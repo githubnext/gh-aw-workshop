@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="90-Minute Agentic Workflows Workshop">
+  <div class="hero">
+    <h2>Build confidence with agentic workflows in 90 minutes</h2>
+    <p>
+      This beginner-friendly workshop helps teams learn how to plan, prompt, verify, and iterate
+      with any agentic engine (Copilot, Claude, Gemini, OpenAI, local agents, and more).
+    </p>
+  </div>
+
+  <section>
+    <h2>Learning goals</h2>
+    <ul>
+      <li>Understand what makes a workflow “agentic” versus a single prompt interaction.</li>
+      <li>Use a repeatable loop: define task → delegate → validate → reflect.</li>
+      <li>Create an Astro documentation site + markdown playbooks with an agent.</li>
+      <li>Leave with a daily workflow you can run in under 20 minutes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>90-minute agenda</h2>
+    <div class="grid">
+      <article>
+        <h3>0–15 min: Foundations</h3>
+        <p>Explain agent roles, constraints, and why verification is required.</p>
+      </article>
+      <article>
+        <h3>15–35 min: Prompt architecture</h3>
+        <p>Practice writing context-rich requests and checklists.</p>
+      </article>
+      <article>
+        <h3>35–60 min: Guided build</h3>
+        <p>Generate pages and instructions in Astro + Markdown with an agent.</p>
+      </article>
+      <article>
+        <h3>60–80 min: Validation lab</h3>
+        <p>Run build/tests, review diffs, and tighten security/quality.</p>
+      </article>
+      <article>
+        <h3>80–90 min: Reflection</h3>
+        <p>Define your daily workflow and anti-patterns to avoid.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Daily agentic workflow (20-minute template)</h2>
+    <ol>
+      <li><strong>Frame:</strong> State objective, constraints, and definition of done.</li>
+      <li><strong>Delegate:</strong> Ask the agent for a plan or implementation step.</li>
+      <li><strong>Verify:</strong> Build, test, inspect diff, and check security assumptions.</li>
+      <li><strong>Capture:</strong> Save reusable prompts and lessons learned.</li>
+    </ol>
+    <p>
+      Use the detailed guides in <a href="/facilitator-guide">Facilitator Guide</a> and
+      <a href="/learner-playbook">Learner Playbook</a>.
+    </p>
+  </section>
+</BaseLayout>

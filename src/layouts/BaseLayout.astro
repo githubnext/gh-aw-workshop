@@ -1,0 +1,97 @@
+---
+const { title = 'Agentic Workflows Workshop' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="90-minute beginner workshop for agentic workflows." />
+    <title>{title}</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        line-height: 1.5;
+      }
+
+      body {
+        margin: 0;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      header {
+        border-bottom: 1px solid #e2e8f0;
+        background: #ffffff;
+      }
+
+      .hero {
+        background: linear-gradient(120deg, #0f172a, #1d4ed8);
+        color: #fff;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        margin: 1.5rem 0;
+      }
+
+      h1, h2, h3 {
+        line-height: 1.2;
+      }
+
+      a {
+        color: #1d4ed8;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      section {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+        margin: 1rem 0;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      code {
+        background: #e2e8f0;
+        padding: 0.1rem 0.35rem;
+        border-radius: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Agentic Workflows Workshop</h1>
+        <nav>
+          <ul>
+            <li><a href="/">Workshop</a></li>
+            <li><a href="/facilitator-guide">Facilitator Guide</a></li>
+            <li><a href="/learner-playbook">Learner Playbook</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>
