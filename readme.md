@@ -15,6 +15,10 @@ npm run dev
 npm run build
 ```
 
+## Deployment note
+
+Before deploying, update `site` in `/astro.config.mjs` from `https://your-domain-here.com` to your real production URL.
+
 ## Content map
 
 - `src/pages/index.astro` — agenda, goals, daily loop
