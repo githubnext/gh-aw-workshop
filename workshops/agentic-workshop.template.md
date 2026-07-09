@@ -1,6 +1,6 @@
 # Interactive Workshop: Getting Started with GitHub Agentic Workflows
 
-_Workshop Date: 2026-07-09_
+_Workshop Date: {{DATE}}_
 
 ## Workshop Goals
 - Understand what agentic workflows are and when to use them.
