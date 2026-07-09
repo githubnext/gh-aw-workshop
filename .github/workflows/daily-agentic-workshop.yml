@@ -21,8 +21,6 @@ jobs:
           cat > workshops/agentic-workshop.md <<EOF
           # Interactive Workshop: Getting Started with GitHub Agentic Workflows
 
-          _Generated on: $(date -u '+%Y-%m-%d %H:%M UTC')_
-
           ## Workshop Goals
           - Understand what agentic workflows are and when to use them.
           - Help developers prototype workflow automation quickly.
