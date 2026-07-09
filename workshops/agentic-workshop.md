@@ -23,6 +23,7 @@
 
 ## Recommended Starting Point
 Start with **Palettes** and the **/slash-agentic workflow designer** skill to quickly scaffold and refine your first workflow.
+Daily Focus rotates on a UTC day boundary.
 
 ## Daily Reflection Prompts
 - What worked well today?
