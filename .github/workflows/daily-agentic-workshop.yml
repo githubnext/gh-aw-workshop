@@ -2,6 +2,7 @@ name: Daily Agentic Workshop Builder
 
 on:
   schedule:
+    # Runs daily at 14:00 UTC to publish one workshop refresh each UTC day.
     - cron: '0 14 * * *'
   workflow_dispatch:
 
@@ -26,8 +27,8 @@ jobs:
             exit 1
           fi
 
-          iso_weekday="$(date -u '+%u')"
-          case "${iso_weekday}" in
+          day_of_week="$(date -u '+%u')"
+          case "${day_of_week}" in
             1) focus="Define clear workflow success metrics and owner accountability." ;;
             2) focus="Refine developer prompts and validate agent guardrails." ;;
             3) focus="Review program milestones and cross-team dependencies." ;;
