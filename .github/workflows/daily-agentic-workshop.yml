@@ -35,6 +35,7 @@ jobs:
             5) focus="Assess adoption signals and collect workshop feedback." ;;
             6) focus="Capture reusable workflow patterns for next week." ;;
             7) focus="Prepare next-week objectives and backlog priorities." ;;
+            *) focus="Review workshop outcomes and refine the next iteration." ;;
           esac
 
           temp_output="$(mktemp)"
