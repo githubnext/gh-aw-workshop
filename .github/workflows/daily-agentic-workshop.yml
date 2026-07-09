@@ -18,8 +18,7 @@ jobs:
       - name: Generate workshop markdown
         run: |
           mkdir -p workshops
-          today="$(date -u '+%Y-%m-%d')"
-          sed "s/{{DATE}}/${today}/g" workshops/agentic-workshop.template.md > workshops/agentic-workshop.md
+          cp workshops/agentic-workshop.template.md workshops/agentic-workshop.md
 
       - name: Commit workshop updates
         run: |

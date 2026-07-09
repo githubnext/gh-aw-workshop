@@ -1,7 +1,5 @@
 # Interactive Workshop: Getting Started with GitHub Agentic Workflows
 
-_Workshop Date: {{DATE}}_
-
 ## Workshop Goals
 - Understand what agentic workflows are and when to use them.
 - Help developers prototype workflow automation quickly.
