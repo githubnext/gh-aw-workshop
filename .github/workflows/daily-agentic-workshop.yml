@@ -38,13 +38,14 @@ jobs:
           esac
 
           temp_output="$(mktemp)"
+          trap 'rm -f "${temp_output}"' EXIT
           cat "${template_path}" > "${temp_output}"
           {
             echo
             echo "## Daily Focus"
             echo "- ${focus}"
           } >> "${temp_output}"
-          mv "${temp_output}" "${output_path}"
+          cp "${temp_output}" "${output_path}"
 
       - name: Commit workshop updates
         run: |
