@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       - name: Generate workshop markdown
         run: |
@@ -42,7 +40,6 @@ jobs:
           esac
 
           temp_output="$(mktemp)"
-          trap 'rm -f "${temp_output}"' EXIT
           cat "${template_path}" > "${temp_output}"
           {
             echo
@@ -50,10 +47,9 @@ jobs:
             echo "- ${focus}"
           } >> "${temp_output}"
           cp "${temp_output}" "${output_path}"
+          rm -f "${temp_output}"
 
       - name: Commit workshop updates
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if git diff --quiet HEAD -- workshops/agentic-workshop.md; then
             echo "No changes to commit."
@@ -62,6 +58,5 @@ jobs:
           git add workshops/agentic-workshop.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git commit -m "chore: refresh daily agentic workshop content"
           git push
