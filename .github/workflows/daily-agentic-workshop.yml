@@ -18,7 +18,31 @@ jobs:
       - name: Generate workshop markdown
         run: |
           mkdir -p workshops
-          cp workshops/agentic-workshop.template.md workshops/agentic-workshop.md
+          template_path="workshops/agentic-workshop.template.md"
+          output_path="workshops/agentic-workshop.md"
+
+          if [ ! -f "${template_path}" ]; then
+            echo "Template file not found: ${template_path}"
+            exit 1
+          fi
+
+          day_of_week="$(date -u '+%u')"
+          case "${day_of_week}" in
+            1) focus="Define clear workflow success metrics and owner accountability." ;;
+            2) focus="Refine developer prompts and validate agent guardrails." ;;
+            3) focus="Review program milestones and cross-team dependencies." ;;
+            4) focus="Map approval checkpoints and escalation paths." ;;
+            5) focus="Assess adoption signals and collect workshop feedback." ;;
+            6) focus="Capture reusable workflow patterns for next week." ;;
+            7) focus="Prepare next-week objectives and backlog priorities." ;;
+          esac
+
+          cp "${template_path}" "${output_path}"
+          {
+            echo
+            echo "## Daily Focus"
+            echo "- ${focus}"
+          } >> "${output_path}"
 
       - name: Commit workshop updates
         run: |

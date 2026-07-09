@@ -28,3 +28,6 @@ Start with **Palettes** and the **/slash-agentic workflow designer** skill to qu
 - What worked well today?
 - What should be changed in tomorrow's run?
 - What additional guidance would improve output quality?
+
+## Daily Focus
+- Map approval checkpoints and escalation paths.
