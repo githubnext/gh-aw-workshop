@@ -26,8 +26,8 @@ jobs:
             exit 1
           fi
 
-          day_of_week="$(date -u '+%u')"
-          case "${day_of_week}" in
+          iso_weekday="$(date -u '+%u')"
+          case "${iso_weekday}" in
             1) focus="Define clear workflow success metrics and owner accountability." ;;
             2) focus="Refine developer prompts and validate agent guardrails." ;;
             3) focus="Review program milestones and cross-team dependencies." ;;
@@ -37,12 +37,14 @@ jobs:
             7) focus="Prepare next-week objectives and backlog priorities." ;;
           esac
 
-          cp "${template_path}" "${output_path}"
+          temp_output="$(mktemp)"
+          cat "${template_path}" > "${temp_output}"
           {
             echo
             echo "## Daily Focus"
             echo "- ${focus}"
-          } >> "${output_path}"
+          } >> "${temp_output}"
+          mv "${temp_output}" "${output_path}"
 
       - name: Commit workshop updates
         run: |
