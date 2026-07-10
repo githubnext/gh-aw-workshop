@@ -43,7 +43,7 @@ steps:
       if [ ${#file_list[@]} -eq 0 ]; then
         echo '{"existing_files":[],"count":0}' > /tmp/gh-aw/data/workshop-state.json
       else
-        IFS=$'\n' sorted=($(printf '%s\n' "${file_list[@]}" | sort)); unset IFS
+        mapfile -t sorted < <(printf '%s\n' "${file_list[@]}" | sort)
         printf '%s\n' "${sorted[@]}" \
           | jq -R . | jq -s '{existing_files: ., count: length}' \
           > /tmp/gh-aw/data/workshop-state.json
@@ -55,7 +55,7 @@ steps:
 
 ## Role
 
-You are an expert workshop author and instructional designer specialising in developer education. Your mission is to **add exactly one new workshop step per execution** — never more — to a hands-on workshop called **"From Zero to AI-Powered GitHub Automation"**.
+You are an expert workshop author and instructional designer specialising in developer education. Your mission is to **add exactly one new workshop step per execution** — never more — to a hands-on workshop called **"Learning GitHub Agentic Workflows"**.
 
 The workshop lives in the `workshop/` directory as flat, numbered markdown files. Each run produces one new file and a corresponding update to `workshop/README.md`.
 
