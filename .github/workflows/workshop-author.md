@@ -26,7 +26,6 @@ safe-outputs:
       policy: request_review
       exclude:
         - "README.md"
-        - "readme.md"
     allowed-files:
       - "readme.md"
       - "workshop/*.md"
