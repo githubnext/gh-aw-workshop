@@ -32,16 +32,22 @@ steps:
   - name: Gather workshop state
     run: |
       mkdir -p /tmp/gh-aw/data
-      # List existing workshop files in order
+      # Collect existing workshop markdown files using a glob (avoids ls anti-pattern)
+      file_list=()
       if [ -d workshop ]; then
-        files=$(ls workshop/*.md 2>/dev/null | sort | xargs -I{} basename {} 2>/dev/null || echo "")
-        count=$(echo "$files" | grep -c . || echo "0")
-      else
-        files=""
-        count=0
+        for f in workshop/*.md; do
+          [ -e "$f" ] && file_list+=("$(basename "$f")")
+        done
       fi
-      echo "{\"existing_files\": $(echo "$files" | jq -R -s 'split("\n") | map(select(. != ""))'), \"count\": $count}" \
-        > /tmp/gh-aw/data/workshop-state.json
+      # Build JSON with jq for safe, robust serialisation
+      if [ ${#file_list[@]} -eq 0 ]; then
+        echo '{"existing_files":[],"count":0}' > /tmp/gh-aw/data/workshop-state.json
+      else
+        IFS=$'\n' sorted=($(printf '%s\n' "${file_list[@]}" | sort)); unset IFS
+        printf '%s\n' "${sorted[@]}" \
+          | jq -R . | jq -s '{existing_files: ., count: length}' \
+          > /tmp/gh-aw/data/workshop-state.json
+      fi
       cat /tmp/gh-aw/data/workshop-state.json
 ---
 
