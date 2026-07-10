@@ -17,8 +17,15 @@ jobs:
             contents: read
 
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
             - name: Install gh-aw extension
               run: gh extension install github/gh-aw
+              env:
+                  GH_TOKEN: ${{ github.token }}
 
             - name: Initialize agentic workflows
               run: gh aw init --skip-permissions
+              env:
+                  GH_TOKEN: ${{ github.token }}
