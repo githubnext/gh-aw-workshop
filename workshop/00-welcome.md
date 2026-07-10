@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-In this workshop, you'll learn how to build **agentic workflows** — GitHub Actions that use AI to think, decide, and act on your behalf. You'll start from scratch and finish with a working daily status report that summarises your repository's activity without you lifting a finger.
+In this workshop, you'll learn how to build **agentic workflows** — GitHub Actions that use AI to think, decide, and act on your behalf. You'll start from scratch and finish with a working daily status report that summarizes your repository's activity without you lifting a finger.
 
 ## A Peek at the Finish Line
 
