@@ -1,0 +1,23 @@
+name: "Copilot Setup Steps"
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    # No additional dependencies to install for this workshop repository.
+    # Copilot will have the code checked out and ready to work with.
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
