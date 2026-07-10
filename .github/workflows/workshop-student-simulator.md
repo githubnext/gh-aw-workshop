@@ -221,6 +221,7 @@ Use deterministic simulation: derive pseudo-random rolls from the student id, st
 
 **Formula**: `roll = ((student_id * 7 + step_index * 13 + day_of_year * 17) % 100) / 100`
 where `day_of_year` is the day number in the current year (1–366).
+The prime multipliers (7, 13, 17) are chosen to spread values across the 0–99 range without clustering, ensuring each (student, step, day) triple maps to a distinct bucket.
 
 A step succeeds if `roll < adjusted_probability`.
 
@@ -237,7 +238,7 @@ For each student who fails at a step, note:
   - **skeptical + early steps**: "Value proposition not convincingly stated"
   - **actions-user + agentic intro**: "Kept mapping to classic Actions patterns, got confused by differences"
   - **advanced + basics**: "Introduction moves too slowly; want to jump to complex examples"
-  - Any student failing step 6: "gh aw install command requires gh CLI pre-installed — not clearly stated as prerequisite"
+  - Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
   - Any student failing step 11: "Full workflow source harder to understand without line-by-line annotation"
 
 ### 4. Aggregate and analyse results
