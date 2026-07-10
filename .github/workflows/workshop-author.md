@@ -10,13 +10,12 @@ on:
         type: string
 permissions:
   contents: read
-  pull-requests: write
+  issues: read
+  pull-requests: read
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
-  bash: {}
-  edit: {}
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop] "
