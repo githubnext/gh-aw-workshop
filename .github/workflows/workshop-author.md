@@ -27,6 +27,7 @@ safe-outputs:
       exclude:
         - "README.md"
     allowed-files:
+      - "README.md"
       - "readme.md"
       - "workshop/*.md"
       - "workshop/**/*.md"
