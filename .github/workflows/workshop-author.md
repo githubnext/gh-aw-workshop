@@ -22,7 +22,13 @@ safe-outputs:
     title-prefix: "[workshop] "
     labels: [workshop, documentation]
     draft: true
+    protected-files:
+      policy: request_review
+      exclude:
+        - "README.md"
+        - "readme.md"
     allowed-files:
+      - "readme.md"
       - "workshop/*.md"
       - "workshop/**/*.md"
     if-no-changes: warn
