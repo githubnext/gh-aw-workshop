@@ -23,6 +23,7 @@ safe-outputs:
     labels: [workshop, documentation]
     draft: true
     allowed-files:
+      - "workshop/*.md"
       - "workshop/**/*.md"
     if-no-changes: warn
 network:
