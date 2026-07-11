@@ -1,0 +1,39 @@
+# Step 5: What Are Agentic Workflows?
+
+_If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
+
+> [!TIP]
+> **Skip to advanced content:** Jump to [Advanced fast-track: What's New cheat sheet](#advanced-fast-track-whats-new-cheat-sheet).
+
+## 🎯 What You'll Do
+
+You'll connect what you already know about classic GitHub Actions to the agentic model used in this workshop.
+
+This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
+
+## Advanced fast-track: What's New cheat sheet
+
+Use this as a one-page reference for the shift from classic workflows to agentic workflows.
+
+| Classic GitHub Actions | Agentic workflows |
+|---|---|
+| Predetermined sequence of steps | Goal-oriented flow where an agent can choose next actions |
+| Logic is encoded manually in YAML and scripts | Logic can be delegated to an AI agent guided by prompts and constraints |
+| Handles known, explicit branches well | Handles ambiguous inputs by reasoning and adapting |
+| Output is usually command/script results | Output can include synthesized summaries, decisions, and follow-up actions |
+| Human updates workflow logic for every new scenario | Human defines guardrails; agent handles more variation at runtime |
+| Great for deterministic automation | Best when tasks require interpretation, triage, or planning |
+
+## What Stays the Same
+
+- Workflows still run in GitHub Actions runners
+- Triggers, permissions, and repository context still matter
+- You still version workflows in git and review them like code
+
+## ✅ Checkpoint
+
+- [ ] I can explain at least two differences between classic and agentic workflows
+- [ ] I know where agentic workflows still rely on core Actions concepts
+- [ ] I'm ready to install the `gh-aw` (GitHub Agentic Workflows) extension
+
+**Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
