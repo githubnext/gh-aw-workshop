@@ -43,7 +43,7 @@ You'll work in your own copy of the workshop repository.
 git --version
 ```
 
-![Example success output after running `git --version`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `git --version`](images/02b-terminal-success-01-git-version.svg)
 
 _What success looks like:_ a line like `git version 2.x.x`.
 
@@ -57,7 +57,7 @@ Check whether Node.js is already installed:
 node --version
 ```
 
-![Example success output after running `node --version`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `node --version`](images/02b-terminal-success-02-node-version.svg)
 
 _What success looks like:_ a line like `v20.x.x` (or newer).
 
@@ -69,7 +69,7 @@ If you see `v20.x.x` or higher, you're good. If not, install Node.js using your 
 brew install node
 ```
 
-![Example success output after running `brew install node`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `brew install node`](images/02b-terminal-success-03-brew-node.svg)
 
 _What success looks like:_ a completed install message with no error lines.
 
@@ -79,7 +79,7 @@ _What success looks like:_ a completed install message with no error lines.
 winget install OpenJS.NodeJS.LTS
 ```
 
-![Example success output after running `winget install OpenJS.NodeJS.LTS`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `winget install OpenJS.NodeJS.LTS`](images/02b-terminal-success-04-winget-node.svg)
 
 _What success looks like:_ install progress finishes and reports success.
 
@@ -90,7 +90,7 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-![Example success output after running Linux Node.js install commands](images/02b-terminal-success-annotated.svg)
+![Example success output after running Linux Node.js install commands](images/02b-terminal-success-05-linux-node.svg)
 
 _What success looks like:_ both commands finish and return to the prompt without errors.
 
@@ -100,7 +100,7 @@ After installing, reopen your terminal and verify:
 node --version
 ```
 
-![Example success output after re-checking `node --version`](images/02b-terminal-success-annotated.svg)
+![Example success output after re-checking `node --version`](images/02b-terminal-success-06-node-version.svg)
 
 _What success looks like:_ `v20.x.x` or newer.
 
@@ -115,7 +115,7 @@ The `gh` CLI is GitHub's official command-line tool. Check whether it's already 
 gh --version
 ```
 
-![Example success output after running `gh --version`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `gh --version`](images/02b-terminal-success-07-gh-version.svg)
 
 _What success looks like:_ version details for `gh` are printed.
 
@@ -127,7 +127,7 @@ If not, follow the instructions for your platform at [cli.github.com](https://cl
 brew install gh
 ```
 
-![Example success output after running `brew install gh`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `brew install gh`](images/02b-terminal-success-08-brew-gh.svg)
 
 _What success looks like:_ installation completes and returns to prompt.
 
@@ -137,7 +137,7 @@ _What success looks like:_ installation completes and returns to prompt.
 winget install --id GitHub.cli
 ```
 
-![Example success output after running `winget install --id GitHub.cli`](images/02b-terminal-success-annotated.svg)
+![Example success output after running `winget install --id GitHub.cli`](images/02b-terminal-success-09-winget-gh.svg)
 
 _What success looks like:_ package install reports success.
 
@@ -153,7 +153,7 @@ _What success looks like:_ package install reports success.
 && sudo apt install gh -y
 ```
 
-![Example success output after running Linux `gh` install commands](images/02b-terminal-success-annotated.svg)
+![Example success output after running Linux `gh` install commands](images/02b-terminal-success-10-linux-gh.svg)
 
 _What success looks like:_ apt completes and `gh` is installed without errors.
 
@@ -163,7 +163,7 @@ _What success looks like:_ apt completes and `gh` is installed without errors.
 gh auth login
 ```
 
-![Example prompt flow after running `gh auth login`](images/02b-terminal-success-annotated.svg)
+![Example prompt flow after running `gh auth login`](images/02b-terminal-success-11-gh-auth-login.svg)
 
 _What success looks like:_ interactive prompts complete and login succeeds.
 
@@ -181,7 +181,7 @@ gh repo clone YOUR_USERNAME/gh-aw-workshop
 cd gh-aw-workshop
 ```
 
-![Example success output after cloning and changing directories](images/02b-terminal-success-annotated.svg)
+![Example success output after cloning and changing directories](images/02b-terminal-success-12-gh-repo-clone.svg)
 
 _What success looks like:_ clone finishes and `cd` returns you to a prompt inside `gh-aw-workshop`.
 
@@ -193,7 +193,7 @@ node --version
 gh --version
 ```
 
-![Example success output for final local setup verification commands](images/02b-terminal-success-annotated.svg)
+![Example success output for final local setup verification commands](images/02b-terminal-success-13-final-verify.svg)
 
 _What success looks like:_ all three commands print output; `owner` is your GitHub username.
 
@@ -205,7 +205,7 @@ All three commands should return output without errors. The repo view should sho
 |------|------|------|
 | `command not found` | Tool is missing or terminal session hasn't picked up install yet | Install/reinstall the tool from the step above, then fully close and reopen terminal |
 | `permission denied` | Command needs elevated privileges or file permissions are restricted | Re-run the Linux/macOS install command with `sudo` exactly as shown; on Windows use an elevated terminal when needed |
-| `No such file or directory` / path-related errors | You're not in the expected folder | Run `pwd` (macOS/Linux) or `cd` into `gh-aw-workshop`, then retry |
+| `No such file or directory` / path-related errors | You're not in the expected folder | Run `pwd` (macOS/Linux) or `cd` (Windows) to check your location, then `cd gh-aw-workshop` and retry |
 
 ## ✅ Checkpoint
 
