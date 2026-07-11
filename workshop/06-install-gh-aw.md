@@ -13,6 +13,13 @@ extension so you can compile and run agentic workflows from your terminal.
   (done in [Adventure A §4](02a-setup-codespace.md#4-authenticate-the-gh-cli)
   or [Adventure B §5](02b-setup-local.md#5-authenticate-the-gh-cli))
 
+> [!IMPORTANT]
+> **No local terminal?** If you are using the GitHub web UI, the Copilot app, or a cloud coding agent,
+> open a **Codespace** on your practice repository — it comes with `gh` pre-installed and authenticated.
+> Haven't set one up yet? Follow [Adventure A: Set Up a Codespace](02a-setup-codespace.md) first.
+> Once `gh extension install github/gh-aw` succeeds inside the Codespace, the extension is available
+> for all subsequent steps in that environment.
+
 ## Steps
 
 > [!TIP]

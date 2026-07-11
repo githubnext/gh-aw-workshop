@@ -54,6 +54,8 @@ You'll confirm that you have everything required before writing a single line of
 
 If `gh` is missing, install it using one of these one-liners:
 
+> **Why this matters:** `gh-aw` is a `gh` CLI extension — it cannot run without `gh` installed. Skipping this step means the `gh aw` command in Step 6 will not exist and the workshop will stall there.
+
 #### macOS (Homebrew)
 
 ```bash
@@ -87,6 +89,8 @@ You need a **free GitHub account**. If you don't have one yet, create it at [git
 > You don't need a paid plan. Everything in this workshop works with a free GitHub account.
 
 Authenticate your `gh` CLI now:
+
+> **Why this matters:** Skipping `gh auth login` will cause Step 6 to fail silently — without authentication, your workflow won't have permission to read repository data or post issue comments, and errors may not be obvious.
 
 ```bash
 gh auth login
