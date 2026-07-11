@@ -340,7 +340,14 @@ permissions:
 
 ### How it works
 
-This workflow makes four practical decisions so it stays reliable and easy to debug. First, it uses a short, task-focused prompt so the agent gathers only the repo signals you care about (PRs, issues, CI, and last commit) instead of wandering. Second, `permissions` are explicitly scoped so the agent can read repository state and write exactly one issue comment, but nothing broader. Third, the `tools` block routes GitHub access through `gh-proxy` with the default toolset, which keeps the workflow compatible with workshop conventions. Finally, the output format is fixed, so each daily report is consistent and easy to scan over time. The guidelines then cover edge cases (already posted today, no existing issue) so the agent does not guess.
+This workflow makes four practical decisions so it stays reliable and easy to debug:
+
+- It uses a short, task-focused prompt so the agent gathers only the repo signals you care about (PRs, issues, CI, and last commit).
+- `permissions` are explicitly scoped so the agent can read repository state and write exactly one issue comment, but nothing broader.
+- The `tools` block routes GitHub access through `gh-proxy` with the default toolset, matching workshop conventions.
+- The output format is fixed, so each daily report is consistent and easy to scan over time.
+
+The guidelines then cover edge cases (already posted today, no existing issue) so the agent does not guess.
 
 Use this block to copy the full workflow into your editor. Inline comments explain why each YAML block exists:
 
@@ -349,7 +356,7 @@ Use this block to copy the full workflow into your editor. Inline comments expla
 
 ```markdown
 ---
-# 1) Metadata shown in workflow listings and UIs
+# 1) Workshop metadata used by the simulator and workflow listings
 emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
 
