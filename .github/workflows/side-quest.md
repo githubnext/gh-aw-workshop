@@ -170,7 +170,7 @@ Match the workshop voice: practical, friendly, and beginner-safe.
 
 Use this structure:
 
-```markdown
+```text
 # Side Quest: <Title>
 
 > _One-sentence reason this optional detour is worth taking._
