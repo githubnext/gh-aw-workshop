@@ -9,24 +9,40 @@ You'll create a fresh GitHub repository in your account, set it up with a basic 
 ## 📋 Before You Start
 
 - You've completed either [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
-- The `gh` CLI is installed and authenticated
+- You have a GitHub account and are signed in
 
 ## Steps
 
 ### 1. Create the repository
 
-Use the `gh` CLI to create a new public repository called `my-agentic-workflows`:
+**Terminal:**
 
 ```bash
 gh repo create my-agentic-workflows --public --description "My GitHub agentic workflows workshop practice repo" --add-readme
 ```
 
-This command does three things at once: creates the repository, sets it to public, and adds a starter `README.md`.
+This command creates the repository, sets it to public, and adds a starter `README.md` in one go.
+
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+1. Go to [github.com/new](https://github.com/new) in your browser.
+2. Fill in **Repository name**: `my-agentic-workflows`
+3. Set **Visibility** to **Public**.
+4. Check **Add a README file**.
+5. Click **Create repository**.
+
+![Create repository form on GitHub](images/03-create-repo-ui.png)
+
+</details>
 
 > [!NOTE]
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
 ### 2. Clone and enter the repository
+
+> [!NOTE]
+> **GitHub UI path:** If you plan to create and edit files directly on GitHub (in the browser), you can skip this step — cloning is only needed for terminal-based work.
 
 If you're on the **local path**, clone the new repository:
 
@@ -44,11 +60,13 @@ cd my-agentic-workflows
 ```
 
 > [!TIP]
-> All remaining workshop steps assume your terminal is inside the `my-agentic-workflows` directory. Keep this terminal open — you'll return to it throughout the workshop.
+> Remaining steps that use the terminal assume your shell is inside the `my-agentic-workflows` directory. Keep this terminal open — you'll return to it throughout the workshop.
 
 ### 3. Confirm GitHub Actions is enabled
 
-Open the repository on GitHub:
+Open the repository on GitHub.
+
+**Terminal shortcut:**
 
 ```bash
 gh repo view --web
@@ -63,7 +81,9 @@ Click the **Actions** tab at the top of the page. You should see a message like 
 
 ### 4. Add a .gitignore (optional but tidy)
 
-Workflows sometimes generate local log files. A `.gitignore` keeps your repository clean:
+Workflows sometimes generate local log files. A `.gitignore` keeps your repository clean.
+
+**Terminal:**
 
 ```bash
 printf '*.log\n.env\n' > .gitignore
@@ -72,9 +92,23 @@ git commit -m "chore: add .gitignore"
 git push
 ```
 
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+1. In your repository on GitHub, click **Add file** → **Create new file**.
+2. Type `.gitignore` as the filename.
+3. Paste the following content:
+   ```
+   *.log
+   .env
+   ```
+4. Click **Commit new file**.
+
+</details>
+
 ### 5. Verify your setup
 
-Check that everything is connected:
+**Terminal:**
 
 ```bash
 gh repo view --json name,owner,url | cat
@@ -82,14 +116,16 @@ gh repo view --json name,owner,url | cat
 
 You should see your username as `owner`, `my-agentic-workflows` as `name`, and a valid GitHub URL.
 
+**GitHub UI:** Navigate to your repository on GitHub and confirm the repository name and your username appear in the page header.
+
 > [!TIP]
-> Bookmark the repository URL that appears — you'll visit it often to watch workflows run.
+> Bookmark the repository URL — you'll visit it often to watch workflows run.
 
 ## ✅ Checkpoint
 
 - [ ] `my-agentic-workflows` repository exists in your GitHub account
-- [ ] You're inside the repository directory in your terminal
+- [ ] You're inside the repository directory in your terminal (terminal path) or have the repository open in your browser (UI path)
 - [ ] The **Actions** tab is visible and enabled on GitHub
-- [ ] `gh repo view` shows your username as the owner
+- [ ] You can confirm your username is the repository owner
 
 **Next:** [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)

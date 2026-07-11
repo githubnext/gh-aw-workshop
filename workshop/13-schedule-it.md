@@ -17,6 +17,13 @@ You'll update the `schedule` trigger in your workflow using gh-aw's fuzzy schedu
 
 In your editor (or Codespace), open `.github/workflows/daily-status.md`.
 
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+Navigate to `.github/workflows/daily-status.md` in your repository on GitHub and click the **pencil icon (✏️)** to open the file in the web editor.
+
+</details>
+
 ### 2. Locate the `on:` block
 
 You should already have a `schedule: daily` trigger and a `workflow_dispatch` trigger:
@@ -52,7 +59,7 @@ on:
 
 ### 4. Compile and validate
 
-After editing, compile the file to make sure the expression is recognised:
+**Terminal:**
 
 ```bash
 gh aw compile .github/workflows/daily-status.md --validate
@@ -60,13 +67,25 @@ gh aw compile .github/workflows/daily-status.md --validate
 
 You should see `✅ Compiled successfully`. The compiled `.yml` will contain the expanded cron expression — you don't need to write or maintain it by hand.
 
+> [!NOTE]
+> **GitHub UI path:** Compilation requires a terminal or Codespace. UI path users can skip this step — GitHub Actions will surface any issues when the workflow next runs.
+
 ### 5. Commit and push
+
+**Terminal:**
 
 ```bash
 git add .github/workflows/daily-status.md
 git commit -m "chore: schedule daily status workflow"
 git push
 ```
+
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+Navigate to `.github/workflows/daily-status.md` in your repository, click the **pencil icon (✏️)**, update the `schedule:` line as described in step 3, then click **Commit changes**.
+
+</details>
 
 ### 6. Confirm the schedule is registered
 

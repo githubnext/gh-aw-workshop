@@ -67,11 +67,20 @@ prompt: |
 
 ### 5. Commit, push, and re-run
 
+**Terminal:**
+
 ```bash
 git add .github/workflows/daily-status.md
 git commit -m "refine: tighten daily status prompt"
 git push
 ```
+
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+Navigate to `.github/workflows/daily-status.md` in your repository, click the **pencil icon (✏️)**, make your changes, then click **Commit changes**.
+
+</details>
 
 Trigger another manual run and compare the new comment with the old one. Repeat until you are happy.
 

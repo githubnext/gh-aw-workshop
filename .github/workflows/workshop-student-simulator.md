@@ -36,46 +36,46 @@ steps:
       if [ ! -f /tmp/gh-aw/cache-memory/profiles.json ]; then
         cat > /tmp/gh-aw/cache-memory/profiles.json <<'EOF'
       {
-        "version": 1,
+        "version": 2,
         "students": [
-          {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":3,  "name":"Morgan Kim",      "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":4,  "name":"Riley Park",      "level":"beginner",     "personality":"impatient",   "background":"no-coding",       "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":5,  "name":"Skyler Nguyen",   "level":"beginner",     "personality":"skeptical",   "background":"no-coding",       "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":6,  "name":"Casey Wong",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"teaching-others",      "runs":0, "successes":0},
-          {"id":7,  "name":"Drew Tanaka",     "level":"github-basic", "personality":"methodical",  "background":"web-dev",         "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":8,  "name":"Avery Singh",     "level":"github-basic", "personality":"curious",     "background":"web-dev",         "goal":"work-project",         "runs":0, "successes":0},
-          {"id":9,  "name":"Jordan Martinez", "level":"github-basic", "personality":"impatient",   "background":"web-dev",         "goal":"work-project",         "runs":0, "successes":0},
-          {"id":10, "name":"Quinn Lopez",     "level":"github-basic", "personality":"confused",    "background":"web-dev",         "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":11, "name":"Reece Thompson",  "level":"github-basic", "personality":"skeptical",   "background":"backend-dev",     "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":12, "name":"Sam Patel",       "level":"github-basic", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "runs":0, "successes":0},
-          {"id":13, "name":"Blake Rivera",    "level":"github-basic", "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":14, "name":"Chris Davis",     "level":"github-basic", "personality":"confused",    "background":"data-science",    "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":15, "name":"Dana Wilson",     "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "runs":0, "successes":0},
-          {"id":16, "name":"Eli Brown",       "level":"actions-user", "personality":"curious",     "background":"devops",          "goal":"work-project",         "runs":0, "successes":0},
-          {"id":17, "name":"Frankie Moore",   "level":"actions-user", "personality":"impatient",   "background":"devops",          "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":18, "name":"Gio Jackson",     "level":"actions-user", "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":19, "name":"Harper Lee",      "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "runs":0, "successes":0},
-          {"id":20, "name":"Indigo Taylor",   "level":"actions-user", "personality":"curious",     "background":"backend-dev",     "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":21, "name":"Jesse Anderson",  "level":"actions-user", "personality":"confused",    "background":"web-dev",         "goal":"work-project",         "runs":0, "successes":0},
-          {"id":22, "name":"Kai White",       "level":"actions-user", "personality":"methodical",  "background":"devops",          "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":23, "name":"Lane Harris",     "level":"advanced",     "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":24, "name":"Max Clark",       "level":"advanced",     "personality":"impatient",   "background":"backend-dev",     "goal":"work-project",         "runs":0, "successes":0},
-          {"id":25, "name":"Nova Robinson",   "level":"advanced",     "personality":"methodical",  "background":"devops",          "goal":"teaching-others",      "runs":0, "successes":0},
-          {"id":26, "name":"Ocean Lewis",     "level":"advanced",     "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":27, "name":"Piper Walker",    "level":"advanced",     "personality":"skeptical",   "background":"web-dev",         "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":28, "name":"Quinn Hall",      "level":"github-basic", "personality":"impatient",   "background":"no-coding",       "goal":"work-project",         "runs":0, "successes":0},
-          {"id":29, "name":"River Young",     "level":"beginner",     "personality":"methodical",  "background":"data-science",    "goal":"work-project",         "runs":0, "successes":0},
-          {"id":30, "name":"Sage King",       "level":"actions-user", "personality":"curious",     "background":"web-dev",         "goal":"teaching-others",      "runs":0, "successes":0},
-          {"id":31, "name":"Tatum Wright",    "level":"advanced",     "personality":"confused",    "background":"backend-dev",     "goal":"work-project",         "runs":0, "successes":0},
-          {"id":32, "name":"Uma Scott",       "level":"beginner",     "personality":"curious",     "background":"web-dev",         "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "runs":0, "successes":0},
-          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "runs":0, "successes":0},
-          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "runs":0, "successes":0},
-          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "runs":0, "successes":0}
+          {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":3,  "name":"Morgan Kim",      "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"personal-learning",    "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":4,  "name":"Riley Park",      "level":"beginner",     "personality":"impatient",   "background":"no-coding",       "goal":"personal-learning",    "ui_preferred":false, "runs":0, "successes":0},
+          {"id":5,  "name":"Skyler Nguyen",   "level":"beginner",     "personality":"skeptical",   "background":"no-coding",       "goal":"personal-learning",    "ui_preferred":false, "runs":0, "successes":0},
+          {"id":6,  "name":"Casey Wong",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"teaching-others",      "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":7,  "name":"Drew Tanaka",     "level":"github-basic", "personality":"methodical",  "background":"web-dev",         "goal":"personal-learning",    "ui_preferred":false, "runs":0, "successes":0},
+          {"id":8,  "name":"Avery Singh",     "level":"github-basic", "personality":"curious",     "background":"web-dev",         "goal":"work-project",         "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":9,  "name":"Jordan Martinez", "level":"github-basic", "personality":"impatient",   "background":"web-dev",         "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":10, "name":"Quinn Lopez",     "level":"github-basic", "personality":"confused",    "background":"web-dev",         "goal":"personal-learning",    "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":11, "name":"Reece Thompson",  "level":"github-basic", "personality":"skeptical",   "background":"backend-dev",     "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":12, "name":"Sam Patel",       "level":"github-basic", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":13, "name":"Blake Rivera",    "level":"github-basic", "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "ui_preferred":false, "runs":0, "successes":0},
+          {"id":14, "name":"Chris Davis",     "level":"github-basic", "personality":"confused",    "background":"data-science",    "goal":"personal-learning",    "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":15, "name":"Dana Wilson",     "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":16, "name":"Eli Brown",       "level":"actions-user", "personality":"curious",     "background":"devops",          "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":17, "name":"Frankie Moore",   "level":"actions-user", "personality":"impatient",   "background":"devops",          "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":18, "name":"Gio Jackson",     "level":"actions-user", "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":19, "name":"Harper Lee",      "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":20, "name":"Indigo Taylor",   "level":"actions-user", "personality":"curious",     "background":"backend-dev",     "goal":"personal-learning",    "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":21, "name":"Jesse Anderson",  "level":"actions-user", "personality":"confused",    "background":"web-dev",         "goal":"work-project",         "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":22, "name":"Kai White",       "level":"actions-user", "personality":"methodical",  "background":"devops",          "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":23, "name":"Lane Harris",     "level":"advanced",     "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":24, "name":"Max Clark",       "level":"advanced",     "personality":"impatient",   "background":"backend-dev",     "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":25, "name":"Nova Robinson",   "level":"advanced",     "personality":"methodical",  "background":"devops",          "goal":"teaching-others",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":26, "name":"Ocean Lewis",     "level":"advanced",     "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "ui_preferred":false, "runs":0, "successes":0},
+          {"id":27, "name":"Piper Walker",    "level":"advanced",     "personality":"skeptical",   "background":"web-dev",         "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":28, "name":"Quinn Hall",      "level":"github-basic", "personality":"impatient",   "background":"no-coding",       "goal":"work-project",         "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":29, "name":"River Young",     "level":"beginner",     "personality":"methodical",  "background":"data-science",    "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":30, "name":"Sage King",       "level":"actions-user", "personality":"curious",     "background":"web-dev",         "goal":"teaching-others",      "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":31, "name":"Tatum Wright",    "level":"advanced",     "personality":"confused",    "background":"backend-dev",     "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":32, "name":"Uma Scott",       "level":"beginner",     "personality":"curious",     "background":"web-dev",         "goal":"team-evaluation",      "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "ui_preferred":false, "runs":0, "successes":0},
+          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "ui_preferred":false, "runs":0, "successes":0},
+          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "ui_preferred":false, "runs":0, "successes":0},
+          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "ui_preferred":true,  "runs":0, "successes":0}
         ]
       }
       EOF
@@ -150,6 +150,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `personality` — `curious`, `methodical`, `impatient`, `confused`, `skeptical`
 - `background` — `no-coding`, `web-dev`, `backend-dev`, `devops`, `data-science`, `enterprise-dev`, `enterprise-devops`, `program-manager`
 - `goal` — `personal-learning`, `work-project`, `team-evaluation`, `teaching-others`
+- `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
@@ -243,6 +244,21 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 - `team-evaluation`: ×0.95 (less patient, evaluating quickly)
 - `teaching-others`: ×1.08 (thorough, high completion)
 
+**UI-preference modifiers** (apply when `ui_preferred` is `true`):
+
+UI-preferred students work entirely through the GitHub web interface and avoid the terminal. Apply the following adjustments to their base probabilities for the affected steps:
+
+| Step | Adjustment | Reason |
+|------|-----------|--------|
+| 3 Create Repo | ×1.15 | Using github.com/new is easier than `gh repo create` for non-coders |
+| 6 Install gh-aw | ×0.75 | `gh extension install` still requires a terminal — this is a genuine barrier |
+| 7 First Workflow | ×1.10 | GitHub web editor removes the need for `mkdir`/`touch` |
+| 11 Build daily-status | ×1.05 | Web editor avoids local file management friction |
+| 12 Test & Iterate | ×1.10 | Committing via **Commit changes** is simpler than `git push` |
+| 13 Schedule | ×1.08 | Web editor commit replaces `git add/commit/push` |
+
+UI-preferred students who reach step 6 and cannot install the extension should record the pain point: `"ui_preferred + install gh-aw: Extension install requires terminal — no UI alternative exists; workshop should recommend Codespace as a workaround"`.
+
 A student **fails at a step** if a random roll exceeds their adjusted probability. When a student fails a step, they stop — they do NOT attempt subsequent steps.
 
 Use deterministic simulation: derive pseudo-random rolls from the student id, step number, and today's date (`${{ env.TODAY }}`). This makes results reproducible for the same day.
@@ -269,6 +285,8 @@ For each student who fails at a step, note:
   - **enterprise-dev + setup steps**: "GHE/GHES configuration differs from github.com — self-hosted runner or proxy requirements not covered"
   - **enterprise-devops + install gh-aw**: "Corporate network policies and self-hosted runner setup block standard `gh` CLI authentication flows"
   - **program-manager + any step**: "Technical CLI steps feel out of scope; needs higher-level overview before hands-on configuration tasks"
+  - **ui_preferred + step 6**: "Extension install requires terminal — the only step with no UI path available; Codespace should be highlighted as a bridge solution"
+  - **ui_preferred + any compile step**: "gh aw compile requires terminal — UI path users are unaware of syntax errors until the workflow runs and fails"
   - Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
   - Any student failing step 11: "Full workflow source harder to understand without line-by-line annotation"
 
@@ -280,6 +298,7 @@ Compute:
 - **Top 5 dropout steps** (highest failure rates)
 - **Success rate by technical level**
 - **Success rate by personality**
+- **Success rate by UI preference** (compare `ui_preferred: true` vs `ui_preferred: false`)
 - **Most common pain points** (top 10, ranked by frequency)
 - **Improvement opportunities** — specific, actionable suggestions for each top dropout step
 
