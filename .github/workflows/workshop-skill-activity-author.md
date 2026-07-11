@@ -26,6 +26,8 @@ safe-outputs:
     title-prefix: "[skill-activity] "
     labels: [workshop, skill-activity, documentation]
     draft: true
+    protected-files:
+      policy: request_review
     allowed-files:
       - "workshop/*.md"
       - "workshop/**/*.md"
