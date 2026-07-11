@@ -22,17 +22,7 @@ Agentic workflow files live alongside regular GitHub Actions workflows inside `.
 mkdir -p .github/workflows
 ```
 
-### 2. Choose your adventure
-
-You can get your first workflow three ways:
-
-- **Adventure A — Add an existing workflow:** run `gh aw add-wizard`, choose a workflow from `githubnext/agentics`, and add it to your repo.
-- **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or Codex and ask it to create a new agentic workflow using the `agentic-workflows` skill.
-- **Adventure C — Edit by hand:** follow the steps below to write your own first workflow manually.
-
-If you choose Adventure A or B, still run the validation step later in this guide.
-
-### 3. Create your first workflow file (Adventure C)
+### 2. Create your first workflow file
 
 Create a new file called `.github/workflows/hello-agent.md`.
 
@@ -42,7 +32,7 @@ touch .github/workflows/hello-agent.md
 
 Open the file in your editor.
 
-### 4. Add the frontmatter
+### 3. Add the basic frontmatter (name + trigger)
 
 Every `gh-aw` workflow starts with a YAML frontmatter block fenced by `---`. This tells the system what the workflow is called, when it runs, and what permissions it needs.
 
@@ -53,14 +43,34 @@ Paste the following at the very top of the file:
 name: Hello Agent
 on:
   workflow_dispatch:
-permissions:
-  contents: read
-  issues: write
 ---
 ```
 
 - `name`: a human-readable label shown in the GitHub Actions UI.
 - `on: workflow_dispatch`: means you trigger it manually — great for testing.
+
+Run validation now:
+
+```bash
+gh aw compile .github/workflows/hello-agent.md --validate
+```
+
+### 4. Add permissions to the frontmatter
+
+Now add the `permissions` block before the closing `---`:
+
+```yaml
+permissions:
+  contents: read
+  issues: write
+```
+
+Re-run validation:
+
+```bash
+gh aw compile .github/workflows/hello-agent.md --validate
+```
+
 - `permissions`: the workflow can read your repository and write to issues.
 
 ### 5. Add the agent instructions
@@ -113,6 +123,20 @@ git push
 ```
 
 ![Workflow file committed in the GitHub UI](images/07-workflow-committed.png)
+
+### Optional: Adventure A and B alternatives
+
+<details>
+<summary>Already comfortable editing less by hand? Expand for optional alternatives.</summary>
+
+You can get your first workflow other ways:
+
+- **Adventure A — Add an existing workflow:** run `gh aw add-wizard`, choose a workflow from `githubnext/agentics`, and add it to your repo.
+- **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or Codex and ask it to create a new agentic workflow using the `agentic-workflows` skill.
+
+If you choose Adventure A or B, still run the validation step in this guide.
+
+</details>
 
 ## ✅ Checkpoint
 

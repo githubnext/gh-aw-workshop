@@ -197,15 +197,31 @@ Here's how to create the file:
 mkdir -p .github/workflows
 ```
 
-Then open your editor and create `.github/workflows/daily-status.md` with the full content shown in the copy-paste block below.
+Then open your editor and create `.github/workflows/daily-status.md`.
 
-After saving:
+### Build pass 1: frontmatter only
+
+Copy Sections 1-6 from above so the file contains only the YAML frontmatter (`---` through closing `---`).
+
+Compile to verify the YAML structure before adding the body:
 
 ```bash
 gh aw compile .github/workflows/daily-status.md --validate
 ```
 
 You should see `✅ Compiled successfully`. If you see errors, check the [Common Mistakes](#common-mistakes) section below.
+
+### Build pass 2: add the Markdown body
+
+Now append Section 7 (`# Daily Repo Status Report` and the instructions) below the closing `---`.
+
+Compile again:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+If you prefer to paste everything at once, use the complete copy-paste block in the collapsible section below.
 
 Commit and push:
 
