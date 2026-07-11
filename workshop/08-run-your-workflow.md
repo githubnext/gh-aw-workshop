@@ -78,9 +78,9 @@ Navigate back to the **Actions** tab and click the completed run. Scroll down pa
 
 ### 7. Re-run with a twist (optional)
 
-Want to experiment? Edit `.github/workflows/hello-agent.md` on your local machine, change the task description slightly (for example, ask the agent to add a label to the issue instead of posting a comment), push the change, and trigger another run.
+Want to experiment? Instead of editing `.github/workflows/hello-agent.md` directly, ask Copilot, Claude, or ChatGPT to update it with the `agentic-workflows` skill. For example, ask the agent to change the task so it adds a label to the issue instead of posting a comment, then review the diff, push the change, and trigger another run.
 
-This is the core loop of agentic workflow development: **write → run → observe → refine**.
+This is the core loop of agentic workflow development: **design → agent edit → run → observe → refine**.
 
 ## ✅ Checkpoint
 

@@ -38,6 +38,9 @@ Use this as a one-page reference for the shift from classic workflows to agentic
 - Triggers, permissions, and repository context still matter
 - You still version workflows in git and review them like code
 
+> [!IMPORTANT]
+> In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**
+
 ## ✅ Checkpoint
 
 - [ ] I can explain at least two differences between classic and agentic workflows

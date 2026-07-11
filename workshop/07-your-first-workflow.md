@@ -32,6 +32,9 @@ touch .github/workflows/hello-agent.md
 
 Open the file in your editor.
 
+> [!IMPORTANT]
+> This first workflow is written by hand so you can learn the file structure once. After that, prefer asking Copilot, Claude, or ChatGPT to update agentic workflows with the `agentic-workflows` skill instead of editing them line by line yourself. **Agents edit agents.**
+
 ### 3. Add the basic frontmatter (name and trigger)
 
 Every `gh-aw` workflow starts with a YAML frontmatter block fenced by `---`. This tells the system what the workflow is called, when it runs, and what permissions it needs.
@@ -99,7 +102,7 @@ Run the `gh-aw` validator to check your frontmatter and structure are correct.
 gh aw compile .github/workflows/hello-agent.md --validate
 ```
 
-If you're editing by hand, you can also keep the compiler running while you iterate:
+If you're still editing by hand, you can also keep the compiler running while you iterate:
 
 ```bash
 gh aw compile .github/workflows/hello-agent.md --watch
@@ -133,6 +136,7 @@ You can get your first workflow other ways:
 
 - **Adventure A — Add an existing workflow:** run `gh aw add-wizard`, choose a workflow from `githubnext/agentics`, and add it to your repo.
 - **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or ChatGPT and ask it to create a new agentic workflow using the `agentic-workflows` skill.
+- **For follow-up changes:** once this file exists, prefer asking the `agentic-workflows` skill to edit or debug it instead of manually rewriting the workflow yourself.
 
 If you choose Adventure A or B, still run the validation step in this guide.
 
