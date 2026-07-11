@@ -1,5 +1,18 @@
 # Step 6: Install the gh-aw CLI Extension
 
+> [!CAUTION]
+> **Before you continue:** Run the check below. If it shows ❌, complete
+> [Adventure A §4 — Authenticate the gh CLI](02a-setup-codespace.md#4-authenticate-the-gh-cli)
+> or
+> [Adventure B §5 — Authenticate the gh CLI](02b-setup-local.md#5-authenticate-the-gh-cli)
+> before installing `gh-aw`.
+>
+> ```bash
+> gh auth status && echo "✅ ready" || echo "❌ run: gh auth login"
+> ```
+>
+> The extension install will fail if you are not logged in.
+>
 > _You're ready to add agentic workflow commands to your `gh` CLI._
 
 ## 🎯 What You'll Do
@@ -18,15 +31,11 @@ extension so you can compile and run agentic workflows from your terminal.
 ## Steps
 
 > [!IMPORTANT]
-> Run this pre-flight check before installing `gh-aw`:
+> Confirm `gh` is installed before installing `gh-aw`:
 >
 > ```bash
 > gh --version && echo "✅ gh installed" || echo "❌ install gh first"
-> gh auth status && echo "✅ gh authenticated" || echo "❌ run: gh auth login"
 > ```
->
-> [!CAUTION]
-> The extension install will fail if you are not logged in. Run `gh auth login` now if the status check above showed ❌.
 
 If `gh` is missing, use your platform command from
 [Step 1 (platform-specific commands)](01-prerequisites.md#macos-homebrew):
