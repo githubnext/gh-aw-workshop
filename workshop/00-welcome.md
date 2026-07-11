@@ -8,8 +8,16 @@ _**What you'll have in about 2 hours:** A scheduled GitHub Action that uses AI t
 > **Quick-start for experienced users**
 > - **Time to first running workflow (Steps 0–8):** about **~45 minutes (advanced), ~75 minutes (actions user), or ~2 hours (beginner)** — see the table below.
 > - **Already comfortable with GitHub Actions?** Jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8 to get your first workflow running quickly.
->
 > **Why agentic workflows?** For team evaluators, this workshop shows how to reduce review and status-chasing cost by automating repository triage into a daily, decision-ready report. It also lets you evaluate safety guardrails (scoped permissions, explicit workflow logic, auditable runs) and GitHub-native integration that keeps governance, CI, and automation in one platform.
+
+<!-- -->
+
+> [!TIP]
+> **Already experienced? Fast-track here**
+> Go straight to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md) once all of these are true:
+> - [ ] You chose your environment path: [Step 2a (Codespace)](02a-setup-codespace.md) or [Step 2b (Local)](02b-setup-local.md)
+> - [ ] You created your practice repository in [Step 3](03-create-your-repo.md)
+> - [ ] You installed and authenticated `gh` plus `gh-aw` in [Step 6](06-install-gh-aw.md)
 
 ## Estimated Time by Technical Level
 
