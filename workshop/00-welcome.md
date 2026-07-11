@@ -7,7 +7,7 @@ _**What you'll have in about 2 hours:** A scheduled GitHub Action that uses AI t
 > [!TIP]
 > **Already experienced? Fast-track here**
 > - **Time to first running workflow (Steps 0–8):** about **~45 minutes (advanced), ~75 minutes (actions user), or ~2 hours (beginner)** — see the table below.
-> - **Fast path:** once the checklist below is complete, jump to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+> - **Fast path:** after completing the checklist below, jump to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 > - **Why agentic workflows?** For team evaluators, this workshop shows how to reduce review and status-chasing cost by automating repository triage into a daily, decision-ready report. It also lets you evaluate safety guardrails (scoped permissions, explicit workflow logic, auditable runs) and GitHub-native integration that keeps governance, CI, and automation in one platform.
 > - [ ] You chose your environment path: [Step 2a (Codespace)](02a-setup-codespace.md) or [Step 2b (Local)](02b-setup-local.md)
 > - [ ] You created your practice repository in [Step 3](03-create-your-repo.md)
