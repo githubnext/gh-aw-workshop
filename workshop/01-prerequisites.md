@@ -31,6 +31,27 @@ You should see something like `git version 2.x.x`. If you see an error, download
 > [!TIP]
 > If you'd rather skip Git setup entirely, use the Codespace path — it comes with Git, Node, and everything else pre-installed.
 
+<!-- markdownlint-disable MD033 -->
+<details>
+<summary><strong>New to the terminal?</strong> Open this quick visual guide.</summary>
+
+![Annotated terminal window with callouts for prompt, command, and output](images/01-terminal-basics-annotated.svg)
+
+- **Prompt**: where your terminal is currently "standing" (for example your user/computer name and folder).
+- **Command**: what you type (`git --version`, `node --version`, etc.).
+- **Output**: what the computer prints after running your command.
+
+### Quick beginner FAQ
+
+| Error | What it means | What to try |
+|------|------|------|
+| `command not found` | The tool is not installed (or not available in this terminal) | Install the tool, then close and reopen the terminal |
+| `permission denied` | Your account cannot run that command as written | Re-run with the documented `sudo` step (Linux/macOS) or open an elevated terminal when instructions require it |
+| "No such file or directory" / path errors | You're in a different folder than the command expects | Run `pwd` (macOS/Linux) or `cd` to the expected folder, then try again |
+
+</details>
+<!-- markdownlint-enable MD033 -->
+
 ### 3. Know what's coming
 
 Here's a quick summary of what you'll have installed and running by the end of the workshop:
