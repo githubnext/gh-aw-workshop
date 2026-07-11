@@ -1,0 +1,28 @@
+name: "Agentic Workflows Auto Update"
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  upgrade:
+    name: Upgrade agentic workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install gh-aw extension
+        uses: github/gh-aw-actions/setup-cli@v0.81.6
+        with:
+          version: v0.81.6
+
+      - name: Upgrade agentic workflows
+        run: gh aw upgrade --create-pull-request --yes --approve
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
