@@ -88,3 +88,4 @@ You've reached the end of the main path — but the graph stays open. Come back 
 ### Go deeper
 
 - ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
+- ➡️ [Choose and Configure Your AI Model](18-model-selection.md) — swap the default model for one that better fits your workflow's speed, cost, or capability needs.
