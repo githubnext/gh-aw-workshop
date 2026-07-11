@@ -90,9 +90,12 @@ safe-outputs:
 
 <!-- ── AGENT INSTRUCTIONS ───────────────────────────────────────────────── -->
 <!-- Everything below the closing `---` is the Markdown body — the task brief  -->
-<!-- the AI agent reads at runtime. Section headers are for readability only.  -->
+<!-- the AI agent reads at runtime. Sub-headers (##, ###) are for readability; -->
+<!-- the top-level title (#) also appears as the workflow name in the UI and   -->
+<!-- is included in the model's context at runtime.                             -->
 
-<!-- Role framing: one sentence that sets the agent's scope and tone. -->
+<!-- Role framing: the top-level title is shown in the GitHub Actions UI and   -->
+<!-- included in the model context. The sentence below sets the agent's scope. -->
 # Daily Repo Status Report
 
 You are an AI assistant that monitors this repository and posts a concise daily health report.
@@ -147,7 +150,7 @@ Find the most recently updated open issue and post a comment in this format:
 
 ## ✅ Checkpoint
 
-- [ ] You can explain why `permissions` does not include `issues: write` even though the workflow posts a comment
+- [ ] You can explain why `permissions` does not include `issues: write` and how `safe-outputs` provides the write access needed to post the comment instead
 - [ ] You can explain what `gh-proxy` prevents compared to direct API access
 - [ ] You can explain what happens if the agent tries to post a second comment in the same run
 - [ ] You can explain why a fixed output template is valuable for a workflow that runs every day
