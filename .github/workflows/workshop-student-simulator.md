@@ -181,7 +181,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 | Tool | Description |
 |------|-------------|
 | `cli` | Uses the `gh aw` CLI extension directly in a terminal |
-| `vscode` | Uses VS Code with the GitHub Copilot extension; should be encouraged to also use the GitHub Copilot CLI (`gh copilot`) for terminal-heavy steps |
+| `vscode` | Uses VS Code with the GitHub Copilot extension; should be encouraged to run `gh aw` commands in the VS Code integrated terminal and to use `gh copilot suggest` as a helper when stuck on CLI steps |
 | `copilot-app` | Uses the GitHub Copilot web or mobile app / chat interface |
 | `cloud-agent` | Uses the GitHub Copilot cloud coding agent (Copilot coding agent) inside GitHub.com |
 
@@ -279,7 +279,7 @@ For each student who fails at a step, note:
   - **enterprise-dev + setup steps**: "GHE/GHES configuration differs from github.com — self-hosted runner or proxy requirements not covered"
   - **enterprise-devops + install gh-aw**: "Corporate network policies and self-hosted runner setup block standard `gh` CLI authentication flows"
   - **program-manager + any step**: "Technical CLI steps feel out of scope; needs higher-level overview before hands-on configuration tasks"
-  - **vscode + CLI steps**: "VS Code user unfamiliar with running `gh aw` commands in a standalone terminal — encourage switching to GitHub Copilot CLI (`gh copilot`) or the VS Code integrated terminal with the GitHub Copilot extension enabled"
+  - **vscode + CLI steps**: "VS Code user expects to stay in the editor UI — encourage running `gh aw` commands in the VS Code integrated terminal; suggest `gh copilot suggest` as a helper when a CLI command is unfamiliar"
   - **copilot-app + install gh-aw**: "Copilot app user has no terminal context — step 6 assumes CLI access that is entirely absent"
   - **cloud-agent + local setup**: "Cloud agent user expects fully managed environment; local install and auth steps are unexpected friction"
   - Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
