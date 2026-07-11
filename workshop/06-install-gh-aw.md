@@ -5,7 +5,7 @@
 > Run this pre-flight check before installing `gh-aw`:
 >
 > ```bash
-> # Pre-flight check — run this before proceeding
+> # Pre-flight check -- run this before proceeding
 > gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — install it first"
 > git --version && echo "✅ git OK" || echo "❌ git missing"
 > node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
@@ -48,7 +48,7 @@ extension so you can compile and run agentic workflows from your terminal.
 > Expected output starts with `gh version 2.` (for example, `gh version 2.75.0`).
 >
 > If `gh` is missing, use your platform command from
-> [Step 1](01-prerequisites.md#macos-homebrew):
+> [Step 1 (platform-specific commands)](01-prerequisites.md#macos-homebrew):
 > - [macOS (Homebrew): `brew install gh`](01-prerequisites.md#macos-homebrew)
 > - [Ubuntu/Debian: `sudo apt install gh`](01-prerequisites.md#ubuntudebian)
 > - [Windows (winget): `winget install GitHub.cli`](01-prerequisites.md#windows-winget)
