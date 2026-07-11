@@ -8,17 +8,17 @@ You'll confirm that you have everything required before writing a single line of
 
 ## Steps
 
-> [!IMPORTANT]
-> Run this pre-flight check before proceeding:
+> [!NOTE]
+> **Already have a terminal open with `gh`, `git`, and `node` available?** Run this quick pre-flight check now. If you're starting fresh and haven't set up your environment yet, skip ahead to [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md) and return here once your terminal is ready.
 >
 > ```bash
-> # Pre-flight check -- run this before proceeding
+> # Pre-flight check -- run this once your terminal is open
 > gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install commands below"
 > git --version && echo "✅ git OK" || echo "❌ git missing"
 > node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
 > echo "Pre-flight complete."
 > ```
->
+
 ### 1. Confirm required vs optional prerequisites
 
 - ✅ **Required:** `gh` CLI 2.x or newer (`gh --version`)
