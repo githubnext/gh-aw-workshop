@@ -54,6 +54,7 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     studentId: id,
     os,
     terminal,
+    tool: student.tool || "cli",
     installed: {
       gh: hasGh ? "2.58.0" : null,
       aw: hasAw ? "0.0.0" : null
