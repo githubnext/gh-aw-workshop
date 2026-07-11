@@ -13,7 +13,11 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 
 ## Quick Summary for Actions Users
 
-> **Key differences from classic Actions:** A `gh-aw` workflow still starts with YAML frontmatter fenced by `---`, usually with `name`, `on`, and `permissions`. Below that frontmatter, you write a Markdown task brief instead of a fixed `jobs.steps` script. The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
+> **Key differences from classic Actions:**
+>
+> - A `gh-aw` workflow still starts with YAML frontmatter fenced by `---`, usually with `name`, `on`, and `permissions`.
+> - Below that frontmatter, you write a Markdown task brief instead of a fixed `jobs.steps` script.
+> - The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
 
 ## Advanced fast-track: What's New cheat sheet
 
