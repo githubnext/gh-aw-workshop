@@ -8,6 +8,9 @@ You'll confirm that you have everything required before writing a single line of
 
 ## Steps
 
+> [!IMPORTANT]
+> The `gh` CLI is a required workshop prerequisite because you'll use it in [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md). Run `gh --version` now to verify it is installed. If needed, install it from the official docs at [cli.github.com](https://cli.github.com).
+
 ### 1. Check your GitHub account
 
 You need a **free GitHub account**. If you don't have one yet, create it at [github.com/join](https://github.com/join).
