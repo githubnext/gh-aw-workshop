@@ -61,7 +61,7 @@ You should see something like `gh version 2.x.x`.
 gh extension list
 ```
 
-You should see `githubnext/gh-aw` listed. If you don't see it yet, don't worry — you'll install it in a later step.
+You should see `github/gh-aw` listed. If you don't see it yet, don't worry — you'll install it in a later step.
 
 ```bash
 node --version
