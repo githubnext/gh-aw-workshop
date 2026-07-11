@@ -54,6 +54,11 @@ Use this as a one-page reference for the shift from classic workflows to agentic
 - Triggers, permissions, and repository context still matter
 - You still version workflows in git and review them like code
 
+> [!NOTE]
+> **Enterprise users:** Agentic workflows are supported on **GitHub Enterprise Cloud (GHEC)** and **GitHub Enterprise Server (GHES) 3.14+**. If your organization uses a proxy or mandates self-hosted runners, see the [GitHub Actions self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners) for setup requirements before continuing. The `gh-aw` CLI and all workshop steps work identically once your runner environment is configured.
+
+The same authoring and review workflow applies everywhere — only the runner configuration differs.
+
 > [!IMPORTANT]
 > In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**
 

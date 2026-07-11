@@ -41,6 +41,8 @@ _**What you'll have in about 2 hours:** A scheduled GitHub Action that uses AI t
 
 Before: you open your repo every morning, click through issues and pull requests, and manually summarize what changed. After: a scheduled workflow does that scan for you and posts a digest automatically before your first meeting. That's the practical value of agentic workflows in this workshop: less status-chasing, more decision-making.
 
+And the code tells the same story. **Before: write and maintain a 200-line Actions YAML full of shell scripts, condition blocks, and API calls. After: write a 20-line task brief in plain English — and let the agent figure out the rest at runtime.**
+
 > [!TIP]
 > Prefer a quick start? Use **Quick-start for experienced users** above — most GitHub Actions-experienced learners jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8.
 
@@ -99,6 +101,12 @@ That report can land in a GitHub issue comment, Slack message, or anywhere else 
 | 16 | [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) | 15 min |
 
 ## Who This Is For
+
+| Audience | What you'll get out of it |
+|---|---|
+| **Individual developer** | A real, portfolio-ready automation you can show and adapt for any project |
+| **Team lead evaluating tooling** | A hands-on proof-of-concept to assess workflow quality, output usefulness, and readiness for team adoption |
+| **Enterprise platform engineer** | A reference pattern for scheduling AI-assisted triage within GitHub-native governance (scoped permissions, auditable runs) |
 
 You should be comfortable with:
 - Creating a GitHub repository
