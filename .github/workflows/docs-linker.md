@@ -168,7 +168,7 @@ has a matching reference page in the docs-site table above. Consider:
 - Named tools or toolsets (`bash`, `edit`, `github`, `agentic-workflows`, etc.)
 - Workflow trigger types (`schedule`, `workflow_dispatch`, `push`, `pull_request`, etc.)
 - Safe-output types (`create-pull-request`, `add-comment`, `create-issue`, etc.)
-- Concepts like subagents, memory, loop, patterns, token optimisation
+- Concepts like subagents, memory, loop, patterns, token optimization
 - CLI commands (`gh aw compile`, `gh aw run`, etc.)
 
 Build a mapping:
@@ -218,6 +218,7 @@ Rules:
 - Link each distinct term **at most once** per file (first occurrence only).
 - Do not modify occurrences that are already hyperlinks.
 - Do not link occurrences inside fenced code blocks (` ``` ... ``` `).
+- Do not link occurrences wrapped in inline code (single backticks, e.g. `` `safe-outputs` ``).
 - Do not link occurrences inside YAML frontmatter (`---` … `---`).
 - Preserve the exact surrounding text; change only the target word/phrase.
 - If a term already has an inline link in the file (any URL), skip it.
@@ -230,8 +231,9 @@ Locate any existing `## 📚 See Also` (or `## See Also`) section at the bottom
 of `target_file`. If it exists, update it. If not, append one.
 
 The section must list **every** doc page referenced by the inline links added in
-Phase 5, plus any additional highly relevant docs for the file's topic that were
-not already linked inline. Format:
+Phase 5, **plus** any additional highly relevant docs for the file's topic that
+were not linked inline (e.g., overview pages that provide broader context).
+Format:
 
 ```markdown
 ## 📚 See Also
@@ -250,10 +252,11 @@ navigation links (if they exist), so it does not interrupt the learning flow.
 
 ### Nothing to change
 
-Call `noop` with a concise explanation when:
-- No concept matches were found for `target_file`
-- All matching terms are already hyperlinked in the file
-- The file already has a complete and up-to-date `## 📚 See Also` section
+Call `noop` with a concise explanation when **all** of the following are true:
+- No new concept matches were found for `target_file` (or all matching terms are already hyperlinked)
+- The file already has a complete and up-to-date `## 📚 See Also` section covering all relevant doc pages
+
+If there are inline links to add **or** the "See Also" section needs updating, proceed with changes.
 
 ### Changes to make
 
