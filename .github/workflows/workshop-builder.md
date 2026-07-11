@@ -54,6 +54,8 @@ safe-outputs:
     title-prefix: "[workshop-builder] "
     labels: [workshop, automation]
     deduplicate-by-title: true
+    max: 2
+  add-comment:
     max: 1
 timeout-minutes: 20
 steps:
@@ -124,6 +126,7 @@ absent:
   "last_dispatch": {},
   "last_modification_pr": null,
   "last_suggestion_issue": null,
+  "status_issue_number": null,
   "run_history": []
 }
 ```
@@ -136,6 +139,8 @@ Fields:
   opened
 - `last_suggestion_issue` — ISO timestamp of the last new-workflow suggestion
   issue filed
+- `status_issue_number` — issue number for the persistent Workshop Builder status
+  history issue (null until created/discovered)
 - `run_history` — last 20 run summaries (newest first), each with: `timestamp`,
   `action` (`"dispatch"` | `"modify"` | `"suggest"` | `"noop"`), `target`, and
   `reason`
@@ -151,6 +156,17 @@ includes:
 - The 5 most recent run history entries
 
 Do **not** take any other action.
+
+### 1d. Resolve status issue target
+
+Resolve the issue that stores builder action history:
+
+1. If `status_issue_number` is set, verify the issue is still open.
+2. If missing/closed/not found, search open issues for this exact title:
+   `[workshop-builder] Workshop Builder status history`
+3. If found, store the discovered issue number in `status_issue_number`.
+4. If not found, leave `status_issue_number` as null for now (you may create it in
+   Phase 5).
 
 ---
 
@@ -336,6 +352,38 @@ Write the updated state back to `/tmp/gh-aw/cache-memory/builder-state.json`:
   - `target` — workflow name, file name, or short description
   - `reason` — one-sentence rationale
 
+## Phase 5 — Maintain Builder Status Issue History
+
+Maintain a single issue that acts as the permanent action log for this
+orchestrator.
+
+### 5a. Ensure status issue exists
+
+If `status_issue_number` is null, create this issue using `create-issue`:
+
+- **temporary_id**: `#aw_builder_status`
+- **Title**: `Workshop Builder status history`
+- **Body**: brief purpose + current timestamp + note that each run appends one
+  action-history comment
+
+After successful creation, set `status_issue_number` to `#aw_builder_status`.
+
+### 5b. Append one history comment every run
+
+Use `add-comment` to append exactly one comment to the status issue on every run
+(including `action = "noop"` and `focus = "status"` runs).
+
+- **item_number**: `status_issue_number` (or `#aw_builder_status` if just created)
+- **body** must include:
+  - Run timestamp
+  - Chosen action (`dispatch`/`modify`/`suggest`/`noop`)
+  - Target
+  - One-sentence reason
+  - The 5 newest `run_history` entries (including the current run)
+
+If adding the history comment fails after retries, still preserve updated
+`builder-state.json` and call `report_incomplete`.
+
 ---
 
 ## Safe Outputs Summary
@@ -345,4 +393,6 @@ Write the updated state back to `/tmp/gh-aw/cache-memory/builder-state.json`:
 | Dispatching an existing workflow | `dispatch-workflow` |
 | Proposing a workflow improvement | `create-pull-request` |
 | Suggesting a new workflow | `create-issue` |
+| Creating the status-history issue when absent | `create-issue` |
+| Appending per-run status history | `add-comment` |
 | No action needed or `focus = "status"` | `noop` with a clear reason |
