@@ -1,9 +1,15 @@
 # Step 4: GitHub Actions in 5 Minutes
 
-_You already have a repository — now anchor on the parts of Actions that matter for agentic workflows._
-
 > [!TIP]
-> Already comfortable with GitHub Actions workflows and YAML? You can skip this step and go straight to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md). If you want the conceptual background on how agentic workflows differ, Step 5 is the optional bridge.
+> **Already use GitHub Actions?** You can skim this step.
+> The only thing you need to know before Step 5 is:
+> - Agentic workflows use `.md` files (not `.yml`) as the workflow definition.
+> - The `gh-aw` CLI compiles them to standard GitHub Actions YAML at deploy time.
+> - The agent body (plain English below `---`) is passed as a prompt to an LLM at runtime.
+>
+> If that makes sense, skip to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+
+_You already have a repository — now anchor on the parts of Actions that matter for agentic workflows._
 
 ## 🎯 What You'll Do
 
