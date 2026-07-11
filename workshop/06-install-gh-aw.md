@@ -1,5 +1,39 @@
 # Step 6: Install the gh-aw CLI Extension
 
+> [!IMPORTANT]
+> **Using the GitHub Copilot web/mobile app or a Copilot coding agent?**
+> There is no in-browser install path for `gh-aw` — you must open a **Codespace** on your practice repository.
+> Codespaces come with `gh` pre-installed and authenticated, so the install command below works immediately.
+> Haven't set one up yet? Follow [Adventure A: Set Up a Codespace](02a-setup-codespace.md) first,
+> then come back here and run the install command inside the Codespace terminal.
+
+<details>
+<summary>Installing gh-aw inside a Copilot coding agent session</summary>
+
+If you are running inside a **Copilot coding agent** session,
+you have two options:
+
+**Option 1 — Use the agent's built-in terminal:**
+Open a terminal within your coding agent session and run the install command normally:
+
+```bash
+gh extension install github/gh-aw
+```
+
+**Option 2 — Pre-install via `copilot-setup-steps.yml`:**
+Add the following step to your repository's `.github/copilot-setup-steps.yml` so that `gh-aw`
+is pre-installed every time a new agent environment starts:
+
+```yaml
+steps:
+  - name: Install gh-aw extension
+    run: gh extension install github/gh-aw
+```
+
+Once installed, run `gh extension list` to confirm the extension is available before continuing.
+
+</details>
+
 ## 🎯 What You'll Do
 
 You'll verify the `gh` CLI is installed and then install the `gh-aw`
@@ -12,13 +46,6 @@ extension so you can compile and run agentic workflows from your terminal.
 - You have authenticated the `gh` CLI with `gh auth login`
   (done in [Adventure A §4](02a-setup-codespace.md#4-authenticate-the-gh-cli)
   or [Adventure B §5](02b-setup-local.md#5-authenticate-the-gh-cli))
-
-> [!IMPORTANT]
-> **No local terminal?** If you are using the GitHub web UI, the Copilot app, or a cloud coding agent,
-> open a **Codespace** on your practice repository — it comes with `gh` pre-installed and authenticated.
-> Haven't set one up yet? Follow [Adventure A: Set Up a Codespace](02a-setup-codespace.md) first.
-> Once `gh extension install github/gh-aw` succeeds inside the Codespace, the extension is available
-> for all subsequent steps in that environment.
 
 ## Steps
 
