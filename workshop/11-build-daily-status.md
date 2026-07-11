@@ -193,11 +193,26 @@ Key things to note:
 
 Here's how to create the file:
 
+**Terminal:**
+
 ```bash
 mkdir -p .github/workflows
 ```
 
 Then open your editor and create `.github/workflows/daily-status.md` (the filename should be exactly `daily-status.md`; agentic workflows in this workshop use Markdown files, not `.yml`).
+
+<details>
+<summary>🖥️ GitHub UI alternative — create the file in your browser</summary>
+
+1. In your repository on GitHub, click **Add file** → **Create new file**.
+2. In the filename box, type: `.github/workflows/daily-status.md`
+3. Paste the complete workflow content from the **Complete Workflow (Copy-Paste Version)** section below directly into the editor.
+4. Click **Commit new file**.
+
+> [!NOTE]
+> The `gh aw compile --validate` checkpoints below require a terminal or Codespace. UI path users can skip them — GitHub Actions will surface any errors when the workflow first runs. If you want early validation, open the repository in a Codespace later and run `gh aw compile .github/workflows/daily-status.md --validate`.
+
+</details>
 
 Instead of pasting one giant block, build the file in small sections and compile after each one. That makes YAML mistakes much easier to spot.
 
@@ -335,11 +350,20 @@ If you prefer to paste everything at once, use the complete copy-paste block in 
 
 Commit and push:
 
+**Terminal:**
+
 ```bash
 git add .github/workflows/daily-status.md
 git commit -m "feat: add daily repo status agentic workflow"
 git push
 ```
+
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+If you created the file via the GitHub UI, it was already committed when you clicked **Commit new file**. No additional push is needed.
+
+</details>
 
 ---
 

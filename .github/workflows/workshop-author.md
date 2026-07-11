@@ -174,6 +174,38 @@ Numbered action sequence. Each action gets its own number. Commands go in fenced
 - Each file: **350–600 words** (tight, digestible, one concept).
 - One concept per file — do not spill into the next node.
 
+### CLI and UI paths
+
+Every step that requires a learner to **create or edit a file, commit changes, or create a GitHub repository** must offer both:
+
+- A **terminal (CLI) path** using `gh`, `git`, and `gh aw compile` commands.
+- A **GitHub UI path** using the browser-based file editor at `github.com`.
+
+Wrap the UI alternative in a `<details>` block so it is accessible without cluttering the primary flow:
+
+```markdown
+<details>
+<summary>🖥️ GitHub UI alternative</summary>
+
+1. In your repository on GitHub, click **Add file** → **Create new file** (for new files)
+   or navigate to the file and click the **pencil icon (✏️)** (for edits).
+2. Make your changes in the editor.
+3. Click **Commit new file** or **Commit changes**.
+
+</details>
+```
+
+When the step involves `gh aw compile` (which requires a terminal), clearly note this and explain that UI path users can skip compilation and rely on GitHub Actions to surface errors at runtime.
+
+Specific patterns to follow:
+
+| Operation | CLI path | UI path |
+|-----------|----------|---------|
+| Create repository | `gh repo create ...` | [github.com/new](https://github.com/new) — fill in the form |
+| Create file | `touch`/editor + `git add/commit/push` | **Add file → Create new file** → **Commit new file** |
+| Edit file | editor + `git add/commit/push` | pencil icon (✏️) → **Commit changes** |
+| Compile/validate | `gh aw compile ... --validate` | _(terminal only)_ — note this limitation and offer the UI path for everything else |
+
 ### Formatting conventions
 
 - Use `> [!NOTE]`, `> [!TIP]`, and `> [!WARNING]` callout blocks for important context.

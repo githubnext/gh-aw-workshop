@@ -74,6 +74,7 @@ Then:
 2. Make a single focused change set (for example: add one missing step file, improve one existing step, or update workshop navigation).
 3. Keep tone aligned with GitHub Skills: short, direct, supportive, and action-oriented.
 4. Keep content practical and learner-first, with clear outcomes and checkpoints.
+5. **Check for missing UI path alternatives**: look for any step that currently shows only CLI commands (file creation with `touch`/`mkdir`, committing with `git add/commit/push`, repository creation with `gh repo create`) without a corresponding GitHub UI path. Adding a `<details>` block that shows the equivalent GitHub web interface steps is a high-value improvement for learners who prefer working in the browser.
 
 If `focus` input is provided, prioritize that area while keeping the workshop coherent.
 
