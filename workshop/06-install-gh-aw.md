@@ -1,16 +1,6 @@
 # Step 6: Install the gh-aw CLI Extension
 
 > _You're ready to add agentic workflow commands to your `gh` CLI._
-> [!IMPORTANT]
-> Run this pre-flight check before installing `gh-aw`:
->
-> ```bash
-> gh --version && echo "✅ gh installed" || echo "❌ install gh first"
-> gh auth status && echo "✅ gh authenticated" || echo "❌ run: gh auth login"
-> ```
->
-> [!CAUTION]
-> The extension install will fail if you are not logged in. Run `gh auth login` now if the status check above showed ❌.
 
 ## 🎯 What You'll Do
 
@@ -26,6 +16,17 @@ extension so you can compile and run agentic workflows from your terminal.
   or [Adventure B §5](02b-setup-local.md#5-authenticate-the-gh-cli))
 
 ## Steps
+
+> [!IMPORTANT]
+> Run this pre-flight check before installing `gh-aw`:
+>
+> ```bash
+> gh --version && echo "✅ gh installed" || echo "❌ install gh first"
+> gh auth status && echo "✅ gh authenticated" || echo "❌ run: gh auth login"
+> ```
+>
+> [!CAUTION]
+> The extension install will fail if you are not logged in. Run `gh auth login` now if the status check above showed ❌.
 
 If `gh` is missing, use your platform command from
 [Step 1 (platform-specific commands)](01-prerequisites.md#macos-homebrew):
@@ -52,6 +53,57 @@ gh extension list
 ```
 
 You should see an entry for `github/gh-aw`.
+
+## Troubleshooting
+
+### Not authenticated
+
+If `gh auth status` reports you are not logged in, run:
+
+```bash
+gh auth login
+gh auth status
+```
+
+### Behind a corporate proxy
+
+Set proxy environment variables in your current shell, then retry:
+
+```bash
+export HTTPS_PROXY="http://proxy.company.com:8080"
+export HTTP_PROXY="$HTTPS_PROXY"
+export NO_PROXY="127.0.0.1,localhost,.company.com"
+gh config set git_protocol https
+gh auth status
+gh extension install github/gh-aw
+```
+
+### GHE/GHES endpoint
+
+For GitHub Enterprise Server, authenticate against your hostname and use HTTPS:
+
+```bash
+gh config set git_protocol https --host ghes.example.com
+gh auth login --hostname ghes.example.com --scopes "repo,read:org,workflow"
+gh extension install github/gh-aw --hostname ghes.example.com
+gh auth status --hostname ghes.example.com
+```
+
+If your administrator requires different scopes, use the minimum required scopes they provide.
+
+### Extension download fails
+
+If `gh extension install github/gh-aw` fails with a network error on a locked-down network:
+
+1. Download the matching release artifact from
+   [github/gh-aw releases](https://github.com/github/gh-aw/releases).
+2. Extract it on a machine that can reach GitHub.
+3. Move the extracted extension folder to your workshop machine and install from local path:
+
+```bash
+gh extension install /path/to/gh-aw
+gh extension list
+```
 
 ## ✅ Checkpoint
 
