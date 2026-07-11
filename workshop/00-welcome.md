@@ -4,12 +4,12 @@
 
 **What you'll build in 15 steps:** A production-style, AI-powered daily repository status workflow that runs on a schedule and posts a useful summary automatically — so your team gets a morning update with zero manual status-chasing.
 
-**Time estimate:** ~2 hours end-to-end, or ~30 minutes if you already have `gh` installed and jump to the quick path.
+**Time estimate:** ~2 hours end-to-end, or ~30 minutes if you're already familiar with GitHub CLI and jump to the quick path.
 
-**Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC), plus a terminal and the `gh` CLI.
+**Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC). You'll install everything you need as part of the workshop — no pre-existing tools required.
 
 > [!TIP]
-> Already have `gh` set up? See [Step 1: What You Need Before We Start](01-prerequisites.md) for the skip-ahead checklist.
+> Experienced developer? See [Step 1: What You Need Before We Start](01-prerequisites.md) for the skip-ahead checklist.
 
 ## Estimated Time by Technical Level
 

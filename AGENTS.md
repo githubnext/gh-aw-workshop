@@ -1,6 +1,6 @@
 # Agent Tips for gh-aw-workshop
 
-## What this repository is
+## About this repository
 
 This is a hands-on workshop that teaches developers how to build GitHub Agentic Workflows
 using the `gh-aw` CLI extension. Learners follow numbered Markdown steps in the `workshop/`
@@ -10,7 +10,7 @@ GitHub Actions.
 The repository also contains the agentic workflow files that power the workshop's own
 automated tooling (author review, student simulation, order checks) under `.github/workflows/`.
 
-## Repository structure
+## Repository layout
 
 ```text
 README.md               # Workshop landing page (GitHub Skills style)
@@ -24,51 +24,80 @@ workshop/               # Step-by-step workshop content (00-welcome.md … 16-co
 .markdownlint-cli2.yaml # Markdownlint rule overrides
 ```
 
-## Linting Markdown
+## Content conventions
 
-All Markdown files are linted with [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)
-using the rules in `.markdownlint-cli2.yaml`.
+### Workshop tone and voice
 
-Run the linter locally from the repository root:
+- Write in **second person** ("you"), present tense, active voice.
+- Keep steps short and outcome-focused. Each step should answer: _what will the learner do, and what will they have when they're done?_
+- Use `> [!TIP]`, `> [!NOTE]`, and `> [!IMPORTANT]` callouts sparingly — only when the information meaningfully changes what the learner should do.
+- End every workshop step with a `## ✅ Checkpoint` section containing a markdown checklist.
+- Do **not** front-load prerequisite tool requirements in welcome or introductory steps — prerequisites belong in `01-prerequisites.md`.
+
+### Markdown rules
+
+All Markdown files are linted with [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2).
+
+Run the linter from the repository root:
 
 ```bash
 npx --yes markdownlint-cli2 "**/*.md"
 ```
 
-Lint is also enforced by the `Markdown Lint` GitHub Actions workflow on every pull request
-that touches `*.md` files.
-
-### Common rules that are disabled
-
-The following rules are turned off in `.markdownlint-cli2.yaml` — do not add inline
+The following rules are **disabled** in `.markdownlint-cli2.yaml` — do not add inline
 `<!-- markdownlint-disable -->` comments for these:
 
-- **MD009** — trailing spaces
-- **MD012** — multiple blank lines
-- **MD013** — line length
-- **MD022** — headings surrounded by blank lines
-- **MD031** — fenced code blocks surrounded by blank lines
-- **MD032** — lists surrounded by blank lines
-- **MD033** — inline HTML
-- **MD040** — fenced code blocks with language specified
-- **MD060** — fenced code block style
+| Rule | Description |
+|------|-------------|
+| MD009 | Trailing spaces |
+| MD012 | Multiple blank lines |
+| MD013 | Line length |
+| MD022 | Headings surrounded by blank lines |
+| MD031 | Fenced code blocks surrounded by blank lines |
+| MD032 | Lists surrounded by blank lines |
+| MD033 | Inline HTML |
+| MD040 | Fenced code blocks with language specified |
+| MD060 | Fenced code block style |
 
-## Agentic workflow files
+## Working with workshop content
+
+- Workshop steps are numbered files in `workshop/` (e.g., `07-your-first-workflow.md`).
+- Images referenced in workshop steps live in `workshop/images/`.
+- Keep `workshop/README.md` in sync whenever you add or rename a step.
+- Run the markdown linter before committing any workshop step edits.
+- When adding a new step, follow the existing file naming pattern and update the curriculum table in both `workshop/README.md` and `workshop/00-welcome.md`.
+
+## Working with agentic workflow files
 
 Workflow definitions live in `.github/workflows/*.md`. Each file contains YAML frontmatter
 (between `---` fences) followed by a Markdown task brief for the AI agent.
 
-Compiled lock files (`*.lock.yml`) are generated automatically — do not edit them by hand.
+Compiled lock files (`*.lock.yml`) are generated automatically — **do not edit them by hand**.
 Regenerate a lock file with:
 
 ```bash
 gh aw compile .github/workflows/<workflow>.md --validate
 ```
 
-## Working with workshop content
+## Common tasks
 
-- Workshop steps are numbered files in `workshop/` (e.g. `07-your-first-workflow.md`).
-- Images referenced in workshop steps live in `workshop/images/`.
-- The `workshop/README.md` file is the curriculum index — keep it in sync when adding or
-  renaming steps.
-- When editing workshop steps, run the markdown linter before committing.
+### Edit a workshop step
+
+1. Open the relevant file in `workshop/`.
+2. Make your changes following the content conventions above.
+3. Run `npx --yes markdownlint-cli2 "**/*.md"` and fix any errors.
+4. If the step is new, update `workshop/README.md` and `workshop/00-welcome.md`.
+
+### Update an agentic workflow definition
+
+1. Edit the `.md` file in `.github/workflows/`.
+2. Regenerate the lock file: `gh aw compile .github/workflows/<workflow>.md --validate`.
+3. Commit both the `.md` and the updated `.lock.yml`.
+
+### Add or update images
+
+Place image files in `workshop/images/` and reference them with a relative path:
+
+```markdown
+![Alt text describing the image](images/filename.svg)
+```
