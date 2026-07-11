@@ -53,13 +53,13 @@ extension so you can compile and run agentic workflows from your terminal.
 ### 1. Install the `gh-aw` extension
 
 ```bash
-gh extension install githubnext/gh-aw
+gh extension install github/gh-aw
 ```
 
 If the extension is already installed, you can update it instead:
 
 ```bash
-gh extension upgrade githubnext/gh-aw
+gh extension upgrade github/gh-aw
 ```
 
 ### 2. Confirm installation
@@ -68,12 +68,12 @@ gh extension upgrade githubnext/gh-aw
 gh extension list
 ```
 
-You should see an entry for `githubnext/gh-aw`.
+You should see an entry for `github/gh-aw`.
 
 ## ✅ Checkpoint
 
 - [ ] `gh --version` returns a `gh version 2.x.x` value
-- [ ] `gh extension install githubnext/gh-aw` ran without errors
-- [ ] `gh extension list` shows `githubnext/gh-aw`
+- [ ] `gh extension install github/gh-aw` ran without errors
+- [ ] `gh extension list` shows `github/gh-aw`
 
 **Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
