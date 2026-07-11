@@ -1,10 +1,19 @@
 # Step 0: Welcome — What We'll Build
 
 > [!TIP]
-> **Quick self-check — pick your starting point:**
-> - Never used a terminal? → Start at [Step 1](01-prerequisites.md) and follow every step.
-> - Know git/GitHub but not Actions? → Start at [Step 1](01-prerequisites.md), skim Steps 2–3, then focus on Steps 4–6.
-> - Comfortable with GitHub Actions and want the agentic workflow concepts first? → Jump to [Step 5](05-agentic-workflows-intro.md).
+> **Quick-start for experienced users**
+> - **Time to first running workflow (Steps 0–8):** about **45–90 minutes** depending on your GitHub Actions experience.
+> - **Already comfortable with GitHub Actions?** Jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8 to get your first workflow running quickly.
+>
+> **Why agentic workflows?** For team evaluators, this workshop shows how to reduce review and status-chasing cost by automating repository triage into a daily, decision-ready report. You also evaluate safety guardrails (scoped permissions, explicit workflow logic, auditable runs) and GitHub-native integration that keeps governance, CI, and automation in one platform.
+
+## Estimated Time by Technical Level
+
+| Technical level | Estimated total time | Time to first running workflow (Steps 0–8) |
+|---|---:|---:|
+| Beginner | ~3 hours | ~2 hours |
+| Actions user | ~1.5 hours | ~60–90 minutes |
+| Advanced | ~45 minutes | ~45 minutes |
 
 ## Why this matters in 60 seconds
 
@@ -31,7 +40,7 @@ Your scheduled workflow then posts a daily status update that your teammates can
 Before: you open your repo every morning, click through issues and pull requests, and manually summarize what changed. After: a scheduled workflow does that scan for you and posts a digest automatically before your first meeting. That's the practical value of agentic workflows in this workshop: less status-chasing, more decision-making.
 
 > [!TIP]
-> Prefer a quick start? Use **Choose your path** above — most GitHub Actions-experienced learners jump to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md), since Steps 1–4 focus on setup and fundamentals.
+> Prefer a quick start? Use **Quick-start for experienced users** above — most GitHub Actions-experienced learners jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8.
 
 ## 🎯 What You'll Do
 
