@@ -5,14 +5,15 @@
 _**What you'll have in about 2 hours:** A scheduled GitHub Action that uses AI to post a daily repo status summary for you — no manual triage required._
 
 > [!TIP]
-> **Already experienced? Fast-track here**
-> - **Time to first running workflow (Steps 0–8):** about **~45 minutes (advanced), ~75 minutes (actions user), or ~2 hours (beginner)** — see the table below.
-> - **Fast path:** after completing the checklist below, jump to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
-> - **Why agentic workflows?** For team evaluators, this workshop shows how to reduce review and status-chasing cost by automating repository triage into a daily, decision-ready report. It also lets you evaluate safety guardrails (scoped permissions, explicit workflow logic, auditable runs) and GitHub-native integration that keeps governance, CI, and automation in one platform.
-> - [ ] You chose your environment path: [Step 2a (Codespace)](02a-setup-codespace.md) or [Step 2b (Local)](02b-setup-local.md)
-> - [ ] You created your practice repository in [Step 3](03-create-your-repo.md)
-> - [ ] You installed and authenticated `gh` plus `gh-aw` in [Step 6](06-install-gh-aw.md)
-> - [ ] Optional but recommended: skim [Step 4](04-github-actions-intro.md) and [Step 5](05-agentic-workflows-intro.md) for core concepts before building
+> **Experienced developer? Skip to Step 6 →**
+> If you already have `gh` installed, a GitHub repo ready, and `gh` authenticated, you can skip Steps 1–5. Confirm all three before jumping ahead:
+> - [ ] `gh` CLI 2.x or newer is installed — run `gh --version`
+> - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
+> - [ ] `gh` is authenticated — run `gh auth status` (or `gh auth login` if not yet done)
+>
+> **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of agentic workflows — all useful context, but safely skippable if you already have a working `gh` setup.
+>
+> Ready? Jump straight to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md) →
 
 ## Estimated Time by Technical Level
 
@@ -39,6 +40,8 @@ _**What you'll have in about 2 hours:** A scheduled GitHub Action that uses AI t
 ## Why Agentic Workflows?
 
 Before: you open your repo every morning, click through issues and pull requests, and manually summarize what changed. After: a scheduled workflow does that scan for you and posts a digest automatically before your first meeting. That's the practical value of agentic workflows in this workshop: less status-chasing, more decision-making.
+
+And the code tells the same story. **Before: write and maintain a 200-line Actions YAML full of shell scripts, condition blocks, and API calls. After: write a 20-line task brief in plain English — and let the agent figure out the rest at runtime.**
 
 > [!TIP]
 > Prefer a quick start? Use **Quick-start for experienced users** above — most GitHub Actions-experienced learners jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8.
@@ -98,6 +101,12 @@ That report can land in a GitHub issue comment, Slack message, or anywhere else 
 | 16 | [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) | 15 min |
 
 ## Who This Is For
+
+| Audience | What you'll get out of it |
+|---|---|
+| **Individual developer** | A real, portfolio-ready automation you can show and adapt for any project |
+| **Team lead evaluating tooling** | A hands-on proof-of-concept to assess workflow quality, output usefulness, and readiness for team adoption |
+| **Enterprise platform engineer** | A reference pattern for scheduling AI-assisted triage within GitHub-native governance (scoped permissions, auditable runs) |
 
 You should be comfortable with:
 - Creating a GitHub repository
