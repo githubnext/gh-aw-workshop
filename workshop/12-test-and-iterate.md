@@ -44,26 +44,33 @@ Read it critically. Ask yourself:
 - Is the tone right — too formal, too casual?
 - Is anything missing (e.g., no mention of stale PRs)?
 
-### 4. Improve the prompt
+### 4. Improve the agent instructions
 
-Open `.github/workflows/daily-status.md` in your editor and find the `prompt:` block in the frontmatter.
+Open `.github/workflows/daily-status.md` in your editor. The agent instructions live in the **Markdown body** — the plain-English text below the closing `---` fence. This is the section that starts with `# Daily Repo Status Report`.
 
-Make one concrete change. Some ideas:
+Make one concrete change to the body. Some ideas:
 
 | Problem noticed | Suggested fix |
 |-----------------|---------------|
-| Report is too verbose | Add _"Keep the report under 100 words."_ to the prompt |
-| Missing PR age info | Add _"Include the age of the oldest open PR."_ |
-| Tone feels robotic | Add _"Write in a friendly, conversational tone."_ |
+| Report is too verbose | Add _"Keep the report under 100 words."_ to the Guidelines section |
+| Missing PR age info | Add _"Include the age of the oldest open PR."_ to the Your Task list |
+| Tone feels robotic | Add _"Write in a friendly, conversational tone."_ to the Guidelines section |
 
-```yaml
-prompt: |
-  Post a daily health check comment on the "Daily Status Reports" issue.
-  Keep the report under 100 words.
-  Include the age of the oldest open PR if any exist.
-  Write in a friendly, conversational tone.
-  ...
+For example, your updated Guidelines section might look like:
+
+```markdown
+## Guidelines
+
+- Post only one comment. If you have already posted today, skip.
+- Keep the report factual. Do not invent numbers.
+- Keep the report under 100 words.
+- Include the age of the oldest open PR if any exist.
+- Write in a friendly, conversational tone.
+- If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
 ```
+
+> [!NOTE]
+> The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
 
 ### 5. Commit, push, and re-run
 
@@ -91,7 +98,7 @@ Trigger another manual run and compare the new comment with the old one. Repeat 
 
 If a run shows a red ❌, click the failed step to see the raw log. Common causes:
 
-- **Missing permissions** — make sure your workflow YAML includes `issues: write` under `permissions`.
+- **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
 - **Compile error** — run `gh aw compile .github/workflows/daily-status.md --validate` locally.
 - **API rate limit** — wait a few minutes and try again.
 
