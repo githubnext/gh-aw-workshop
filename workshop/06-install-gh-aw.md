@@ -20,6 +20,8 @@ extension so you can compile and run agentic workflows from your terminal.
 >
 > **1 — Verify your GitHub CLI authentication** (the extension install will fail if you skip this):
 >
+> If you completed [Step 1 (Prerequisites)](01-prerequisites.md), you already verified this — skip ahead to check 2.
+>
 > ```bash
 > gh auth status
 > ```
