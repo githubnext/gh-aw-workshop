@@ -50,7 +50,7 @@ Each chunk object in `md-chunks.json` has:
 | `title` | Heading text (stripped) |
 | `heading_path` | Breadcrumb from document root to this section |
 | `text` | Heading title + content concatenated — used for similarity scoring |
-| `word_count` | Token count of `text`; chunks with fewer than 20 words are excluded |
+| `word_count` | Whitespace-separated word count of `text`; chunks with fewer than 20 words are excluded |
 
 ## Cluster Schema
 

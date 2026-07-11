@@ -236,6 +236,7 @@ steps:
       import pathlib
       import re
 
+      # 0.55 = lower bound of "partial overlap" range (see markdown-chunker SKILL.md)
       SIMILARITY_THRESHOLD = 0.55
 
       def tokenize(text):
@@ -265,7 +266,7 @@ steps:
               json.dumps({"clusters": [], "total_pairs": 0, "total_clusters": 0})
           )
           print("No chunks to cluster")
-          raise SystemExit(0)
+          sys.exit(0)
 
       # -- TF-IDF ------------------------------------------------------------
 
@@ -340,6 +341,7 @@ steps:
 
       clusters.sort(key=lambda c: -c["max_similarity"])
 
+      # Keep top 10 clusters by similarity to bound issue creation volume
       result = {
           "clusters": clusters[:10],
           "total_pairs": len(similar_pairs),
