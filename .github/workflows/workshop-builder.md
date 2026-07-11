@@ -385,15 +385,3 @@ Use `add-comment` to append exactly one comment to the status issue on every run
 If adding the history comment fails after retries, still preserve updated
 `builder-state.json` and call `report_incomplete`.
 
----
-
-## Safe Outputs Summary
-
-| Situation | Output to use |
-|---|---|
-| Dispatching an existing workflow | `dispatch-workflow` |
-| Proposing a workflow improvement | `create-pull-request` |
-| Suggesting a new workflow | `create-issue` |
-| Creating the status-history issue when absent | `create-issue` |
-| Appending per-run status history | `add-comment` |
-| No action needed or `focus = "status"` | `noop` with a clear reason |
