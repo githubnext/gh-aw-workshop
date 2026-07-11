@@ -7,7 +7,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 | # | File | Title | Status |
 |---|------|-------|--------|
 | 0 | [00-welcome.md](00-welcome.md) | Welcome — What We'll Build | ✅ |
-| 1 | [01-prerequisites.md](01-prerequisites.md) | What You Need Before We Start | ⏳ |
+| 1 | [01-prerequisites.md](01-prerequisites.md) | What You Need Before We Start | ✅ |
 | 2a | [02a-setup-codespace.md](02a-setup-codespace.md) | ➡️ Adventure A: Set Up a Codespace | ⏳ |
 | 2b | [02b-setup-local.md](02b-setup-local.md) | ➡️ Adventure B: Set Up Your Local Terminal | ⏳ |
 | 3 | [03-create-your-repo.md](03-create-your-repo.md) | Create Your Practice Repository | ⏳ |
