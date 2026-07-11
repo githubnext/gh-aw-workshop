@@ -9,8 +9,6 @@ _You already have a repository — now anchor on the parts of Actions that matte
 
 You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files.
 
-If you want a quick preview of what changes with agentic workflows before installing `gh-aw`, continue to Step 5.
-
 ## Quick Refresher
 
 A GitHub Actions workflow is a YAML file in `.github/workflows/` that tells GitHub:
