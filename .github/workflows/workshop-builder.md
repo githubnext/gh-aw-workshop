@@ -36,6 +36,7 @@ safe-outputs:
     workflows:
       - workshop-author
       - workshop-order-review
+      - side-quest
       - workshop-skill-activity-author
       - workshop-student-simulator
       - workshop-sync-check
@@ -161,6 +162,7 @@ Use the `agentic-workflows` `status` tool to check the latest run status for
 each workshop workflow:
 
 - `workshop-author`
+- `side-quest`
 - `workshop-order-review`
 - `workshop-skill-activity-author`
 - `workshop-student-simulator`
@@ -182,6 +184,7 @@ gh search issues --repo "$GITHUB_REPOSITORY" --state open \
 Record:
 
 - Whether an open PR with label `workshop` exists (blocks `workshop-author`)
+- Whether an open PR with label `side-quest` exists (blocks `side-quest`)
 - Whether an open PR with label `skill-activity` exists (blocks
   `workshop-skill-activity-author`)
 - Any open issues suggesting improvements or reporting errors
@@ -193,6 +196,7 @@ For each workflow, compute whether it is **eligible** for dispatch:
 | Workflow | Eligible when |
 |---|---|
 | `workshop-author` | nodes < 15, no open `workshop` PR, last dispatch > 5 h ago or never |
+| `side-quest` | nodes ≥ 5, no open `side-quest` PR, last dispatch > 20 h ago or never |
 | `workshop-student-simulator` | nodes ≥ 5, last dispatch > 20 h ago or never |
 | `workshop-sync-check` | nodes ≥ 3, last dispatch > 22 h ago or never |
 | `workshop-order-review` | nodes ≥ 3, last dispatch > 22 h ago or never |
@@ -215,17 +219,20 @@ conditions are met.
 Select the highest-priority **eligible** workflow (most urgent first):
 
 1. `workshop-author` — highest priority when the workshop is still growing
-2. `workshop-student-simulator` — ensures quality feedback exists
-3. `workshop-sync-check` — keeps content accurate against gh-aw changes
-4. `workshop-order-review` — detects ordering problems early
-5. `workshop-skill-activity-author` — adds Skills-style activities
+2. `side-quest` — extracts optional detours from oversized workshop steps
+3. `workshop-student-simulator` — ensures quality feedback exists
+4. `workshop-sync-check` — keeps content accurate against gh-aw changes
+5. `workshop-order-review` — detects ordering problems early
+6. `workshop-skill-activity-author` — adds Skills-style activities
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
 that may shift priority toward a specific workflow (e.g. "add content" → prefer
-`workshop-author`; "fix sync" → prefer `workshop-sync-check`).
+`workshop-author`; "side quest" or "tutorial" → prefer `side-quest`; "fix sync"
+→ prefer `workshop-sync-check`).
 
-When dispatching `workshop-author` or `workshop-skill-activity-author`, pass the
-`focus` input through if it is set and relevant.
+When dispatching `workshop-author`, `side-quest`, or
+`workshop-skill-activity-author`, pass the `focus` input through if it is set
+and relevant.
 
 → If at least one workflow is eligible, **dispatch the highest-priority one** and
 skip Tiers B and C.
