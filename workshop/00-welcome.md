@@ -7,7 +7,7 @@
 Before: you open your repo every morning, click through issues and pull requests, and manually summarize what changed. After: a scheduled workflow does that scan for you and posts a digest automatically before your first meeting. That's the practical value of agentic workflows in this workshop: less status-chasing, more decision-making.
 
 > [!TIP]
-> **Already know GitHub Actions? Fast path →** Jump to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+> **Already know GitHub Actions? Fast path:** Jump to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 ![Completed GitHub Actions run for the daily repo status workflow](images/00-workflow-run-complete.svg)
 
