@@ -76,7 +76,20 @@ Authenticate your `gh` CLI now:
 gh auth login
 ```
 
-Expected output includes `✓ Logged in to github.com`.
+> [!IMPORTANT]
+> **Verify your GitHub CLI authentication before continuing:**
+>
+> ```bash
+> gh auth status
+> ```
+>
+> If the output says you are not logged in, run:
+>
+> ```bash
+> gh auth login
+> ```
+>
+> Re-run `gh auth status` and confirm you see `Logged in to github.com` before proceeding to the next step.
 
 ### 3. Verify Git is available (local path only)
 
