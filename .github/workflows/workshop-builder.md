@@ -35,6 +35,7 @@ safe-outputs:
   dispatch-workflow:
     workflows:
       - workshop-author
+      - workflow-skills-editor
       - workshop-order-review
       - side-quest
       - workshop-skill-activity-author
@@ -47,6 +48,7 @@ safe-outputs:
     draft: true
     allowed-files:
       - ".github/workflows/*.md"
+      - ".github/workflows/*.lock.yml"
     if-no-changes: warn
   create-issue:
     title-prefix: "[workshop-builder] "
@@ -162,6 +164,7 @@ Use the `agentic-workflows` `status` tool to check the latest run status for
 each workshop workflow:
 
 - `workshop-author`
+- `workflow-skills-editor`
 - `side-quest`
 - `workshop-order-review`
 - `workshop-skill-activity-author`
@@ -184,6 +187,8 @@ gh search issues --repo "$GITHUB_REPOSITORY" --state open \
 Record:
 
 - Whether an open PR with label `workshop` exists (blocks `workshop-author`)
+- Whether an open PR with label `workflow-editor` exists (blocks
+  `workflow-skills-editor`)
 - Whether an open PR with label `side-quest` exists (blocks `side-quest`)
 - Whether an open PR with label `skill-activity` exists (blocks
   `workshop-skill-activity-author`)
@@ -196,6 +201,7 @@ For each workflow, compute whether it is **eligible** for dispatch:
 | Workflow | Eligible when |
 |---|---|
 | `workshop-author` | nodes < 15, no open `workshop` PR, last dispatch > 5 h ago or never |
+| `workflow-skills-editor` | no open `workflow-editor` PR, last dispatch > 22 h ago or never |
 | `side-quest` | nodes ≥ 5, no open `side-quest` PR, last dispatch > 20 h ago or never |
 | `workshop-student-simulator` | nodes ≥ 5, last dispatch > 20 h ago or never |
 | `workshop-sync-check` | nodes ≥ 3, last dispatch > 22 h ago or never |
@@ -219,18 +225,21 @@ conditions are met.
 Select the highest-priority **eligible** workflow (most urgent first):
 
 1. `workshop-author` — highest priority when the workshop is still growing
-2. `side-quest` — extracts optional detours from oversized workshop steps
-3. `workshop-student-simulator` — ensures quality feedback exists
-4. `workshop-sync-check` — keeps content accurate against gh-aw changes
-5. `workshop-order-review` — detects ordering problems early
-6. `workshop-skill-activity-author` — adds Skills-style activities
+2. `workflow-skills-editor` — trims workflow prompt bloat and aligns source
+   prompts with GitHub Skills lesson tone
+3. `side-quest` — extracts optional detours from oversized workshop steps
+4. `workshop-student-simulator` — ensures quality feedback exists
+5. `workshop-sync-check` — keeps content accurate against gh-aw changes
+6. `workshop-order-review` — detects ordering problems early
+7. `workshop-skill-activity-author` — adds Skills-style activities
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
 that may shift priority toward a specific workflow (e.g. "add content" → prefer
-`workshop-author`; "side quest" or "tutorial" → prefer `side-quest`; "fix sync"
-→ prefer `workshop-sync-check`).
+`workshop-author`; "workflow", "tone", "duplication", or "bloat" → prefer
+`workflow-skills-editor`; "side quest" or "tutorial" → prefer `side-quest`;
+"fix sync" → prefer `workshop-sync-check`).
 
-When dispatching `workshop-author`, `side-quest`, or
+When dispatching `workshop-author`, `workflow-skills-editor`, `side-quest`, or
 `workshop-skill-activity-author`, pass the `focus` input through if it is set
 and relevant.
 
