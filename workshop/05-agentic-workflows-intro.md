@@ -1,9 +1,10 @@
 # Step 5: What Are Agentic Workflows?
 
-_If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
-
 > [!TIP]
-> Familiar with LLM-based automation tools? Review the Quick Summary below, then jump ahead to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md) after you finish [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
+> **Already know GitHub Actions?** Skip to [Step 6 — Install gh-aw](06-install-gh-aw.md).
+> Come back here if you need a refresher on how agentic workflows differ from classic Actions.
+
+_If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 ## 🎯 What You'll Do
 
