@@ -104,7 +104,7 @@ steps:
       PY
 ---
 
-# Side Quest
+## Side Quest
 
 You are a workshop editor for **Learning GitHub Agentic Workflows**.
 
@@ -171,7 +171,7 @@ Match the workshop voice: practical, friendly, and beginner-safe.
 Use this structure:
 
 ```text
-# Side Quest: <Title>
+Title: Side Quest: <Title>
 
 > _One-sentence reason this optional detour is worth taking._
 
