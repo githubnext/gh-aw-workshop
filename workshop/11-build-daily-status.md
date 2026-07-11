@@ -187,11 +187,12 @@ YAML is unforgiving. The most frequent pitfalls are tabs instead of spaces, miss
 
 > [!NOTE]
 > If you hit a compile error, the optional **[Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md)** walks through each of these mistakes with broken ❌ and correct ✅ examples.
+> **Optional Side Quest:** Want to get better AI output from your task brief? See **[Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md)** for five prompt-engineering techniques you can apply right now.
 
 ---
 
 > [!TIP]
-> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer using the `agentic-workflows` skill for workflow edits and debugging rather than changing agentic workflows by hand. **Agents edit agents.**
+> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying agentic workflows through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
 
 If you prefer to paste everything at once, use the complete copy-paste block in the **Complete Workflow (Copy-Paste Version)** section below.
 
