@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily simulation of 33 students with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily simulation of 38 students with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -75,11 +75,16 @@ steps:
           {"id":30, "name":"Sage King",       "level":"actions-user", "personality":"curious",     "background":"web-dev",         "goal":"teaching-others",      "runs":0, "successes":0},
           {"id":31, "name":"Tatum Wright",    "level":"advanced",     "personality":"confused",    "background":"backend-dev",     "goal":"work-project",         "runs":0, "successes":0},
           {"id":32, "name":"Uma Scott",       "level":"beginner",     "personality":"curious",     "background":"web-dev",         "goal":"team-evaluation",      "runs":0, "successes":0},
-          {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "runs":0, "successes":0}
+          {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "runs":0, "successes":0},
+          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "runs":0, "successes":0},
+          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "runs":0, "successes":0},
+          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "runs":0, "successes":0},
+          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "runs":0, "successes":0},
+          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "runs":0, "successes":0}
         ]
       }
       EOF
-        echo "Initialized fresh student profiles (33 students)"
+        echo "Initialized fresh student profiles (38 students)"
       else
         echo "Loaded existing student profiles from cache"
         cat /tmp/gh-aw/agent/sim/data/profiles.json | python3 -c "
@@ -117,7 +122,7 @@ steps:
 
 ## Role
 
-You are an expert UX researcher and instructional designer specialising in developer education. Your task is to **simulate 33 students with distinct profiles** attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
+You are an expert UX researcher and instructional designer specialising in developer education. Your task is to **simulate 38 students with distinct profiles** attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
 
 ---
 
@@ -148,14 +153,14 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} step file
 
 ---
 
-## Student Profiles (33 students)
+## Student Profiles (38 students)
 
 Read `/tmp/gh-aw/agent/sim/data/profiles.json` to load the student profiles. Each student has:
-- `id` — unique identifier (1–33)
+- `id` — unique identifier (1–38)
 - `name` — persona name
 - `level` — agentic technical level: `beginner`, `github-basic`, `actions-user`, `advanced`
 - `personality` — `curious`, `methodical`, `impatient`, `confused`, `skeptical`
-- `background` — `no-coding`, `web-dev`, `backend-dev`, `devops`, `data-science`
+- `background` — `no-coding`, `web-dev`, `backend-dev`, `devops`, `data-science`, `enterprise-dev`, `enterprise-devops`, `program-manager`
 - `goal` — `personal-learning`, `work-project`, `team-evaluation`, `teaching-others`
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
@@ -169,6 +174,19 @@ Read `/tmp/gh-aw/agent/sim/data/profiles.json` to load the student profiles. Eac
 | `actions-user` | Familiar with GitHub Actions YAML; new to agentic/AI workflows |
 | `advanced` | Experienced developer or DevOps; has used LLM-based tools before |
 
+### Background Definitions
+
+| Background | Description |
+|------------|-------------|
+| `no-coding` | No software development background |
+| `web-dev` | Frontend or full-stack web developer |
+| `backend-dev` | Backend or systems developer |
+| `devops` | DevOps engineer or SRE |
+| `data-science` | Data scientist or ML engineer |
+| `enterprise-dev` | Developer in a large enterprise using GHE or GHES with self-hosted runners and corporate proxy/network constraints |
+| `enterprise-devops` | Senior DevOps/platform engineer in a Fortune 500 company; manages self-hosted runner fleets and network policies |
+| `program-manager` | Program or product manager evaluating GitHub agentic workflows for their team; non-technical hands-on user |
+
 ---
 
 ## Simulation Task
@@ -179,7 +197,7 @@ Read `/tmp/gh-aw/agent/sim/data/profiles.json`. You will update this file at the
 
 ### 2. Simulate each student through the workshop
 
-For **each of the 33 students**, simulate their experience step-by-step using the following rules:
+For **each of the 38 students**, simulate their experience step-by-step using the following rules:
 
 #### Simulation Rules
 
@@ -239,6 +257,9 @@ For each student who fails at a step, note:
   - **skeptical + early steps**: "Value proposition not convincingly stated"
   - **actions-user + agentic intro**: "Kept mapping to classic Actions patterns, got confused by differences"
   - **advanced + basics**: "Introduction moves too slowly; want to jump to complex examples"
+  - **enterprise-dev + setup steps**: "GHE/GHES configuration differs from github.com — self-hosted runner or proxy requirements not covered"
+  - **enterprise-devops + install gh-aw**: "Corporate network policies and self-hosted runner setup block standard `gh` CLI authentication flows"
+  - **program-manager + any step**: "Technical CLI steps feel out of scope; needs higher-level overview before hands-on configuration tasks"
   - Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
   - Any student failing step 11: "Full workflow source harder to understand without line-by-line annotation"
 
@@ -270,7 +291,7 @@ Use `create-issue` safe output with:
 
 - `temporary_id`: `aw_workshop_simulation_parent` (safe-outputs requires the `aw_` prefix; this parent issue handle is used by child issues in step 8)
 - **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N)`
-- where N is the total accumulated runs across all students divided by 33 (round to nearest integer).
+- where N is the total accumulated runs across all students divided by 38 (round to nearest integer).
 
 Keep the report short and to the point. Keep critical findings visible; move verbose content into `<details>` sections for progressive disclosure.
 
@@ -279,9 +300,9 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ```markdown
 ### Overview
 - Date: YYYY-MM-DD
-- Students simulated: 33
+- Students simulated: 38
 - Workshop steps available: N/15
-- Completion: N/33 (XX%)
+- Completion: N/38 (XX%)
 - Highest-dropout step: Step N (XX%)
 
 ### Critical Findings
