@@ -217,34 +217,20 @@ If you created the file via the GitHub UI, it was already committed when you cli
 
 ## Complete Workflow (Copy-Paste Version)
 
-### How it works
+Use this block to copy the full workflow into your editor if you prefer to paste everything at once rather than building it section by section.
 
-This workflow makes four practical decisions so it stays reliable and easy to debug:
+> [!TIP]
+> **Optional Side Quest:** Want to understand the reasoning behind each design choice — why permissions are scoped the way they are, what `gh-proxy` actually prevents, and why the output format is fixed? See [Side Quest: Reading an Annotated Agentic Workflow](side-quest-annotated-workflow.md) for a fully annotated walkthrough before adapting this workflow.
 
-- It uses a short, task-focused prompt so the agent gathers only the repo signals you care about (PRs, issues, CI, and last commit).
-- `permissions` are explicitly scoped so the agent can read repository state and write exactly one issue comment, but nothing broader.
-- The `tools` block routes GitHub access through `gh-proxy` with the default toolset, matching workshop conventions.
-- The output format is fixed, so each daily report is consistent and easy to scan over time.
-
-The guidelines then cover edge cases (already posted today, no existing issue) so the agent does not guess.
-
-Use this block to copy the full workflow into your editor. Inline comments explain key sections in both the frontmatter and the instruction body:
-
-<details>
-<summary>Line-by-line walkthrough</summary>
-
-````markdown
+```markdown
 ---
-# 1) Workshop metadata used by the simulator and workflow listings
 emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
 
-# 2) Triggers: run on schedule and allow manual runs for testing
 on:
   schedule: daily
   workflow_dispatch: {}
 
-# 3) Least-privilege access needed to read signals and post one report
 permissions:
   contents: read
   copilot-requests: write
@@ -252,25 +238,20 @@ permissions:
   pull-requests: read
   actions: read
 
-# 4) Tooling setup: use GitHub tools via gh-proxy
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
 
-# 5) Guardrail: limit side effects to a single comment
 safe-outputs:
   add-comment:
     max: 1
 ---
 
-<!-- 6) Title shown to humans reading the prompt and to the model at runtime -->
 # Daily Repo Status Report
 
-<!-- 7) One-sentence role framing so the agent keeps the right scope -->
 You are an AI assistant that monitors this repository and posts a concise daily health report.
 
-<!-- 8) Task section: tells the agent exactly what signals to collect -->
 ## Your Task
 
 Collect and summarize:
@@ -279,12 +260,11 @@ Collect and summarize:
 3. **CI status** — result of the most recent workflow run on the default branch
 4. **Last commit** — message and time since it was pushed
 
-<!-- 9) Output contract: keeps reports consistent and easy to scan -->
 ## Output Format
 
 Find the most recently updated open issue and post a comment in this format:
 
-```
+​```
 📊 Daily Repo Status — {today's date}
 ══════════════════════════════════
 🔀 Open pull requests:  {count}
@@ -293,17 +273,14 @@ Find the most recently updated open issue and post a comment in this format:
 📝 Last commit:         "{message}" — {time ago}
 
 {One sentence of overall health. Flag anything that needs attention.}
-```
+​```
 
-<!-- 10) Guardrails for behavior in common edge cases -->
 ## Guidelines
 
 - Post only one comment. If you have already posted today, skip.
 - Keep the report factual. Do not invent numbers.
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
-````
-
-</details>
+```
 
 ---
 
