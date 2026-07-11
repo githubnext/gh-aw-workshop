@@ -3,13 +3,13 @@
 _You already have a repository — now anchor on the parts of Actions that matter for agentic workflows._
 
 > [!TIP]
-> **Skip to advanced content:** Already use GitHub Actions? Skip to [Step 5 — What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+> Already comfortable with GitHub Actions workflows and YAML? You can skip this step and go straight to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
 
 ## 🎯 What You'll Do
 
 You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files.
 
-If you're experienced, you can jump directly to Step 5 where we focus on what's different with agentic workflows.
+If you're experienced but want the quick delta before installing `gh-aw`, continue to Step 5 where we focus on what changes with agentic workflows.
 
 ## Quick Refresher
 

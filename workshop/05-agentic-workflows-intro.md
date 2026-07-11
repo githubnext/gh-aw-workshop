@@ -3,13 +3,16 @@
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 > [!TIP]
-> **Skip to advanced content:** Jump to [Advanced fast-track: What's New cheat sheet](#advanced-fast-track-whats-new-cheat-sheet).
+> Familiar with LLM-based automation tools? Review the frontmatter format summary below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 
 ## 🎯 What You'll Do
 
 You'll connect what you already know about classic GitHub Actions to the agentic model used in this workshop.
 
 This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
+
+> [!NOTE]
+> **Key differences from classic Actions:** A `gh-aw` workflow still starts with YAML frontmatter fenced by `---` — typically `name`, `on`, and `permissions` — but below that frontmatter you write a Markdown task brief instead of a fixed `jobs.steps` script. The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
 
 ## Advanced fast-track: What's New cheat sheet
 
