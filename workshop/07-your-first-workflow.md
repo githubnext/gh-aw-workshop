@@ -12,6 +12,15 @@ You'll create a simple agentic workflow file in your repository using the `gh-aw
 - The `gh aw` command is available in your terminal
 - Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
+> [!TIP]
+> **Editor setup for YAML files:**
+>
+> 1. Install the [YAML extension for VS Code](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) for syntax highlighting and error detection.
+> 2. Open **Settings** and set `editor.tabSize` to `2`.
+> 3. Enable `editor.formatOnSave` to auto-format on every save.
+>
+> This catches tab-vs-space errors before you run the compiler.
+
 ## Steps
 
 ### 1. Create the workflows directory
@@ -58,6 +67,12 @@ Run validation now:
 gh aw compile .github/workflows/hello-agent.md --validate
 ```
 
+You should see:
+
+```
+✔ hello-agent.md — valid
+```
+
 ### 4. Add permissions to the frontmatter
 
 Now add the `permissions` block after the `on:` section and before the closing `---`:
@@ -72,6 +87,12 @@ Re-run validation:
 
 ```bash
 gh aw compile .github/workflows/hello-agent.md --validate
+```
+
+You should see:
+
+```
+✔ hello-agent.md — valid
 ```
 
 - `permissions`: the workflow can read your repository and write to issues.

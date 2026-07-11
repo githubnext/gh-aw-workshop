@@ -199,43 +199,6 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/daily-status.md` (the filename should be exactly `daily-status.md`; agentic workflows in this workshop use Markdown files, not `.yml`).
 
-### Build pass 1: frontmatter only
-
-Copy Sections 1-6 from above so the file contains only the YAML frontmatter (`---` through closing `---`).
-
-Compile to verify the YAML structure before adding the body:
-
-```bash
-gh aw compile .github/workflows/daily-status.md --validate
-```
-
-You should see `✅ Compiled successfully`. If you see errors, check the [Common Mistakes](#common-mistakes) section below.
-
-### Build pass 2: add the Markdown body
-
-Now append Section 7 (`# Daily Repo Status Report` and the instructions) below the closing `---`.
-
-> [!TIP]
-> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer using the `agentic-workflows` skill for workflow edits and debugging rather than changing agentic workflows by hand. **Agents edit agents.**
-
-Compile again:
-
-```bash
-gh aw compile .github/workflows/daily-status.md --validate
-```
-
-If you prefer to paste everything at once, use the complete copy-paste block in the **Complete Workflow (Copy-Paste Version)** section below.
-
-Commit and push:
-
-```bash
-git add .github/workflows/daily-status.md
-git commit -m "feat: add daily repo status agentic workflow"
-git push
-```
-
----
-
 ## Common Mistakes
 
 YAML is unforgiving. Here are the five errors students hit most often:
@@ -332,6 +295,43 @@ permissions:
   contents: read
   copilot-requests: write
   issues: read
+```
+
+---
+
+### Build pass 1: frontmatter only
+
+Copy Sections 1-6 from above so the file contains only the YAML frontmatter (`---` through closing `---`).
+
+Compile to verify the YAML structure before adding the body:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+You should see `✅ Compiled successfully`. If you see errors, check the [Common Mistakes](#common-mistakes) section above.
+
+### Build pass 2: add the Markdown body
+
+Now append Section 7 (`# Daily Repo Status Report` and the instructions) below the closing `---`.
+
+> [!TIP]
+> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer using the `agentic-workflows` skill for workflow edits and debugging rather than changing agentic workflows by hand. **Agents edit agents.**
+
+Compile again:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+If you prefer to paste everything at once, use the complete copy-paste block in the **Complete Workflow (Copy-Paste Version)** section below.
+
+Commit and push:
+
+```bash
+git add .github/workflows/daily-status.md
+git commit -m "feat: add daily repo status agentic workflow"
+git push
 ```
 
 ---
