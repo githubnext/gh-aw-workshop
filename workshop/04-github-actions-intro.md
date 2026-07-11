@@ -3,13 +3,11 @@
 _You already have a repository — now anchor on the parts of Actions that matter for agentic workflows._
 
 > [!TIP]
-> **Skip to advanced content:** Already use GitHub Actions? Skip to [Step 5 — What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+> Already comfortable with GitHub Actions workflows and YAML? You can skip this step and go straight to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md). If you want the conceptual background on how agentic workflows differ, Step 5 is the optional bridge.
 
 ## 🎯 What You'll Do
 
 You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files.
-
-If you're experienced, you can jump directly to Step 5 where we focus on what's different with agentic workflows.
 
 ## Quick Refresher
 
@@ -38,12 +36,12 @@ jobs:
 
 Traditional workflows execute a fixed script path. Agentic workflows still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
 
-Step 5 is the key transition: _what changes when a workflow can reason and choose next actions_.
+Step 5 is the optional transition if you want the conceptual delta before installing `gh-aw`: _what changes when a workflow can reason and choose next actions_.
 
 ## ✅ Checkpoint
 
 - [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] I know workflows live in `.github/workflows/`
-- [ ] I can continue to Step 5 (or I skipped here as an advanced user)
+- [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
