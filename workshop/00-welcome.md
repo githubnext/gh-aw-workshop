@@ -2,7 +2,7 @@
 
 > [!TIP]
 > **Quick-start for experienced users**
-> - **Time to first running workflow (Steps 0–8):** about **45–90 minutes** depending on your GitHub Actions experience.
+> - **Time to first running workflow (Steps 0–8):** about **45 minutes to 2 hours** depending on your GitHub Actions experience.
 > - **Already comfortable with GitHub Actions?** Jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8 to get your first workflow running quickly.
 >
 > **Why agentic workflows?** For team evaluators, this workshop shows how to reduce review and status-chasing cost by automating repository triage into a daily, decision-ready report. You also evaluate safety guardrails (scoped permissions, explicit workflow logic, auditable runs) and GitHub-native integration that keeps governance, CI, and automation in one platform.
@@ -12,7 +12,7 @@
 | Technical level | Estimated total time | Time to first running workflow (Steps 0–8) |
 |---|---:|---:|
 | Beginner | ~3 hours | ~2 hours |
-| Actions user | ~1.5 hours | ~60–90 minutes |
+| Actions user | ~1.5 hours | ~75 minutes |
 | Advanced | ~45 minutes | ~45 minutes |
 
 ## Why this matters in 60 seconds
