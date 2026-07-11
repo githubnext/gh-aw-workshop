@@ -71,7 +71,9 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
       sawAgenticIntro: false,
       hasRepo: false,
       hasWorkflowFile: false,
-      ranWorkflow: false
+      ranWorkflow: false,
+      environmentReady: false,
+      agentCredentialsConfigured: false
     }
   });
 }
