@@ -59,39 +59,15 @@ When invoked with the `/q` command in an issue or pull request comment, analyze 
 - **Triggered by**: @${{ github.actor }}
 
 {{#if ${{ github.event.issue.number }} }}
-### Parent Issue Context
-
-This workflow was triggered from a comment on issue #${{ github.event.issue.number }}.
-
-**Important**: Before proceeding with your analysis, retrieve the full issue details to understand the context of the work to be done:
-
-1. Read the issue title, body, and labels to understand what workflows or problems are being discussed
-2. Consider any linked issues or previous comments for additional context
-3. Use this issue context to inform your investigation and recommendations
+**Issue context**: Read issue #${{ github.event.issue.number }} (title, body, labels, comments) before proceeding.
 {{/if}}
 
 {{#if ${{ github.event.pull_request.number }} }}
-### Parent Pull Request Context
-
-This workflow was triggered from a comment on pull request #${{ github.event.pull_request.number }}.
-
-**Important**: Before proceeding with your analysis, retrieve the full PR details to understand the context of the work to be done:
-
-1. Review the PR title, description, and changed files to understand what changes are being proposed
-2. Consider the PR's relationship to workflow optimizations or issues
-3. Use this PR context to inform your investigation and recommendations
+**PR context**: Read PR #${{ github.event.pull_request.number }} (title, description, changed files) before proceeding.
 {{/if}}
 
 {{#if ${{ github.event.discussion.number }} }}
-### Parent Discussion Context
-
-This workflow was triggered from a comment on discussion #${{ github.event.discussion.number }}.
-
-**Important**: Before proceeding with your analysis, retrieve the full discussion details to understand the context of the work to be done:
-
-1. Review the discussion title and body to understand the topic being discussed
-2. Consider the discussion context when planning your workflow optimizations
-3. Use this discussion context to inform your investigation and recommendations
+**Discussion context**: Read discussion #${{ github.event.discussion.number }} (title and body) before proceeding.
 {{/if}}
 </current_context>
 
@@ -285,37 +261,6 @@ Create a pull request with your improvements:
 - **Validate all changes**: Use the `compile` tool from agentic-workflows before PR
 - **Focus on source**: Only modify .md workflow files
 - **Test changes**: Verify syntax and configuration are correct
-
-## Areas to Investigate
-
-Based on your analysis, focus on these common issues:
-
-### Missing Tools
-
-- Check logs for "missing tool" reports
-- Add tools to workflow configurations
-- Add shared imports for standard tools
-
-### Permission Problems
-
-- Identify permission-denied errors in logs
-- Add minimal necessary permissions
-- Use safe-outputs for write operations
-- Follow principle of least privilege
-
-### Performance Issues
-
-- Detect excessive repetitive tool calls
-- Identify high token usage patterns
-- Find workflows with many turns
-- Spot timeout issues
-
-### Common Patterns
-
-- Extract repeated workflow steps
-- Create shared configuration files
-- Identify reusable prompt templates
-- Build common tool configurations
 
 ## Output Format
 
