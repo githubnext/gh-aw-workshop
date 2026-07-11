@@ -347,8 +347,8 @@ For each student who fails at a step, note:
   - **copilot-app + install gh-aw**: "Copilot app user has no terminal context — step 6 assumes CLI access that is entirely absent"
   - **cloud-agent + local setup**: "Cloud agent user expects fully managed environment; local install and auth steps are unexpected friction"
 >>>>>>> origin/main
-  - Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
-  - Any student failing step 11: "Full workflow source harder to understand without line-by-line annotation"
+- Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
+- Any student failing step 11: "Full workflow source harder to understand without line-by-line annotation"
 
 ### 4. Aggregate and analyse results
 
