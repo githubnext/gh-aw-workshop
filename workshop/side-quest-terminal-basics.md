@@ -104,4 +104,4 @@ cd .. && rm -r test-dir
 
 ---
 
-When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md#steps).
+When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md).
