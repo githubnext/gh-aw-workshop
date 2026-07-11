@@ -54,10 +54,23 @@ Use this as a one-page reference for the shift from classic workflows to agentic
 - Triggers, permissions, and repository context still matter
 - You still version workflows in git and review them like code
 
-> [!NOTE]
-> **Enterprise users:** Agentic workflows are supported on **GitHub Enterprise Cloud (GHEC)** and **GitHub Enterprise Server (GHES) 3.14+**. If your organization uses a proxy or mandates self-hosted runners, see the [GitHub Actions self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners) for setup requirements before continuing. The `gh-aw` CLI and all workshop steps work identically once your runner environment is configured.
-
 The same authoring and review workflow applies everywhere — only the runner configuration differs.
+
+## Platform Compatibility
+
+> [!WARNING]
+> **GHES (GitHub Enterprise Server) users:** Agentic workflows are **not supported by default** on GHES. Support varies by version and organization configuration. If you are on a GHES instance and agentic workflows are not enabled, you will encounter 404 errors or permission failures at Steps 6–8 with no clear explanation.
+>
+> **Recommended options for GHES users:**
+> - Follow along in read-only mode to learn the concepts — you can still complete all non-execution steps.
+> - Request a **github.com** account (free tier is sufficient) to run the hands-on portions of the workshop.
+> - Ask your GitHub Enterprise administrator whether agentic workflows have been enabled for your organization.
+
+| GitHub deployment | Agentic workflows supported? |
+|---|---|
+| **github.com** (free/Team/Enterprise) | ✅ Fully supported |
+| **GitHub Enterprise Cloud (GHEC)** | ✅ Fully supported |
+| **GitHub Enterprise Server (GHES)** | ⚠️ Not supported by default — varies by version and org configuration |
 
 > [!IMPORTANT]
 > In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**

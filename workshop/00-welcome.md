@@ -19,6 +19,8 @@
 | Actions user | ~1.5 hours | ~75 minutes |
 | Advanced | ~45 minutes | ~45 minutes |
 
+> [!NOTE]
+> **Enterprise users:** Agentic workflows require **github.com** or **GitHub Enterprise Cloud (GHEC)**. GHES is not supported by default — see [Step 5](05-agentic-workflows-intro.md#platform-compatibility) for details and workarounds.
 ## Why this matters in 60 seconds
 
 **In about 2 hours, you'll have an AI-powered daily repo health report running automatically in GitHub** — the kind of workflow a teammate or evaluator can judge in under a minute.
