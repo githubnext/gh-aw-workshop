@@ -3,7 +3,7 @@
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 > [!TIP]
-> Familiar with LLM-based automation tools? Review the Quick Summary for Actions Users below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+> Familiar with LLM-based automation tools? Review the Quick Summary below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 
 ## 🎯 What You'll Do
 
@@ -11,7 +11,7 @@ You'll connect what you already know about classic GitHub Actions to the agentic
 
 This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
 
-## Quick Summary for Actions Users
+## Quick Summary
 
 > **Key differences from classic Actions:**
 >
