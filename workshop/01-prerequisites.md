@@ -14,6 +14,7 @@ You'll confirm that you have everything required before writing a single line of
 > ```bash
 > # Pre-flight check -- run this once your terminal is open
 > gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install commands below"
+> gh auth status && echo "✅ gh authenticated" || echo "❌ run: gh auth login"
 > git --version && echo "✅ git OK" || echo "❌ git missing"
 > node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
 > echo "Pre-flight complete."
@@ -53,6 +54,14 @@ You need a **free GitHub account**. If you don't have one yet, create it at [git
 
 > [!NOTE]
 > You don't need a paid plan. Everything in this workshop works with a free GitHub account.
+
+Authenticate your `gh` CLI now:
+
+```bash
+gh auth login
+```
+
+Expected output includes `✓ Logged in to github.com`.
 
 ### 3. Verify Git is available (local path only)
 
@@ -122,6 +131,7 @@ Now decide how you want to work:
 
 - [ ] You have a GitHub account and can sign in
 - [ ] gh CLI version 2.x or newer installed — verify with `gh --version`
+- [ ] gh CLI is authenticated — run `gh auth login`, then verify with `gh auth status`
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
