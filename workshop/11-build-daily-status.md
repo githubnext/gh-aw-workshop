@@ -199,6 +199,126 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/daily-status.md` (the filename should be exactly `daily-status.md`; agentic workflows in this workshop use Markdown files, not `.yml`).
 
+Instead of pasting one giant block, build the file in small sections and compile after each one. That makes YAML mistakes much easier to spot.
+
+### Build section 1: frontmatter basics
+
+Start with the opening fence and the two metadata keys. `emoji` is just a visual label in workflow lists, while `description` is the plain-English summary that shows people what this workflow does before they open it.
+
+```yaml
+---
+emoji: 📊
+description: Post a daily repository status summary as a GitHub issue comment.
+---
+```
+
+Compile after saving:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+### Build section 2: trigger block
+
+Now add the trigger block after the `description` line and before the closing `---`. `workflow_dispatch` gives you a manual **Run workflow** button, and `schedule: daily` is the source-format shorthand for a cron-style daily schedule — in plain English, "run this once every day around midnight UTC."
+
+```yaml
+on:
+  schedule: daily
+  workflow_dispatch: {}
+```
+
+Compile again:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+### Build section 3: permissions block
+
+Next add the minimum permissions the workflow needs. This workflow only needs to read repository state and make AI requests; keeping permissions narrow reduces the blast radius if you misconfigure the prompt later.
+
+```yaml
+permissions:
+  contents: read
+  copilot-requests: write
+  issues: read
+  pull-requests: read
+  actions: read
+```
+
+Compile again:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+### Build section 4: tools and output guardrails
+
+Add the tool configuration and the `safe-outputs` guardrail next. The `tools` block tells the agent how to talk to GitHub, and `safe-outputs` limits the workflow to posting a single comment instead of giving it broad write access.
+
+```yaml
+tools:
+  github:
+    mode: gh-proxy
+    toolsets: [default]
+
+safe-outputs:
+  add-comment:
+    max: 1
+```
+
+Compile again:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+### Build section 5: agent instructions block
+
+Finally, add the Markdown body below the closing `---`. This is the brief the AI agent follows at runtime: what signals to collect, how to format the report, and which edge cases to handle so the output stays predictable.
+
+```markdown
+# Daily Repo Status Report
+
+You are an AI assistant that monitors this repository and posts a concise daily health report.
+
+## Your Task
+
+Collect and summarize:
+1. **Open pull requests** — count, and flag any open longer than 7 days
+2. **Open issues** — total count, how many are labeled "bug"
+3. **CI status** — result of the most recent workflow run on the default branch
+4. **Last commit** — message and time since it was pushed
+
+## Output Format
+
+Find the most recently updated open issue and post a comment in this format:
+
+```
+📊 Daily Repo Status — {today's date}
+══════════════════════════════════
+🔀 Open pull requests:  {count}
+🐛 Open issues:         {count}  ({bug-count} labeled "bug")
+✅ CI status:           {passing/failing/unknown}
+📝 Last commit:         "{message}" — {time ago}
+
+{One sentence of overall health. Flag anything that needs attention.}
+```
+
+## Guidelines
+
+- Post only one comment. If you have already posted today, skip.
+- Keep the report factual. Do not invent numbers.
+- If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
+```
+
+Compile one more time:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
 ## Common Mistakes
 
 YAML is unforgiving. Here are the five errors students hit most often:
@@ -299,30 +419,8 @@ permissions:
 
 ---
 
-### Build pass 1: frontmatter only
-
-Copy Sections 1-6 from above so the file contains only the YAML frontmatter (`---` through closing `---`).
-
-Compile to verify the YAML structure before adding the body:
-
-```bash
-gh aw compile .github/workflows/daily-status.md --validate
-```
-
-You should see `✅ Compiled successfully`. If you see errors, check the [Common Mistakes](#common-mistakes) section above.
-
-### Build pass 2: add the Markdown body
-
-Now append Section 7 (`# Daily Repo Status Report` and the instructions) below the closing `---`.
-
 > [!TIP]
 > This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer using the `agentic-workflows` skill for workflow edits and debugging rather than changing agentic workflows by hand. **Agents edit agents.**
-
-Compile again:
-
-```bash
-gh aw compile .github/workflows/daily-status.md --validate
-```
 
 If you prefer to paste everything at once, use the complete copy-paste block in the **Complete Workflow (Copy-Paste Version)** section below.
 
