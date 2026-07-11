@@ -49,7 +49,7 @@ _What success looks like:_ a line like `git version 2.x.x`.
 
 You should see `git version 2.x.x` or higher. If you see an error, download Git from [git-scm.com](https://git-scm.com) and re-run the check.
 
-### 3. Install Node.js (v20 or later)
+### 3. Install Node.js (v22 or later)
 
 Check whether Node.js is already installed:
 
@@ -59,9 +59,9 @@ node --version
 
 ![Example success output after running `node --version`](images/02b-terminal-success-02-node-version.svg)
 
-_What success looks like:_ a line like `v20.x.x` (or newer).
+_What success looks like:_ a line like `v22.x.x` (or newer).
 
-If you see `v20.x.x` or higher, you're good. If not, install Node.js using your preferred method:
+If you see `v22.x.x` or higher, you're good. If not, install Node.js using your preferred method:
 
 **macOS (Homebrew):**
 
@@ -102,7 +102,7 @@ node --version
 
 ![Example success output after re-checking `node --version`](images/02b-terminal-success-06-node-version.svg)
 
-_What success looks like:_ `v20.x.x` or newer.
+_What success looks like:_ `v22.x.x` or newer.
 
 > [!TIP]
 > If you manage multiple Node.js versions, [nvm](https://github.com/nvm-sh/nvm) is a great tool. Run `nvm install --lts` to get the latest LTS release.
@@ -211,7 +211,7 @@ All three commands should return output without errors. The repo view should sho
 
 - [ ] Your fork exists on GitHub
 - [ ] `git --version` returns a version number
-- [ ] `node --version` returns v20 or higher
+- [ ] `node --version` returns v22 or higher
 - [ ] `gh --version` returns a version number
 - [ ] `gh auth login` completed without errors
 - [ ] You've cloned the repository and `cd`-ed into it
