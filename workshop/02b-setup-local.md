@@ -4,6 +4,9 @@
 
 ## 🎯 What You'll Do
 
+> [!IMPORTANT]
+> If you run into trouble with any terminal step, switch to a Codespace at any time — all progress is preserved in your repository. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
+
 You'll install the tools you need on your own machine: Git, Node.js, and the `gh` CLI. You'll authenticate with GitHub, and by the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
 
 ## 📋 Before You Start
