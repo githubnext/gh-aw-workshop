@@ -62,7 +62,7 @@ steps:
             # Extract image refs: ![alt](path) — skip http URLs and inside code blocks
             echo "$line_content" | grep -oP '!\[[^\]]*\]\([^)]+\)' | while IFS= read -r img_ref; do
               alt=$(echo "$img_ref" | sed 's/!\[\([^\]]*\)\].*/\1/')
-              path=$(echo "$img_ref" | sed 's/!\[[^\]]*\](\(.*\))/\1/')
+              path=$(echo "$img_ref" | sed 's/!\[[^\]]*\](\([^)]*\))/\1/')
               # Skip external URLs
               case "$path" in http*|https*) continue ;; esac
               # Resolve relative to source file directory
@@ -140,7 +140,7 @@ illustrates the described GitHub UI element.
 
 ### SVG design rules
 
-- **Canvas**: 1200 × 560, `viewBox="0 0 1200 560"`.
+- **Canvas**: 1200 x 560, `viewBox="0 0 1200 560"`.
 - **Background**: `#f6f8fa` (GitHub light page background).
 - Use a browser chrome header (`#ffffff`, height 44, with rounded top corners,
   subtle `#d0d7de` border) showing a mocked URL bar containing the workshop
@@ -149,7 +149,7 @@ illustrates the described GitHub UI element.
   etc.) as a horizontal tab bar with the relevant tab underlined in `#0969da`.
 - For Actions-tab screenshots: show a workflow list panel with a single row
   representing the relevant workflow, a status icon (green ✓ for success,
-  yellow ⏳ for in-progress), and the workflow name.
+  yellow (in-progress hourglass) for in-progress), and the workflow name.
 - For Run workflow button: render a blue button labelled "Run workflow" in the
   Actions sidebar.
 - For Codespace/fork/commit dialogs: use a centered modal panel (`#ffffff`
