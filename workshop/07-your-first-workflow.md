@@ -142,9 +142,9 @@ You should still see:
 ✔ hello-agent.md — valid
 ```
 
-### 6. Validate the file
+### 6. Optional: Keep validating while you iterate
 
-Run the `gh-aw` validator to check your frontmatter and structure are correct.
+If you make more edits after the checkpoints above, run the `gh-aw` validator again or keep it running while you refine the file.
 
 ```bash
 gh aw compile .github/workflows/hello-agent.md --validate
@@ -163,7 +163,7 @@ You should see output like:
 ```
 
 > [!NOTE]
-> Validation only checks the file structure. The agent's reasoning happens at runtime, not compile time.
+> Validation checks the file structure. The agent's reasoning happens at runtime, not compile time.
 
 ### 7. Commit and push
 
