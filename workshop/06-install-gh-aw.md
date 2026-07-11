@@ -46,17 +46,7 @@ You'll verify the `gh` CLI is installed, install it if needed, and then install 
 >
 > Official installation docs: [cli.github.com](https://cli.github.com)
 
-### 1. Verify `gh` again before installing the extension
-
-Run:
-
-```bash
-gh --version
-```
-
-You should still see output that starts with `gh version 2.`.
-
-### 2. Install the `gh-aw` extension
+### 1. Install the `gh-aw` extension
 
 ```bash
 gh extension install githubnext/gh-aw
@@ -68,7 +58,7 @@ If the extension is already installed, you can update it instead:
 gh extension upgrade githubnext/gh-aw
 ```
 
-### 3. Confirm installation
+### 2. Confirm installation
 
 ```bash
 gh extension list
