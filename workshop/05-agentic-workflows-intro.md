@@ -20,6 +20,21 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 > - Below that frontmatter, you write a Markdown task brief instead of a fixed `jobs.steps` script.
 > - The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
 
+## Side-by-side: Classic Actions vs Agentic Workflows
+
+If you're coming from classic GitHub Actions, this table shows exactly where the two models diverge.
+
+| Dimension | Classic GitHub Actions | Agentic Workflow |
+|---|---|---|
+| **File format** | `.yml` YAML | `.md` Markdown (YAML frontmatter + task brief) |
+| **Task description** | Shell commands and scripts in `steps:` | Natural language instructions below the frontmatter |
+| **Execution** | Deterministic — same input always gives same output | AI agent interprets the brief and decides how to act at runtime |
+| **Handles ambiguity** | Fails or needs explicit branching logic | Reasons through ambiguous inputs and adapts |
+| **Best for** | CI/CD pipelines, builds, deployments | Summaries, triage, reporting, and tasks that need judgment |
+
+> [!NOTE]
+> Both types of workflow live in `.github/workflows/` and use the same `on:` triggers and `permissions:` blocks — only the task description format changes.
+
 ## Advanced fast-track: What's New cheat sheet
 
 Use this as a one-page reference for the shift from classic workflows to agentic workflows.
