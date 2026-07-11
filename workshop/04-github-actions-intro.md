@@ -36,12 +36,12 @@ jobs:
 
 Traditional workflows execute a fixed script path. Agentic workflows still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
 
-Step 5 is the key transition: _what changes when a workflow can reason and choose next actions_.
+Step 5 is the optional transition if you want the conceptual delta before installing `gh-aw`: _what changes when a workflow can reason and choose next actions_.
 
 ## ✅ Checkpoint
 
 - [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] I know workflows live in `.github/workflows/`
-- [ ] I can continue to Step 5 (or I skipped here as an advanced user)
+- [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
