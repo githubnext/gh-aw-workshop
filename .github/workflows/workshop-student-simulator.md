@@ -199,7 +199,7 @@ Read `/tmp/gh-aw/agent/sim/data/profiles.json`. You will update this file at the
 
 For **each of the 38 students**, simulate their experience step-by-step using the following rules:
 
-Before calculating probabilities, use `.github/skills/micro-environment-simulator/SKILL.md` to build and run a JavaScript abstract state machine replay for each student that models:
+Before calculating probabilities, use `.github/skills/micro-environment-simulator/SKILL.md` and run `.github/skills/micro-environment-simulator/simulator.js` to execute a JavaScript abstract state machine replay for each student that models:
 
 - OS
 - terminal
