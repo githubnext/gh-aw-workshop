@@ -54,7 +54,7 @@ Open the repository on GitHub:
 gh repo view --web
 ```
 
-Click the **Actions** tab at the top of the page. You should see a message like *"Get started with GitHub Actions"* — that means Actions is enabled and ready to go.
+Click the **Actions** tab at the top of the page. You should see a message like _"Get started with GitHub Actions"_ — that means Actions is enabled and ready to go.
 
 ![Actions tab with getting-started message](images/03-actions-tab.png)
 
