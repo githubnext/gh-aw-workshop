@@ -5,7 +5,7 @@ _Starting with the right setup saves you from frustrating detours later._
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
 > If you already have `gh` installed, a GitHub repo ready, and `gh` authenticated, you can skip Steps 1–5. Confirm all three before jumping ahead:
-> - [ ] `gh` CLI 2.x or newer is installed — run `gh --version`
+> - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
 > - [ ] `gh` is authenticated — run `gh auth status` (or `gh auth login` if not yet done)
 >
@@ -48,7 +48,7 @@ You'll confirm that you have everything required before writing a single line of
 
 ### 1. Confirm required vs optional prerequisites
 
-- ✅ **Required:** `gh` CLI 2.x or newer (`gh --version`)
+- ✅ **Required:** `gh` CLI ≥ 2.40 (`gh --version`)
 - ✅ **Required (local terminal path):** Git (`git --version`)
 - ℹ️ **Optional:** Node.js (`node --version`) — not required for this workshop
 
@@ -73,6 +73,11 @@ winget install GitHub.cli
 ```
 
 Full installation docs: [cli.github.com](https://cli.github.com)
+
+> [!NOTE]
+> **Can't install software locally?** No problem — skip the installs entirely.
+> Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40, Git, and Node pre-installed and pre-authenticated. You'll be ready to continue in under two minutes without touching your local machine.
+> ➡️ **[Adventure A: Set Up a Codespace](02a-setup-codespace.md)**
 
 ### 2. Check your GitHub account
 
@@ -153,7 +158,7 @@ Now decide how you want to work:
 ## ✅ Checkpoint
 
 - [ ] You have a GitHub account and can sign in
-- [ ] gh CLI version 2.x or newer installed — verify with `gh --version`
+- [ ] gh CLI ≥ 2.40 installed — verify with `gh --version`
 - [ ] gh CLI is authenticated — run `gh auth login`, then verify with `gh auth status`
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
