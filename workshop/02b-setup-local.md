@@ -12,6 +12,9 @@ You'll install the tools you need on your own machine: Git, Node.js, and the `gh
 - You have a free GitHub account and are signed in
 - You have a terminal application open (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
 
+> [!NOTE]
+> **New to terminals?** A terminal (also called a shell or command line) is a text-based interface where you type commands to control your computer. If that sounds unfamiliar, you may find it easier to use [Adventure A: Codespace](02a-setup-codespace.md) instead — it sets everything up for you in the browser with no local installs required.
+
 ## 🧭 Terminal Basics (1 minute)
 
 If this is your first time in a terminal, use this legend while running each step:

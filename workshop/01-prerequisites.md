@@ -2,6 +2,18 @@
 
 > _Starting with the right setup saves you from frustrating detours later._
 
+## 🔀 Choose Your Setup Path
+
+> [!IMPORTANT]
+> **Not sure where to begin? Pick your path now:**
+>
+> | I am… | Go to… |
+> |-------|--------|
+> | New to coding or the terminal — or on a shared/school machine | ➡️ [Adventure A: Codespace (**recommended for beginners**)](02a-setup-codespace.md) — nothing to install, runs in your browser |
+> | Comfortable with my terminal and local installs | ➡️ [Adventure B: Local Setup](02b-setup-local.md) |
+>
+> If you're unsure, **start with the Codespace path** — you can always switch later.
+
 ## 🎯 What You'll Do
 
 You'll confirm that you have everything required before writing a single line of workflow code. By the end of this step you'll know which setup path to follow — Codespace or local terminal — and you'll be ready to move forward.
@@ -19,6 +31,9 @@ You'll confirm that you have everything required before writing a single line of
 > node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
 > echo "Pre-flight complete."
 > ```
+>
+> ![Terminal showing all pre-flight checks passing with green checkmarks](images/01-preflight-success.svg)
+> _What success looks like: every line shows ✅ and the prompt returns without errors._
 
 ### 1. Confirm required vs optional prerequisites
 
