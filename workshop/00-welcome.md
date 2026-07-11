@@ -97,6 +97,15 @@ and might need a nudge. 👀
 
 That report can land in a GitHub issue comment, Slack message, or anywhere else you configure. It runs on a schedule — no clicks required.
 
+## Who This Is For
+
+| Audience | What you'll get out of it |
+|---|---|
+| **Developer** | A real, portfolio-ready automation you can show and adapt for any project — prove you can build practical AI workflows |
+| **DevOps / platform engineer** | A reference pattern for scheduling AI-assisted triage within GitHub-native governance (scoped permissions, auditable runs) |
+| **Program manager** | A daily automated digest of your team's repository health — no more manual morning check-ins or status-chasing |
+| **Team evaluator** | A concrete, end-to-end example of AI workflow quality and output to assess before recommending adoption to your organization |
+
 ## Workshop Curriculum
 
 | Step | What you'll do | Est. time |
@@ -120,13 +129,7 @@ That report can land in a GitHub issue comment, Slack message, or anywhere else 
 | 15 | [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) | 15 min |
 | 16 | [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) | 15 min |
 
-## Who This Is For
-
-| Audience | What you'll get out of it |
-|---|---|
-| **Developer** | A real, portfolio-ready automation you can show and adapt for any project — prove you can build practical AI workflows |
-| **DevOps / platform engineer** | A reference pattern for scheduling AI-assisted triage within GitHub-native governance (scoped permissions, auditable runs) |
-| **Program manager** | A daily automated digest of your team's repository health — no more manual morning check-ins or status-chasing |
+⏱ Estimated time: 60–90 minutes. Skip to [Step 10](10-design-daily-status.md) if you already know GitHub Actions.
 
 You should be comfortable with:
 - Creating a GitHub repository
