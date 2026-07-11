@@ -15,7 +15,7 @@
 > One-liner safety check:
 >
 > ```bash
-> gh --version || { echo "Install gh first using the platform-specific commands below."; exit 1; }
+> gh --version || { echo "Install gh first using the platform-specific commands in the list below."; exit 1; }
 > ```
 >
 > Direct install commands from Step 1:
