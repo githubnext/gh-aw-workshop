@@ -11,7 +11,7 @@ You'll connect what you already know about classic GitHub Actions to the agentic
 
 This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
 
-## Quick summary for Actions users
+## Quick Summary for Actions Users
 
 > **Key differences from classic Actions:** A `gh-aw` workflow still starts with YAML frontmatter fenced by `---` — typically `name`, `on`, and `permissions` — but below that frontmatter you write a Markdown task brief instead of a fixed `jobs.steps` script. The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
 
