@@ -45,7 +45,7 @@ Here are a few directions to explore. Choose the one that excites you most.
 
 Add branching logic to your daily-status workflow. For example:
 
-- Only post the summary if there were commits in the last 24 hours.
+- Only post the summary if there were commits in the last 24 hours → ➡️ [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
 - Include a different AI prompt on Mondays (weekly review) vs. other days (daily diff).
 
 #### Connect a new data source
