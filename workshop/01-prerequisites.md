@@ -9,7 +9,38 @@ You'll confirm that you have everything required before writing a single line of
 ## Steps
 
 > [!IMPORTANT]
-> The `gh` CLI is a required workshop prerequisite because you'll use it in [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md). Run `gh --version` now to verify it is installed. If needed, install it from the official docs at [cli.github.com](https://cli.github.com).
+> The `gh` CLI (version 2.x or newer) is a required workshop prerequisite because
+> you'll use it in [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
+>
+> Verify it now:
+>
+> ```bash
+> gh --version
+> ```
+>
+> Expected output starts with `gh version 2.` (for example, `gh version 2.75.0`).
+>
+> If `gh` is missing, install it using one of these one-liners:
+>
+> **macOS (Homebrew):**
+>
+> ```bash
+> brew install gh
+> ```
+>
+> **Ubuntu/Debian:**
+>
+> ```bash
+> sudo apt install gh
+> ```
+>
+> **Windows (winget):**
+>
+> ```powershell
+> winget install GitHub.cli
+> ```
+>
+> Full installation docs: [cli.github.com](https://cli.github.com)
 
 ### 1. Check your GitHub account
 
@@ -80,6 +111,7 @@ Now decide how you want to work:
 ## ✅ Checkpoint
 
 - [ ] You have a GitHub account and can sign in
+- [ ] gh CLI version 2.x or newer installed — verify with `gh --version`
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
