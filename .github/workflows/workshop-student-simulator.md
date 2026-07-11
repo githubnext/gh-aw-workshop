@@ -268,7 +268,7 @@ If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3
 
 Use `create-issue` safe output with:
 
-- `temporary_id`: `aw_report` (this is the parent issue handle used by child issues in step 8)
+- `temporary_id`: `aw_workshop_simulation_parent` (parent issue handle used by child issues in step 8)
 - **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N)`
 - where N is the total accumulated runs across all students divided by 33 (round to nearest integer).
 
@@ -317,8 +317,8 @@ Briefly cover one surprising success, one unexpected dropout, and one content-ga
 ### 8. Create actionable sub-issues for repairs
 
 After creating the report issue, create **3-5 child issues** using `create-issue` where each issue:
-- sets `parent: "aw_report"` (preferred) to link directly to the parent from step 7
-- use a numeric parent issue number only as fallback if the temporary id is unavailable
+- sets `parent: "aw_workshop_simulation_parent"` (preferred) to link directly to the parent from step 7
+- use a numeric parent issue number only as fallback if the temporary id is unavailable; in that case, use the issue number returned when the parent report issue is created
 - has a concise, imperative title starting with `Repair:` or `Improve:`
 - describes one concrete workshop improvement only
 - includes:
