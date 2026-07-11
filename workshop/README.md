@@ -23,6 +23,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 | 13 | [13-schedule-it.md](13-schedule-it.md) | Schedule It to Run Every Day | ✅ |
 | 14 | [14-next-steps.md](14-next-steps.md) | What's Next? Keep Exploring | ✅ |
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
+| 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |
 
 ## Getting Started
 
