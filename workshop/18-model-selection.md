@@ -15,7 +15,7 @@ You'll learn how to specify a particular AI model in your workflow's frontmatter
 
 ### 1. Understand the default
 
-When you omit a `models:` block in your workflow frontmatter, `gh-aw` uses a default model chosen by the platform. That's fine for getting started, but as your workflows grow more complex you may want a model that is faster, cheaper, more capable, or specialised for a certain type of task.
+When you omit an `engine:` block in your workflow frontmatter, `gh-aw` uses a default model chosen by the platform. That's fine for getting started, but as your workflows grow more complex you may want a model that is faster, cheaper, more capable, or specialised for a certain type of task.
 
 ### 2. Browse available models
 
@@ -37,12 +37,12 @@ Open your workflow file (e.g., `.github/workflows/daily-status.md`).
 
 1. Navigate to `.github/workflows/daily-status.md` in your repository on GitHub.
 2. Click the **pencil icon (✏️)** to open the editor.
-3. Add the `models:` block shown below to the frontmatter.
+3. Add the `engine:` block shown below to the frontmatter.
 4. Click **Commit changes**.
 
 </details>
 
-Inside the opening `---` / `---` frontmatter block, add a `models:` block that enables the GitHub-hosted model provider:
+Inside the opening `---` / `---` frontmatter block, add an `engine:` block with a `model:` field:
 
 ```yaml
 ---
@@ -53,16 +53,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-models:
-  providers:
-    github: {}
+engine:
+  model: openai/gpt-4.1-mini
 ---
-```
-
-Then, in your task brief (the Markdown section after the frontmatter), tell the agent which model to prefer. For example:
-
-```
-> Use the `openai/gpt-4.1-mini` model for this task.
 ```
 
 > [!NOTE]
@@ -87,7 +80,7 @@ A clean compile means the frontmatter is syntactically correct. UI-first learner
 
 ### 6. Compare outputs (optional)
 
-Run the workflow twice with two different model preferences in your task brief and compare the summaries. Notice differences in:
+Run the workflow twice with two different `engine: model:` values and compare the summaries. Notice differences in:
 
 - **Tone** — some models are more concise, others more verbose.
 - **Speed** — lighter models complete faster.
@@ -98,7 +91,7 @@ Run the workflow twice with two different model preferences in your task brief a
 
 ## ✅ Checkpoint
 
-- [ ] Your frontmatter includes a `models:` block with `providers.github: {}`
+- [ ] Your frontmatter includes an `engine:` block with a `model:` field pointing to your chosen model
 - [ ] `gh aw compile --validate` (or a successful Actions run) confirms no errors
 - [ ] A manual run completes and the log shows the agent using your chosen model
 - [ ] You can explain in one sentence why context-window size matters for data-heavy workflows
