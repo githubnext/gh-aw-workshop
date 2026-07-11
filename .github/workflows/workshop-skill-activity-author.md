@@ -81,14 +81,8 @@ If no meaningful improvement is needed, call `noop` with a concise reason.
 
 ## Validate Agentic Workflow Snippets
 
-After making changes and before creating the pull request, scan every modified workshop file for YAML code blocks that demonstrate agentic workflow frontmatter syntax (fenced code blocks tagged `yaml` or `yml` whose content starts with `---`).
-
-For each complete frontmatter snippet found:
-1. Write the snippet to a temporary file at `/tmp/gh-aw/validate/snippet-<N>.md` (N increments per snippet).
-2. Use the `compile` tool from `agentic-workflows` with `--validate` on that file to check for syntax errors.
-3. If compile reports errors, fix the YAML in the workshop file before proceeding.
-
-Ignore partial snippets (only `permissions:`, only `tools:`, etc.); only validate snippets that contain a complete frontmatter section (both opening and closing `---`).
+Use the shared procedure in `.github/workflows/workshop-author.md` under
+`### 5. Validate agentic workflow snippets`.
 
 ## Content Style Requirements
 

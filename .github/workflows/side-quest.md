@@ -198,17 +198,8 @@ Keep the side quest self-contained and concise. It should cover one concept.
 
 ## Validate workflow snippets
 
-After editing and before creating the pull request, scan every modified workshop
-file for YAML code blocks that demonstrate agentic workflow frontmatter syntax
-(fenced code blocks tagged `yaml` or `yml` whose content starts with `---`).
-
-For each complete frontmatter snippet found:
-
-1. Write the snippet to `/tmp/gh-aw/validate/snippet-<N>.md`
-2. Use the `agentic-workflows` compile tool with `--validate`
-3. Fix any invalid snippet before proceeding
-
-Ignore partial YAML examples that are not complete frontmatter blocks.
+Use the shared procedure in `.github/workflows/workshop-author.md` under
+`### 5. Validate agentic workflow snippets`.
 
 ## No-op rule
 
