@@ -39,7 +39,7 @@ steps:
       mkdir -p /tmp/gh-aw/data
 
       if [ -d workshop ]; then
-        find workshop -type f -name "*.md" ! -name "README.md" | sort | jq -R . | jq -sc '{workshop_files: .}' > /tmp/gh-aw/data/repo-state.json
+        find workshop -type f -name "*.md" | sort | jq -R . | jq -sc '{workshop_files: .}' > /tmp/gh-aw/data/repo-state.json
       else
         jq -n '{workshop_files: []}' > /tmp/gh-aw/data/repo-state.json
       fi
@@ -131,7 +131,7 @@ Then:
 
 1. Search open issues with label `broken-link` for an existing issue whose title contains that exact key hash.
 2. If no matching issue exists, call `create-issue` with:
-   - **Title**: `Broken link <key-hash> <file>:<line>`
+   - **Title**: `Broken link [<key-hash>] in <file>:<line>`
    - **Body** including:
      - file path
      - line number
