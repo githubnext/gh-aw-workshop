@@ -83,7 +83,7 @@ git push
 <details>
 <summary>🖥️ GitHub UI alternative</summary>
 
-Navigate to `.github/workflows/daily-status.md` in your repository, click the **pencil icon (✏️)**, update the `schedule:` line as described in step 3, then click **Commit changes**.
+After updating the `schedule:` line in the web editor (opened in step 1), click **Commit changes**.
 
 </details>
 

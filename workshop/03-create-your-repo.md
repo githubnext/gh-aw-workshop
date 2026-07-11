@@ -32,8 +32,6 @@ This command creates the repository, sets it to public, and adds a starter `READ
 4. Check **Add a README file**.
 5. Click **Create repository**.
 
-![Create repository form on GitHub](images/03-create-repo-ui.png)
-
 </details>
 
 > [!NOTE]
