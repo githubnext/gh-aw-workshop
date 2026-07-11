@@ -126,12 +126,17 @@ For internal links to non-markdown files, only validate file existence.
 
 For each broken link record, create a deterministic issue key hash:
 
-`bl-<lowercase-hex sha256(file + \"|\" + line + \"|\" + raw_link)>`
+`bl-<lowercase-hex sha256(file + \"|\" + line + \"|\" + raw_link)>` where `|` is a literal pipe character.
+
+Example source string:
+
+`workshop/11-build-daily-status.md|123|../README.md#overview`
 
 Then:
 
-1. Search open issues with label `broken-link` for an existing issue whose title contains that exact key hash.
-2. If no matching issue exists, call `create-issue` with:
+1. At the start of this phase, list open issues with label `broken-link` once and cache them locally.
+2. Search that cached list for an existing issue whose title contains the exact key hash.
+3. If no matching issue exists, call `create-issue` with:
    - **Title**: `Broken link [bl-<hash>] in <file>:<line>`
    - **Body** including:
      - file path
@@ -140,7 +145,7 @@ Then:
      - resolved target
      - failure reason/status
      - checked-at timestamp (UTC)
-3. If a matching issue exists, call `add-comment` on that issue with:
+4. If a matching issue exists, call `add-comment` on that issue with:
    - updated failure details
    - checked-at timestamp
    - note that the link is still broken
