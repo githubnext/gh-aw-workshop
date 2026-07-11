@@ -15,10 +15,12 @@ permissions:
   copilot-requests: write
   issues: read
   pull-requests: read
+  actions: read
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+  agentic-workflows:
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop] "
@@ -181,7 +183,18 @@ Numbered action sequence. Each action gets its own number. Commands go in fenced
 
 ---
 
-### 5. Update `workshop/README.md`
+### 5. Validate agentic workflow snippets
+
+Before updating the README or creating the pull request, scan the newly created node file for YAML code blocks that demonstrate agentic workflow frontmatter syntax (i.e., fenced code blocks tagged `yaml` or `yml` whose content starts with `---`).
+
+For each complete frontmatter snippet found:
+1. Write the snippet content to a temporary file at `/tmp/gh-aw/validate/snippet-<N>.md` (where N is an incrementing counter).
+2. Use the `compile` tool from `agentic-workflows` with `--validate` on that file to check for syntax errors.
+3. If compile reports errors, fix the YAML in the workshop node file before continuing.
+
+Ignore partial snippets that show only a single block (e.g., only `permissions:` or only `tools:`); only validate snippets that include a complete frontmatter section (opening and closing `---`).
+
+### 6. Update `workshop/README.md`
 
 After creating the node file, update `workshop/README.md` to reflect the new graph state:
 - If `workshop/README.md` does not exist, create it with a title, intro paragraph, and a visual graph map showing all nodes and their connections (use a simple ASCII tree or Mermaid diagram).
@@ -191,7 +204,7 @@ Use the `edit` tool for both operations.
 
 ---
 
-### 6. Create a pull request
+### 7. Create a pull request
 
 Use the `create-pull-request` safe output with:
 - **Title**: `Add node: <Title>` (the `[workshop]` prefix is added automatically)
