@@ -18,7 +18,7 @@ safe-outputs:
   create-issue:
     title-prefix: "[workshop-sim] "
     labels: [workshop, simulation, feedback]
-    max: 6
+    max: 4
     close-older-issues: true
 network:
   allowed:
@@ -347,7 +347,7 @@ Briefly cover one surprising success, one unexpected dropout, and one content-ga
 
 ### 8. Create actionable sub-issues for repairs
 
-After creating the report issue, create **3-5 child issues** using `create-issue` where each issue:
+After creating the report issue, create **exactly 3 child issues** using `create-issue` where each issue:
 - sets `parent: "aw_workshop_simulation_parent"` to link directly to the parent from step 7
 - has a concise, imperative title starting with `Repair:` or `Improve:`
 - describes one concrete workshop improvement only
