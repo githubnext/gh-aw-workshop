@@ -138,7 +138,7 @@ Here's a quick summary of what you'll have installed and running by the end of t
 | **GitHub Codespace** or **local terminal** | Your development environment |
 | **GitHub Actions** | Runs your automated workflows in the cloud |
 | **gh CLI** | GitHub's official command-line tool |
-| **gh-aw extension** | Adds agentic workflow commands to the gh CLI |
+| **gh-aw extension** | Adds agentic workflow commands to the gh CLI — installed in [Step 6](06-install-gh-aw.md) (may be pre-installed in Codespaces) |
 
 ### 5. Choose your path
 
