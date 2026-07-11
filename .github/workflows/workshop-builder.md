@@ -284,7 +284,7 @@ Example capability gaps to consider:
 
 - No broken-link validator for workshop markdown files
 - No automated accessibility checker for workshop content
-- No weekly digest for workshop maintainers summarising open issues and PRs
+- No weekly digest for workshop maintainers summarizing open issues and PRs
 - No PR reviewer that checks new workshop nodes follow the required template
 - No automated stale-issue cleanup for aged workshop issues
 - No check for consistent tone/voice across workshop step files
