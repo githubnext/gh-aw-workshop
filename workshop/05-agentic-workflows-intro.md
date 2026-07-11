@@ -34,6 +34,6 @@ Use this as a one-page reference for the shift from classic workflows to agentic
 
 - [ ] I can explain at least two differences between classic and agentic workflows
 - [ ] I know where agentic workflows still rely on core Actions concepts
-- [ ] I'm ready to install the `gh-aw` extension
+- [ ] I'm ready to install the `gh-aw` (GitHub Agentic Workflows) extension
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
