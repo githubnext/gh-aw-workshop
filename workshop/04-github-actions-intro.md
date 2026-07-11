@@ -7,7 +7,7 @@ _You already have a repository — now anchor on the parts of Actions that matte
 
 ## 🎯 What You'll Do
 
-You'll do a fast refresher on the Action primitives used in this workshop: triggers, jobs, steps, and workflow files.
+You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files.
 
 If you're experienced, you can jump directly to Step 5 where we focus on what's different with agentic workflows.
 
