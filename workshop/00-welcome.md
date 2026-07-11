@@ -18,6 +18,7 @@ _**What you'll have in about 2 hours:** A scheduled GitHub Action that uses AI t
 > - [ ] You chose your environment path: [Step 2a (Codespace)](02a-setup-codespace.md) or [Step 2b (Local)](02b-setup-local.md)
 > - [ ] You created your practice repository in [Step 3](03-create-your-repo.md)
 > - [ ] You installed and authenticated `gh` plus `gh-aw` in [Step 6](06-install-gh-aw.md)
+> - [ ] Optional but recommended: skim [Step 4](04-github-actions-intro.md) and [Step 5](05-agentic-workflows-intro.md) for core concepts before building
 
 ## Estimated Time by Technical Level
 

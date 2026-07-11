@@ -447,7 +447,7 @@ This workflow makes four practical decisions so it stays reliable and easy to de
 
 The guidelines then cover edge cases (already posted today, no existing issue) so the agent does not guess.
 
-Use this block to copy the full workflow into your editor. Inline comments explain every meaningful block in both the frontmatter and the instruction body:
+Use this block to copy the full workflow into your editor. Inline comments explain key sections in both the frontmatter and the instruction body:
 
 <details>
 <summary>Line-by-line walkthrough</summary>
