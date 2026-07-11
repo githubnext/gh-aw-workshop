@@ -447,12 +447,12 @@ This workflow makes four practical decisions so it stays reliable and easy to de
 
 The guidelines then cover edge cases (already posted today, no existing issue) so the agent does not guess.
 
-Use this block to copy the full workflow into your editor. Inline comments explain why each YAML block exists:
+Use this block to copy the full workflow into your editor. Inline comments explain key sections in both the frontmatter and the instruction body:
 
 <details>
-<summary>Click to expand — <code>.github/workflows/daily-status.md</code></summary>
+<summary>Line-by-line walkthrough</summary>
 
-```markdown
+````markdown
 ---
 # 1) Workshop metadata used by the simulator and workflow listings
 emoji: 📊
@@ -483,10 +483,13 @@ safe-outputs:
     max: 1
 ---
 
+<!-- 6) Title shown to humans reading the prompt and to the model at runtime -->
 # Daily Repo Status Report
 
+<!-- 7) One-sentence role framing so the agent keeps the right scope -->
 You are an AI assistant that monitors this repository and posts a concise daily health report.
 
+<!-- 8) Task section: tells the agent exactly what signals to collect -->
 ## Your Task
 
 Collect and summarize:
@@ -495,6 +498,7 @@ Collect and summarize:
 3. **CI status** — result of the most recent workflow run on the default branch
 4. **Last commit** — message and time since it was pushed
 
+<!-- 9) Output contract: keeps reports consistent and easy to scan -->
 ## Output Format
 
 Find the most recently updated open issue and post a comment in this format:
@@ -510,12 +514,13 @@ Find the most recently updated open issue and post a comment in this format:
 {One sentence of overall health. Flag anything that needs attention.}
 ```
 
+<!-- 10) Guardrails for behavior in common edge cases -->
 ## Guidelines
 
 - Post only one comment. If you have already posted today, skip.
 - Keep the report factual. Do not invent numbers.
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
-```
+````
 
 </details>
 
