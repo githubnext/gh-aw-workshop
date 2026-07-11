@@ -111,7 +111,7 @@ Now decide how you want to work:
 ## ✅ Checkpoint
 
 - [ ] You have a GitHub account and can sign in
-- [ ] gh CLI ≥ 2.x installed — verify with `gh --version`
+- [ ] gh CLI version 2.x or newer installed — verify with `gh --version`
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
