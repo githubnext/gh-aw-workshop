@@ -42,9 +42,30 @@ extension so you can compile and run agentic workflows from your terminal.
 
 If `gh` is missing, install it for your platform:
 
-- **macOS (Homebrew):** `brew install gh`
-- **Ubuntu/Debian:** `sudo apt install gh`
-- **Windows (winget):** `winget install GitHub.cli`
+<details>
+<summary>Install <code>gh</code> CLI — platform instructions</summary>
+
+**macOS (Homebrew):**
+
+```bash
+brew install gh
+```
+
+**Ubuntu/Debian:**
+
+```bash
+sudo apt install gh
+```
+
+**Windows (winget):**
+
+```powershell
+winget install GitHub.cli
+```
+
+Full installation docs: [cli.github.com](https://cli.github.com)
+
+</details>
 
 ### 1. Install the `gh-aw` extension
 
