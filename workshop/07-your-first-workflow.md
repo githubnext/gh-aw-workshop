@@ -57,7 +57,7 @@ gh aw compile .github/workflows/hello-agent.md --validate
 
 ### 4. Add permissions to the frontmatter
 
-Now add the `permissions` block after `on:` and before the closing `---`:
+Now add the `permissions` block after the `on:` section and before the closing `---`:
 
 ```yaml
 permissions:
