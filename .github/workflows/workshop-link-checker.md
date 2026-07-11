@@ -104,7 +104,7 @@ Validate each extracted link and collect only broken ones.
 1. Send an HTTP `HEAD` request first.
 2. If `HEAD` is unsupported (405/501), retry with a standard `GET` request and do not analyze response-body content.
 3. Follow redirects (3xx) and validate the final response.
-4. Treat as broken when response is:
+4. For `HEAD` and fallback `GET`, treat as broken when response is:
    - network failure / DNS failure / TLS failure
    - any 4xx or 5xx status code
 
@@ -116,7 +116,12 @@ Record status code or error in `reason`.
 2. If the target file does not exist, mark as broken (`missing file`).
 3. If the link includes an anchor (`#...`):
    - Parse headings from the target markdown file.
-   - Generate GitHub-style heading slugs.
+   - Generate GitHub-style heading slugs:
+     - lowercase
+     - trim surrounding whitespace
+     - replace spaces with `-`
+     - remove punctuation except `-` and `_`
+     - disambiguate duplicates with `-1`, `-2`, etc.
    - If the anchor is missing, mark as broken (`missing anchor`).
 
 For internal links to non-markdown files, only validate file existence.
@@ -127,7 +132,7 @@ For internal links to non-markdown files, only validate file existence.
 
 For each broken link record, create a deterministic issue key hash:
 
-`bl-<lowercase-hex sha256(utf8(file + \"|\" + line + \"|\" + raw_link))>` where `|` is a literal pipe character.
+`bl-<lowercase-hex sha256(utf8(\"f=\" + len(file) + \":\" + file + \"|l=\" + line + \"|u=\" + len(raw_link) + \":\" + raw_link))>`
 
 Example source string:
 
