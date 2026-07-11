@@ -17,24 +17,28 @@ Create and run a **JavaScript abstract state machine** that models student execu
 Use the checked-in source directly (do not re-implement from scratch):
 
 - `.github/skills/micro-environment-simulator/simulator.js`
+- `.github/skills/micro-environment-simulator/workshop-student-journey.js` (workshop-specific example journey)
 
 It exports:
 
-- `STEP_IDS`
 - `defaultEnvironmentForStudent(student, dayOfYear)`
-- `replayWorkshop({ student, date, initialState, steps })`
-- `simulateStudents(students, date)`
+- `replayJourney({ student, date, initialState, steps, transitions })`
+- `replayWorkshop({ student, date, initialState, steps, transitions })`
+- `simulateStudents(students, date, config)`
 
 CLI usage:
 
 ```bash
 node .github/skills/micro-environment-simulator/simulator.js \
   --students /tmp/gh-aw/agent/sim/data/profiles.json \
+  --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
   --date "$TODAY" \
   --out /tmp/gh-aw/agent/sim/data/environment-replay.json
 ```
 
 Use `/tmp/gh-aw/agent/sim/data/environment-replay.json` as the source of environment mismatch diagnostics during simulation.
+
+The simulator API is workflow-agnostic. Each workflow should provide its own journey `steps` and `transitions`.
 
 ## Required Environment Model
 

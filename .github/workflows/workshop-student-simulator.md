@@ -199,7 +199,17 @@ Read `/tmp/gh-aw/agent/sim/data/profiles.json`. You will update this file at the
 
 For **each of the 38 students**, simulate their experience step-by-step using the following rules:
 
-Before calculating probabilities, use `.github/skills/micro-environment-simulator/SKILL.md` and run `.github/skills/micro-environment-simulator/simulator.js` to execute a JavaScript abstract state machine replay for each student that models:
+Before calculating probabilities, invoke the `micro-environment-simulator` skill (`.github/skills/micro-environment-simulator/SKILL.md`) and run:
+
+```bash
+node .github/skills/micro-environment-simulator/simulator.js \
+  --students /tmp/gh-aw/agent/sim/data/profiles.json \
+  --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
+  --date "${{ env.TODAY }}" \
+  --out /tmp/gh-aw/agent/sim/data/environment-replay.json
+```
+
+Use this replay output to execute a JavaScript abstract state machine replay for each student that models:
 
 - OS
 - terminal
