@@ -132,7 +132,7 @@ git push
 You can get your first workflow other ways:
 
 - **Adventure A — Add an existing workflow:** run `gh aw add-wizard`, choose a workflow from `githubnext/agentics`, and add it to your repo.
-- **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or Codex and ask it to create a new agentic workflow using the `agentic-workflows` skill.
+- **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or ChatGPT and ask it to create a new agentic workflow using the `agentic-workflows` skill.
 
 If you choose Adventure A or B, still run the validation step in this guide.
 

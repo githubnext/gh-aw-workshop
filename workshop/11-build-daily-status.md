@@ -197,7 +197,7 @@ Here's how to create the file:
 mkdir -p .github/workflows
 ```
 
-Then open your editor and create `.github/workflows/daily-status.md` (agentic workflows in this workshop use Markdown files, not `.yml`).
+Then open your editor and create `.github/workflows/daily-status.md` (the filename should be exactly `daily-status.md`; agentic workflows in this workshop use Markdown files, not `.yml`).
 
 ### Build pass 1: frontmatter only
 
