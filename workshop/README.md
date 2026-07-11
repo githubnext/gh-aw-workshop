@@ -34,6 +34,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 - [Side Quest: Frontmatter Deep Dive](side-quest-frontmatter-deep-dive.md) — section-by-section walkthrough of every frontmatter key; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md) — five prompt-engineering techniques for getting clearer, more consistent AI output; branches from [Step 11](11-build-daily-status.md).
+- [Side Quest: Reading an Annotated Agentic Workflow](side-quest-annotated-workflow.md) — fully annotated `daily-status.md` walkthrough explaining every design decision; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-github-output.md) — deep-dive into how `$GITHUB_OUTPUT` works; branches from [Step 16](16-connect-data-source.md).
 - [Side Quest: How MCP Tool Servers Work](side-quest-mcp-concepts.md) — conceptual primer explaining what MCP is, how the agentic loop changes, and how to read tool calls in the Actions log; branches from [Step 17](17-add-mcp-tools.md).
 
