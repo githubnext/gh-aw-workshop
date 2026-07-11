@@ -13,7 +13,7 @@ You'll create a simple agentic workflow file in your repository using the `gh-aw
 - Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
 > [!TIP]
-> **Editor setup for YAML files:**
+> **Set up your editor before you paste any YAML:**
 >
 > 1. Install the [YAML extension for VS Code](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) for syntax highlighting and error detection.
 > 2. Open **Settings** and set `editor.tabSize` to `2`.
@@ -48,6 +48,21 @@ Open the file in your editor.
 
 Every `gh-aw` workflow starts with a YAML frontmatter block fenced by `---`. This tells the system what the workflow is called, when it runs, and what permissions it needs.
 
+Keep this minimal reference card nearby while you edit:
+
+```yaml
+---
+name: Hello Agent # Human-readable workflow name shown in GitHub Actions
+on: # Events that can start this workflow
+  workflow_dispatch: # Lets you run the workflow manually while testing
+permissions: # GitHub token access the agent needs
+  contents: read # Read repository contents
+  issues: write # Create or comment on issues
+---
+```
+
+The opening and closing `---` fences should stay flush-left with no tabs or extra spaces.
+
 Paste the following at the very top of the file:
 
 ```yaml
@@ -61,7 +76,7 @@ on:
 - `name`: a human-readable label shown in the GitHub Actions UI.
 - `on: workflow_dispatch`: means you trigger it manually — great for testing.
 
-Run validation now:
+Checkpoint — validate what you have so far:
 
 ```bash
 gh aw compile .github/workflows/hello-agent.md --validate
@@ -83,7 +98,7 @@ permissions:
   issues: write
 ```
 
-Re-run validation:
+Checkpoint — validate the completed frontmatter:
 
 ```bash
 gh aw compile .github/workflows/hello-agent.md --validate
@@ -114,6 +129,18 @@ If there are no open issues, create one titled "Community Voting Test" and post 
 
 > [!TIP]
 > You don't need to tell the agent _how_ to search issues or post comments — it knows how to use GitHub's APIs. You just describe the _goal_ and the _guardrails_.
+
+Checkpoint — validate the full file before moving on:
+
+```bash
+gh aw compile .github/workflows/hello-agent.md --validate
+```
+
+You should still see:
+
+```
+✔ hello-agent.md — valid
+```
 
 ### 6. Validate the file
 
