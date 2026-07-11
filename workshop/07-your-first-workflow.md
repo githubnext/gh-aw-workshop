@@ -22,7 +22,17 @@ Agentic workflow files live alongside regular GitHub Actions workflows inside `.
 mkdir -p .github/workflows
 ```
 
-### 2. Create your first workflow file
+### 2. Choose your adventure
+
+You can get your first workflow three ways:
+
+- **Adventure A — Add an existing workflow:** run `gh aw add-wizard`, choose a workflow from `githubnext/agentics`, and add it to your repo.
+- **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or Codex and ask it to create a new agentic workflow using the `agentic-workflows` skill.
+- **Adventure C — Edit by hand:** follow the steps below to write your own first workflow manually.
+
+If you choose Adventure A or B, still run the validation step later in this guide.
+
+### 3. Create your first workflow file (Adventure C)
 
 Create a new file called `.github/workflows/hello-agent.md`.
 
@@ -32,7 +42,7 @@ touch .github/workflows/hello-agent.md
 
 Open the file in your editor.
 
-### 3. Add the frontmatter
+### 4. Add the frontmatter
 
 Every `gh-aw` workflow starts with a YAML frontmatter block fenced by `---`. This tells the system what the workflow is called, when it runs, and what permissions it needs.
 
@@ -53,7 +63,7 @@ permissions:
 - `on: workflow_dispatch`: means you trigger it manually — great for testing.
 - `permissions`: the workflow can read your repository and write to issues.
 
-### 4. Add the agent instructions
+### 5. Add the agent instructions
 
 Below the closing `---`, write a plain-English description of what you want the agent to do. Think of it as a task brief for a capable colleague.
 
@@ -69,14 +79,20 @@ If there are no open issues, create one titled "Community Voting Test" and post 
 ```
 
 > [!TIP]
-> You don't need to tell the agent *how* to search issues or post comments — it knows how to use GitHub's APIs. You just describe the *goal* and the *guardrails*.
+> You don't need to tell the agent _how_ to search issues or post comments — it knows how to use GitHub's APIs. You just describe the _goal_ and the _guardrails_.
 
-### 5. Validate the file
+### 6. Validate the file
 
 Run the `gh-aw` validator to check your frontmatter and structure are correct.
 
 ```bash
 gh aw compile .github/workflows/hello-agent.md --validate
+```
+
+If you're editing by hand, you can also keep the compiler running while you iterate:
+
+```bash
+gh aw compile .github/workflows/hello-agent.md --watch
 ```
 
 You should see output like:
@@ -88,7 +104,7 @@ You should see output like:
 > [!NOTE]
 > Validation only checks the file structure. The agent's reasoning happens at runtime, not compile time.
 
-### 6. Commit and push
+### 7. Commit and push
 
 ```bash
 git add .github/workflows/hello-agent.md
