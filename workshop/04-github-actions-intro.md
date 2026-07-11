@@ -3,7 +3,7 @@
 _You already have a repository — now anchor on the parts of Actions that matter for agentic workflows._
 
 > [!TIP]
-> Already comfortable with GitHub Actions workflows and YAML? You can skip this step and go straight to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
+> Already comfortable with GitHub Actions workflows and YAML? You can skip this step and go straight to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md). If you want a quick summary of what changes with agentic workflows first, read Step 5 before you install `gh-aw`.
 
 ## 🎯 What You'll Do
 

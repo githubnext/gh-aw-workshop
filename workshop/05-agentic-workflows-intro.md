@@ -3,7 +3,7 @@
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 > [!TIP]
-> Familiar with LLM-based automation tools? Review the Quick Summary for Actions Users section below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+> Familiar with LLM-based automation tools? Review the Quick Summary for Actions Users below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 
 ## 🎯 What You'll Do
 
