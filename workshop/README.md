@@ -14,7 +14,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 | 4 | [04-github-actions-intro.md](04-github-actions-intro.md) | What Are GitHub Actions? | ⏳ |
 | 5 | [05-agentic-workflows-intro.md](05-agentic-workflows-intro.md) | What Are Agentic Workflows? | ⏳ |
 | 6 | [06-install-gh-aw.md](06-install-gh-aw.md) | Install the gh-aw CLI Extension | ⏳ |
-| 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ⏳ |
+| 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ⏳ |
 | 9 | [09-understand-output.md](09-understand-output.md) | Reading Workflow Output | ⏳ |
 | 10 | [10-design-daily-status.md](10-design-daily-status.md) | Design: Your Daily Repo Status Report | ⏳ |
