@@ -1,20 +1,5 @@
 # Step 6: Install the gh-aw CLI Extension
 
-> [!CAUTION]
-> **Before you continue:** Run the check below. If it shows ❌, complete
-> [Adventure A §4 — Authenticate the gh CLI](02a-setup-codespace.md#4-authenticate-the-gh-cli)
-> or
-> [Adventure B §5 — Authenticate the gh CLI](02b-setup-local.md#5-authenticate-the-gh-cli)
-> before installing `gh-aw`.
->
-> ```bash
-> gh auth status && echo "✅ ready" || echo "❌ run: gh auth login"
-> ```
->
-> The extension install will fail if you are not logged in.
->
-> _You're ready to add agentic workflow commands to your `gh` CLI._
-
 ## 🎯 What You'll Do
 
 You'll verify the `gh` CLI is installed and then install the `gh-aw`
@@ -31,17 +16,33 @@ extension so you can compile and run agentic workflows from your terminal.
 ## Steps
 
 > [!IMPORTANT]
-> Confirm `gh` is installed before installing `gh-aw`:
+> **Run these pre-flight checks before installing `gh-aw`.**
+>
+> **1 — Verify your GitHub CLI authentication** (the extension install will fail if you skip this):
+>
+> ```bash
+> gh auth status
+> ```
+>
+> If the output says you are not logged in, run:
+>
+> ```bash
+> gh auth login
+> ```
+>
+> Re-run `gh auth status` and confirm you see `Logged in to github.com` before continuing.
+>
+> **2 — Confirm `gh` is installed:**
 >
 > ```bash
 > gh --version && echo "✅ gh installed" || echo "❌ install gh first"
 > ```
 
-If `gh` is missing, use your platform command from
-[Step 1 (platform-specific commands)](01-prerequisites.md#macos-homebrew):
-- [macOS (Homebrew): `brew install gh`](01-prerequisites.md#macos-homebrew)
-- [Ubuntu/Debian: `sudo apt install gh`](01-prerequisites.md#ubuntudebian)
-- [Windows (winget): `winget install GitHub.cli`](01-prerequisites.md#windows-winget)
+If `gh` is missing, install it for your platform:
+
+- **macOS (Homebrew):** `brew install gh`
+- **Ubuntu/Debian:** `sudo apt install gh`
+- **Windows (winget):** `winget install GitHub.cli`
 
 ### 1. Install the `gh-aw` extension
 
@@ -67,12 +68,26 @@ You should see an entry for `github/gh-aw`.
 
 ### Not authenticated
 
-If `gh auth status` reports you are not logged in, run:
+If `gh extension install` fails with an error such as:
+
+```
+error connecting to api.github.com: HTTP 401: Bad credentials
+```
+
+or:
+
+```
+failed to authenticate to api.github.com
+```
+
+you are not logged in to the GitHub CLI. Run:
 
 ```bash
 gh auth login
 gh auth status
 ```
+
+Re-run `gh auth status` and confirm you see `Logged in to github.com`, then retry the extension install.
 
 ### Behind a corporate proxy
 
