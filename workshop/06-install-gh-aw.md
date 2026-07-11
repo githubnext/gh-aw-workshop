@@ -4,7 +4,8 @@
 
 ## 🎯 What You'll Do
 
-You'll verify the `gh` CLI is installed, install it if needed, and then install the `gh-aw` extension so you can compile and run agentic workflows from your terminal.
+You'll verify the `gh` CLI is installed and then install the `gh-aw`
+extension so you can compile and run agentic workflows from your terminal.
 
 ## 📋 Before You Start
 
@@ -14,7 +15,8 @@ You'll verify the `gh` CLI is installed, install it if needed, and then install 
 ## Steps
 
 > [!IMPORTANT]
-> **Required:** `gh` CLI must be installed before you can run `gh extension install`.
+> **Required:** `gh` CLI must already be installed before you can run
+> `gh extension install`.
 >
 > Verify now:
 >
@@ -24,27 +26,9 @@ You'll verify the `gh` CLI is installed, install it if needed, and then install 
 >
 > Expected output starts with `gh version 2.` (for example, `gh version 2.75.0`).
 >
-> If `gh` is missing, install it using one of these one-liners:
->
-> **macOS (Homebrew):**
->
-> ```bash
-> brew install gh
-> ```
->
-> **Ubuntu/Debian:**
->
-> ```bash
-> sudo apt install gh
-> ```
->
-> **Windows (winget):**
->
-> ```powershell
-> winget install GitHub.cli
-> ```
->
-> Official installation docs: [cli.github.com](https://cli.github.com)
+> If `gh` is missing, go back to
+> [Step 1: What You Need Before We Start](01-prerequisites.md) for the install
+> commands and full setup docs.
 
 ### 1. Install the `gh-aw` extension
 
