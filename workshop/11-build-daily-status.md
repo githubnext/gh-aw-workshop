@@ -16,7 +16,7 @@ You'll write the complete `daily-status.md` agentic workflow file, placing it in
 
 ## The Workflow File at a Glance
 
-An agentic workflow file has two parts: **frontmatter** (YAML between `---` fences) and a **Markdown body** (the agent's instructions below the closing `---`). The table below summarises the five frontmatter sections you'll build in this step.
+An agentic workflow file has two parts: **frontmatter** (YAML between `---` fences) and a **Markdown body** (the agent's instructions below the closing `---`). The table below summarizes the five frontmatter sections you'll build in this step.
 
 | Section | Key(s) | What it does |
 |---------|--------|--------------|

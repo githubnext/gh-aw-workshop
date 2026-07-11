@@ -175,7 +175,7 @@ Key things to note:
 
 ## ✅ Checkpoint
 
-- [ ] You can explain what each of the five frontmatter sections does
+- [ ] You can explain what each of the six frontmatter sections does
 - [ ] You understand why `copilot-requests: write` is required under `permissions`
 - [ ] You understand why `safe-outputs` is the true source of write access
 - [ ] You understand the difference between the frontmatter and the Markdown body
