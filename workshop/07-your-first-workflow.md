@@ -32,7 +32,7 @@ touch .github/workflows/hello-agent.md
 
 Open the file in your editor.
 
-### 3. Add the basic frontmatter (name + trigger)
+### 3. Add the basic frontmatter (name and trigger)
 
 Every `gh-aw` workflow starts with a YAML frontmatter block fenced by `---`. This tells the system what the workflow is called, when it runs, and what permissions it needs.
 
