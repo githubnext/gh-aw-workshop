@@ -13,6 +13,7 @@ on:
   skip-if-match: "is:pr is:open label:workflow-editor"
 permissions:
   contents: read
+  actions: read
   copilot-requests: write
   pull-requests: read
   issues: read
