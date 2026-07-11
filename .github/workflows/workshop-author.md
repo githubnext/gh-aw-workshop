@@ -222,7 +222,7 @@ Before updating the README or creating the pull request, scan the newly created 
 For each complete frontmatter snippet found:
 1. Write the snippet content to a temporary file at `/tmp/gh-aw/validate/snippet-<N>.md` (where N is an incrementing counter).
 2. Use the `compile` tool from `agentic-workflows` with `--validate` on that file to check for syntax errors.
-3. If compile reports errors, fix the YAML in the workshop node file before continuing.
+3. If compile reports errors, report the specific failure with the source file and snippet context, then fix the YAML in the workshop node file before continuing.
 
 Ignore partial snippets that show only a single block (e.g., only `permissions:` or only `tools:`); only validate snippets that include a complete frontmatter section (opening and closing `---`).
 
