@@ -5,8 +5,8 @@ const { VALID_TERMINALS, ensure } = require("./simulator");
 const STEP_IDS = [
   "00-welcome",
   "01-prerequisites",
-  "02-setup",
   "03-create-repo",
+  "02-setup",
   "04-actions-intro",
   "05-agentic-intro",
   "06-install-gh-aw",
@@ -42,24 +42,25 @@ function buildTransitions() {
         "environment-metadata-missing",
         "Initialize environment with os, terminal, auth, and deployment fields before replay."
       ),
-    "02-setup": (state) =>
-      ensure(
+    "03-create-repo": (state) => {
+      const next = cloneState(state);
+      next.flags.hasRepo = true;
+      return { ok: true, state: deepFreeze(next) };
+    },
+    "02-setup": (state) => {
+      const repoCheck = ensure(
+        state.flags.hasRepo,
+        "Codespace cannot be opened without an existing repository",
+        "repo-missing-before-codespace",
+        "Create the repository via the GitHub web UI before opening a Codespace."
+      );
+      if (!repoCheck.ok) return repoCheck;
+      return ensure(
         VALID_TERMINALS[state.os] && VALID_TERMINALS[state.os].has(state.terminal),
         `Terminal '${state.terminal}' is not valid for OS '${state.os}'`,
         "terminal-os-mismatch",
         "Use bash/zsh for macOS/Linux and powershell/cmd for Windows."
-      ),
-    "03-create-repo": (state) => {
-      const precheck = ensure(
-        state.auth.isLoggedIn,
-        "User is not logged into GitHub CLI",
-        "github-auth-missing",
-        "Run `gh auth login` before repository operations."
       );
-      if (!precheck.ok) return precheck;
-      const next = cloneState(state);
-      next.flags.hasRepo = true;
-      return { ok: true, state: deepFreeze(next) };
     },
     "04-actions-intro": (state) => {
       const next = cloneState(state);
