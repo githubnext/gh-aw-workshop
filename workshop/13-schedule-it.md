@@ -4,61 +4,66 @@
 
 ## 🎯 What You'll Do
 
-You'll add a `schedule` trigger to your workflow so GitHub Actions runs it automatically every morning. By the end, you'll understand cron syntax well enough to choose any cadence you like.
+You'll update the `schedule` trigger in your workflow using gh-aw's fuzzy schedule syntax so GitHub Actions runs it at exactly the cadence you want. By the end, you'll know how to express any recurring schedule in plain English.
 
 ## 📋 Before You Start
 
 - You have a working, manually tested workflow from [Test and Improve Your Workflow](12-test-and-iterate.md).
-- Your workflow file lives at `.github/workflows/daily-status.md` (or `.yml` if you compiled it already).
+- Your workflow file lives at `.github/workflows/daily-status.md`.
 
 ## Steps
 
 ### 1. Open your workflow file
 
-In your editor (or Codespace), open `.github/workflows/daily-status.yml`.
+In your editor (or Codespace), open `.github/workflows/daily-status.md`.
 
 ### 2. Locate the `on:` block
 
-You should already have a `workflow_dispatch` trigger that lets you run the workflow by hand. It looks like this:
+You should already have a `schedule: daily` trigger and a `workflow_dispatch` trigger:
 
 ```yaml
 on:
-  workflow_dispatch:
+  schedule: daily
+  workflow_dispatch: {}
 ```
 
-### 3. Add a `schedule` trigger
+### 3. Choose your schedule
 
-Append a `schedule` entry directly below `workflow_dispatch`. The value is a list of cron expressions.
+gh-aw accepts natural-language schedule expressions — no cron syntax needed. The `gh aw compile` command expands them into the correct cron expression automatically.
+
+| What you want | Fuzzy expression |
+|---------------|-----------------|
+| Once a day (midnight UTC) | `schedule: daily` |
+| Weekdays only | `schedule: daily on weekdays` |
+| Once a week | `schedule: weekly` |
+| Every hour | `schedule: hourly` |
+| Every six hours | `schedule: every 6 hours` |
+
+Pick the cadence that fits your team and update the `schedule:` line accordingly. For example, to run only on weekdays:
 
 ```yaml
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * *"   # 08:00 UTC every day
+  schedule: daily on weekdays
+  workflow_dispatch: {}
 ```
-
-> [!NOTE]
-> Cron syntax has five fields: **minute hour day-of-month month day-of-week**. The expression `0 8 * * *` means "at minute 0 of hour 8, every day". [crontab.guru](https://crontab.guru) is a handy visual editor if you want a different time.
 
 > [!TIP]
-> GitHub Actions schedules run in UTC. If your team is in UTC-5, `0 13 * * *` fires at 08:00 local time.
+> Keep `workflow_dispatch` in the file even after you go to production. It lets you re-run the report on demand without changing the schedule.
 
-### 4. Choose your schedule
+### 4. Compile and validate
 
-Pick a time that makes sense for you:
+After editing, compile the file to make sure the expression is recognised:
 
-| Cadence | Cron expression |
-|---------|-----------------|
-| Daily at 08:00 UTC | `0 8 * * *` |
-| Weekdays at 09:00 UTC | `0 9 * * 1-5` |
-| Every Monday at 07:00 UTC | `0 7 * * 1` |
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
 
-Edit the `cron:` line to match your preference.
+You should see `✅ Compiled successfully`. The compiled `.yml` will contain the expanded cron expression — you don't need to write or maintain it by hand.
 
 ### 5. Commit and push
 
 ```bash
-git add .github/workflows/daily-status.yml
+git add .github/workflows/daily-status.md
 git commit -m "chore: schedule daily status workflow"
 git push
 ```
@@ -78,8 +83,9 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 
 ## ✅ Checkpoint
 
-- [ ] Your `on:` block now contains both `workflow_dispatch` and `schedule`
-- [ ] The cron expression reflects the cadence you actually want
+- [ ] Your `on:` block contains both `workflow_dispatch` and a `schedule` fuzzy expression
+- [ ] The schedule expression reflects the cadence you actually want
+- [ ] `gh aw compile .github/workflows/daily-status.md --validate` reports no errors
 - [ ] You have pushed the change and can see the schedule badge in the Actions UI
 - [ ] At least one scheduled (or manual) run has completed successfully after the change
 
