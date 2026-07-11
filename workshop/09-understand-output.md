@@ -50,7 +50,7 @@ Each line type tells you something different:
 - `[done]` — the agent finished its task.
 
 > [!TIP]
-> If you see many `[plan]` lines followed by no `[tool]` lines, the agent may be confused by unclear instructions. Go back to your workflow body and add more specific guidance.
+> If you see many `[plan]` lines followed by no `[tool]` lines, the agent may be confused by unclear instructions. Ask the `agentic-workflows` skill to tighten the workflow body with more specific guidance.
 
 ---
 
@@ -72,7 +72,7 @@ I posted a comment on issue #4 summarising the top-voted requests.
 
 Key things to check:
 
-1. **Does the action described match what you asked for?** If you asked for a comment on the top-voted issue but the summary mentions a different issue, check the instructions in your workflow body.
+1. **Does the action described match what you asked for?** If you asked for a comment on the top-voted issue but the summary mentions a different issue, ask the `agentic-workflows` skill to revise the instructions in your workflow body.
 2. **Safe outputs used** — this line shows you whether the agent hit its write limit. A `1 / 1` result means it used its one allowed write. A `0 / 1` means it either had nothing to write or was blocked.
 
 > [!NOTE]
@@ -92,10 +92,10 @@ Alternatively, go directly to where the output landed. For **Hello Agent**, that
 - Does the timestamp match when the run completed?
 - Is the format and tone consistent with your instructions?
 
-If the comment exists but the content is wrong, the agent followed your instructions but your instructions were ambiguous. If no comment exists at all, check the safe-output limit (`max:`) in your workflow frontmatter.
+If the comment exists but the content is wrong, the agent followed your instructions but your instructions were ambiguous. Ask the `agentic-workflows` skill to clarify the workflow. If no comment exists at all, check the safe-output limit (`max:`) in your workflow frontmatter.
 
 > [!WARNING]
-> Never edit a comment the agent created just to fix a typo. Instead, fix the agent's instructions and re-run. Editing manually means the next run will post a second comment — now you have two.
+> Never edit a comment the agent created just to fix a typo. Instead, ask the `agentic-workflows` skill to fix the workflow instructions and re-run. Editing manually means the next run will post a second comment — now you have two.
 
 ---
 
@@ -103,11 +103,11 @@ If the comment exists but the content is wrong, the agent followed your instruct
 
 | What you see | What it means | What to do |
 |-------------|--------------|-----------|
-| Long `[plan]` chains with no `[tool]` calls | Agent is stuck reasoning | Simplify or clarify the task in your workflow body |
+| Long `[plan]` chains with no `[tool]` calls | Agent is stuck reasoning | Use the `agentic-workflows` skill to simplify or clarify the task in your workflow body |
 | `[tool]` calls that return empty results | The API returned no data | Check permissions — is the required scope listed under `permissions:`? |
 | `safe-output: BLOCKED (limit reached)` | Agent tried to write more than `max:` allows | Increase `max:` if the extra write was intentional |
 | Run fails with `permission denied` | A tool call was attempted for a scope not in `permissions:` | Add the missing scope (e.g., `issues: write`) |
-| Summary says "done" but nothing was written | The agent completed but had nothing to write — or the instructions were satisfied without a write | Review the guidelines in your workflow body |
+| Summary says "done" but nothing was written | The agent completed but had nothing to write — or the instructions were satisfied without a write | Use the `agentic-workflows` skill to review and tighten the guidelines in your workflow body |
 
 ---
 

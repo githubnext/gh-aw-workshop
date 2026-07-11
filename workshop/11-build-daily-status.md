@@ -215,6 +215,9 @@ You should see `✅ Compiled successfully`. If you see errors, check the [Common
 
 Now append Section 7 (`# Daily Repo Status Report` and the instructions) below the closing `---`.
 
+> [!TIP]
+> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer using the `agentic-workflows` skill for workflow edits and debugging rather than changing agentic workflows by hand. **Agents edit agents.**
+
 Compile again:
 
 ```bash
