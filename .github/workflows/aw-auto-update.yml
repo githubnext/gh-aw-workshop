@@ -23,6 +23,6 @@ jobs:
           version: v0.81.6
 
       - name: Upgrade agentic workflows
-        run: gh aw upgrade --create-pull-request --yes --approve
+        run: gh aw upgrade --create-pull-request --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
