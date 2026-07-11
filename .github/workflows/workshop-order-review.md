@@ -18,7 +18,6 @@ network:
 safe-outputs:
   mentions: false
   allowed-github-references: []
-  max-bot-mentions: 0
   create-issue:
     title-prefix: "[ordering-review] "
     deduplicate-by-title: true
@@ -193,7 +192,6 @@ steps:
           'providers': providers,
           'capability_help': capability_help,
       }
-      (repo / '/tmp/gh-aw/data/order-review-context.json')
       pathlib.Path('/tmp/gh-aw/data/order-review-context.json').write_text(json.dumps(context, indent=2))
       PY
 
@@ -208,7 +206,6 @@ steps:
       context = json.loads(pathlib.Path('/tmp/gh-aw/data/order-review-context.json').read_text())
       files = context['files']
       capability_help = context['capability_help']
-      order_lookup = {entry['file']: tuple(entry['order']) for entry in files}
 
       provider_order = {}
       provider_file = {}
@@ -279,7 +276,7 @@ steps:
       PY
 ---
 
-# Workshop Ordering Reviewer
+## Workshop Order Review
 
 You are a specialized reviewer for the workshop content in `workshop/*.md`.
 
@@ -291,7 +288,7 @@ Examples of the kinds of problems to flag:
 - using `gh aw` commands before the extension or repository setup exists
 - prerequisite sections that point to the wrong earlier step for the commands that follow
 
-## Inputs
+### Inputs
 
 Read these generated files first:
 - `/tmp/gh-aw/data/order-review-context.json`
@@ -299,14 +296,14 @@ Read these generated files first:
 
 Then read only the workshop files cited by the findings you decide to verify.
 
-## Task
+### Task
 
 1. Review each potential finding from the heuristics output.
 2. Confirm whether it is a real ordering inconsistency by checking the cited workshop file and the earlier step that should come first.
 3. Ignore false positives.
 4. When you find a real problem, create a focused issue for that single inconsistency.
 
-## Issue requirements
+### Issue requirements
 
 Create at most 5 issues. Use one issue per problem area. Each issue body must include:
 - the workshop file reviewed
@@ -319,11 +316,11 @@ Create at most 5 issues. Use one issue per problem area. Each issue body must in
 Use concise titles in this form:
 `<file>: <short ordering problem>`
 
-## No-op rule
+### No-op rule
 
 If the heuristics output is empty or every candidate is a false positive, call `noop` with a short explanation.
 
-## Safe Outputs
+### Safe Outputs
 
 - Use `create-issue` for verified ordering problems.
 - Use `noop` when no issue should be created.
