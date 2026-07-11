@@ -74,6 +74,9 @@ description: Post a daily repository status summary as a GitHub issue comment.
 ---
 ```
 
+> [!NOTE]
+> The `emoji` and `description` fields are metadata only — they appear in the `gh aw` dashboard and the Actions UI to help you identify the workflow at a glance. They have no effect on how the agent runs.
+
 Compile after saving:
 
 ```bash
@@ -89,6 +92,10 @@ on:
   schedule: daily
   workflow_dispatch: {}
 ```
+
+> [!NOTE]
+> `schedule: daily` is `gh-aw`'s plain-English shorthand for a daily cron schedule — it compiles to `0 0 * * *`, triggering the agent once every day around midnight UTC.
+> `workflow_dispatch: {}` adds a manual **Run workflow** button in the Actions UI so you can test on demand without waiting for the next scheduled run.
 
 Compile again:
 
@@ -108,6 +115,9 @@ permissions:
   pull-requests: read
   actions: read
 ```
+
+> [!NOTE]
+> `copilot-requests: write` is the permission that allows the Actions runner to call the Copilot AI API on your behalf — it is required for any agentic workflow. Every other permission here is read-only, which means the workflow can observe repository state but cannot modify it. The only write action is gated behind the `safe-outputs` guardrail configured in the next section.
 
 Compile again:
 
@@ -129,6 +139,9 @@ safe-outputs:
   add-comment:
     max: 1
 ```
+
+> [!NOTE]
+> `mode: gh-proxy` routes all GitHub API calls through a controlled proxy rather than giving the agent a raw token — the proxy enforces that only the scopes declared in `permissions` are used. `safe-outputs.add-comment: max: 1` is the write guardrail: the agent is permitted to post at most one issue comment per run and nothing else, no matter what the task brief says.
 
 Compile again:
 
