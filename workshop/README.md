@@ -25,6 +25,10 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
 | 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |
 
+## Optional Side Quests
+
+- [Side Quest: Terminal Basics](side-quest-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
+
 ## Getting Started
 
 Start at [Step 0: Welcome](00-welcome.md) — it shows you what you'll build and sets you up for success.
