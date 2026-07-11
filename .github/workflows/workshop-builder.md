@@ -49,6 +49,7 @@ safe-outputs:
     allowed-files:
       - ".github/workflows/*.md"
       - ".github/workflows/*.lock.yml"
+      - ".github/skills/**/*.md"
     if-no-changes: warn
   create-issue:
     title-prefix: "[workshop-builder] "
