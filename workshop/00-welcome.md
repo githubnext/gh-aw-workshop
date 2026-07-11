@@ -161,4 +161,3 @@ Both paths converge at **Step 3** and stay together for the rest of the workshop
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)
