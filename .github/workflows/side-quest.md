@@ -30,6 +30,7 @@ safe-outputs:
     protected-files:
       policy: request_review
       exclude:
+        - "workshop/README.md"
         - "workshop/*.md"
         - "workshop/**/*.md"
     allowed-files:

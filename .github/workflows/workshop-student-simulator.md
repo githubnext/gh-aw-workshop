@@ -13,11 +13,13 @@ tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+  cache-memory: true
 safe-outputs:
   create-issue:
     title-prefix: "[workshop-sim] "
     labels: [workshop, simulation, feedback]
     max: 6
+    close-older-issues: true
 network:
   allowed:
     - defaults
@@ -25,21 +27,14 @@ steps:
   - name: Prepare simulation workspace
     run: |
       mkdir -p /tmp/gh-aw/agent/sim/data
+      mkdir -p /tmp/gh-aw/cache-memory
       TODAY=$(date -u +%Y-%m-%d)
       echo "TODAY=$TODAY" >> "$GITHUB_ENV"
 
-  - name: Restore student profiles cache
-    id: restore-profiles
-    uses: actions/cache/restore@v5
-    with:
-      key: workshop-sim-profiles-${{ github.run_id }}
-      restore-keys: workshop-sim-profiles-
-      path: /tmp/gh-aw/agent/sim/data/profiles.json
-
   - name: Initialize student profiles if missing
     run: |
-      if [ ! -f /tmp/gh-aw/agent/sim/data/profiles.json ]; then
-        cat > /tmp/gh-aw/agent/sim/data/profiles.json <<'EOF'
+      if [ ! -f /tmp/gh-aw/cache-memory/profiles.json ]; then
+        cat > /tmp/gh-aw/cache-memory/profiles.json <<'EOF'
       {
         "version": 1,
         "students": [
@@ -87,7 +82,7 @@ steps:
         echo "Initialized fresh student profiles (38 students)"
       else
         echo "Loaded existing student profiles from cache"
-        cat /tmp/gh-aw/agent/sim/data/profiles.json | python3 -c "
+        cat /tmp/gh-aw/cache-memory/profiles.json | python3 -c "
       import json,sys
       d=json.load(sys.stdin)
       runs=sum(s['runs'] for s in d['students'])
@@ -109,13 +104,6 @@ steps:
       echo "WORKSHOP_STEP_COUNT=$step_count" >> "$GITHUB_ENV"
       echo "WORKSHOP_STEP_FILES=$step_files" >> "$GITHUB_ENV"
       echo "Workshop has $step_count step files available: $step_files"
-
-  - name: Save profiles cache
-    id: save-profiles
-    uses: actions/cache/save@v5
-    with:
-      key: workshop-sim-profiles-${{ github.run_id }}
-      path: /tmp/gh-aw/agent/sim/data/profiles.json
 ---
 
 # Workshop Student Simulator
@@ -155,7 +143,7 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} step file
 
 ## Student Profiles (38 students)
 
-Read `/tmp/gh-aw/agent/sim/data/profiles.json` to load the student profiles. Each student has:
+Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each student has:
 - `id` — unique identifier (1–38)
 - `name` — persona name
 - `level` — agentic technical level: `beginner`, `github-basic`, `actions-user`, `advanced`
@@ -193,7 +181,7 @@ Read `/tmp/gh-aw/agent/sim/data/profiles.json` to load the student profiles. Eac
 
 ### 1. Load student profiles
 
-Read `/tmp/gh-aw/agent/sim/data/profiles.json`. You will update this file at the end with accumulated run counts.
+Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the end with accumulated run counts.
 
 ### 2. Simulate each student through the workshop
 
@@ -203,7 +191,7 @@ Before calculating probabilities, invoke the `micro-environment-simulator` skill
 
 ```bash
 node .github/skills/micro-environment-simulator/simulator.js \
-  --students /tmp/gh-aw/agent/sim/data/profiles.json \
+  --students /tmp/gh-aw/cache-memory/profiles.json \
   --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
   --date "${{ env.TODAY }}" \
   --out /tmp/gh-aw/agent/sim/data/environment-replay.json
@@ -298,10 +286,10 @@ Compute:
 
 ### 5. Update student profiles
 
-Update `/tmp/gh-aw/agent/sim/data/profiles.json`:
+Update `/tmp/gh-aw/cache-memory/profiles.json`:
 - Increment `runs` by 1 for every student
 - Increment `successes` by 1 for every student who completed all 15 steps
-- Write the updated JSON back to `/tmp/gh-aw/agent/sim/data/profiles.json`
+- Write the updated JSON back to `/tmp/gh-aw/cache-memory/profiles.json`
 
 ### 6. Read workshop files (if available)
 

@@ -1,4 +1,4 @@
-# Adventure A: Set Up a Codespace
+# Adventure A: Set Up a Codespace _(recommended for new users)_
 
 > _A Codespace gives you a full development environment in your browser — no installs, no version conflicts, just you and the workshop._
 
