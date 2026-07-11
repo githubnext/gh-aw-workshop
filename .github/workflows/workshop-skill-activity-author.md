@@ -68,13 +68,14 @@ First, read:
 - `/tmp/gh-aw/data/workshop-state.json`
 - `workshop/README.md` (if present)
 - Existing workshop step files in `workshop/`
+- `.github/workflows/guidelines.md`
 
 Then:
 1. Identify the highest-value content gap, clarity issue, or learner experience improvement.
 2. Make a single focused change set (for example: add one missing step file, improve one existing step, or update workshop navigation).
 3. Keep tone aligned with GitHub Skills: short, direct, supportive, and action-oriented.
 4. Keep content practical and learner-first, with clear outcomes and checkpoints.
-5. **Check for missing UI path alternatives**: look for any step that currently shows only CLI commands (file creation with `touch`/`mkdir`, committing with `git add/commit/push`, repository creation with `gh repo create`) without a corresponding GitHub UI path. Adding a `<details>` block that shows the equivalent GitHub web interface steps is a high-value improvement for learners who prefer working in the browser.
+5. **Check for missing UI path alternatives and early `gh` overuse**: look for steps that are CLI-heavy, require `gh` too early, or present `gh repo create` as the default without a corresponding GitHub UI path. Prefer improvements that delay/minimize `gh` setup and add clear UI-first alternatives.
 
 If `focus` input is provided, prioritize that area while keeping the workshop coherent.
 

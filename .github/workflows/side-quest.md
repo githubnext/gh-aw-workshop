@@ -120,6 +120,7 @@ Create **at most one** pull request per run.
 1. `/tmp/gh-aw/data/side-quest-state.json`
 2. `workshop/README.md`
 3. Only the candidate workshop files you need from `candidate_files`
+4. `.github/workflows/guidelines.md`
 
 If `focus` is provided, prioritize matching candidates while still choosing the
 best coherent side quest.
@@ -167,6 +168,8 @@ Use **proper routing** so the optional detour feels intentional:
 ## Writing rules for the new side quest
 
 Match the workshop voice: practical, friendly, and beginner-safe.
+
+Also follow shared guidance to delay and minimize `gh` usage in early steps, keeping UI-first paths prominent wherever possible.
 
 Use this structure:
 
