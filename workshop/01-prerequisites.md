@@ -9,47 +9,52 @@ You'll confirm that you have everything required before writing a single line of
 ## Steps
 
 > [!IMPORTANT]
-> The `gh` CLI (version 2.x or newer) is a required workshop prerequisite because
-> you'll use it in [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
->
-> Verify it now:
+> Run this pre-flight check before proceeding:
 >
 > ```bash
-> gh --version
+> # Pre-flight check — run this before proceeding
+> gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install link above"
+> git --version && echo "✅ git OK" || echo "❌ git missing"
+> node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
+> echo "Pre-flight complete."
 > ```
 >
-> Expected output starts with `gh version 2.` (for example, `gh version 2.75.0`).
->
-> If `gh` is missing, install it using one of these one-liners:
->
-> **macOS (Homebrew):**
->
-> ```bash
-> brew install gh
-> ```
->
-> **Ubuntu/Debian:**
->
-> ```bash
-> sudo apt install gh
-> ```
->
-> **Windows (winget):**
->
-> ```powershell
-> winget install GitHub.cli
-> ```
->
-> Full installation docs: [cli.github.com](https://cli.github.com)
+### 1. Confirm required vs optional prerequisites
 
-### 1. Check your GitHub account
+- ✅ **Required:** `gh` CLI 2.x or newer (`gh --version`)
+- ✅ **Required:** Git (`git --version`) for local terminal path
+- ℹ️ **Optional:** Node.js (`node --version`) — not required for this workshop
+
+If `gh` is missing, install it using one of these one-liners:
+
+#### macOS (Homebrew)
+
+```bash
+brew install gh
+```
+
+#### Ubuntu/Debian
+
+```bash
+sudo apt install gh
+```
+
+#### Windows (winget)
+
+```powershell
+winget install GitHub.cli
+```
+
+Full installation docs: [cli.github.com](https://cli.github.com)
+
+### 2. Check your GitHub account
 
 You need a **free GitHub account**. If you don't have one yet, create it at [github.com/join](https://github.com/join).
 
 > [!NOTE]
 > You don't need a paid plan. Everything in this workshop works with a free GitHub account.
 
-### 2. Verify Git is available (local path only)
+### 3. Verify Git is available (local path only)
 
 If you plan to work on your own computer, make sure Git is installed:
 
@@ -83,7 +88,7 @@ You should see something like `git version 2.x.x`. If you see an error, download
 </details>
 <!-- markdownlint-enable MD033 -->
 
-### 3. Know what's coming
+### 4. Know what's coming
 
 Here's a quick summary of what you'll have installed and running by the end of the workshop:
 
@@ -94,7 +99,7 @@ Here's a quick summary of what you'll have installed and running by the end of t
 | **gh CLI** | GitHub's official command-line tool |
 | **gh-aw extension** | Adds agentic workflow commands to the gh CLI |
 
-### 4. Choose your path
+### 5. Choose your path
 
 Now decide how you want to work:
 
