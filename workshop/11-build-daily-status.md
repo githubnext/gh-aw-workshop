@@ -221,7 +221,7 @@ Compile again:
 gh aw compile .github/workflows/daily-status.md --validate
 ```
 
-If you prefer to paste everything at once, use the complete copy-paste block in the collapsible section below.
+If you prefer to paste everything at once, use the complete copy-paste block in the **Complete Workflow (Copy-Paste Version)** section below.
 
 Commit and push:
 

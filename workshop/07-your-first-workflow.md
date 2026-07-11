@@ -127,7 +127,7 @@ git push
 ### Optional: Adventure A and B alternatives
 
 <details>
-<summary>Already comfortable editing less by hand? Expand for optional alternatives.</summary>
+<summary>Already comfortable with editing by hand? Expand for optional alternatives.</summary>
 
 You can get your first workflow other ways:
 
