@@ -219,18 +219,20 @@ git push
 
 ## Common Mistakes
 
-YAML is unforgiving. Here are the three errors students hit most often:
+YAML is unforgiving. Here are the five errors students hit most often:
 
 ### 1. Tabs instead of spaces
 
 YAML does not allow tab characters for indentation. Every level of nesting must use **two spaces**.
 
 ```yaml
-# ❌ Wrong — uses a tab character (→) before "schedule"
+# ❌ Wrong — the line below "on:" is indented with a tab character,
+#    not spaces. The tab is invisible in most editors, which makes
+#    this bug hard to spot. YAML will reject it with a parse error.
 on:
-  schedule: daily  # indented with a tab — this will cause a parse error
+  schedule: daily  # <-- replace the leading whitespace with 2 spaces, not a tab
 
-# ✅ Correct — uses two spaces
+# ✅ Correct — uses exactly two spaces
 on:
   schedule: daily
 ```
