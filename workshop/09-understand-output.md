@@ -101,13 +101,16 @@ If the comment exists but the content is wrong, the agent followed your instruct
 
 ## Step 4: Common Output Patterns (and What They Mean)
 
-| What you see | What it means | What to do |
-|-------------|--------------|-----------|
-| Long `[plan]` chains with no `[tool]` calls | Agent is stuck reasoning | Use the `agentic-workflows` skill to simplify or clarify the task in your workflow body |
-| `[tool]` calls that return empty results | The API returned no data | Check permissions — is the required scope listed under `permissions:`? |
-| `safe-output: BLOCKED (limit reached)` | Agent tried to write more than `max:` allows | Increase `max:` if the extra write was intentional |
-| Run fails with `permission denied` | A tool call was attempted for a scope not in `permissions:` | Add the missing scope (e.g., `issues: write`) |
-| Summary says "done" but nothing was written | The agent completed but had nothing to write — or the instructions were satisfied without a write | Use the `agentic-workflows` skill to review and tighten the guidelines in your workflow body |
+| What you see | Most likely cause | Quick fix |
+|-------------|-------------------|-----------|
+| Long `[plan]` chains with no `[tool]` calls | Ambiguous task brief | Clarify or simplify the instructions in your workflow body |
+| `[tool]` calls that return empty results | Missing `permissions:` scope or filters too narrow | Add the required scope; loosen filters |
+| `safe-output: BLOCKED (limit reached)` | Agent exceeded `max:` write limit | Raise `max:` or add a "post only once" guideline |
+| Run fails with `permission denied` | Scope not declared in `permissions:` | Add the missing scope (e.g., `issues: write`) |
+| Summary says "done" but nothing was written | Write condition not met, or `safe-outputs:` block missing | Tighten the condition or add a `safe-outputs:` entry |
+
+> [!TIP]
+> Want a deeper walkthrough? [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-debug-output.md) expands each pattern with concrete log examples and step-by-step fixes.
 
 ---
 
