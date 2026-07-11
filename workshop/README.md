@@ -28,6 +28,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 ## Optional Side Quests
 
 - [Side Quest: Terminal Basics](side-quest-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
+- [Side Quest: Install `gh-aw` Troubleshooting](side-quest-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
 - [Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11](11-build-daily-status.md).
 
 ## Getting Started

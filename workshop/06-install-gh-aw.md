@@ -68,68 +68,11 @@ You should see an entry for `github/gh-aw`.
 
 ## Troubleshooting
 
-### Not authenticated
+Most installs work on the first try after `gh auth status` and `gh extension install github/gh-aw`.
+If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the optional troubleshooting side quest.
 
-If `gh extension install` fails with an error such as:
-
-```
-error connecting to api.github.com: HTTP 401: Bad credentials
-```
-
-or:
-
-```
-failed to authenticate to api.github.com
-```
-
-you are not logged in to the GitHub CLI. Run:
-
-```bash
-gh auth login
-gh auth status
-```
-
-Re-run `gh auth status` and confirm you see `Logged in to github.com`, then retry the extension install.
-
-### Behind a corporate proxy
-
-Set proxy environment variables in your current shell, then retry:
-
-```bash
-export HTTPS_PROXY="http://proxy.company.com:8080"
-export HTTP_PROXY="$HTTPS_PROXY"
-export NO_PROXY="127.0.0.1,localhost,.company.com"
-gh config set git_protocol https
-gh auth status
-gh extension install github/gh-aw
-```
-
-### GHE/GHES endpoint
-
-For GitHub Enterprise Server, authenticate against your hostname and use HTTPS:
-
-```bash
-gh config set git_protocol https --host ghes.example.com
-gh auth login --hostname ghes.example.com --scopes "repo,read:org,workflow"
-gh extension install github/gh-aw --hostname ghes.example.com
-gh auth status --hostname ghes.example.com
-```
-
-If your administrator requires different scopes, use the minimum required scopes they provide.
-
-### Extension download fails
-
-If `gh extension install github/gh-aw` fails with a network error on a locked-down network:
-
-1. Download the matching release artifact from
-   [github/gh-aw releases](https://github.com/github/gh-aw/releases).
-2. Extract it on a machine that can reach GitHub.
-3. Move the extracted extension folder to your workshop machine and install from local path:
-
-```bash
-gh extension install /path/to/gh-aw
-gh extension list
-```
+> [!TIP]
+> Need copy-paste fixes? Open [Side Quest: Install `gh-aw` Troubleshooting](side-quest-install-troubleshooting.md), then come back here.
 
 ## ✅ Checkpoint
 
