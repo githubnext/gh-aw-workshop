@@ -26,3 +26,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Assume many learners are new to terminal workflows.
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
+
+## 5) Consistency check
+
+Before finalizing workshop edits, quickly confirm that early steps remain UI-first and do not require `gh` before it is truly needed.

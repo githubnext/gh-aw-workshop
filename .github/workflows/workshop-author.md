@@ -95,7 +95,8 @@ When designing a new node, consider which existing leaf nodes would most benefit
 Read `/tmp/gh-aw/data/workshop-state.json`. It contains:
 - `existing_files`: array of `*.md` filenames already present in `workshop/`
 - `count`: number of files present
-- Read `.github/workflows/guidelines.md` and apply it while authoring.
+
+Also read `.github/workflows/guidelines.md` and apply it while authoring.
 
 ### 2. Handle `focus = "status"`
 
@@ -204,9 +205,9 @@ Specific patterns to follow:
 
 | Operation | CLI path | UI path |
 |-----------|----------|---------|
-| Create repository | _(optional)_ `gh repo create ...` | **Preferred:** [github.com/new](https://github.com/new) — fill in the form |
-| Create file | _(optional)_ editor + `git add/commit/push` | **Preferred:** **Add file → Create new file** → **Commit new file** |
-| Edit file | _(optional)_ editor + `git add/commit/push` | **Preferred:** pencil icon (✏️) → **Commit changes** |
+| Create repository | _(optional)_ `gh repo create ...` | Preferred: [github.com/new](https://github.com/new) — fill in the form |
+| Create file | _(optional)_ editor + `git add/commit/push` | Preferred: **Add file → Create new file** → **Commit new file** |
+| Edit file | _(optional)_ editor + `git add/commit/push` | Preferred: pencil icon (✏️) → **Commit changes** |
 | Compile/validate | `gh aw compile ... --validate` | _(terminal only)_ — explain limitation and provide UI-first continuation guidance |
 
 ### Formatting conventions
