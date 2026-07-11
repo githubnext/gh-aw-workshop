@@ -60,6 +60,8 @@ gh-aw can call GitHub APIs, run shell commands, and pass results to your AI prom
 
 Put the workflow file in a shared repository. Your teammates can trigger it with `workflow_dispatch`, customize the prompt, or fork it as the basis for their own automations.
 
+➡️ [Share Your Workflow with Your Team](18-share-with-team.md)
+
 #### Contribute to the workshop
 
 Found a gap? Have a better explanation? Open an issue or pull request in this repository. The workshop itself is a living document.
