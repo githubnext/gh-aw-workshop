@@ -295,7 +295,6 @@ For each student who fails at a step, note:
   - **enterprise-dev + setup steps**: "GHE/GHES configuration differs from github.com — self-hosted runner or proxy requirements not covered"
   - **enterprise-devops + install gh-aw**: "Corporate network policies and self-hosted runner setup block standard `gh` CLI authentication flows"
   - **program-manager + any step**: "Technical CLI steps feel out of scope; needs higher-level overview before hands-on configuration tasks"
-  - **ui_preferred + step 6**: "Extension install requires terminal — the only step with no UI path available; Codespace should be highlighted as a bridge solution"
   - **ui_preferred + any compile step**: "gh aw compile requires terminal — UI path users are unaware of syntax errors until the workflow runs and fails"
   - **vscode + CLI steps**: "VS Code user expects to stay in the editor UI — encourage running `gh aw` commands in the VS Code integrated terminal; suggest `gh copilot suggest` as a helper when a CLI command is unfamiliar"
   - **copilot-app + install gh-aw**: "Copilot app user has no terminal context — step 6 assumes CLI access that is entirely absent"
