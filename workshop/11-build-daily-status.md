@@ -338,28 +338,41 @@ permissions:
 
 ## Complete Workflow (Copy-Paste Version)
 
-Use this block to copy the full, unannotated workflow into your editor:
+### How it works
+
+This workflow makes four practical decisions so it stays reliable and easy to debug. First, it uses a short, task-focused prompt so the agent gathers only the repo signals you care about (PRs, issues, CI, and last commit) instead of wandering. Second, `permissions` are explicitly scoped so the agent can read repository state and write exactly one issue comment, but nothing broader. Third, the `tools` block routes GitHub access through `gh-proxy` with the default toolset, which keeps the workflow compatible with workshop conventions. Finally, the output format is fixed, so each daily report is consistent and easy to scan over time. The guidelines then cover edge cases (already posted today, no existing issue) so the agent does not guess.
+
+Use this block to copy the full workflow into your editor. Inline comments explain why each YAML block exists:
 
 <details>
 <summary>Click to expand — <code>.github/workflows/daily-status.md</code></summary>
 
 ```markdown
 ---
+# 1) Metadata shown in workflow listings and UIs
 emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
+
+# 2) Triggers: run on schedule and allow manual runs for testing
 on:
   schedule: daily
   workflow_dispatch: {}
+
+# 3) Least-privilege access needed to read signals and post one report
 permissions:
   contents: read
   copilot-requests: write
   issues: read
   pull-requests: read
   actions: read
+
+# 4) Tooling setup: use GitHub tools via gh-proxy
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+
+# 5) Guardrail: limit side effects to a single comment
 safe-outputs:
   add-comment:
     max: 1
