@@ -133,6 +133,8 @@ Choose one bounded improvement that does at least one of these:
 - rewrites dense text into lean, learner-friendly instructions
 - tightens examples or validation guidance so the workflow stays educational and
   information-dense
+- removes unnecessary early `gh` requirements and shifts `gh` setup later in the
+  learner journey when possible
 - adds a missing UI path alternative alongside an existing CLI-only step (for
   example: `<details>` blocks for creating files, committing changes, or creating
   a repository via the GitHub web interface)

@@ -96,6 +96,8 @@ Read `/tmp/gh-aw/data/workshop-state.json`. It contains:
 - `existing_files`: array of `*.md` filenames already present in `workshop/`
 - `count`: number of files present
 
+Also read `.github/workflows/guidelines.md` and apply it while authoring.
+
 ### 2. Handle `focus = "status"`
 
 If the `focus` input equals `"status"`, call `noop` with a message listing:
@@ -174,12 +176,14 @@ Numbered action sequence. Each action gets its own number. Commands go in fenced
 - Each file: **350–600 words** (tight, digestible, one concept).
 - One concept per file — do not spill into the next node.
 
-### CLI and UI paths
+### Tooling progression and CLI/UI paths
 
-Every step that requires a learner to **create or edit a file, commit changes, or create a GitHub repository** must offer both:
+Use a **UI-first progression** that delays and minimizes `gh` usage:
 
-- A **terminal (CLI) path** using `gh`, `git`, and `gh aw compile` commands.
-- A **GitHub UI path** using the browser-based file editor at `github.com`.
+- Prefer a **GitHub UI path** as the default for repository/file/edit/commit actions.
+- Add terminal commands only when they provide clear value or are required.
+- Do not introduce `gh` as a workshop-wide prerequisite until the dedicated install/use point (late in the tutorial path).
+- Keep required `gh` usage narrow and specific; avoid repeated `gh` command blocks when one concise instruction is enough.
 
 Wrap the UI alternative in a `<details>` block so it is accessible without cluttering the primary flow:
 
@@ -195,16 +199,16 @@ Wrap the UI alternative in a `<details>` block so it is accessible without clutt
 </details>
 ```
 
-When the step involves `gh aw compile` (which requires a terminal), clearly note this and explain that UI path users can skip compilation and rely on GitHub Actions to surface errors at runtime.
+When the step involves `gh aw compile` (terminal-only), clearly explain why and note that UI-first learners can skip local compile and rely on GitHub Actions feedback.
 
 Specific patterns to follow:
 
 | Operation | CLI path | UI path |
 |-----------|----------|---------|
-| Create repository | `gh repo create ...` | [github.com/new](https://github.com/new) — fill in the form |
-| Create file | `touch`/editor + `git add/commit/push` | **Add file → Create new file** → **Commit new file** |
-| Edit file | editor + `git add/commit/push` | pencil icon (✏️) → **Commit changes** |
-| Compile/validate | `gh aw compile ... --validate` | _(terminal only)_ — note this limitation and offer the UI path for everything else |
+| Create repository | _(optional)_ `gh repo create ...` | Preferred: [github.com/new](https://github.com/new) — fill in the form |
+| Create file | _(optional)_ editor + `git add/commit/push` | Preferred: **Add file → Create new file** → **Commit new file** |
+| Edit file | _(optional)_ editor + `git add/commit/push` | Preferred: pencil icon (✏️) → **Commit changes** |
+| Compile/validate | `gh aw compile ... --validate` | _(terminal only)_ — explain limitation and provide UI-first continuation guidance |
 
 ### Formatting conventions
 
