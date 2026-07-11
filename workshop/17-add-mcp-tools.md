@@ -15,11 +15,10 @@ You'll add an MCP (Model Context Protocol) server to your workflow's frontmatter
 
 ### 1. Understand what MCP adds
 
-gh-aw workflows run an AI agent that, by default, can read the task brief you write and produce text output. That's powerful — but it's essentially a one-way street.
+MCP (Model Context Protocol) connects external tool servers to the agent so it can call structured operations — like listing issues or fetching commits — and weave the live results into its output. Without MCP, the agent only knows what you wrote in the brief; with MCP, it can go out and look things up itself.
 
-**MCP (Model Context Protocol)** is an open standard that lets you connect _tool servers_ to the agent. A tool server exposes a set of structured operations (like "fetch this URL", "run this query", or "list these files"). The agent can call those tools during a run and use the results to inform its response.
-
-Think of it like giving your agent a toolbox: instead of only knowing what you wrote in the brief, it can go out and look things up itself.
+> [!TIP]
+> **Optional Side Quest:** Want a deeper look at how the agentic loop changes, what the `tools:` block does, and how to read tool calls in the Actions log? Work through [Side Quest: How MCP Tool Servers Work](side-quest-mcp-concepts.md), then come back here.
 
 ### 2. Add an MCP server to your workflow
 
