@@ -66,7 +66,7 @@ Click the **Actions** tab at the top of the page. You should see a message like 
 Workflows sometimes generate local log files. A `.gitignore` keeps your repository clean:
 
 ```bash
-echo "*.log\n.env" > .gitignore
+printf '*.log\n.env\n' > .gitignore
 git add .gitignore
 git commit -m "chore: add .gitignore"
 git push
