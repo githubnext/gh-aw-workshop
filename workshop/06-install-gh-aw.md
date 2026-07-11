@@ -22,6 +22,13 @@ extension so you can compile and run agentic workflows from your terminal.
 
 ## Steps
 
+> [!TIP]
+> **Using VS Code?** Open the integrated terminal with `` Ctrl+` `` (macOS: `` Cmd+` ``),
+> then run all `gh aw` commands there. If a command is unfamiliar, try:
+> `gh copilot suggest "how do I install a gh extension"`
+
+Before you can install the extension, verify the GitHub CLI is set up correctly:
+
 > [!IMPORTANT]
 > **Run these pre-flight checks before installing `gh-aw`.**
 >

@@ -26,10 +26,11 @@ If you're coming from classic GitHub Actions, this table shows exactly where the
 
 | Dimension | Classic GitHub Actions | Agentic Workflow |
 |---|---|---|
-| **File format** | `.yml` YAML | `.md` Markdown (YAML frontmatter + task brief) |
+| **File format** | `.github/workflows/*.yml` | `.github/workflows/*.md` (compiled to `.lock.yml`) |
 | **Task description** | Shell commands and scripts in `steps:` | Natural language instructions below the frontmatter |
 | **Execution** | Deterministic — same input always gives same output | AI agent interprets the brief and decides how to act at runtime |
 | **Handles ambiguity** | Fails or needs explicit branching logic | Reasons through ambiguous inputs and adapts |
+| **Runtime** | No AI model involved | Copilot or another LLM is the runtime |
 | **Best for** | CI/CD pipelines, builds, deployments | Summaries, triage, reporting, and tasks that need judgment |
 
 > [!NOTE]
