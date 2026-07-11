@@ -12,6 +12,8 @@
 > echo "Pre-flight complete."
 > ```
 >
+> This mirrors the Step 1 pre-flight so you can catch missing tools before install.
+>
 > One-liner safety check:
 >
 > ```bash

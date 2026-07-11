@@ -22,7 +22,7 @@ You'll confirm that you have everything required before writing a single line of
 ### 1. Confirm required vs optional prerequisites
 
 - ✅ **Required:** `gh` CLI 2.x or newer (`gh --version`)
-- ✅ **Required:** Git (`git --version`) when working in a local terminal
+- ✅ **Required (local terminal path):** Git (`git --version`)
 - ℹ️ **Optional:** Node.js (`node --version`) — not required for this workshop
 
 If `gh` is missing, install it using one of these one-liners:
