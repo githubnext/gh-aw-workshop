@@ -3,7 +3,7 @@
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 > [!TIP]
-> Familiar with LLM-based automation tools? Review the Quick Summary below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+> Familiar with LLM-based automation tools? Review the Quick Summary below, then jump ahead to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md) after you finish [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
 
 ## 🎯 What You'll Do
 
