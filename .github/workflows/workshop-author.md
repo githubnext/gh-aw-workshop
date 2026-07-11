@@ -2,12 +2,14 @@
 emoji: 🎓
 description: Incrementally authors the "Learning GitHub Agentic Workflows" workshop — adds exactly one new step per execution, guiding GitHub beginners from zero to a running daily-repo-status workflow
 on:
+  schedule: every 6 hours
   workflow_dispatch:
     inputs:
       focus:
         description: "Optional: topic hint for the next step (e.g. 'codespace path', 'prerequisites'), or 'status' to list workshop progress"
         required: false
         type: string
+  skip-if-match: "is:pr is:open label:workshop"
 permissions:
   contents: read
   copilot-requests: write
@@ -68,31 +70,6 @@ The workshop lives in the `workshop/` directory as flat, numbered markdown files
 
 ---
 
-## Curriculum
-
-The workshop follows this fixed 15-step path. Do **not** deviate from it.
-
-| # | Filename | Title | Notes |
-|---|----------|-------|-------|
-| 0 | `00-welcome.md` | Welcome — What We'll Build | Show the end result first; set expectations |
-| 1 | `01-prerequisites.md` | What You Need Before We Start | GitHub account; present the path fork |
-| 2a | `02a-setup-codespace.md` | ➡️ Adventure A: Set Up a Codespace | Fork of step 1; for Codespace users |
-| 2b | `02b-setup-local.md` | ➡️ Adventure B: Set Up Your Local Terminal | Fork of step 1; for local terminal users |
-| 3 | `03-create-your-repo.md` | Create Your Practice Repository | Both paths converge here |
-| 4 | `04-github-actions-intro.md` | What Are GitHub Actions? | Conceptual intro; keep it short and visual |
-| 5 | `05-agentic-workflows-intro.md` | What Are Agentic Workflows? | AI + Actions concept; real-world examples |
-| 6 | `06-install-gh-aw.md` | Install the gh-aw CLI Extension | Practical install steps for both paths |
-| 7 | `07-your-first-workflow.md` | Write Your First Agentic Workflow | Hello-world example; introduces syntax |
-| 8 | `08-run-your-workflow.md` | Run and Watch Your Workflow | `gh aw run`; reading live output |
-| 9 | `09-understand-output.md` | Reading Workflow Output | Logs, turns, safe outputs explained |
-| 10 | `10-design-daily-status.md` | Design: Your Daily Repo Status Report | Guided design exercise before coding |
-| 11 | `11-build-daily-status.md` | Build: Daily Repo Status Workflow | Write and compile the real workflow |
-| 12 | `12-test-and-iterate.md` | Test and Improve Your Workflow | Trigger, inspect, iterate |
-| 13 | `13-schedule-it.md` | Schedule It to Run Every Day | Add a cron trigger; commit and push |
-| 14 | `14-next-steps.md` | What's Next? Keep Exploring | Resources, ideas, community |
-
----
-
 ## Task
 
 ### 1. Read current state
@@ -112,10 +89,16 @@ Do NOT create any files.
 
 ### 3. Identify the next step
 
-Walk the curriculum table **in order** (00 → 14, with 2a before 2b). The next step is the **first** entry whose filename does NOT appear in `existing_files`.
+Analyse the existing files in `existing_files` to understand the workshop's current scope and progression. Read the content of recently added files to understand the writing style, level of detail, and topics already covered.
 
-- If `focus` input is provided and non-empty (and not "status"), treat it as a hint that may influence the tone, examples, or specific techniques used in the step — but stay on the curriculum order.
-- If all 15 steps exist, call `noop` with "Workshop complete — all 15 steps have been authored."
+Determine the next most valuable step to add that:
+- Builds logically on what already exists
+- Advances learners from GitHub basics toward building, running, and scheduling an agentic workflow
+- Does not duplicate content already covered
+
+If `focus` is provided and non-empty (and not "status"), treat it as a hint that may influence the topic, tone, or specific techniques — but keep the overall workshop progression coherent.
+
+If the workshop already covers all essential topics (introduction, prerequisites, setup, first workflow, running and debugging, design, building, iteration, and scheduling), call `noop` with "Workshop complete — all key steps have been authored."
 
 ### 4. Author the step file
 
@@ -178,24 +161,12 @@ Numbered action sequence. Each action gets its own number. Commands go in fenced
 - Use screenshot placeholders where visuals would help: `![Description](images/NN-description.png)`
 - Use **bold** for UI labels (e.g., **New repository**) and `inline code` for file names and commands.
 
-### Step-specific guidance
-
-- **Step 0 (welcome)**: Open with the finished product — show the daily-status workflow output the learner will have by the end. Use an ASCII art preview or describe it concretely. Set a friendly, excitement-building tone.
-- **Step 1 (prerequisites)**: After listing what's needed, present the path fork clearly. Do NOT describe the setup — just give the choice and link forward.
-- **Steps 2a / 2b**: Each is a full, self-contained setup guide for its path. End with "✅ Checkpoint + Next: Step 3."
-- **Step 4 (Actions intro)**: Use a simple analogy (e.g., recipe / vending machine). Keep it under 400 words. No code yet.
-- **Step 5 (agentic intro)**: Distinguish between classic Actions (scripts) and agentic workflows (AI agents). Give one concrete real-world example.
-- **Step 7 (first workflow)**: Include the complete hello-world `.md` file content in a fenced code block. Walk through each frontmatter field line by line.
-- **Step 10 (design)**: Use a guided worksheet / fill-in-the-blank format to help the learner think through their workflow before writing code. Example: "What should trigger your report? ___", "What data should it include? ___"
-- **Step 11 (build)**: Provide the complete `daily-repo-status.md` workflow source. Annotate each section with comments explaining the choice.
-- **Step 13 (schedule)**: Show the cron syntax clearly. Remind learners to commit the lock file.
-
 ---
 
 ### 5. Update `workshop/README.md`
 
 After creating the step file:
-- If `workshop/README.md` does not exist, create it with a title, intro paragraph, and a curriculum table listing all 15 steps (marking completed ones with ✅ and pending ones with ⏳).
+- If `workshop/README.md` does not exist, create it with a title, intro paragraph, and a curriculum table listing all known workshop steps (marking completed ones with ✅ and pending ones with ⏳).
 - If `workshop/README.md` already exists, update only the row for the step you just added — change ⏳ to ✅.
 
 Use the `edit` tool for both operations.
@@ -215,4 +186,4 @@ Use the `create-pull-request` safe output with:
 - Use `create-pull-request` to submit every new workshop file + README update together.
 - Call `noop` with a clear, informative reason when:
   - `focus` equals `"status"` (progress check only)
-  - All curriculum steps already exist (workshop complete)
+  - The workshop already covers all key learning objectives (workshop complete)
