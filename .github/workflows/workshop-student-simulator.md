@@ -171,9 +171,9 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 | `backend-dev` | Backend or systems developer |
 | `devops` | DevOps engineer or SRE |
 | `data-science` | Data scientist or ML engineer |
-| `enterprise-dev` | Developer in a large enterprise using GHE or GHES with self-hosted runners and corporate proxy/network constraints |
-| `enterprise-devops` | Senior DevOps/platform engineer in a Fortune 500 company; manages self-hosted runner fleets and network policies |
-| `program-manager` | Program or product manager evaluating GitHub agentic workflows for their team; non-technical hands-on user |
+| `enterprise-dev` | Enterprise developer using GHE or GHES with self-hosted runners |
+| `enterprise-devops` | Senior DevOps or platform engineer managing self-hosted runner fleets |
+| `program-manager` | Program or product manager evaluating agentic workflows |
 
 ---
 
@@ -249,7 +249,6 @@ Use deterministic simulation: derive pseudo-random rolls from the student id, st
 
 **Formula**: `roll = ((student_id * 7 + step_index * 13 + day_of_year * 17) % 100) / 100`
 where `day_of_year` is the day number in the current year (1–366).
-The prime multipliers (7, 13, 17) are chosen to spread values across the 0–99 range without clustering, ensuring each (student, step, day) triple maps to a distinct bucket.
 
 A step succeeds if `roll < adjusted_probability`.
 
