@@ -199,7 +199,7 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/daily-status.md` (the filename should be exactly `daily-status.md`; agentic workflows in this workshop use Markdown files, not `.yml`).
 
-Instead of pasting one giant block, build the file in small passes and compile after each one. That makes YAML mistakes much easier to spot.
+Instead of pasting one giant block, build the file in small sections and compile after each one. That makes YAML mistakes much easier to spot.
 
 ### Build section 1: frontmatter basics
 
@@ -220,7 +220,7 @@ gh aw compile .github/workflows/daily-status.md --validate
 
 ### Build section 2: trigger block
 
-Now add the trigger block above the closing `---`. `workflow_dispatch` gives you a manual **Run workflow** button, and `schedule: daily` is the source-format shorthand for a cron-style daily schedule — in plain English, "run this once every day around midnight UTC."
+Now add the trigger block after the `description` line and before the closing `---`. `workflow_dispatch` gives you a manual **Run workflow** button, and `schedule: daily` is the source-format shorthand for a cron-style daily schedule — in plain English, "run this once every day around midnight UTC."
 
 ```yaml
 on:
@@ -255,7 +255,7 @@ gh aw compile .github/workflows/daily-status.md --validate
 
 ### Build section 4: tools and output guardrails
 
-Add the tool configuration and the write guardrail next. The `tools` block tells the agent how to talk to GitHub, and `safe-outputs` limits the workflow to posting a single comment instead of giving it broad write access.
+Add the tool configuration and the `safe-outputs` guardrail next. The `tools` block tells the agent how to talk to GitHub, and `safe-outputs` limits the workflow to posting a single comment instead of giving it broad write access.
 
 ```yaml
 tools:
