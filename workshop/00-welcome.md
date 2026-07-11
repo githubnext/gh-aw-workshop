@@ -6,7 +6,7 @@
 
 **Time estimate:** ~2 hours end-to-end, or ~30 minutes if you're already familiar with GitHub CLI and jump to the quick path.
 
-**Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC). You'll install everything you need as part of the workshop — no pre-existing tools required.
+**Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC). You'll install everything you need as part of the workshop — no pre-existing tools required. All terminal commands in this workshop can also be run inside a GitHub Codespace — no local install required.
 
 > [!TIP]
 > Experienced developer? See [Step 1: What You Need Before We Start](01-prerequisites.md) for the skip-ahead checklist.
