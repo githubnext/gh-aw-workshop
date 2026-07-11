@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  copilot-requests: write
   actions: read
   issues: read
   pull-requests: read
