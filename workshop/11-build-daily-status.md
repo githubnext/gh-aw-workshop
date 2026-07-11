@@ -188,6 +188,8 @@ YAML is unforgiving. The most frequent pitfalls are tabs instead of spaces, miss
 > [!NOTE]
 > If you hit a compile error, the optional **[Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md)** walks through each of these mistakes with broken ❌ and correct ✅ examples.
 
+> **Optional Side Quest:** Want to get better AI output from your task brief? See **[Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md)** for five prompt-engineering techniques you can apply right now.
+
 ---
 
 > [!TIP]
