@@ -55,7 +55,7 @@ Use this as a one-page reference for the shift from classic workflows to agentic
 - You still version workflows in git and review them like code
 
 > [!NOTE]
-> **Enterprise users:** Agentic workflows are supported on **GitHub Enterprise Cloud (GHEC)** and **GitHub Enterprise Server (GHES) 3.14+**. If your organisation uses a proxy or mandates self-hosted runners, see the [GitHub Actions self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners) for setup requirements before continuing. The `gh-aw` CLI and all workshop steps work identically once your runner environment is configured.
+> **Enterprise users:** Agentic workflows are supported on **GitHub Enterprise Cloud (GHEC)** and **GitHub Enterprise Server (GHES) 3.14+**. If your organization uses a proxy or mandates self-hosted runners, see the [GitHub Actions self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners) for setup requirements before continuing. The `gh-aw` CLI and all workshop steps work identically once your runner environment is configured.
 
 The same authoring and review workflow applies everywhere — only the runner configuration differs.
 
