@@ -102,6 +102,8 @@ function buildTransitions() {
       }
       const next = cloneState(state);
       next.installed.aw = "latest";
+      // In the simulation model, isLoggedIn serves as a proxy for having Copilot-enabled
+      // credentials. A real-world check would also verify Copilot subscription access.
       next.flags.agentCredentialsConfigured = Boolean(state.auth.isLoggedIn);
       return { ok: true, state: deepFreeze(next) };
     },
