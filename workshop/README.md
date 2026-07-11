@@ -25,6 +25,8 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
 | 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |
 
+| 17 | [17-add-mcp-tools.md](17-add-mcp-tools.md) | Give Your Agent More Tools with MCP | ✅ |
+
 ## Optional Side Quests
 
 - [Side Quest: Terminal Basics](side-quest-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).

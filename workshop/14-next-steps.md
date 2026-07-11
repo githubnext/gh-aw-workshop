@@ -82,3 +82,9 @@ Found a gap? Have a better explanation? Open an issue or pull request in this re
 - [ ] You know where to find the gh-aw docs when you need them
 
 You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
+
+---
+
+### Go deeper
+
+- ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
