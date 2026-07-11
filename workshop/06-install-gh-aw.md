@@ -29,6 +29,9 @@ extension so you can compile and run agentic workflows from your terminal.
 
 - You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You're inside your `my-agentic-workflows` repository directory
+- You have authenticated the `gh` CLI with `gh auth login`
+  (done in [Adventure A §4](02a-setup-codespace.md#4-authenticate-the-gh-cli)
+  or [Adventure B §5](02b-setup-local.md#5-authenticate-the-gh-cli))
 
 ## Steps
 
