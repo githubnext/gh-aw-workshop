@@ -10,7 +10,7 @@ You'll write the complete `daily-status.md` agentic workflow file, placing it in
 
 - You've completed [Step 10: Design: Your Daily Repo Status Report](10-design-daily-status.md)
 - Your terminal is inside `my-agentic-workflows`
-- `gh aw` is installed and authenticated (from Step 6)
+- [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
 ---
 
