@@ -13,7 +13,7 @@ You'll confirm that you have everything required before writing a single line of
 >
 > ```bash
 > # Pre-flight check — run this before proceeding
-> gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install link above"
+> gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install commands below"
 > git --version && echo "✅ git OK" || echo "❌ git missing"
 > node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
 > echo "Pre-flight complete."
