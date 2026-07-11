@@ -1,6 +1,17 @@
 # Step 1: What You Need Before We Start
 
-> _Starting with the right setup saves you from frustrating detours later._
+_Starting with the right setup saves you from frustrating detours later._
+
+> [!TIP]
+> **Experienced developer? Skip to Step 6 →**
+> If you already have `gh` installed, a GitHub repo ready, and `gh` authenticated, you can skip Steps 1–5. Confirm all three before jumping ahead:
+> - [ ] `gh` CLI 2.x or newer is installed — run `gh --version`
+> - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
+> - [ ] `gh` is authenticated — run `gh auth status` (or `gh auth login` if not yet done)
+>
+> **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of agentic workflows — all useful context, but safely skippable if you already have a working `gh` setup.
+>
+> Ready? Jump straight to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md) →
 
 ## 🔀 Choose Your Setup Path
 
