@@ -69,10 +69,11 @@ For each file in `workshop_files`, extract links with line numbers:
 
 - Inline links: `[text](url)`
 - Reference-style links: `[text][ref]` plus matching definitions `[ref]: url`
+- Autolinks: `<https://example.com>`
 
 Rules:
 
-- Ignore image links (`![alt](url)`).
+- Ignore image links (`![alt](url)` and `![alt][ref]`).
 - Ignore mailto links.
 - Ignore links inside fenced code blocks.
 - Resolve relative links against the source file location.
@@ -101,7 +102,7 @@ Validate each extracted link and collect only broken ones.
 ### External URLs (`http://` or `https://`)
 
 1. Send an HTTP `HEAD` request first.
-2. If `HEAD` is unsupported (405/501), retry with lightweight `GET`.
+2. If `HEAD` is unsupported (405/501), retry with a standard `GET` request and do not analyze response-body content.
 3. Follow redirects (3xx) and validate the final response.
 4. Treat as broken when response is:
    - network failure / DNS failure / TLS failure
@@ -126,7 +127,7 @@ For internal links to non-markdown files, only validate file existence.
 
 For each broken link record, create a deterministic issue key hash:
 
-`bl-<lowercase-hex sha256(file + \"|\" + line + \"|\" + raw_link)>` where `|` is a literal pipe character.
+`bl-<lowercase-hex sha256(utf8(file + \"|\" + line + \"|\" + raw_link))>` where `|` is a literal pipe character.
 
 Example source string:
 
@@ -137,7 +138,7 @@ Then:
 1. At the start of this phase, list open issues with label `broken-link` once and cache them locally.
 2. Search that cached list for an existing issue whose title contains the exact key hash.
 3. If no matching issue exists, call `create-issue` with:
-   - **Title**: `Broken link [bl-<hash>] in <file>:<line>`
+   - **Title**: `Broken link in <file> at line <line> [bl-<hash>]`
    - **Body** including:
      - file path
      - line number
