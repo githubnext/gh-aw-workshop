@@ -2,8 +2,14 @@
 
 **In about 2 hours, you'll have an AI-powered daily repo health report running automatically in GitHub** — the kind of workflow a teammate or evaluator can judge in under a minute.
 
+## Why Agentic Workflows?
+
+Before: you open your repo every morning, click through issues and pull requests, and manually summarize what changed. After: a scheduled workflow does that scan for you and posts a digest automatically before your first meeting. That's the practical value of agentic workflows in this workshop: less status-chasing, more decision-making.
+
 > [!TIP]
-> **Already know GitHub Actions? Jump ahead →** Review the curriculum and start at [Step 6: Install the `gh-aw` CLI Extension](README.md#curriculum).
+> **Already know GitHub Actions? Fast path →** Jump to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+
+![Completed GitHub Actions run for the daily repo status workflow](images/00-workflow-run-complete.svg)
 
 ## 🎯 What You'll Do
 
