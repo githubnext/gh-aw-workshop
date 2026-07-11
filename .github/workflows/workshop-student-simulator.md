@@ -318,7 +318,6 @@ Briefly cover one surprising success, one unexpected dropout, and one content-ga
 
 After creating the report issue, create **3-5 child issues** using `create-issue` where each issue:
 - sets `parent: "aw_workshop_simulation_parent"` (preferred) to link directly to the parent from step 7
-- use a numeric parent issue number only as fallback if the temporary id is unavailable; in that case, use the issue number returned when the parent report issue is created
 - has a concise, imperative title starting with `Repair:` or `Improve:`
 - describes one concrete workshop improvement only
 - includes:
