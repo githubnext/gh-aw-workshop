@@ -15,7 +15,7 @@
 > One-liner safety check:
 >
 > ```bash
-> gh --version || { echo "Install gh first: macOS: brew install gh | Ubuntu/Debian: sudo apt install gh | Windows: winget install GitHub.cli"; exit 1; }
+> gh --version || { echo "Install gh first (macOS: brew install gh; Ubuntu/Debian: sudo apt install gh; Windows: winget install GitHub.cli)"; exit 1; }
 > ```
 >
 > Direct install commands from Step 1:
