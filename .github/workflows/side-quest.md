@@ -29,10 +29,6 @@ safe-outputs:
     draft: true
     protected-files:
       policy: request_review
-      exclude:
-        - "workshop/README.md"
-        - "workshop/*.md"
-        - "workshop/**/*.md"
     allowed-files:
       - "workshop/*.md"
       - "workshop/**/*.md"
