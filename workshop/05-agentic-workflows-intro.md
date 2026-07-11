@@ -3,7 +3,7 @@
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 > [!TIP]
-> Familiar with LLM-based automation tools? Review the Quick summary for Actions users section below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+> Familiar with LLM-based automation tools? Review the Quick Summary for Actions Users section below, then skip to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 
 ## 🎯 What You'll Do
 
@@ -13,7 +13,7 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 
 ## Quick Summary for Actions Users
 
-> **Key differences from classic Actions:** A `gh-aw` workflow still starts with YAML frontmatter fenced by `---` — typically `name`, `on`, and `permissions` — but below that frontmatter you write a Markdown task brief instead of a fixed `jobs.steps` script. The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
+> **Key differences from classic Actions:** A `gh-aw` workflow still starts with YAML frontmatter fenced by `---`, usually with `name`, `on`, and `permissions`. Below that frontmatter, you write a Markdown task brief instead of a fixed `jobs.steps` script. The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
 
 ## Advanced fast-track: What's New cheat sheet
 
