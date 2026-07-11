@@ -1,11 +1,10 @@
 # Step 6: Install the gh-aw CLI Extension
 
-> [!IMPORTANT]
-> **Using the GitHub Copilot web/mobile app or a Copilot coding agent?**
-> There is no in-browser install path for `gh-aw` — you must open a **Codespace** on your practice repository.
-> Codespaces come with `gh` pre-installed and authenticated, so the install command below works immediately.
-> Haven't set one up yet? Follow [Adventure A: Set Up a Codespace](02a-setup-codespace.md) first,
-> then come back here and run the install command inside the Codespace terminal.
+> **Which environment are you using?**
+>
+> - 🖥️ **Terminal / VS Code / Codespace** → continue below
+> - 🌐 **GitHub UI / Copilot web app** → [open a Codespace first](02a-setup-codespace.md#2-open-the-codespace), then return here
+> - 🤖 **Copilot coding agent** → expand the section below for agent-specific install steps
 
 <details>
 <summary>Installing gh-aw inside a Copilot coding agent session</summary>
