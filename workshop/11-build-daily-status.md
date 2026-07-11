@@ -18,6 +18,9 @@ You'll write the complete `daily-status.md` agentic workflow file, placing it in
 
 An agentic workflow file is a Markdown document with two parts:
 
+> [!NOTE]
+> Reminder: if you're confused about why this file ends in `.md` instead of `.yml`, see the [Classic vs. Agentic comparison table in Step 5](05-agentic-workflows-intro.md#side-by-side-classic-actions-vs-agentic-workflows).
+
 1. **Frontmatter** — a YAML block between `---` fences at the very top of the file. This is machine-readable configuration: triggers, permissions, tools, and output rules.
 2. **Body** — plain Markdown below the second `---`. This is the AI agent's instruction set — what you want it to do and how you want it to behave.
 

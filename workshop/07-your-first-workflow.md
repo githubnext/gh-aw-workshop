@@ -23,6 +23,11 @@ You'll create a simple agentic workflow file in your repository using the `gh-aw
 
 ## Steps
 
+> [!TIP]
+> **Using VS Code?** Open the integrated terminal with `` Ctrl+` `` (macOS: `` Cmd+` ``),
+> then run all `gh aw` commands there. If a command is unfamiliar, try:
+> `gh copilot suggest "how do I install a gh extension"`
+
 ### 1. Create the workflows directory
 
 Agentic workflow files live alongside regular GitHub Actions workflows inside `.github/workflows/`.
