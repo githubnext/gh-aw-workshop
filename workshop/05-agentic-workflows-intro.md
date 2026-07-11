@@ -59,7 +59,7 @@ The same authoring and review workflow applies everywhere — only the runner co
 ## Platform Compatibility
 
 > [!WARNING]
-> **GHES (GitHub Enterprise Server) users:** Agentic workflows are **not currently supported** on GHES by default. Support varies by version and organization configuration. If you are on a GHES instance and agentic workflows are not enabled, you will encounter 404 errors or permission failures at Steps 6–8 with no clear explanation.
+> **GHES (GitHub Enterprise Server) users:** Agentic workflows are **not supported by default** on GHES. Support varies by version and organization configuration. If you are on a GHES instance and agentic workflows are not enabled, you will encounter 404 errors or permission failures at Steps 6–8 with no clear explanation.
 >
 > **Recommended options for GHES users:**
 > - Follow along in read-only mode to learn the concepts — you can still complete all non-execution steps.
