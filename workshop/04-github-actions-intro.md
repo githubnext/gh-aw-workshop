@@ -9,7 +9,7 @@ _You already have a repository — now anchor on the parts of Actions that matte
 
 You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files.
 
-If you're experienced but want the quick delta before installing `gh-aw`, continue to Step 5 where we focus on what changes with agentic workflows. Otherwise, you can skip straight to Step 6.
+If you're experienced but want the key differences before installing `gh-aw`, continue to Step 5 where we focus on what changes with agentic workflows. Otherwise, you can skip straight to Step 6.
 
 ## Quick Refresher
 
