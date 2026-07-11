@@ -43,6 +43,14 @@ GitHub will spin up a container with everything pre-installed. This takes about 
 
 Once the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac) and run these checks:
 
+> [!TIP]
+> **First time in a terminal?** A blank prompt is normal. Try:
+> - `pwd` → prints your current folder path
+> - `ls` → lists files and folders in the current location
+> - `cd workshop` → moves into the `workshop` folder
+> - `cd ..` → moves back up one folder
+> - `git status` → shows `On branch main` and whether your working tree is clean
+
 ```bash
 gh --version
 ```

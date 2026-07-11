@@ -98,6 +98,11 @@ Here's a quick summary of what you'll have installed and running by the end of t
 
 Now decide how you want to work:
 
+> [!IMPORTANT]
+> **Not sure which setup to use?**
+> - **No coding experience, new to the terminal, or on a school/work machine?** → Use [Codespace (Step 2a)](02a-setup-codespace.md) — nothing to install.
+> - **Comfortable with your terminal and local installs?** → Use [Local Setup (Step 2b)](02b-setup-local.md).
+
 - **Codespace** — Everything runs in the browser. No installs. Ideal if you're on a shared machine or just want the fastest start.
 - **Local terminal** — You'll work in your own terminal. Good if you prefer a local environment you already know.
 
