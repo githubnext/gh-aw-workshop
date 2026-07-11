@@ -15,13 +15,8 @@
 > One-liner safety check:
 >
 > ```bash
-> gh --version || { echo "Install gh first using the platform-specific commands in the list below."; exit 1; }
+> gh --version || echo "Install gh first using the platform-specific commands in the Step 1 links below."
 > ```
->
-> Direct install commands from Step 1:
-> - [macOS (Homebrew): `brew install gh`](01-prerequisites.md#macos-homebrew)
-> - [Ubuntu/Debian: `sudo apt install gh`](01-prerequisites.md#ubuntudebian)
-> - [Windows (winget): `winget install GitHub.cli`](01-prerequisites.md#windows-winget)
 
 ## 🎯 What You'll Do
 
