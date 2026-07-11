@@ -102,7 +102,8 @@ Validate each extracted link and collect only broken ones.
 
 1. Send an HTTP `HEAD` request first.
 2. If `HEAD` is unsupported (405/501), retry with lightweight `GET`.
-3. Treat as broken when response is:
+3. Follow redirects (3xx) and validate the final response.
+4. Treat as broken when response is:
    - network failure / DNS failure / TLS failure
    - any 4xx or 5xx status code
 
@@ -125,13 +126,13 @@ For internal links to non-markdown files, only validate file existence.
 
 For each broken link record, create a deterministic issue key hash:
 
-`bl-<sha256(file + \"|\" + line + \"|\" + raw_link)>`
+`bl-<lowercase-hex sha256(file + \"|\" + line + \"|\" + raw_link)>`
 
 Then:
 
 1. Search open issues with label `broken-link` for an existing issue whose title contains that exact key hash.
 2. If no matching issue exists, call `create-issue` with:
-   - **Title**: `Broken link [<key-hash>] in <file>:<line>`
+   - **Title**: `Broken link [bl-<hash>] in <file>:<line>`
    - **Body** including:
      - file path
      - line number
