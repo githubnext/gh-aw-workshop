@@ -10,7 +10,9 @@ If you already have a terminal with `gh` available, run this single command to c
 gh auth status && gh --version && echo "✅ Ready to continue"
 ```
 
-If the command fails with an authentication error, run `gh auth login` first — see the [GitHub CLI auth docs](https://cli.github.com/manual/gh_auth_login). If `gh` is not found, install it using the steps in [§ Confirm required vs optional prerequisites](#1-confirm-required-vs-optional-prerequisites) below.
+If the command fails with an **authentication error**, run `gh auth login` first — see the [GitHub CLI auth docs](https://cli.github.com/manual/gh_auth_login).
+
+If `gh` is not found, install it using the steps in [§ Confirm required vs optional prerequisites](#1-confirm-required-vs-optional-prerequisites) below.
 
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
