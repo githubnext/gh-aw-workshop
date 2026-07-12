@@ -155,6 +155,7 @@ steps:
           for i in range(n):
               groups[find(i)].append(i)
 
+          file_path = file_titles[0]["file"] if file_titles else ""
           result = []
           for root, members in groups.items():
               if len(members) < MIN_CLUSTER_SIZE:
@@ -168,7 +169,7 @@ steps:
                       max_score = max(max_score, pair_scores.get((i, j), 0.0))
               result.append(
                   {
-                      "id": f"cluster-{root}",
+                      "id": f"cluster-{file_path}-{root}",
                       "size": len(members_sorted),
                       "max_similarity": round(max_score, 3),
                       "titles": [file_titles[idx] for idx in members_sorted],
