@@ -136,8 +136,7 @@ Create **at most one** pull request per run.
 
    ```json
    {
-     "round_robin_index": 0,
-     "recent_targets": []
+     "round_robin_index": 0
    }
    ```
 
@@ -216,8 +215,8 @@ short concept slug.
 
 Examples:
 
-- `workshop/10a-design-daily-status.md` + concept `workflow loop` →
-  `workshop/images/10a-workflow-loop.svg`
+- `workshop/13-schedule-it.md` + concept `schedule loop` →
+  `workshop/images/13-schedule-loop.svg`
 - `workshop/16-connect-data-source.md` + concept `step-to-agent flow` →
   `workshop/images/16-step-agent-flow.svg`
 
