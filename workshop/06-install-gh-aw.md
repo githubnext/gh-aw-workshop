@@ -28,7 +28,9 @@ Use the path that matches your tool before you run any install command:
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
 | `copilot-app` | [Open a Codespace first](#open-a-codespace-first) |
-| Local terminal or Codespace terminal | [Check if already installed](#check-if-already-installed), then [Install from terminal](#install-from-terminal) |
+| Local terminal or Codespace terminal | [Install from terminal](#install-from-terminal) |
+
+Before installing, run the quick check in [Check if already installed](#check-if-already-installed). Install only if `gh aw --version` is not found.
 
 ## Check if already installed
 
@@ -61,7 +63,7 @@ If you are using `copilot-app`, you must open a Codespace to run install command
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows you are logged in
-> - ⚠️ If you're in an org-owned Codespace, run the fallback command in the next section before the standard install command.
+> - ⚠️ If you're in an org-owned Codespace, run the HTTP 403 fallback command below before the standard install command.
 
 <!-- -->
 
