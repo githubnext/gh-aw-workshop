@@ -1,5 +1,21 @@
 # Step 0: Welcome — What We'll Build
 
+In about 30 minutes, your repository will generate this report automatically every morning:
+
+```markdown
+## Daily Repository Status — July 12
+
+- ✅ CI health: 18 workflows succeeded, 1 failed (`docs-link-check`)
+- 🔄 Pull requests: 7 open (2 need review, 1 stale > 14 days)
+- 🐛 Issues: 4 new, 3 closed, 2 high-priority still open
+- 🚀 Releases: No new tags in the last 24 hours
+
+### Recommended next actions
+1. Re-run `docs-link-check` and update broken external URLs.
+2. Review PR #412 and PR #415 before noon.
+3. Triage high-priority issue #398 with the platform team.
+```
+
 ## Why this matters
 
 Manual status reporting steals time from shipping and leaves teams with uneven visibility. In this workshop, you'll automate that reporting so your team gets a daily repo update with zero manual effort.
