@@ -1,6 +1,6 @@
 # Step 3: Open and Verify Your Practice Repository
 
-> _Now that setup is complete, make sure your practice repository is open and ready for workflow work._
+This repository will hold the agentic workflow you build in the next steps, and once it's running this same repo will receive a daily AI-generated status report automatically.
 
 ## 🎯 What You'll Do
 

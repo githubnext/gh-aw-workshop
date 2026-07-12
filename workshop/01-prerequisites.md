@@ -8,7 +8,6 @@ Complete these checks before you choose a setup path:
 
 - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
 - [ ] `gh auth status` shows a logged-in account — run `gh auth login` if it does not
-
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
 > If you already have `gh` installed, a GitHub repo ready, and the pre-flight checks above passing, you can skip Steps 1–5. Confirm all three before jumping ahead:
@@ -84,6 +83,9 @@ Full installation docs: [cli.github.com](https://cli.github.com)
 
 ### Check your GitHub account
 
+> [!IMPORTANT]
+> **GitHub Enterprise Server users:** Confirm with your administrator that Copilot cloud agent is enabled before continuing. See [Enabling Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). You'll need it by Step 6.
+
 You need a **free GitHub account**. If you don't have one yet, create it at [github.com/join](https://github.com/join).
 
 > [!NOTE]
@@ -140,6 +142,16 @@ Here's a quick summary of what you'll have installed and running by the end of t
 | **GitHub Actions** | Runs your automated workflows in the cloud |
 | **gh CLI** | GitHub's official command-line tool |
 | **gh-aw extension** | Adds agentic workflow commands to the gh CLI — installed in [Step 6](06-install-gh-aw.md) (may be pre-installed in Codespaces) |
+
+## ✅ Quick environment check
+
+Run this smoke test before you move on:
+
+```bash
+gh auth status && echo "✅ Ready to continue"
+```
+
+If you see `gh: command not found`, go back to **Confirm required vs optional prerequisites** above and install `gh` (or switch to the [Codespace path](02a-setup-codespace.md)).
 
 ## ✅ Checkpoint
 
