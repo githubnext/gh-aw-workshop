@@ -255,7 +255,7 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 3. **Match student profile to step demands**: For each student, consider:
    - **`level`** vs. assumed knowledge: a `beginner` facing a YAML-authoring step needs a much lower base probability than an `actions-user`.
    - **`background`** vs. step domain: a `devops` student on a CLI install step will fare far better than a `program-manager` or `no-coding` background student on the same step.
-   - **`tool`** and **`ui_preferred`** vs. step tooling: if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `copilot-app` / `cloud-agent`, reduce probability appropriately; if the step is UI-native (e.g., editing a file on GitHub.com), increase it for UI-preferred students.
+   - **`tool`** and **`ui_preferred`** vs. step tooling: if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `copilot-app` / `cloud-agent`, reduce probability appropriately; for `gh aw run`, assume Codespaces auth does not include `actions:write` and treat CLI triggering as a failing path unless a GitHub Actions UI path is followed; if the step is UI-native (e.g., editing a file on GitHub.com), increase it for UI-preferred students.
    - **`personality`**: a `methodical` student reads carefully and retries — raise probability; a `confused` student may not know why something failed — lower probability; an `impatient` student may skip prerequisite reading — lower probability particularly for steps that depend on earlier state.
    - **`goal`**: a student evaluating for their team (`team-evaluation`) will abandon sooner than someone learning for personal interest; a `teaching-others` goal drives thoroughness.
    - **Prior runs** (`runs`, `successes`): a student who has completed the workshop before will have a meaningfully higher success probability on familiar steps.
@@ -315,7 +315,7 @@ For each student who fails at a step, note:
   - **ui_preferred + any compile step**: "gh aw compile requires terminal — UI path users are unaware of syntax errors until the workflow runs and fails"
   - **vscode + CLI steps**: "VS Code user expects to stay in the editor UI — encourage running `gh aw` commands in the VS Code integrated terminal; suggest `gh copilot suggest` as a helper when a CLI command is unfamiliar"
   - **copilot-app + install gh-aw**: "Copilot app user has no terminal context — step 6 assumes CLI access that is entirely absent"
-  - **codespaces + auth checks**: "Codespaces `gh` is usually pre-authenticated, so guidance should check `gh auth status` before instructing `gh auth login`"
+  - **codespaces + gh aw run**: "Codespaces auth token does not include `actions:write`, so `gh aw run` fails and learners need the GitHub Actions UI trigger path"
   - **cloud-agent + local setup**: "Cloud agent user expects fully managed environment; local install and auth steps are unexpected friction"
 - Any student failing an `*install*` step: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
 - Any student failing a `*build*` step: "Full workflow source harder to understand without line-by-line annotation"
