@@ -25,17 +25,17 @@ You'll see a list of workflows on the left. Look for **Hello Agent** — that's 
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
 
-### 2. Trigger via GitHub Actions UI
+### 2. Trigger manually via GitHub Actions UI (no terminal required)
 
 Click **Hello Agent** in the left sidebar. You'll see a banner that says "This workflow has a workflow_dispatch event trigger."
 
 Click the **Run workflow** button, leave the default branch selected, and click the green **Run workflow** button in the dropdown.
 
-For terminal users, this is the same action as [CLI equivalent gh aw run (terminal optional)](#cli-equivalent-gh-aw-run-terminal-optional).
+For terminal users, this is the same action as [CLI equivalent (`gh aw run`)](#cli-equivalent-gh-aw-run).
 
 ![Run workflow button](images/08-run-workflow-button.svg)
 
-#### CLI equivalent gh aw run (terminal optional)
+#### CLI equivalent gh aw run
 
 If you do have a terminal, this command triggers the same workflow run:
 
