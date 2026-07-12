@@ -32,6 +32,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 - [Side Quest: Terminal Basics](side-quest-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
 - [Side Quest: Install `gh-aw` Troubleshooting](side-quest-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
 - [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](09-understand-output.md).
+- [Side Quest: Writing a Clear Agent Brief](side-quest-agent-brief.md) — five-step framework for designing any agentic workflow brief; branches from [Step 10](10-design-daily-status.md).
 - [Side Quest: Frontmatter Deep Dive](side-quest-frontmatter-deep-dive.md) — section-by-section walkthrough of every frontmatter key; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md) — five prompt-engineering techniques for getting clearer, more consistent AI output; branches from [Step 11](11-build-daily-status.md).

@@ -21,43 +21,35 @@ Spending five minutes writing a brief makes your instructions concrete. It also 
 
 ---
 
-## Step 1: State the Goal in One Sentence
+## The Four Components of a Good Brief
 
-Open a scratch file (or grab a piece of paper) and answer:
+Every effective agent brief covers these four things:
 
-> _"Every day, I want the agent to…"_
-
-For this workshop the answer is:
-
-> "Every day, I want the agent to read the current state of my repository and post a short health summary as a GitHub issue comment."
-
-Write your own version. You can use a different repository section (e.g. focus on pull requests only, or on CI status). Keep it to one sentence.
-
----
-
-## Step 2: List the Inputs
-
-What information does the agent need to produce the report?
-
-Think through each piece of data:
-
-- **Open pull requests** — count and titles
-- **Open issues** — count, and how many are labelled `bug`
-- **CI status** — did the last workflow run pass or fail?
-- **Last commit** — message and when it was made
-
-Write these down as bullet points. If you're not sure whether a piece of data is available, add a `?` next to it — you can verify it later.
-
-> [!TIP]
-> GitHub's REST API exposes all of the above. The `gh aw` agent can call `gh api` commands automatically when you list the right scopes in your workflow's frontmatter.
+| Component | What to write | Example |
+|-----------|--------------|---------|
+| **Goal** | One sentence: what should the agent do? | "Post a daily health summary as a GitHub issue comment." |
+| **Inputs** | Bullet list of the data the agent needs to collect | Open PRs, open issues, CI status, last commit |
+| **Output format** | A concrete skeleton or template the agent should fill in | The comment template below |
+| **Guardrails** | Short rules that prevent unexpected behaviour | Post once per day; never invent data |
 
 ---
 
-## Step 3: Describe the Output Format
+## A Ready-to-Use Starter Brief
 
-Decide what the comment should look like. A consistent format makes the report easy to scan at a glance. Here is a simple template to start with:
+Copy this into a scratch file and personalise it:
 
 ```
+Every day, read the current state of this repository and post a short health
+summary as a comment on the issue titled "Daily Status Reports" (create the
+issue if it doesn't exist).
+
+Inputs to collect:
+- Number of open pull requests (and their titles)
+- Number of open issues (and how many are labelled "bug")
+- Result of the most recent CI workflow run
+- Message and timestamp of the most recent commit
+
+Output format:
 📊 Daily Repo Status — {today's date}
 ══════════════════════════════════
 🔀 Open pull requests:  {count}
@@ -66,39 +58,15 @@ Decide what the comment should look like. A consistent format makes the report e
 📝 Last commit:         "{message}" — {time ago}
 
 {One sentence of overall health. Flag anything that needs attention.}
+
+Guardrails:
+- Post only one comment per calendar day. If today's report already exists, stop.
+- Never invent numbers. Write "unknown" if data is unavailable.
+- If the "Daily Status Reports" issue doesn't exist, create it, then comment.
 ```
 
-Adjust the emoji, wording, or sections to suit your taste. The agent will fill in the `{placeholders}` from real data.
-
----
-
-## Step 4: Write the Guardrails
-
-Guardrails are rules that keep the agent from doing something unexpected. For this workflow, three rules matter:
-
-1. **Post only one comment per day.** If a report already exists for today, skip the run.
-2. **Never invent numbers.** If data is unavailable, write "unknown" — don't guess.
-3. **If no issue exists to comment on, create one** titled `Daily Status Reports` and post there.
-
-Write your guardrails as a short bulleted list in plain English. You'll paste this into the workflow body in the next step.
-
-> [!WARNING]
-> Skipping guardrails is the most common cause of runaway agents. One missing rule can result in the agent posting dozens of duplicate comments.
-
----
-
-## Step 5: Check Your Brief
-
-Review what you've written. Your brief should answer:
-
-| Question | Answer |
-|---------|--------|
-| What is the agent's one-sentence goal? | ✅ |
-| What data does it need? | ✅ |
-| What does the output look like? | ✅ |
-| What rules should it follow? | ✅ |
-
-If any row is blank, fill it in before moving on.
+> [!TIP]
+> Want a deeper walkthrough of the brief-writing process? [Side Quest: Writing a Clear Agent Brief](side-quest-agent-brief.md) walks through each component step by step with extra tips on why each decision matters.
 
 ---
 
