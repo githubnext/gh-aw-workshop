@@ -8,12 +8,12 @@ const VALID_TERMINALS = {
   windows: new Set(["powershell", "cmd"])
 };
 
-const INFERENCE_PROVIDERS = ["github", "anthropic", "openai"];
 const PROVIDER_SECRET_BY_NAME = {
   github: "COPILOT_GITHUB_TOKEN",
   anthropic: "ANTHROPIC_API_KEY",
   openai: "OPENAI_API_KEY"
 };
+const INFERENCE_PROVIDERS = Object.keys(PROVIDER_SECRET_BY_NAME);
 const INFERENCE_PROVIDER_SEED_OFFSET = 4;
 const COPILOT_SECRET_PRIMARY_MODULO = 5;
 const COPILOT_SECRET_SECONDARY_MODULO = 7;
@@ -31,6 +31,13 @@ function toDayOfYear(isoDate) {
 function deterministicChoice(seed, choices) {
   const index = Math.abs(seed) % choices.length;
   return choices[index];
+}
+
+function hasThirdPartyProviderSecret(level, seed, missingRemainder) {
+  if (level !== "beginner") {
+    return true;
+  }
+  return seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== missingRemainder;
 }
 
 function deepFreeze(obj) {
@@ -77,12 +84,12 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
   const hasAnthropicApiKey =
     isLoggedIn &&
     (inferenceProvider === "anthropic"
-      ? level !== "beginner" || seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== 0
+      ? hasThirdPartyProviderSecret(level, seed, 0)
       : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 0);
   const hasOpenAiApiKey =
     isLoggedIn &&
     (inferenceProvider === "openai"
-      ? level !== "beginner" || seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== 1
+      ? hasThirdPartyProviderSecret(level, seed, 1)
       : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 1);
   const hasCopilotRequestsWrite =
     inferenceProvider === "github"
