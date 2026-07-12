@@ -1,4 +1,4 @@
-# Side Quest: Use `gh-aw` with the copilot-app
+# Side Quest: Use `gh-aw` with the Copilot App
 
 Use this side quest if you're working in the GitHub Copilot app and need a terminal for `gh-aw` commands.
 
@@ -8,7 +8,7 @@ You'll open a GitHub Codespace from your browser, verify `gh` access, install `g
 
 ## Open a Codespace
 
-From [Step 6](06-install-gh-aw.md), select the **Open in GitHub Codespaces** button in the copilot-app on-ramp section.
+From [Step 6](06-install-gh-aw.md), select the **Open in GitHub Codespaces** button in the **No terminal yet?** section.
 
 When the Codespace finishes loading:
 
