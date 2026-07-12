@@ -37,6 +37,10 @@ function isOrgScopedCodespacesToken(state) {
   return state.workspace?.context === "codespaces" && state.auth?.tokenScope === "org";
 }
 
+function isCodespacesWorkspace(state) {
+  return state.workspace?.context === "codespaces";
+}
+
 function buildTransitions() {
   return {
     "00-welcome": (state) => ({ ok: true, state }),
@@ -59,28 +63,35 @@ function buildTransitions() {
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
-      next.flags.hasRepo = true;
-      next.flags.repoCreatedViaUi = true;
-      next.flags.repoHasReadme = true;
       next.flags.environmentReady = true;
+      if (!isCodespacesWorkspace(state)) {
+        next.flags.hasRepo = true;
+        next.flags.repoCreatedViaUi = true;
+        next.flags.repoHasReadme = true;
+      }
       return { ok: true, state: deepFreeze(next) };
     },
     "03-create-your-repo": (state) => {
-      const repoCheck = ensure(
-        state.flags.hasRepo && state.flags.repoCreatedViaUi,
-        "Practice repository must be created in GitHub UI during setup",
-        "repo-setup-missing",
-        "In setup, create `my-agentic-workflows` from github.com/new before continuing."
+      const envCheck = ensure(
+        state.flags.environmentReady,
+        "Practice repository setup depends on an opened local terminal or Codespace",
+        "environment-not-ready",
+        "Complete the setup step (02-setup) before creating or cloning `my-agentic-workflows`."
       );
-      if (!repoCheck.ok) return repoCheck;
+      if (!envCheck.ok) return envCheck;
+      const next = cloneState(state);
+      if (!next.flags.hasRepo) {
+        next.flags.hasRepo = true;
+        next.flags.repoCreatedViaUi = true;
+        next.flags.repoHasReadme = true;
+      }
       const readmeCheck = ensure(
-        state.flags.repoHasReadme,
+        next.flags.repoHasReadme,
         "Practice repository is missing the starter README",
         "repo-readme-missing",
         "Enable 'Add a README file' when creating the repository in GitHub UI."
       );
       if (!readmeCheck.ok) return readmeCheck;
-      const next = cloneState(state);
       next.flags.repoVerified = true;
       return { ok: true, state: deepFreeze(next) };
     },

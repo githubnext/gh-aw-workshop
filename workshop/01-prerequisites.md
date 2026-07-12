@@ -6,17 +6,18 @@ _Starting with the right setup saves you from frustrating detours later._
 
 Complete these checks before you choose a setup path:
 
-- [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
+- [ ] You know where you'll run workshop commands: a local terminal or a GitHub Codespace
+- [ ] `gh` CLI ≥ 2.40 is available in that environment — run `gh --version` now if you're using your own terminal, or after opening your Codespace in [Adventure A](02a-setup-codespace.md)
 
 > [!NOTE]
-> If `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. Authentication (`gh auth login`) is handled in your chosen setup path — [Adventure A](02a-setup-codespace.md) or [Adventure B](02b-setup-local.md).
+> If you're using your own terminal and `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. If you're planning to use a Codespace, skip the local install commands and continue to [Adventure A](02a-setup-codespace.md). Authentication (`gh auth login`) is handled in your chosen setup path.
 
 <!-- -->
 
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
-> If you already have `gh` installed and authenticated with a GitHub account, you can skip Steps 1–5. Confirm these before jumping ahead:
-> - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
+> If you already have `gh` installed and authenticated in the environment you'll use for the workshop, you can skip Steps 1–5. Confirm these before jumping ahead:
+> - [ ] `gh` CLI ≥ 2.40 is available — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
 > - [ ] `gh auth status` shows a logged-in account
 > **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — all useful context, but safely skippable if you already have a working `gh` setup.
@@ -55,10 +56,11 @@ You'll confirm that you have everything required before writing a single line of
 
 ### Confirm required vs optional prerequisites
 
-- ✅ **Required:** `gh` CLI ≥ 2.40 (`gh --version`)
+- ✅ **Required:** access to either a local terminal or a GitHub Codespace
+- ✅ **Required:** `gh` CLI ≥ 2.40 in the environment you'll use (`gh --version`)
 - ✅ **Required (local terminal path):** Git (`git --version`)
 
-If `gh` is missing, install it using one of these one-liners:
+If you chose the **local terminal path** and `gh` is missing there, install it using one of these one-liners:
 
 > **Why this matters:** `gh-aw` is a `gh` CLI extension — it cannot run without `gh` installed. Skipping this step means the `gh aw` command in Step 6 will not exist and the workshop will stall there.
 
@@ -83,7 +85,7 @@ winget install GitHub.cli
 Full installation docs: [cli.github.com](https://cli.github.com)
 
 > [!NOTE]
-> **Can't install software locally?** No problem — skip the installs entirely.
+> **Planning to use a Codespace?** Skip the local install commands entirely.
 > Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40 and Git pre-installed, and `gh` is often already authenticated. Still run `gh auth status` to verify before you continue.
 > ➡️ **[Adventure A: Set Up a Codespace](02a-setup-codespace.md)**
 
@@ -136,7 +138,7 @@ Need a quick glossary with official docs links?
 ## ✅ Checkpoint
 
 - [ ] You have a GitHub account and can sign in
-- [ ] gh CLI ≥ 2.40 installed — verify with `gh --version`
+- [ ] gh CLI ≥ 2.40 is available in your chosen environment
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 

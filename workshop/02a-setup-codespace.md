@@ -42,10 +42,26 @@ GitHub will spin up a container with everything you need for the workshop alread
 > - `cd ..` → moves back up one folder
 > - `git status` → shows `On branch main` and whether your working tree is clean
 
+### Verify GitHub CLI and authentication
+
+Run these commands in the Codespace terminal:
+
+```bash
+gh --version
+gh auth status
+```
+
+You should see a `gh version 2.x.x` line and a message showing that you're logged in to `github.com`.
+
+> [!NOTE]
+> Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready before you create your practice repository or install `gh-aw`.
+
 ## ✅ Checkpoint
 
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
+- [ ] `gh --version` works in the Codespace terminal
+- [ ] `gh auth status` shows you're logged in to GitHub
 - [ ] You're ready to create your practice repository in the next step
 
 **Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
