@@ -12,7 +12,7 @@
 
 **After** — agentic workflow (you describe the goal):
 
-```
+```text
 List all open issues that need triage and summarize them with recommended next steps.
 ```
 
