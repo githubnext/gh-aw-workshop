@@ -1,11 +1,11 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
 > [!IMPORTANT]
-> **Using Copilot app or cloud agent?** These entry points don't include a local terminal.
-> If you're not already in one, jump to [Step 2: Open the Codespace](#open-the-codespace),
-> then continue this step in the Codespace terminal.
+> **Using GitHub Copilot Chat, the Copilot mobile app (`copilot-app`), or the cloud coding agent?**
+> Adventure A is the **recommended setup path** for you — no local terminal required.
+> Start at [Open the Codespace](#open-the-codespace) below.
 
-Adventure A is the no-local-install path for **GitHub Codespaces**, **VS Code (integrated terminal in Codespaces)**, **copilot-app**, and **cloud-agent** users.
+Adventure A is the **recommended, no-local-install path** for **GitHub Codespaces**, **VS Code (integrated terminal in Codespaces)**, **copilot-app**, and **cloud-agent** users.
 
 _A Codespace gives you a full development environment in your browser — no installs, no version conflicts, just you and the workshop._
 

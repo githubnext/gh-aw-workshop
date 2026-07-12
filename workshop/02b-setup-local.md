@@ -1,11 +1,8 @@
 # Adventure B: Set Up Your Local Terminal
 
 > [!IMPORTANT]
-> **Not using a local terminal? → [Return to Adventure A (Codespace)](02a-setup-codespace.md)**
->
-> **Using Copilot app or cloud agent?** These entry points don't include a local terminal.
-> Open this repository in a [Codespace](02a-setup-codespace.md#open-the-codespace) first,
-> then continue with [Adventure A](02a-setup-codespace.md) and run all commands in the Codespace terminal.
+> **Adventure B requires a local terminal with `git` and `gh` installed.**
+> **Using GitHub Copilot Chat, the Copilot mobile app, or the cloud coding agent?** Go back to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) — it is the right path for you.
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
