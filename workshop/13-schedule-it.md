@@ -12,6 +12,24 @@ You'll update the `schedule` trigger in your workflow using gh-aw's fuzzy schedu
 - You have a working, manually tested workflow from [Test and Improve Your Workflow](12-test-and-iterate.md).
 - Your workflow file lives at `.github/workflows/daily-status.md`.
 
+## What a compile error looks like
+
+If the `schedule` line is nested incorrectly under `on:`, `gh aw compile` reports a YAML parse error. For example, this is broken:
+
+```yaml
+on:
+schedule: daily on weekdays
+  workflow_dispatch: {}
+```
+
+Fix it by indenting both trigger keys equally under `on:`:
+
+```yaml
+on:
+  schedule: daily on weekdays
+  workflow_dispatch: {}
+```
+
 ## Steps
 
 ### 1. Open your workflow file
@@ -52,6 +70,12 @@ on:
 
 > [!TIP]
 > Keep `workflow_dispatch` in the file even after you go to production. It lets you re-run the report on demand without changing the schedule.
+> **Compile checkpoint:** Save your file, then run:
+> ```bash
+> gh aw compile .github/workflows/daily-status.md
+> ```
+> A green output means your YAML is valid so far. If you see a red error, check indentation in the `on:` block you just edited.
+> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
 ### 4. Compile and validate
 
@@ -64,7 +88,7 @@ gh aw compile .github/workflows/daily-status.md
 You should see `✅ Compiled successfully`. The compiled `.yml` will contain the expanded cron expression — you don't need to write or maintain it by hand.
 
 > [!NOTE]
-> **GitHub UI path:** Compilation requires a terminal or Codespace. UI path users can skip this step — GitHub Actions will surface any issues when the workflow next runs.
+> **GitHub UI path:** You won't be able to validate YAML until after committing. Run `gh aw compile` in a Codespace if you want early feedback.
 
 ### 5. Commit and push
 

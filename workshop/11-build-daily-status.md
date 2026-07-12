@@ -12,6 +12,24 @@ You'll write the complete `daily-status.md` agentic workflow file, placing it in
 - Your terminal is inside `my-agentic-workflows`
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
+## What a compile error looks like
+
+If a key is indented at the wrong level, `gh aw compile` fails with a YAML parse error. For example, this is broken because `workflow_dispatch` is mis-indented:
+
+```yaml
+on:
+  schedule: daily
+workflow_dispatch: {}
+```
+
+Fix it by indenting `workflow_dispatch` under `on:`:
+
+```yaml
+on:
+  schedule: daily
+  workflow_dispatch: {}
+```
+
 ---
 
 ## The Workflow File at a Glance
@@ -57,7 +75,7 @@ Then open your editor and create `.github/workflows/daily-status.md` (the filena
 4. Click **Commit new file**.
 
 > [!NOTE]
-> The `gh aw compile` checkpoints below require a terminal or Codespace. UI path users can skip them — GitHub Actions will surface any errors when the workflow first runs. If you want early validation, open the repository in a Codespace later and run `gh aw compile .github/workflows/daily-status.md`.
+> You won't be able to validate YAML until after committing — run `gh aw compile` in a Codespace if you want early feedback.
 
 </details>
 
@@ -76,12 +94,13 @@ description: Post a daily repository status summary as a GitHub issue comment. #
 
 > [!NOTE]
 > The `emoji` and `description` fields are metadata only — they appear in the `gh aw` dashboard and the Actions UI to help you identify the workflow at a glance. They have no effect on how the agent runs.
-
-Compile after saving:
-
-```bash
-gh aw compile .github/workflows/daily-status.md
-```
+> [!TIP]
+> **Compile checkpoint:** Save your file, then run:
+> ```bash
+> gh aw compile .github/workflows/daily-status.md
+> ```
+> A green output means your YAML is valid so far. If you see a red error, check the indentation in the section you just added.
+> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
 ### Build section 2: trigger block
 
@@ -96,12 +115,13 @@ on: # Run triggers
 > [!NOTE]
 > `schedule: daily` is `gh-aw`'s plain-English shorthand for a daily cron schedule — it compiles to `0 0 * * *`, triggering the agent once every day around midnight UTC.
 > `workflow_dispatch: {}` adds a manual **Run workflow** button in the Actions UI so you can test on demand without waiting for the next scheduled run.
-
-Compile again:
-
-```bash
-gh aw compile .github/workflows/daily-status.md
-```
+> [!TIP]
+> **Compile checkpoint:** Save your file, then run:
+> ```bash
+> gh aw compile .github/workflows/daily-status.md
+> ```
+> A green output means your YAML is valid so far. If you see a red error, check the indentation in the section you just added.
+> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
 ### Build section 3: permissions block
 
@@ -118,12 +138,13 @@ permissions: # Required GitHub scopes
 
 > [!NOTE]
 > `copilot-requests: write` is the permission that allows the Actions runner to call the Copilot AI API on your behalf — it is required for any agentic workflow. Every other permission here is read-only, which means the workflow can observe repository state but cannot modify it. The only write action is gated behind the `safe-outputs` guardrail configured in the next section.
-
-Compile again:
-
-```bash
-gh aw compile .github/workflows/daily-status.md
-```
+> [!TIP]
+> **Compile checkpoint:** Save your file, then run:
+> ```bash
+> gh aw compile .github/workflows/daily-status.md
+> ```
+> A green output means your YAML is valid so far. If you see a red error, check the indentation in the section you just added.
+> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
 ### Build section 4: tools and output guardrails
 
@@ -142,12 +163,13 @@ safe-outputs: # Write guardrails
 
 > [!NOTE]
 > `mode: gh-proxy` routes all GitHub API calls through a controlled proxy rather than giving the agent a raw token — the proxy enforces that only the scopes declared in `permissions` are used. `safe-outputs.add-comment: max: 1` is the write guardrail: the agent is permitted to post at most one issue comment per run and nothing else, no matter what the task brief says.
-
-Compile again:
-
-```bash
-gh aw compile .github/workflows/daily-status.md
-```
+> [!TIP]
+> **Compile checkpoint:** Save your file, then run:
+> ```bash
+> gh aw compile .github/workflows/daily-status.md
+> ```
+> A green output means your YAML is valid so far. If you see a red error, check the indentation in the section you just added.
+> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
 ### Build section 5: agent instructions block
 
@@ -188,11 +210,13 @@ Find the most recently updated open issue and post a comment in this format:
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
 ```
 
-Compile one more time:
-
-```bash
-gh aw compile .github/workflows/daily-status.md
-```
+> [!TIP]
+> **Compile checkpoint:** Save your file, then run:
+> ```bash
+> gh aw compile .github/workflows/daily-status.md
+> ```
+> A green output means your YAML is valid so far. If you see a red error, check the indentation in the section you just added.
+> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
 ## Troubleshooting
 
