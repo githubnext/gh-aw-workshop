@@ -29,7 +29,7 @@ extension so you can compile and run [agentic workflows](https://github.github.c
 - You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You're inside your `my-agentic-workflows` repository directory
 - You have authenticated the `gh` CLI with `gh auth login`
-  (done in [Verify GitHub CLI and authentication](02a-setup-codespace.md#verify-github-cli-and-authentication)
+  (done in [Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready)
   or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 Run this now to confirm `gh` is installed and authenticated before continuing:
@@ -38,7 +38,7 @@ Run this now to confirm `gh` is installed and authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Verify GitHub CLI and authentication](02a-setup-codespace.md#verify-github-cli-and-authentication) or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready) or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
 
 ## Choose your path
 
