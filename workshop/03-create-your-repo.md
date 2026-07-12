@@ -10,7 +10,7 @@ You'll open the `my-agentic-workflows` repository you already created during set
 
 - You've completed either [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 - You have a GitHub account and are signed in
-- You either already created `my-agentic-workflows` during setup, or you'll create it now in GitHub UI with **Add a README file** enabled
+- You've already created `my-agentic-workflows` during setup in GitHub UI with **Add a README file** enabled
 
 ## Steps
 
@@ -19,7 +19,6 @@ You'll open the `my-agentic-workflows` repository you already created during set
 Open `https://github.com/<your-username>/my-agentic-workflows` in your browser.
 
 > [!NOTE]
-> If you skipped repository creation in setup, create it now using [github.com/new](https://github.com/new), set it to **Public**, and check **Add a README file**.
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
 ### 2. Clone and enter the repository

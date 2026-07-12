@@ -40,25 +40,29 @@ All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
 
-### 1. Fork the workshop repository and create your practice repository
+### 1. Fork the workshop repository
 
 You'll work in your own copy of the workshop repository.
 
 1. Open [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) in your browser.
 2. Click **Fork** (top-right corner).
 3. Accept the defaults and click **Create fork**.
-4. Open [github.com/new](https://github.com/new).
-5. Enter `my-agentic-workflows` for **Repository name**.
-6. Set **Visibility** to **Public**.
-7. Check **Add a README file**.
-8. Click **Create repository**.
 
 > [!NOTE]
 > Forking creates your own copy under your account. All experiments stay in your fork — the original is untouched.
->
+
+### 2. Create your practice repository
+
+1. Open [github.com/new](https://github.com/new).
+2. Enter `my-agentic-workflows` for **Repository name**.
+3. Set **Visibility** to **Public**.
+4. Check **Add a README file**.
+5. Click **Create repository**.
+
+> [!NOTE]
 > Creating `my-agentic-workflows` now keeps setup ordering consistent with the Codespace path and avoids an empty repository.
 
-### 2. Verify Git
+### 3. Verify Git
 
 ```bash
 git --version
@@ -70,7 +74,7 @@ _What success looks like:_ a line like `git version 2.x.x`.
 
 You should see `git version 2.x.x` or higher. If you see an error, download Git from [git-scm.com](https://git-scm.com) and re-run the check.
 
-### 3. Install the gh CLI
+### 4. Install the gh CLI
 
 The `gh` CLI is GitHub's official command-line tool. Check whether it's already installed:
 
@@ -120,7 +124,7 @@ _What success looks like:_ package install reports success.
 
 _What success looks like:_ apt completes and `gh` is installed without errors.
 
-### 4. Authenticate the gh CLI
+### 5. Authenticate the gh CLI
 
 ```bash
 gh auth login
@@ -135,7 +139,7 @@ Choose **GitHub.com** and then **Login with a web browser**. A one-time code wil
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
-### 5. Clone your fork
+### 6. Clone your fork
 
 Replace `YOUR_USERNAME` with your GitHub username:
 
@@ -148,7 +152,7 @@ cd gh-aw-workshop
 
 _What success looks like:_ clone finishes and `cd` returns you to a prompt inside `gh-aw-workshop`.
 
-### 6. Verify everything is in order
+### 7. Verify everything is in order
 
 ```bash
 gh repo view --json name,owner | cat
