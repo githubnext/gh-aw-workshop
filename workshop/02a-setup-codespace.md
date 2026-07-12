@@ -74,9 +74,17 @@ You should see `github/gh-aw` listed. If you don't see it yet, don't worry — y
 > [!NOTE]
 > The Codespace was built from a `.devcontainer` configuration that pre-installs the `gh` CLI. You don't need to install it yourself.
 
-### 4. Authenticate the gh CLI
+### 4. Verify GitHub authentication
 
-The `gh` CLI needs to be authorised to act on your behalf.
+Codespaces often start with `gh` already authenticated, but you should still verify before you move on.
+
+```bash
+gh auth status
+```
+
+If the command shows `Logged in to github.com`, you're ready.
+
+If it says authentication is required, run:
 
 ```bash
 gh auth login
@@ -100,7 +108,7 @@ You should see `githubnext` as `owner` and `gh-aw-workshop` as `name`.
 - [ ] Your `my-agentic-workflows` repository is created on GitHub with a starter README
 - [ ] The Codespace editor is open in your browser
 - [ ] `gh --version` returns a version number
-- [ ] `gh auth login` completed without errors
+- [ ] `gh auth status` shows you are logged in to GitHub
 
 **Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
 

@@ -191,8 +191,13 @@ You should see output like:
 ✔ hello-agent.md — valid
 ```
 
-> [!NOTE]
-> Validation checks the file structure. The agent's reasoning happens at runtime, not compile time.
+Validation checks the file structure. The agent's reasoning happens at runtime, not compile time.
+
+> [!IMPORTANT]
+> **Before you run this workflow in Step 8, do one quick pre-flight check:**
+> - Run `gh auth status` and confirm it shows a logged-in account
+> - Run `gh copilot status` and confirm Copilot access is available
+> - If Copilot credentials are missing, run `gh auth refresh -s copilot` before you continue
 
 ### 7. Commit and push
 
