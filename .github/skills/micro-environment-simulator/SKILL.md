@@ -47,10 +47,12 @@ Model environment state with explicit fields for:
 - OS (`macos`, `linux`, `windows`)
 - terminal (`bash`, `zsh`, `powershell`, `cmd`)
 - installed software (`gh`, `aw`, and related versions)
-- login status (`gh auth status` equivalent)
+- login status (`gh auth status` equivalent, including pre-authenticated Codespaces sessions)
 - agent authentication material (`hasApiKey`, `hasCopilotRequestToken`)
+- gh token scope (`user`, `org`)
 - account type (`personal`, `enterprise-managed`)
 - deployment type (`github.com`, `ghec`, `ghes`)
+- workspace context (`codespaces`, `local`)
 
 ## Approach
 
@@ -73,6 +75,7 @@ Model environment state with explicit fields for:
 - Ensure every instruction checks assumptions before mutating state.
 - Distinguish platform-specific command behavior across OS/terminal combinations.
 - Distinguish auth/account/deployment constraints (`github.com` vs `ghec` vs `ghes`).
+- Model org-scoped Codespaces token behavior where `gh extension install GitHub/gh-aw` can return HTTP 403 and requires install script remediation.
 
 ## Output Contract
 
