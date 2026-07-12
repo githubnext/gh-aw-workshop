@@ -48,6 +48,7 @@ Model environment state with explicit fields for:
 - terminal (`bash`, `zsh`, `powershell`, `cmd`)
 - installed software (`gh`, `aw`, and related versions)
 - login status (`gh auth status` equivalent)
+- agent authentication material (`hasApiKey`, `hasCopilotRequestToken`)
 - account type (`personal`, `enterprise-managed`)
 - deployment type (`github.com`, `ghec`, `ghes`)
 
