@@ -41,6 +41,16 @@ function isCodespacesWorkspace(state) {
   return state.workspace?.context === "codespaces";
 }
 
+const PROVIDER_SECRET_BY_NAME = {
+  github: "COPILOT_GITHUB_TOKEN",
+  anthropic: "ANTHROPIC_API_KEY",
+  openai: "OPENAI_API_KEY"
+};
+
+function requiredSecretForProvider(provider) {
+  return PROVIDER_SECRET_BY_NAME[provider] || null;
+}
+
 function buildTransitions() {
   return {
     "00-welcome": (state) => ({ ok: true, state }),
@@ -167,6 +177,44 @@ function buildTransitions() {
         "Run `gh auth status` first (Codespaces sessions are often pre-authenticated); if needed, run `gh auth login` before triggering workflow runs."
       );
       if (!authCheck.ok) return authCheck;
+
+      const provider = state.actions?.inferenceProvider;
+      const providerCheck = ensure(
+        provider === "github" || provider === "anthropic" || provider === "openai",
+        "Workflow run is missing a supported model inference provider configuration",
+        "inference-provider-missing",
+        "Set the workflow model provider to github, anthropic, or openai before running."
+      );
+      if (!providerCheck.ok) return providerCheck;
+
+      const requiredSecret = requiredSecretForProvider(provider);
+      const hasRequiredSecret = Boolean(state.actions?.secrets?.[requiredSecret]);
+      const providerSecretCheck = ensure(
+        hasRequiredSecret,
+        `Required Actions secret '${requiredSecret}' is not configured for '${provider}' inference`,
+        "provider-secret-missing",
+        `Add repository or organization Actions secret '${requiredSecret}' before running the workflow.`
+      );
+      if (!providerSecretCheck.ok) return providerSecretCheck;
+
+      if (provider === "github") {
+        if (state.actions?.permissions?.copilotRequestsWrite !== true) {
+          if (state.auth?.accountType === "enterprise-managed") {
+            return ensure(
+              false,
+              "Enterprise GitHub inference requires `permissions.copilot-requests: write` to enable org billing",
+              "org-billing-not-enabled",
+              "Set `permissions.copilot-requests: write` for enterprise workflows that use GitHub inference."
+            );
+          }
+          return ensure(
+            false,
+            "Workflow is missing `permissions.copilot-requests: write` for GitHub inference",
+            "copilot-permission-missing",
+            "Add `permissions.copilot-requests: write` to the workflow frontmatter."
+          );
+        }
+      }
 
       const next = cloneState(state);
       next.flags.ranWorkflow = true;

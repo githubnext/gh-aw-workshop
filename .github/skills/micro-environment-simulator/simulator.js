@@ -8,6 +8,8 @@ const VALID_TERMINALS = {
   windows: new Set(["powershell", "cmd"])
 };
 
+const INFERENCE_PROVIDERS = ["github", "anthropic", "openai"];
+
 function toDayOfYear(isoDate) {
   const date = new Date(`${isoDate}T00:00:00Z`);
   const start = new Date(Date.UTC(date.getUTCFullYear(), 0, 0));
@@ -54,6 +56,13 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
   const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
   const hasCopilotRequestToken = isLoggedIn && (student.tool === "cloud-agent" || seed % 2 === 0);
+  const inferenceProvider = deterministicChoice(seed + 4, INFERENCE_PROVIDERS);
+  const hasCopilotGithubToken = isLoggedIn && (inferenceProvider === "github" ? seed % 5 !== 0 : seed % 7 === 0);
+  const hasAnthropicApiKey =
+    isLoggedIn && (inferenceProvider === "anthropic" ? level !== "beginner" || seed % 3 !== 0 : seed % 8 === 0);
+  const hasOpenAiApiKey =
+    isLoggedIn && (inferenceProvider === "openai" ? level !== "beginner" || seed % 3 !== 1 : seed % 8 === 1);
+  const hasCopilotRequestsWrite = inferenceProvider === "github" ? seed % 4 !== 0 : seed % 3 !== 0;
 
   return deepFreeze({
     studentId: id,
@@ -76,6 +85,17 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     },
     workspace: {
       context: inCodespaces ? "codespaces" : "local"
+    },
+    actions: {
+      inferenceProvider,
+      permissions: {
+        copilotRequestsWrite: hasCopilotRequestsWrite
+      },
+      secrets: {
+        COPILOT_GITHUB_TOKEN: hasCopilotGithubToken,
+        ANTHROPIC_API_KEY: hasAnthropicApiKey,
+        OPENAI_API_KEY: hasOpenAiApiKey
+      }
     },
     flags: {
       sawActionsIntro: false,
