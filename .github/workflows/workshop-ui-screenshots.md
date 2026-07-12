@@ -60,7 +60,8 @@ steps:
           while IFS= read -r line_content; do
             line_num=$((line_num + 1))
             # Extract image refs: ![alt](path) — skip http URLs and inside code blocks
-            echo "$line_content" | grep -oP '!\[[^\]]*\]\([^)]+\)' | while IFS= read -r img_ref; do
+            # Use { grep || true; } so grep's exit 1 (no match) doesn't abort the pipeline under set -euo pipefail
+            echo "$line_content" | { grep -oP '!\[[^\]]*\]\([^)]+\)' || true; } | while IFS= read -r img_ref; do
               alt=$(echo "$img_ref" | sed 's/!\[\([^\]]*\)\].*/\1/')
               path=$(echo "$img_ref" | sed 's/!\[[^\]]*\](\([^)]*\))/\1/')
               # Skip external URLs
