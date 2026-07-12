@@ -42,6 +42,8 @@ This shell command:
 
 > [!NOTE]
 > `$GITHUB_OUTPUT` is a special GitHub Actions file. Anything you write in the format `key=value` becomes available to later steps as `steps.<id>.outputs.key`.
+>
+> Want to understand how `${{ steps.recent.outputs.commit_count }}` works and what other context objects exist? See [Side Quest: GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md).
 
 ### Add a top-level condition in frontmatter
 
