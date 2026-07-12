@@ -215,7 +215,11 @@ No high-volume similar-title clusters found. Scanned {total_files} files and {to
 
 For each cluster in `title-clusters.json`:
 
-1. Confirm the cluster reflects semantically similar headings (not just shared generic words).
+1. Confirm the cluster reflects semantically similar headings (not just shared
+   generic words). Treat headings as semantically similar when they describe the
+   same learner intent (for example, "Run your workflow" and "Execute the
+   workflow"), and reject clusters where overlap comes only from generic tokens
+   such as "Step", "Checkpoint", or "Next steps".
 2. Ignore clusters that represent valid parallel structure (for example repeated `## ✅ Checkpoint` headings).
 3. Keep only genuine clusters where title wording can be consolidated, clarified, or differentiated.
 
@@ -238,7 +242,11 @@ Title format (prefix is added automatically):
 ```
 
 Use the first heading from the cluster's `titles` list as the representative
-title.
+title after sorting `titles` by:
+
+1. highest exact-title frequency within the cluster
+2. shortest title length
+3. alphabetical order
 
 Issue body must include:
 
