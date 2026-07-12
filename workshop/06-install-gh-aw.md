@@ -70,7 +70,7 @@ If you are using `copilot-app`, you must open a Codespace to run install command
 <!-- -->
 
 > [!IMPORTANT]
-> **Getting HTTP 403?** You're likely in an organization-owned Codespace.
+> **Getting HTTP 403?** You're likely in an org-owned Codespace.
 > Run this fallback instead:
 > ```bash
 > curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
