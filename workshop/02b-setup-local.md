@@ -23,7 +23,7 @@ You'll install the tools you need on your own machine: Git and the `gh` CLI. You
 > [!NOTE]
 > **New to terminals?** A terminal (also called a shell or command line) is a text-based interface where you type commands to control your computer. If that sounds unfamiliar, you may find it easier to use [Adventure A: Codespace](02a-setup-codespace.md) instead — it sets everything up for you in the browser with no local installs required.
 
-## 🧭 Terminal Basics (1 minute)
+## 🧭 Terminal Basics
 
 If this is your first time in a terminal, use this legend while running each step:
 
