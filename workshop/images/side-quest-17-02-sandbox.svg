@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">Sandbox boundary for agentic workflow</title>
+  <desc id="desc">Diagram showing repository and tools inside a sandbox boundary, with blocked unsafe areas outside.</desc>
+  <rect width="980" height="520" fill="#f8fafc"/>
+  <text x="40" y="48" font-family="Arial, sans-serif" font-size="30" fill="#0f172a" font-weight="700">Agentic Workflow Sandbox (ELI5)</text>
+
+  <rect x="50" y="90" width="600" height="370" rx="20" fill="#e0f2fe" stroke="#0284c7" stroke-width="4" stroke-dasharray="10 8"/>
+  <text x="70" y="128" font-family="Arial, sans-serif" font-size="24" fill="#075985" font-weight="700">Sandbox boundary</text>
+
+  <rect x="90" y="160" width="240" height="120" rx="12" fill="#ffffff" stroke="#0369a1" stroke-width="2"/>
+  <text x="110" y="198" font-family="Arial, sans-serif" font-size="22" fill="#0f172a">Agent</text>
+  <text x="110" y="230" font-family="Arial, sans-serif" font-size="17" fill="#334155">Reads brief, decides tools</text>
+
+  <rect x="360" y="160" width="250" height="120" rx="12" fill="#ffffff" stroke="#0369a1" stroke-width="2"/>
+  <text x="380" y="198" font-family="Arial, sans-serif" font-size="22" fill="#0f172a">Allowed tools</text>
+  <text x="380" y="230" font-family="Arial, sans-serif" font-size="17" fill="#334155">Only listed MCP toolsets</text>
+
+  <rect x="90" y="310" width="520" height="120" rx="12" fill="#ffffff" stroke="#0369a1" stroke-width="2"/>
+  <text x="110" y="348" font-family="Arial, sans-serif" font-size="22" fill="#0f172a">Permissions gate</text>
+  <text x="110" y="380" font-family="Arial, sans-serif" font-size="17" fill="#334155">Actions + gh-aw enforce declared scopes</text>
+
+  <line x1="330" y1="220" x2="360" y2="220" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="210" y1="280" x2="210" y2="310" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="485" y1="280" x2="485" y2="310" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="110" width="240" height="160" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="720" y="146" font-family="Arial, sans-serif" font-size="22" fill="#7f1d1d">Outside sandbox</text>
+  <text x="720" y="182" font-family="Arial, sans-serif" font-size="17" fill="#991b1b">Random systems</text>
+  <text x="720" y="210" font-family="Arial, sans-serif" font-size="17" fill="#991b1b">Undeclared permissions</text>
+  <text x="720" y="238" font-family="Arial, sans-serif" font-size="17" fill="#991b1b">Unapproved actions</text>
+
+  <text x="706" y="315" font-family="Arial, sans-serif" font-size="18" fill="#991b1b" font-weight="700">✋ Blocked by boundary</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+</svg>

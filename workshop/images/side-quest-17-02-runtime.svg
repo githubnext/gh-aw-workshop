@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">Where the agent runs in a workflow</title>
+  <desc id="desc">Diagram showing repository and workflow file triggering a temporary GitHub Actions runner where the agent executes and produces safe outputs.</desc>
+  <rect width="980" height="520" fill="#f8fafc"/>
+  <text x="40" y="48" font-family="Arial, sans-serif" font-size="30" fill="#0f172a" font-weight="700">Where the Agent Runs</text>
+
+  <rect x="60" y="100" width="250" height="120" rx="12" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="84" y="142" font-family="Arial, sans-serif" font-size="21" fill="#0f172a">Your repository</text>
+  <text x="84" y="174" font-family="Arial, sans-serif" font-size="16" fill="#334155">Code + workflow file</text>
+
+  <rect x="360" y="100" width="250" height="120" rx="12" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="384" y="142" font-family="Arial, sans-serif" font-size="21" fill="#0f172a">GitHub Actions</text>
+  <text x="384" y="174" font-family="Arial, sans-serif" font-size="16" fill="#334155">Starts a temporary runner</text>
+
+  <rect x="660" y="80" width="270" height="240" rx="14" fill="#eef2ff" stroke="#4338ca" stroke-width="3"/>
+  <text x="686" y="120" font-family="Arial, sans-serif" font-size="21" fill="#1e1b4b" font-weight="700">Temporary runner</text>
+
+  <rect x="688" y="145" width="214" height="70" rx="10" fill="#ffffff" stroke="#4338ca" stroke-width="2"/>
+  <text x="706" y="188" font-family="Arial, sans-serif" font-size="20" fill="#0f172a">Agent process</text>
+
+  <rect x="688" y="232" width="214" height="70" rx="10" fill="#ffffff" stroke="#4338ca" stroke-width="2"/>
+  <text x="706" y="273" font-family="Arial, sans-serif" font-size="20" fill="#0f172a">Allowed tools</text>
+
+  <line x1="310" y1="160" x2="360" y2="160" stroke="#1d4ed8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="610" y1="160" x2="660" y2="160" stroke="#1d4ed8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="160" y="290" width="660" height="170" rx="14" fill="#ecfdf5" stroke="#16a34a" stroke-width="3"/>
+  <text x="185" y="332" font-family="Arial, sans-serif" font-size="24" fill="#14532d" font-weight="700">Safe outputs</text>
+  <text x="185" y="366" font-family="Arial, sans-serif" font-size="18" fill="#14532d">• Daily summary of PRs/issues/commits</text>
+  <text x="185" y="394" font-family="Arial, sans-serif" font-size="18" fill="#14532d">• Actionable status notes for collaborators</text>
+  <text x="185" y="422" font-family="Arial, sans-serif" font-size="18" fill="#14532d">• No secrets or hidden credentials in logs/comments</text>
+
+  <text x="685" y="352" font-family="Arial, sans-serif" font-size="17" fill="#14532d">Runner is deleted after run</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
+</svg>
