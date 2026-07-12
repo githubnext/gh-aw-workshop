@@ -58,6 +58,9 @@ The wizard asks which AI engine should power the workflow. Choose **Copilot** to
 
 > [!NOTE]
 > **Using an engine other than Copilot?** You will need an API key for that provider. The wizard will prompt you to enter it and offer to store it as a GitHub Actions secret in your repository so the workflow can use it at runtime.
+>
+> - ➡️ [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — for the `claude` engine
+> - ➡️ [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — for the `codex` engine
 
 ### Review the secret prompt
 
