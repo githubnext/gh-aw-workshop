@@ -11,6 +11,9 @@ You'll create your `my-agentic-workflows` repository, open it on GitHub, confirm
 - You've completed either [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 - You have a GitHub account and are signed in
 
+> [!NOTE]
+> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+
 ## Steps
 
 ### Create your practice repository
