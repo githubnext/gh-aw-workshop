@@ -95,3 +95,8 @@ You should see your username as `owner` and `gh-aw-workshop` as `name`.
 - [ ] `gh auth login` completed without errors
 
 **Next:** [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [gh aw CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)
