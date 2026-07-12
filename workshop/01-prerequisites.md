@@ -2,18 +2,6 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
-## 🔍 Quick self-check
-
-If you already have a terminal with `gh` available, run this single command to confirm your environment is ready:
-
-```bash
-gh auth status && gh --version && echo "✅ Ready to continue"
-```
-
-If the check fails with an authentication error, run `gh auth login` first — see the [GitHub CLI auth docs](https://cli.github.com/manual/gh_auth_login).
-
-If `gh` is not found, install it using the steps in [§ Confirm required vs optional prerequisites](#1-confirm-required-vs-optional-prerequisites) below.
-
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
 > If you already have `gh` installed, a GitHub repo ready, and `gh` authenticated, you can skip Steps 1–5. Confirm all three before jumping ahead:
