@@ -66,7 +66,7 @@ gh aw compile .github/workflows/training-plan-research.md --validate
 
 ## ✅ Checkpoint
 
-- [ ] You reviewed current gh-aw direction signals from `llms.txt`
+- [ ] You reviewed current gh-aw direction signals from `LLMs.txt`
 - [ ] You identified one concrete learner gap for a new training node
 - [ ] You drafted a bounded node scope tied to specific repository files
 - [ ] You captured supporting rationale in XML comments
