@@ -8,9 +8,7 @@ You'll open a GitHub Codespace from your browser, verify `gh` access, install `g
 
 ## Open a Codespace
 
-From the Step 6 page, select the Codespaces button:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
+From [Step 6](06-install-gh-aw.md), select the **Open in GitHub Codespaces** button in the `copilot-app` on-ramp section.
 
 When the Codespace finishes loading:
 
