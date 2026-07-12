@@ -85,4 +85,4 @@ git push
 - [ ] You triggered the workflow manually and confirmed the conditional behaviour in the run log
 - [ ] The workflow still posts a summary on days with commits
 
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
