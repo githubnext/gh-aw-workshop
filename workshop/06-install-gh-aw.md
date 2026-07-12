@@ -38,7 +38,7 @@ Run this now to confirm `gh` is installed and authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error, return to [Step 1: Prerequisites](01-prerequisites.md) (for `gh` install) or [Step 2: Set Up a Codespace](02a-setup-codespace.md#verify-github-cli-and-authentication) (for auth).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Verify GitHub CLI and authentication](02a-setup-codespace.md#verify-github-cli-and-authentication) or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
 
 ## Choose your path
 
@@ -143,7 +143,7 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 
 - [ ] `gh auth status` shows you are logged in to github.com
 - [ ] `gh --version` returns a `gh version 2.x.x` value
-- [ ] `gh extension install github/gh-aw` succeeded **or** the fallback (`curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh | sh`) succeeded for a 403 error
+- [ ] `gh extension install github/gh-aw` succeeded (or the fallback install succeeded if you encountered a 403 error)
 - [ ] `gh extension list` shows `github/gh-aw`
 - [ ] `gh aw --version` returns a version number (e.g. `gh-aw version 0.81.6` or later)
 
