@@ -1,6 +1,6 @@
-# Side Quest: Use `gh-aw` with the GitHub Copilot App
+# Side Quest: Use `gh-aw` with the GitHub Copilot Cloud Agent
 
-Use this side quest if you're working in the GitHub Copilot app (web or mobile) and need a terminal for `gh-aw` commands.
+Use this side quest if you're working in the **GitHub Copilot Cloud Agent (CCA)** and need a terminal for `gh-aw` commands.
 
 ## What you'll do
 
@@ -9,7 +9,7 @@ You'll open a GitHub Codespace from your browser, verify `gh` access, install `g
 ## Open a Codespace
 
 From [Step 6](06-install-gh-aw.md), select the Codespaces button in the
-**Open a Codespace first (GitHub Copilot app users)** section.
+**Open a Codespace first (GitHub Copilot Cloud Agent users)** section.
 
 When the Codespace finishes loading:
 

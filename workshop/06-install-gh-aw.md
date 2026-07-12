@@ -1,14 +1,14 @@
 # Step 6: Install the gh-aw CLI Extension
 
-## Open a Codespace first (GitHub Copilot app users)
+## Open a Codespace first (GitHub Copilot Cloud Agent users)
 
-If you're using the GitHub Copilot app (web or mobile) and don't have a terminal open yet, use this button:
+If you're using the **GitHub Copilot Cloud Agent (CCA)** and don't have a terminal open yet, use this button:
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
 
 Then return to this page and continue with [Install from terminal](#install-from-terminal).
 
-For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the Copilot App](side-quest-06-02-copilot-app-codespace.md).
+For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md).
 
 <!-- Separate adjacent callouts -->
 
@@ -47,7 +47,7 @@ Use the path that matches your tool before you run any install command:
 | I am using… | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| `copilot-app` (web/mobile) | [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users) |
+| **GitHub Copilot Cloud Agent (CCA)** | [Open a Codespace for CCA users](#open-a-codespace-for-cca-users) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
@@ -62,10 +62,10 @@ If you get a version number, skip to [Confirm installation](#confirm-installatio
 
 If the command is not found:
 
-- If you are using `copilot-app`, first complete [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users)
+- If you are using the **GitHub Copilot Cloud Agent (CCA)**, first complete [Open a Codespace for CCA users](#open-a-codespace-for-cca-users)
 - Then continue with [Install from terminal](#install-from-terminal)
 
-## Open a Codespace for copilot-app users
+## Open a Codespace for CCA users
 
 Open a Codespace to run install commands in its terminal:
 
