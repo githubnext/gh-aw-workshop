@@ -38,7 +38,7 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 | Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
 
 > [!NOTE]
-> Reminder: if you're confused about why this file ends in `.md` instead of `.yml`, see the [Classic vs. Agentic comparison table in Step 5](05-agentic-workflows-intro.md#side-by-side-classic-actions-vs-agentic-workflows).
+> Reminder: if you're confused about why this file ends in `.md` instead of `.yml`, see the [Classic vs. Agentic comparison table in Step 5](05-agentic-workflows-intro.md#classic-actions-vs-agentic-workflows).
 
 Before diving in, there are optional side quests if you want more detail first:
 
