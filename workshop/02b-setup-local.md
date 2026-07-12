@@ -1,6 +1,8 @@
 # Adventure B: Set Up Your Local Terminal
 
 > [!IMPORTANT]
+> **Not using a local terminal? → [Return to Adventure A (Codespace)](02a-setup-codespace.md)**
+>
 > **Using Copilot app or cloud agent?** These entry points don't include a local terminal.
 > Open this repository in a [Codespace](02a-setup-codespace.md#open-the-codespace) first,
 > then continue with [Adventure A](02a-setup-codespace.md) and run all commands in the Codespace terminal.
