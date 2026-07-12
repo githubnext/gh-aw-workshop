@@ -23,7 +23,7 @@ Find your **Daily Repo Status** workflow in the left sidebar and click it. Then 
 > [!TIP]
 > You can also trigger it from the terminal:
 > ```bash
-> gh workflow run daily-status.md
+> gh aw run daily-status
 > ```
 
 ### Watch the run live
