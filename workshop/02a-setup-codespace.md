@@ -8,7 +8,7 @@
 > | **GitHub Codespaces**, **copilot-app**, or **cloud-agent** | ✅ Stay on **Adventure A** (this page) |
 > | A local terminal on your own machine (including **VS Code integrated terminal** outside Codespaces) | ➡️ Use [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
 
-Adventure A is the no-local-install path for **Codespace**, **VS Code (integrated terminal in Codespaces)**, **copilot-app**, and **cloud-agent** users.
+Adventure A is the no-local-install path for **GitHub Codespaces**, **VS Code (integrated terminal in Codespaces)**, **copilot-app**, and **cloud-agent** users.
 
 _A Codespace gives you a full development environment in your browser — no installs, no version conflicts, just you and the workshop._
 
