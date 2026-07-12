@@ -51,7 +51,7 @@ gh --version
 gh auth status
 ```
 
-You should see a `gh version 2.40.x` line or newer and a message showing that you're logged in to `github.com`.
+You should see a `gh version 2.40.0` line or newer and a message showing that you're logged in to `github.com`.
 
 > [!NOTE]
 > Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready before you create your practice repository or install `gh-aw`.
