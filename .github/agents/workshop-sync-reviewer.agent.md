@@ -20,23 +20,25 @@ You will receive an object with:
 |---|---|
 | `file_path` | Path to the workshop file being reviewed |
 | `content` | Full text of the workshop file |
-| `reference_docs` | Object mapping doc filename to raw text (keys: `github-agentic-workflows.md`, `syntax-core.md`, `syntax-agentic.md`, `mcp-clis.md`) |
+| `ref_dir` | Path to directory containing reference docs — read files from here on demand: `github-agentic-workflows.md`, `syntax-core.md`, `syntax-agentic.md`, `mcp-clis.md` |
 | `release_notes` | Latest release notes body (empty string when no new release) |
 | `gh_aw_version` | Latest gh-aw version tag |
 
 ## Your Task
 
-Carefully compare `content` against `reference_docs` and `release_notes`. Check for:
+Carefully compare `content` against the reference docs in `ref_dir` and `release_notes`. Read only the specific reference files you need for the checks below — do **not** load all four at once.
 
-| Category | What to look for |
+| Category | Relevant reference file |
 |---|---|
-| **CLI commands** | Are `gh aw` commands still valid? Any renames or removed subcommands? |
-| **Frontmatter syntax** | Do any YAML examples use deprecated or renamed fields? |
-| **Tool names** | Are tool names (`bash`, `edit`, `cache-memory`, etc.) still correct? |
-| **URLs and links** | Do docs or external links still resolve correctly? |
-| **Version references** | Are version numbers current (gh CLI, gh-aw extension, Node.js)? |
-| **Concept accuracy** | Does the description of how agentic workflows work match current behaviour? |
-| **Installation steps** | Are install instructions still accurate (e.g. `gh extension install`)? |
+| **CLI commands** | `mcp-clis.md` |
+| **Frontmatter syntax** | `syntax-core.md`, `syntax-agentic.md` |
+| **Tool names** | `syntax-agentic.md` |
+| **URLs and links** | `github-agentic-workflows.md` |
+| **Version references** | release notes |
+| **Concept accuracy** | `github-agentic-workflows.md` |
+| **Installation steps** | `mcp-clis.md` |
+
+For each check, read only the specific file(s) listed. Stop reading as soon as you have enough information to determine whether a finding exists.
 
 Only flag genuine inaccuracies with clear evidence from the reference docs or release notes.
 Do **not** flag style issues or minor wording differences.

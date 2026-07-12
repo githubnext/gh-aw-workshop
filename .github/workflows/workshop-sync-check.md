@@ -112,6 +112,23 @@ steps:
 
       echo "=== Workshop files ===" && cat /tmp/gh-aw/data/workshop_files.json
       echo "=== Workflow files ===" && cat /tmp/gh-aw/data/workflow_files.json
+
+  - name: Fetch gh-aw reference documentation
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data/ref
+
+      # Pre-download reference docs to disk so the agent and subagents can
+      # read them directly rather than passing the full text inline.
+      # This avoids injecting ~300-400k tokens into every subagent context.
+      for doc in github-agentic-workflows.md syntax-core.md syntax-agentic.md mcp-clis.md; do
+        gh api repos/github/gh-aw/contents/.github/aw/${doc} \
+          --jq '.content' | base64 -d > /tmp/gh-aw/data/ref/${doc}
+        echo "Fetched ${doc} ($(wc -c < /tmp/gh-aw/data/ref/${doc}) bytes)"
+      done
+
+      echo "=== Reference docs ready at /tmp/gh-aw/data/ref/ ==="
+      ls -lh /tmp/gh-aw/data/ref/
 ---
 
 # Workshop Sync Check
@@ -168,10 +185,10 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 ## Select Files to Review (Round-Robin)
 
 1. Using `workshop_files` from the repo state and `round_robin_index` from the cache,
-   select up to 5 files starting at the current index (pseudocode for illustration):
+   select up to 3 files starting at the current index (pseudocode for illustration):
 
    ```
-   n = min(5, total number of workshop files)
+   n = min(3, total number of workshop files)
    target_files = [workshop_files[(round_robin_index + i) % total] for each i in 0..n-1]
    ```
 
@@ -179,23 +196,22 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 
 ---
 
-## Fetch Reference Documentation
+## Confirm Reference Documentation Is Ready
 
-Fetch the authoritative gh-aw documentation to compare against. Use `gh api` to read the raw content of these key reference files from `github/gh-aw`:
-
-- `.github/aw/github-agentic-workflows.md` — core syntax and rules
-- `.github/aw/syntax-core.md` — frontmatter schema (triggers, permissions)
-- `.github/aw/syntax-agentic.md` — agentic-specific fields
-- `.github/aw/mcp-clis.md` — CLI tool usage
-
-Fetch each file with:
+The setup step has already downloaded reference docs to `/tmp/gh-aw/data/ref/`. Confirm the files exist:
 
 ```bash
-gh api repos/github/gh-aw/contents/.github/aw/<filename> \
-  --jq '.content' | base64 -d
+ls /tmp/gh-aw/data/ref/
+# github-agentic-workflows.md  syntax-core.md  syntax-agentic.md  mcp-clis.md
 ```
 
-Also fetch the latest release notes if a new release was found in Phase 2.
+Do **not** re-fetch these files into the agent's own context — they are large and will be read by each subagent on demand from disk. Record only the file paths:
+
+```
+ref_dir = "/tmp/gh-aw/data/ref/"
+```
+
+If a new gh-aw release was found in Phase 2, record the release notes body in a compact variable — not the full GitHub API response.
 
 ---
 
@@ -217,11 +233,10 @@ For each file in `target_files`:
    (`.github/agents/workshop-sync-reviewer.agent.md`) and pass an object containing:
    - `file_path` — the file path
    - `content` — the full file content
-   - `reference_docs` — the reference documentation object fetched in Phase 4
-     (keys: `github-agentic-workflows.md`, `syntax-core.md`, `syntax-agentic.md`, `mcp-clis.md`)
+   - `ref_dir` — the path `/tmp/gh-aw/data/ref/` (the subagent will read individual
+     reference files from this directory on demand — do **not** pass the file contents inline)
    - `release_notes` — release notes from Phase 2 (empty string if none)
    - `gh_aw_version` — the latest gh-aw release tag
-   - `gh_aw_cli_help` — the parsed JSON from `/tmp/gh-aw/data/gh-aw-cli-help.json`
 
 3. Collect the structured JSON verdict returned by the subagent.
 
