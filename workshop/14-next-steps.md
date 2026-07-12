@@ -95,3 +95,4 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) — add conditions so your workflow only runs when there is meaningful activity to report.
 - ➡️ [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
 - ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
+- ➡️ [Keep Your Workflows Healthy](19-observe-running-workflows.md) — monitor run history, diagnose failures, and add automatic failure notifications.
