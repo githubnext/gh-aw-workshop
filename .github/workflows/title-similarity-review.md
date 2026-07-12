@@ -237,6 +237,9 @@ Title format (prefix is added automatically):
 <cluster representative title>: high-volume similar headings (<size>)
 ```
 
+Use the first heading from the cluster's `titles` list as the representative
+title.
+
 Issue body must include:
 
 - Why this cluster is semantically too similar
