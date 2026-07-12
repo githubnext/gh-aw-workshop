@@ -4,7 +4,7 @@ name: Docs Linker
 description: >
   Daily workflow that cross-correlates workshop tasks and concepts with
   gh-aw documentation pages. Uses cache-memory round-robin to process
-  one workshop file per run, then opens a pull request that adds inline
+  at least 10 workshop files per run, then opens a pull request that adds inline
   links and a "See Also" section pointing to the rendered gh-aw docs
   (Astro Starlight site at https://github.github.com/gh-aw/).
 on:
@@ -69,7 +69,7 @@ steps:
 
 You are a documentation curator for the **"Learning GitHub Agentic Workflows"** workshop.
 
-Your job is to keep one workshop file per run well-connected to the official
+Your job is to keep at least 10 workshop files per run well-connected to the official
 gh-aw documentation, by adding precise **inline hyperlinks** and a **"📚 See
 Also"** section at the bottom. You never remove content — you only enrich it
 with links.
@@ -148,20 +148,23 @@ docs, add them to its working knowledge.
 
 ---
 
-## Select File (Round-Robin)
+## Select Files (Round-Robin)
 
-1. If the `focus` input is non-empty, use it as `target_file`. Otherwise:
-   - `target_file = workshop_files[round_robin_index % len(workshop_files)]`
-   - Increment `round_robin_index` by 1 in the updated state.
+1. If the `focus` input is non-empty, use it as the only entry in `target_files`.
+   Otherwise:
+   - `batch_size = min(10, len(workshop_files))`
+   - `target_files = [workshop_files[(round_robin_index + i) % len(workshop_files)] for i in range(batch_size)]`
+   - Increment `round_robin_index` by `batch_size` in the updated state.
 
-2. Read the full content of `target_file`.
+2. Read the full content of each file in `target_files`.
 
 ---
 
 ## Identify Concepts and Tasks
 
-Scan `target_file` for every **concept**, **task**, **term**, or **feature** that
-has a matching reference page in the docs-site table above. Consider:
+For each file in `target_files`, scan the file for every **concept**, **task**,
+**term**, or **feature** that has a matching reference page in the docs-site table
+above. Consider:
 
 - Frontmatter fields mentioned (`on:`, `permissions:`, `tools:`, `safe-outputs:`,
   `network:`, `cache-memory:`, `strict:`, `timeout-minutes:`, etc.)
@@ -230,7 +233,7 @@ Do **not** add any link whose URL fails this check.
 
 ## Add Inline Links
 
-For each verified mapping entry, search `target_file` for the **first bare
+For each verified mapping entry, search the current target file for the **first bare
 occurrence** of the term (i.e., the term appears as plain text, not already
 inside a Markdown link). Wrap only that **first** occurrence with a hyperlink:
 
@@ -251,8 +254,9 @@ Rules:
 
 ## Add or Update "See Also" Section
 
-Locate any existing `## 📚 See Also` (or `## See Also`) section at the bottom
-of `target_file`. If it exists, update it. If not, append one.
+For each file in `target_files`, locate any existing `## 📚 See Also` (or
+`## See Also`) section at the bottom of the current file. If it exists, update
+it. If not, append one.
 
 The section must list **every** doc page referenced by the inline links added in
 Phase 5, **plus** any additional highly relevant docs for the file's topic that
@@ -277,18 +281,19 @@ navigation links (if they exist), so it does not interrupt the learning flow.
 ### Nothing to change
 
 Call `noop` with a concise explanation when **all** of the following are true:
-- No new concept matches were found for `target_file` (or all matching terms are already hyperlinked)
-- The file already has a complete and up-to-date `## 📚 See Also` section covering all relevant doc pages
+- No new concept matches were found for all selected files (or all matching terms are already hyperlinked)
+- All selected files already have a complete and up-to-date `## 📚 See Also` section covering all relevant doc pages
 
 If there are inline links to add **or** the "See Also" section needs updating, proceed with changes.
 
 ### Changes to make
 
-Write the updated content back to `target_file` using the `edit` tool. Then
+Write updated content back to each changed file in `target_files` using the
+`edit` tool. Then
 create a pull request with:
 
-- **Title**: `<target_file>: add gh-aw doc links` (the `[docs-linker]` prefix is added automatically)
-- **Body**: list each term linked, the doc URL it points to, and the updated "See Also" entries.
+- **Title**: `workshop docs: add gh-aw doc links` (the `[docs-linker]` prefix is added automatically)
+- **Body**: group by file, listing each term linked, the doc URL it points to, and the updated "See Also" entries.
 
 ---
 
@@ -299,7 +304,7 @@ Write the updated state to `/tmp/gh-aw/cache-memory/docs-linker-state.json`:
 ```json
 {
   "round_robin_index": <incremented value>,
-  "files_processed": [<append target_file if not already present>]
+  "files_processed": [<append each processed file if not already present>]
 }
 ```
 
