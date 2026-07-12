@@ -37,6 +37,35 @@ All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
 
+### Pre-flight check your current `gh` state
+
+Run this before installing anything:
+
+```bash
+gh auth status && gh extension list
+```
+
+_What success looks like:_ the command runs without shell errors and shows your current login state plus any installed extensions.
+
+If the command fails with `gh: command not found`, continue to [Install the gh CLI](#install-the-gh-cli) below, then re-run this pre-flight check.
+
+Expected output includes one of these login states:
+
+```text
+✓ Logged in to github.com account <your-username>
+```
+
+or:
+
+```text
+You are not logged into any GitHub hosts. Run gh auth login to authenticate.
+```
+
+`gh extension list` can show existing extensions or no entries if you have none yet.
+
+> [!NOTE]
+> **Using GitHub Enterprise Server (GHES), SSO, or a corporate proxy?** Follow [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before continuing. It includes enterprise hostname and locked-down network guidance.
+
 ### Create your practice repository
 
 1. Open [github.com/new](https://github.com/new).
@@ -151,13 +180,29 @@ _What success looks like:_ both commands print output; `owner` is your GitHub us
 
 Both commands should return output without errors. The repo view should show your username as `owner` and `my-agentic-workflows` as `name`.
 
-## 🛟 Troubleshooting: common beginner errors
+## 🛟 Troubleshooting
 
-| Error message | Why it happens | How to fix it |
-|------|------|------|
-| `command not found` | Tool is missing or terminal session hasn't picked up install yet | Install/reinstall the tool from the step above, then fully close and reopen terminal |
-| `permission denied` | Command needs elevated privileges or file permissions are restricted | Re-run the Linux/macOS install command with `sudo` exactly as shown; on Windows use an elevated terminal when needed |
-| `No such file or directory` / path-related errors | You're not in the expected folder | Run `pwd` (macOS/Linux) or `cd` (Windows) to check your location, then `cd my-agentic-workflows` and retry |
+If setup commands fail, use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for quick fixes (`command not found`, permissions, proxy, and GHES-specific setup), then return here.
+
+## ✅ Verify your setup
+
+Run this exact command from inside `my-agentic-workflows`:
+
+```bash
+gh auth status && gh extension list && gh repo view --json owner,name --jq '"\(.owner.login)/\(.name)"'
+```
+
+_What success looks like:_ no errors are shown across all command output, and the final line is exactly:
+
+```text
+<your-username>/my-agentic-workflows
+```
+
+You should see your actual GitHub username in place of `<your-username>` in that final output line.
+
+If this combined check stops early, run each command on its own to find the failing step.
+
+If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before moving on.
 
 ## ✅ Checkpoint
 
