@@ -146,11 +146,14 @@ The PR adds two files:
 | `.github/workflows/<name>.md` | Frontmatter keys match the scenario; the task brief describes what you want; `safe-outputs` limits write actions |
 | `.github/workflows/<name>.lock.yml` | Exists and is non-empty — this is the compiled GitHub Actions YAML that the runner executes |
 
-Look through the workflow Markdown body. The agent should have written a clear task brief based on the prompt you provided. If anything looks wrong — wrong schedule, missing permission, overly broad task brief — leave a review comment and the agent can revise it. Add a comment like:
+Look through the workflow Markdown body. The agent should have written a clear task brief based on the prompt you provided. If anything looks wrong — wrong schedule, missing permission, overly broad task brief — leave a review comment and the agent can revise it. Start your comment with `@copilot` so the agent picks it up, for example:
 
 ```
-Please change the schedule to weekly instead of daily.
+@copilot Please change the schedule to weekly instead of daily.
 ```
+
+> [!IMPORTANT]
+> Comments directed at the Copilot agent **must** begin with `@copilot`. Without it, the agent will not see or act on your message.
 
 The agent will push an updated commit to the same branch.
 
