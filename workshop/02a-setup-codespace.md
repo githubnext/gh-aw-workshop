@@ -74,6 +74,7 @@ You should see `github/gh-aw` listed. If you don't see it yet, don't worry — y
 > [!NOTE]
 > The Codespace was built from a `.devcontainer` configuration that pre-installs the `gh` CLI. You don't need to install it yourself.
 
+<a id="verify-github-authentication"></a>
 ### Verify GitHub authentication
 
 Codespaces often start with `gh` already authenticated, but you should still verify before you move on.
