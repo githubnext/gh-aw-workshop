@@ -13,26 +13,49 @@ Walk through a structured, five-step method for designing the brief that drives 
 
 ---
 
-## Why a Framework?
+## At a Glance
+
+Five steps, five minutes. Here's the complete framework — expand each step below for the detailed walkthrough.
+
+| Step | What to write | Takes about |
+|------|--------------|-------------|
+| 1. Goal | One sentence: what should the agent do every day? | 1 min |
+| 2. Inputs | Bullet list of the data the agent needs to collect | 1 min |
+| 3. Output format | A literal skeleton the agent fills in | 1 min |
+| 4. Guardrails | Rules that prevent unexpected behaviour | 1 min |
+| 5. Review | Check every question is answered | 1 min |
+
+<details>
+<summary>Why a framework instead of just writing a prompt?</summary>
 
 A brief is the natural-language instruction your AI agent reads before acting. Unlike a chat message, it runs unattended — the agent can't ask clarifying questions, so ambiguity becomes bugs. A five-minute structured exercise prevents hours of debugging later.
+
+The framework also gives you **acceptance criteria**: once the workflow runs, you can compare the actual output against what you specified and know exactly which part of the brief to tighten if something looks wrong.
+
+</details>
 
 ---
 
 ## Step 1: State the Goal in One Sentence
 
-Open a scratch file (or grab a piece of paper) and answer:
+Open a scratch file and answer:
 
 > _"Every day, I want the agent to…"_
 
-For the daily status report the answer is:
+For the daily status report:
 
 > "Every day, I want the agent to read the current state of my repository and post a short health summary as a GitHub issue comment."
 
 Write your own version. You can focus on a different repository section (e.g. pull requests only, or CI status only). **Keep it to one sentence.**
 
-> [!TIP]
-> One sentence forces a clear scope. If you need two sentences, you probably have two workflows. Split them. A focused workflow is easier to test, cheaper to run, and simpler to debug.
+<details>
+<summary>Why one sentence?</summary>
+
+One sentence forces a clear scope. If you need two sentences, you probably have two workflows — split them. A focused workflow is easier to test, cheaper to run, and simpler to debug.
+
+When you ask Copilot to generate or update a workflow using the `agentic-workflows` skill, it reads this goal sentence first. The clearer it is, the less back-and-forth you need.
+
+</details>
 
 ---
 
@@ -47,8 +70,14 @@ What information does the agent need to produce the report? Think through each p
 
 Write these down as bullet points. If you're not sure whether a piece of data is available, add a `?` next to it — you can verify it later.
 
-> [!TIP]
-> GitHub's REST API exposes all of the above. The `gh aw` agent can call `gh api` commands automatically when you list the right scopes in your workflow's frontmatter.
+<details>
+<summary>How does the agent actually get this data?</summary>
+
+GitHub's REST API exposes all of the above. The `gh aw` agent calls `gh api` commands automatically when you list the right permission scopes in your workflow's frontmatter. You'll add those scopes in [Step 11](11-build-daily-status.md).
+
+If you want to fetch external data (a dashboard, a metrics API), you can add an MCP tool server — see [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
+</details>
 
 ---
 
@@ -69,8 +98,14 @@ Decide what the comment should look like. A consistent format makes the report e
 
 Adjust the emoji, wording, or sections to suit your taste. The agent will fill in the `{placeholders}` from real data.
 
-> [!TIP]
-> Include a literal skeleton — not just a description. Seeing the exact structure you want makes it far easier for the model to produce predictable output, and makes it far easier for you to spot when something is off.
+<details>
+<summary>Why a literal skeleton instead of a description?</summary>
+
+When you tell the agent "post a summary", it decides the format. When you show it a skeleton, it fills in the blanks — and every run looks the same. Consistent output is easier to scan, easier to grep, and easier to notice when something changes.
+
+It also makes it obvious when the agent has gone off-script. If a field is missing or in the wrong place, you know exactly which line of the brief to fix.
+
+</details>
 
 ---
 
@@ -87,34 +122,41 @@ Write your guardrails as a short bulleted list in plain English. You'll paste th
 > [!WARNING]
 > Skipping guardrails is the most common cause of runaway agents. One missing rule can result in the agent posting dozens of duplicate comments.
 
+<details>
+<summary>Default guardrails for any agentic workflow</summary>
+
+Most agentic workflows need at least three types of guardrail:
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| **Deduplication** | Prevents the agent repeating the action | "If today's report already exists, stop." |
+| **Data integrity** | Prevents the agent inventing missing data | "Write 'unknown' if data is unavailable." |
+| **Error handling** | Defines behaviour when a prerequisite is missing | "Create the issue if it doesn't exist." |
+
+Start from this list for every new workflow and add workflow-specific rules on top.
+
+</details>
+
 ---
 
-> [!TIP]
-> Most agentic workflows need at least these default guardrails: a **deduplication rule** (don't repeat the action if already done today), a **data-integrity rule** (don't invent missing data), and an **error-handling rule** (what to do if a prerequisite is missing). Start from this list and add workflow-specific rules on top.
+## Step 5: Review Your Brief
 
----
+Use this table as your acceptance criteria — both before you build and after the first run.
 
-## Step 5: Check Your Brief
+| Question | Before you build | After the first run |
+|----------|-----------------|---------------------|
+| What is the agent's one-sentence goal? | ✅ written | ✅ output matches? |
+| What data does it need? | ✅ listed | ✅ all data present? |
+| What does the output look like? | ✅ sketched | ✅ format matches? |
+| What rules should it follow? | ✅ written | ✅ no unexpected actions? |
 
-Review what you've written. Your brief should answer each of these questions:
-
-| Question | Answer |
-|----------|--------|
-| What is the agent's one-sentence goal? | ✅ |
-| What data does it need? | ✅ |
-| What does the output look like? | ✅ |
-| What rules should it follow? | ✅ |
-
-If any row is blank, fill it in before moving on.
-
-> [!TIP]
-> Treat this table as **acceptance criteria**. After you run the workflow for the first time, come back here and check whether the agent's actual output satisfies every row. If it doesn't, the brief — not the agent — is the thing to fix.
+If any cell in the "before" column is blank, fill it in before moving on. If any "after" cell fails, the brief — not the agent — is the thing to fix.
 
 ---
 
 ## Your Completed Brief
 
-Here is a starter brief that combines all five steps for the daily status report:
+Here is a starter brief that combines all five steps. Copy it into a scratch file and personalise it:
 
 ```
 Every day, read the current state of this repository and post a short health
@@ -142,6 +184,9 @@ Guardrails:
 - Never invent numbers. Write "unknown" if data is unavailable.
 - If the "Daily Status Reports" issue doesn't exist, create it, then comment.
 ```
+
+> [!TIP]
+> Once you have a brief you're happy with, you can hand it to Copilot (using the `agentic-workflows` skill) and ask it to turn it into a complete workflow file. The skill knows the frontmatter syntax, permission scopes, and safe-output patterns — you focus on the goal, it handles the YAML.
 
 ---
 
