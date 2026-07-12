@@ -59,6 +59,37 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 > [!IMPORTANT]
 > **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
 
+## Side-by-side: Classic Actions vs Agentic Workflows
+
+If you're coming from classic GitHub Actions, this table shows exactly where the two models diverge.
+
+| Dimension | Classic GitHub Actions | Agentic Workflow |
+|---|---|---|
+| **File format** | `.github/workflows/*.yml` | `.github/workflows/*.md` (compiled to `.lock.yml`) |
+| **Task description** | Shell commands and scripts in `steps:` | Natural language instructions below the frontmatter |
+| **Execution** | Deterministic — same input always gives same output | AI agent interprets the brief and decides how to act at runtime |
+| **Handles ambiguity** | Fails or needs explicit branching logic | Reasons through ambiguous inputs and adapts |
+| **Runtime** | No AI model involved | Copilot or another LLM is the runtime |
+| **Best for** | CI/CD pipelines, builds, deployments | Summaries, triage, reporting, and tasks that need judgment |
+
+> [!NOTE]
+> Both types of workflow live in `.github/workflows/` and use the same `on:` triggers and `permissions:` blocks — only the task description format changes.
+
+Here is a complete minimal agentic workflow — the same structure you'll write in Step 7:
+
+```yaml
+---
+name: Hello Agent
+on:
+  workflow_dispatch:
+---
+
+List all open issues that need triage and summarize them with recommended next steps.
+```
+
+> [!NOTE]
+> **If you've used GitHub Actions before:** the key difference is that you write a _brief_ in plain language, not a sequence of shell commands — the agent decides how to fulfill it.
+
 ## Quick Summary
 
 For platform engineers and DevOps teams evaluating adoption, agentic workflows cut the cost of maintaining bespoke scripted automation. Engineers spend less time updating fragile scripts and more time on higher-value work. Every workflow definition is a versioned Markdown file that goes through a pull request, so teams retain full auditability, change history, and approval gates. This makes agentic automation compatible with enterprise compliance requirements and existing runner fleet investments.
@@ -76,22 +107,6 @@ For Actions users, keep this quick mental model:
 > - You define the goal in plain language instead of scripting each step in `jobs.steps`.
 > - The agent decides how to use available tools at runtime instead of following a fixed command sequence.
 > - The output is a synthesized report with recommendations, not just raw command logs.
-
-## Side-by-side: Classic Actions vs Agentic Workflows
-
-If you're coming from classic GitHub Actions, this table shows exactly where the two models diverge.
-
-| Dimension | Classic GitHub Actions | Agentic Workflow |
-|---|---|---|
-| **File format** | `.github/workflows/*.yml` | `.github/workflows/*.md` (compiled to `.lock.yml`) |
-| **Task description** | Shell commands and scripts in `steps:` | Natural language instructions below the frontmatter |
-| **Execution** | Deterministic — same input always gives same output | AI agent interprets the brief and decides how to act at runtime |
-| **Handles ambiguity** | Fails or needs explicit branching logic | Reasons through ambiguous inputs and adapts |
-| **Runtime** | No AI model involved | Copilot or another LLM is the runtime |
-| **Best for** | CI/CD pipelines, builds, deployments | Summaries, triage, reporting, and tasks that need judgment |
-
-> [!NOTE]
-> Both types of workflow live in `.github/workflows/` and use the same `on:` triggers and `permissions:` blocks — only the task description format changes.
 
 ## Advanced fast-track: What's New cheat sheet
 
