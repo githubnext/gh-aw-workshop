@@ -1,10 +1,10 @@
 # Step 6: Install the gh-aw CLI Extension
 
-## Using Copilot app or cloud agent?
-
-These entry points don't support local CLI installs. Open this repo in a
-[Codespace](02a-setup-codespace.md#2-open-the-codespace) or use a VS Code
-integrated terminal, then complete this step there.
+> [!NOTE]
+> **Using `copilot-app` or `cloud-agent`?**
+> `gh extension install github/gh-aw` must run in a terminal. Open your
+> [Codespace from Step 2](02a-setup-codespace.md#2-open-the-codespace), then
+> run this step in the Codespace terminal.
 
 ## 🎯 What You'll Do
 
@@ -25,8 +25,6 @@ extension so you can compile and run agentic workflows from your terminal.
 > **Using VS Code?** Open the integrated terminal with `` Ctrl+` `` (macOS: `` Cmd+` ``),
 > then run all `gh aw` commands there. If a command is unfamiliar, try:
 > `gh copilot suggest "how do I install a gh extension"`
-> [!IMPORTANT]
-> No terminal in `copilot-app` or cloud-agent? Open this repo in a [Codespace](02a-setup-codespace.md#2-open-the-codespace), then run this step there.
 
 ### 1. Install the `gh-aw` extension
 
