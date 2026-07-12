@@ -301,26 +301,7 @@ A step succeeds if `roll < adjusted_probability`.
 For each student who fails at a step, note:
 - Which step they failed on
 - Any environment assumption mismatch from the simulator replay
-- Likely reason (based on their profile):
-  - **beginner + setup steps**: "No prior CLI experience — unfamiliar with terminal commands"
-  - **beginner + install gh-aw**: "gh CLI extension install command confusing"
-  - **impatient + any step**: "Skipped prerequisite reading, hit unexpected error"
-  - **confused + workflow syntax**: "YAML frontmatter syntax unclear without more examples"
-  - **github-basic + agentic concepts**: "Distinction between classic Actions and agentic workflows not obvious"
-  - **skeptical + early steps**: "Value proposition not convincingly stated"
-  - **actions-user + agentic intro**: "Kept mapping to classic Actions patterns, got confused by differences"
-  - **advanced + basics**: "Introduction moves too slowly; want to jump to complex examples"
-  - **enterprise-dev + setup steps**: "GHE/GHES configuration differs from github.com — self-hosted runner or proxy requirements not covered"
-  - **enterprise-devops + install gh-aw**: "Org-owned Codespaces can use org-scoped tokens; `gh extension install github/gh-aw` may 403 and needs the install script fallback from installation instructions"
-  - **program-manager + any step**: "Technical CLI steps feel out of scope; needs higher-level overview before hands-on configuration tasks"
-  - **ui_preferred + any compile step**: "gh aw compile requires terminal — UI path users are unaware of syntax errors until the workflow runs and fails"
-  - **vscode + CLI steps**: "VS Code user expects to stay in the editor UI — encourage running `gh aw` commands in the VS Code integrated terminal; suggest `gh copilot suggest` as a helper when a CLI command is unfamiliar"
-  - **CCA + install gh-aw**: "GitHub Copilot Cloud Agent user has no terminal context — step 6 assumes CLI access that is entirely absent"
-  - **codespaces + gh aw run**: "Codespaces auth token does not include `actions:write`, so `gh aw run` fails and learners need the GitHub Actions UI trigger path"
-  - **CCA + local setup**: "GitHub Copilot Cloud Agent user expects fully managed environment; local install and auth steps are unexpected friction"
-- Any student failing an `*install*` step: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
-- Any student failing a workflow execution step because of missing credentials: "The workflow depends on repository-side Actions secrets or model access that are not configured yet; local Copilot CLI auth does not fix this"
-- Any student failing a `*build*` step: "Full workflow source harder to understand without line-by-line annotation"
+- Likely reason (based on their profile): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces tokens lacking `actions:write` for `gh aw run`; enterprise/proxy environments adding friction to setup steps.
 
 ### Aggregate and analyse results
 
