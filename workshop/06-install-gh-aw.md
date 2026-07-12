@@ -27,7 +27,7 @@ Use the path that matches your tool before you run any install command:
 | I am using... | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| Copilot Chat / app | [Open a Codespace first](#open-a-codespace-first) |
+| `copilot-app` | [Open a Codespace first](#open-a-codespace-first) |
 | Local terminal or Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
@@ -43,7 +43,7 @@ If the command is not found, continue with [Install from terminal](#install-from
 
 ## Open a Codespace first
 
-If you are using `copilot-app`, run install commands in a terminal-backed environment first:
+If you are using `copilot-app`, you must open a Codespace to run install commands in its terminal:
 
 - [Open the Codespace](02a-setup-codespace.md#open-the-codespace)
 - Return to this step and continue with [Install from terminal](#install-from-terminal)
