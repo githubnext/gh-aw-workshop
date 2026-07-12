@@ -49,4 +49,4 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), and [Step 3](03-create-your-repo.md).
+Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), and [Step 3](03-create-your-repo.md).
