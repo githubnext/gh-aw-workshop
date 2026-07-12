@@ -18,6 +18,8 @@ You'll open the `my-agentic-workflows` repository you already created during set
 
 Open `https://github.com/<your-username>/my-agentic-workflows` in your browser.
 
+Replace `<your-username>` with your actual GitHub username.
+
 > [!NOTE]
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
