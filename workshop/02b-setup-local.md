@@ -23,9 +23,6 @@ Check each statement:
 
 > [!IMPORTANT]
 > If any answer is **No** (or **not sure**), switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md). You can finish setup there faster and come back later.
-> [!IMPORTANT]
-> **Adventure B requires a local terminal with `git` and `gh` installed.**
-> **Using GitHub Copilot Chat, the Copilot mobile app, or the cloud coding agent?** Go back to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) — it is the right path for you.
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
