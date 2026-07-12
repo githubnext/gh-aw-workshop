@@ -12,6 +12,8 @@ By the end of this workshop, you'll have a real GitHub Actions workflow that aut
 | **CLI user** (comfortable in a terminal) | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
 | **VS Code user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
 
+If you're using the GitHub Copilot web app, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.
+
 ## Why this matters
 
 Manual status reporting steals time from shipping and leaves teams with uneven visibility. In this workshop, you'll automate that reporting so your team gets a daily repo update with zero manual effort.

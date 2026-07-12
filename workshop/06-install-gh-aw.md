@@ -7,6 +7,18 @@
 
 <!-- Separate adjacent callouts -->
 
+## No terminal yet? Open a Codespace first (`copilot-app`)
+
+If you're using `copilot-app` (web/mobile) and don't have a terminal open yet, use this button:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
+
+Then return to this page and continue with [Install from terminal](#install-from-terminal).
+
+For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the Copilot App](side-quest-06-02-copilot-app-codespace.md).
+
+<!-- -->
+
 > [!NOTE]
 > **Using the GitHub Copilot cloud agent?** `gh aw` may already be available in
 > your environment. Run `gh aw --version` first — if it returns a version number,
@@ -34,7 +46,7 @@ Use the path that matches your tool before you run any install command:
 | I am using… | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| `copilot-app` | [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users) |
+| `copilot-app` (web/mobile) | [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
