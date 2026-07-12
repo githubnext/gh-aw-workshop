@@ -61,7 +61,7 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 
 ## Classic Actions vs Agentic Workflows
 
-An agentic workflow is a GitHub Actions workflow written as a Markdown file that runs a sandboxed, gated agentic job.
+An agentic workflow is a Markdown file with two parts: a YAML frontmatter block that is fully backward compatible with GitHub Actions (same `on:`, `permissions:`, and trigger syntax you already know, plus a few agent-specific extras), and a body that is the plain-language prompt the agent receives. The `gh aw compile` command converts that Markdown file into a standard Actions workflow (`.lock.yml`) that runs the agent in a safe, sandboxed, gated job.
 
 If you're coming from classic GitHub Actions, here's where the two models diverge:
 
