@@ -4,15 +4,25 @@
 
 ## 🎯 What You'll Do
 
-You'll open the `my-agentic-workflows` repository you already created during setup, clone it locally if you completed the local terminal setup, and confirm GitHub Actions is enabled. This repository is your sandbox for building and testing agentic workflows.
+You'll create your `my-agentic-workflows` repository, open it on GitHub, clone it into your working environment, and confirm GitHub Actions is enabled. This repository is your sandbox for building and testing agentic workflows.
 
 ## 📋 Before You Start
 
 - You've completed either [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 - You have a GitHub account and are signed in
-- You've already created `my-agentic-workflows` during setup in GitHub UI with **Add a README file** enabled
 
 ## Steps
+
+### Create your practice repository
+
+1. Open [github.com/new](https://github.com/new) in your browser.
+2. Enter `my-agentic-workflows` for **Repository name**.
+3. Set **Visibility** to **Public**.
+4. Check **Add a README file**.
+5. Click **Create repository**.
+
+> [!NOTE]
+> Adding a README avoids an empty-repository setup edge case and gives you something to clone right away.
 
 ### Open your practice repository
 
