@@ -1,10 +1,17 @@
 # Step 6: Install the gh-aw CLI Extension
 
 > [!NOTE]
-> **Using `copilot-app` or `cloud-agent`?**
-> `gh extension install github/gh-aw` must run in a terminal. Use
-> [Open the Codespace](02a-setup-codespace.md#open-the-codespace), then
-> run this step in the Codespace terminal.
+> **Using the GitHub Copilot cloud agent?** `gh aw` may already be available in
+> your environment. Run `gh aw --version` first — if it returns a version number,
+> you can skip straight to [Confirm installation](#confirm-installation).
+
+<!-- -->
+
+> [!IMPORTANT]
+> **Using `copilot-app`?** `gh extension install github/gh-aw` must run in a
+> terminal. Open your Codespace first:
+> [Open the Codespace](02a-setup-codespace.md#open-the-codespace), then run
+> this step in the Codespace terminal.
 
 ## 🎯 What You'll Do
 
@@ -45,15 +52,6 @@ gh extension install github/gh-aw
 > ```bash
 > curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 > ```
-
-<details>
-<summary>HTTP 403 fallback install path</summary>
-
-```bash
-curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
-```
-
-</details>
 
 If the extension is already installed, you can update it instead:
 
