@@ -91,4 +91,4 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 - [ ] A manual run completes and the log shows at least one MCP tool call
 - [ ] The workflow output reflects live data retrieved via MCP, not just static text
 
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md)
