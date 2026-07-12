@@ -92,7 +92,7 @@ After updating the `schedule:` line in the web editor (opened in step 1), click 
 
 Navigate to your repository on GitHub, then **Actions → daily-status**. On the right-hand sidebar you'll see a **This workflow has a schedule trigger** badge.
 
-![Scheduled workflow badge visible in the Actions sidebar](images/13-schedule-badge.png)
+![Scheduled workflow badge visible in the Actions sidebar](images/13-schedule-badge.svg)
 
 > [!WARNING]
 > GitHub may delay the very first scheduled run by up to 15 minutes after you push. If the workflow doesn't fire at the expected time, check **Actions** for queued runs before assuming something is broken.

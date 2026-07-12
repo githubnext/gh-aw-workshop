@@ -20,7 +20,7 @@ In your repository, click the **Actions** tab at the top of the page.
 
 You'll see a list of workflows on the left. Look for **Hello Agent** — that's the workflow you pushed in Step 7.
 
-![Actions tab showing Hello Agent workflow](images/08-actions-tab.png)
+![Actions tab showing Hello Agent workflow](images/08-actions-tab.svg)
 
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
@@ -31,7 +31,7 @@ Click **Hello Agent** in the left sidebar. You'll see a banner that says "This w
 
 Click the **Run workflow** button, leave the default branch selected, and click the green **Run workflow** button in the dropdown.
 
-![Run workflow button](images/08-run-workflow-button.png)
+![Run workflow button](images/08-run-workflow-button.svg)
 
 ### 3. Watch the run in progress
 
@@ -74,7 +74,7 @@ Open the comment and read it. Then look back at the workflow file you wrote. Not
 
 Navigate back to the **Actions** tab and click the completed run. Scroll down past the jobs to the **Summary** section. Agentic workflows often post a structured summary here showing what the agent did and which safe-output operations it performed.
 
-![Workflow run summary panel](images/08-run-summary.png)
+![Workflow run summary panel](images/08-run-summary.svg)
 
 ### 7. Re-run with a twist (optional)
 

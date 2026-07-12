@@ -118,7 +118,7 @@ git commit -m "feat: inject open issues into daily summary prompt"
 git push
 ```
 
-![Actions run showing the fetch-issues step and updated summary](images/16-data-source-run.png)
+![Actions run showing the fetch-issues step and updated summary](images/16-data-source-run.svg)
 
 > [!WARNING]
 > If your repository has no open issues, the AI will say so — that's expected behaviour. Create a test issue to see the integration in action.

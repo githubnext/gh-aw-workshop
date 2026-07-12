@@ -21,7 +21,7 @@ The workshop repository contains a starter project and a pre-configured Codespac
 2. Click **Fork** (top-right corner).
 3. Accept the defaults and click **Create fork**.
 
-![Fork the repository](images/02a-fork-repo.png)
+![Fork the repository](images/02a-fork-repo.svg)
 
 > [!NOTE]
 > Forking creates your own copy of the repository under your account. All changes you make stay in your fork — you won't affect the original.
@@ -32,7 +32,7 @@ The workshop repository contains a starter project and a pre-configured Codespac
 2. Click the **Codespaces** tab.
 3. Click **Create codespace on main**.
 
-![Open Codespace](images/02a-open-codespace.png)
+![Open Codespace](images/02a-open-codespace.svg)
 
 GitHub will spin up a container with everything pre-installed. This takes about 30–60 seconds on first launch.
 

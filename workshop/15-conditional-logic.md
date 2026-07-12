@@ -64,7 +64,7 @@ Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
 - If there were recent commits, the summary step should run.
 - If not, you should see the step marked as **skipped** (a grey icon in the Actions UI).
 
-![Skipped step in GitHub Actions](images/15-skipped-step.png)
+![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
 ### 5. Commit and push
 

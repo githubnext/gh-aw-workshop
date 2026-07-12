@@ -34,7 +34,7 @@ Look for two things:
 - The step where the agent reads your repository data
 - The step where the agent posts (or skips) the comment
 
-![Workflow run log](images/12-workflow-run-log.png)
+![Workflow run log](images/12-workflow-run-log.svg)
 
 ### 3. Check the output
 
