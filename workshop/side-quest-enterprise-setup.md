@@ -9,7 +9,7 @@ Use this side quest before setup if your environment differs from standard `gith
 Codespaces availability varies by platform and policy:
 
 - **GHES:** Codespaces is only available on supported GHES versions and when enabled by admins.
-  Verify support in the [GHES Codespaces documentation](https://docs.github.com/en/enterprise-server@latest/codespaces/getting-started/enabling-github-codespaces-for-your-enterprise).
+  Verify support in the [Codespaces organization documentation](https://docs.github.com/en/enterprise-cloud@latest/codespaces/managing-codespaces-for-your-organization/enabling-or-disabling-github-codespaces-for-your-organization).
 - **GHEC:** Org policies can restrict who can create Codespaces or which repositories are allowed.
 
 Before continuing:
