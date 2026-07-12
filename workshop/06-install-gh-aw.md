@@ -34,7 +34,7 @@ Use the path that matches your tool before you run any install command:
 | I am using… | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| `copilot-app` | [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users) |
+| GitHub Copilot app (GitHub.com chat or mobile) | [Open a Codespace for GitHub Copilot app users](#open-a-codespace-for-github-copilot-app-users) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
@@ -49,12 +49,12 @@ If you get a version number, skip to [Confirm installation](#confirm-installatio
 
 If the command is not found:
 
-- If you are using `copilot-app`, first complete [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users)
+- If you are using the GitHub Copilot app, first complete [Open a Codespace for GitHub Copilot app users](#open-a-codespace-for-github-copilot-app-users)
 - Then continue with [Install from terminal](#install-from-terminal)
 
-## Open a Codespace for copilot-app users
+## Open a Codespace for GitHub Copilot app users
 
-Open a Codespace to run install commands in its terminal:
+If you are working from GitHub Copilot chat on GitHub.com or in the mobile app, open a Codespace to run install commands in its terminal:
 
 - [Open the Codespace](02a-setup-codespace.md#open-the-codespace)
 - Return to this step and continue with [Install from terminal](#install-from-terminal)
