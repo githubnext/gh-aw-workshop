@@ -113,7 +113,7 @@ gh aw --version
 Example success output:
 
 ```text
-gh-aw version x.y.z
+gh-aw version 0.1.0
 ```
 
 ## Troubleshooting
@@ -129,6 +129,6 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 - [ ] `gh --version` returns a `gh version 2.x.x` value
 - [ ] `gh extension install github/gh-aw` ran without errors
 - [ ] `gh extension list` shows `github/gh-aw`
-- [ ] `gh aw --version` returns a `gh-aw version x.y.z` value
+- [ ] `gh aw --version` returns a `gh-aw version 0.1.0` style value
 
 **Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
