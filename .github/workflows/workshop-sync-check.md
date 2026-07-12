@@ -36,6 +36,43 @@ safe-outputs:
     max: 5
 timeout-minutes: 30
 steps:
+  - name: Capture gh aw CLI help output
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data
+
+      gh_aw_help="$(gh aw help 2>&1)"
+      compile_help="$(gh aw compile --help 2>&1)"
+      run_help="$(gh aw run --help 2>&1)"
+      logs_help="$(gh aw logs --help 2>&1)"
+      status_help="$(gh aw status --help 2>&1)"
+      update_help="$(gh aw update --help 2>&1)"
+      fix_help="$(gh aw fix --help 2>&1)"
+
+      jq -n \
+        --arg gh_aw_help "$gh_aw_help" \
+        --arg compile_help "$compile_help" \
+        --arg run_help "$run_help" \
+        --arg logs_help "$logs_help" \
+        --arg status_help "$status_help" \
+        --arg update_help "$update_help" \
+        --arg fix_help "$fix_help" \
+        '{
+          gh_aw_help: $gh_aw_help,
+          subcommands: {
+            compile: $compile_help,
+            run: $run_help,
+            logs: $logs_help,
+            status: $status_help,
+            update: $update_help,
+            fix: $fix_help
+          }
+        }' \
+        > /tmp/gh-aw/data/gh-aw-cli-help.json
+
+      echo "=== gh aw CLI help snapshot ==="
+      cat /tmp/gh-aw/data/gh-aw-cli-help.json
+
   - name: Gather workshop files
     run: |
       set -euo pipefail
@@ -91,7 +128,9 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
    - `workshop_files` — array of workshop markdown paths
    - `workflow_files` — array of `.github/workflows/*.md` source paths
 
-2. Load the cache-memory file `/tmp/gh-aw/cache-memory/sync-state.json` if it exists.
+2. Read `/tmp/gh-aw/data/gh-aw-cli-help.json` and use it as the authoritative source for valid `gh aw` subcommands and flags when reviewing workshop command examples.
+
+3. Load the cache-memory file `/tmp/gh-aw/cache-memory/sync-state.json` if it exists.
    It has this shape (create it with defaults when absent):
 
    ```json
@@ -180,6 +219,7 @@ For each file in `target_files`:
      (keys: `github-agentic-workflows.md`, `syntax-core.md`, `syntax-agentic.md`, `mcp-clis.md`)
    - `release_notes` — release notes from Phase 2 (empty string if none)
    - `gh_aw_version` — the latest gh-aw release tag
+   - `gh_aw_cli_help` — the parsed JSON from `/tmp/gh-aw/data/gh-aw-cli-help.json`
 
 3. Collect the structured JSON verdict returned by the subagent.
 
