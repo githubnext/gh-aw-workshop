@@ -34,7 +34,7 @@ Create the repository you'll use to store your workflows during the workshop.
 5. Click **Create repository**.
 
 > [!NOTE]
-> Creating the repository first keeps Codespaces and terminal setup paths aligned, and adding a README avoids an empty-repository setup edge case.
+> Creating the repository first keeps the Codespace and terminal setup paths aligned, and adding a README avoids an empty-repository setup edge case.
 
 ### 2. Open the Codespace
 
