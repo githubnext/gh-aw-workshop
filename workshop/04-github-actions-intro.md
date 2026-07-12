@@ -19,9 +19,9 @@ Already know both GitHub Actions **and** agentic workflow concepts?
 
 ## 🎯 What You'll Do
 
-You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file — a skill you'll build on immediately in Steps 5 and 6.
+You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file — a skill you'll build on immediately in Steps 5 and 6.
 
-## Classic Actions vs Agentic Workflows
+## Classic Actions vs [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 
 If you already know Actions, here's the key shift at a glance:
 
@@ -68,3 +68,8 @@ Step 5 is the optional transition if you want the conceptual delta before instal
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
