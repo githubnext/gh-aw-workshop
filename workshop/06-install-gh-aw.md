@@ -9,7 +9,7 @@
 
 ## No terminal yet? Open a Codespace first (copilot-app)
 
-If you're using `copilot-app` (web/mobile) and don't have a terminal open yet, use this button:
+If you're using copilot-app (web/mobile) and don't have a terminal open yet, use this button:
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
 
