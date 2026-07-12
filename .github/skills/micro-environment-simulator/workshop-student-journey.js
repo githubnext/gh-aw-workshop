@@ -76,7 +76,7 @@ function buildTransitions() {
         state.flags.environmentReady,
         "Practice repository setup requires a local terminal or Codespace to be ready",
         "environment-not-ready",
-        "Complete Adventure A (Codespace) or Adventure B (local terminal) before creating or cloning `my-agentic-workflows`."
+        "Complete Adventure A (Codespace) or Adventure B (local terminal) before creating `my-agentic-workflows`."
       );
       if (!envCheck.ok) return envCheck;
       const needsRepoCreation = !state.flags.hasRepo;

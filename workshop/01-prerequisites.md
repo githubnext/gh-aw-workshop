@@ -7,7 +7,8 @@ _Starting with the right setup saves you from frustrating detours later._
 Complete these checks before you choose a setup path:
 
 - [ ] You know where you'll run workshop commands: a local terminal or a GitHub Codespace
-- [ ] `gh` CLI ≥ 2.40 is available in that environment — run `gh --version` now if you're using your own terminal, or after opening your Codespace in [Adventure A](02a-setup-codespace.md)
+- [ ] If you're using your own terminal, run `gh --version` now and confirm `gh` CLI ≥ 2.40
+- [ ] If you're using a Codespace, open it in [Adventure A](02a-setup-codespace.md) and run `gh --version` there
 
 > [!NOTE]
 > If you're using your own terminal and `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. If you're planning to use a Codespace, skip the local install commands and continue to [Adventure A](02a-setup-codespace.md). Authentication (`gh auth login`) is handled in your chosen setup path.
