@@ -130,49 +130,59 @@ steps:
       data = json.loads(pathlib.Path("/tmp/gh-aw/data/title-index.json").read_text())
       titles = data["titles"]
 
-      n = len(titles)
-      parent = list(range(n))
+      def cluster_titles(file_titles):
+          n = len(file_titles)
+          parent = list(range(n))
 
-      def find(x):
-          while parent[x] != x:
-              parent[x] = parent[parent[x]]
-              x = parent[x]
-          return x
+          def find(x):
+              while parent[x] != x:
+                  parent[x] = parent[parent[x]]
+                  x = parent[x]
+              return x
 
-      def union(a, b):
-          parent[find(a)] = find(b)
+          def union(a, b):
+              parent[find(a)] = find(b)
 
-      pair_scores = {}
-      for i in range(n):
-          for j in range(i + 1, n):
-              score = similarity(titles[i]["title"], titles[j]["title"])
-              if score >= SIMILARITY_THRESHOLD:
-                  pair_scores[(i, j)] = round(score, 3)
-                  union(i, j)
+          pair_scores = {}
+          for i in range(n):
+              for j in range(i + 1, n):
+                  score = similarity(file_titles[i]["title"], file_titles[j]["title"])
+                  if score >= SIMILARITY_THRESHOLD:
+                      pair_scores[(i, j)] = round(score, 3)
+                      union(i, j)
 
-      groups = collections.defaultdict(list)
-      for i in range(n):
-          groups[find(i)].append(i)
+          groups = collections.defaultdict(list)
+          for i in range(n):
+              groups[find(i)].append(i)
+
+          result = []
+          for root, members in groups.items():
+              if len(members) < MIN_CLUSTER_SIZE:
+                  continue
+              members_sorted = sorted(members)
+              max_score = 0.0
+              for i in members_sorted:
+                  for j in members_sorted:
+                      if i >= j:
+                          continue
+                      max_score = max(max_score, pair_scores.get((i, j), 0.0))
+              result.append(
+                  {
+                      "id": f"cluster-{root}",
+                      "size": len(members_sorted),
+                      "max_similarity": round(max_score, 3),
+                      "titles": [file_titles[idx] for idx in members_sorted],
+                  }
+              )
+          return result
+
+      by_file = collections.defaultdict(list)
+      for t in titles:
+          by_file[t["file"]].append(t)
 
       clusters = []
-      for root, members in groups.items():
-          if len(members) < MIN_CLUSTER_SIZE:
-              continue
-          members_sorted = sorted(members)
-          max_score = 0.0
-          for i in members_sorted:
-              for j in members_sorted:
-                  if i >= j:
-                      continue
-                  max_score = max(max_score, pair_scores.get((i, j), 0.0))
-          clusters.append(
-              {
-                  "id": f"cluster-{root}",
-                  "size": len(members_sorted),
-                  "max_similarity": round(max_score, 3),
-                  "titles": [titles[idx] for idx in members_sorted],
-              }
-          )
+      for file_titles in by_file.values():
+          clusters.extend(cluster_titles(file_titles))
 
       clusters.sort(key=lambda c: (-c["size"], -c["max_similarity"]))
       result = {
