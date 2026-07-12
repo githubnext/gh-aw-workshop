@@ -33,7 +33,7 @@ Use your current tool entry point to choose the fastest route:
 |------|------|
 | **GitHub CLI (`gh`)** in your own terminal | ➡️ **Adventure B**: [Set Up Your Local Terminal](02b-setup-local.md) |
 | **VS Code** | ➡️ **Adventure B**: [Set Up Your Local Terminal](02b-setup-local.md) using the integrated terminal (**Terminal → New Terminal**) |
-| **copilot-app** or **cloud-agent** | ➡️ **Adventure A**: [Set Up a Codespace](02a-setup-codespace.md) first, then run workshop commands in the Codespace terminal |
+| **copilot-app** or **cloud-agent** | ➡️ **Adventure A**: [Set Up a Codespace](02a-setup-codespace.md) — run all `gh aw` commands in the Codespace terminal |
 
 ## 🎯 What You'll Do
 
