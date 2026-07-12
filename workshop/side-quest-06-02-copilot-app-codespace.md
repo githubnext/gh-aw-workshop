@@ -8,7 +8,7 @@ You'll open a GitHub Codespace from your browser, verify `gh` access, install `g
 
 ## Open a Codespace
 
-From [Step 6](06-install-gh-aw.md), select the **Open in GitHub Codespaces** button in the **No terminal yet?** section.
+From [Step 6](06-install-gh-aw.md), select the Codespaces button in the **No terminal yet?** section.
 
 When the Codespace finishes loading:
 

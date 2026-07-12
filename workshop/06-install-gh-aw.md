@@ -1,6 +1,6 @@
 # Step 6: Install the gh-aw CLI Extension
 
-## No terminal yet? Open a Codespace first (GitHub Copilot app)
+## Open a Codespace first (GitHub Copilot app users)
 
 If you're using the GitHub Copilot app (web or mobile) and don't have a terminal open yet, use this button:
 
