@@ -100,7 +100,7 @@ Trigger another manual run and compare the new comment with the old one. Repeat 
 If a run shows a red ❌, click the failed step to see the raw log. Common causes:
 
 - **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
-- **Compile error** — run `gh aw compile .github/workflows/daily-status.md --validate` locally to see the exact YAML error and line number. **UI path / no terminal:** check the failed Actions step log — compile errors appear in the step output. The [Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md) covers the most common mistakes (tabs, indentation, missing quotes) with before/after examples and copy-paste fixes.
+- **Compile error** — run `gh aw compile .github/workflows/daily-status.md --validate` locally to see the exact YAML error and line number. **UI path / no terminal:** check the failed Actions step log — compile errors appear in the step output. The [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) covers the most common mistakes (tabs, indentation, missing quotes) with before/after examples and copy-paste fixes.
 - **API rate limit** — wait a few minutes and try again.
 
 > [!WARNING]
