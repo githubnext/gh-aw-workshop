@@ -20,8 +20,6 @@ Open `https://github.com/<your-username>/my-agentic-workflows` in your browser.
 
 > [!NOTE]
 > If you skipped repository creation in setup, create it now using [github.com/new](https://github.com/new), set it to **Public**, and check **Add a README file**.
-
-> [!NOTE]
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
 ### 2. Clone and enter the repository
