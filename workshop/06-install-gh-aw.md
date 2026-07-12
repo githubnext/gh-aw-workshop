@@ -34,14 +34,19 @@ extension so you can compile and run agentic workflows from your terminal.
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows you are logged in
-> Then run `gh extension install github/gh-aw` below.
+> - ⚠️ If you're in an org-owned Codespace, the curl fallback below may be required.
+> Then run `gh extension install github/gh-aw` below *(org-owned Codespace?)*.
 
 ```bash
 gh extension install github/gh-aw
 ```
 
 > [!IMPORTANT]
-> If you're in an organization-owned Codespace and `gh extension install github/gh-aw` returns HTTP 403, use this fallback:
+> **Getting HTTP 403?** You're likely in an organization-owned Codespace.
+> Run this fallback instead:
+> ```bash
+> curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
+> ```
 
 <details>
 <summary>HTTP 403 fallback install path</summary>
