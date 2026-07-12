@@ -10,12 +10,12 @@ Agentic workflows that use the Copilot engine (the default) need to authenticate
 
 | Method | What you need | When to use it |
 |---|---|---|
-| **Feature flag** (recommended) | An active GitHub Copilot subscription on your account | Most workflows — no secret to manage |
-| **`COPILOT_GITHUB_TOKEN` secret** | A PAT with Copilot access stored as a repository secret | Older workflows, org-level overrides, or automation that can't use the feature flag |
+| **Copilot requests permission** (recommended) | An active GitHub Copilot subscription on your account | Most workflows — no secret to manage |
+| **`COPILOT_GITHUB_TOKEN` secret** | A PAT with Copilot access stored as a repository secret | Older workflows, org-level overrides, or automation that can't use the copilot requests permission |
 
 ---
 
-## Method 1 — Feature flag (recommended)
+## Method 1 — Copilot requests permission (recommended)
 
 This method uses the GitHub Actions token that every workflow run already has. No additional secret is required.
 
@@ -40,7 +40,7 @@ With this in place, the workflow authenticates automatically using `${{ github.t
 
 ## Method 2 — `COPILOT_GITHUB_TOKEN` secret
 
-Use this method if you prefer a dedicated token, need to authenticate with a service account, or are working with a workflow that predates the feature flag.
+Use this method if you prefer a dedicated token, need to authenticate with a service account, or are working with a workflow that predates the copilot requests permission.
 
 ### Create a Personal Access Token
 
@@ -89,7 +89,7 @@ Look for a line that mentions the `copilot` scope or check that your Copilot pla
 
 ## ✅ Checkpoint
 
-- [ ] You understand the difference between the feature flag method and the `COPILOT_GITHUB_TOKEN` method
+- [ ] You understand the difference between the copilot requests permission method and the `COPILOT_GITHUB_TOKEN` method
 - [ ] Your workflow frontmatter has `copilot-requests: write` under `permissions`
 - [ ] If using the secret method: `COPILOT_GITHUB_TOKEN` is stored as a repository secret
 - [ ] Your GitHub account has an active Copilot subscription
