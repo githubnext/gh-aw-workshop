@@ -27,7 +27,7 @@ Use the path that matches your tool before you run any install command:
 | I am using... | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| `copilot-app` | [Open a Codespace (`copilot-app` users)](#open-a-codespace-copilot-app-users) |
+| `copilot-app` | [Open a Codespace for copilot-app](#open-a-codespace-for-copilot-app) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
@@ -42,10 +42,10 @@ If you get a version number, skip to [Confirm installation](#confirm-installatio
 
 If the command is not found:
 
-- If you are using `copilot-app`, first complete [Open a Codespace (`copilot-app` users)](#open-a-codespace-copilot-app-users)
+- If you are using `copilot-app`, first complete [Open a Codespace for copilot-app](#open-a-codespace-for-copilot-app)
 - Then continue with [Install from terminal](#install-from-terminal)
 
-## Open a Codespace (`copilot-app` users)
+## Open a Codespace for copilot-app
 
 If you are using `copilot-app`, you must open a Codespace to run install commands in its terminal:
 
@@ -65,7 +65,7 @@ If you are using `copilot-app`, you must open a Codespace to run install command
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows you are logged in
-> - ⚠️ If you're in an org-owned Codespace, see the HTTP 403 workaround in the following callout before the standard install command.
+> - ⚠️ If you're in an org-owned Codespace, use the HTTP 403 workaround below before the standard install command.
 
 <!-- -->
 
