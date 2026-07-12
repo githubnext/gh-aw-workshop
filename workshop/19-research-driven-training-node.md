@@ -61,7 +61,7 @@ Run markdown lint and compile checks so your proposal is production-ready:
 
 ```bash
 npx --yes markdownlint-cli2 "workshop/**/*.md"
-gh aw compile .github/workflows/training-plan-research.md --validate
+gh aw compile .github/workflows/<your-workflow>.md --validate
 ```
 
 ## ✅ Checkpoint
