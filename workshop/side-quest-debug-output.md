@@ -112,18 +112,13 @@ The agent tried to write more than the `max:` value in your `safe-outputs` block
 
 **What it means:**
 
-The agent attempted a write operation (creating an issue, posting a comment, updating a label, etc.) for a GitHub API scope that isn't declared in `permissions:`. The `gh-proxy` tool layer enforces this at the network level, so the call is rejected before it reaches GitHub's API.
+The agent attempted a write operation (creating an issue, posting a comment, updating a label, etc.) that your workflow configuration does not allow. The `gh-proxy` tool layer enforces this at the network level, so the call is rejected before it reaches GitHub's API.
 
 **What to do:**
 
-Add the missing scope to `permissions:` in your workflow frontmatter. For example, if the agent needs to create issues:
+The correct way to allow the agent to create an issue is to declare the write operation in `safe-outputs:` — not by adding `issues: write` to `permissions:`. `permissions:` only accepts `read` or `none` for most scopes (`write` is blocked by the framework for security reasons).
 
-```yaml
-permissions:
-  issues: write
-```
-
-Then also add a corresponding entry in `safe-outputs:` to control exactly how many writes of that type are allowed:
+Add a `safe-outputs` entry for the write operation you want to allow:
 
 ```yaml
 safe-outputs:
@@ -131,8 +126,17 @@ safe-outputs:
     max: 1
 ```
 
+If the agent also needs to _read_ issue data (for example, to look up an existing issue before creating a new one), add the read scope to `permissions:`:
+
+```yaml
+permissions:
+  issues: read
+```
+
+`safe-outputs:` is the true source of write access; `permissions:` is read-only access control.
+
 > [!NOTE]
-> `permissions:` declares the scopes the workflow _may_ use. `safe-outputs:` then constrains which write operations the agent can actually perform and how many times. Both blocks work together — a scope in `permissions:` without a matching `safe-outputs:` entry won't let the agent write anything.
+> `permissions:` declares the read scopes the workflow may use. `safe-outputs:` is the sole mechanism through which the agent can perform any GitHub write operation. There are no writable `permissions:` scopes (except `id-token: write` and `copilot-requests: write`).
 
 ---
 
