@@ -8,8 +8,8 @@
 
 | If you… | Do this |
 |---------|---------|
-| Are new to terminals, prefer a browser-based setup, or use the GitHub Copilot Cloud Agent (CCA) | ✅ **You're in the right place** — click the badge above and continue below |
-| Are comfortable with a local terminal and want to use your own machine | ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
+| New to terminals, prefer a browser-based setup, or use the GitHub Copilot Cloud Agent (CCA) | ✅ **You're in the right place** — click the badge above and continue below |
+| Comfortable with a local terminal and want to use your own machine | ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
 
 > [!IMPORTANT]
 > **Using the GitHub Copilot Cloud Agent (CCA)?**
