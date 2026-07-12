@@ -250,7 +250,7 @@ After generating the SVG:
 If you generated a diagram, call `create-pull-request` with:
 
 - **Title**: `Add explanatory SVG diagram for <concept>`
-- **Body** summarising:
+- **Body** summarizing:
   - which workshop file changed
   - which concept was illustrated
   - which SVG file was added
