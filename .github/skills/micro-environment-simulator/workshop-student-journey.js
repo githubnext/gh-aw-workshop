@@ -55,12 +55,16 @@ function buildTransitions() {
         "Create the repository via the GitHub web UI before opening a Codespace."
       );
       if (!repoCheck.ok) return repoCheck;
-      return ensure(
+      const terminalCheck = ensure(
         VALID_TERMINALS[state.os] && VALID_TERMINALS[state.os].has(state.terminal),
         `Terminal '${state.terminal}' is not valid for OS '${state.os}'`,
         "terminal-os-mismatch",
         "Use bash/zsh for macOS/Linux and powershell/cmd for Windows."
       );
+      if (!terminalCheck.ok) return terminalCheck;
+      const next = cloneState(state);
+      next.flags.environmentReady = true;
+      return { ok: true, state: deepFreeze(next) };
     },
     "04-actions-intro": (state) => {
       const next = cloneState(state);
@@ -81,6 +85,13 @@ function buildTransitions() {
       return { ok: true, state: deepFreeze(next) };
     },
     "06-install-gh-aw": (state) => {
+      const envCheck = ensure(
+        state.flags.environmentReady,
+        "gh CLI cannot be installed before a Codespace or local terminal is open",
+        "environment-not-ready",
+        "Complete the setup step (02-setup) to open a Codespace or local terminal before installing gh."
+      );
+      if (!envCheck.ok) return envCheck;
       if (!state.installed.gh) {
         return ensure(
           false,
@@ -91,6 +102,9 @@ function buildTransitions() {
       }
       const next = cloneState(state);
       next.installed.aw = "latest";
+      // In the simulation model, isLoggedIn serves as a proxy for having Copilot-enabled
+      // credentials. A real-world check would also verify Copilot subscription access.
+      next.flags.agentCredentialsConfigured = Boolean(state.auth.isLoggedIn);
       return { ok: true, state: deepFreeze(next) };
     },
     "07-first-workflow": (state) => {
@@ -121,6 +135,14 @@ function buildTransitions() {
         "Run `gh auth login` before triggering workflow runs."
       );
       if (!authCheck.ok) return authCheck;
+
+      const credCheck = ensure(
+        state.flags.agentCredentialsConfigured,
+        "Agent credentials have not been configured",
+        "agent-credentials-missing",
+        "Complete the gh-aw install step and ensure gh auth login was run before triggering a workflow run."
+      );
+      if (!credCheck.ok) return credCheck;
 
       const next = cloneState(state);
       next.flags.ranWorkflow = true;
