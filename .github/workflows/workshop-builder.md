@@ -56,7 +56,7 @@ safe-outputs:
     title-prefix: "[workshop-builder] "
     labels: [workshop, automation]
     deduplicate-by-title: true
-    max: 2
+    max: 5
   add-comment:
     max: 1
 timeout-minutes: 20
