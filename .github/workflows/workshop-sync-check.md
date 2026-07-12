@@ -127,14 +127,14 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 ## Phase 3 — Select Files to Review (Round-Robin)
 
 1. Using `workshop_files` from the repo state and `round_robin_index` from the cache,
-   select up to 5 files starting at the current index:
+   select up to 5 files starting at the current index (pseudocode for illustration):
 
    ```
-   n = min(5, len(workshop_files))
-   target_files = [workshop_files[(round_robin_index + i) % len(workshop_files)] for i in range(n)]
+   n = min(5, total number of workshop files)
+   target_files = [workshop_files[(round_robin_index + i) % total] for each i in 0..n-1]
    ```
 
-2. Increment `round_robin_index` by `n` (wraps naturally via modulo on the next run).
+2. Record `n` for use in Phase 8.
 
 ---
 
@@ -236,7 +236,7 @@ Write the updated state back to `/tmp/gh-aw/cache-memory/sync-state.json`:
 
 ```json
 {
-  "round_robin_index": <incremented by n, the number of files reviewed>,
+  "round_robin_index": <previous round_robin_index + n, where n is the number of files reviewed>,
   "files_reviewed": [<append all target_files if not already present>],
   "last_gh_aw_release": "<latest tag>",
   "last_gh_aw_release_date": "<published_at>"
