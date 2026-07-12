@@ -62,7 +62,9 @@ Once the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or 
 gh --version
 ```
 
-You should see something like `gh version 2.x.x`.
+> [!TIP]
+> **You should see:** `gh version 2.x.x` — if you do, your environment is ready.
+> If not, go back to [Step 1: What You Need Before We Start](01-prerequisites.md).
 
 ```bash
 gh extension list
@@ -81,7 +83,9 @@ Codespaces often start with `gh` already authenticated, but you should still ver
 gh auth status
 ```
 
-If the command shows `Logged in to github.com`, you're ready.
+> [!TIP]
+> **You should see:** `Logged in to github.com as <your-username>` — if you do, you're ready to continue.
+> If not, run `gh auth login` and complete the browser sign-in prompts.
 
 If it says authentication is required, run:
 
