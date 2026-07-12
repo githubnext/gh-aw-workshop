@@ -4,9 +4,11 @@ _Starting with the right setup saves you from frustrating detours later._
 
 ## 🔍 Quick self-check
 
-If you haven't run the pre-flight check in [Step 0](00-welcome.md), run it first to confirm `gh` is installed and authenticated:
+If you already have a terminal with `gh` available, run this single command to confirm your environment is ready:
 
-➡️ [Step 0 pre-flight check](00-welcome.md#optional-pre-flight-tool-check)
+```bash
+gh auth status && gh --version && echo "✅ Ready to continue"
+```
 
 If the check fails with an authentication error, run `gh auth login` first — see the [GitHub CLI auth docs](https://cli.github.com/manual/gh_auth_login).
 

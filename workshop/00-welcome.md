@@ -25,21 +25,6 @@ By the end of this workshop, you'll have a scheduled AI agent that posts a daily
 | **DevOps / platform engineer** | A repeatable GitHub-native pattern for scheduled AI-assisted triage with clear permissions and auditable runs |
 | **Evaluator / program manager** | A concrete, low-effort way to evaluate team repo health and AI workflow value without doing manual status collection |
 
-## Optional pre-flight tool check
-
-<details>
-<summary>🔧 Show the pre-flight tool check (recommended if you already have a terminal open)</summary>
-
-If you already have a terminal open, run:
-
-```bash
-gh --version && gh auth status
-```
-
-If either command fails, continue to [Step 1: What You Need Before We Start](01-prerequisites.md) for setup help.
-
-</details>
-
 ## 🚀 What You'll Ship
 
 By the end of this workshop, a scheduled GitHub Actions job will post a daily status report to your repository every morning — written by an AI agent, triggered automatically, zero manual work. It reads live repository data, decides what matters, and publishes a structured summary before your team's first meeting.
