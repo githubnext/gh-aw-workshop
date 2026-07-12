@@ -192,13 +192,13 @@ Run this exact command from inside `my-agentic-workflows`:
 gh auth status && gh extension list && gh repo view --json owner,name --jq '"\(.owner.login)/\(.name)"'
 ```
 
-_What success looks like:_ no errors are shown, and the final line is exactly:
+_What success looks like:_ no errors are shown across all command output, and the final line is exactly:
 
 ```text
 <your-username>/my-agentic-workflows
 ```
 
-Replace `<your-username>` with your actual GitHub username in that final output line.
+You should see your actual GitHub username in place of `<your-username>` in that final output line.
 
 If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before moving on.
 
