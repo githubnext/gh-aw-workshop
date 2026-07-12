@@ -147,7 +147,8 @@ Need a quick glossary with official docs links?
 ## ✅ Checkpoint
 
 - [ ] You have a GitHub account and can sign in
-- [ ] gh CLI ≥ 2.40 is available in your chosen environment
+- [ ] `gh` CLI ≥ 2.40 is available in your chosen environment (`gh --version`)
+- [ ] `gh` CLI is authenticated — `gh auth status` shows `Logged in to github.com as <your-username>` (completed in your chosen setup path)
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
