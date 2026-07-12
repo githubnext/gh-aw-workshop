@@ -83,7 +83,7 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 
 ## ✅ Checkpoint
 
-- [ ] Your frontmatter has an `mcp.servers` block pointing to an MCP server
+- [ ] Your frontmatter has a `tools:` block with `github: mode: gh-proxy`
 - [ ] Your task brief mentions what the agent should do with the tools
 - [ ] A manual run completes and the log shows at least one MCP tool call
 - [ ] The workflow output reflects live data retrieved via MCP, not just static text
