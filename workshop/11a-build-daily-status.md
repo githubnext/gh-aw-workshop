@@ -1,4 +1,4 @@
-# Step 11: Build: Daily Repo Status Workflow
+# Step 11a: Build — Daily Repo Status Workflow
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._
 >
@@ -15,7 +15,7 @@ You'll write the complete `daily-status.md` agentic workflow file, placing it in
 
 ## 📋 Before You Start
 
-- You've completed [Step 10: Design: Your Daily Repo Status Report](10-design-daily-status.md)
+- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 - Your terminal is inside `my-agentic-workflows`
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
@@ -403,5 +403,5 @@ Find the most recently updated open issue and post a comment in this format:
 - [ ] The file is committed and pushed to `main`
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 
-**Previous:** [Step 10: Design: Your Daily Repo Status Report](10-design-daily-status.md)
+**Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)

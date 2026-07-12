@@ -122,4 +122,4 @@ If the comment exists but the content is wrong, the agent followed your instruct
 - [ ] I understand what the `safe-outputs used` line in the summary means
 - [ ] I know the first place to look when a run produces unexpected output
 
-**Next:** [Step 10: Design Your Daily Repo Status Report](10-design-daily-status.md)
+**Next:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)

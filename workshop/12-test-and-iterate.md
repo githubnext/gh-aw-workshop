@@ -9,8 +9,8 @@ You'll trigger your daily-status workflow manually, read the resulting issue com
 ## 📋 Before You Start
 
 - You have installed the `gh-aw` extension in [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
-- You have completed [Step 11: Build: Daily Repo Status Workflow](11-build-daily-status.md).
-- Your workflow file `.github/workflows/daily-status.md` is committed and pushed to `main`.
+- You have completed one of the scenario build steps: [Step 11a](11a-build-daily-status.md), [Step 11b](11b-build-daily-docs.md), or [Step 11c](11c-build-pr-reviewer.md).
+- Your workflow file is committed and pushed to `main`.
 
 ## Steps
 
