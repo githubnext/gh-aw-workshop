@@ -39,6 +39,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 - [Side Quest: Reading an Annotated Agentic Workflow](side-quest-annotated-workflow.md) — fully annotated `daily-status.md` walkthrough explaining every design decision; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-github-output.md) — deep-dive into how `$GITHUB_OUTPUT` works; branches from [Step 16](16-connect-data-source.md).
 - [Side Quest: How MCP Tool Servers Work](side-quest-mcp-concepts.md) — conceptual primer explaining what MCP is, how the agentic loop changes, and how to read tool calls in the Actions log; branches from [Step 17](17-add-mcp-tools.md).
+- [Side Quest: Storing Credentials with GitHub Secrets](side-quest-secrets-and-permissions.md) — guide to creating repository secrets, referencing them in workflow steps, using the built-in `GITHUB_TOKEN`, and scoping permissions; branches from [Step 16](16-connect-data-source.md) or [Step 17](17-add-mcp-tools.md).
 
 ## Getting Started
 
