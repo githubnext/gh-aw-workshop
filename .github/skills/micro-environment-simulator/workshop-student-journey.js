@@ -1,6 +1,6 @@
 "use strict";
 
-const { VALID_TERMINALS, ensure } = require("./simulator");
+const { VALID_TERMINALS, INFERENCE_PROVIDERS, PROVIDER_SECRET_BY_NAME, ensure } = require("./simulator");
 
 const STEP_IDS = [
   "00-welcome",
@@ -40,12 +40,6 @@ function isOrgScopedCodespacesToken(state) {
 function isCodespacesWorkspace(state) {
   return state.workspace?.context === "codespaces";
 }
-
-const PROVIDER_SECRET_BY_NAME = {
-  github: "COPILOT_GITHUB_TOKEN",
-  anthropic: "ANTHROPIC_API_KEY",
-  openai: "OPENAI_API_KEY"
-};
 
 function requiredSecretForProvider(provider) {
   return PROVIDER_SECRET_BY_NAME[provider] || null;
@@ -180,7 +174,7 @@ function buildTransitions() {
 
       const provider = state.actions?.inferenceProvider;
       const providerCheck = ensure(
-        provider === "github" || provider === "anthropic" || provider === "openai",
+        INFERENCE_PROVIDERS.includes(provider),
         "Workflow run is missing a supported model inference provider configuration",
         "inference-provider-missing",
         "Set the workflow model provider to github, anthropic, or openai before running."

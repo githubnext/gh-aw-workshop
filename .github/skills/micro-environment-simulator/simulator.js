@@ -9,6 +9,11 @@ const VALID_TERMINALS = {
 };
 
 const INFERENCE_PROVIDERS = ["github", "anthropic", "openai"];
+const PROVIDER_SECRET_BY_NAME = {
+  github: "COPILOT_GITHUB_TOKEN",
+  anthropic: "ANTHROPIC_API_KEY",
+  openai: "OPENAI_API_KEY"
+};
 const INFERENCE_PROVIDER_SEED_OFFSET = 4;
 const COPILOT_SECRET_PRIMARY_MODULO = 5;
 const COPILOT_SECRET_SECONDARY_MODULO = 7;
@@ -112,9 +117,9 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
         copilotRequestsWrite: hasCopilotRequestsWrite
       },
       secrets: {
-        COPILOT_GITHUB_TOKEN: hasCopilotGithubToken,
-        ANTHROPIC_API_KEY: hasAnthropicApiKey,
-        OPENAI_API_KEY: hasOpenAiApiKey
+        [PROVIDER_SECRET_BY_NAME.github]: hasCopilotGithubToken,
+        [PROVIDER_SECRET_BY_NAME.anthropic]: hasAnthropicApiKey,
+        [PROVIDER_SECRET_BY_NAME.openai]: hasOpenAiApiKey
       }
     },
     flags: {
@@ -264,6 +269,8 @@ function runCli() {
 
 const exportedApi = {
   VALID_TERMINALS,
+  INFERENCE_PROVIDERS,
+  PROVIDER_SECRET_BY_NAME,
   ensure,
   defaultEnvironmentForStudent,
   replayJourney,
