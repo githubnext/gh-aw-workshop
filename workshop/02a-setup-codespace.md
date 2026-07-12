@@ -1,12 +1,9 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
 > [!IMPORTANT]
-> **Choose the setup path that matches how you work:**
->
-> | I use… | Go to… |
-> |------|------|
-> | **GitHub Codespaces**, **copilot-app**, or **cloud-agent** | ✅ Stay on **Adventure A** (this page) |
-> | A local terminal on your own machine (including **VS Code integrated terminal** outside Codespaces) | ➡️ Use [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
+> **Using Copilot app or cloud agent?** These entry points don't include a local terminal.
+> If you're not already in one, jump to [Step 2: Open the Codespace](#open-the-codespace),
+> then continue this step in the Codespace terminal.
 
 Adventure A is the no-local-install path for **GitHub Codespaces**, **VS Code (integrated terminal in Codespaces)**, **copilot-app**, and **cloud-agent** users.
 
@@ -36,6 +33,7 @@ Create the repository you'll use to store your workflows during the workshop.
 > [!NOTE]
 > Creating the repository first keeps the Codespace and terminal setup paths aligned, and adding a README avoids an empty-repository setup edge case.
 
+<a id="open-the-codespace"></a>
 ### 2. Open the Codespace
 
 1. In [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop), click the green **Code** button.
