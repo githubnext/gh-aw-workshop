@@ -9,6 +9,13 @@ const VALID_TERMINALS = {
 };
 
 const INFERENCE_PROVIDERS = ["github", "anthropic", "openai"];
+const INFERENCE_PROVIDER_SEED_OFFSET = 4;
+const COPILOT_SECRET_PRIMARY_MODULO = 5;
+const COPILOT_SECRET_SECONDARY_MODULO = 7;
+const THIRD_PARTY_SECRET_BEGINNER_MODULO = 3;
+const THIRD_PARTY_SECRET_SECONDARY_MODULO = 8;
+const COPILOT_PERMISSION_GITHUB_MODULO = 4;
+const COPILOT_PERMISSION_OTHER_MODULO = 3;
 
 function toDayOfYear(isoDate) {
   const date = new Date(`${isoDate}T00:00:00Z`);
@@ -56,13 +63,26 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
   const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
   const hasCopilotRequestToken = isLoggedIn && (student.tool === "cloud-agent" || seed % 2 === 0);
-  const inferenceProvider = deterministicChoice(seed + 4, INFERENCE_PROVIDERS);
-  const hasCopilotGithubToken = isLoggedIn && (inferenceProvider === "github" ? seed % 5 !== 0 : seed % 7 === 0);
+  const inferenceProvider = deterministicChoice(seed + INFERENCE_PROVIDER_SEED_OFFSET, INFERENCE_PROVIDERS);
+  const hasCopilotGithubToken =
+    isLoggedIn &&
+    (inferenceProvider === "github"
+      ? seed % COPILOT_SECRET_PRIMARY_MODULO !== 0
+      : seed % COPILOT_SECRET_SECONDARY_MODULO === 0);
   const hasAnthropicApiKey =
-    isLoggedIn && (inferenceProvider === "anthropic" ? level !== "beginner" || seed % 3 !== 0 : seed % 8 === 0);
+    isLoggedIn &&
+    (inferenceProvider === "anthropic"
+      ? level !== "beginner" || seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== 0
+      : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 0);
   const hasOpenAiApiKey =
-    isLoggedIn && (inferenceProvider === "openai" ? level !== "beginner" || seed % 3 !== 1 : seed % 8 === 1);
-  const hasCopilotRequestsWrite = inferenceProvider === "github" ? seed % 4 !== 0 : seed % 3 !== 0;
+    isLoggedIn &&
+    (inferenceProvider === "openai"
+      ? level !== "beginner" || seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== 1
+      : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 1);
+  const hasCopilotRequestsWrite =
+    inferenceProvider === "github"
+      ? seed % COPILOT_PERMISSION_GITHUB_MODULO !== 0
+      : seed % COPILOT_PERMISSION_OTHER_MODULO !== 0;
 
   return deepFreeze({
     studentId: id,
