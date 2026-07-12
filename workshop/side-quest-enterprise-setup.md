@@ -36,7 +36,7 @@ If you do not have this access yet, ask your admin to provide a ready-to-use run
 Agentic workflows require both Actions execution and model access:
 
 - You need an active Copilot plan supported by your enterprise policy (Business or Enterprise where required).
-- Confirm your organization and repository allow GitHub-hosted model usage for workflows.
+- Confirm your organization and repository allow Copilot model access in workflow runs.
 - If model access is blocked by policy, workflow runs can start but fail when the agent step executes.
 
 Before installing `gh-aw`, verify with your admin that your account and repository are permitted to run Copilot-powered workflow jobs.
@@ -49,4 +49,4 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), and [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md).
+Common return points are [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), and [Step 3](03-create-your-repo.md).
