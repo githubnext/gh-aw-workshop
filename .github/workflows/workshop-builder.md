@@ -108,7 +108,7 @@ run can pick up where you left off.
 
 ---
 
-## Phase 1 — Load State
+## Load State
 
 ### 1a. Read repository state
 
@@ -172,7 +172,7 @@ Resolve the issue that stores builder action history:
 
 ---
 
-## Phase 2 — Assess Workshop Health
+## Assess Workshop Health
 
 Gather signals from three sources:
 
@@ -235,7 +235,7 @@ it as always eligible.
 
 ---
 
-## Phase 3 — Select Exactly One Action
+## Select Exactly One Action
 
 Apply the following priority tiers in order. Take the first action whose
 conditions are met.
@@ -341,7 +341,7 @@ explanation covering what was checked and why nothing was needed.
 
 ---
 
-## Phase 4 — Update Persistent State
+## Update Persistent State
 
 Write the updated state back to `/tmp/gh-aw/cache-memory/builder-state.json`:
 
@@ -358,7 +358,7 @@ Write the updated state back to `/tmp/gh-aw/cache-memory/builder-state.json`:
   - `target` — workflow name, file name, or short description
   - `reason` — one-sentence rationale
 
-## Phase 5 — Maintain Builder Status Issue History
+## Maintain Builder Status Issue History
 
 Maintain a single issue that acts as the permanent action log for this
 orchestrator.

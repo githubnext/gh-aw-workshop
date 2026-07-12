@@ -123,7 +123,7 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 
 ---
 
-## Phase 1 — Load State
+## Load State
 
 1. Read `/tmp/gh-aw/data/repo-state.json`. It contains:
    - `workshop_files` — array of workshop markdown paths
@@ -146,7 +146,7 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 
 ---
 
-## Phase 2 — Check for New gh-aw Releases
+## Check for New gh-aw Releases
 
 1. Fetch the latest gh-aw release:
 
@@ -165,7 +165,7 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 
 ---
 
-## Phase 3 — Select Files to Review (Round-Robin)
+## Select Files to Review (Round-Robin)
 
 1. Using `workshop_files` from the repo state and `round_robin_index` from the cache,
    select up to 5 files starting at the current index (pseudocode for illustration):
@@ -179,7 +179,7 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
 
 ---
 
-## Phase 4 — Fetch Reference Documentation
+## Fetch Reference Documentation
 
 Fetch the authoritative gh-aw documentation to compare against. Use `gh api` to read the raw content of these key reference files from `github/gh-aw`:
 
@@ -199,7 +199,7 @@ Also fetch the latest release notes if a new release was found in Phase 2.
 
 ---
 
-## Phase 5 — Compile-Validate Workshop Workflow Examples
+## Compile-Validate Workshop Workflow Examples
 
 Use the `agentic-workflows` compile tool to validate each workflow source file listed in `workflow_files`.
 
@@ -207,7 +207,7 @@ For every `.md` file in that list, run the compile tool with `--validate` to che
 
 ---
 
-## Phase 6 — Evaluate Workshop Files Using Inline Subagents
+## Evaluate Workshop Files Using Inline Subagents
 
 For each file in `target_files`:
 
@@ -229,7 +229,7 @@ After all subagents have returned their verdicts, proceed to Phase 7.
 
 ---
 
-## Phase 7 — Decide and Act
+## Decide and Act
 
 Collect all verdicts returned by the `workshop-sync-reviewer` subagents in Phase 6.
 
@@ -272,7 +272,7 @@ Replace `--pin` with `--version` on line 23.
 
 ---
 
-## Phase 8 — Update Cache State
+## Update Cache State
 
 Write the updated state back to `/tmp/gh-aw/cache-memory/sync-state.json`:
 

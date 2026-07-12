@@ -48,7 +48,7 @@ You'll confirm that you have everything required before writing a single line of
 
 ## Steps
 
-### 1. Confirm required vs optional prerequisites
+### Confirm required vs optional prerequisites
 
 - ✅ **Required:** `gh` CLI ≥ 2.40 (`gh --version`)
 - ✅ **Required (local terminal path):** Git (`git --version`)
@@ -82,7 +82,7 @@ Full installation docs: [cli.github.com](https://cli.github.com)
 > Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40 and Git pre-installed, and `gh` is often already authenticated. Still run `gh auth status` to verify before you continue.
 > ➡️ **[Adventure A: Set Up a Codespace](02a-setup-codespace.md)**
 
-### 2. Check your GitHub account
+### Check your GitHub account
 
 You need a **free GitHub account**. If you don't have one yet, create it at [github.com/join](https://github.com/join).
 
@@ -112,7 +112,7 @@ gh auth login
 >
 > Re-run `gh auth status` and confirm you see `Logged in to github.com` before proceeding to the next step.
 
-### 3. Verify Git is available (local path only)
+### Verify Git is available (local path only)
 
 If you plan to work on your own computer, make sure Git is installed:
 
@@ -130,7 +130,7 @@ Need a quick terminal primer before continuing?
 ➡️ **[Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)** — an optional walkthrough for opening a terminal, navigating folders, reading command output, and running your first practice commands.
 
 
-### 4. Know what's coming
+### Know what's coming
 
 Here's a quick summary of what you'll have installed and running by the end of the workshop:
 

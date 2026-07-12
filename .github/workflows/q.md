@@ -73,7 +73,7 @@ When invoked with the `/q` command in an issue or pull request comment, analyze 
 
 ## Investigation Protocol
 
-### Phase 0: Setup and Context Analysis
+### Setup and Context Analysis
 
 1. **Analyze Trigger Context**: Parse the triggering content to understand what needs improvement:
    - Is a specific workflow mentioned?
@@ -81,7 +81,7 @@ When invoked with the `/q` command in an issue or pull request comment, analyze 
    - Is this a general optimization request?
 2. **Identify Target Workflows**: Determine which workflows to analyze (specific ones or all)
 
-### Phase 1: Gather Live Data
+### Gather Live Data
 
 **NEVER EVER make up logs or data - always pull from live sources.**
 
@@ -109,7 +109,7 @@ Use the agentic-workflows tool to gather real data:
    - **Performance Issues**: High token usage, excessive turns, timeouts
    - **Error Patterns**: Recurring failures and their causes
 
-### Phase 2: Deep Code Analysis
+### Deep Code Analysis
 
 Use bash and file inspection tools to:
 
@@ -118,7 +118,7 @@ Use bash and file inspection tools to:
 3. **Extract Reusable Steps**: Find workflow steps that appear in multiple places
 4. **Detect Configuration Issues**: Spot missing tools, incorrect permissions, or suboptimal settings
 
-### Phase 3: Research Solutions
+### Research Solutions
 
 Use web-search to research:
 
@@ -127,11 +127,11 @@ Use web-search to research:
 3. **Performance Optimization**: Find strategies for reducing token usage and improving efficiency
 4. **Error Resolutions**: Research solutions for identified error patterns
 
-### Phase 4: Workflow Improvements
+### Workflow Improvements
 
 Based on your analysis, make targeted improvements to workflow files:
 
-#### 4.1 Add Missing Tools
+#### Add Missing Tools
 
 If logs show missing tool reports:
 - Add the tools to the appropriate workflow frontmatter
@@ -144,7 +144,7 @@ tools:
   edit:
 ```
 
-#### 4.2 Fix Permission Issues
+#### Fix Permission Issues
 
 If logs show permission errors:
 - Add required permissions to workflow frontmatter
@@ -159,7 +159,7 @@ permissions:
   actions: read
 ```
 
-#### 4.3 Optimize Repetitive Operations
+#### Optimize Repetitive Operations
 
 If logs show excessive repetitive tool calls:
 - Extract common patterns into workflow steps
@@ -172,14 +172,14 @@ imports:
   - shared/reporting.md
 ```
 
-#### 4.4 Extract Common Execution Pathways
+#### Extract Common Execution Pathways
 
 If multiple workflows share similar logic:
 - Create new shared configuration files in `workflows/shared/`
 - Extract common prompts or instructions
 - Add imports to workflows to use shared configs
 
-#### 4.5 Improve Workflow Configuration
+#### Improve Workflow Configuration
 
 General optimizations:
 - Add `timeout-minutes` to prevent runaway costs
@@ -187,7 +187,7 @@ General optimizations:
 - Ensure proper network settings
 - Configure appropriate safe-outputs
 
-### Phase 5: Validate Changes
+### Validate Changes
 
 **CRITICAL**: Use the agentic-workflows tool to validate all changes:
 
@@ -201,7 +201,7 @@ General optimizations:
 3. **Validate Syntax**: Confirm the workflow is syntactically correct
 4. **Test locally if possible**: Try running the workflow in a test environment
 
-### Phase 6: Create Pull Request (Only if Changes Exist)
+### Create Pull Request (Only if Changes Exist)
 
 **IMPORTANT**: Only create a pull request if you have made actual changes to workflow files. If no changes are needed, explain your findings in a comment instead.
 

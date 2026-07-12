@@ -6,7 +6,7 @@ YAML is unforgiving. Here are the five errors learners hit most often when build
 
 ---
 
-## 1. Tabs instead of spaces
+## Tabs instead of spaces
 
 YAML does not allow tab characters for indentation. Every level of nesting must use **two spaces**.
 
@@ -26,7 +26,7 @@ Most editors insert tabs by default for `.md` files. Check your editor's setting
 
 ---
 
-## 2. Missing quotes around strings with special characters
+## Missing quotes around strings with special characters
 
 YAML treats certain characters (`:`, `#`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `?`, `|`, `>`, `!`, `'`, `"`) as syntax when they appear unquoted in values.
 
@@ -40,7 +40,7 @@ description: "Post a report: daily"
 
 ---
 
-## 3. Wrong indentation level for nested keys
+## Wrong indentation level for nested keys
 
 YAML nesting is strictly positional. A key one level deeper must be indented exactly two more spaces than its parent.
 
@@ -60,7 +60,7 @@ tools:
 
 ---
 
-## 4. Forgetting the closing `---`
+## Forgetting the closing `---`
 
 The frontmatter must have both an opening and a closing `---` fence. If you omit the closing fence, the entire file is treated as YAML and the agent body is lost.
 
@@ -91,7 +91,7 @@ You are an AI assistant...
 
 ---
 
-## 5. `copilot-requests: write` not listed under `permissions`
+## `copilot-requests: write` not listed under `permissions`
 
 This is the single most common reason a workflow compiles but produces no output. The agent can't make AI calls without this permission.
 

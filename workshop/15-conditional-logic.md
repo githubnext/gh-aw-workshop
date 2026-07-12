@@ -13,7 +13,7 @@ Add a conditional check to your daily-status workflow so it only posts a summary
 
 ## Steps
 
-### 1. Understand the problem
+### Understand the problem
 
 Right now your daily-status workflow runs every weekday — even on days when nothing happened. That means noisy, unhelpful summaries like "No activity to report." Conditional logic lets you skip the AI call entirely on quiet days.
 
@@ -22,7 +22,7 @@ The approach:
 2. Store the result in an output variable.
 3. Use an `if:` condition in your workflow to skip the summary step when the count is zero.
 
-### 2. Add a commit-count step
+### Add a commit-count step
 
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add a new step **before** the AI prompt step:
 
@@ -42,7 +42,7 @@ This shell command:
 > [!NOTE]
 > `$GITHUB_OUTPUT` is a special GitHub Actions file. Anything you write in the format `key=value` becomes available to later steps as `steps.<id>.outputs.key`.
 
-### 3. Add a condition to your AI step
+### Add a condition to your AI step
 
 Now find the step that calls your AI prompt and add an `if:` line:
 
@@ -57,7 +57,7 @@ Replace `uses: ...` with whatever your existing AI step looks like. The `if:` li
 > [!TIP]
 > You can use `${{ steps.recent.outputs.commit_count }}` inside your prompt text too — for example: "Summarise the last ${{ steps.recent.outputs.commit_count }} commits."
 
-### 4. Test it locally first
+### Test it locally first
 
 Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
 
@@ -66,7 +66,7 @@ Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
 
 ![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
-### 5. Commit and push
+### Commit and push
 
 ```bash
 git add .github/workflows/daily-status.md

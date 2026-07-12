@@ -37,7 +37,7 @@ All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
 
-### 1. Create your practice repository
+### Create your practice repository
 
 1. Open [github.com/new](https://github.com/new).
 2. Enter `my-agentic-workflows` for **Repository name**.
@@ -48,7 +48,7 @@ All command blocks below are copy-paste-ready (no leading `$`).
 > [!NOTE]
 > Creating `my-agentic-workflows` now keeps setup ordering consistent with the Codespace path and avoids an empty repository.
 
-### 2. Verify Git
+### Verify Git
 
 ```bash
 git --version
@@ -60,7 +60,7 @@ _What success looks like:_ a line like `git version 2.x.x`.
 
 You should see `git version 2.x.x` or higher. If you see an error, download Git from [git-scm.com](https://git-scm.com) and re-run the check.
 
-### 3. Install the gh CLI
+### Install the gh CLI
 
 The `gh` CLI is GitHub's official command-line tool. Check whether it's already installed:
 
@@ -110,7 +110,7 @@ _What success looks like:_ package install reports success.
 
 _What success looks like:_ apt completes and `gh` is installed without errors.
 
-### 4. Authenticate the gh CLI
+### Authenticate the gh CLI
 
 ```bash
 gh auth login
@@ -125,7 +125,7 @@ Choose **GitHub.com** and then **Login with a web browser**. A one-time code wil
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
-### 5. Clone your practice repository
+### Clone your practice repository
 
 Replace `YOUR_USERNAME` with your GitHub username:
 
@@ -138,7 +138,7 @@ cd my-agentic-workflows
 
 _What success looks like:_ clone finishes and `cd` returns you to a prompt inside `my-agentic-workflows`.
 
-### 6. Verify everything is in order
+### Verify everything is in order
 
 ```bash
 gh repo view --json name,owner | cat

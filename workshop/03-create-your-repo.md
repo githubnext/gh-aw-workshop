@@ -14,7 +14,7 @@ You'll open the `my-agentic-workflows` repository you already created during set
 
 ## Steps
 
-### 1. Open your practice repository
+### Open your practice repository
 
 Open `https://github.com/<your-username>/my-agentic-workflows` in your browser.
 
@@ -23,7 +23,7 @@ Replace `<your-username>` with your actual GitHub username.
 > [!NOTE]
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
-### 2. Clone and enter the repository
+### Clone and enter the repository
 
 > [!NOTE]
 > **GitHub UI path:** If you plan to create and edit files directly on GitHub (in the browser), you can skip this step — cloning is only needed for terminal-based work.
@@ -46,7 +46,7 @@ cd my-agentic-workflows
 > [!TIP]
 > Remaining steps that use the terminal assume your shell is inside the `my-agentic-workflows` directory. Keep this terminal open — you'll return to it throughout the workshop.
 
-### 3. Confirm GitHub Actions is enabled
+### Confirm GitHub Actions is enabled
 
 Open the repository on GitHub.
 
@@ -63,7 +63,7 @@ Click the **Actions** tab at the top of the page. You should see a message like 
 > [!NOTE]
 > GitHub Actions is enabled by default for all new public repositories. If you see a prompt to enable it, click the button to turn it on.
 
-### 4. Add a .gitignore (optional but tidy)
+### Add a .gitignore (optional but tidy)
 
 Workflows sometimes generate local log files. A `.gitignore` keeps your repository clean.
 
@@ -90,7 +90,7 @@ git push
 
 </details>
 
-### 5. Verify your setup
+### Verify your setup
 
 **Terminal:**
 

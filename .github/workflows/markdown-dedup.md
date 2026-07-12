@@ -365,7 +365,7 @@ prompt an automated agent to consolidate the redundant sections.
 
 ---
 
-## Phase 1 — Load Results
+## Load Results
 
 Read:
 
@@ -391,7 +391,7 @@ No duplicate clusters found. Scanned {total_files} files → {total_chunks} sect
 
 ---
 
-## Phase 2 — Triage Each Cluster
+## Triage Each Cluster
 
 For each cluster in `clusters`, invoke the `markdown-dedup-analyst` inline agent
 (`.github/agents/markdown-dedup-analyst.agent.md`) and pass the full cluster object.
@@ -407,7 +407,7 @@ Collect the structured JSON verdict for each cluster before moving to Phase 3.
 
 ---
 
-## Phase 3 — Verify Findings
+## Verify Findings
 
 For each cluster where the analyst returned `"verdict": "genuine"`, read the
 actual file sections to confirm:
@@ -420,7 +420,7 @@ Discard any cluster where verification fails.
 
 ---
 
-## Phase 4 — Create Issues
+## Create Issues
 
 For each verified genuine duplicate cluster, create one issue.
 

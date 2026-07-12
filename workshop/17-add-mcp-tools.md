@@ -14,7 +14,7 @@ You'll add an MCP (Model Context Protocol) server to your workflow's frontmatter
 
 ## Steps
 
-### 1. Understand what MCP adds
+### Understand what MCP adds
 
 MCP (Model Context Protocol) connects external tool servers to the agent so it can call structured operations — like listing issues or fetching commits — and weave the live results into its output. Without MCP, the agent only knows what you wrote in the brief; with MCP, it can go out and look things up itself.
 
@@ -24,7 +24,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 > - Want a beginner-friendly security mental model for why sandboxing matters, where the agent runs, and what safe output looks like? Work through [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md).  
 > Then come back here.
 
-### 2. Add an MCP server to your workflow
+### Add an MCP server to your workflow
 
 Open your daily-status workflow file (`.github/workflows/daily-status.md`) and find the YAML frontmatter at the top. Add a `tools` block:
 
@@ -47,7 +47,7 @@ tools:
 > [!NOTE]
 > The `github` tool entry tells gh-aw to start the GitHub MCP server in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
 
-### 3. Reference the tools in your task brief
+### Reference the tools in your task brief
 
 Below the frontmatter, update the task brief to tell the agent it can use the MCP tools:
 
@@ -61,7 +61,7 @@ Post the summary as a new issue titled "Daily Status — {today's date}".
 
 The agent will read this brief, decide which MCP tool calls to make, and weave the results into its final output — all without you scripting each API call manually.
 
-### 4. Validate and push
+### Validate and push
 
 If you're working locally, compile before pushing:
 
@@ -80,7 +80,7 @@ gh aw compile .github/workflows/daily-status.md --validate
 
 </details>
 
-### 5. Watch the agent reason
+### Watch the agent reason
 
 Open the run log in **Actions**. You'll see the agent interleaving tool calls with its reasoning — it fetches data, processes it, then produces the summary. That's the agentic loop in action.
 

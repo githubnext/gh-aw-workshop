@@ -20,7 +20,7 @@ You'll create your practice repository in GitHub, launch a GitHub Codespace, con
 
 ## Steps
 
-### 1. Create your practice repository in GitHub
+### Create your practice repository in GitHub
 
 Create the repository you'll use to store your workflows during the workshop.
 
@@ -34,7 +34,7 @@ Create the repository you'll use to store your workflows during the workshop.
 > Creating the repository first keeps the Codespace and terminal setup paths aligned, and adding a README avoids an empty-repository setup edge case.
 
 <a id="open-the-codespace"></a>
-### 2. Open the Codespace
+### Open the Codespace
 
 1. In [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop), click the green **Code** button.
 2. Click the **Codespaces** tab.
@@ -47,7 +47,7 @@ GitHub will spin up a container with everything pre-installed. This takes about 
 > [!TIP]
 > Codespaces auto-saves your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
-### 3. Verify the tools are ready
+### Verify the tools are ready
 
 Once the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac) and run these checks:
 
@@ -74,7 +74,7 @@ You should see `github/gh-aw` listed. If you don't see it yet, don't worry — y
 > [!NOTE]
 > The Codespace was built from a `.devcontainer` configuration that pre-installs the `gh` CLI. You don't need to install it yourself.
 
-### 4. Verify GitHub authentication
+### Authenticate the `gh` CLI
 
 Codespaces often start with `gh` already authenticated, but you should still verify before you move on.
 
@@ -95,7 +95,7 @@ Follow the prompts. When asked, choose **GitHub.com** and then **Login with a we
 > [!WARNING]
 > Your Codespace is private to you, but it's still good practice to authenticate with the minimum scopes needed. The default scopes selected by `gh auth login` are exactly right for this workshop.
 
-### 5. Confirm you're in the right repo
+### Confirm you're in the right repo
 
 ```bash
 gh repo view --json name,owner | cat

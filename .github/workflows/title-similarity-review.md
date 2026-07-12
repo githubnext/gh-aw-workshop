@@ -196,7 +196,7 @@ consolidation.
 
 ---
 
-## Phase 1 — Load Data
+## Load Data
 
 Read:
 
@@ -211,7 +211,7 @@ No high-volume similar-title clusters found. Scanned {total_files} files and {to
 
 ---
 
-## Phase 2 — Validate Clusters
+## Validate Clusters
 
 For each cluster in `title-clusters.json`:
 
@@ -231,7 +231,7 @@ Prioritize clusters with:
 
 ---
 
-## Phase 3 — Create Issues (max 3)
+## Create Issues (max 3)
 
 Create at most **3** issues, one per validated cluster.
 

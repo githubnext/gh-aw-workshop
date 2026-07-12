@@ -10,7 +10,7 @@ Think of your workflow like a smart helper in a playroom.
 
 ---
 
-## 1. Why you need a sandbox
+## Why you need a sandbox
 
 A powerful helper without boundaries can accidentally do unsafe things.
 
@@ -26,7 +26,7 @@ Without a sandbox, one mistake could affect too much. With a sandbox, mistakes s
 
 ---
 
-## 2. Where the agent is actually running
+## Where the agent is actually running
 
 The agent does **not** run on your laptop by default. In this workshop flow, it runs inside a GitHub Actions job on a temporary runner.
 
@@ -42,7 +42,7 @@ This design reduces long-lived risk because the environment is short-lived and i
 
 ---
 
-## 3. What “safe output” means
+## What “safe output” means
 
 Safe output is useful information that avoids harmful leakage or unsafe actions.
 
@@ -58,7 +58,7 @@ Good output usually:
 
 ---
 
-## 4. Security architecture in one sentence
+## Security architecture in one sentence
 
 You declare **permissions + tools + task intent**, the runner enforces boundaries, and the agent produces constrained output from allowed data.
 

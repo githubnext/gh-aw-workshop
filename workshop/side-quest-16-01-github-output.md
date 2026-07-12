@@ -6,7 +6,7 @@ GitHub Actions runs each step in its own shell process. That means a plain `expo
 
 ---
 
-## 1. Why `export` doesn't work across steps
+## Why `export` doesn't work across steps
 
 ```bash
 # ❌ This looks reasonable but DOES NOT WORK
@@ -21,7 +21,7 @@ Each step is a separate child process. Environment variables set with `export` o
 
 ---
 
-## 2. Single-line values
+## Single-line values
 
 Append a `key=value` pair to the file path stored in the `$GITHUB_OUTPUT` environment variable:
 
@@ -34,7 +34,7 @@ To read it back in a later step, reference `${{ steps.<id>.outputs.status }}` �
 
 ---
 
-## 3. Giving steps an `id`
+## Giving steps an `id`
 
 A step `id` is how you refer to its outputs elsewhere in the workflow. Add `id:` at the same level as `name:` and `run:`:
 
@@ -53,7 +53,7 @@ ${{ steps.health_check.outputs.status }}
 
 ---
 
-## 4. Multi-line values with the `<<EOF` heredoc syntax
+## Multi-line values with the `<<EOF` heredoc syntax
 
 A single `echo "key=value"` won't work for multi-line content because the newlines would break the `key=value` format. Use a heredoc delimiter instead:
 
@@ -73,7 +73,7 @@ You can use any unique string as the delimiter — `EOF` is just a convention.
 
 ---
 
-## 5. Injecting outputs into an AI prompt
+## Injecting outputs into an AI prompt
 
 Once your data is in `$GITHUB_OUTPUT`, you can reference it anywhere in the workflow YAML — including inside an AI prompt step:
 

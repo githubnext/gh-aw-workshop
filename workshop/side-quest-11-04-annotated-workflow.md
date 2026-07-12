@@ -12,19 +12,19 @@ Read a fully annotated copy of the `daily-status.md` workflow and understand the
 
 Before looking at the annotated file, here are the four choices worth understanding:
 
-### 1. Narrow permissions
+### Narrow permissions
 
 The workflow declares only the five GitHub API scopes it actually needs. If the prompt is ever misconfigured or the agent misbehaves, it cannot touch anything outside those scopes. Least-privilege is a security practice borrowed from classic software — it applies here too.
 
-### 2. `gh-proxy` for GitHub access
+### `gh-proxy` for GitHub access
 
 The `tools` block routes all GitHub API calls through `gh-proxy`. This proxy enforces the `permissions` block at the network level, so the agent physically cannot call GitHub APIs you haven't listed — even if your task brief accidentally asks it to.
 
-### 3. `max: 1` guardrail
+### `max: 1` guardrail
 
 The `safe-outputs` block limits write operations to a single comment per run. Without this block the agent cannot write _anything_; with it, it can write _exactly_ one comment. This turns an open-ended capability into a predictable, auditable action.
 
-### 4. Tight output contract
+### Tight output contract
 
 The task brief gives the agent a fixed template to fill in. Predictable output means each daily report looks the same, making it easy to scan and easy to grep. The guidelines section then closes the remaining edge cases (already posted, no open issue) so the agent never has to guess.
 

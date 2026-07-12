@@ -90,7 +90,7 @@ When designing a new node, consider which existing leaf nodes would most benefit
 
 ## Task
 
-### 1. Read current state
+### Read current state
 
 Read `/tmp/gh-aw/data/workshop-state.json`. It contains:
 - `existing_files`: array of `*.md` filenames already present in `workshop/`
@@ -98,7 +98,7 @@ Read `/tmp/gh-aw/data/workshop-state.json`. It contains:
 
 Also read `.github/workflows/guidelines.md` and apply it while authoring.
 
-### 2. Handle `focus = "status"`
+### Handle `focus = "status"`
 
 If the `focus` input equals `"status"`, call `noop` with a message listing:
 - The current graph structure (nodes and edges inferred from file links)
@@ -108,7 +108,7 @@ If the `focus` input equals `"status"`, call `noop` with a message listing:
 
 Do NOT create any files.
 
-### 3. Identify the next node
+### Identify the next node
 
 Read the content of existing workshop files to map the current graph: identify the root, all branch points, all convergence points, and all open leaf nodes (files that don't link forward to another existing file).
 
@@ -122,7 +122,7 @@ If `focus` is provided and non-empty (and not "status"), treat it as a hint that
 
 If the graph already provides complete paths covering all essential topics (introduction, prerequisites, setup, first workflow, running and debugging, design, building, iteration, and scheduling) for all supported learner personas, call `noop` with "Workshop complete — the graph covers all key paths."
 
-### 4. Author the node file
+### Author the node file
 
 Create the file at `workshop/<filename>` using the `edit` tool. Follow **all** of the rules below.
 
@@ -216,10 +216,11 @@ Specific patterns to follow:
 - Wrap **every** command in a fenced code block with the correct language tag (`bash`, `yaml`, etc.).
 - Use screenshot placeholders where visuals would help: `![Description](images/node-description.png)`
 - Use **bold** for UI labels (e.g., **New repository**) and `inline code` for file names and commands.
+- Do **not** number Markdown headers inside the file. Use descriptive headings such as `### Open the Codespace`, and keep ordering in the surrounding numbered list instead.
 
 ---
 
-### 5. Validate agentic workflow snippets
+### Validate agentic workflow snippets
 
 Before updating the README or creating the pull request, scan the newly created node file for YAML code blocks that demonstrate agentic workflow frontmatter syntax (i.e., fenced code blocks tagged `yaml` or `yml` whose content starts with `---`).
 
@@ -230,7 +231,7 @@ For each complete frontmatter snippet found:
 
 Ignore partial snippets that show only a single block (e.g., only `permissions:` or only `tools:`); only validate snippets that include a complete frontmatter section (opening and closing `---`).
 
-### 6. Update `workshop/README.md`
+### Update `workshop/README.md`
 
 After creating the node file, update `workshop/README.md` to reflect the new graph state:
 - If `workshop/README.md` does not exist, create it with a title, intro paragraph, and a visual graph map showing all nodes and their connections (use a simple ASCII tree or Mermaid diagram).
@@ -240,7 +241,7 @@ Use the `edit` tool for both operations.
 
 ---
 
-### 7. Create a pull request
+### Create a pull request
 
 Use the `create-pull-request` safe output with:
 - **Title**: `Add node: <Title>` (the `[workshop]` prefix is added automatically)

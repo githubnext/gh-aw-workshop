@@ -6,7 +6,7 @@ GitHub Actions workflows run in a shared environment where code, logs, and confi
 
 ---
 
-## 1. What is a GitHub Secret?
+## What is a GitHub Secret?
 
 A secret is a named, encrypted value stored in your repository (or organisation) settings. At runtime, GitHub injects it as an environment variable. Secrets:
 
@@ -16,7 +16,7 @@ A secret is a named, encrypted value stored in your repository (or organisation)
 
 ---
 
-## 2. When do you need a secret?
+## When do you need a secret?
 
 You need a secret whenever your workflow authenticates to an external service. Common cases:
 
@@ -32,7 +32,7 @@ You need a secret whenever your workflow authenticates to an external service. C
 
 ---
 
-## 3. Add a secret to your repository
+## Add a secret to your repository
 
 ### GitHub UI (recommended)
 
@@ -49,7 +49,7 @@ You need a secret whenever your workflow authenticates to an external service. C
 
 ---
 
-## 4. Reference a secret in your workflow
+## Reference a secret in your workflow
 
 Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
 
@@ -73,7 +73,7 @@ For environment variables, you can also declare them at the step level to keep t
 
 ---
 
-## 5. Using the built-in `GITHUB_TOKEN`
+## Using the built-in `GITHUB_TOKEN`
 
 Most GitHub API calls (fetching issues, listing commits, posting comments) work with the automatically provided `GITHUB_TOKEN`:
 
@@ -91,7 +91,7 @@ The `gh` CLI reads `GH_TOKEN` automatically when it is set as an environment var
 
 ---
 
-## 6. Permissions frontmatter
+## Permissions frontmatter
 
 gh-aw workflows declare required permissions in frontmatter. Only request what you need:
 
