@@ -32,6 +32,10 @@ function deepFreeze(obj) {
   return obj;
 }
 
+function hasAgentAuth(state) {
+  return Boolean(state.auth?.hasApiKey || state.auth?.hasCopilotRequestToken);
+}
+
 function buildTransitions() {
   return {
     "00-welcome": (state) => ({ ok: true, state }),
@@ -102,9 +106,7 @@ function buildTransitions() {
       }
       const next = cloneState(state);
       next.installed.aw = "latest";
-      // In the simulation model, isLoggedIn serves as a proxy for having Copilot-enabled
-      // credentials. A real-world check would also verify Copilot subscription access.
-      next.flags.agentCredentialsConfigured = Boolean(state.auth.isLoggedIn);
+      next.flags.agentCredentialsConfigured = hasAgentAuth(state);
       return { ok: true, state: deepFreeze(next) };
     },
     "07-first-workflow": (state) => {
@@ -137,10 +139,10 @@ function buildTransitions() {
       if (!authCheck.ok) return authCheck;
 
       const credCheck = ensure(
-        state.flags.agentCredentialsConfigured,
-        "Agent credentials have not been configured",
+        hasAgentAuth(state) || state.flags.agentCredentialsConfigured,
+        "Agent authentication is missing: configure an API key or Copilot request token before running the agent",
         "agent-credentials-missing",
-        "Complete the gh-aw install step and ensure gh auth login was run before triggering a workflow run."
+        "Configure an API key or Copilot request token after completing gh auth login and before triggering a workflow run."
       );
       if (!credCheck.ok) return credCheck;
 

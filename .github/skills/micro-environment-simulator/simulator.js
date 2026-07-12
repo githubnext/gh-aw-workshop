@@ -49,6 +49,8 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
   const hasGh = level !== "beginner" || seed % 3 !== 0;
   const hasAw = false;
   const isLoggedIn = hasGh && (level === "advanced" || level === "actions-user" || seed % 4 !== 0);
+  const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
+  const hasCopilotRequestToken = isLoggedIn && (student.tool === "cloud-agent" || seed % 2 === 0);
 
   return deepFreeze({
     studentId: id,
@@ -61,7 +63,9 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     },
     auth: {
       isLoggedIn,
-      accountType
+      accountType,
+      hasApiKey,
+      hasCopilotRequestToken
     },
     github: {
       deployment
