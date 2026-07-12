@@ -1,13 +1,5 @@
 # Step 5: What Are Agentic Workflows?
 
-> [!IMPORTANT]
-> **Coming from classic Actions? Unlearn these 3 things first:**
-> 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
-> 2. The `.md` file is NOT documentation — it IS the workflow definition.
-> 3. Output is not logs — it's a synthesized report the agent composes at runtime.
-
-## What you'll have built by the end
-
 By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
 
 ```markdown
@@ -24,8 +16,17 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 3. Triage high-priority issue #398 with the platform team.
 ```
 
+> **TL;DR** — By the end of this workshop, a scheduled GitHub Actions workflow will automatically
+> generate a daily, stakeholder-ready status report for your repo — no script maintenance required.
+> This step explains what makes that possible.
+
+You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract.
+
 > [!IMPORTANT]
-> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
+> **Coming from classic Actions? Unlearn these 3 things first:**
+> 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
+> 2. The `.md` file is NOT documentation — it IS the workflow definition.
+> 3. Output is not logs — it's a synthesized report the agent composes at runtime.
 
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
@@ -38,6 +39,9 @@ _If you already know Actions, this step is the delta: what's new when workflows 
 You'll connect what you already know about classic GitHub Actions to the agentic model used in this workshop.
 
 This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
+
+> [!IMPORTANT]
+> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
 
 ## Quick Summary
 

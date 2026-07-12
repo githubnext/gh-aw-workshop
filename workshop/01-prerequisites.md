@@ -34,6 +34,9 @@ Complete these checks before you choose a setup path:
 
 ### Which setup path is right for me?
 
+> [!IMPORTANT]
+> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
+
 Use your current tool entry point to choose the fastest route:
 
 | If you're using... | Recommended setup path |
