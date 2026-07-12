@@ -32,6 +32,14 @@ extension so you can compile and run agentic workflows from your terminal.
   (done in [Verify GitHub CLI and authentication](02a-setup-codespace.md#verify-github-cli-and-authentication)
   or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
+Run this now to confirm `gh` is installed and authenticated before continuing:
+
+```bash
+gh auth status
+```
+
+Expected output: `Logged in to github.com as <your-username>`. If you see an error, return to [Step 1: Prerequisites](01-prerequisites.md) (for `gh` install) or [Step 2: Set Up a Codespace](02a-setup-codespace.md#verify-github-cli-and-authentication) (for auth).
+
 ## Choose your path
 
 Use the path that matches your tool before you run any install command:
@@ -81,23 +89,21 @@ If you get an HTTP 403 error, use [Side Quest: Install `gh-aw` Troubleshooting](
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows `Logged in to github.com as <your-username>` — this was completed in [Step 2: Set Up a Codespace](02a-setup-codespace.md). If not, go back and complete that auth step before continuing.
-> - ⚠️ If you're in an org-owned Codespace, use the HTTP 403 workaround in the callout below before the standard install command.
 
 <!-- -->
 
-> [!IMPORTANT]
-> **Getting HTTP 403 in an org-owned Codespace?**
-> You can run this fallback command immediately.
-> Use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) if you want additional context.
-> ```bash
-> curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
-> ```
-
-If you do not hit HTTP 403, install the extension with:
+Install the extension with:
 
 ```bash
 gh extension install github/gh-aw
 ```
+
+> [!TIP]
+> Getting a `403 Forbidden` error? Your org token may not allow public extension installs. Use the fallback installer:
+> ```bash
+> curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh | sh
+> ```
+> Need more context? See [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 If the extension is already installed, you can update it instead:
 
@@ -135,8 +141,9 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 
 ## ✅ Checkpoint
 
+- [ ] `gh auth status` shows you are logged in to github.com
 - [ ] `gh --version` returns a `gh version 2.x.x` value
-- [ ] Either `gh extension install github/gh-aw` worked, or you used the install script fallback for Codespaces org-token 403 errors
+- [ ] `gh extension install github/gh-aw` succeeded **or** the fallback (`curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh | sh`) succeeded for a 403 error
 - [ ] `gh extension list` shows `github/gh-aw`
 - [ ] `gh aw --version` returns a version number (e.g. `gh-aw version 0.81.6` or later)
 
