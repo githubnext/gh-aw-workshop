@@ -7,7 +7,7 @@
 > [!IMPORTANT]
 > If you run into trouble with any terminal step, switch to a Codespace at any time — all progress is preserved in your repository. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
 
-You'll install the tools you need on your own machine: Git, Node.js, and the `gh` CLI. You'll authenticate with GitHub, and by the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
+You'll install the tools you need on your own machine: Git and the `gh` CLI. You'll authenticate with GitHub, and by the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
 
 ## 📋 Before You Start
 
@@ -55,65 +55,7 @@ _What success looks like:_ a line like `git version 2.x.x`.
 
 You should see `git version 2.x.x` or higher. If you see an error, download Git from [git-scm.com](https://git-scm.com) and re-run the check.
 
-### 3. Install Node.js (v22 or later)
-
-Check whether Node.js is already installed:
-
-```bash
-node --version
-```
-
-![Example success output after running `node --version`](images/02b-terminal-success-02-node-version.svg)
-
-_What success looks like:_ a line like `v22.x.x` (or newer).
-
-If you see `v22.x.x` or higher, you're good. If not, install Node.js using your preferred method:
-
-**macOS (Homebrew):**
-
-```bash
-brew install node
-```
-
-![Example success output after running `brew install node`](images/02b-terminal-success-03-brew-node.svg)
-
-_What success looks like:_ a completed install message with no error lines.
-
-**Windows (winget):**
-
-```bash
-winget install OpenJS.NodeJS.LTS
-```
-
-![Example success output after running `winget install OpenJS.NodeJS.LTS`](images/02b-terminal-success-04-winget-node.svg)
-
-_What success looks like:_ install progress finishes and reports success.
-
-**Linux (apt):**
-
-```bash
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-![Example success output after running Linux Node.js install commands](images/02b-terminal-success-05-linux-node.svg)
-
-_What success looks like:_ both commands finish and return to the prompt without errors.
-
-After installing, reopen your terminal and verify:
-
-```bash
-node --version
-```
-
-![Example success output after re-checking `node --version`](images/02b-terminal-success-06-node-version.svg)
-
-_What success looks like:_ `v22.x.x` or newer.
-
-> [!TIP]
-> If you manage multiple Node.js versions, [nvm](https://github.com/nvm-sh/nvm) is a great tool. Run `nvm install --lts` to get the latest LTS release.
-
-### 4. Install the gh CLI
+### 3. Install the gh CLI
 
 The `gh` CLI is GitHub's official command-line tool. Check whether it's already installed:
 
@@ -163,7 +105,7 @@ _What success looks like:_ package install reports success.
 
 _What success looks like:_ apt completes and `gh` is installed without errors.
 
-### 5. Authenticate the gh CLI
+### 4. Authenticate the gh CLI
 
 ```bash
 gh auth login
@@ -178,7 +120,7 @@ Choose **GitHub.com** and then **Login with a web browser**. A one-time code wil
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
-### 6. Clone your fork
+### 5. Clone your fork
 
 Replace `YOUR_USERNAME` with your GitHub username:
 
@@ -191,19 +133,18 @@ cd gh-aw-workshop
 
 _What success looks like:_ clone finishes and `cd` returns you to a prompt inside `gh-aw-workshop`.
 
-### 7. Verify everything is in order
+### 6. Verify everything is in order
 
 ```bash
 gh repo view --json name,owner | cat
-node --version
 gh --version
 ```
 
 ![Example success output for final local setup verification commands](images/02b-terminal-success-13-final-verify.svg)
 
-_What success looks like:_ all three commands print output; `owner` is your GitHub username.
+_What success looks like:_ both commands print output; `owner` is your GitHub username.
 
-All three commands should return output without errors. The repo view should show your username as `owner`.
+Both commands should return output without errors. The repo view should show your username as `owner`.
 
 ## 🛟 Troubleshooting: common beginner errors
 
@@ -217,7 +158,6 @@ All three commands should return output without errors. The repo view should sho
 
 - [ ] Your fork exists on GitHub
 - [ ] `git --version` returns a version number
-- [ ] `node --version` returns v22 or higher
 - [ ] `gh --version` returns a version number
 - [ ] `gh auth login` completed without errors
 - [ ] You've cloned the repository and `cd`-ed into it

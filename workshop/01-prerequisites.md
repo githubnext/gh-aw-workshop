@@ -44,14 +44,13 @@ You'll confirm that you have everything required before writing a single line of
 ## Steps
 
 > [!NOTE]
-> **Already have a terminal open with `gh`, `git`, and `node` available?** Run this quick pre-flight check now. If you're starting fresh and haven't set up your environment yet, skip ahead to [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md) and return here once your terminal is ready.
+> **Already have a terminal open with `gh` and `git` available?** Run this quick pre-flight check now. If you're starting fresh and haven't set up your environment yet, skip ahead to [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md) and return here once your terminal is ready.
 >
 > ```bash
 > # Pre-flight check -- run this once your terminal is open
 > gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install commands below"
 > gh auth status && echo "✅ gh authenticated" || echo "❌ run: gh auth login"
 > git --version && echo "✅ git OK" || echo "❌ git missing"
-> node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
 > echo "Pre-flight complete."
 > ```
 >
@@ -62,7 +61,6 @@ You'll confirm that you have everything required before writing a single line of
 
 - ✅ **Required:** `gh` CLI ≥ 2.40 (`gh --version`)
 - ✅ **Required (local terminal path):** Git (`git --version`)
-- ℹ️ **Optional:** Node.js (`node --version`) — not required for this workshop
 
 If `gh` is missing, install it using one of these one-liners:
 
@@ -90,7 +88,7 @@ Full installation docs: [cli.github.com](https://cli.github.com)
 
 > [!NOTE]
 > **Can't install software locally?** No problem — skip the installs entirely.
-> Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40, Git, and Node pre-installed and pre-authenticated. You'll be ready to continue in under two minutes without touching your local machine.
+> Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40 and Git pre-installed and pre-authenticated. You'll be ready to continue in under two minutes without touching your local machine.
 > ➡️ **[Adventure A: Set Up a Codespace](02a-setup-codespace.md)**
 
 ### 2. Check your GitHub account
@@ -134,7 +132,7 @@ git --version
 You should see something like `git version 2.x.x`. If you see an error, download Git from [git-scm.com](https://git-scm.com).
 
 > [!TIP]
-> If you'd rather skip Git setup entirely, use the Codespace path — it comes with Git, Node, and everything else pre-installed.
+> If you'd rather skip Git setup entirely, use the Codespace path — it comes with Git and everything else pre-installed.
 
 Need a quick terminal primer before continuing?
 

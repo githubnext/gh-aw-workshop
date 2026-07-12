@@ -32,6 +32,13 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
 - Always configure agent credentials (via `gh auth login` with Copilot access) before guiding learners to trigger a workflow run. Do not place credential setup steps after the run-workflow step. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Step 6: Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
-## 6) Consistency check
+## 6) Node.js is not required
 
-Before finalizing workshop edits, quickly confirm that early steps remain UI-first and do not require `gh` before it is truly needed.
+- Do **not** list Node.js as a prerequisite or required tool anywhere in the workshop.
+- Do **not** include `node --version` checks or Node.js install steps in any activity or setup step.
+- Node.js is incidentally present in Codespaces but learners must never be told they need to install or verify it.
+- If a step currently references Node.js, remove that reference and update any associated checkpoint items.
+
+## 7) Consistency check
+
+Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, and do not reference Node.js as a prerequisite.
