@@ -24,13 +24,15 @@ Complete these checks before you choose a setup path:
 <!-- -->
 
 > [!TIP]
-> **Experienced developer? Skip to Step 6 →**
-> If you already have `gh` installed and authenticated in the environment you'll use for the workshop, you can skip Steps 1–5. Confirm these before jumping ahead:
+> **Advanced user fast-track**
+> Already know GitHub Actions and the `gh` CLI? Jump to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md) to skip environment setup.
+>
+> If you already have `gh` installed and authenticated in the environment you'll use for the workshop, you can skip Steps 1–4. Confirm these before jumping ahead:
 > - [ ] `gh` CLI ≥ 2.40 is available — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
 > - [ ] `gh auth status` shows a logged-in account
-> **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — all useful context, but safely skippable if you already have a working `gh` setup.
-> Ready? Jump straight to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md) →
+> **What Steps 2–4 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, and Step 4 gives a short primer on GitHub Actions.
+> After Step 5, continue to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 
 ## 🔀 Choose Your Setup Path
 
