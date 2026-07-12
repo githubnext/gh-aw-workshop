@@ -259,7 +259,7 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 
 **Success probability per step** must be evaluated dynamically for each student-step pair. Do **not** use a fixed lookup table. Instead, reason from the student's full profile and the step's actual content and demands:
 
-1. **Read the step**: Consult the step's `title` and `file` from `curriculum.json`. Where necessary (especially for high-dropout steps), read the actual workshop markdown file to understand what the learner is asked to do — for example, whether it requires terminal commands, YAML authoring, understanding new concepts, or multi-action sequences.
+1. **Read the step**: Consult the step's `title` and `file` from `curriculum.json`. Where necessary (especially for steps with high simulated failure rates in this run, or steps that appear complex based on their title), read the actual workshop markdown file to understand what the learner is asked to do — for example, whether it requires terminal commands, YAML authoring, understanding new concepts, or multi-action sequences. For any step where the reasoning framework does not yield a clear probability estimate, fall back to the calibration anchors below using your best judgment about step difficulty relative to the student's level.
 
 2. **Assess step difficulty** from the content:
    - How many distinct actions must the learner perform?
@@ -275,12 +275,12 @@ Use the simulator run to verify environment assumptions for each workshop step. 
    - **`goal`**: a student evaluating for their team (`team-evaluation`) will abandon sooner than someone learning for personal interest; a `teaching-others` goal drives thoroughness.
    - **Prior runs** (`runs`, `successes`): a student who has completed the workshop before will have a meaningfully higher success probability on familiar steps.
 
-4. **Calibration anchors** (reference points, not hard constraints):
+4. **Calibration anchors** (reference points, not hard constraints — use these to sanity-check your derived probability and narrow the range for a specific student-step pair):
    - An `advanced`/`devops` student on an orientation or welcome step: ~98%.
-   - A `beginner`/`no-coding` student on a hands-on CLI install step: ~45–55%.
-   - Any student on a pure conceptual overview step: 75–95% depending on level.
-   - Any student on a complex multi-action build or compile step: 40–90% depending on level and personality.
-   - Any student on a final/wrap-up step (reached this far): 88–97%.
+   - A `beginner`/`no-coding` student on a hands-on CLI install step: ~45–55% (e.g., if the step has multiple commands and no validation feedback, lean toward 45%; if it has a clear success indicator, lean toward 55%).
+   - Any student on a pure conceptual overview step: 75–95% depending on level (e.g., a `beginner` reading a concepts page with no actions: ~80%; an `advanced` student: ~93%).
+   - Any student on a complex multi-action build or compile step: 40–90% depending on level and personality (e.g., a `confused`/`beginner` on a YAML compile step: ~40%; a `methodical`/`actions-user` on the same step: ~85%).
+   - Any student on a final/wrap-up step (having reached this far): 88–97%.
 
 5. **UI-preference adjustments**: Where a step requires terminal or CLI interaction and the student is `ui_preferred`:
    - Steps that are entirely CLI-based (install, auth, compile commands) are genuine blockers — apply a meaningful reduction.
