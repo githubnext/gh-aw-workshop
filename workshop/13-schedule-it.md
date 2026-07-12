@@ -14,21 +14,7 @@ You'll update the `schedule` trigger in your workflow using gh-aw's fuzzy schedu
 
 ## What a compile error looks like
 
-If the `schedule` line is nested incorrectly under `on:`, `gh aw compile` reports a YAML parse error. For example, this is broken:
-
-```yaml
-on:
-schedule: daily on weekdays
-  workflow_dispatch: {}
-```
-
-Fix it by indenting both trigger keys equally under `on:`:
-
-```yaml
-on:
-  schedule: daily on weekdays
-  workflow_dispatch: {}
-```
+If `gh aw compile` reports a YAML parse error after you change the schedule, start by checking indentation in the `on:` block first. Want a deeper walkthrough with broken/fixed examples and common fixes? See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ## Steps
 

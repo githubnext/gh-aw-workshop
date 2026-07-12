@@ -21,21 +21,7 @@ You'll write the complete `daily-status.md` agentic workflow file, placing it in
 
 ## What a compile error looks like
 
-If a key is indented at the wrong level, `gh aw compile` fails with a YAML parse error. For example, this is broken because `workflow_dispatch` is mis-indented:
-
-```yaml
-on:
-  schedule: daily
-workflow_dispatch: {}
-```
-
-Fix it by indenting `workflow_dispatch` under `on:`:
-
-```yaml
-on:
-  schedule: daily
-  workflow_dispatch: {}
-```
+If `gh aw compile` throws a YAML parse error, start by checking indentation in the section you just edited — nested keys under `on:` are a common culprit. Want broken/fixed examples plus a quick-fix table? See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ---
 

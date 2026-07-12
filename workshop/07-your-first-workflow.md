@@ -173,26 +173,12 @@ You should still see:
 
 ### Optional: Keep validating while you iterate
 
-If you make more edits after the checkpoints above, run the `gh-aw` validator again or keep it running while you refine the file.
+Run `gh aw compile .github/workflows/hello-agent.md --validate` any time you want a quick checkpoint, or keep `gh aw compile .github/workflows/hello-agent.md --watch` running while you edit by hand.
 
-```bash
-gh aw compile .github/workflows/hello-agent.md --validate
-```
-
-If you're still editing by hand, you can also keep the compiler running while you iterate:
-
-```bash
-gh aw compile .github/workflows/hello-agent.md --watch
-```
-
-You should see output like:
-
-```
-✔ hello-agent.md — valid
-```
+`gh aw compile` checks file structure, not the agent's runtime reasoning.
 
 > [!NOTE]
-> Validation checks the file structure. The agent's reasoning happens at runtime, not compile time.
+> Want examples of compile errors and a quick-fix guide? See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ### Commit and push your workflow file
 
