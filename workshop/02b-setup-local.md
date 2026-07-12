@@ -47,7 +47,7 @@ gh auth status && gh extension list
 
 _What success looks like:_ the command runs without shell errors and shows your current login state plus any installed extensions.
 
-If the command fails with `gh: command not found`, continue to **Install the gh CLI** below, then re-run this pre-flight check.
+If the command fails with `gh: command not found`, continue to [Install the gh CLI](#install-the-gh-cli) below, then re-run this pre-flight check.
 
 Expected output includes one of these login states:
 
@@ -64,7 +64,7 @@ You are not logged into any GitHub hosts. Run gh auth login to authenticate.
 `gh extension list` can show existing extensions or no entries if you have none yet.
 
 > [!NOTE]
-> **Using GitHub Enterprise Server (GHES), SSO, or a corporate proxy?** Follow [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before continuing. It includes GHES hostname authentication and locked-down network guidance.
+> **Using GitHub Enterprise Server (GHES), SSO, or a corporate proxy?** Follow [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before continuing. It includes enterprise hostname and locked-down network guidance.
 
 ### Create your practice repository
 

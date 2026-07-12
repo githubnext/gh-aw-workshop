@@ -13,7 +13,7 @@ If you are still in local terminal setup and not yet installing `gh-aw`, use thi
 | Error message | Why it happens | How to fix it |
 |------|------|------|
 | `command not found` | Tool is missing or terminal session has not picked up install yet | Install/reinstall the tool from the step above, then fully close and reopen terminal |
-| `permission denied` | Command needs elevated privileges or file permissions are restricted | Re-run the Linux/macOS install command with `sudo` exactly as shown; on Windows use an elevated terminal when needed |
+| `permission denied` | Command needs elevated privileges or file permissions are restricted | Re-run the failed Linux/macOS install command with `sudo` exactly as shown; on Windows use an elevated terminal when needed |
 | `No such file or directory` / path-related errors | You are not in the expected folder | Run `pwd` (macOS/Linux) or `cd` with no arguments (Windows) to check your location, then `cd my-agentic-workflows` and retry |
 
 ---
