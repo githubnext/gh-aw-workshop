@@ -48,6 +48,7 @@ steps:
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
       target=/tmp/gh-aw/data/llms.txt
+      # The canonical location may vary by repository branch/release; try known mirrors.
       urls=(
         "https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt"
         "https://raw.githubusercontent.com/github/gh-aw/main/llms.txt"

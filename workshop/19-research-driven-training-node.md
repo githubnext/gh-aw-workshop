@@ -19,7 +19,14 @@ In this step, you will turn `github/gh-aw` research into a concrete training pla
 Start by collecting the most current signal from the source repository and its docs references:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt | head -n 40
+for url in \
+  "https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt" \
+  "https://raw.githubusercontent.com/github/gh-aw/main/llms.txt" \
+  "https://github.github.com/gh-aw/llms.txt"; do
+  if curl -fsSL "$url" | head -n 40; then
+    break
+  fi
+done
 ```
 
 This gives you a compact index of what the gh-aw project currently emphasizes for model and documentation consumption.
@@ -76,9 +83,9 @@ gh aw compile .github/workflows/<your-workflow>.md --validate
 
 ## 📚 See Also
 
-- [LLMs reference](https://github.github.com/gh-aw/reference/llms/)
-- [Workflow patterns](https://github.github.com/gh-aw/guides/workflow-patterns/)
-- [Safe outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Training Plan Researcher workflow](../.github/workflows/training-plan-research.md)
+- [Docs Linker workflow example](../.github/workflows/docs-linker.md)
+- [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
 
 <!--
 <research-node-metadata>
