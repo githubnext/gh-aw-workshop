@@ -194,7 +194,7 @@ You should see output like:
 > [!NOTE]
 > Validation checks the file structure. The agent's reasoning happens at runtime, not compile time.
 
-### Commit and push
+### Commit and push your workflow file
 
 **Terminal:**
 
