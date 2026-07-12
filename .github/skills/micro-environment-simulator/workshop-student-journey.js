@@ -6,7 +6,7 @@ const STEP_IDS = [
   "00-welcome",
   "01-prerequisites",
   "02-setup",
-  "03-verify-your-repo",
+  "03-create-your-repo",
   "04-actions-intro",
   "05-agentic-intro",
   "06-install-gh-aw",
@@ -68,7 +68,7 @@ function buildTransitions() {
       next.flags.environmentReady = true;
       return { ok: true, state: deepFreeze(next) };
     },
-    "03-verify-your-repo": (state) => {
+    "03-create-your-repo": (state) => {
       const repoCheck = ensure(
         state.flags.hasRepo && state.flags.repoCreatedViaUi,
         "Practice repository must be created in GitHub UI during setup",
