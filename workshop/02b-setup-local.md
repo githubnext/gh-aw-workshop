@@ -1,12 +1,9 @@
 # Adventure B: Set Up Your Local Terminal
 
 > [!IMPORTANT]
-> **Stop and route yourself before reading further:**
->
-> | I use… | Go to… |
-> |------|------|
-> | **copilot-app**, **cloud-agent**, or **VS Code in Codespaces (browser)** | ➡️ Switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
-> | A terminal on my machine (Terminal, Windows Terminal, Git Bash, Linux shell, or VS Code integrated terminal outside Codespaces) | ✅ Stay on **Adventure B** (this page) |
+> **Using Copilot app or cloud agent?** These entry points don't include a local terminal.
+> Open this repository in a [Codespace](02a-setup-codespace.md#2-open-the-codespace) first,
+> then return to this step and run all commands in the Codespace terminal.
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
