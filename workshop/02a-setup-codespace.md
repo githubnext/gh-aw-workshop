@@ -67,10 +67,10 @@ github.com
   ✓ Logged in to github.com account <your-username> (...)
   ...
 
-gh aw    gh-aw    ...
+(no extensions installed)
 ```
 
-You should see `gh version 2.40.0` or newer, a line confirming you're logged in to `github.com`, and `gh aw` listed among installed extensions.
+You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step.
 
 > [!NOTE]
 > Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready before you create your practice repository or install `gh-aw`.
@@ -86,7 +86,7 @@ You should see `gh version 2.40.0` or newer, a line confirming you're logged in 
 - [ ] The built-in terminal is open in your Codespace
 - [ ] `gh --version` returns version 2.40.0 or newer
 - [ ] `gh auth status` shows you're logged in to GitHub without errors
-- [ ] `gh extension list` lists `gh aw` (or shows an empty list if you haven't installed it yet)
+- [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
 - [ ] You're ready to create your practice repository in the next step
 
 **Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
