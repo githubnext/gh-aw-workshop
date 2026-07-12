@@ -8,9 +8,9 @@ By the end of this workshop, you'll have a real GitHub Actions workflow that aut
 
 | If you're a... | Recommended setup adventure | Why this path fits |
 |---|---|---|
-| **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md) | Stay in the browser with a preconfigured environment |
-| **CLI user** (comfortable in a terminal) | ➡️ [Adventure B: Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
-| **VS Code user** | ➡️ [Adventure B: Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
+| **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Adventure A (Step 2a): Set Up a Codespace](02a-setup-codespace.md) | Stay in the browser with a preconfigured environment |
+| **CLI user** (comfortable in a terminal) | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
+| **VS Code user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
 
 ## Why this matters
 
@@ -54,7 +54,7 @@ Before: you open your repo every morning, click through issues and pull requests
 And the code tells the same story. **Before: write and maintain a 200-line Actions YAML full of shell scripts, condition blocks, and API calls. After: write a 20-line task brief in plain English — and let the agent figure out the rest at runtime.**
 
 > [!TIP]
-> Prefer a quick start? Use **Quick-start for experienced users** above — most GitHub Actions-experienced learners jump to [Step 6](06-install-gh-aw.md), then continue with Steps 7–8.
+> Prefer a quick start? Use the experienced developer tip above — most GitHub Actions-experienced learners jump to [Step 6](06-install-gh-aw.md), then continue with Steps 7–8.
 
 ## 🎯 What You'll Do
 
