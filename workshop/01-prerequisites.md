@@ -21,7 +21,7 @@ If `gh` is not found, install it using the steps in [§ Confirm required vs opti
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
 > - [ ] `gh` is authenticated — run `gh auth status` (or `gh auth login` if not yet done)
 >
-> **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of agentic workflows — all useful context, but safely skippable if you already have a working `gh` setup.
+> **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — all useful context, but safely skippable if you already have a working `gh` setup.
 >
 > Ready? Jump straight to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md) →
 
@@ -150,7 +150,7 @@ Here's a quick summary of what you'll have installed and running by the end of t
 | **GitHub Codespace** or **local terminal** | Your development environment |
 | **GitHub Actions** | Runs your automated workflows in the cloud |
 | **gh CLI** | GitHub's official command-line tool |
-| **gh-aw extension** | Adds agentic workflow commands to the gh CLI — installed in [Step 6](06-install-gh-aw.md) (may be pre-installed in Codespaces) |
+| **[gh-aw extension](https://github.github.com/gh-aw/reference/cli-commands/)** | Adds agentic workflow commands to the gh CLI — installed in [Step 6](06-install-gh-aw.md) (may be pre-installed in Codespaces) |
 
 ### 5. Choose your path
 
@@ -180,3 +180,8 @@ Now decide how you want to work:
 - [ ] You know which file to open next
 
 **Next:** Follow the link above for your chosen path — [Adventure A](02a-setup-codespace.md) or [Adventure B](02b-setup-local.md).
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)
