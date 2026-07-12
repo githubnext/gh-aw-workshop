@@ -1,8 +1,12 @@
 # Step 0: Welcome — What We'll Build
 
-By the end of this workshop, you'll have a real GitHub Actions workflow that automatically summarizes your repository every day — written and run by an AI agent you configured.
+By the end of this workshop, a real AI agent will post a comment on one of your GitHub issues — automatically, every day, without you writing shell-script workflow code.
 
-![Completed workflow run in the Actions tab](images/00-workflow-run-complete.svg)
+## 👀 What you'll see in 30 seconds
+
+This is the finished workflow run you'll build toward in the GitHub Actions UI.
+
+![Preview of a completed workflow run in the Actions tab](images/00-workflow-run-complete.svg)
 
 ## Choose your path
 
