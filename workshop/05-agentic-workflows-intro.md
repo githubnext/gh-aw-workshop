@@ -59,18 +59,16 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 > [!IMPORTANT]
 > **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
 
-## Side-by-side: Classic Actions vs Agentic Workflows
+## Classic Actions vs Agentic Workflows
 
-If you're coming from classic GitHub Actions, this table shows exactly where the two models diverge.
+An agentic workflow is a GitHub Actions workflow written as a Markdown file that runs a sandboxed, gated agentic job.
 
-| Dimension | Classic GitHub Actions | Agentic Workflow |
-|---|---|---|
-| **File format** | `.github/workflows/*.yml` | `.github/workflows/*.md` (compiled to `.lock.yml`) |
-| **Task description** | Shell commands and scripts in `steps:` | Natural language instructions below the frontmatter |
-| **Execution** | Deterministic — same input always gives same output | AI agent interprets the brief and decides how to act at runtime |
-| **Handles ambiguity** | Fails or needs explicit branching logic | Reasons through ambiguous inputs and adapts |
-| **Runtime** | No AI model involved | Copilot or another LLM is the runtime |
-| **Best for** | CI/CD pipelines, builds, deployments | Summaries, triage, reporting, and tasks that need judgment |
+If you're coming from classic GitHub Actions, here's where the two models diverge:
+
+- **File format:** Classic workflows are `.yml` files with `jobs.steps`. Agentic workflows are `.md` files (compiled to `.lock.yml`) — the task description is plain language below the frontmatter.
+- **Execution:** Classic workflows are deterministic — same input, same output. Agentic workflows let the AI agent interpret the brief and decide how to act at runtime.
+- **Runtime:** Classic workflows have no AI model involved. Agentic workflows use Copilot or another LLM as the runtime.
+- **Best for:** Classic workflows excel at CI/CD pipelines, builds, and deployments. Agentic workflows are best for summaries, triage, reporting, and tasks that need judgment.
 
 > [!NOTE]
 > Both types of workflow live in `.github/workflows/` and use the same `on:` triggers and `permissions:` blocks — only the task description format changes.
