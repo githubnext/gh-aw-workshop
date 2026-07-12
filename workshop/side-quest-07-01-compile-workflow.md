@@ -48,6 +48,8 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 
 When `gh aw compile` fails, start with the first line number it reports. YAML errors are often caused by the line above or below the reported line, especially when indentation is off.
 
+The examples below show `gh-aw` source files before compilation, so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the schedule value itself.
+
 ```yaml
 # ❌ Broken — "workflow_dispatch" is not nested under "on:"
 on:
