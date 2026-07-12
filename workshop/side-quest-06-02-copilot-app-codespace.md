@@ -8,7 +8,8 @@ You'll open a GitHub Codespace from your browser, verify `gh` access, install `g
 
 ## Open a Codespace
 
-From [Step 6](06-install-gh-aw.md), select the Codespaces button in the **No terminal yet?** section.
+From [Step 6](06-install-gh-aw.md), select the Codespaces button in the
+**Open a Codespace first (GitHub Copilot app users)** section.
 
 When the Codespace finishes loading:
 
@@ -36,7 +37,8 @@ Then verify:
 gh aw --version
 ```
 
-If you hit an HTTP 403 install error in an org-owned Codespace, use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md#organization-codespace-token-limitation-http-403).
+If you hit an HTTP 403 install error in an org-owned Codespace, use
+[Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md#organization-codespace-token-limitation-http-403).
 
 ## Return to the main workshop
 
