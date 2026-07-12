@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Side-by-side comparison of Classic GitHub Actions YAML versus an Agentic Workflow: Classic uses a schedule trigger that flows through static YAML steps and shell scripts to produce output; Agentic uses the same trigger that flows through a plain-English task brief into an AI agent that reasons and produces output automatically.">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Title -->
+  <text x="600" y="42" font-family="'Segoe UI',system-ui,sans-serif" font-size="22" font-weight="700" fill="#24292f" text-anchor="middle">Classic GitHub Actions vs Agentic Workflow</text>
+  <text x="600" y="66" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" fill="#57606a" text-anchor="middle">Both use the same trigger — but what happens next is completely different.</text>
+
+  <!-- LEFT PANEL — Classic Actions -->
+  <rect x="40" y="88" width="510" height="420" rx="12" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="40" y="88" width="510" height="48" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="40" y="112" width="510" height="24" fill="#f6f8fa"/>
+  <text x="295" y="118" font-family="'Segoe UI',system-ui,sans-serif" font-size="15" font-weight="700" fill="#57606a" text-anchor="middle">BEFORE — Classic Actions YAML</text>
+
+  <!-- Trigger box (left) -->
+  <rect x="185" y="160" width="160" height="48" rx="8" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+  <text x="265" y="179" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="600" fill="#0550ae" text-anchor="middle">⏰ Schedule Trigger</text>
+  <text x="265" y="197" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#0550ae" text-anchor="middle">cron: "0 8 * * *"</text>
+
+  <!-- Arrow down -->
+  <line x1="265" y1="208" x2="265" y2="232" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- YAML Steps box -->
+  <rect x="155" y="232" width="220" height="96" rx="8" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
+  <text x="265" y="252" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#7d4e00" text-anchor="middle">📄 Static YAML Steps</text>
+  <text x="265" y="270" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#7d4e00" text-anchor="middle">checkout → run script</text>
+  <text x="265" y="286" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#7d4e00" text-anchor="middle">→ call API → format</text>
+  <text x="265" y="302" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#7d4e00" text-anchor="middle">→ post comment</text>
+  <text x="265" y="318" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#a57800" text-anchor="middle">~200 lines of YAML + shell</text>
+
+  <!-- Arrow down -->
+  <line x1="265" y1="328" x2="265" y2="352" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Shell Scripts dashed group -->
+  <rect x="100" y="352" width="108" height="56" rx="6" fill="#fff0f0" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="154" y="375" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#a40e26" text-anchor="middle">🐚 Shell Scripts</text>
+  <text x="154" y="391" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#a40e26" text-anchor="middle">hard-coded logic</text>
+
+  <rect x="322" y="352" width="108" height="56" rx="6" fill="#fff0f0" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="376" y="375" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" font-weight="600" fill="#a40e26" text-anchor="middle">🔧 API Calls</text>
+  <text x="376" y="391" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#a40e26" text-anchor="middle">explicit plumbing</text>
+
+  <!-- Arrows from YAML to scripts -->
+  <line x1="220" y1="360" x2="208" y2="360" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="310" y1="360" x2="322" y2="360" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Arrows from scripts back down -->
+  <line x1="154" y1="408" x2="154" y2="436" stroke="#57606a" stroke-width="1.5"/>
+  <line x1="376" y1="408" x2="376" y2="436" stroke="#57606a" stroke-width="1.5"/>
+  <line x1="154" y1="436" x2="265" y2="436" stroke="#57606a" stroke-width="1.5"/>
+  <line x1="376" y1="436" x2="265" y2="436" stroke="#57606a" stroke-width="1.5"/>
+  <line x1="265" y1="436" x2="265" y2="448" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Output box left -->
+  <rect x="185" y="448" width="160" height="44" rx="8" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="265" y="469" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#116329" text-anchor="middle">📋 Report Posted</text>
+  <text x="265" y="484" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#116329" text-anchor="middle">but brittle to maintain</text>
+
+  <!-- RIGHT PANEL — Agentic Workflow -->
+  <rect x="650" y="88" width="510" height="420" rx="12" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="650" y="88" width="510" height="48" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="650" y="112" width="510" height="24" fill="#f6f8fa"/>
+  <text x="905" y="118" font-family="'Segoe UI',system-ui,sans-serif" font-size="15" font-weight="700" fill="#0969da" text-anchor="middle">AFTER — Agentic Workflow Markdown</text>
+
+  <!-- Trigger box (right) -->
+  <rect x="795" y="160" width="160" height="48" rx="8" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+  <text x="875" y="179" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="600" fill="#0550ae" text-anchor="middle">⏰ Schedule Trigger</text>
+  <text x="875" y="197" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#0550ae" text-anchor="middle">cron: "0 8 * * *"</text>
+
+  <!-- Arrow down -->
+  <line x1="875" y1="208" x2="875" y2="232" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Task Brief box -->
+  <rect x="755" y="232" width="240" height="72" rx="8" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
+  <text x="875" y="253" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#7d4e00" text-anchor="middle">📝 Plain-English Task Brief</text>
+  <text x="875" y="272" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#7d4e00" text-anchor="middle" font-style="italic">"Create a daily repository</text>
+  <text x="875" y="287" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#7d4e00" text-anchor="middle" font-style="italic">status update in GitHub."</text>
+  <text x="875" y="300" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#a57800" text-anchor="middle">~20 lines of Markdown</text>
+
+  <!-- Arrow down -->
+  <line x1="875" y1="304" x2="875" y2="328" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- AI Agent box with glow -->
+  <rect x="730" y="328" width="290" height="96" rx="10" fill="#fbefff" stroke="#8250df" stroke-width="2"/>
+  <text x="875" y="350" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="700" fill="#6639ba" text-anchor="middle">🤖 AI Agent</text>
+  <text x="875" y="369" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#6639ba" text-anchor="middle">Reads live repo state</text>
+  <text x="875" y="385" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#6639ba" text-anchor="middle">Decides what matters</text>
+  <text x="875" y="401" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#6639ba" text-anchor="middle">Takes action via safe-output tools</text>
+  <text x="875" y="415" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#8250df" text-anchor="middle">No shell scripts or API plumbing needed</text>
+
+  <!-- Arrow down -->
+  <line x1="875" y1="424" x2="875" y2="448" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Output box right -->
+  <rect x="795" y="448" width="160" height="44" rx="8" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="875" y="469" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#116329" text-anchor="middle">📋 Report Posted</text>
+  <text x="875" y="484" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#116329" text-anchor="middle">easy to adapt</text>
+
+  <!-- VS divider -->
+  <line x1="600" y1="88" x2="600" y2="508" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <circle cx="600" cy="298" r="20" fill="#24292f"/>
+  <text x="600" y="303" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">VS</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="536" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" fill="#57606a" text-anchor="middle">Same trigger, radically simpler code — the agent handles reasoning, decisions, and output at runtime.</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#57606a"/>
+    </marker>
+  </defs>
+</svg>
