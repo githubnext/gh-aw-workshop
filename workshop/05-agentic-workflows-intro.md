@@ -98,44 +98,10 @@ List all open issues that need triage and summarize them with recommended next s
 > [!NOTE]
 > **If you've used GitHub Actions before:** the key difference is that you write a _brief_ in plain language, not a sequence of shell commands — the agent decides how to fulfill it.
 
-## Quick Summary
-
-For platform engineers and DevOps teams evaluating adoption, agentic workflows cut the cost of maintaining bespoke scripted automation. Engineers spend less time updating fragile scripts and more time on higher-value work. Every workflow definition is a versioned Markdown file that goes through a pull request, so teams retain full auditability, change history, and approval gates. This makes agentic automation compatible with enterprise compliance requirements and existing runner fleet investments.
-
-> **Key differences from classic Actions:**
->
-> - A `gh-aw` workflow still starts with YAML frontmatter fenced by `---`, usually with `name`, `on`, and `permissions`.
-> - Below that frontmatter, you write a Markdown task brief instead of a fixed `jobs.steps` script.
-> - The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
-
-For Actions users, keep this quick mental model:
+If you're coming from classic GitHub Actions, the shift is simple: keep your existing trigger/permission/review model, but replace scripted `jobs.steps` with a goal-oriented brief that an agent executes at runtime.
 
 > [!TIP]
-> **How this differs from classic Actions**
-> - You define the goal in plain language instead of scripting each step in `jobs.steps`.
-> - The agent decides how to use available tools at runtime instead of following a fixed command sequence.
-> - The output is a synthesized report with recommendations, not just raw command logs.
-
-## Advanced fast-track: What's New cheat sheet
-
-Use this as a one-page reference for the shift from classic workflows to agentic workflows.
-
-| Classic GitHub Actions | Agentic workflows |
-|---|---|
-| Predetermined sequence of steps | Goal-oriented flow where an agent can choose next actions |
-| Logic is encoded manually in YAML and scripts | Logic can be delegated to an AI agent guided by prompts and constraints |
-| Handles known, explicit branches well | Handles ambiguous inputs by reasoning and adapting |
-| Output is usually command/script results | Output can include synthesized summaries, decisions, and follow-up actions |
-| Human updates workflow logic for every new scenario | Human defines guardrails; agent handles more variation at runtime |
-| Great for deterministic automation | Best when tasks require interpretation, triage, or planning |
-
-## What Stays the Same
-
-- Workflows still run in GitHub Actions runners
-- Triggers, permissions, and repository context still matter
-- You still version workflows in git and review them like code
-
-The same authoring and review workflow applies everywhere — only the runner configuration differs.
+> **Optional side quest for Actions power users:** Want the one-page cheat sheet for what's new vs what stays the same? Read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
 
 ## Platform Compatibility
 
