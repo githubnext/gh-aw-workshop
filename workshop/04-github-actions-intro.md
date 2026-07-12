@@ -11,11 +11,15 @@ If you can check all three boxes below, jump straight to Step 5 for just the age
 
 **→ [Skip to Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
 
+Already know both GitHub Actions **and** agentic workflow concepts?
+
+**→ [Jump straight to Step 6: Install gh-aw](06-install-gh-aw.md)**
+
 </details>
 
 ## 🎯 What You'll Do
 
-You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files.
+You'll do a fast refresher on the Actions primitives used in this workshop: triggers, jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file — a skill you'll build on immediately in Steps 5 and 6.
 
 ## Classic Actions vs Agentic Workflows
 
