@@ -53,7 +53,9 @@ on:
 # ── PERMISSIONS (DESIGN DECISION 1) ──────────────────────────────────────────
 # Declare only the scopes the workflow actually needs.
 # - `contents: read`        → read commits and files
-# - `copilot-requests: write` → required by every agentic workflow to call AI
+# - `copilot-requests: write` → recommended when using Copilot as the AI engine;
+#   allows the workflow to authenticate with `${{ github.token }}` automatically
+#   instead of requiring a `COPILOT_GITHUB_TOKEN` secret
 # - `issues: read`          → count issues and find the target issue to post on
 # - `pull-requests: read`   → count open PRs
 # - `actions: read`         → read the most recent CI run status
