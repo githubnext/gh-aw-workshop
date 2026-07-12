@@ -257,53 +257,49 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 
 #### Simulation Rules
 
-**Success probability per step** is determined by the step's category, inferred from its `file` field in `curriculum.json`. Match each step's filename against the patterns below **in table order** — use the **first matching row**. Patterns are glob-style and matched case-insensitively against the filename only (not the title). The "last step" row applies to the entry with the highest `index` in `main_steps`.
+**Success probability per step** must be evaluated dynamically for each student-step pair. Do **not** use a fixed lookup table. Instead, reason from the student's full profile and the step's actual content and demands:
 
-| Category | Filename pattern | beginner | github-basic | actions-user | advanced |
-|----------|-----------------|---------|-------------|-------------|---------|
-| Welcome / orientation | `*welcome*` | 95% | 98% | 99% | 99% |
-| Prerequisites | `*prerequisite*` | 70% | 85% | 95% | 98% |
-| Environment setup | `*setup-*` | 55% | 75% | 90% | 97% |
-| Repository creation | `*create-*repo*` | 65% | 88% | 97% | 99% |
-| Concepts / intro | `*intro*`, `*concepts*` | 75% | 85% | 82% | 88% |
-| Tool install | `*install*` | 50% | 70% | 88% | 95% |
-| Hands-on: first workflow | `*first-workflow*` | 45% | 65% | 80% | 92% |
-| Hands-on: run / output | `*run*`, `*output*`, `*understand*` | 55% | 70% | 82% | 93% |
-| Design step | `*design*` | 70% | 78% | 85% | 90% |
-| Build step | `*build*` | 45% | 62% | 78% | 90% |
-| Test / iterate | `*test*`, `*iterate*` | 50% | 65% | 80% | 92% |
-| Schedule / automation | `*schedule*` | 55% | 70% | 85% | 94% |
-| Advanced features | `*conditional*`, `*data-source*`, `*mcp*`, `*connect*` | 40% | 58% | 75% | 90% |
-| Next steps / wrap-up | last step, `*next-step*` | 90% | 92% | 95% | 97% |
-| Other (default) | anything else | 65% | 75% | 85% | 93% |
+1. **Read the step**: Consult the step's `title` and `file` from `curriculum.json`. Where necessary (especially for high-dropout steps), read the actual workshop markdown file to understand what the learner is asked to do — for example, whether it requires terminal commands, YAML authoring, understanding new concepts, or multi-action sequences.
 
-**Personality modifiers** (multiply the base probability):
-- `curious`: ×1.05 (engages more deeply, higher completion)
-- `methodical`: ×1.10 (follows steps carefully, highest completion)
-- `impatient`: ×0.85 (skips steps, lower completion)
-- `confused`: ×0.80 (needs more guidance, lowest completion)
-- `skeptical`: ×0.90 (questions value, may abandon)
+2. **Assess step difficulty** from the content:
+   - How many distinct actions must the learner perform?
+   - Does the step introduce a new concept, tool, or syntax?
+   - Does it require prior setup or state from earlier steps to succeed?
+   - Are there clear error messages or validation steps that help a confused learner self-correct?
 
-**Goal modifiers**:
-- `personal-learning`: ×1.00 (neutral)
-- `work-project`: ×1.05 (motivated to complete)
-- `team-evaluation`: ×0.95 (less patient, evaluating quickly)
-- `teaching-others`: ×1.08 (thorough, high completion)
+3. **Match student profile to step demands**: For each student, consider:
+   - **`level`** vs. assumed knowledge: a `beginner` facing a YAML-authoring step needs a much lower base probability than an `actions-user`.
+   - **`background`** vs. step domain: a `devops` student on a CLI install step will fare far better than a `program-manager` or `no-coding` background student on the same step.
+   - **`tool`** and **`ui_preferred`** vs. step tooling: if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `copilot-app` / `cloud-agent`, reduce probability appropriately; if the step is UI-native (e.g., editing a file on GitHub.com), increase it for UI-preferred students.
+   - **`personality`**: a `methodical` student reads carefully and retries — raise probability; a `confused` student may not know why something failed — lower probability; an `impatient` student may skip prerequisite reading — lower probability particularly for steps that depend on earlier state.
+   - **`goal`**: a student evaluating for their team (`team-evaluation`) will abandon sooner than someone learning for personal interest; a `teaching-others` goal drives thoroughness.
+   - **Prior runs** (`runs`, `successes`): a student who has completed the workshop before will have a meaningfully higher success probability on familiar steps.
 
-**UI-preference modifiers** (apply when `ui_preferred` is `true`):
+4. **Calibration anchors** (reference points, not hard constraints):
+   - An `advanced`/`devops` student on an orientation or welcome step: ~98%.
+   - A `beginner`/`no-coding` student on a hands-on CLI install step: ~45–55%.
+   - Any student on a pure conceptual overview step: 75–95% depending on level.
+   - Any student on a complex multi-action build or compile step: 40–90% depending on level and personality.
+   - Any student on a final/wrap-up step (reached this far): 88–97%.
 
-UI-preferred students work entirely through the GitHub web interface and avoid the terminal. Apply the following adjustments to their base probabilities. Match each step's `file` field against the patterns below **in table order** — apply the **first matching row** that fits the filename (case-insensitive):
+5. **UI-preference adjustments**: Where a step requires terminal or CLI interaction and the student is `ui_preferred`:
+   - Steps that are entirely CLI-based (install, auth, compile commands) are genuine blockers — apply a meaningful reduction.
+   - Steps that can be done through the GitHub web editor (editing files, committing changes) are easier for UI-preferred students — apply a modest increase.
+   - Reason about each step's actual UI/CLI split rather than applying a blanket rule.
 
-| Step pattern | Adjustment | Reason |
-|-------------|-----------|--------|
-| `*create-*repo*` | ×1.15 | Using github.com/new is easier than `gh repo create` for non-coders |
-| `*install*` | ×0.75 | `gh extension install` still requires a terminal — this is a genuine barrier |
-| `*first-workflow*` | ×1.10 | GitHub web editor removes the need for `mkdir`/`touch` |
-| `*build*` | ×1.05 | Web editor avoids local file management friction |
-| `*test*`, `*iterate*` | ×1.10 | Committing via **Commit changes** is simpler than `git push` |
-| `*schedule*` | ×1.08 | Web editor commit replaces `git add/commit/push` |
+After deriving the base probability from the above reasoning, apply these qualitative multipliers to reflect personality and goal traits — cap the final probability at 0.99:
 
-UI-preferred students who fail an `*install*` step should record the pain point: `"ui_preferred + install gh-aw: Extension install requires terminal — no UI alternative exists; workshop should recommend Codespace as a workaround"`.
+- `methodical` personality: ×1.10 (follows steps carefully)
+- `curious` personality: ×1.05 (engages more deeply)
+- `skeptical` personality: ×0.90 (questions value, may abandon)
+- `impatient` personality: ×0.85 (skips steps)
+- `confused` personality: ×0.80 (needs more guidance)
+- `teaching-others` goal: ×1.08 (thorough)
+- `work-project` goal: ×1.05 (motivated)
+- `team-evaluation` goal: ×0.95 (less patient)
+- `personal-learning` goal: ×1.00 (neutral)
+
+UI-preferred students who fail a step that requires terminal access should record the pain point explaining that no UI alternative exists for that specific action.
 
 A student **fails at a step** if a random roll exceeds their adjusted probability. When a student fails a step, they stop — they do NOT attempt subsequent steps.
 
