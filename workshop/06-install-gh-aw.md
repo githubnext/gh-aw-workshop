@@ -1,7 +1,7 @@
 # Step 6: Install the gh-aw CLI Extension
 
 > [!NOTE]
-> **Using copilot-app or cloud-agent?**
+> **Using `copilot-app` or `cloud-agent`?**
 > `gh extension install github/gh-aw` must run in a terminal. Open your
 > [Codespace from Step 2](02a-setup-codespace.md#2-open-the-codespace), then
 > run this step in the Codespace terminal.
