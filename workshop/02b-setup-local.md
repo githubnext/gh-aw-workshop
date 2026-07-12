@@ -110,6 +110,7 @@ _What success looks like:_ package install reports success.
 
 _What success looks like:_ apt completes and `gh` is installed without errors.
 
+<a id="authenticate-the-gh-cli"></a>
 ### Authenticate the gh CLI
 
 ```bash

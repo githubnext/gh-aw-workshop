@@ -2,8 +2,8 @@
 
 > [!NOTE]
 > **Using `copilot-app` or `cloud-agent`?**
-> `gh extension install github/gh-aw` must run in a terminal. Open your
-> [Codespace from Step 2](02a-setup-codespace.md#open-the-codespace), then
+> `gh extension install github/gh-aw` must run in a terminal. Use
+> [Open the Codespace](02a-setup-codespace.md#open-the-codespace), then
 > run this step in the Codespace terminal.
 
 ## 🎯 What You'll Do
@@ -16,8 +16,8 @@ extension so you can compile and run agentic workflows from your terminal.
 - You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You're inside your `my-agentic-workflows` repository directory
 - You have authenticated the `gh` CLI with `gh auth login`
-  (done in [Adventure A: Verify GitHub authentication](02a-setup-codespace.md#verify-github-authentication)
-  or [Adventure B: Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
+  (done in [Verify GitHub authentication](02a-setup-codespace.md#verify-github-authentication)
+  or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 ## Steps
 
