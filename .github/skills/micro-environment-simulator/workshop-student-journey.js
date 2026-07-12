@@ -188,13 +188,6 @@ function buildTransitions() {
       if (!providerCheck.ok) return providerCheck;
 
       const requiredSecret = requiredSecretForProvider(provider);
-      const requiredSecretCheck = ensure(
-        Boolean(requiredSecret),
-        `No Actions secret mapping exists for provider '${provider}'`,
-        "provider-secret-mapping-missing",
-        "Define the required secret name for this provider before running the workflow."
-      );
-      if (!requiredSecretCheck.ok) return requiredSecretCheck;
       const hasRequiredSecret = Boolean(state.actions?.secrets?.[requiredSecret]);
       const providerSecretCheck = ensure(
         hasRequiredSecret,
