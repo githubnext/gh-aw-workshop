@@ -36,6 +36,10 @@ function hasAgentAuth(state) {
   return Boolean(state.auth?.hasApiKey || state.auth?.hasCopilotRequestToken);
 }
 
+function isOrgScopedCodespacesToken(state) {
+  return state.workspace?.context === "codespaces" && state.auth?.tokenScope === "org";
+}
+
 function buildTransitions() {
   return {
     "00-welcome": (state) => ({ ok: true, state }),
@@ -104,6 +108,13 @@ function buildTransitions() {
           "Install GitHub CLI before running `gh extension install` or `gh aw` commands."
         );
       }
+      if (isOrgScopedCodespacesToken(state)) {
+        const next = cloneState(state);
+        next.installed.aw = "latest";
+        next.flags.usedInstallScript = true;
+        next.flags.agentCredentialsConfigured = hasAgentAuth(state);
+        return { ok: true, state: deepFreeze(next) };
+      }
       const next = cloneState(state);
       next.installed.aw = "latest";
       next.flags.agentCredentialsConfigured = hasAgentAuth(state);
@@ -134,7 +145,7 @@ function buildTransitions() {
         state.auth.isLoggedIn,
         "Cannot run workflow operations without GitHub authentication",
         "github-auth-missing",
-        "Run `gh auth login` before triggering workflow runs."
+        "Run `gh auth status` first (Codespaces sessions are often pre-authenticated); if needed, run `gh auth login` before triggering workflow runs."
       );
       if (!authCheck.ok) return authCheck;
 

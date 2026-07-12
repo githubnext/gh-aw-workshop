@@ -2,7 +2,8 @@
 
 > [!NOTE]
 > **Using a Codespace?** In the workshop Codespace, `gh` is pre-installed and pre-authenticated.
-> You can run `gh extension install github/gh-aw` directly.
+> In organization-owned Codespaces, the default token can be org-scoped and `gh extension install github/gh-aw` may return HTTP 403.
+> If that happens, use the install script from the [installation instructions](https://raw.githubusercontent.com/github/gh-aw/main/install.md).
 
 ## Using Copilot app or cloud agent?
 
@@ -90,6 +91,12 @@ Full installation docs: [cli.github.com](https://cli.github.com)
 gh extension install github/gh-aw
 ```
 
+If you're in an organization-owned Codespace and this returns HTTP 403, use the install script path instead:
+
+```bash
+curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
+```
+
 If the extension is already installed, you can update it instead:
 
 ```bash
@@ -127,7 +134,7 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 ## ✅ Checkpoint
 
 - [ ] `gh --version` returns a `gh version 2.x.x` value
-- [ ] `gh extension install github/gh-aw` ran without errors
+- [ ] Either `gh extension install github/gh-aw` worked, or you used the install script fallback for Codespaces org-token 403 errors
 - [ ] `gh extension list` shows `github/gh-aw`
 - [ ] `gh aw --version` returns a `gh-aw version 0.1.0` style value
 
