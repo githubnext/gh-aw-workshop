@@ -56,10 +56,6 @@ gh-aw can call GitHub APIs, run shell commands, and pass results to your AI prom
 - CI/CD status of recent runs
 - Dependency vulnerability alerts
 
-#### Share your workflow with your team
-
-Put the workflow file in a shared repository. Your teammates can trigger it with `workflow_dispatch`, customize the prompt, or fork it as the basis for their own automations.
-
 #### Contribute to the workshop
 
 Found a gap? Have a better explanation? Open an issue or pull request in this repository. The workshop itself is a living document.
