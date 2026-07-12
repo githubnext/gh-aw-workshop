@@ -1,5 +1,11 @@
 # Step 5: What Are Agentic Workflows?
 
+> [!IMPORTANT]
+> **Coming from classic Actions? Unlearn these 3 things first:**
+> 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
+> 2. The `.md` file is NOT documentation — it IS the workflow definition.
+> 3. Output is not logs — it's a synthesized report the agent composes at runtime.
+
 ## What you'll have built by the end
 
 By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
@@ -34,6 +40,8 @@ You'll connect what you already know about classic GitHub Actions to the agentic
 This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
 
 ## Quick Summary
+
+For platform engineers and DevOps teams evaluating adoption: agentic workflows reduce the cost of maintaining bespoke scripted automation by delegating judgment to an AI agent, so engineers spend less time updating fragile scripts and more time on higher-value work. Because every workflow definition is a versioned Markdown file reviewed in a pull request, teams retain full auditability, change history, and approval gates — making agentic automation compatible with enterprise compliance requirements and existing runner fleet investments.
 
 > **Key differences from classic Actions:**
 >
