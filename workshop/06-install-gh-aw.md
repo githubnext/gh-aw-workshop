@@ -5,7 +5,7 @@
 > `gh aw`. Open a Codespace first: [Open a Codespace](02a-setup-codespace.md#open-the-codespace).
 > Then return here and follow the [Install from terminal](#install-from-terminal) section.
 
-<!-- -->
+<!-- Separate adjacent callouts -->
 
 > [!NOTE]
 > **Using the GitHub Copilot cloud agent?** `gh aw` may already be available in
