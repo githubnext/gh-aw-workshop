@@ -28,7 +28,7 @@ Use the path that matches your tool before you run any install command:
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
 | `copilot-app` | [Open a Codespace first](#open-a-codespace-first) |
-| Local terminal or Codespace terminal | [Install from terminal](#install-from-terminal) |
+| Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
 
@@ -38,7 +38,12 @@ Run this first:
 gh aw --version
 ```
 
-If you get a version number, skip to [Confirm installation](#confirm-installation). Otherwise, continue with [Install from terminal](#install-from-terminal). If you are using `copilot-app`, first complete [Open a Codespace first](#open-a-codespace-first).
+If you get a version number, skip to [Confirm installation](#confirm-installation).
+
+If the command is not found:
+
+- If you are using `copilot-app`, first complete [Open a Codespace first](#open-a-codespace-first)
+- Continue with [Install from terminal](#install-from-terminal)
 
 ## Open a Codespace first
 
