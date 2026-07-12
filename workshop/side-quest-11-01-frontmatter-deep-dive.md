@@ -64,7 +64,7 @@ permissions:
 | Field | Why it's needed |
 |-------|----------------|
 | `contents: read` | Lets the agent read files and commits in the repository. |
-| `copilot-requests: write` | Grants the agentic runtime permission to make AI calls on behalf of this workflow. **Required for any agentic workflow.** |
+| `copilot-requests: write` | Recommended when using the Copilot coding agent engine so it can authenticate with `${{ github.token }}`. Not required for all agentic workflows. |
 | `issues: read` | Lets the agent list and read open issues. The agent needs this to count issues and find the right one to post its report on. |
 | `pull-requests: read` | Lets the agent list and read open pull requests. |
 | `actions: read` | Lets the agent read recent workflow runs to report CI status. |
@@ -176,7 +176,7 @@ Key things to note:
 ## ✅ Checkpoint
 
 - [ ] You can explain what each of the six frontmatter sections does
-- [ ] You understand why `copilot-requests: write` is required under `permissions`
+- [ ] You understand when `copilot-requests: write` is needed under `permissions`
 - [ ] You understand why `safe-outputs` is the true source of write access
 - [ ] You understand the difference between the frontmatter and the Markdown body
 
