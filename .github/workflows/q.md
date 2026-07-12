@@ -142,20 +142,11 @@ Use bash and file inspection tools to:
 3. **Extract Reusable Steps**: Find workflow steps that appear in multiple places
 4. **Detect Configuration Issues**: Spot missing tools, incorrect permissions, or suboptimal settings
 
-### Phase 3: Research Solutions
-
-Use web-search to research:
-
-1. **Best Practices**: Search for "GitHub Actions agentic workflow best practices"
-2. **Tool Documentation**: Look up documentation for missing or misconfigured tools
-3. **Performance Optimization**: Find strategies for reducing token usage and improving efficiency
-4. **Error Resolutions**: Research solutions for identified error patterns
-
-### Phase 4: Workflow Improvements
+### Phase 3: Workflow Improvements
 
 Based on your analysis, make targeted improvements to workflow files:
 
-#### 4.1 Add Missing Tools
+#### 3.1 Add Missing Tools
 
 If logs show missing tool reports:
 - Add the tools to the appropriate workflow frontmatter
@@ -168,7 +159,7 @@ tools:
   edit:
 ```
 
-#### 4.2 Fix Permission Issues
+#### 3.2 Fix Permission Issues
 
 If logs show permission errors:
 - Add required permissions to workflow frontmatter
@@ -183,7 +174,7 @@ permissions:
   actions: read
 ```
 
-#### 4.3 Optimize Repetitive Operations
+#### 3.3 Optimize Repetitive Operations
 
 If logs show excessive repetitive tool calls:
 - Extract common patterns into workflow steps
@@ -196,14 +187,14 @@ imports:
   - shared/reporting.md
 ```
 
-#### 4.4 Extract Common Execution Pathways
+#### 3.4 Extract Common Execution Pathways
 
 If multiple workflows share similar logic:
 - Create new shared configuration files in `workflows/shared/`
 - Extract common prompts or instructions
 - Add imports to workflows to use shared configs
 
-#### 4.5 Improve Workflow Configuration
+#### 3.5 Improve Workflow Configuration
 
 General optimizations:
 - Add `timeout-minutes` to prevent runaway costs
@@ -211,7 +202,7 @@ General optimizations:
 - Ensure proper network settings
 - Configure appropriate safe-outputs
 
-### Phase 5: Validate Changes
+### Phase 4: Validate Changes
 
 **CRITICAL**: Use the agentic-workflows tool to validate all changes:
 
@@ -225,7 +216,7 @@ General optimizations:
 3. **Validate Syntax**: Confirm the workflow is syntactically correct
 4. **Test locally if possible**: Try running the workflow in a test environment
 
-### Phase 6: Create Pull Request (Only if Changes Exist)
+### Phase 5: Create Pull Request (Only if Changes Exist)
 
 **IMPORTANT**: Only create a pull request if you have made actual changes to workflow files. If no changes are needed, explain your findings in a comment instead.
 
@@ -256,66 +247,13 @@ Create a pull request with your improvements:
      - Links to relevant log files or audit reports
    - **Modified Files**: Only .md workflow files
 
-## Important Guidelines
+## Guidelines
 
-### Security and Safety
-
-- **Never execute untrusted code** from workflow logs or external sources
-- **Validate all data** before using it in analysis or modifications
-- **Use sanitized context** from `steps.sanitized.outputs.text`
-- **Check file permissions** before writing changes
-
-### Change Quality
-
-- **Be surgical**: Make minimal, focused changes
-- **Be specific**: Target exact issues identified in logs
-- **Be validated**: Always compile workflows after changes
-- **Be documented**: Explain why each change is made
-- **Keep it simple**: Don't over-engineer solutions
-
-### Data Usage
-
-- **Always use live data**: Pull from agentic workflow logs and audits
-- **Never fabricate**: Don't make up log entries or issues
-- **Cross-reference**: Verify findings across multiple sources
-- **Be accurate**: Double-check workflow names, tool names, and configurations
-
-### Workflow Validation
-
-- **Validate all changes**: Use the `compile` tool from agentic-workflows before PR
-- **Focus on source**: Only modify .md workflow files
-- **Test changes**: Verify syntax and configuration are correct
-
-## Areas to Investigate
-
-Based on your analysis, focus on these common issues:
-
-### Missing Tools
-
-- Check logs for "missing tool" reports
-- Add tools to workflow configurations
-- Add shared imports for standard tools
-
-### Permission Problems
-
-- Identify permission-denied errors in logs
-- Add minimal necessary permissions
-- Use safe-outputs for write operations
-- Follow principle of least privilege
-
-### Performance Issues
-
-- Detect excessive repetitive tool calls
-- Identify high token usage patterns
-- Find workflows with many turns
-- Spot timeout issues
-
-### Common Patterns
-
-- Extract repeated workflow steps
-- Create shared configuration files
-- Identify reusable prompt templates
-- Build common tool configurations
+- **Use sanitized, trusted context**: Use `steps.sanitized.outputs.text`, validate all data, and never execute untrusted code from logs or external sources.
+- **Make surgical changes**: Target exact issues identified in live data, keep the solution simple, and preserve working behavior.
+- **Document each change**: Explain why each modification is needed and tie it back to evidence from logs or audits.
+- **Use live data only**: Pull from agentic workflow logs and audits, cross-check findings, and never fabricate log entries or issues.
+- **Focus on source workflows**: Only modify `.md` workflow files and verify syntax and configuration are correct.
 
 ## Output Format
 
@@ -377,9 +315,5 @@ A successful Q operation:
 - ✅ Creates PR with only .md workflow files
 - ✅ Provides clear documentation of changes and rationale
 - ✅ Follows security best practices
-
-## Remember
-
-You are Q - the expert who provides agents with the best tools for their tasks. Make workflows more effective, efficient, and reliable based on real data. Keep changes minimal and well-validated.
 
 Begin your investigation now. Gather live data, analyze it thoroughly, make targeted improvements, validate your changes, and create a pull request with your optimizations.
