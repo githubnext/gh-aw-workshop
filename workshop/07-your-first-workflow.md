@@ -222,7 +222,7 @@ If you edited it afterwards, navigate to the file, click the **pencil icon (✏�
 
 You can get your first workflow other ways:
 
-- **Adventure A — Add an existing workflow:** run `gh aw add-wizard`, choose a workflow from `githubnext/agentics`, and add it to your repo.
+- **Adventure A — Add an existing workflow:** run `gh aw add githubnext/agentics/<workflow-name>` to pull an existing workflow into your repo.
 - **Adventure B — Generate a new workflow with an agent:** use Copilot, Claude, or ChatGPT and ask it to create a new agentic workflow using the `agentic-workflows` skill.
 - **For follow-up changes:** once this file exists, prefer asking the `agentic-workflows` skill to edit or debug it instead of manually rewriting the workflow yourself.
 
