@@ -24,6 +24,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 11a✨ | [11a-build-daily-status-wizard.md](11a-build-daily-status-wizard.md) | ➡️ Adventure A (wizard): Build Daily Status with the Add Wizard | ✅ |
 | 11b | [11b-build-daily-docs.md](11b-build-daily-docs.md) | ➡️ Adventure B: Build — Daily Documentation Updater | ✅ |
 | 11c | [11c-build-pr-reviewer.md](11c-build-pr-reviewer.md) | ➡️ Adventure C: Build — PR Code Reviewer | ✅ |
+| 11d | [11d-build-copilot-agents.md](11d-build-copilot-agents.md) | ➡️ Adventure D: Build Any Workflow with the GitHub Copilot Agents Tab (Enterprise) | ✅ |
 | 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
 | 13 | [13-schedule-it.md](13-schedule-it.md) | Schedule It to Run Every Day | ✅ |
 | 14 | [14-next-steps.md](14-next-steps.md) | What's Next? Keep Exploring | ✅ |

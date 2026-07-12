@@ -24,6 +24,11 @@ Choose one of three real-world agentic workflow scenarios to design and build ov
 > [!TIP]
 > Not sure which to pick? Start with **Adventure A** — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
 
+<!-- -->
+
+> [!NOTE]
+> **Using GitHub Copilot Enterprise or Copilot Business with the coding agent enabled?** You can skip the design step and build any of these scenarios directly from the GitHub UI — no CLI installation required. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md).
+
 ---
 
 ## Adventure A: Daily Repo Status Report
@@ -79,3 +84,4 @@ Choose one of three real-world agentic workflow scenarios to design and build ov
 - ➡️ Adventure A: [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 - ➡️ Adventure B: [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - ➡️ Adventure C: [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+- ➡️ Adventure D (Enterprise): [Step 11d: Build Any Workflow with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md)
