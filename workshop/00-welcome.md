@@ -15,6 +15,7 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 | **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Adventure A (Step 2a): Set Up a Codespace](02a-setup-codespace.md) | Stay in the browser with a preconfigured environment |
 | **CLI user** (comfortable in a terminal) | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
 | **VS Code user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
+| **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md) | No installation needed — start a session, paste a prompt, merge a PR |
 
 > [!NOTE]
 > If you're using the GitHub Copilot app (web or mobile, `copilot-app`), you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.
