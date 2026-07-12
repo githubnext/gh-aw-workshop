@@ -25,7 +25,7 @@ The pattern looks like this:
 3. Reference the output in your prompt with `${{ steps.<id>.outputs.<key> }}`.
 
 > [!TIP]
-> New to `$GITHUB_OUTPUT`? Check out the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-github-output.md) for a deeper explanation of why `export` doesn't work across steps, how to write single-line and multi-line values, and how to reference them in a prompt.
+> New to `$GITHUB_OUTPUT`? Check out the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) for a deeper explanation of why `export` doesn't work across steps, how to write single-line and multi-line values, and how to reference them in a prompt.
 
 ### 2. Add a step to fetch recent commits
 
@@ -46,7 +46,7 @@ First, fetch the recent commit log:
 What this does:
 - `git log` with a time filter lists commits from the last 24 hours.
 - `--format="%h %s"` produces a short hash followed by the commit subject, e.g. `a1b2c3d Fix login bug`.
-- The multi-line `<<EOF` syntax stores a multi-line string in `$GITHUB_OUTPUT` (see the [side quest](side-quest-github-output.md) for details).
+- The multi-line `<<EOF` syntax stores a multi-line string in `$GITHUB_OUTPUT` (see the [side quest](side-quest-16-01-github-output.md) for details).
 
 ### 3. Add a step to fetch open issues
 

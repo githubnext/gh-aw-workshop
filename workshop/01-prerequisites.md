@@ -122,7 +122,7 @@ You should see something like `git version 2.x.x`. If you see an error, download
 
 Need a quick terminal primer before continuing?
 
-➡️ **[Side Quest: Terminal Basics](side-quest-terminal-basics.md)** — an optional walkthrough for opening a terminal, navigating folders, reading command output, and running your first practice commands.
+➡️ **[Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)** — an optional walkthrough for opening a terminal, navigating folders, reading command output, and running your first practice commands.
 
 
 ### 4. Know what's coming

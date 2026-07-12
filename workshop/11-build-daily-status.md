@@ -32,7 +32,7 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 Before diving in, there is an optional side quest if you want more detail first:
 
 > [!TIP]
-> **Optional Side Quest:** Want a section-by-section explanation of every key with tables and examples before you build? See [Side Quest: Frontmatter Deep Dive](side-quest-frontmatter-deep-dive.md). It's fully optional — everything you need to complete this step is in the build sections below.
+> **Optional Side Quest:** Want a section-by-section explanation of every key with tables and examples before you build? See [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md). It's fully optional — everything you need to complete this step is in the build sections below.
 
 ---
 
@@ -203,8 +203,8 @@ gh aw compile .github/workflows/daily-status.md
 | Incorrect `on:` trigger block | The daily run does not trigger, or the manual **Run workflow** button is missing | Set `on.schedule: daily` and `on.workflow_dispatch: {}` exactly as shown. |
 
 > [!NOTE]
-> If you hit a compile error, the optional **[Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md)** walks through each of these mistakes with broken ❌ and correct ✅ examples.
-> **Optional Side Quest:** Want to get better AI output from your task brief? See **[Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md)** for five prompt-engineering techniques you can apply right now.
+> If you hit a compile error, the optional **[Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md)** walks through each of these mistakes with broken ❌ and correct ✅ examples.
+> **Optional Side Quest:** Want to get better AI output from your task brief? See **[Side Quest: Write Better AI Task Briefs](side-quest-11-03-better-prompts.md)** for five prompt-engineering techniques you can apply right now.
 
 ---
 
@@ -237,7 +237,7 @@ If you created the file via the GitHub UI, it was already committed when you cli
 If you prefer to paste the complete workflow at once rather than building it section by section, expand the reference copy below.
 
 > [!TIP]
-> **Optional Side Quest:** Want to understand the reasoning behind each design choice — why permissions are scoped the way they are, what `gh-proxy` actually prevents, and why the output format is fixed? See [Side Quest: Reading an Annotated Agentic Workflow](side-quest-annotated-workflow.md) for a fully annotated walkthrough before adapting this workflow.
+> **Optional Side Quest:** Want to understand the reasoning behind each design choice — why permissions are scoped the way they are, what `gh-proxy` actually prevents, and why the output format is fixed? See [Side Quest: Reading an Annotated Agentic Workflow](side-quest-11-04-annotated-workflow.md) for a fully annotated walkthrough before adapting this workflow.
 
 <details>
 <summary>Complete workflow file (reference copy)</summary>

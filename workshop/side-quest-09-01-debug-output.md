@@ -45,7 +45,7 @@ Ask the `agentic-workflows` skill to simplify or clarify the task in your workfl
 
 - Replace vague goals ("find the most important issue") with specific, measurable instructions ("list open issues sorted by `reactions` and pick the first result").
 - Add an explicit first step, for example: "Start by calling `github.list_issues` with `{state: open, sort: reactions}`."
-- See [Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md) for prompt-engineering techniques that reduce planning loops.
+- See [Side Quest: Write Better AI Task Briefs](side-quest-11-03-better-prompts.md) for prompt-engineering techniques that reduce planning loops.
 
 ---
 

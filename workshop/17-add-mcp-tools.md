@@ -19,7 +19,7 @@ You'll add an MCP (Model Context Protocol) server to your workflow's frontmatter
 MCP (Model Context Protocol) connects external tool servers to the agent so it can call structured operations — like listing issues or fetching commits — and weave the live results into its output. Without MCP, the agent only knows what you wrote in the brief; with MCP, it can go out and look things up itself.
 
 > [!TIP]
-> **Optional Side Quest:** Want a deeper look at how the agentic loop changes, what the `tools:` block does, and how to read tool calls in the Actions log? Work through [Side Quest: How MCP Tool Servers Work](side-quest-mcp-concepts.md), then come back here.
+> **Optional Side Quest:** Want a deeper look at how the agentic loop changes, what the `tools:` block does, and how to read tool calls in the Actions log? Work through [Side Quest: How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md), then come back here.
 
 ### 2. Add an MCP server to your workflow
 

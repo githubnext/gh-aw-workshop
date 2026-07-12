@@ -110,7 +110,7 @@ If the comment exists but the content is wrong, the agent followed your instruct
 | Summary says "done" but nothing was written | Write condition not met, or `safe-outputs:` block missing | Tighten the condition or add a `safe-outputs:` entry |
 
 > [!TIP]
-> Want a deeper walkthrough? [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-debug-output.md) expands each pattern with concrete log examples and step-by-step fixes.
+> Want a deeper walkthrough? [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) expands each pattern with concrete log examples and step-by-step fixes.
 
 ---
 

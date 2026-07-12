@@ -84,7 +84,7 @@ Most installs work on the first try after `gh auth status` and `gh extension ins
 If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the optional troubleshooting side quest.
 
 > [!TIP]
-> Need copy-paste fixes? Open [Side Quest: Install `gh-aw` Troubleshooting](side-quest-install-troubleshooting.md), then come back here.
+> Need copy-paste fixes? Open [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md), then come back here.
 
 ## ✅ Checkpoint
 

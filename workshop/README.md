@@ -29,18 +29,18 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered da
 
 ## Optional Side Quests
 
-- [Side Quest: Terminal Basics](side-quest-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
-- [Side Quest: Install `gh-aw` Troubleshooting](side-quest-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
-- [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](09-understand-output.md).
-- [Side Quest: Writing a Clear Agent Brief](side-quest-agent-brief.md) — five-step framework for designing any agentic workflow brief; branches from [Step 10](10-design-daily-status.md).
-- [Side Quest: Frontmatter Deep Dive](side-quest-frontmatter-deep-dive.md) — section-by-section walkthrough of every frontmatter key; branches from [Step 11](11-build-daily-status.md).
+- [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
+- [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
+- [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](09-understand-output.md).
+- [Side Quest: Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) — five-step framework for designing any agentic workflow brief; branches from [Step 10](10-design-daily-status.md).
+- [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md) — section-by-section walkthrough of every frontmatter key; branches from [Step 11](11-build-daily-status.md).
 - [Side Quest: Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 13](13-schedule-it.md).
-- [Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11](11-build-daily-status.md).
-- [Side Quest: Write Better AI Task Briefs](side-quest-better-prompts.md) — five prompt-engineering techniques for getting clearer, more consistent AI output; branches from [Step 11](11-build-daily-status.md).
-- [Side Quest: Reading an Annotated Agentic Workflow](side-quest-annotated-workflow.md) — fully annotated `daily-status.md` walkthrough explaining every design decision; branches from [Step 11](11-build-daily-status.md).
-- [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-github-output.md) — deep-dive into how `$GITHUB_OUTPUT` works; branches from [Step 16](16-connect-data-source.md).
-- [Side Quest: How MCP Tool Servers Work](side-quest-mcp-concepts.md) — conceptual primer explaining what MCP is, how the agentic loop changes, and how to read tool calls in the Actions log; branches from [Step 17](17-add-mcp-tools.md).
-- [Side Quest: Storing Credentials with GitHub Secrets](side-quest-secrets-and-permissions.md) — guide to creating repository secrets, referencing them in workflow steps, using the built-in `GITHUB_TOKEN`, and scoping permissions; branches from [Step 16](16-connect-data-source.md) or [Step 17](17-add-mcp-tools.md).
+- [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11](11-build-daily-status.md).
+- [Side Quest: Write Better AI Task Briefs](side-quest-11-03-better-prompts.md) — five prompt-engineering techniques for getting clearer, more consistent AI output; branches from [Step 11](11-build-daily-status.md).
+- [Side Quest: Reading an Annotated Agentic Workflow](side-quest-11-04-annotated-workflow.md) — fully annotated `daily-status.md` walkthrough explaining every design decision; branches from [Step 11](11-build-daily-status.md).
+- [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) — deep-dive into how `$GITHUB_OUTPUT` works; branches from [Step 16](16-connect-data-source.md).
+- [Side Quest: How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md) — conceptual primer explaining what MCP is, how the agentic loop changes, and how to read tool calls in the Actions log; branches from [Step 17](17-add-mcp-tools.md).
+- [Side Quest: Storing Credentials with GitHub Secrets](side-quest-16-02-secrets-and-permissions.md) — guide to creating repository secrets, referencing them in workflow steps, using the built-in `GITHUB_TOKEN`, and scoping permissions; branches from [Step 16](16-connect-data-source.md) or [Step 17](17-add-mcp-tools.md).
 
 ## Getting Started
 
