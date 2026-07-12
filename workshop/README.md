@@ -32,6 +32,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |
 | 17 | [17-add-mcp-tools.md](17-add-mcp-tools.md) | Give Your Agent More Tools with MCP | ✅ |
 | 18 | [18-share-and-reuse.md](18-share-and-reuse.md) | Share and Reuse Your Agentic Workflows | ✅ |
+| 19 | [19-research-driven-training-node.md](19-research-driven-training-node.md) | Build a Research-Driven Next Training Node | ✅ |
 
 ## Optional Side Quests
 
