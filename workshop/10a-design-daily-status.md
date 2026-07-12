@@ -1,4 +1,4 @@
-# Step 10: Design Your Daily Repo Status Report
+# Step 10a: Design — Daily Repo Status Report
 
 > _Great agentic workflows start with a clear brief — writing down what you want before you code anything saves hours of debugging later._
 
