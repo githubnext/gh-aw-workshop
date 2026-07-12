@@ -121,10 +121,13 @@ steps:
       # Pre-download reference docs to disk so the agent and subagents can
       # read them directly rather than passing the full text inline.
       # This avoids injecting ~300-400k tokens into every subagent context.
-      for doc in github-agentic-workflows.md syntax-core.md syntax-agentic.md mcp-clis.md; do
-        gh api repos/github/gh-aw/contents/.github/aw/${doc} \
-          --jq '.content' | base64 -d > /tmp/gh-aw/data/ref/${doc}
-        echo "Fetched ${doc} ($(wc -c < /tmp/gh-aw/data/ref/${doc}) bytes)"
+      # IMPORTANT: if you add or remove files here, update the comment in
+      # "Confirm Reference Documentation Is Ready" in the prompt body below.
+      docs=(github-agentic-workflows.md syntax-core.md syntax-agentic.md mcp-clis.md)
+      for doc in "${docs[@]}"; do
+        gh api repos/github/gh-aw/contents/.github/aw/"${doc}" \
+          --jq '.content' | base64 -d > /tmp/gh-aw/data/ref/"${doc}"
+        echo "Fetched ${doc} ($(wc -c < /tmp/gh-aw/data/ref/"${doc}") bytes)"
       done
 
       echo "=== Reference docs ready at /tmp/gh-aw/data/ref/ ==="
@@ -136,7 +139,7 @@ steps:
 You are a technical accuracy reviewer for the **"Learning GitHub Agentic Workflows"** workshop.
 Your job is to verify that the workshop content stays accurate and up to date with the `github/gh-aw` project.
 
-Each daily run reviews **five workshop files** (round-robin) and checks for outdated commands, screenshots, concepts, or version references. When problems are found you open a focused GitHub issue.
+Each daily run reviews **three workshop files** (round-robin) and checks for outdated commands, screenshots, concepts, or version references. When problems are found you open a focused GitHub issue.
 
 ---
 
@@ -233,8 +236,7 @@ For each file in `target_files`:
    (`.github/agents/workshop-sync-reviewer.agent.md`) and pass an object containing:
    - `file_path` — the file path
    - `content` — the full file content
-   - `ref_dir` — the path `/tmp/gh-aw/data/ref/` (the subagent will read individual
-     reference files from this directory on demand — do **not** pass the file contents inline)
+   - `ref_dir` — the path `/tmp/gh-aw/data/ref/` (the subagent reads individual reference files from this directory on demand — do **not** pass the file contents inline)
    - `release_notes` — release notes from Phase 2 (empty string if none)
    - `gh_aw_version` — the latest gh-aw release tag
 

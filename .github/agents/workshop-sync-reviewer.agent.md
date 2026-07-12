@@ -38,7 +38,7 @@ Carefully compare `content` against the reference docs in `ref_dir` and `release
 | **Concept accuracy** | `github-agentic-workflows.md` |
 | **Installation steps** | `mcp-clis.md` |
 
-For each check, read only the specific file(s) listed. Stop reading as soon as you have enough information to determine whether a finding exists.
+For each check, read only the specific file(s) listed. Stop reading as soon as you have enough information to determine whether a finding exists. Do **not** load all reference files at once — each file is large and loading them all would exceed the token budget for this subagent invocation.
 
 Only flag genuine inaccuracies with clear evidence from the reference docs or release notes.
 Do **not** flag style issues or minor wording differences.
