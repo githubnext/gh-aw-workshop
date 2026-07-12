@@ -69,8 +69,8 @@ Start with the opening fence and the two metadata keys. `emoji` is just a visual
 
 ```yaml
 ---
-emoji: 📊
-description: Post a daily repository status summary as a GitHub issue comment.
+emoji: 📊 # Workflow icon
+description: Post a daily repository status summary as a GitHub issue comment. # Workflow summary
 ---
 ```
 
@@ -88,9 +88,9 @@ gh aw compile .github/workflows/daily-status.md
 Now add the trigger block after the `description` line and before the closing `---`. `workflow_dispatch` gives you a manual **Run workflow** button, and `schedule: daily` is the source-format shorthand for a cron-style daily schedule — in plain English, "run this once every day around midnight UTC."
 
 ```yaml
-on:
-  schedule: daily
-  workflow_dispatch: {}
+on: # Run triggers
+  schedule: daily # Daily run
+  workflow_dispatch: {} # Manual run button
 ```
 
 > [!NOTE]
@@ -108,12 +108,12 @@ gh aw compile .github/workflows/daily-status.md
 Next add the minimum permissions the workflow needs. This workflow only needs to read repository state and make AI requests; keeping permissions narrow reduces the blast radius if you misconfigure the prompt later.
 
 ```yaml
-permissions:
-  contents: read
-  copilot-requests: write
-  issues: read
-  pull-requests: read
-  actions: read
+permissions: # Required GitHub scopes
+  contents: read # Read repo
+  copilot-requests: write # Call Copilot APIs
+  issues: read # Read issues
+  pull-requests: read # Read pull requests
+  actions: read # Read workflow runs
 ```
 
 > [!NOTE]
@@ -130,14 +130,14 @@ gh aw compile .github/workflows/daily-status.md
 Add the tool configuration and the `safe-outputs` guardrail next. The `tools` block tells the agent how to talk to GitHub, and `safe-outputs` limits the workflow to posting a single comment instead of giving it broad write access.
 
 ```yaml
-tools:
-  github:
-    mode: gh-proxy
-    toolsets: [default]
+tools: # Tool access
+  github: # GitHub MCP
+    mode: gh-proxy # Use scoped proxy
+    toolsets: [default] # Default toolset
 
-safe-outputs:
-  add-comment:
-    max: 1
+safe-outputs: # Write guardrails
+  add-comment: # Allow comments
+    max: 1 # One comment max
 ```
 
 > [!NOTE]
@@ -194,9 +194,13 @@ Compile one more time:
 gh aw compile .github/workflows/daily-status.md
 ```
 
-## Common Mistakes
+## Troubleshooting
 
-YAML is unforgiving. The most frequent pitfalls are tabs instead of spaces, missing quotes around values with special characters, wrong indentation for nested keys, a missing closing `---` fence, and forgetting `copilot-requests: write` in `permissions`.
+| Common issue | What you see | How to fix it |
+|---------|--------------|---------------|
+| Wrong indentation under nested keys | `gh aw compile` fails with a YAML parse error near `permissions`, `tools`, or `safe-outputs` | Use spaces only (no tabs), and indent child keys by exactly two spaces. |
+| Missing `permissions:` key or missing `copilot-requests: write` | Compile succeeds but runtime fails when the workflow tries to call Copilot APIs | Add the full `permissions:` block shown in this step, including `copilot-requests: write`. |
+| Incorrect `on:` trigger block | The daily run does not trigger, or the manual **Run workflow** button is missing | Set `on.schedule: daily` and `on.workflow_dispatch: {}` exactly as shown. |
 
 > [!NOTE]
 > If you hit a compile error, the optional **[Side Quest: YAML Frontmatter Pitfalls](side-quest-yaml-frontmatter.md)** walks through each of these mistakes with broken ❌ and correct ✅ examples.
@@ -230,10 +234,13 @@ If you created the file via the GitHub UI, it was already committed when you cli
 
 ## Complete Workflow (Copy-Paste Version)
 
-Use this block to copy the full workflow into your editor if you prefer to paste everything at once rather than building it section by section.
+If you prefer to paste the complete workflow at once rather than building it section by section, expand the reference copy below.
 
 > [!TIP]
 > **Optional Side Quest:** Want to understand the reasoning behind each design choice — why permissions are scoped the way they are, what `gh-proxy` actually prevents, and why the output format is fixed? See [Side Quest: Reading an Annotated Agentic Workflow](side-quest-annotated-workflow.md) for a fully annotated walkthrough before adapting this workflow.
+
+<details>
+<summary>Complete workflow file (reference copy)</summary>
 
 ```markdown
 ---
@@ -277,7 +284,7 @@ Collect and summarize:
 
 Find the most recently updated open issue and post a comment in this format:
 
-​```
+```
 📊 Daily Repo Status — {today's date}
 ══════════════════════════════════
 🔀 Open pull requests:  {count}
@@ -286,7 +293,7 @@ Find the most recently updated open issue and post a comment in this format:
 📝 Last commit:         "{message}" — {time ago}
 
 {One sentence of overall health. Flag anything that needs attention.}
-​```
+```
 
 ## Guidelines
 
@@ -295,7 +302,7 @@ Find the most recently updated open issue and post a comment in this format:
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
 ```
 
----
+</details>
 
 ## ✅ Checkpoint
 
