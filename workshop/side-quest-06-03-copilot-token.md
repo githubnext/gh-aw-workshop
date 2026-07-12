@@ -19,17 +19,14 @@ Agentic workflows that use the Copilot engine (the default) need to authenticate
 
 This method uses the GitHub Actions token that every workflow run already has. No additional secret is required.
 
-Add two things to your workflow frontmatter:
+Add the following to your workflow frontmatter:
 
 ```yaml
 permissions:
   copilot-requests: write   # Required: grants the workflow Copilot API access
-
-features:
-  copilot-requests: true    # Tells gh-aw to use the Actions token instead of a PAT
 ```
 
-With these two lines in place, the workflow authenticates automatically using `${{ github.token }}` — the same token GitHub Actions uses for all other API calls in the same run.
+With this in place, the workflow authenticates automatically using `${{ github.token }}` — the same token GitHub Actions uses for all other API calls in the same run.
 
 > [!IMPORTANT]
 > Your GitHub account must have an active GitHub Copilot subscription. The token inherits Copilot access from the account that owns the repository. If you are running inside a GitHub organization, the organization Copilot policy must allow agentic workflows.
@@ -37,7 +34,7 @@ With these two lines in place, the workflow authenticates automatically using `$
 <!-- -->
 
 > [!TIP]
-> The `copilot` engine is the default — you don't need to write `engine: copilot` explicitly. If your frontmatter has `copilot-requests: write` and `features: copilot-requests: true`, the workflow is already configured.
+> The `copilot` engine is the default — you don't need to write `engine: copilot` explicitly. If your frontmatter has `copilot-requests: write`, the workflow is already configured.
 
 ---
 
@@ -73,8 +70,6 @@ permissions:
   copilot-requests: write
 ```
 
-You do **not** need `features: copilot-requests: true` when using the secret method.
-
 ---
 
 ## Verify Copilot access
@@ -96,7 +91,6 @@ Look for a line that mentions the `copilot` scope or check that your Copilot pla
 
 - [ ] You understand the difference between the feature flag method and the `COPILOT_GITHUB_TOKEN` method
 - [ ] Your workflow frontmatter has `copilot-requests: write` under `permissions`
-- [ ] If using the feature flag method: `features: copilot-requests: true` is set in your frontmatter
 - [ ] If using the secret method: `COPILOT_GITHUB_TOKEN` is stored as a repository secret
 - [ ] Your GitHub account has an active Copilot subscription
 
