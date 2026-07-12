@@ -99,4 +99,3 @@ You should see your username as `owner` and `gh-aw-workshop` as `name`.
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [gh aw CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)

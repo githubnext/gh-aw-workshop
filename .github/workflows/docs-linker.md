@@ -204,6 +204,25 @@ Discard a mapping entry if the fetched file does not mention the identified term
 
 ---
 
+## Phase 4b — Validate Rendered URLs (Live HTTP Check)
+
+Before adding any link, verify that the rendered doc URL is actually reachable.
+For **every** mapping entry that survived Phase 4, run:
+
+```bash
+curl -sI --max-time 10 --retry 2 "<doc_url>"
+```
+
+Check the HTTP status code from the response headers:
+
+- If the status is **2xx or 3xx** (success or redirect) → keep the mapping entry.
+- If the status is **4xx or 5xx**, or if curl fails (network error, timeout) → **discard** the mapping entry and log:
+  `Skipping <doc_url> — HTTP <status> (or curl error); removing from link candidates.`
+
+Do **not** add any link whose URL fails this check.
+
+---
+
 ## Phase 5 — Add Inline Links
 
 For each verified mapping entry, search `target_file` for the **first bare
