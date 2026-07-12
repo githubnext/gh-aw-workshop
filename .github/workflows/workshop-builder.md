@@ -367,19 +367,21 @@ orchestrator.
 
 If `status_issue_number` is null, create this issue using `create-issue`:
 
-- **temporary_id**: `#aw_builder_status`
 - **Title**: `Workshop Builder status history`
 - **Body**: brief purpose + current timestamp + note that each run appends one
   action-history comment
 
-After successful creation, set `status_issue_number` to `#aw_builder_status`.
+Do **not** set `status_issue_number` after creation — the real issue number will
+be resolved automatically by step 1d on the next run.
 
 ### 5b. Append one history comment every run
 
-Use `add-comment` to append exactly one comment to the status issue on every run
-(including `action = "noop"` and `focus = "status"` runs).
+Only call `add-comment` when `status_issue_number` is a **real numeric issue
+number** (i.e. it was already known before this run and is not null). Skip the
+comment when the issue was just created in this run — the next run will discover
+the number via step 1d and then start appending comments.
 
-- **item_number**: `status_issue_number` (or `#aw_builder_status` if just created)
+- **item_number**: `status_issue_number`
 - **body** must include:
   - Run timestamp
   - Chosen action (`dispatch`/`modify`/`suggest`/`noop`)
