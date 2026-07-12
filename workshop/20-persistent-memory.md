@@ -124,9 +124,10 @@ What each field does:
 | `path:` | Repository-relative path to the JSON file. The directory is created automatically on first write. |
 | `branch:` | Branch where the memory file is committed. Usually `main` or your default branch. |
 
-> [!NOTE]
+> [!IMPORTANT]
 > `repo-memory` requires `contents: write` in your `permissions` block so the agent can commit the updated file. Add it alongside your existing permissions.
-> Every `repo-memory` write creates a commit in your repository. Keep the stored data small (a list of IDs or a summary object) to avoid cluttering your commit history.
+
+Keep the stored data small — a list of IDs or a compact summary object — to avoid cluttering your commit history with large file changes.
 
 ### Compile and validate
 
@@ -168,7 +169,7 @@ The first run reports all currently open issues and writes them to memory. The s
 - [ ] You ran the workflow twice and confirmed the second run skips previously seen items
 - [ ] You can explain the difference between `cache-memory` and `repo-memory` and when to use each
 
-**Next:** [Build a Research-Driven Next Training Node](19-research-driven-training-node.md)
+**Next:** [Learning GitHub Agentic Workflows](README.md)
 
 ## 📚 See Also
 
