@@ -185,7 +185,7 @@ function buildTransitions() {
       const providerSecretMappingCheck = ensure(
         Boolean(requiredSecret),
         "Workflow run could not resolve a required Actions secret for the configured model provider",
-        "inference-provider-missing",
+        "provider-secret-mapping-missing",
         "Set the workflow model provider to github, anthropic, or openai before running."
       );
       if (!providerSecretMappingCheck.ok) return providerSecretMappingCheck;

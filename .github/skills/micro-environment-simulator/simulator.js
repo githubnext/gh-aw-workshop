@@ -19,6 +19,8 @@ const COPILOT_SECRET_PRIMARY_MODULO = 5;
 const COPILOT_SECRET_SECONDARY_MODULO = 7;
 const THIRD_PARTY_SECRET_BEGINNER_MODULO = 3;
 const THIRD_PARTY_SECRET_SECONDARY_MODULO = 8;
+const ANTHROPIC_MISSING_REMAINDER = 0;
+const OPENAI_MISSING_REMAINDER = 1;
 const COPILOT_PERMISSION_GITHUB_MODULO = 4;
 const COPILOT_PERMISSION_OTHER_MODULO = 3;
 
@@ -84,12 +86,12 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
   const hasAnthropicApiKey =
     isLoggedIn &&
     (inferenceProvider === "anthropic"
-      ? hasThirdPartyProviderSecret(level, seed, 0)
+      ? hasThirdPartyProviderSecret(level, seed, ANTHROPIC_MISSING_REMAINDER)
       : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 0);
   const hasOpenAiApiKey =
     isLoggedIn &&
     (inferenceProvider === "openai"
-      ? hasThirdPartyProviderSecret(level, seed, 1)
+      ? hasThirdPartyProviderSecret(level, seed, OPENAI_MISSING_REMAINDER)
       : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 1);
   const hasCopilotRequestsWrite =
     inferenceProvider === "github"
