@@ -10,7 +10,7 @@ By the end of this workshop, you'll have a scheduled AI agent that posts a daily
 
 **What you'll build in 15 steps:** A production-style, AI-powered daily repository status workflow that runs on a [schedule](https://github.github.com/gh-aw/reference/triggers/) and posts a useful summary automatically — so your team gets a morning update with zero manual status-chasing.
 
-**Time estimate:** ~2 hours end-to-end, or ~30 minutes if you're already familiar with GitHub CLI and jump to the quick path.
+**Format:** Self-paced end-to-end, with an optional quick path if you're already familiar with GitHub CLI.
 
 **Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC). You'll install everything you need as part of the workshop — no pre-existing tools required. All terminal commands in this workshop can also be run inside a GitHub Codespace — no local install required.
 
@@ -25,19 +25,11 @@ By the end of this workshop, you'll have a scheduled AI agent that posts a daily
 | **DevOps / platform engineer** | A repeatable GitHub-native pattern for scheduled AI-assisted triage with clear permissions and auditable runs |
 | **Evaluator / program manager** | A concrete, low-effort way to evaluate team repo health and AI workflow value without doing manual status collection |
 
-## Estimated Time by Technical Level
-
-| Technical level | Estimated total time | Time to first running workflow (Steps 0–8) |
-|---|---:|---:|
-| Beginner | ~3 hours | ~2 hours |
-| Actions user | ~1.5 hours | ~75 minutes |
-| Advanced | ~45 minutes | ~45 minutes |
-
 > [!NOTE]
 > **Enterprise users:** [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) require **github.com** or **GitHub Enterprise Cloud (GHEC)**. GHES is not supported by default — see [Step 5](05-agentic-workflows-intro.md#platform-compatibility) for details and workarounds.
-## Why this matters in 60 seconds
+## Why this matters at a glance
 
-**In about 2 hours, you'll have an AI-powered daily repo health report running automatically in GitHub** — the kind of workflow a teammate or evaluator can judge in under a minute.
+**By the end, you'll have an AI-powered daily repo health report running automatically in GitHub** — the kind of workflow a teammate or evaluator can review quickly.
 
 - **Personal learners:** You leave with a concrete, portfolio-ready automation that proves you can build practical AI workflows.
 - **Work-project engineers:** You replace manual morning repo triage with a scheduled status summary that highlights what needs action.
@@ -81,7 +73,7 @@ You do **not** need experience with GitHub Actions or AI tools. This workshop as
 
 ## How the Workshop Is Structured
 
-Each step is short — most take **5–15 minutes**, with a couple of longer setup and build steps. Steps build on each other, but checkboxes at the end of each step tell you exactly what to verify before moving on.
+Each step is focused. Steps build on each other, but checkboxes at the end of each step tell you exactly what to verify before moving on.
 
 At **Step 1**, the path splits into two options:
 - **Adventure A** — set up a cloud environment with GitHub Codespaces (no local install needed)
@@ -94,7 +86,7 @@ Both paths converge at **Step 3** and stay together for the rest of the workshop
 
 ## ✅ Checkpoint
 
-- [ ] You know the concrete outcome you'll build in about 2 hours
+- [ ] You know the concrete outcome you'll build
 - [ ] You know how this differs from a regular GitHub Action
 - [ ] You know which setup path you'll take (Codespace or local)
 - [ ] You're excited — let's go! 🚀
