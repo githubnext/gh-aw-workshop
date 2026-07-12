@@ -22,7 +22,7 @@ For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Co
 ## 🎯 What You'll Do
 
 You'll verify the `gh` CLI is installed and then install the `gh-aw`
-extension so you can compile and run agentic workflows from your terminal.
+extension so you can compile and run [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from your terminal.
 
 ## 📋 Before You Start
 
@@ -151,3 +151,7 @@ Want to understand how Copilot authenticates with your workflow — or set up a 
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 **Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
