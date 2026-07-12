@@ -142,11 +142,16 @@ A green ✔ means the file is valid. Commit and push, then proceed to [Step 12](
 
 </details>
 
-> [!CAUTION]
-> **Top 3 YAML mistakes — check these first if `gh aw compile` fails:**
-> - **Wrong indentation** — YAML requires exactly two spaces per nesting level; tabs are not valid.
-> - **Missing `---` fences** — the frontmatter must be wrapped by an opening `---` and a closing `---`; omitting either causes a parse error.
-> - **Unquoted special characters** — values that contain `:`, `#`, or `{` must be wrapped in double quotes, for example `description: "Post a report: daily"`.
+<details>
+<summary>⚠️ Common YAML mistakes — expand if <code>gh aw compile</code> fails</summary>
+
+- **Wrong indentation** — YAML requires exactly two spaces per nesting level; tabs are not valid.
+- **Missing `---` fences** — the frontmatter must be wrapped by an opening `---` and a closing `---`; omitting either causes a parse error.
+- **Unquoted special characters** — values that contain `:`, `#`, or `{` must be wrapped in double quotes, for example `description: "Post a report: daily"`.
+
+For broken ❌ and correct ✅ examples of each, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
+
+</details>
 
 ---
 
