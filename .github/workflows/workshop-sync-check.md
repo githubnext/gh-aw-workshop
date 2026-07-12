@@ -41,6 +41,7 @@ steps:
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
 
+      # Keep this list aligned with workshop command coverage as gh-aw evolves.
       gh_aw_help="$(gh aw help 2>&1)"
       compile_help="$(gh aw compile --help 2>&1)"
       run_help="$(gh aw run --help 2>&1)"
@@ -129,6 +130,7 @@ Each daily run reviews **five workshop files** (round-robin) and checks for outd
    - `workflow_files` — array of `.github/workflows/*.md` source paths
 
 2. Read `/tmp/gh-aw/data/gh-aw-cli-help.json` and use it as the authoritative source for valid `gh aw` subcommands and flags when reviewing workshop command examples.
+   If a workshop command or flag is missing from this live help snapshot, treat it as a drift finding for the installed CLI version and include the relevant help excerpt as evidence.
 
 3. Load the cache-memory file `/tmp/gh-aw/cache-memory/sync-state.json` if it exists.
    It has this shape (create it with defaults when absent):
