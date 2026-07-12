@@ -8,6 +8,22 @@ const VALID_TERMINALS = {
   windows: new Set(["powershell", "cmd"])
 };
 
+const PROVIDER_SECRET_BY_NAME = {
+  github: "COPILOT_GITHUB_TOKEN",
+  anthropic: "ANTHROPIC_API_KEY",
+  openai: "OPENAI_API_KEY"
+};
+const INFERENCE_PROVIDERS = Object.keys(PROVIDER_SECRET_BY_NAME);
+const INFERENCE_PROVIDER_SEED_OFFSET = 4;
+const COPILOT_SECRET_PRIMARY_MODULO = 5;
+const COPILOT_SECRET_SECONDARY_MODULO = 7;
+const THIRD_PARTY_SECRET_BEGINNER_MODULO = 3;
+const THIRD_PARTY_SECRET_SECONDARY_MODULO = 8;
+const ANTHROPIC_MISSING_REMAINDER = 0;
+const OPENAI_MISSING_REMAINDER = 1;
+const COPILOT_PERMISSION_GITHUB_MODULO = 4;
+const COPILOT_PERMISSION_OTHER_MODULO = 3;
+
 function toDayOfYear(isoDate) {
   const date = new Date(`${isoDate}T00:00:00Z`);
   const start = new Date(Date.UTC(date.getUTCFullYear(), 0, 0));
@@ -17,6 +33,13 @@ function toDayOfYear(isoDate) {
 function deterministicChoice(seed, choices) {
   const index = Math.abs(seed) % choices.length;
   return choices[index];
+}
+
+function hasThirdPartyProviderSecret(level, seed, missingRemainder) {
+  if (level !== "beginner") {
+    return true;
+  }
+  return seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== missingRemainder;
 }
 
 function deepFreeze(obj) {
@@ -54,6 +77,26 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
   const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
   const hasCopilotRequestToken = isLoggedIn && (student.tool === "cloud-agent" || seed % 2 === 0);
+  const inferenceProvider = deterministicChoice(seed + INFERENCE_PROVIDER_SEED_OFFSET, INFERENCE_PROVIDERS);
+  const hasCopilotGithubToken =
+    isLoggedIn &&
+    (inferenceProvider === "github"
+      ? seed % COPILOT_SECRET_PRIMARY_MODULO !== 0
+      : seed % COPILOT_SECRET_SECONDARY_MODULO === 0);
+  const hasAnthropicApiKey =
+    isLoggedIn &&
+    (inferenceProvider === "anthropic"
+      ? hasThirdPartyProviderSecret(level, seed, ANTHROPIC_MISSING_REMAINDER)
+      : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 0);
+  const hasOpenAiApiKey =
+    isLoggedIn &&
+    (inferenceProvider === "openai"
+      ? hasThirdPartyProviderSecret(level, seed, OPENAI_MISSING_REMAINDER)
+      : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 1);
+  const hasCopilotRequestsWrite =
+    inferenceProvider === "github"
+      ? seed % COPILOT_PERMISSION_GITHUB_MODULO !== 0
+      : seed % COPILOT_PERMISSION_OTHER_MODULO !== 0;
 
   return deepFreeze({
     studentId: id,
@@ -76,6 +119,17 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
     },
     workspace: {
       context: inCodespaces ? "codespaces" : "local"
+    },
+    actions: {
+      inferenceProvider,
+      permissions: {
+        copilotRequestsWrite: hasCopilotRequestsWrite
+      },
+      secrets: {
+        [PROVIDER_SECRET_BY_NAME.github]: hasCopilotGithubToken,
+        [PROVIDER_SECRET_BY_NAME.anthropic]: hasAnthropicApiKey,
+        [PROVIDER_SECRET_BY_NAME.openai]: hasOpenAiApiKey
+      }
     },
     flags: {
       sawActionsIntro: false,
@@ -224,6 +278,8 @@ function runCli() {
 
 const exportedApi = {
   VALID_TERMINALS,
+  INFERENCE_PROVIDERS,
+  PROVIDER_SECRET_BY_NAME,
   ensure,
   defaultEnvironmentForStudent,
   replayJourney,

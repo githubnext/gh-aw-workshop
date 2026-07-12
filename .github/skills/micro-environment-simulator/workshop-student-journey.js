@@ -1,6 +1,6 @@
 "use strict";
 
-const { VALID_TERMINALS, ensure } = require("./simulator");
+const { VALID_TERMINALS, INFERENCE_PROVIDERS, PROVIDER_SECRET_BY_NAME, ensure } = require("./simulator");
 
 const STEP_IDS = [
   "00-welcome",
@@ -39,6 +39,10 @@ function isOrgScopedCodespacesToken(state) {
 
 function isCodespacesWorkspace(state) {
   return state.workspace?.context === "codespaces";
+}
+
+function requiredSecretForProvider(provider) {
+  return PROVIDER_SECRET_BY_NAME[provider] || null;
 }
 
 function buildTransitions() {
@@ -167,6 +171,51 @@ function buildTransitions() {
         "Run `gh auth status` first (Codespaces sessions are often pre-authenticated); if needed, run `gh auth login` before triggering workflow runs."
       );
       if (!authCheck.ok) return authCheck;
+
+      const provider = state.actions?.inferenceProvider;
+      const providerCheck = ensure(
+        INFERENCE_PROVIDERS.includes(provider),
+        "Workflow run is missing a supported model inference provider configuration",
+        "inference-provider-missing",
+        "Set the workflow model provider to github, anthropic, or openai before running."
+      );
+      if (!providerCheck.ok) return providerCheck;
+
+      const requiredSecret = requiredSecretForProvider(provider);
+      const providerSecretMappingCheck = ensure(
+        Boolean(requiredSecret),
+        "Workflow run could not resolve a required Actions secret for the configured model provider",
+        "provider-secret-mapping-missing",
+        "Set the workflow model provider to github, anthropic, or openai before running."
+      );
+      if (!providerSecretMappingCheck.ok) return providerSecretMappingCheck;
+      const hasRequiredSecret = Boolean(state.actions?.secrets?.[requiredSecret]);
+      const providerSecretCheck = ensure(
+        hasRequiredSecret,
+        `Required Actions secret '${requiredSecret}' is not configured for '${provider}' inference`,
+        "provider-secret-missing",
+        `Add repository or organization Actions secret '${requiredSecret}' before running the workflow.`
+      );
+      if (!providerSecretCheck.ok) return providerSecretCheck;
+
+      if (provider === "github") {
+        if (state.actions?.permissions?.copilotRequestsWrite !== true) {
+          if (state.auth?.accountType === "enterprise-managed") {
+            return ensure(
+              false,
+              "Enterprise GitHub inference requires `permissions.copilot-requests: write` to enable org billing",
+              "org-billing-not-enabled",
+              "Set `permissions.copilot-requests: write` for enterprise workflows that use GitHub inference."
+            );
+          }
+          return ensure(
+            false,
+            "Workflow is missing `permissions.copilot-requests: write` for GitHub inference",
+            "copilot-permission-missing",
+            "Add `permissions.copilot-requests: write` to the workflow frontmatter."
+          );
+        }
+      }
 
       const next = cloneState(state);
       next.flags.ranWorkflow = true;
