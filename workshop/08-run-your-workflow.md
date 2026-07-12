@@ -35,7 +35,7 @@ For terminal users, this is the same action as [CLI equivalent (`gh aw run`)](#c
 
 ![Run workflow button](images/08-run-workflow-button.svg)
 
-#### CLI equivalent gh aw run
+#### CLI equivalent (`gh aw run`)
 
 If you do have a terminal, this command triggers the same workflow run:
 
