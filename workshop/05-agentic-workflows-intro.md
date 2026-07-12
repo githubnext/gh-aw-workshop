@@ -18,11 +18,14 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 3. Triage high-priority issue #398 with the platform team.
 ```
 
+> [!IMPORTANT]
+> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
+
+_If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
+
 > [!TIP]
 > **Already know GitHub Actions?** Skip to [Step 6 — Install gh-aw](06-install-gh-aw.md).
 > Come back here if you need a refresher on how agentic workflows differ from classic Actions.
-
-_If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
 
 ## 🎯 What You'll Do
 

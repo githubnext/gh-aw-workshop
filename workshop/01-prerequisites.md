@@ -2,12 +2,19 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
+## ✅ Required pre-flight checks
+
+Complete these checks before you choose a setup path:
+
+- [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
+- [ ] `gh auth status` shows a logged-in account — run `gh auth login` if it does not
+
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
-> If you already have `gh` installed, a GitHub repo ready, and `gh` authenticated, you can skip Steps 1–5. Confirm all three before jumping ahead:
+> If you already have `gh` installed, a GitHub repo ready, and the pre-flight checks above passing, you can skip Steps 1–5. Confirm all three before jumping ahead:
 > - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
-> - [ ] `gh` is authenticated — run `gh auth status` (or `gh auth login` if not yet done)
+> - [ ] `gh auth status` shows a logged-in account
 >
 > **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — all useful context, but safely skippable if you already have a working `gh` setup.
 >
@@ -72,7 +79,7 @@ Full installation docs: [cli.github.com](https://cli.github.com)
 
 > [!NOTE]
 > **Can't install software locally?** No problem — skip the installs entirely.
-> Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40 and Git pre-installed and pre-authenticated. You'll be ready to continue in under two minutes without touching your local machine.
+> Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40 and Git pre-installed, and `gh` is often already authenticated. Still run `gh auth status` to verify before you continue.
 > ➡️ **[Adventure A: Set Up a Codespace](02a-setup-codespace.md)**
 
 ### 2. Check your GitHub account
@@ -138,7 +145,7 @@ Here's a quick summary of what you'll have installed and running by the end of t
 
 - [ ] You have a GitHub account and can sign in
 - [ ] gh CLI ≥ 2.40 installed — verify with `gh --version`
-- [ ] gh CLI is authenticated — run `gh auth login`, then verify with `gh auth status`
+- [ ] `gh auth status` shows you are logged in
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 

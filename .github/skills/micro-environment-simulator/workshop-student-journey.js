@@ -33,10 +33,6 @@ function deepFreeze(obj) {
   return obj;
 }
 
-function hasAgentAuth(state) {
-  return Boolean(state.auth?.hasApiKey || state.auth?.hasCopilotRequestToken);
-}
-
 function isOrgScopedCodespacesToken(state) {
   return state.workspace?.context === "codespaces" && state.auth?.tokenScope === "org";
 }
@@ -122,16 +118,8 @@ function buildTransitions() {
           "Install GitHub CLI before running `gh extension install` or `gh aw` commands."
         );
       }
-      if (isOrgScopedCodespacesToken(state)) {
-        const next = cloneState(state);
-        next.installed.aw = "latest";
-        next.flags.usedInstallScript = true;
-        next.flags.agentCredentialsConfigured = hasAgentAuth(state);
-        return { ok: true, state: deepFreeze(next) };
-      }
       const next = cloneState(state);
       next.installed.aw = "latest";
-      next.flags.agentCredentialsConfigured = hasAgentAuth(state);
       return { ok: true, state: deepFreeze(next) };
     },
     "07-first-workflow": (state) => {
@@ -162,14 +150,6 @@ function buildTransitions() {
         "Run `gh auth status` first (Codespaces sessions are often pre-authenticated); if needed, run `gh auth login` before triggering workflow runs."
       );
       if (!authCheck.ok) return authCheck;
-
-      const credCheck = ensure(
-        hasAgentAuth(state) || state.flags.agentCredentialsConfigured,
-        "Agent authentication is missing: configure an API key or Copilot request token before running the agent",
-        "agent-credentials-missing",
-        "Configure an API key or Copilot request token after completing gh auth login and before triggering a workflow run."
-      );
-      if (!credCheck.ok) return credCheck;
 
       const next = cloneState(state);
       next.flags.ranWorkflow = true;
