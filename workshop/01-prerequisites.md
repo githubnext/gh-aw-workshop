@@ -2,6 +2,14 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
+> [!TIP]
+> **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A](02a-setup-codespace.md)
+
+<!-- -->
+
+> [!TIP]
+> **Already have `gh` and a Copilot subscription?** Run `gh auth status && gh extension list` — if `gh-aw` appears, you're ready to [skip to Step 3](03-create-your-repo.md).
+
 ## ✅ Required pre-flight checks
 
 Complete these checks before you choose a setup path:
