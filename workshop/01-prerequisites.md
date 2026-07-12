@@ -22,8 +22,6 @@ Complete these checks before you choose a setup path:
 
 ## 🔀 Choose Your Setup Path
 
-If you're using GitHub Enterprise Server, confirm agentic workflows are enabled before you continue:
-
 > [!IMPORTANT]
 > **Not sure where to begin? Pick your path now:**
 >
