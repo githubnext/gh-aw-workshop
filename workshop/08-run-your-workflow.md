@@ -11,7 +11,6 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 - Completed [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
 - `.github/workflows/hello-agent.md` is committed and pushed to `main`
 - Your browser is open to your practice repository on GitHub
-- `gh auth status` shows a logged-in account and `gh copilot status` confirms Copilot access
 
 ## Steps
 
@@ -82,33 +81,6 @@ Navigate back to the **Actions** tab and click the completed run. Scroll down pa
 Want to experiment? Instead of editing `.github/workflows/hello-agent.md` directly, ask Copilot, Claude, or ChatGPT to update it with the `agentic-workflows` skill. For example, ask the agent to change the task so it adds a label to the issue instead of posting a comment, then review the diff, push the change, and trigger another run.
 
 This is the core loop of agentic workflow development: **design → agent edit → run → observe → refine**.
-
-## Troubleshooting
-
-### `Error: authentication required`
-
-Your GitHub CLI session is not authenticated in the environment where you ran the workflow command.
-
-```bash
-gh auth login
-gh auth status
-```
-
-Re-run the workflow after `gh auth status` shows you are logged in to `github.com`.
-
-### `Error: no Copilot token`
-
-Your GitHub account needs Copilot access and a refreshed Copilot credential for the CLI.
-
-1. Confirm your account has an active Copilot subscription or access through your organisation.
-2. Refresh the Copilot credential:
-
-```bash
-gh auth refresh -s copilot
-gh copilot status
-```
-
-Re-run the workflow after `gh copilot status` confirms Copilot access is available.
 
 ## ✅ Checkpoint
 

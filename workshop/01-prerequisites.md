@@ -8,15 +8,13 @@ Complete these checks before you choose a setup path:
 
 - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
 - [ ] `gh auth status` shows a logged-in account — run `gh auth login` if it does not
-- [ ] `gh copilot status` confirms Copilot access is available
-- [ ] If `gh copilot status` reports missing credentials, run `gh auth refresh -s copilot` and check again
 
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
 > If you already have `gh` installed, a GitHub repo ready, and the pre-flight checks above passing, you can skip Steps 1–5. Confirm all three before jumping ahead:
 > - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
-> - [ ] `gh auth status` shows a logged-in account and `gh copilot status` confirms Copilot access
+> - [ ] `gh auth status` shows a logged-in account
 >
 > **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — all useful context, but safely skippable if you already have a working `gh` setup.
 >
@@ -148,7 +146,6 @@ Here's a quick summary of what you'll have installed and running by the end of t
 - [ ] You have a GitHub account and can sign in
 - [ ] gh CLI ≥ 2.40 installed — verify with `gh --version`
 - [ ] `gh auth status` shows you are logged in
-- [ ] `gh copilot status` confirms Copilot access is available
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
