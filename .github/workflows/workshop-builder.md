@@ -110,7 +110,7 @@ run can pick up where you left off.
 
 ## Load State
 
-### 1a. Read repository state
+### Read repository state
 
 Load `/tmp/gh-aw/data/repo-state.json`. It contains:
 
@@ -118,7 +118,7 @@ Load `/tmp/gh-aw/data/repo-state.json`. It contains:
 - `workflow_sources` — list of `.md` source files in `.github/workflows/`
 - `timestamp` — current run timestamp
 
-### 1b. Load persistent orchestrator state from cache-memory
+### Load persistent orchestrator state from cache-memory
 
 Read `/tmp/gh-aw/cache-memory/builder-state.json`. Create it with defaults when
 absent:
