@@ -18,7 +18,7 @@ safe-outputs:
   create-issue:
     title-prefix: "[workshop-sim] "
     labels: [workshop, simulation, feedback]
-    max: 4
+    max: 5
     close-older-issues: true
 network:
   allowed:

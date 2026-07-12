@@ -27,7 +27,7 @@ safe-outputs:
     title-prefix: "[title-similarity] "
     labels: [documentation]
     deduplicate-by-title: true
-    max: 3
+    max: 5
 timeout-minutes: 20
 steps:
   - name: Extract markdown titles
