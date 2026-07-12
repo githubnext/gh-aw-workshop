@@ -1,37 +1,14 @@
 # Step 6: Install the gh-aw CLI Extension
 
-> **Which environment are you using?**
->
-> - 🖥️ **Terminal / VS Code / Codespace** → continue below
-> - 🌐 **GitHub UI / Copilot web app** → [open a Codespace first](02a-setup-codespace.md#2-open-the-codespace), then return here
-> - 🤖 **Copilot coding agent** → expand the section below for agent-specific install steps
+> [!NOTE]
+> **Using a Codespace?** In the workshop Codespace, `gh` is pre-installed and pre-authenticated.
+> You can run `gh extension install github/gh-aw` directly.
 
-<details>
-<summary>Installing gh-aw inside a Copilot coding agent session</summary>
+## Using Copilot app or cloud agent?
 
-If you are running inside a **Copilot coding agent** session,
-you have two options:
-
-**Option 1 — Use the agent's built-in terminal:**
-Open a terminal within your coding agent session and run the install command normally:
-
-```bash
-gh extension install github/gh-aw
-```
-
-**Option 2 — Pre-install via `copilot-setup-steps.yml`:**
-Add the following step to your repository's `.github/copilot-setup-steps.yml` so that `gh-aw`
-is pre-installed every time a new agent environment starts:
-
-```yaml
-steps:
-  - name: Install gh-aw extension
-    run: gh extension install github/gh-aw
-```
-
-Once installed, run `gh extension list` to confirm the extension is available before continuing.
-
-</details>
+These entry points don't support local CLI installs. Open this repo in a
+[Codespace](02a-setup-codespace.md#2-open-the-codespace) or use a VS Code
+integrated terminal, then complete this step there.
 
 ## 🎯 What You'll Do
 
@@ -127,6 +104,18 @@ gh extension list
 
 You should see an entry for `github/gh-aw`.
 
+### 3. Verify `gh aw` is available
+
+```bash
+gh aw --version
+```
+
+Example success output:
+
+```text
+gh-aw version 0.1.0
+```
+
 ## Troubleshooting
 
 Most installs work on the first try after `gh auth status` and `gh extension install github/gh-aw`.
@@ -140,5 +129,6 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 - [ ] `gh --version` returns a `gh version 2.x.x` value
 - [ ] `gh extension install github/gh-aw` ran without errors
 - [ ] `gh extension list` shows `github/gh-aw`
+- [ ] `gh aw --version` returns a `gh-aw version 0.1.0` style value
 
 **Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
