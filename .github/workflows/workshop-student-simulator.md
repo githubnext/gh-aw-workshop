@@ -240,6 +240,8 @@ Use this replay output to execute a JavaScript abstract state machine replay for
 
 Use the simulator run to verify environment assumptions for each workshop step. If an assumption fails, stop the replay at that step and include the assumption mismatch in the student's pain points.
 
+Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when the workflow itself depends on repository-side Actions secrets or model access that the learner was expected to configure.
+
 #### Simulation Rules
 
 **Success probability per step** must be evaluated dynamically for each student-step pair. Do **not** use a fixed lookup table. Instead, reason from the student's full profile and the step's actual content and demands:
@@ -318,6 +320,7 @@ For each student who fails at a step, note:
   - **codespaces + auth checks**: "Codespaces `gh` is usually pre-authenticated, so guidance should check `gh auth status` before instructing `gh auth login`"
   - **cloud-agent + local setup**: "Cloud agent user expects fully managed environment; local install and auth steps are unexpected friction"
 - Any student failing an `*install*` step: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
+- Any student failing a workflow execution step because of missing credentials: "The workflow depends on repository-side Actions secrets or model access that are not configured yet; local Copilot CLI auth does not fix this"
 - Any student failing a `*build*` step: "Full workflow source harder to understand without line-by-line annotation"
 
 ### 4. Aggregate and analyse results
