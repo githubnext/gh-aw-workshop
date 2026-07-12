@@ -22,6 +22,8 @@ Complete these checks before you choose a setup path:
 
 ## 🔀 Choose Your Setup Path
 
+If you're using GitHub Enterprise Server, confirm agentic workflows are enabled before you continue:
+
 > [!IMPORTANT]
 > **Not sure where to begin? Pick your path now:**
 >
@@ -31,6 +33,11 @@ Complete these checks before you choose a setup path:
 > | Comfortable with my terminal and local installs | ➡️ [Adventure B: Local Setup](02b-setup-local.md) |
 >
 > If you're unsure, **start with the Codespace path** — you can always switch later.
+
+If you're on GHES, do this platform check before you continue:
+
+> [!IMPORTANT]
+> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
 
 ### Which setup path is right for me?
 
