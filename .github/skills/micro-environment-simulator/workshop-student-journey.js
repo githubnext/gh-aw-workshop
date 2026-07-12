@@ -118,14 +118,11 @@ function buildTransitions() {
           "Install GitHub CLI before running `gh extension install` or `gh aw` commands."
         );
       }
-      if (isOrgScopedCodespacesToken(state)) {
-        const next = cloneState(state);
-        next.installed.aw = "latest";
-        next.flags.usedInstallScript = true;
-        return { ok: true, state: deepFreeze(next) };
-      }
       const next = cloneState(state);
       next.installed.aw = "latest";
+      if (isOrgScopedCodespacesToken(state)) {
+        next.flags.usedInstallScript = true;
+      }
       return { ok: true, state: deepFreeze(next) };
     },
     "07-first-workflow": (state) => {
