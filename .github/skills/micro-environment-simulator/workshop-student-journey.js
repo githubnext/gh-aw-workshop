@@ -64,6 +64,9 @@ function buildTransitions() {
         next.installed.gh = "2.58.0";
       }
       next.flags.environmentReady = true;
+      // Codespace setup opens the ready-to-use environment, but the learner does not
+      // create their practice repository until Step 03. The local path creates that
+      // repository during setup, so those repo flags are available earlier.
       if (!isCodespacesWorkspace(state)) {
         next.flags.hasRepo = true;
         next.flags.repoCreatedViaUi = true;
