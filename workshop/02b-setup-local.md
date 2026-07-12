@@ -47,6 +47,8 @@ gh auth status && gh extension list
 
 _What success looks like:_ the command runs without shell errors and shows your current login state plus any installed extensions.
 
+If the command fails with `gh: command not found`, continue to **Install the gh CLI** below, then re-run this pre-flight check.
+
 Expected output includes one of these login states:
 
 ```text
@@ -195,6 +197,8 @@ _What success looks like:_ no errors are shown, and the final line is exactly:
 ```text
 <your-username>/my-agentic-workflows
 ```
+
+Replace `<your-username>` with your actual GitHub username in that final output line.
 
 If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before moving on.
 
