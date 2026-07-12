@@ -32,7 +32,7 @@ Complete these checks before you choose a setup path:
 >
 > If you're unsure, **start with the Codespace path** — you can always switch later.
 
-If you're on GHES, do this platform check before you continue:
+If you're on GHES, complete this enablement check before you continue:
 
 > [!IMPORTANT]
 > **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
