@@ -1,12 +1,5 @@
 # Step 6: Install the gh-aw CLI Extension
 
-> [!IMPORTANT]
-> **Using GitHub Copilot app (web or mobile)?** You need a terminal to install
-> `gh aw`. Open a Codespace first: [Open a Codespace](02a-setup-codespace.md#open-the-codespace).
-> Then return here and follow the [Install from terminal](#install-from-terminal) section.
-
-<!-- Separate adjacent callouts -->
-
 ## No terminal yet? Open a Codespace first (GitHub Copilot app)
 
 If you're using the GitHub Copilot app (web or mobile) and don't have a terminal open yet, use this button:

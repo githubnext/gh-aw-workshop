@@ -1,6 +1,6 @@
-# Side Quest: Use `gh-aw` with the Copilot App
+# Side Quest: Use `gh-aw` with the GitHub Copilot App
 
-Use this side quest if you're working in the GitHub Copilot app and need a terminal for `gh-aw` commands.
+Use this side quest if you're working in the GitHub Copilot app (web or mobile) and need a terminal for `gh-aw` commands.
 
 ## What you'll do
 
