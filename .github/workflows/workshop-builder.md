@@ -37,6 +37,7 @@ safe-outputs:
       - workshop-author
       - workflow-skills-editor
       - workshop-order-review
+      - title-similarity-review
       - side-quest
       - workshop-skill-activity-author
       - workshop-student-simulator
@@ -183,6 +184,7 @@ each workshop workflow:
 - `workshop-author`
 - `workflow-skills-editor`
 - `side-quest`
+- `title-similarity-review`
 - `workshop-order-review`
 - `workshop-skill-activity-author`
 - `workshop-student-simulator`
@@ -220,6 +222,7 @@ For each workflow, compute whether it is **eligible** for dispatch:
 | `workshop-author` | nodes < 15, no open `workshop` PR, last dispatch > 3 h ago or never |
 | `workflow-skills-editor` | no open `workflow-editor` PR, last dispatch > 4 h ago or never |
 | `side-quest` | nodes ≥ 5, no open `side-quest` PR, last dispatch > 4 h ago or never |
+| `title-similarity-review` | nodes ≥ 3, last dispatch > 24 h ago or never |
 | `workshop-student-simulator` | nodes ≥ 5, last dispatch > 4 h ago or never |
 | `workshop-sync-check` | nodes ≥ 3, last dispatch > 4 h ago or never |
 | `workshop-order-review` | nodes ≥ 3, last dispatch > 4 h ago or never |
@@ -245,16 +248,18 @@ Select the highest-priority **eligible** workflow (most urgent first):
 2. `workflow-skills-editor` — trims workflow prompt bloat and aligns source
    prompts with GitHub Skills lesson tone
 3. `side-quest` — extracts optional detours from oversized workshop steps
-4. `workshop-student-simulator` — ensures quality feedback exists
-5. `workshop-sync-check` — keeps content accurate against gh-aw changes
-6. `workshop-order-review` — detects ordering problems early
-7. `workshop-skill-activity-author` — adds Skills-style activities
+4. `title-similarity-review` — catches high-volume semantically similar headings
+5. `workshop-student-simulator` — ensures quality feedback exists
+6. `workshop-sync-check` — keeps content accurate against gh-aw changes
+7. `workshop-order-review` — detects ordering problems early
+8. `workshop-skill-activity-author` — adds Skills-style activities
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
 that may shift priority toward a specific workflow (e.g. "add content" → prefer
 `workshop-author`; "workflow", "tone", "duplication", or "bloat" → prefer
 `workflow-skills-editor`; "side quest" or "tutorial" → prefer `side-quest`;
-"fix sync" → prefer `workshop-sync-check`).
+"fix sync" → prefer `workshop-sync-check`; "title", "heading", or "similar"
+→ prefer `title-similarity-review`).
 
 When dispatching `workshop-author`, `workflow-skills-editor`, `side-quest`, or
 `workshop-skill-activity-author`, pass the `focus` input through if it is set
