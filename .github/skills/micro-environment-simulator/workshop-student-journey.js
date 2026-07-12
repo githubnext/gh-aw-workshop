@@ -120,9 +120,6 @@ function buildTransitions() {
       }
       const next = cloneState(state);
       next.installed.aw = "latest";
-      if (isOrgScopedCodespacesToken(state)) {
-        next.flags.usedInstallScript = true;
-      }
       return { ok: true, state: deepFreeze(next) };
     },
     "07-first-workflow": (state) => {
