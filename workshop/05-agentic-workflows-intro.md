@@ -1,5 +1,23 @@
 # Step 5: What Are Agentic Workflows?
 
+## What you'll have built by the end
+
+By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
+
+```markdown
+## Daily Repository Status — July 12
+
+- ✅ CI health: 18 workflows succeeded, 1 failed (`docs-link-check`)
+- 🔄 Pull requests: 7 open (2 need review, 1 stale > 14 days)
+- 🐛 Issues: 4 new, 3 closed, 2 high-priority still open
+- 🚀 Releases: No new tags in the last 24 hours
+
+### Recommended next actions
+1. Re-run `docs-link-check` and update broken external URLs.
+2. Review PR #412 and PR #415 before noon.
+3. Triage high-priority issue #398 with the platform team.
+```
+
 > [!TIP]
 > **Already know GitHub Actions?** Skip to [Step 6 — Install gh-aw](06-install-gh-aw.md).
 > Come back here if you need a refresher on how agentic workflows differ from classic Actions.
@@ -19,6 +37,14 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 > - A `gh-aw` workflow still starts with YAML frontmatter fenced by `---`, usually with `name`, `on`, and `permissions`.
 > - Below that frontmatter, you write a Markdown task brief instead of a fixed `jobs.steps` script.
 > - The agent uses that brief plus the declared permissions and safe outputs to decide how to complete the work at runtime.
+
+For Actions users, keep this quick mental model:
+
+> [!TIP]
+> **How this differs from classic Actions**
+> - You define the goal in plain language instead of scripting each step in `jobs.steps`.
+> - The agent decides how to use available tools at runtime instead of following a fixed command sequence.
+> - The output is a synthesized report with recommendations, not just raw command logs.
 
 ## Side-by-side: Classic Actions vs Agentic Workflows
 
@@ -78,8 +104,7 @@ The same authoring and review workflow applies everywhere — only the runner co
 
 ## ✅ Checkpoint
 
-- [ ] I can explain at least two differences between classic and agentic workflows
-- [ ] I know where agentic workflows still rely on core Actions concepts
-- [ ] I'm ready to install the `gh-aw` (GitHub Agentic Workflows) extension
+- [ ] I can describe what an agentic workflow is in one sentence
+- [ ] I can name at least one way agentic workflows differ from classic GitHub Actions
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
