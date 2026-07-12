@@ -3,10 +3,10 @@ emoji: 🔍
 name: Workshop Sync Check
 description: >
   Daily scan of workshop content against the latest gh-aw documentation.
-  Uses round-robin scheduling via cache-memory to review one workshop file
-  per run, checks recent gh-aw releases for breaking changes, validates
-  workflow examples with the gh-aw compiler, and opens an issue when
-  the workshop content is out of date.
+  Uses round-robin scheduling via cache-memory to review five workshop files
+  per run using inline subagents, checks recent gh-aw releases for breaking
+  changes, validates workflow examples with the gh-aw compiler, and opens an
+  issue when the workshop content is out of date.
 on:
   schedule: daily
   workflow_dispatch:
@@ -81,7 +81,7 @@ steps:
 You are a technical accuracy reviewer for the **"Learning GitHub Agentic Workflows"** workshop.
 Your job is to verify that the workshop content stays accurate and up to date with the `github/gh-aw` project.
 
-Each daily run reviews **one workshop file** (round-robin) and checks for outdated commands, screenshots, concepts, or version references. When problems are found you open a focused GitHub issue.
+Each daily run reviews **five workshop files** (round-robin) and checks for outdated commands, screenshots, concepts, or version references. When problems are found you open a focused GitHub issue.
 
 ---
 
@@ -124,14 +124,17 @@ Each daily run reviews **one workshop file** (round-robin) and checks for outdat
 
 ---
 
-## Phase 3 — Select File to Review (Round-Robin)
+## Phase 3 — Select Files to Review (Round-Robin)
 
-1. Using `workshop_files` from the repo state and `round_robin_index` from the cache:
-   - `target_file = workshop_files[round_robin_index % len(workshop_files)]`
+1. Using `workshop_files` from the repo state and `round_robin_index` from the cache,
+   select up to 5 files starting at the current index:
 
-2. Read the full content of `target_file`.
+   ```
+   n = min(5, len(workshop_files))
+   target_files = [workshop_files[(round_robin_index + i) % len(workshop_files)] for i in range(n)]
+   ```
 
-3. Increment `round_robin_index` by 1 (wraps naturally via modulo on the next run).
+2. Increment `round_robin_index` by `n` (wraps naturally via modulo on the next run).
 
 ---
 
@@ -163,37 +166,42 @@ For every `.md` file in that list, run the compile tool with `--validate` to che
 
 ---
 
-## Phase 6 — Evaluate Workshop File Accuracy
+## Phase 6 — Evaluate Workshop Files Using Inline Subagents
 
-Compare the workshop file read in Phase 3 against the reference documentation fetched in Phase 4 and any release notes from Phase 2.
+For each file in `target_files`:
 
-Check for:
+1. Read the full content of the file.
 
-| Category | What to look for |
-|---|---|
-| **CLI commands** | Are `gh aw` commands still valid? Any renames or removed subcommands? |
-| **Frontmatter syntax** | Do any YAML examples use deprecated or renamed fields? |
-| **Tool names** | Are tool names (`bash`, `edit`, `cache-memory`, etc.) still correct? |
-| **URLs and links** | Do docs or external links still resolve correctly? |
-| **Version references** | Are version numbers current (gh CLI, gh-aw extension, Node.js)? |
-| **Concept accuracy** | Does the description of how agentic workflows work match current behaviour? |
-| **Installation steps** | Are install instructions still accurate (e.g. `gh extension install`)? |
+2. Invoke the `workshop-sync-reviewer` inline agent
+   (`.github/agents/workshop-sync-reviewer.agent.md`) and pass an object containing:
+   - `file_path` — the file path
+   - `content` — the full file content
+   - `reference_docs` — the reference documentation object fetched in Phase 4
+     (keys: `github-agentic-workflows.md`, `syntax-core.md`, `syntax-agentic.md`, `mcp-clis.md`)
+   - `release_notes` — release notes from Phase 2 (empty string if none)
+   - `gh_aw_version` — the latest gh-aw release tag
+
+3. Collect the structured JSON verdict returned by the subagent.
+
+After all subagents have returned their verdicts, proceed to Phase 7.
 
 ---
 
 ## Phase 7 — Decide and Act
 
-### If no issues were found
+Collect all verdicts returned by the `workshop-sync-reviewer` subagents in Phase 6.
+
+### If no issues were found across all files
 
 Call `noop` with:
 
 ```
-Reviewed <target_file> — no issues found. gh-aw release: <tag>. Next index: <new_index>.
+Reviewed <n> files (<comma-separated file names>) — no issues found. gh-aw release: <tag>. Next index: <new_index>.
 ```
 
 ### If issues were found
 
-Create an issue per distinct problem area (max 5 total, one per file/topic). Each issue must include:
+Create one issue per file that has issues (max 5 total). Each issue must include:
 
 - **Title**: `<target_file>: <short description of the problem>` (the `[workshop-sync]` prefix is added automatically)
 - **Body** (minimum 20 characters):
@@ -228,8 +236,8 @@ Write the updated state back to `/tmp/gh-aw/cache-memory/sync-state.json`:
 
 ```json
 {
-  "round_robin_index": <incremented value>,
-  "files_reviewed": [<append target_file if not already present>],
+  "round_robin_index": <incremented by n, the number of files reviewed>,
+  "files_reviewed": [<append all target_files if not already present>],
   "last_gh_aw_release": "<latest tag>",
   "last_gh_aw_release_date": "<published_at>"
 }
