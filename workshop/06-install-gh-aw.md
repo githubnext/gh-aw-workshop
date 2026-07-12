@@ -38,7 +38,7 @@ Run this first:
 gh aw --version
 ```
 
-If you get a version number, skip to [Confirm installation](#confirm-installation). Otherwise, return to [Choose your path](#choose-your-path) and follow the right section for your tool.
+If you get a version number, skip to [Confirm installation](#confirm-installation). Otherwise, continue with [Install from terminal](#install-from-terminal). If you are using `copilot-app`, first complete [Open a Codespace first](#open-a-codespace-first).
 
 ## Open a Codespace first
 
