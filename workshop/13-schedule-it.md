@@ -37,15 +37,10 @@ on:
 
 ### 3. Choose your schedule
 
-gh-aw accepts natural-language schedule expressions — no cron syntax needed. The `gh aw compile` command expands them into the correct cron expression automatically.
+gh-aw accepts natural-language schedule expressions — no cron syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
 
-| What you want | Fuzzy expression |
-|---------------|-----------------|
-| Once a day (midnight UTC) | `schedule: daily` |
-| Weekdays only | `schedule: daily on weekdays` |
-| Once a week | `schedule: weekly` |
-| Every hour | `schedule: hourly` |
-| Every six hours | `schedule: every 6 hours` |
+> [!TIP]
+> Want the full reference table, example compiled cron values, and help choosing the right cadence? See [Side Quest: Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md).
 
 Pick the cadence that fits your team and update the `schedule:` line accordingly. For example, to run only on weekdays:
 
