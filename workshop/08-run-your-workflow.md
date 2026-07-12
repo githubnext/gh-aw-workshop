@@ -40,7 +40,7 @@ If you prefer terminal commands, use the CLI equivalent in the next subsection.
 Terminal users can use this command instead:
 
 ```bash
-gh aw run .github/workflows/hello-agent.md
+gh aw run hello-agent
 ```
 
 Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md)
