@@ -1,8 +1,11 @@
 # Side Quest: Configure an OpenAI API Key
 
-> _Optional: work through this guide when you want to use Codex (OpenAI's coding engine) as the AI engine for your agentic workflow, then return to your main path._
+> _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
 
-By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **Codex** (OpenAI), you'll need an OpenAI API key stored as a repository secret and a one-line change to your workflow frontmatter.
+By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **OpenAI models**, you'll need an OpenAI API key stored as a repository secret and a one-line change to your workflow frontmatter.
+
+> [!NOTE]
+> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution — it routes requests to OpenAI's current API. The name refers to the engine integration, not the discontinued OpenAI Codex model family.
 
 ---
 
