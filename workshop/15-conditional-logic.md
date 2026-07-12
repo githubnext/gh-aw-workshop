@@ -66,7 +66,7 @@ Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
 
 ![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
-### 5. Commit and push
+### 5. Commit and push your conditional logic
 
 ```bash
 git add .github/workflows/daily-status.md

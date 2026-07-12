@@ -90,7 +90,7 @@ You should see `✅ Compiled successfully`. The compiled `.yml` will contain the
 > [!NOTE]
 > **GitHub UI path:** You won't be able to validate YAML until after committing. Run `gh aw compile` in a Codespace if you want early feedback.
 
-### 5. Commit and push
+### 5. Commit and push the schedule trigger
 
 **Terminal:**
 
