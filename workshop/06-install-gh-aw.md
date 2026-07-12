@@ -1,10 +1,5 @@
 # Step 6: Install the gh-aw CLI Extension
 
-> [!NOTE]
-> **Using a Codespace?** In the workshop Codespace, `gh` is pre-installed and pre-authenticated.
-> In organization-owned Codespaces, the default token can be org-scoped and `gh extension install github/gh-aw` may return HTTP 403.
-> If that happens, use the install script from the [installation instructions](https://raw.githubusercontent.com/github/gh-aw/main/install.md).
-
 ## Using Copilot app or cloud agent?
 
 These entry points don't support local CLI installs. Open this repo in a
@@ -30,72 +25,32 @@ extension so you can compile and run agentic workflows from your terminal.
 > **Using VS Code?** Open the integrated terminal with `` Ctrl+` `` (macOS: `` Cmd+` ``),
 > then run all `gh aw` commands there. If a command is unfamiliar, try:
 > `gh copilot suggest "how do I install a gh extension"`
-
-Before you can install the extension, verify the GitHub CLI is set up correctly:
-
 > [!IMPORTANT]
-> **Run these pre-flight checks before installing `gh-aw`.**
->
-> **1 — Verify your GitHub CLI authentication** (the extension install will fail if you skip this):
->
-> If you completed [Step 1 (Prerequisites)](01-prerequisites.md), you already verified this — skip ahead to check 2.
->
-> ```bash
-> gh auth status
-> ```
->
-> If the output says you are not logged in, run:
->
-> ```bash
-> gh auth login
-> ```
->
-> Re-run `gh auth status` and confirm you see `Logged in to github.com` before continuing.
->
-> **2 — Confirm `gh` is installed:**
->
-> ```bash
-> gh --version && echo "✅ gh installed" || echo "❌ install gh first"
-> ```
-
-If `gh` is missing, install it for your platform:
-
-<details>
-<summary>Install <code>gh</code> CLI — platform instructions</summary>
-
-**macOS (Homebrew):**
-
-```bash
-brew install gh
-```
-
-**Ubuntu/Debian:**
-
-```bash
-sudo apt install gh
-```
-
-**Windows (winget):**
-
-```powershell
-winget install GitHub.cli
-```
-
-Full installation docs: [cli.github.com](https://cli.github.com)
-
-</details>
+> No terminal in `copilot-app` or cloud-agent? Open this repo in a [Codespace](02a-setup-codespace.md#2-open-the-codespace), then run this step there.
 
 ### 1. Install the `gh-aw` extension
+
+> [!IMPORTANT]
+> **Pre-flight checklist (run these in order):**
+> - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
+> - ✅ `gh auth status` shows you are logged in
+> Then run `gh extension install github/gh-aw` below.
 
 ```bash
 gh extension install github/gh-aw
 ```
 
-If you're in an organization-owned Codespace and this returns HTTP 403, use the install script path instead:
+> [!IMPORTANT]
+> If you're in an organization-owned Codespace and `gh extension install github/gh-aw` returns HTTP 403, use this fallback:
+
+<details>
+<summary>HTTP 403 fallback install path</summary>
 
 ```bash
 curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 ```
+
+</details>
 
 If the extension is already installed, you can update it instead:
 
