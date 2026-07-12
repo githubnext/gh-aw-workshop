@@ -70,7 +70,6 @@ on:
 
 > [!TIP]
 > Keep `workflow_dispatch` in the file even after you go to production. It lets you re-run the report on demand without changing the schedule.
-> [!TIP]
 > **Compile checkpoint:** Save your file, then run:
 > ```bash
 > gh aw compile .github/workflows/daily-status.md
