@@ -33,8 +33,8 @@ If you do not have this access yet, ask your admin to provide a ready-to-use run
 
 Agentic workflows require both Actions execution and model access:
 
-- Your account needs an active Copilot plan supported by your enterprise policy (Business or Enterprise where required).
-- Your organization and repository must allow GitHub-hosted model usage for workflows.
+- You need an active Copilot plan supported by your enterprise policy (Business or Enterprise where required).
+- Confirm your organization and repository allow GitHub-hosted model usage for workflows.
 - If model access is blocked by policy, workflow runs can start but fail when the agent step executes.
 
 Before installing `gh-aw`, verify with your admin that your account and repository are permitted to run Copilot-powered workflow jobs.
