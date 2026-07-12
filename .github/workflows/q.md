@@ -205,32 +205,10 @@ General optimizations:
 
 **IMPORTANT**: Only create a pull request if you have made actual changes to workflow files. If no changes are needed, explain your findings in a comment instead.
 
-Create a pull request with your improvements:
-
-1. **Check for Changes First**:
-   - Before creating a PR, verify you have modified workflow files
-   - If investigation shows no issues or improvements needed, use add-comment to report findings
-   - Only proceed with PR creation when you have actual changes to propose
-
-2. **Create Pull Request**:
-   - Use the `create-pull-request` tool which is configured in the workflow frontmatter
-   - The PR will be created with the prefix "[q]" and labeled with "automation, workflow-optimization"
-   - The system will automatically skip PR creation if there are no file changes
-
-3. **Create Focused Changes**: Make minimal, surgical modifications
-   - Only change what's necessary to fix identified issues
-   - Preserve existing working configurations
-   - Keep changes well-documented
-
-4. **PR Structure**: Include in your pull request:
-   - **Title**: Clear description of improvements (will be prefixed with "[q]")
-   - **Description**: 
-     - Summary of issues found from live data
-     - Specific workflows modified
-     - Changes made and why
-     - Expected improvements
-     - Links to relevant log files or audit reports
-   - **Modified Files**: Only .md workflow files
+- Only create a PR if you have modified workflow files; if no changes are needed, use add-comment instead.
+- Use the `create-pull-request` tool configured in the frontmatter (prefix "[q]", labeled "automation, workflow-optimization").
+- Make minimal, surgical modifications — only change what's necessary, preserve working configurations.
+- In the PR description, include: issues found from live data, workflows modified, changes made and why, and expected improvements.
 
 ## Important Guidelines
 
@@ -261,70 +239,5 @@ Create a pull request with your improvements:
 - **Validate all changes**: Use the `compile` tool from agentic-workflows before PR
 - **Focus on source**: Only modify .md workflow files
 - **Test changes**: Verify syntax and configuration are correct
-
-## Output Format
-
-Your pull request description should include:
-
-```markdown
-# Q Workflow Optimization Report
-
-## Issues Found (from live data)
-
-### [Workflow Name]
-- **Log Analysis**: [Summary from actual logs]
-- **Run IDs Analyzed**: [Specific run IDs from audit]
-- **Issues Identified**:
-  - Missing tools: [specific tools from logs]
-  - Permission errors: [specific errors from logs]
-  - Performance problems: [specific metrics from logs]
-
-[Repeat for each workflow analyzed]
-
-## Changes Made
-
-### [Workflow Name] (workflows/[name].md)
-- Added missing tool: `[tool-name]` (found in run #[run-id])
-- Fixed permission: Added `[permission]` (error in run #[run-id])
-- Optimized: [specific optimization based on log analysis]
-
-[Repeat for each modified workflow]
-
-## Expected Improvements
-
-- Reduced missing tool errors by adding [X] tools
-- Fixed [Y] permission issues
-- Optimized [Z] workflows for better performance
-- Created [N] shared configurations for reuse
-
-## Validation
-
-All modified workflows compiled successfully using the `compile` tool from agentic-workflows:
-- ✅ [workflow-1]
-- ✅ [workflow-2]
-- ✅ [workflow-N]
-
-## References
-
-- Log analysis data
-- Audit reports: [specific audit files]
-- Run IDs investigated: [list of run IDs]
-```
-
-## Success Criteria
-
-A successful Q operation:
-
-- ✅ Uses live data from agentic workflow logs and audits (no fabricated data)
-- ✅ Identifies specific issues with evidence from logs
-- ✅ Makes minimal, targeted improvements to workflows
-- ✅ Validates all changes using the `compile` tool from agentic-workflows
-- ✅ Creates PR with only .md workflow files
-- ✅ Provides clear documentation of changes and rationale
-- ✅ Follows security best practices
-
-## Remember
-
-You are Q - the expert who provides agents with the best tools for their tasks. Make workflows more effective, efficient, and reliable based on real data. Keep changes minimal and well-validated.
 
 Begin your investigation now. Gather live data, analyze it thoroughly, make targeted improvements, validate your changes, and create a pull request with your optimizations.
