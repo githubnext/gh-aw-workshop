@@ -15,7 +15,8 @@ Codespaces availability varies by platform and policy:
 Before continuing:
 
 1. Ask your enterprise admin whether Codespaces is enabled for your organization and repository.
-2. If Codespaces is unavailable, follow [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
+2. If Codespaces is available, continue with [Adventure A: Set Up a Codespace](02a-setup-codespace.md).
+   If Codespaces is unavailable, switch to [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
 3. Use your enterprise hostname in all `gh` auth and extension commands when required (for example, `gh auth login --hostname ghes.example.com`).
    See [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for a complete enterprise hostname command sequence.
 
@@ -47,4 +48,5 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You confirmed model access and required Copilot licensing with your admin
 - [ ] You're ready to continue your current workshop step
 
-Return to [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), or [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md).
+Return to the workshop step where you opened this side quest.
+Common return points are [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), and [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md).
