@@ -65,7 +65,7 @@ If you are using `copilot-app`, you must open a Codespace to run install command
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows you are logged in
-> - ⚠️ If you're in an org-owned Codespace, use the HTTP 403 workaround in the next callout before the standard install command.
+> - ⚠️ If you're in an org-owned Codespace, see the HTTP 403 workaround in the following callout before the standard install command.
 
 <!-- -->
 
