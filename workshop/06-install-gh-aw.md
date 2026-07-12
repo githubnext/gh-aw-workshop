@@ -30,8 +30,6 @@ Use the path that matches your tool before you run any install command:
 | `copilot-app` | [Open a Codespace first](#open-a-codespace-first) |
 | Local terminal or Codespace terminal | [Install from terminal](#install-from-terminal) |
 
-Before installing, run the quick check in [Check if already installed](#check-if-already-installed). Install only if `gh aw --version` is not found.
-
 ## Check if already installed
 
 Run this first:
@@ -40,8 +38,7 @@ Run this first:
 gh aw --version
 ```
 
-If you get a version number, skip to [Confirm installation](#confirm-installation).
-If the command is not found, continue with [Install from terminal](#install-from-terminal).
+If you get a version number, skip to [Confirm installation](#confirm-installation). Otherwise, continue with [Install from terminal](#install-from-terminal).
 
 ## Open a Codespace first
 
@@ -63,7 +60,7 @@ If you are using `copilot-app`, you must open a Codespace to run install command
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows you are logged in
-> - ⚠️ If you're in an org-owned Codespace, run the HTTP 403 fallback command below before the standard install command.
+> - ⚠️ If you're in an org-owned Codespace, run the HTTP 403 workaround command in the callout under this checklist before the standard install command.
 
 <!-- -->
 
