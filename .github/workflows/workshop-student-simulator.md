@@ -101,7 +101,9 @@ steps:
           data = {'main_steps': [], 'side_quests': [], 'step_count': 0}
           pathlib.Path('/tmp/gh-aw/agent/sim/data/curriculum.json').write_text(json.dumps(data))
           print("No workshop directory found")
-          import os; open(os.environ['GITHUB_ENV'], 'a').write('WORKSHOP_STEP_COUNT=0\n')
+          import os
+          with open(os.environ['GITHUB_ENV'], 'a') as ef:
+              ef.write('WORKSHOP_STEP_COUNT=0\n')
           exit(0)
 
       def extract_title(f):
@@ -111,6 +113,12 @@ steps:
           return f.stem
 
       def sort_key(name):
+          """Sort workshop filenames in curriculum order.
+
+          Numbered files (e.g. 02a-setup.md) are sorted numerically with the
+          optional letter suffix sorted alphabetically (02a < 02b). Files without
+          a leading number (e.g. side-quest-*.md) sort last, alphabetically.
+          """
           m = re.match(r'^(\d+)([a-z]?)', name)
           if not m:
               return (999, name)
@@ -249,7 +257,7 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 
 #### Simulation Rules
 
-**Success probability per step** is determined by the step's category, inferred from its filename and title. For each step in `curriculum.json`, classify it using the following pattern table and apply the corresponding base probabilities:
+**Success probability per step** is determined by the step's category, inferred from its `file` field in `curriculum.json`. Match each step's filename against the patterns below **in table order** — use the **first matching row**. Patterns are glob-style and matched case-insensitively against the filename only (not the title). The "last step" row applies to the entry with the highest `index` in `main_steps`.
 
 | Category | Filename pattern | beginner | github-basic | actions-user | advanced |
 |----------|-----------------|---------|-------------|-------------|---------|
@@ -269,8 +277,6 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 | Next steps / wrap-up | last step, `*next-step*` | 90% | 92% | 95% | 97% |
 | Other (default) | anything else | 65% | 75% | 85% | 93% |
 
-If a step's filename matches multiple categories, use the most specific match (longest pattern match). The "last step" rule applies to whichever step has the highest index in `curriculum.json`.
-
 **Personality modifiers** (multiply the base probability):
 - `curious`: ×1.05 (engages more deeply, higher completion)
 - `methodical`: ×1.10 (follows steps carefully, highest completion)
@@ -286,7 +292,7 @@ If a step's filename matches multiple categories, use the most specific match (l
 
 **UI-preference modifiers** (apply when `ui_preferred` is `true`):
 
-UI-preferred students work entirely through the GitHub web interface and avoid the terminal. Apply the following adjustments to their base probabilities for the matching steps (match by filename pattern):
+UI-preferred students work entirely through the GitHub web interface and avoid the terminal. Apply the following adjustments to their base probabilities. Match each step's `file` field against the patterns below **in table order** — apply the **first matching row** that fits the filename (case-insensitive):
 
 | Step pattern | Adjustment | Reason |
 |-------------|-----------|--------|
