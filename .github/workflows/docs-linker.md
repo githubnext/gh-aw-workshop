@@ -204,6 +204,30 @@ Discard a mapping entry if the fetched file does not mention the identified term
 
 ---
 
+## Phase 4b — Validate Rendered URLs (Live HTTP Check)
+
+Before adding any link, verify that the rendered doc URL is actually reachable.
+For **every** mapping entry that survived Phase 4, run:
+
+```bash
+http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 \
+  --retry 2 --retry-delay 1 --retry-max-time 15 -L \
+  --max-redirs 10 "<doc_url>")
+```
+
+Evaluate the HTTP status code:
+
+- If `http_code` is **2xx** (e.g. `200`, `201`) → keep the mapping entry.
+- If `http_code` is **000** (connection failure, timeout, redirect loop, or max redirects exceeded) → **discard** the mapping entry.
+- If `http_code` is **4xx** or **5xx** → **discard** the mapping entry.
+
+For any discarded entry, log with the actual values substituted:
+`Skipping https://github.github.com/gh-aw/reference/cli-commands/ — HTTP 404; removing from link candidates.`
+
+Do **not** add any link whose URL fails this check.
+
+---
+
 ## Phase 5 — Add Inline Links
 
 For each verified mapping entry, search `target_file` for the **first bare
