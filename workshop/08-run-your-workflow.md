@@ -31,13 +31,14 @@ Click **Hello Agent** in the left sidebar. You'll see a banner that says "This w
 
 Click the **Run workflow** button, leave the default branch selected, and click the green **Run workflow** button in the dropdown.
 
-Terminal users can alternatively use the CLI command in [cli-equivalent-gh-aw-run](#cli-equivalent-gh-aw-run).
+Terminal users can alternatively run `gh aw run .github/workflows/hello-agent.md`.
+See the [`gh aw run` CLI reference](https://github.github.com/gh-aw/setup/cli/#run).
 
 ![Run workflow button](images/08-run-workflow-button.svg)
 
 #### CLI equivalent gh aw run
 
-If you do have a terminal, this command triggers the same workflow run:
+Terminal users can use this command instead:
 
 ```bash
 gh aw run .github/workflows/hello-agent.md
