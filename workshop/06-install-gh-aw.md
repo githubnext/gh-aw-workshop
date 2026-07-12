@@ -64,7 +64,7 @@ Open a Codespace to run install commands in its terminal:
 > [!IMPORTANT]
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
-> - ✅ `gh auth status` shows `Logged in to github.com as <your-username>` — this was completed in [Step 2: Verify GitHub authentication](02a-setup-codespace.md#verify-github-authentication). If not, go back and complete that auth step before continuing.
+> - ✅ `gh auth status` shows `Logged in to github.com as <your-username>` — this was completed in [Step 2: Set Up a Codespace](02a-setup-codespace.md). If not, go back and complete that auth step before continuing.
 > - ⚠️ If you're in an org-owned Codespace, use the HTTP 403 workaround in the callout below before the standard install command.
 
 <!-- -->
