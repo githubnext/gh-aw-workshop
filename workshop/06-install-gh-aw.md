@@ -81,8 +81,8 @@ If you get an HTTP 403 error, use [Side Quest: Install `gh-aw` Troubleshooting](
 <!-- -->
 
 > [!IMPORTANT]
-> **Getting HTTP 403?** You're likely in an org-owned Codespace.
-> Run this fallback before the standard install command:
+> **Getting HTTP 403 in an org-owned Codespace?**
+> Use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md#organization-codespace-token-limitation-http-403) for the workaround details, then run this fallback before the standard install command:
 > ```bash
 > curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 > ```

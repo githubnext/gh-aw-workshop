@@ -25,6 +25,11 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 GitHub will spin up a container with everything you need for the workshop already installed and authenticated. This takes about 30–60 seconds on first launch.
 
+> [!NOTE]
+> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+
+<!-- -->
+
 > [!TIP]
 > Codespaces auto-saves your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
