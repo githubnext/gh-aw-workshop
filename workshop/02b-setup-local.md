@@ -163,3 +163,7 @@ Both commands should return output without errors. The repo view should show you
 - [ ] You've cloned the repository and `cd`-ed into it
 
 **Next:** [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
