@@ -135,14 +135,19 @@ Need a quick terminal primer before continuing?
 
 ### Know what's coming
 
-Here's a quick summary of what you'll have installed and running by the end of the workshop:
+Here's a quick summary of the environments and tools you'll use in this workshop:
 
-| Tool | What it does |
+| Environment or tool | What it does |
 |------|-------------|
-| **GitHub Codespace** or **local terminal** | Your development environment |
+| **GitHub Codespaces** | Browser-based development environment with a ready-to-use terminal |
+| **Visual Studio Code** | Editor interface you'll use in Codespaces (or locally if you prefer) |
+| **Terminal + `gh` CLI** | Where you run GitHub commands during setup and workflow authoring |
+| **`gh-aw` CLI extension** | Adds agentic workflow commands to the `gh` CLI — installed in [Step 6](06-install-gh-aw.md) |
+| **GitHub Copilot CLI** | Optional AI assistant in your terminal for command and workflow help |
 | **GitHub Actions** | Runs your automated workflows in the cloud |
-| **gh CLI** | GitHub's official command-line tool |
-| **gh-aw extension** | Adds agentic workflow commands to the gh CLI — installed in [Step 6](06-install-gh-aw.md) (may be pre-installed in Codespaces) |
+
+Need a quick glossary with official docs links?
+➡️ **[Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)**
 
 ## ✅ Checkpoint
 
@@ -157,3 +162,4 @@ Here's a quick summary of what you'll have installed and running by the end of t
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)
