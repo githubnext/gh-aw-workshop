@@ -1,6 +1,6 @@
 # Adventure D: Build Any Workflow with the GitHub Copilot Agents Tab
 
-> _You don't need a terminal to add an agentic workflow. Enterprise Copilot users can start an agent session from the GitHub UI, let the agent write and compile the workflow, and merge a pull request — all in the browser._
+> _You don't need a terminal to add an agentic workflow. GitHub Copilot users with the Agents tab enabled can start an agent session from the GitHub UI, let the agent write and compile the workflow, and merge a pull request — all in the browser._
 
 ## 🎯 What You'll Do
 
@@ -9,10 +9,10 @@ You'll open the GitHub Copilot Agents tab in your repository, paste a ready-made
 ## 📋 What You Need
 
 - A GitHub repository (see [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md) if you haven't created one yet)
-- GitHub Copilot Enterprise or Copilot Business access with the Copilot coding agent enabled
+- A GitHub Copilot subscription with the Copilot coding agent (Agents tab) enabled
 
 > [!NOTE]
-> The GitHub Copilot coding agent (sometimes shown as the **Agents** tab) is available on GitHub.com and GitHub Enterprise Cloud (GHEC). If your organization has not yet enabled it, ask your Copilot administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent).
+> The GitHub Copilot coding agent (sometimes shown as the **Agents** tab) is available to GitHub Copilot users on GitHub.com and GitHub Enterprise Cloud (GHEC). If you don't see the Agents tab in your repository, ask your organization administrator to enable it. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent).
 
 ---
 
