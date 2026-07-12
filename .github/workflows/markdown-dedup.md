@@ -4,8 +4,9 @@ name: Markdown Dedup
 description: >
   Daily scanner that uses a Markdown AST parser (mistletoe / QMD-style) to
   chunk workshop and workflow markdown files into sections, computes TF-IDF
-  cosine similarity to cluster near-duplicate segments, and opens agent-ready
-  issues prompting automated consolidation.
+  cosine similarity to cluster near-duplicate segments (across files and
+  within the same file), and opens agent-ready issues prompting automated
+  consolidation.
 on:
   schedule: daily
   workflow_dispatch:
@@ -235,6 +236,7 @@ steps:
       import math
       import pathlib
       import re
+      import sys
 
       # 0.55 = lower bound of "partial overlap" range (see markdown-chunker SKILL.md)
       SIMILARITY_THRESHOLD = 0.55
@@ -281,13 +283,11 @@ steps:
 
       vectors = [tfidf_vector(tok, idf) for tok in tokenized]
 
-      # -- pairwise similarity (cross-file only) -----------------------------
+      # -- pairwise similarity ------------------------------------------------
 
       similar_pairs = []
       for i in range(len(chunks)):
           for j in range(i + 1, len(chunks)):
-              if chunks[i]["file"] == chunks[j]["file"]:
-                  continue
               sim = cosine(vectors[i], vectors[j])
               if sim >= SIMILARITY_THRESHOLD:
                   similar_pairs.append((i, j, round(sim, 3)))
@@ -321,8 +321,6 @@ steps:
           if len(members) < 2:
               continue
           files = {chunks[m]["file"] for m in members}
-          if len(files) < 2:
-              continue
 
           member_set = set(members)
           max_sim = max(
@@ -352,7 +350,7 @@ steps:
       )
       print(
           f"Similar pairs: {len(similar_pairs)} | "
-          f"Cross-file clusters: {len(clusters)}"
+          f"Clusters: {len(clusters)}"
       )
       PY
 ---
@@ -379,8 +377,8 @@ Key fields in `md-clusters.json`:
 | Field | Meaning |
 |---|---|
 | `clusters` | Top ≤ 10 clusters sorted by `max_similarity` descending |
-| `total_pairs` | Cross-file similar pairs detected |
-| `total_clusters` | Total cross-file clusters found |
+| `total_pairs` | Similar pairs detected |
+| `total_clusters` | Total clusters found |
 
 For chunking details, consult the `markdown-chunker` inline skill:
 `.github/skills/markdown-chunker/SKILL.md`
