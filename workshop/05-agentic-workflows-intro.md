@@ -33,6 +33,14 @@ _If you already know Actions, this step is the delta: what's new when workflows 
 > [!TIP]
 > **Already know GitHub Actions and LLM concepts?** → [Jump to Step 6: Install gh-aw](06-install-gh-aw.md)
 
+<!-- -->
+
+> [!NOTE]
+> **If you know GitHub Actions:** Agentic workflows look like Actions but the job runs an AI agent instead of shell commands. Here's what's different:
+> - You define the goal in Markdown (`.md`) and compile it, instead of hand-authoring `jobs.steps` in YAML.
+> - The agent decides how to complete the task at runtime, instead of executing a fixed command sequence.
+> - The result is a synthesized report or recommendation, not just command logs from shell steps.
+
 **Before** — classic GitHub Actions (you write every step):
 
 ```yaml
