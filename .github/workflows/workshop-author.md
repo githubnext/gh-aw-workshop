@@ -164,6 +164,8 @@ Numbered action sequence. Each action gets its own number. Commands go in fenced
 **Next:** [Title](filename.md) ← omit if this node branches (use "Choose Your Path" above instead)
 ```
 
+- Do **not** number Markdown headers inside the file. Use descriptive headings such as `### Open the Codespace`; keep ordering in surrounding lists, filenames, tables, and checkpoints instead.
+
 ### Voice and audience
 
 - **Audience**: Knows GitHub (can clone/commit/push) but has never used Actions or AI tools.
@@ -216,7 +218,6 @@ Specific patterns to follow:
 - Wrap **every** command in a fenced code block with the correct language tag (`bash`, `yaml`, etc.).
 - Use screenshot placeholders where visuals would help: `![Description](images/node-description.png)`
 - Use **bold** for UI labels (e.g., **New repository**) and `inline code` for file names and commands.
-- Do **not** number Markdown headers inside the file. Use descriptive headings such as `### Open the Codespace`, and keep ordering in the surrounding numbered list instead.
 
 ---
 
