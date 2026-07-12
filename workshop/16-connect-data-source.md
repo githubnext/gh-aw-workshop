@@ -143,4 +143,4 @@ Once you're comfortable with this pattern, the same technique works for:
 - [ ] A manual run completes and the summary mentions both commits and open issues
 - [ ] You can explain the `<<EOF` multi-line output syntax in your own words
 
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)

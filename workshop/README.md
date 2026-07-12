@@ -30,9 +30,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 14 | [14-next-steps.md](14-next-steps.md) | What's Next? Keep Exploring | ✅ |
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
 | 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |
-
 | 17 | [17-add-mcp-tools.md](17-add-mcp-tools.md) | Give Your Agent More Tools with MCP | ✅ |
-
 | 18 | [18-share-and-reuse.md](18-share-and-reuse.md) | Share and Reuse Your Agentic Workflows | ✅ |
 
 ## Optional Side Quests
