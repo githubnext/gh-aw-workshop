@@ -84,3 +84,4 @@ You've reached the end of the main path — but the graph stays open. Come back 
 ### Go deeper
 
 - ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
+- ➡️ [Post Your Daily Status to a GitHub Issue](18-post-to-issue.md) — make every run's output persistent and shareable by writing the AI summary to a tracking issue.
