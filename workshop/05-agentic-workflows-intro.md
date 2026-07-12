@@ -1,6 +1,7 @@
 # Step 5: What Are Agentic Workflows?
 
-You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract. This is the step that explains why agentic workflows reduce maintenance overhead — read this before deciding whether to continue.
+You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract.
+If you're evaluating whether agentic workflows are worth adopting for your team, this is the one page you need — it combines the business case with the technical model so you can decide quickly.
 
 By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
 
@@ -18,6 +19,9 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 3. Triage high-priority issue #398 with the platform team.
 ```
 
+> [!NOTE]
+> **Checking enterprise compatibility before you continue?** Agentic workflows use GitHub Actions infrastructure. They work on `github.com`, GHEC, and GHES 3.12+ when GitHub Copilot Enterprise (including Copilot cloud agent) is enabled by your admins. Self-hosted runners are supported.
+> See [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for enterprise deployment notes before continuing.
 > [!IMPORTANT]
 > **Coming from classic Actions? Unlearn these 3 things first:**
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
