@@ -7,7 +7,7 @@
 
 <!-- Separate adjacent callouts -->
 
-## No terminal yet? Open a Codespace first (`copilot-app`)
+## No terminal yet? Open a Codespace first (copilot-app)
 
 If you're using `copilot-app` (web/mobile) and don't have a terminal open yet, use this button:
 
@@ -17,7 +17,7 @@ Then return to this page and continue with [Install from terminal](#install-from
 
 For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the Copilot App](side-quest-06-02-copilot-app-codespace.md).
 
-<!-- -->
+<!-- Separate adjacent callouts -->
 
 > [!NOTE]
 > **Using the GitHub Copilot cloud agent?** `gh aw` may already be available in
