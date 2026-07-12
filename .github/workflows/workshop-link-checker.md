@@ -28,9 +28,9 @@ safe-outputs:
     title-prefix: "[workshop-link-checker] "
     labels: [broken-link]
     deduplicate-by-title: true
-    max: 50
+    max: 1
   add-comment:
-    max: 50
+    max: 1
 timeout-minutes: 30
 steps:
   - name: Gather workshop markdown files
@@ -128,35 +128,30 @@ For internal links to non-markdown files, only validate file existence.
 
 ---
 
-## Open or Update Broken-Link Issues
+## Open or Update the Broken-Links Issue
 
-For each broken link record, create a deterministic issue key hash:
+When broken links exist, report all of them in a single issue thread.
 
-`bl-<lowercase-hex sha256(utf8(\"f=\" + len(file) + \":\" + file + \"|l=\" + line + \"|u=\" + len(raw_link) + \":\" + raw_link))>`
-
-Example source string:
-
-`workshop/11-build-daily-status.md|123|../README.md#overview`
-
-Then:
-
-1. At the start of this phase, list open issues with label `broken-link` once and cache them locally.
-2. Search that cached list for an existing issue whose title contains the exact key hash.
-3. If no matching issue exists, call `create-issue` with:
-   - **Title**: `Broken link in <file> at line <line> [bl-<hash>]`
-   - **Body** including:
-     - file path
-     - line number
-     - raw link
-     - resolved target
-     - failure reason/status
+1. Build one Markdown table containing every broken link with columns:
+   - `File`
+   - `Line`
+   - `Link`
+   - `Resolved target`
+   - `Reason`
+2. Search open issues with label `broken-link` for an exact title match:
+   - `Broken links found`
+3. If no such issue exists, call `create-issue` once with:
+   - **Title**: `Broken links found`
+   - **Body**:
+     - short summary with number of files scanned and broken links found
      - checked-at timestamp (UTC)
-4. If a matching issue exists, call `add-comment` on that issue with:
-   - updated failure details
-   - checked-at timestamp
-   - note that the link is still broken
+     - the full Markdown table of broken links
+4. If the issue exists, call `add-comment` once on that issue with:
+   - checked-at timestamp (UTC)
+   - short summary with number of files scanned and broken links found
+   - the full Markdown table of broken links
 
-Do not create duplicate issues for the same key in one run.
+Never create one issue per link. Use one issue per run and one comment update at most.
 
 ---
 
