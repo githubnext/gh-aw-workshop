@@ -7,17 +7,19 @@ _Starting with the right setup saves you from frustrating detours later._
 Complete these checks before you choose a setup path:
 
 - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
-- [ ] `gh auth status` shows a logged-in account — run `gh auth login` if it does not
+
+> [!NOTE]
+> If `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. Authentication (`gh auth login`) is handled in your chosen setup path — [Adventure A](02a-setup-codespace.md) or [Adventure B](02b-setup-local.md).
+
+<!-- -->
 
 > [!TIP]
 > **Experienced developer? Skip to Step 6 →**
-> If you already have `gh` installed, a GitHub repo ready, and the pre-flight checks above passing, you can skip Steps 1–5. Confirm all three before jumping ahead:
+> If you already have `gh` installed and authenticated with a GitHub account, you can skip Steps 1–5. Confirm these before jumping ahead:
 > - [ ] `gh` CLI ≥ 2.40 is installed — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
 > - [ ] `gh auth status` shows a logged-in account
->
 > **What Steps 2–5 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, Step 4 gives a short primer on GitHub Actions, and Step 5 introduces the concept of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — all useful context, but safely skippable if you already have a working `gh` setup.
->
 > Ready? Jump straight to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md) →
 
 ## 🔀 Choose Your Setup Path
@@ -92,28 +94,10 @@ You need a **free GitHub account**. If you don't have one yet, create it at [git
 > [!NOTE]
 > You don't need a paid plan. Everything in this workshop works with a free GitHub account.
 
-Authenticate your `gh` CLI now:
+<!-- -->
 
-> **Why this matters:** Skipping `gh auth login` will cause Step 6 to fail silently — without authentication, your workflow won't have permission to read repository data or post issue comments, and errors may not be obvious.
-
-```bash
-gh auth login
-```
-
-> [!IMPORTANT]
-> **Verify your GitHub CLI authentication before continuing:**
->
-> ```bash
-> gh auth status
-> ```
->
-> If the output says you are not logged in, run:
->
-> ```bash
-> gh auth login
-> ```
->
-> Re-run `gh auth status` and confirm you see `Logged in to github.com` before proceeding to the next step.
+> [!TIP]
+> You'll authenticate `gh` with `gh auth login` as part of your chosen setup path — [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md). You don't need to do it here.
 
 ### Verify Git is available (local path only)
 
@@ -153,7 +137,6 @@ Need a quick glossary with official docs links?
 
 - [ ] You have a GitHub account and can sign in
 - [ ] gh CLI ≥ 2.40 installed — verify with `gh --version`
-- [ ] `gh auth status` shows you are logged in
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
