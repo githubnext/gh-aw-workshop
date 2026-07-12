@@ -389,5 +389,10 @@ Find the most recently updated open issue and post a comment in this format:
 - [ ] The file is committed and pushed to `main`
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 
+Want to use a different AI engine? These side quests walk you through switching from Copilot to Claude or Codex:
+
+- ➡️ [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — use `engine: claude`
+- ➡️ [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — use `engine: codex`
+
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)

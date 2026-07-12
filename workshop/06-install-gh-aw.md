@@ -147,4 +147,7 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 - [ ] `gh extension list` shows `github/gh-aw`
 - [ ] `gh aw --version` returns a version number (e.g. `gh-aw version 0.81.6` or later)
 
+Want to understand how Copilot authenticates with your workflow — or set up a `COPILOT_GITHUB_TOKEN` secret?
+➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
+
 **Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
