@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily simulation of 38 students with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily simulation of 38 students with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -93,17 +93,57 @@ steps:
   - name: Gather workshop content
     run: |
       mkdir -p /tmp/gh-aw/agent/sim/data
-      # Read available workshop steps
-      if [ -d workshop ]; then
-        step_files=$(find workshop -name '*.md' | sort | tr '\n' ',' | sed 's/,$//')
-        step_count=$(find workshop -name '*.md' | wc -l | tr -d ' ')
-      else
-        step_files=""
-        step_count=0
-      fi
-      echo "WORKSHOP_STEP_COUNT=$step_count" >> "$GITHUB_ENV"
-      echo "WORKSHOP_STEP_FILES=$step_files" >> "$GITHUB_ENV"
-      echo "Workshop has $step_count step files available: $step_files"
+      python3 <<'PY'
+      import json, pathlib, re
+
+      workshop = pathlib.Path('workshop')
+      if not workshop.is_dir():
+          data = {'main_steps': [], 'side_quests': [], 'step_count': 0}
+          pathlib.Path('/tmp/gh-aw/agent/sim/data/curriculum.json').write_text(json.dumps(data))
+          print("No workshop directory found")
+          import os; open(os.environ['GITHUB_ENV'], 'a').write('WORKSHOP_STEP_COUNT=0\n')
+          exit(0)
+
+      def extract_title(f):
+          for line in f.read_text().splitlines():
+              if line.startswith('# '):
+                  return line[2:].strip()
+          return f.stem
+
+      def sort_key(name):
+          m = re.match(r'^(\d+)([a-z]?)', name)
+          if not m:
+              return (999, name)
+          return (int(m.group(1)), m.group(2) or '')
+
+      all_files = sorted(
+          (f for f in workshop.glob('*.md') if f.name != 'README.md'),
+          key=lambda f: sort_key(f.name)
+      )
+      main_steps = [f for f in all_files if not f.name.startswith('side-quest')]
+      side_quests = [f for f in all_files if f.name.startswith('side-quest')]
+
+      curriculum = [
+          {'index': i, 'file': f.name, 'title': extract_title(f)}
+          for i, f in enumerate(main_steps)
+      ]
+      side_quest_list = [{'file': f.name, 'title': extract_title(f)} for f in side_quests]
+
+      data = {
+          'main_steps': curriculum,
+          'side_quests': side_quest_list,
+          'step_count': len(curriculum),
+      }
+      pathlib.Path('/tmp/gh-aw/agent/sim/data/curriculum.json').write_text(json.dumps(data, indent=2))
+
+      import os
+      env_file = os.environ['GITHUB_ENV']
+      with open(env_file, 'a') as ef:
+          ef.write(f"WORKSHOP_STEP_COUNT={len(curriculum)}\n")
+      print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests")
+      for entry in curriculum:
+          print(f"  [{entry['index']}] {entry['file']}: {entry['title']}")
+      PY
 ---
 
 # Workshop Student Simulator
@@ -116,28 +156,16 @@ You are an expert UX researcher and instructional designer specialising in devel
 
 ## Context
 
-The workshop teaches GitHub beginners how to create and run agentic workflows. It follows a 15-step curriculum:
+The workshop teaches GitHub beginners how to create and run agentic workflows. The curriculum is determined at runtime from the workshop markdown files.
 
-| # | Step | Title |
-|---|------|-------|
-| 0 | `00-welcome.md` | Welcome — What We'll Build |
-| 1 | `01-prerequisites.md` | What You Need Before We Start |
-| 2a | `02a-setup-codespace.md` | Set Up a Codespace |
-| 2b | `02b-setup-local.md` | Set Up Your Local Terminal |
-| 3 | `03-create-your-repo.md` | Create Your Practice Repository |
-| 4 | `04-github-actions-intro.md` | What Are GitHub Actions? |
-| 5 | `05-agentic-workflows-intro.md` | What Are Agentic Workflows? |
-| 6 | `06-install-gh-aw.md` | Install the gh-aw CLI Extension |
-| 7 | `07-your-first-workflow.md` | Write Your First Agentic Workflow |
-| 8 | `08-run-your-workflow.md` | Run and Watch Your Workflow |
-| 9 | `09-understand-output.md` | Reading Workflow Output |
-| 10 | `10-design-daily-status.md` | Design: Your Daily Repo Status Report |
-| 11 | `11-build-daily-status.md` | Build: Daily Repo Status Workflow |
-| 12 | `12-test-and-iterate.md` | Test and Improve Your Workflow |
-| 13 | `13-schedule-it.md` | Schedule It to Run Every Day |
-| 14 | `14-next-steps.md` | What's Next? Keep Exploring |
+Read `/tmp/gh-aw/agent/sim/data/curriculum.json`. It contains:
+- `main_steps`: ordered array of `{index, file, title}` for each main workshop step (excludes `README.md` and side-quest files)
+- `side_quests`: array of `{file, title}` for optional supplementary steps
+- `step_count`: total number of main steps
 
-The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} step files** at `${{ env.WORKSHOP_STEP_FILES }}`.
+Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, and `title` is the heading extracted from that file. Do not rely on any previously known or hardcoded list of steps.
+
+The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main steps** (plus side quests listed in `curriculum.json`).
 
 ---
 
@@ -221,25 +249,27 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 
 #### Simulation Rules
 
-**Success probability per step** depends on technical level:
+**Success probability per step** is determined by the step's category, inferred from its filename and title. For each step in `curriculum.json`, classify it using the following pattern table and apply the corresponding base probabilities:
 
-| Step | beginner | github-basic | actions-user | advanced |
-|------|----------|--------------|--------------|----------|
-| 0 Welcome | 95% | 98% | 99% | 99% |
-| 1 Prerequisites | 70% | 85% | 95% | 98% |
-| 2a/2b Setup | 55% | 75% | 90% | 97% |
-| 3 Create Repo | 65% | 88% | 97% | 99% |
-| 4 Actions Intro | 80% | 90% | 85% | 90% |
-| 5 Agentic Intro | 75% | 85% | 80% | 88% |
-| 6 Install gh-aw | 50% | 70% | 88% | 95% |
-| 7 First Workflow | 45% | 65% | 80% | 92% |
-| 8 Run Workflow | 50% | 68% | 82% | 94% |
-| 9 Understand Output | 60% | 72% | 83% | 93% |
-| 10 Design | 70% | 78% | 85% | 90% |
-| 11 Build | 45% | 62% | 78% | 90% |
-| 12 Test & Iterate | 50% | 65% | 80% | 92% |
-| 13 Schedule | 55% | 70% | 85% | 94% |
-| 14 Next Steps | 90% | 92% | 95% | 97% |
+| Category | Filename pattern | beginner | github-basic | actions-user | advanced |
+|----------|-----------------|---------|-------------|-------------|---------|
+| Welcome / orientation | `*welcome*` | 95% | 98% | 99% | 99% |
+| Prerequisites | `*prerequisite*` | 70% | 85% | 95% | 98% |
+| Environment setup | `*setup-*` | 55% | 75% | 90% | 97% |
+| Repository creation | `*create-*repo*` | 65% | 88% | 97% | 99% |
+| Concepts / intro | `*intro*`, `*concepts*` | 75% | 85% | 82% | 88% |
+| Tool install | `*install*` | 50% | 70% | 88% | 95% |
+| Hands-on: first workflow | `*first-workflow*` | 45% | 65% | 80% | 92% |
+| Hands-on: run / output | `*run*`, `*output*`, `*understand*` | 55% | 70% | 82% | 93% |
+| Design step | `*design*` | 70% | 78% | 85% | 90% |
+| Build step | `*build*` | 45% | 62% | 78% | 90% |
+| Test / iterate | `*test*`, `*iterate*` | 50% | 65% | 80% | 92% |
+| Schedule / automation | `*schedule*` | 55% | 70% | 85% | 94% |
+| Advanced features | `*conditional*`, `*data-source*`, `*mcp*`, `*connect*` | 40% | 58% | 75% | 90% |
+| Next steps / wrap-up | last step, `*next-step*` | 90% | 92% | 95% | 97% |
+| Other (default) | anything else | 65% | 75% | 85% | 93% |
+
+If a step's filename matches multiple categories, use the most specific match (longest pattern match). The "last step" rule applies to whichever step has the highest index in `curriculum.json`.
 
 **Personality modifiers** (multiply the base probability):
 - `curious`: ×1.05 (engages more deeply, higher completion)
@@ -256,18 +286,18 @@ Use the simulator run to verify environment assumptions for each workshop step. 
 
 **UI-preference modifiers** (apply when `ui_preferred` is `true`):
 
-UI-preferred students work entirely through the GitHub web interface and avoid the terminal. Apply the following adjustments to their base probabilities for the affected steps:
+UI-preferred students work entirely through the GitHub web interface and avoid the terminal. Apply the following adjustments to their base probabilities for the matching steps (match by filename pattern):
 
-| Step | Adjustment | Reason |
-|------|-----------|--------|
-| 3 Create Repo | ×1.15 | Using github.com/new is easier than `gh repo create` for non-coders |
-| 6 Install gh-aw | ×0.75 | `gh extension install` still requires a terminal — this is a genuine barrier |
-| 7 First Workflow | ×1.10 | GitHub web editor removes the need for `mkdir`/`touch` |
-| 11 Build daily-status | ×1.05 | Web editor avoids local file management friction |
-| 12 Test & Iterate | ×1.10 | Committing via **Commit changes** is simpler than `git push` |
-| 13 Schedule | ×1.08 | Web editor commit replaces `git add/commit/push` |
+| Step pattern | Adjustment | Reason |
+|-------------|-----------|--------|
+| `*create-*repo*` | ×1.15 | Using github.com/new is easier than `gh repo create` for non-coders |
+| `*install*` | ×0.75 | `gh extension install` still requires a terminal — this is a genuine barrier |
+| `*first-workflow*` | ×1.10 | GitHub web editor removes the need for `mkdir`/`touch` |
+| `*build*` | ×1.05 | Web editor avoids local file management friction |
+| `*test*`, `*iterate*` | ×1.10 | Committing via **Commit changes** is simpler than `git push` |
+| `*schedule*` | ×1.08 | Web editor commit replaces `git add/commit/push` |
 
-UI-preferred students who reach step 6 and cannot install the extension should record the pain point: `"ui_preferred + install gh-aw: Extension install requires terminal — no UI alternative exists; workshop should recommend Codespace as a workaround"`.
+UI-preferred students who fail an `*install*` step should record the pain point: `"ui_preferred + install gh-aw: Extension install requires terminal — no UI alternative exists; workshop should recommend Codespace as a workaround"`.
 
 A student **fails at a step** if a random roll exceeds their adjusted probability. When a student fails a step, they stop — they do NOT attempt subsequent steps.
 
@@ -299,13 +329,13 @@ For each student who fails at a step, note:
   - **vscode + CLI steps**: "VS Code user expects to stay in the editor UI — encourage running `gh aw` commands in the VS Code integrated terminal; suggest `gh copilot suggest` as a helper when a CLI command is unfamiliar"
   - **copilot-app + install gh-aw**: "Copilot app user has no terminal context — step 6 assumes CLI access that is entirely absent"
   - **cloud-agent + local setup**: "Cloud agent user expects fully managed environment; local install and auth steps are unexpected friction"
-- Any student failing step 6: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
-- Any student failing step 11: "Full workflow source harder to understand without line-by-line annotation"
+- Any student failing an `*install*` step: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
+- Any student failing a `*build*` step: "Full workflow source harder to understand without line-by-line annotation"
 
 ### 4. Aggregate and analyse results
 
 Compute:
-- **Overall success rate** (% of students who complete all 15 steps)
+- **Overall success rate** (% of students who complete all ${{ env.WORKSHOP_STEP_COUNT }} steps)
 - **Per-step dropout rate** (% of students who fail at each step)
 - **Top 5 dropout steps** (highest failure rates)
 - **Success rate by technical level**
@@ -318,7 +348,7 @@ Compute:
 
 Update `/tmp/gh-aw/cache-memory/profiles.json`:
 - Increment `runs` by 1 for every student
-- Increment `successes` by 1 for every student who completed all 15 steps
+- Increment `successes` by 1 for every student who completed all ${{ env.WORKSHOP_STEP_COUNT }} steps
 - Write the updated JSON back to `/tmp/gh-aw/cache-memory/profiles.json`
 
 ### 6. Read workshop files (if available)
@@ -341,7 +371,7 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ### Overview
 - Date: YYYY-MM-DD
 - Students simulated: 38
-- Workshop steps available: N/15
+- Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
 - Completion: N/38 (XX%)
 - Highest-dropout step: Step N (XX%)
 
@@ -354,7 +384,7 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 3. Repair summary 3
 
 <details>
-<summary>Dropout by step (0-14)</summary>
+<summary>Dropout by step</summary>
 
 Table with: step, dropouts, dropout rate, top reason.
 
