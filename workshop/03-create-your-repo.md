@@ -10,7 +10,7 @@ You'll open the `my-agentic-workflows` repository you already created during set
 
 - You've completed either [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 - You have a GitHub account and are signed in
-- You already created `my-agentic-workflows` in GitHub UI with **Add a README file** enabled
+- You either already created `my-agentic-workflows` during setup, or you'll create it now in GitHub UI with **Add a README file** enabled
 
 ## Steps
 
