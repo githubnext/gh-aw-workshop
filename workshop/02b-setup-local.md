@@ -5,7 +5,8 @@
 ## 🎯 What You'll Do
 
 > [!IMPORTANT]
-> If you run into trouble with any terminal step, switch to a Codespace at any time — all progress is preserved in your repository. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
+> **Struggling with any step below? Switch to Codespace now — your progress is preserved.**
+> ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md) — nothing to install, runs in your browser.
 
 You'll install the tools you need on your own machine: Git, Node.js, and the `gh` CLI. You'll authenticate with GitHub, and by the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
 
@@ -29,6 +30,18 @@ If this is your first time in a terminal, use this legend while running each ste
 - **Output** = what success or errors look like after pressing Enter
 
 All command blocks below are copy-paste-ready (no leading `$`).
+
+## ⚡ Quick Setup Check
+
+Run this block in your terminal to see which tools are already installed:
+
+```bash
+git --version && echo "✅ Git OK" || echo "❌ Git missing — see 'Verify Git' below"
+node --version && echo "✅ Node.js OK" || echo "❌ Node.js missing — see 'Install Node.js' below"
+gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see 'Install the gh CLI' below"
+```
+
+Any ❌ item? Follow the numbered steps below for that tool only. If everything shows ✅, jump straight to [Step 5](#5-authenticate-the-gh-cli).
 
 ## Steps
 
@@ -193,17 +206,15 @@ _What success looks like:_ clone finishes and `cd` returns you to a prompt insid
 
 ### 7. Verify everything is in order
 
+Run this final check to confirm all tools are installed correctly:
+
 ```bash
-gh repo view --json name,owner | cat
-node --version
-gh --version
+git --version && node --version && gh --version && echo "✅ All tools verified — you are ready to continue!"
 ```
 
-![Example success output for final local setup verification commands](images/02b-terminal-success-13-final-verify.svg)
+_What success looks like:_ all three version lines appear, followed by `✅ All tools verified — you are ready to continue!`.
 
-_What success looks like:_ all three commands print output; `owner` is your GitHub username.
-
-All three commands should return output without errors. The repo view should show your username as `owner`.
+If any line shows an error instead of a version number, revisit the step for that tool above. If you're stuck, switch to a Codespace — your progress is preserved: [Adventure A: Set Up a Codespace](02a-setup-codespace.md).
 
 ## 🛟 Troubleshooting: common beginner errors
 
