@@ -118,7 +118,7 @@ You should see your username as `owner`, `my-agentic-workflows` as `name`, and a
 ## ✅ Checkpoint
 
 - [ ] `my-agentic-workflows` repository exists in your GitHub account
-- [ ] You're inside the repository directory in your terminal (terminal path) or have the repository open in your browser (UI path)
+- [ ] The repository is cloned in your working environment (terminal path) or open in your browser (UI path)
 - [ ] The **Actions** tab is visible and enabled on GitHub
 - [ ] You can confirm your username is the repository owner
 
