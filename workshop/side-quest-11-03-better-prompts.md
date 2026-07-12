@@ -1,6 +1,6 @@
 # Side Quest: Write Better AI Task Briefs
 
-> _Optional: work through this guide if you want to get more useful, consistent output from your agentic workflows — then return to [Step 11](11-build-daily-status.md) or [Step 12](12-test-and-iterate.md)._
+> _Optional: work through this guide if you want to get more useful, consistent output from your agentic workflows — then return to [Step 11](11a-build-daily-status.md) or [Step 12](12-test-and-iterate.md)._
 
 ## 🎯 What You'll Do
 
@@ -8,7 +8,7 @@ Learn five practical techniques for writing AI task briefs that produce clearer,
 
 ## 📋 Before You Start
 
-- You've written your first workflow task brief in [Step 11](11-build-daily-status.md).
+- You've written your first workflow task brief in [Step 11](11a-build-daily-status.md).
 - You've run the workflow at least once in [Step 12](12-test-and-iterate.md) and seen its output.
 
 ---
@@ -154,4 +154,4 @@ posted to the Actions run summary.
 
 ---
 
-Return to [Step 11: Build Your Daily Repo Status Workflow](11-build-daily-status.md) or continue to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+Return to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md) or continue to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).

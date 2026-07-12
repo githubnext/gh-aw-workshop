@@ -55,7 +55,7 @@ By the end of this workshop, you'll have a scheduled AI agent that posts a daily
 > **Choose your path**
 > - **I'm brand new to GitHub** → Start at [Step 1: What You Need Before We Start](01-prerequisites.md) and follow every step in order.
 > - **I know GitHub Actions** → Steps 1–4 are optional for you — go straight to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
-> - **I just want to see the final workflow** → Go straight to [Step 11: Build the Daily Status Workflow](11-build-daily-status.md).
+> - **I just want to see the final workflow** → Go straight to [Step 11a: Build the Daily Status Workflow](11a-build-daily-status.md).
 
 ## Why Agentic Workflows?
 

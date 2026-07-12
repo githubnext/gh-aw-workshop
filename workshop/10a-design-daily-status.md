@@ -77,4 +77,4 @@ Guardrails:
 - [ ] I've sketched the comment format (even a rough draft counts)
 - [ ] I've written at least two guardrail rules
 
-**Next:** [Step 11: Build — Daily Repo Status Workflow](11-build-daily-status.md)
+**Next:** [Step 11a: Build — Daily Repo Status Workflow](11a-build-daily-status.md)

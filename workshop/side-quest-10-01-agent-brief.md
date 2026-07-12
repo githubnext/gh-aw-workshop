@@ -1,6 +1,6 @@
 # Side Quest: Writing a Clear Agent Brief
 
-> _Optional: work through this guide if you want a deeper walkthrough of the five-step brief-writing framework — then return to [Step 10](10-design-daily-status.md) or [Step 11](11-build-daily-status.md)._
+> _Optional: work through this guide if you want a deeper walkthrough of the five-step brief-writing framework — then return to [Step 10](10a-design-daily-status.md) or [Step 11](11a-build-daily-status.md)._
 
 ## 🎯 What You'll Do
 
@@ -73,7 +73,7 @@ Write these down as bullet points. If you're not sure whether a piece of data is
 <details>
 <summary>How does the agent actually get this data?</summary>
 
-GitHub's REST API exposes all of the above. The `gh aw` agent calls `gh api` commands automatically when you list the right permission scopes in your workflow's frontmatter. You'll add those scopes in [Step 11](11-build-daily-status.md).
+GitHub's REST API exposes all of the above. The `gh aw` agent calls `gh api` commands automatically when you list the right permission scopes in your workflow's frontmatter. You'll add those scopes in [Step 11](11a-build-daily-status.md).
 
 If you want to fetch external data (a dashboard, a metrics API), you can add an MCP tool server — see [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 
@@ -200,4 +200,4 @@ Guardrails:
 
 ---
 
-Return to [Step 10: Design Your Daily Repo Status Report](10-design-daily-status.md) or continue to [Step 11: Build Your Daily Repo Status Workflow](11-build-daily-status.md).
+Return to [Step 10: Design Your Daily Repo Status Report](10a-design-daily-status.md) or continue to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md).

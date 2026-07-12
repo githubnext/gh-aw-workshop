@@ -1,6 +1,6 @@
 # Side Quest: Reading an Annotated Agentic Workflow
 
-> _Optional: work through this guide if you want to understand the reasoning behind every design choice in `daily-status.md` before adapting it — then return to [Step 11: Build: Daily Repo Status Workflow](11-build-daily-status.md)._
+> _Optional: work through this guide if you want to understand the reasoning behind every design choice in `daily-status.md` before adapting it — then return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md)._
 
 ## 🎯 What You'll Do
 
@@ -157,4 +157,4 @@ Find the most recently updated open issue and post a comment in this format:
 
 ---
 
-Return to [Step 11: Build: Daily Repo Status Workflow](11-build-daily-status.md).
+Return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md).
