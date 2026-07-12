@@ -1,38 +1,24 @@
-# Step 3: Create Your Practice Repository
+# Step 3: Open and Verify Your Practice Repository
 
-> _Your workflows need somewhere to live — let's create a dedicated repository you'll use for the rest of the workshop._
+> _Now that setup is complete, make sure your practice repository is open and ready for workflow work._
 
 ## 🎯 What You'll Do
 
-You'll create a fresh GitHub repository in your account, set it up with a basic README, and confirm that GitHub Actions is enabled. This repository will be your sandbox for building and testing agentic workflows.
+You'll open the `my-agentic-workflows` repository you already created during setup, clone it locally if you completed the local terminal setup, and confirm GitHub Actions is enabled. This repository is your sandbox for building and testing agentic workflows.
 
 ## 📋 Before You Start
 
 - You've completed either [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 - You have a GitHub account and are signed in
+- You've already created `my-agentic-workflows` during setup in GitHub UI with **Add a README file** enabled
 
 ## Steps
 
-### 1. Create the repository
+### 1. Open your practice repository
 
-**Terminal:**
+Open `https://github.com/<your-username>/my-agentic-workflows` in your browser.
 
-```bash
-gh repo create my-agentic-workflows --public --description "My GitHub agentic workflows workshop practice repo" --add-readme
-```
-
-This command creates the repository, sets it to public, and adds a starter `README.md` in one go.
-
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
-
-1. Go to [github.com/new](https://github.com/new) in your browser.
-2. Fill in **Repository name**: `my-agentic-workflows`
-3. Set **Visibility** to **Public**.
-4. Check **Add a README file**.
-5. Click **Create repository**.
-
-</details>
+Replace `<your-username>` with your actual GitHub username.
 
 > [!NOTE]
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.

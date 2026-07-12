@@ -5,8 +5,9 @@ const { VALID_TERMINALS, ensure } = require("./simulator");
 const STEP_IDS = [
   "00-welcome",
   "01-prerequisites",
-  "03-create-repo",
   "02-setup",
+  // Keep this ID aligned with the workshop filename `03-create-your-repo.md`.
+  "03-create-your-repo",
   "04-actions-intro",
   "05-agentic-intro",
   "06-install-gh-aw",
@@ -50,19 +51,7 @@ function buildTransitions() {
         "environment-metadata-missing",
         "Initialize environment with os, terminal, auth, and deployment fields before replay."
       ),
-    "03-create-repo": (state) => {
-      const next = cloneState(state);
-      next.flags.hasRepo = true;
-      return { ok: true, state: deepFreeze(next) };
-    },
     "02-setup": (state) => {
-      const repoCheck = ensure(
-        state.flags.hasRepo,
-        "Codespace cannot be opened without an existing repository",
-        "repo-missing-before-codespace",
-        "Create the repository via the GitHub web UI before opening a Codespace."
-      );
-      if (!repoCheck.ok) return repoCheck;
       const terminalCheck = ensure(
         VALID_TERMINALS[state.os] && VALID_TERMINALS[state.os].has(state.terminal),
         `Terminal '${state.terminal}' is not valid for OS '${state.os}'`,
@@ -71,7 +60,32 @@ function buildTransitions() {
       );
       if (!terminalCheck.ok) return terminalCheck;
       const next = cloneState(state);
+      if (!next.installed.gh) {
+        next.installed.gh = "2.58.0";
+      }
+      next.flags.hasRepo = true;
+      next.flags.repoCreatedViaUi = true;
+      next.flags.repoHasReadme = true;
       next.flags.environmentReady = true;
+      return { ok: true, state: deepFreeze(next) };
+    },
+    "03-create-your-repo": (state) => {
+      const repoCheck = ensure(
+        state.flags.hasRepo && state.flags.repoCreatedViaUi,
+        "Practice repository must be created in GitHub UI during setup",
+        "repo-setup-missing",
+        "In setup, create `my-agentic-workflows` from github.com/new before continuing."
+      );
+      if (!repoCheck.ok) return repoCheck;
+      const readmeCheck = ensure(
+        state.flags.repoHasReadme,
+        "Practice repository is missing the starter README",
+        "repo-readme-missing",
+        "Enable 'Add a README file' when creating the repository in GitHub UI."
+      );
+      if (!readmeCheck.ok) return readmeCheck;
+      const next = cloneState(state);
+      next.flags.repoVerified = true;
       return { ok: true, state: deepFreeze(next) };
     },
     "04-actions-intro": (state) => {
@@ -95,9 +109,9 @@ function buildTransitions() {
     "06-install-gh-aw": (state) => {
       const envCheck = ensure(
         state.flags.environmentReady,
-        "gh CLI cannot be installed before a Codespace or local terminal is open",
+        "gh-aw cannot be installed before setup opens a Codespace or local terminal",
         "environment-not-ready",
-        "Complete the setup step (02-setup) to open a Codespace or local terminal before installing gh."
+        "Complete the setup step (02-setup) before installing the gh-aw extension."
       );
       if (!envCheck.ok) return envCheck;
       if (!state.installed.gh) {

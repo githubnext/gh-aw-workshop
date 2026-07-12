@@ -14,7 +14,7 @@ _A Codespace gives you a full development environment in your browser — no ins
 
 ## 🎯 What You'll Do
 
-You'll create a new private empty repository for your workshop outputs, launch a GitHub Codespace for the workshop repository, confirm that all the tools you need are already waiting for you, and arrive at the shared workshop path ready to write your first workflow.
+You'll create your practice repository in GitHub, launch a GitHub Codespace, confirm that all the tools you need are already waiting for you, and arrive at the shared workshop path ready to write your first workflow.
 
 ## 📋 Before You Start
 
@@ -23,18 +23,18 @@ You'll create a new private empty repository for your workshop outputs, launch a
 
 ## Steps
 
-### 1. Create your private empty practice repository
+### 1. Create your practice repository in GitHub
 
 Create the repository you'll use to store your workflows during the workshop.
 
 1. Open [github.com/new](https://github.com/new) in your browser.
 2. Enter `my-agentic-workflows` for **Repository name**.
-3. Set **Visibility** to **Private**.
-4. Leave all initialization options unchecked so the repository stays empty.
+3. Set **Visibility** to **Public**.
+4. Check **Add a README file**.
 5. Click **Create repository**.
 
 > [!NOTE]
-> You'll add files to this repository in later steps. Creating it now makes the rest of the workshop flow smoother.
+> Creating the repository first keeps the Codespace and terminal setup paths aligned, and adding a README avoids an empty-repository setup edge case.
 
 ### 2. Open the Codespace
 
@@ -99,12 +99,12 @@ You should see `githubnext` as `owner` and `gh-aw-workshop` as `name`.
 
 ## ✅ Checkpoint
 
-- [ ] Your private empty `my-agentic-workflows` repository is created on GitHub
+- [ ] Your `my-agentic-workflows` repository is created on GitHub with a starter README
 - [ ] The Codespace editor is open in your browser
 - [ ] `gh --version` returns a version number
 - [ ] `gh auth login` completed without errors
 
-**Next:** [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+**Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
 
 ## 📚 See Also
 
