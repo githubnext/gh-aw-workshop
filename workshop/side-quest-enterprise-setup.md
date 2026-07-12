@@ -13,7 +13,7 @@ Codespaces availability varies by platform and policy:
 
 Before continuing:
 
-1. Ask your enterprise admin whether Codespaces is enabled for your org/repository.
+1. Ask your enterprise admin whether Codespaces is enabled for your organization and repository.
 2. If Codespaces is unavailable, follow [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
 3. Keep using your enterprise hostname in all `gh` auth and extension commands when required.
 
@@ -33,7 +33,7 @@ If you do not have this access yet, ask your admin to provide a ready-to-use run
 Agentic workflows require both Actions execution and model access:
 
 - Your account needs an active Copilot plan supported by your enterprise policy (Business or Enterprise where required).
-- Your org/repo must allow GitHub-hosted model usage for workflows.
+- Your organization and repository must allow GitHub-hosted model usage for workflows.
 - If model access is blocked by policy, workflow runs can start but fail when the agent step executes.
 
 Before installing `gh-aw`, verify with your admin that your account and repository are permitted to run Copilot-powered workflow jobs.
