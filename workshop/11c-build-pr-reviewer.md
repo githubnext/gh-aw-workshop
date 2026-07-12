@@ -25,6 +25,9 @@ This changes two things:
 | **Trigger** | `on: schedule: daily` | `on: pull_request: {}` |
 | **Safe output** | `add-comment` (issue comment) | `add-pr-review-comment` (PR review comment) |
 
+> [!TIP]
+> Want a fuller primer on choosing between `pull_request`, `push`, `issues`, and `schedule`? Take [Side Quest: Event-Driven Triggers in Agentic Workflows](side-quest-11-05-event-triggers.md) before you build.
+
 ---
 
 ## The Workflow File at a Glance
