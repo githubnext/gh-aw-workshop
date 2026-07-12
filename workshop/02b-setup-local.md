@@ -1,6 +1,14 @@
 # Adventure B: Set Up Your Local Terminal
 
-> _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
+> [!IMPORTANT]
+> **Stop and route yourself before reading further:**
+>
+> | I use… | Go to… |
+> |------|------|
+> | **copilot-app**, **cloud-agent**, or **VS Code in Codespaces (browser)** | ➡️ Switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
+> | A terminal on my machine (Terminal, Windows Terminal, Git Bash, Linux shell, or VS Code integrated terminal outside Codespaces) | ✅ Stay on **Adventure B** (this page) |
+
+_Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
 ## 🎯 What You'll Do
 
