@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll launch a GitHub Codespace for this workshop's practice repository, confirm that all the tools you need are already waiting for you, and arrive at the shared workshop path ready to write your first workflow.
+You'll create a new private empty repository for your workshop outputs, launch a GitHub Codespace for the workshop repository, confirm that all the tools you need are already waiting for you, and arrive at the shared workshop path ready to write your first workflow.
 
 ## 📋 Before You Start
 
@@ -13,22 +13,22 @@ You'll launch a GitHub Codespace for this workshop's practice repository, confir
 
 ## Steps
 
-### 1. Fork the workshop repository
+### 1. Create your private empty practice repository
 
-The workshop repository contains a starter project and a pre-configured Codespace. You'll fork it so you have your own copy to experiment with.
+Create the repository you'll use to store your workflows during the workshop.
 
-1. Open [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) in your browser.
-2. Click **Fork** (top-right corner).
-3. Accept the defaults and click **Create fork**.
-
-![Fork the repository](images/02a-fork-repo.svg)
+1. Open [github.com/new](https://github.com/new) in your browser.
+2. Enter `my-agentic-workflows` for **Repository name**.
+3. Set **Visibility** to **Private**.
+4. Leave all initialization options unchecked so the repository stays empty.
+5. Click **Create repository**.
 
 > [!NOTE]
-> Forking creates your own copy of the repository under your account. All changes you make stay in your fork — you won't affect the original.
+> You'll add files to this repository in later steps. Creating it now makes the rest of the workshop flow smoother.
 
 ### 2. Open the Codespace
 
-1. From your new fork, click the green **Code** button.
+1. In [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop), click the green **Code** button.
 2. Click the **Codespaces** tab.
 3. Click **Create codespace on main**.
 
@@ -85,11 +85,11 @@ Follow the prompts. When asked, choose **GitHub.com** and then **Login with a we
 gh repo view --json name,owner | cat
 ```
 
-You should see your username as `owner` and `gh-aw-workshop` as `name`.
+You should see `githubnext` as `owner` and `gh-aw-workshop` as `name`.
 
 ## ✅ Checkpoint
 
-- [ ] Your fork is created on GitHub
+- [ ] Your private empty `my-agentic-workflows` repository is created on GitHub
 - [ ] The Codespace editor is open in your browser
 - [ ] `gh --version` returns a version number
 - [ ] `gh auth login` completed without errors
