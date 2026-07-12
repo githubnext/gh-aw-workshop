@@ -20,18 +20,19 @@ Right now your daily-status workflow runs every weekday — even on days when no
 The approach:
 1. Run a shell command to count recent commits.
 2. Store the result in an output variable.
-3. Use an `if:` condition in your workflow to skip the summary step when the count is zero.
+3. Add a top-level `if:` in workflow frontmatter to skip the agent job when the count is zero.
 
 ### Add a commit-count step
 
-Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add a new step **before** the AI prompt step:
+Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add this inside the YAML frontmatter under `steps:`:
 
 ```yaml
-- name: Count recent commits
-  id: recent
-  run: |
-    COUNT=$(git log --oneline --since="24 hours ago" | wc -l | tr -d ' ')
-    echo "commit_count=$COUNT" >> $GITHUB_OUTPUT
+steps:
+  - name: Count recent commits
+    id: recent
+    run: |
+      COUNT=$(git log --oneline --since="24 hours ago" | wc -l | tr -d ' ')
+      echo "commit_count=$COUNT" >> $GITHUB_OUTPUT
 ```
 
 This shell command:
@@ -42,17 +43,15 @@ This shell command:
 > [!NOTE]
 > `$GITHUB_OUTPUT` is a special GitHub Actions file. Anything you write in the format `key=value` becomes available to later steps as `steps.<id>.outputs.key`.
 
-### Add a condition to your AI step
+### Add a top-level condition in frontmatter
 
-Now find the step that calls your AI prompt and add an `if:` line:
+In the same frontmatter block, add a top-level `if:` key (at the same level as `on:` and `steps:`):
 
 ```yaml
-- name: Generate daily summary
-  if: steps.recent.outputs.commit_count != '0'
-  uses: ...
+if: steps.recent.outputs.commit_count != '0'
 ```
 
-Replace `uses: ...` with whatever your existing AI step looks like. The `if:` line tells Actions to skip this step entirely when `commit_count` is `0`.
+This condition skips the compiler-generated agent job entirely when `commit_count` is `0`.
 
 > [!TIP]
 > You can use `${{ steps.recent.outputs.commit_count }}` inside your prompt text too — for example: "Summarise the last ${{ steps.recent.outputs.commit_count }} commits."
@@ -61,8 +60,8 @@ Replace `uses: ...` with whatever your existing AI step looks like. The `if:` li
 
 Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
 
-- If there were recent commits, the summary step should run.
-- If not, you should see the step marked as **skipped** (a grey icon in the Actions UI).
+- If there were recent commits, the summary should run.
+- If not, you should see the agent job marked as **skipped** (a grey icon in the Actions UI).
 
 ![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
@@ -75,12 +74,12 @@ git push
 ```
 
 > [!WARNING]
-> Make sure `$GITHUB_OUTPUT` is written before the AI step runs. Steps execute in order, so keep the commit-count step first.
+> Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.
 
 ## ✅ Checkpoint
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
-- [ ] Your AI summary step includes `if: steps.recent.outputs.commit_count != '0'`
+- [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`
 - [ ] You triggered the workflow manually and confirmed the conditional behaviour in the run log
 - [ ] The workflow still posts a summary on days with commits
 
