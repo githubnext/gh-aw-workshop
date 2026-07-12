@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       focus:
-        description: "Optional focus area for the new training node (for example: mcp tools, safe outputs, workflow debugging)"
+        description: "Optional focus area for the new training node (e.g., mcp tools, safe outputs, workflow debugging)"
         required: false
         type: string
   schedule: weekly
