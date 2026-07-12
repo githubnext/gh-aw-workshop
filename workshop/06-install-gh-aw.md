@@ -3,15 +3,9 @@
 > [!NOTE]
 > **Using the GitHub Copilot cloud agent?** `gh aw` may already be available in
 > your environment. Run `gh aw --version` first — if it returns a version number,
-> you can skip straight to [Confirm installation](#confirm-installation).
+> you can skip straight to [Check if already installed](#check-if-already-installed).
 
 <!-- -->
-
-> [!IMPORTANT]
-> **Using `copilot-app`?** `gh extension install github/gh-aw` must run in a
-> terminal. Open your Codespace first:
-> [Open the Codespace](02a-setup-codespace.md#open-the-codespace), then run
-> this step in the Codespace terminal.
 
 ## 🎯 What You'll Do
 
@@ -26,32 +20,67 @@ extension so you can compile and run agentic workflows from your terminal.
   (done in [Verify GitHub authentication](02a-setup-codespace.md#verify-github-authentication)
   or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
-## Steps
+## Choose your path
+
+Use the path that matches your tool before you run any install command:
+
+| I am using… | Do this |
+| --- | --- |
+| Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
+| `copilot-app` | [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users) |
+| Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
+
+## Check if already installed
+
+Run this first:
+
+```bash
+gh aw --version
+```
+
+If you get a version number, skip to [Confirm installation](#confirm-installation).
+
+If the command is not found:
+
+- If you are using `copilot-app`, first complete [Open a Codespace for copilot-app users](#open-a-codespace-for-copilot-app-users)
+- Then continue with [Install from terminal](#install-from-terminal)
+
+## Open a Codespace for copilot-app users
+
+Open a Codespace to run install commands in its terminal:
+
+- [Open the Codespace](02a-setup-codespace.md#open-the-codespace)
+- Return to this step and continue with [Install from terminal](#install-from-terminal)
+
+## Install from terminal
 
 > [!TIP]
 > **Using VS Code?** Open the integrated terminal with `` Ctrl+` `` (macOS: `` Cmd+` ``),
 > then run all `gh aw` commands there. If a command is unfamiliar, try:
 > `gh copilot suggest "how do I install a gh extension"`
 
-### Install the `gh-aw` extension
+<!-- -->
 
 > [!IMPORTANT]
 > **Pre-flight checklist (run these in order):**
 > - ✅ `gh --version` returns output (if not, complete [Step 1 (Prerequisites)](01-prerequisites.md))
 > - ✅ `gh auth status` shows you are logged in
-> - ⚠️ If you're in an org-owned Codespace, the curl fallback below may be required.
-> Then run `gh extension install github/gh-aw` below *(org-owned Codespace?)*.
+> - ⚠️ If you're in an org-owned Codespace, use the HTTP 403 workaround in the callout below before the standard install command.
 
-```bash
-gh extension install github/gh-aw
-```
+<!-- -->
 
 > [!IMPORTANT]
-> **Getting HTTP 403?** You're likely in an organization-owned Codespace.
+> **Getting HTTP 403?** You're likely in an org-owned Codespace.
 > Run this fallback instead:
 > ```bash
 > curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 > ```
+
+Then install the extension:
+
+```bash
+gh extension install github/gh-aw
+```
 
 If the extension is already installed, you can update it instead:
 
