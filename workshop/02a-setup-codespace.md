@@ -33,7 +33,6 @@ Create the repository you'll use to store your workflows during the workshop.
 > [!NOTE]
 > Creating the repository first keeps the Codespace and terminal setup paths aligned, and adding a README avoids an empty-repository setup edge case.
 
-<a id="open-the-codespace"></a>
 ### Open the Codespace
 
 1. In [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop), click the green **Code** button.
@@ -74,7 +73,6 @@ You should see `github/gh-aw` listed. If you don't see it yet, don't worry — y
 > [!NOTE]
 > The Codespace was built from a `.devcontainer` configuration that pre-installs the `gh` CLI. You don't need to install it yourself.
 
-<a id="verify-github-authentication"></a>
 ### Verify GitHub authentication
 
 Codespaces often start with `gh` already authenticated, but you should still verify before you move on.
