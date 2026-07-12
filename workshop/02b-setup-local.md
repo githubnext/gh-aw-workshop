@@ -1,5 +1,28 @@
 # Adventure B: Set Up Your Local Terminal
 
+## 🔀 Choose your path first
+
+Use this quick checklist before you run any command:
+
+| If this describes you… | Do this now |
+| --- | --- |
+| You use GitHub Copilot Chat, the Copilot mobile app, or a cloud coding agent | Go to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
+| You prefer browser-first setup and want fewer local install steps | Go to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
+| You are unsure about using a local terminal today | Go to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
+| You are comfortable running commands in a local terminal | Continue with Adventure B below |
+
+## 🧪 5-question terminal self-assessment
+
+Check each statement:
+
+- [ ] I have opened a terminal before.
+- [ ] I can run `pwd` (or `cd`) and understand what it shows.
+- [ ] I can copy, paste, and run multi-line commands.
+- [ ] I know how to read command output and spot errors.
+- [ ] I feel comfortable troubleshooting local install or proxy issues.
+
+> [!IMPORTANT]
+> If any answer is **No** (or **not sure**), switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md). You can finish setup there faster and come back later.
 > [!IMPORTANT]
 > **Adventure B requires a local terminal with `git` and `gh` installed.**
 > **Using GitHub Copilot Chat, the Copilot mobile app, or the cloud coding agent?** Go back to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) — it is the right path for you.
@@ -139,7 +162,18 @@ _What success looks like:_ package install reports success.
 
 _What success looks like:_ apt completes and `gh` is installed without errors.
 
+Run this command again before continuing:
+
+```bash
+gh --version
+```
+
+_What success looks like:_ `gh --version` prints version details without errors.
+
 ### Authenticate the gh CLI
+
+> [!NOTE]
+> **Using GHES, SSO, or a corporate proxy?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first, then return here for `gh auth login`.
 
 ```bash
 gh auth login
