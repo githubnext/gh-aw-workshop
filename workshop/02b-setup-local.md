@@ -50,7 +50,7 @@ _What success looks like:_ the command runs without shell errors and shows your 
 Expected output includes one of these login states:
 
 ```text
-✓ Logged in to github.com account YOUR_USERNAME
+✓ Logged in to github.com account <your-username>
 ```
 
 or:
@@ -193,7 +193,7 @@ gh auth status && gh extension list && gh repo view --json owner,name --jq '"\(.
 _What success looks like:_ no errors are shown, and the final line is exactly:
 
 ```text
-YOUR_USERNAME/my-agentic-workflows
+<your-username>/my-agentic-workflows
 ```
 
 If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before moving on.
