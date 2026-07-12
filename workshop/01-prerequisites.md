@@ -146,7 +146,7 @@ Here's a quick summary of what you'll have installed and running by the end of t
 | **gh CLI** | GitHub's official command-line tool |
 | **gh-aw extension** | Adds agentic workflow commands to the gh CLI — installed in [Step 6](06-install-gh-aw.md) (may be pre-installed in Codespaces) |
 
-### 5. Choose your path
+### 5. Select your environment
 
 Now decide how you want to work:
 
@@ -157,8 +157,6 @@ Now decide how you want to work:
 
 - **Codespace** — Everything runs in the browser. No installs. Ideal if you're on a shared machine or just want the fastest start.
 - **Local terminal** — You'll work in your own terminal. Good if you prefer a local environment you already know.
-
-## 🔀 Choose Your Path
 
 | If you… | Go to… |
 |---------|--------|
