@@ -18,7 +18,7 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 | **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md) | No installation needed — start a session, paste a prompt, merge a PR |
 
 > [!NOTE]
-> If you're using the GitHub Copilot app (web or mobile, `copilot-app`), you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.
+> If you're using the **GitHub Copilot Cloud Agent (CCA)**, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.
 
 ## What problem does this solve?
 

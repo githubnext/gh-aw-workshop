@@ -38,12 +38,12 @@ steps:
       {
         "version": 2,
         "students": [
-          {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":3,  "name":"Morgan Kim",      "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"personal-learning",    "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":4,  "name":"Riley Park",      "level":"beginner",     "personality":"impatient",   "background":"no-coding",       "goal":"personal-learning",    "tool":"copilot-app",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":5,  "name":"Skyler Nguyen",   "level":"beginner",     "personality":"skeptical",   "background":"no-coding",       "goal":"personal-learning",    "tool":"copilot-app",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":6,  "name":"Casey Wong",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"teaching-others",      "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":3,  "name":"Morgan Kim",      "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":4,  "name":"Riley Park",      "level":"beginner",     "personality":"impatient",   "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
+          {"id":5,  "name":"Skyler Nguyen",   "level":"beginner",     "personality":"skeptical",   "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
+          {"id":6,  "name":"Casey Wong",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"teaching-others",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":7,  "name":"Drew Tanaka",     "level":"github-basic", "personality":"methodical",  "background":"web-dev",         "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":8,  "name":"Avery Singh",     "level":"github-basic", "personality":"curious",     "background":"web-dev",         "goal":"work-project",         "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":9,  "name":"Jordan Martinez", "level":"github-basic", "personality":"impatient",   "background":"web-dev",         "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
@@ -65,17 +65,17 @@ steps:
           {"id":25, "name":"Nova Robinson",   "level":"advanced",     "personality":"methodical",  "background":"devops",          "goal":"teaching-others",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":26, "name":"Ocean Lewis",     "level":"advanced",     "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":27, "name":"Piper Walker",    "level":"advanced",     "personality":"skeptical",   "background":"web-dev",         "goal":"team-evaluation",      "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":28, "name":"Quinn Hall",      "level":"github-basic", "personality":"impatient",   "background":"no-coding",       "goal":"work-project",         "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":28, "name":"Quinn Hall",      "level":"github-basic", "personality":"impatient",   "background":"no-coding",       "goal":"work-project",         "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":29, "name":"River Young",     "level":"beginner",     "personality":"methodical",  "background":"data-science",    "goal":"work-project",         "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":30, "name":"Sage King",       "level":"actions-user", "personality":"curious",     "background":"web-dev",         "goal":"teaching-others",      "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":31, "name":"Tatum Wright",    "level":"advanced",     "personality":"confused",    "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":32, "name":"Uma Scott",       "level":"beginner",     "personality":"curious",     "background":"web-dev",         "goal":"team-evaluation",      "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "tool":"cloud-agent",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "tool":"cloud-agent",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"cloud-agent",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"copilot-app",   "ui_preferred":true,  "runs":0, "successes":0}
+          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
+          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
+          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
+          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0}
         ]
       }
       EOF
@@ -202,8 +202,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `tool` — preferred agentic tool entry point:
   - `cli`: uses the `gh aw` CLI extension in a terminal
   - `vscode`: uses VS Code with the GitHub Copilot extension
-  - `copilot-app`: uses the GitHub Copilot web or mobile app/chat interface
-  - `cloud-agent`: uses the GitHub Copilot cloud coding agent in GitHub.com
+  - `CCA`: uses the GitHub Copilot Cloud Agent (web or mobile app/chat interface, or cloud coding agent)
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
@@ -257,7 +256,7 @@ Treat browser-driven workflow execution steps differently from local CLI steps: 
 3. **Match student profile to step demands**: For each student, consider:
    - **`level`** vs. assumed knowledge: a `beginner` facing a YAML-authoring step needs a much lower base probability than an `actions-user`.
    - **`background`** vs. step domain: a `devops` student on a CLI install step will fare far better than a `program-manager` or `no-coding` background student on the same step.
-   - **`tool`** and **`ui_preferred`** vs. step tooling: if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `copilot-app` / `cloud-agent`, reduce probability appropriately; for `gh aw run`, assume Codespaces auth does not include `actions:write` and treat CLI triggering as a failing path unless a GitHub Actions UI path is followed; if the step is UI-native (e.g., editing a file on GitHub.com), increase it for UI-preferred students.
+   - **`tool`** and **`ui_preferred`** vs. step tooling: if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA`, reduce probability appropriately; for `gh aw run`, assume Codespaces auth does not include `actions:write` and treat CLI triggering as a failing path unless a GitHub Actions UI path is followed; if the step is UI-native (e.g., editing a file on GitHub.com), increase it for UI-preferred students.
    - **`personality`**: a `methodical` student reads carefully and retries — raise probability; a `confused` student may not know why something failed — lower probability; an `impatient` student may skip prerequisite reading — lower probability particularly for steps that depend on earlier state.
    - **`goal`**: a student evaluating for their team (`team-evaluation`) will abandon sooner than someone learning for personal interest; a `teaching-others` goal drives thoroughness.
    - **Prior runs** (`runs`, `successes`): a student who has completed the workshop before will have a meaningfully higher success probability on familiar steps.
@@ -316,9 +315,9 @@ For each student who fails at a step, note:
   - **program-manager + any step**: "Technical CLI steps feel out of scope; needs higher-level overview before hands-on configuration tasks"
   - **ui_preferred + any compile step**: "gh aw compile requires terminal — UI path users are unaware of syntax errors until the workflow runs and fails"
   - **vscode + CLI steps**: "VS Code user expects to stay in the editor UI — encourage running `gh aw` commands in the VS Code integrated terminal; suggest `gh copilot suggest` as a helper when a CLI command is unfamiliar"
-  - **copilot-app + install gh-aw**: "Copilot app user has no terminal context — step 6 assumes CLI access that is entirely absent"
+  - **CCA + install gh-aw**: "GitHub Copilot Cloud Agent user has no terminal context — step 6 assumes CLI access that is entirely absent"
   - **codespaces + gh aw run**: "Codespaces auth token does not include `actions:write`, so `gh aw run` fails and learners need the GitHub Actions UI trigger path"
-  - **cloud-agent + local setup**: "Cloud agent user expects fully managed environment; local install and auth steps are unexpected friction"
+  - **CCA + local setup**: "GitHub Copilot Cloud Agent user expects fully managed environment; local install and auth steps are unexpected friction"
 - Any student failing an `*install*` step: "gh aw install command requires gh CLI preinstalled — not clearly stated as prerequisite"
 - Any student failing a workflow execution step because of missing credentials: "The workflow depends on repository-side Actions secrets or model access that are not configured yet; local Copilot CLI auth does not fix this"
 - Any student failing a `*build*` step: "Full workflow source harder to understand without line-by-line annotation"
