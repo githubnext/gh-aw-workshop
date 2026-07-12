@@ -200,6 +200,8 @@ _What success looks like:_ no errors are shown across all command output, and th
 
 You should see your actual GitHub username in place of `<your-username>` in that final output line.
 
+If this combined check stops early, run each command on its own to find the failing step.
+
 If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before moving on.
 
 ## ✅ Checkpoint
