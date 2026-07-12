@@ -15,7 +15,8 @@ Before continuing:
 
 1. Ask your enterprise admin whether Codespaces is enabled for your organization and repository.
 2. If Codespaces is unavailable, follow [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
-3. Keep using your enterprise hostname in all `gh` auth and extension commands when required.
+3. Keep using your enterprise hostname in all `gh` auth and extension commands when required (for example, `gh auth login --hostname ghes.example.com`).
+   See [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for a complete enterprise hostname command sequence.
 
 ## Self-hosted runner prerequisites
 
