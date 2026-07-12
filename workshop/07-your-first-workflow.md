@@ -213,7 +213,7 @@ If you edited it afterwards, navigate to the file, click the **pencil icon (‚úèÔ
 
 </details>
 
-![Workflow file committed in the GitHub UI](images/07-workflow-committed.png)
+![Workflow file committed in the GitHub UI](images/07-workflow-committed.svg)
 
 ### Optional: Adventure A and B alternatives
 

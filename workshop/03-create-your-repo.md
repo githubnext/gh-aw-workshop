@@ -72,7 +72,7 @@ gh repo view --web
 
 Click the **Actions** tab at the top of the page. You should see a message like _"Get started with GitHub Actions"_ — that means Actions is enabled and ready to go.
 
-![Actions tab with getting-started message](images/03-actions-tab.png)
+![Actions tab with getting-started message](images/03-actions-tab.svg)
 
 > [!NOTE]
 > GitHub Actions is enabled by default for all new public repositories. If you see a prompt to enable it, click the button to turn it on.
