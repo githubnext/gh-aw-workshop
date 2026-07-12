@@ -5,8 +5,8 @@ const { VALID_TERMINALS, ensure } = require("./simulator");
 const STEP_IDS = [
   "00-welcome",
   "01-prerequisites",
-  // Keep this ID aligned with the workshop filename `03-create-your-repo.md`.
   "02-setup",
+  // Keep this ID aligned with the workshop filename `03-create-your-repo.md`.
   "03-create-your-repo",
   "04-actions-intro",
   "05-agentic-intro",

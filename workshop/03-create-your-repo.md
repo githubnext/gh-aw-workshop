@@ -1,6 +1,6 @@
 # Step 3: Open and Verify Your Practice Repository
 
-> _Now that setup is complete, make sure your practice repository is open, cloned if needed, and ready for workflow work._
+> _Now that setup is complete, make sure your practice repository is open and ready for workflow work._
 
 ## 🎯 What You'll Do
 
