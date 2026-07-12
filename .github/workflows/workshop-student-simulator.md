@@ -182,45 +182,30 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main step
 Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each student has:
 - `id` — unique identifier (1–38)
 - `name` — persona name
-- `level` — agentic technical level: `beginner`, `github-basic`, `actions-user`, `advanced`
+- `level` — agentic technical level:
+  - `beginner`: no prior GitHub or coding experience
+  - `github-basic`: can clone/commit/push but has not used GitHub Actions or AI tools
+  - `actions-user`: familiar with GitHub Actions YAML, but new to agentic/AI workflows
+  - `advanced`: experienced developer or DevOps engineer who has used LLM-based tools
 - `personality` — `curious`, `methodical`, `impatient`, `confused`, `skeptical`
-- `background` — `no-coding`, `web-dev`, `backend-dev`, `devops`, `data-science`, `enterprise-dev`, `enterprise-devops`, `program-manager`
+- `background` — role background:
+  - `no-coding`: no software development background
+  - `web-dev`: frontend or full-stack web developer
+  - `backend-dev`: backend or systems developer
+  - `devops`: DevOps engineer or SRE
+  - `data-science`: data scientist or ML engineer
+  - `enterprise-dev`: enterprise developer using GHE or GHES with self-hosted runners
+  - `enterprise-devops`: senior DevOps or platform engineer managing self-hosted runner fleets
+  - `program-manager`: program or product manager evaluating agentic workflows
 - `goal` — `personal-learning`, `work-project`, `team-evaluation`, `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point: `cli`, `vscode`, `copilot-app`, `cloud-agent`
+- `tool` — preferred agentic tool entry point:
+  - `cli`: uses the `gh aw` CLI extension in a terminal
+  - `vscode`: uses VS Code with the GitHub Copilot extension
+  - `copilot-app`: uses the GitHub Copilot web or mobile app/chat interface
+  - `cloud-agent`: uses the GitHub Copilot cloud coding agent in GitHub.com
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
-
-### Technical Level Definitions
-
-| Level | Description |
-|-------|-------------|
-| `beginner` | No prior GitHub or coding experience |
-| `github-basic` | Can clone/commit/push but never used GitHub Actions or AI tools |
-| `actions-user` | Familiar with GitHub Actions YAML; new to agentic/AI workflows |
-| `advanced` | Experienced developer or DevOps; has used LLM-based tools before |
-
-### Background Definitions
-
-| Background | Description |
-|------------|-------------|
-| `no-coding` | No software development background |
-| `web-dev` | Frontend or full-stack web developer |
-| `backend-dev` | Backend or systems developer |
-| `devops` | DevOps engineer or SRE |
-| `data-science` | Data scientist or ML engineer |
-| `enterprise-dev` | Enterprise developer using GHE or GHES with self-hosted runners |
-| `enterprise-devops` | Senior DevOps or platform engineer managing self-hosted runner fleets |
-| `program-manager` | Program or product manager evaluating agentic workflows |
-
-### Tool Definitions
-
-| Tool | Description |
-|------|-------------|
-| `cli` | Uses the `gh aw` CLI extension directly in a terminal |
-| `vscode` | Uses VS Code with the GitHub Copilot extension; should be encouraged to run `gh aw` commands in the VS Code integrated terminal and to use `gh copilot suggest` as a helper when stuck on CLI steps |
-| `copilot-app` | Uses the GitHub Copilot web or mobile app / chat interface |
-| `cloud-agent` | Uses the GitHub Copilot cloud coding agent (Copilot coding agent) inside GitHub.com |
 
 ---
 
