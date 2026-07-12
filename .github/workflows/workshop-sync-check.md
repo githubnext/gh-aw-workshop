@@ -205,10 +205,9 @@ The setup step has already downloaded reference docs to `/tmp/gh-aw/data/ref/`. 
 
 ```bash
 ls /tmp/gh-aw/data/ref/
-# github-agentic-workflows.md  syntax-core.md  syntax-agentic.md  mcp-clis.md
 ```
 
-Do **not** re-fetch these files into the agent's own context — they are large and will be read by each subagent on demand from disk. Record only the file paths:
+Do **not** re-fetch or read these files into the agent's own context. Each file is large; they must be read by subagents one file at a time, only when needed for a specific check. Record only the directory path:
 
 ```
 ref_dir = "/tmp/gh-aw/data/ref/"
