@@ -217,13 +217,13 @@ For each workflow, compute whether it is **eligible** for dispatch:
 
 | Workflow | Eligible when |
 |---|---|
-| `workshop-author` | nodes < 15, no open `workshop` PR, last dispatch > 5 h ago or never |
-| `workflow-skills-editor` | no open `workflow-editor` PR, last dispatch > 22 h ago or never |
-| `side-quest` | nodes ≥ 5, no open `side-quest` PR, last dispatch > 20 h ago or never |
-| `workshop-student-simulator` | nodes ≥ 5, last dispatch > 20 h ago or never |
-| `workshop-sync-check` | nodes ≥ 3, last dispatch > 22 h ago or never |
-| `workshop-order-review` | nodes ≥ 3, last dispatch > 22 h ago or never |
-| `workshop-skill-activity-author` | nodes ≥ 8, no open `skill-activity` PR, last dispatch > 20 h ago or never |
+| `workshop-author` | nodes < 15, no open `workshop` PR, last dispatch > 3 h ago or never |
+| `workflow-skills-editor` | no open `workflow-editor` PR, last dispatch > 4 h ago or never |
+| `side-quest` | nodes ≥ 5, no open `side-quest` PR, last dispatch > 4 h ago or never |
+| `workshop-student-simulator` | nodes ≥ 5, last dispatch > 4 h ago or never |
+| `workshop-sync-check` | nodes ≥ 3, last dispatch > 4 h ago or never |
+| `workshop-order-review` | nodes ≥ 3, last dispatch > 4 h ago or never |
+| `workshop-skill-activity-author` | nodes ≥ 8, no open `skill-activity` PR, last dispatch > 4 h ago or never |
 
 Use the timestamps from `last_dispatch` in the loaded state and the current
 `timestamp` from the repo state to evaluate "last dispatch > N h ago". If a
@@ -269,8 +269,8 @@ Consider this tier only when **no workflow is eligible for dispatch**.
 
 Conditions for opening a modification PR:
 
-- No modification PR was opened by this orchestrator in the last 24 hours
-  (`last_modification_pr` is null or > 24 h ago)
+- No modification PR was opened by this orchestrator in the last 4 hours
+  (`last_modification_pr` is null or > 4 h ago)
 - You identify a **concrete, specific, bounded** improvement to one of the
   `.md` files listed in `workflow_sources`
 
@@ -301,8 +301,8 @@ Consider this tier only when **Tiers A and B both yield no action**.
 
 Conditions:
 
-- No suggestion issue was filed in the last 48 hours (`last_suggestion_issue`
-  is null or > 48 h ago)
+- No suggestion issue was filed in the last 4 hours (`last_suggestion_issue`
+  is null or > 4 h ago)
 - You identify a genuine automation capability gap not covered by any existing
   workflow
 
@@ -384,4 +384,3 @@ Use `add-comment` to append exactly one comment to the status issue on every run
 
 If adding the history comment fails after retries, still preserve updated
 `builder-state.json` and call `report_incomplete`.
-
