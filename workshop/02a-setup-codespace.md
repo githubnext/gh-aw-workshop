@@ -42,8 +42,6 @@ GitHub will spin up a container with everything you need for the workshop alread
 > - `cd ..` → moves back up one folder
 > - `git status` → shows `On branch main` and whether your working tree is clean
 
-If you want a quick primer before you continue, take the optional [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md).
-
 ## ✅ Checkpoint
 
 - [ ] The Codespace editor is open in your browser

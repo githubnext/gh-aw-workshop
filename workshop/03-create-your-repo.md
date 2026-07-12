@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll create your `my-agentic-workflows` repository, open it on GitHub, clone it into your working environment, and confirm GitHub Actions is enabled. This repository is your sandbox for building and testing agentic workflows.
+You'll create your `my-agentic-workflows` repository, open it on GitHub, confirm GitHub Actions is enabled, and clone it into your working environment if you're using the terminal path. This repository is your sandbox for building and testing agentic workflows.
 
 ## 📋 Before You Start
 
