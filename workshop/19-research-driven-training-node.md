@@ -19,7 +19,7 @@ In this step, you will turn `github/gh-aw` research into a concrete training pla
 Start by collecting the most current signal from the source repository and its docs references:
 
 ```bash
-curl -fsSL https://github.github.com/gh-aw/llms.txt | head -n 40
+curl -fsSL https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt | head -n 40
 ```
 
 This gives you a compact index of what the gh-aw project currently emphasizes for model and documentation consumption.
@@ -45,7 +45,7 @@ Add XML comments to preserve reasoning without interrupting learner flow:
 <research-metadata>
   <focus>safe outputs selection</focus>
   <sources>
-    <source>https://github.github.com/gh-aw/llms.txt</source>
+    <source>https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt</source>
     <source>https://github.github.com/gh-aw/reference/safe-outputs/</source>
   </sources>
   <rationale>...</rationale>
@@ -83,7 +83,7 @@ gh aw compile .github/workflows/training-plan-research.md --validate
 <!--
 <research-node-metadata>
   <intent>Teach maintainers how to choose and justify the next workshop node using live gh-aw research.</intent>
-  <primary-source>https://github.github.com/gh-aw/llms.txt</primary-source>
+  <primary-source>https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt</primary-source>
   <secondary-sources>
     <source>https://github.github.com/gh-aw/reference/llms/</source>
     <source>https://github.github.com/gh-aw/guides/workflow-patterns/</source>
