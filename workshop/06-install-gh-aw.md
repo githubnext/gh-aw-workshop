@@ -76,7 +76,7 @@ gh aw --version
 Example success output:
 
 ```text
-gh-aw version 0.1.0
+gh-aw version 0.81.6
 ```
 
 ## Troubleshooting
@@ -92,6 +92,6 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 - [ ] `gh --version` returns a `gh version 2.x.x` value
 - [ ] Either `gh extension install github/gh-aw` worked, or you used the install script fallback for Codespaces org-token 403 errors
 - [ ] `gh extension list` shows `github/gh-aw`
-- [ ] `gh aw --version` returns a `gh-aw version 0.1.0` style value
+- [ ] `gh aw --version` returns a version number (e.g. `gh-aw version 0.81.6` or later)
 
 **Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
