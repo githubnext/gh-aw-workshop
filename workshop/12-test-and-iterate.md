@@ -114,3 +114,9 @@ If a run shows a red ❌, click the failed step to see the raw log. Common cause
 - [ ] You understand how to read the Actions log to diagnose failures
 
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
+
+---
+
+### Go deeper
+
+- ➡️ [Side Quest: Prompt Iteration Patterns](side-quest-12-01-iteration-patterns.md) — four diagnostic patterns for systematically improving your task brief when the agent output isn't quite right.
