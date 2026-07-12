@@ -1,24 +1,6 @@
 # Step 5: What Are Agentic Workflows?
 
-> [!TIP]
-> **Already know GitHub Actions and LLM concepts?** → [Jump to Step 6: Install gh-aw](06-install-gh-aw.md)
-
-**Before** — classic GitHub Actions (you write every step):
-
-```yaml
-- name: List open issues
-  run: gh issue list --json title,number | jq '.[] | .number, .title'
-```
-
-**After** — agentic workflow (you describe the goal):
-
-```text
-List all open issues that need triage and summarize them with recommended next steps.
-```
-
-That's the core shift. The agent handles the how at runtime.
-
----
+You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract. This is the step that explains why agentic workflows reduce maintenance overhead — read this before deciding whether to continue.
 
 By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
 
@@ -36,19 +18,35 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 3. Triage high-priority issue #398 with the platform team.
 ```
 
-> **TL;DR** — By the end of this workshop, a scheduled GitHub Actions workflow will automatically
-> generate a daily, stakeholder-ready status report for your repo — no script maintenance required.
-> This step explains what makes that possible.
-
-You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract.
-
 > [!IMPORTANT]
 > **Coming from classic Actions? Unlearn these 3 things first:**
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
 > 2. The `.md` file is NOT documentation — it IS the workflow definition.
 > 3. Output is not logs — it's a synthesized report the agent composes at runtime.
 
+**TL;DR** — By the end of this workshop, a scheduled GitHub Actions workflow will automatically
+generate a daily, stakeholder-ready status report for your repo — no script maintenance required.
+This step explains what makes that possible.
+
 _If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
+
+> [!TIP]
+> **Already know GitHub Actions and LLM concepts?** → [Jump to Step 6: Install gh-aw](06-install-gh-aw.md)
+
+**Before** — classic GitHub Actions (you write every step):
+
+```yaml
+- name: List open issues
+  run: gh issue list --json title,number | jq '.[] | .number, .title'
+```
+
+**After** — agentic workflow (you describe the goal):
+
+```text
+List all open issues that need triage and summarize them with recommended next steps.
+```
+
+That's the core shift. The agent handles the how at runtime.
 
 ## 🎯 What You'll Do
 

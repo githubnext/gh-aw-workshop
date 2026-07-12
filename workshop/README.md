@@ -8,8 +8,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 |---|------|-------|--------|
 | 0 | [00-welcome.md](00-welcome.md) | Welcome — What We'll Build | ✅ |
 | 1 | [01-prerequisites.md](01-prerequisites.md) | What You Need Before We Start | ✅ |
-| 2a | [02a-setup-codespace.md](02a-setup-codespace.md) | ➡️ Adventure A: Set Up a Codespace | ✅ |
-| 2b | [02b-setup-local.md](02b-setup-local.md) | ➡️ Adventure B: Set Up Your Local Terminal | ✅ |
+| 2 | Choose one: [02a-setup-codespace.md](02a-setup-codespace.md) **or** [02b-setup-local.md](02b-setup-local.md) | Setup Adventure — A: Codespace or B: Local Terminal | ✅ |
 | 3 | [03-create-your-repo.md](03-create-your-repo.md) | Open and Verify Your Practice Repository | ✅ |
 | 4 | [04-github-actions-intro.md](04-github-actions-intro.md) | What Are GitHub Actions? | ✅ |
 | 5 | [05-agentic-workflows-intro.md](05-agentic-workflows-intro.md) | What Are Agentic Workflows? | ✅ |

@@ -8,12 +8,12 @@ Instead of writing the `daily-status` workflow file by hand, you'll use the `gh 
 
 ## 📋 Before You Start
 
-- You've completed [Step 10: Design: Your Daily Repo Status Report](10-design-daily-status.md)
+- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 - Your terminal is inside `my-agentic-workflows`
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
 > [!NOTE]
-> This is the **wizard path** for Step 11. If you prefer to understand every line of the workflow file before running it, use the [manual build path](11-build-daily-status.md) instead. Both paths produce the same result and converge at [Step 12](12-test-and-iterate.md).
+> This is the **wizard path** for Step 11. If you prefer to understand every line of the workflow file before running it, use the [manual build path](11a-build-daily-status.md) instead. Both paths produce the same result and converge at [Step 12](12-test-and-iterate.md).
 
 ---
 
@@ -127,7 +127,7 @@ The wizard added two files to your repository:
 | `.github/workflows/daily-status.lock.yml` | The compiled GitHub Actions YAML that GitHub Actions actually runs |
 
 > [!TIP]
-> Curious about what is inside `daily-status.md`? Open it in your editor and compare it to the [manual build walkthrough](11-build-daily-status.md). The YAML frontmatter sections — `emoji`, `description`, `on`, `permissions`, `tools`, and `safe-outputs` — are explained there in detail.
+> Curious about what is inside `daily-status.md`? Open it in your editor and compare it to the [manual build walkthrough](11a-build-daily-status.md). The YAML frontmatter sections — `emoji`, `description`, `on`, `permissions`, `tools`, and `safe-outputs` — are explained there in detail.
 
 ---
 
@@ -138,5 +138,5 @@ The wizard added two files to your repository:
 - [ ] `.github/workflows/daily-status.md` exists in your repository
 - [ ] `gh aw validate .github/workflows/daily-status.md` reports no errors
 
-**Previous:** [Step 10: Design: Your Daily Repo Status Report](10-design-daily-status.md)
+**Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
