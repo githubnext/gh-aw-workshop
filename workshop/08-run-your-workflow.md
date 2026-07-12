@@ -46,8 +46,8 @@ gh aw run hello-agent
 Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md)
 
 > [!NOTE]
-> **Troubleshooting Codespaces CLI triggers (`actions:write`)**
-> If `gh aw run hello-agent` fails in a Codespace with an `actions:write` permission/token error, trigger the run from the **Actions** tab UI instead (the button flow in this step). The UI path is the most reliable fallback when the Codespaces token has limited workflow scopes.
+> **Troubleshooting: Codespaces CLI trigger failures (`actions:write`)**
+> If `gh aw run hello-agent` fails in a Codespace with an `actions:write` permission/token error, trigger the run from the **Actions** tab UI instead (use the **Trigger manually via GitHub Actions UI (no terminal required)** section above). The UI path is the most reliable fallback when the Codespaces token has limited workflow scopes.
 
 ### Watch the run in progress
 

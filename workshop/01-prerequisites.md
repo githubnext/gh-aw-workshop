@@ -3,11 +3,11 @@
 _Starting with the right setup saves you from frustrating detours later._
 
 > [!IMPORTANT]
-> **Enterprise / GHES users: run this pre-flight first.** Agentic workflows require Copilot model access at both the organization and repository level.
+> **Enterprise and GHES users: complete this check first.** Agentic workflows require Copilot model access at both the organization and repository level.
 >
 > Before you continue:
 > - Run `gh copilot --version` to confirm Copilot CLI support is available in your environment.
-> - Check **Settings → Copilot** to confirm your Copilot licence and model access are enabled for this account.
+> - Check **Settings → Copilot** to confirm your Copilot license and model access are enabled for this account.
 > - If either check fails, ask your enterprise admin to enable Copilot model access first, then continue.
 >
 > Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and review [About GitHub Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent) for current enterprise and GHES capability constraints.
@@ -30,7 +30,7 @@ Complete these checks before you choose a setup path:
 - [ ] You know where you'll run workshop commands: a local terminal or a GitHub Codespace
 - [ ] If you're using your own terminal, run `gh --version` now and confirm `gh` CLI ≥ 2.40
 - [ ] If you choose a Codespace, you'll run `gh --version` in [Adventure A](02a-setup-codespace.md) right after the Codespace opens
-- [ ] You verified Copilot licence + model access for this account (`gh copilot --version` or **Settings → Copilot**)
+- [ ] You completed the Copilot license + model access check in the enterprise callout above
 
 > [!NOTE]
 > If you're using your own terminal and `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. If you're planning to use a Codespace, skip the local install commands and continue to [Adventure A](02a-setup-codespace.md). Authentication (`gh auth login`) is handled in your chosen setup path.
@@ -45,7 +45,7 @@ Complete these checks before you choose a setup path:
 > - [ ] `gh` CLI ≥ 2.40 is available — run `gh --version`
 > - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
 > - [ ] `gh auth status` shows a logged-in account
-> - [ ] Copilot licence + model access are enabled for this account (`gh copilot --version` or **Settings → Copilot**)
+> - [ ] Copilot license + model access are enabled for this account (`gh copilot --version` or **Settings → Copilot**)
 > **What Steps 2–4 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, and Step 4 gives a short primer on GitHub Actions.
 > After Step 5, continue to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 
@@ -167,7 +167,7 @@ Need a quick glossary with official docs links?
 - [ ] You have a GitHub account and can sign in
 - [ ] `gh` CLI ≥ 2.40 is available in your chosen environment (`gh --version`)
 - [ ] `gh` CLI is authenticated — `gh auth status` shows `Logged in to github.com as <your-username>` (completed in your chosen setup path)
-- [ ] Copilot licence + model access are verified (`gh copilot --version` or **Settings → Copilot**)
+- [ ] Copilot license + model access are verified (`gh copilot --version` or **Settings → Copilot**)
 - [ ] You've decided whether to use Codespaces or your local terminal
 - [ ] You know which file to open next
 
