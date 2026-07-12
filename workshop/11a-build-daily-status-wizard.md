@@ -23,13 +23,13 @@ The `add-wizard` command pulls an existing workflow from the `githubnext/agentic
 
 | Wizard step | What happens |
 |---|---|
-| Engine selection | You pick an AI engine: Copilot, Claude, Codex, Gemini, or Crush |
+| Engine selection | You pick an AI engine: Copilot, Claude, Codex (OpenAI), Gemini, or Crush (GitHub Next) |
 | Secret configuration | The wizard prompts for any API keys the chosen engine needs and stores them as GitHub Actions secrets |
 | Pull request | The wizard commits the workflow file and opens a pull request in your repository |
 | Optional run | You can trigger the workflow immediately or leave it for the schedule |
 
 > [!TIP]
-> The catalog workflow (`githubnext/agentics/daily-repo-status`) is maintained by the `gh-aw` team and is kept up to date with the latest frontmatter conventions. Adding it via the wizard means you always get a validated, production-ready starting point.
+> The catalog workflow (`githubnext/agentics/daily-repo-status`) is maintained by the `gh-aw` team and is kept up to date with the latest YAML frontmatter conventions. Adding it via the wizard means you always get a validated, production-ready starting point.
 
 ---
 
@@ -127,7 +127,7 @@ The wizard added two files to your repository:
 | `.github/workflows/daily-status.lock.yml` | The compiled GitHub Actions YAML that GitHub Actions actually runs |
 
 > [!TIP]
-> Curious about what is inside `daily-status.md`? Open it in your editor and compare it to the [manual build walkthrough](11-build-daily-status.md). The frontmatter sections — `emoji`, `description`, `on`, `permissions`, `tools`, and `safe-outputs` — are explained there in detail.
+> Curious about what is inside `daily-status.md`? Open it in your editor and compare it to the [manual build walkthrough](11-build-daily-status.md). The YAML frontmatter sections — `emoji`, `description`, `on`, `permissions`, `tools`, and `safe-outputs` — are explained there in detail.
 
 ---
 
