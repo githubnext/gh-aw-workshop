@@ -60,7 +60,7 @@ gh-aw can call GitHub APIs, run shell commands, and pass results to your AI prom
 
 Practice by reusing proven workflows before designing your own from scratch:
 
-1. Browse [`githubnext/agentics/workflows`](https://github.com/githubnext/agentics/tree/main/workflows), then pick a workflow ID from a filename (for example, `ci-doctor` from `ci-doctor.md`).
+1. Browse [`githubnext/agentics/workflows`](https://github.com/githubnext/agentics/tree/main/workflows), then pick a workflow ID by removing `.md` from a filename (for example, `ci-doctor.md` becomes `ci-doctor`).
 2. Run `gh aw add githubnext/agentics/ci-doctor` in your repository (replace `ci-doctor` with the workflow ID you picked).
 3. Open the added workflow file, read the frontmatter and task brief, then run it.
 4. Adapt one part (trigger, permissions, or prompt) and re-run to compare behavior.
