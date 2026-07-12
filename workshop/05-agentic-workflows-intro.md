@@ -22,6 +22,16 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 
 You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract.
 
+| | Classic GitHub Actions | Agentic Workflow |
+|---|---|---|
+| **File format** | YAML (`.yml`) | Markdown with YAML frontmatter (`.md`) |
+| **Logic location** | `run:` shell steps you write | Task brief you describe in prose |
+| **Execution** | Runs shell commands deterministically | AI agent reasons, calls tools, decides next steps |
+| **Output** | Exit codes, logs | GitHub issues, comments, PRs, files |
+| **When to use** | Build, test, deploy pipelines | Open-ended tasks that need judgment |
+
+You still use GitHub Actions as the runner, but instead of writing the steps yourself, you describe the goal and the agent figures out the steps.
+
 > [!IMPORTANT]
 > **Coming from classic Actions? Unlearn these 3 things first:**
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
