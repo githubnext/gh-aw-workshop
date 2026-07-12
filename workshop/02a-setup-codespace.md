@@ -1,5 +1,16 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
+
+**New to terminals, or prefer to work in the browser?** Click the badge above to launch your Codespace instantly — everything you need is pre-installed and authenticated. All workshop CLI commands run in the Codespace browser terminal — no local install required.
+
+## Which path is right for me?
+
+| If you… | Do this |
+|---------|---------|
+| New to terminals, prefer a browser-based setup, or use the GitHub Copilot Cloud Agent (CCA) | ✅ **You're in the right place** — click the badge above and continue below |
+| Comfortable with a local terminal and want to use your own machine | ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
+
 > [!IMPORTANT]
 > **Using the GitHub Copilot Cloud Agent (CCA)?**
 > Adventure A is the **recommended setup path** for you — no local terminal required.
