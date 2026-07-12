@@ -1,20 +1,16 @@
 # Step 0: Welcome — What We'll Build
 
-In about 30 minutes, your repository will generate this report automatically every morning:
+By the end of this workshop, you'll have a real GitHub Actions workflow that automatically summarizes your repository every day — written and run by an AI agent you configured.
 
-```markdown
-## Daily Repository Status — July 12
+![Completed workflow run in the Actions tab](images/00-workflow-run-complete.svg)
 
-- ✅ CI health: 18 workflows succeeded, 1 failed (`docs-link-check`)
-- 🔄 Pull requests: 7 open (2 need review, 1 stale > 14 days)
-- 🐛 Issues: 4 new, 3 closed, 2 high-priority still open
-- 🚀 Releases: No new tags in the last 24 hours
+## Choose your path
 
-### Recommended next actions
-1. Re-run `docs-link-check` and update broken external URLs.
-2. Review PR #412 and PR #415 before noon.
-3. Triage high-priority issue #398 with the platform team.
-```
+| If you're a... | Recommended setup adventure | Why this path fits |
+|---|---|---|
+| **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md) | Stay in the browser with a preconfigured environment |
+| **CLI user** (comfortable in a terminal) | ➡️ [Adventure B: Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
+| **VS Code user** | ➡️ [Adventure B: Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
 
 ## Why this matters
 
@@ -26,9 +22,9 @@ By the end of this workshop, you'll have a scheduled AI agent that posts a daily
 
 **What you'll build in 15 steps:** A production-style, AI-powered daily repository status workflow that runs on a [schedule](https://github.github.com/gh-aw/reference/triggers/) and posts a useful summary automatically — so your team gets a morning update with zero manual status-chasing.
 
-**Format:** Self-paced end-to-end, with an optional quick path if you're already familiar with GitHub CLI.
+**Format:** Self-paced end-to-end, with an optional quick path if you're already familiar with GitHub.
 
-**Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC). You'll install everything you need as part of the workshop — no pre-existing tools required. All terminal commands in this workshop can also be run inside a GitHub Codespace — no local install required.
+**Compatibility:** Works with GitHub.com or GitHub Enterprise Cloud (GHEC). You'll install everything you need in Step 1.
 
 > [!TIP]
 > Experienced developer? See [Step 1: What You Need Before We Start](01-prerequisites.md) for the skip-ahead checklist.
@@ -51,12 +47,6 @@ By the end of this workshop, you'll have a scheduled AI agent that posts a daily
 - **Work-project engineers:** You replace manual morning repo triage with a scheduled status summary that highlights what needs action.
 - **Team evaluators:** You can quickly assess workflow quality, output usefulness, and readiness for real project adoption.
 
-> [!TIP]
-> **Choose your path**
-> - **I'm brand new to GitHub** → Start at [Step 1: What You Need Before We Start](01-prerequisites.md) and follow every step in order.
-> - **I know GitHub Actions** → Steps 1–4 are optional for you — go straight to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
-> - **I just want to see the final workflow** → Go straight to [Step 11a: Build the Daily Status Workflow](11a-build-daily-status.md).
-
 ## Why Agentic Workflows?
 
 Before: you open your repo every morning, click through issues and pull requests, and manually summarize what changed. After: a scheduled workflow does that scan for you and posts a digest automatically before your first meeting. That's the practical value of agentic workflows in this workshop: less status-chasing, more decision-making.
@@ -64,7 +54,7 @@ Before: you open your repo every morning, click through issues and pull requests
 And the code tells the same story. **Before: write and maintain a 200-line Actions YAML full of shell scripts, condition blocks, and API calls. After: write a 20-line task brief in plain English — and let the agent figure out the rest at runtime.**
 
 > [!TIP]
-> Prefer a quick start? Use **Quick-start for experienced users** above — most GitHub Actions-experienced learners jump to [Step 6: Install `gh-aw`](06-install-gh-aw.md), then continue with Steps 7–8.
+> Prefer a quick start? Use **Quick-start for experienced users** above — most GitHub Actions-experienced learners jump to [Step 6](06-install-gh-aw.md), then continue with Steps 7–8.
 
 ## 🎯 What You'll Do
 
@@ -99,7 +89,7 @@ Both paths converge at **Step 3** and stay together for the rest of the workshop
 
 At **Step 11**, the path splits again:
 - **Manual build** — write the workflow file section by section so every line is clear.
-- **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup.
+- **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use the guided, interactive setup path.
 
 Both Step 11 paths converge at **Step 12**.
 
