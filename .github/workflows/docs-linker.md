@@ -131,7 +131,7 @@ docs, add them to its working knowledge.
 
 ---
 
-## Phase 1 — Load State
+## Load State
 
 1. Read `/tmp/gh-aw/data/repo-state.json`. It contains:
    - `workshop_files` — sorted array of all workshop markdown paths
@@ -148,7 +148,7 @@ docs, add them to its working knowledge.
 
 ---
 
-## Phase 2 — Select File (Round-Robin)
+## Select File (Round-Robin)
 
 1. If the `focus` input is non-empty, use it as `target_file`. Otherwise:
    - `target_file = workshop_files[round_robin_index % len(workshop_files)]`
@@ -158,7 +158,7 @@ docs, add them to its working knowledge.
 
 ---
 
-## Phase 3 — Identify Concepts and Tasks
+## Identify Concepts and Tasks
 
 Scan `target_file` for every **concept**, **task**, **term**, or **feature** that
 has a matching reference page in the docs-site table above. Consider:
@@ -189,7 +189,7 @@ Only include entries where a matching URL exists in the table.
 
 ---
 
-## Phase 4 — Fetch Reference Docs (Spot-Check)
+## Fetch Reference Docs (Spot-Check)
 
 For the **top 3–5 most prominent concept matches**, fetch the raw source file
 from `github/gh-aw` to confirm the doc still covers the concept:
@@ -228,7 +228,7 @@ Do **not** add any link whose URL fails this check.
 
 ---
 
-## Phase 5 — Add Inline Links
+## Add Inline Links
 
 For each verified mapping entry, search `target_file` for the **first bare
 occurrence** of the term (i.e., the term appears as plain text, not already
@@ -249,7 +249,7 @@ Rules:
 
 ---
 
-## Phase 6 — Add or Update "See Also" Section
+## Add or Update "See Also" Section
 
 Locate any existing `## 📚 See Also` (or `## See Also`) section at the bottom
 of `target_file`. If it exists, update it. If not, append one.
@@ -272,7 +272,7 @@ navigation links (if they exist), so it does not interrupt the learning flow.
 
 ---
 
-## Phase 7 — Decide and Act
+## Decide and Act
 
 ### Nothing to change
 
@@ -292,7 +292,7 @@ create a pull request with:
 
 ---
 
-## Phase 8 — Update Cache State
+## Update Cache State
 
 Write the updated state to `/tmp/gh-aw/cache-memory/docs-linker-state.json`:
 

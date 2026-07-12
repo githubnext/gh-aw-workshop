@@ -94,7 +94,7 @@ that still needs attention.
 
 ---
 
-## Phase 1 — Load Inputs
+## Load Inputs
 
 1. Read `/tmp/gh-aw/data/image-refs.json` — the full list of image references
    found in workshop markdown files. Each record has:
@@ -117,7 +117,7 @@ that still needs attention.
 
 ---
 
-## Phase 2 — Classify Broken References
+## Classify Broken References
 
 For each broken reference, determine whether it depicts a **GitHub UI element**
 that can be illustrated with a conceptual SVG.
@@ -134,7 +134,7 @@ Classify each broken reference as:
 
 ---
 
-## Phase 3 — Generate Conceptual SVGs
+## Generate Conceptual SVGs
 
 For each `generatable` broken reference, generate a conceptual SVG that
 illustrates the described GitHub UI element.
@@ -185,7 +185,7 @@ in the exact line where the reference appears.
 
 ---
 
-## Phase 4 — Report Remaining Broken References
+## Report Remaining Broken References
 
 For each `not-generatable` broken reference (real screenshot needed):
 
@@ -207,7 +207,7 @@ For each `not-generatable` broken reference (real screenshot needed):
 
 ---
 
-## Phase 5 — Open a Pull Request
+## Open a Pull Request
 
 If any SVG files were generated in Phase 3:
 

@@ -6,7 +6,7 @@ By default, a gh-aw agent reads your task brief and produces text. **MCP (Model 
 
 ---
 
-## 1. What is MCP?
+## What is MCP?
 
 **Model Context Protocol** is an open standard originally developed by Anthropic that defines a uniform way for AI models to call external tools. Instead of building a custom integration for every API you want the agent to use, MCP gives you a single protocol. A server speaks MCP; the agent calls it. That's the whole contract.
 
@@ -20,7 +20,7 @@ The GitHub MCP server, for example, advertises tools like `list_issues`, `get_pu
 
 ---
 
-## 2. How the agentic loop changes
+## How the agentic loop changes
 
 Without MCP, the agent loop looks like this:
 
@@ -43,7 +43,7 @@ The agent can interleave tool calls with its reasoning as many times as it needs
 
 ---
 
-## 3. What the `tools:` frontmatter block does
+## What the `tools:` frontmatter block does
 
 The `tools:` block in your workflow's YAML frontmatter tells gh-aw which MCP servers to start before the agent runs:
 
@@ -66,7 +66,7 @@ tools:
 
 ---
 
-## 4. How toolsets work
+## How toolsets work
 
 A toolset is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
 
@@ -89,7 +89,7 @@ tools:
 
 ---
 
-## 5. Reading MCP tool calls in the Actions log
+## Reading MCP tool calls in the Actions log
 
 When you run a workflow with MCP enabled, the Actions log shows each tool call the agent makes. Look for lines like:
 

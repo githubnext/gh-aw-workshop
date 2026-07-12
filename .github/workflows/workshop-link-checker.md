@@ -55,7 +55,7 @@ Your job is to detect broken links in workshop markdown files and report actiona
 
 ---
 
-## Phase 1 — Load Inputs
+## Load Inputs
 
 1. Read `/tmp/gh-aw/data/repo-state.json`.
 2. Extract `workshop_files`.
@@ -63,7 +63,7 @@ Your job is to detect broken links in workshop markdown files and report actiona
 
 ---
 
-## Phase 2 — Extract Links from Markdown
+## Extract Links from Markdown
 
 For each file in `workshop_files`, extract links with line numbers:
 
@@ -95,7 +95,7 @@ Build a normalized list of records:
 
 ---
 
-## Phase 3 — Validate Links
+## Validate Links
 
 Validate each extracted link and collect only broken ones.
 
@@ -128,7 +128,7 @@ For internal links to non-markdown files, only validate file existence.
 
 ---
 
-## Phase 4 — Open or Update Broken-Link Issues
+## Open or Update Broken-Link Issues
 
 For each broken link record, create a deterministic issue key hash:
 
@@ -160,7 +160,7 @@ Do not create duplicate issues for the same key in one run.
 
 ---
 
-## Phase 5 — No-op When Clean
+## No-op When Clean
 
 If no broken links were found, call `noop` with a concise summary:
 

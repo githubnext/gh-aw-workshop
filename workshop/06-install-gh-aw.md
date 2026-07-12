@@ -2,8 +2,8 @@
 
 > [!NOTE]
 > **Using `copilot-app` or `cloud-agent`?**
-> `gh extension install github/gh-aw` must run in a terminal. Open your
-> [Codespace from Step 2](02a-setup-codespace.md#2-open-the-codespace), then
+> `gh extension install github/gh-aw` must run in a terminal. Use
+> [Open the Codespace](02a-setup-codespace.md#open-the-codespace), then
 > run this step in the Codespace terminal.
 
 ## 🎯 What You'll Do
@@ -16,8 +16,8 @@ extension so you can compile and run agentic workflows from your terminal.
 - You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You're inside your `my-agentic-workflows` repository directory
 - You have authenticated the `gh` CLI with `gh auth login`
-  (done in [Adventure A §4](02a-setup-codespace.md#4-authenticate-the-gh-cli)
-  or [Adventure B §5](02b-setup-local.md#5-authenticate-the-gh-cli))
+  (done in [Verify GitHub authentication](02a-setup-codespace.md#verify-github-authentication)
+  or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 ## Steps
 
@@ -26,7 +26,7 @@ extension so you can compile and run agentic workflows from your terminal.
 > then run all `gh aw` commands there. If a command is unfamiliar, try:
 > `gh copilot suggest "how do I install a gh extension"`
 
-### 1. Install the `gh-aw` extension
+### Install the `gh-aw` extension
 
 > [!IMPORTANT]
 > **Pre-flight checklist (run these in order):**
@@ -61,7 +61,7 @@ If the extension is already installed, you can update it instead:
 gh extension upgrade github/gh-aw
 ```
 
-### 2. Confirm installation
+### Confirm installation
 
 ```bash
 gh extension list
@@ -69,7 +69,7 @@ gh extension list
 
 You should see an entry for `github/gh-aw`.
 
-### 3. Verify `gh aw` is available
+### Verify `gh aw` is available
 
 ```bash
 gh aw --version

@@ -32,6 +32,7 @@ workshop/               # Step-by-step workshop content (00-welcome.md … 16-co
 - Keep steps short and outcome-focused. Each step should answer: _what will the learner do, and what will they have when they're done?_
 - Use `> [!TIP]`, `> [!NOTE]`, and `> [!IMPORTANT]` callouts sparingly — only when the information meaningfully changes what the learner should do.
 - End every workshop step with a `## ✅ Checkpoint` section containing a markdown checklist.
+- Do **not** number Markdown headers inside a file. Use descriptive headings and keep step order in lists, filenames, tables, or checkpoints instead.
 - Do **not** front-load prerequisite tool requirements in welcome or introductory steps — prerequisites belong in `01-prerequisites.md`.
 
 ### Markdown rules

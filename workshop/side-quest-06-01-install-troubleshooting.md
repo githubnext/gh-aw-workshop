@@ -6,7 +6,7 @@ If `gh extension install github/gh-aw` fails, use the matching fix below and ret
 
 ---
 
-## 1. Not authenticated (HTTP 401)
+## Not authenticated (HTTP 401)
 
 If you see errors like:
 
@@ -32,7 +32,7 @@ Confirm `gh auth status` shows `Logged in to github.com`.
 
 ---
 
-## 2. Organization Codespace token limitation (HTTP 403)
+## Organization Codespace token limitation (HTTP 403)
 
 In an org-owned Codespace, `gh` can be pre-authenticated with an org-scoped token.
 Installing `github/gh-aw` from the marketplace can fail with HTTP 403 even though auth is valid.
@@ -48,7 +48,7 @@ You usually do **not** need to run `gh auth login` for this case.
 
 ---
 
-## 3. Behind a corporate proxy
+## Behind a corporate proxy
 
 Set proxy variables in your current shell, then retry:
 
@@ -63,7 +63,7 @@ gh extension install github/gh-aw
 
 ---
 
-## 4. GitHub Enterprise Server (GHE/GHES) endpoint
+## GitHub Enterprise Server (GHE/GHES) endpoint
 
 Authenticate against your GHES hostname and install with `--hostname`:
 
@@ -78,7 +78,7 @@ If your administrator requires different scopes, use the minimum required scopes
 
 ---
 
-## 5. Extension download fails on a locked-down network
+## Extension download fails on a locked-down network
 
 If install fails with a network error:
 

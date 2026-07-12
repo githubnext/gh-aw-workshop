@@ -211,11 +211,11 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 
 ## Simulation Task
 
-### 1. Load student profiles
+### Load student profiles
 
 Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the end with accumulated run counts.
 
-### 2. Simulate each student through the workshop
+### Simulate each student through the workshop
 
 For **each of the 38 students**, simulate their experience step-by-step using the following rules:
 
@@ -297,7 +297,7 @@ where `day_of_year` is the day number in the current year (1–366).
 
 A step succeeds if `roll < adjusted_probability`.
 
-### 3. Collect pain points per student
+### Collect pain points per student
 
 For each student who fails at a step, note:
 - Which step they failed on
@@ -323,7 +323,7 @@ For each student who fails at a step, note:
 - Any student failing a workflow execution step because of missing credentials: "The workflow depends on repository-side Actions secrets or model access that are not configured yet; local Copilot CLI auth does not fix this"
 - Any student failing a `*build*` step: "Full workflow source harder to understand without line-by-line annotation"
 
-### 4. Aggregate and analyse results
+### Aggregate and analyse results
 
 Compute:
 - **Overall success rate** (% of students who complete all ${{ env.WORKSHOP_STEP_COUNT }} steps)
@@ -335,18 +335,18 @@ Compute:
 - **Most common pain points** (top 10, ranked by frequency)
 - **Improvement opportunities** — specific, actionable suggestions for each top dropout step
 
-### 5. Update student profiles
+### Update student profiles
 
 Update `/tmp/gh-aw/cache-memory/profiles.json`:
 - Increment `runs` by 1 for every student
 - Increment `successes` by 1 for every student who completed all ${{ env.WORKSHOP_STEP_COUNT }} steps
 - Write the updated JSON back to `/tmp/gh-aw/cache-memory/profiles.json`
 
-### 6. Read workshop files (if available)
+### Read workshop files (if available)
 
 If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3 of the workshop step files to ground your improvement suggestions in the actual content. Focus on the highest-dropout steps.
 
-### 7. Create a concise report issue
+### Create a concise report issue
 
 Use `create-issue` safe output with:
 
@@ -396,7 +396,7 @@ Briefly cover one surprising success, one unexpected dropout, and one content-ga
 </details>
 ```
 
-### 8. Create actionable sub-issues for repairs
+### Create actionable sub-issues for repairs
 
 After creating the report issue, create **exactly 3 child issues** using `create-issue` where each issue:
 - sets `parent: "aw_workshop_simulation_parent"` to link directly to the parent from step 7

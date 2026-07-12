@@ -12,7 +12,7 @@ Take stock of everything you've learned, then choose a direction for what to bui
 
 ## Steps
 
-### 1. Celebrate what you've shipped
+### Celebrate what you've shipped
 
 You've gone from zero to a fully automated, AI-powered workflow that:
 
@@ -22,7 +22,7 @@ You've gone from zero to a fully automated, AI-powered workflow that:
 
 That is a real, production-capable workflow. Nicely done.
 
-### 2. Review what you've learned
+### Review what you've learned
 
 Here's a quick recap of the concepts you've touched:
 
@@ -37,7 +37,7 @@ Here's a quick recap of the concepts you've touched:
 > [!TIP]
 > If any of these feel shaky, go back and re-read the relevant node. The workshop is a graph — you can revisit any step at any time.
 
-### 3. Pick your next challenge
+### Pick your next challenge
 
 Here are a few directions to explore. Choose the one that excites you most.
 
@@ -69,7 +69,7 @@ Practice by reusing proven workflows before designing your own from scratch:
 
 Found a gap? Have a better explanation? Open an issue or pull request in this repository. The workshop itself is a living document.
 
-### 4. Explore further resources
+### Explore further resources
 
 - **gh-aw documentation**: run `gh aw --help` or visit the extension's GitHub page for the full reference.
 - **GitHub Actions docs**: [docs.github.com/actions](https://docs.github.com/en/actions) — the official home for triggers, runners, and marketplace actions.

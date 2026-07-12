@@ -28,7 +28,7 @@ You'll create a simple agentic workflow file in your repository using the `gh-aw
 > then run all `gh aw` commands there. If a command is unfamiliar, try:
 > `gh copilot suggest "how do I install a gh extension"`
 
-### 1. Create the workflows directory
+### Create the workflows directory
 
 Agentic workflow files live alongside regular GitHub Actions workflows inside `.github/workflows/`.
 
@@ -41,7 +41,7 @@ mkdir -p .github/workflows
 > [!NOTE]
 > **GitHub UI path:** Skip this step — GitHub creates intermediate directories automatically when you specify a full file path in the next step.
 
-### 2. Create your first workflow file
+### Create your first workflow file
 
 **Terminal:**
 
@@ -73,7 +73,7 @@ Write your workflow using the steps below, then compile it to generate the `.loc
 > [!IMPORTANT]
 > This first workflow is written by hand so you can learn the file structure once. After that, prefer asking Copilot, Claude, or ChatGPT to update agentic workflows with the `agentic-workflows` skill instead of editing them line by line yourself. **Agents edit agents.**
 
-### 3. Add the basic frontmatter (name and trigger)
+### Add the basic frontmatter (name and trigger)
 
 Every `gh-aw` workflow starts with a YAML frontmatter block fenced by `---`. This tells the system what the workflow is called, when it runs, and what permissions it needs.
 
@@ -117,7 +117,7 @@ You should see:
 ✔ hello-agent.md — valid
 ```
 
-### 4. Add permissions to the frontmatter
+### Add permissions to the frontmatter
 
 Now add the `permissions` block after the `on:` section and before the closing `---`:
 
@@ -141,7 +141,7 @@ You should see:
 
 - `permissions`: the workflow can read your repository and write to issues.
 
-### 5. Add the agent instructions
+### Add the agent instructions
 
 Below the closing `---`, write a plain-English description of what you want the agent to do. Think of it as a task brief for a capable colleague.
 
@@ -171,7 +171,7 @@ You should still see:
 ✔ hello-agent.md — valid
 ```
 
-### 6. Optional: Keep validating while you iterate
+### Optional: Keep validating while you iterate
 
 If you make more edits after the checkpoints above, run the `gh-aw` validator again or keep it running while you refine the file.
 
@@ -194,7 +194,7 @@ You should see output like:
 > [!NOTE]
 > Validation checks the file structure. The agent's reasoning happens at runtime, not compile time.
 
-### 7. Commit and push your workflow file
+### Commit and push your workflow file
 
 **Terminal:**
 

@@ -14,7 +14,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
-### 1. Open the Actions tab
+### Open the Actions tab
 
 In your repository, click the **Actions** tab at the top of the page.
 
@@ -25,7 +25,7 @@ You'll see a list of workflows on the left. Look for **Hello Agent** — that's 
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
 
-### 2. Trigger manually via GitHub Actions UI (no terminal required)
+### Trigger manually via GitHub Actions UI (no terminal required)
 
 Click **Hello Agent** in the left sidebar. You'll see a banner that says "This workflow has a workflow_dispatch event trigger."
 
@@ -45,13 +45,13 @@ gh aw run .github/workflows/hello-agent.md
 
 Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md)
 
-### 3. Watch the run in progress
+### Watch the run in progress
 
 After a few seconds, a new row appears in the run list with a yellow spinning icon — that means the workflow is running. Click the row to open the run details.
 
 You'll see a single job. Click it to open the live log view.
 
-### 4. Read the log as the agent works
+### Read the log as the agent works
 
 The log streams in real time. Unlike a traditional CI job — which shows build commands — an agentic workflow log shows the agent's **reasoning steps**:
 
@@ -73,7 +73,7 @@ Each line tells you what the agent is doing:
 > [!TIP]
 > If you're used to CI logs that scroll by in milliseconds, agentic logs can feel slow — the agent is actually pausing to think. That's normal and expected.
 
-### 5. Check the outcome
+### Check the outcome
 
 Once the run shows a green ✅ checkmark, go to the **Issues** tab of your repository. You should see a new comment on an existing issue — or a brand-new issue created by the agent if your repo had none.
 
@@ -82,13 +82,13 @@ Open the comment and read it. Then look back at the workflow file you wrote. Not
 > [!NOTE]
 > The agent may have picked a different issue than you expected, or created a new issue with a slightly different title. That's fine — it's reasoning from live data and following the instructions you gave it. If the result surprises you, look at your instructions and consider how you might make them more precise.
 
-### 6. View the run summary
+### View the run summary
 
 Navigate back to the **Actions** tab and click the completed run. Scroll down past the jobs to the **Summary** section. Agentic workflows often post a structured summary here showing what the agent did and which safe-output operations it performed.
 
 ![Workflow run summary panel](images/08-run-summary.svg)
 
-### 7. Re-run with a twist (optional)
+### Re-run with a twist (optional)
 
 Want to experiment? Instead of editing `.github/workflows/hello-agent.md` directly, ask Copilot, Claude, or ChatGPT to update it with the `agentic-workflows` skill. For example, ask the agent to change the task so it adds a label to the issue instead of posting a comment, then review the diff, push the change, and trigger another run.
 

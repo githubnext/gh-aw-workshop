@@ -32,7 +32,7 @@ on:
 
 ## Steps
 
-### 1. Open your workflow file
+### Open your workflow file
 
 In your editor (or Codespace), open `.github/workflows/daily-status.md`.
 
@@ -43,7 +43,7 @@ Navigate to `.github/workflows/daily-status.md` in your repository on GitHub and
 
 </details>
 
-### 2. Locate the `on:` block
+### Locate the `on:` block
 
 You should already have a `schedule: daily` trigger and a `workflow_dispatch` trigger:
 
@@ -53,7 +53,7 @@ on:
   workflow_dispatch: {}
 ```
 
-### 3. Choose your schedule
+### Choose your schedule
 
 gh-aw accepts natural-language schedule expressions — no cron syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
 
@@ -77,7 +77,7 @@ on:
 > A green output means your YAML is valid so far. If you see a red error, check indentation in the `on:` block you just edited.
 > For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
-### 4. Compile and validate
+### Compile and validate
 
 **Terminal:**
 
@@ -90,7 +90,7 @@ You should see `✅ Compiled successfully`. The compiled `.yml` will contain the
 > [!NOTE]
 > **GitHub UI path:** You won't be able to validate YAML until after committing. Run `gh aw compile` in a Codespace if you want early feedback.
 
-### 5. Commit and push the schedule trigger
+### Commit and push the schedule trigger
 
 **Terminal:**
 
@@ -107,7 +107,7 @@ After updating the `schedule:` line in the web editor (opened in step 1), click 
 
 </details>
 
-### 6. Confirm the schedule is registered
+### Confirm the schedule is registered
 
 Navigate to your repository on GitHub, then **Actions → daily-status**. On the right-hand sidebar you'll see a **This workflow has a schedule trigger** badge.
 
@@ -116,7 +116,7 @@ Navigate to your repository on GitHub, then **Actions → daily-status**. On the
 > [!WARNING]
 > GitHub may delay the very first scheduled run by up to 15 minutes after you push. If the workflow doesn't fire at the expected time, check **Actions** for queued runs before assuming something is broken.
 
-### 7. Wait for or trigger a run
+### Wait for or trigger a run
 
 You can wait for the next scheduled time, or click **Run workflow** → **Run workflow** to trigger it immediately and confirm everything still works.
 

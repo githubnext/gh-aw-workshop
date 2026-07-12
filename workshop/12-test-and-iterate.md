@@ -14,7 +14,7 @@ You'll trigger your daily-status workflow manually, read the resulting issue com
 
 ## Steps
 
-### 1. Trigger the workflow manually
+### Trigger the workflow manually
 
 Open a browser, navigate to your repository, and click the **Actions** tab.
 
@@ -26,7 +26,7 @@ Find your **Daily Repo Status** workflow in the left sidebar and click it. Then 
 > gh workflow run daily-status.md
 > ```
 
-### 2. Watch the run live
+### Watch the run live
 
 Click the run that just appeared. You will see a job named something like **run** or **agent**. Click it to watch the live log stream.
 
@@ -36,7 +36,7 @@ Look for two things:
 
 ![Workflow run log](images/12-workflow-run-log.svg)
 
-### 3. Check the output
+### Check the output
 
 Once the run finishes (green ✅), open an issue in your repository titled **Daily Status Reports**. The agent should have posted a comment in the format you defined in the prompt.
 
@@ -45,7 +45,7 @@ Read it critically. Ask yourself:
 - Is the tone right — too formal, too casual?
 - Is anything missing (e.g., no mention of stale PRs)?
 
-### 4. Improve the agent instructions
+### Improve the agent instructions
 
 Open `.github/workflows/daily-status.md` in your editor. The agent instructions live in the **Markdown body** — the plain-English text below the closing `---` fence. This is the section that starts with `# Daily Repo Status Report`.
 
@@ -73,7 +73,7 @@ For example, your updated Guidelines section might look like:
 > [!NOTE]
 > The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
 
-### 5. Commit, push, and re-run
+### Commit, push, and re-run
 
 **Terminal:**
 
@@ -95,7 +95,7 @@ Trigger another manual run and compare the new comment with the old one. Repeat 
 > [!NOTE]
 > Every iteration teaches you something about prompt engineering. Small, focused changes are easier to evaluate than large rewrites.
 
-### 6. Read the run log for errors
+### Read the run log for errors
 
 If a run shows a red ❌, click the failed step to see the raw log. Common causes:
 
