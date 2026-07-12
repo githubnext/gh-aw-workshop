@@ -43,7 +43,7 @@ Terminal users can use this command instead:
 gh aw run .github/workflows/hello-agent.md
 ```
 
-Reference: [`gh aw run` CLI docs](https://github.github.com/gh-aw/setup/cli/#run)
+Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md#run)
 
 ### 3. Watch the run in progress
 
