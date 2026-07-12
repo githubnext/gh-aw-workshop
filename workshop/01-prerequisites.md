@@ -4,13 +4,11 @@ _Starting with the right setup saves you from frustrating detours later._
 
 ## 🔍 Quick self-check
 
-If you already have a terminal with `gh` available, run this single command to confirm your environment is ready:
+If you haven't run the pre-flight check in [Step 0](00-welcome.md), run it first to confirm `gh` is installed and authenticated:
 
-```bash
-gh auth status && gh --version && echo "✅ Ready to continue"
-```
+➡️ [Step 0 pre-flight check](00-welcome.md#optional-pre-flight-tool-check)
 
-If the command fails with an **authentication error**, run `gh auth login` first — see the [GitHub CLI auth docs](https://cli.github.com/manual/gh_auth_login).
+If the check fails with an authentication error, run `gh auth login` first — see the [GitHub CLI auth docs](https://cli.github.com/manual/gh_auth_login).
 
 If `gh` is not found, install it using the steps in [§ Confirm required vs optional prerequisites](#1-confirm-required-vs-optional-prerequisites) below.
 
@@ -42,21 +40,6 @@ If `gh` is not found, install it using the steps in [§ Confirm required vs opti
 You'll confirm that you have everything required before writing a single line of workflow code. By the end of this step you'll know which setup path to follow — Codespace or local terminal — and you'll be ready to move forward.
 
 ## Steps
-
-> [!NOTE]
-> **Already have a terminal open with `gh`, `git`, and `node` available?** Run this quick pre-flight check now. If you're starting fresh and haven't set up your environment yet, skip ahead to [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md) and return here once your terminal is ready.
->
-> ```bash
-> # Pre-flight check -- run this once your terminal is open
-> gh --version && echo "✅ gh CLI OK" || echo "❌ gh CLI missing — see install commands below"
-> gh auth status && echo "✅ gh authenticated" || echo "❌ run: gh auth login"
-> git --version && echo "✅ git OK" || echo "❌ git missing"
-> node --version 2>/dev/null && echo "✅ node OK" || echo "ℹ️  node not required but useful"
-> echo "Pre-flight complete."
-> ```
->
-> ![Terminal showing all pre-flight checks passing with green checkmarks](images/01-preflight-success.svg)
-> _What success looks like: every line shows ✅ and the prompt returns without errors._
 
 ### 1. Confirm required vs optional prerequisites
 
