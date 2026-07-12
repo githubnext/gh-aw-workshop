@@ -76,22 +76,23 @@ function buildTransitions() {
         state.flags.environmentReady,
         "Practice repository setup depends on an opened local terminal or Codespace",
         "environment-not-ready",
-        "Complete the setup step (02-setup) before creating or cloning `my-agentic-workflows`."
+        "Complete Adventure A (Codespace) or Adventure B (local terminal) before creating or cloning `my-agentic-workflows`."
       );
       if (!envCheck.ok) return envCheck;
-      const next = cloneState(state);
-      if (!next.flags.hasRepo) {
-        next.flags.hasRepo = true;
-        next.flags.repoCreatedViaUi = true;
-        next.flags.repoHasReadme = true;
-      }
+      const needsRepoCreation = !state.flags.hasRepo;
       const readmeCheck = ensure(
-        next.flags.repoHasReadme,
+        needsRepoCreation || state.flags.repoHasReadme,
         "Practice repository is missing the starter README",
         "repo-readme-missing",
         "Enable 'Add a README file' when creating the repository in GitHub UI."
       );
       if (!readmeCheck.ok) return readmeCheck;
+      const next = cloneState(state);
+      if (needsRepoCreation) {
+        next.flags.hasRepo = true;
+        next.flags.repoCreatedViaUi = true;
+        next.flags.repoHasReadme = true;
+      }
       next.flags.repoVerified = true;
       return { ok: true, state: deepFreeze(next) };
     },
