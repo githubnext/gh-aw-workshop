@@ -57,7 +57,7 @@ Then open your editor and create `.github/workflows/daily-status.md` (the filena
 4. Click **Commit new file**.
 
 > [!NOTE]
-> The `gh aw compile --validate` checkpoints below require a terminal or Codespace. UI path users can skip them — GitHub Actions will surface any errors when the workflow first runs. If you want early validation, open the repository in a Codespace later and run `gh aw compile .github/workflows/daily-status.md --validate`.
+> The `gh aw compile` checkpoints below require a terminal or Codespace. UI path users can skip them — GitHub Actions will surface any errors when the workflow first runs. If you want early validation, open the repository in a Codespace later and run `gh aw compile .github/workflows/daily-status.md`.
 
 </details>
 
@@ -80,7 +80,7 @@ description: Post a daily repository status summary as a GitHub issue comment.
 Compile after saving:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile .github/workflows/daily-status.md
 ```
 
 ### Build section 2: trigger block
@@ -100,7 +100,7 @@ on:
 Compile again:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile .github/workflows/daily-status.md
 ```
 
 ### Build section 3: permissions block
@@ -122,7 +122,7 @@ permissions:
 Compile again:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile .github/workflows/daily-status.md
 ```
 
 ### Build section 4: tools and output guardrails
@@ -146,7 +146,7 @@ safe-outputs:
 Compile again:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile .github/workflows/daily-status.md
 ```
 
 ### Build section 5: agent instructions block
@@ -191,7 +191,7 @@ Find the most recently updated open issue and post a comment in this format:
 Compile one more time:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile .github/workflows/daily-status.md
 ```
 
 ## Common Mistakes
@@ -300,7 +300,7 @@ Find the most recently updated open issue and post a comment in this format:
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-status.md` exists in your repository
-- [ ] `gh aw compile .github/workflows/daily-status.md --validate` reports no errors
+- [ ] `gh aw compile .github/workflows/daily-status.md` reports no errors
 - [ ] The file is committed and pushed to `main`
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 
