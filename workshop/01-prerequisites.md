@@ -2,6 +2,11 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
+> [!IMPORTANT]
+> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Enterprise environments require additional hostname, SSO, proxy, and Copilot licensing configuration before any workshop commands will work. Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first, then return here.
+
+<!-- -->
+
 > [!TIP]
 > **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)
 
@@ -14,6 +19,7 @@ _Starting with the right setup saves you from frustrating detours later._
 
 Complete these checks before you choose a setup path:
 
+- [ ] **Enterprise users:** You've reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 - [ ] You know where you'll run workshop commands: a local terminal or a GitHub Codespace
 - [ ] If you're using your own terminal, run `gh --version` now and confirm `gh` CLI ≥ 2.40
 - [ ] If you choose a Codespace, you'll run `gh --version` in [Adventure A](02a-setup-codespace.md) right after the Codespace opens
@@ -146,6 +152,7 @@ Need a quick glossary with official docs links?
 
 ## ✅ Checkpoint
 
+- [ ] **Enterprise users:** You've reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 - [ ] You have a GitHub account and can sign in
 - [ ] `gh` CLI ≥ 2.40 is available in your chosen environment (`gh --version`)
 - [ ] `gh` CLI is authenticated — `gh auth status` shows `Logged in to github.com as <your-username>` (completed in your chosen setup path)
