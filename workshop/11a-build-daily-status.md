@@ -1,6 +1,13 @@
 # Step 11a: Build — Daily Repo Status Workflow
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._
+>
+> [!TIP]
+> **Two paths through this step:**
+> - **This page (manual build)** — write the file section by section so every line is clear.
+> - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup that handles engine selection, secrets, and the pull request for you.
+>
+> Both paths produce the same workflow and converge at [Step 12](12-test-and-iterate.md).
 
 ## 🎯 What You'll Do
 
@@ -47,10 +54,56 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 > [!NOTE]
 > Reminder: if you're confused about why this file ends in `.md` instead of `.yml`, see the [Classic vs. Agentic comparison table in Step 5](05-agentic-workflows-intro.md#side-by-side-classic-actions-vs-agentic-workflows).
 
-Before diving in, there is an optional side quest if you want more detail first:
+Before diving in, there are optional side quests if you want more detail first:
 
 > [!TIP]
-> **Optional Side Quest:** Want a section-by-section explanation of every key with tables and examples before you build? See [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md). It's fully optional — everything you need to complete this step is in the build sections below.
+> **Optional side quests — read before you build if you want deeper context:**
+> - **[Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)** — section-by-section walkthrough of every frontmatter key with tables and examples.
+> - **[Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md)** — the five most common YAML mistakes with broken ❌ and correct ✅ examples. Bookmark this as a quick reference card while you build.
+
+<details>
+<summary>📋 Annotated YAML reference — expand for a line-by-line explanation of every frontmatter key</summary>
+
+```yaml
+---
+emoji: 📊                      # Decorative icon shown in the gh aw dashboard and Actions UI.
+                               # Any emoji works — choose one that reflects the workflow's purpose.
+description: Post a daily repository status summary as a GitHub issue comment.
+                               # One-sentence summary shown in gh aw list and the GitHub Actions UI.
+
+on:                            # Trigger block — controls when GitHub Actions starts this workflow.
+  schedule: daily              # gh-aw shorthand that compiles to cron "0 0 * * *" (midnight UTC).
+                               # Also valid: "hourly", "weekly".
+  workflow_dispatch: {}        # Adds a manual "Run workflow" button in the Actions UI.
+                               # The "{}" means no custom inputs are needed to trigger it.
+
+permissions:                   # Declares the minimum GitHub API scopes this workflow may use.
+                               # Only list what the agent actually needs — keep the blast radius small.
+  contents: read               # Read access to files, commits, and branches.
+  copilot-requests: write      # REQUIRED for every agentic workflow — grants the Actions runner
+                               # permission to call the Copilot AI API on your behalf.
+  issues: read                 # Read open issues (used to count them and find the target thread).
+  pull-requests: read          # Read open pull requests (used to report PR count and age).
+  actions: read                # Read recent workflow runs (used to report CI status).
+
+tools:                         # Configures which external tools the AI agent can call at runtime.
+  github:                      # Enables the GitHub MCP (Model Context Protocol) integration.
+    mode: gh-proxy             # Routes all GitHub API calls through a controlled proxy that
+                               # enforces the scopes declared in "permissions" above.
+                               # The agent cannot exceed what those scopes allow.
+    toolsets: [default]        # Activates the standard GitHub toolset: issues, PRs, commits,
+                               # and actions. Add more toolsets later if the workflow needs them.
+
+safe-outputs:                  # Write guardrails — the ONLY write actions the agent may take.
+                               # Without this block the agent cannot write anything, regardless
+                               # of what the Markdown body asks it to do.
+  add-comment:                 # Permits the agent to post a comment on an issue or pull request.
+    max: 1                     # Hard limit: the agent may post at most one comment per run.
+                               # Extra posts are silently dropped.
+---
+```
+
+</details>
 
 ---
 
@@ -217,6 +270,21 @@ Find the most recently updated open issue and post a comment in this format:
 > ```
 > A green output means your YAML is valid so far. If you see a red error, check the indentation in the section you just added.
 > For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
+
+### Final validation
+
+With all five sections in place, run a full compile-and-validate to confirm the complete workflow file is error-free before committing:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+A successful run produces green output and writes a `.lock.yml` file next to your workflow file. That lock file is what GitHub Actions actually executes.
+
+If you see a red error, the message names the key and the line that failed. Compare it against the relevant build section above and check indentation — two-space indentation is required throughout.
+
+> [!TIP]
+> If the error message isn't clear, **[Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md)** shows broken ❌ and correct ✅ examples for the five most common mistakes.
 
 ## Troubleshooting
 

@@ -22,6 +22,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 10b | [10b-design-daily-docs.md](10b-design-daily-docs.md) | ➡️ Adventure B: Design — Daily Documentation Updater | ✅ |
 | 10c | [10c-design-pr-reviewer.md](10c-design-pr-reviewer.md) | ➡️ Adventure C: Design — PR Code Reviewer | ✅ |
 | 11a | [11a-build-daily-status.md](11a-build-daily-status.md) | ➡️ Adventure A: Build — Daily Repo Status Workflow | ✅ |
+| 11a✨ | [11a-build-daily-status-wizard.md](11a-build-daily-status-wizard.md) | ➡️ Adventure A (wizard): Build Daily Status with the Add Wizard | ✅ |
 | 11b | [11b-build-daily-docs.md](11b-build-daily-docs.md) | ➡️ Adventure B: Build — Daily Documentation Updater | ✅ |
 | 11c | [11c-build-pr-reviewer.md](11c-build-pr-reviewer.md) | ➡️ Adventure C: Build — PR Code Reviewer | ✅ |
 | 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
