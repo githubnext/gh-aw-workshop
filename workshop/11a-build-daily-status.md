@@ -91,6 +91,68 @@ safe-outputs:                  # Write guardrails — the ONLY write actions the
 
 </details>
 
+## Quick Start: Copy-and-Run
+
+> [!TIP]
+> **In a hurry?** Paste the minimal workflow below, compile it to confirm your setup is valid, then jump to [Step 12: Test and Improve](12-test-and-iterate.md). Come back here anytime to learn what each line does.
+
+<details>
+<summary>⚡ Minimal working workflow — copy, paste, and compile before customizing</summary>
+
+Create `.github/workflows/daily-status.md` and paste the content below exactly as shown:
+
+```markdown
+---
+emoji: 📊
+description: Post a daily repository status summary as a GitHub issue comment.
+
+on:
+  schedule: daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  copilot-requests: write
+  issues: read
+  pull-requests: read
+  actions: read
+
+tools:
+  github:
+    mode: gh-proxy
+    toolsets: [default]
+
+safe-outputs:
+  add-comment:
+    max: 1
+---
+
+# Daily Repo Status Report
+
+You are an AI assistant. Collect the count of open pull requests, open issues, the most recent CI run status, and the last commit message, then post one formatted summary comment on the most recently updated open issue.
+```
+
+Then validate:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --validate
+```
+
+A green ✔ means the file is valid. Commit and push, then proceed to [Step 12](12-test-and-iterate.md).
+
+</details>
+
+<details>
+<summary>⚠️ Common YAML mistakes — expand if <code>gh aw compile</code> fails</summary>
+
+- **Wrong indentation** — YAML requires exactly two spaces per nesting level; tabs are not valid.
+- **Missing `---` fences** — the frontmatter must be wrapped by an opening `---` and a closing `---`; omitting either causes a parse error.
+- **Unquoted special characters** — values that contain `:`, `#`, or `{` must be wrapped in double quotes, for example `description: "Post a report: daily"`.
+
+For broken ❌ and correct ✅ examples of each, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
+
+</details>
+
 ---
 
 ## Putting It All Together
