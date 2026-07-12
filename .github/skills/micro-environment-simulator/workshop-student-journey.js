@@ -37,6 +37,10 @@ function isOrgScopedCodespacesToken(state) {
   return state.workspace?.context === "codespaces" && state.auth?.tokenScope === "org";
 }
 
+function isCodespacesWorkspace(state) {
+  return state.workspace?.context === "codespaces";
+}
+
 function buildTransitions() {
   return {
     "00-welcome": (state) => ({ ok: true, state }),
@@ -59,28 +63,41 @@ function buildTransitions() {
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
-      next.flags.hasRepo = true;
-      next.flags.repoCreatedViaUi = true;
-      next.flags.repoHasReadme = true;
       next.flags.environmentReady = true;
+      // Codespace setup opens the ready-to-use environment, but the learner does not
+      // create their practice repository until Step 03. The local path creates that
+      // repository during setup, so those repo flags are available earlier.
+      if (!isCodespacesWorkspace(state)) {
+        next.flags.hasRepo = true;
+        next.flags.repoCreatedViaUi = true;
+        next.flags.repoHasReadme = true;
+      }
       return { ok: true, state: deepFreeze(next) };
     },
     "03-create-your-repo": (state) => {
-      const repoCheck = ensure(
-        state.flags.hasRepo && state.flags.repoCreatedViaUi,
-        "Practice repository must be created in GitHub UI during setup",
-        "repo-setup-missing",
-        "In setup, create `my-agentic-workflows` from github.com/new before continuing."
+      const environmentReadyCheck = ensure(
+        state.flags.environmentReady,
+        "Practice repository setup requires a local terminal or Codespace to be ready",
+        "environment-not-ready",
+        "Complete Adventure A (Codespace) or Adventure B (local terminal) before creating `my-agentic-workflows`."
       );
-      if (!repoCheck.ok) return repoCheck;
-      const readmeCheck = ensure(
-        state.flags.repoHasReadme,
-        "Practice repository is missing the starter README",
-        "repo-readme-missing",
-        "Enable 'Add a README file' when creating the repository in GitHub UI."
-      );
-      if (!readmeCheck.ok) return readmeCheck;
+      if (!environmentReadyCheck.ok) return environmentReadyCheck;
+      const needsRepoCreation = !state.flags.hasRepo;
+      if (!needsRepoCreation) {
+        const readmeCheck = ensure(
+          state.flags.repoHasReadme,
+          "Practice repository is missing the starter README",
+          "repo-readme-missing",
+          "Enable 'Add a README file' when creating the repository in GitHub UI."
+        );
+        if (!readmeCheck.ok) return readmeCheck;
+      }
       const next = cloneState(state);
+      if (needsRepoCreation) {
+        next.flags.hasRepo = true;
+        next.flags.repoCreatedViaUi = true;
+        next.flags.repoHasReadme = true;
+      }
       next.flags.repoVerified = true;
       return { ok: true, state: deepFreeze(next) };
     },
