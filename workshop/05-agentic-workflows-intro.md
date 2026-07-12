@@ -41,7 +41,7 @@ This is not a re-introduction to Actions fundamentals — it's a focused view of
 
 ## Quick Summary
 
-For platform engineers and DevOps teams evaluating adoption: agentic workflows reduce the cost of maintaining bespoke scripted automation by delegating judgment to an AI agent, so engineers spend less time updating fragile scripts and more time on higher-value work. Because every workflow definition is a versioned Markdown file reviewed in a pull request, teams retain full auditability, change history, and approval gates — making agentic automation compatible with enterprise compliance requirements and existing runner fleet investments.
+For platform engineers and DevOps teams evaluating adoption, agentic workflows cut the cost of maintaining bespoke scripted automation. Engineers spend less time updating fragile scripts and more time on higher-value work. Every workflow definition is a versioned Markdown file that goes through a pull request, so teams retain full auditability, change history, and approval gates. This makes agentic automation compatible with enterprise compliance requirements and existing runner fleet investments.
 
 > **Key differences from classic Actions:**
 >
