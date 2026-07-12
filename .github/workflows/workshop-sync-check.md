@@ -175,7 +175,7 @@ Check for:
 | **Frontmatter syntax** | Do any YAML examples use deprecated or renamed fields? |
 | **Tool names** | Are tool names (`bash`, `edit`, `cache-memory`, etc.) still correct? |
 | **URLs and links** | Do docs or external links still resolve correctly? |
-| **Version references** | Are version numbers current (gh CLI, gh-aw extension, Node.js)? |
+| **Version references** | Are version numbers current (gh CLI, gh-aw extension)? |
 | **Concept accuracy** | Does the description of how agentic workflows work match current behaviour? |
 | **Installation steps** | Are install instructions still accurate (e.g. `gh extension install`)? |
 

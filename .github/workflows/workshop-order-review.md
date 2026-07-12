@@ -45,14 +45,13 @@ steps:
       step_heading_re = re.compile(r'^###\s+(\d+)\.\s+(.*)$')
 
       command_prefixes = (
-          'git ', 'gh ', 'node ', 'npm ', 'npx ', 'pnpm ', 'yarn ', 'cd ', 'curl ',
+          'git ', 'gh ', 'cd ', 'curl ',
           'brew ', 'winget ', 'sudo ', 'echo ', 'pwd', 'cat ', 'mkdir '
       )
 
       requirement_patterns = {
           'environment_ready': [
               r'\bgit --version\b',
-              r'\bnode --version\b',
               r'\bgh --version\b',
               r'\bgh auth login\b',
               r'\bgh repo (?:create|clone|view)\b',
@@ -283,7 +282,7 @@ You are a specialized reviewer for the workshop content in `workshop/*.md`.
 Your focus is **instruction ordering**: detect cases where learners are told to do something before the workshop has prepared the required environment, tool, authentication, or repository state.
 
 Examples of the kinds of problems to flag:
-- asking learners to check for Git, `gh`, or Node before they have opened the right terminal or Codespace path
+- asking learners to check for Git or `gh` before they have opened the right terminal or Codespace path
 - asking learners to create or clone a project before the setup path is complete
 - using `gh aw` commands before the extension or repository setup exists
 - prerequisite sections that point to the wrong earlier step for the commands that follow
