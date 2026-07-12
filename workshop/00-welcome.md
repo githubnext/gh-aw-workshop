@@ -97,6 +97,12 @@ At **Step 1**, the path splits into two options:
 
 Both paths converge at **Step 3** and stay together for the rest of the workshop.
 
+At **Step 11**, the path splits again:
+- **Manual build** — write the workflow file section by section so every line is clear.
+- **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup.
+
+Both Step 11 paths converge at **Step 12**.
+
 > [!TIP]
 > If you get stuck, every step links back to the previous one. You can always rewind.
 

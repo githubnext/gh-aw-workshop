@@ -1,6 +1,13 @@
 # Step 11: Build: Daily Repo Status Workflow
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._
+>
+> [!TIP]
+> **Two paths through this step:**
+> - **This page (manual build)** — write the file section by section so every line is clear.
+> - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup that handles engine selection, secrets, and the pull request for you.
+>
+> Both paths produce the same workflow and converge at [Step 12](12-test-and-iterate.md).
 
 ## 🎯 What You'll Do
 
