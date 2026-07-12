@@ -48,7 +48,10 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
 
   const hasGh = level !== "beginner" || seed % 3 !== 0;
   const hasAw = false;
-  const isLoggedIn = hasGh && (level === "advanced" || level === "actions-user" || seed % 4 !== 0);
+  const inCodespaces = student.tool === "vscode" ? seed % 2 === 0 : seed % 3 === 0;
+  const tokenScope = inCodespaces && isEnterprise ? "org" : "user";
+  const isLoggedIn =
+    hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
   const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
   const hasCopilotRequestToken = isLoggedIn && (student.tool === "cloud-agent" || seed % 2 === 0);
 
@@ -65,10 +68,14 @@ function defaultEnvironmentForStudent(student, dayOfYear) {
       isLoggedIn,
       accountType,
       hasApiKey,
-      hasCopilotRequestToken
+      hasCopilotRequestToken,
+      tokenScope
     },
     github: {
       deployment
+    },
+    workspace: {
+      context: inCodespaces ? "codespaces" : "local"
     },
     flags: {
       sawActionsIntro: false,

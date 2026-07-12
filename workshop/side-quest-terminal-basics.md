@@ -5,7 +5,7 @@
 ![Annotated terminal window with callouts for prompt, command, and output](images/01-terminal-basics-annotated.svg)
 
 - **Prompt**: where your terminal is currently "standing" (for example your user/computer name and folder).
-- **Command**: what you type (`git --version`, `node --version`, etc.).
+- **Command**: what you type (`git --version`, `gh --version`, etc.).
 - **Output**: what the computer prints after running your command.
 
 ---

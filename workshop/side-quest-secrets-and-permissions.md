@@ -42,7 +42,7 @@ You need a secret whenever your workflow authenticates to an external service. C
 4. Enter a name (e.g. `SLACK_WEBHOOK_URL`) and the secret value.
 5. Click **Add secret**.
 
-![Repository secrets page](images/side-quest-secrets-settings.png)
+![Repository secrets page](images/side-quest-secrets-settings.svg)
 
 > [!TIP]
 > Secret names must use only uppercase letters, digits, and underscores. By convention, use `SCREAMING_SNAKE_CASE`.

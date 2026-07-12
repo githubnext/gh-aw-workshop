@@ -63,14 +63,8 @@ gh extension list
 
 You should see `github/gh-aw` listed. If you don't see it yet, don't worry — you'll install it in a later step.
 
-```bash
-node --version
-```
-
-You should see `v20.x.x` or higher.
-
 > [!NOTE]
-> The Codespace was built from a `.devcontainer` configuration that pre-installs the `gh` CLI and `node`. You don't need to install them yourself.
+> The Codespace was built from a `.devcontainer` configuration that pre-installs the `gh` CLI. You don't need to install it yourself.
 
 ### 4. Authenticate the gh CLI
 
@@ -98,7 +92,11 @@ You should see your username as `owner` and `gh-aw-workshop` as `name`.
 - [ ] Your fork is created on GitHub
 - [ ] The Codespace editor is open in your browser
 - [ ] `gh --version` returns a version number
-- [ ] `node --version` returns v20 or higher
 - [ ] `gh auth login` completed without errors
 
 **Next:** [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [gh aw CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)

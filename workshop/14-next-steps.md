@@ -30,7 +30,7 @@ Here's a quick recap of the concepts you've touched:
 |---|---|
 | GitHub Actions triggers | `on: schedule` and `workflow_dispatch` |
 | gh-aw workflow syntax | Every `.md` workflow file you wrote |
-| AI model calls | The `prompt:` block in your daily-status workflow |
+| AI model calls | The Markdown body (agent instructions) of your daily-status workflow |
 | Natural-language schedules | `schedule: daily on weekdays` |
 | Iterative debugging | Running, reading output, tweaking, repeating |
 
