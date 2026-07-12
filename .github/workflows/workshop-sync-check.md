@@ -114,6 +114,8 @@ steps:
       echo "=== Workflow files ===" && cat /tmp/gh-aw/data/workflow_files.json
 
   - name: Fetch gh-aw reference documentation
+    env:
+      GH_TOKEN: ${{ github.token }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data/ref
