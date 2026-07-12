@@ -72,21 +72,23 @@ function buildTransitions() {
       return { ok: true, state: deepFreeze(next) };
     },
     "03-create-your-repo": (state) => {
-      const envCheck = ensure(
+      const environmentReadyCheck = ensure(
         state.flags.environmentReady,
         "Practice repository setup requires a local terminal or Codespace to be ready",
         "environment-not-ready",
         "Complete Adventure A (Codespace) or Adventure B (local terminal) before creating `my-agentic-workflows`."
       );
-      if (!envCheck.ok) return envCheck;
+      if (!environmentReadyCheck.ok) return environmentReadyCheck;
       const needsRepoCreation = !state.flags.hasRepo;
-      const readmeCheck = ensure(
-        needsRepoCreation || state.flags.repoHasReadme,
-        "Practice repository is missing the starter README",
-        "repo-readme-missing",
-        "Enable 'Add a README file' when creating the repository in GitHub UI."
-      );
-      if (!readmeCheck.ok) return readmeCheck;
+      if (!needsRepoCreation) {
+        const readmeCheck = ensure(
+          state.flags.repoHasReadme,
+          "Practice repository is missing the starter README",
+          "repo-readme-missing",
+          "Enable 'Add a README file' when creating the repository in GitHub UI."
+        );
+        if (!readmeCheck.ok) return readmeCheck;
+      }
       const next = cloneState(state);
       if (needsRepoCreation) {
         next.flags.hasRepo = true;
