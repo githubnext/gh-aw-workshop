@@ -40,16 +40,23 @@ All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
 
-### 1. Fork the workshop repository
+### 1. Fork the workshop repository and create your practice repository
 
 You'll work in your own copy of the workshop repository.
 
 1. Open [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) in your browser.
 2. Click **Fork** (top-right corner).
 3. Accept the defaults and click **Create fork**.
+4. Open [github.com/new](https://github.com/new).
+5. Enter `my-agentic-workflows` for **Repository name**.
+6. Set **Visibility** to **Public**.
+7. Check **Add a README file**.
+8. Click **Create repository**.
 
 > [!NOTE]
 > Forking creates your own copy under your account. All experiments stay in your fork — the original is untouched.
+>
+> Creating `my-agentic-workflows` now keeps setup ordering consistent with the Codespace path and avoids an empty repository.
 
 ### 2. Verify Git
 
@@ -165,12 +172,13 @@ Both commands should return output without errors. The repo view should show you
 ## ✅ Checkpoint
 
 - [ ] Your fork exists on GitHub
+- [ ] Your `my-agentic-workflows` repository exists on GitHub with a starter README
 - [ ] `git --version` returns a version number
 - [ ] `gh --version` returns a version number
 - [ ] `gh auth login` completed without errors
 - [ ] You've cloned the repository and `cd`-ed into it
 
-**Next:** [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+**Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
 
 ## 📚 See Also
 
