@@ -15,7 +15,19 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 ## Steps
 
 > [!NOTE]
-> You can trigger this workflow entirely from your browser — no terminal needed.
+> You can trigger this workflow entirely from your browser — no terminal required for the recommended path.
+>
+> **Using a Codespace?** Before you start, confirm your token has `actions:write` — the optional terminal path in this step requires it.
+>
+> **Terminal check (10 seconds):**
+>
+> ```bash
+> gh auth status
+> ```
+>
+> Look for `actions:write` and `workflows:write` in the token scopes list. If either is missing, use the [GitHub Actions UI path](#trigger-manually-via-github-actions-ui) below — no token change needed — or see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) for the full fix.
+>
+> **UI check:** If you are using a personal access token, go to **Settings → Developer settings → Personal access tokens** in your GitHub account and confirm `actions:write` and `workflows:write` are listed in the token's scopes.
 
 ### Trigger manually via GitHub Actions UI
 
