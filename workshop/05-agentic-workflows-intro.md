@@ -9,7 +9,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ## Three things to know
 
-**What it is:** A Markdown file (`.md`) with two parts — a standard Actions frontmatter block (triggers, permissions) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
+**What it is:** A Markdown file (`.md`) with two parts — a standard Actions frontmatter block (YAML header between `---` markers, containing triggers and permissions) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 
 **What it produces:** A synthesized, structured output — a report, recommendation, or action taken — that the agent composes at runtime based on live repository data.
 
@@ -37,7 +37,7 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 > 2. The `.md` file is NOT documentation — it IS the workflow definition.
 > 3. Output is not logs — it's a synthesized report the agent composes at runtime.
 
-Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. A detailed side-by-side comparison of classic Actions vs agentic workflows, including the agent anatomy and YAML authoring details, is covered in [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
+Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. For a detailed side-by-side comparison, agent anatomy, and YAML authoring details, see [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
 
 If you want a one-page cheat sheet for Actions power users, read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
 
@@ -47,7 +47,7 @@ Enterprise users (GHEC, GHES, or EMU) who need runner and model access guidance 
 
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I understand that the agent decides _how_ to complete the task at runtime, not you
-- [ ] I can name at least one type of task agentic workflows are better suited for than classic Actions
+- [ ] I can name one task (triage, summarization, or reporting) where agentic workflows fit better than a scripted CI step
 - [ ] I navigated to the **Actions** tab in my practice repository and confirmed I can see the workflow list
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
