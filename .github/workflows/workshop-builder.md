@@ -49,6 +49,7 @@ safe-outputs:
       - markdown-dedup
       - workshop-link-checker
       - workshop-ui-screenshots
+      - curriculum-evaluator
     max: 1
   create-pull-request:
     title-prefix: "[workshop-builder] "
@@ -203,6 +204,7 @@ each workshop workflow:
 - `markdown-dedup`
 - `workshop-link-checker`
 - `workshop-ui-screenshots`
+- `curriculum-evaluator`
 
 Note: which workflows are failing, skipping, or have not run recently.
 
@@ -256,6 +258,7 @@ For each workflow, compute whether it is **eligible** for dispatch:
 | `markdown-dedup` | nodes ≥ 3, no open `dedup` issue, last dispatch > 24 h ago or never |
 | `workshop-link-checker` | nodes ≥ 3, last dispatch > 24 h ago or never |
 | `workshop-ui-screenshots` | nodes ≥ 3, last dispatch > 24 h ago or never |
+| `curriculum-evaluator` | nodes ≥ 3, last dispatch > 24 h ago or never |
 
 Use the timestamps from `last_dispatch` in the loaded state and the current
 `timestamp` from the repo state to evaluate "last dispatch > N h ago". If a
@@ -281,28 +284,32 @@ Select the highest-priority **eligible** workflow (most urgent first):
 4. `side-quest` — extracts optional detours from oversized workshop steps
 5. `security-side-quest` — adds security-focused side quests explaining attack
    vectors and AW security architecture
-6. `title-similarity-review` — catches high-volume semantically similar headings
-7. `workshop-student-simulator` — ensures quality feedback exists
-8. `workshop-sync-check` — keeps content accurate against gh-aw changes
-9. `workshop-order-review` — detects ordering problems early
-10. `workshop-skill-activity-author` — adds Skills-style activities
-11. `workshop-explanatory-diagrams` — generates educational SVG diagrams for
+6. `curriculum-evaluator` — measures workshop quality with evidence-based rubric
+   scores and opens improvement issues; run frequently so new content is assessed
+   quickly
+7. `title-similarity-review` — catches high-volume semantically similar headings
+8. `workshop-student-simulator` — ensures quality feedback exists
+9. `workshop-sync-check` — keeps content accurate against gh-aw changes
+10. `workshop-order-review` — detects ordering problems early
+11. `workshop-skill-activity-author` — adds Skills-style activities
+12. `workshop-explanatory-diagrams` — generates educational SVG diagrams for
     concepts that benefit from visual explanation
-12. `docs-linker` — cross-correlates workshop content with gh-aw documentation
-13. `markdown-dedup` — detects and flags near-duplicate sections across files
-14. `workshop-link-checker` — validates external URLs and internal anchors
-15. `workshop-ui-screenshots` — generates SVG illustrations for missing UI images
+13. `docs-linker` — cross-correlates workshop content with gh-aw documentation
+14. `markdown-dedup` — detects and flags near-duplicate sections across files
+15. `workshop-link-checker` — validates external URLs and internal anchors
+16. `workshop-ui-screenshots` — generates SVG illustrations for missing UI images
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
 that may shift priority toward a specific workflow (e.g. "add content" → prefer
 `workshop-author` or `training-plan-research`; "workflow", "tone",
 "duplication", or "bloat" → prefer `workflow-skills-editor`; "side quest" or
 "tutorial" → prefer `side-quest`; "security" → prefer `security-side-quest`;
-"fix sync" → prefer `workshop-sync-check`; "title", "heading", or "similar"
-→ prefer `title-similarity-review`; "diagram" or "visual" → prefer
-`workshop-explanatory-diagrams`; "docs" or "link" → prefer `docs-linker`;
-"dedup" or "duplicate" → prefer `markdown-dedup`; "broken" or "checker"
-→ prefer `workshop-link-checker`; "screenshot" or "image" → prefer
+"quality", "curriculum", "rubric", "cognitive", or "scaffold" → prefer
+`curriculum-evaluator`; "fix sync" → prefer `workshop-sync-check`; "title",
+"heading", or "similar" → prefer `title-similarity-review`; "diagram" or
+"visual" → prefer `workshop-explanatory-diagrams`; "docs" or "link" → prefer
+`docs-linker`; "dedup" or "duplicate" → prefer `markdown-dedup`; "broken" or
+"checker" → prefer `workshop-link-checker`; "screenshot" or "image" → prefer
 `workshop-ui-screenshots`).
 
 When dispatching `workshop-author`, `training-plan-research`,
