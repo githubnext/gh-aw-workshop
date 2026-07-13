@@ -9,11 +9,15 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 0 | [00-welcome.md](00-welcome.md) | Welcome — What We'll Build | ✅ |
 | 1 | [01-prerequisites.md](01-prerequisites.md) | What You Need Before We Start | ✅ |
 | 2 | Choose one: [02a-setup-codespace.md](02a-setup-codespace.md) **or** [02b-setup-local.md](02b-setup-local.md) | Setup Adventure — A: Codespace or B: Local Terminal | ✅ |
-| 3 | [03-create-your-repo.md](03-create-your-repo.md) | Open and Verify Your Practice Repository | ✅ |
+| 3 | [03-create-your-repo.md](03-create-your-repo.md) | Choose How to Create and Verify Your Practice Repository | ✅ |
+| 3a | [03a-create-your-repo-terminal.md](03a-create-your-repo-terminal.md) | Terminal Path — Create and Verify Your Practice Repository | ✅ |
+| 3b | [03b-create-your-repo-ui.md](03b-create-your-repo-ui.md) | GitHub UI Path — Create and Verify Your Practice Repository | ✅ |
 | 4 | [04-github-actions-intro.md](04-github-actions-intro.md) | What Are GitHub Actions? | ✅ |
 | 5 | [05-agentic-workflows-intro.md](05-agentic-workflows-intro.md) | What Are Agentic Workflows? | ✅ |
 | 6 | [06-install-gh-aw.md](06-install-gh-aw.md) | Install the gh-aw CLI Extension | ✅ |
 | 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ✅ |
+| 7a | [07a-your-first-workflow-terminal.md](07a-your-first-workflow-terminal.md) | Terminal Path — Write Your First Agentic Workflow | ✅ |
+| 7b | [07b-your-first-workflow-ui.md](07b-your-first-workflow-ui.md) | GitHub UI Path — Write Your First Agentic Workflow | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
 | 9 | [09-understand-output.md](09-understand-output.md) | Reading Workflow Output | ✅ |
 | 10 | [10-choose-your-scenario.md](10-choose-your-scenario.md) | Choose Your Scenario | ✅ |
@@ -21,12 +25,17 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 10b | [10b-design-daily-docs.md](10b-design-daily-docs.md) | ➡️ Adventure B: Design — Daily Documentation Updater | ✅ |
 | 10c | [10c-design-pr-reviewer.md](10c-design-pr-reviewer.md) | ➡️ Adventure C: Design — PR Code Reviewer | ✅ |
 | 11a | [11a-build-daily-status.md](11a-build-daily-status.md) | ➡️ Adventure A: Build — Daily Repo Status Workflow | ✅ |
+| 11a | [Terminal](11a-build-daily-status-terminal.md) **or** [GitHub UI](11a-build-daily-status-ui.md) | Adventure A Build Paths | ✅ |
 | 11a✨ | [11a-build-daily-status-wizard.md](11a-build-daily-status-wizard.md) | ➡️ Adventure A (wizard): Build Daily Status with the Add Wizard | ✅ |
 | 11b | [11b-build-daily-docs.md](11b-build-daily-docs.md) | ➡️ Adventure B: Build — Daily Documentation Updater | ✅ |
+| 11b | [Terminal](11b-build-daily-docs-terminal.md) **or** [GitHub UI](11b-build-daily-docs-ui.md) | Adventure B Build Paths | ✅ |
 | 11c | [11c-build-pr-reviewer.md](11c-build-pr-reviewer.md) | ➡️ Adventure C: Build — PR Code Reviewer | ✅ |
+| 11c | [Terminal](11c-build-pr-reviewer-terminal.md) **or** [GitHub UI](11c-build-pr-reviewer-ui.md) | Adventure C Build Paths | ✅ |
 | 11d | [11d-build-copilot-agents.md](11d-build-copilot-agents.md) | ➡️ Adventure D: Build Any Workflow with the GitHub Copilot Agents Tab | ✅ |
 | 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
 | 13 | [13-schedule-it.md](13-schedule-it.md) | Schedule It to Run Every Day | ✅ |
+| 13a | [13a-schedule-it-terminal.md](13a-schedule-it-terminal.md) | Terminal Path — Schedule the Workflow | ✅ |
+| 13b | [13b-schedule-it-ui.md](13b-schedule-it-ui.md) | GitHub UI Path — Schedule the Workflow | ✅ |
 | 14 | [14-next-steps.md](14-next-steps.md) | What's Next? Keep Exploring | ✅ |
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
 | 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |

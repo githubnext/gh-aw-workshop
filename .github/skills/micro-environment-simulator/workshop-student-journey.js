@@ -24,17 +24,29 @@ const STEP_FILE_ALIASES = {
   "00-welcome": ["00-welcome.md"],
   "01-prerequisites": ["01-prerequisites.md"],
   "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md"],
-  "03-create-your-repo": ["03-create-your-repo.md"],
+  "03-create-your-repo": ["03-create-your-repo.md", "03a-create-your-repo-terminal.md", "03b-create-your-repo-ui.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "06-install-gh-aw": ["06-install-gh-aw.md"],
-  "07-first-workflow": ["07-your-first-workflow.md"],
+  "07-first-workflow": ["07-your-first-workflow.md", "07a-your-first-workflow-terminal.md", "07b-your-first-workflow-ui.md"],
   "08-run-workflow": ["08-run-your-workflow.md"],
   "09-understand-output": ["09-understand-output.md"],
   "10-design": ["10-choose-your-scenario.md", "10a-design-daily-status.md", "10b-design-daily-docs.md", "10c-design-pr-reviewer.md"],
-  "11-build": ["11a-build-daily-status.md", "11a-build-daily-status-wizard.md", "11b-build-daily-docs.md", "11c-build-pr-reviewer.md", "11d-build-copilot-agents.md"],
+  "11-build": [
+    "11a-build-daily-status.md",
+    "11a-build-daily-status-terminal.md",
+    "11a-build-daily-status-ui.md",
+    "11a-build-daily-status-wizard.md",
+    "11b-build-daily-docs.md",
+    "11b-build-daily-docs-terminal.md",
+    "11b-build-daily-docs-ui.md",
+    "11c-build-pr-reviewer.md",
+    "11c-build-pr-reviewer-terminal.md",
+    "11c-build-pr-reviewer-ui.md",
+    "11d-build-copilot-agents.md"
+  ],
   "12-test-iterate": ["12-test-and-iterate.md"],
-  "13-schedule": ["13-schedule-it.md"],
+  "13-schedule": ["13-schedule-it.md", "13a-schedule-it-terminal.md", "13b-schedule-it-ui.md"],
   "14-next-steps": ["14-next-steps.md"]
 };
 
@@ -42,7 +54,7 @@ const STEP_IDS = [
   "00-welcome",
   "01-prerequisites",
   "02-setup",
-  // Keep this ID aligned with the workshop filename `03-create-your-repo.md`.
+  // Keep this ID aligned with the Step 3 landing page and its path variants.
   "03-create-your-repo",
   "04-actions-intro",
   "05-agentic-intro",

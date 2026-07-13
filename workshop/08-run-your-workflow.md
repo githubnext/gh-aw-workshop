@@ -4,9 +4,8 @@ _Reading about agents is one thing — watching one work in real time is somethi
 
 > [!IMPORTANT]
 > **Path reminder:** Keep using the setup path you chose in Step 2.
-> - **Path A — Codespace (browser terminal):** use the browser-based UI path (recommended), or use `gh aw run` if your terminal token includes the required scopes.
-> - **Path B — Local terminal:** you can use either the UI path or the optional `gh aw run` path.
-> - **Path C — UI only (Copilot Chat / CCA browser-only mode):** use [Trigger manually via GitHub Actions UI](#trigger-manually-via-github-actions-ui). `gh aw run` is not available without a terminal.
+> - **Terminal path:** use the GitHub Actions UI (recommended), or `gh aw run` if your token includes the required scopes.
+> - **GitHub UI path:** use [Trigger manually via GitHub Actions UI](#trigger-manually-via-github-actions-ui).
 
 ## 🎯 What You'll Do
 
@@ -14,7 +13,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## 📋 Before You Start
 
-- Completed [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md) for Step 7
 - Your browser is open to your practice repository on GitHub
 
 ## Steps
@@ -47,7 +46,7 @@ Confirm all three items before triggering the workflow — skipping this is the 
 2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
 3. _(Codespace users only)_ Your token includes `actions:write` if you plan to use the optional terminal path below.
 
-If item 1 or 2 is not yet true, return to [Step 7](07-your-first-workflow.md) and complete it first. CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
+If item 1 or 2 is not yet true, return to the [Step 7 path chooser](07-your-first-workflow.md) and complete your chosen path first.
 
 <details>
 <summary>Advanced: trigger from the terminal</summary>

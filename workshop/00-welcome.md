@@ -12,7 +12,7 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 
 | If you're a... | Recommended setup adventure | Why this path fits |
 |---|---|---|
-| **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Adventure A (Step 2a): Set Up a Codespace](02a-setup-codespace.md) | Stay in the browser with a preconfigured environment |
+| **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Step 3b: Create Your Repository in the GitHub UI](03b-create-your-repo-ui.md) | Stay in the browser without terminal setup |
 | **CLI user** (comfortable in a terminal) | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
 | **VS Code user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
 | **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md) | No installation needed — start a session, paste a prompt, merge a PR |
@@ -118,11 +118,12 @@ You do **not** need experience with GitHub Actions or AI tools. This workshop as
 
 Each step is focused. Steps build on each other, but checkboxes at the end of each step tell you exactly what to verify before moving on.
 
-At **Step 1**, the path splits into two options:
-- **Adventure A** — set up a cloud environment with GitHub Codespaces (no local install needed)
-- **Adventure B** — use your local terminal
+At **Step 1**, choose your working style:
+- **Terminal path with Codespaces** — use a browser-based terminal with no local install.
+- **Terminal path on your computer** — use your existing local tools.
+- **GitHub UI path** — create and edit files entirely on GitHub.com.
 
-Both paths converge at **Step 3** and stay together for the rest of the workshop.
+Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path.
 
 At **Step 11**, the path splits again:
 - **Manual build** — write the workflow file section by section so every line is clear.
@@ -137,7 +138,7 @@ Both Step 11 paths converge at **Step 12**.
 
 - [ ] You know the concrete outcome you'll build
 - [ ] You know how this differs from a regular GitHub Action
-- [ ] You know which setup path you'll take (Codespace or local)
+- [ ] You know which working path you'll take (Codespace, local terminal, or GitHub UI)
 - [ ] You're excited — let's go! 🚀
 
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)

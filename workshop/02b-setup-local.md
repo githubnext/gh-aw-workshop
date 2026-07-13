@@ -10,9 +10,9 @@
 >
 > Choose one path and keep it through Step 8.
 >
-> - **Path A — Codespace (browser terminal):** recommended for most beginners. Run terminal steps in a browser Codespace. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
-> - **Path B — Local terminal:** for learners with `gh` CLI installed locally. ✅ **You're in the right place.**
-> - **Path C — UI only (Copilot Chat / CCA):** complete browser-friendly steps, and use the **Actions tab** trigger in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui). `gh aw run` is **not available** without a terminal.
+> - **Terminal path — Codespace:** recommended for beginners who want compile feedback. ➡️ [Set Up a Codespace](02a-setup-codespace.md)
+> - **Terminal path — local:** continue below. ✅ **You're in the right place.**
+> - **GitHub UI path:** skip terminal setup and [create your repository in the browser](03b-create-your-repo-ui.md).
 
 ## 🧪 5-question terminal self-assessment
 
@@ -246,7 +246,7 @@ If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshoo
 - [ ] `gh auth login` completed without errors
 - [ ] You've cloned the repository and `cd`-ed into it
 
-**Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
+**Next:** [Step 3a: Create Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
 
 ## 📚 See Also
 
