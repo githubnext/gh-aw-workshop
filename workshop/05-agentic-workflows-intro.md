@@ -2,12 +2,12 @@
 
 ## 📋 Before You Start
 
-**Managed enterprise users (`github.com`, GHEC, or GHES):** Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot → Policies** before continuing.
+**Enterprise users (GHEC, GHES, or EMU):** Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot → Policies** before continuing.
 
 > [!IMPORTANT]
-> Managed enterprise or GHES/GHEC user? Review your admin-managed prerequisites before continuing.
+> Enterprise user (GHEC, GHES, or EMU)? Review your admin-managed prerequisites before continuing.
 >
-> → [Enterprise setup guide (required for GHES/GHEC users; helpful for managed enterprise orgs)](side-quest-enterprise-setup.md)
+> → [Enterprise setup guide (required for enterprise users)](side-quest-enterprise-setup.md)
 
 **Enterprise preflight checklist (do this before reading further):**
 
