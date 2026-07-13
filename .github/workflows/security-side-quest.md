@@ -99,6 +99,14 @@ steps:
       secrets_path = workshop_dir / "side-quest-16-02-secrets-and-permissions.md"
       secrets_content = secrets_path.read_text() if secrets_path.exists() else ""
 
+      # Build a brief of covered topics from existing side quest headings to help
+      # the agent avoid duplication. Store partial content (first 500 chars) only.
+      existing_sq_excerpts = {
+          path: pathlib.Path(path).read_text()[:500]
+          for path in all_sq_files
+          if pathlib.Path(path).exists()
+      }
+
       # Candidate attack/security topics the workflow should cover (one per run)
       attack_topics = [
           {
@@ -175,7 +183,10 @@ steps:
                   "existing_security_sq_titles": sq_titles,
                   "all_side_quest_files": all_sq_files,
                   "security_architecture_doc": "workshop/side-quest-17-02-security-architecture.md",
+                  "security_architecture_content": sec_arch_content,
                   "secrets_permissions_doc": "workshop/side-quest-16-02-secrets-and-permissions.md",
+                  "secrets_permissions_content": secrets_content,
+                  "existing_sq_excerpts": existing_sq_excerpts,
                   "attack_topics": attack_topics,
                   "covered_slugs": list(covered_slugs),
                   "remaining_topics": remaining_topics,
