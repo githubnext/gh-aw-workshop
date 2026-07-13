@@ -14,40 +14,35 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
-### Open the Actions tab
+### Trigger manually via GitHub Actions UI (recommended)
 
-In your repository, click the **Actions** tab at the top of the page.
+1. In your repository, click the **Actions** tab at the top of the page.
 
-You'll see a list of workflows on the left. Look for **Hello Agent** — that's the workflow you pushed in Step 7.
+   ![Actions tab showing where to find Hello Agent in the workflow list](images/08-actions-tab.svg)
 
-![Actions tab showing Hello Agent workflow](images/08-actions-tab.svg)
+2. In the left workflow sidebar, click **Hello Agent**, then click **Run workflow**.
+
+   ![Workflow sidebar with the Run workflow button highlighted](images/08-run-workflow-button.svg)
+
+3. In the confirmation dropdown, keep the default branch selected and click the green **Run workflow** button.
+
+   ![Run workflow confirmation dropdown showing branch selection and final Run workflow button](images/08-run-workflow-confirm-dropdown.svg)
 
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
+>
+> **Troubleshooting: Codespaces CLI trigger failures (`actions:write`)**
+> If `gh aw run hello-agent` fails in a Codespace with an `actions:write` permission/token error, trigger the run from the **Actions** tab UI instead (the section above). The UI path is the most reliable fallback when the Codespaces token has limited workflow scopes.
+> [!NOTE]
+> **For terminal users:** in some Codespaces environments, `gh aw run` can fail with an `actions:write` token scope error. If that happens, use the UI steps above.
 
-### Trigger manually via GitHub Actions UI (no terminal required)
-
-Click **Hello Agent** in the left sidebar. You'll see a banner that says "This workflow has a workflow_dispatch event trigger."
-
-Click the **Run workflow** button, leave the default branch selected, and click the green **Run workflow** button in the dropdown.
-
-If you prefer terminal commands, use the CLI equivalent in the next subsection.
-
-![Run workflow button](images/08-run-workflow-button.svg)
-
-#### CLI equivalent gh aw run
-
-Terminal users can use this command instead:
+Terminal users can trigger the same run with:
 
 ```bash
 gh aw run hello-agent
 ```
 
 Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md)
-
-> [!NOTE]
-> **Troubleshooting: Codespaces CLI trigger failures (`actions:write`)**
-> If `gh aw run hello-agent` fails in a Codespace with an `actions:write` permission/token error, trigger the run from the **Actions** tab UI instead (use the **Trigger manually via GitHub Actions UI (no terminal required)** section above). The UI path is the most reliable fallback when the Codespaces token has limited workflow scopes.
 
 ### Watch the run in progress
 
