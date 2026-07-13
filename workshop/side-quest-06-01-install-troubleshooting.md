@@ -12,9 +12,9 @@ If you are still in local terminal setup and not yet installing `gh-aw`, use thi
 
 | Error message | Why it happens | How to fix it |
 |------|------|------|
-| `command not found` | Tool is missing or terminal session has not picked up install yet | Install/reinstall the tool from the step above, then fully close and reopen terminal |
-| `permission denied` | Command needs elevated privileges or file permissions are restricted | Re-run the failed Linux/macOS install command with `sudo` exactly as shown; on Windows use an elevated terminal when needed |
-| `No such file or directory` / path-related errors | You are not in the expected folder | Run `pwd` (macOS/Linux) or `cd` with no arguments (Windows) to check your location, then `cd my-agentic-workflows` and retry |
+| `command not found` | Tool is missing or the terminal session has not picked up the install yet | Install or reinstall the tool following the instructions in the step above, then fully close and reopen your terminal. When the install succeeds, the command will run without the `command not found` error. |
+| `permission denied` | The command needs elevated privileges or the file permissions are restricted | Re-run the failed install command with `sudo` (Linux/macOS) exactly as shown in the step, or open an elevated (Administrator) terminal on Windows and retry. When the fix works, the install command completes without a permission error. |
+| `No such file or directory` / path-related errors | Your terminal is not in the expected folder | Run `pwd` (macOS/Linux) or `cd` with no arguments (Windows) to see your current location. Change to the correct directory with `cd my-agentic-workflows` and retry the command. When you are in the right folder, the path error disappears and the command succeeds. |
 
 ---
 
@@ -86,7 +86,7 @@ gh extension install github/gh-aw --hostname ghes.example.com
 gh auth status --hostname ghes.example.com
 ```
 
-If your administrator requires different scopes, use the minimum required scopes they provide.
+If your administrator requires different scopes, use the minimum required scopes they provide. When the steps above succeed, `gh auth status --hostname ghes.example.com` shows "Logged in to ghes.example.com" and `gh aw --version` prints a version number.
 
 ---
 
@@ -102,6 +102,18 @@ If install fails with a network error:
 gh extension install /path/to/gh-aw
 gh extension list
 ```
+
+---
+
+## ✅ Checkpoint
+
+Use this checklist to confirm the install issue is fully resolved before returning to the main path:
+
+- [ ] `gh auth status` (or `gh auth status --hostname <your-host>` for GHES) shows "Logged in to …" with no errors
+- [ ] `gh extension install github/gh-aw` completed without an HTTP 4xx or network error
+- [ ] `gh aw --version` prints a version number (for example, `gh-aw 1.x.x`)
+- [ ] `gh extension list` shows `github/gh-aw` in the output
+- [ ] I am ready to return to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) and continue
 
 ---
 
