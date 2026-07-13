@@ -14,7 +14,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
-### Trigger manually via GitHub Actions UI (recommended)
+### Trigger manually via GitHub Actions UI
 
 1. In your repository, click the **Actions** tab at the top of the page.
 
@@ -30,13 +30,11 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
->
-> **Troubleshooting: Codespaces CLI trigger failures (`actions:write`)**
-> If `gh aw run hello-agent` fails in a Codespace with an `actions:write` permission/token error, trigger the run from the **Actions** tab UI instead (the section above). The UI path is the most reliable fallback when the Codespaces token has limited workflow scopes.
-> [!NOTE]
-> **For terminal users:** the command below is an alternative to the UI walkthrough above.
 
-If you're in Codespaces, read the `actions:write` warning above before running this command.
+### Alternative: trigger from the terminal
+
+> [!IMPORTANT]
+> **Codespaces users:** If `gh aw run hello-agent` fails with an `actions:write` permission error, your Codespaces token has limited workflow scopes. Use the Actions-tab UI steps above instead — they work regardless of token scope.
 
 Terminal users can trigger the same run with:
 
