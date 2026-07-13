@@ -55,7 +55,7 @@ on:
 permissions:
   contents: read
   issues: write
-memory:
+tools:
   cache-memory:
     key: daily-status-seen-issues
     ttl: 7d
@@ -66,7 +66,7 @@ memory:
 
 | Field | Purpose |
 |-------|---------|
-| `memory:` | Parent key that enables memory features for this workflow. |
+| `tools:` | Parent key that enables tool integrations for this workflow. |
 | `cache-memory:` | Tells `gh-aw` to back this memory slot with the GitHub Actions cache. |
 | `key:` | A unique name for this memory slot. Prefix it with your workflow name to avoid collisions if you have multiple workflows in the same repository. |
 | `ttl: 7d` | How long to keep cached data without a refresh. After 7 days of no runs the cache expires and the agent starts fresh. Common values: `1d`, `7d`, `30d`. |
@@ -107,10 +107,8 @@ on:
 permissions:
   contents: write
   issues: write
-memory:
-  repo-memory:
-    path: .github/memory/daily-status-baseline.json
-    branch: main
+tools:
+  repo-memory: true
 ---
 ```
 
@@ -118,9 +116,8 @@ memory:
 
 | Field | Purpose |
 |-------|---------|
-| `repo-memory:` | Backs this memory slot with a file committed to the repository. |
-| `path:` | Repository-relative path to the JSON file. The directory is created automatically on first write. |
-| `branch:` | Branch where the memory file is committed. Usually `main` or your default branch. |
+| `tools:` | Parent key that enables tool integrations for this workflow. |
+| `repo-memory:` | Enables repository-backed memory for this workflow (`true` to enable). |
 
 > [!IMPORTANT]
 > `repo-memory` requires `contents: write` in your `permissions` block so the agent can commit the updated file. Add it alongside your existing permissions. This is a broader permission than `cache-memory` requires — keep the stored data small and review commits regularly.
