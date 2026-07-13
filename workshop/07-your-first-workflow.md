@@ -94,8 +94,13 @@ on: # Events that can start this workflow
   workflow_dispatch: # Lets you run the workflow manually while testing
 permissions: # GitHub token access the agent needs
   contents: read # Read repository contents
-  issues: write # Create or comment on issues
+  issues: read # Read open issues before choosing where to write
   copilot-requests: write # Required: allows the workflow to make requests to the Copilot API
+safe-outputs: # Controlled GitHub write operations the agent may perform
+  add-comment:
+    max: 1 # Post at most one comment per run
+  create-issue:
+    max: 1 # Create at most one issue if no open issues exist
 ---
 ```
 
@@ -126,15 +131,21 @@ You should see:
 ✔ hello-agent.md — valid
 ```
 
-### Add permissions to the frontmatter
+### Add permissions and safe outputs to the frontmatter
 
-Now add the `permissions` block after the `on:` section and before the closing `---`:
+Now add the `permissions` and `safe-outputs` blocks after the `on:` section and before the closing `---`.
+In strict mode, issue writes belong in `safe-outputs:` rather than `permissions:`:
 
 ```yaml
 permissions:
   contents: read
-  issues: write
+  issues: read
   copilot-requests: write
+safe-outputs:
+  add-comment:
+    max: 1
+  create-issue:
+    max: 1
 ```
 
 Checkpoint — validate the completed frontmatter:
@@ -149,7 +160,8 @@ You should see:
 ✔ hello-agent.md — valid
 ```
 
-- `permissions`: the workflow can read your repository, write to issues, and authenticate with Copilot.
+- `permissions`: the workflow can read your repository and authenticate with Copilot.
+- `safe-outputs`: the workflow can post at most one comment or create at most one issue without needing a broad `issues: write` permission.
 
 ### Add the agent instructions
 
