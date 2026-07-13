@@ -30,7 +30,9 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 
 ## Putting It All Together
 
-**Terminal:**
+Choose the path that matches how you want to work:
+
+### Terminal path — create the workflow file
 
 ```bash
 mkdir -p .github/workflows
@@ -38,8 +40,7 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/daily-docs.md`.
 
-<details>
-<summary>🖥️ GitHub UI alternative — create the file in your browser</summary>
+### GitHub UI path — create the workflow file in your browser
 
 1. In your repository on GitHub, click **Add file** → **Create new file**.
 2. In the filename box, type: `.github/workflows/daily-docs.md`
@@ -49,9 +50,9 @@ Then open your editor and create `.github/workflows/daily-docs.md`.
 > [!NOTE]
 > You won't be able to validate YAML until after committing — run `gh aw compile` in a Codespace if you want early feedback.
 
-</details>
+If you're following the **terminal path**, build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-docs.md` to validate — or keep `gh aw compile .github/workflows/daily-docs.md --watch` running in a second terminal for continuous feedback.
 
-Build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-docs.md` to validate — or keep `gh aw compile .github/workflows/daily-docs.md --watch` running in a second terminal for continuous feedback.
+If you're following the **GitHub UI path**, paste the complete workflow from the reference section, commit it once, then use the build sections below as a guided explanation of what each part does.
 
 ### Build section 1: frontmatter basics
 
@@ -143,9 +144,7 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 > [!TIP]
 > This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
 
-Commit and push:
-
-**Terminal:**
+### Terminal path — commit and push
 
 ```bash
 git add .github/workflows/daily-docs.md
@@ -153,12 +152,9 @@ git commit -m "feat: add daily documentation updater agentic workflow"
 git push
 ```
 
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
+### GitHub UI path — commit in the browser
 
 If you created the file via the GitHub UI, it was already committed when you clicked **Commit new file**. No additional push is needed.
-
-</details>
 
 ---
 
