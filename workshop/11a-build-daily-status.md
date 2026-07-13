@@ -2,6 +2,16 @@
 
 _You've designed the workflow on paper — now choose how you want to create it._
 
+## 📋 Before You Start
+
+- [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md) is complete and you have a written design for your daily-status workflow.
+- You know which build path you will use (terminal, GitHub UI, or Add Wizard).
+- Your practice repository exists and you have write access to it.
+
+## 🎯 What You'll Have When You're Done
+
+You'll have `.github/workflows/daily-status.md` committed to your repository and passing `gh aw compile --validate` with no errors. The workflow file will include all required sections — `trigger:`, `task:`, and at least one data-source — and will be ready to test in Step 12.
+
 ## Choose Your Path
 
 | Path | What you'll do | Continue |
@@ -14,8 +24,10 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 
 ## ✅ Checkpoint
 
-- [ ] You chose the path that matches how you want to work
-- [ ] You know all paths produce the same workflow file
+- [ ] `.github/workflows/daily-status.md` exists in your repository.
+- [ ] Running `gh aw compile .github/workflows/daily-status.md --validate` exits with no errors.
+- [ ] The workflow file includes the `trigger:`, `task:`, and at least one data-source section.
+- [ ] A commit containing the new workflow file appears in your repository's commit history.
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** Continue with your chosen path above.
