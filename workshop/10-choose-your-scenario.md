@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Choose one of three real-world agentic workflow scenarios to design and build over the next two steps. Each scenario follows the same structure — design a brief, then build the workflow file — so you'll practice the same core skills whichever path you take.
+Choose one of three real-world [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) scenarios to design and build over the next two steps. Each scenario follows the same structure — design a brief, then build the workflow file — so you'll practice the same core skills whichever path you take.
 
 ## 📋 Before You Start
 
@@ -85,3 +85,9 @@ Choose one of three real-world agentic workflow scenarios to design and build ov
 - ➡️ Adventure B: [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - ➡️ Adventure C: [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 - ➡️ Adventure D: [Step 11d: Build Any Workflow with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

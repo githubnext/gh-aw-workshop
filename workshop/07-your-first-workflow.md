@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll create a simple agentic workflow file in your repository using the `gh-aw` format. By the end of this step you'll have a working workflow definition that an AI agent can understand and act on.
+You'll create a simple [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) file in your repository using the `gh-aw` format. By the end of this step you'll have a working workflow definition that an AI agent can understand and act on.
 
 ## 📋 Before You Start
 
@@ -224,3 +224,9 @@ If you choose Adventure A or B, still run the validation step in this guide.
 - [ ] The file is committed and pushed to `main`
 
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

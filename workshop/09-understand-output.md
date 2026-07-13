@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll learn how to interpret the three places where agentic workflow results appear: the live run log, the run summary, and the safe-output record. By the end you'll know what a healthy run looks like, how to spot a misbehaving agent, and where to look first when something goes wrong.
+You'll learn how to interpret the three places where [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) results appear: the live run log, the run summary, and the [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) record. By the end you'll know what a healthy run looks like, how to spot a misbehaving agent, and where to look first when something goes wrong.
 
 ## 📋 Before You Start
 
@@ -123,3 +123,8 @@ If the comment exists but the content is wrong, the agent followed your instruct
 - [ ] I know the first place to look when a run produces unexpected output
 
 **Next:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
