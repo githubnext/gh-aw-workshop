@@ -13,6 +13,17 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
+### ✅ Before You Trigger — complete all three
+
+- [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`.
+- [ ] The **Actions** tab shows **Hello Agent** in the left workflow sidebar.
+- [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not).
+
+> [!IMPORTANT]
+> Complete all three checks above before triggering. Skipping them is the most common cause of silent run failures.
+
+<!-- -->
+
 > [!NOTE]
 > **Recommended: use the GitHub Actions UI.** No token configuration needed.
 
@@ -32,16 +43,6 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
-
-### Before You Trigger
-
-Confirm all three items before triggering the workflow — skipping this is the most common reason runs fail silently.
-
-1. `hello-agent.md` is committed to `.github/workflows/` on `main` (or your default branch).
-2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
-3. _(All users)_ Your practice repository has at least one open issue. If not, open the **Issues** tab in your practice repository and create a placeholder issue so the agent has something to act on.
-
-If item 1 or 2 is not yet true, return to the [Step 7 path chooser](07-your-first-workflow.md) and complete your chosen path first.
 
 <details>
 <summary>Advanced: trigger from the terminal (requires <code>actions:write</code> scope)</summary>
