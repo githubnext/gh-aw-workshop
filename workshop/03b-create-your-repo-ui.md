@@ -1,7 +1,7 @@
 # Step 3b: Create Your Practice Repository — GitHub UI Path
 
 > [!NOTE]
-> Want to use a terminal? Switch to the [Terminal path](03a-create-your-repo-terminal.md).
+> **Using the Copilot app or a mobile device?** You can complete this workshop entirely in the browser. Steps 4–10, 11 (UI builds), 13b, and 15–16 all have browser-friendly versions. Steps 17–21 may require terminal access for the most advanced activities, but optional terminal-based alternatives exist if you gain access later. Want to use a terminal now? Switch to the [Terminal path](03a-create-your-repo-terminal.md).
 
 ## 🎯 What You'll Do
 

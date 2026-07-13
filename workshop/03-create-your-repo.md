@@ -2,6 +2,9 @@
 
 _Now that setup is complete, create the repository where you'll build and test your workflows._
 
+> [!IMPORTANT]
+> **Using the GitHub web UI, Copilot app, or mobile?** Go to [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md) — no terminal needed.
+
 ## 🎯 What You'll Do
 
 You'll create a public `my-agentic-workflows` repository, confirm GitHub Actions is enabled, and prepare it for the rest of the workshop.
