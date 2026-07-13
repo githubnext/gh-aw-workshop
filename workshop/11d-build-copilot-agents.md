@@ -13,7 +13,7 @@ You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-ma
 - Either the [GitHub Copilot app](https://github.com/github/app) installed or the Copilot coding agent (Agents tab) enabled
 
 > [!NOTE]
-> The GitHub Copilot app is available on macOS, Windows, and Linux. For Copilot Business and Enterprise users, an administrator must enable Copilot CLI in the organization's [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
+> The GitHub Copilot app is available on macOS, Windows, and Linux and is built on Copilot CLI. For Copilot Business and Enterprise users, desktop app sessions require an administrator to enable Copilot CLI in the organization's [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
 
 <!-- Separate adjacent callouts -->
 
@@ -188,7 +188,7 @@ The agent will push an updated commit to the same branch.
 
 Once you are satisfied with the workflow:
 
-1. In the browser, click **Merge pull request** and **Confirm merge**. In the GitHub Copilot app, merge from the pull request view or enable **agent merge** to land it after required reviews and checks pass.
+1. In the browser, click **Merge pull request** and **Confirm merge**. In the GitHub Copilot app, merge from the pull request view or enable [**agent merge**](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests#merging-a-pull-request), which asks the agent to fix blockers and merge after required reviews and checks pass.
 2. Confirm that the pull request is merged.
 3. Delete the branch (optional but recommended).
 
