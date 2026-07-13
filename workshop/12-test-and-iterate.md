@@ -45,6 +45,43 @@ Read it critically. Ask yourself:
 - Is the tone right — too formal, too casual?
 - Is anything missing (e.g., no mention of stale PRs)?
 
+If you are not sure whether the result is "good enough," compare it to these examples:
+
+#### Needs improvement
+
+```markdown
+### Daily Repo Status
+
+- 7 open issues
+- 2 open PRs
+- 1 PR needs review
+```
+
+Why this still needs work:
+- It is technically correct, but it sounds robotic.
+- It does not include the age of the oldest open PR, so you cannot spot stale work.
+- It gives you numbers, but not much help interpreting them.
+
+#### Good output after one iteration
+
+```markdown
+### Daily Repo Status
+
+Good morning! You have 7 open issues and 2 open PRs.
+
+- Oldest open PR: #42, open for 6 days
+- 1 PR is waiting for review
+- No stale issues need attention today
+
+Your queue looks manageable today — one review pass would keep things moving.
+```
+
+Use this pass/fail check on your own output:
+- Pass if the facts match your repository, the tone sounds human, and the comment includes the key detail you wanted to improve.
+- Fail if it is still missing important context, still sounds generic, or still does not match the format you had in mind.
+
+If it fails, make one small prompt change and run the workflow again.
+
 ### Improve the agent instructions
 
 Open `.github/workflows/daily-status.md` in your editor. The agent instructions live in the **Markdown body** — the plain-English text below the closing `---` fence. This is the section that starts with `# Daily Repo Status Report`.
@@ -111,6 +148,7 @@ If a run shows a red ❌, click the failed step to see the raw log. Common cause
 - [ ] You have triggered at least two manual runs
 - [ ] The workflow posts a correctly formatted status comment on your issue
 - [ ] You have made at least one improvement to the prompt
+- [ ] Your improved workflow has run at least once and produced output that matches your formatting expectations
 - [ ] You understand how to read the Actions log to diagnose failures
 
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
