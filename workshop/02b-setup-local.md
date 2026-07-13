@@ -1,21 +1,15 @@
 # Adventure B: Set Up Your Local Terminal
 
 > [!IMPORTANT]
-> **No terminal? No problem.** If you prefer to stay in the GitHub web UI without opening a terminal at all, skip ahead to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+> **No terminal? No problem.** If you're using the Copilot app, a mobile device, or prefer the GitHub web UI without opening a terminal at all, skip ahead to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
 
 ## 🔀 Choose your path first
 
-> [!IMPORTANT]
-> If you're unsure you chose the right path, ask yourself:
-> 1. **Do you have a terminal available?**
-> 2. **Are you using GitHub Copilot Chat or the GitHub web UI only?**
-> 3. **If you have a terminal, do you prefer a browser terminal or your local machine?**
->
-> Choose one path and keep it through Step 8.
->
-> - **Terminal path — Codespace:** recommended for beginners who want compile feedback. ➡️ [Set Up a Codespace](02a-setup-codespace.md)
-> - **Terminal path — local:** continue below. ✅ **You're in the right place.**
-> - **GitHub UI path:** skip terminal setup and [create your repository in the browser](03b-create-your-repo-ui.md).
+| I am… | Go to… |
+|-------|--------|
+| **Browser / Copilot app / Mobile** — no terminal, using GitHub web UI, Copilot app, or mobile | ➡️ [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md) — skip terminal setup entirely |
+| **Codespace user** — browser terminal, no local install | ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
+| **Local terminal user** — prefer my own machine and tools | ✅ You're in the right place — continue below |
 
 ## 🧪 5-question terminal self-assessment
 
