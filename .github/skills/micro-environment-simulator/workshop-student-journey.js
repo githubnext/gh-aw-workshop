@@ -273,8 +273,9 @@ function applyLearning(state, context, gains = {}) {
 
 function contentReadinessCheck(state, context, options = {}) {
   const assessment = evaluateStepProbability(state, context, options);
+  const assessmentMeta = { summary: assessment.summary, riskTags: assessment.riskTags };
   if (deterministicRoll(context, options.salt || 0) <= assessment.probability) {
-    return { ok: true, assessment };
+    return { ok: true, probability: assessment.probability, assessment: assessmentMeta };
   }
   const failure = ensure(
     false,
@@ -283,7 +284,7 @@ function contentReadinessCheck(state, context, options = {}) {
     options.remediation || "Reduce the cognitive load in this step or add a clearer UI/CLI split."
   );
   failure.probability = assessment.probability;
-  failure.assessment = assessment;
+  failure.assessment = assessmentMeta;
   return failure;
 }
 
