@@ -33,6 +33,10 @@ _Working locally means you'll use the tools and shell you already know — let's
 
 You'll install the tools you need on your own machine: Git and the `gh` CLI. You'll authenticate with GitHub, and by the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
 
+Here is an overview of the five stages you'll complete:
+
+![Local setup journey: five stages from pre-flight check through install, authenticate, clone, and ready to build](images/02b-local-setup-flow.svg)
+
 ## 📋 Before You Start
 
 - You've completed [Step 1: What You Need Before We Start](01-prerequisites.md)

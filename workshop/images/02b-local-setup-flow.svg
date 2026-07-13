@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Local setup journey: five stages from pre-flight check through install, authenticate, clone, and ready to build">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Main card -->
+  <rect x="40" y="40" width="1120" height="480" rx="12" ry="12" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="600" y="84" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700" fill="#24292f" text-anchor="middle">Local Setup Journey — Adventure B</text>
+  <text x="600" y="106" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#57606a" text-anchor="middle">Five stages to go from a fresh machine to a workflow-ready repository</text>
+
+  <!-- ── Stage boxes ── -->
+  <!-- Stage 1: Pre-flight -->
+  <rect x="80" y="150" width="170" height="110" rx="10" ry="10" fill="#ddf4ff" stroke="#0969da" stroke-width="2"/>
+  <circle cx="80" cy="150" r="14" fill="#0969da"/>
+  <text x="80" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">1</text>
+  <text x="165" y="184" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#0969da" text-anchor="middle">Pre-flight</text>
+  <text x="165" y="203" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#0969da" text-anchor="middle">Check</text>
+  <text x="165" y="226" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">gh auth status</text>
+  <text x="165" y="243" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">gh extension list</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="252" y1="205" x2="288" y2="205" stroke="#57606a" stroke-width="2"/>
+  <polygon points="288,200 298,205 288,210" fill="#57606a"/>
+
+  <!-- Stage 2: Install -->
+  <rect x="300" y="150" width="170" height="110" rx="10" ry="10" fill="#fff8c5" stroke="#bf8700" stroke-width="2"/>
+  <circle cx="300" cy="150" r="14" fill="#bf8700"/>
+  <text x="300" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">2</text>
+  <text x="385" y="184" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#bf8700" text-anchor="middle">Install</text>
+  <text x="385" y="203" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#bf8700" text-anchor="middle">Tools</text>
+  <text x="385" y="226" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">git + gh CLI</text>
+  <text x="385" y="243" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">macOS / Win / Linux</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="472" y1="205" x2="508" y2="205" stroke="#57606a" stroke-width="2"/>
+  <polygon points="508,200 518,205 508,210" fill="#57606a"/>
+
+  <!-- Stage 3: Authenticate -->
+  <rect x="520" y="150" width="170" height="110" rx="10" ry="10" fill="#ffeff7" stroke="#8250df" stroke-width="2"/>
+  <circle cx="520" cy="150" r="14" fill="#8250df"/>
+  <text x="520" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">3</text>
+  <text x="605" y="184" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#8250df" text-anchor="middle">Authenticate</text>
+  <text x="605" y="226" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">gh auth login</text>
+  <text x="605" y="243" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">browser one-time code</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="692" y1="205" x2="728" y2="205" stroke="#57606a" stroke-width="2"/>
+  <polygon points="728,200 738,205 728,210" fill="#57606a"/>
+
+  <!-- Stage 4: Clone -->
+  <rect x="740" y="150" width="170" height="110" rx="10" ry="10" fill="#fff0f0" stroke="#cf222e" stroke-width="2"/>
+  <circle cx="740" cy="150" r="14" fill="#cf222e"/>
+  <text x="740" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">4</text>
+  <text x="825" y="184" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#cf222e" text-anchor="middle">Clone</text>
+  <text x="825" y="203" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#cf222e" text-anchor="middle">Repository</text>
+  <text x="825" y="226" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">gh repo clone</text>
+  <text x="825" y="243" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">cd my-agentic-workflows</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="912" y1="205" x2="948" y2="205" stroke="#57606a" stroke-width="2"/>
+  <polygon points="948,200 958,205 948,210" fill="#57606a"/>
+
+  <!-- Stage 5: Ready -->
+  <rect x="960" y="150" width="170" height="110" rx="10" ry="10" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+  <circle cx="960" cy="150" r="14" fill="#1a7f37"/>
+  <text x="960" y="155" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">5</text>
+  <text x="1045" y="184" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#1a7f37" text-anchor="middle">Ready to</text>
+  <text x="1045" y="203" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#1a7f37" text-anchor="middle">Build</text>
+  <text x="1045" y="226" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">same starting point</text>
+  <text x="1045" y="243" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle">as Codespace users</text>
+
+  <!-- ── Decision note below stage 1 ── -->
+  <!-- Dashed box for decision -->
+  <rect x="80" y="300" width="360" height="80" rx="8" ry="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="260" y="322" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#57606a" text-anchor="middle">Already have gh installed?</text>
+  <text x="260" y="342" font-family="'Segoe UI', sans-serif" font-size="11" fill="#57606a" text-anchor="middle">If pre-flight shows a logged-in account</text>
+  <text x="260" y="360" font-family="'Segoe UI', sans-serif" font-size="11" fill="#57606a" text-anchor="middle">→ skip stages 2 &amp; 3, jump straight to stage 4</text>
+
+  <!-- Connector from stage 1 down to decision box -->
+  <line x1="165" y1="260" x2="165" y2="300" stroke="#57606a" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- ── Verify banner ── -->
+  <rect x="520" y="310" width="620" height="60" rx="8" ry="8" fill="#ddf4ff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="830" y="334" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#0969da" text-anchor="middle">Final Verification (run from inside the cloned repo)</text>
+  <text x="830" y="354" font-family="'Segoe UI', sans-serif" font-size="11" fill="#24292f" text-anchor="middle" font-family="'Fira Code', monospace">gh auth status &amp;&amp; gh extension list &amp;&amp; gh repo view --json owner,name</text>
+
+  <!-- Connector from stage 5 down to verify -->
+  <line x1="1045" y1="260" x2="1045" y2="310" stroke="#0969da" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Footer annotation -->
+  <text x="600" y="460" font-family="'Segoe UI', sans-serif" font-size="12" fill="#57606a" text-anchor="middle">After stage 5, you are at the same starting point as Codespace users — ready to install gh-aw and write your first agentic workflow.</text>
+</svg>
