@@ -23,7 +23,7 @@ You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-ma
 - A GitHub Copilot plan
 - Either the [GitHub Copilot app](https://github.com/github/app) installed or the Copilot coding agent (Agents tab) enabled
 
-The GitHub Copilot app runs on macOS, Windows, and Linux and is built on Copilot CLI. Copilot Business and Enterprise users may need an administrator to enable Copilot CLI in the organization's [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies). If you use the browser path and don't see the Agents tab, ask your organization administrator to enable the Copilot coding agent.
+The GitHub Copilot app runs on macOS, Windows, and Linux. If you don't see the Agents tab in your repository, ask your organization administrator to enable the Copilot coding agent in [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
 
 ---
 
@@ -36,17 +36,22 @@ The GitHub Copilot app runs on macOS, Windows, and Linux and is built on Copilot
 3. Choose your practice repository from GitHub, a local folder, or a repository URL.
 4. Choose **Interactive** mode so you can review and steer the work as it progresses.
 
-The app creates an isolated workspace for the session. You can inspect the agent's changes, give follow-up instructions, and manage the resulting pull request without switching to an editor.
-
 ### GitHub Copilot Agents tab
 
 1. Open your practice repository on GitHub.com.
 2. In the repository navigation, click **Copilot** (or the **Agents** tab if your organization uses that label).
 3. Click **New session** (or **Ask Copilot** / **Start agent task** — the exact label depends on your GitHub version).
 
-A text input panel opens where you can describe the task for the agent.
+You can also start a session from any open issue by clicking **Assign to Copilot** in the issue sidebar — the issue body becomes the task description.
 
-You can also start an agent session from any open issue by clicking **Assign to Copilot** in the issue sidebar — the issue body becomes the task description. Either entry point works for this adventure.
+---
+
+## ✅ Ready to Start?
+
+Before you paste the scenario prompt, confirm you have everything in place:
+
+- [ ] You have opened a session for your practice repository (Copilot app or Agents tab)
+- [ ] You know which scenario you are building (A, B, or C — see [Step 10](10-choose-your-scenario.md))
 
 ---
 
@@ -145,94 +150,5 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 
 ---
 
-## Monitor Your Session
-
-After submitting the prompt, the session shows a live activity feed. You will see the agent working through several phases:
-
-| Phase | What you see |
-|---|---|
-| **Reading** | The agent fetches the `create.md` reference and reads existing files in your repository |
-| **Planning** | The agent decides what frontmatter keys, permissions, and task brief to use |
-| **Writing** | The agent creates the workflow `.md` file in `.github/workflows/` |
-| **Compiling** | The agent runs `gh aw compile --validate` and fixes any errors it finds |
-| **Opening PR** | The agent commits both files and opens a pull request |
-
-The session typically completes in two to five minutes. You can steer it with follow-up prompts if it needs more context or takes the wrong direction. Follow along in the activity feed and expand individual steps to see exactly what the agent wrote, read, or ran — this is a good way to learn the agentic workflow format without writing it yourself.
-
-> [!IMPORTANT]
-> - The agent runs `gh aw compile ... --validate` in its session workspace and can install `gh-aw` there if needed.
-> - For manual validation or to run `gh aw compile ... --watch` yourself, install `gh-aw` locally or in Codespaces by following [Step 6](06-install-gh-aw.md).
-> - Use the GitHub **Actions tab** in [Step 12](12-test-and-iterate.md) to trigger the workflow and inspect its runtime logs.
-
----
-
-## Review and Merge the Pull Request
-
-When the session ends, open the pull request it created. In the GitHub Copilot app, find it in **My work**. In the Agents tab, use the pull request link in the session.
-
-### What to check in the PR diff
-
-The PR adds two files:
-
-| File | What to verify |
-|---|---|
-| `.github/workflows/<name>.md` | Frontmatter keys match the scenario; the task brief describes what you want; `safe-outputs` limits write actions |
-| `.github/workflows/<name>.lock.yml` | Exists and is non-empty — this is the compiled GitHub Actions YAML that the runner executes |
-
-Look through the workflow Markdown body. The agent should have written a clear task brief based on the prompt you provided. If anything looks wrong — wrong schedule, missing permission, overly broad task brief — ask the agent to revise it:
-
-- **GitHub Copilot app:** start or continue a session for the pull request and describe the change.
-- **Agents tab:** leave a review comment that starts with `@copilot`, for example:
-
-```
-@copilot Please change the schedule to weekly instead of daily.
-```
-
-> [!IMPORTANT]
-> In the browser PR flow, comments directed at the Copilot agent **must** begin with `@copilot`. Without it, the agent will not see or act on your message.
-
-The agent will push an updated commit to the same branch.
-
-### Merge the pull request
-
-Once you are satisfied with the workflow:
-
-1. In the browser, click **Merge pull request** and **Confirm merge**. In the GitHub Copilot app, merge from the pull request view or enable [**agent merge**](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests#merging-a-pull-request), which asks the agent to fix blockers and merge after required reviews and checks pass.
-2. Confirm that the pull request is merged.
-3. Delete the branch (optional but recommended).
-
-The workflow is now live on your default branch. GitHub Actions will pick it up on the next scheduled trigger or when you click **Run workflow** in the Actions tab.
-
----
-
-## What Was Added
-
-After merging, your repository contains:
-
-| File | Purpose |
-|---|---|
-| `.github/workflows/<name>.md` | The Markdown task brief — the human-readable workflow definition the agent and you can edit |
-| `.github/workflows/<name>.lock.yml` | The compiled GitHub Actions YAML — generated automatically, do not edit by hand |
-
-You can continue iterating through a GitHub Copilot app or Agents-tab session and let the agent handle edits and recompilation. If you want a persistent validation loop or direct CLI control, follow [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) and use `gh aw compile --watch` in a local or Codespaces terminal.
-
----
-
-## ✅ Checkpoint
-
-- [ ] You opened a session for your repository in the GitHub Copilot app or Agents tab
-- [ ] You pasted the scenario prompt (A, B, or C) and the agent created the workflow files
-- [ ] The agent ran `gh aw compile .github/workflows/<name>.md --validate` successfully
-- [ ] The pull request was created, reviewed, and merged into your default branch
-- [ ] `.github/workflows/<name>.md` and `.github/workflows/<name>.lock.yml` exist in your repository
-
 **Previous:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [About the GitHub Copilot app](https://docs.github.com/en/copilot/concepts/agents/github-copilot-app)
-- [Managing issues and pull requests with the GitHub Copilot app](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+**Next:** [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)
