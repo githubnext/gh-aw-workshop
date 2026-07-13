@@ -140,7 +140,10 @@ steps:
           """Approximate FK grade for directional curriculum scoring."""
           words = re.findall(r"[a-zA-Z']+", text)
           sentences = max(1, len(SENTENCE_RE.findall(text)))
-          syllables = sum(max(1, len(re.findall(r'[aeiouAEIOU]+', w))) for w in words)
+          syllables = 0
+          for w in words:
+              vowel_groups = len(re.findall(r'[aeiouAEIOU]+', w))
+              syllables += vowel_groups if vowel_groups > 0 else 1
           if not words:
               return 0.0
           return round(0.39 * (len(words) / sentences) + 11.8 * (syllables / len(words)) - 15.59, 1)
@@ -154,9 +157,12 @@ steps:
           callout_count = len(CALLOUT_RE.findall(raw))
           numbered_headings = len(NUMBERED_HDR_RE.findall(raw))
           fk = fk_grade(prose)
+          # Activities per 100 words so longer steps without added practice score lower.
           activity_density = round((code_blocks + checklist_items) / max(1, words / 100), 2)
 
-          cognitive_load = round(max(0, 10 - max(0, (words - OPTIMAL_WORD_COUNT) / WORD_COUNT_PENALTY_PER)), 1)
+          word_excess = max(0, words - OPTIMAL_WORD_COUNT)
+          cognitive_penalty = word_excess / WORD_COUNT_PENALTY_PER
+          cognitive_load = round(max(0, 10 - cognitive_penalty), 1)
           readability = (
               10.0 if READABILITY_IDEAL_MIN <= fk <= READABILITY_IDEAL_MAX
               else round(max(0, 10 - abs(fk - READABILITY_TARGET) * READABILITY_PENALTY_SCALE), 1)
@@ -178,8 +184,8 @@ steps:
               'checkpoint_quality': checkpoint_quality,
               'style_compliance': style_compliance,
           }
-          # Keep weights aligned with the curriculum-evaluator dimensions so dropout analysis
-          # can correlate simulator friction with the same quality rubric emphasis.
+          # Keep weights aligned with .github/workflows/curriculum-evaluator.md so dropout
+          # analysis can correlate simulator friction with the same rubric emphasis.
           weights = {
               'cognitive_load': 2.0,
               'readability': 1.5,
