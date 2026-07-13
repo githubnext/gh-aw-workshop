@@ -34,7 +34,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 ### Alternative: trigger from the terminal
 
 > [!IMPORTANT]
-> **Codespaces users:** If `gh aw run hello-agent` fails with an `actions:write` permission error, your Codespaces token has limited workflow scopes. Use the Actions-tab UI steps above instead — they work regardless of token scope.
+> **Codespaces users:** If `gh aw run hello-agent` fails with an `actions:write` permission error, use the GitHub Actions UI steps above first. If you want the full recovery checklist, open [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
 Terminal users can trigger the same run with:
 
