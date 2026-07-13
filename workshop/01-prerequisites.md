@@ -2,15 +2,31 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
+## Enterprise users
+
 > [!IMPORTANT]
-> **Enterprise and GHES users: complete this check first.** Agentic workflows require Copilot model access at both the organization and repository level.
+> **Using GHEC, GHES, or EMU? Complete this check before you continue.**
 >
-> Before you continue:
-> - Run `gh copilot --version` to confirm Copilot CLI support is available in your environment.
-> - Check **Settings → Copilot** to confirm your Copilot license and model access are enabled for this account.
-> - If either check fails, ask your enterprise admin to enable Copilot model access first, then continue.
+> Agentic workflows will not run until all three Copilot Enterprise prerequisites are true for the organization that owns your workshop repository:
 >
-> Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and review [About GitHub Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent) for current enterprise and GHES capability constraints.
+> - [ ] Copilot Enterprise is enabled for the organization
+> - [ ] A Copilot Enterprise seat is assigned to your account
+> - [ ] The Copilot policy is active for your account (**Settings → Copilot → Policies**)
+>
+> Next steps:
+> - Complete the [Enterprise setup guide](side-quest-enterprise-setup.md) before you proceed
+> - Run `gh copilot --version` to confirm Copilot CLI support is available in your environment
+> - Check **Settings → Copilot** to confirm your Copilot access is enabled for this account
+>
+> **Blocked? Send your GitHub org admin this note:**
+>
+> > I'm taking the gh-aw workshop.
+> >
+> > Step 1 requires GitHub Copilot Enterprise to be enabled for the organization that owns my workshop repository.
+> >
+> > Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account.
+>
+> Review [About GitHub Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent) for current enterprise and GHES capability constraints.
 
 <!-- -->
 
@@ -30,7 +46,7 @@ Complete these checks before you choose a setup path:
 - [ ] You know where you'll run workshop commands: a local terminal or a GitHub Codespace
 - [ ] If you're using your own terminal, run `gh --version` now and confirm `gh` CLI ≥ 2.40
 - [ ] If you choose a Codespace, you'll run `gh --version` in [Adventure A](02a-setup-codespace.md) right after the Codespace opens
-- [ ] You completed the Copilot license + model access check in the enterprise callout above
+- [ ] If you're on GHEC, GHES, or EMU, you completed the enterprise prerequisite check above
 
 > [!NOTE]
 > **First time with GitHub Actions?**

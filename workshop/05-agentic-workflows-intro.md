@@ -7,29 +7,9 @@
 **Not on GHEC, GHES, or EMU?** Skip this section and continue to the next heading.
 
 > [!IMPORTANT]
-> Enterprise user (GHEC, GHES, or EMU)? Review your admin-managed prerequisites before continuing.
+> Enterprise user (GHEC, GHES, or EMU)? Confirm you already completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users) before continuing.
 >
-> → [Enterprise setup guide (required for enterprise users)](side-quest-enterprise-setup.md)
->
-> - [ ] Copilot Enterprise enabled for the org
-> - [ ] Copilot Enterprise seat assigned to your account
-> - [ ] Policy active (verified in **Settings → Copilot → Policies**)
-
-**Do not continue to Step 6 until all three boxes are checked.** Skipping this check will cause a silent failure at Step 8 with no clear error message. Your admin can usually unblock this in under 5 minutes.
-
-**Blocked? Do this:** Send your GitHub org admin a note like this:
-
-> I'm taking the gh-aw workshop.
->
-> Step 5 requires GitHub Copilot Enterprise to be enabled for the organization that owns my workshop repository.
->
-> Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account.
-
-While you wait:
-
-1. Complete the [enterprise setup guide](side-quest-enterprise-setup.md).
-2. Read Steps 6 and 7 to install `gh-aw` and understand your first workflow.
-3. Wait to run workflows in Step 8 and later until your access is ready.
+> If not, stop here, complete the [enterprise setup guide](side-quest-enterprise-setup.md), and return after your org admin has enabled your Copilot Enterprise access.
 
 ---
 
