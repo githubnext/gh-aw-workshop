@@ -47,16 +47,27 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 ## UI/CLI split path
 
-Steps that involve file creation or editing must support two named paths. Use the exact headings and labels below so learners can navigate consistently.
+When a step diverges significantly between a terminal-based workflow and a browser-only workflow, **split it into separate files** rather than mixing both paths in a single file. Segmenting users into path-specific files keeps each file focused, reduces cognitive load, and avoids long blocks of instructions that do not apply to the reader.
+
+### Prefer file split over inline sections
+
+Use a file split when the Terminal path and the GitHub UI path differ in more than one or two instructions. Inline `### Terminal path —` / `### GitHub UI path —` sections are only appropriate for short, mostly-converging steps where the divergence is a single action (for example, one commit step at the end).
+
+For new file-split steps, follow the existing **choose-your-path branch ID** naming convention (`NNx` where `x` is a lowercase letter):
+
+- `NNa-<slug>-terminal.md` — Terminal path file
+- `NNb-<slug>-ui.md` — GitHub UI path file
+
+Link between the two files at the top of each so learners can switch if they chose the wrong one.
 
 ### Named paths
 
 - **Terminal path** — the learner has a terminal open (Codespace or local). They create files with shell commands, compile with `gh aw compile`, and push with `git`.
 - **GitHub UI path** — the learner works entirely in the browser. They create and edit files using the GitHub web editor, paste complete file content, and commit directly from the browser.
 
-### Heading convention
+### Heading convention (for inline sections)
 
-Use `###` section headings that state both the path name and the action, separated by an em dash:
+When inline sections are appropriate, use `###` headings that state both the path name and the action, separated by an em dash:
 
 ```
 ### Terminal path — <action>
