@@ -10,6 +10,8 @@ You'll finish `.github/workflows/hello-agent.md` by adding:
 - a `## Task` instructions block below frontmatter
 - a final compile check, commit, and push
 
+**For future edits, prefer asking an agent to update workflows with the `agentic-workflows` skill instead of hand-editing every line.**
+
 ## 📋 Before You Start
 
 - Completed [Part 1](07a-your-first-workflow-terminal.md)
@@ -70,8 +72,6 @@ git add .github/workflows/hello-agent.md
 git commit -m "Add hello-agent agentic workflow"
 git push
 ```
-
-For follow-up edits, prefer asking an agent to update the workflow with the `agentic-workflows` skill instead of hand-editing every line.
 
 ## Checkpoint
 

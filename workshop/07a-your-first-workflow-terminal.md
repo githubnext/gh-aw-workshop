@@ -45,7 +45,7 @@ Open `.github/workflows/hello-agent.md` in your editor.
 </details>
 
 > [!IMPORTANT]
-> This `.md` file is your agent task brief. GitHub Actions runs the compiled `.lock.yml` file created by `gh aw compile`.
+> This `.md` file is your agent task brief, not the workflow GitHub Actions executes directly. You write the goal in Markdown; `gh aw compile` turns it into the `.lock.yml` workflow file that Actions actually runs.
 
 ### Add the starter frontmatter
 
