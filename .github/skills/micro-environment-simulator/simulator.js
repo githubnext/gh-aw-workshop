@@ -2,6 +2,8 @@
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const RUN_INDEX_SEED_FACTOR = 31;
+const fs = require("node:fs");
+const path = require("node:path");
 
 const VALID_TERMINALS = {
   macos: new Set(["bash", "zsh"]),
@@ -24,6 +26,19 @@ const ANTHROPIC_MISSING_REMAINDER = 0;
 const OPENAI_MISSING_REMAINDER = 1;
 const COPILOT_PERMISSION_GITHUB_MODULO = 4;
 const COPILOT_PERMISSION_OTHER_MODULO = 3;
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function stableHash(value) {
+  const input = String(value || "");
+  let hash = 0;
+  for (let i = 0; i < input.length; i += 1) {
+    hash = (hash * 31 + input.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+}
 
 function toDayOfYear(isoDate) {
   const date = new Date(`${isoDate}T00:00:00Z`);
@@ -55,11 +70,153 @@ function cloneState(state) {
   return JSON.parse(JSON.stringify(state));
 }
 
+function countMatches(text, pattern) {
+  const matches = String(text || "").match(pattern);
+  return matches ? matches.length : 0;
+}
+
+function analyzeStepMarkdown(stepId, markdown, files = []) {
+  const text = String(markdown || "");
+  const lines = text.split(/\r?\n/);
+  const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const headingCount = countMatches(text, /^#{1,6}\s+/gm);
+  const calloutCount = countMatches(text, /^>\s+\[![A-Z]+\]/gm);
+  const clickCueCount = countMatches(
+    text,
+    /\b(click|open|navigate|Actions tab|browser|GitHub UI|web UI)\b/gi
+  );
+  const authCueCount = countMatches(
+    text,
+    /\b(auth|login|signed in|token|Copilot|permissions?|403|secret)\b/gi
+  );
+  const enterpriseCueCount = countMatches(text, /\b(GHES|GHEC|EMU|enterprise|org admin)\b/gi);
+  const troubleshootingCueCount = countMatches(
+    text,
+    /\b(troubleshoot|error|failed|warning|blocked|if you see|if you get|fix)\b/gi
+  );
+  const optionalPathCueCount = countMatches(
+    text,
+    /\b(Adventure [A-Z]|Path [A-Z]|alternative|optional|UI path|browser path|Codespace|local path)\b/gi
+  );
+  const codeBlocks = [];
+  for (let i = 0; i < lines.length; i += 1) {
+    const start = lines[i].match(/^```([A-Za-z0-9_-]+)?\s*$/);
+    if (!start) continue;
+    const language = String(start[1] || "").toLowerCase();
+    const blockLines = [];
+    i += 1;
+    while (i < lines.length && !/^```/.test(lines[i])) {
+      blockLines.push(lines[i]);
+      i += 1;
+    }
+    codeBlocks.push({ language, lines: blockLines });
+  }
+  const commandBlockCount = codeBlocks.filter((block) =>
+    ["bash", "sh", "shell", "zsh", "powershell", "pwsh", ""].includes(block.language)
+  ).length;
+  const commandLineCount = codeBlocks.reduce(
+    (sum, block) =>
+      sum +
+      block.lines.filter((line) => /\b(gh|git|mkdir|cd|touch|printf|curl|brew|winget|sudo)\b/.test(line))
+        .length,
+    0
+  );
+  const uiAlternativeCount = countMatches(text, /\b(UI alternative|GitHub UI path|browser path|Path C)\b/gi);
+  const complexity = clamp(
+    0.12 +
+      Math.min(wordCount / 1400, 0.32) +
+      Math.min(commandLineCount / 18, 0.24) +
+      Math.min(calloutCount / 18, 0.12) +
+      Math.min(optionalPathCueCount / 10, 0.2),
+    0.05,
+    0.95
+  );
+  const terminalDemand = clamp(
+    Math.min(commandBlockCount * 0.18 + commandLineCount * 0.03, 0.95) - Math.min(uiAlternativeCount * 0.1, 0.3),
+    0,
+    1
+  );
+  const browserSupport = clamp(
+    Math.min((clickCueCount + uiAlternativeCount * 2 + optionalPathCueCount) * 0.06, 1),
+    0,
+    1
+  );
+  const authDemand = clamp(Math.min(authCueCount * 0.07, 1), 0, 1);
+  const enterpriseDemand = clamp(Math.min(enterpriseCueCount * 0.12, 1), 0, 1);
+  const troubleshootingSupport = clamp(
+    Math.min((troubleshootingCueCount + calloutCount) * 0.06, 1),
+    0,
+    1
+  );
+  const conceptDemand = clamp(
+    0.08 + Math.min((headingCount + optionalPathCueCount + calloutCount) * 0.03, 0.6),
+    0,
+    1
+  );
+
+  return deepFreeze({
+    stepId,
+    files,
+    wordCount,
+    headingCount,
+    calloutCount,
+    commandBlockCount,
+    commandLineCount,
+    clickCueCount,
+    uiAlternativeCount,
+    authDemand,
+    browserSupport,
+    complexity,
+    conceptDemand,
+    enterpriseDemand,
+    terminalDemand,
+    troubleshootingSupport,
+    contentHash: stableHash(text)
+  });
+}
+
+function buildStepContentById({ steps = [], curriculum, stepFilesById = {}, repoRoot = process.cwd() }) {
+  const workshopDir = path.resolve(repoRoot, "workshop");
+  const curriculumEntries = Array.isArray(curriculum?.main_steps) ? curriculum.main_steps : [];
+  const curriculumByFile = new Map(curriculumEntries.map((entry) => [entry.file, entry]));
+  const stepContentById = {};
+
+  for (const stepId of steps) {
+    const mappedFiles = stepFilesById[stepId];
+    const candidateFiles = Array.isArray(mappedFiles)
+      ? mappedFiles
+      : mappedFiles
+      ? [mappedFiles]
+      : curriculumEntries
+          .filter((entry) => entry.file.replace(/\.md$/i, "") === stepId)
+          .map((entry) => entry.file);
+    const existingFiles = candidateFiles.filter((file) => fs.existsSync(path.resolve(workshopDir, file)));
+    const markdown = existingFiles
+      .map((file) => fs.readFileSync(path.resolve(workshopDir, file), "utf8"))
+      .join("\n\n");
+    stepContentById[stepId] = analyzeStepMarkdown(
+      stepId,
+      markdown,
+      existingFiles.map((file) => ({
+        file,
+        title: curriculumByFile.get(file)?.title || file.replace(/\.md$/i, "")
+      }))
+    );
+  }
+
+  return deepFreeze(stepContentById);
+}
+
 function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const id = Number(student.id || 0);
   const seed = id * 97 + dayOfYear * 17 + runIndex * RUN_INDEX_SEED_FACTOR;
   const background = String(student.background || "");
   const level = String(student.level || "");
+  const tool = String(student.tool || "cli");
+  const uiPreferred = Boolean(student.ui_preferred);
+  const priorRuns = Number(student.runs || 0);
+  const priorSuccesses = Number(student.successes || 0);
+  const priorSuccessRate = priorRuns > 0 ? priorSuccesses / priorRuns : 0;
 
   const isEnterprise = background === "enterprise-dev" || background === "enterprise-devops";
   const deployment = isEnterprise
@@ -70,14 +227,28 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const os = deterministicChoice(seed + 2, ["macos", "linux", "windows"]);
   const terminal = deterministicChoice(seed + 3, Array.from(VALID_TERMINALS[os]));
 
-  const hasGh = level !== "beginner" || seed % 3 !== 0;
+  const inCodespaces =
+    tool === "mobile"
+      ? false
+      : tool === "CCA"
+      ? seed % 10 < 4
+      : tool === "vscode"
+      ? seed % 10 < 6
+      : seed % 10 < 2;
+  const hasGh = tool === "mobile" ? false : level !== "beginner" || inCodespaces || seed % 3 !== 0;
   const hasAw = false;
-  const inCodespaces = student.tool === "vscode" ? seed % 2 === 0 : seed % 3 === 0;
   const tokenScope = inCodespaces && isEnterprise ? "org" : "user";
+  const hasGithubSession = tool === "mobile" || seed % 9 !== 0;
   const isLoggedIn =
     hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
   const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
-  const hasCopilotRequestToken = isLoggedIn && (student.tool === "cloud-agent" || seed % 2 === 0);
+  const hasCopilotRequestToken = isLoggedIn && (tool === "cloud-agent" || tool === "CCA" || seed % 2 === 0);
+  const hasCopilotAccess =
+    deployment !== "ghes" &&
+    hasGithubSession &&
+    (level === "advanced" ||
+      level === "actions-user" ||
+      (isEnterprise ? seed % 6 !== 0 : seed % (uiPreferred ? 4 : 5) !== 0));
   const inferenceProvider = deterministicChoice(seed + INFERENCE_PROVIDER_SEED_OFFSET, INFERENCE_PROVIDERS);
   const hasCopilotGithubToken =
     isLoggedIn &&
@@ -98,18 +269,33 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     inferenceProvider === "github"
       ? seed % COPILOT_PERMISSION_GITHUB_MODULO !== 0
       : seed % COPILOT_PERMISSION_OTHER_MODULO !== 0;
+  const baseConfidence = clamp(
+    0.3 +
+      (level === "advanced"
+        ? 0.4
+        : level === "actions-user"
+        ? 0.28
+        : level === "github-basic"
+        ? 0.16
+        : 0.02) +
+      (priorSuccessRate * 0.16 + Math.min(priorRuns, 1500) / 1500 * 0.08),
+    0.18,
+    0.96
+  );
 
   return deepFreeze({
     studentId: id,
     os,
     terminal,
-    tool: student.tool || "cli",
+    tool,
     installed: {
       gh: hasGh ? "2.58.0" : null,
       aw: hasAw ? "0.0.0" : null
     },
     auth: {
       isLoggedIn,
+      hasGithubSession,
+      hasCopilotAccess,
       accountType,
       hasApiKey,
       hasCopilotRequestToken,
@@ -119,7 +305,8 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
       deployment
     },
     workspace: {
-      context: inCodespaces ? "codespaces" : "local"
+      context: inCodespaces ? "codespaces" : "local",
+      deviceClass: tool
     },
     actions: {
       inferenceProvider,
@@ -130,6 +317,43 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
         [PROVIDER_SECRET_BY_NAME.github]: hasCopilotGithubToken,
         [PROVIDER_SECRET_BY_NAME.anthropic]: hasAnthropicApiKey,
         [PROVIDER_SECRET_BY_NAME.openai]: hasOpenAiApiKey
+      }
+    },
+    learner: {
+      level,
+      background,
+      goal: String(student.goal || ""),
+      personality: String(student.personality || ""),
+      uiPreferred,
+      priorRuns,
+      priorSuccesses,
+      priorSuccessRate,
+      confidence: baseConfidence,
+      mastery: {
+        terminal: clamp(baseConfidence + (hasGh ? 0.08 : -0.18), 0, 1),
+        github: clamp(baseConfidence + (hasGithubSession ? 0.08 : -0.15), 0, 1),
+        actions: clamp(
+          baseConfidence +
+            (level === "advanced" ? 0.18 : level === "actions-user" ? 0.12 : level === "github-basic" ? -0.04 : -0.18),
+          0,
+          1
+        ),
+        agentic: clamp(
+          baseConfidence +
+            (level === "advanced" ? 0.15 : level === "actions-user" ? 0.06 : level === "github-basic" ? -0.02 : -0.12),
+          0,
+          1
+        ),
+        troubleshooting: clamp(
+          baseConfidence +
+            (background === "devops" || background === "enterprise-devops"
+              ? 0.2
+              : background === "backend-dev" || background === "enterprise-dev"
+              ? 0.08
+              : -0.08),
+          0,
+          1
+        )
       }
     },
     flags: {
@@ -153,7 +377,15 @@ function ensure(condition, failedAssumption, category, remediation) {
   return { ok: true };
 }
 
-function replayJourney({ student, date, initialState, steps = [], transitions = {} }) {
+function replayJourney({
+  student,
+  date,
+  initialState,
+  steps = [],
+  transitions = {},
+  stepContentById = {},
+  runIndex = 0
+}) {
   const dayOfYear = toDayOfYear(date);
   let state = deepFreeze(initialState || defaultEnvironmentForStudent(student, dayOfYear));
   const trace = [];
@@ -172,7 +404,17 @@ function replayJourney({ student, date, initialState, steps = [], transitions = 
       };
     }
 
-    const result = transition(state);
+    const stepContent = stepContentById[stepId] || null;
+    const result = transition(state, {
+      student,
+      date,
+      runIndex,
+      stepId,
+      stepIndex: trace.length,
+      totalSteps: steps.length,
+      steps,
+      stepContent
+    });
     if (!result.ok) {
       return {
         success: false,
@@ -181,12 +423,18 @@ function replayJourney({ student, date, initialState, steps = [], transitions = 
         failedAssumption: result.failedAssumption,
         remediation: result.remediation,
         trace,
-        finalState: state
+        finalState: state,
+        stepContent
       };
     }
 
     state = deepFreeze(result.state || state);
-    trace.push({ stepId, status: "ok" });
+    trace.push({
+      stepId,
+      status: "ok",
+      complexity: stepContent?.complexity ?? null,
+      terminalDemand: stepContent?.terminalDemand ?? null
+    });
   }
 
   return {
@@ -216,7 +464,8 @@ function simulateStudents(students, date, config = {}) {
           ? config.initialStateForStudent(student, date)
           : config.initialState,
       steps: config.steps || [],
-      transitions: config.transitions || {}
+      transitions: config.transitions || {},
+      stepContentById: config.stepContentById || {}
     })
   }));
 }
@@ -254,7 +503,9 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
         date,
         initialState,
         steps: config.steps || [],
-        transitions: config.transitions || {}
+        transitions: config.transitions || {},
+        stepContentById: config.stepContentById || {},
+        runIndex
       });
 
       if (result.success) {
@@ -286,15 +537,14 @@ function parseArgs(argv) {
     else if (arg === "--date") args.date = argv[++i];
     else if (arg === "--out") args.outPath = argv[++i];
     else if (arg === "--journey") args.journeyPath = argv[++i];
+    else if (arg === "--curriculum") args.curriculumPath = argv[++i];
     else if (arg === "--runs") args.runsCount = parseInt(argv[++i], 10);
   }
   return args;
 }
 
 function runCli() {
-  const fs = require("node:fs");
-  const path = require("node:path");
-  const { studentsPath, date, outPath, journeyPath, runsCount } = parseArgs(process.argv);
+  const { studentsPath, date, outPath, journeyPath, curriculumPath, runsCount } = parseArgs(process.argv);
   if (!studentsPath) {
     throw new Error("Missing required --students <path> argument.");
   }
@@ -319,15 +569,27 @@ function runCli() {
       "Journey module must export 'transitions' object or 'buildTransitions()' function."
     );
   }
+  const curriculum = curriculumPath ? JSON.parse(fs.readFileSync(path.resolve(curriculumPath), "utf8")) : null;
+  const stepContentById = buildStepContentById({
+    steps,
+    curriculum,
+    stepFilesById: journeyModule.stepFilesById || journeyModule.STEP_FILE_ALIASES || {},
+    repoRoot: process.cwd()
+  });
 
   let results;
   if (runsCount && runsCount > 1) {
-    const monteCarlo = simulateStudentsMonteCarlo(students, today, runsCount, { steps, transitions });
+    const monteCarlo = simulateStudentsMonteCarlo(students, today, runsCount, {
+      steps,
+      transitions,
+      stepContentById
+    });
     results = {
       date: today,
       mode: "monte-carlo",
       runs: runsCount,
       total: students.length,
+      stepContentById,
       monteCarlo,
       aggregate: {
         overallSuccessRate:
@@ -340,7 +602,8 @@ function runCli() {
       date: today,
       mode: "single",
       total: students.length,
-      results: simulateStudents(students, today, { steps, transitions })
+      stepContentById,
+      results: simulateStudents(students, today, { steps, transitions, stepContentById })
     };
   }
 
@@ -358,6 +621,10 @@ const exportedApi = {
   INFERENCE_PROVIDERS,
   PROVIDER_SECRET_BY_NAME,
   ensure,
+  clamp,
+  stableHash,
+  analyzeStepMarkdown,
+  buildStepContentById,
   defaultEnvironmentForStudent,
   replayJourney,
   replayWorkshop,

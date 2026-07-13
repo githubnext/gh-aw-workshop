@@ -162,6 +162,7 @@ steps:
       node .github/skills/micro-environment-simulator/simulator.js \
         --students /tmp/gh-aw/cache-memory/profiles.json \
         --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
+        --curriculum /tmp/gh-aw/agent/sim/data/curriculum.json \
         --date "$TODAY" \
         --runs "$MONTE_CARLO_RUNS" \
         --out /tmp/gh-aw/agent/sim/data/monte-carlo-replay.json
@@ -231,6 +232,16 @@ The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh
   "mode": "monte-carlo",
   "runs": ${{ env.MONTE_CARLO_RUNS }},
   "total": 41,
+  "stepContentById": {
+    "<step-id>": {
+      "files": [{"file": "<workshop-file>", "title": "<title>"}],
+      "complexity": <0.0–1.0>,
+      "terminalDemand": <0.0–1.0>,
+      "browserSupport": <0.0–1.0>,
+      "authDemand": <0.0–1.0>,
+      "troubleshootingSupport": <0.0–1.0>
+    }
+  },
   "monteCarlo": [
     {
       "studentId": 1,
@@ -250,12 +261,13 @@ The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh
 }
 ```
 
-Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort.
+Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort. Use `stepContentById` to explain how the actual workshop content changes those probabilities from step to step — do not reuse the same generic explanation for every learner.
 
-Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`) and cross-reference with the student profile to produce per-student pain points:
+Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`), inspect the matching `stepContentById[mostCommonFailureStep]`, and cross-reference both with the student profile to produce per-student pain points:
 
-- Which step failed most often across the 100 runs
+- Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} runs
 - The likely environment or profile reason (OS, tool, auth, level, personality)
+- The likely content reason (for example: terminal-heavy instructions, browser-friendly fallback, auth-heavy setup, or high conceptual density)
 - Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when the workflow itself depends on repository-side Actions secrets or model access that the learner was expected to configure.
 
 #### Qualitative depth for top-failure students
@@ -274,7 +286,7 @@ For students whose `successRate` < 0.50 (the most at-risk half), apply additiona
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
-- Likely reason (based on their profile): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces tokens lacking `actions:write` for `gh aw run`; enterprise/proxy environments adding friction to setup steps.
+- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
 
 ### Aggregate and analyse results
 
