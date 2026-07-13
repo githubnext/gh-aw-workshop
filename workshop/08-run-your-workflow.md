@@ -34,7 +34,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 ### Alternative: trigger from the terminal
 
 > [!IMPORTANT]
-> **Codespaces users:** If `gh aw run hello-agent` fails with an `actions:write` permission error, your Codespaces token has limited workflow scopes. Use the Actions-tab UI steps above instead — they work regardless of token scope.
+> **Codespaces users:** If `gh aw run hello-agent` fails with an `actions:write` permission error, use the GitHub Actions UI steps above first. If you want to understand or fix the token problem, use the troubleshooting checklist below.
 
 Terminal users can trigger the same run with:
 
@@ -43,6 +43,60 @@ gh aw run hello-agent
 ```
 
 Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md)
+
+### Troubleshoot Codespaces `actions:write` errors
+
+If you're working in a Codespace and `gh aw run hello-agent` does not start the workflow, use this checklist.
+
+#### Symptom
+
+You may see this error:
+
+```text
+HTTP 403: Resource not accessible by integration
+```
+
+Some versions of `gh aw` also show a follow-up message explaining that the default Codespaces token does not have `actions:write` and `workflows:write`.
+
+#### Cause
+
+The default token inside a Codespace usually has enough access to work with your repository, but it may not have the workflow-trigger permissions that `gh aw run` needs. In practice, the missing permissions are usually `actions:write` and `workflows:write`.
+
+#### Fix A (recommended): use the GitHub Actions UI
+
+Return to [Trigger manually via GitHub Actions UI](#trigger-manually-via-github-actions-ui) and run the workflow there. This path does not depend on your Codespace terminal token, so it is the fastest fix for beginners.
+
+#### Fix B (advanced): recreate your Codespace with extra permissions
+
+If you want `gh aw run` to work from the terminal, add a `.devcontainer/devcontainer.json` file to **your practice repository**, commit it, and then create a brand-new Codespace from that updated repository.
+
+```json
+{
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "YOUR-USERNAME/YOUR-REPO": {
+          "permissions": {
+            "actions": "write",
+            "workflows": "write"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Existing Codespaces do not pick up new permissions after a rebuild, so you must create a new Codespace after the file is committed. For more detail, see [Managing access to other repositories within your codespace](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces).
+
+#### Verification
+
+Before you retry `gh aw run hello-agent`, confirm one of these is true:
+
+- A new **Hello Agent** run appears after you use the Actions tab
+- A new **Hello Agent** run appears after you run `gh aw run hello-agent` from your newly created Codespace
+
+If you still see the same 403 error and no new run appears in the **Actions** tab, go back to **Fix A** and use the UI path for this workshop.
 
 ### Watch the run in progress
 
