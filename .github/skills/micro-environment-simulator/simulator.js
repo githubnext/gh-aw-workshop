@@ -196,6 +196,32 @@ function isPlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
+function normalizeNumericField(container, fieldName, stepId) {
+  if (container[fieldName] == null) {
+    return;
+  }
+  if (!Number.isFinite(Number(container[fieldName]))) {
+    console.warn(`[simulator] Agent insight '${stepId}.${fieldName}' should be numeric.`);
+    delete container[fieldName];
+    return;
+  }
+  container[fieldName] = Number(container[fieldName]);
+}
+
+function normalizeNumericObject(container, fieldName, stepId) {
+  if (container[fieldName] == null) {
+    return;
+  }
+  if (!isPlainObject(container[fieldName])) {
+    console.warn(`[simulator] Agent insight '${stepId}.${fieldName}' should be an object.`);
+    delete container[fieldName];
+    return;
+  }
+  for (const key of Object.keys(container[fieldName])) {
+    normalizeNumericField(container[fieldName], key, `${stepId}.${fieldName}`);
+  }
+}
+
 function normalizeAgentInsightsByStep(input) {
   if (!isPlainObject(input)) {
     return {};
@@ -215,20 +241,9 @@ function normalizeAgentInsightsByStep(input) {
       console.warn(`[simulator] Agent insight '${stepId}.summary' should be a string.`);
       delete nextInsight.summary;
     }
-    if (nextInsight.bias != null && !Number.isFinite(Number(nextInsight.bias))) {
-      console.warn(`[simulator] Agent insight '${stepId}.bias' should be numeric.`);
-      delete nextInsight.bias;
-    } else if (nextInsight.bias != null) {
-      nextInsight.bias = Number(nextInsight.bias);
-    }
-    if (nextInsight.signalAdjustments != null && !isPlainObject(nextInsight.signalAdjustments)) {
-      console.warn(`[simulator] Agent insight '${stepId}.signalAdjustments' should be an object.`);
-      delete nextInsight.signalAdjustments;
-    }
-    if (nextInsight.pathAdjustments != null && !isPlainObject(nextInsight.pathAdjustments)) {
-      console.warn(`[simulator] Agent insight '${stepId}.pathAdjustments' should be an object.`);
-      delete nextInsight.pathAdjustments;
-    }
+    normalizeNumericField(nextInsight, "bias", stepId);
+    normalizeNumericObject(nextInsight, "signalAdjustments", stepId);
+    normalizeNumericObject(nextInsight, "pathAdjustments", stepId);
     if (nextInsight.riskTags != null && !Array.isArray(nextInsight.riskTags)) {
       console.warn(`[simulator] Agent insight '${stepId}.riskTags' should be an array.`);
       delete nextInsight.riskTags;

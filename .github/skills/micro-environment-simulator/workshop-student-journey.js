@@ -111,6 +111,10 @@ function agentInsight(context) {
   return insight && typeof insight === "object" ? insight : {};
 }
 
+function ensurePlainObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value) ? value : {};
+}
+
 function prefersBrowserPath(state, context) {
   const learner = learnerProfile(state);
   return (
@@ -196,16 +200,8 @@ function computeSuccessProbability(state, context, emphasis = {}) {
 
 function evaluateStepProbability(state, context, options = {}) {
   const insight = agentInsight(context);
-  const signalAdjustments =
-    insight.signalAdjustments !== null &&
-    typeof insight.signalAdjustments === "object" &&
-    !Array.isArray(insight.signalAdjustments)
-      ? insight.signalAdjustments
-      : {};
-  const pathAdjustments =
-    insight.pathAdjustments !== null && typeof insight.pathAdjustments === "object" && !Array.isArray(insight.pathAdjustments)
-      ? insight.pathAdjustments
-      : {};
+  const signalAdjustments = ensurePlainObject(insight.signalAdjustments);
+  const pathAdjustments = ensurePlainObject(insight.pathAdjustments);
   const usingBrowserPath = prefersBrowserPath(state, context);
   const emphasis = {
     ...(options.emphasis || {}),
@@ -213,13 +209,17 @@ function evaluateStepProbability(state, context, options = {}) {
   };
   let probability = computeSuccessProbability(state, context, emphasis);
 
-  probability += contentSignal(context, "complexity") * Number(signalAdjustments.complexity || 0);
-  probability += contentSignal(context, "terminalDemand") * Number(signalAdjustments.terminalDemand || 0);
-  probability += contentSignal(context, "browserSupport") * Number(signalAdjustments.browserSupport || 0);
-  probability += contentSignal(context, "authDemand") * Number(signalAdjustments.authDemand || 0);
-  probability += contentSignal(context, "troubleshootingSupport") * Number(signalAdjustments.troubleshootingSupport || 0);
-  probability += contentSignal(context, "conceptDemand") * Number(signalAdjustments.conceptDemand || 0);
-  probability += contentSignal(context, "enterpriseDemand") * Number(signalAdjustments.enterpriseDemand || 0);
+  for (const signal of [
+    "complexity",
+    "terminalDemand",
+    "browserSupport",
+    "authDemand",
+    "troubleshootingSupport",
+    "conceptDemand",
+    "enterpriseDemand"
+  ]) {
+    probability += contentSignal(context, signal) * Number(signalAdjustments[signal] || 0);
+  }
 
   if (usingBrowserPath) {
     probability += Number(pathAdjustments.browser || 0);
