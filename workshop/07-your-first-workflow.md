@@ -87,6 +87,7 @@ on: # Events that can start this workflow
 permissions: # GitHub token access the agent needs
   contents: read # Read repository contents
   issues: write # Create or comment on issues
+  copilot-requests: write # Required: allows the workflow to make requests to the Copilot API
 ---
 ```
 
@@ -125,6 +126,7 @@ Now add the `permissions` block after the `on:` section and before the closing `
 permissions:
   contents: read
   issues: write
+  copilot-requests: write
 ```
 
 Checkpoint — validate the completed frontmatter:
@@ -139,7 +141,7 @@ You should see:
 ✔ hello-agent.md — valid
 ```
 
-- `permissions`: the workflow can read your repository and write to issues.
+- `permissions`: the workflow can read your repository, write to issues, and authenticate with Copilot.
 
 ### Add the agent instructions
 
@@ -216,12 +218,54 @@ If you choose Adventure A or B, still run the validation step in this guide.
 
 </details>
 
+## Verify Copilot Access
+
+The `hello-agent` workflow uses GitHub Copilot as its AI engine. If Copilot model access is not enabled for your account, the workflow will fail in Step 8 — and the error appears only inside the workflow log, not on the trigger page, so it can be easy to miss.
+
+Complete this check now so you don't hit a silent failure later.
+
+> [!IMPORTANT]
+> If you skip this check and the workflow fails in Step 8, look for these messages in the workflow log:
+>
+> - `403 Forbidden` on a Copilot API call
+> - `model unavailable` or `copilot access denied`
+> - A `copilot-requests` permission error
+>
+> Any of these means Copilot model access is not configured. Return here and complete the setup before re-running the workflow.
+
+### Option A — GitHub UI (no terminal required)
+
+1. Open your repository on GitHub.
+2. Click **Settings** → **Copilot**.
+3. Confirm that you see an active Copilot plan listed (for example, "Copilot Individual", "Copilot Business", or "Copilot Enterprise"). A green or "Active" status means model access is enabled.
+
+If the **Copilot** entry is absent from **Settings**, your account does not have an active Copilot plan. See [If Copilot is not enabled](#if-copilot-is-not-enabled) below.
+
+### Option B — Terminal
+
+Run:
+
+```bash
+gh auth status
+```
+
+You should see `Logged in to github.com as <your-username>` with no errors. Then check your Copilot subscription status at [github.com/settings/copilot](https://github.com/settings/copilot). You should see an active plan listed (for example, "Copilot Individual", "Copilot Business", or "Copilot Enterprise") — that means model access is ready.
+
+### If Copilot is not enabled
+
+- **Personal accounts:** Enable Copilot at [github.com/settings/copilot](https://github.com/settings/copilot). GitHub offers a free plan with limited usage.
+- **Organization accounts:** Ask your org admin to enable Copilot model access in **Organization Settings → Copilot → Policies**.
+- **Enterprise / GHES users:** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
+
+For a deeper look at how Copilot authenticates with agentic workflows and how to configure a `COPILOT_GITHUB_TOKEN` secret as an alternative, see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md).
+
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/hello-agent.md` exists in my repository
-- [ ] The file has valid YAML frontmatter with `name`, `on`, and `permissions`
+- [ ] The file has valid YAML frontmatter with `name`, `on`, and `permissions` (including `copilot-requests: write`)
 - [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports no errors
 - [ ] The file is committed and pushed to `main`
+- [ ] Copilot model access is enabled for my account (verified via **Settings → Copilot** or [github.com/settings/copilot](https://github.com/settings/copilot))
 
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
