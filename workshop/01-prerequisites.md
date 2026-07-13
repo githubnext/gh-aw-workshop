@@ -51,6 +51,8 @@ Complete these checks before you choose a setup path:
 
 ## 🔀 Choose Your Setup Path
 
+![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
+
 > [!IMPORTANT]
 > **Not sure where to begin? Pick your path now:**
 >
