@@ -4,7 +4,7 @@
 
 ## 📋 Before You Start
 
-You have completed Step 17 and have a working workflow file that uses `safe-outputs`.
+You have completed [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file that uses `safe-outputs`.
 
 ---
 
@@ -117,7 +117,7 @@ That is the key defence. A misdirected agent cannot silently turn a docs task in
 
 Write your prediction here, then save and run the workflow to check it:
 
-> _My prediction: …_
+> _My prediction: ..._
 
 ---
 
