@@ -30,14 +30,6 @@ You'll build a scheduled, AI-powered repository status report that runs in GitHu
 | A platform or DevOps engineer | A reusable pattern for AI-assisted repository triage with auditable runs in GitHub |
 | An evaluator, mentor, or workshop host | A hands-on artifact that makes agentic workflow concepts easy to demonstrate and assess |
 
-## Choose your path
-
-| If you prefer... | Start with... |
-|---|---|
-| Browser-first setup with minimal local tooling | [Step 0: Welcome](workshop/00-welcome.md), then [Step 2a: Set Up a Codespace](workshop/02a-setup-codespace.md) |
-| Working in your own terminal or VS Code | [Step 0: Welcome](workshop/00-welcome.md), then [Step 2b: Set Up Local Environment](workshop/02b-setup-local.md) |
-| Jumping into the full curriculum first | [Workshop curriculum](workshop/README.md) |
-
 ## Start here
 
 1. Open [Step 0: Welcome](workshop/00-welcome.md).
