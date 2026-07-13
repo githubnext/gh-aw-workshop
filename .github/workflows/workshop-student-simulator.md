@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily simulation of 38 students with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily Monte Carlo simulation of 38 students (100 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -30,6 +30,7 @@ steps:
       mkdir -p /tmp/gh-aw/cache-memory
       TODAY=$(date -u +%Y-%m-%d)
       echo "TODAY=$TODAY" >> "$GITHUB_ENV"
+      echo "MONTE_CARLO_RUNS=100" >> "$GITHUB_ENV"
 
   - name: Initialize student profiles if missing
     run: |
@@ -152,6 +153,23 @@ steps:
       for entry in curriculum:
           print(f"  [{entry['index']}] {entry['file']}: {entry['title']}")
       PY
+
+  - name: Run Monte Carlo simulation (${{ env.MONTE_CARLO_RUNS }} runs per student)
+    run: |
+      node .github/skills/micro-environment-simulator/simulator.js \
+        --students /tmp/gh-aw/cache-memory/profiles.json \
+        --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
+        --date "$TODAY" \
+        --runs "$MONTE_CARLO_RUNS" \
+        --out /tmp/gh-aw/agent/sim/data/monte-carlo-replay.json
+      echo "Monte Carlo simulation complete"
+      node -e "
+        const d = require('/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json');
+        console.log('Overall success rate:', (d.aggregate.overallSuccessRate * 100).toFixed(1) + '%');
+        const top = Object.entries(d.aggregate.dropoutRateByStep)
+          .sort(([,a],[,b]) => b - a).slice(0, 3);
+        console.log('Top dropout steps:', top.map(([s,r]) => s + ' (' + (r*100).toFixed(1) + '%)').join(', '));
+      "
 ---
 
 # Workshop Student Simulator
@@ -203,108 +221,76 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 38 students**, simulate their experience step-by-step using the following rules:
 
-Before calculating probabilities, invoke the `micro-environment-simulator` skill (`.github/skills/micro-environment-simulator/SKILL.md`) and run:
+The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` by the preceding workflow step (${{ env.MONTE_CARLO_RUNS }} independent environment draws per student). Read this file to obtain the statistical baseline:
 
-```bash
-node .github/skills/micro-environment-simulator/simulator.js \
-  --students /tmp/gh-aw/cache-memory/profiles.json \
-  --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
-  --date "${{ env.TODAY }}" \
-  --out /tmp/gh-aw/agent/sim/data/environment-replay.json
+```json
+{
+  "mode": "monte-carlo",
+  "runs": ${{ env.MONTE_CARLO_RUNS }},
+  "total": 38,
+  "monteCarlo": [
+    {
+      "studentId": 1,
+      "name": "Alex Chen",
+      "runs": ${{ env.MONTE_CARLO_RUNS }},
+      "successes": <N>,
+      "successRate": <0.0–1.0>,
+      "failuresByStep": { "<step-id>": <count>, ... },
+      "mostCommonFailureStep": "<step-id> | null"
+    },
+    ...
+  ],
+  "aggregate": {
+    "overallSuccessRate": <0.0–1.0>,
+    "dropoutRateByStep": { "<step-id>": <rate 0.0–1.0>, ... }
+  }
+}
 ```
 
-Use this replay output to execute a JavaScript abstract state machine replay for each student that models:
+Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort.
 
-- OS
-- terminal
-- installed software (`gh`, `aw`)
-- login status
-- account type
-- GitHub deployment type (`github.com`, `ghec`, `ghes`)
+Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`) and cross-reference with the student profile to produce per-student pain points:
 
-Use the simulator run to verify environment assumptions for each workshop step. If an assumption fails, stop the replay at that step and include the assumption mismatch in the student's pain points.
+- Which step failed most often across the 100 runs
+- The likely environment or profile reason (OS, tool, auth, level, personality)
+- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when the workflow itself depends on repository-side Actions secrets or model access that the learner was expected to configure.
 
-Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when the workflow itself depends on repository-side Actions secrets or model access that the learner was expected to configure.
+#### Qualitative depth for top-failure students
 
-#### Simulation Rules
+For students whose `successRate` < 0.50 (the most at-risk half), apply additional qualitative reasoning from the student profile to enrich the pain-point description:
 
-**Success probability per step** must be evaluated dynamically for each student-step pair. Do **not** use a fixed lookup table. Instead, reason from the student's full profile and the step's actual content and demands:
-
-1. **Read the step**: Consult the step's `title` and `file` from `curriculum.json`. Where necessary (especially for steps with high simulated failure rates in this run, or steps that appear complex based on their title), read the actual workshop markdown file to understand what the learner is asked to do — for example, whether it requires terminal commands, YAML authoring, understanding new concepts, or multi-action sequences. For any step where the reasoning framework does not yield a clear probability estimate, fall back to the calibration anchors below using your best judgment about step difficulty relative to the student's level.
-
-2. **Assess step difficulty** from the content:
-   - How many distinct actions must the learner perform?
-   - Does the step introduce a new concept, tool, or syntax?
-   - Does it require prior setup or state from earlier steps to succeed?
-   - Are there clear error messages or validation steps that help a confused learner self-correct?
-
-3. **Match student profile to step demands**: For each student, consider:
-   - **`level`** vs. assumed knowledge: a `beginner` facing a YAML-authoring step needs a much lower base probability than an `actions-user`.
-   - **`background`** vs. step domain: a `devops` student on a CLI install step will fare far better than a `program-manager` or `no-coding` background student on the same step.
-   - **`tool`** and **`ui_preferred`** vs. step tooling: if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA`, reduce probability appropriately; for `gh aw run`, assume Codespaces auth does not include `actions:write` and treat CLI triggering as a failing path unless a GitHub Actions UI path is followed; if the step is UI-native (e.g., editing a file on GitHub.com), increase it for UI-preferred students.
-   - **`personality`**: a `methodical` student reads carefully and retries — raise probability; a `confused` student may not know why something failed — lower probability; an `impatient` student may skip prerequisite reading — lower probability particularly for steps that depend on earlier state.
-   - **`goal`**: a student evaluating for their team (`team-evaluation`) will abandon sooner than someone learning for personal interest; a `teaching-others` goal drives thoroughness.
-   - **Prior runs** (`runs`, `successes`): a student who has completed the workshop before will have a meaningfully higher success probability on familiar steps.
-
-4. **Calibration anchors** (reference points, not hard constraints — use these to sanity-check your derived probability and narrow the range for a specific student-step pair):
-   - An `advanced`/`devops` student on an orientation or welcome step: ~98%.
-   - A `beginner`/`no-coding` student on a hands-on CLI install step: ~45–55% (e.g., if the step has multiple commands and no validation feedback, lean toward 45%; if it has a clear success indicator, lean toward 55%).
-   - Any student on a pure conceptual overview step: 75–95% depending on level (e.g., a `beginner` reading a concepts page with no actions: ~80%; an `advanced` student: ~93%).
-   - Any student on a complex multi-action build or compile step: 40–90% depending on level and personality (e.g., a `confused`/`beginner` on a YAML compile step: ~40%; a `methodical`/`actions-user` on the same step: ~85%).
-   - Any student on a final/wrap-up step (having reached this far): 88–97%.
-
-5. **UI-preference adjustments**: Where a step requires terminal or CLI interaction and the student is `ui_preferred`:
-   - Steps that are entirely CLI-based (install, auth, compile commands) are genuine blockers — apply a meaningful reduction.
-   - Steps that can be done through the GitHub web editor (editing files, committing changes) are easier for UI-preferred students — apply a modest increase.
-   - Reason about each step's actual UI/CLI split rather than applying a blanket rule.
-
-After deriving the base probability from the above reasoning, apply these qualitative multipliers to reflect personality and goal traits — cap the final probability at 0.99:
-
-- `methodical` personality: ×1.10 (follows steps carefully)
-- `curious` personality: ×1.05 (engages more deeply)
-- `skeptical` personality: ×0.90 (questions value, may abandon)
-- `impatient` personality: ×0.85 (skips steps)
-- `confused` personality: ×0.80 (needs more guidance)
-- `teaching-others` goal: ×1.08 (thorough)
-- `work-project` goal: ×1.05 (motivated)
-- `team-evaluation` goal: ×0.95 (less patient)
-- `personal-learning` goal: ×1.00 (neutral)
-
-UI-preferred students who fail a step that requires terminal access should record the pain point explaining that no UI alternative exists for that specific action.
-
-A student **fails at a step** if a random roll exceeds their adjusted probability. When a student fails a step, they stop — they do NOT attempt subsequent steps.
-
-Use deterministic simulation: derive pseudo-random rolls from the student id, step number, and today's date (`${{ env.TODAY }}`). This makes results reproducible for the same day.
-
-**Formula**: `roll = ((student_id * 7 + step_index * 13 + day_of_year * 17) % 100) / 100`
-where `day_of_year` is the day number in the current year (1–366).
-
-A step succeeds if `roll < adjusted_probability`.
+- **`level`** vs. assumed knowledge
+- **`background`** vs. step domain
+- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA`, note that no UI alternative exists)
+- **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
+- **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
+- **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
 
 ### Collect pain points per student
 
-For each student who fails at a step, note:
-- Which step they failed on
-- Any environment assumption mismatch from the simulator replay
+For each student whose `successRate` < 1.0, note:
+- Which step failed most often across the 100 Monte Carlo runs (`mostCommonFailureStep`)
+- The failure count per step from `failuresByStep`
 - Likely reason (based on their profile): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces tokens lacking `actions:write` for `gh aw run`; enterprise/proxy environments adding friction to setup steps.
 
 ### Aggregate and analyse results
 
-Compute:
-- **Overall success rate** (% of students who complete all ${{ env.WORKSHOP_STEP_COUNT }} steps)
-- **Per-step dropout rate** (% of students who fail at each step)
-- **Top 5 dropout steps** (highest failure rates)
-- **Success rate by technical level**
-- **Success rate by personality**
-- **Success rate by UI preference** (compare `ui_preferred: true` vs `ui_preferred: false`)
-- **Most common pain points** (top 10, ranked by frequency)
+Use the pre-computed values from `monte-carlo-replay.json` as the primary data source:
+
+- **Overall success rate** — read from `aggregate.overallSuccessRate`
+- **Per-step dropout rate** — read from `aggregate.dropoutRateByStep`; sort descending to find the worst steps
+- **Top 5 dropout steps** — highest values in `aggregate.dropoutRateByStep`
+- **Success rate by technical level** — group `monteCarlo` entries by student level and average `successRate`
+- **Success rate by personality** — group `monteCarlo` entries by student personality and average `successRate`
+- **Success rate by UI preference** — compare average `successRate` for students where `ui_preferred: true` vs `ui_preferred: false`
+- **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`)
 - **Improvement opportunities** — specific, actionable suggestions for each top dropout step
 
 ### Update student profiles
 
 Update `/tmp/gh-aw/cache-memory/profiles.json`:
-- Increment `runs` by 1 for every student
-- Increment `successes` by 1 for every student who completed all ${{ env.WORKSHOP_STEP_COUNT }} steps
+- Increment `runs` by **${{ env.MONTE_CARLO_RUNS }}** for every student (one Monte Carlo batch = ${{ env.MONTE_CARLO_RUNS }} runs)
+- Increment `successes` by the student's `successes` count from `monte-carlo-replay.json` (i.e., the number of successful runs in the ${{ env.MONTE_CARLO_RUNS }}-run batch)
 - Write the updated JSON back to `/tmp/gh-aw/cache-memory/profiles.json`
 
 ### Read workshop files (if available)
@@ -316,7 +302,7 @@ If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3
 Use `create-issue` safe output with:
 
 - `temporary_id`: `aw_workshop_simulation_parent` (safe-outputs requires the `aw_` prefix; this parent issue handle is used by child issues in step 8)
-- **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N)`
+- **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N, 100×Monte Carlo)`
 - where N is the total accumulated runs across all students divided by 38 (round to nearest integer).
 
 Keep the report short and to the point. Keep critical findings visible; move verbose content into `<details>` sections for progressive disclosure.
@@ -326,10 +312,10 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ```markdown
 ### Overview
 - Date: YYYY-MM-DD
-- Students simulated: 38
+- Students simulated: 38 × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
 - Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
-- Completion: N/38 (XX%)
-- Highest-dropout step: Step N (XX%)
+- Overall success rate: XX% (from `aggregate.overallSuccessRate`)
+- Highest-dropout step: <step-id> (XX% dropout rate)
 
 ### Critical Findings
 1. 2-4 bullets with the most important blockers and who they affect.
