@@ -11,7 +11,7 @@
 
 **Enterprise preflight checklist (do this before reading further):**
 
-1. Confirm GitHub Copilot Enterprise is enabled for the organization owning your workshop repository in **Settings → Copilot → Policies**.
+1. Confirm GitHub Copilot Enterprise is enabled in the organization settings page for the organization owning your workshop repository under **Settings → Copilot → Policies**.
    If your admin needs instructions, share [Setting up GitHub Copilot for your organization](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-organization).
 2. Confirm a Copilot Enterprise seat is assigned to the GitHub account you are using for this workshop.
    Your admin can verify this in the Copilot seat management flow documented in [GitHub Copilot seat assignment](https://docs.github.com/en/copilot/reference/copilot-billing/seat-assignment).
@@ -24,8 +24,8 @@
 - "Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account."
 
 Org admins can usually unblock this in under 5 minutes. If you are waiting on that change,
-complete the [enterprise setup guide](side-quest-enterprise-setup.md) now, then read ahead through
-the next workshop steps without trying to run workflows until your access is ready.
+complete the [enterprise setup guide](side-quest-enterprise-setup.md) now, then read Steps 6 and 7
+to prepare your setup. Wait to run workflows in Step 8 and later until your access is ready.
 
 ---
 
