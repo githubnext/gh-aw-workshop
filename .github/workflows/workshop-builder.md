@@ -187,24 +187,7 @@ Gather signals from three sources:
 ### 2a. Workflow run status
 
 Use the `agentic-workflows` `status` tool to check the latest run status for
-each workshop workflow:
-
-- `workshop-author`
-- `training-plan-research`
-- `workflow-skills-editor`
-- `side-quest`
-- `security-side-quest`
-- `title-similarity-review`
-- `workshop-student-simulator`
-- `workshop-sync-check`
-- `workshop-order-review`
-- `workshop-skill-activity-author`
-- `workshop-explanatory-diagrams`
-- `docs-linker`
-- `markdown-dedup`
-- `workshop-link-checker`
-- `workshop-ui-screenshots`
-- `curriculum-evaluator`
+each workflow in the `dispatch-workflow` list above.
 
 Note: which workflows are failing, skipping, or have not run recently.
 
