@@ -13,17 +13,6 @@ You'll create a simple agentic workflow file in your repository using the `gh-aw
 - Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
 > [!TIP]
-> **Using the GitHub web UI (no terminal)?** You can complete this entire step in your browser:
->
-> - **Create the workflow file** using **Add file → Create new file** in your repository (details in the step below).
-> - **Skip all `gh aw compile` checkpoints** — those require a terminal. GitHub Actions will surface errors when the workflow next runs.
-> - **Commit changes** directly from the GitHub editor instead of using `git push`.
->
-> Look for the **🖥️ GitHub UI alternative** sections throughout this step for browser-specific instructions.
-
-<!-- -->
-
-> [!TIP]
 > **Set up your editor before you paste any YAML:**
 >
 > 1. Install the [YAML extension for VS Code](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) for syntax highlighting and error detection.
@@ -231,7 +220,7 @@ If you choose Adventure A or B, still run the validation step in this guide.
 
 - [ ] `.github/workflows/hello-agent.md` exists in my repository
 - [ ] The file has valid YAML frontmatter with `name`, `on`, and `permissions`
-- [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports no errors _(terminal users — UI-only users can skip this)_
+- [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports no errors
 - [ ] The file is committed and pushed to `main`
 
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)

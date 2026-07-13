@@ -60,6 +60,10 @@ The following rules are **disabled** in `.markdownlint-cli2.yaml` — do not add
 | MD040 | Fenced code blocks with language specified |
 | MD060 | Fenced code block style |
 
+## Working with Codespaces
+
+**Never configure Codespace badges or `devcontainer.json` to open from this (`gh-aw-workshop`) repository.** The workshop repository itself is not a suitable Codespace base — learners work in their own practice repositories, not a clone of this one. Any Codespace badge or devcontainer setup must point to the learner's own repository.
+
 ## Working with workshop content
 
 - Workshop steps are numbered files in `workshop/` (e.g., `07-your-first-workflow.md`).

@@ -80,24 +80,6 @@ In [Step 8](08-run-your-workflow.md), you'll trigger a workflow from the GitHub 
 
 If you're taking the beginner-friendly Codespaces path, bookmark your repository's Actions URL as soon as you know it (for example, `https://github.com/YOUR-USERNAME/YOUR-REPO/actions`) so it's easy to open again in Step 8.
 
-### Prefer the web UI with no local install?
-
-If you'd rather stay in the browser and avoid installing anything on your computer, the **Codespace path (Adventure A)** is the right choice. Opening this repository's Codespace gives you a pre-configured environment where `gh` is already authenticated and `gh-aw` is installed automatically — no terminal setup commands needed.
-
-A few workshop steps still use the Codespace's built-in terminal, but the number is small:
-
-| Step | What's needed | Terminal required? |
-|------|--------------|-------------------|
-| Step 3 | Clone your practice repository | Yes — run one command in the Codespace terminal |
-| Step 6 | Verify `gh-aw` is installed | Verification only — `gh-aw` is pre-installed by the devcontainer; run `gh aw --version` in the Codespace terminal to confirm |
-| Step 7 | Create your workflow file | No — use the GitHub web editor (UI alternative in that step) |
-| Step 8 | Trigger and watch your workflow | No — use the Actions tab in your browser |
-
-> [!TIP]
-> **Starting fresh? Open a Codespace now:**
-> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
-> Once it loads, continue to [Adventure A: Set Up a Codespace](02a-setup-codespace.md). You can skip Steps 1–2b setup commands that reference local installs.
-
 ## 🎯 What You'll Do
 
 You'll confirm that you have everything required before writing a single line of workflow code. By the end of this step you'll know which setup path to follow — Codespace or local terminal — and you'll be ready to move forward.

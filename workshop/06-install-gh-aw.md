@@ -11,7 +11,6 @@ Use the path that matches your tool before you run any install command:
 
 | I am using… | Do this |
 | --- | --- |
-| **Codespace opened from this repository** | Start here: [Codespaces with devcontainer (auto-install)](#codespaces-with-devcontainer-auto-install) |
 | **VS Code Copilot extension** | Start here: [Check if already installed](#check-if-already-installed) |
 | **GitHub Copilot Cloud Agent (CCA)** | Use the callout above, then [Check if already installed](#check-if-already-installed) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
@@ -28,23 +27,6 @@ For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Co
 > you can skip straight to [Check if already installed](#check-if-already-installed).
 
 <!-- -->
-
-## Codespaces with devcontainer (auto-install)
-
-If you opened a Codespace from this repository using the badge on the welcome page or the button in [Adventure A](02a-setup-codespace.md), `gh-aw` is installed automatically as part of the Codespace setup via the repository's `devcontainer.json` (`postCreateCommand`). You can skip the manual install step.
-
-Verify the extension is ready by running:
-
-```bash
-gh aw --version
-```
-
-If you see a version number (for example `gh-aw version 0.81.6`), skip straight to [Confirm installation](#confirm-installation).
-
-If the command is not found — for example because you opened a Codespace from a fork that does not have the devcontainer config — continue with [Install from terminal](#install-from-terminal).
-
-> [!NOTE]
-> **How it works:** The `.devcontainer/devcontainer.json` in this repository includes a `postCreateCommand` that runs `gh extension install github/gh-aw || true` automatically when the Codespace is first created. This means UI-first learners who use the Codespace path can skip manual `gh extension install` commands entirely.
 
 ## 🎯 What You'll Do
 
