@@ -11,7 +11,7 @@ You'll ask an agent in the GitHub Copilot app or Agents tab to create and valida
 
 ## Start a session
 
-Open your practice repository in the GitHub Copilot app and start an **Interactive** session, or open the repository's **Copilot** or **Agents** tab and start a new session.
+Open your practice repository in the GitHub Copilot app and start a session in **Interactive** mode so you can steer the work, or open the repository's **Copilot** or **Agents** tab and start a new session.
 
 Paste this prompt:
 
@@ -33,6 +33,7 @@ pull request. Show me the diff before merging.
 ```
 
 The agent runs validation in its isolated session workspace. You do not need a terminal for this path.
+Before you approve the merge, the agent presents the file changes in its session response for you to review.
 
 > [!NOTE]
 > To keep `gh aw compile .github/workflows/hello-agent.md --watch` running while you edit, use a local or Codespaces terminal instead.
