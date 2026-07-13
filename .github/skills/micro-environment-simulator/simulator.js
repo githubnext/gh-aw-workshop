@@ -192,42 +192,48 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
   });
 }
 
+function isPlainObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
 function normalizeAgentInsightsByStep(input) {
-  if (!input || typeof input !== "object") {
+  if (!isPlainObject(input)) {
     return {};
   }
   const raw = input.stepInsightsById;
-  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+  if (!isPlainObject(raw)) {
     return {};
   }
   const normalized = {};
   for (const [stepId, insight] of Object.entries(raw)) {
-    if (!insight || typeof insight !== "object" || Array.isArray(insight)) {
+    if (!isPlainObject(insight)) {
       console.warn(`[simulator] Ignoring malformed agent insight for step '${stepId}': expected an object.`);
       continue;
     }
-    if (insight.summary != null && typeof insight.summary !== "string") {
+    const nextInsight = { ...insight };
+    if (nextInsight.summary != null && typeof nextInsight.summary !== "string") {
       console.warn(`[simulator] Agent insight '${stepId}.summary' should be a string.`);
+      delete nextInsight.summary;
     }
-    if (insight.bias != null && !Number.isFinite(Number(insight.bias))) {
+    if (nextInsight.bias != null && !Number.isFinite(Number(nextInsight.bias))) {
       console.warn(`[simulator] Agent insight '${stepId}.bias' should be numeric.`);
+      delete nextInsight.bias;
+    } else if (nextInsight.bias != null) {
+      nextInsight.bias = Number(nextInsight.bias);
     }
-    if (
-      insight.signalAdjustments != null &&
-      (typeof insight.signalAdjustments !== "object" || Array.isArray(insight.signalAdjustments))
-    ) {
+    if (nextInsight.signalAdjustments != null && !isPlainObject(nextInsight.signalAdjustments)) {
       console.warn(`[simulator] Agent insight '${stepId}.signalAdjustments' should be an object.`);
+      delete nextInsight.signalAdjustments;
     }
-    if (
-      insight.pathAdjustments != null &&
-      (typeof insight.pathAdjustments !== "object" || Array.isArray(insight.pathAdjustments))
-    ) {
+    if (nextInsight.pathAdjustments != null && !isPlainObject(nextInsight.pathAdjustments)) {
       console.warn(`[simulator] Agent insight '${stepId}.pathAdjustments' should be an object.`);
+      delete nextInsight.pathAdjustments;
     }
-    if (insight.riskTags != null && !Array.isArray(insight.riskTags)) {
+    if (nextInsight.riskTags != null && !Array.isArray(nextInsight.riskTags)) {
       console.warn(`[simulator] Agent insight '${stepId}.riskTags' should be an array.`);
+      delete nextInsight.riskTags;
     }
-    normalized[stepId] = insight;
+    normalized[stepId] = nextInsight;
   }
   return normalized;
 }

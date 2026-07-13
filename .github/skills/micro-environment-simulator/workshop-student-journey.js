@@ -197,9 +197,15 @@ function computeSuccessProbability(state, context, emphasis = {}) {
 function evaluateStepProbability(state, context, options = {}) {
   const insight = agentInsight(context);
   const signalAdjustments =
-    insight.signalAdjustments && typeof insight.signalAdjustments === "object" ? insight.signalAdjustments : {};
+    insight.signalAdjustments !== null &&
+    typeof insight.signalAdjustments === "object" &&
+    !Array.isArray(insight.signalAdjustments)
+      ? insight.signalAdjustments
+      : {};
   const pathAdjustments =
-    insight.pathAdjustments && typeof insight.pathAdjustments === "object" ? insight.pathAdjustments : {};
+    insight.pathAdjustments !== null && typeof insight.pathAdjustments === "object" && !Array.isArray(insight.pathAdjustments)
+      ? insight.pathAdjustments
+      : {};
   const usingBrowserPath = prefersBrowserPath(state, context);
   const emphasis = {
     ...(options.emphasis || {}),
@@ -273,9 +279,9 @@ function applyLearning(state, context, gains = {}) {
 
 function contentReadinessCheck(state, context, options = {}) {
   const assessment = evaluateStepProbability(state, context, options);
-  const assessmentMeta = { summary: assessment.summary, riskTags: assessment.riskTags };
+  const { probability, ...assessmentMeta } = assessment;
   if (deterministicRoll(context, options.salt || 0) <= assessment.probability) {
-    return { ok: true, probability: assessment.probability, assessment: assessmentMeta };
+    return { ok: true, probability, assessment: assessmentMeta };
   }
   const failure = ensure(
     false,
@@ -283,7 +289,7 @@ function contentReadinessCheck(state, context, options = {}) {
     options.category || "content-friction",
     options.remediation || "Reduce the cognitive load in this step or add a clearer UI/CLI split."
   );
-  failure.probability = assessment.probability;
+  failure.probability = probability;
   failure.assessment = assessmentMeta;
   return failure;
 }
