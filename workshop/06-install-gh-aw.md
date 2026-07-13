@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **No terminal open yet?** If you're using the **GitHub Copilot Cloud Agent (CCA)** or prefer a browser, launch a Codespace first:
 > [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
-> Once your Codespace loads, return here and continue with [Install from terminal](#install-from-terminal).
+> Once your Codespace loads, return here and continue with [Check if already installed](#check-if-already-installed).
 
 ## Choose your path
 
@@ -12,7 +12,7 @@ Use the path that matches your tool before you run any install command:
 | I am using… | Do this |
 | --- | --- |
 | **VS Code Copilot extension** | Start here: [Check if already installed](#check-if-already-installed) |
-| **GitHub Copilot Cloud Agent (CCA)** | Launch now: [Open in GitHub Codespaces](https://codespaces.new/githubnext/gh-aw-workshop) |
+| **GitHub Copilot Cloud Agent (CCA)** | Use the callout above, then [Check if already installed](#check-if-already-installed) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## GitHub Copilot Cloud Agent walkthrough
