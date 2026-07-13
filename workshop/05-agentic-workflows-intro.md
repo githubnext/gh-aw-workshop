@@ -2,10 +2,54 @@
 
 ## 📋 Before You Start
 
-**`github.com` or GitHub Enterprise Cloud (GHEC) users:** Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot** before continuing.
+**`github.com` users (personal or Team plan):** ✅ No extra steps — continue below.
 
-> [!IMPORTANT]
-> Enterprise or GHES user? Check [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+**GitHub Enterprise Cloud (GHEC) or GitHub Enterprise Server (GHES) users:** Use the decision tree below to confirm your environment is ready before continuing.
+
+<details>
+<summary>🔍 Enterprise environment check — about 30 seconds</summary>
+
+**Q1: Has your GitHub org admin enabled Copilot Enterprise for your organization?**
+
+Check: open your organization's **Settings → Copilot** page. If Copilot Enterprise is listed and active:
+
+- **Yes, Copilot Enterprise is enabled** → ✅ Close this and continue.
+- **No, or I'm not sure** → Continue to Q2.
+
+**Q2: Can you request Copilot Enterprise enablement from your org admin now?**
+
+- **Yes** → Use the template below to request enablement, then wait for confirmation before continuing.
+- **Not right now** → Use the personal-account path at the bottom of this section to evaluate the workshop first.
+
+---
+
+### Admin request template
+
+Copy and send the following to your GitHub org admin:
+
+> **Subject:** Enable Copilot Enterprise for agentic workflow workshop
+>
+> Hi,
+>
+> I'm completing the [GitHub Agentic Workflows workshop](https://github.com/githubnext/gh-aw-workshop) and need Copilot Enterprise enabled at the org level so I can run agentic workflows in GitHub Actions.
+>
+> **What's needed:** Enable Copilot Enterprise in **Organization Settings → Copilot** so that workflow runs in this org can access Copilot model inference.
+>
+> Reference: [Managing Copilot for your organization](https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization)
+>
+> Thank you!
+
+Once your admin confirms it's enabled, return here and continue with Step 5.
+
+---
+
+### Personal-account deferral
+
+You can complete **Steps 1–7** using a personal `github.com` account to evaluate the workshop hands-on. When Copilot Enterprise is available in your enterprise org, create a fresh practice repository in that org, then return to [Step 3: Create Your Repository](03-create-your-repo.md) to pick up from there.
+
+To start: use an existing personal `github.com` account (or create a free one), then return to [Step 1: Prerequisites](01-prerequisites.md) and follow the standard path.
+
+</details>
 
 ---
 
