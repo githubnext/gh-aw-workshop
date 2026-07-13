@@ -2,6 +2,17 @@
 
 > _You can use the GitHub Copilot app or the browser-based Agents tab to start an agent session, steer the work, review the changes, and land an agentic workflow._
 
+## 📋 Before You Start
+
+This adventure builds on:
+
+- **Step 7** ([Your first workflow](07-your-first-workflow.md)): writing a Markdown task brief with YAML frontmatter
+- **Step 9** ([Compile and validate](09-compile-and-validate.md)): using `gh aw compile` to generate and validate lock files
+- **Step 10** ([Choose your scenario](10-choose-your-scenario.md)): the scenario (A, B, or C) you selected to build
+- **Step 11 (any path)** ([11a](11a-build-daily-status.md), [11b](11b-build-daily-docs.md), or [11c](11c-build-pr-reviewer.md)): how frontmatter keys such as `triggers`, `permissions`, and `safe-outputs` shape what the workflow can do
+
+You do not need the `gh-aw` CLI installed locally — the agent handles compilation in its own workspace.
+
 ## 🎯 What You'll Do
 
 You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-made prompt that bootstraps the agent with the agentic workflow format, and watch the agent create and validate your workflow. Then you'll review and merge its pull request.
@@ -12,13 +23,7 @@ You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-ma
 - A GitHub Copilot plan
 - Either the [GitHub Copilot app](https://github.com/github/app) installed or the Copilot coding agent (Agents tab) enabled
 
-> [!NOTE]
-> The GitHub Copilot app is available on macOS, Windows, and Linux and is built on Copilot CLI. For Copilot Business and Enterprise users, desktop app sessions require an administrator to enable Copilot CLI in the organization's [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
-
-<!-- Separate adjacent callouts -->
-
-> [!NOTE]
-> If you use the browser path and don't see the Agents tab, ask your organization administrator to enable the Copilot coding agent.
+The GitHub Copilot app runs on macOS, Windows, and Linux and is built on Copilot CLI. Copilot Business and Enterprise users may need an administrator to enable Copilot CLI in the organization's [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies). If you use the browser path and don't see the Agents tab, ask your organization administrator to enable the Copilot coding agent.
 
 ---
 
@@ -41,8 +46,7 @@ The app creates an isolated workspace for the session. You can inspect the agent
 
 A text input panel opens where you can describe the task for the agent.
 
-> [!TIP]
-> You can also start an agent session from any open issue by clicking **Assign to Copilot** in the issue sidebar. The issue body becomes the task description. Either entry point works for this adventure.
+You can also start an agent session from any open issue by clicking **Assign to Copilot** in the issue sidebar — the issue body becomes the task description. Either entry point works for this adventure.
 
 ---
 
@@ -53,6 +57,16 @@ The prompt below tells the agent two things:
 2. What workflow to create for your chosen scenario.
 
 **Choose the prompt for the scenario you picked in [Step 10](10-choose-your-scenario.md).**
+
+### ✏️ Exercise: probe the agent before the full prompt
+
+Before submitting the full scenario prompt, test that your agent session is working by sending this short probe:
+
+```
+Fetch the file at https://github.com/github/gh-aw/blob/main/create.md and tell me the top-level sections in that document.
+```
+
+The agent should reply with a list that includes sections such as **Frontmatter schema**, **Triggers**, **Permissions**, and **Safe outputs**. If you see those headings in the response, the agent can reach the reference guide and you are ready to proceed.
 
 ---
 
@@ -143,12 +157,7 @@ After submitting the prompt, the session shows a live activity feed. You will se
 | **Compiling** | The agent runs `gh aw compile --validate` and fixes any errors it finds |
 | **Opening PR** | The agent commits both files and opens a pull request |
 
-The session typically completes in two to five minutes. You can steer it with follow-up prompts if it needs more context or takes the wrong direction.
-
-> [!TIP]
-> You can follow along in the activity feed and expand individual steps to see exactly what the agent wrote, read, or ran. This is a good way to learn the agentic workflow format without writing it yourself.
-
-<!-- Separate adjacent callouts -->
+The session typically completes in two to five minutes. You can steer it with follow-up prompts if it needs more context or takes the wrong direction. Follow along in the activity feed and expand individual steps to see exactly what the agent wrote, read, or ran — this is a good way to learn the agentic workflow format without writing it yourself.
 
 > [!IMPORTANT]
 > - The agent runs `gh aw compile ... --validate` in its session workspace and can install `gh-aw` there if needed.
@@ -205,8 +214,7 @@ After merging, your repository contains:
 | `.github/workflows/<name>.md` | The Markdown task brief — the human-readable workflow definition the agent and you can edit |
 | `.github/workflows/<name>.lock.yml` | The compiled GitHub Actions YAML — generated automatically, do not edit by hand |
 
-> [!NOTE]
-> You can continue iterating through a GitHub Copilot app or Agents-tab session and let the agent handle edits and recompilation. If you want a persistent validation loop or direct CLI control, follow [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) and use `gh aw compile --watch` in a local or Codespaces terminal.
+You can continue iterating through a GitHub Copilot app or Agents-tab session and let the agent handle edits and recompilation. If you want a persistent validation loop or direct CLI control, follow [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) and use `gh aw compile --watch` in a local or Codespaces terminal.
 
 ---
 
