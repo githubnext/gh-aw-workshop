@@ -2,7 +2,7 @@
 
 > _Optional: work through this reference if you want to understand sub-agent name rules, block boundaries, and supported frontmatter fields in depth before or after completing [Step 21](21-inline-sub-agents.md), then return to the main path._
 
-This reference covers everything you need to write correct inline sub-agent blocks — names, boundaries, frontmatter fields, and model aliases.
+Work through this reference to practice writing correct sub-agent blocks — then return to Step 21 to apply these rules in your own workflow.
 
 ## 📋 Before You Start
 
@@ -22,20 +22,20 @@ Valid examples: `` `planner` ``, `` `file-summarizer` ``, `` `code-reviewer` ``
 
 Invalid examples: `` `File Summarizer` `` (spaces and uppercase), `` `1st-agent` `` (starts with a digit)
 
-### ✏️ Quick Check — Name rules
+### ✏️ Try it: fix the broken names
 
-Which of these names are valid? Explain why each is valid or invalid.
+Which of these headings are invalid? Fix each one before reading the answer.
 
-- (a) `` `File-Summarizer` ``
-- (b) `` `file_summarizer` ``
-- (c) `` `1st-agent` ``
+- `` ## agent: `File Summarizer` ``
+- `` ## agent: `1st-agent` ``
+- `` ## agent: `code-reviewer` ``
 
 <details>
 <summary>Answer</summary>
 
-- (a) **Invalid** — contains uppercase letters (`F`, `S`). Names must use only lowercase letters, digits, hyphens, and underscores.
-- (b) **Valid** — all lowercase, starts with a letter, only letters and underscores.
-- (c) **Invalid** — starts with a digit (`1`). Names must start with a letter.
+- `` ## agent: `File Summarizer` `` — **Invalid**: contains spaces and uppercase letters. Fix: `` ## agent: `file-summarizer` ``
+- `` ## agent: `1st-agent` `` — **Invalid**: starts with a digit. Fix: `` ## agent: `first-agent` `` or choose a name that starts with a letter.
+- `` ## agent: `code-reviewer` `` — **Valid**: all lowercase, starts with a letter, only letters and a hyphen.
 
 </details>
 
@@ -82,6 +82,21 @@ Each sub-agent block may have its own YAML frontmatter fence. Only two fields ar
 
 All other fields (`engine:`, `tools:`, `network:`, etc.) are **stripped at compile time with a warning**. Sub-agents inherit the parent workflow's engine, tool access, and network configuration.
 
+Here is a complete sub-agent block showing both supported fields in use:
+
+```markdown
+## agent: `issue-classifier`
+
+---
+description: Classifies each issue by severity and assigns the right label
+model: small
+---
+
+Read the issue body and reply with exactly one label: `bug`, `enhancement`, or `question`.
+```
+
+In this example, `description` documents the sub-agent's role for readers and tooling, and `model: small` keeps costs low for this bounded classification task.
+
 ### ✏️ Quick Check — Frontmatter fields
 
 You write this frontmatter inside a sub-agent block:
@@ -120,12 +135,12 @@ Use `small` for any bounded retrieval, extraction, or one-shot summarization tas
 
 ### ✏️ Quick Check — Model aliases
 
-You are building a sub-agent that classifies issue labels (e.g., assigns `bug`, `enhancement`, or `question` based on the issue body). Which alias should you use and why?
+You're writing a sub-agent that reads 500 files and summarises each one. Which alias should you use, and why?
 
 <details>
 <summary>Answer</summary>
 
-Use **`small`** — label classification is a bounded, one-shot task: the sub-agent reads a short input and returns a single word. It does not require complex reasoning or multi-step synthesis, so a cheap, fast model is the right choice. Reserve `large` or `inherited` for the orchestrator that coordinates the overall workflow.
+Use **`small`** — summarizing a single file is a bounded, one-shot task that does not require complex reasoning. Using `small` across 500 sub-agent invocations keeps costs low and latency short. Reserve `large` or `inherited` for the orchestrating agent that plans, coordinates the sub-agents, and synthesizes the final output.
 
 </details>
 
