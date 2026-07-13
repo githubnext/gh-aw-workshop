@@ -115,7 +115,7 @@ Before returning to Step 1, confirm you have completed the following:
 - [ ] You opened a terminal and saw a prompt (e.g., `$`, `%`, or `>`)
 - [ ] You ran `pwd` (macOS/Linux) or `cd` (Windows) and saw your current directory path printed
 - [ ] You ran `mkdir test-dir && cd test-dir && echo "hello, terminal!"` and saw `hello, terminal!` in the output
-- [ ] You ran the cleanup command (`cd .. && rm -r test-dir`) without any errors
+- [ ] You ran the cleanup command (`cd .. && rm -r test-dir` on macOS/Linux, or `cd .. && rmdir /s test-dir` on Windows) without any errors
 - [ ] You can explain the difference between an absolute path and a relative path
 
 ---
