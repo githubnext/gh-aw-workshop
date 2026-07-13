@@ -30,7 +30,7 @@ You'll add inline sub-agents to your daily-status workflow so that cheap, focuse
 
 Every workflow you have built so far runs as a single agent prompt. That works well for small tasks, but as a workflow grows it develops two expensive habits:
 
-- **The frontier model reads everything.** Even a simple "summarise this file" call uses frontier-model tokens when a `small` model would do it for roughly 10–20× less cost.
+- **The frontier model reads everything.** Even a simple "summarize this file" call uses frontier-model tokens when a `small` model would do it for roughly 10–20× less cost.
 - **Context bloat.** A monolithic prompt that gathers data, classifies items, writes the summary, and posts the result carries all that context in one call chain. Errors at any stage contaminate the whole context window.
 
 Inline sub-agents solve both problems. You define specialised workers directly in the same Markdown file. At compile time, `gh-aw` extracts each sub-agent block and writes it to the engine-specific agents directory. The parent (orchestrator) agent then calls workers by name and receives compact, structured results.
@@ -79,7 +79,7 @@ All other fields (`engine:`, `tools:`, `network:`, etc.) are stripped at compile
 | `large` | sonnet / gpt-5-pro / gpt-5 / gemini-pro | Complex reasoning or synthesis tasks |
 | `inherited` | Parent workflow model | Default — use when the sub-agent needs the same capability as the parent |
 
-Use `small` for any bounded retrieval, extraction, or one-shot summarisation task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesises, and decides.
+Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
 
 ## Steps
 
@@ -119,7 +119,9 @@ You produce a daily repository health digest.
 2. For each issue, use the `issue-summarizer` agent to produce a
    one-sentence summary.
 3. Compile the summaries into a numbered list, ordered by issue number.
-4. Post the list as a comment on the tracking issue.
+4. Post the list as a comment on the repository's main tracking issue
+   (the issue you created in [Step 11a](11a-build-daily-status.md) to
+   receive daily status updates).
 ```
 
 > [!TIP]
