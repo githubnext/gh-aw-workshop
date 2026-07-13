@@ -145,6 +145,9 @@ Once you're comfortable with this pattern, the same technique works for:
 
 **Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
 
+> [!TIP]
+> Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit. Learn how crafted issue or PR content can attempt to exfiltrate your `GITHUB_TOKEN` — and how gh-aw stops it — in the optional [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
+
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
