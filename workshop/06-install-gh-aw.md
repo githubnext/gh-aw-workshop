@@ -12,12 +12,12 @@ Use the path that matches your tool before you run any install command:
 | I am using… | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| **GitHub Copilot Cloud Agent (CCA)** | [Open a Codespace first](#open-a-codespace-first) |
+| **GitHub Copilot Cloud Agent (CCA)** | [Open in GitHub Codespaces](https://codespaces.new/githubnext/gh-aw-workshop) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Open a Codespace first
 
-If you're using the **GitHub Copilot Cloud Agent (CCA)** and don't have a terminal open yet, use the launch button above.
+If you're using the **GitHub Copilot Cloud Agent (CCA)** and don't have a terminal open yet, use the launch button in the IMPORTANT callout at the top of this page.
 
 For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md).
 
