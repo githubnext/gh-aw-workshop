@@ -219,6 +219,17 @@ git push
 ```
 
 <details>
+<summary>No terminal? Commit via the GitHub web UI</summary>
+
+1. In your practice repository on GitHub, navigate to `.github/workflows/`.
+2. Click **Add file** → **Create new file**.
+3. Name the file `hello-agent.md`.
+4. Paste the workflow content from this step.
+5. Scroll down to **Commit changes**, enter a commit message, then click **Commit changes**.
+
+</details>
+
+<details>
 <summary>Path C — Browser / Copilot Chat</summary>
 
 If you followed the browser path above, this step is already done — the same `.github/workflows/hello-agent.md` file is now committed on `main`. No terminal push is needed.
