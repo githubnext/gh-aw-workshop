@@ -78,16 +78,22 @@ permissions:
 > [!NOTE]
 > `copilot-requests: write` is required for every agentic workflow — it grants the Actions runner permission to call the Copilot AI API on your behalf. Every other permission is read-only.
 
-### Add tools and output guardrails
+### Add the tools block
 
-The `tools` block tells the agent how to talk to GitHub. `mode: gh-proxy` routes all GitHub API calls through a controlled proxy that enforces only the scopes in `permissions`. `safe-outputs.add-comment: max: 1` limits the agent to posting at most one issue comment per run — no other write actions.
+The `tools` block tells the agent how to talk to GitHub. `mode: gh-proxy` routes all GitHub API calls through a controlled proxy that enforces only the scopes in `permissions`.
 
 ```yaml
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+```
 
+### Add the safe-outputs guardrail
+
+`safe-outputs.add-comment: max: 1` limits the agent to posting at most one issue comment per run — no other write actions are permitted.
+
+```yaml
 safe-outputs:
   add-comment:
     max: 1
@@ -145,6 +151,16 @@ git push
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** [Step 11a2: Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)
+
+## ✅ Checkpoint
+
+Before moving on, confirm all of the following:
+
+- [ ] `.github/workflows/daily-status.md` exists in my repository
+- [ ] The workflow file contains all five frontmatter sections: `emoji`/`description`, `on:`, `permissions:`, `tools:`, and `safe-outputs:`
+- [ ] `gh aw compile .github/workflows/daily-status.md --validate` exits with no errors
+- [ ] `git log --oneline -1` shows my commit `feat: add daily repo status agentic workflow`
+- [ ] `git push` completed successfully and the file is visible on GitHub
 
 ## 📚 See Also
 
