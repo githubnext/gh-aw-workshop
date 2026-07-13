@@ -1,5 +1,10 @@
 # Step 5: What Are Agentic Workflows?
 
+> [!IMPORTANT]
+> **Enterprise/GHES users: start here before Step 5.** Agentic workflows require **GHES 3.12+** (or `github.com`/GHEC) and **GitHub Copilot Enterprise** with Copilot cloud agent enabled by your admins.
+> Self-hosted runners and enterprise proxy-based environments are supported when required network egress and policy settings are configured.
+> If you're on GHES or a managed enterprise environment, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as a required prerequisite, then return to this Step 5 page.
+
 **⏱ In 30 seconds:** An agentic workflow is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. No shell scripts. No brittle YAML. Just a goal and an agent that figures out the rest.
 
 ![Animated agent run log — the agent reads a task brief, calls list_issues and list_pull_requests, reasons about the results, and posts a comment to GitHub](images/05-agent-run-log.svg)
@@ -23,9 +28,6 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 3. Triage high-priority issue #398 with the platform team.
 ```
 
-> [!NOTE]
-> **Checking enterprise compatibility before you continue?** Agentic workflows use GitHub Actions infrastructure. They work on `github.com`, GHEC, and GHES 3.12+ when GitHub Copilot Enterprise (including Copilot cloud agent) is enabled by your admins. Self-hosted runners are supported.
-> See [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for enterprise deployment notes before continuing.
 > [!IMPORTANT]
 > **Coming from classic Actions? Unlearn these 3 things first:**
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
