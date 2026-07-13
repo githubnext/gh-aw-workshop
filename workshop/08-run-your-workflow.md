@@ -15,19 +15,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 ## Steps
 
 > [!NOTE]
-> You can trigger this workflow entirely from your browser — no terminal required for the recommended path.
->
-> **Using a Codespace?** Before you start, confirm your token has `actions:write` — the optional terminal path in this step requires it.
->
-> **Terminal check (10 seconds):**
->
-> ```bash
-> gh auth status
-> ```
->
-> Look for `actions:write` and `workflows:write` in the token scopes list. If either is missing, use the [GitHub Actions UI path](#trigger-manually-via-github-actions-ui) below — no token change needed — or see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) for the full fix.
->
-> **UI check:** If you are using a personal access token, go to **Settings → Developer settings → Personal access tokens** in your GitHub account and confirm `actions:write` and `workflows:write` are listed in the token's scopes.
+> You can complete this step entirely from your browser — no terminal or token configuration needed.
 
 ### Trigger manually via GitHub Actions UI
 
@@ -46,7 +34,8 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
 
-### Optional advanced path: trigger from the terminal
+<details>
+<summary>Advanced: trigger from the terminal</summary>
 
 Prefer the GitHub Actions UI path above for this workshop. If you already have CLI trigger permissions configured, you can trigger the same run with:
 
@@ -54,12 +43,13 @@ Prefer the GitHub Actions UI path above for this workshop. If you already have C
 gh aw run hello-agent
 ```
 
-<details>
-<summary>Troubleshooting: common run failures</summary>
+If you're using a Codespace, run `gh auth status` and confirm your token includes `actions:write` and `workflows:write` before using `gh aw run`.
+
+#### Troubleshooting: common run failures
 
 #### `actions:write` permission error (Codespaces users)
 
-If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Use the recommended GitHub Actions UI steps above to trigger the workflow instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Can't resolve this? Use the Actions UI path above instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
 #### Workflow not showing in the Actions sidebar
 
