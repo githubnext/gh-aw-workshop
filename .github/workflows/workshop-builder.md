@@ -292,22 +292,34 @@ Select the highest-priority **eligible** workflow (most urgent first):
 15. `workshop-link-checker` — validates external URLs and internal anchors
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
-that may shift priority toward a specific workflow (e.g. "add content" → prefer
-`workshop-author`; "workflow", "tone", "duplication", or "bloat" → prefer
-`workflow-skills-editor`; "side quest" or "tutorial" → prefer `side-quest`;
-"security" → prefer `security-side-quest`; "fix sync" → prefer
-`workshop-sync-check`; "title", "heading", or "similar" → prefer
-`title-similarity-review`; "diagram" or "visual" → prefer
-`workshop-explanatory-diagrams`; "screenshot" or "image" → prefer
-`workshop-ui-screenshots`; "link" or "docs" → prefer `docs-linker`;
-"broken link" → prefer `workshop-link-checker`; "duplicate" or "dedup" →
-prefer `markdown-dedup`; "training" or "research" → prefer
-`training-plan-research`).
+that may shift priority toward a specific workflow:
 
-When dispatching `workshop-author`, `workflow-skills-editor`, `side-quest`,
-`security-side-quest`, `workshop-skill-activity-author`, `training-plan-research`,
-`workshop-explanatory-diagrams`, or `docs-linker`, pass the `focus` input through
-if it is set and relevant.
+| Focus hint keywords | Preferred workflow |
+|---|---|
+| "add content" | `workshop-author` |
+| "workflow", "tone", "duplication", "bloat" | `workflow-skills-editor` |
+| "side quest", "tutorial" | `side-quest` |
+| "security" | `security-side-quest` |
+| "fix sync" | `workshop-sync-check` |
+| "title", "heading", "similar" | `title-similarity-review` |
+| "diagram", "visual" | `workshop-explanatory-diagrams` |
+| "screenshot", "image" | `workshop-ui-screenshots` |
+| "link", "docs" | `docs-linker` |
+| "broken link" | `workshop-link-checker` |
+| "duplicate", "dedup" | `markdown-dedup` |
+| "training", "research" | `training-plan-research` |
+
+Pass the `focus` input through when dispatching the following workflows, if it
+is set and relevant:
+
+- `workshop-author`
+- `workflow-skills-editor`
+- `side-quest`
+- `security-side-quest`
+- `workshop-skill-activity-author`
+- `training-plan-research`
+- `workshop-explanatory-diagrams`
+- `docs-linker`
 
 → If at least one workflow is eligible, **dispatch the highest-priority one** and
 skip Tiers B and C.
