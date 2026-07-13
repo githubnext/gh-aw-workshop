@@ -1,88 +1,68 @@
 # Step 8: Run and Watch Your Workflow
 
-_Reading about agents is one thing — watching one work in real time is something else entirely._
+_Watching an agent work in real time is fundamentally different from reading about it._
 
 ## 🎯 What You'll Do
 
-You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run live inside GitHub Actions. By the end you'll have seen a real AI agent reason through a task, make GitHub API calls, and post a comment — all without you writing a single line of code to do it.
+You'll trigger the `hello-agent` workflow from Step 7, predict what it will do before it runs, then verify your predictions against the live log.
 
 ## 📋 Before You Start
 
-- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md) for Step 7
+- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
 - Your browser is open to your practice repository on GitHub
 
 ## Steps
 
-### ✅ Before You Trigger — complete all three
+### Confirm your setup
 
-- [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`.
-- [ ] The **Actions** tab shows **Hello Agent** in the left workflow sidebar.
-- [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not).
+Before triggering, verify all three:
 
-> [!IMPORTANT]
-> Complete all three checks above before triggering. Skipping them is the most common cause of silent run failures.
+- [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`
+- [ ] The **Actions** tab shows **Hello Agent** in the left workflow sidebar
+- [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
-<!-- -->
+### Predict before you run
 
-> [!NOTE]
-> **Recommended: use the GitHub Actions UI.** No token configuration needed.
+Before you click anything, write down your predictions:
 
-### Trigger manually via GitHub Actions UI
+1. **What will the agent do first?** Write one sentence describing the first action you expect it to take.
+2. **Which issue will it pick?** If you have multiple open issues, which one do you expect the agent to select, and why?
+3. **What will the output look like?** Will the agent post a comment, create a new issue, or do something else?
 
-1. In your repository, click the **Actions** tab at the top of the page. It sits in the repository navigation bar between the **Pull requests** and **Projects** tabs. The left sidebar lists all workflows registered for your repository.
+Keep your predictions handy — you'll check them against the live log in a moment.
+
+### Trigger the workflow via GitHub Actions UI
+
+1. Click the **Actions** tab in your repository's navigation bar.
 
    ![Actions tab showing where to find Hello Agent in the workflow list](images/08-actions-tab.svg)
 
-2. In the left workflow sidebar, click **Hello Agent**, then click **Run workflow**.
+2. In the left sidebar, click **Hello Agent**, then click **Run workflow**.
 
    ![Workflow sidebar with the Run workflow button highlighted](images/08-run-workflow-button.svg)
 
-3. In the confirmation dropdown, keep the default branch selected and click the green **Run workflow** button.
+3. Keep the default branch selected and click the green **Run workflow** button.
 
    ![Run workflow confirmation dropdown showing branch selection and final Run workflow button](images/08-run-workflow-confirm-dropdown.svg)
 
-> [!NOTE]
-> If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
-
 <details>
-<summary>Advanced: trigger from the terminal (requires <code>actions:write</code> scope)</summary>
+<summary>Troubleshooting and advanced: terminal trigger</summary>
 
-> [!WARNING]
-> **Codespace users:** Codespace tokens do not include `actions:write` by default.
-> If you plan to trigger via the terminal (`gh aw run`), verify your token first.
-> Use the **[GitHub Actions UI trigger](#trigger-manually-via-github-actions-ui)** above (no token needed) to avoid this issue entirely.
-> Full recovery guide: [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+**Hello Agent not in the Actions sidebar?** Wait 30 seconds and refresh. If it still doesn't appear, confirm `.github/workflows/hello-agent.md` is committed to `main`.
 
-Prefer the GitHub Actions UI path above for this workshop. If you already have CLI trigger permissions configured, you can trigger the same run with:
+**Workflow doesn't start within 60 seconds?** Refresh — GitHub's run queue occasionally takes up to a minute to dispatch a job.
 
-```bash
-gh aw run hello-agent
-```
+**Run succeeded but no comment was created?** The agent may have found no open issues. Create one and re-run.
 
-<!-- -->
-
-Troubleshooting: common run failures
-
-- **`actions:write` permission error (Codespaces users):** If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Use the Actions UI path above instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
-- **Workflow not showing in the Actions sidebar:** GitHub takes up to 30 seconds to register a newly pushed workflow file. Wait 30 seconds, then refresh the **Actions** tab. If it still doesn't appear, confirm `.github/workflows/hello-agent.md` is committed and pushed to `main`.
-- **Run succeeded but no comment or issue was created:** Check the run log for the agent's reasoning steps. The agent may have found no open issues to comment on — if your repository has no issues, create one first, then re-run the workflow.
+**Prefer the terminal?** Trigger with `gh aw run hello-agent`, but this requires `actions:write` scope. Codespace tokens do not include this by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 </details>
 
-Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs/src/content/docs/setup/cli.md)
+### Watch the run and interpret the log
 
-### Watch the run in progress
+After a few seconds a new row appears with a yellow spinning icon. Click it, then click the job to open the live log.
 
-After a few seconds, a new row appears in the run list with a yellow spinning icon — that means the workflow is running. Click the row to open the run details.
-
-You'll see a single job. Click it to open the live log view.
-
-> [!NOTE]
-> If the workflow doesn't start within 60 seconds, check that the **Actions** tab shows **Hello Agent** in the left sidebar and that you clicked the green **Run workflow** button in the confirmation dropdown. GitHub's run queue occasionally takes up to a minute to pick up a newly dispatched job — refresh the page if the spinning icon doesn't appear.
-
-### Read the log as the agent works
-
-The log streams in real time. Unlike a traditional CI job — which shows build commands — an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) log shows the agent's **reasoning steps**:
+The log streams in real time. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) log shows the agent's **reasoning steps** — not build commands:
 
 ```
 🤔 Planning...  Searching for open issues with 👍 reactions
@@ -93,43 +73,38 @@ The log streams in real time. Unlike a traditional CI job — which shows build 
 ✅ Done
 ```
 
-Each line tells you what the agent is doing:
-- **Planning** lines show the agent deciding its next action.
-- **Tool call** lines show it making an API call.
-- **Result** lines show what came back from that call.
-- **Done** means the agent finished the task within its [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) limits.
+**Interpret the log** — answer these three questions as you watch:
+
+1. Which API call (`tool_call`) did the agent make first?
+2. How many reasoning steps did the agent take before posting a comment or creating an issue?
+3. Does the agent's behavior match your predictions? Note any surprises.
 
 > [!TIP]
-> If you're used to CI logs that scroll by in milliseconds, agentic logs can feel slow — the agent is actually pausing to think. That's normal and expected.
+> Agentic logs can feel slow — the agent pauses to reason between steps. Each `🤔 Thinking...` line is the model choosing its next action.
 
 ### Check the outcome
 
-Once the run shows a green ✅ checkmark, go to the **Issues** tab of your repository. You should see a new comment on an existing issue — or a brand-new issue created by the agent if your repo had none.
+Once the run shows a green ✅, go to the **Issues** tab. You should see a new comment on an existing issue (or a new issue created by the agent).
 
-Open the comment and read it. Then look back at the workflow file you wrote. Notice how the plain-English instructions you wrote translated directly into real GitHub actions.
-
-> [!NOTE]
-> The agent may have picked a different issue than you expected, or created a new issue with a slightly different title. That's fine — it's reasoning from live data and following the instructions you gave it. If the result surprises you, look at your instructions and consider how you might make them more precise.
+Read the comment, then look back at your workflow file. Notice how your plain-English instructions translated into real GitHub actions. If the result surprises you, compare it to your predictions and consider how you might revise the instructions.
 
 ### View the run summary
 
-Navigate back to the **Actions** tab and click the completed run. Scroll down past the jobs to the **Summary** section. Agentic workflows often post a structured summary here showing what the agent did and which safe-output operations it performed.
+Go back to the completed run in the **Actions** tab and scroll to the **Summary** section. Agentic workflows post a structured summary showing what the agent did and which [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) operations it performed.
 
 ![Workflow run summary panel](images/08-run-summary.svg)
 
 ### Re-run with a twist (optional)
 
-Want to experiment? Instead of editing `.github/workflows/hello-agent.md` directly, ask Copilot, Claude, or ChatGPT to update it with the `agentic-workflows` skill. For example, ask the agent to change the task so it adds a label to the issue instead of posting a comment, then review the diff, push the change, and trigger another run.
-
-This is the core loop of agentic workflow development: **design → agent edit → run → observe → refine**.
+Ask Copilot, Claude, or ChatGPT (with the `agentic-workflows` skill) to change the task — for example, add a label instead of posting a comment. Review the diff, push, and trigger another run. This is the core loop: **design → agent edit → run → observe → refine**.
 
 ## ✅ Checkpoint
 
 - [ ] The **Hello Agent** workflow appears in the **Actions** tab
-- [ ] I triggered a manual run and watched it complete
-- [ ] I can read the agent's reasoning steps in the live log
+- [ ] I triggered a manual run and it completed with a green ✅
+- [ ] The run log shows at least one `tool_call` entry
 - [ ] A comment or issue was created in my repository by the agent
-- [ ] I understand the difference between a tool call and a safe-output operation
+- [ ] I answered all three "Interpret the Log" questions from the live log
 
 **Next:** [Step 9: Reading Workflow Output](09-understand-output.md)
 
