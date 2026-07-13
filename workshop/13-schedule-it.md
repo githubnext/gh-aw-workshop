@@ -6,7 +6,24 @@ _Automating the trigger turns a one-off workflow into a recurring service._
 
 - [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) is complete and your workflow has run successfully at least once.
 - `.github/workflows/daily-status.md` is committed to your repository.
-- You know which path you will use to make the schedule change (terminal or GitHub UI).
+- You are familiar with the `schedule:` trigger syntax introduced in [Step 7a: Your First Workflow (Terminal)](07a-your-first-workflow-terminal.md).
+- A fuzzy expression like `daily on weekdays` is plain English that `gh aw compile` converts to a valid cron string at compile time — you never need to write cron syntax by hand.
+
+For example, the fuzzy expression `schedule: daily` compiles to a cron value such as `"49 23 * * *"` in the generated lock file:
+
+```yaml
+# Before (in daily-status.md)
+on:
+  schedule: daily
+
+# After gh aw compile (in daily-status.lock.yml)
+on:
+  schedule:
+    - cron: "49 23 * * *"
+```
+
+> [!NOTE]
+> The exact cron value is randomized by `gh aw compile` to prevent all workflows from running at the same time. Your compiled output may differ from the example above — that is expected.
 
 ## Choose Your Path
 
@@ -21,8 +38,10 @@ Both paths update the same fuzzy schedule expression and finish by confirming it
 
 After completing your chosen path, verify:
 
+- [ ] I can explain what a `schedule:` trigger does in GitHub Actions — it runs the workflow automatically at the defined cadence without manual intervention.
+- [ ] I understand that `gh aw compile` converts a fuzzy expression like `daily on weekdays` into a valid cron string in the lock file.
 - [ ] The `schedule:` field in `.github/workflows/daily-status.md` contains a valid schedule expression (for example, `daily on weekdays`).
-- [ ] The schedule expression reflects the cadence you chose, not just the default `daily`.
+- [ ] The compiled `.lock.yml` shows a valid cron string under `on.schedule` (for example, `"50 11 * * 1-5"`).
 - [ ] A commit containing the updated `.github/workflows/daily-status.md` appears in your repository's commit history.
 - [ ] The **Actions** tab shows the schedule badge for your **daily-status** workflow.
 - [ ] At least one run has completed successfully after the schedule change.
