@@ -8,8 +8,8 @@ You'll trigger your daily-status workflow manually, read the resulting issue com
 
 ## 📋 Before You Start
 
-- You have installed the `gh-aw` extension in [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
-- You have completed one of the scenario build steps: [Step 11a](11a-build-daily-status.md), [Step 11b](11b-build-daily-docs.md), or [Step 11c](11c-build-pr-reviewer.md).
+- You have installed the `gh-aw` extension in [Step 6](06-install-gh-aw.md), or your GitHub Copilot agent compiled the workflow for you.
+- You have completed one of the scenario build steps: [Step 11a](11a-build-daily-status.md), [Step 11b](11b-build-daily-docs.md), [Step 11c](11c-build-pr-reviewer.md), or [Step 11d](11d-build-copilot-agents.md).
 - Your workflow file is committed and pushed to `main`.
 
 ## Steps
@@ -119,6 +119,11 @@ For example, your updated Guidelines section might look like:
 > [!NOTE]
 > The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
 
+<!-- Separate adjacent callouts -->
+
+> [!TIP]
+> **Using the GitHub Copilot app or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate`, and update the pull request. Review the diff before merging.
+
 ### Commit your change
 
 #### Terminal path
@@ -143,7 +148,7 @@ Trigger another manual run and compare the new comment with the old one. Repeat 
 If a run shows a red ❌, click the failed step to see the raw log. Common causes:
 
 - **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
-- **Compile error** — run `gh aw compile .github/workflows/daily-status.md --validate` locally to see the exact YAML error and line number. **UI path / no terminal:** check the failed Actions step log — compile errors appear in the step output. The [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) covers the most common mistakes (tabs, indentation, missing quotes) with before/after examples and copy-paste fixes.
+- **Compile error** — run `gh aw compile .github/workflows/daily-status.md --validate` locally to see the exact YAML error and line number, or ask your GitHub Copilot app session to run it and fix the error. **UI path / no terminal:** check the failed Actions step log — compile errors appear in the step output. Use a local or Codespaces terminal if you want to keep `gh aw compile --watch` running. The [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) covers the most common mistakes (tabs, indentation, missing quotes) with before/after examples and copy-paste fixes.
 - **API rate limit** — wait a few minutes and try again.
 
 > [!WARNING]

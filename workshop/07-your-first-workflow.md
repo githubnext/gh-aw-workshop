@@ -7,11 +7,13 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 > - **Path A — Codespace (browser terminal):** run commands in your Codespace terminal.
 > - **Path B — Local terminal:** run commands in your local terminal.
 > - **Path C — UI only (Copilot Chat / CCA):** use the GitHub UI alternatives in this step. `gh aw run` is not available without a terminal, so plan to trigger from the **Actions tab** in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui).
+> - **GitHub Copilot app authoring option:** open your practice repository in the app and ask an agent to create and validate the file. Use the **Actions tab** in Step 8 to run it.
 
 <!-- Separate adjacent callouts -->
 
 > [!NOTE]
 > **No terminal? Use the GitHub web editor.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, skip terminal commands and create `hello-agent.md` using the GitHub UI path below.
+> **Using the GitHub Copilot app?** Ask an agent session to create `.github/workflows/hello-agent.md` from this step, run `gh aw compile .github/workflows/hello-agent.md --validate`, and show you the diff. For a persistent `--watch` loop, use a local or Codespaces terminal instead.
 
 ## 🎯 What You'll Do
 
@@ -19,7 +21,7 @@ You'll create a simple [agentic workflow](https://github.github.com/gh-aw/introd
 
 ## 📋 Before You Start
 
-- Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) (Path A/B) or the [GitHub UI alternative](06-install-gh-aw.md#github-ui-alternative) in Step 6 (Path C)
+- Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) (Path A/B), used the [GitHub UI alternative](06-install-gh-aw.md#github-ui-alternative) (Path C), or connected your practice repository to the GitHub Copilot app
 - The `gh aw` command is available in your terminal (Path A/B only)
 - Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
@@ -71,6 +73,7 @@ Open the file in your editor.
 > [!NOTE]
 > With the browser path you write the complete file first, then commit once at the end — skip the `gh aw compile` checkpoints in steps 3–5 (those require a terminal). GitHub Actions will surface any workflow errors when you run the file in [Step 8](08-run-your-workflow.md).
 > **Using Copilot Chat / CCA?** Ask Copilot Chat to create `.github/workflows/hello-agent.md` with the Step 7 template and commit it to `main` from the chat panel. Review the proposed diff before you approve.
+> **Using the GitHub Copilot app?** Ask your app session to make the same file, validate it, and create a pull request. Review the diff before merging.
 
 Write your workflow using the steps below, then compile it to generate the `.lock.yml` that Actions will run.
 
@@ -274,7 +277,7 @@ For a deeper look at how Copilot authenticates with agentic workflows and how to
 
 - [ ] `.github/workflows/hello-agent.md` exists in my repository
 - [ ] The file has valid YAML frontmatter with `name`, `on`, and `permissions` (including `copilot-requests: write`)
-- [ ] (Path A/B) `gh aw compile .github/workflows/hello-agent.md --validate` reports no errors, or (Path C) the file was created and committed via the GitHub web editor
+- [ ] (Path A/B) I ran `gh aw compile .github/workflows/hello-agent.md --validate`, (Path C) I committed the file in the web editor, or (Copilot app) the agent validated the file
 - [ ] The file is committed and pushed to `main`
 - [ ] Copilot model access is enabled for my account (verified via **Settings → Copilot** or [github.com/settings/copilot](https://github.com/settings/copilot))
 

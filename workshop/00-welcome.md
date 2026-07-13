@@ -15,7 +15,8 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 | **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Adventure A (Step 2a): Set Up a Codespace](02a-setup-codespace.md) | Stay in the browser with a preconfigured environment |
 | **CLI user** (comfortable in a terminal) | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
 | **VS Code user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
-| **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md) | No installation needed — start a session, paste a prompt, merge a PR |
+| **GitHub Copilot app user** | ➡️ [Adventure D (Step 11d): Build with GitHub Copilot](11d-build-copilot-agents.md) | Open your repository in the desktop app, steer an agent, and land its pull request |
+| **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with GitHub Copilot](11d-build-copilot-agents.md) | No installation needed — start a browser session, paste a prompt, and merge a PR |
 
 > [!NOTE]
 > If you're using the **GitHub Copilot Cloud Agent (CCA)**, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.
@@ -127,6 +128,7 @@ Both paths converge at **Step 3** and stay together for the rest of the workshop
 At **Step 11**, the path splits again:
 - **Manual build** — write the workflow file section by section so every line is clear.
 - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use the guided, interactive setup path.
+- **[Adventure D: GitHub Copilot](11d-build-copilot-agents.md)** — have an agent build and validate the workflow in the GitHub Copilot app or Agents tab.
 
 Both Step 11 paths converge at **Step 12**.
 
@@ -137,7 +139,7 @@ Both Step 11 paths converge at **Step 12**.
 
 - [ ] You know the concrete outcome you'll build
 - [ ] You know how this differs from a regular GitHub Action
-- [ ] You know which setup path you'll take (Codespace or local)
+- [ ] You know which setup and authoring paths you'll take
 - [ ] You're excited — let's go! 🚀
 
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)
