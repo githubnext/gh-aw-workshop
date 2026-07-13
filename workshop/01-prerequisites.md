@@ -81,7 +81,7 @@ Complete these checks before you choose a setup path:
 >
 > **Yes.** Path C (the GitHub UI path) lets you complete the main workshop through Step 14 in your browser:
 >
-> - Skip the Terminal setup in Step 2 and start with Step 3b
+> - Skip the terminal setup in Step 2 and start with Step 3b
 > - Use the GitHub UI alternative in Step 6 and choose Step 7b
 > - Complete Steps 8–10, then choose the GitHub UI options in Steps 11–13
 >
