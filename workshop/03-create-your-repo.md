@@ -62,7 +62,7 @@ If you plan to create and edit files directly on GitHub, skip cloning and keep t
 
 ### Confirm GitHub Actions is enabled
 
-Choose the path that matches how you're working:
+Choose the path that matches how you are working:
 
 #### Terminal path — open the repository
 
