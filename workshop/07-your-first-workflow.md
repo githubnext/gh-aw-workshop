@@ -1,6 +1,12 @@
 # Step 7: Write Your First Agentic Workflow
 
-> _Writing your first workflow is the moment theory becomes practice — let's make something real._
+_Writing your first workflow is the moment theory becomes practice — let's make something real._
+
+> [!IMPORTANT]
+> **Path reminder:** Keep using the setup path you chose in Step 2.
+> - **Path A — Codespace (browser terminal):** run commands in your Codespace terminal.
+> - **Path B — Local terminal:** run commands in your local terminal.
+> - **Path C — UI only (Copilot Chat / CCA):** use the GitHub UI alternatives in this step. `gh aw run` is not available without a terminal, so plan to trigger from the **Actions tab** in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui).
 
 ## 🎯 What You'll Do
 

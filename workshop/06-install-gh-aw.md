@@ -1,7 +1,11 @@
 # Step 6: Install the gh-aw CLI Extension
 
 > [!IMPORTANT]
-> **No terminal open yet?** If you're using the **GitHub Copilot Cloud Agent (CCA)** or prefer a browser, launch a Codespace first:
+> **Path reminder:** Keep using the setup path you chose in Step 2.
+> - **Path A — Codespace (browser terminal):** continue in your Codespace terminal.
+> - **Path B — Local terminal:** continue in your local terminal.
+> - **Path C — UI only (Copilot Chat / CCA browser-only mode):** this step's `gh aw` commands require a terminal. If you stay UI-only, skip terminal commands and plan to trigger runs from the **Actions tab** in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui).
+> **Want to switch from Path C to Path A for terminal commands?** If you're using the **GitHub Copilot Cloud Agent (CCA)** or prefer a browser terminal, launch a Codespace:
 > [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
 > Once your Codespace loads, return here and continue with [Check if already installed](#check-if-already-installed).
 

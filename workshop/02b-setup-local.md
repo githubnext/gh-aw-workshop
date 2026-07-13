@@ -2,14 +2,17 @@
 
 ## 🔀 Choose your path first
 
-Use this quick checklist before you run any command:
-
-| If this describes you… | Do this now |
-| --- | --- |
-| You use GitHub Copilot Chat, the Copilot mobile app, or a cloud coding agent | Go to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
-| You prefer browser-first setup and want fewer local install steps | Go to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
-| You are unsure about using a local terminal today | Go to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
-| You are comfortable running commands in a local terminal | Continue with Adventure B below |
+> [!IMPORTANT]
+> If you're unsure you chose the right path, ask yourself:
+> 1. **Do you have a terminal available?**
+> 2. **Are you using GitHub Copilot Chat or the GitHub web UI only?**
+> 3. **If you have a terminal, do you prefer a browser terminal or your local machine?**
+>
+> Choose one path and keep it through Step 8.
+>
+> - **Path A — Codespace (browser terminal):** recommended for most beginners. Run terminal steps in a browser Codespace. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
+> - **Path B — Local terminal:** for learners with `gh` CLI installed locally. ✅ **You're in the right place.**
+> - **Path C — UI only (Copilot Chat / CCA):** complete browser-friendly steps, and use the **Actions tab** trigger in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui). `gh aw run` is **not available** without a terminal.
 
 ## 🧪 5-question terminal self-assessment
 
