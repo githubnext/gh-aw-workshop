@@ -15,6 +15,9 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 4 | [04-github-actions-intro.md](04-github-actions-intro.md) | What Are GitHub Actions? | ✅ |
 | 5 | [05-agentic-workflows-intro.md](05-agentic-workflows-intro.md) | What Are Agentic Workflows? | ✅ |
 | 6 | [06-install-gh-aw.md](06-install-gh-aw.md) | Install the gh-aw CLI Extension | ✅ |
+| 6a | [06a-install-terminal.md](06a-install-terminal.md) | Codespace Terminal Path — Install gh-aw | ✅ |
+| 6b | [06b-install-local.md](06b-install-local.md) | Local Terminal Path — Install gh-aw | ✅ |
+| 6c | [06c-install-ui.md](06c-install-ui.md) | GitHub UI Path — No Installation Needed | ✅ |
 | 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ✅ |
 | 7a | [07a-your-first-workflow-terminal.md](07a-your-first-workflow-terminal.md) | Terminal Path — Write Your First Agentic Workflow | ✅ |
 | 7a-part2 | [07a-part2-your-first-workflow-instructions.md](07a-part2-your-first-workflow-instructions.md) | Terminal Path (Part 2) — Add Instructions and Finish Your First Workflow | ✅ |
