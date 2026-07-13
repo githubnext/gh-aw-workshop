@@ -2,12 +2,10 @@
 
 > [!IMPORTANT]
 > **Path reminder:** Keep using the setup path you chose in Step 2.
-> - **Path A — Codespace (browser terminal):** continue in your Codespace terminal.
-> - **Path B — Local terminal:** continue in your local terminal.
-> - **Path C — UI only (Copilot Chat / CCA browser-only mode):** this step's `gh aw` commands require a terminal. If you stay UI-only, skip terminal commands and plan to trigger runs from the **Actions tab** in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui).
-> **Want to switch from Path C to Path A for terminal commands?** If you're using the **GitHub Copilot Cloud Agent (CCA)** or prefer a browser terminal, launch a Codespace:
-> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
-> Once your Codespace loads, return here and continue with [Check if already installed](#check-if-already-installed).
+> - **Terminal path — Codespace:** continue in your Codespace terminal.
+> - **Terminal path — local:** continue in your local terminal.
+> - **GitHub UI path:** skip installation and continue to the browser instructions below.
+> **Want to switch from the GitHub UI path to a browser terminal?** Follow [Adventure A: Set Up a Codespace](02a-setup-codespace.md) using your own practice repository. Once it loads, return here and continue with [Check if already installed](#check-if-already-installed).
 
 <!-- Separate adjacent callouts -->
 
@@ -17,7 +15,7 @@
 <!-- Separate adjacent callouts -->
 
 > [!IMPORTANT]
-> **Path C (UI only): skip these sections entirely.** If you are staying in browser-only mode (no terminal), do **not** run or follow:
+> **GitHub UI path: skip these sections entirely.** If you are staying in browser-only mode, do **not** run or follow:
 > - [Check if already installed](#check-if-already-installed)
 > - [Open a Codespace for CCA users](#open-a-codespace-for-cca-users)
 > - [Install from terminal](#install-from-terminal)
@@ -51,20 +49,20 @@ For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Co
 
 ## GitHub UI Alternative
 
-For **Path C (UI only)** — Copilot Chat, CCA, or browser-only — you do not need to install `gh-aw` locally. `gh-aw` runs on GitHub's infrastructure when your workflow executes.
+For the **GitHub UI path** — Copilot Chat, CCA, or browser-only — you do not need to install `gh-aw` locally. `gh-aw` runs on GitHub's infrastructure when your workflow executes.
 
 **What to do:**
 
 1. Skip the installation steps on this page.
-2. Continue to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md) and create `hello-agent.md` using the [GitHub web editor path](07-your-first-workflow.md#github-web-editor-path).
+2. Continue directly to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
 3. In [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md), open the **Actions** tab — if **Hello Agent** appears in the workflow list, `gh-aw` is working on GitHub's side. No local installation needed.
 
-**Path C checkpoint for this step:**
+**GitHub UI path checkpoint:**
 
-- [ ] I understand that Path C (UI only) does not require a local `gh-aw` installation
+- [ ] I understand that the GitHub UI path does not require a local `gh-aw` installation
 - [ ] I will confirm `gh-aw` is working by checking the **Actions** tab in [Step 8](08-run-your-workflow.md)
 
-**Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+**Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
 
 ---
 
@@ -189,7 +187,7 @@ If you hit auth, proxy, GHES hostname, or locked-down-network errors, use the op
 Want to understand how Copilot authenticates with your workflow — or set up a `COPILOT_GITHUB_TOKEN` secret?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
-**Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+**Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 
 ## 📚 See Also
 
