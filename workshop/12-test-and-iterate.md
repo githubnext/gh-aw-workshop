@@ -152,3 +152,9 @@ If a run shows a red ❌, click the failed step to see the raw log. Common cause
 - [ ] You understand how to read the Actions log to diagnose failures
 
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

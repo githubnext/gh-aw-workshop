@@ -16,7 +16,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 ### Understand how data flows in
 
-gh-aw workflows run inside GitHub Actions, which means you can run any shell command available on the runner — including `gh`, the GitHub CLI. The trick is to capture command output and pass it into your AI prompt as context.
+[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, which means you can run any shell command available on the runner — including `gh`, the GitHub CLI. The trick is to capture command output and pass it into your AI prompt as context.
 
 The pattern looks like this:
 
@@ -144,3 +144,8 @@ Once you're comfortable with this pattern, the same technique works for:
 - [ ] You can explain the `<<EOF` multi-line output syntax in your own words
 
 **Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

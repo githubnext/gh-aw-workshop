@@ -33,7 +33,7 @@ This gives you a compact index of what the gh-aw project currently emphasizes fo
 
 ### Pick one high-value learner gap
 
-Read your existing workshop path and ask one practical question: _what can a learner do now that they could not do before this new node exists?_ Keep your answer narrow. Good gaps are concrete, such as "how to validate workflow constraints before opening a PR" or "how to select safe outputs for automation."
+Read your existing workshop path and ask one practical question: _what can a learner do now that they could not do before this new node exists?_ Keep your answer narrow. Good gaps are concrete, such as "how to validate workflow constraints before opening a PR" or "how to select [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) for automation."
 
 ### Draft a node proposal with clear scope
 
@@ -83,6 +83,8 @@ gh aw compile .github/workflows/<your-workflow>.md --validate
 
 ## 📚 See Also
 
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Training Plan Researcher workflow](../.github/workflows/training-plan-research.md)
 - [Docs Linker workflow example](../.github/workflows/docs-linker.md)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)

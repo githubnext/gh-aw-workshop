@@ -86,3 +86,8 @@ git push
 - [ ] The workflow still posts a summary on days with commits
 
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
