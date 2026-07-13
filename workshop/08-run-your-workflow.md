@@ -2,11 +2,6 @@
 
 _Reading about agents is one thing — watching one work in real time is something else entirely._
 
-> [!IMPORTANT]
-> **Path reminder:** Keep using the setup path you chose in Step 2.
-> - **Terminal path:** use the GitHub Actions UI (recommended), or `gh aw run` if your token includes the required scopes.
-> - **GitHub UI path:** use [Trigger manually via GitHub Actions UI](#trigger-manually-via-github-actions-ui).
-
 ## 🎯 What You'll Do
 
 You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run live inside GitHub Actions. By the end you'll have seen a real AI agent reason through a task, make GitHub API calls, and post a comment — all without you writing a single line of code to do it.
@@ -40,12 +35,11 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ### Before You Trigger
 
-Confirm all four items before triggering the workflow — skipping this is the most common reason runs fail silently.
+Confirm all three items before triggering the workflow — skipping this is the most common reason runs fail silently.
 
 1. `hello-agent.md` is committed to `.github/workflows/` on `main` (or your default branch).
 2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
-3. _(Codespace users only)_ Your token includes `actions:write` if you plan to use the optional terminal path below.
-4. _(All users)_ Your practice repository has at least one open issue. If not, open the **Issues** tab in your practice repository and create a placeholder issue so the agent has something to act on.
+3. _(All users)_ Your practice repository has at least one open issue. If not, open the **Issues** tab in your practice repository and create a placeholder issue so the agent has something to act on.
 
 If item 1 or 2 is not yet true, return to the [Step 7 path chooser](07-your-first-workflow.md) and complete your chosen path first.
 
@@ -81,6 +75,9 @@ Reference: [`gh aw run` CLI docs](https://github.com/github/gh-aw/blob/main/docs
 After a few seconds, a new row appears in the run list with a yellow spinning icon — that means the workflow is running. Click the row to open the run details.
 
 You'll see a single job. Click it to open the live log view.
+
+> [!NOTE]
+> If the workflow doesn't start within 60 seconds, check that the **Actions** tab shows **Hello Agent** in the left sidebar and that you clicked the green **Run workflow** button in the confirmation dropdown. GitHub's run queue occasionally takes up to a minute to pick up a newly dispatched job — refresh the page if the spinning icon doesn't appear.
 
 ### Read the log as the agent works
 
