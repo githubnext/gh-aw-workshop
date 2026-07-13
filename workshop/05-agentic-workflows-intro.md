@@ -2,14 +2,8 @@
 
 ## 📋 Before You Start
 
-**Enterprise users (GHEC, GHES, or EMU):** This step assumes your organization already has GitHub Copilot Enterprise available.
-
-**Not on GHEC, GHES, or EMU?** Skip this section and continue to the next heading.
-
-> [!IMPORTANT]
-> Enterprise user (GHEC, GHES, or EMU)? Confirm you already completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users) before continuing.
->
-> If not, stop here, complete the [enterprise setup guide](side-quest-enterprise-setup.md), and return after your org admin has enabled your Copilot Enterprise access.
+> [!NOTE]
+> **Enterprise users (GHEC, GHES, or EMU):** ✅ Enterprise access confirmed in Step 1 — if you completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users), you're ready to continue.
 
 ---
 
