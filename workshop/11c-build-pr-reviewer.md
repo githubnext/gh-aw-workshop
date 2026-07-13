@@ -65,6 +65,8 @@ Then open your editor and create `.github/workflows/pr-code-reviewer.md`.
 
 </details>
 
+Build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/pr-code-reviewer.md` to validate — or keep `gh aw compile .github/workflows/pr-code-reviewer.md --watch` running in a second terminal for continuous feedback.
+
 ### Build section 1: frontmatter basics
 
 ```yaml
@@ -73,13 +75,6 @@ emoji: 🔍 # Workflow icon
 description: Review pull requests for duplicate code and post a structured review comment. # Workflow summary
 ---
 ```
-
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/pr-code-reviewer.md
-> ```
-> A green output means your YAML is valid so far. For auto-recompile while editing, run `gh aw compile .github/workflows/pr-code-reviewer.md --watch`.
 
 ### Build section 2: trigger block
 
@@ -92,12 +87,6 @@ on: # Run triggers
 > [!NOTE]
 > `pull_request: {}` triggers the workflow whenever a pull request is opened, synchronized (new commits pushed), or reopened. The `workflow_dispatch: {}` button lets you trigger a manual run from the Actions UI — handy for testing the workflow without opening a real PR.
 >
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/pr-code-reviewer.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/pr-code-reviewer.md --watch`.
 
 ### Build section 3: permissions block
 
@@ -113,12 +102,6 @@ permissions: # Required GitHub scopes
 > [!NOTE]
 > `pull-requests: write` is needed to post a review comment on the PR. Unlike the daily-status workflow, there is no `issues` permission here because this workflow only interacts with pull requests.
 >
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/pr-code-reviewer.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/pr-code-reviewer.md --watch`.
 
 ### Build section 4: tools and output guardrails
 
@@ -136,12 +119,6 @@ safe-outputs: # Write guardrails
 > [!NOTE]
 > `safe-outputs.add-pr-review-comment: max: 5` limits the agent to at most five PR review comments per run. This prevents the agent from flooding a large PR with dozens of low-value findings. If the agent finds more than five issues, the task brief instructs it to list only the top five.
 >
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/pr-code-reviewer.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/pr-code-reviewer.md --watch`.
 
 ### Build section 5: agent instructions block
 
@@ -186,13 +163,6 @@ Findings: {count}
 - If the PR touches only documentation, configuration, or lock files, reply: "No source code changes to review."
 - Keep each finding description under 50 words.
 ```
-
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/pr-code-reviewer.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/pr-code-reviewer.md --watch`.
 
 ---
 

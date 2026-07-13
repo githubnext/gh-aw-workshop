@@ -73,10 +73,9 @@ Open the file in your editor.
 4. Keep the browser editor open and paste in the same workflow content from the sections below so you end up with the same file the terminal path creates.
 5. When the file is complete, scroll to the commit form, keep **Commit directly to the `main` branch** selected, and click **Commit changes**.
 
-> [!TIP]
-> With the browser path you write the complete file first, then commit once at the end. You can skip the individual `gh aw compile` checkpoints in steps 3–5 — those require a terminal. GitHub Actions will surface any workflow errors when you run the file in [Step 8](08-run-your-workflow.md).
 > [!NOTE]
-> **Using Copilot Chat / CCA?** You can stay in the browser and ask Copilot Chat to create `.github/workflows/hello-agent.md` with the Step 7 template, then commit it to `main` from the chat panel. Review the proposed diff before you approve the commit.
+> With the browser path you write the complete file first, then commit once at the end — skip the `gh aw compile` checkpoints in steps 3–5 (those require a terminal). GitHub Actions will surface any workflow errors when you run the file in [Step 8](08-run-your-workflow.md).
+> **Using Copilot Chat / CCA?** Ask Copilot Chat to create `.github/workflows/hello-agent.md` with the Step 7 template and commit it to `main` from the chat panel. Review the proposed diff before you approve.
 
 </details>
 
