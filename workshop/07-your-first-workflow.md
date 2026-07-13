@@ -15,7 +15,7 @@ You'll create `.github/workflows/hello-agent.md`, a small workflow that reads re
 
 | Path | What you'll do | Continue |
 |---|---|---|
-| **Terminal path** | Build the workflow incrementally, compile after each meaningful change, then commit and push | [Write the workflow with the Terminal path](07a-your-first-workflow-terminal.md) |
+| **Terminal path** | Build the workflow incrementally in two short parts, compile after each meaningful change, then commit and push | [Write the workflow with the Terminal path](07a-your-first-workflow-terminal.md) |
 | **GitHub UI path** | Paste the complete workflow into the web editor and commit it in the browser | [Write the workflow with the GitHub UI path](07b-your-first-workflow-ui.md) |
 | **GitHub Copilot path** | Ask an agent to create and validate the workflow, then review and merge its pull request | [Write the workflow with GitHub Copilot](07c-your-first-workflow-copilot.md) |
 
