@@ -56,6 +56,8 @@ An agentic workflow source file is a Markdown task brief with YAML frontmatter. 
 > [!NOTE]
 > This path skips `gh aw compile` checkpoints. GitHub Actions compiles the workflow when you run it in Step 8 and shows any errors in the run log.
 
+<!-- Separate adjacent callouts -->
+
 > [!TIP]
 > You can ask Copilot to create or revise this file with the `agentic-workflows` skill. Review the proposed diff before you approve it.
 

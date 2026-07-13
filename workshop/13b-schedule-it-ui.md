@@ -39,6 +39,8 @@ Keep `workflow_dispatch` so you can still run the workflow on demand.
 > [!NOTE]
 > The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the change and reports syntax errors in the run log.
 
+<!-- Separate adjacent callouts -->
+
 > [!TIP]
 > See [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) for more cadence options.
 

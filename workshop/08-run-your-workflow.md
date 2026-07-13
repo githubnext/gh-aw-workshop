@@ -4,9 +4,8 @@ _Reading about agents is one thing — watching one work in real time is somethi
 
 > [!IMPORTANT]
 > **Path reminder:** Keep using the setup path you chose in Step 2.
-> - **Path A — Codespace (browser terminal):** use the browser-based UI path (recommended), or use `gh aw run` if your terminal token includes the required scopes.
-> - **Path B — Local terminal:** you can use either the UI path or the optional `gh aw run` path.
-> - **Path C — UI only (Copilot Chat / CCA browser-only mode):** use [Trigger manually via GitHub Actions UI](#trigger-manually-via-github-actions-ui). `gh aw run` is not available without a terminal.
+> - **Terminal path:** use the GitHub Actions UI (recommended), or `gh aw run` if your token includes the required scopes.
+> - **GitHub UI path:** use [Trigger manually via GitHub Actions UI](#trigger-manually-via-github-actions-ui).
 
 ## 🎯 What You'll Do
 

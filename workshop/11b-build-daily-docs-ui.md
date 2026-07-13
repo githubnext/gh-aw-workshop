@@ -49,20 +49,33 @@ You'll paste a complete documentation health workflow into the GitHub web editor
    ## Your Task
 
    Collect and summarise:
-   1. **Documentation files** — list Markdown files in `docs/` and the root `README.md`
-   2. **Staleness** — flag files not updated in the last 30 days
-   3. **Thin pages** — flag files with fewer than 200 words
-   4. **Broken internal links** — identify links to files that do not exist
+
+   1. **Documentation files** — list all Markdown files in `docs/` and the root `README.md`
+   2. **Staleness** — for each file, find the date of the most recent commit that touched it; flag files not updated in the last 30 days
+   3. **Thin pages** — flag files that appear to have fewer than 200 words of content
+   4. **Broken internal links** — identify any links between documentation files that point to a file that does not exist
 
    ## Output Format
 
-   Find the issue titled "Daily Docs Health", create it if needed, and post one concise report comment.
+   Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and post a comment in this format:
+
+   ```
+   📚 Docs Health Report — {today's date}
+   ═══════════════════════════════════
+   📄 Files scanned:          {count}
+   ⏳ Stale (>30 days):       {count} ({list of filenames, or "none"})
+   🚧 Thin pages (<200 words): {count} ({list of filenames, or "none"})
+   🔗 Broken internal links:  {count} ({list of filenames and anchors, or "none"})
+
+   {One or two sentences of overall health. Highlight the single highest-priority item.}
+   ```
 
    ## Guidelines
 
-   - Post only one comment per calendar day.
-   - Never edit or commit changes to any file.
-   - Write "unknown" when data is unavailable.
+   - Post only one comment per calendar day. If today's report already exists, stop.
+   - Never edit or commit changes to any file — read only.
+   - Write "unknown" for any field where data is unavailable.
+   - If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
    ```
 
 4. Select **Commit directly to the `main` branch**.

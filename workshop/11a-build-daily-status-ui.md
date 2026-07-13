@@ -51,6 +51,7 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
    ## Your Task
 
    Collect and summarize:
+
    1. **Open pull requests** — count, and flag any open longer than 7 days
    2. **Open issues** — total count, how many are labeled "bug"
    3. **CI status** — result of the most recent workflow run on the default branch
@@ -58,7 +59,18 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 
    ## Output Format
 
-   Find the most recently updated open issue and post one concise status comment.
+   Find the most recently updated open issue and post a comment in this format:
+
+   ```
+   📊 Daily Repo Status — {today's date}
+   ══════════════════════════════════
+   🔀 Open pull requests:  {count}
+   🐛 Open issues:         {count}  ({bug-count} labeled "bug")
+   ✅ CI status:           {passing/failing/unknown}
+   📝 Last commit:         "{message}" — {time ago}
+
+   {One sentence of overall health. Flag anything that needs attention.}
+   ```
 
    ## Guidelines
 

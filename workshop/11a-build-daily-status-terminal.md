@@ -9,6 +9,8 @@
 >
 > Both paths produce the same workflow and converge at [Step 12](12-test-and-iterate.md).
 
+<!-- Separate adjacent callouts -->
+
 > [!NOTE]
 > Want to work in the browser? Switch to the [GitHub UI path](11a-build-daily-status-ui.md).
 

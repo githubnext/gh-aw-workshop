@@ -10,10 +10,9 @@
 > 2. **Are you using GitHub Copilot Chat or the GitHub web UI only?**
 > 3. **If you have a terminal, do you prefer a browser terminal or your local machine?**
 > Choose one path and keep it through Step 8.
-> - **Path A — Codespace (browser terminal):** recommended for most beginners. You'll run terminal steps in a browser Codespace. ✅ **You're in the right place.**
-> - **Path B — Local terminal:** for learners with `gh` CLI installed locally. ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
-> - **Path C — UI only (Copilot Chat / CCA browser-only mode):** complete browser-friendly steps, and use the **Actions tab** trigger in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui). `gh aw run` is **not available** without a terminal.
-> **Using the GitHub Copilot Cloud Agent (CCA)?** If you want to run terminal commands, switch to Path A by opening a Codespace at [Open the Codespace](#open-the-codespace) below.
+> - **Terminal path — Codespace:** recommended for beginners who want compile feedback. ✅ **You're in the right place.**
+> - **Terminal path — local:** for learners with `gh` installed locally. ➡️ [Set Up Your Local Terminal](02b-setup-local.md)
+> - **GitHub UI path:** for browser-only learners. ➡️ [Create Your Repository in the GitHub UI](03b-create-your-repo-ui.md)
 
 Adventure A is the **recommended, no-local-install path** for **GitHub Codespaces**, **VS Code (integrated terminal in Codespaces)**, and **GitHub Copilot Cloud Agent (CCA)** users.
 

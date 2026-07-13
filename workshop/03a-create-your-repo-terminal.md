@@ -14,6 +14,8 @@ You'll create your `my-agentic-workflows` repository, clone it into your working
 > [!NOTE]
 > Want to work without a terminal? Switch to the [GitHub UI path](03b-create-your-repo-ui.md).
 
+<!-- Separate adjacent callouts -->
+
 > [!NOTE]
 > **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
 
