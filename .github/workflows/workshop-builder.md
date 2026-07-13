@@ -42,6 +42,13 @@ safe-outputs:
       - workshop-skill-activity-author
       - workshop-student-simulator
       - workshop-sync-check
+      - markdown-dedup
+      - workshop-explanatory-diagrams
+      - docs-linker
+      - workshop-link-checker
+      - training-plan-research
+      - security-side-quest
+      - workshop-ui-screenshots
     max: 1
   create-pull-request:
     title-prefix: "[workshop-builder] "
@@ -189,6 +196,13 @@ each workshop workflow:
 - `workshop-skill-activity-author`
 - `workshop-student-simulator`
 - `workshop-sync-check`
+- `markdown-dedup`
+- `workshop-explanatory-diagrams`
+- `docs-linker`
+- `workshop-link-checker`
+- `training-plan-research`
+- `security-side-quest`
+- `workshop-ui-screenshots`
 
 Note: which workflows are failing, skipping, or have not run recently.
 
@@ -211,6 +225,14 @@ Record:
 - Whether an open PR with label `side-quest` exists (blocks `side-quest`)
 - Whether an open PR with label `skill-activity` exists (blocks
   `workshop-skill-activity-author`)
+- Whether an open PR with label `diagram-generator` exists (blocks
+  `workshop-explanatory-diagrams`)
+- Whether an open PR with label `docs-linker` exists (blocks `docs-linker`)
+- Whether an open PR with label `training-plan` exists (blocks
+  `training-plan-research`)
+- Whether an open PR with label `security-side-quest` exists (blocks
+  `security-side-quest`)
+- Whether an open issue with label `dedup` exists (blocks `markdown-dedup`)
 - Any open issues suggesting improvements or reporting errors
 
 ### 2c. Derive dispatch eligibility
@@ -227,6 +249,13 @@ For each workflow, compute whether it is **eligible** for dispatch:
 | `workshop-sync-check` | nodes ≥ 3, last dispatch > 4 h ago or never |
 | `workshop-order-review` | nodes ≥ 3, last dispatch > 4 h ago or never |
 | `workshop-skill-activity-author` | nodes ≥ 8, no open `skill-activity` PR, last dispatch > 4 h ago or never |
+| `security-side-quest` | nodes ≥ 3, no open `security-side-quest` PR, last dispatch > 4 h ago or never |
+| `training-plan-research` | nodes ≥ 5, no open `training-plan` PR, last dispatch > 24 h ago or never |
+| `workshop-explanatory-diagrams` | nodes ≥ 3, no open `diagram-generator` PR, last dispatch > 4 h ago or never |
+| `workshop-ui-screenshots` | nodes ≥ 3, last dispatch > 4 h ago or never |
+| `docs-linker` | nodes ≥ 3, no open `docs-linker` PR, last dispatch > 4 h ago or never |
+| `markdown-dedup` | nodes ≥ 5, no open `dedup` issue, last dispatch > 24 h ago or never |
+| `workshop-link-checker` | nodes ≥ 3, last dispatch > 24 h ago or never |
 
 Use the timestamps from `last_dispatch` in the loaded state and the current
 `timestamp` from the repo state to evaluate "last dispatch > N h ago". If a
@@ -248,22 +277,37 @@ Select the highest-priority **eligible** workflow (most urgent first):
 2. `workflow-skills-editor` — trims workflow prompt bloat and aligns source
    prompts with GitHub Skills lesson tone
 3. `side-quest` — extracts optional detours from oversized workshop steps
-4. `title-similarity-review` — catches high-volume semantically similar headings
-5. `workshop-student-simulator` — ensures quality feedback exists
-6. `workshop-sync-check` — keeps content accurate against gh-aw changes
-7. `workshop-order-review` — detects ordering problems early
-8. `workshop-skill-activity-author` — adds Skills-style activities
+4. `security-side-quest` — adds security-focused side quests explaining attack
+   vectors and security architecture decisions
+5. `title-similarity-review` — catches high-volume semantically similar headings
+6. `workshop-student-simulator` — ensures quality feedback exists
+7. `workshop-sync-check` — keeps content accurate against gh-aw changes
+8. `workshop-order-review` — detects ordering problems early
+9. `workshop-skill-activity-author` — adds Skills-style activities
+10. `training-plan-research` — researches and authors new training nodes
+11. `workshop-explanatory-diagrams` — generates educational SVG diagrams for key concepts
+12. `workshop-ui-screenshots` — generates SVG illustrations for missing UI screenshots
+13. `docs-linker` — cross-links workshop content to gh-aw documentation pages
+14. `markdown-dedup` — clusters near-duplicate workshop and workflow sections and files issues
+15. `workshop-link-checker` — validates external URLs and internal anchors
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
 that may shift priority toward a specific workflow (e.g. "add content" → prefer
 `workshop-author`; "workflow", "tone", "duplication", or "bloat" → prefer
 `workflow-skills-editor`; "side quest" or "tutorial" → prefer `side-quest`;
-"fix sync" → prefer `workshop-sync-check`; "title", "heading", or "similar"
-→ prefer `title-similarity-review`).
+"security" → prefer `security-side-quest`; "fix sync" → prefer
+`workshop-sync-check`; "title", "heading", or "similar" → prefer
+`title-similarity-review`; "diagram" or "visual" → prefer
+`workshop-explanatory-diagrams`; "screenshot" or "image" → prefer
+`workshop-ui-screenshots`; "link" or "docs" → prefer `docs-linker`;
+"broken link" → prefer `workshop-link-checker`; "duplicate" or "dedup" →
+prefer `markdown-dedup`; "training" or "research" → prefer
+`training-plan-research`).
 
-When dispatching `workshop-author`, `workflow-skills-editor`, `side-quest`, or
-`workshop-skill-activity-author`, pass the `focus` input through if it is set
-and relevant.
+When dispatching `workshop-author`, `workflow-skills-editor`, `side-quest`,
+`security-side-quest`, `workshop-skill-activity-author`, `training-plan-research`,
+`workshop-explanatory-diagrams`, or `docs-linker`, pass the `focus` input through
+if it is set and relevant.
 
 → If at least one workflow is eligible, **dispatch the highest-priority one** and
 skip Tiers B and C.
