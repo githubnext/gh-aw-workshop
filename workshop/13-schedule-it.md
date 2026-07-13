@@ -23,7 +23,7 @@ on:
 ```
 
 > [!NOTE]
-> The exact cron value is scattered by `gh aw compile` so not every workflow fires at the same second. Your compiled output may differ from the example above — that is expected.
+> The exact cron value is randomized by `gh aw compile` to prevent all workflows from running at the same time. Your compiled output may differ from the example above — that is expected.
 
 ## Choose Your Path
 
@@ -38,7 +38,7 @@ Both paths update the same fuzzy schedule expression and finish by confirming it
 
 After completing your chosen path, verify:
 
-- [ ] I can explain what a `schedule:` trigger does in GitHub Actions (it runs the workflow automatically at the defined cadence without manual intervention).
+- [ ] I can explain what a `schedule:` trigger does in GitHub Actions — it runs the workflow automatically at the defined cadence without manual intervention.
 - [ ] I understand that `gh aw compile` converts a fuzzy expression like `daily on weekdays` into a valid cron string in the lock file.
 - [ ] The `schedule:` field in `.github/workflows/daily-status.md` contains a valid schedule expression (for example, `daily on weekdays`).
 - [ ] The compiled `.lock.yml` shows a valid cron string under `on.schedule` (for example, `"50 11 * * 1-5"`).
