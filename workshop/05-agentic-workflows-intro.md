@@ -1,12 +1,13 @@
 # Step 5: What Are Agentic Workflows?
 
 > [!TIP]
-> **Already know GitHub Actions and LLM concepts?** → [Jump to Step 6: Install gh-aw](06-install-gh-aw.md)
+> **Already familiar with GitHub Actions and LLM agent concepts?** → [Skip to Step 6: Install gh-aw](06-install-gh-aw.md)
 
-## 📋 Before You Start
+**What the agent does:**
 
-> [!NOTE]
-> **Enterprise users (GHEC, GHES, or EMU):** ✅ Enterprise access confirmed in Step 1 — if you completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users), you're ready to continue.
+- Reads a plain-English task brief you write in Markdown
+- Calls GitHub tools (issues, PRs, workflows) and reasons about the results at runtime
+- Posts a structured report or recommendation — no shell scripts or hand-authored YAML required
 
 ---
 
@@ -15,9 +16,6 @@
 ![Animated agent run log — the agent reads a task brief, calls list_issues and list_pull_requests, reasons about the results, and posts a comment to GitHub](images/05-agent-run-log.svg)
 
 You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract.
-
-> [!NOTE]
-> **If you're in DevOps or evaluating for production:** You keep pull-request auditability, approvals, and trigger/permission controls because workflows still compile to standard Actions. For secret isolation and runner policy details (including self-hosted runners), use [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as your implementation checklist.
 
 By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
 
@@ -115,10 +113,19 @@ If you're coming from classic GitHub Actions, the shift is simple: keep your exi
 > [!TIP]
 > **Optional side quest for Actions power users:** Want the one-page cheat sheet for what's new vs what stays the same? Read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
 
-## Platform Compatibility
+<details>
+<summary>Enterprise / GHES / GHEC: runner and model access considerations</summary>
 
 > [!NOTE]
-> **GHES users:** If you completed the [Enterprise Setup side quest](side-quest-enterprise-setup.md) before reaching this section, your environment should already be ready. If you skipped it, return to [Before You Start](#-before-you-start) at the top of this page.
+> **Enterprise users (GHEC, GHES, or EMU):** ✅ Enterprise access confirmed in Step 1 — if you completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users), you're ready to continue.
+<!-- -->
+> [!NOTE]
+> **If you're in DevOps or evaluating for production:** You keep pull-request auditability, approvals, and trigger/permission controls because workflows still compile to standard Actions. For secret isolation and runner policy details (including self-hosted runners), use [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as your implementation checklist.
+
+### Platform Compatibility
+
+> [!NOTE]
+> **GHES users:** If you completed the [Enterprise Setup side quest](side-quest-enterprise-setup.md) before reaching this section, your environment should already be ready. If you skipped it, return to the [Enterprise Setup side quest](side-quest-enterprise-setup.md) to confirm your environment.
 
 | GitHub deployment | Agentic workflows supported? |
 |---|---|
@@ -126,6 +133,8 @@ If you're coming from classic GitHub Actions, the shift is simple: keep your exi
 | **GitHub Enterprise Cloud (GHEC)** | ✅ Fully supported |
 | **GitHub Enterprise Server (GHES) 3.12+** | ✅ Supported when Copilot Enterprise and network egress are configured by admin |
 | **GitHub Enterprise Server (GHES) < 3.12** | ❌ Not supported — upgrade required |
+
+</details>
 
 > [!TIP]
 > In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**
