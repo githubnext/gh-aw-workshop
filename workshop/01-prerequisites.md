@@ -33,6 +33,15 @@ Complete these checks before you choose a setup path:
 - [ ] You completed the Copilot license + model access check in the enterprise callout above
 
 > [!NOTE]
+> **First time with GitHub Actions?**
+> You do not need to understand GitHub Actions in depth to complete this workshop.
+> The one thing to know now: you will trigger your workflow from the **GitHub Actions tab in your browser** — no terminal commands required.
+> Steps 2 (Setup) and 8 (Run Your Workflow) will walk you through exactly what to click.
+> If you want a 5-minute background, [Step 4](04-github-actions-intro.md) covers it.
+
+<!-- -->
+
+> [!NOTE]
 > If you're using your own terminal and `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. If you're planning to use a Codespace, skip the local install commands and continue to [Adventure A](02a-setup-codespace.md). Authentication (`gh auth login`) is handled in your chosen setup path.
 
 <!-- -->
