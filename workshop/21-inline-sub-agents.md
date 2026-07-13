@@ -196,7 +196,7 @@ Trigger a manual run and open the run log. You should see the orchestrator calli
 - [ ] `gh aw compile --validate` passes with no errors
 - [ ] You ran the workflow and confirmed the sub-agent is invoked in the run log
 
-**Next:** [Learning GitHub Agentic Workflows](README.md)
+**Next:** [Chain Agentic Workflows Together](22-compose-workflows.md)
 
 ## 📚 See Also
 
