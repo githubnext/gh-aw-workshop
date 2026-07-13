@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" role="img" aria-label="Animated agent run log showing the agent reasoning, calling tools, and posting a comment">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" role="img" aria-label="Animated agent run log — the agent plans, calls github.list_issues and github.list_pull_requests, thinks about the results, then posts a comment to GitHub">
   <title>Agentic workflow in action — agent run log</title>
-  <desc>A terminal-style log showing an AI agent starting, reading a task brief, calling list_issues and list_pull_requests tools, reasoning about results, generating a report, and posting a comment to GitHub.</desc>
+  <desc>A terminal-style log showing an AI agent starting, planning its approach, calling github.list_issues and github.list_pull_requests tools, thinking about results, and posting a comment to GitHub.</desc>
 
   <style>
     .line { opacity: 0; }
@@ -33,70 +33,70 @@
   <text x="430" y="25" font-family="Arial,sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">Actions › Daily Repo Status › Run #7</text>
 
   <!-- Log lines -->
-  <!-- Line 1: agent start -->
+  <!-- Line 1: agent job header -->
   <g class="line line1">
     <text x="30" y="76" font-family="monospace" font-size="13" fill="#8b949e">▶  run-agent</text>
     <rect x="22" y="83" width="816" height="1" fill="#21262d"/>
   </g>
 
-  <!-- Line 2: task brief -->
+  <!-- Line 2: agent start -->
   <g class="line line2">
     <text x="44" y="106" font-family="monospace" font-size="13" fill="#3fb950">▼  Running agent: Daily Repo Status</text>
   </g>
 
-  <!-- Line 3: reading brief -->
+  <!-- Line 3: planning -->
   <g class="line line3">
-    <text x="64" y="130" font-family="monospace" font-size="12" fill="#c9d1d9">  📋 Reading task brief...</text>
+    <text x="64" y="130" font-family="monospace" font-size="12" fill="#e3b341">  🤔 Planning...  I need to check open issues, PRs, and recent CI status</text>
   </g>
 
   <!-- Line 4: tool call list_issues -->
   <g class="line line4">
-    <text x="64" y="154" font-family="monospace" font-size="12" fill="#c9d1d9">  🔍 Calling tool: <tspan fill="#79c0ff">list_issues</tspan><tspan fill="#c9d1d9"> (state=open)</tspan></text>
+    <text x="64" y="154" font-family="monospace" font-size="12" fill="#c9d1d9">  🔧 Tool call:   <tspan fill="#79c0ff">github.list_issues</tspan><tspan fill="#c9d1d9">  (state=open)</tspan></text>
   </g>
 
   <!-- Line 5: tool result -->
   <g class="line line5">
-    <text x="64" y="178" font-family="monospace" font-size="12" fill="#8b949e">      → 7 open issues found (3 labeled high-priority)</text>
+    <text x="64" y="178" font-family="monospace" font-size="12" fill="#8b949e">  📥 Result:      7 open issues (3 labeled "high-priority")</text>
   </g>
 
   <!-- Line 6: tool call list_pull_requests -->
   <g class="line line6">
-    <text x="64" y="202" font-family="monospace" font-size="12" fill="#c9d1d9">  🔍 Calling tool: <tspan fill="#79c0ff">list_pull_requests</tspan><tspan fill="#c9d1d9"> (state=open)</tspan></text>
+    <text x="64" y="202" font-family="monospace" font-size="12" fill="#c9d1d9">  🔧 Tool call:   <tspan fill="#79c0ff">github.list_pull_requests</tspan><tspan fill="#c9d1d9">  (state=open)</tspan></text>
   </g>
 
   <!-- Line 7: tool result -->
   <g class="line line7">
-    <text x="64" y="226" font-family="monospace" font-size="12" fill="#8b949e">      → 4 open PRs (1 stale &gt; 14 days, 2 awaiting review)</text>
+    <text x="64" y="226" font-family="monospace" font-size="12" fill="#8b949e">  📥 Result:      4 open PRs (1 stale &gt; 14 days, 2 awaiting review)</text>
   </g>
 
-  <!-- Line 8: reasoning -->
+  <!-- Line 8: thinking -->
   <g class="line line8">
-    <text x="64" y="258" font-family="monospace" font-size="12" fill="#e3b341">  💭 Agent reasoning:</text>
-    <text x="64" y="278" font-family="monospace" font-size="12" fill="#8b949e">      "I'll group issues by priority and flag the stale PR for action."</text>
+    <text x="64" y="250" font-family="monospace" font-size="12" fill="#e3b341">  🤔 Thinking...  All data collected — composing status report</text>
   </g>
 
-  <!-- Line 9: generating report -->
+  <!-- Line 9: tool call add_comment -->
   <g class="line line9">
-    <text x="64" y="308" font-family="monospace" font-size="12" fill="#c9d1d9">  📝 Generating stakeholder report...</text>
+    <text x="64" y="274" font-family="monospace" font-size="12" fill="#c9d1d9">  🔧 Tool call:   <tspan fill="#79c0ff">github.add_comment</tspan><tspan fill="#c9d1d9">  (issue_number=42)</tspan></text>
   </g>
 
-  <!-- Line 10: posting comment -->
+  <!-- Line 10: tool result -->
   <g class="line line10">
-    <text x="64" y="332" font-family="monospace" font-size="12" fill="#c9d1d9">  💬 Calling tool: <tspan fill="#79c0ff">create_issue_comment</tspan><tspan fill="#c9d1d9"> (issue #42)</tspan></text>
+    <text x="64" y="298" font-family="monospace" font-size="12" fill="#8b949e">  📥 Result:      Comment posted</text>
   </g>
 
-  <!-- Line 11: success -->
+  <!-- Line 11: done -->
   <g class="line line11">
-    <rect x="22" y="352" width="816" height="1" fill="#21262d"/>
-    <text x="44" y="372" font-family="monospace" font-size="13" fill="#3fb950">✓  Daily Repo Status completed  (38s)</text>
+    <rect x="22" y="318" width="816" height="1" fill="#21262d"/>
+    <text x="44" y="338" font-family="monospace" font-size="13" fill="#3fb950">✅ Done (41s)</text>
   </g>
 
   <!-- Line 12: comment preview -->
   <g class="line line12">
-    <rect x="44" y="390" width="770" height="68" rx="6" fill="#161b22" stroke="#238636" stroke-width="1"/>
-    <text x="64" y="412" font-family="monospace" font-size="12" fill="#3fb950">💬 Posted comment:</text>
-    <text x="64" y="432" font-family="monospace" font-size="11" fill="#c9d1d9">  ## Daily Repo Status — 3 high-priority issues · 1 stale PR needs review</text>
-    <text x="64" y="450" font-family="monospace" font-size="11" fill="#8b949e">  Recommended actions: Triage #301, #318, #327 · Review PR #412 today</text>
+    <rect x="44" y="356" width="770" height="96" rx="6" fill="#161b22" stroke="#238636" stroke-width="1"/>
+    <text x="64" y="378" font-family="monospace" font-size="12" fill="#3fb950">💬 Posted comment on issue #42:</text>
+    <text x="64" y="400" font-family="monospace" font-size="11" fill="#c9d1d9">  ## Daily Repo Status — July 12</text>
+    <text x="64" y="420" font-family="monospace" font-size="11" fill="#c9d1d9">  7 open issues (3 high-priority) · 4 open PRs (1 stale) · CI passing</text>
+    <text x="64" y="440" font-family="monospace" font-size="11" fill="#8b949e">  Next: triage #301, #318, #327 · review PR #412 today</text>
   </g>
 
   <!-- Blinking cursor -->

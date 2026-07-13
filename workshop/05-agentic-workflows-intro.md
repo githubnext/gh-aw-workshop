@@ -5,7 +5,7 @@
 
 An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. No shell scripts. No brittle YAML. Just a goal and an agent that figures out the rest.
 
-![Animated agent run log — the agent reads a task brief, calls list_issues and list_pull_requests, reasons about the results, and posts a comment to GitHub](images/05-agent-run-log.svg)
+![Animated agent run log — the agent plans, calls github.list_issues and github.list_pull_requests, thinks about the results, then posts a comment to GitHub](images/05-agent-run-log.svg)
 
 ## Three things to know
 
