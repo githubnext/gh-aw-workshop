@@ -23,6 +23,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 > - Want a deeper look at how the agentic loop changes, what the `tools:` block does, and how to read tool calls in the Actions log? Work through [Side Quest: How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md).  
 > - Want a beginner-friendly security mental model for why sandboxing matters, where the agent runs, and what safe output looks like? Work through [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md).  
 > - Want to understand how malicious content in issues or PRs can try to redirect your agent — and how gh-aw's design limits the damage? Work through [Side Quest: Prompt Injection Attacks in Agentic Workflows](side-quest-17-03-prompt-injection.md).  
+> - Want to see how an over-powered workflow can give a misdirected agent more authority than the task really needs? Work through [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).  
 > Then come back here.
 
 ### Add an MCP server to your workflow
