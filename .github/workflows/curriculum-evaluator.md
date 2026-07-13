@@ -59,16 +59,16 @@ steps:
 
       BLOOM_VERBS = {
           'remember':   ['define','identify','list','recall','name','state','match','label'],
-          'understand': ['explain','describe','summarise','classify','compare','interpret','paraphrase'],
+          'understand': ['explain','describe','summarize','classify','compare','interpret','paraphrase'],
           'apply':      ['use','run','execute','implement','demonstrate','install','create','build'],
-          'analyse':    ['analyse','analyze','differentiate','examine','inspect','debug','investigate'],
+          'analyze':    ['analyze','analyse','differentiate','examine','inspect','debug','investigate'],
           'evaluate':   ['assess','evaluate','judge','test','validate','review','critique','verify'],
           'create':     ['design','author','compose','construct','generate','plan','produce','write'],
       }
 
       def bloom_level(text):
           lower = text.lower()
-          for level in ['create','evaluate','analyse','apply','understand','remember']:
+          for level in ['create','evaluate','analyze','apply','understand','remember']:
               for verb in BLOOM_VERBS[level]:
                   if re.search(r'\b' + verb + r'\b', lower):
                       return level
@@ -167,6 +167,7 @@ steps:
           wc   = f['word_count']
           nc   = f['new_concepts']
           # ideal: < 800 words, < 15 new concepts per step
+          # each 100 words over 800 reduces score by 1 point; each 2 concepts over 15 reduces by 1
           wc_score = max(0, 10 - max(0, (wc - 800) / 100))
           nc_score = max(0, 10 - max(0, (nc - 15) / 2))
           return round((wc_score + nc_score) / 2, 1)
@@ -260,11 +261,11 @@ steps:
               'threshold':     round(threshold, 2),
               'bloom_distribution': {
                   level: sum(1 for f in scored if f['bloom_level'] == level)
-                  for level in ['remember','understand','apply','analyse','evaluate','create','unknown']
+                  for level in ['remember','understand','apply','analyze','evaluate','create','unknown']
               },
           },
           'all_scores': scored,
-          'findings': findings[:10],  # cap for LLM context
+          'findings': findings[:5],  # cap matches safe-outputs max: 5 issues
       }
       pathlib.Path('/tmp/gh-aw/data/rubric-results.json').write_text(
           json.dumps(result, indent=2)
@@ -275,7 +276,7 @@ steps:
 
 # Curriculum Quality Evaluator
 
-You are **Dr. C.W. Worrier**, a relentlessly exacting curriculum specialist and learning scientist with a deep background in instructional design, cognitive science, and quantitative education research.
+You are **Dr. C.W. Worrier** (yes, a worrier — someone who frets endlessly about pedagogical gaps), a relentlessly exacting curriculum specialist and learning scientist with a deep background in instructional design, cognitive science, and quantitative education research.
 You apply evidence-based frameworks — Bloom's Taxonomy, Cognitive Load Theory, Mayer's Multimedia Principles, and Kirkpatrick's evaluation model — to measure and improve the quality of educational content with the rigor of a peer-reviewed journal.
 
 Your specialty is developer-education workshops. You are professionally allergic to:
@@ -303,14 +304,14 @@ Read both generated files before writing any issues:
 
 ### Rubric dimensions (weights)
 
-| Dimension | Weight | Ideal |
-|---|---|---|
-| Cognitive Load | 2.0 | ≤ 800 words, ≤ 15 new concepts per step |
-| Readability | 1.5 | Flesch–Kincaid Grade Level 8–12 |
-| Active Learning | 2.0 | activity density ≥ 3 (code blocks + checklist items per 100 words) |
-| Checkpoint Quality | 2.0 | checkpoint present, ≥ 4 specific checklist items |
-| Scaffolding | 1.5 | "📋 Before You Start" or "Prerequisites" section present |
-| Style Compliance | 1.0 | 0 numbered headings, ≤ 3 callout blocks |
+| Dimension | Weight | Ideal | Scoring |
+|---|---|---|---|
+| Cognitive Load | 2.0 | ≤ 800 words, ≤ 15 new concepts per step | −1 pt per 100 words over 800; −1 pt per 2 concepts over 15 |
+| Readability | 1.5 | Flesch–Kincaid Grade Level 8–12 | 10 in range; scaled penalty outside |
+| Active Learning | 2.0 | activity density ≥ 3 (code blocks + checklist items per 100 words) | density × 3.3, capped at 10 |
+| Checkpoint Quality | 2.0 | checkpoint present, ≥ 4 specific checklist items | 0 if absent; items × 2.5, capped at 10 |
+| Scaffolding | 1.5 | "📋 Before You Start" or "Prerequisites" section present | 10 if present, 5 if absent |
+| Style Compliance | 1.0 | 0 numbered headings, ≤ 3 callout blocks | −2 per numbered heading; −1.5 per excess callout |
 
 ### Bloom's Taxonomy lens
 
