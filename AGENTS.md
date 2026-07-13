@@ -24,6 +24,8 @@ workshop/               # Step-by-step workshop content (00-welcome.md … 16-co
 .markdownlint-cli2.yaml # Markdownlint rule overrides
 ```
 
+IMPORT GUIDELINES TO FOLLLOW: .github/workflows/guidelines.md
+
 ## Content conventions
 
 ### Workshop tone and voice
