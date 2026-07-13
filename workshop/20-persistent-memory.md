@@ -169,7 +169,7 @@ The first run reports all currently open issues and writes them to memory. The s
 - [ ] You ran the workflow twice and confirmed the second run skips previously seen items
 - [ ] You can explain the difference between `cache-memory` and `repo-memory` and when to use each
 
-**Next:** [Learning GitHub Agentic Workflows](README.md)
+**Next:** [Monitor and Audit Your Agentic Workflows](21-monitor-and-audit.md)
 
 ## 📚 See Also
 
