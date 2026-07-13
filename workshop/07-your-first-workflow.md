@@ -8,14 +8,19 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 > - **Path B — Local terminal:** run commands in your local terminal.
 > - **Path C — UI only (Copilot Chat / CCA):** use the GitHub UI alternatives in this step. `gh aw run` is not available without a terminal, so plan to trigger from the **Actions tab** in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui).
 
+<!-- Separate adjacent callouts -->
+
+> [!NOTE]
+> **No terminal? Use the GitHub web editor.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, skip terminal commands and create `hello-agent.md` using the [GitHub web editor path](#github-web-editor-path) below.
+
 ## 🎯 What You'll Do
 
 You'll create a simple [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) file in your repository using the `gh-aw` format. By the end of this step you'll have a working workflow definition that an AI agent can understand and act on.
 
 ## 📋 Before You Start
 
-- Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
-- The `gh aw` command is available in your terminal
+- Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) (Path A/B) or the [GitHub UI alternative](06-install-gh-aw.md#github-ui-alternative) in Step 6 (Path C)
+- The `gh aw` command is available in your terminal (Path A/B only)
 - Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
 > [!TIP]
@@ -56,6 +61,8 @@ touch .github/workflows/hello-agent.md
 ```
 
 Open the file in your editor.
+
+## GitHub Web Editor Path
 
 <details>
 <summary>Path C — Browser / Copilot Chat: create via GitHub web UI</summary>
@@ -283,7 +290,7 @@ For a deeper look at how Copilot authenticates with agentic workflows and how to
 
 - [ ] `.github/workflows/hello-agent.md` exists in my repository
 - [ ] The file has valid YAML frontmatter with `name`, `on`, and `permissions` (including `copilot-requests: write`)
-- [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports no errors
+- [ ] (Path A/B) `gh aw compile .github/workflows/hello-agent.md --validate` reports no errors, or (Path C) the file was created and committed via the GitHub web editor
 - [ ] The file is committed and pushed to `main`
 - [ ] Copilot model access is enabled for my account (verified via **Settings → Copilot** or [github.com/settings/copilot](https://github.com/settings/copilot))
 
