@@ -60,6 +60,21 @@ steps:
           > /tmp/gh-aw/data/workshop-state.json
       fi
       cat /tmp/gh-aw/data/workshop-state.json
+  - name: Fetch open curriculum quality issues
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data
+      # Fetch open issues filed by curriculum-evaluator (label: curriculum)
+      gh issue list \
+        --repo "$GITHUB_REPOSITORY" \
+        --state open \
+        --label curriculum \
+        --json number,title,body,createdAt \
+        --limit 10 \
+        > /tmp/gh-aw/data/curriculum-issues.json 2>/dev/null \
+        || echo '[]' > /tmp/gh-aw/data/curriculum-issues.json
+      count=$(jq length /tmp/gh-aw/data/curriculum-issues.json)
+      echo "Found $count open curriculum quality issue(s)."
 ---
 
 # Workshop Author: Learning GitHub Agentic Workflows
@@ -97,6 +112,30 @@ Read `/tmp/gh-aw/data/workshop-state.json`. It contains:
 - `count`: number of files present
 
 Also read `.github/workflows/guidelines.md` and apply it while authoring.
+
+### Review open curriculum quality findings
+
+Read `/tmp/gh-aw/data/curriculum-issues.json`. It contains open GitHub issues
+filed by the Curriculum Quality Evaluator (`curriculum-evaluator`) — each issue
+describes a specific workshop file that scores below the corpus average on one or
+more quality dimensions (cognitive load, readability, active learning, checkpoint
+quality, scaffolding, or style compliance).
+
+Use these findings to inform the new node you are about to create:
+
+- If the issue list is **non-empty**, extract the list of flagged files and their
+  primary weaknesses. Each issue title follows the format
+  `[curriculum-eval] <file>: <dimension> — <diagnosis>` and the body contains
+  the file's **Overall Score** and a **Flagged Dimensions** table. When the new
+  node is related to a flagged file — for example, it immediately precedes or
+  follows that file in the graph, references it, or covers the same topic area —
+  apply the relevant rubric recommendations as design constraints for your new
+  node (e.g. keep word count under 800, include a strong "Before You Start"
+  section, write a checkpoint with ≥ 4 specific verifiable items).
+- If the issue list is **empty**, proceed without additional constraints beyond
+  the standard content rules below.
+
+Do not attempt to fix existing files — you are authoring a new node only.
 
 ### Handle `focus = "status"`
 

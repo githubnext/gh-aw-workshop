@@ -51,6 +51,21 @@ steps:
       else
         echo '{"files":[],"count":0}' > /tmp/gh-aw/data/workshop-state.json
       fi
+  - name: Fetch open curriculum quality issues
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data
+      # Fetch open issues filed by curriculum-evaluator (label: curriculum)
+      gh issue list \
+        --repo "$GITHUB_REPOSITORY" \
+        --state open \
+        --label curriculum \
+        --json number,title,body,createdAt \
+        --limit 10 \
+        > /tmp/gh-aw/data/curriculum-issues.json 2>/dev/null \
+        || echo '[]' > /tmp/gh-aw/data/curriculum-issues.json
+      count=$(jq length /tmp/gh-aw/data/curriculum-issues.json)
+      echo "Found $count open curriculum quality issue(s)."
 ---
 
 # Workshop Skill Activity Author
@@ -66,16 +81,27 @@ This workflow creates a **GitHub Skills-style activity**, not a Copilot agent sk
 
 First, read:
 - `/tmp/gh-aw/data/workshop-state.json`
+- `/tmp/gh-aw/data/curriculum-issues.json`
 - `workshop/README.md` (if present)
 - Existing workshop step files in `workshop/`
 - `.github/workflows/guidelines.md`
 
 Then:
-1. Identify the highest-value content gap, clarity issue, or learner experience improvement.
-2. Make a single focused change set (for example: add one missing step file, improve one existing step, or update workshop navigation).
-3. Keep tone aligned with GitHub Skills: short, direct, supportive, and action-oriented.
-4. Keep content practical and learner-first, with clear outcomes and checkpoints.
-5. **Check for missing UI path alternatives and early `gh` overuse**: look for steps that are CLI-heavy, require `gh` too early, or present `gh repo create` as the default without a corresponding GitHub UI path. Prefer improvements that delay/minimize `gh` setup and add clear UI-first alternatives.
+1. **Check curriculum quality findings first.** If `/tmp/gh-aw/data/curriculum-issues.json`
+   contains open issues, extract the flagged files and their specific weaknesses.
+   Each issue title follows the format `[curriculum-eval] <file>: <dimension> — <diagnosis>`
+   and the issue body contains the file's **Overall Score** and a **Flagged Dimensions**
+   table. Sort issues by the `Overall Score` value extracted from the body (ascending)
+   to identify the lowest-scoring file. Treat that file as the top candidate for
+   improvement — its issue body also contains a ready-to-use **Improvement Prompt**
+   you can apply directly.
+2. Identify the highest-value content gap, clarity issue, or learner experience improvement.
+   Prefer fixing curriculum-flagged files over making other changes when a flagged
+   file exists.
+3. Make a single focused change set (for example: add one missing step file, improve one existing step, or update workshop navigation).
+4. Keep tone aligned with GitHub Skills: short, direct, supportive, and action-oriented.
+5. Keep content practical and learner-first, with clear outcomes and checkpoints.
+6. **Check for missing UI path alternatives and early `gh` overuse**: look for steps that are CLI-heavy, require `gh` too early, or present `gh repo create` as the default without a corresponding GitHub UI path. Prefer improvements that delay/minimize `gh` setup and add clear UI-first alternatives.
 
 If `focus` input is provided, prioritize that area while keeping the workshop coherent.
 
