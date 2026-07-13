@@ -66,11 +66,16 @@ steps:
           'create':     ['create', 'build', 'design', 'author', 'compose', 'construct', 'generate', 'write'],
       }
       BLOOM_LEVELS = ['remember', 'understand', 'apply', 'analyze', 'evaluate', 'create']
+      INTRO_WORD_LIMIT = 220
+      TITLE_WEIGHT = 3
+      INTRO_WEIGHT = 1
+      MIN_UNDERSTAND_STEPS = 3
+      MIN_ANALYZE_STEPS = 2
 
       def bloom_level(title, text, filename):
           title_text = f"{filename} {title}".lower()
           prose = CODE_FENCE_RE.sub('', text).lower()
-          intro = ' '.join(re.findall(r"[a-z']+", prose)[:220])
+          intro = ' '.join(re.findall(r"[a-z']+", prose)[:INTRO_WORD_LIMIT])
 
           scores = {level: 0 for level in BLOOM_LEVELS}
           evidence = {level: [] for level in BLOOM_LEVELS}
@@ -78,10 +83,10 @@ steps:
           for level in BLOOM_LEVELS:
               for cue in BLOOM_SIGNALS[level]:
                   if re.search(r'\b' + re.escape(cue) + r'\b', title_text):
-                      scores[level] += 3
+                      scores[level] += TITLE_WEIGHT
                       evidence[level].append(f"title:{cue}")
                   if re.search(r'\b' + re.escape(cue) + r'\b', intro):
-                      scores[level] += 1
+                      scores[level] += INTRO_WEIGHT
                       evidence[level].append(f"intro:{cue}")
 
           if len(CODE_FENCE_RE.findall(text)) > 0 or len(INLINE_CMD_RE.findall(text)) >= 3:
@@ -93,6 +98,7 @@ steps:
 
           ranked = sorted(
               BLOOM_LEVELS,
+              # On score ties, prefer lower-order cognitive levels first to avoid over-tagging as "create".
               key=lambda level: (scores[level], -BLOOM_LEVELS.index(level))
           )
           selected = ranked[-1]
@@ -290,13 +296,13 @@ steps:
       understand_count = sum(1 for f in scored if f['bloom_level'] == 'understand')
       analyze_count = sum(1 for f in scored if f['bloom_level'] == 'analyze')
       gap_proposals = []
-      if understand_count < 3:
+      if understand_count < MIN_UNDERSTAND_STEPS:
           gap_proposals.append({
               'title': 'Step X: Bloom Primer — Understand Before You Build',
               'target_bloom_level': 'understand',
               'description': "This step explains Bloom levels with concrete workshop examples so you can tell the difference between understanding, applying, and creating tasks. It includes a quick rewrite exercise where you convert one 'build' instruction into a concept-first explanation."
           })
-      if analyze_count < 2:
+      if analyze_count < MIN_ANALYZE_STEPS:
           gap_proposals.append({
               'title': 'Step Y: Output Diagnostics Lab',
               'target_bloom_level': 'analyze',
@@ -324,8 +330,8 @@ steps:
               'bloom_gap_analysis': {
                   'understand_steps': understand_count,
                   'analyze_steps': analyze_count,
-                  'has_min_understand_steps': understand_count >= 3,
-                  'has_min_analyze_steps': analyze_count >= 2,
+                  'has_min_understand_steps': understand_count >= MIN_UNDERSTAND_STEPS,
+                  'has_min_analyze_steps': analyze_count >= MIN_ANALYZE_STEPS,
                   'gap_proposals': gap_proposals,
               },
           },
