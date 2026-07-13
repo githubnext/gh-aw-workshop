@@ -18,6 +18,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ✅ |
 | 7a | [07a-your-first-workflow-terminal.md](07a-your-first-workflow-terminal.md) | Terminal Path — Write Your First Agentic Workflow | ✅ |
 | 7b | [07b-your-first-workflow-ui.md](07b-your-first-workflow-ui.md) | GitHub UI Path — Write Your First Agentic Workflow | ✅ |
+| 7c | [07c-your-first-workflow-copilot.md](07c-your-first-workflow-copilot.md) | GitHub Copilot Path — Write Your First Agentic Workflow | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
 | 9 | [09-understand-output.md](09-understand-output.md) | Reading Workflow Output | ✅ |
 | 10 | [10-choose-your-scenario.md](10-choose-your-scenario.md) | Choose Your Scenario | ✅ |
@@ -31,7 +32,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 11b | [Terminal](11b-build-daily-docs-terminal.md) **or** [GitHub UI](11b-build-daily-docs-ui.md) | Adventure B Build Paths | ✅ |
 | 11c | [11c-build-pr-reviewer.md](11c-build-pr-reviewer.md) | ➡️ Adventure C: Build — PR Code Reviewer | ✅ |
 | 11c | [Terminal](11c-build-pr-reviewer-terminal.md) **or** [GitHub UI](11c-build-pr-reviewer-ui.md) | Adventure C Build Paths | ✅ |
-| 11d | [11d-build-copilot-agents.md](11d-build-copilot-agents.md) | ➡️ Adventure D: Build Any Workflow with the GitHub Copilot Agents Tab | ✅ |
+| 11d | [11d-build-copilot-agents.md](11d-build-copilot-agents.md) | ➡️ Adventure D: Build Any Workflow with GitHub Copilot | ✅ |
 | 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
 | 13 | [13-schedule-it.md](13-schedule-it.md) | Schedule It to Run Every Day | ✅ |
 | 13a | [13a-schedule-it-terminal.md](13a-schedule-it-terminal.md) | Terminal Path — Schedule the Workflow | ✅ |

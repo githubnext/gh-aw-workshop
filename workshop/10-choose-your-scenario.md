@@ -27,7 +27,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 <!-- -->
 
 > [!NOTE]
-> **Using GitHub Copilot with the Agents tab enabled?** You can skip the design step and build any of these scenarios directly from the GitHub UI — no CLI installation required. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md).
+> **Using the GitHub Copilot app or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
 
 ---
 
@@ -84,7 +84,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 - ➡️ Adventure A: [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 - ➡️ Adventure B: [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - ➡️ Adventure C: [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
-- ➡️ Adventure D: [Step 11d: Build Any Workflow with the GitHub Copilot Agents Tab](11d-build-copilot-agents.md)
+- ➡️ Adventure D: [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 
 ## 📚 See Also
 
