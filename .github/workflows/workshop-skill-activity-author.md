@@ -88,10 +88,13 @@ First, read:
 
 Then:
 1. **Check curriculum quality findings first.** If `/tmp/gh-aw/data/curriculum-issues.json`
-   contains open issues, extract the flagged files and their specific weaknesses
-   (e.g. missing checkpoint, low active-learning density, concept overload). Treat
-   the lowest-scoring flagged file as the top candidate for improvement — its issue
-   body contains a ready-to-use improvement prompt you can apply directly.
+   contains open issues, extract the flagged files and their specific weaknesses.
+   Each issue title follows the format `[curriculum-eval] <file>: <dimension> — <diagnosis>`
+   and the issue body contains the file's **Overall Score** and a **Flagged Dimensions**
+   table. Sort issues by the `Overall Score` value extracted from the body (ascending)
+   to identify the lowest-scoring file. Treat that file as the top candidate for
+   improvement — its issue body also contains a ready-to-use **Improvement Prompt**
+   you can apply directly.
 2. Identify the highest-value content gap, clarity issue, or learner experience improvement.
    Prefer fixing curriculum-flagged files over making other changes when a flagged
    file exists.

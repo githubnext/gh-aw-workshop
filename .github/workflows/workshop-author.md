@@ -124,10 +124,14 @@ quality, scaffolding, or style compliance).
 Use these findings to inform the new node you are about to create:
 
 - If the issue list is **non-empty**, extract the list of flagged files and their
-  primary weaknesses. When the new node is adjacent to or logically related to a
-  flagged file, apply the relevant rubric recommendations as design constraints
-  (e.g. keep word count under 800, include a strong "Before You Start" section,
-  write a checkpoint with ≥ 4 specific items).
+  primary weaknesses. Each issue title follows the format
+  `[curriculum-eval] <file>: <dimension> — <diagnosis>` and the body contains
+  the file's **Overall Score** and a **Flagged Dimensions** table. When the new
+  node is related to a flagged file — for example, it immediately precedes or
+  follows that file in the graph, references it, or covers the same topic area —
+  apply the relevant rubric recommendations as design constraints for your new
+  node (e.g. keep word count under 800, include a strong "Before You Start"
+  section, write a checkpoint with ≥ 4 specific verifiable items).
 - If the issue list is **empty**, proceed without additional constraints beyond
   the standard content rules below.
 
