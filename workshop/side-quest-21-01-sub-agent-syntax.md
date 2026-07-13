@@ -65,7 +65,7 @@ Run via GitHub Actions...
 <details>
 <summary>Answer</summary>
 
-**Incorrect** — the sub-agent block appears before the "How to use this workflow" section. Sub-agent blocks must be placed **at the bottom** of the file, after all main workflow content. Move the `## agent: \`summarizer\`` block to the end of the file.
+**Incorrect** — the sub-agent block appears before the "How to use this workflow" section. Sub-agent blocks must be placed **at the bottom** of the file, after all main workflow content. Move the `` ## agent: `summarizer` `` block to the end of the file.
 
 </details>
 
