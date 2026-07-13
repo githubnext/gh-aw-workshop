@@ -89,7 +89,7 @@ Complete these checks before you choose a setup path:
 >
 > These activities require a terminal:
 >
-> - Codespaces and Steps 2a/2b, 3a, and 7a
+> - Step 2a (Codespace setup), Step 2b (local setup), and Steps 3a and 7a
 > - The Step 6 installation
 > - The Terminal builds and Add Wizard in Step 11
 > - Optional `gh aw` commands in Steps 8 and 12
