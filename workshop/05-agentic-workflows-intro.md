@@ -1,7 +1,7 @@
 # Step 5: What Are Agentic Workflows?
 
 > [!IMPORTANT]
-> **Enterprise/GHES users: start here before Step 5.** Agentic workflows require **GHES 3.12+** (or `github.com`/GHEC) and **GitHub Copilot Enterprise** with Copilot cloud agent enabled by your admins.
+> **Enterprise/GHES users: read this before continuing with Step 5.** Agentic workflows require **GHES 3.12+** (or `github.com`/GHEC) and **GitHub Copilot Enterprise** with Copilot cloud agent enabled by your admins.
 > Self-hosted runners and enterprise proxy-based environments are supported when required network egress and policy settings are configured.
 > If you're on GHES or a managed enterprise environment, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as a required prerequisite, then return to this Step 5 page.
 
