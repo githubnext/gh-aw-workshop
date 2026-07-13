@@ -6,10 +6,17 @@
 
 ## Which path is right for me?
 
-| If you… | Do this |
-|---------|---------|
-| New to terminals, prefer a browser-based setup, or use the GitHub Copilot Cloud Agent (CCA) | ✅ **You're in the right place** — click the badge above and continue below |
-| Comfortable with a local terminal and want to use your own machine | ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
+> [!IMPORTANT]
+> ### Which setup path is right for me?
+> Ask yourself:
+> 1. **Do you have a terminal available?**
+> 2. **Are you using GitHub Copilot Chat or the GitHub web UI only?**
+> Choose one path and keep it through Step 8:
+> - **Path A — Codespace (browser terminal):** recommended for most beginners. You'll run terminal steps in a browser Codespace. ✅ **You're in the right place.**
+> - **Path B — Local terminal:** for learners with `gh` CLI installed locally. ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
+> - **Path C — UI only (Copilot Chat / CCA):** complete browser-friendly steps, and use the **Actions tab** trigger in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui). `gh aw run` is **not available** without a terminal.
+
+<!-- -->
 
 > [!IMPORTANT]
 > **Using the GitHub Copilot Cloud Agent (CCA)?**
