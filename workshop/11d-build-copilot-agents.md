@@ -7,7 +7,7 @@
 This adventure builds on:
 
 - **Step 7** ([Your first workflow](07-your-first-workflow.md)): writing a Markdown task brief with YAML frontmatter
-- **Step 9** ([Compile and validate](09-compile-and-validate.md)): using `gh aw compile` to generate and validate lock files
+- **Compile guidance** ([Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)): using `gh aw compile` to generate and validate lock files
 - **Step 10** ([Choose your scenario](10-choose-your-scenario.md)): the scenario (A, B, or C) you selected to build
 - **Step 11 (any path)** ([11a](11a-build-daily-status.md), [11b](11b-build-daily-docs.md), or [11c](11c-build-pr-reviewer.md)): how frontmatter keys such as `triggers`, `permissions`, and `safe-outputs` shape what the workflow can do
 

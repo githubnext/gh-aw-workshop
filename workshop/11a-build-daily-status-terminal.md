@@ -31,7 +31,7 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 | Tools | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
 | Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
 
-This file ends in `.md` instead of `.yml` because agentic workflows use Markdown — see the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md#classic-actions-vs-agentic-workflows). For deeper context on any key, see [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md) and [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
+This file ends in `.md` instead of `.yml` because agentic workflows use Markdown — see the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md). For deeper context on any key, see [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md) and [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
 
 ## Create the workflow file
 
