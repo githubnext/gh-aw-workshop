@@ -182,27 +182,12 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main step
 Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each student has:
 - `id` — unique identifier (1–38)
 - `name` — persona name
-- `level` — agentic technical level:
-  - `beginner`: no prior GitHub or coding experience
-  - `github-basic`: can clone/commit/push but has not used GitHub Actions or AI tools
-  - `actions-user`: familiar with GitHub Actions YAML, but new to agentic/AI workflows
-  - `advanced`: experienced developer or DevOps engineer who has used LLM-based tools
-- `personality` — `curious`, `methodical`, `impatient`, `confused`, `skeptical`
-- `background` — role background:
-  - `no-coding`: no software development background
-  - `web-dev`: frontend or full-stack web developer
-  - `backend-dev`: backend or systems developer
-  - `devops`: DevOps engineer or SRE
-  - `data-science`: data scientist or ML engineer
-  - `enterprise-dev`: enterprise developer using GHE or GHES with self-hosted runners
-  - `enterprise-devops`: senior DevOps or platform engineer managing self-hosted runner fleets
-  - `program-manager`: program or product manager evaluating agentic workflows
-- `goal` — `personal-learning`, `work-project`, `team-evaluation`, `teaching-others`
+- `level` — agentic technical level: `beginner` (no prior GitHub/coding) | `github-basic` (can clone/commit/push; no Actions or AI tools) | `actions-user` (familiar with Actions YAML; new to agentic/AI workflows) | `advanced` (experienced developer/DevOps engineer with LLM tooling experience)
+- `personality` — `curious` | `methodical` | `impatient` | `confused` | `skeptical`
+- `background` — role background: `no-coding` (no software development background) | `web-dev` (frontend/full-stack web developer) | `backend-dev` (backend/systems developer) | `devops` (DevOps engineer/SRE) | `data-science` (data scientist/ML engineer) | `enterprise-dev` (enterprise developer using GHE/GHES with self-hosted runners) | `enterprise-devops` (senior DevOps/platform engineer managing self-hosted runner fleets) | `program-manager` (program/product manager evaluating agentic workflows)
+- `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point:
-  - `cli`: uses the `gh aw` CLI extension in a terminal
-  - `vscode`: uses VS Code with the GitHub Copilot extension
-  - `CCA`: uses the GitHub Copilot Cloud Agent (web or mobile app/chat interface, or cloud coding agent)
+- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/mobile chat or cloud coding agent)
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
