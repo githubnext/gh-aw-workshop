@@ -4,18 +4,18 @@
 
 **Enterprise users (GHEC, GHES, or EMU):** This step assumes your organization already has GitHub Copilot Enterprise available.
 
+**Not on GHEC, GHES, or EMU?** Skip this section and continue to the next heading.
+
 > [!IMPORTANT]
 > Enterprise user (GHEC, GHES, or EMU)? Review your admin-managed prerequisites before continuing.
 >
 > → [Enterprise setup guide (required for enterprise users)](side-quest-enterprise-setup.md)
+>
+> - [ ] Copilot Enterprise enabled for the org
+> - [ ] Copilot Enterprise seat assigned to your account
+> - [ ] Policy active (verified in **Settings → Copilot → Policies**)
 
-**Enterprise preflight checklist (do this before reading further):**
-
-1. Confirm GitHub Copilot Enterprise is enabled for the organization owning your workshop repository under **Settings → Copilot → Policies**.
-   If your admin needs instructions, share [Setting up GitHub Copilot for your organization](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-organization).
-2. Confirm a Copilot Enterprise seat is assigned to the GitHub account you are using for this workshop.
-   Your admin can verify this in the Copilot seat management flow documented in [GitHub Copilot seat assignment](https://docs.github.com/en/copilot/reference/copilot-billing/seat-assignment).
-3. If either check is incomplete, pause here and contact your GitHub org admin before continuing.
+**Do not continue to Step 6 until all three boxes are checked.** Skipping this check will cause a silent failure at Step 8 with no clear error message. Your admin can usually unblock this in under 5 minutes.
 
 **Blocked? Do this:** Send your GitHub org admin a note like this:
 
@@ -25,7 +25,7 @@
 >
 > Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account.
 
-Org admins can usually unblock this in under 5 minutes. While you wait:
+While you wait:
 
 1. Complete the [enterprise setup guide](side-quest-enterprise-setup.md).
 2. Read Steps 6 and 7 to install `gh-aw` and understand your first workflow.
