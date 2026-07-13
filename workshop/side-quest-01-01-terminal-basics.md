@@ -68,6 +68,9 @@ Then clean up:
 cd .. && rm -r test-dir
 ```
 
+> [!TIP]
+> On Windows Command Prompt, use `rmdir /s test-dir` instead of `rm -r test-dir`. Git Bash users can use `rm -r` as shown above.
+
 You created a folder (`mkdir`), moved into it (`cd`), printed a message (`echo`), and deleted the folder (`rm -r`). ✅
 
 ---

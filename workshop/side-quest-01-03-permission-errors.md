@@ -38,4 +38,4 @@ Right-click **Windows Terminal** or **PowerShell** and choose **Run as administr
 
 ---
 
-When you're done here, return to [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) or [Step 1: What You Need Before We Start](01-prerequisites.md).
+When you're done here, return to [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md).
