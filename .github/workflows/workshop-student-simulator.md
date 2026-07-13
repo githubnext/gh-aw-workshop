@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily Monte Carlo simulation of 38 students (100 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily Monte Carlo simulation of 41 students (100 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -76,11 +76,14 @@ steps:
           {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0}
+          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":39, "name":"Sam Torres",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":40, "name":"Hayden Brooks",  "level":"github-basic", "personality":"impatient",   "background":"program-manager", "goal":"team-evaluation",      "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":41, "name":"Rowan Diaz",     "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"work-project",         "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0}
         ]
       }
       EOF
-        echo "Initialized fresh student profiles (38 students)"
+        echo "Initialized fresh student profiles (41 students)"
       else
         echo "Loaded existing student profiles from cache"
         cat /tmp/gh-aw/cache-memory/profiles.json | python3 -c "
@@ -176,7 +179,7 @@ steps:
 
 ## Role
 
-You are an expert UX researcher and instructional designer specialising in developer education. Your task is to **simulate 38 students with distinct profiles** attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
+You are an expert UX researcher and instructional designer specialising in developer education. Your task is to **simulate 41 students with distinct profiles** attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
 
 ---
 
@@ -195,17 +198,17 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main step
 
 ---
 
-## Student Profiles (38 students)
+## Student Profiles (41 students)
 
 Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each student has:
-- `id` — unique identifier (1–38)
+- `id` — unique identifier (1–41)
 - `name` — persona name
 - `level` — agentic technical level: `beginner` (no prior GitHub/coding) | `github-basic` (can clone/commit/push; no Actions or AI tools) | `actions-user` (familiar with Actions YAML; new to agentic/AI workflows) | `advanced` (experienced developer/DevOps engineer with LLM tooling experience)
 - `personality` — `curious` | `methodical` | `impatient` | `confused` | `skeptical`
 - `background` — role background: `no-coding` (no software development background) | `web-dev` (frontend/full-stack web developer) | `backend-dev` (backend/systems developer) | `devops` (DevOps engineer/SRE) | `data-science` (data scientist/ML engineer) | `enterprise-dev` (enterprise developer using GHE/GHES with self-hosted runners) | `enterprise-devops` (senior DevOps/platform engineer managing self-hosted runner fleets) | `program-manager` (program/product manager evaluating agentic workflows)
 - `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/mobile chat or cloud coding agent)
+- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/browser chat or cloud coding agent) | `mobile` (uses the GitHub Mobile app on iOS or Android to spawn agent sessions and review pull requests; no coding support)
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
@@ -219,7 +222,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 ### Simulate each student through the workshop
 
-For **each of the 38 students**, simulate their experience step-by-step using the following rules:
+For **each of the 41 students**, simulate their experience step-by-step using the following rules:
 
 The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` by the preceding workflow step (${{ env.MONTE_CARLO_RUNS }} independent environment draws per student). Read this file to obtain the statistical baseline:
 
@@ -227,7 +230,7 @@ The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh
 {
   "mode": "monte-carlo",
   "runs": ${{ env.MONTE_CARLO_RUNS }},
-  "total": 38,
+  "total": 41,
   "monteCarlo": [
     {
       "studentId": 1,
@@ -261,7 +264,7 @@ For students whose `successRate` < 0.50 (the most at-risk half), apply additiona
 
 - **`level`** vs. assumed knowledge
 - **`background`** vs. step domain
-- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA`, note that no UI alternative exists)
+- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA` or `mobile`, note that no UI alternative exists)
 - **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
 - **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
 - **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
@@ -303,7 +306,7 @@ Use `create-issue` safe output with:
 
 - `temporary_id`: `aw_workshop_simulation_parent` (safe-outputs requires the `aw_` prefix; this parent issue handle is used by child issues in step 8)
 - **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N, ${{ env.MONTE_CARLO_RUNS }}×Monte Carlo)`
-- where N is the total accumulated runs across all students divided by 38 (round to nearest integer).
+- where N is the total accumulated runs across all students divided by 41 (round to nearest integer).
 
 Keep the report short and to the point. Keep critical findings visible; move verbose content into `<details>` sections for progressive disclosure.
 
@@ -312,7 +315,7 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ```markdown
 ### Overview
 - Date: YYYY-MM-DD
-- Students simulated: 38 × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
+- Students simulated: 41 × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
 - Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
 - Overall success rate: XX% (from `aggregate.overallSuccessRate`)
 - Highest-dropout step: <step-id> (XX% dropout rate)
