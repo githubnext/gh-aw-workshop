@@ -54,7 +54,7 @@
 name: "Workshop Student Simulator"
 on:
   schedule:
-  - cron: "53 13 * * *"
+  - cron: "19 2 * * *"
     # Friendly format: daily (scattered)
   workflow_dispatch: {}
 
