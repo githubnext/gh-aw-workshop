@@ -16,7 +16,7 @@ You'll have `.github/workflows/daily-status.md` committed to your repository and
 
 Every daily-status workflow file has the same three-part skeleton, regardless of which construction path you take:
 
-```markdown
+```
 ---
 on:
   schedule: daily
