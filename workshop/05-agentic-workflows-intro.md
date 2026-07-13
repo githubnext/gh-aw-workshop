@@ -93,6 +93,14 @@ If you're coming from classic GitHub Actions, here's where the two models diverg
 > [!NOTE]
 > Both types of workflow live in `.github/workflows/` and use the same `on:` triggers and `permissions:` blocks — only the task description format changes.
 
+### 🧭 Quick Check — Keep going if you can tick these
+
+- [ ] I understand that agentic workflows use a `.md` file, not a hand-authored `.yml`
+- [ ] I understand that the AI agent decides _how_ to complete the task at runtime
+- [ ] I can describe one difference between a classic CI step and an agentic workflow step
+
+Still confused? Expand the **Classic Actions vs Agentic Workflows (deep dive)** section near the top of this page, or ask Copilot: _"Explain agentic workflows vs classic GitHub Actions in plain language, without jargon."_
+
 Here is a complete minimal agentic workflow — the same structure you'll write in Step 7:
 
 ```yaml
