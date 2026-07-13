@@ -75,7 +75,7 @@ The trigger decides **when** the workflow starts. The `safe-outputs` block decid
 
 | Trigger | Natural thing to reply to | Common `safe-outputs` choice |
 |---------|----------------------------|------------------------------|
-| `pull_request` | The current pull request | `add-pr-review-comment` |
+| `pull_request` | The current pull request | `add-comment` |
 | `issues` | The current issue | `add-comment` |
 | `push` | Often no built-in conversation thread | Usually none at first, or `add-comment` if the workflow posts to an issue or PR it finds |
 | `schedule` | Usually a standing issue or report thread | `add-comment` |
@@ -105,7 +105,7 @@ The Daily Repo Status workflow in [Step 11a](11a-build-daily-status.md) and the 
 | Step | Trigger | Why it fits | Safe output |
 |------|---------|-------------|-------------|
 | 11a Daily Repo Status | `schedule: daily` | You want a report every day, even on quiet days | `add-comment` |
-| 11c PR Code Reviewer | `pull_request: {}` | You want feedback only when a PR changes | `add-pr-review-comment` |
+| 11c PR Code Reviewer | `pull_request: {}` | You want feedback only when a PR changes | `add-comment` |
 
 That is the core decision: pick the trigger that matches the moment you care about, then pick the write target that matches the object you want the workflow to answer.
 
@@ -114,7 +114,7 @@ That is the core decision: pick the trigger that matches the moment you care abo
 - [ ] I can explain the difference between a scheduled workflow and an event-driven workflow
 - [ ] I know starter trigger blocks for `pull_request`, `push`, `issues`, and `schedule`
 - [ ] I understand that `safe-outputs` controls write access separately from the trigger
-- [ ] I can explain why Step 11a uses `add-comment` and Step 11c uses `add-pr-review-comment`
+- [ ] I can explain why both Step 11a and Step 11c use `add-comment` as their `safe-outputs` choice
 
 ---
 
