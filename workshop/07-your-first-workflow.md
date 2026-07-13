@@ -13,7 +13,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 > [!NOTE]
 > **No terminal? Use the GitHub web editor.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, skip terminal commands and create `hello-agent.md` using the GitHub UI path below.
-> **Using the GitHub Copilot app?** Ask an agent session to create `.github/workflows/hello-agent.md` from this step, run `gh aw compile .github/workflows/hello-agent.md --validate`, and show you the diff. For a persistent `--watch` loop, use a local or Codespaces terminal instead.
+> **Using the GitHub Copilot app?** Ask the agent to create `.github/workflows/hello-agent.md`, run `gh aw compile .github/workflows/hello-agent.md --validate` in its session workspace, and show you the diff. You do not need a terminal for agent-run validation. For a persistent `--watch` loop that you control, use a local or Codespaces terminal instead.
 
 ## 🎯 What You'll Do
 

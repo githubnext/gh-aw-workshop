@@ -122,7 +122,7 @@ For example, your updated Guidelines section might look like:
 <!-- Separate adjacent callouts -->
 
 > [!TIP]
-> **Using the GitHub Copilot app or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate`, and update the pull request. Review the diff before merging.
+> **Using the GitHub Copilot app or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate` in its session workspace, and update the pull request. The desktop app and browser cloud agent can run this command on your behalf; you do not need an interactive terminal. Review the diff before merging.
 
 ### Commit your change
 
