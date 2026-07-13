@@ -36,7 +36,7 @@ Ask yourself: _what happens if the memory is lost?_
 | You need to inspect or edit the stored state manually | `repo-memory` |
 | You expect the workflow to run infrequently (less than once a week) | `repo-memory` |
 
-For most deduplication use cases, `cache-memory` is the right starting point. Switch to `repo-memory` only when the cost of losing state is too high.
+For most deduplication use cases, `cache-memory` is the right starting point. Switch to `repo-memory` only when the cost of losing state is too high — for example, when loss would flood your team with false-positive alerts or require manual cleanup before the workflow runs correctly again.
 
 ---
 

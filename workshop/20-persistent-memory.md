@@ -31,7 +31,11 @@ You'll add persistent memory to your agentic workflow so it can carry state betw
 
 ## Why Memory Matters
 
-Every workflow run you have built so far starts with a blank slate. That is fine for a daily summary, but it causes problems the moment you want to deduplicate alerts, compare against a baseline, or scan incrementally.
+Every workflow run you have built so far starts with a blank slate. That is fine for a daily summary, but it causes problems the moment you want to:
+
+- **Deduplicate alerts** — alert only on _new_ open issues, not the same ones every morning.
+- **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
+- **Scan incrementally** — skip pull requests you have already reviewed.
 
 `gh-aw` provides two memory primitives: **`cache-memory`** (backed by the GitHub Actions cache, ideal for short-lived deduplication) and **`repo-memory`** (backed by a committed file, ideal for durable baselines). This step focuses on `cache-memory` — the simpler and more common choice.
 
