@@ -81,7 +81,7 @@ Complete these checks before you choose a setup path:
 >
 > **Yes.** The GitHub UI path lets you complete the main workshop through Step 14 in your browser:
 >
-> - Skip the terminal setup in Steps 2a/2b and start with Step 3b
+> - Skip the terminal setup in Steps 2a/2b and start with [Step 3b](03b-create-your-repo-ui.md)
 > - Use the GitHub UI alternative in Step 6 and choose Step 7b
 > - Complete Steps 8–10, then choose the GitHub UI options in Steps 11–13
 >
@@ -95,7 +95,7 @@ Complete these checks before you choose a setup path:
 > - Optional `gh aw` commands in Steps 8 and 12
 > - Step 13a and the workflow-reuse activity in Step 14
 >
-> You can skip them on the UI path. Advanced extensions after Step 14 are not all designed for UI-only completion.
+> You can skip them on the UI path. Steps 15–21 are not all designed for UI-only completion.
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
