@@ -30,7 +30,7 @@ steps:
       mkdir -p /tmp/gh-aw/cache-memory
       TODAY=$(date -u +%Y-%m-%d)
       echo "TODAY=$TODAY" >> "$GITHUB_ENV"
-      echo "MONTE_CARLO_RUNS=100" >> "$GITHUB_ENV"
+      echo "MONTE_CARLO_RUNS=1000" >> "$GITHUB_ENV"
 
   - name: Initialize student profiles if missing
     run: |
@@ -269,7 +269,7 @@ For students whose `successRate` < 0.50 (the most at-risk half), apply additiona
 ### Collect pain points per student
 
 For each student whose `successRate` < 1.0, note:
-- Which step failed most often across the 100 Monte Carlo runs (`mostCommonFailureStep`)
+- Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
 - Likely reason (based on their profile): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces tokens lacking `actions:write` for `gh aw run`; enterprise/proxy environments adding friction to setup steps.
 
@@ -302,7 +302,7 @@ If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3
 Use `create-issue` safe output with:
 
 - `temporary_id`: `aw_workshop_simulation_parent` (safe-outputs requires the `aw_` prefix; this parent issue handle is used by child issues in step 8)
-- **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N, 100×Monte Carlo)`
+- **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N, ${{ env.MONTE_CARLO_RUNS }}×Monte Carlo)`
 - where N is the total accumulated runs across all students divided by 38 (round to nearest integer).
 
 Keep the report short and to the point. Keep critical findings visible; move verbose content into `<details>` sections for progressive disclosure.
