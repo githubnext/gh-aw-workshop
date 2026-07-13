@@ -19,7 +19,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 ## Steps
 
 > [!NOTE]
-> You can complete this step entirely from your browser — no terminal or token configuration needed.
+> **Recommended: use the GitHub Actions UI.** No token configuration needed.
 
 ### Trigger manually via GitHub Actions UI
 
@@ -38,14 +38,6 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
 
-<!-- -->
-
-> [!WARNING]
-> **Codespace users:** Codespace tokens do not include `actions:write` by default.
-> If you plan to trigger via the terminal (`gh aw run`), verify your token first.
-> Use the **[GitHub Actions UI trigger](#trigger-manually-via-github-actions-ui)** above (no token needed) to avoid this issue entirely.
-> Full recovery guide: [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
-
 ### Before You Trigger
 
 Confirm all four items before triggering the workflow — skipping this is the most common reason runs fail silently.
@@ -58,7 +50,13 @@ Confirm all four items before triggering the workflow — skipping this is the m
 If item 1 or 2 is not yet true, return to the [Step 7 path chooser](07-your-first-workflow.md) and complete your chosen path first.
 
 <details>
-<summary>Advanced: trigger from the terminal</summary>
+<summary>Advanced: trigger from the terminal (requires <code>actions:write</code> scope)</summary>
+
+> [!WARNING]
+> **Codespace users:** Codespace tokens do not include `actions:write` by default.
+> If you plan to trigger via the terminal (`gh aw run`), verify your token first.
+> Use the **[GitHub Actions UI trigger](#trigger-manually-via-github-actions-ui)** above (no token needed) to avoid this issue entirely.
+> Full recovery guide: [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 Prefer the GitHub Actions UI path above for this workshop. If you already have CLI trigger permissions configured, you can trigger the same run with:
 
