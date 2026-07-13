@@ -19,22 +19,6 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
-### Before You Trigger
-
-Confirm all three items before triggering the workflow — skipping this is the most common reason runs fail silently.
-
-1. `hello-agent.md` is committed to `.github/workflows/` on `main` (or your default branch).
-2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
-3. _(Codespace users only)_ Your token includes `actions:write`.
-
-If item 1 or 2 is not yet true, return to [Step 7](07-your-first-workflow.md) and complete it first. CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
-
-> [!WARNING]
-> **Codespace users: check your token before triggering.**
-> Codespace tokens do not include `actions:write` by default. If you try to trigger with `gh aw run` and see `HTTP 403: Resource not accessible by integration`, your token is missing that scope. Use the **GitHub Actions UI path below** (no token needed) or follow the full recovery guide in [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
-
-<!-- -->
-
 > [!NOTE]
 > You can complete this step entirely from your browser — no terminal or token configuration needed.
 
@@ -55,6 +39,16 @@ If item 1 or 2 is not yet true, return to [Step 7](07-your-first-workflow.md) an
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
 
+### Before You Trigger
+
+Confirm all three items before triggering the workflow — skipping this is the most common reason runs fail silently.
+
+1. `hello-agent.md` is committed to `.github/workflows/` on `main` (or your default branch).
+2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
+3. _(Codespace users only)_ Your token includes `actions:write` if you plan to use the optional terminal path below.
+
+If item 1 or 2 is not yet true, return to [Step 7](07-your-first-workflow.md) and complete it first. CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
+
 <details>
 <summary>Advanced: trigger from the terminal</summary>
 
@@ -63,6 +57,12 @@ Prefer the GitHub Actions UI path above for this workshop. If you already have C
 ```bash
 gh aw run hello-agent
 ```
+
+> [!WARNING]
+> **Codespace users: check your token before triggering from the terminal.**
+> Codespace tokens do not include `actions:write` by default. If you try to trigger with `gh aw run` and see `HTTP 403: Resource not accessible by integration`, your token is missing that scope. Use the **GitHub Actions UI path above** (no token needed) or follow the full recovery guide in [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+
+<!-- -->
 
 Troubleshooting: common run failures
 
