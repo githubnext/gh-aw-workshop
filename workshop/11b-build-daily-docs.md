@@ -51,7 +51,7 @@ Then open your editor and create `.github/workflows/daily-docs.md`.
 
 </details>
 
-Build the file section by section and compile after each one so YAML mistakes are easy to spot.
+Build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-docs.md` to validate — or keep `gh aw compile .github/workflows/daily-docs.md --watch` running in a second terminal for continuous feedback.
 
 ### Build section 1: frontmatter basics
 
@@ -62,13 +62,6 @@ description: Post a daily documentation health report as a GitHub issue comment.
 ---
 ```
 
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/daily-docs.md
-> ```
-> A green output means your YAML is valid so far. For auto-recompile while editing, run `gh aw compile .github/workflows/daily-docs.md --watch`.
-
 ### Build section 2: trigger block
 
 ```yaml
@@ -76,13 +69,6 @@ on: # Run triggers
   schedule: daily # Daily run
   workflow_dispatch: {} # Manual run button
 ```
-
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/daily-docs.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-docs.md --watch`.
 
 ### Build section 3: permissions block
 
@@ -98,12 +84,6 @@ permissions: # Required GitHub scopes
 > [!NOTE]
 > `copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. The other permissions here are read-only. The only write action is the issue comment, which is gated by the `safe-outputs` guardrail below.
 >
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/daily-docs.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-docs.md --watch`.
 
 ### Build section 4: tools and output guardrails
 
@@ -117,13 +97,6 @@ safe-outputs: # Write guardrails
   add-comment: # Allow comments
     max: 1 # One comment max
 ```
-
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/daily-docs.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-docs.md --watch`.
 
 ### Build section 5: agent instructions block
 
@@ -164,13 +137,6 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 - Write "unknown" for any field where data is unavailable.
 - If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
 ```
-
-> [!TIP]
-> **Compile checkpoint:** Save your file, then run:
-> ```bash
-> gh aw compile .github/workflows/daily-docs.md
-> ```
-> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-docs.md --watch`.
 
 ---
 

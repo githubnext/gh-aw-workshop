@@ -126,7 +126,7 @@ If you're coming from classic GitHub Actions, the shift is simple: keep your exi
 | **GitHub Enterprise Server (GHES) 3.12+** | ✅ Supported when Copilot Enterprise and network egress are configured by admin |
 | **GitHub Enterprise Server (GHES) < 3.12** | ❌ Not supported — upgrade required |
 
-> [!IMPORTANT]
+> [!TIP]
 > In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**
 
 ## ✅ Checkpoint
