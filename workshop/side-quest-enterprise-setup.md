@@ -8,6 +8,13 @@ Use this side quest if your environment differs from standard `github.com` defau
 
 Agentic workflows require **GHES 3.12 or later**. On earlier versions, the Copilot cloud agent feature is unavailable regardless of licensing or policy settings.
 
+| GitHub deployment | Agentic workflows supported? |
+|---|---|
+| **github.com** | ✅ Fully supported |
+| **GitHub Enterprise Cloud (GHEC)** | ✅ Fully supported |
+| **GitHub Enterprise Server (GHES) 3.12+** | ✅ Supported when Copilot Enterprise and network access are configured by admin |
+| **GitHub Enterprise Server (GHES) < 3.12** | ❌ Not supported — upgrade required |
+
 Before continuing:
 
 1. Ask your GitHub Enterprise administrator to confirm the GHES version running in your environment.
@@ -36,6 +43,7 @@ If your enterprise requires self-hosted runners for GitHub Actions, confirm thes
 
 - A runner is registered and online for your repository or org.
 - The runner allows workflow jobs from your repository.
+- If your network uses an outbound proxy, proxy settings are configured for runner jobs.
 - Network egress allows access to required endpoints such as `github.com`, `api.github.com`, `raw.githubusercontent.com`, and any model or MCP endpoints your workflow uses.
 - Required secrets and permissions are configured for runner-based execution.
 
