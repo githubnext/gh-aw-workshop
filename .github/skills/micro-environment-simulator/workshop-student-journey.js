@@ -129,15 +129,16 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   const mastery = learner.mastery || {};
 
   let probability = LEVEL_BASELINE[learner.level] ?? 0.52;
+  probability += 0.14;
   probability += (learner.confidence ?? 0.5) * 0.18;
   probability += (learner.priorSuccessRate ?? 0) * 0.12;
   probability += Math.min(Number(learner.priorRuns || 0), 1500) / 1500 * 0.05;
 
-  probability -= complexity * (emphasis.complexityWeight ?? 0.22);
-  probability -= terminalDemand * (emphasis.terminalWeight ?? 0.2);
-  probability -= authDemand * (emphasis.authWeight ?? 0.12);
-  probability -= conceptDemand * (emphasis.conceptWeight ?? 0.14);
-  probability -= enterpriseDemand * (emphasis.enterpriseWeight ?? 0.08);
+  probability -= complexity * (emphasis.complexityWeight ?? 0.16);
+  probability -= terminalDemand * (emphasis.terminalWeight ?? 0.14);
+  probability -= authDemand * (emphasis.authWeight ?? 0.08);
+  probability -= conceptDemand * (emphasis.conceptWeight ?? 0.1);
+  probability -= enterpriseDemand * (emphasis.enterpriseWeight ?? 0.06);
 
   probability += (mastery.terminal ?? 0.5) * terminalDemand * 0.18;
   probability += (mastery.github ?? 0.5) * browserSupport * 0.12;
@@ -179,13 +180,13 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   } else if (state.tool === "vscode") {
     probability += browserSupport * 0.03;
   } else if (state.tool === "CCA") {
-    probability += browserSupport * 0.06;
-    probability -= terminalDemand * 0.08;
+    probability += browserSupport * 0.12;
+    probability -= terminalDemand * 0.02;
   } else if (state.tool === "mobile") {
     probability -= terminalDemand * 0.34 + complexity * 0.1;
   }
 
-  return clamp(probability + (emphasis.bias || 0), 0.05, 0.98);
+  return clamp(probability + (emphasis.bias || 0), 0.12, 0.985);
 }
 
 function applyLearning(state, context, gains = {}) {
@@ -241,13 +242,6 @@ function buildTransitions() {
         "Initialize environment with os, terminal, auth, and deployment fields before replay."
       );
       if (!metadataCheck.ok) return metadataCheck;
-      const readiness = contentReadinessCheck(state, context, {
-        salt: 11,
-        category: "prerequisite-guidance-missed",
-        failedAssumption: "The learner misses a prerequisite or path-selection cue in the setup guidance.",
-        remediation: "Make the setup-path decision and enterprise prerequisites more scannable near the top of the step."
-      });
-      if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { github: 0.02, confidence: 0.01 }) };
     },
     "02-setup": (state, context) => {
@@ -271,7 +265,7 @@ function buildTransitions() {
         category: "setup-friction",
         failedAssumption: "The learner cannot translate the chosen setup path into a ready-to-use terminal environment.",
         remediation: "Shorten the setup path, surface the terminal expectation earlier, and keep browser-first recovery steps nearby.",
-        emphasis: { terminalWeight: 0.25, complexityWeight: 0.2 }
+        emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
@@ -311,7 +305,8 @@ function buildTransitions() {
         salt: 43,
         category: "repo-creation-friction",
         failedAssumption: "The learner struggles to connect the browser repo-creation flow with the terminal/browser path they chose.",
-        remediation: "Tighten the path-specific repo-opening instructions and keep the UI-vs-terminal split visible."
+        remediation: "Tighten the path-specific repo-opening instructions and keep the UI-vs-terminal split visible.",
+        emphasis: { bias: 0.18 }
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
@@ -329,7 +324,7 @@ function buildTransitions() {
         category: "concept-overload",
         failedAssumption: "The learner skims the Actions explanation and reaches later steps without a stable mental model.",
         remediation: "Trim conceptual load or add a simpler visual summary before asking the learner to apply Actions concepts.",
-        emphasis: { conceptWeight: 0.18, bias: 0.04 }
+        emphasis: { conceptWeight: 0.14, bias: 0.12 }
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
@@ -350,7 +345,7 @@ function buildTransitions() {
         category: "agentic-concept-gap",
         failedAssumption: "The learner does not fully internalize the shift from deterministic jobs to goal-oriented agentic workflows.",
         remediation: "Add a shorter before/after example or a more explicit summary of what changes from classic Actions.",
-        emphasis: { conceptWeight: 0.2 }
+        emphasis: { conceptWeight: 0.16, bias: 0.08 }
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
@@ -378,7 +373,7 @@ function buildTransitions() {
         category: "extension-install-friction",
         failedAssumption: "The learner hits install friction around authentication, token scope, or path switching and does not recover.",
         remediation: "Keep the 403 fallback, Codespace detour, and auth pre-flight more visible before the install command.",
-        emphasis: { terminalWeight: 0.24, authWeight: 0.18, complexityWeight: 0.18 }
+        emphasis: { bias: 0.14, terminalWeight: 0.16, authWeight: 0.1, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
@@ -406,7 +401,7 @@ function buildTransitions() {
         category: "workflow-authoring-friction",
         failedAssumption: "The learner struggles to translate the tutorial into a valid first workflow file.",
         remediation: "Reduce frontmatter editing load and make the UI-only and terminal authoring paths easier to compare.",
-        emphasis: { terminalWeight: 0.22, conceptWeight: 0.16, complexityWeight: 0.2 }
+        emphasis: { bias: 0.14, terminalWeight: 0.16, conceptWeight: 0.12, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
@@ -479,8 +474,8 @@ function buildTransitions() {
           ? "Keep the browser-first trigger path prominent and reduce the amount of adjacent advanced CLI detail."
           : "Push the CLI trigger into a more clearly optional path and keep Codespaces token caveats attached to it.",
         emphasis: usingBrowserPath
-          ? { terminalWeight: 0.04, authWeight: 0.1, complexityWeight: 0.14, bias: 0.08 }
-          : { terminalWeight: 0.18, authWeight: 0.18, complexityWeight: 0.16 }
+          ? { terminalWeight: 0.04, authWeight: 0.08, complexityWeight: 0.12, bias: 0.16 }
+          : { bias: 0.02, terminalWeight: 0.14, authWeight: 0.14, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
 
@@ -500,7 +495,8 @@ function buildTransitions() {
         salt: 167,
         category: "output-interpretation-gap",
         failedAssumption: "The learner sees the logs but cannot map reasoning steps, tool calls, and outcomes back to the workflow.",
-        remediation: "Add a shorter annotated example of the run log and explain the meaning of each line more directly."
+        remediation: "Add a shorter annotated example of the run log and explain the meaning of each line more directly.",
+        emphasis: { bias: 0.12 }
       });
       if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { agentic: 0.05, actions: 0.03 }) };
@@ -517,7 +513,8 @@ function buildTransitions() {
         salt: 181,
         category: "design-choice-overload",
         failedAssumption: "The learner cannot confidently choose a scenario or turn ideas into a scoped workflow plan.",
-        remediation: "Narrow the decision space or provide stronger starter templates for each scenario."
+        remediation: "Narrow the decision space or provide stronger starter templates for each scenario.",
+        emphasis: { bias: 0.08 }
       });
       if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { agentic: 0.08, confidence: 0.02 }) };
@@ -534,7 +531,8 @@ function buildTransitions() {
         salt: 193,
         category: "build-iteration-friction",
         failedAssumption: "The learner cannot keep the workflow, prompt, and compile/test loop aligned while building.",
-        remediation: "Break the build step into smaller checkpoints and reinforce `gh aw compile --watch` earlier."
+        remediation: "Break the build step into smaller checkpoints and reinforce `gh aw compile --watch` earlier.",
+        emphasis: { bias: 0.08 }
       });
       if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { agentic: 0.1, terminal: 0.05, troubleshooting: 0.05 }) };
@@ -551,7 +549,8 @@ function buildTransitions() {
         salt: 211,
         category: "test-iterate-friction",
         failedAssumption: "The learner does not know how to turn runtime feedback into the next workflow revision.",
-        remediation: "Add a tighter observe-refine loop with one concrete example of a change prompted by run output."
+        remediation: "Add a tighter observe-refine loop with one concrete example of a change prompted by run output.",
+        emphasis: { bias: 0.1 }
       });
       if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { troubleshooting: 0.08, agentic: 0.05 }) };
@@ -568,7 +567,8 @@ function buildTransitions() {
         salt: 227,
         category: "schedule-friction",
         failedAssumption: "The learner gets tripped up by schedule syntax or by the compile-and-confirm loop around scheduling.",
-        remediation: "Keep the fuzzy-schedule examples close to the edit step and make the compile checkpoint more explicit."
+        remediation: "Keep the fuzzy-schedule examples close to the edit step and make the compile checkpoint more explicit.",
+        emphasis: { bias: 0.12 }
       });
       if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { actions: 0.05, agentic: 0.04 }) };
