@@ -1,5 +1,8 @@
 # Adventure B: Set Up Your Local Terminal
 
+> [!IMPORTANT]
+> **No terminal? No problem.** If you prefer to stay in the GitHub web UI without opening a terminal at all, skip ahead to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+
 ## 🔀 Choose your path first
 
 > [!IMPORTANT]
