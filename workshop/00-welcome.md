@@ -25,12 +25,14 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 
 ## Quick check: where are you starting from?
 
-Mark what's already true for you — this helps you choose the right path:
+Mark what's already true for you — use these to pick a path in the table above:
 
 - [ ] I have a GitHub account
 - [ ] I've used GitHub Actions before
 - [ ] I've tried AI-assisted developer tools
 - [ ] I'm on GitHub Enterprise Cloud (GHEC)
+
+If you checked all four boxes, the skip-ahead checklist in [Step 1](01-prerequisites.md) is for you.
 
 ## Before vs after
 
@@ -57,7 +59,7 @@ on:
 Create a daily repository status update in GitHub.
 ```
 
-The same trigger now hands off to an AI agent instead of a chain of shell scripts — less orchestration code, more acting on the output.
+The same trigger now hands off to an AI agent instead of a chain of shell scripts — less orchestration, more acting on the output.
 
 ![Side-by-side comparison of Classic GitHub Actions YAML versus an Agentic Workflow: Classic uses a schedule trigger that flows through static YAML steps and shell scripts to produce output; Agentic uses the same trigger that flows through a plain-English task brief into an AI agent that reasons and produces output automatically.](images/00-actions-vs-agentic.svg)
 
@@ -65,7 +67,7 @@ The same trigger now hands off to an AI agent instead of a chain of shell script
 
 ## 🎯 What You'll Do
 
-You'll build an **agentic workflow**: a GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a schedule — a practical workflow you can adapt for real teams.
+You'll build an **agentic workflow**: a GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a schedule — practical enough to adapt for real teams.
 
 What makes it different from regular GitHub Actions:
 
@@ -82,9 +84,11 @@ You should be comfortable with:
 - Making commits and pushing code
 - Reading a little YAML (we'll explain everything line by line)
 
-You do **not** need experience with GitHub Actions or AI tools.
+No experience with GitHub Actions or AI tools required.
 
-Steps build on each other, and checkboxes at the end of each step tell you exactly what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path. At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D) — all paths converge at Step 12.
+Steps build on each other, and checkboxes at the end of each step tell you exactly what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path.
+
+At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D). All paths converge at Step 12.
 
 > [!TIP]
 > If you get stuck, every step links back to the previous one. You can always rewind.
