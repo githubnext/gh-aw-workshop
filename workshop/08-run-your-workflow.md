@@ -19,14 +19,19 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
-> [!IMPORTANT]
-> **Before you trigger the run, confirm Step 7 is complete:**
-> - [ ] `hello-agent.md` is committed to your repository
-> - [ ] The file appears under `.github/workflows/` on GitHub.com
-> - [ ] The branch you committed to is `main` (or your default branch)
->
-> If any box is unchecked, return to [Step 7](07-your-first-workflow.md) and complete it first.
-> CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
+### Before You Trigger
+
+Confirm all three items before triggering the workflow — skipping this is the most common reason runs fail silently.
+
+1. `hello-agent.md` is committed to `.github/workflows/` on `main` (or your default branch).
+2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
+3. _(Codespace users only)_ Your token includes `actions:write`.
+
+If item 1 or 2 is not yet true, return to [Step 7](07-your-first-workflow.md) and complete it first. CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
+
+> [!WARNING]
+> **Codespace users: check your token before triggering.**
+> Codespace tokens do not include `actions:write` by default. If you try to trigger with `gh aw run` and see `HTTP 403: Resource not accessible by integration`, your token is missing that scope. Use the **GitHub Actions UI path below** (no token needed) or follow the full recovery guide in [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
 <!-- -->
 
@@ -35,7 +40,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ### Trigger manually via GitHub Actions UI
 
-1. In your repository, click the **Actions** tab at the top of the page.
+1. In your repository, click the **Actions** tab at the top of the page. It sits in the repository navigation bar between the **Pull requests** and **Projects** tabs. The left sidebar lists all workflows registered for your repository.
 
    ![Actions tab showing where to find Hello Agent in the workflow list](images/08-actions-tab.svg)
 
@@ -59,11 +64,9 @@ Prefer the GitHub Actions UI path above for this workshop. If you already have C
 gh aw run hello-agent
 ```
 
-If you're using a Codespace, run `gh auth status` and confirm your token includes `actions:write` and `workflows:write` before using `gh aw run`.
-
 Troubleshooting: common run failures
 
-- **`actions:write` permission error (Codespaces users):** If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Can't resolve this? Use the Actions UI path above instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+- **`actions:write` permission error (Codespaces users):** If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Use the Actions UI path above instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 - **Workflow not showing in the Actions sidebar:** GitHub takes up to 30 seconds to register a newly pushed workflow file. Wait 30 seconds, then refresh the **Actions** tab. If it still doesn't appear, confirm `.github/workflows/hello-agent.md` is committed and pushed to `main`.
 - **Run succeeded but no comment or issue was created:** Check the run log for the agent's reasoning steps. The agent may have found no open issues to comment on — if your repository has no issues, create one first, then re-run the workflow.
 
