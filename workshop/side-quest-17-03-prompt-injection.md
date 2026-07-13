@@ -61,7 +61,7 @@ permissions:
   contents: read
   issues: write
 safe-outputs:
-  - create-issue
+  create-issue:
 ---
 ```
 
