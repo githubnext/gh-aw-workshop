@@ -2,7 +2,8 @@
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
 
-Want to work without a terminal? Switch to the [GitHub UI path](07b-your-first-workflow-ui.md).
+> [!NOTE]
+> Want to work without a terminal? Switch to the [GitHub UI path](07b-your-first-workflow-ui.md).
 
 ## 🎯 What You'll Do
 
@@ -45,7 +46,7 @@ Open `.github/workflows/hello-agent.md` in your editor.
 </details>
 
 > [!IMPORTANT]
-> This `.md` file is your agent task brief, not the workflow GitHub Actions executes directly. You write the goal in Markdown; `gh aw compile` turns it into the `.lock.yml` workflow file that Actions actually runs.
+> This `.md` file is **not** the workflow GitHub Actions executes. You write the goal in Markdown; `gh aw compile` generates the `.lock.yml` file that Actions actually runs.
 
 ### Add the starter frontmatter
 
@@ -88,6 +89,8 @@ Expected result:
 ```
 
 If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
+
+After this first manual setup, prefer asking an agent to edit workflows with the `agentic-workflows` skill.
 
 Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md).
 
