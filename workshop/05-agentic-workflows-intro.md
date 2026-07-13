@@ -43,6 +43,36 @@ If you want a one-page cheat sheet for Actions power users, read [Side Quest: Ag
 
 Enterprise users (GHEC, GHES, or EMU) who need runner and model access guidance can follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
 
+## 🔍 Spot the agent
+
+Read this short excerpt from a **Hello Agent** workflow run log. The agent's task was:
+_"Find the most recently opened issue and post a greeting comment on it."_
+
+```
+Line 1  🤔 [plan]   I need to find the most recently opened issue in this repository.
+Line 2  🔧 [tool]   github.list_issues  → {state: "open", sort: "created", direction: "desc", per_page: 1}
+Line 3  📥 [result] 1 issue returned: #12 "Add dark mode support" (opened 2 hours ago)
+Line 4  🤔 [plan]   Issue #12 is the most recent. I will post a greeting comment on it.
+Line 5  🔧 [tool]   github.add_comment  → {issue_number: 12, body: "👋 Thanks for opening this issue!"}
+Line 6  📤 [output] safe-output: add-comment  (1 of 1 allowed)
+Line 7  ✅ [done]   Task complete
+```
+
+Answer these three questions by identifying the line number (1–7):
+
+1. Which line shows the agent **reading data from the repository**?
+2. Which line shows the agent **deciding what to do** based on the data it received?
+3. Which line shows the agent **posting the comment** to GitHub?
+
+> [!TIP]
+> **Answers:**
+>
+> 1. **Line 2** — `🔧 [tool] github.list_issues` is the API call that fetches live issue data from the repository.
+> 2. **Line 4** — `🤔 [plan]` after receiving results is where the agent reasons about what it found and chooses its next action.
+> 3. **Line 5** — `🔧 [tool] github.add_comment` is the API call that posts the comment to issue #12.
+>
+> You'll explore every log line type hands-on in [Step 9: Reading Workflow Output](09-understand-output.md).
+
 ## ✅ Checkpoint
 
 - [ ] I can describe what an agentic workflow is in one sentence
