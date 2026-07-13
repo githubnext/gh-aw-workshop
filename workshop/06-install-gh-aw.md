@@ -11,8 +11,8 @@ Use the path that matches your tool before you run any install command:
 
 | I am using… | Do this |
 | --- | --- |
-| **VS Code Copilot extension** | [Check if already installed](#check-if-already-installed) |
-| **GitHub Copilot Cloud Agent (CCA)** | [Open in GitHub Codespaces](https://codespaces.new/githubnext/gh-aw-workshop) |
+| **VS Code Copilot extension** | Start here: [Check if already installed](#check-if-already-installed) |
+| **GitHub Copilot Cloud Agent (CCA)** | Launch now: [Open in GitHub Codespaces](https://codespaces.new/githubnext/gh-aw-workshop) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## GitHub Copilot Cloud Agent walkthrough
