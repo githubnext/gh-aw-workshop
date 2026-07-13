@@ -58,16 +58,18 @@ touch .github/workflows/hello-agent.md
 Open the file in your editor.
 
 <details>
-<summary>🖥️ GitHub UI alternative — create the file in your browser</summary>
+<summary>Path C — Browser / Copilot Chat: create via GitHub web UI</summary>
 
-1. In your repository on GitHub, click **Add file** → **Create new file**.
-2. In the filename box, type: `.github/workflows/hello-agent.md`
-   GitHub creates the `.github/workflows/` directories for you automatically.
-3. Add the workflow content from the sections below directly into the editor.
-4. When you have added all the content, click **Commit new file**.
+1. Open your practice repository on GitHub.com. If `.github/workflows/` already exists, open that folder. If it does not exist yet, stay at the repository root — GitHub will create the path for you in the next step.
+2. Click **Add file** → **Create new file**.
+3. In the filename box, enter `.github/workflows/hello-agent.md`.
+4. Keep the browser editor open and paste in the same workflow content from the sections below so you end up with the same file the terminal path creates.
+5. When the file is complete, scroll to the commit form, keep **Commit directly to the `main` branch** selected, and click **Commit changes**.
 
 > [!TIP]
-> With the UI path you write the complete file first, then commit once at the end. You can skip the individual `gh aw compile` checkpoints in steps 3–5 — those require a terminal. Push once you are done and GitHub Actions will surface any errors when the workflow next runs.
+> With the browser path you write the complete file first, then commit once at the end. You can skip the individual `gh aw compile` checkpoints in steps 3–5 — those require a terminal. GitHub Actions will surface any workflow errors when you run the file in [Step 8](08-run-your-workflow.md).
+> [!NOTE]
+> **Using Copilot Chat / CCA?** You can stay in the browser and ask Copilot Chat to create `.github/workflows/hello-agent.md` with the Step 7 template, then commit it to `main` from the chat panel. Review the proposed diff before you approve the commit.
 
 </details>
 
@@ -199,9 +201,9 @@ git push
 ```
 
 <details>
-<summary>🖥️ GitHub UI alternative</summary>
+<summary>Path C — Browser / Copilot Chat</summary>
 
-If you created the file via the GitHub UI in step 2, it was already committed when you clicked **Commit new file**. No additional push is needed.
+If you followed the browser path above, this step is already done — the same `.github/workflows/hello-agent.md` file is now committed on `main`. No terminal push is needed.
 
 If you edited it afterwards, navigate to the file, click the **pencil icon (✏️)**, make your changes, then click **Commit changes**.
 
