@@ -9,6 +9,11 @@
 > [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
 > Once your Codespace loads, return here and continue with [Check if already installed](#check-if-already-installed).
 
+<!-- Separate adjacent callouts -->
+
+> [!NOTE]
+> **No terminal? Skip this step.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, `gh-aw` runs on GitHub's infrastructure when your workflow executes — no local installation is needed for browser-triggered workflows. Skip to [GitHub UI alternative](#github-ui-alternative) below, then continue to [Step 7](07-your-first-workflow.md).
+
 ## Choose your path
 
 Use the path that matches your tool before you run any install command:
@@ -31,6 +36,25 @@ For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Co
 > you can skip straight to [Check if already installed](#check-if-already-installed).
 
 <!-- -->
+
+## GitHub UI Alternative
+
+For **Path C (UI only)** — Copilot Chat, CCA, or browser-only — you do not need to install `gh-aw` locally. `gh-aw` runs on GitHub's infrastructure when your workflow executes.
+
+**What to do:**
+
+1. Skip the installation steps on this page.
+2. Continue to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md) and create `hello-agent.md` using the [GitHub web editor path](07-your-first-workflow.md#github-web-editor-path).
+3. In [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md), open the **Actions** tab — if **Hello Agent** appears in the workflow list, `gh-aw` is working on GitHub's side. No local installation needed.
+
+**Path C checkpoint for this step:**
+
+- [ ] I understand that Path C (UI only) does not require a local `gh-aw` installation
+- [ ] I will confirm `gh-aw` is working by checking the **Actions** tab in [Step 8](08-run-your-workflow.md)
+
+**Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+
+---
 
 ## 🎯 What You'll Do
 
