@@ -142,5 +142,9 @@ If you're coming from classic GitHub Actions, the shift is simple: keep your exi
 
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I can name at least one way agentic workflows differ from classic GitHub Actions
+- [ ] I navigated to the **Actions** tab in my practice repository and confirmed I can see the workflow list
+
+> [!NOTE]
+> **Enterprise users:** No trigger permission is needed to complete this step — you are only observing the Actions tab. You will not need to trigger a workflow until Step 8.
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
