@@ -15,10 +15,20 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 ## 📋 Before You Start
 
 - Completed [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
-- `.github/workflows/hello-agent.md` is committed and pushed to `main`
 - Your browser is open to your practice repository on GitHub
 
 ## Steps
+
+> [!IMPORTANT]
+> **Before you trigger the run, confirm Step 7 is complete:**
+> - [ ] `hello-agent.md` is committed to your repository
+> - [ ] The file appears under `.github/workflows/` on GitHub.com
+> - [ ] The branch you committed to is `main` (or your default branch)
+>
+> If any box is unchecked, return to [Step 7](07-your-first-workflow.md) and complete it first.
+> CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
+
+<!-- -->
 
 > [!NOTE]
 > You can complete this step entirely from your browser — no terminal or token configuration needed.
