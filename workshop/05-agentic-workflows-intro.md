@@ -2,12 +2,12 @@
 
 ## 📋 Before You Start
 
-**Managed enterprise users (`github.com`, GHEC, or GHES):** Confirm GitHub Copilot Enterprise is enabled for your organization in **Organization settings → Copilot** before continuing.
+**Managed enterprise users (`github.com`, GHEC, or GHES):** Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot → Policies** before continuing.
 
 > [!IMPORTANT]
-> Enterprise or GHES/GHEC user? Review your admin-managed prerequisites before continuing.
+> Managed enterprise or GHES/GHEC user? Review your admin-managed prerequisites before continuing.
 >
-> → [Enterprise setup guide (required for GHES/GHEC users)](side-quest-enterprise-setup.md)
+> → [Enterprise setup guide (required for GHES/GHEC users; helpful for managed enterprise orgs)](side-quest-enterprise-setup.md)
 
 **Enterprise preflight checklist (do this before reading further):**
 
@@ -25,10 +25,11 @@
 >
 > Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account.
 
-Org admins can usually unblock this in under 5 minutes. If you are waiting on that change,
-complete the [enterprise setup guide](side-quest-enterprise-setup.md) now, then read Steps 6 and 7
-to install `gh-aw` and understand your first workflow. Wait to run workflows in Step 8 and later
-until your access is ready.
+Org admins can usually unblock this in under 5 minutes. While you wait:
+
+1. Complete the [enterprise setup guide](side-quest-enterprise-setup.md).
+2. Read Steps 6 and 7 to install `gh-aw` and understand your first workflow.
+3. Wait to run workflows in Step 8 and later until your access is ready.
 
 ---
 
