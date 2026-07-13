@@ -89,13 +89,13 @@ Complete these checks before you choose a setup path:
 >
 > These activities require a terminal:
 >
-> - Step 2a (Codespace setup), Step 2b (local setup), and Steps 3a and 7a
+> - Step 2a (Codespace setup), Step 2b (local setup), Step 3a, and Step 7a
 > - The Step 6 installation
 > - The Terminal builds and Add Wizard in Step 11
 > - Optional `gh aw` commands in Steps 8 and 12
 > - Step 13a and the workflow-reuse activity in Step 14
 >
-> You can skip them on the UI path. Steps 15–21 are not all designed for UI-only completion.
+> You can skip them on the UI path. Steps 15–21 do not have dedicated UI paths and may require terminal access.
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
