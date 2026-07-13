@@ -46,6 +46,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 19 | [19-research-driven-training-node.md](19-research-driven-training-node.md) | Build a Research-Driven Next Training Node | ✅ |
 | 20 | [20-persistent-memory.md](20-persistent-memory.md) | Make Your Workflow Remember Across Runs | ✅ |
 | 21 | [21-inline-sub-agents.md](21-inline-sub-agents.md) | Split Complex Workflows with Inline Sub-Agents | ✅ |
+| 22 | [22-structured-outputs.md](22-structured-outputs.md) | Get Reliable Data Out of Your Agent with Structured Outputs | ✅ |
 
 ## Optional Side Quests
 
@@ -76,6 +77,10 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — step-by-step guide to generating an OpenAI key, storing it as a repository secret, and switching your workflow to `engine: codex`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) — decision guide, full field references, and example task briefs for both `cache-memory` and `repo-memory`; branches from [Step 20](20-persistent-memory.md).
 - [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md) — name rules, block boundary rules, supported frontmatter fields, and model alias table for inline sub-agents; branches from [Step 21](21-inline-sub-agents.md).
+
+## Step 22: Structured Outputs
+
+[Step 22: Get Reliable Data Out of Your Agent with Structured Outputs](22-structured-outputs.md) extends [Step 21](21-inline-sub-agents.md). Learners add a JSON output instruction to their task brief and wire a `run:` step to capture the structured data in `$GITHUB_OUTPUT`, enabling downstream jobs and tools to consume the agent's results programmatically.
 
 ## Getting Started
 
