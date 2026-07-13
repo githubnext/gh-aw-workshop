@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub">
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Title -->
+  <text x="600" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="22" font-weight="600" fill="#24292f">Codespace Environment Architecture</text>
+  <text x="600" y="66" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="14" fill="#57606a">How your browser, the Codespace container, and GitHub connect</text>
+
+  <!-- ======== Browser Panel ======== -->
+  <rect x="30" y="100" width="200" height="380" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="130" y="130" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="14" font-weight="600" fill="#24292f">Your Browser</text>
+
+  <!-- Browser icon -->
+  <rect x="80" y="148" width="100" height="72" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="80" y="148" width="100" height="18" rx="8" fill="#e6edf3"/>
+  <rect x="80" y="158" width="100" height="8" fill="#e6edf3"/>
+  <circle cx="89" cy="157" r="3.5" fill="#cf222e"/>
+  <circle cx="101" cy="157" r="3.5" fill="#bf8700"/>
+  <circle cx="113" cy="157" r="3.5" fill="#1a7f37"/>
+  <rect x="88" y="174" width="84" height="6" rx="2" fill="#d0d7de"/>
+  <rect x="88" y="186" width="60" height="6" rx="2" fill="#d0d7de"/>
+  <rect x="88" y="198" width="72" height="6" rx="2" fill="#d0d7de"/>
+
+  <!-- VS Code / editor chip -->
+  <rect x="72" y="238" width="116" height="30" rx="6" fill="#0969da" opacity="0.12"/>
+  <text x="130" y="258" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" fill="#0969da" font-weight="600">VS Code (browser)</text>
+
+  <!-- Terminal chip -->
+  <rect x="72" y="278" width="116" height="30" rx="6" fill="#1a7f37" opacity="0.12"/>
+  <text x="130" y="298" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" fill="#1a7f37" font-weight="600">Built-in Terminal</text>
+
+  <text x="130" y="360" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">No local installs</text>
+  <text x="130" y="378" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">needed on your machine</text>
+
+  <!-- ======== Arrow Browser → Codespace ======== -->
+  <line x1="230" y1="290" x2="318" y2="290" stroke="#0969da" stroke-width="2" stroke-dasharray="6,3"/>
+  <polygon points="318,286 328,290 318,294" fill="#0969da"/>
+  <text x="274" y="282" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="10" fill="#0969da">HTTPS</text>
+
+  <!-- Arrow Codespace → Browser (return) -->
+  <line x1="318" y1="300" x2="230" y2="300" stroke="#57606a" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="230,296 220,300 230,304" fill="#57606a"/>
+
+  <!-- ======== Codespace Container Panel ======== -->
+  <rect x="330" y="100" width="520" height="380" rx="12" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
+  <!-- Container dashed border label -->
+  <rect x="380" y="90" width="190" height="24" rx="4" fill="#0969da"/>
+  <text x="475" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#ffffff">☁ GitHub Codespace Container</text>
+
+  <text x="590" y="138" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="14" font-weight="600" fill="#24292f">Pre-installed &amp; Pre-authenticated</text>
+
+  <!-- gh CLI box -->
+  <rect x="356" y="158" width="148" height="80" rx="8" fill="#1a7f37" opacity="0.1" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="430" y="180" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#1a7f37">gh CLI</text>
+  <text x="430" y="198" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#1a7f37">v2.40+ pre-installed</text>
+  <text x="430" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#1a7f37">auto-authenticated</text>
+  <text x="430" y="228" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="10" fill="#57606a">✓ ready at launch</text>
+
+  <!-- gh aw extension box -->
+  <rect x="516" y="158" width="148" height="80" rx="8" fill="#8250df" opacity="0.1" stroke="#8250df" stroke-width="1.5"/>
+  <text x="590" y="180" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#8250df">gh aw</text>
+  <text x="590" y="198" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#8250df">extension installed</text>
+  <text x="590" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#8250df">in Step 6</text>
+  <text x="590" y="228" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="10" fill="#57606a">↑ you do this</text>
+
+  <!-- Workshop files box -->
+  <rect x="676" y="158" width="148" height="80" rx="8" fill="#bf8700" opacity="0.1" stroke="#bf8700" stroke-width="1.5"/>
+  <text x="750" y="180" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#bf8700">workshop/</text>
+  <text x="750" y="198" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#bf8700">cloned from your</text>
+  <text x="750" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#bf8700">practice repo</text>
+  <text x="750" y="228" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="10" fill="#57606a">in Step 3</text>
+
+  <!-- Auth token section -->
+  <rect x="356" y="258" width="468" height="60" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="590" y="279" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#24292f">🔑 GITHUB_TOKEN (auto-injected)</text>
+  <text x="590" y="297" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">Scoped to your Codespace — lets</text>
+  <text x="590" y="311" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">gh CLI authenticate without any login steps</text>
+
+  <!-- Terminal section -->
+  <rect x="356" y="332" width="468" height="116" rx="8" fill="#24292f"/>
+  <text x="380" y="354" font-family="monospace" font-size="12" fill="#57606a">$ # Codespace terminal — all workshop commands run here</text>
+  <text x="380" y="374" font-family="monospace" font-size="12" fill="#3fb950">$ gh --version</text>
+  <text x="380" y="390" font-family="monospace" font-size="12" fill="#e6edf3">gh version 2.40.0</text>
+  <text x="380" y="410" font-family="monospace" font-size="12" fill="#3fb950">$ gh auth status</text>
+  <text x="380" y="426" font-family="monospace" font-size="12" fill="#e6edf3">✓ Logged in to github.com</text>
+
+  <!-- ======== Arrow Codespace → GitHub ======== -->
+  <line x1="850" y1="290" x2="938" y2="290" stroke="#0969da" stroke-width="2" stroke-dasharray="6,3"/>
+  <polygon points="938,286 948,290 938,294" fill="#0969da"/>
+  <text x="894" y="282" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="10" fill="#0969da">API / git</text>
+  <line x1="938" y1="300" x2="850" y2="300" stroke="#57606a" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="850,296 840,300 850,304" fill="#57606a"/>
+
+  <!-- ======== GitHub Panel ======== -->
+  <rect x="960" y="100" width="210" height="380" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="1065" y="130" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="14" font-weight="600" fill="#24292f">GitHub</text>
+
+  <!-- GitHub services chips -->
+  <rect x="988" y="148" width="154" height="32" rx="6" fill="#0969da" opacity="0.12"/>
+  <text x="1065" y="169" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#0969da">Your Repository</text>
+
+  <rect x="988" y="192" width="154" height="32" rx="6" fill="#1a7f37" opacity="0.12"/>
+  <text x="1065" y="213" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#1a7f37">GitHub Actions</text>
+
+  <rect x="988" y="236" width="154" height="32" rx="6" fill="#8250df" opacity="0.12"/>
+  <text x="1065" y="257" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#8250df">Copilot API</text>
+
+  <rect x="988" y="280" width="154" height="32" rx="6" fill="#bf8700" opacity="0.12"/>
+  <text x="1065" y="301" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="12" font-weight="600" fill="#bf8700">REST / GraphQL API</text>
+
+  <text x="1065" y="360" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">All workshop commands</text>
+  <text x="1065" y="378" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">communicate through</text>
+  <text x="1065" y="396" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="11" fill="#57606a">these services</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="516" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="13" fill="#57606a">The Codespace container is your development environment — pre-configured so you can focus on learning agentic workflows, not setup.</text>
+</svg>

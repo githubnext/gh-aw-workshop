@@ -60,6 +60,10 @@ GitHub will spin up a container with everything you need for the workshop alread
 
 ### Verify your Codespace is ready
 
+The diagram below shows what's inside your Codespace and how it connects to GitHub — everything is pre-installed and pre-authenticated so you can focus on the workshop.
+
+![Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub](images/02a-codespace-architecture.svg)
+
 Run these commands in the Codespace terminal:
 
 ```bash
