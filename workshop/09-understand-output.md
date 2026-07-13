@@ -106,7 +106,7 @@ If the comment exists but the content is wrong, the agent followed your instruct
 | Long `[plan]` chains with no `[tool]` calls | Ambiguous task brief | Clarify or simplify the instructions in your workflow body |
 | `[tool]` calls that return empty results | Missing `permissions:` scope or filters too narrow | Add the required scope; loosen filters |
 | `safe-output: BLOCKED (limit reached)` | Agent exceeded `max:` write limit | Raise `max:` or add a "post only once" guideline |
-| Run fails with `permission denied` | Scope not declared in `permissions:` | Add the missing scope (e.g., `issues: write`) |
+| Run fails with `permission denied` | Missing read scope or missing `safe-outputs:` entry | Add the read scope you need (for example, `issues: read`) or declare the write action in `safe-outputs:` |
 | Summary says "done" but nothing was written | Write condition not met, or `safe-outputs:` block missing | Tighten the condition or add a `safe-outputs:` entry |
 
 > [!TIP]
