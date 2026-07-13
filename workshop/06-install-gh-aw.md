@@ -1,12 +1,21 @@
 # Step 6: Install the gh-aw CLI Extension
 
-## Open a Codespace first (GitHub Copilot Cloud Agent users)
+> [!IMPORTANT]
+> **No terminal open yet?** If you're using the **GitHub Copilot Cloud Agent (CCA)** or prefer a browser, launch a Codespace first:
+> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
+> Once your Codespace loads, return here and continue with [Check if already installed](#check-if-already-installed).
 
-If you're using the **GitHub Copilot Cloud Agent (CCA)** and don't have a terminal open yet, use this button:
+## Choose your path
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
+Use the path that matches your tool before you run any install command:
 
-Then return to this page and continue with [Install from terminal](#install-from-terminal).
+| I am using… | Do this |
+| --- | --- |
+| **VS Code Copilot extension** | Start here: [Check if already installed](#check-if-already-installed) |
+| **GitHub Copilot Cloud Agent (CCA)** | Use the callout above, then [Check if already installed](#check-if-already-installed) |
+| Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
+
+## GitHub Copilot Cloud Agent walkthrough
 
 For a browser-first walkthrough, see [Side Quest: Use `gh-aw` with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md).
 
@@ -39,16 +48,6 @@ gh auth status
 ```
 
 Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready) or [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
-
-## Choose your path
-
-Use the path that matches your tool before you run any install command:
-
-| I am using… | Do this |
-| --- | --- |
-| Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| **GitHub Copilot Cloud Agent (CCA)** | [Open a Codespace for CCA users](#open-a-codespace-for-cca-users) |
-| Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
 ## Check if already installed
 
