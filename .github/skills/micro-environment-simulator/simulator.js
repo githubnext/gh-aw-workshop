@@ -1,6 +1,7 @@
 "use strict";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
+const RUN_INDEX_SEED_FACTOR = 31;
 
 const VALID_TERMINALS = {
   macos: new Set(["bash", "zsh"]),
@@ -54,9 +55,9 @@ function cloneState(state) {
   return JSON.parse(JSON.stringify(state));
 }
 
-function defaultEnvironmentForStudent(student, dayOfYear) {
+function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const id = Number(student.id || 0);
-  const seed = id * 97 + dayOfYear * 17;
+  const seed = id * 97 + dayOfYear * 17 + runIndex * RUN_INDEX_SEED_FACTOR;
   const background = String(student.background || "");
   const level = String(student.level || "");
 
@@ -220,6 +221,49 @@ function simulateStudents(students, date, config = {}) {
   }));
 }
 
+function simulateStudentsMonteCarlo(students, date, config = {}, runsCount = 100) {
+  const dayOfYear = toDayOfYear(date);
+  return students.map((student) => {
+    let successes = 0;
+    const failuresByStep = {};
+
+    for (let runIndex = 0; runIndex < runsCount; runIndex++) {
+      const initialState =
+        typeof config.initialStateForStudentAndRun === "function"
+          ? config.initialStateForStudentAndRun(student, date, runIndex)
+          : typeof config.initialStateForStudent === "function"
+          ? config.initialStateForStudent(student, date)
+          : defaultEnvironmentForStudent(student, dayOfYear, runIndex);
+
+      const result = replayJourney({
+        student,
+        date,
+        initialState,
+        steps: config.steps || [],
+        transitions: config.transitions || {}
+      });
+
+      if (result.success) {
+        successes += 1;
+      } else if (result.firstFailingStep) {
+        failuresByStep[result.firstFailingStep] =
+          (failuresByStep[result.firstFailingStep] || 0) + 1;
+      }
+    }
+
+    const sortedFailures = Object.entries(failuresByStep).sort(([, a], [, b]) => b - a);
+    return {
+      studentId: student.id,
+      name: student.name,
+      runs: runsCount,
+      successes,
+      successRate: successes / runsCount,
+      failuresByStep,
+      mostCommonFailureStep: sortedFailures.length > 0 ? sortedFailures[0][0] : null
+    };
+  });
+}
+
 function parseArgs(argv) {
   const args = {};
   for (let i = 2; i < argv.length; i += 1) {
@@ -228,6 +272,7 @@ function parseArgs(argv) {
     else if (arg === "--date") args.date = argv[++i];
     else if (arg === "--out") args.outPath = argv[++i];
     else if (arg === "--journey") args.journeyPath = argv[++i];
+    else if (arg === "--runs") args.runsCount = parseInt(argv[++i], 10);
   }
   return args;
 }
@@ -235,7 +280,7 @@ function parseArgs(argv) {
 function runCli() {
   const fs = require("node:fs");
   const path = require("node:path");
-  const { studentsPath, date, outPath, journeyPath } = parseArgs(process.argv);
+  const { studentsPath, date, outPath, journeyPath, runsCount } = parseArgs(process.argv);
   if (!studentsPath) {
     throw new Error("Missing required --students <path> argument.");
   }
@@ -261,11 +306,39 @@ function runCli() {
     );
   }
 
-  const results = {
-    date: today,
-    total: students.length,
-    results: simulateStudents(students, today, { steps, transitions })
-  };
+  let results;
+  if (runsCount && runsCount > 1) {
+    const monteCarlo = simulateStudentsMonteCarlo(students, today, { steps, transitions }, runsCount);
+    const dropoutRateByStep = {};
+    for (const sr of monteCarlo) {
+      for (const [step, count] of Object.entries(sr.failuresByStep)) {
+        dropoutRateByStep[step] = (dropoutRateByStep[step] || 0) + count;
+      }
+    }
+    const totalRuns = students.length * runsCount;
+    for (const step of Object.keys(dropoutRateByStep)) {
+      dropoutRateByStep[step] = dropoutRateByStep[step] / totalRuns;
+    }
+    results = {
+      date: today,
+      mode: "monte-carlo",
+      runs: runsCount,
+      total: students.length,
+      monteCarlo,
+      aggregate: {
+        overallSuccessRate:
+          monteCarlo.reduce((sum, r) => sum + r.successRate, 0) / monteCarlo.length,
+        dropoutRateByStep
+      }
+    };
+  } else {
+    results = {
+      date: today,
+      mode: "single",
+      total: students.length,
+      results: simulateStudents(students, today, { steps, transitions })
+    };
+  }
 
   const output = JSON.stringify(results, null, 2);
   if (outPath) {
@@ -284,7 +357,8 @@ const exportedApi = {
   defaultEnvironmentForStudent,
   replayJourney,
   replayWorkshop,
-  simulateStudents
+  simulateStudents,
+  simulateStudentsMonteCarlo
 };
 
 module.exports = exportedApi;
