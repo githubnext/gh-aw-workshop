@@ -33,197 +33,78 @@ _Starting with the right setup saves you from frustrating detours later._
 > [!TIP]
 > **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)
 
-<!-- -->
-
-> [!TIP]
-> **Already have `gh` set up?** Run `gh auth status && gh extension list` — if `gh-aw` appears in the list, your CLI is ready. (Copilot access is verified later.) Skip to [Step 3](03-create-your-repo.md).
-
 ## ✅ Required pre-flight checks
 
-Complete these checks before you choose a setup path:
+Complete these checks before you choose your path:
 
-- [ ] **Enterprise users:** You've reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
-- [ ] You know whether you'll use a local terminal, a GitHub Codespace, or the GitHub UI-only path
-- [ ] If you're using your own terminal, run `gh --version` now and confirm `gh` CLI ≥ 2.40
-- [ ] If you choose a Codespace, you'll run `gh --version` in [Adventure A](02a-setup-codespace.md) right after the Codespace opens
-- [ ] If you're on GHEC, GHES, or EMU, you completed the enterprise prerequisite check above
-
-> [!NOTE]
-> **First time with GitHub Actions?**
-> You do not need to understand GitHub Actions in depth to complete this workshop.
-> The one thing to know now: you will trigger your workflow from the **GitHub Actions tab in your browser** — no terminal commands required.
-> Steps 2 (Setup) and 8 (Run Your Workflow) will walk you through exactly what to click.
-> If you want a 5-minute background, [Step 4](04-github-actions-intro.md) covers it.
-
-<!-- -->
-
-> [!NOTE]
-> If you're using your own terminal and `gh` is not yet installed, skip to the [Install the gh CLI](#steps) section below, then return here. If you're planning to use a Codespace, skip the local install commands and continue to [Adventure A](02a-setup-codespace.md). Authentication (`gh auth login`) is handled in your chosen setup path.
-
-<!-- -->
-
-> [!TIP]
-> **Advanced user fast-track**
-> Already know GitHub Actions and the `gh` CLI? Jump to [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md) to skip environment setup.
->
-> If you already have `gh` installed and authenticated in the environment you'll use for the workshop, you can skip Steps 1–4. Confirm these before jumping ahead:
-> - [ ] `gh` CLI ≥ 2.40 is available — run `gh --version`
-> - [ ] You have a GitHub repository to work in — create one at [github.com/new](https://github.com/new) if needed
-> - [ ] `gh auth status` shows a logged-in account
-> - [ ] Copilot license + model access are enabled for this account (`gh copilot --version` or **Settings → Copilot**)
-> **What Steps 2–4 cover:** Step 2 sets up your development environment (Codespace or local terminal), Step 3 walks you through creating a practice repository, and Step 4 gives a short primer on GitHub Actions.
-> After Step 5, continue to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
+- [ ] You can sign in to GitHub with the account you'll use for the workshop
+- [ ] You know whether you'll use a Codespace, a local terminal, or the GitHub UI path
+- [ ] If you chose a local terminal path, `gh --version` reports GitHub CLI 2.40+
+- [ ] If you chose a local terminal path, `git --version` works
+- [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 
 ## 🔀 Choose Your Setup Path
 
-> [!NOTE]
-> **Can I do this workshop without a terminal?**
->
-> **Yes.** The GitHub UI path lets you complete the main workshop through Step 14 in your browser:
->
-> - Skip the terminal setup in Steps 2a/2b and start with [Step 3b](03b-create-your-repo-ui.md)
-> - Use the GitHub UI alternative in Step 6 and choose Step 7b
-> - Complete Steps 8–10, then choose the GitHub UI options in Steps 11–13
->
-> You won't install or run the `gh aw` CLI locally, but you will trigger and watch a real agentic workflow run from the Actions tab in Step 8.
->
-> These activities require a terminal:
->
-> - Step 2a (Codespace setup), Step 2b (local setup), Step 3a, and Step 7a
-> - The Step 6 installation
-> - The Terminal builds and Add Wizard in Step 11
-> - Optional `gh aw` commands in Steps 8 and 12
-> - Step 13a and the workflow-reuse activity in Step 14
->
-> You can skip them on the UI path. Steps 15–21 do not have dedicated UI paths and may require terminal access.
+Pick one path now, then follow that file:
+
+| If you are... | Continue with... |
+|---|---|
+| New to coding, using a school/shared machine, or want the quickest start | [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
+| Comfortable with local tooling and terminal setup | [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
+| Working entirely in the GitHub web UI | [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md) |
+
+If you are unsure, start with a Codespace. It gives you a ready-to-use environment, and you can switch later by returning to [Step 1](01-prerequisites.md) and following another path link.
+
+If you choose the GitHub UI path, you can complete the main workshop steps in your browser and still run a real workflow from the Actions tab in [Step 8](08-run-your-workflow.md).
+
+If you are new to GitHub Actions, that is fine. You will trigger runs from the **Actions** tab with guided steps in this workshop. [Step 4](04-github-actions-intro.md) gives a short background when you want it.
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
-> [!IMPORTANT]
-> **Not sure where to begin? Pick your path now:**
->
-> | I am… | Go to… |
-> |-------|--------|
-> | New to coding or the terminal — or on a shared/school machine | ➡️ [Adventure A: Codespace (**recommended for beginners**)](02a-setup-codespace.md) — nothing to install, runs in your browser |
-> | Comfortable with my terminal and local installs | ➡️ [Adventure B: Local Setup](02b-setup-local.md) |
-> | Working entirely in the GitHub web UI | ➡️ [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md) — skip terminal setup |
->
-> If you're unsure, **start with the Codespace path** — you can always switch later.
-
-### Which setup path is right for me?
-
-> [!IMPORTANT]
-> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
-
-Use this profile guide to choose the fastest route:
-
-| Learner profile | Recommended setup path |
-|------|------|
-| **New to GitHub / no coding background** | ➡️ **Adventure A**: [Set Up a Codespace](02a-setup-codespace.md) (**strongly recommended**) — your GitHub account is enough to get started |
-| **Web/backend developer** | ➡️ **Adventure A** or **B**: [Set Up a Codespace](02a-setup-codespace.md) or [Set Up Your Local Terminal](02b-setup-local.md) — choose the environment you prefer |
-| **DevOps / advanced** | ➡️ **Adventure B**: [Set Up Your Local Terminal](02b-setup-local.md) — recommended if you're already fluent with `gh` CLI workflows |
-
-In [Step 8](08-run-your-workflow.md), you'll trigger a workflow from the GitHub Actions tab — you don't need a terminal for that step.
-
-If you're taking the beginner-friendly Codespaces path, bookmark your repository's Actions URL as soon as you know it (for example, `https://github.com/YOUR-USERNAME/YOUR-REPO/actions`) so it's easy to open again in Step 8.
-
 ## 🎯 What You'll Do
 
-You'll confirm that you have everything required before writing a single line of workflow code. By the end of this step you'll know which setup path to follow — Codespace or local terminal — and you'll be ready to move forward.
+In this step, you confirm your account and tool prerequisites, then choose your setup path. After this, you continue directly to the matching setup instructions instead of doing setup work here.
 
 ## Steps
 
-### Confirm required vs optional prerequisites
+### Confirm account access
 
-- ✅ **Required:** access to GitHub.com
-- ✅ **Required for the Terminal path:** a local terminal or GitHub Codespace with `gh` CLI ≥ 2.40
-- ✅ **Required (local terminal path):** Git (`git --version`)
+Sign in at [github.com](https://github.com). If you do not have an account yet, create one at [github.com/join](https://github.com/join).
 
-If you chose the **local terminal path** and `gh` is missing there, install it using one of these one-liners:
+### Confirm local tools (only if using Adventure B)
 
-> **Why this matters:** `gh-aw` is a `gh` CLI extension — it cannot run without `gh` installed. On the Terminal path, skipping this step means the `gh aw` command in Step 6 will not exist and the workshop will stall there.
-
-#### macOS (Homebrew)
+If you plan to use your own computer, run:
 
 ```bash
-brew install gh
-```
-
-#### Ubuntu/Debian
-
-```bash
-sudo apt install gh
-```
-
-#### Windows (winget)
-
-```powershell
-winget install GitHub.cli
-```
-
-Full installation docs: [cli.github.com](https://cli.github.com)
-
-> [!NOTE]
-> **Planning to use a Codespace?** Skip the local install commands entirely.
-> Open a [GitHub Codespace](02a-setup-codespace.md) from your browser: it comes with `gh` ≥ 2.40 and Git pre-installed, and `gh` is often already authenticated. Still run `gh auth status` to verify before you continue.
-> ➡️ **[Adventure A: Set Up a Codespace](02a-setup-codespace.md)**
-
-### Check your GitHub account
-
-You need a **free GitHub account**. If you don't have one yet, create it at [github.com/join](https://github.com/join).
-
-> [!NOTE]
-> You don't need a paid plan. Everything in this workshop works with a free GitHub account.
-
-<!-- -->
-
-> [!TIP]
-> You'll authenticate `gh` with `gh auth login` as part of your chosen setup path — [Adventure A: Set Up a Codespace](02a-setup-codespace.md) or [Adventure B: Set Up Your Local Terminal](02b-setup-local.md). You don't need to do it here.
-
-### Verify Git is available (local path only)
-
-If you plan to work on your own computer, make sure Git is installed:
-
-```bash
+gh --version
 git --version
 ```
 
-You should see something like `git version 2.x.x`. If you see an error, download Git from [git-scm.com](https://git-scm.com).
+If `gh` is missing, install it from [cli.github.com](https://cli.github.com), re-run `gh --version`, then continue in [Adventure B](02b-setup-local.md) for full local setup.
+If both commands work, continue in [Adventure B](02b-setup-local.md).
 
-> [!TIP]
-> If you'd rather skip Git setup entirely, use the Codespace path — it comes with Git and everything else pre-installed.
+Need extra help before Step 2?
 
-Need a quick terminal primer before continuing?
+- [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)
+- [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)
 
-➡️ **[Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)** — an optional walkthrough for opening a terminal, navigating folders, reading command output, and running your first practice commands.
+### Continue to your path file
 
+Continue with exactly one of these paths:
 
-### Know what's coming
-
-Here's a quick summary of the environments and tools you'll use in this workshop:
-
-| Environment or tool | What it does |
-|------|-------------|
-| **GitHub Codespaces** | Browser-based development environment with a ready-to-use terminal |
-| **Visual Studio Code** | Editor interface you'll use in Codespaces (or locally if you prefer) |
-| **Terminal + `gh` CLI** | Where you run GitHub commands during setup and workflow authoring |
-| **`gh-aw` CLI extension** | Adds agentic workflow commands to the `gh` CLI — installed in [Step 6](06-install-gh-aw.md) |
-| **GitHub Copilot CLI** | Optional AI assistant in your terminal for command and workflow help |
-| **GitHub Actions** | Runs your automated workflows in the cloud |
-
-Need a quick glossary with official docs links?
-➡️ **[Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)**
+- **Adventure A (Codespace):** open a Codespace and verify preinstalled tools in [02a-setup-codespace.md](02a-setup-codespace.md).
+- **Adventure B (Local):** install or verify local prerequisites and authentication in [02b-setup-local.md](02b-setup-local.md).
+- **GitHub UI path:** skip terminal setup and continue in [03b-create-your-repo-ui.md](03b-create-your-repo-ui.md).
 
 ## ✅ Checkpoint
 
-- [ ] **Enterprise users:** You've reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
-- [ ] You have a GitHub account and can sign in
-- [ ] For the Terminal path, `gh` CLI ≥ 2.40 is available and authenticated
-- [ ] Copilot license + model access are verified (`gh copilot --version` or **Settings → Copilot**)
-- [ ] You've decided whether to use Codespaces, a local terminal, or the GitHub UI
-- [ ] You know which file to open next
+- [ ] **If you're on GHEC, GHES, or EMU:** You reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment meets the enterprise requirements
+- [ ] You can sign in to GitHub with the account you'll use for the workshop
+- [ ] You chose one path: Codespace (02a), Local (02b), or GitHub UI (03b)
+- [ ] If using Local (02b), `gh` CLI 2.40+ and Git are available
+- [ ] You know which file you will open next
 
-**Next:** Follow the link above for your chosen path — [Adventure A](02a-setup-codespace.md), [Adventure B](02b-setup-local.md), or the [GitHub UI path](03b-create-your-repo-ui.md).
+**Next:** Open your selected path file now — [Adventure A](02a-setup-codespace.md), [Adventure B](02b-setup-local.md), or [Step 3b](03b-create-your-repo-ui.md).
 
 ## 📚 See Also
 
