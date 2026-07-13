@@ -98,7 +98,7 @@ steps:
     run: |
       mkdir -p /tmp/gh-aw/agent/sim/data
       python3 <<'PY'
-      import json, pathlib, re
+      import json, pathlib, re, statistics
 
       workshop = pathlib.Path('workshop')
       if not workshop.is_dir():
@@ -110,11 +110,73 @@ steps:
               ef.write('WORKSHOP_STEP_COUNT=0\n')
           exit(0)
 
-      def extract_title(f):
-          for line in f.read_text().splitlines():
+      CHECKPOINT_RE = re.compile(r'##\s+✅\s*Checkpoint', re.IGNORECASE)
+      CHECKLIST_RE = re.compile(r'^\s*-\s+\[[ xX]\]', re.MULTILINE)
+      CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
+      CALLOUT_RE = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
+      NUMBERED_HDR_RE = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
+
+      def extract_title(raw, fallback):
+          for line in raw.splitlines():
               if line.startswith('# '):
                   return line[2:].strip()
-          return f.stem
+          return fallback
+
+      def fk_grade(text):
+          words = re.findall(r"[a-zA-Z']+", text)
+          sentences = max(1, len(re.findall(r'[.!?]+', text)))
+          syllables = sum(max(1, len(re.findall(r'[aeiouAEIOU]+', w))) for w in words)
+          if not words:
+              return 0.0
+          return round(0.39 * (len(words) / sentences) + 11.8 * (syllables / len(words)) - 15.59, 1)
+
+      def quality_metrics_for(raw, file_name, title):
+          prose = CODE_FENCE_RE.sub('', raw)
+          words = len(re.findall(r"[a-zA-Z']+", prose))
+          code_blocks = len(CODE_FENCE_RE.findall(raw))
+          checklist_items = len(CHECKLIST_RE.findall(raw))
+          has_checkpoint = bool(CHECKPOINT_RE.search(raw))
+          callout_count = len(CALLOUT_RE.findall(raw))
+          numbered_headings = len(NUMBERED_HDR_RE.findall(raw))
+          fk = fk_grade(prose)
+          activity_density = round((code_blocks + checklist_items) / max(1, words / 100), 2)
+
+          cognitive_load = round(max(0, 10 - max(0, (words - 800) / 100)), 1)
+          readability = 10.0 if 8 <= fk <= 12 else round(max(0, 10 - abs(fk - 10) * 0.8), 1)
+          active_learning = round(min(10, activity_density * 3.3), 1)
+          checkpoint_quality = 0.0 if not has_checkpoint else round(min(10, checklist_items * 2.5), 1)
+          style_compliance = round(max(0, 10 - (numbered_headings * 2 + max(0, callout_count - 3) * 1.5)), 1)
+
+          dimensions = {
+              'cognitive_load': cognitive_load,
+              'readability': readability,
+              'active_learning': active_learning,
+              'checkpoint_quality': checkpoint_quality,
+              'style_compliance': style_compliance,
+          }
+          weights = {
+              'cognitive_load': 2.0,
+              'readability': 1.5,
+              'active_learning': 2.0,
+              'checkpoint_quality': 2.0,
+              'style_compliance': 1.0,
+          }
+          weighted = sum(dimensions[k] * weights[k] for k in dimensions)
+          overall = round(weighted / sum(weights.values()), 2)
+
+          return {
+              'file': file_name,
+              'title': title,
+              'word_count': words,
+              'fk_grade': fk,
+              'activity_density': activity_density,
+              'has_checkpoint': has_checkpoint,
+              'checklist_items': checklist_items,
+              'callout_count': callout_count,
+              'numbered_headings': numbered_headings,
+              'dim_scores': dimensions,
+              'overall_score': overall,
+          }
 
       def sort_key(name):
           """Sort workshop filenames in curriculum order.
@@ -135,11 +197,21 @@ steps:
       main_steps = [f for f in all_files if not f.name.startswith('side-quest')]
       side_quests = [f for f in all_files if f.name.startswith('side-quest')]
 
-      curriculum = [
-          {'index': i, 'file': f.name, 'title': extract_title(f)}
-          for i, f in enumerate(main_steps)
-      ]
-      side_quest_list = [{'file': f.name, 'title': extract_title(f)} for f in side_quests]
+      curriculum = []
+      quality_metrics = []
+      for i, f in enumerate(main_steps):
+          raw = f.read_text(encoding='utf-8')
+          title = extract_title(raw, f.stem)
+          curriculum.append({'index': i, 'file': f.name, 'title': title})
+          quality_metrics.append(quality_metrics_for(raw, f.name, title))
+
+      side_quest_list = []
+      for f in side_quests:
+          raw = f.read_text(encoding='utf-8')
+          side_quest_list.append({'file': f.name, 'title': extract_title(raw, f.stem)})
+
+      quality_mean = round(statistics.mean([m['overall_score'] for m in quality_metrics]), 2) if quality_metrics else 0.0
+      lowest_quality = min(quality_metrics, key=lambda m: m['overall_score']) if quality_metrics else None
 
       data = {
           'main_steps': curriculum,
@@ -147,12 +219,24 @@ steps:
           'step_count': len(curriculum),
       }
       pathlib.Path('/tmp/gh-aw/agent/sim/data/curriculum.json').write_text(json.dumps(data, indent=2))
+      pathlib.Path('/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json').write_text(
+          json.dumps({
+              'generated_from': 'workshop-student-simulator',
+              'total_steps': len(quality_metrics),
+              'mean_overall_score': quality_mean,
+              'lowest_quality_step': lowest_quality,
+              'steps': quality_metrics,
+          }, indent=2)
+      )
 
       import os
       env_file = os.environ['GITHUB_ENV']
       with open(env_file, 'a') as ef:
           ef.write(f"WORKSHOP_STEP_COUNT={len(curriculum)}\n")
       print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests")
+      print(f"Curriculum quality mean score: {quality_mean}")
+      if lowest_quality:
+          print(f"Lowest quality step: {lowest_quality['file']} ({lowest_quality['overall_score']}/10)")
       for entry in curriculum:
           print(f"  [{entry['index']}] {entry['file']}: {entry['title']}")
       PY
@@ -195,6 +279,8 @@ Read `/tmp/gh-aw/agent/sim/data/curriculum.json`. It contains:
 
 Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, and `title` is the heading extracted from that file. Do not rely on any previously known or hardcoded list of steps.
 
+Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `style_compliance`). Use this data to ground dropout analysis and repair recommendations.
+
 The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main steps** (plus side quests listed in `curriculum.json`).
 
 ---
@@ -225,7 +311,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 41 students**, simulate their experience step-by-step using the following rules:
 
-First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read `curriculum.json`, inspect the most instruction-heavy workshop files for those steps, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content.
+First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`, inspect the most instruction-heavy workshop files for those steps, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content and quality metrics.
 
 Use this JSON shape:
 
@@ -354,6 +440,7 @@ Use the pre-computed values from `monte-carlo-replay.json` as the primary data s
 - **Success rate by personality** — group `monteCarlo` entries by student personality and average `successRate`
 - **Success rate by UI preference** — compare average `successRate` for students where `ui_preferred: true` vs `ui_preferred: false`
 - **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`)
+- **Curriculum quality hotspots** — correlate top-dropout steps with low `overall_score` and weak rubric dimensions from `curriculum-quality-metrics.json`
 - **Improvement opportunities** — specific, actionable suggestions for each top dropout step
 
 ### Update student profiles
@@ -386,6 +473,7 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 - Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
 - Overall success rate: XX% (from `aggregate.overallSuccessRate`)
 - Highest-dropout step: <step-id> (XX% dropout rate)
+- Lowest curriculum quality step: `<file>` (overall score X.X/10)
 
 ### Critical Findings
 1. 2-4 bullets with the most important blockers and who they affect.
@@ -399,6 +487,13 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 <summary>Dropout by step</summary>
 
 Table with: step, dropouts, dropout rate, top reason.
+
+</details>
+
+<details>
+<summary>Curriculum quality metrics</summary>
+
+Table with: step file, overall score, lowest rubric dimension, recommended repair focus.
 
 </details>
 
