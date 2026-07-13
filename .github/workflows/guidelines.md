@@ -45,6 +45,38 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Node.js is incidentally present in Codespaces but learners must never be told they need to install or verify it.
 - If a step currently references Node.js, remove that reference and update any associated checkpoint items.
 
+## UI/CLI split path
+
+Steps that involve file creation or editing must support two named paths. Use the exact headings and labels below so learners can navigate consistently.
+
+### Named paths
+
+- **Terminal path** — the learner has a terminal open (Codespace or local). They create files with shell commands, compile with `gh aw compile`, and push with `git`.
+- **GitHub UI path** — the learner works entirely in the browser. They create and edit files using the GitHub web editor, paste complete file content, and commit directly from the browser.
+
+### Heading convention
+
+Use `###` section headings that state both the path name and the action, separated by an em dash:
+
+```
+### Terminal path — <action>
+### GitHub UI path — <action>
+```
+
+Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do not use lowercase (`terminal path`) or alternate labels (`CLI path`, `browser path`).
+
+### Structure rules
+
+- Place the **Terminal path** section before the **GitHub UI path** section for the same action.
+- For the GitHub UI path, always provide the complete file content in a copy-paste block so learners can paste once and commit.
+- For the Terminal path, guide learners to build incrementally and compile after each section: `gh aw compile <file>`. Recommend the `--watch` flag as an alternative: `gh aw compile <file> --watch` keeps a second terminal compiling on save for continuous feedback.
+- After the split sections, add a short bridging paragraph that calls out what each path skips (for example, the UI path skips `gh aw compile` checkpoints).
+
+### Compile checkpoints
+
+- Skip `gh aw compile` checkpoints for UI-path learners — compilation happens implicitly when GitHub Actions runs the workflow.
+- For Terminal-path learners, place a compile checkpoint after each meaningful addition to the workflow file.
+
 ## Consistency check
 
 Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, and do not reference Node.js as a prerequisite.
