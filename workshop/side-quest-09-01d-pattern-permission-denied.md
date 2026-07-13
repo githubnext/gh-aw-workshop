@@ -15,7 +15,11 @@ When a log shows `permission denied`, the agent tried an operation outside the w
 
 Do not treat `permissions:` as a write switch. In this framework, write intent is controlled by `safe-outputs:`. Keep both controls minimal: only scopes and outputs your workflow truly needs.
 
-A quick check: if the failing call changes GitHub state, inspect `safe-outputs:` first. If the call only retrieves data, inspect `permissions:` first. If you want a second set of eyes, ask the `agentic-workflows` skill to validate your frontmatter.
+A quick check:
+
+- If the failing call changes GitHub state, inspect `safe-outputs:` first.
+- If the call only retrieves data, inspect `permissions:` first.
+- If you want a second set of eyes, ask the `agentic-workflows` skill to validate your frontmatter.
 
 ## Hands-On Exercise
 

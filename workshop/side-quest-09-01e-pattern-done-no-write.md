@@ -16,7 +16,7 @@ Start with three checks:
 2. Confirm a matching write action exists in `safe-outputs:`.
 3. Confirm your instructions define what to do when no condition matches.
 
-To avoid silent no-write outcomes, include explicit fallback behavior such as: "If no incidents are found, post one status comment saying no action is required." This still gives users a visible heartbeat and proves the workflow ran.
+To avoid silent no-write outcomes, include explicit fallback behavior such as: "If no incidents are found, post one status comment saying no action is required." This still gives users a visible status indicator and proves the workflow ran.
 
 If you are unsure how to phrase conditions, ask the `agentic-workflows` skill to rewrite the conditional language, or iterate with `gh aw compile --watch`.
 

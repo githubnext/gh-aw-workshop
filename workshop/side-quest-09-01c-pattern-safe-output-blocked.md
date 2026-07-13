@@ -15,7 +15,9 @@ You will learn how to interpret blocked writes and choose between increasing all
 
 Treat `max` as a safety boundary, not a convenience setting. A low limit reduces accidental spam if instructions are interpreted too broadly.
 
-When changing behavior, prefer precise workflow guidance like "Post one comment per run. If a comment already exists today, update context in memory and skip writing." If you need help with that wording, ask the `agentic-workflows` skill or iterate quickly with `gh aw compile --watch`.
+When changing behavior, prefer precise workflow guidance like "Post one comment per run. If a comment already exists today, update context in memory and skip writing."
+
+If you need help with wording, ask the `agentic-workflows` skill or iterate quickly with `gh aw compile --watch`.
 
 ## Hands-On Exercise
 

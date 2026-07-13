@@ -12,7 +12,7 @@ When you see many consecutive `[plan]` lines and no `[tool]` line, the agent is 
 
 Use this structure in your brief:
 
-- Start action: "Call `github.list_issues` with `state: open`."
+- Start action: "Call `github.list_issues` to list open issues."
 - Ranking rule: "Sort by reactions and pick the top item."
 - Output rule: "Post one comment that includes the selected issue URL and reason."
 
