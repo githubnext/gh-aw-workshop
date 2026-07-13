@@ -45,19 +45,11 @@ gh aw run hello-agent
 
 If you're using a Codespace, run `gh auth status` and confirm your token includes `actions:write` and `workflows:write` before using `gh aw run`.
 
-#### Troubleshooting: common run failures
+Troubleshooting: common run failures
 
-#### `actions:write` permission error (Codespaces users)
-
-If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Can't resolve this? Use the Actions UI path above instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
-
-#### Workflow not showing in the Actions sidebar
-
-GitHub takes up to 30 seconds to register a newly pushed workflow file. Wait 30 seconds, then refresh the **Actions** tab. If it still doesn't appear, confirm `.github/workflows/hello-agent.md` is committed and pushed to `main`.
-
-#### Run succeeded but no comment or issue was created
-
-Check the run log for the agent's reasoning steps. The agent may have found no open issues to comment on — if your repository has no issues, create one first, then re-run the workflow.
+- **`actions:write` permission error (Codespaces users):** If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Can't resolve this? Use the Actions UI path above instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+- **Workflow not showing in the Actions sidebar:** GitHub takes up to 30 seconds to register a newly pushed workflow file. Wait 30 seconds, then refresh the **Actions** tab. If it still doesn't appear, confirm `.github/workflows/hello-agent.md` is committed and pushed to `main`.
+- **Run succeeded but no comment or issue was created:** Check the run log for the agent's reasoning steps. The agent may have found no open issues to comment on — if your repository has no issues, create one first, then re-run the workflow.
 
 </details>
 
