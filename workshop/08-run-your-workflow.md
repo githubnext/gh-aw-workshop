@@ -14,6 +14,9 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## Steps
 
+> [!NOTE]
+> You can trigger this workflow entirely from your browser — no terminal needed.
+
 ### Trigger manually via GitHub Actions UI
 
 1. In your repository, click the **Actions** tab at the top of the page.
