@@ -71,7 +71,7 @@ You collect open issues that have had no activity in the last 14 days.
 ```
 
 > [!TIP]
-> Keep the collector brief focused entirely on data collection. The simpler the brief, the cheaper and faster the collector run.
+> Keep the collector's brief focused entirely on data collection. The simpler the brief, the cheaper and faster the collector run.
 
 ### Create the reporter workflow
 
@@ -96,7 +96,7 @@ memory:
 Write a brief that instructs the reporter to reason over the snapshot and post a summary:
 
 ```markdown
-You summarise open issues that have gone stale and alert the team.
+You summarize open issues that have gone stale and alert the team.
 
 1. Read the stale issue list from your `stale-snapshot.json` memory.
 2. If the list is empty, do nothing.
