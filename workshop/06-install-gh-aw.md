@@ -14,6 +14,18 @@
 > [!NOTE]
 > **No terminal? Skip this step.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, `gh-aw` runs on GitHub's infrastructure when your workflow executes — no local installation is needed for browser-triggered workflows. Skip to [GitHub UI alternative](#github-ui-alternative) below, then continue to [Step 7](07-your-first-workflow.md).
 
+<!-- Separate adjacent callouts -->
+
+> [!IMPORTANT]
+> **Path C (UI only): skip these sections entirely.** If you are staying in browser-only mode (no terminal), do **not** run or follow:
+> - [Check if already installed](#check-if-already-installed)
+> - [Open a Codespace for CCA users](#open-a-codespace-for-cca-users)
+> - [Install from terminal](#install-from-terminal)
+> - [Confirm installation](#confirm-installation)
+> - [Verify `gh aw` is available](#verify-gh-aw-is-available)
+>
+> Your install path is already handled for this workshop flow: go straight to [GitHub UI Alternative](#github-ui-alternative), then continue to [Step 7](07-your-first-workflow.md).
+
 ## Choose your path
 
 Use the path that matches your tool before you run any install command:
