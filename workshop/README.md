@@ -34,6 +34,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 11c | [11c-build-pr-reviewer.md](11c-build-pr-reviewer.md) | ➡️ Adventure C: Build — PR Code Reviewer | ✅ |
 | 11c | [Terminal](11c-build-pr-reviewer-terminal.md) **or** [GitHub UI](11c-build-pr-reviewer-ui.md) | Adventure C Build Paths | ✅ |
 | 11d | [11d-build-copilot-agents.md](11d-build-copilot-agents.md) | ➡️ Adventure D: Build Any Workflow with GitHub Copilot | ✅ |
+| 11d2 | [11d2-review-and-merge.md](11d2-review-and-merge.md) | ➡️ Adventure D (Part 2): Monitor, Review, and Merge | ✅ |
 | 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
 | 13 | [13-schedule-it.md](13-schedule-it.md) | Schedule It to Run Every Day | ✅ |
 | 13a | [13a-schedule-it-terminal.md](13a-schedule-it-terminal.md) | Terminal Path — Schedule the Workflow | ✅ |
