@@ -1,5 +1,10 @@
 # Step 6: Install the gh-aw CLI Extension
 
+> [!NOTE]
+> **Copilot app / Mobile / UI-only users:** You do not need to install the gh-aw CLI extension. Skip to [Step 7b: GitHub UI Path](07b-your-first-workflow-ui.md).
+
+<!-- Separate adjacent callouts -->
+
 > [!IMPORTANT]
 > **Path reminder:** Keep using the setup path you chose in Step 2.
 > - **Terminal path — Codespace:** continue in your Codespace terminal.
@@ -10,7 +15,7 @@
 <!-- Separate adjacent callouts -->
 
 > [!NOTE]
-> **No terminal? Skip this step.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, `gh-aw` runs on GitHub's infrastructure when your workflow executes — no local installation is needed for browser-triggered workflows. Skip to [GitHub UI alternative](#github-ui-alternative) below, then continue to [Step 7](07-your-first-workflow.md).
+> **No terminal? Skip this step.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, `gh-aw` runs on GitHub's infrastructure when your workflow executes — no local installation is needed for browser-triggered workflows. Skip to [GitHub UI alternative](#github-ui-alternative) below, then continue to [Step 7b: GitHub UI Path](07b-your-first-workflow-ui.md).
 
 <!-- Separate adjacent callouts -->
 
@@ -22,7 +27,7 @@
 > - [Confirm installation](#confirm-installation)
 > - [Verify `gh aw` is available](#verify-gh-aw-is-available)
 >
-> Your install path is already handled for this workshop flow: go straight to [GitHub UI Alternative](#github-ui-alternative), then continue to [Step 7](07-your-first-workflow.md).
+> Your install path is already handled for this workshop flow: go straight to [GitHub UI Alternative](#github-ui-alternative), then continue to [Step 7b: GitHub UI Path](07b-your-first-workflow-ui.md).
 
 ## Choose your path
 
