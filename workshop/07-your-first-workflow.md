@@ -87,7 +87,7 @@ on: # Events that can start this workflow
 permissions: # GitHub token access the agent needs
   contents: read # Read repository contents
   issues: write # Create or comment on issues
-  copilot-requests: write # Required: authenticates the workflow with Copilot
+  copilot-requests: write # Required: allows the workflow to make requests to the Copilot API
 ---
 ```
 
@@ -237,7 +237,7 @@ Complete this check now so you don't hit a silent failure later.
 
 1. Open your repository on GitHub.
 2. Click **Settings** → **Copilot**.
-3. Confirm that Copilot model access shows as enabled for your account or organization.
+3. Confirm that you see an active Copilot plan listed (for example, "Copilot Individual", "Copilot Business", or "Copilot Enterprise"). A green or "Active" status means model access is enabled.
 
 If the **Copilot** entry is absent from **Settings**, your account does not have an active Copilot plan. See [If Copilot is not enabled](#if-copilot-is-not-enabled) below.
 
@@ -249,7 +249,7 @@ Run:
 gh auth status
 ```
 
-You should see `Logged in to github.com as <your-username>` with no errors. Then check your Copilot subscription status at [github.com/settings/copilot](https://github.com/settings/copilot).
+You should see `Logged in to github.com as <your-username>` with no errors. Then check your Copilot subscription status at [github.com/settings/copilot](https://github.com/settings/copilot). You should see an active plan listed (for example, "Copilot Individual", "Copilot Business", or "Copilot Enterprise") — that means model access is ready.
 
 ### If Copilot is not enabled
 
