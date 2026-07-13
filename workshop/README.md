@@ -34,6 +34,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 18 | [18-share-and-reuse.md](18-share-and-reuse.md) | Share and Reuse Your Agentic Workflows | ✅ |
 | 19 | [19-research-driven-training-node.md](19-research-driven-training-node.md) | Build a Research-Driven Next Training Node | ✅ |
 | 20 | [20-persistent-memory.md](20-persistent-memory.md) | Make Your Workflow Remember Across Runs | ✅ |
+| 21 | [21-inline-sub-agents.md](21-inline-sub-agents.md) | Split Complex Workflows with Inline Sub-Agents | ✅ |
 
 ## Optional Side Quests
 
