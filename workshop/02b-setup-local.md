@@ -1,15 +1,7 @@
 # Adventure B: Set Up Your Local Terminal
 
-> [!IMPORTANT]
-> **No terminal? No problem.** If you're using the Copilot app, a mobile device, or prefer the GitHub web UI without opening a terminal at all, skip ahead to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
-
-## 🔀 Choose your path first
-
-| I am… | Go to… |
-|-------|--------|
-| **Browser / Copilot app / Mobile** — no terminal, using GitHub web UI, Copilot app, or mobile | ➡️ [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md) — skip terminal setup entirely |
-| **Codespace user** — browser terminal, no local install | ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md) |
-| **Local terminal user** — prefer my own machine and tools | ✅ You're in the right place — continue below |
+> [!TIP]
+> Not using a terminal? Switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) instead — no local installs required.
 
 ## 🧪 5-question terminal self-assessment
 
@@ -21,26 +13,19 @@ Check each statement:
 - [ ] I know how to read command output and spot errors.
 - [ ] I feel comfortable troubleshooting local install or proxy issues.
 
-> [!IMPORTANT]
-> If any answer is **No** (or **not sure**), switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md). You can finish setup there faster and come back later.
+If any answer is **No**, switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
 ## 🎯 What You'll Do
 
-> [!IMPORTANT]
-> If you run into trouble with any terminal step, switch to a Codespace at any time — all progress is preserved in your repository. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
-
-You'll install the tools you need on your own machine: Git and the `gh` CLI. You'll authenticate with GitHub, and by the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
+You'll install Git and the `gh` CLI on your own machine, authenticate with GitHub, and clone your practice repository. By the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
 
 ## 📋 Before You Start
 
 - You've completed [Step 1: What You Need Before We Start](01-prerequisites.md)
 - You have a free GitHub account and are signed in
 - You have a terminal application open (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
-
-> [!NOTE]
-> **New to terminals?** A terminal (also called a shell or command line) is a text-based interface where you type commands to control your computer. If that sounds unfamiliar, you may find it easier to use [Adventure A: Codespace](02a-setup-codespace.md) instead — it sets everything up for you in the browser with no local installs required.
 
 ## 🧭 Terminal Basics
 
@@ -83,8 +68,7 @@ You are not logged into any GitHub hosts. Run gh auth login to authenticate.
 `gh extension list` can show existing extensions or no entries if you have none yet.
 
 > [!NOTE]
-> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
-> If you're blocked by SSO, proxy, or host-specific install issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
+> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing. If you're blocked by SSO, proxy, or host-specific issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 ### Create your practice repository
 
@@ -93,9 +77,6 @@ You are not logged into any GitHub hosts. Run gh auth login to authenticate.
 3. Set **Visibility** to **Public**.
 4. Check **Add a README file**.
 5. Click **Create repository**.
-
-> [!NOTE]
-> Creating `my-agentic-workflows` now keeps setup ordering consistent with the Codespace path and avoids an empty repository.
 
 ### Verify Git
 
@@ -121,56 +102,9 @@ gh --version
 
 _What success looks like:_ version details for `gh` are printed.
 
-If not, follow the instructions for your platform at [cli.github.com](https://cli.github.com). The most common options:
-
-**macOS:**
-
-```bash
-brew install gh
-```
-
-![Example success output after running `brew install gh`](images/02b-terminal-success-08-brew-gh.svg)
-
-_What success looks like:_ installation completes and returns to prompt.
-
-**Windows:**
-
-```bash
-winget install --id GitHub.cli
-```
-
-![Example success output after running `winget install --id GitHub.cli`](images/02b-terminal-success-09-winget-gh.svg)
-
-_What success looks like:_ package install reports success.
-
-**Linux (Debian/Ubuntu):**
-
-```bash
-(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-&& sudo mkdir -p -m 755 /etc/apt/keyrings \
-&& wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
-```
-
-![Example success output after running Linux `gh` install commands](images/02b-terminal-success-10-linux-gh.svg)
-
-_What success looks like:_ apt completes and `gh` is installed without errors.
-
-Run this command again before continuing:
-
-```bash
-gh --version
-```
-
-_What success looks like:_ `gh --version` prints version details without errors.
+If not installed, follow the official instructions for your platform at [cli.github.com](https://cli.github.com), then re-run `gh --version` to confirm.
 
 ### Authenticate the gh CLI
-
-> [!NOTE]
-> **Using GHES, SSO, or a corporate proxy?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first, then return here for `gh auth login`.
 
 ```bash
 gh auth login
@@ -198,19 +132,6 @@ cd my-agentic-workflows
 
 _What success looks like:_ clone finishes and `cd` returns you to a prompt inside `my-agentic-workflows`.
 
-### Verify everything is in order
-
-```bash
-gh repo view --json name,owner | cat
-gh --version
-```
-
-![Example success output for final local setup verification commands](images/02b-terminal-success-13-final-verify.svg)
-
-_What success looks like:_ both commands print output; `owner` is your GitHub username.
-
-Both commands should return output without errors. The repo view should show your username as `owner` and `my-agentic-workflows` as `name`.
-
 ## 🛟 Troubleshooting
 
 If setup commands fail, use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for quick fixes (`command not found`, permissions, proxy, and GHES-specific setup), then return here.
@@ -232,8 +153,6 @@ _What success looks like:_ no errors are shown across all command output, and th
 You should see your actual GitHub username in place of `<your-username>` in that final output line.
 
 If this combined check stops early, run each command on its own to find the failing step.
-
-If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) before moving on.
 
 ## ✅ Checkpoint
 
