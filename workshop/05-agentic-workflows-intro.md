@@ -13,9 +13,7 @@
 > Agentic workflows require **GHES 3.12+**, **Copilot Enterprise** enabled by your admin, and network egress to GitHub model endpoints.
 > Without these in place you will encounter hard failures at Steps 6–8 with no clear explanation.
 >
-> → Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now, then [return to Step 5](05-agentic-workflows-intro.md#resume-step-5) to continue.
-
-<a name="resume-step-5"></a>
+> → Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now, then return to the [What You'll Do](#-what-youll-do) section below.
 
 ---
 
