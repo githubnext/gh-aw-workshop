@@ -196,7 +196,10 @@ function normalizeAgentInsightsByStep(input) {
   if (!input || typeof input !== "object") {
     return {};
   }
-  const raw = input.stepInsightsById && typeof input.stepInsightsById === "object" ? input.stepInsightsById : input;
+  const raw = input.stepInsightsById;
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return {};
+  }
   return Object.fromEntries(
     Object.entries(raw).filter(([, insight]) => insight && typeof insight === "object" && !Array.isArray(insight))
   );

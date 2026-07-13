@@ -225,7 +225,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 41 students**, simulate their experience step-by-step using the following rules:
 
-Before you rely on the Monte Carlo output, read `curriculum.json`, inspect the most instruction-heavy workshop files, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content.
+First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest-dropout or highest-risk steps. Then read `curriculum.json`, inspect the most instruction-heavy workshop files for those steps, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content.
 
 Use this JSON shape:
 

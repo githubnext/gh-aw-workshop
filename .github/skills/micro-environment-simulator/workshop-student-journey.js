@@ -274,7 +274,7 @@ function applyLearning(state, context, gains = {}) {
 function contentReadinessCheck(state, context, options = {}) {
   const assessment = evaluateStepProbability(state, context, options);
   if (deterministicRoll(context, options.salt || 0) <= assessment.probability) {
-    return { ok: true, probability: assessment.probability, assessment };
+    return { ok: true, assessment };
   }
   const failure = ensure(
     false,
