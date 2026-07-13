@@ -25,7 +25,7 @@ An agentic workflow produces output in three distinct places. Think of them as t
 
 ---
 
-## Step 1: Anatomy of the Live Log
+## Anatomy of the Live Log
 
 Open the **Actions** tab, click your completed **Hello Agent** run, then click the job name to open the log.
 
@@ -54,7 +54,7 @@ Each line type tells you something different:
 
 ---
 
-## Step 2: Reading the Run Summary
+## Reading the Run Summary
 
 Scroll past the job logs to the **Summary** section of the run page.
 
@@ -80,7 +80,7 @@ Key things to check:
 
 ---
 
-## Step 3: Verifying the Safe-Output Record
+## Verifying the Safe-Output Record
 
 The live log and summary are the agent's own account of what happened. The safe-output record is the ground truth — what was actually written to GitHub.
 
@@ -99,7 +99,7 @@ If the comment exists but the content is wrong, the agent followed your instruct
 
 ---
 
-## Step 4: Common Output Patterns (and What They Mean)
+## Common Output Patterns and What They Mean
 
 | What you see | Most likely cause | Quick fix |
 |-------------|-------------------|-----------|
