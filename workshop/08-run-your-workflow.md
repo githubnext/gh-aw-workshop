@@ -58,7 +58,7 @@ Keep your predictions handy — you'll check them against the live log in a mome
 
 </details>
 
-### Watch the run and annotate the log
+### Annotate a sample log, then analyse your own
 
 After a few seconds a new row appears with a yellow spinning icon. Click it, then click the job to open the live log.
 
