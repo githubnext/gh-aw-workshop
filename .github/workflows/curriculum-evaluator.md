@@ -589,19 +589,19 @@ Use this exact section structure in the issue body:
 
 ---
 
-**Current Page Scores**
+### Current Page Scores
 
 | File | Overall Score |
 |---|---|
 | `workshop/<filename>` | `X.XX / 10.0` |
 
-**Score Trends (history window: N commits)**
+### Score Trends (history window: N commits)
 
 | File | Baseline | Latest | Delta | Direction |
 |---|---|---|---|---|
 | `workshop/<filename>` | `X.XX` | `Y.YY` | `+/-Z.ZZ` | `improving/stable/declining` |
 
-**Overall Trend**
+### Overall Trend
 
 - Baseline mean score: `X.XX`
 - Latest mean score: `Y.YY`
