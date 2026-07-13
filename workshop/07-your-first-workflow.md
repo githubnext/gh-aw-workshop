@@ -11,7 +11,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 <!-- Separate adjacent callouts -->
 
 > [!NOTE]
-> **No terminal? Use the GitHub web editor.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, skip terminal commands and create `hello-agent.md` using the [GitHub UI path](#github-ui-path--create-the-file-in-the-web-editor) below.
+> **No terminal? Use the GitHub web editor.** If you are using GitHub Copilot Chat, Copilot Cloud Agent (CCA), or prefer not to use a terminal, skip terminal commands and create `hello-agent.md` using the GitHub UI path below.
 
 ## 🎯 What You'll Do
 

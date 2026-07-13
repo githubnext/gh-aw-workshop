@@ -66,7 +66,7 @@ Then open your editor and create `.github/workflows/pr-code-reviewer.md`.
 
 If you're following the **terminal path**, build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/pr-code-reviewer.md` to validate — or keep `gh aw compile .github/workflows/pr-code-reviewer.md --watch` running in a second terminal for continuous feedback.
 
-If you're following the **GitHub UI path**, paste the complete workflow from the reference section, commit it once, then use the build sections below as a guided explanation of what each part does.
+If you're following the **GitHub UI path**, paste the complete workflow from the **Complete Workflow (Copy-Paste Version)** section below, commit it once, then use the build sections below as a guided explanation of what each part does.
 
 ### Build section 1: frontmatter basics
 
