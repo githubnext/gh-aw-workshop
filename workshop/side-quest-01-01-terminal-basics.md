@@ -2,121 +2,102 @@
 
 > _Optional: complete this quick primer if you're new to the terminal, then return to Step 1._
 
-![Annotated terminal window with callouts for prompt, command, and output](images/01-terminal-basics-annotated.svg)
+## 📋 Before You Start
 
-- **Prompt**: where your terminal is currently "standing" (for example your user/computer name and folder).
-- **Command**: what you type (`git --version`, `gh --version`, etc.).
-- **Output**: what the computer prints after running your command.
+- A computer running macOS, Windows, or Linux with internet access
 
 ---
 
 ## How to open a terminal
 
-### macOS
+**macOS:** Press **Command ⌘ + Space**, type **Terminal**, and press **Enter**. You'll see a prompt like `yourname@MacBook ~ %`.
 
-1. Press **Command ⌘ + Space** to open Spotlight Search.
-2. Type **Terminal** and press **Enter**.
-3. A window opens showing a prompt like `yourname@MacBook ~ %`.
+**Windows:** Press **Win**, type **Terminal**, and press **Enter**. You'll see a prompt like `C:\Users\yourname>`. Installing [Git for Windows](https://git-scm.com/download/win) also gives you **Git Bash**, which understands the `ls` and `pwd` commands used in this guide.
 
-### Windows
+**Linux:** Press **Ctrl + Alt + T**, or right-click the desktop and choose **Open Terminal**. You'll see a prompt like `yourname@machine:~$`.
 
-1. Press **Win + X**, then select **Windows Terminal** or **PowerShell**.
-   - Alternatively, press **Win**, type **Terminal**, and press **Enter**.
-2. A window opens showing a prompt like `C:\Users\yourname>`.
-3. **Tip:** [Git for Windows](https://git-scm.com/download/win) installs **Git Bash**, which gives you `ls`, `pwd`, and other Unix-style commands that match the examples in this workshop.
-
-### Linux
-
-1. Press **Ctrl + Alt + T** (works on Ubuntu and most desktop environments).
-   - Or right-click the desktop and choose **Open Terminal**.
-2. A window opens showing a prompt like `yourname@machine:~$`.
+The **prompt** is a short line of text ending in `$`, `%`, or `>`. When you see it, the terminal is ready for your **command**. Whatever the terminal prints back is the **output**.
 
 ---
 
-## Understanding file paths and navigation
+## Practice 1: Confirm your terminal works
 
-A **path** is the address of a file or folder on your computer. macOS/Linux use `/` as a separator; Windows uses `\`.
-
-| What you want to do | macOS / Linux | Windows |
-|---------------------|--------------|---------|
-| See current folder | `pwd` | `cd` (no argument) |
-| List files | `ls` | `dir` |
-| Move into a sub-folder | `cd folder-name` | `cd folder-name` |
-| Move up one level | `cd ..` | `cd ..` |
-| Go to home folder | `cd ~` (`/Users/alice`) | `cd %USERPROFILE%` |
-| Absolute path example | `/Users/alice/workshop` | `C:\Users\alice\workshop` |
-| Relative path example | `workshop/files` | `workshop\files` |
-
----
-
-## How to tell if a command succeeded
-
-Most commands print output and then return you to the prompt. Watch for these signals:
-
-| What you see | Meaning |
-|-------------|---------|
-| Prompt returns with no red text | ✅ Command succeeded (exit code 0) |
-| A version number or confirmation message | ✅ Success |
-| `command not found` | The tool is not installed or not on your PATH |
-| `permission denied` | You need elevated rights — prefix with `sudo` on macOS/Linux |
-| `No such file or directory` | The path you typed doesn't exist — check spelling |
-
----
-
-## 🏃 Practice exercise
-
-Try these three commands to confirm your terminal is working. Copy and paste them exactly:
+Type this command and press **Enter**:
 
 ```bash
-mkdir test-dir && cd test-dir && echo "hello, terminal!"
+echo "hello, terminal!"
 ```
 
-You should see **`hello, terminal!`** printed. That means you successfully:
+You should see `hello, terminal!` printed as output. If you do, your terminal is working. ✅
 
-1. Created a folder (`mkdir test-dir`)
-2. Moved into it (`cd test-dir`)
-3. Printed a message to the screen (`echo`)
+---
 
-Clean up when you're done:
+## Practice 2: Navigate folders
+
+Your terminal always has a **current directory** — the folder it is "standing" in. Run these two commands to see where you are and what's there:
+
+```bash
+pwd
+ls
+```
+
+- `pwd` prints your current directory path (for example `/Users/alice`).
+- `ls` lists the files and folders inside it.
+
+To move into a folder and then back out, run:
+
+```bash
+cd Documents
+cd ..
+```
+
+> [!TIP]
+> On Windows Command Prompt, use `dir` instead of `ls`, and `cd` (no argument) instead of `pwd`.
+
+---
+
+## Practice 3: Create, use, and remove a folder
+
+```bash
+mkdir test-dir && cd test-dir && echo "inside test-dir"
+```
+
+Then clean up:
 
 ```bash
 cd .. && rm -r test-dir
 ```
 
-> **Windows cmd users:** Replace `rm -r test-dir` with `rmdir /s test-dir`.
+You created a folder (`mkdir`), moved into it (`cd`), printed a message (`echo`), and deleted the folder (`rm -r`). ✅
 
 ---
 
-## Quick beginner FAQ
+## Practice 4: See a deliberate error
 
-| Error | What it means | What to try |
-|------|------|------|
-| `command not found` | The tool is not installed (or not available in this terminal) | Install the tool, then close and reopen the terminal |
-| "No such file or directory" / path errors | You're in a different folder than the command expects | Run `pwd` (macOS/Linux) or `cd` to the expected folder, then try again |
+Type a command that doesn't exist:
 
-<details>
-<summary>Advanced: permission errors and elevated access</summary>
+```bash
+notacommand
+```
 
-If you see `permission denied`, your account cannot run that command as written.
+You'll see `command not found` or `notacommand: not found`. That's the terminal telling you it doesn't recognise the command — nothing is broken. You'll see this any time a tool isn't installed or you mistype a name.
 
-- **macOS / Linux:** Re-run with `sudo` in front of the command (for example, `sudo <command>`). You'll be prompted for your password.
-- **Windows:** Right-click **Windows Terminal** or **PowerShell** and choose **Run as administrator**, then retry the command.
-
-Only use elevated access when workshop instructions explicitly tell you to — running everything as root or administrator is not recommended.
-
-</details>
+> [!TIP]
+> The three most common errors beginners encounter:
+>
+> - **`command not found`** — the tool isn't installed or the name is misspelled.
+> - **`No such file or directory`** — the path you typed doesn't exist; run `pwd` to check where you are.
+> - **`permission denied`** — your account needs elevated rights. See [Side Quest: Permission Errors](side-quest-01-03-permission-errors.md) for help.
 
 ---
 
 ## ✅ Checkpoint
 
-Before returning to Step 1, confirm you have completed the following:
-
-- [ ] You opened a terminal and saw a prompt (e.g., `$`, `%`, or `>`)
-- [ ] You ran `pwd` (macOS/Linux) or `cd` (Windows) and saw your current directory path printed
-- [ ] You ran `mkdir test-dir && cd test-dir && echo "hello, terminal!"` and saw `hello, terminal!` in the output
-- [ ] You ran the cleanup command (`cd .. && rm -r test-dir` on macOS/Linux, or `cd .. && rmdir /s test-dir` on Windows) without any errors
-- [ ] You can explain the difference between an absolute path and a relative path
+- [ ] You opened a terminal and saw a prompt (`$`, `%`, or `>`)
+- [ ] You ran `echo "hello, terminal!"` and saw the message printed
+- [ ] You ran `pwd` and `ls` and saw your current directory and its contents
+- [ ] You ran the folder exercise and cleaned up successfully
+- [ ] You ran `notacommand` and saw a `command not found` error
 
 ---
 
