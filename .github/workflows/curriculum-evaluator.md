@@ -197,6 +197,8 @@ steps:
 
       data    = json.loads(pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').read_text())
       files   = data['files']
+      MIN_UNDERSTAND_STEPS = 3
+      MIN_ANALYZE_STEPS = 2
 
       # ---------- rubric weights (0–10 per dimension) ----------
       def score_cognitive_load(f):
