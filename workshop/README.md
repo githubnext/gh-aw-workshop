@@ -17,6 +17,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 6 | [06-install-gh-aw.md](06-install-gh-aw.md) | Install the gh-aw CLI Extension | ✅ |
 | 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ✅ |
 | 7a | [07a-your-first-workflow-terminal.md](07a-your-first-workflow-terminal.md) | Terminal Path — Write Your First Agentic Workflow | ✅ |
+| 7a2 | [07a-part2-your-first-workflow-instructions.md](07a-part2-your-first-workflow-instructions.md) | Terminal Path (Part 2) — Add Instructions and Finish Your First Workflow | ✅ |
 | 7b | [07b-your-first-workflow-ui.md](07b-your-first-workflow-ui.md) | GitHub UI Path — Write Your First Agentic Workflow | ✅ |
 | 7c | [07c-your-first-workflow-copilot.md](07c-your-first-workflow-copilot.md) | GitHub Copilot Path — Write Your First Agentic Workflow | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
