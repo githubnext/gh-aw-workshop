@@ -50,36 +50,15 @@ file and return a brief summary (2–4 sentences) describing its purpose
 and key contents. Be concise and factual.
 ```
 
-### Name rules
+Key rules at a glance:
 
-- Enclosed in backticks: `` `name` ``
-- Lowercase letters, digits, hyphens, and underscores — starts with a letter
-- Examples: `` `planner` ``, `` `file-summarizer` ``, `` `code-reviewer` ``
+- **Name:** backtick-wrapped, lowercase letters/digits/hyphens/underscores, starts with a letter
+- **Block end:** the next `##` heading or end of file — no closing marker needed
+- **Frontmatter:** only `description` and `model` are supported; all other fields are stripped
+- **Model:** use `small` for cheap worker tasks, `large` for complex reasoning, `inherited` to match the parent
 
-### Block boundary
-
-The block ends at the next level-2 heading or at end of file. No closing marker is needed. Always place sub-agent blocks **at the bottom** of the file, after all main workflow content.
-
-### Supported frontmatter fields
-
-Only two fields are meaningful inside a sub-agent block:
-
-| Field | Required | Default | Notes |
-|-------|----------|---------|-------|
-| `description` | No | — | Human-readable summary of the sub-agent's role |
-| `model` | No | `inherited` | Model override. Use aliases (see table below) for portability. |
-
-All other fields (`engine:`, `tools:`, `network:`, etc.) are stripped at compile time with a warning. Sub-agents inherit the parent workflow's engine, tool access, and network configuration.
-
-### Model aliases
-
-| Alias | Resolves to | When to use |
-|-------|-------------|-------------|
-| `small` | mini / haiku / gpt-5-mini / gpt-5-nano / gemini-flash | Cheap, fast tasks: extraction, classification, formatting |
-| `large` | sonnet / gpt-5-pro / gpt-5 / gemini-pro | Complex reasoning or synthesis tasks |
-| `inherited` | Parent workflow model | Default — use when the sub-agent needs the same capability as the parent |
-
-Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
+> [!TIP]
+> For the full name rules, block boundary rules, supported frontmatter fields, and model alias table, see the [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md).
 
 ## Steps
 
