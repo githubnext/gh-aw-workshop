@@ -11,11 +11,17 @@
 
 **Enterprise preflight checklist (do this before reading further):**
 
-1. Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot → Policies**. If your admin needs instructions, share [Setting up GitHub Copilot for your organization](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-organization).
-2. Confirm a Copilot Enterprise seat is assigned to your account. Your admin can verify this in the Copilot seat management flow documented in [GitHub Copilot seat assignment](https://docs.github.com/en/copilot/reference/copilot-billing/seat-assignment).
+1. Confirm GitHub Copilot Enterprise is enabled for the organization that owns the repository where you are doing this workshop in **Settings → Copilot → Policies**. If your admin needs instructions, share [Setting up GitHub Copilot for your organization](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-organization).
+2. Confirm a Copilot Enterprise seat is assigned to the GitHub account you are using for this workshop. Your admin can verify this in the Copilot seat management flow documented in [GitHub Copilot seat assignment](https://docs.github.com/en/copilot/reference/copilot-billing/seat-assignment).
 3. If either check is incomplete, pause here and contact your GitHub org admin before continuing.
 
-**Blocked? Do this:** Tell your GitHub org admin: "I'm taking the gh-aw workshop and Step 5 requires GitHub Copilot Enterprise to be enabled for our organization and assigned to my account." Ask them to enable Copilot Enterprise, assign you a seat, and confirm the policy is active. Org admins can usually unblock this in under 5 minutes. If you are waiting on that change, complete the [enterprise setup guide](side-quest-enterprise-setup.md) now and continue in read-only mode until access is ready.
+**Blocked? Do this:** Send your GitHub org admin a note like this:
+
+- "I'm taking the gh-aw workshop."
+- "Step 5 requires GitHub Copilot Enterprise to be enabled for the organization that owns my workshop repository."
+- "Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account."
+
+Org admins can usually unblock this in under 5 minutes. If you are waiting on that change, complete the [enterprise setup guide](side-quest-enterprise-setup.md) now and continue in read-only mode until access is ready.
 
 ---
 
