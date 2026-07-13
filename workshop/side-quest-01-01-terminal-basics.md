@@ -33,26 +33,19 @@
 
 ---
 
-## Understanding file paths
+## Understanding file paths and navigation
 
-A **path** is the address of a file or folder on your computer. On macOS/Linux, paths use `/`; on Windows they use `\`.
+A **path** is the address of a file or folder on your computer. macOS/Linux use `/` as a separator; Windows uses `\`.
 
-| Example | Platform | What it means |
-|---------|----------|--------------|
-| `/Users/alice/workshop` | macOS / Linux | Absolute path starting from the filesystem root |
-| `C:\Users\alice\workshop` | Windows | Absolute path starting from drive C |
-| `workshop/files` | Any | Relative path — relative to your current folder |
-| `~` | macOS / Linux | Your home folder shorthand (`/Users/alice`, etc.) |
-
-**Essential navigation commands:**
-
-| What you want to do | macOS / Linux | Windows (cmd / PowerShell) |
-|---------------------|--------------|---------------------------|
-| See your current folder | `pwd` | `cd` (no argument) |
-| List files in the current folder | `ls` | `dir` |
+| What you want to do | macOS / Linux | Windows |
+|---------------------|--------------|---------|
+| See current folder | `pwd` | `cd` (no argument) |
+| List files | `ls` | `dir` |
 | Move into a sub-folder | `cd folder-name` | `cd folder-name` |
 | Move up one level | `cd ..` | `cd ..` |
-| Go to your home folder | `cd ~` | `cd %USERPROFILE%` |
+| Go to home folder | `cd ~` (`/Users/alice`) | `cd %USERPROFILE%` |
+| Absolute path example | `/Users/alice/workshop` | `C:\Users\alice\workshop` |
+| Relative path example | `workshop/files` | `workshop\files` |
 
 ---
 
@@ -99,8 +92,31 @@ cd .. && rm -r test-dir
 | Error | What it means | What to try |
 |------|------|------|
 | `command not found` | The tool is not installed (or not available in this terminal) | Install the tool, then close and reopen the terminal |
-| `permission denied` | Your account cannot run that command as written | Re-run with the documented `sudo` step (Linux/macOS) or open an elevated terminal when instructions require it |
 | "No such file or directory" / path errors | You're in a different folder than the command expects | Run `pwd` (macOS/Linux) or `cd` to the expected folder, then try again |
+
+<details>
+<summary>Advanced: permission errors and elevated access</summary>
+
+If you see `permission denied`, your account cannot run that command as written.
+
+- **macOS / Linux:** Re-run with `sudo` in front of the command (for example, `sudo <command>`). You'll be prompted for your password.
+- **Windows:** Right-click **Windows Terminal** or **PowerShell** and choose **Run as administrator**, then retry the command.
+
+Only use elevated access when workshop instructions explicitly tell you to — running everything as root or administrator is not recommended.
+
+</details>
+
+---
+
+## ✅ Checkpoint
+
+Before returning to Step 1, confirm you have completed the following:
+
+- [ ] You opened a terminal and saw a prompt (e.g., `$`, `%`, or `>`)
+- [ ] You ran `pwd` (macOS/Linux) or `cd` (Windows) and saw your current directory path printed
+- [ ] You ran `mkdir test-dir && cd test-dir && echo "hello, terminal!"` and saw `hello, terminal!` in the output
+- [ ] You ran the cleanup command (`cd .. && rm -r test-dir`) without any errors
+- [ ] You can explain the difference between an absolute path and a relative path
 
 ---
 
