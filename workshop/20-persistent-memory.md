@@ -31,29 +31,18 @@ You'll add persistent memory to your agentic workflow so it can carry state betw
 
 ## Why Memory Matters
 
-Every workflow run you have built so far starts with a blank slate. That is fine for a daily summary, but it causes problems the moment you want to:
+Every workflow run you have built so far starts with a blank slate. That is fine for a daily summary, but it causes problems the moment you want to deduplicate alerts, compare against a baseline, or scan incrementally.
 
-- **Deduplicate alerts** — alert only on _new_ open issues, not the same ones every morning.
-- **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
-- **Scan incrementally** — skip pull requests you have already reviewed.
+`gh-aw` provides two memory primitives: **`cache-memory`** (backed by the GitHub Actions cache, ideal for short-lived deduplication) and **`repo-memory`** (backed by a committed file, ideal for durable baselines). This step focuses on `cache-memory` — the simpler and more common choice.
 
-`gh-aw` provides two memory primitives that solve this without you managing a database:
-
-| Tool | Where state is stored | Lifetime | Best for |
-|------|----------------------|----------|----------|
-| `cache-memory` | GitHub Actions cache | Until cache eviction (typically 7 days of inactivity) | Short-lived deduplication; data that is fine to lose |
-| `repo-memory` | A file committed to your repository | As long as the file exists | Durable baselines; data that must survive cache eviction |
+> [!TIP]
+> **Optional Side Quest:** Want a deeper comparison of both primitives, a decision guide, and full field-by-field references for each? See [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md).
 
 ## Steps
 
 ### Choose the right memory tool
 
-Ask yourself: _what happens if the memory is lost?_
-
-- If the workflow simply re-reports a few duplicates until memory is rebuilt — use **`cache-memory`**.
-- If losing state would trigger a flood of false positives or break a comparison — use **`repo-memory`**.
-
-For a deduplication use case (the example in this step), `cache-memory` is the right choice. A few repeated alerts on cache expiry is tolerable.
+For a deduplication use case (the example in this step), `cache-memory` is the right choice. A few repeated alerts on cache expiry is tolerable. If you need state that must survive cache eviction — for example, a baseline comparison where losing state would trigger a flood of false positives — use `repo-memory` instead (see the side quest above).
 
 ### Add `cache-memory` to your frontmatter
 
@@ -107,27 +96,7 @@ have already reported on. On each run:
 
 ### Use `repo-memory` for durable baselines
 
-When you need state that survives cache eviction, switch to `repo-memory`. It stores a JSON file directly in your repository:
-
-```yaml
-memory:
-  repo-memory:
-    path: .github/memory/daily-status-baseline.json
-    branch: main
-```
-
-What each field does:
-
-| Field | Purpose |
-|-------|---------|
-| `repo-memory:` | Backs this memory slot with a file committed to the repository. |
-| `path:` | Repository-relative path to the JSON file. The directory is created automatically on first write. |
-| `branch:` | Branch where the memory file is committed. Usually `main` or your default branch. |
-
-> [!IMPORTANT]
-> `repo-memory` requires `contents: write` in your `permissions` block so the agent can commit the updated file. Add it alongside your existing permissions.
-
-Keep the stored data small — a list of IDs or a compact summary object — to avoid cluttering your commit history with large file changes.
+When you need state that survives cache eviction, switch to `repo-memory`. It stores a JSON file directly in your repository and requires `contents: write` in your `permissions` block. For a full field reference, example task brief, and guidance on when to choose `repo-memory`, see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md).
 
 ### Compile and validate
 
@@ -173,6 +142,7 @@ The first run reports all currently open issues and writes them to memory. The s
 
 ## 📚 See Also
 
+- [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md)
 - [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
 - [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
