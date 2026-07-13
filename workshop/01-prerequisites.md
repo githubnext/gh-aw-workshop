@@ -79,11 +79,23 @@ Complete these checks before you choose a setup path:
 > [!NOTE]
 > **Can I do this workshop without a terminal?**
 >
-> **Yes.** Path C (the GitHub UI path) lets you complete the main workshop through Step 14 in your browser. Skip the terminal setup in Step 2, start with Step 3b, use the GitHub UI alternative in Step 6, choose Step 7b, complete Steps 8–10, then choose the GitHub UI options in Steps 11–13.
+> **Yes.** Path C (the GitHub UI path) lets you complete the main workshop through Step 14 in your browser:
+>
+> - Skip the Terminal setup in Step 2 and start with Step 3b
+> - Use the GitHub UI alternative in Step 6 and choose Step 7b
+> - Complete Steps 8–10, then choose the GitHub UI options in Steps 11–13
 >
 > You won't install or run the `gh aw` CLI locally, but you will trigger and watch a real agentic workflow run from the Actions tab in Step 8.
 >
-> Codespaces and options labeled **Terminal path** require a terminal. These include Steps 2a/2b, 3a, 7a, the Step 6 installation, the terminal builds and Add Wizard in Step 11, optional `gh aw` commands in Steps 8 and 12, Step 13a, and the workflow-reuse activity in Step 14. You can skip them on the UI path; advanced extensions after Step 14 are not all designed for UI-only completion.
+> These activities require a terminal:
+>
+> - Codespaces and Steps 2a/2b, 3a, and 7a
+> - The Step 6 installation
+> - The Terminal builds and Add Wizard in Step 11
+> - Optional `gh aw` commands in Steps 8 and 12
+> - Step 13a and the workflow-reuse activity in Step 14
+>
+> You can skip them on the UI path. Advanced extensions after Step 14 are not all designed for UI-only completion.
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
