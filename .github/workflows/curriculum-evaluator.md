@@ -193,71 +193,77 @@ steps:
       set -euo pipefail
 
       python3 <<'PY'
-      import json, statistics, pathlib
+      import json, statistics, pathlib, textwrap, sys
 
       data    = json.loads(pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').read_text())
       files   = data['files']
       MIN_UNDERSTAND_STEPS = 3
       MIN_ANALYZE_STEPS = 2
 
-      # ---------- rubric weights (0–10 per dimension) ----------
-      def score_cognitive_load(f):
-          """Penalise high concept density and very long steps."""
-          wc   = f['word_count']
-          nc   = f['new_concepts']
-          # ideal: < 800 words, < 15 new concepts per step
-          # each 100 words over 800 reduces score by 1 point; each 2 concepts over 15 reduces by 1
-          wc_score = max(0, 10 - max(0, (wc - 800) / 100))
-          nc_score = max(0, 10 - max(0, (nc - 15) / 2))
-          return round((wc_score + nc_score) / 2, 1)
+      module_path = pathlib.Path('/tmp/gh-aw/data/rubric_scoring.py')
+      module_path.write_text(textwrap.dedent('''
+          DIMENSIONS = {
+              'cognitive_load': 2.0,
+              'readability': 1.5,
+              'active_learning': 2.0,
+              'checkpoint_quality': 2.0,
+              'scaffolding': 1.5,
+              'style_compliance': 1.0,
+          }
 
-      def score_readability(f):
-          """FK grade 8–12 is ideal for tech docs; penalise outliers."""
-          fk = f['fk_grade']
-          if 8 <= fk <= 12:
-              return 10.0
-          return round(max(0, 10 - abs(fk - 10) * 0.8), 1)
+          def score_cognitive_load(f):
+              wc = f['word_count']
+              nc = f['new_concepts']
+              wc_score = max(0, 10 - max(0, (wc - 800) / 100))
+              nc_score = max(0, 10 - max(0, (nc - 15) / 2))
+              return round((wc_score + nc_score) / 2, 1)
 
-      def score_active_learning(f):
-          """Higher activity density = better."""
-          ad = f['activity_density']
-          return round(min(10, ad * 3.3), 1)
+          def score_readability(f):
+              fk = f['fk_grade']
+              if 8 <= fk <= 12:
+                  return 10.0
+              return round(max(0, 10 - abs(fk - 10) * 0.8), 1)
 
-      def score_checkpoint_quality(f):
-          """Must have checkpoint; more checklist items = better (up to 5)."""
-          if not f['has_checkpoint']:
-              return 0.0
-          items = f['checklist_items']
-          return round(min(10, items * 2.5), 1)
+          def score_active_learning(f):
+              return round(min(10, f['activity_density'] * 3.3), 1)
 
-      def score_scaffolding(f):
-          """Having a 'Before You Start' / prerequisites section."""
-          return 10.0 if f['has_prereq_section'] else 5.0
+          def score_checkpoint_quality(f):
+              if not f['has_checkpoint']:
+                  return 0.0
+              return round(min(10, f['checklist_items'] * 2.5), 1)
 
-      def score_style_compliance(f):
-          """Penalise numbered headings (violates guidelines) and excessive callouts."""
-          penalty = f['numbered_headings'] * 2 + max(0, f['callout_count'] - 3) * 1.5
-          return round(max(0, 10 - penalty), 1)
+          def score_scaffolding(f):
+              return 10.0 if f['has_prereq_section'] else 5.0
 
-      DIMENSIONS = {
-          'cognitive_load':      (score_cognitive_load,  2.0),
-          'readability':         (score_readability,      1.5),
-          'active_learning':     (score_active_learning,  2.0),
-          'checkpoint_quality':  (score_checkpoint_quality, 2.0),
-          'scaffolding':         (score_scaffolding,      1.5),
-          'style_compliance':    (score_style_compliance, 1.0),
-      }
-      total_weight = sum(w for _, w in DIMENSIONS.values())
+          def score_style_compliance(f):
+              penalty = f['numbered_headings'] * 2 + max(0, f['callout_count'] - 3) * 1.5
+              return round(max(0, 10 - penalty), 1)
+
+          SCORE_FNS = {
+              'cognitive_load': score_cognitive_load,
+              'readability': score_readability,
+              'active_learning': score_active_learning,
+              'checkpoint_quality': score_checkpoint_quality,
+              'scaffolding': score_scaffolding,
+              'style_compliance': score_style_compliance,
+          }
+
+          def overall_score_from_metrics(metrics):
+              dim_scores = {}
+              weighted_sum = 0.0
+              total_weight = sum(DIMENSIONS.values())
+              for dim, weight in DIMENSIONS.items():
+                  score = SCORE_FNS[dim](metrics)
+                  dim_scores[dim] = score
+                  weighted_sum += score * weight
+              return dim_scores, round(weighted_sum / total_weight, 2)
+      ''').strip() + '\n')
+      sys.path.insert(0, str(module_path.parent))
+      from rubric_scoring import overall_score_from_metrics
 
       scored = []
       for f in files:
-          dim_scores = {}
-          weighted_sum = 0.0
-          for dim, (fn, w) in DIMENSIONS.items():
-              s = fn(f)
-              dim_scores[dim] = s
-              weighted_sum += s * w
-          overall = round(weighted_sum / total_weight, 2)
+          dim_scores, overall = overall_score_from_metrics(f)
           scored.append({**f, 'dim_scores': dim_scores, 'overall_score': overall})
 
       # corpus statistics
@@ -352,6 +358,7 @@ steps:
       import pathlib
       import re
       import subprocess
+      import sys
 
       rubric = json.loads(pathlib.Path('/tmp/gh-aw/data/rubric-results.json').read_text())
       current_scores = {
@@ -369,12 +376,13 @@ steps:
       def git(*args):
           return subprocess.check_output(['git', *args], text=True).strip()
 
-      HEADING_RE = re.compile(r'^(#{1,6})\s+(.+)', re.MULTILINE)
       CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
       CHECKPOINT_RE = re.compile(r'## ✅ Checkpoint', re.MULTILINE)
       CHECKLIST_RE = re.compile(r'^\s*-\s+\[[ xX]\]', re.MULTILINE)
       CALLOUT_RE = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
       NUMBERED_HDR = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
+      sys.path.insert(0, '/tmp/gh-aw/data')
+      from rubric_scoring import overall_score_from_metrics
 
       def fk_grade(text):
           words = re.findall(r"[a-zA-Z']+", text)
@@ -405,43 +413,18 @@ steps:
               re.search(r'##\s+Prerequisites', text, re.IGNORECASE)
           )
           activity_density = round((len(code_blocks) + checklist_items) / max(1, len(words) / 100), 2)
-
-          def score_cognitive_load():
-              wc_score = max(0, 10 - max(0, (len(words) - 800) / 100))
-              nc_score = max(0, 10 - max(0, (new_concepts - 15) / 2))
-              return round((wc_score + nc_score) / 2, 1)
-
-          def score_readability():
-              if 8 <= fk <= 12:
-                  return 10.0
-              return round(max(0, 10 - abs(fk - 10) * 0.8), 1)
-
-          def score_active_learning():
-              return round(min(10, activity_density * 3.3), 1)
-
-          def score_checkpoint_quality():
-              if not has_checkpoint:
-                  return 0.0
-              return round(min(10, checklist_items * 2.5), 1)
-
-          def score_scaffolding():
-              return 10.0 if has_prereq_section else 5.0
-
-          def score_style_compliance():
-              penalty = numbered_headings * 2 + max(0, callout_count - 3) * 1.5
-              return round(max(0, 10 - penalty), 1)
-
-          dimensions = [
-              (score_cognitive_load(), 2.0),
-              (score_readability(), 1.5),
-              (score_active_learning(), 2.0),
-              (score_checkpoint_quality(), 2.0),
-              (score_scaffolding(), 1.5),
-              (score_style_compliance(), 1.0),
-          ]
-          weighted_sum = sum(score * weight for score, weight in dimensions)
-          total_weight = sum(weight for _, weight in dimensions)
-          return round(weighted_sum / total_weight, 2)
+          metrics = {
+              'word_count': len(words),
+              'new_concepts': new_concepts,
+              'fk_grade': fk,
+              'activity_density': activity_density,
+              'has_checkpoint': has_checkpoint,
+              'checklist_items': checklist_items,
+              'has_prereq_section': has_prereq_section,
+              'numbered_headings': numbered_headings,
+              'callout_count': callout_count,
+          }
+          return overall_score_from_metrics(metrics)[1]
 
       start_ref = git('rev-parse', '--abbrev-ref', 'HEAD')
       if start_ref == 'HEAD':
@@ -633,7 +616,7 @@ In addition to per-step issues, look at:
 
 ### Create issues
 
-Create at most **5 additional issues**, prioritised by impact and evidence quality. Each issue must follow this exact structure:
+Create at most **5 additional issues**, prioritized by impact and evidence quality. Each issue must follow this exact structure:
 
 ---
 
