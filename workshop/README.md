@@ -58,6 +58,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) — explains the two Copilot authentication methods (feature flag vs `COPILOT_GITHUB_TOKEN` PAT) and when to use each; branches from [Step 6](06-install-gh-aw.md).
 - [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — step-by-step guide to generating an Anthropic key, storing it as a repository secret, and switching your workflow to `engine: claude`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — step-by-step guide to generating an OpenAI key, storing it as a repository secret, and switching your workflow to `engine: codex`; branches from [Step 11a](11a-build-daily-status.md).
+- [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) — decision guide, full field references, and example task briefs for both `cache-memory` and `repo-memory`; branches from [Step 20](20-persistent-memory.md).
 
 ## Getting Started
 
