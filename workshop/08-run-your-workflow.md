@@ -34,7 +34,9 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 > **Troubleshooting: Codespaces CLI trigger failures (`actions:write`)**
 > If `gh aw run hello-agent` fails in a Codespace with an `actions:write` permission/token error, trigger the run from the **Actions** tab UI instead (the section above). The UI path is the most reliable fallback when the Codespaces token has limited workflow scopes.
 > [!NOTE]
-> **For terminal users:** in some Codespaces environments, `gh aw run` can fail with an `actions:write` token scope error. If that happens, use the UI steps above.
+> **For terminal users:** the command below is an alternative to the UI walkthrough above.
+
+If you're in Codespaces, read the `actions:write` warning above before running this command.
 
 Terminal users can trigger the same run with:
 
