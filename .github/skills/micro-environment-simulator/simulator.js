@@ -26,6 +26,15 @@ const ANTHROPIC_MISSING_REMAINDER = 0;
 const OPENAI_MISSING_REMAINDER = 1;
 const COPILOT_PERMISSION_GITHUB_MODULO = 4;
 const COPILOT_PERMISSION_OTHER_MODULO = 3;
+const WORD_COUNT_COMPLEXITY_THRESHOLD = 1400;
+const COMMAND_LINE_COMPLEXITY_THRESHOLD = 18;
+const CALLOUT_COMPLEXITY_THRESHOLD = 18;
+const OPTIONAL_PATH_COMPLEXITY_THRESHOLD = 10;
+const COMMAND_BLOCK_TERMINAL_WEIGHT = 0.18;
+const COMMAND_LINE_TERMINAL_WEIGHT = 0.03;
+const TERMINAL_DEMAND_CAP = 0.95;
+const UI_ALTERNATIVE_TERMINAL_DISCOUNT = 0.1;
+const UI_ALTERNATIVE_TERMINAL_DISCOUNT_CAP = 0.3;
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -124,15 +133,23 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
   const uiAlternativeCount = countMatches(text, /\b(UI alternative|GitHub UI path|browser path|Path C)\b/gi);
   const complexity = clamp(
     0.12 +
-      Math.min(wordCount / 1400, 0.32) +
-      Math.min(commandLineCount / 18, 0.24) +
-      Math.min(calloutCount / 18, 0.12) +
-      Math.min(optionalPathCueCount / 10, 0.2),
+      Math.min(wordCount / WORD_COUNT_COMPLEXITY_THRESHOLD, 0.32) +
+      Math.min(commandLineCount / COMMAND_LINE_COMPLEXITY_THRESHOLD, 0.24) +
+      Math.min(calloutCount / CALLOUT_COMPLEXITY_THRESHOLD, 0.12) +
+      Math.min(optionalPathCueCount / OPTIONAL_PATH_COMPLEXITY_THRESHOLD, 0.2),
     0.05,
     0.95
   );
   const terminalDemand = clamp(
-    Math.min(commandBlockCount * 0.18 + commandLineCount * 0.03, 0.95) - Math.min(uiAlternativeCount * 0.1, 0.3),
+    Math.min(
+      commandBlockCount * COMMAND_BLOCK_TERMINAL_WEIGHT +
+        commandLineCount * COMMAND_LINE_TERMINAL_WEIGHT,
+      TERMINAL_DEMAND_CAP
+    ) -
+      Math.min(
+        uiAlternativeCount * UI_ALTERNATIVE_TERMINAL_DISCOUNT,
+        UI_ALTERNATIVE_TERMINAL_DISCOUNT_CAP
+      ),
     0,
     1
   );

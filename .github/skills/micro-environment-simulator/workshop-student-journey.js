@@ -106,7 +106,7 @@ function contentSignal(context, key) {
   return Number(context.stepContent?.[key] || 0);
 }
 
-function shouldUseBrowserPath(state, context) {
+function prefersBrowserPath(state, context) {
   const learner = learnerProfile(state);
   return (
     learner.uiPreferred === true ||
@@ -417,7 +417,7 @@ function buildTransitions() {
       );
       if (!workflowCheck.ok) return workflowCheck;
 
-      const usingBrowserPath = shouldUseBrowserPath(state, context);
+      const usingBrowserPath = prefersBrowserPath(state, context);
       const authCheck = ensure(
         usingBrowserPath ? state.auth.hasGithubSession : state.auth.isLoggedIn,
         usingBrowserPath
