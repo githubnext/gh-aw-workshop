@@ -57,22 +57,53 @@ steps:
       CALLOUT_RE    = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
       NUMBERED_HDR  = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
 
-      BLOOM_VERBS = {
-          'remember':   ['define','identify','list','recall','name','state','match','label'],
-          'understand': ['explain','describe','summarize','classify','compare','interpret','paraphrase'],
-          'apply':      ['use','run','execute','implement','demonstrate','install','create','build'],
-          'analyze':    ['analyze','analyse','differentiate','examine','inspect','debug','investigate'],
-          'evaluate':   ['assess','evaluate','judge','test','validate','review','critique','verify'],
-          'create':     ['design','author','compose','construct','generate','plan','produce','write'],
+      BLOOM_SIGNALS = {
+          'remember':   ['welcome', 'reference', 'vocabulary', 'definition', 'terminology', 'glossary', 'prerequisite'],
+          'understand': ['intro', 'introduction', 'overview', 'understand', 'concept', 'architecture', 'explain', 'at a glance'],
+          'apply':      ['run', 'execute', 'install', 'setup', 'configure', 'connect', 'schedule', 'use'],
+          'analyze':    ['analyze', 'analyse', 'inspect', 'debug', 'diagnose', 'compare', 'output', 'troubleshoot', 'investigate'],
+          'evaluate':   ['evaluate', 'assess', 'judge', 'review', 'validate', 'verify', 'test', 'iterate'],
+          'create':     ['create', 'build', 'design', 'author', 'compose', 'construct', 'generate', 'write'],
       }
+      BLOOM_LEVELS = ['remember', 'understand', 'apply', 'analyze', 'evaluate', 'create']
 
-      def bloom_level(text):
-          lower = text.lower()
-          for level in ['create','evaluate','analyze','apply','understand','remember']:
-              for verb in BLOOM_VERBS[level]:
-                  if re.search(r'\b' + verb + r'\b', lower):
-                      return level
-          return 'unknown'
+      def bloom_level(title, text, filename):
+          title_text = f"{filename} {title}".lower()
+          prose = CODE_FENCE_RE.sub('', text).lower()
+          intro = ' '.join(re.findall(r"[a-z']+", prose)[:220])
+
+          scores = {level: 0 for level in BLOOM_LEVELS}
+          evidence = {level: [] for level in BLOOM_LEVELS}
+
+          for level in BLOOM_LEVELS:
+              for cue in BLOOM_SIGNALS[level]:
+                  if re.search(r'\b' + re.escape(cue) + r'\b', title_text):
+                      scores[level] += 3
+                      evidence[level].append(f"title:{cue}")
+                  if re.search(r'\b' + re.escape(cue) + r'\b', intro):
+                      scores[level] += 1
+                      evidence[level].append(f"intro:{cue}")
+
+          if len(CODE_FENCE_RE.findall(text)) > 0 or len(INLINE_CMD_RE.findall(text)) >= 3:
+              scores['apply'] += 1
+              evidence['apply'].append('activity:commands_or_code')
+          if CHECKPOINT_RE.search(text):
+              scores['evaluate'] += 1
+              evidence['evaluate'].append('activity:checkpoint')
+
+          ranked = sorted(
+              BLOOM_LEVELS,
+              key=lambda level: (scores[level], -BLOOM_LEVELS.index(level))
+          )
+          selected = ranked[-1]
+
+          if scores[selected] == 0:
+              return 'unknown', "No reliable Bloom cues found in title or intro."
+
+          top_cues = ', '.join(evidence[selected][:2])
+          if not top_cues:
+              top_cues = 'general activity cues'
+          return selected, f"Primary cues: {top_cues}."
 
       def fk_grade(text):
           """Flesch–Kincaid Grade Level (approximate)."""
@@ -123,6 +154,8 @@ steps:
 
           title = next((t.strip() for _,t in headings if _ == '#'), path.stem)
 
+          bloom, bloom_reason = bloom_level(title, raw, path.name)
+
           entries.append({
               'file':             path.name,
               'title':            title,
@@ -142,7 +175,8 @@ steps:
               'fk_grade':         fk,
               'activity_density': activity_density,
               'has_prereq_section': has_prereq_link,
-              'bloom_level':      bloom_level(prose),
+              'bloom_level':      bloom,
+              'bloom_justification': bloom_reason,
           })
 
       pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').write_text(
@@ -253,6 +287,22 @@ steps:
       # sort by overall score ascending so worst come first
       findings.sort(key=lambda x: x['overall_score'])
 
+      understand_count = sum(1 for f in scored if f['bloom_level'] == 'understand')
+      analyze_count = sum(1 for f in scored if f['bloom_level'] == 'analyze')
+      gap_proposals = []
+      if understand_count < 3:
+          gap_proposals.append({
+              'title': 'Step X: Bloom Primer — Understand Before You Build',
+              'target_bloom_level': 'understand',
+              'description': "This step explains Bloom levels with concrete workshop examples so you can tell the difference between understanding, applying, and creating tasks. It includes a quick rewrite exercise where you convert one 'build' instruction into a concept-first explanation."
+          })
+      if analyze_count < 2:
+          gap_proposals.append({
+              'title': 'Step Y: Output Diagnostics Lab',
+              'target_bloom_level': 'analyze',
+              'description': "This step asks you to inspect real workflow logs and classify whether each failure is prompt, permissions, or tool-configuration related. You compare two runs and explain which evidence supports your diagnosis before making fixes."
+          })
+
       result = {
           'corpus': {
               'total_files':   len(scored),
@@ -262,6 +312,21 @@ steps:
               'bloom_distribution': {
                   level: sum(1 for f in scored if f['bloom_level'] == level)
                   for level in ['remember','understand','apply','analyze','evaluate','create','unknown']
+              },
+              'bloom_reclassification': [
+                  {
+                      'file': f['file'],
+                      'level': f['bloom_level'],
+                      'justification': f['bloom_justification']
+                  }
+                  for f in scored
+              ],
+              'bloom_gap_analysis': {
+                  'understand_steps': understand_count,
+                  'analyze_steps': analyze_count,
+                  'has_min_understand_steps': understand_count >= 3,
+                  'has_min_analyze_steps': analyze_count >= 2,
+                  'gap_proposals': gap_proposals,
               },
           },
           'all_scores': scored,
@@ -335,9 +400,11 @@ For each entry in `findings` (sorted worst-first by overall score):
 In addition to per-step issues, look at:
 
 - Bloom's distribution — is the workshop dominated by lower-order thinking?
+- Bloom reclassification — use `corpus.bloom_reclassification` to audit all files and report each file's level with its one-sentence justification.
 - Step length variance — are some steps dramatically longer than the median?
 - Checkpoint coverage — do all steps have checkpoints?
 - Scaffolding gaps — do later steps reference capabilities introduced many steps earlier?
+- Bloom pyramid gaps — verify `corpus.bloom_gap_analysis.has_min_understand_steps` and `corpus.bloom_gap_analysis.has_min_analyze_steps`. If either is false, include the provided `gap_proposals` in the issue body as a structured list.
 
 ### Create issues
 
