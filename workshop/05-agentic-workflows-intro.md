@@ -118,14 +118,13 @@ If you're coming from classic GitHub Actions, the shift is simple: keep your exi
 
 > [!NOTE]
 > **Enterprise users (GHEC, GHES, or EMU):** ✅ Enterprise access confirmed in Step 1 — if you completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users), you're ready to continue.
-<!-- -->
-> [!NOTE]
-> **If you're in DevOps or evaluating for production:** You keep pull-request auditability, approvals, and trigger/permission controls because workflows still compile to standard Actions. For secret isolation and runner policy details (including self-hosted runners), use [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as your implementation checklist.
+>
+> **DevOps / production evaluation:** You keep pull-request auditability, approvals, and trigger/permission controls because workflows still compile to standard Actions. For secret isolation and runner policy details (including self-hosted runners), use [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as your implementation checklist.
 
 ### Platform Compatibility
 
 > [!NOTE]
-> **GHES users:** If you completed the [Enterprise Setup side quest](side-quest-enterprise-setup.md) before reaching this section, your environment should already be ready. If you skipped it, return to the [Enterprise Setup side quest](side-quest-enterprise-setup.md) to confirm your environment.
+> **GHES users:** If you completed the [Enterprise Setup side quest](side-quest-enterprise-setup.md) before reaching this section, your environment should already be ready. If you skipped it, complete the [Copilot Enterprise and network egress configuration steps](side-quest-enterprise-setup.md) in that guide before continuing.
 
 | GitHub deployment | Agentic workflows supported? |
 |---|---|
