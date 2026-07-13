@@ -30,6 +30,7 @@ steps:
       mkdir -p /tmp/gh-aw/cache-memory
       TODAY=$(date -u +%Y-%m-%d)
       echo "TODAY=$TODAY" >> "$GITHUB_ENV"
+      echo "MONTE_CARLO_RUNS=100" >> "$GITHUB_ENV"
 
   - name: Initialize student profiles if missing
     run: |
@@ -153,13 +154,13 @@ steps:
           print(f"  [{entry['index']}] {entry['file']}: {entry['title']}")
       PY
 
-  - name: Run Monte Carlo simulation (100 runs per student)
+  - name: Run Monte Carlo simulation (${{ env.MONTE_CARLO_RUNS }} runs per student)
     run: |
       node .github/skills/micro-environment-simulator/simulator.js \
         --students /tmp/gh-aw/cache-memory/profiles.json \
         --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
         --date "$TODAY" \
-        --runs 100 \
+        --runs "$MONTE_CARLO_RUNS" \
         --out /tmp/gh-aw/agent/sim/data/monte-carlo-replay.json
       echo "Monte Carlo simulation complete"
       node -e "
@@ -220,18 +221,18 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 38 students**, simulate their experience step-by-step using the following rules:
 
-The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` by the preceding workflow step (100 independent environment draws per student). Read this file to obtain the statistical baseline:
+The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` by the preceding workflow step (${{ env.MONTE_CARLO_RUNS }} independent environment draws per student). Read this file to obtain the statistical baseline:
 
 ```json
 {
   "mode": "monte-carlo",
-  "runs": 100,
+  "runs": ${{ env.MONTE_CARLO_RUNS }},
   "total": 38,
   "monteCarlo": [
     {
       "studentId": 1,
       "name": "Alex Chen",
-      "runs": 100,
+      "runs": ${{ env.MONTE_CARLO_RUNS }},
       "successes": <N>,
       "successRate": <0.0–1.0>,
       "failuresByStep": { "<step-id>": <count>, ... },
@@ -288,8 +289,8 @@ Use the pre-computed values from `monte-carlo-replay.json` as the primary data s
 ### Update student profiles
 
 Update `/tmp/gh-aw/cache-memory/profiles.json`:
-- Increment `runs` by **100** for every student (one Monte Carlo batch = 100 runs)
-- Increment `successes` by the student's `successes` count from `monte-carlo-replay.json` (i.e., the number of successful runs in the 100-run batch)
+- Increment `runs` by **${{ env.MONTE_CARLO_RUNS }}** for every student (one Monte Carlo batch = ${{ env.MONTE_CARLO_RUNS }} runs)
+- Increment `successes` by the student's `successes` count from `monte-carlo-replay.json` (i.e., the number of successful runs in the ${{ env.MONTE_CARLO_RUNS }}-run batch)
 - Write the updated JSON back to `/tmp/gh-aw/cache-memory/profiles.json`
 
 ### Read workshop files (if available)
@@ -311,7 +312,7 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ```markdown
 ### Overview
 - Date: YYYY-MM-DD
-- Students simulated: 38 × 100 Monte Carlo runs
+- Students simulated: 38 × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
 - Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
 - Overall success rate: XX% (from `aggregate.overallSuccessRate`)
 - Highest-dropout step: <step-id> (XX% dropout rate)

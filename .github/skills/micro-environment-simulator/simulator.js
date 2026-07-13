@@ -221,7 +221,21 @@ function simulateStudents(students, date, config = {}) {
   }));
 }
 
-function simulateStudentsMonteCarlo(students, date, config = {}, runsCount = 100) {
+function aggregateDropoutRates(monteCarlo, totalStudents, runsCount) {
+  const dropoutRateByStep = {};
+  for (const sr of monteCarlo) {
+    for (const [step, count] of Object.entries(sr.failuresByStep)) {
+      dropoutRateByStep[step] = (dropoutRateByStep[step] || 0) + count;
+    }
+  }
+  const totalRuns = totalStudents * runsCount;
+  for (const step of Object.keys(dropoutRateByStep)) {
+    dropoutRateByStep[step] = dropoutRateByStep[step] / totalRuns;
+  }
+  return dropoutRateByStep;
+}
+
+function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}) {
   const dayOfYear = toDayOfYear(date);
   return students.map((student) => {
     let successes = 0;
@@ -308,17 +322,7 @@ function runCli() {
 
   let results;
   if (runsCount && runsCount > 1) {
-    const monteCarlo = simulateStudentsMonteCarlo(students, today, { steps, transitions }, runsCount);
-    const dropoutRateByStep = {};
-    for (const sr of monteCarlo) {
-      for (const [step, count] of Object.entries(sr.failuresByStep)) {
-        dropoutRateByStep[step] = (dropoutRateByStep[step] || 0) + count;
-      }
-    }
-    const totalRuns = students.length * runsCount;
-    for (const step of Object.keys(dropoutRateByStep)) {
-      dropoutRateByStep[step] = dropoutRateByStep[step] / totalRuns;
-    }
+    const monteCarlo = simulateStudentsMonteCarlo(students, today, runsCount, { steps, transitions });
     results = {
       date: today,
       mode: "monte-carlo",
@@ -328,7 +332,7 @@ function runCli() {
       aggregate: {
         overallSuccessRate:
           monteCarlo.reduce((sum, r) => sum + r.successRate, 0) / monteCarlo.length,
-        dropoutRateByStep
+        dropoutRateByStep: aggregateDropoutRates(monteCarlo, students.length, runsCount)
       }
     };
   } else {
@@ -358,7 +362,8 @@ const exportedApi = {
   replayJourney,
   replayWorkshop,
   simulateStudents,
-  simulateStudentsMonteCarlo
+  simulateStudentsMonteCarlo,
+  aggregateDropoutRates
 };
 
 module.exports = exportedApi;
