@@ -34,9 +34,9 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 > [!NOTE]
 > If you don't see **Hello Agent** in the list yet, wait 30 seconds and refresh. GitHub takes a moment to register newly pushed workflow files.
 
-### Alternative: trigger from the terminal
+### Optional advanced path: trigger from the terminal
 
-Terminal users can trigger the same run with:
+Prefer the GitHub Actions UI path above for this workshop. If you already have CLI trigger permissions configured, you can trigger the same run with:
 
 ```bash
 gh aw run hello-agent
@@ -47,7 +47,7 @@ gh aw run hello-agent
 
 #### `actions:write` permission error (Codespaces users)
 
-If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Use the GitHub Actions UI steps above to trigger the workflow instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+If you see `HTTP 403: Resource not accessible by integration`, your Codespace token is missing `actions:write`. Use the recommended GitHub Actions UI steps above to trigger the workflow instead. For the full recovery guide — including how to recreate your Codespace with the right permissions — see [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
 #### Workflow not showing in the Actions sidebar
 

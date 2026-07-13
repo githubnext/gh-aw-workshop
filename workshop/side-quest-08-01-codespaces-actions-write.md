@@ -83,7 +83,7 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 - [ ] I know the exact error text that signals this Codespaces token problem
 - [ ] I understand why `gh aw run` can fail in a Codespace even when other GitHub commands work
-- [ ] I can use the GitHub Actions UI as the primary fallback
+- [ ] I can use the GitHub Actions UI as the recommended path
 - [ ] I know how to create a new Codespace with `actions:write` and `workflows:write` if I want the advanced terminal path
 - [ ] I'm ready to return to Step 8
 

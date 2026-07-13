@@ -21,7 +21,7 @@ Open a browser, navigate to your repository, and click the **Actions** tab.
 Find your **Daily Repo Status** workflow in the left sidebar and click it. Then click **Run workflow** → **Run workflow** (green button) to launch a manual run.
 
 > [!TIP]
-> You can also trigger it from the terminal:
+> Prefer the GitHub Actions UI for manual runs in this workshop. If you have CLI trigger permissions configured, you can also trigger it from the terminal:
 > ```bash
 > gh aw run daily-status
 > ```
