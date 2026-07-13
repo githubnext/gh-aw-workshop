@@ -150,5 +150,11 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 
 ---
 
+## ✅ Checkpoint
+
+- [ ] You have opened a session for your practice repository in the GitHub Copilot app or Agents tab
+- [ ] You confirmed the agent can reach the reference guide (probe returned Frontmatter schema, Triggers, Permissions, and Safe outputs)
+- [ ] You submitted the scenario prompt (A, B, or C) to the agent
+
 **Previous:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
 **Next:** [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)

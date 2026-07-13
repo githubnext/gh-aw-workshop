@@ -2,7 +2,7 @@
 
 > _Once you have submitted the scenario prompt, you'll monitor the agent session, steer it if needed, review its pull request, and merge your workflow._
 
-**Previous:** [Adventure D (Part 1): Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
+**Previous:** [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 
 ---
 
@@ -88,7 +88,7 @@ You can continue iterating through a GitHub Copilot app or Agents-tab session an
 - [ ] Both workflow files exist in your repository after merging
 - [ ] The workflow is visible in the GitHub Actions tab
 
-**Previous:** [Adventure D (Part 1): Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
+**Previous:** [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
 
 ## 📚 See Also
