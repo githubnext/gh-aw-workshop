@@ -66,8 +66,8 @@ steps:
           'create':     ['create', 'build', 'design', 'author', 'compose', 'construct', 'generate', 'write'],
       }
       BLOOM_LEVELS = ['remember', 'understand', 'apply', 'analyze', 'evaluate', 'create']
-      BLOOM_TIE_BREAK = {level: len(BLOOM_LEVELS) - idx for idx, level in enumerate(BLOOM_LEVELS)}
-      INTRO_TOKEN_LIMIT = 220  # Limit the intro analysis to the first 220 word tokens.
+      BLOOM_TIE_BREAK = {level: len(BLOOM_LEVELS) - idx for idx, level in enumerate(BLOOM_LEVELS)}  # Higher value = lower-order level.
+      INTRO_TOKEN_LIMIT = 220  # Limit intro analysis to the first 220 matched words.
       TITLE_WEIGHT = 3
       INTRO_WEIGHT = 1
       MIN_UNDERSTAND_STEPS = 3
@@ -297,7 +297,7 @@ steps:
           gap_proposals.append({
               'title': 'Bloom Primer — Understand Before You Build',
               'target_bloom_level': 'understand',
-              'description': "This step explains Bloom levels with concrete workshop examples so you can tell the difference between understanding, applying, and creating tasks. It includes a quick rewrite exercise where you convert one 'build' instruction into a concept-first explanation."
+              'description': "This step explains Bloom levels with concrete workshop examples so you can tell the difference between understanding, applying, and creating tasks. It includes a quick rewrite exercise where you convert one build instruction into a concept-first explanation."
           })
       if analyze_count < MIN_ANALYZE_STEPS:
           gap_proposals.append({
