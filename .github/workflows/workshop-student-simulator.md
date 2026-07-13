@@ -225,7 +225,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 41 students**, simulate their experience step-by-step using the following rules:
 
-First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest-dropout or highest-risk steps. Then read `curriculum.json`, inspect the most instruction-heavy workshop files for those steps, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content.
+First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read `curriculum.json`, inspect the most instruction-heavy workshop files for those steps, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content.
 
 Use this JSON shape:
 
@@ -236,15 +236,21 @@ Use this JSON shape:
       "summary": "Short explanation of the content-specific risk or support you inferred.",
       "bias": -0.04,
       "signalAdjustments": {
+        "complexity": -0.02,
         "terminalDemand": -0.05,
         "browserSupport": 0.04,
         "authDemand": -0.03,
-        "troubleshootingSupport": 0.02
+        "troubleshootingSupport": 0.02,
+        "conceptDemand": -0.02,
+        "enterpriseDemand": -0.03
       },
       "pathAdjustments": {
         "browser": 0.06,
         "cli": -0.05,
         "codespaces": -0.03,
+        "local": 0.02,
+        "mobile": -0.08,
+        "uiPreferred": 0.03,
         "enterprise": -0.04
       },
       "riskTags": ["browser-first", "auth-friction"]
