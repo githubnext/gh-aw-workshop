@@ -106,6 +106,11 @@ function contentSignal(context, key) {
   return Number(context.stepContent?.[key] || 0);
 }
 
+function agentInsight(context) {
+  const insight = context.stepContent?.agentInsight;
+  return insight && typeof insight === "object" ? insight : {};
+}
+
 function prefersBrowserPath(state, context) {
   const learner = learnerProfile(state);
   return (
@@ -189,6 +194,54 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   return clamp(probability + (emphasis.bias || 0), 0.12, 0.985);
 }
 
+function evaluateStepProbability(state, context, options = {}) {
+  const insight = agentInsight(context);
+  const signalAdjustments =
+    insight.signalAdjustments && typeof insight.signalAdjustments === "object" ? insight.signalAdjustments : {};
+  const pathAdjustments =
+    insight.pathAdjustments && typeof insight.pathAdjustments === "object" ? insight.pathAdjustments : {};
+  const usingBrowserPath = prefersBrowserPath(state, context);
+  const emphasis = {
+    ...(options.emphasis || {}),
+    bias: (options.emphasis?.bias || 0) + Number(insight.bias || 0)
+  };
+  let probability = computeSuccessProbability(state, context, emphasis);
+
+  probability += contentSignal(context, "complexity") * Number(signalAdjustments.complexity || 0);
+  probability += contentSignal(context, "terminalDemand") * Number(signalAdjustments.terminalDemand || 0);
+  probability += contentSignal(context, "browserSupport") * Number(signalAdjustments.browserSupport || 0);
+  probability += contentSignal(context, "authDemand") * Number(signalAdjustments.authDemand || 0);
+  probability += contentSignal(context, "troubleshootingSupport") * Number(signalAdjustments.troubleshootingSupport || 0);
+  probability += contentSignal(context, "conceptDemand") * Number(signalAdjustments.conceptDemand || 0);
+  probability += contentSignal(context, "enterpriseDemand") * Number(signalAdjustments.enterpriseDemand || 0);
+
+  if (usingBrowserPath) {
+    probability += Number(pathAdjustments.browser || 0);
+  } else {
+    probability += Number(pathAdjustments.cli || 0);
+  }
+  if (state.workspace?.context === "codespaces") {
+    probability += Number(pathAdjustments.codespaces || 0);
+  } else {
+    probability += Number(pathAdjustments.local || 0);
+  }
+  if (state.tool === "mobile") {
+    probability += Number(pathAdjustments.mobile || 0);
+  }
+  if (learnerProfile(state).uiPreferred) {
+    probability += Number(pathAdjustments.uiPreferred || 0);
+  }
+  if (state.auth?.accountType === "enterprise-managed" || state.github?.deployment === "ghes") {
+    probability += Number(pathAdjustments.enterprise || 0);
+  }
+
+  return {
+    probability: clamp(probability, 0.12, 0.985),
+    summary: typeof insight.summary === "string" ? insight.summary : "",
+    riskTags: Array.isArray(insight.riskTags) ? insight.riskTags : []
+  };
+}
+
 function applyLearning(state, context, gains = {}) {
   const next = cloneState(state);
   const learner = next.learner || {};
@@ -219,16 +272,19 @@ function applyLearning(state, context, gains = {}) {
 }
 
 function contentReadinessCheck(state, context, options = {}) {
-  const probability = computeSuccessProbability(state, context, options.emphasis);
-  if (deterministicRoll(context, options.salt || 0) <= probability) {
-    return { ok: true, probability };
+  const assessment = evaluateStepProbability(state, context, options);
+  if (deterministicRoll(context, options.salt || 0) <= assessment.probability) {
+    return { ok: true, probability: assessment.probability, assessment };
   }
-  return ensure(
+  const failure = ensure(
     false,
     options.failedAssumption || "The learner misses a key instruction in this step.",
     options.category || "content-friction",
     options.remediation || "Reduce the cognitive load in this step or add a clearer UI/CLI split."
   );
+  failure.probability = assessment.probability;
+  failure.assessment = assessment;
+  return failure;
 }
 
 function buildTransitions() {

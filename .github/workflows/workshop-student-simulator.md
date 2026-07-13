@@ -225,7 +225,52 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 41 students**, simulate their experience step-by-step using the following rules:
 
-The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` by the preceding workflow step (${{ env.MONTE_CARLO_RUNS }} independent environment draws per student). Read this file to obtain the statistical baseline:
+Before you rely on the Monte Carlo output, read `curriculum.json`, inspect the most instruction-heavy workshop files, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content.
+
+Use this JSON shape:
+
+```json
+{
+  "stepInsightsById": {
+    "<step-id>": {
+      "summary": "Short explanation of the content-specific risk or support you inferred.",
+      "bias": -0.04,
+      "signalAdjustments": {
+        "terminalDemand": -0.05,
+        "browserSupport": 0.04,
+        "authDemand": -0.03,
+        "troubleshootingSupport": 0.02
+      },
+      "pathAdjustments": {
+        "browser": 0.06,
+        "cli": -0.05,
+        "codespaces": -0.03,
+        "enterprise": -0.04
+      },
+      "riskTags": ["browser-first", "auth-friction"]
+    }
+  }
+}
+```
+
+- Omit steps where you have no meaningful adjustment.
+- Use positive numbers to increase success probability and negative numbers to decrease it.
+- Base these adjustments on the actual wording, path structure, fallbacks, and recovery guidance in the files you inspect — not only on the numeric signals already present in the simulator.
+
+Then rerun the simulator yourself so those agent-derived insights are incorporated into the probabilities:
+
+```bash
+node .github/skills/micro-environment-simulator/simulator.js \
+  --students /tmp/gh-aw/cache-memory/profiles.json \
+  --journey .github/skills/micro-environment-simulator/workshop-student-journey.js \
+  --curriculum /tmp/gh-aw/agent/sim/data/curriculum.json \
+  --agent-insights /tmp/gh-aw/agent/sim/data/agent-step-insights.json \
+  --date "$TODAY" \
+  --runs "$MONTE_CARLO_RUNS" \
+  --out /tmp/gh-aw/agent/sim/data/monte-carlo-replay.json
+```
+
+The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` should therefore reflect both the simulator's constraint model and your content-aware adjustments:
 
 ```json
 {
@@ -239,7 +284,11 @@ The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh
       "terminalDemand": <0.0–1.0>,
       "browserSupport": <0.0–1.0>,
       "authDemand": <0.0–1.0>,
-      "troubleshootingSupport": <0.0–1.0>
+      "troubleshootingSupport": <0.0–1.0>,
+      "agentInsight": {
+        "summary": "<optional content-aware rationale>",
+        "riskTags": ["<tag>", "..."]
+      }
     }
   },
   "monteCarlo": [
@@ -261,7 +310,7 @@ The Monte Carlo simulation has already been pre-computed and written to `/tmp/gh
 }
 ```
 
-Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort. Use `stepContentById` to explain how the actual workshop content changes those probabilities from step to step — do not reuse the same generic explanation for every learner.
+Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort. Use `stepContentById` — including any `agentInsight` you added before rerunning the simulator — to explain how the actual workshop content changes those probabilities from step to step. Do not reuse the same generic explanation for every learner.
 
 Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`), inspect the matching `stepContentById[mostCommonFailureStep]`, and cross-reference both with the student profile to produce per-student pain points:
 
@@ -310,7 +359,7 @@ Update `/tmp/gh-aw/cache-memory/profiles.json`:
 
 ### Read workshop files (if available)
 
-If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3 of the workshop step files to ground your improvement suggestions in the actual content. Focus on the highest-dropout steps.
+If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3 of the workshop step files to ground both your `agent-step-insights.json` adjustments and your improvement suggestions in the actual content. Focus on the highest-dropout or highest-risk steps.
 
 ### Create a concise report issue
 

@@ -192,7 +192,23 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
   });
 }
 
-function buildStepContentById({ steps = [], curriculum, stepFilesById = {}, repoRoot = process.cwd() }) {
+function normalizeAgentInsightsByStep(input) {
+  if (!input || typeof input !== "object") {
+    return {};
+  }
+  const raw = input.stepInsightsById && typeof input.stepInsightsById === "object" ? input.stepInsightsById : input;
+  return Object.fromEntries(
+    Object.entries(raw).filter(([, insight]) => insight && typeof insight === "object" && !Array.isArray(insight))
+  );
+}
+
+function buildStepContentById({
+  steps = [],
+  curriculum,
+  stepFilesById = {},
+  repoRoot = process.cwd(),
+  agentInsightsByStep = {}
+}) {
   const workshopDir = path.resolve(repoRoot, "workshop");
   const curriculumEntries = Array.isArray(curriculum?.main_steps) ? curriculum.main_steps : [];
   const curriculumByFile = new Map(curriculumEntries.map((entry) => [entry.file, entry]));
@@ -211,14 +227,17 @@ function buildStepContentById({ steps = [], curriculum, stepFilesById = {}, repo
     const markdown = existingFiles
       .map((file) => fs.readFileSync(path.resolve(workshopDir, file), "utf8"))
       .join("\n\n");
-    stepContentById[stepId] = analyzeStepMarkdown(
-      stepId,
-      markdown,
-      existingFiles.map((file) => ({
-        file,
-        title: curriculumByFile.get(file)?.title || file.replace(/\.md$/i, "")
-      }))
-    );
+    stepContentById[stepId] = deepFreeze({
+      ...analyzeStepMarkdown(
+        stepId,
+        markdown,
+        existingFiles.map((file) => ({
+          file,
+          title: curriculumByFile.get(file)?.title || file.replace(/\.md$/i, "")
+        }))
+      ),
+      agentInsight: agentInsightsByStep[stepId] || null
+    });
   }
 
   return deepFreeze(stepContentById);
@@ -555,13 +574,14 @@ function parseArgs(argv) {
     else if (arg === "--out") args.outPath = argv[++i];
     else if (arg === "--journey") args.journeyPath = argv[++i];
     else if (arg === "--curriculum") args.curriculumPath = argv[++i];
+    else if (arg === "--agent-insights") args.agentInsightsPath = argv[++i];
     else if (arg === "--runs") args.runsCount = parseInt(argv[++i], 10);
   }
   return args;
 }
 
 function runCli() {
-  const { studentsPath, date, outPath, journeyPath, curriculumPath, runsCount } = parseArgs(process.argv);
+  const { studentsPath, date, outPath, journeyPath, curriculumPath, agentInsightsPath, runsCount } = parseArgs(process.argv);
   if (!studentsPath) {
     throw new Error("Missing required --students <path> argument.");
   }
@@ -587,11 +607,15 @@ function runCli() {
     );
   }
   const curriculum = curriculumPath ? JSON.parse(fs.readFileSync(path.resolve(curriculumPath), "utf8")) : null;
+  const agentInsightsByStep = agentInsightsPath
+    ? normalizeAgentInsightsByStep(JSON.parse(fs.readFileSync(path.resolve(agentInsightsPath), "utf8")))
+    : {};
   const stepContentById = buildStepContentById({
     steps,
     curriculum,
     stepFilesById: journeyModule.stepFilesById || journeyModule.STEP_FILE_ALIASES || {},
-    repoRoot: process.cwd()
+    repoRoot: process.cwd(),
+    agentInsightsByStep
   });
 
   let results;
@@ -642,6 +666,7 @@ const exportedApi = {
   stableHash,
   analyzeStepMarkdown,
   buildStepContentById,
+  normalizeAgentInsightsByStep,
   defaultEnvironmentForStudent,
   replayJourney,
   replayWorkshop,
