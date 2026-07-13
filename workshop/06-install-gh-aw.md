@@ -12,10 +12,10 @@ Use the path that matches your tool before you run any install command:
 | I am using… | Do this |
 | --- | --- |
 | Cloud agent or VS Code Copilot extension | [Check if already installed](#check-if-already-installed) |
-| **GitHub Copilot Cloud Agent (CCA)** | [Open a Codespace first](#open-a-codespace-first-github-copilot-cloud-agent-users) |
+| **GitHub Copilot Cloud Agent (CCA)** | [Open a Codespace first](#open-a-codespace-first) |
 | Local terminal or standard Codespace terminal | [Install from terminal](#install-from-terminal) |
 
-## Open a Codespace first (GitHub Copilot Cloud Agent users)
+## Open a Codespace first
 
 If you're using the **GitHub Copilot Cloud Agent (CCA)** and don't have a terminal open yet, use the launch button above.
 
