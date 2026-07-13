@@ -1,8 +1,18 @@
 # Side Quest: Enterprise Setup Considerations
 
-> _Optional: use this guide if you're running the workshop in GHES or a managed enterprise environment, then return to your current step._
+> _Required for GHES users before attempting to create or run agentic workflows. Also useful if you are running any setup step in a managed enterprise environment — complete this guide, then return to your current step._
 
-Use this side quest before setup if your environment differs from standard `github.com` defaults.
+Use this side quest if your environment differs from standard `github.com` defaults.
+
+## Confirm GHES version and agentic workflow support
+
+Agentic workflows require **GHES 3.12 or later**. On earlier versions, the Copilot cloud agent feature is unavailable regardless of licensing or policy settings.
+
+Before continuing:
+
+1. Ask your GitHub Enterprise administrator to confirm the GHES version running in your environment.
+2. If your instance is below 3.12, you cannot run agentic workflows hands-on — you can follow along in read-only mode or request a `github.com` account to complete the execution steps.
+3. If your instance is 3.12+, continue with the sections below to confirm Codespaces, runner, and model access prerequisites.
 
 ## Confirm Codespaces availability on GHES or enterprise policies
 
@@ -43,10 +53,11 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 
 ## ✅ Checkpoint
 
+- [ ] Your GHES instance is version 3.12 or later (or you are on `github.com`/GHEC)
 - [ ] You know whether Codespaces is available in your enterprise environment
 - [ ] You know whether you need a self-hosted runner and that it is ready
-- [ ] You confirmed model access and required Copilot licensing with your admin
+- [ ] You confirmed Copilot Enterprise and model access are enabled with your admin
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), and [Step 3](03-create-your-repo.md).
+Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).

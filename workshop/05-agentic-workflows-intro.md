@@ -1,9 +1,21 @@
 # Step 5: What Are Agentic Workflows?
 
+## 📋 Before You Start
+
+**`github.com` or GitHub Enterprise Cloud (GHEC) users:**
+
+- [ ] GitHub Copilot Enterprise is enabled for your organization — confirm in **Settings → Copilot** before continuing.
+
+**GitHub Enterprise Server (GHES) users:**
+
 > [!IMPORTANT]
-> **Enterprise/GHES users: read this before continuing with Step 5.** Agentic workflows require **GHES 3.12+** (or `github.com`/GHEC) and **GitHub Copilot Enterprise** with Copilot cloud agent enabled by your admins.
-> Self-hosted runners and enterprise proxy-based environments are supported when required network egress and policy settings are configured.
-> If you're on GHES or a managed enterprise environment, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as a required prerequisite, then return to this Step 5 page.
+> **GHES users: complete the side quest below before reading further — it is required, not optional.**
+> Agentic workflows require **GHES 3.12+**, **Copilot Enterprise** enabled by your admin, and network egress to GitHub model endpoints.
+> Without these in place you will encounter hard failures at Steps 6–8 with no clear explanation.
+>
+> → Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now, then return to the [What You'll Do](#-what-youll-do) section below.
+
+---
 
 **⏱ In 30 seconds:** An agentic workflow is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. No shell scripts. No brittle YAML. Just a goal and an agent that figures out the rest.
 
@@ -72,9 +84,6 @@ You'll connect what you already know about classic GitHub Actions to the agentic
 
 This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
 
-> [!IMPORTANT]
-> **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
-
 ## Classic Actions vs Agentic Workflows
 
 An agentic workflow is a Markdown file with two parts: a YAML frontmatter block that is fully backward compatible with GitHub Actions (same `on:`, `permissions:`, and trigger syntax you already know, plus a few agent-specific extras), and a body that is the plain-language prompt the agent receives. The `gh aw compile` command converts that Markdown file into a standard Actions workflow (`.lock.yml`) that runs the agent in a safe, sandboxed, gated job.
@@ -111,19 +120,15 @@ If you're coming from classic GitHub Actions, the shift is simple: keep your exi
 
 ## Platform Compatibility
 
-> [!WARNING]
-> **GHES (GitHub Enterprise Server) users:** Agentic workflows are **not supported by default** on GHES. Support varies by version and organization configuration. If you are on a GHES instance and agentic workflows are not enabled, you will encounter 404 errors or permission failures at Steps 6–8 with no clear explanation.
->
-> **Recommended options for GHES users:**
-> - Follow along in read-only mode to learn the concepts — you can still complete all non-execution steps.
-> - Request a **github.com** account (free tier is sufficient) to run the hands-on portions of the workshop.
-> - Ask your GitHub Enterprise administrator whether agentic workflows have been enabled for your organization.
+> [!NOTE]
+> **GHES users:** If you completed the [Enterprise Setup side quest](side-quest-enterprise-setup.md) before reaching this section, your environment should already be ready. If you skipped it, return to [Before You Start](#-before-you-start) at the top of this page.
 
 | GitHub deployment | Agentic workflows supported? |
 |---|---|
 | **github.com** (free/Team/Enterprise) | ✅ Fully supported |
 | **GitHub Enterprise Cloud (GHEC)** | ✅ Fully supported |
-| **GitHub Enterprise Server (GHES)** | ⚠️ Not supported by default — varies by version and org configuration |
+| **GitHub Enterprise Server (GHES) 3.12+** | ✅ Supported when Copilot Enterprise and network egress are configured by admin |
+| **GitHub Enterprise Server (GHES) < 3.12** | ❌ Not supported — upgrade required |
 
 > [!IMPORTANT]
 > In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**
