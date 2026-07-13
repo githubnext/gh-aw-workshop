@@ -54,7 +54,7 @@ You'll see a single job. Click it to open the live log view.
 
 ### Read the log as the agent works
 
-The log streams in real time. Unlike a traditional CI job — which shows build commands — an agentic workflow log shows the agent's **reasoning steps**:
+The log streams in real time. Unlike a traditional CI job — which shows build commands — an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) log shows the agent's **reasoning steps**:
 
 ```
 🤔 Planning...  Searching for open issues with 👍 reactions
@@ -69,7 +69,7 @@ Each line tells you what the agent is doing:
 - **Planning** lines show the agent deciding its next action.
 - **Tool call** lines show it making an API call.
 - **Result** lines show what came back from that call.
-- **Done** means the agent finished the task within its safe-output limits.
+- **Done** means the agent finished the task within its [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) limits.
 
 > [!TIP]
 > If you're used to CI logs that scroll by in milliseconds, agentic logs can feel slow — the agent is actually pausing to think. That's normal and expected.
@@ -104,3 +104,9 @@ This is the core loop of agentic workflow development: **design → agent edit �
 - [ ] I understand the difference between a tool call and a safe-output operation
 
 **Next:** [Step 9: Reading Workflow Output](09-understand-output.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

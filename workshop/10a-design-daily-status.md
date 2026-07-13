@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll design your first real-world agentic workflow: a **Daily Repo Status Report**. Instead of jumping straight into YAML, you'll sketch the agent's goal, inputs, and expected output in plain English first. By the end you'll have a clear brief ready to translate into a workflow file in the next step.
+You'll design your first real-world [agentic workflow](https://github.github.com/gh-aw/introduction/overview/): a **Daily Repo Status Report**. Instead of jumping straight into YAML, you'll sketch the agent's goal, inputs, and expected output in plain English first. By the end you'll have a clear brief ready to translate into a workflow file in the next step.
 
 ## 📋 Before You Start
 
@@ -78,3 +78,9 @@ Guardrails:
 - [ ] I've written at least two guardrail rules
 
 **Next:** [Step 11a: Build — Daily Repo Status Workflow](11a-build-daily-status.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

@@ -175,7 +175,7 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 ---
 
 > [!TIP]
-> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying agentic workflows through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
+> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
 
 Commit and push:
 
@@ -271,3 +271,10 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 
 **Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
