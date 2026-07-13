@@ -43,7 +43,7 @@ _Starting with the right setup saves you from frustrating detours later._
 Complete these checks before you choose a setup path:
 
 - [ ] **Enterprise users:** You've reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
-- [ ] You know where you'll run workshop commands: a local terminal or a GitHub Codespace
+- [ ] You know whether you'll use a local terminal, a GitHub Codespace, or the GitHub UI-only path
 - [ ] If you're using your own terminal, run `gh --version` now and confirm `gh` CLI ≥ 2.40
 - [ ] If you choose a Codespace, you'll run `gh --version` in [Adventure A](02a-setup-codespace.md) right after the Codespace opens
 - [ ] If you're on GHEC, GHES, or EMU, you completed the enterprise prerequisite check above
@@ -75,6 +75,27 @@ Complete these checks before you choose a setup path:
 > After Step 5, continue to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 
 ## 🔀 Choose Your Setup Path
+
+> [!NOTE]
+> **Can I do this workshop without a terminal?**
+>
+> **Yes.** The GitHub UI path lets you complete the main workshop through Step 14 in your browser:
+>
+> - Skip the terminal setup in Steps 2a/2b and start with [Step 3b](03b-create-your-repo-ui.md)
+> - Use the GitHub UI alternative in Step 6 and choose Step 7b
+> - Complete Steps 8–10, then choose the GitHub UI options in Steps 11–13
+>
+> You won't install or run the `gh aw` CLI locally, but you will trigger and watch a real agentic workflow run from the Actions tab in Step 8.
+>
+> These activities require a terminal:
+>
+> - Step 2a (Codespace setup), Step 2b (local setup), Step 3a, and Step 7a
+> - The Step 6 installation
+> - The Terminal builds and Add Wizard in Step 11
+> - Optional `gh aw` commands in Steps 8 and 12
+> - Step 13a and the workflow-reuse activity in Step 14
+>
+> You can skip them on the UI path. Steps 15–21 do not have dedicated UI paths and may require terminal access.
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
@@ -120,7 +141,7 @@ You'll confirm that you have everything required before writing a single line of
 
 If you chose the **local terminal path** and `gh` is missing there, install it using one of these one-liners:
 
-> **Why this matters:** `gh-aw` is a `gh` CLI extension — it cannot run without `gh` installed. Skipping this step means the `gh aw` command in Step 6 will not exist and the workshop will stall there.
+> **Why this matters:** `gh-aw` is a `gh` CLI extension — it cannot run without `gh` installed. On the Terminal path, skipping this step means the `gh aw` command in Step 6 will not exist and the workshop will stall there.
 
 #### macOS (Homebrew)
 
@@ -202,7 +223,7 @@ Need a quick glossary with official docs links?
 - [ ] You've decided whether to use Codespaces, a local terminal, or the GitHub UI
 - [ ] You know which file to open next
 
-**Next:** Follow the link above for your chosen path — [Adventure A](02a-setup-codespace.md) or [Adventure B](02b-setup-local.md).
+**Next:** Follow the link above for your chosen path — [Adventure A](02a-setup-codespace.md), [Adventure B](02b-setup-local.md), or the [GitHub UI path](03b-create-your-repo-ui.md).
 
 ## 📚 See Also
 
