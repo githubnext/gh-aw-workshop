@@ -84,7 +84,7 @@ The `description` helps readers (and the orchestrator) understand the sub-agent'
 
 Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
 
-> **Decision prompt:** You're writing a sub-agent that reads 500 files and summarises each one. Which alias should you use, and why?
+> **Decision prompt:** You're writing a sub-agent that reads 500 files and summarizes each one. Which alias should you use, and why?
 
 <details>
 <summary>Answer</summary>
