@@ -2,7 +2,7 @@
 
 ## 📋 Before You Start
 
-**`github.com` or GitHub Enterprise Cloud (GHEC) users:** Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot** before continuing.
+**Managed enterprise users (`github.com`, GHEC, or GHES):** Confirm GitHub Copilot Enterprise is enabled for your organization in **Organization settings → Copilot** before continuing.
 
 > [!IMPORTANT]
 > Enterprise or GHES/GHEC user? Review your admin-managed prerequisites before continuing.
@@ -19,9 +19,11 @@
 
 **Blocked? Do this:** Send your GitHub org admin a note like this:
 
-- "I'm taking the gh-aw workshop."
-- "Step 5 requires GitHub Copilot Enterprise to be enabled for the organization that owns my workshop repository."
-- "Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account."
+> I'm taking the gh-aw workshop.
+>
+> Step 5 requires GitHub Copilot Enterprise to be enabled for the organization that owns my workshop repository.
+>
+> Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account.
 
 Org admins can usually unblock this in under 5 minutes. If you are waiting on that change,
 complete the [enterprise setup guide](side-quest-enterprise-setup.md) now, then read Steps 6 and 7
