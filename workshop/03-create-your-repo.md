@@ -38,7 +38,7 @@ Replace `<your-username>` with your actual GitHub username.
 
 ### Terminal path — clone and enter the repository
 
-If you're on the **local path**, clone the new repository:
+If you're using your own terminal, clone the new repository:
 
 ```bash
 gh repo clone my-agentic-workflows
