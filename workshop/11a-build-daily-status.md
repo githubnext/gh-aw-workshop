@@ -12,6 +12,27 @@ _You've designed the workflow on paper — now choose how you want to create it.
 
 You'll have `.github/workflows/daily-status.md` committed to your repository and passing `gh aw compile --validate` with no errors. The workflow file will include all required sections — `trigger:`, `task:`, and at least one data-source — and will be ready to test in Step 12.
 
+## What You'll Build
+
+Every daily-status workflow file has the same three-part skeleton, regardless of which construction path you take:
+
+```
+---
+on:
+  schedule: daily
+safe-outputs:
+  - post-issue-comment
+---
+## Task
+
+<your agent instructions here>
+```
+
+The **frontmatter** (between the `---` fences) declares _when_ the workflow runs (`on: schedule: daily`) and _what write actions_ the agent may take (`safe-outputs`). The **Markdown body** below the closing `---` is the task brief — plain-English instructions the AI agent reads each time it runs. Keeping this structure in mind as you follow any path below will make each section feel familiar rather than arbitrary.
+
+> [!TIP]
+> Refer back to the brief you wrote in Step 10a as you build. Each component of your design maps directly to a section of this skeleton.
+
 ## Choose Your Path
 
 | Path | What you'll do | Continue |
