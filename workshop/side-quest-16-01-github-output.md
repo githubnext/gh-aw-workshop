@@ -75,20 +75,30 @@ You can use any unique string as the delimiter — `EOF` is just a convention.
 
 ## Injecting outputs into an AI prompt
 
-Once your data is in `$GITHUB_OUTPUT`, you can reference it anywhere in the workflow YAML — including inside an AI prompt step:
+Once your data is in `$GITHUB_OUTPUT`, you reference it directly inside the workflow Markdown body — which **is** the AI prompt in gh-aw. There is no separate step to invoke the AI; the body text is sent to the model after all step outputs have been resolved.
+
+**Frontmatter** (data-preparation step):
 
 ```yaml
-- name: Generate summary
-  uses: gh-aw/prompt@v1
-  with:
-    prompt: |
-      Here are the recent commits:
-      ${{ steps.recent.outputs.commit_log }}
-
-      Write a one-paragraph summary of this activity.
+steps:
+  - name: Fetch recent commits
+    id: recent
+    run: |
+      echo "commit_log<<EOF" >> $GITHUB_OUTPUT
+      git log --oneline -10 >> $GITHUB_OUTPUT
+      echo "EOF" >> $GITHUB_OUTPUT
 ```
 
-The `${{ ... }}` expression is resolved by GitHub Actions **before** the step runs, so the model receives the fully expanded text.
+**Workflow body (the prompt)**:
+
+```markdown
+Here are the recent commits:
+${{ steps.recent.outputs.commit_log }}
+
+Write a one-paragraph summary of this activity.
+```
+
+The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is sent to the model, so the AI receives the fully expanded text.
 
 ---
 
