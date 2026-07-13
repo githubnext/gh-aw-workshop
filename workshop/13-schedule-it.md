@@ -20,14 +20,15 @@ If `gh aw compile` reports a YAML parse error after you change the schedule, sta
 
 ### Open your workflow file
 
+Choose the path that matches how you want to edit the file.
+
+#### Terminal path — commit in the terminal
+
 In your editor (or Codespace), open `.github/workflows/daily-status.md`.
 
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
+#### GitHub UI path — commit in the browser
 
 Navigate to `.github/workflows/daily-status.md` in your repository on GitHub and click the **pencil icon (✏️)** to open the file in the web editor.
-
-</details>
 
 ### Locate the `on:` block
 
@@ -63,9 +64,7 @@ on:
 > A green output means your YAML is valid so far. If you see a red error, check indentation in the `on:` block you just edited.
 > For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
 
-### Compile and validate
-
-**Terminal:**
+### Terminal path — compile and validate
 
 ```bash
 gh aw compile .github/workflows/daily-status.md
@@ -76,9 +75,9 @@ You should see `✅ Compiled successfully`. The compiled `.yml` will contain the
 > [!NOTE]
 > **GitHub UI path:** You won't be able to validate YAML until after committing. Run `gh aw compile` in a Codespace if you want early feedback.
 
-### Commit and push the schedule trigger
+### Commit the schedule change
 
-**Terminal:**
+#### Terminal path
 
 ```bash
 git add .github/workflows/daily-status.md
@@ -86,12 +85,9 @@ git commit -m "chore: schedule daily status workflow"
 git push
 ```
 
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
+#### GitHub UI path
 
 After updating the `schedule:` line in the web editor (opened in step 1), click **Commit changes**.
-
-</details>
 
 ### Confirm the schedule is registered
 

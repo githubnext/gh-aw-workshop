@@ -16,15 +16,24 @@ You'll trigger your daily-status workflow manually, read the resulting issue com
 
 ### Trigger the workflow manually
 
+Choose the path that matches how you want to trigger the run.
+
+#### GitHub UI path (recommended)
+
 Open a browser, navigate to your repository, and click the **Actions** tab.
 
 Find your **Daily Repo Status** workflow in the left sidebar and click it. Then click **Run workflow** → **Run workflow** (green button) to launch a manual run.
 
 > [!TIP]
-> Prefer the GitHub Actions UI for manual runs in this workshop. If you have CLI trigger permissions configured, you can also trigger it from the terminal:
-> ```bash
-> gh aw run daily-status
-> ```
+> Prefer the GitHub Actions UI for manual runs in this workshop.
+
+#### CLI path (optional)
+
+If you already have CLI trigger permissions configured, you can trigger the same run from the terminal:
+
+```bash
+gh aw run daily-status
+```
 
 ### Watch the run live
 
@@ -110,9 +119,9 @@ For example, your updated Guidelines section might look like:
 > [!NOTE]
 > The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
 
-### Commit, push, and re-run
+### Commit your change
 
-**Terminal:**
+#### Terminal path
 
 ```bash
 git add .github/workflows/daily-status.md
@@ -120,12 +129,9 @@ git commit -m "refine: tighten daily status prompt"
 git push
 ```
 
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
+#### GitHub UI path
 
 Navigate to `.github/workflows/daily-status.md` in your repository, click the **pencil icon (✏️)**, make your changes, then click **Commit changes**.
-
-</details>
 
 Trigger another manual run and compare the new comment with the old one. Repeat until you are happy.
 

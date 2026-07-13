@@ -36,12 +36,9 @@ Replace `<your-username>` with your actual GitHub username.
 > [!NOTE]
 > The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
-### Clone and enter the repository
+### Terminal path — clone and enter the repository
 
-> [!NOTE]
-> **GitHub UI path:** If you plan to create and edit files directly on GitHub (in the browser), you can skip this step — cloning is only needed for terminal-based work.
-
-If you're on the **local path**, clone the new repository:
+If you're using your own terminal, clone the new repository:
 
 ```bash
 gh repo clone my-agentic-workflows
@@ -59,17 +56,29 @@ cd my-agentic-workflows
 > [!TIP]
 > Remaining steps that use the terminal assume your shell is inside the `my-agentic-workflows` directory. Keep this terminal open — you'll return to it throughout the workshop.
 
+### GitHub UI path — stay in the browser
+
+If you plan to create and edit files directly on GitHub, skip cloning and keep the repository open in your browser. You only need to confirm that **Actions** is enabled in the next section.
+
 ### Confirm GitHub Actions is enabled
 
-Open the repository on GitHub.
+Choose the path that matches how you are working:
 
-**Terminal shortcut:**
+#### Terminal path — open the repository
+
+Open the repository on GitHub:
 
 ```bash
 gh repo view --web
 ```
 
-Click the **Actions** tab at the top of the page. You should see a message like _"Get started with GitHub Actions"_ — that means Actions is enabled and ready to go.
+Then click the **Actions** tab at the top of the page.
+
+#### GitHub UI path — open the repository
+
+From your repository page on GitHub, click the **Actions** tab at the top of the page.
+
+You should see a message like _"Get started with GitHub Actions"_ — that means Actions is enabled and ready to go.
 
 ![Actions tab with getting-started message](images/03-actions-tab.svg)
 
@@ -105,7 +114,7 @@ git push
 
 ### Verify your setup
 
-**Terminal:**
+#### Terminal path — verify in the terminal
 
 ```bash
 gh repo view --json name,owner,url | cat
@@ -113,7 +122,9 @@ gh repo view --json name,owner,url | cat
 
 You should see your username as `owner`, `my-agentic-workflows` as `name`, and a valid GitHub URL.
 
-**GitHub UI:** Navigate to your repository on GitHub and confirm the repository name and your username appear in the page header.
+#### GitHub UI path — verify in the browser
+
+Navigate to your repository on GitHub and confirm the repository name and your username appear in the page header.
 
 > [!TIP]
 > Bookmark the repository URL — you'll visit it often to watch workflows run.

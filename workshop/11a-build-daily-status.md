@@ -157,9 +157,9 @@ For broken ❌ and correct ✅ examples of each, see [Side Quest: YAML Frontmatt
 
 ## Putting It All Together
 
-Here's how to create the file:
+Choose the path that matches how you want to work:
 
-**Terminal:**
+### Terminal path — create the workflow file
 
 ```bash
 mkdir -p .github/workflows
@@ -167,8 +167,7 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/daily-status.md` (the filename should be exactly `daily-status.md`; agentic workflows in this workshop use Markdown files, not `.yml`).
 
-<details>
-<summary>🖥️ GitHub UI alternative — create the file in your browser</summary>
+### GitHub UI path — create the workflow file in your browser
 
 1. In your repository on GitHub, click **Add file** → **Create new file**.
 2. In the filename box, type: `.github/workflows/daily-status.md`
@@ -178,10 +177,9 @@ Then open your editor and create `.github/workflows/daily-status.md` (the filena
 > [!NOTE]
 > You won't be able to validate YAML until after committing — run `gh aw compile` in a Codespace if you want early feedback.
 
-</details>
+If you're following the **Terminal path**, build the file in small sections and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-status.md` to validate — or keep `gh aw compile .github/workflows/daily-status.md --watch` running in a second terminal for continuous feedback.
 
-Instead of pasting one giant block, build the file in small sections and compile after each one to catch YAML errors early.
-After saving each section, run `gh aw compile .github/workflows/daily-status.md` to validate — or keep `gh aw compile .github/workflows/daily-status.md --watch` running in a second terminal for continuous feedback.
+If you're following the **GitHub UI path**, paste the complete workflow from the **Complete Workflow (Copy-Paste Version)** section below, commit it once, then use the build sections below as a guided explanation of what each part does.
 
 ### Build section 1: frontmatter basics
 
@@ -318,9 +316,7 @@ If you see a red error, the message names the key and the line that failed. Comp
 
 If you prefer to paste everything at once, use the complete copy-paste block in the **Complete Workflow (Copy-Paste Version)** section below.
 
-Commit and push:
-
-**Terminal:**
+### Terminal path — commit and push
 
 ```bash
 git add .github/workflows/daily-status.md
@@ -328,12 +324,9 @@ git commit -m "feat: add daily repo status agentic workflow"
 git push
 ```
 
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
+### GitHub UI path — commit in the browser
 
 If you created the file via the GitHub UI, it was already committed when you clicked **Commit new file**. No additional push is needed.
-
-</details>
 
 ---
 

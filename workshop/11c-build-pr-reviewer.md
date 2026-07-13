@@ -44,7 +44,9 @@ This changes two things:
 
 ## Putting It All Together
 
-**Terminal:**
+Choose the path that matches how you want to work:
+
+### Terminal path — create the workflow file
 
 ```bash
 mkdir -p .github/workflows
@@ -52,8 +54,7 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/pr-code-reviewer.md`.
 
-<details>
-<summary>🖥️ GitHub UI alternative — create the file in your browser</summary>
+### GitHub UI path — create the workflow file in your browser
 
 1. In your repository on GitHub, click **Add file** → **Create new file**.
 2. In the filename box, type: `.github/workflows/pr-code-reviewer.md`
@@ -63,9 +64,9 @@ Then open your editor and create `.github/workflows/pr-code-reviewer.md`.
 > [!NOTE]
 > You won't be able to validate YAML until after committing — run `gh aw compile` in a Codespace if you want early feedback.
 
-</details>
+If you're following the **Terminal path**, build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/pr-code-reviewer.md` to validate — or keep `gh aw compile .github/workflows/pr-code-reviewer.md --watch` running in a second terminal for continuous feedback.
 
-Build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/pr-code-reviewer.md` to validate — or keep `gh aw compile .github/workflows/pr-code-reviewer.md --watch` running in a second terminal for continuous feedback.
+If you're following the **GitHub UI path**, paste the complete workflow from the **Complete Workflow (Copy-Paste Version)** section below, commit it once, then use the build sections below as a guided explanation of what each part does.
 
 ### Build section 1: frontmatter basics
 
@@ -169,9 +170,7 @@ Findings: {count}
 > [!TIP]
 > This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying agentic workflows through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
 
-Commit and push:
-
-**Terminal:**
+### Terminal path — commit and push
 
 ```bash
 git add .github/workflows/pr-code-reviewer.md
@@ -179,12 +178,9 @@ git commit -m "feat: add pr code reviewer agentic workflow"
 git push
 ```
 
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
+### GitHub UI path — commit in the browser
 
 If you created the file via the GitHub UI, it was already committed when you clicked **Commit new file**. No additional push is needed.
-
-</details>
 
 ---
 
