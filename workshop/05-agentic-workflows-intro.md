@@ -2,7 +2,7 @@
 
 ## 📋 Before You Start
 
-**Enterprise users (GHEC, GHES, or EMU):** Confirm GitHub Copilot Enterprise is enabled for your organization in **Settings → Copilot → Policies** before continuing.
+**Enterprise users (GHEC, GHES, or EMU):** This step assumes your organization already has GitHub Copilot Enterprise available.
 
 > [!IMPORTANT]
 > Enterprise user (GHEC, GHES, or EMU)? Review your admin-managed prerequisites before continuing.
