@@ -5,7 +5,7 @@
 
 ## 🎯 What You'll Do
 
-You'll verify the `gh` CLI is authenticated, check whether `gh-aw` is already installed, install it if needed, and confirm the extension is working in your local terminal.
+You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and confirm it is working in your local terminal.
 
 ## 📋 Before You Start
 
@@ -21,65 +21,53 @@ gh auth status
 
 Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
 
-## Check if already installed
+## Install from terminal
 
-Run:
+Check whether `gh-aw` is already installed, then install or update accordingly:
 
 ```bash
 gh aw --version
 ```
 
-If you get a version number, skip to [Confirm installation](#confirm-installation).
-
-## Install the extension
-
-> [!TIP]
-> **Using VS Code?** Open the integrated terminal with `` Ctrl+` `` (macOS: `` Cmd+` ``), then run all `gh aw` commands there.
+- **Version shown?** Update the extension: `gh extension upgrade github/gh-aw`
+- **Command not found?** Install the extension (open your terminal — in VS Code use `` Ctrl+` `` / `` Cmd+` ``):
 
 ```bash
 gh extension install github/gh-aw
 ```
 
-> [!TIP]
-> Getting a `403 Forbidden` error? Your org token may not allow public extension installs. Use the fallback installer:
-> ```bash
-> curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh | sh
-> ```
-> Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
+<details>
+<summary>Troubleshooting: 403 Forbidden on install</summary>
 
-If the extension is already installed, update it instead:
+Your org token may not allow public extension installs. Use the fallback installer:
 
 ```bash
-gh extension upgrade github/gh-aw
+curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh | sh
 ```
 
-## Confirm installation
+Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
-```bash
-gh extension list
-```
+</details>
 
-You should see an entry for `github/gh-aw`.
-
-## Verify gh aw is available
+Verify the extension is ready:
 
 ```bash
 gh aw --version
 ```
 
-Example success output:
+You should see output like `gh-aw version 0.81.6`.
 
-```text
-gh-aw version 0.81.6
-```
+## 🏃 Try It
+
+Run `gh aw --help` and scan the list of sub-commands.
+
+Which one sub-command do you expect to use in Step 7 when you create and run your first workflow?
 
 ## ✅ Checkpoint
 
 - [ ] `gh auth status` shows you are logged in to github.com
-- [ ] `gh --version` returns a version number
-- [ ] `gh extension install github/gh-aw` succeeded (or the fallback install succeeded)
-- [ ] `gh extension list` shows `github/gh-aw`
 - [ ] `gh aw --version` returns a version number
+- [ ] You can name one `gh aw` sub-command from `gh aw --help`
 
 Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
