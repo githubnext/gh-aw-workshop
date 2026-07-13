@@ -58,11 +58,11 @@ Keep your predictions handy — you'll check them against the live log in a mome
 
 </details>
 
-### Watch the run and interpret the log
+### Annotate a sample log, then analyse your own
 
 After a few seconds a new row appears with a yellow spinning icon. Click it, then click the job to open the live log.
 
-The log streams in real time. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) log shows the agent's **reasoning steps** — not build commands:
+An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) log shows the agent's **reasoning steps** — not build commands. Before reading the explanation, label each line in the sample below with its type: `Planning`, `Tool call`, `Result`, or `Done`. Copy the block into a local text file and write your labels next to each line.
 
 ```
 🤔 Planning...  Searching for open issues with 👍 reactions
@@ -73,16 +73,31 @@ The log streams in real time. An [agentic workflow](https://github.github.com/gh
 ✅ Done
 ```
 
-**Interpret the log** — answer these three questions as you watch:
+<details>
+<summary>Reveal annotated log</summary>
 
-1. Which API call (`tool_call`) did the agent make first?
-2. How many reasoning steps did the agent take before posting a comment or creating an issue?
+```
+🤔 Planning...  Searching for open issues with 👍 reactions   ← Planning
+🔧 Tool call:   github.list_issues  (state=open, sort=reactions-+1)  ← Tool call
+📥 Result:      3 issues found                                ← Result
+🤔 Thinking...  Issue #4 has the most 👍 reactions (7)        ← Planning
+🔧 Tool call:   github.add_comment  (issue_number=4)          ← Tool call
+✅ Done                                                       ← Done
+```
+
+Each `🤔` line is the model choosing its next action — this is where reasoning happens. Logs can feel slow for exactly this reason.
+
+</details>
+
+Now watch your own run's live log and answer these questions:
+
+1. Which `tool_call` did the agent make first?
+2. How many reasoning steps (`🤔`) did the agent take before posting a comment or creating an issue?
 3. Does the agent's behavior match your predictions? Note any surprises.
 
-> [!TIP]
-> Agentic logs can feel slow — the agent pauses to reason between steps. Each `🤔 Thinking...` line is the model choosing its next action.
-
 ### Check the outcome
+
+**Reflection — before you open the Issues tab:** predict what the agent would have done if your repository had zero open issues. Write your prediction, then open the Issues tab and verify it against the run log.
 
 Once the run shows a green ✅, go to the **Issues** tab. You should see a new comment on an existing issue (or a new issue created by the agent).
 
