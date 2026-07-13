@@ -25,7 +25,7 @@ safe-outputs:
     title-prefix: "[curriculum-eval] "
     deduplicate-by-title: true
     labels: [curriculum, quality, documentation]
-    max: 5
+    max: 6
 steps:
   - name: Collect workshop corpus and compute quantitative metrics
     run: |
@@ -342,6 +342,190 @@ steps:
       )
       print(f"Corpus mean: {corpus_mean} | stdev: {corpus_stdev} | flagged: {len(findings)}")
       PY
+
+  - name: Compute score history trends from git history
+    run: |
+      set -euo pipefail
+
+      python3 <<'PY'
+      import json
+      import pathlib
+      import re
+      import subprocess
+
+      rubric = json.loads(pathlib.Path('/tmp/gh-aw/data/rubric-results.json').read_text())
+      current_scores = {
+          f['file']: f['overall_score']
+          for f in rubric.get('all_scores', [])
+      }
+      tracked_files = sorted(current_scores.keys())
+
+      if not tracked_files:
+          pathlib.Path('/tmp/gh-aw/data/score-history.json').write_text(
+              json.dumps({'commits': [], 'trend_by_file': [], 'overall_trend': {}}, indent=2)
+          )
+          raise SystemExit(0)
+
+      def git(*args):
+          return subprocess.check_output(['git', *args], text=True).strip()
+
+      HEADING_RE = re.compile(r'^(#{1,6})\s+(.+)', re.MULTILINE)
+      CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
+      CHECKPOINT_RE = re.compile(r'## ✅ Checkpoint', re.MULTILINE)
+      CHECKLIST_RE = re.compile(r'^\s*-\s+\[[ xX]\]', re.MULTILINE)
+      CALLOUT_RE = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
+      NUMBERED_HDR = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
+
+      def fk_grade(text):
+          words = re.findall(r"[a-zA-Z']+", text)
+          if not words:
+              return 0.0
+          sentences = max(1, len(re.findall(r'[.!?]+', text)))
+          syllables = sum(max(1, len(re.findall(r'[aeiouAEIOU]+', w))) for w in words)
+          return 0.39 * (len(words) / sentences) + 11.8 * (syllables / len(words)) - 15.59
+
+      def count_new_concepts(text):
+          bold = re.findall(r'\*\*([^*\n]{2,40})\*\*', text)
+          code_short = [t for t in re.findall(r'`([^`\n]{2,30})`', text)
+                        if not t.startswith(('gh ', 'git ', 'cd ', 'cat ', 'echo ', 'mkdir '))]
+          return len(set(bold)) + len(set(code_short))
+
+      def score_file(text):
+          prose = CODE_FENCE_RE.sub('', text)
+          words = re.findall(r"[a-zA-Z']+", prose)
+          code_blocks = CODE_FENCE_RE.findall(text)
+          has_checkpoint = bool(CHECKPOINT_RE.search(text))
+          checklist_items = len(CHECKLIST_RE.findall(text))
+          callout_count = len(CALLOUT_RE.findall(text))
+          numbered_headings = len(NUMBERED_HDR.findall(text))
+          new_concepts = count_new_concepts(prose)
+          fk = round(fk_grade(prose), 1)
+          has_prereq_section = bool(
+              re.search(r'##\s+📋\s*Before You Start', text, re.IGNORECASE) or
+              re.search(r'##\s+Prerequisites', text, re.IGNORECASE)
+          )
+          activity_density = round((len(code_blocks) + checklist_items) / max(1, len(words) / 100), 2)
+
+          def score_cognitive_load():
+              wc_score = max(0, 10 - max(0, (len(words) - 800) / 100))
+              nc_score = max(0, 10 - max(0, (new_concepts - 15) / 2))
+              return round((wc_score + nc_score) / 2, 1)
+
+          def score_readability():
+              if 8 <= fk <= 12:
+                  return 10.0
+              return round(max(0, 10 - abs(fk - 10) * 0.8), 1)
+
+          def score_active_learning():
+              return round(min(10, activity_density * 3.3), 1)
+
+          def score_checkpoint_quality():
+              if not has_checkpoint:
+                  return 0.0
+              return round(min(10, checklist_items * 2.5), 1)
+
+          def score_scaffolding():
+              return 10.0 if has_prereq_section else 5.0
+
+          def score_style_compliance():
+              penalty = numbered_headings * 2 + max(0, callout_count - 3) * 1.5
+              return round(max(0, 10 - penalty), 1)
+
+          dimensions = [
+              (score_cognitive_load(), 2.0),
+              (score_readability(), 1.5),
+              (score_active_learning(), 2.0),
+              (score_checkpoint_quality(), 2.0),
+              (score_scaffolding(), 1.5),
+              (score_style_compliance(), 1.0),
+          ]
+          weighted_sum = sum(score * weight for score, weight in dimensions)
+          total_weight = sum(weight for _, weight in dimensions)
+          return round(weighted_sum / total_weight, 2)
+
+      start_ref = git('rev-parse', '--abbrev-ref', 'HEAD')
+      if start_ref == 'HEAD':
+          start_ref = git('rev-parse', 'HEAD')
+
+      commit_lines = git('log', '--format=%H|%cI', '--max-count', '20', '--', 'workshop').splitlines()
+      history = []
+
+      try:
+          for line in commit_lines:
+              sha, committed_at = line.split('|', 1)
+              subprocess.check_call(['git', 'checkout', '--quiet', sha])
+
+              commit_scores = {}
+              for filename in tracked_files:
+                  path = pathlib.Path('workshop') / filename
+                  if not path.exists():
+                      continue
+                  text = path.read_text(encoding='utf-8')
+                  commit_scores[filename] = score_file(text)
+
+              if not commit_scores:
+                  continue
+
+              mean_score = round(sum(commit_scores.values()) / len(commit_scores), 2)
+              history.append({
+                  'sha': sha,
+                  'committed_at': committed_at,
+                  'scores': commit_scores,
+                  'mean_score': mean_score,
+              })
+      finally:
+          subprocess.check_call(['git', 'checkout', '--quiet', start_ref])
+
+      history.sort(key=lambda row: row['committed_at'])
+
+      trend_by_file = []
+      for filename in tracked_files:
+          samples = [row['scores'][filename] for row in history if filename in row['scores']]
+          if not samples:
+              continue
+          baseline = samples[0]
+          latest = samples[-1]
+          delta = round(latest - baseline, 2)
+          direction = 'stable'
+          if delta >= 0.25:
+              direction = 'improving'
+          elif delta <= -0.25:
+              direction = 'declining'
+          trend_by_file.append({
+              'file': filename,
+              'baseline_score': baseline,
+              'latest_score': latest,
+              'delta': delta,
+              'direction': direction,
+              'samples': len(samples),
+          })
+
+      trend_by_file.sort(key=lambda row: row['latest_score'])
+
+      latest_mean = history[-1]['mean_score'] if history else None
+      baseline_mean = history[0]['mean_score'] if history else None
+      overall_delta = round(latest_mean - baseline_mean, 2) if history else None
+      overall_direction = 'stable'
+      if overall_delta is not None:
+          if overall_delta >= 0.25:
+              overall_direction = 'improving'
+          elif overall_delta <= -0.25:
+              overall_direction = 'declining'
+
+      output = {
+          'history_window_commits': len(history),
+          'commits': history,
+          'trend_by_file': trend_by_file,
+          'overall_trend': {
+              'baseline_mean_score': baseline_mean,
+              'latest_mean_score': latest_mean,
+              'delta': overall_delta,
+              'direction': overall_direction,
+          },
+      }
+      pathlib.Path('/tmp/gh-aw/data/score-history.json').write_text(json.dumps(output, indent=2))
+      print(f"Computed historical trends across {len(history)} commits.")
+      PY
 ---
 
 # Curriculum Quality Evaluator
@@ -363,10 +547,11 @@ You are constructive, specific, and data-driven. Every critique you write comes 
 
 ## Inputs
 
-Read both generated files before writing any issues:
+Read all generated files before writing any issues:
 
 1. `/tmp/gh-aw/data/corpus-metrics.json` — raw per-file metrics for every workshop step
 2. `/tmp/gh-aw/data/rubric-results.json` — rubric scores per dimension, corpus statistics, and flagged findings
+3. `/tmp/gh-aw/data/score-history.json` — per-file score history across recent workshop commits and trend analysis
 
 ---
 
@@ -392,6 +577,41 @@ Flag corpus-level imbalances (for example, all steps at "remember/understand" wi
 
 ## Task
 
+### Create scorecard issue (required)
+
+Always create one scorecard issue that reports:
+
+- overall score for every page in the current run, sorted from lowest to highest
+- score trend for every page (baseline score, latest score, delta, direction)
+- overall curriculum trend (`baseline_mean_score`, `latest_mean_score`, `delta`, `direction`)
+
+Use this exact section structure in the issue body:
+
+---
+
+**Current Page Scores**
+
+| File | Overall Score |
+|---|---|
+| `workshop/<filename>` | `X.XX / 10.0` |
+
+**Score Trends (history window: N commits)**
+
+| File | Baseline | Latest | Delta | Direction |
+|---|---|---|---|---|
+| `workshop/<filename>` | `X.XX` | `Y.YY` | `+/-Z.ZZ` | `improving/stable/declining` |
+
+**Overall Trend**
+
+- Baseline mean score: `X.XX`
+- Latest mean score: `Y.YY`
+- Delta: `+/-Z.ZZ`
+- Direction: `<improving|stable|declining>`
+
+---
+
+Issue title format: `curriculum-scorecard: overall page scores and trend analysis`
+
 ### Review findings
 
 For each entry in `findings` (sorted worst-first by overall score):
@@ -413,7 +633,7 @@ In addition to per-step issues, look at:
 
 ### Create issues
 
-Create at most **5 issues**, prioritised by impact and evidence quality. Each issue must follow this exact structure:
+Create at most **5 additional issues**, prioritised by impact and evidence quality. Each issue must follow this exact structure:
 
 ---
 
@@ -456,6 +676,7 @@ If all workshop files score above the corpus mean and no critical failures exist
 
 ## Output
 
-- Use `create-issue` for each confirmed finding. Maximum 5 issues.
+- Always use `create-issue` once for the required scorecard issue.
+- Use `create-issue` for each confirmed finding. Maximum 5 additional issues.
 - Use `noop` if the corpus is healthy.
 - In the issue body, always include the full scored rubric table and the ready-to-use improvement prompt.
