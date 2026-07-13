@@ -13,7 +13,7 @@ You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-ma
 - Either the [GitHub Copilot app](https://github.com/github/app) installed or the Copilot coding agent (Agents tab) enabled
 
 > [!NOTE]
-> The GitHub Copilot app is available on macOS, Windows, and Linux. Copilot Business and Enterprise users need an administrator to enable the [Copilot CLI policy](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
+> The GitHub Copilot app is available on macOS, Windows, and Linux. For Copilot Business and Enterprise users, an administrator must enable Copilot CLI in the organization's [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
 
 <!-- Separate adjacent callouts -->
 
@@ -151,8 +151,8 @@ The session typically completes in two to five minutes. You can steer it with fo
 <!-- Separate adjacent callouts -->
 
 > [!IMPORTANT]
-> - The agent runs `gh aw compile ... --validate` in its session workspace. If `gh-aw` is unavailable there, ask the agent to install the extension in that workspace and retry.
-> - You do not need to install `gh-aw` locally for agent-run validation. To run validation yourself or keep `gh aw compile ... --watch` running, use the local or Codespaces terminal from [Step 6](06-install-gh-aw.md).
+> - The agent runs `gh aw compile ... --validate` in its session workspace and can install `gh-aw` there if needed.
+> - For manual validation or to run `gh aw compile ... --watch` yourself, install `gh-aw` locally or in Codespaces by following [Step 6](06-install-gh-aw.md).
 > - Use the GitHub **Actions tab** in [Step 12](12-test-and-iterate.md) to trigger the workflow and inspect its runtime logs.
 
 ---

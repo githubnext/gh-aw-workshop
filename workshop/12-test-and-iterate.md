@@ -148,7 +148,11 @@ Trigger another manual run and compare the new comment with the old one. Repeat 
 If a run shows a red ❌, click the failed step to see the raw log. Common causes:
 
 - **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
-- **Compile error** — run `gh aw compile .github/workflows/daily-status.md --validate` locally to see the exact YAML error and line number, or ask your GitHub Copilot app session to run it and fix the error. **UI path / no terminal:** check the failed Actions step log — compile errors appear in the step output. Use a local or Codespaces terminal if you want to keep `gh aw compile --watch` running. The [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) covers the most common mistakes (tabs, indentation, missing quotes) with before/after examples and copy-paste fixes.
+- **Compile error:**
+  - Run `gh aw compile .github/workflows/daily-status.md --validate` locally, or ask your GitHub Copilot app session to run it and fix the error.
+  - **UI path / no terminal:** check the failed Actions step log for the compile error and line number.
+  - To keep `gh aw compile --watch` running, use a local or Codespaces terminal.
+  - For common mistakes and fixes, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
 - **API rate limit** — wait a few minutes and try again.
 
 > [!WARNING]
