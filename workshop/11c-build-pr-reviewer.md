@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll write the complete `pr-code-reviewer.md` agentic workflow file, placing it in `.github/workflows/`. This step walks through every section of the file so nothing is mysterious. By the end you'll have a working workflow that triggers on every pull request.
+You'll write the complete `pr-code-reviewer.md` agentic workflow file, placing it in `.github/workflows/`. This step walks through every section of the file so nothing is mysterious. By the end you'll have a working workflow that triggers on every [pull request](https://github.github.com/gh-aw/reference/triggers/).
 
 ## 📋 Before You Start
 
@@ -300,3 +300,9 @@ Findings: {count}
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+
+## 📚 See Also
+
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/)

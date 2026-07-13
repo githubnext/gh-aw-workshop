@@ -41,7 +41,7 @@ on:
 
 ### Choose your schedule
 
-gh-aw accepts natural-language schedule expressions — no cron syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
+gh-aw accepts natural-language [schedule expressions](https://github.github.com/gh-aw/reference/triggers/) — no cron syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
 
 > [!TIP]
 > Want the full reference table, example compiled cron values, and help choosing the right cadence? See [Side Quest: Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md).
@@ -115,3 +115,7 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 - [ ] At least one scheduled (or manual) run has completed successfully after the change
 
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+
+## 📚 See Also
+
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

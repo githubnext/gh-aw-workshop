@@ -29,7 +29,7 @@ Here's a quick recap of the concepts you've touched:
 | Concept | Where you used it |
 |---|---|
 | GitHub Actions triggers | `on: schedule` and `workflow_dispatch` |
-| gh-aw workflow syntax | Every `.md` workflow file you wrote |
+| [gh-aw workflow syntax](https://github.github.com/gh-aw/introduction/overview/) | Every `.md` workflow file you wrote |
 | AI model calls | The Markdown body (agent instructions) of your daily-status workflow |
 | Natural-language schedules | `schedule: daily on weekdays` |
 | Iterative debugging | Running, reading output, tweaking, repeating |
@@ -95,3 +95,8 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) — add conditions so your workflow only runs when there is meaningful activity to report.
 - ➡️ [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
 - ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
