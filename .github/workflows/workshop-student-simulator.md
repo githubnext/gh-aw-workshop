@@ -115,6 +115,20 @@ steps:
       CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
       CALLOUT_RE = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
       NUMBERED_HDR_RE = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
+      SENTENCE_RE = re.compile(r'[.!?]')
+
+      OPTIMAL_WORD_COUNT = 800
+      WORD_COUNT_PENALTY_PER = 100
+      READABILITY_IDEAL_MIN = 8
+      READABILITY_IDEAL_MAX = 12
+      READABILITY_TARGET = 10
+      READABILITY_PENALTY_SCALE = 0.8
+      ACTIVITY_DENSITY_SCALE = 3.3
+      CHECKPOINT_ITEM_SCALE = 2.5
+      STYLE_BASE_SCORE = 10
+      STYLE_NUMBERED_HEADING_PENALTY = 2
+      STYLE_CALLOUT_GRACE = 3
+      STYLE_EXTRA_CALLOUT_PENALTY = 1.5
 
       def extract_title(raw, fallback):
           for line in raw.splitlines():
@@ -123,8 +137,9 @@ steps:
           return fallback
 
       def fk_grade(text):
+          """Approximate FK grade for directional curriculum scoring."""
           words = re.findall(r"[a-zA-Z']+", text)
-          sentences = max(1, len(re.findall(r'[.!?]+', text)))
+          sentences = max(1, len(SENTENCE_RE.findall(text)))
           syllables = sum(max(1, len(re.findall(r'[aeiouAEIOU]+', w))) for w in words)
           if not words:
               return 0.0
@@ -141,11 +156,20 @@ steps:
           fk = fk_grade(prose)
           activity_density = round((code_blocks + checklist_items) / max(1, words / 100), 2)
 
-          cognitive_load = round(max(0, 10 - max(0, (words - 800) / 100)), 1)
-          readability = 10.0 if 8 <= fk <= 12 else round(max(0, 10 - abs(fk - 10) * 0.8), 1)
-          active_learning = round(min(10, activity_density * 3.3), 1)
-          checkpoint_quality = 0.0 if not has_checkpoint else round(min(10, checklist_items * 2.5), 1)
-          style_compliance = round(max(0, 10 - (numbered_headings * 2 + max(0, callout_count - 3) * 1.5)), 1)
+          cognitive_load = round(max(0, 10 - max(0, (words - OPTIMAL_WORD_COUNT) / WORD_COUNT_PENALTY_PER)), 1)
+          readability = (
+              10.0 if READABILITY_IDEAL_MIN <= fk <= READABILITY_IDEAL_MAX
+              else round(max(0, 10 - abs(fk - READABILITY_TARGET) * READABILITY_PENALTY_SCALE), 1)
+          )
+          active_learning = round(min(10, activity_density * ACTIVITY_DENSITY_SCALE), 1)
+          checkpoint_quality = 0.0 if not has_checkpoint else round(min(10, checklist_items * CHECKPOINT_ITEM_SCALE), 1)
+          style_compliance = round(max(
+              0,
+              STYLE_BASE_SCORE - (
+                  numbered_headings * STYLE_NUMBERED_HEADING_PENALTY
+                  + max(0, callout_count - STYLE_CALLOUT_GRACE) * STYLE_EXTRA_CALLOUT_PENALTY
+              )
+          ), 1)
 
           dimensions = {
               'cognitive_load': cognitive_load,
@@ -154,6 +178,8 @@ steps:
               'checkpoint_quality': checkpoint_quality,
               'style_compliance': style_compliance,
           }
+          # Keep weights aligned with the curriculum-evaluator dimensions so dropout analysis
+          # can correlate simulator friction with the same quality rubric emphasis.
           weights = {
               'cognitive_load': 2.0,
               'readability': 1.5,
