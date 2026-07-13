@@ -128,7 +128,7 @@ At **Step 1**, choose your working style:
 Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path.
 
 At **Step 11**, the path splits again:
-- **Manual build** — write the workflow file section by section so every line is clear.
+- **Manual build** — write the workflow file section by section (Step 11a), then compile and run it (Step 11a2).
 - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use the guided, interactive setup path.
 - **[Adventure D: GitHub Copilot](11d-build-copilot-agents.md)** — have an agent build and validate the workflow in the GitHub Copilot app or Agents tab.
 
