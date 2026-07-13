@@ -177,7 +177,7 @@ Then open your editor and create `.github/workflows/daily-status.md` (the filena
 > [!NOTE]
 > You won't be able to validate YAML until after committing — run `gh aw compile` in a Codespace if you want early feedback.
 
-If you're following the **terminal path**, build the file in small sections and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-status.md` to validate — or keep `gh aw compile .github/workflows/daily-status.md --watch` running in a second terminal for continuous feedback.
+If you're following the **Terminal path**, build the file in small sections and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-status.md` to validate — or keep `gh aw compile .github/workflows/daily-status.md --watch` running in a second terminal for continuous feedback.
 
 If you're following the **GitHub UI path**, paste the complete workflow from the **Complete Workflow (Copy-Paste Version)** section below, commit it once, then use the build sections below as a guided explanation of what each part does.
 

@@ -58,7 +58,7 @@ cd my-agentic-workflows
 
 ### GitHub UI path — stay in the browser
 
-If you plan to create and edit files directly on GitHub, skip cloning and keep the repository open in your browser. You only need the next step to confirm that **Actions** is enabled.
+If you plan to create and edit files directly on GitHub, skip cloning and keep the repository open in your browser. You only need to confirm that **Actions** is enabled in the next section.
 
 ### Confirm GitHub Actions is enabled
 
