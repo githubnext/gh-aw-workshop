@@ -15,7 +15,7 @@ You'll create a public `my-agentic-workflows` repository, confirm GitHub Actions
 
 ## Choose Your Path
 
-Before choosing, confirm GitHub Actions is enabled on your account: visit [github.com/settings/actions](https://github.com/settings/actions) and verify Actions are not disabled.
+Before choosing, confirm GitHub Actions is enabled on your account: open your GitHub account settings, then go to **Actions** and verify Actions are not disabled.
 
 Choose how you want to create and manage files:
 
