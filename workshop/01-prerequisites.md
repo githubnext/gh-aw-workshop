@@ -68,13 +68,17 @@ Complete these checks before you choose a setup path:
 > [!IMPORTANT]
 > **Using GitHub Enterprise Server (GHES)?** Agentic workflows require GitHub Copilot cloud agent — the agentic execution feature behind these workflows — to be enabled by your GHES administrator. See [Enabling GitHub Copilot cloud agent in your enterprise](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/enable-copilot-cloud-agent). If it is not yet enabled, reach out to your platform team before continuing.
 
-Use your current tool entry point to choose the fastest route:
+Use this profile guide to choose the fastest route:
 
-| If you're using... | Recommended setup path |
+| Learner profile | Recommended setup path |
 |------|------|
-| **GitHub CLI (`gh`)** in your own terminal | ➡️ **Adventure B**: [Set Up Your Local Terminal](02b-setup-local.md) |
-| **VS Code** | ➡️ **Adventure B**: [Set Up Your Local Terminal](02b-setup-local.md) using the integrated terminal (**Terminal → New Terminal**) |
-| **GitHub Copilot Cloud Agent (CCA)** | ➡️ **Adventure A**: [Set Up a Codespace](02a-setup-codespace.md) — run all `gh aw` commands in the Codespace terminal |
+| **New to GitHub / no coding background** | ➡️ **Adventure A**: [Set Up a Codespace](02a-setup-codespace.md) (**strongly recommended**) — your GitHub account is enough to get started |
+| **Web/backend developer** | ➡️ **Adventure A** or **B**: [Set Up a Codespace](02a-setup-codespace.md) or [Set Up Your Local Terminal](02b-setup-local.md) — choose the environment you prefer |
+| **DevOps / advanced** | ➡️ **Adventure B**: [Set Up Your Local Terminal](02b-setup-local.md) — recommended if you're already fluent with `gh` CLI workflows |
+
+In [Step 8](08-run-your-workflow.md), you'll trigger a workflow from the GitHub Actions tab — you don't need a terminal for that step.
+
+If you're taking the beginner-friendly Codespaces path, bookmark your repository's Actions URL as soon as you know it (for example, `https://github.com/YOUR-USERNAME/YOUR-REPO/actions`) so it's easy to open again in Step 8.
 
 ## 🎯 What You'll Do
 
