@@ -3,21 +3,19 @@
 > [!TIP]
 > **Already familiar with GitHub Actions and LLM agent concepts?** → [Skip to Step 6: Install gh-aw](06-install-gh-aw.md)
 
-**What the agent does:**
-
-- Reads a plain-English task brief you write in Markdown
-- Calls GitHub tools (issues, PRs, workflows) and reasons about the results at runtime
-- Posts a structured report or recommendation — no shell scripts or hand-authored YAML required
-
----
-
-**⏱ In 30 seconds:** An agentic workflow is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. No shell scripts. No brittle YAML. Just a goal and an agent that figures out the rest.
+An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. No shell scripts. No brittle YAML. Just a goal and an agent that figures out the rest.
 
 ![Animated agent run log — the agent reads a task brief, calls list_issues and list_pull_requests, reasons about the results, and posts a comment to GitHub](images/05-agent-run-log.svg)
 
-You'll finish this workshop with an automated workflow that checks your repository, decides what matters, and publishes a report your team can act on. This page gives you the payoff first, then explains the agentic workflow model behind it so the rest of the workshop feels concrete instead of abstract.
+## Three things to know
 
-By the end of this workshop, your workflow produces a daily, stakeholder-ready repo status report like this:
+**What it is:** A Markdown file (`.md`) with two parts — a standard Actions frontmatter block (triggers, permissions) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
+
+**What it produces:** A synthesized, structured output — a report, recommendation, or action taken — that the agent composes at runtime based on live repository data.
+
+**Why it exists:** Classic GitHub Actions workflows are great for deterministic CI/CD steps. Agentic workflows fill the gap for tasks that need judgment: triage, summarization, reporting, and decisions that change based on context.
+
+By the end of this workshop, a scheduled workflow will automatically generate a daily repo status report like this:
 
 ```markdown
 ## Daily Repository Status — July 12
@@ -33,126 +31,23 @@ By the end of this workshop, your workflow produces a daily, stakeholder-ready r
 3. Triage high-priority issue #398 with the platform team.
 ```
 
-**TL;DR** — By the end of this workshop, a scheduled GitHub Actions workflow will automatically
-generate a daily, stakeholder-ready status report for your repo — no script maintenance required.
-This step explains what makes that possible.
-
-_If you already know Actions, this step is the delta: what's new when workflows can reason, decide, and act._
-
-<!-- -->
-
-> [!NOTE]
-> **If you know GitHub Actions:** Agentic workflows look like Actions but the job runs an AI agent instead of shell commands. Here's what's different:
-> - You define the goal in Markdown (`.md`) and compile it, instead of hand-authoring `jobs.steps` in YAML.
-> - The agent decides how to complete the task at runtime, instead of executing a fixed command sequence.
-> - The result is a synthesized report or recommendation, not just command logs from shell steps.
-
-<details>
-<summary>Classic Actions vs Agentic Workflows (deep dive)</summary>
-
 > [!IMPORTANT]
 > **Coming from classic Actions? Unlearn these 3 things first:**
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
 > 2. The `.md` file is NOT documentation — it IS the workflow definition.
 > 3. Output is not logs — it's a synthesized report the agent composes at runtime.
 
-**Before** — classic GitHub Actions (you write every step):
+Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. A detailed side-by-side comparison of classic Actions vs agentic workflows, including the agent anatomy and YAML authoring details, is covered in [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
 
-```yaml
-- name: List open issues
-  run: gh issue list --json title,number | jq '.[] | .number, .title'
-```
+If you want a one-page cheat sheet for Actions power users, read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
 
-**After** — agentic workflow (you describe the goal):
-
-```text
-List all open issues that need triage and summarize them with recommended next steps.
-```
-
-That's the core shift. The agent handles the how at runtime.
-
-</details>
-
-## 🎯 What You'll Do
-
-You'll connect what you already know about classic GitHub Actions to the agentic model used in this workshop.
-
-This is not a re-introduction to Actions fundamentals — it's a focused view of what's different.
-
-## Classic Actions vs Agentic Workflows
-
-An agentic workflow is a Markdown file with two parts: a YAML frontmatter block that is fully backward compatible with GitHub Actions (same `on:`, `permissions:`, and trigger syntax you already know, plus a few agent-specific extras), and a body that is the plain-language prompt the agent receives. The `gh aw compile` command converts that Markdown file into a standard Actions workflow (`.lock.yml`) that runs the agent in a safe, sandboxed, gated job.
-
-If you're coming from classic GitHub Actions, here's where the two models diverge:
-
-- **File format:** Classic workflows are `.yml` files with `jobs.steps`. Agentic workflows are `.md` files (compiled to `.lock.yml`) — the task description is plain language below the frontmatter.
-- **Execution:** Classic workflows are deterministic — same input, same output. Agentic workflows let the AI agent interpret the brief and decide how to act at runtime.
-- **Runtime:** Classic workflows have no AI model involved. Agentic workflows use Copilot or another LLM as the runtime.
-- **Best for:** Classic workflows excel at CI/CD pipelines, builds, and deployments. Agentic workflows are best for summaries, triage, reporting, and tasks that need judgment.
-
-> [!NOTE]
-> Both types of workflow live in `.github/workflows/` and use the same `on:` triggers and `permissions:` blocks — only the task description format changes.
-
-### 🧭 Quick Check — Keep going if you can tick these
-
-- [ ] I understand that agentic workflows use a `.md` file, not a hand-authored `.yml`
-- [ ] I understand that the AI agent decides _how_ to complete the task at runtime
-- [ ] I can describe one difference between a classic CI step and an agentic workflow step
-
-Still confused? Expand the **Classic Actions vs Agentic Workflows (deep dive)** section near the top of this page, or ask Copilot: _"Explain agentic workflows vs classic GitHub Actions in plain language, without jargon."_
-
-Here is a complete minimal agentic workflow — the same structure you'll write in Step 7:
-
-```yaml
----
-name: Hello Agent
-on:
-  workflow_dispatch:
----
-
-List all open issues that need triage and summarize them with recommended next steps.
-```
-
-> [!NOTE]
-> **If you've used GitHub Actions before:** the key difference is that you write a _brief_ in plain language, not a sequence of shell commands — the agent decides how to fulfill it.
-
-If you're coming from classic GitHub Actions, the shift is simple: keep your existing trigger/permission/review model, but replace scripted `jobs.steps` with a goal-oriented brief that an agent executes at runtime.
-
-> [!TIP]
-> **Optional side quest for Actions power users:** Want the one-page cheat sheet for what's new vs what stays the same? Read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
-
-<details>
-<summary>Enterprise / GHES / GHEC: runner and model access considerations</summary>
-
-> [!NOTE]
-> **Enterprise users (GHEC, GHES, or EMU):** ✅ Enterprise access confirmed in Step 1 — if you completed the [enterprise prerequisite check in Step 1](01-prerequisites.md#enterprise-users), you're ready to continue.
->
-> **DevOps / production evaluation:** You keep pull-request auditability, approvals, and trigger/permission controls because workflows still compile to standard Actions. For secret isolation and runner policy details (including self-hosted runners), use [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) as your implementation checklist.
-
-### Platform Compatibility
-
-> [!NOTE]
-> **GHES users:** If you completed the [Enterprise Setup side quest](side-quest-enterprise-setup.md) before reaching this section, your environment should already be ready. If you skipped it, complete the [Copilot Enterprise and network egress configuration steps](side-quest-enterprise-setup.md) in that guide before continuing.
-
-| GitHub deployment | Agentic workflows supported? |
-|---|---|
-| **github.com** (free/Team/Enterprise) | ✅ Fully supported |
-| **GitHub Enterprise Cloud (GHEC)** | ✅ Fully supported |
-| **GitHub Enterprise Server (GHES) 3.12+** | ✅ Supported when Copilot Enterprise and network egress are configured by admin |
-| **GitHub Enterprise Server (GHES) < 3.12** | ❌ Not supported — upgrade required |
-
-</details>
-
-> [!TIP]
-> In this workshop, learn to iterate on agentic workflows by asking Copilot (or another capable agent) to use the `agentic-workflows` skill. Reading the workflow directly helps you understand it, but editing and debugging agentic workflows by hand is usually less effective. **Agents edit agents.**
+Enterprise users (GHEC, GHES, or EMU) who need runner and model access guidance can follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
 
 ## ✅ Checkpoint
 
 - [ ] I can describe what an agentic workflow is in one sentence
-- [ ] I can name at least one way agentic workflows differ from classic GitHub Actions
+- [ ] I understand that the agent decides _how_ to complete the task at runtime, not you
+- [ ] I can name at least one type of task agentic workflows are better suited for than classic Actions
 - [ ] I navigated to the **Actions** tab in my practice repository and confirmed I can see the workflow list
-
-> [!NOTE]
-> **Enterprise users:** No trigger permission is needed to complete this step — you are only observing the Actions tab. You will not need to trigger a workflow until Step 8.
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
