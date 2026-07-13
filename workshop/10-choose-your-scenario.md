@@ -65,9 +65,9 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 **Trigger:** Fires on `pull_request` events (open, synchronize).
 
-**Key permissions:** `contents: read`, `pull-requests: write`
+**Key permissions:** `contents: read`, `pull-requests: read`
 
-**Safe output:** Up to five review comments per PR.
+**Safe output:** Up to five review comments per PR (posted via `safe-outputs`).
 
 ➡️ [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 
