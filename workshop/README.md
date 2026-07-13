@@ -27,6 +27,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 10c | [10c-design-pr-reviewer.md](10c-design-pr-reviewer.md) | ➡️ Adventure C: Design — PR Code Reviewer | ✅ |
 | 11a | [11a-build-daily-status.md](11a-build-daily-status.md) | ➡️ Adventure A: Build — Daily Repo Status Workflow | ✅ |
 | 11a | [Terminal](11a-build-daily-status-terminal.md) **or** [GitHub UI](11a-build-daily-status-ui.md) | Adventure A Build Paths | ✅ |
+| 11a2 | [11a2-run-daily-status-terminal.md](11a2-run-daily-status-terminal.md) | Terminal Path — Compile and Run the Daily Status Workflow | ✅ |
 | 11a✨ | [11a-build-daily-status-wizard.md](11a-build-daily-status-wizard.md) | ➡️ Adventure A (wizard): Build Daily Status with the Add Wizard | ✅ |
 | 11b | [11b-build-daily-docs.md](11b-build-daily-docs.md) | ➡️ Adventure B: Build — Daily Documentation Updater | ✅ |
 | 11b | [Terminal](11b-build-daily-docs-terminal.md) **or** [GitHub UI](11b-build-daily-docs-ui.md) | Adventure B Build Paths | ✅ |
