@@ -6,12 +6,12 @@
 
 - [ ] GitHub Copilot Enterprise is enabled for your organization — confirm in **Settings → Copilot** before continuing.
 
-**Enterprise and GHES users:**
+**Enterprise users:**
 
 > [!IMPORTANT]
 > **Enterprise & Proxy Environments (quick compatibility check):**
 > - **Copilot plan:** Agentic workflow model access requires **GitHub Copilot Enterprise** enabled for your org and repository.
-> - **GHE compatibility:** `github.com` and GHEC are supported; GHES requires **3.12+** with Copilot cloud agent enabled by an admin.
+> - **Platform compatibility:** `github.com` and GitHub Enterprise Cloud (GHEC) are supported; GHES requires **3.12+** with Copilot cloud agent enabled by an admin.
 > - **Self-hosted runners and proxies:** Your runner network needs outbound egress to required GitHub and model endpoints, or workflow runs fail in Steps 6–8.
 > - **Not sure yet?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and check [About GitHub Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent) before continuing.
 
