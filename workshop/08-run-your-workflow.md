@@ -40,13 +40,18 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ### Before You Trigger
 
-Confirm all three items before triggering the workflow — skipping this is the most common reason runs fail silently.
+Confirm all four items before triggering the workflow — skipping this is the most common reason runs fail silently.
 
 1. `hello-agent.md` is committed to `.github/workflows/` on `main` (or your default branch).
 2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
 3. _(Codespace users only)_ Your token includes `actions:write` if you plan to use the optional terminal path below.
+4. _(All users)_ Your practice repository has at least one open issue. If not, open the **Issues** tab in your practice repository and create a placeholder issue so the agent has something to act on.
 
 If item 1 or 2 is not yet true, return to the [Step 7 path chooser](07-your-first-workflow.md) and complete your chosen path first.
+
+> [!WARNING]
+> **Codespace users: check your token before triggering from the terminal.**
+> Codespace tokens do not include `actions:write` by default. If you try to trigger with `gh aw run` and see `HTTP 403: Resource not accessible by integration`, your token is missing that scope. Use the **GitHub Actions UI path above** (no token needed) or follow the full recovery guide in [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
 <details>
 <summary>Advanced: trigger from the terminal</summary>
@@ -56,10 +61,6 @@ Prefer the GitHub Actions UI path above for this workshop. If you already have C
 ```bash
 gh aw run hello-agent
 ```
-
-> [!WARNING]
-> **Codespace users: check your token before triggering from the terminal.**
-> Codespace tokens do not include `actions:write` by default. If you try to trigger with `gh aw run` and see `HTTP 403: Resource not accessible by integration`, your token is missing that scope. Use the **GitHub Actions UI path above** (no token needed) or follow the full recovery guide in [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
 <!-- -->
 
