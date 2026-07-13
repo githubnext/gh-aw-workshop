@@ -246,7 +246,7 @@ If you get any error, stop here and use [Side Quest: Install `gh-aw` Troubleshoo
 - [ ] `gh auth login` completed without errors
 - [ ] You've cloned the repository and `cd`-ed into it
 
-**Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
+**Next:** [Step 3a: Create Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
 
 ## 📚 See Also
 

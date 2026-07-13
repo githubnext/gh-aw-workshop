@@ -14,7 +14,7 @@ You'll trigger the `hello-agent` workflow you wrote in Step 7 and watch it run l
 
 ## 📋 Before You Start
 
-- Completed [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md) for Step 7
 - Your browser is open to your practice repository on GitHub
 
 ## Steps
@@ -47,7 +47,7 @@ Confirm all three items before triggering the workflow — skipping this is the 
 2. The **Actions** tab in your repository shows **Hello Agent** in the left workflow sidebar.
 3. _(Codespace users only)_ Your token includes `actions:write` if you plan to use the optional terminal path below.
 
-If item 1 or 2 is not yet true, return to [Step 7](07-your-first-workflow.md) and complete it first. CCA users: use the GitHub UI alternative in Step 7 to commit without a terminal.
+If item 1 or 2 is not yet true, return to the [Step 7 path chooser](07-your-first-workflow.md) and complete your chosen path first.
 
 <details>
 <summary>Advanced: trigger from the terminal</summary>

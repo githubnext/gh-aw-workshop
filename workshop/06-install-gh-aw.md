@@ -5,9 +5,7 @@
 > - **Path A — Codespace (browser terminal):** continue in your Codespace terminal.
 > - **Path B — Local terminal:** continue in your local terminal.
 > - **Path C — UI only (Copilot Chat / CCA browser-only mode):** this step's `gh aw` commands require a terminal. If you stay UI-only, skip terminal commands and plan to trigger runs from the **Actions tab** in [Step 8](08-run-your-workflow.md#trigger-manually-via-github-actions-ui).
-> **Want to switch from Path C to Path A for terminal commands?** If you're using the **GitHub Copilot Cloud Agent (CCA)** or prefer a browser terminal, launch a Codespace:
-> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
-> Once your Codespace loads, return here and continue with [Check if already installed](#check-if-already-installed).
+> **Want to switch from the GitHub UI path to a browser terminal?** Follow [Adventure A: Set Up a Codespace](02a-setup-codespace.md) using your own practice repository. Once it loads, return here and continue with [Check if already installed](#check-if-already-installed).
 
 <!-- Separate adjacent callouts -->
 
@@ -56,7 +54,7 @@ For **Path C (UI only)** — Copilot Chat, CCA, or browser-only — you do not n
 **What to do:**
 
 1. Skip the installation steps on this page.
-2. Continue to [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md) and create `hello-agent.md` using the [GitHub web editor path](07-your-first-workflow.md#github-web-editor-path).
+2. Continue directly to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
 3. In [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md), open the **Actions** tab — if **Hello Agent** appears in the workflow list, `gh-aw` is working on GitHub's side. No local installation needed.
 
 **Path C checkpoint for this step:**
@@ -64,7 +62,7 @@ For **Path C (UI only)** — Copilot Chat, CCA, or browser-only — you do not n
 - [ ] I understand that Path C (UI only) does not require a local `gh-aw` installation
 - [ ] I will confirm `gh-aw` is working by checking the **Actions** tab in [Step 8](08-run-your-workflow.md)
 
-**Next:** [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md)
+**Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 
 ---
 

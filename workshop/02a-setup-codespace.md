@@ -1,8 +1,6 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/githubnext/gh-aw-workshop)
-
-**New to terminals, or prefer to work in the browser?** Click the badge above to launch your Codespace instantly — everything you need is pre-installed and authenticated. All workshop CLI commands run in the Codespace browser terminal — no local install required.
+**New to terminals, but want compiler feedback?** A Codespace gives you a browser-based terminal with the tools you need and no local installation.
 
 ## Which path is right for me?
 
@@ -29,13 +27,17 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 ### Open the Codespace
 
-1. In [github.com/githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop), click the green **Code** button.
-2. Click the **Codespaces** tab.
-3. Click **Create codespace on main**.
+1. Create your own public repository at [github.com/new](https://github.com/new):
+   - Name it `my-agentic-workflows`.
+   - Check **Add a README file**.
+   - Click **Create repository**.
+2. In your new repository, click the green **Code** button.
+3. Click the **Codespaces** tab.
+4. Click **Create codespace on main**.
 
 ![Open Codespace](images/02a-open-codespace.svg)
 
-GitHub will spin up a container with everything you need for the workshop already installed and authenticated. This takes about 30–60 seconds on first launch.
+GitHub will spin up a container attached to your practice repository. This takes about 30–60 seconds on first launch.
 
 > [!NOTE]
 > **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
@@ -49,7 +51,7 @@ GitHub will spin up a container with everything you need for the workshop alread
 
 1. When the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac).
 2. Wait for the terminal prompt to appear.
-3. Keep this terminal open. You'll use it in the next step to create and clone your practice repository.
+3. Keep this terminal open. It is already inside your practice repository.
 
 > [!TIP]
 > **First time in a terminal?** A blank prompt is normal. Try:
@@ -103,9 +105,9 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 - [ ] `gh --version` returns version 2.40.0 or newer
 - [ ] `gh auth status` shows you're logged in to GitHub without errors
 - [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
-- [ ] You're ready to create your practice repository in the next step
+- [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
 
-**Next:** [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md)
+**Next:** [Step 3a: Verify Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
 
 ## 📚 See Also
 

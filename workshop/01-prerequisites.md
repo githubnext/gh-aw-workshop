@@ -85,6 +85,7 @@ Complete these checks before you choose a setup path:
 > |-------|--------|
 > | New to coding or the terminal — or on a shared/school machine | ➡️ [Adventure A: Codespace (**recommended for beginners**)](02a-setup-codespace.md) — nothing to install, runs in your browser |
 > | Comfortable with my terminal and local installs | ➡️ [Adventure B: Local Setup](02b-setup-local.md) |
+> | Working entirely in the GitHub web UI | ➡️ [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md) — skip terminal setup |
 >
 > If you're unsure, **start with the Codespace path** — you can always switch later.
 
@@ -113,8 +114,8 @@ You'll confirm that you have everything required before writing a single line of
 
 ### Confirm required vs optional prerequisites
 
-- ✅ **Required:** access to either a local terminal or a GitHub Codespace
-- ✅ **Required:** `gh` CLI ≥ 2.40 in the environment you'll use (`gh --version`)
+- ✅ **Required:** access to GitHub.com
+- ✅ **Required for the Terminal path:** a local terminal or GitHub Codespace with `gh` CLI ≥ 2.40
 - ✅ **Required (local terminal path):** Git (`git --version`)
 
 If you chose the **local terminal path** and `gh` is missing there, install it using one of these one-liners:
@@ -196,10 +197,9 @@ Need a quick glossary with official docs links?
 
 - [ ] **Enterprise users:** You've reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 - [ ] You have a GitHub account and can sign in
-- [ ] `gh` CLI ≥ 2.40 is available in your chosen environment (`gh --version`)
-- [ ] `gh` CLI is authenticated — `gh auth status` shows `Logged in to github.com as <your-username>` (completed in your chosen setup path)
+- [ ] For the Terminal path, `gh` CLI ≥ 2.40 is available and authenticated
 - [ ] Copilot license + model access are verified (`gh copilot --version` or **Settings → Copilot**)
-- [ ] You've decided whether to use Codespaces or your local terminal
+- [ ] You've decided whether to use Codespaces, a local terminal, or the GitHub UI
 - [ ] You know which file to open next
 
 **Next:** Follow the link above for your chosen path — [Adventure A](02a-setup-codespace.md) or [Adventure B](02b-setup-local.md).
