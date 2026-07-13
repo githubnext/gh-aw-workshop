@@ -89,7 +89,7 @@ A few workshop steps still use the Codespace's built-in terminal, but the number
 | Step | What's needed | Terminal required? |
 |------|--------------|-------------------|
 | Step 3 | Clone your practice repository | Yes — run one command in the Codespace terminal |
-| Step 6 | Verify `gh-aw` is installed | No — `gh-aw` is pre-installed by the devcontainer; just run `gh aw --version` to confirm |
+| Step 6 | Verify `gh-aw` is installed | Verification only — `gh-aw` is pre-installed by the devcontainer; run `gh aw --version` in the Codespace terminal to confirm |
 | Step 7 | Create your workflow file | No — use the GitHub web editor (UI alternative in that step) |
 | Step 8 | Trigger and watch your workflow | No — use the Actions tab in your browser |
 

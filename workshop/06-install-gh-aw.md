@@ -44,7 +44,7 @@ If you see a version number (for example `gh-aw version 0.81.6`), skip straight 
 If the command is not found — for example because you opened a Codespace from a fork that does not have the devcontainer config — continue with [Install from terminal](#install-from-terminal).
 
 > [!NOTE]
-> **How it works:** The `.devcontainer/devcontainer.json` in this repository includes a `postCreateCommand` that runs `gh extension install github/gh-aw` automatically when the Codespace is first created. This means UI-first learners who use the Codespace path can skip manual `gh extension install` commands entirely.
+> **How it works:** The `.devcontainer/devcontainer.json` in this repository includes a `postCreateCommand` that runs `gh extension install github/gh-aw || true` automatically when the Codespace is first created. This means UI-first learners who use the Codespace path can skip manual `gh extension install` commands entirely.
 
 ## 🎯 What You'll Do
 
