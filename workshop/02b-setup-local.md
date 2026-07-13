@@ -3,13 +3,12 @@
 ## 🔀 Choose your path first
 
 > [!IMPORTANT]
-> ### Which setup path is right for me?
->
-> Ask yourself:
+> If you're unsure you chose the right path, ask yourself:
 > 1. **Do you have a terminal available?**
 > 2. **Are you using GitHub Copilot Chat or the GitHub web UI only?**
+> 3. **If you have a terminal, do you prefer a browser terminal or your local machine?**
 >
-> Choose one path and keep it through Step 8:
+> Choose one path and keep it through Step 8.
 >
 > - **Path A — Codespace (browser terminal):** recommended for most beginners. Run terminal steps in a browser Codespace. ➡️ [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
 > - **Path B — Local terminal:** for learners with `gh` CLI installed locally. ✅ **You're in the right place.**
