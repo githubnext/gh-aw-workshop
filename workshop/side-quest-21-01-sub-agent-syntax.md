@@ -2,7 +2,7 @@
 
 > _Optional: work through this reference if you want to understand sub-agent name rules, block boundaries, and supported frontmatter fields in depth before or after completing [Step 21](21-inline-sub-agents.md), then return to the main path._
 
-This reference covers everything you need to write correct inline sub-agent blocks — names, boundaries, frontmatter fields, and model aliases.
+Work through this reference to practice writing correct sub-agent blocks — then return to [Step 21](21-inline-sub-agents.md) to apply these rules in your own workflow. Each section includes a short activity so you can confirm your understanding before moving on.
 
 ---
 
@@ -17,6 +17,23 @@ A sub-agent heading looks like `## agent: \`name\``. The name must:
 Valid examples: `` `planner` ``, `` `file-summarizer` ``, `` `code-reviewer` ``
 
 Invalid examples: `` `File Summarizer` `` (spaces and uppercase), `` `1st-agent` `` (starts with a digit)
+
+### Try it: fix the broken names
+
+Which of these headings are invalid? Fix each one before reading the answer.
+
+- `## agent: \`File Summarizer\``
+- `## agent: \`1st-agent\``
+- `## agent: \`code-reviewer\``
+
+<details>
+<summary>Answer</summary>
+
+- `` ## agent: `File Summarizer` `` — **Invalid.** The name contains spaces and uppercase letters. Fix: `` ## agent: `file-summarizer` ``
+- `` ## agent: `1st-agent` `` — **Invalid.** The name starts with a digit. Fix: `` ## agent: `first-agent` `` (or any name that starts with a letter)
+- `` ## agent: `code-reviewer` `` — **Valid.** Lowercase letters and a hyphen only, starts with a letter.
+
+</details>
 
 ---
 
@@ -40,6 +57,21 @@ Each sub-agent block may have its own YAML frontmatter fence. Only two fields ar
 
 All other fields (`engine:`, `tools:`, `network:`, etc.) are **stripped at compile time with a warning**. Sub-agents inherit the parent workflow's engine, tool access, and network configuration.
 
+Here is a complete sub-agent block using both supported fields:
+
+```markdown
+## agent: `file-summarizer`
+---
+description: Reads a single file and returns a one-paragraph summary.
+model: small
+---
+
+Summarize the content of the file provided in the input.
+Return exactly one paragraph with no bullet points.
+```
+
+The `description` helps readers (and the orchestrator) understand the sub-agent's purpose. The `model: small` override keeps costs low for this bounded, one-shot summarization task.
+
 ---
 
 ## Model aliases
@@ -51,6 +83,15 @@ All other fields (`engine:`, `tools:`, `network:`, etc.) are **stripped at compi
 | `inherited` | Parent workflow model | Default — use when the sub-agent needs the same capability as the parent |
 
 Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
+
+> **Decision prompt:** You're writing a sub-agent that reads 500 files and summarises each one. Which alias should you use, and why?
+
+<details>
+<summary>Answer</summary>
+
+Use **`small`**. Each call is a bounded, one-shot summarization task with a single input file and a single output paragraph — exactly the use case the `small` alias is designed for. Using `large` or `inherited` would cost significantly more without improving quality for this type of task. Reserve the larger model for the orchestrator that collects and synthesizes all 500 summaries into a final report.
+
+</details>
 
 ---
 
