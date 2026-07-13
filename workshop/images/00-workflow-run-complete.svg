@@ -1,17 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
   <title id="title">Completed GitHub Actions workflow run</title>
-  <desc id="desc">A simplified screenshot-style visual showing a successful Daily Repo Status workflow run with all jobs passing.</desc>
+  <desc id="desc">A simplified screenshot-style visual showing a successful Daily Repo Status workflow run with activating, agent, detection, safe_outputs, and conclusion jobs passing.</desc>
   <rect width="960" height="520" fill="#0d1117"/>
   <rect x="40" y="40" width="880" height="440" rx="12" fill="#161b22" stroke="#30363d"/>
   <text x="72" y="92" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="28" font-weight="700">Daily Repo Status</text>
-  <text x="72" y="126" fill="#8b949e" font-family="Arial, sans-serif" font-size="18">Run #42 completed successfully • 48s</text>
-  <circle cx="84" cy="188" r="12" fill="#238636"/>
-  <text x="112" y="194" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">build-and-report</text>
-  <text x="780" y="194" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 31s</text>
-  <circle cx="84" cy="246" r="12" fill="#238636"/>
-  <text x="112" y="252" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">publish-summary</text>
-  <text x="780" y="252" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 17s</text>
-  <rect x="72" y="302" width="816" height="132" rx="8" fill="#0d1117" stroke="#30363d"/>
-  <text x="96" y="340" fill="#3fb950" font-family="Arial, sans-serif" font-size="18">✓ This workflow run completed and posted the daily digest.</text>
-  <text x="96" y="376" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">Use this view to confirm your own workflow is green before moving forward.</text>
+  <text x="72" y="126" fill="#8b949e" font-family="Arial, sans-serif" font-size="18">Run #42 completed successfully • 52s</text>
+  <circle cx="84" cy="176" r="12" fill="#238636"/>
+  <text x="112" y="182" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">activating</text>
+  <text x="780" y="182" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 6s</text>
+  <circle cx="84" cy="222" r="12" fill="#238636"/>
+  <text x="112" y="228" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">agent</text>
+  <text x="780" y="228" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 17s</text>
+  <circle cx="84" cy="268" r="12" fill="#238636"/>
+  <text x="112" y="274" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">detection</text>
+  <text x="780" y="274" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 8s</text>
+  <circle cx="84" cy="314" r="12" fill="#238636"/>
+  <text x="112" y="320" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">safe_outputs</text>
+  <text x="780" y="320" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 9s</text>
+  <circle cx="84" cy="360" r="12" fill="#238636"/>
+  <text x="112" y="366" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="20">conclusion</text>
+  <text x="780" y="366" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">✓ 12s</text>
+  <rect x="72" y="398" width="816" height="64" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <text x="96" y="428" fill="#3fb950" font-family="Arial, sans-serif" font-size="18">✓ This workflow run completed and posted the daily digest.</text>
+  <text x="96" y="450" fill="#8b949e" font-family="Arial, sans-serif" font-size="16">Use this view to confirm your own workflow is green before moving forward.</text>
 </svg>
