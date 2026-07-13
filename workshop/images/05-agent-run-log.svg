@@ -87,7 +87,7 @@
   <!-- Line 11: done -->
   <g class="line line11">
     <rect x="22" y="318" width="816" height="1" fill="#21262d"/>
-    <text x="44" y="338" font-family="monospace" font-size="13" fill="#3fb950">✅ Done  (41s)</text>
+    <text x="44" y="338" font-family="monospace" font-size="13" fill="#3fb950">✅ Done (41s)</text>
   </g>
 
   <!-- Line 12: comment preview -->
