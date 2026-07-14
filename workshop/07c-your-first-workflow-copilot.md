@@ -18,6 +18,8 @@ Paste this prompt:
 ```text
 Create `.github/workflows/hello-agent.md` as a GitHub Agentic Workflow.
 
+Before authoring, run `gh aw init` from the repository root, then commit and push the generated `.github/skills/agentic-workflows/` files.
+
 The workflow must:
 - Be named "Hello Agent"
 - Support manual runs with `workflow_dispatch`
@@ -28,7 +30,7 @@ The workflow must:
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
 Run `gh aw compile .github/workflows/hello-agent.md --validate` in the session
-workspace, fix any errors, commit the source and generated lock file, and open a
+workspace, fix any errors, commit the source and generated lock file (plus the initialized skill files), and open a
 pull request. Show me the diff before merging.
 ```
 
@@ -48,6 +50,7 @@ Before you approve the merge, the agent presents the file changes in its session
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/hello-agent.md` exists in the repository
+- [ ] `.github/skills/agentic-workflows/` exists in the repository from `gh aw init`
 - [ ] The agent validated the workflow in its session workspace
 - [ ] You reviewed the source and generated lock file
 - [ ] You merged the pull request into `main`

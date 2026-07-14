@@ -446,6 +446,8 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     flags: {
       sawActionsIntro: false,
       sawAgenticIntro: false,
+      awSkillInitialized: false,
+      awSkillPushed: false,
       hasRepo: false,
       repoCreatedViaUi: false,
       repoHasReadme: false,

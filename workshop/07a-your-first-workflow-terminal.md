@@ -18,6 +18,7 @@ Then you'll run your first compile check.
 
 - Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command works in your terminal
+- You already ran `gh aw init` and pushed `.github/skills/agentic-workflows/`
 - Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
 ## Steps
