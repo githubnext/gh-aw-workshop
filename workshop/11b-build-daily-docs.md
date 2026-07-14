@@ -2,6 +2,49 @@
 
 _You've designed the workflow on paper — now choose how you want to create it._
 
+## 📋 Before You Start
+
+- You've completed [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+- Your practice repository is ready
+- [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
+
+## What You'll Build
+
+Both paths produce `.github/workflows/daily-docs.md` — a workflow that reads your repository's documentation files and posts a daily health report as a GitHub issue comment. Here is a complete skeleton to orient you before you start:
+
+```yaml
+---
+emoji: 📚
+description: Post a daily documentation health report as a GitHub issue comment.
+
+on:
+  schedule: daily       # Run automatically each day
+  workflow_dispatch: {} # Add a manual Run button in the Actions UI
+
+permissions:
+  contents: read          # Read files in the repository
+  copilot-requests: write # Required for every agentic workflow
+  issues: read            # Read issues and find where to post the report
+
+tools:
+  github:
+    mode: gh-proxy      # Route API calls through the scoped proxy
+    toolsets: [default]
+
+safe-outputs:
+  add-comment:
+    max: 1              # The agent may post at most one comment per run
+---
+
+# Daily Documentation Health Report
+
+You are an AI assistant that monitors this repository's documentation.
+Scan for stale files, thin pages, and broken internal links.
+Find the issue titled "Daily Docs Health" (or create it) and post one comment with a concise health summary.
+```
+
+The `on:` block sets when the workflow runs — `schedule: daily` compiles to a daily cron schedule. The `permissions:` block declares the minimum GitHub API scopes the workflow may use. The `safe-outputs:` guardrail limits the agent to posting at most one issue comment per run.
+
 ## Choose Your Path
 
 | Path | What you'll do | Continue |
@@ -15,6 +58,8 @@ Both paths produce `.github/workflows/daily-docs.md` and converge at Step 12.
 
 - [ ] You chose the path that matches how you want to work
 - [ ] You know both paths produce the same workflow file
+- [ ] My workflow file includes a valid `on:` trigger and `permissions:` block
+- [ ] I can explain in one sentence what my agent brief instructs the agent to do
 
 **Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 **Next:** Continue with your chosen path above.
