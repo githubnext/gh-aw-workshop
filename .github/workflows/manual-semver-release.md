@@ -45,202 +45,77 @@ steps:
           sha: $sha,
           bump: $bump
         }' > "$RELEASE_TRIGGER_PATH"
-  - name: Compute release plan
+  - name: Download release description
     uses: actions/github-script@v7
     env:
-      BUMP: ${{ github.event.inputs.bump }}
+      NEXT_TAG: ${{ needs.create-release.outputs.next_tag }}
+      CREATE_RELEASE_HAS_CHANGES: ${{ needs.create-release.outputs.has_changes }}
       TARGET_SHA: ${{ github.sha }}
     with:
       script: |
         const fs = require('fs');
         const path = require('path');
-        const { execFileSync, spawnSync } = require('child_process');
 
         const planPath = process.env.RELEASE_PLAN_PATH;
         const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
-        const bump = process.env.BUMP;
+        const nextTag = process.env.NEXT_TAG;
+        const createReleaseHasChanges = process.env.CREATE_RELEASE_HAS_CHANGES;
         const target = process.env.TARGET_SHA;
         const owner = context.repo.owner;
         const repo = context.repo.repo;
 
-        const runGitCommand = (...args) => {
-          try {
-            return execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
-          } catch (error) {
-            const stdout = typeof error === 'object' && error !== null && 'stdout' in error ? error.stdout : '';
-            const stderr = typeof error === 'object' && error !== null && 'stderr' in error ? error.stderr : '';
-            const output = [stdout, stderr]
-              .map(value => value && String(value).trim())
-              .filter(Boolean)
-              .join('\n');
-            throw new Error(`Command failed: ${args.join(' ')}${output ? `\n${output}` : ''}`);
-          }
-        };
-        const runGitCommandLines = (...args) => {
-          const text = runGitCommand(...args);
-          return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
-        };
-        const isMissingGitHubResource = async request => {
-          try {
-            await request();
-            return false;
-          } catch (error) {
-            if (error.status === 404) {
-              return true;
-            }
-            throw error;
-          }
-        };
-
         fs.mkdirSync(path.dirname(planPath), { recursive: true });
-        runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
-
-        const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
-        const semverTags = new Map();
-        const compareVersions = (left, right) => {
-          for (let index = 0; index < 3; index += 1) {
-            if (left[index] !== right[index]) {
-              return left[index] - right[index];
-            }
-          }
-          return 0;
-        };
-        // Prefer the conventional v-prefixed form, then the lexicographically earliest equivalent tag.
-        const selectCanonicalTag = tags => {
-          let best = null;
-          let bestPriority = Number.POSITIVE_INFINITY;
-
-          for (const candidate of tags) {
-            const candidatePriority = candidate.startsWith('v') ? 0 : 1;
-            if (
-              best === null ||
-              candidatePriority < bestPriority ||
-              (candidatePriority === bestPriority && candidate.localeCompare(best) < 0)
-            ) {
-              best = candidate;
-              bestPriority = candidatePriority;
-            }
-          }
-
-          return best;
-        };
-
-        for (const tag of runGitCommandLines('git', 'tag', '--list')) {
-          const match = tag.match(semverPattern);
-          if (!match) continue;
-
-          const key = match.slice(1).join('.');
-          if (!semverTags.has(key)) {
-            semverTags.set(key, []);
-          }
-          semverTags.get(key).push(tag);
-        }
-
-        let previousTag = null;
-        let previousTagDisplay = 'start';
-        let baseVersion = [0, 0, 0];
-
-        if (semverTags.size > 0) {
-          let latestVersion = null;
-          let latestTags = [];
-          for (const [versionKey, tags] of semverTags.entries()) {
-            const version = versionKey.split('.').map(Number);
-            if (!latestVersion || compareVersions(version, latestVersion) > 0) {
-              latestVersion = version;
-              latestTags = tags;
-            }
-          }
-
-          previousTag = selectCanonicalTag(latestTags);
-          previousTagDisplay = `v${latestVersion.join('.')}`;
-          baseVersion = latestVersion;
-        }
-
-        const nextVersion = {
-          patch: [baseVersion[0], baseVersion[1], baseVersion[2] + 1],
-          minor: [baseVersion[0], baseVersion[1] + 1, 0],
-          major: [baseVersion[0] + 1, 0, 0],
-        }[bump];
-        const nextTag = `v${nextVersion.join('.')}`;
 
         const plan = {
-          bump,
-          previous_tag: previousTag,
-          previous_tag_display: previousTagDisplay,
-          next_tag: nextTag,
+          next_tag: nextTag || '',
           target,
-          title: nextTag,
-          has_changes: true,
+          title: nextTag || '',
+          has_changes: false,
         };
 
-        if (!(await isMissingGitHubResource(() => github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag })))) {
-          plan.has_changes = false;
-          plan.noop_reason = `Target release ${nextTag} is already visible before publication.`;
+        if (!nextTag || createReleaseHasChanges !== 'true') {
+          plan.noop_reason = nextTag
+            ? `The create-release job did not publish a release for ${nextTag}.`
+            : `The create-release job did not report a target tag.`;
+          fs.writeFileSync(descriptionPath, '');
+          fs.writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`);
+          core.info('=== Release plan (noop) ===');
+          core.info(fs.readFileSync(planPath, 'utf8'));
+          return;
         }
 
-        if (
-          plan.has_changes &&
-          !(await isMissingGitHubResource(() => github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` })))
-        ) {
-          plan.has_changes = false;
-          plan.noop_reason = `Target tag ${nextTag} is already visible before publication.`;
-        }
-
-        let revspec = target;
-        if (previousTag) {
-          const ancestorResult = spawnSync('git', ['merge-base', '--is-ancestor', previousTag, target], { stdio: 'ignore' });
-          if (ancestorResult.status !== 0) {
-            plan.has_changes = false;
-            plan.noop_reason = `Cannot safely compare ${previousTagDisplay} to ${target} because the tag is not an ancestor of the target commit.`;
-            fs.writeFileSync(
-              descriptionPath,
-              `## Full change list since ${previousTagDisplay}\n- Unable to compute safely.\n`,
-            );
+        let releaseBody = '';
+        try {
+          const release = await github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag });
+          releaseBody = release.data.body || '';
+          plan.has_changes = true;
+        } catch (error) {
+          if (error.status === 404) {
+            plan.noop_reason = `Release ${nextTag} was not found after the create-release job completed.`;
+            fs.writeFileSync(descriptionPath, '');
             fs.writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`);
-            core.info('=== Release plan ===');
+            core.info('=== Release plan (noop - release not found) ===');
             core.info(fs.readFileSync(planPath, 'utf8'));
-            core.info('=== Deterministic release description ===');
-            core.info(fs.readFileSync(descriptionPath, 'utf8'));
             return;
           }
-          revspec = `${previousTag}..${target}`;
+          throw error;
         }
 
-        let changeLines = runGitCommandLines(
-          'git',
-          'log',
-          '--first-parent',
-          '--reverse',
-          '--pretty=format:- %s (%h)',
-          revspec,
-        );
-
-        plan.commit_count = changeLines.length;
-        if (previousTag && changeLines.length === 0) {
-          plan.has_changes = false;
-          plan.noop_reason = `No meaningful changes were found since ${previousTagDisplay}.`;
-        }
-
-        const heading = previousTag
-          ? `## Full change list since ${previousTagDisplay}`
-          : '## Full change list for the initial release';
-
-        if (changeLines.length === 0) {
-          changeLines = ['- No commits found in the selected release range.'];
-        }
-
-        fs.writeFileSync(descriptionPath, `${heading}\n${changeLines.join('\n')}\n`);
+        fs.writeFileSync(descriptionPath, `${releaseBody}\n`);
         fs.writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`);
 
         core.info('=== Release plan ===');
         core.info(fs.readFileSync(planPath, 'utf8'));
-        core.info('=== Deterministic release description ===');
+        core.info('=== Downloaded release description ===');
         core.info(fs.readFileSync(descriptionPath, 'utf8'));
 jobs:
   create-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      has_changes: ${{ steps.plan-release.outputs.has_changes }}
+      next_tag: ${{ steps.plan-release.outputs.next_tag }}
     env:
       RELEASE_DESCRIPTION_PATH: /tmp/gh-aw/data/release-description.md
     steps:
@@ -467,22 +342,22 @@ network:
 
 ## Current Context
 
-The `Compute release plan` step creates these files before the agent starts. Read them before you do anything else:
+The `Download release description` step downloads the release body created by the `create-release` job and writes these files before the agent starts. Read them before you do anything else:
 
 - `/tmp/gh-aw/data/release-trigger.json` — repository, requested bump, triggering ref name, and triggering SHA
-- `/tmp/gh-aw/data/release-plan.json` — deterministic release metadata including the previous semver tag, next semver tag, target SHA, and whether the release is publishable
-- `/tmp/gh-aw/data/release-description.md` — the full change list that the workflow creates first and publishes unless you replace it with better release notes
+- `/tmp/gh-aw/data/release-plan.json` — release metadata including the next semver tag, target SHA, and whether the release is publishable
+- `/tmp/gh-aw/data/release-description.md` — the raw release body downloaded from the GitHub release created by the `create-release` job
 
-A separate deterministic `create-release` job uses the same semver rules to create the GitHub release with `gh release create` before your `update_release` safe output runs. Your only write action is to replace that raw body with better release notes.
+A separate deterministic `create-release` job uses semver rules to create the GitHub release with `gh release create` before your `update_release` safe output runs. Your only write action is to replace that raw body with better release notes.
 
 ## Task
 
-Rewrite the deterministic release description into polished release notes for the GitHub release created for the current ref.
+Rewrite the downloaded release description into polished release notes for the GitHub release.
 
-1. Treat `/tmp/gh-aw/data/release-plan.json` as the source of truth for the version, title, target SHA, and previous release boundary.
-2. Treat `/tmp/gh-aw/data/release-description.md` as the deterministic full change list. Read it closely and rewrite it into concise, human-friendly release notes.
+1. Treat `/tmp/gh-aw/data/release-plan.json` as the source of truth for the version, title, and target SHA.
+2. Treat `/tmp/gh-aw/data/release-description.md` as the raw release body to summarize. Read it closely and rewrite it into concise, human-friendly release notes.
 3. Inspect commits, merged pull requests, and repository context as needed to improve the rewrite, but do not change the version or release target from the release plan.
-4. If there is no prior semver release, use the full change list plus the repository context to explain the initial release clearly and concisely.
+4. If the release description is empty or the change list covers the initial release, use the repository context to explain the release clearly and concisely.
 5. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
 
 ## Required Release Notes Format
