@@ -3,7 +3,11 @@
 _Now that setup is complete, create the repository where you'll build and test your workflows._
 
 > [!IMPORTANT]
-> **Using the GitHub web UI, Copilot app, or mobile?** Go to [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md) — no terminal needed.
+> **Which path is right for me?** Choose the option that matches how you work:
+>
+> - 🌐 **Browser / Copilot app / Mobile** — I prefer the GitHub web UI with no terminal → go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+> - ☁️ **Codespace** — I have a Codespace open → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md) (your terminal is already open)
+> - 💻 **Local terminal** — I want to use my own machine → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md)
 
 ## 📋 Before You Start
 

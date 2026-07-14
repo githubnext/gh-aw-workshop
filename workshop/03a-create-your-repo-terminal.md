@@ -1,6 +1,6 @@
 # Step 3a: Create Your Practice Repository — Terminal Path
 
-> _Now that setup is complete, make sure your practice repository is open and ready for workflow work._
+> _When you're done with this step, you'll have a public `my-agentic-workflows` repository cloned locally or in your Codespace, with GitHub Actions enabled and ready for the rest of the workshop._
 
 ## 🎯 What You'll Do
 
