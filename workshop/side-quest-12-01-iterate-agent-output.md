@@ -10,7 +10,7 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 - You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
 - Your workflow posts to a safe output surface such as the **Daily Status Reports** issue.
-- If you are on the GitHub UI path, you can still do this side quest by asking a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
+- If you are not using a terminal, you can still do this side quest by asking a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
 
 ## Trigger one baseline run
 
@@ -53,7 +53,7 @@ Pick the lowest-scoring row and change only **one sentence** in your workflow br
 If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), ask for one focused update:
 
 ```text
-Using the /agentic-workflows skill, update .github/workflows/daily-status.md
+Using the agentic-workflows skill, update .github/workflows/daily-status.md
 by changing one sentence in the Markdown body to improve Tone.
 Run gh aw compile after the edit.
 ```
