@@ -54,6 +54,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 21 | [21-inline-sub-agents.md](21-inline-sub-agents.md) | Split Complex Workflows with Inline Sub-Agents | ✅ |
 | 22 | [22-error-handling-and-resilience.md](22-error-handling-and-resilience.md) | Make Your Workflows Resilient to Failure | ✅ |
 | 23 | [23-ab-experiments.md](23-ab-experiments.md) | Test Your Prompt Ideas with A/B Experiments | ✅ |
+| 24 | [24-govern-and-audit.md](24-govern-and-audit.md) | Govern and Audit Your Agentic Workflows | ✅ |
 
 ## Optional Side Quests
 
