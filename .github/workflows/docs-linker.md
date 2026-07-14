@@ -46,6 +46,11 @@ network:
     - defaults
     - github
 timeout-minutes: 30
+checkout:
+  repository: github/gh-aw
+  sparse-checkout: docs/src
+  path: gh-aw-docs-repo
+  github-token: ${{ github.token }}
 steps:
   - name: Gather workshop files
     run: |
@@ -93,24 +98,11 @@ steps:
         echo "No cached doc index. Building from scratch."
       fi
 
-      # Shallow sparse checkout of docs/src/ from github/gh-aw
-      DOCS_REPO=/tmp/gh-aw-docs-repo
-      rm -rf "$DOCS_REPO"
-      git clone \
-        --depth 1 \
-        --filter=blob:none \
-        --sparse \
-        "https://x-access-token:${GITHUB_TOKEN}@github.com/github/gh-aw.git" \
-        "$DOCS_REPO"
-      cd "$DOCS_REPO"
-      git sparse-checkout set docs/src
-      echo "Sparse checkout complete."
-
       python3 <<'PYEOF'
       import json, os, re, shutil, time
 
       REPO_URL_BASE = "https://github.github.com/gh-aw"
-      DOCS_REPO     = "/tmp/gh-aw-docs-repo"
+      DOCS_REPO     = os.path.join(os.environ.get("GITHUB_WORKSPACE", "."), "gh-aw-docs-repo")
 
       def find_content_dir(base):
           """Find the Starlight content directory under docs/src/."""
@@ -190,8 +182,6 @@ steps:
       shutil.copy("/tmp/gh-aw/data/doc-index.json", "/tmp/gh-aw/cache-memory/docs-index.json")
       print(f"\nDoc index: {len(index['pages'])} pages indexed")
       PYEOF
-
-      rm -rf "$DOCS_REPO"
 ---
 
 # Docs Linker
