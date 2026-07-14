@@ -24,8 +24,7 @@ The pattern looks like this:
 2. Store the result in `$GITHUB_OUTPUT`.
 3. Reference the output in your prompt with `${{ steps.<id>.outputs.<key> }}`.
 
-> [!TIP]
-> New to `$GITHUB_OUTPUT`? Check out the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) for a deeper explanation of why `export` doesn't work across steps, how to write single-line and multi-line values, and how to reference them in a prompt.
+If you're unfamiliar with `$GITHUB_OUTPUT`, the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) explains why `export` doesn't work across steps and how to write multi-line values.
 
 ### Add a step to fetch recent commits
 
@@ -47,6 +46,8 @@ What this does:
 - `git log` with a time filter lists commits from the last 24 hours.
 - `--format="%h %s"` produces a short hash followed by the commit subject, e.g. `a1b2c3d Fix login bug`.
 - The multi-line `<<EOF` syntax stores a multi-line string in `$GITHUB_OUTPUT` (see the [side quest](side-quest-16-01-github-output.md) for details).
+
+🤔 **Predict:** What will `${{ steps.recent.outputs.commit_log }}` contain if no commits were made in the last 24 hours? Form your prediction now and verify it at the checkpoint below, once you've completed the full step and triggered a run.
 
 ### Add a step to fetch open issues
 
@@ -72,9 +73,9 @@ What this does:
 - `gh issue list` returns the 10 most recent open issues as JSON.
 - `--jq '.[] | "#\(.number) \(.title)"'` formats each issue as `#42 Fix the login bug` — a readable list.
 - A second `gh issue list` call counts the total with `--jq 'length'` and stores it as `open_issues_count`.
+- `GH_TOKEN` is set to `secrets.GITHUB_TOKEN`, which GitHub Actions provides automatically in every repository — you do not need to create it.
 
-> [!NOTE]
-> `GH_TOKEN` is automatically provided by GitHub Actions in `secrets.GITHUB_TOKEN`. You don't need to create it yourself — it's available in every repository.
+✏️ **Try it:** Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you complete this step and trigger a workflow run, check whether `open_issues_count` in the output matches.
 
 ### Inject the data into your AI prompt
 
@@ -99,10 +100,9 @@ Write a concise, friendly update — two short paragraphs.
 Highlight anything that looks urgent in the issue list.
 ```
 
-The `${{ steps.<id>.outputs.<key> }}` expressions are resolved at runtime and the values are injected into the prompt before the AI sees it.
+The `${{ steps.<id>.outputs.<key> }}` expressions are resolved at runtime and the values are injected into the prompt before the AI sees it. The more specific you make the instructions (e.g., "two short paragraphs"), the more consistent the output will be.
 
-> [!TIP]
-> The more specific your prompt, the better the output. Tell the model exactly what format you want (e.g., "two short paragraphs") and what to emphasise.
+✏️ **Try it:** Change `"two short paragraphs"` to `"one bullet list per topic"`, recompile, and re-run the workflow. Notice how the output format shifts — then decide which style suits your daily report better.
 
 ### Compile and validate
 
