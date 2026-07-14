@@ -87,28 +87,33 @@ If any row fails, make exactly **one** change to address it, then re-run.
 
 ## Making One Focused Change
 
-Open `.github/workflows/daily-status.md` in your editor. The agent instructions live in the **Markdown body** — the plain-English text below the closing `---` fence.
+Once you know what to fix, use the `agentic-workflows` skill to make the change. Open the GitHub Copilot **Agents** tab (or the GitHub Copilot app) in your practice repository and describe the single improvement you want:
 
-Pick the single highest-priority failure from the pass/fail check above. Make exactly one corresponding change. For example, if tone was the problem, you might update your Guidelines section like this:
-
-```markdown
-## Guidelines
-
-- Post only one comment. If you have already posted today, skip.
-- Keep the report factual. Do not invent numbers.
-- Keep the report under 100 words.
-- Include the age of the oldest open PR if any exist.
-- Write in a friendly, conversational tone.
-- If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
+```
+Using the agentic-workflows skill, update .github/workflows/daily-status.md
+to add a friendly, conversational tone instruction to the Guidelines section.
+Run gh aw compile to validate after the change.
 ```
 
-> [!NOTE]
-> The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
+Tailor the prompt to the problem row you identified:
+
+| Problem row that failed | Example prompt for the skill |
+|-------------------------|------------------------------|
+| Tone feels robotic | "Add a tone instruction: _Write in a friendly, conversational tone._" |
+| Missing PR age info | "Add to the Your Task list: _Include the age of the oldest open PR._" |
+| Report is too verbose | "Add a length cap: _Keep the report under 100 words._" |
+| Format does not match sketch | "Add an explicit output skeleton with the section headings I care about." |
+| Duplicate comments appearing | "Add the deduplication guardrail: _If you have already posted today, skip._" |
+
+Review the diff the skill proposes before merging. One clear instruction per session keeps the change easy to evaluate.
+
+> [!TIP]
+> Prefer using an agent with the `/agentic-workflows` skill over hand-editing workflow files. **Agents edit agents.** For terminal users, run `gh aw compile .github/workflows/daily-status.md --watch` for continuous feedback while the agent edits.
 
 <!-- Separate adjacent callouts -->
 
-> [!TIP]
-> **Using the GitHub Copilot app or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate` in its session workspace, and update the pull request. Review the diff before merging.
+> [!NOTE]
+> The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
 
 ---
 
@@ -116,10 +121,10 @@ Pick the single highest-priority failure from the pass/fail check above. Make ex
 
 Repeat the following until you are satisfied:
 
-1. Trigger a manual run.
+1. Trigger a manual run from the **Actions** tab.
 2. Read the new comment against the pass/fail check.
 3. If all rows pass — you are done. Move on to [Step 13: Schedule It to Run Every Day](13-schedule-it.md).
-4. If a row still fails — find the matching row in the problem-to-fix table, make one change, commit, and go back to step 1.
+4. If a row still fails — find the matching row in the problem-to-fix table, ask the `agentic-workflows` skill to make that one change, review its diff, merge, and go back to step 1.
 
 > [!TIP]
 > Keep your iterations small. A single-line change is much easier to attribute to a specific improvement (or regression) than a paragraph rewrite.
@@ -130,7 +135,7 @@ Repeat the following until you are satisfied:
 
 - [ ] You have read your output against all five pass/fail checks
 - [ ] You have identified at least one row that fails (or confirmed all pass)
-- [ ] You have made at most one prompt change per iteration
+- [ ] You have asked the `agentic-workflows` skill to make the targeted fix
 - [ ] After re-running, the previously failing check now passes
 - [ ] You understand the difference between a format, data, and tone problem
 
