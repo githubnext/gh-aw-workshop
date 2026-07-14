@@ -38,19 +38,6 @@ You should see a message like _"Get started with GitHub Actions"_.
 > [!NOTE]
 > GitHub Actions is enabled by default for new public repositories. If you see a prompt to enable it, click the button to turn it on.
 
-### Add a `.gitignore` (optional)
-
-1. Click **Add file** → **Create new file**.
-2. Enter `.gitignore` as the filename.
-3. Paste:
-
-   ```text
-   *.log
-   .env
-   ```
-
-4. Click **Commit changes**.
-
 ### Verify your setup
 
 Confirm `my-agentic-workflows` and your username appear in the page header.
