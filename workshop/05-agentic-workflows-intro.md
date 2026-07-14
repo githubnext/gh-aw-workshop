@@ -16,7 +16,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 > [!NOTE]
 > <details>
-> <summary>**What does an agentic workflow look like in practice?**</summary>
+> <summary><b>What does an agentic workflow look like in practice?</b></summary>
 >
 > | If you use… | An agentic workflow looks like… |
 > |---|---|
@@ -56,7 +56,7 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 
 > [!IMPORTANT]
 > <details>
-> <summary>**Coming from classic Actions? Unlearn these 3 things first:**</summary>
+> <summary><b>Coming from classic Actions? Unlearn these 3 things first:</b></summary>
 >
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
 > 2. The `.md` file is NOT documentation — it IS the workflow definition.

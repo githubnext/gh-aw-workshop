@@ -25,7 +25,7 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 
 > [!NOTE]
 > <details>
-> <summary>If you're using the **GitHub Copilot Cloud Agent (CCA)**, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.</summary>
+> <summary>If you're using the <b>GitHub Copilot Cloud Agent (CCA)</b>, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.</summary>
 >
 > **Experienced developer or Enterprise Cloud user?** See [Step 1: What You Need Before We Start](01-prerequisites.md) for the skip-ahead checklist and platform compatibility notes.
 >

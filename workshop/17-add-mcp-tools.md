@@ -20,7 +20,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 
 > [!TIP]
 > <details>
-> <summary>**Optional Side Quests:**</summary>
+> <summary><b>Optional Side Quests:</b></summary>
 >
 > - Want a deeper look at how the agentic loop changes, what the `tools:` block does, and how to read tool calls in the Actions log? Work through [Side Quest: How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md).  
 > - Want a beginner-friendly security mental model for why sandboxing matters, where the agent runs, and what safe output looks like? Work through [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md).  
