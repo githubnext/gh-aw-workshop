@@ -75,7 +75,7 @@ Inside a sub-agent block, keep the frontmatter small:
 - `description` explains the sub-agent's job
 - `model` is optional if you want to override the parent model
 
-Anything other than `description` and `model` is stripped during compile. For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
+Inside sub-agent frontmatter, anything other than `description` and `model` is stripped during compile. For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
 
 **Action:** Remove the unsupported field from the broken block.
 
@@ -133,7 +133,7 @@ Open your Step 21 workflow and do one real edit:
 
 1. Add or repair one ``## agent: `name` `` block at the bottom of the file.
 2. Keep only `description` and, if needed, `model` in the sub-agent frontmatter.
-3. From the repository root, run:
+3. From the top-level folder of your practice repository, run:
 
 ```bash
 gh aw compile
