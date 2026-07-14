@@ -125,7 +125,7 @@ steps:
       # This avoids injecting ~300-400k tokens into every subagent context.
       # IMPORTANT: if you add or remove files here, update the comment in
       # "Confirm Reference Documentation Is Ready" in the prompt body below.
-      docs=(github-agentic-workflows.md syntax-core.md syntax-agentic.md mcp-clis.md)
+      docs=(github-agentic-workflows.md syntax-core.md syntax-agentic.md mcp-clis.md triggers.md)
       for doc in "${docs[@]}"; do
         gh api repos/github/gh-aw/contents/.github/aw/"${doc}" \
           --jq '.content' | base64 -d > /tmp/gh-aw/data/ref/"${doc}"
@@ -219,6 +219,54 @@ If a new gh-aw release was found in Phase 2, record the release notes body in a 
 
 ---
 
+## Valid External Documentation URLs
+
+Workshop files may contain external links to the rendered gh-aw documentation site. The canonical URL format follows the [Astro Starlight](https://starlight.astro.build/) pattern:
+
+```
+https://github.github.com/gh-aw/<category>/<page-slug>/
+```
+
+The table below is the authoritative mapping from source reference files (in `github/gh-aw`) to their rendered URLs. When a workshop file links to one of these URLs, treat it as **verified** — do **not** flag these as unverified external links:
+
+| Source file | Rendered URL |
+|---|---|
+| `.github/aw/github-agentic-workflows.md` | `https://github.github.com/gh-aw/introduction/overview/` |
+| `.github/aw/syntax-core.md` | `https://github.github.com/gh-aw/reference/syntax/` |
+| `.github/aw/syntax-agentic.md` | `https://github.github.com/gh-aw/reference/agentic/` |
+| `.github/aw/syntax-tools-imports.md` | `https://github.github.com/gh-aw/reference/tools/` |
+| `.github/aw/triggers.md` | `https://github.github.com/gh-aw/reference/triggers/` |
+| `.github/aw/memory.md` | `https://github.github.com/gh-aw/reference/memory/` |
+| `.github/aw/safe-outputs.md` | `https://github.github.com/gh-aw/reference/safe-outputs/` |
+| `.github/aw/safe-outputs-content.md` | `https://github.github.com/gh-aw/reference/safe-outputs-content/` |
+| `.github/aw/safe-outputs-automation.md` | `https://github.github.com/gh-aw/reference/safe-outputs-automation/` |
+| `.github/aw/safe-outputs-management.md` | `https://github.github.com/gh-aw/reference/safe-outputs-management/` |
+| `.github/aw/safe-outputs-runtime.md` | `https://github.github.com/gh-aw/reference/safe-outputs-runtime/` |
+| `.github/aw/network.md` | `https://github.github.com/gh-aw/reference/network/` |
+| `.github/aw/messages.md` | `https://github.github.com/gh-aw/reference/messages/` |
+| `.github/aw/subagents.md` | `https://github.github.com/gh-aw/reference/subagents/` |
+| `.github/aw/loop.md` | `https://github.github.com/gh-aw/reference/loop/` |
+| `.github/aw/patterns.md` | `https://github.github.com/gh-aw/guides/patterns/` |
+| `.github/aw/workflow-patterns.md` | `https://github.github.com/gh-aw/guides/workflow-patterns/` |
+| `.github/aw/token-optimization.md` | `https://github.github.com/gh-aw/guides/token-optimization/` |
+| `.github/aw/context.md` | `https://github.github.com/gh-aw/reference/context/` |
+| `.github/aw/skills.md` | `https://github.github.com/gh-aw/reference/skills/` |
+| `.github/aw/reuse.md` | `https://github.github.com/gh-aw/guides/reuse/` |
+| `.github/aw/experiments.md` | `https://github.github.com/gh-aw/reference/experiments/` |
+| `.github/aw/github-mcp-server.md` | `https://github.github.com/gh-aw/reference/github-mcp-server/` |
+| `.github/aw/mcp-clis.md` | `https://github.github.com/gh-aw/reference/mcp-clis/` |
+| `.github/aw/agentic-workflows-mcp.md` | `https://github.github.com/gh-aw/reference/agentic-workflows-mcp/` |
+| `.github/aw/cli-commands.md` | `https://github.github.com/gh-aw/reference/cli-commands/` |
+| `.github/aw/pr-reviewer.md` | `https://github.github.com/gh-aw/guides/pr-reviewer/` |
+| `.github/aw/report.md` | `https://github.github.com/gh-aw/guides/report/` |
+| `.github/aw/llms.md` | `https://github.github.com/gh-aw/reference/llms/` |
+| `.github/aw/workflow-constraints.md` | `https://github.github.com/gh-aw/reference/workflow-constraints/` |
+| `.github/aw/workflow-editing.md` | `https://github.github.com/gh-aw/guides/workflow-editing/` |
+
+Pass this table to each `workshop-sync-reviewer` subagent as `doc_url_map` so it can validate external links without false positives.
+
+---
+
 ## Compile-Validate Workshop Workflow Examples
 
 Use the `agentic-workflows` compile tool to validate each workflow source file listed in `workflow_files`.
@@ -240,6 +288,7 @@ For each file in `target_files`:
    - `ref_dir` — the path `/tmp/gh-aw/data/ref/` (the subagent reads individual reference files from this directory on demand — do **not** pass the file contents inline)
    - `release_notes` — release notes from Phase 2 (empty string if none)
    - `gh_aw_version` — the latest gh-aw release tag
+   - `doc_url_map` — the rendered-URL mapping table from "Valid External Documentation URLs" above
 
 3. Collect the structured JSON verdict returned by the subagent.
 
