@@ -43,9 +43,12 @@ This prevents the most common failure: the agent silently completes without writ
 Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` to your workflow frontmatter to cap the run:
 
 ```yaml
-jobs:
-  run:
-    timeout-minutes: 10
+---
+name: Daily Status Report
+on:
+  schedule: daily
+timeout-minutes: 10
+---
 ```
 
 > [!TIP]
