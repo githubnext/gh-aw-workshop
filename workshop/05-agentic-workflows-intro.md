@@ -68,32 +68,39 @@ Both workflow types live in `.github/workflows/` and share the same `on:` trigge
 
 If you want a one-page cheat sheet for Actions power users, read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
 
-## Try a quick comparison
+## Classify these tasks
 
-Which task is a better fit for an agentic workflow?
+For each task below, decide whether it is a better fit for an **agentic workflow** or a **standard Actions workflow**, then check your answers.
 
 ```text
 Task A: Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 Task B: Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
+Task C: Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
 ```
 
-Before you reveal the answer, mark the statements you can explain:
+Before you reveal the answers, mark the statements you can explain:
 
-- [ ] I chose which task is the better fit for an agentic workflow
-- [ ] I can explain why the other task is better as a deterministic GitHub Actions workflow
-- [ ] I can point to the task that needs judgment at runtime
-- [ ] I can point to the task that follows the same script every run
-- [ ] I can name the live repository data the agent would inspect for the better-fit task
-- [ ] I can describe what output the better-fit workflow would publish back to GitHub
+- [ ] I classified Task A as agentic workflow or standard Actions workflow
+- [ ] I classified Task B as agentic workflow or standard Actions workflow
+- [ ] I classified Task C as agentic workflow or standard Actions workflow
+- [ ] I can explain which tasks follow the same fixed steps every run
+- [ ] I can explain which tasks need live repository context or judgment at runtime
 
 <details>
-<summary>Reveal the answer</summary>
+<summary>Reveal the answers</summary>
 
-**Task B** is the better fit for an agentic workflow because the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
+**Task A — Standard Actions workflow:** every run follows the same fixed steps: start the test job, fail on a non-zero exit code, and upload the coverage artifact. No judgment required.
 
-**Task A** is still a great fit for classic GitHub Actions because every run follows the same fixed steps: start the test job, fail on a non-zero exit code, and upload the same coverage artifact.
+**Task B — Agentic workflow:** the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
+
+**Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
 
 </details>
+
+**Want a first look before you install anything?**
+
+- **Browser:** Watch a live agent run in the [gh-aw-workshop Actions tab](https://github.com/githubnext/gh-aw-workshop/actions) — no login required for public runs.
+- **Terminal (optional):** If you already have `gh` and `gh-aw` installed, run `gh aw --help` to preview available commands — no files to create yet.
 
 > [!NOTE]
 > A brand-new repo won't have any workflows yet — the **Actions** tab will show a "Getting started" page. That's expected at this stage. You'll create your first workflow in [Step 7: Your First Workflow](07-your-first-workflow.md).
@@ -102,8 +109,8 @@ Before you reveal the answer, mark the statements you can explain:
 
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I understand that the agent decides _how_ to complete the task at runtime, not you
-- [ ] I can explain why Task B is a better fit for an agentic workflow than Task A
-- [ ] I can explain why Task A is still a good fit for classic GitHub Actions
+- [ ] I classified all three tasks and checked my answers in the reveal
+- [ ] I can explain why Tasks B and C are agentic workflows and Task A is a standard Actions workflow
 - [ ] I navigated to the **Actions** tab in my practice repository and confirmed I can open the getting-started or workflow list page
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
