@@ -129,6 +129,18 @@ If the agent makes a tool call you didn't expect, revisit your task brief. Addin
 
 ---
 
+## Trust and Security Concepts
+
+Because MCP tool servers receive and return data at runtime, a few security concepts apply specifically to this environment. You will encounter them in the [Supply Chain Attacks via MCP](side-quest-17-05-supply-chain-mcp.md) side quest.
+
+**Supply chain attack through MCP** — occurs when a tool server your agent trusts returns manipulated data instead of the real thing. Rather than compromising your workflow file directly, an attacker targets the tool server, so the same workflow file can produce harmful results.
+
+**Poisoned payload** — the manipulated data a compromised tool server returns. It may be fabricated data (such as fake issue lists) or embedded instructions that redirect the agent to take unintended actions.
+
+**Blast radius** — the scope of damage a successful attack can cause. For MCP-based agents, the blast radius is larger than a traditional dependency vulnerability because the payload is interpreted by an AI model that may act on embedded instructions.
+
+---
+
 ## ✅ Checkpoint
 
 - [ ] You can explain what an MCP tool server is and what it provides to the agent
