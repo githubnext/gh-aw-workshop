@@ -9,12 +9,7 @@
 
 ## The Attack
 
-A supply chain attack through MCP happens when a tool server your agent trusts returns
-manipulated data instead of the real thing. Imagine your daily-status workflow calls a
-third-party MCP server to fetch issue data, but that server has been compromised. It
-returns a fabricated list of issues — or worse, it injects extra instructions into its
-response that redirect your agent to take unintended actions. Your workflow follows the
-poisoned instructions without you knowing anything changed.
+A supply chain attack through MCP (see [Trust and Security Concepts](side-quest-17-01-mcp-concepts.md#trust-and-security-concepts)) happens when a tool server your agent trusts returns poisoned payloads or injected instructions instead of the real thing. Imagine your daily-status workflow calls a third-party MCP server to fetch issue data, but that server has been compromised — it returns a fabricated list of issues or redirects your agent to take unintended actions, all without you knowing anything changed.
 
 ## Why This Matters for Agentic Workflows
 
