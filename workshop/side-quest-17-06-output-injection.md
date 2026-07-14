@@ -32,15 +32,15 @@ gh-aw limits both **where** the agent can write and **how** it signals actions, 
 
   ```yaml
   safe-outputs:
-    write-summary: {}          # allows writing a workflow summary
-    add-issue-comment:         # allows posting to issues only
-      label: daily-status
+    add-comment:
+      max: 1
+      required-labels: [daily-status]
   ```
 
-  With this configuration, the agent can add issue comments labelled `daily-status` and write a workflow summary — nothing else. A prompt injection asking it to approve a PR or modify files is outside the allowed surfaces.
+  With this configuration, the agent can post one comment, and only on an issue or pull request that already carries the `daily-status` label. A prompt injection asking it to approve a PR, post somewhere unrelated, or modify files is outside the allowed surface.
 
-- **Label scoping on comments**
-  Adding a `label:` to `add-issue-comment` or `add-pr-comment` means every comment the agent posts carries a consistent, machine-readable label. Reviewers and automation can filter out unexpected labels, making it easier to spot an out-of-scope comment that an attacker caused the agent to post.
+- **Label scoping on comment targets**
+  Adding `required-labels:` to `add-comment` scopes where the workflow may post. If you reserve a label like `daily-status` for the one issue or PR thread your workflow should use, an injected instruction cannot redirect the agent to comment on some unrelated item that lacks that label.
 
 - **Minimal `permissions:`**
   Declaring `permissions: contents: read` (and omitting `issues: write` when the workflow does not need to post) prevents the agent from writing to surfaces it has no reason to touch, even if injected content instructs it to.
@@ -51,8 +51,8 @@ gh-aw limits both **where** the agent can write and **how** it signals actions, 
     issues: write        # only add this if the workflow must post comments
   ```
 
-- **Workflow summary as a lower-trust surface**
-  A workflow summary (`write-summary`) is visible on the Actions run page, not in the repository's issue tracker or PR thread. Moving routine output there keeps the trust-sensitive surfaces (PR comments, issue bodies) clean.
+- **Prefer no write surface when you do not need one**
+  If a workflow does not need to write back to an issue or PR, leave `safe-outputs` out entirely. Keeping the result in the Actions run instead of posting a repository comment reduces the chance that injected text shows up in a trust-sensitive thread.
 
 > See [Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md)
 > for the full security model.
@@ -60,8 +60,8 @@ gh-aw limits both **where** the agent can write and **how** it signals actions, 
 ## What You Can Do as a Workflow Author
 
 - [ ] Declare only the `safe-outputs` surfaces your workflow genuinely needs. Remove any surface you added speculatively.
-- [ ] Add a `label:` to any `add-issue-comment` or `add-pr-comment` safe output so automated tooling and reviewers can verify provenance.
-- [ ] Use `write-summary` for routine informational output, and reserve issue/PR comments for actions that actually require reviewer attention.
+- [ ] Add `required-labels:` to any `add-comment` safe output that should only post to a specific tracking issue or PR thread.
+- [ ] If your workflow does not need to write back to GitHub, leave `safe-outputs` out and keep the result in the Actions run instead.
 - [ ] Scope `permissions:` to `read` for every resource the workflow does not need to modify. Removing `issues: write` when you only need `issues: read` eliminates the write surface entirely.
 - [ ] Treat repository content (issue bodies, PR descriptions, file contents) as untrusted input in your task brief. Phrase the brief so the agent summarizes factual data rather than quoting freeform text verbatim.
 
