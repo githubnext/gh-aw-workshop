@@ -16,7 +16,7 @@ A supply chain attack through MCP starts when you trust a tool server, package, 
 Use this table as a quick threat model when you add or review an MCP server.
 
 | Attack type | How it works | Detection signal |
-|---|---|---|
+| --- | --- | --- |
 | Typosquatted package | A package name looks familiar, but the publisher or package is not the one you meant to install. | The name is close to a trusted tool, but the publisher is unfamiliar. |
 | Compromised server or image | A real server or container starts returning altered results after the publisher account or registry is compromised. | The config uses a mutable tag such as `latest`, or a remote endpoint with no version pin. |
 | Tool poisoning | The server exposes more tools than your task needs, so a bad response has more ways to steer the agent. | The tool list is broad, vague, or includes an "everything" style toolset. |
@@ -57,7 +57,7 @@ Before you trust a server like this, verify who publishes it, confirm the expect
 
 ## Three Habits That Lower the Risk
 
-Keep the response simple:
+Follow these three habits:
 
 1. **Pin the server you run.** Prefer a specific version or image digest over a mutable default like `latest`.
 2. **Restrict permissions and outputs.** Keep `permissions:` minimal and declare only the write surfaces you actually need in `safe-outputs`.
