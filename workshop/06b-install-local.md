@@ -63,15 +63,16 @@ Before you author your first workflow, initialize and push the generated skill f
 
 ```bash
 gh aw init
-git add .github/ .gitattributes .vscode/
+git add .
 git commit -m "Initialize agentic workflow skills"
 git push
 ```
 
-This configures `.gitattributes`, creates skill files under `.github/skills/`, adds the custom
-agent at `.github/agents/agentic-workflows.md`, creates MCP configuration at `.github/mcp.json`,
-adds Copilot setup steps at `.github/workflows/copilot-setup-steps.yml`, and adds editor settings
-under `.vscode/`.
+This creates several files needed for agentic workflow authoring:
+`.github/skills/agentic-workflows/SKILL.md`,
+`.github/skills/agentic-workflow-designer/SKILL.md`,
+`.github/agents/agentic-workflows.md`, `.github/mcp.json`,
+`.github/workflows/copilot-setup-steps.yml`, and `.vscode/settings.json`.
 
 ## 🏃 Try It
 
