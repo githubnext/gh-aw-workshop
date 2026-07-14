@@ -85,6 +85,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — step-by-step guide to generating an OpenAI key, storing it as a repository secret, and switching your workflow to `engine: codex`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) — decision guide, full field references, and example task briefs for both `cache-memory` and `repo-memory`; branches from [Step 20](20-persistent-memory.md).
 - [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md) — name rules, block boundary rules, supported frontmatter fields, and model alias table for inline sub-agents; branches from [Step 21](21-inline-sub-agents.md).
+- [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md) — full phase reference table, activity feed tips, steering prompts, and advanced agent merge / `--watch` paths; branches from [Step 11d2](11d2-review-and-merge.md).
 
 ## Getting Started
 
