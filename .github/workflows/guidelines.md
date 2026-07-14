@@ -27,6 +27,13 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
+## Positioning agentic workflows as an Actions-compatible superset
+
+- Present agentic workflows as a **smooth transition from classic GitHub Actions**, not a replacement that forces learners to start over.
+- State explicitly that frontmatter is **Actions YAML compatible** (triggers, permissions, runners, and deterministic steps still apply), while the Markdown body is the agent prompt with advanced templating features.
+- Reinforce that workflow authors can create **hybrid deterministic + agentic designs** by keeping or importing custom jobs and steps for fixed data collection, then delegating reasoning and synthesis to the agent.
+- In data-ops examples, teach a split of responsibilities: deterministic steps fetch/shape data, and the agentic prompt interprets that data and decides how to communicate outcomes.
+
 ## Header style
 
 - Do **not** number Markdown headers inside a file. Use descriptive headings such as `### Open the Codespace`, not `### 2. Open the Codespace`.
