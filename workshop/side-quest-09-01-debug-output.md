@@ -12,7 +12,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 
 ## Quick Triage
 
-Before diving into a specific pattern, glance at the top of the failing run's log. Here is what a long-planning-loop failure looks like:
+Before diving into a specific pattern, glance at the top of the failing run's log. Here is what a long plan chain failure looks like:
 
 ```
 [plan] I will search for open pull requests and collect their titles.
