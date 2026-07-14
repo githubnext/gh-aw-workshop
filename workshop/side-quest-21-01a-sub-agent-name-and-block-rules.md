@@ -1,6 +1,6 @@
 # Side Quest: Sub-Agent Names and Block Boundaries
 
-> _Optional: use this before or after [Step 21](21-inline-sub-agents.md) if you want quick practice with the first two syntax rules._
+> _Optional: use this before or after [Step 21](21-inline-sub-agents.md) if you want quick practice with sub-agent naming and block boundaries._
 
 ## Before You Start
 

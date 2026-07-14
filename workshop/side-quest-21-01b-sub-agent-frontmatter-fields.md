@@ -11,7 +11,7 @@
 
 ## Frontmatter fields
 
-Inside a sub-agent block, keep frontmatter small. `description` explains the helper. `model` can stay `inherited` or use `small` for cheap bounded work or `large` for heavier reasoning. Other fields are stripped with a warning.
+Inside a sub-agent block, keep frontmatter small. `description` explains the helper. `model` sets the helper's reasoning level. Use `small` for cheap bounded work, `large` for heavier reasoning, and `inherited` when the helper should match the parent workflow's model. Other fields are stripped with a warning.
 
 ### 🔍 Predict — Frontmatter Fields
 
@@ -48,6 +48,8 @@ model: ?
 <summary>Answer</summary>
 
 Use `model: small`. The task is bounded and repeated, so the cheaper worker model is the best fit.
+
+Use `model: inherited` when a helper needs the same reasoning depth as the parent workflow, such as a second-pass writer that must match the parent's synthesis quality.
 
 </details>
 
@@ -103,10 +105,12 @@ The `writer` agent heading starts the second helper. It also ends the first help
 - [ ] You chose `small`, `large`, or `inherited` for a helper based on the task.
 - [ ] You can explain why `small` fits a one-issue summarizer.
 - [ ] You can explain when `inherited` is a better choice than `small`.
+- [ ] You can name one helper that should stay on the parent model with `inherited`.
 - [ ] You can place two sub-agent blocks together at the bottom of a workflow file.
 - [ ] You can move `## Notes for maintainers` above the sub-agent section.
 - [ ] You can explain which `## agent:` heading starts the second helper.
 - [ ] You can explain which heading also ends the first helper block.
+- [ ] You can explain why sub-agent notes belong above the helper section.
 
 ---
 
