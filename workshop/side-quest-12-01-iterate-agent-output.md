@@ -47,7 +47,7 @@ Lowest score: Tone
 Pick the lowest-scoring row and change only **one sentence** in your workflow brief to address it.
 
 - **Accuracy**: add a sentence that tells the agent not to invent numbers and to skip anything it cannot verify.
-- **Completeness**: add a sentence naming the missing field, such as the age of the oldest open PR.
+- **Completeness**: add a sentence naming the missing field, such as "Include the age of the oldest open PR."
 - **Tone**: add a sentence describing the voice you want, such as "Write in a friendly, conversational tone."
 
 If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), ask for one focused update:
@@ -105,7 +105,7 @@ If the lowest row did not improve, keep the first change, pick one new sentence,
 - [ ] You recorded a baseline score for accuracy, completeness, and tone
 - [ ] You changed exactly one sentence in the workflow brief to target the lowest score
 - [ ] You recompiled with `gh aw compile` or had a Copilot agent do it for you
-- [ ] You triggered a second run and recorded a before/after comparison such as `Before: A2 C1 T0 → After: A2 C2 T2`
+- [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
 ---
 
