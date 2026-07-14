@@ -50,7 +50,7 @@ For a deduplication use case (the example in this step), `cache-memory` is the r
 
 ### Add `cache-memory` to your frontmatter
 
-Open your workflow file at `.github/workflows/daily-status.md`. Add a `memory` block inside the frontmatter:
+Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter:
 
 ```yaml
 ---
@@ -61,7 +61,7 @@ on:
 permissions:
   contents: read
   issues: write
-memory:
+tools:
   cache-memory:
     key: daily-status-seen-issues
     ttl: 7d
@@ -72,8 +72,8 @@ What each field does:
 
 | Field | Purpose |
 |-------|---------|
-| `memory:` | Parent key that enables memory features for this workflow. |
-| `cache-memory:` | Tells `gh-aw` to back this memory slot with the GitHub Actions cache. |
+| `tools:` | Parent key that enables tool integrations for this workflow. Memory primitives are nested under this key. |
+| `cache-memory:` | Tells `gh-aw` to back this memory slot with the GitHub Actions cache. Nested under `tools:`. |
 | `key:` | A unique name for this memory slot. Prefix it with your workflow name to avoid collisions if you have multiple workflows in the same repository. |
 | `ttl: 7d` | How long to keep cached data without a refresh. After 7 days of no runs the cache expires and the agent starts fresh. |
 
@@ -110,7 +110,7 @@ After editing the frontmatter, compile the workflow to confirm the memory block 
 gh aw compile .github/workflows/daily-status.md --validate
 ```
 
-Fix any errors before pushing. Common mistakes include indenting `memory:` inside `tools:` (they are siblings, not nested) and omitting the `key:` field for `cache-memory`.
+Fix any errors before pushing. Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
 
 > [!TIP]
 > Use `--watch` to recompile automatically as you edit: `gh aw compile .github/workflows/daily-status.md --watch`
@@ -136,7 +136,7 @@ The first run reports all currently open issues and writes them to memory. The s
 
 ## ✅ Checkpoint
 
-- [ ] Your workflow frontmatter has a `memory:` block with either `cache-memory` or `repo-memory`
+- [ ] Your workflow frontmatter has `cache-memory:` or `repo-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot
 - [ ] `gh aw compile --validate` passes with no errors
 - [ ] You ran the workflow twice and confirmed the second run skips previously seen items
