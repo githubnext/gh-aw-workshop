@@ -37,7 +37,7 @@ You'll create a public `my-agentic-workflows` repository, confirm GitHub Actions
 
 Open these pages before you choose a path:
 
-```text
+```
 https://github.com/<your-username>
 https://github.com/settings/actions
 ```
