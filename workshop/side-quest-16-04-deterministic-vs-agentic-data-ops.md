@@ -52,25 +52,25 @@ This keeps your pipeline reliable. It also gives you flexible reasoning where sc
 Read the workflow snippet. In the comment block, label each step as **D** (deterministic) or **A** (agentic).
 
 ```yaml
-# 1) Fetch open issues from the last 24 hours.
+# Step A: Fetch open issues from the last 24 hours.
 gh issue list --state open --search "updated:>=2026-07-13" --json number,title,labels,updatedAt
 
-# 2) Shape the output into a sorted table with issue number, label count, and last update time.
+# Step B: Shape the output into a sorted table with issue number, label count, and last update time.
 
-# 3) Decide which three issues need maintainer attention today and explain why.
+# Step C: Decide which three issues need maintainer attention today and explain why.
 
 # Your labels:
-# 1) _
-# 2) _
-# 3) _
+# Step A: _
+# Step B: _
+# Step C: _
 ```
 
 <details>
 <summary>Show answer key</summary>
 
-- Step 1: **D** — fixed command and fixed fields.
-- Step 2: **D** — fixed transform and sort rules.
-- Step 3: **A** — requires prioritization and explanation.
+- Step A: **D** — fixed command and fixed fields.
+- Step B: **D** — fixed transform and sort rules.
+- Step C: **A** — requires prioritization and explanation.
 
 </details>
 
