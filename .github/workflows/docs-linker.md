@@ -104,7 +104,6 @@ steps:
         "$DOCS_REPO"
       cd "$DOCS_REPO"
       git sparse-checkout set docs/src
-      git checkout
       echo "Sparse checkout complete."
 
       python3 <<'PYEOF'
@@ -146,11 +145,11 @@ steps:
       for root, dirs, files in os.walk(content_dir):
           dirs.sort()
           for fname in sorted(files):
-              if not re.search(r"\.(mdx?)$", fname):
+              if not re.search(r"\.mdx?$", fname):
                   continue
               fpath = os.path.join(root, fname)
               rel   = os.path.relpath(fpath, content_dir).replace(os.sep, "/")
-              slug  = re.sub(r"\.(mdx?)$", "", rel)
+              slug  = re.sub(r"\.mdx?$", "", rel)
               if slug.endswith("/index"):
                   slug = slug[:-6]
               url = f"{REPO_URL_BASE}/{slug}/"
