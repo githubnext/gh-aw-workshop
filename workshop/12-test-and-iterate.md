@@ -30,9 +30,6 @@ gh aw run daily-status
 
 Open your repository's **Actions** tab, select **Daily Repo Status**, then click **Run workflow** → **Run workflow**.
 
-> [!TIP]
-> Prefer the GitHub Actions UI for manual runs in this workshop.
-
 ### Watch the run live
 
 Click the run that just appeared. You will see a job named something like **run** or **agent**. Click it to watch the live log stream.
@@ -47,17 +44,23 @@ Look for two things:
 
 Once the run finishes (green ✅), open an issue in your repository titled **Daily Status Reports**. The agent should have posted a comment in the format you defined in the prompt.
 
-Read it critically. Ask yourself:
-- Did the numbers look correct?
-- Is the tone right — too formal, too casual?
-- Is anything missing (e.g., no mention of stale PRs)?
+Use this rubric to evaluate what you see:
 
-Look for two things: whether the facts match your repository, and whether the format matches the output shape you defined in the prompt. Good output includes accurate numbers, a consistent format, and a tone that feels intentional — not just a robotic list of counts.
+| Check | Pass | Fail |
+|-------|------|------|
+| Accuracy | Numbers match what you can verify in your repo | Numbers are wrong, missing, or suspiciously round |
+| Format | Output matches the skeleton you defined in the prompt | Agent chose its own section headings or layout |
+| Tone | Language sounds the way you wanted | Too formal, too casual, or robotic bullet-point lists |
+| Completeness | All requested fields are present | One or more fields from your brief are absent |
+
+**Your turn:** Paste the first three lines of the comment into a code block on your **Daily Status Reports** issue, and note which rubric row fails first (or confirm all rows pass).
+
+Review each rubric row in order. If a row fails, that is your target for the next run.
 
 If you are not satisfied, make one targeted prompt change and run the workflow again. Small, focused changes are easier to evaluate than large rewrites.
 
 > [!TIP]
-> **Optional Side Quest:** Want a structured rubric for evaluating output and a five-row problem-to-fix reference table? See [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
+> **Optional Side Quest:** For a five-row problem-to-fix reference table, a repeatable iteration loop, and help reading the run log for errors, see [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
 
 ### Improve the agent instructions
 
@@ -80,11 +83,8 @@ For example, your updated Guidelines section might look like:
 
 > [!NOTE]
 > The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).
-
-<!-- Separate adjacent callouts -->
-
-> [!TIP]
-> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate` in its session workspace, and update the pull request. The desktop app and browser cloud agent can run this command on your behalf; you do not need an interactive terminal. Review the diff before merging.
+>
+> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate` in its session workspace, and update the pull request.
 
 ### Commit your change
 
@@ -100,33 +100,17 @@ git push
 
 Navigate to `.github/workflows/daily-status.md` in your repository, click the **pencil icon (✏️)**, make your changes, then click **Commit changes**.
 
-Trigger another manual run and compare the new comment with the old one. Repeat until you are happy.
+Trigger another manual run and compare the new comment against the rubric. Repeat until all four rows pass.
 
-> [!NOTE]
-> Every iteration teaches you something about prompt engineering. Small, focused changes are easier to evaluate than large rewrites.
-
-### Read the run log for errors
-
-If a run shows a red ❌, click the failed step to see the raw log. Common causes:
-
-- **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
-- **Compile error:**
-  - Run `gh aw compile .github/workflows/daily-status.md --validate` locally, or ask your GitHub Copilot app session to run it and fix the error.
-  - **UI path / no terminal:** check the failed Actions step log for the compile error and line number.
-  - To keep `gh aw compile --watch` running, use a local or Codespaces terminal.
-  - For common mistakes and fixes, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
-- **API rate limit** — wait a few minutes and try again.
-
-> [!WARNING]
-> If the agent posts duplicate comments, check that your prompt contains the line _"If you have already posted today, skip."_
+For troubleshooting run failures, see [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md#read-the-run-log-for-errors).
 
 ## ✅ Checkpoint
 
 - [ ] You have triggered at least two manual runs
 - [ ] The workflow posts a correctly formatted status comment on your issue
-- [ ] You have made at least one improvement to the prompt
+- [ ] You have pasted the first three lines of the comment into a code block on your issue
+- [ ] You have made at least one improvement to the prompt targeting a specific rubric row
 - [ ] Your improved workflow has run at least once and produced output that matches your formatting expectations
-- [ ] You understand how to read the Actions log to diagnose failures
 
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
 

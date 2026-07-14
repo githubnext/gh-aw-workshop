@@ -85,6 +85,23 @@ If any row fails, make exactly **one** change to address it, then re-run.
 
 ---
 
+## Read the Run Log for Errors
+
+If a run shows a red ❌, click the failed step to see the raw log. Common causes:
+
+- **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
+- **Compile error:**
+  - Run `gh aw compile .github/workflows/daily-status.md --validate` locally, or ask your GitHub Copilot app session to run it and fix the error.
+  - **UI path / no terminal:** check the failed Actions step log for the compile error and line number.
+  - To keep `gh aw compile --watch` running, use a local or Codespaces terminal.
+  - For common mistakes and fixes, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
+- **API rate limit** — wait a few minutes and try again.
+
+> [!WARNING]
+> If the agent posts duplicate comments, check that your prompt contains the line _"If you have already posted today, skip."_
+
+---
+
 ## Making One Focused Change
 
 Once you know what to fix, use the `agentic-workflows` skill to make the change. Open the GitHub Copilot **Agents** tab (or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app)) in your practice repository and describe the single improvement you want:
