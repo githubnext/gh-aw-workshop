@@ -7,7 +7,8 @@
 
 **Before you start: How do you plan to work through this workshop?** Choose the option that matches how you work:
 
-- 🌐 **Browser / Copilot app / Mobile** — I'll use the GitHub web UI, Copilot app, or GitHub Mobile with no terminal → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+- 📱 **Mobile / Copilot app** — I'll use GitHub Mobile or the Copilot app with no terminal → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+- 🤖 **Copilot Cloud Agent (CCA)** — I'll work browser-only in CCA chat with no local install → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
 - ☁️ **Codespace** — I want a browser-based terminal with no local installs → switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
 - 💻 **Local terminal** — I want to use my own machine and tools → ✅ you're in the right place, continue below
 

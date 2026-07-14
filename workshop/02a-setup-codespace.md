@@ -17,9 +17,13 @@ Make sure you have:
 
 | Path | Best for | Action |
 |------|----------|--------|
-| 🌐 Browser / Copilot app / Mobile | No terminal; web UI or mobile preferred | [Skip to Step 3b](03b-create-your-repo-ui.md) |
+| 📱 Mobile / Copilot app | No terminal; GitHub Mobile or Copilot app | [Skip to Step 3b](03b-create-your-repo-ui.md) |
+| 🤖 Copilot Cloud Agent (CCA) | Browser-only, no local install; CCA chat | [Skip to Step 3b](03b-create-your-repo-ui.md) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B](02b-setup-local.md) |
+
+> [!NOTE]
+> GitHub Mobile and Copilot Cloud Agent paths do not require a terminal. Continue on the GitHub UI path and trigger workflows from the Actions tab in your browser.
 
 ## 🎯 What You'll Do
 
@@ -31,6 +35,7 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 - [ ] I have a GitHub account with access to GitHub Codespaces
 - [ ] I want a browser-based terminal and do not need to install tools locally
+- [ ] Mobile and CCA users should follow [Step 3b](03b-create-your-repo-ui.md) instead
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
@@ -53,8 +58,7 @@ GitHub will spin up a container attached to your practice repository. This takes
 
 While the Codespace spins up (30–60 seconds), you can read the enterprise side quest.
 
-> [!TIP]
-> Codespaces auto-saves your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
+Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
 ### Open the Codespace terminal
 
@@ -104,6 +108,8 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 - [ ] `gh auth status` shows you're logged in to GitHub without errors
 - [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
+- [ ] I know GitHub Mobile and Copilot app users should continue on [Step 3b](03b-create-your-repo-ui.md)
+- [ ] I know Copilot Cloud Agent (CCA) users should continue on [Step 3b](03b-create-your-repo-ui.md)
 
 **Next:** [Step 3a: Verify Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
 
