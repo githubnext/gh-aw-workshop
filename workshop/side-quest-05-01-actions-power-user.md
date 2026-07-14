@@ -12,24 +12,66 @@ To get the most out of this fast-track guide, you should have already:
 
 ## 🎯 What You'll Do
 
-Review the key shift from classic Actions to agentic workflows, scan a one-page comparison table, and keep a short list of what stays unchanged. By the end, you'll have a practical adoption lens for platform and DevOps use cases.
+Review the key shift from classic Actions to agentic workflows, compare concrete code examples, and keep a short list of what stays unchanged. By the end, you'll have a practical adoption lens for platform and DevOps use cases.
 
 ## The core mental model shift
 
 You keep the same GitHub Actions foundations — triggers, permissions, runners, repo context, and pull-request review flow — but you stop hand-authoring fixed `jobs.steps` logic and instead define a goal in plain language that an agent executes at runtime.
 
-## Advanced fast-track: What's new cheat sheet
+## Before and After: Classic Actions vs. Agentic Workflows
 
-Use this as a one-page reference for the shift from classic workflows to agentic workflows.
+The biggest shift is replacing imperative shell steps with a plain-language goal. Here is the same "triage an issue" task written both ways.
 
-| Classic GitHub Actions | Agentic workflows |
-|---|---|
-| Classic workflows execute a predetermined, hard-coded sequence of steps that you define at authoring time — meaning every branch in logic must be written out explicitly in YAML. | Agentic workflows define a plain-language goal and let the agent decide which actions to take at runtime, so the flow adapts without you rewriting YAML for every new case. |
-| All logic is encoded manually in YAML and shell scripts, which means every decision point and edge case must be anticipated and hardcoded by the author. | Logic can be delegated to an AI agent guided by a natural-language prompt and explicit constraints, so the agent reasons through ambiguity instead of failing on an unhandled branch. |
-| Classic workflows handle known, explicit branches well because every outcome is predetermined — but they break or require updates when inputs fall outside the expected range. | Agentic workflows handle ambiguous or variable inputs by reasoning through them at runtime, which reduces the number of maintenance updates you need to ship. |
-| Output is typically the stdout of commands and scripts, which is useful for structured pipelines but harder to consume when the result requires interpretation. | Output can include synthesized prose summaries, structured decisions, and follow-up action recommendations — making results easier to consume in review comments, Slack messages, or issue threads. |
-| Extending coverage for a new scenario requires a human to update the workflow logic, test it, and merge a PR before the new case is handled. | Humans define guardrails once (for example, "only label issues, never close them"), and the agent handles variations in inputs automatically within those boundaries. |
-| Classic workflows are the right choice for deterministic, well-scoped automation where every step is known and the output must be bit-for-bit reproducible. | Agentic workflows excel when tasks require interpretation, triage, or planning — for example, summarizing a pull request, triaging a bug report, or drafting a release note. |
+**Classic GitHub Actions** — every decision is hard-coded in shell:
+
+```yaml
+on: [issues]
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply bug label
+        run: |
+          # Must hard-code every label check
+          if echo "${{ github.event.issue.body }}" | grep -qi "error\|exception"; then
+            gh issue edit ${{ github.event.issue.number }} --add-label "bug"
+          fi
+```
+
+**Agentic workflow** — a plain-language goal replaces the shell logic:
+
+```yaml
+---
+on: [issues]
+---
+Read the opened issue body and apply the single most relevant label
+from the repository label list. Do not close or comment on the issue.
+```
+
+Key differences at a glance:
+
+| | Classic Actions | Agentic workflows |
+|---|---|---|
+| **Logic** | Hard-coded shell; every branch written by hand | Delegated to agent; handles new cases automatically |
+| **Inputs** | Fixed; fails on unexpected values | Flexible; reasons through ambiguity at runtime |
+| **Output** | Command stdout | Prose summaries, decisions, action recommendations |
+| **Maintenance** | Update the workflow for each new case | Define guardrails once; agent handles variations |
+| **Best for** | Deterministic, reproducible tasks | Triage, summarization, planning, interpretation |
+
+## 🛠️ Try it
+
+Open the workflow file you created in Step 4, or find a `run:` step in any `.github/workflows/*.yml` file. Pick one step that handles a decision — checking a label, parsing a PR title, or filtering by file path.
+
+Add a comment above that step with a one-sentence plain-language goal:
+
+```yaml
+# Goal: suggest up to three relevant labels from the repo label list
+- name: Check labels
+  run: |
+    echo "Checking labels..."
+```
+
+Keep this goal statement handy — you will use it when authoring your first agentic workflow in [Step 7](07-your-first-workflow.md).
 
 ## What stays the same
 
@@ -39,22 +81,21 @@ Use this as a one-page reference for the shift from classic workflows to agentic
 
 The same authoring and review workflow applies everywhere — only the runner configuration differs.
 
-## 🖊️ Quick reflection
-
-> **Apply what you just read:** Think of the last GitHub Actions workflow you wrote or reviewed. Identify one step — for example, a `run:` command that parses issue labels or checks PR titles — that currently requires you to handle every case explicitly in script logic.
->
-> Write a one-sentence plain-language goal that an agentic workflow could use instead. For example: _"Analyze the PR description and suggest up to three relevant labels from the repository's label list."_
->
-> Post your one-sentence goal as a comment on your practice repository's open issue, or jot it in a text editor. You'll revisit it when you author your first agentic workflow in [Step 7](07-your-first-workflow.md).
-
 ## Why platform and DevOps teams adopt this model
 
-For platform engineers and DevOps teams evaluating adoption, agentic workflows cut the cost of maintaining bespoke scripted automation. Engineers spend less time updating fragile scripts and more time on higher-value work. Every workflow definition is a versioned Markdown file that goes through a pull request, so teams retain full auditability, change history, and approval gates. This makes agentic automation compatible with enterprise compliance requirements and existing runner fleet investments.
+For platform engineers and DevOps teams evaluating adoption, agentic workflows cut the cost of maintaining bespoke scripted automation:
+
+- Less time updating fragile shell scripts; more time on higher-value work
+- Every definition is a versioned Markdown file reviewed in a pull request
+- Full auditability, change history, and approval gates stay intact
+- Compatible with existing runner fleet investments and compliance requirements
 
 ## ✅ Checkpoint
 
 - [ ] I can explain the mental model shift from scripted steps to goal-oriented execution
 - [ ] I can identify what changes in agentic workflows and what stays the same from classic Actions
+- [ ] I identified one specific `run:` step in an existing workflow that could be replaced with a goal statement
+- [ ] I can describe one scenario where classic Actions is still the right choice
 - [ ] I can explain why this model can reduce automation maintenance overhead for platform teams
 
 ---
