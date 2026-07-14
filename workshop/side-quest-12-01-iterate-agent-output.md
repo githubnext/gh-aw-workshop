@@ -81,7 +81,7 @@ If the lowest row did not improve, keep the first change, pick one new sentence,
 <details>
 <summary>Need ideas for what to change or where to look for errors?</summary>
 
-### Quick problem-to-fix guide
+Quick problem-to-fix guide:
 
 | Problem you see | One sentence to add or tighten |
 |-----------------|--------------------------------|
@@ -91,7 +91,7 @@ If the lowest row did not improve, keep the first change, pick one new sentence,
 | The format drifts | "Follow this exact heading and bullet structure." |
 | Duplicate comments appear | "If you have already posted today, skip." |
 
-### Quick run-log check
+Quick run-log check:
 
 - **Compile error** — run `gh aw compile` locally, or ask your Copilot agent to run it and fix the reported line.
 - **Missing permissions** — re-check the workflow frontmatter and confirm the safe output surface is declared correctly.
@@ -106,7 +106,5 @@ If the lowest row did not improve, keep the first change, pick one new sentence,
 - [ ] You changed exactly one sentence in the workflow brief to target the lowest score
 - [ ] You recompiled with `gh aw compile` or had a Copilot agent do it for you
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
-
----
 
 Return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
