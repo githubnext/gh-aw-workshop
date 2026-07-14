@@ -15,7 +15,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 ## Pick Your Adventure
 
-Before you read the scenario descriptions, write one sentence describing a repository task you'd like to automate in a scratch note, issue draft, or local text file. Keep it nearby — you'll compare it to your final choice at the end of this step.
+Before you read the scenario descriptions, write one sentence describing a repository task you'd like to automate in a scratch note, issue draft, or local text file. Keep it nearby — you'll compare it to your chosen scenario later in this step.
 
 | Scenario | What it automates | Best for |
 |---|---|---|
