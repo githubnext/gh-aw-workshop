@@ -102,7 +102,7 @@ Leave the `model` field out to use the engine's current default model, which is 
 After updating your frontmatter, recompile the workflow to check for errors:
 
 ```bash
-gh aw compile .github/workflows/<your-workflow>.md --validate
+gh aw compile --validate
 ```
 
 You should see:

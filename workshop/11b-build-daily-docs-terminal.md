@@ -41,7 +41,7 @@ mkdir -p .github/workflows
 
 Then open your editor and create `.github/workflows/daily-docs.md`.
 
-Build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile .github/workflows/daily-docs.md` to validate — or keep `gh aw compile .github/workflows/daily-docs.md --watch` running in a second terminal for continuous feedback.
+Build the file section by section and compile after each one to catch YAML errors early. After saving each section, run `gh aw compile` to validate — or keep `gh aw compile --watch` running in a second terminal for continuous feedback.
 
 ### Add the frontmatter basics
 
@@ -212,7 +212,7 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-docs.md` exists in your repository
-- [ ] `gh aw compile .github/workflows/daily-docs.md` reports no errors
+- [ ] `gh aw compile` reports no errors
 - [ ] The file is committed and pushed to `main`
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 

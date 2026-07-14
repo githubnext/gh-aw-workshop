@@ -31,7 +31,7 @@ touch .github/workflows/daily-status.md
 In a **second terminal**, start the compiler in watch mode so it reports errors as you save:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --watch
+gh aw compile --watch
 ```
 
 Leave the watcher running throughout this step.
@@ -169,7 +169,7 @@ git push
 ```
 
 > [!TIP]
-> When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile .github/workflows/daily-status.md --watch` for continuous feedback as you edit. **Agents edit agents.**
+> When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile --watch` for continuous feedback as you edit. **Agents edit agents.**
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** [Step 11a2: Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)
@@ -180,7 +180,7 @@ Before moving on, confirm all of the following:
 
 - [ ] `.github/workflows/daily-status.md` exists in my repository
 - [ ] The workflow file contains all five frontmatter sections: `emoji`/`description`, `on:`, `permissions:`, `tools:`, and `safe-outputs:`
-- [ ] `gh aw compile .github/workflows/daily-status.md --validate` exits with no errors
+- [ ] `gh aw compile --validate` exits with no errors
 - [ ] `git log --oneline -1` shows my commit `feat: add daily repo status agentic workflow`
 - [ ] `git push` completed successfully and the file is visible on GitHub
 

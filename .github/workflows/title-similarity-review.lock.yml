@@ -53,7 +53,7 @@
 name: "Title Similarity Review"
 on:
   schedule:
-  - cron: "22 18 * * *"
+  - cron: "23 6 * * *"
     # Friendly format: daily (scattered)
   workflow_dispatch:
     inputs:

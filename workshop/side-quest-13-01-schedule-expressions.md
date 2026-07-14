@@ -36,7 +36,7 @@ You do **not** need to write cron by hand for common cases. In `gh-aw`, you can 
 Run:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md
+gh aw compile
 ```
 
 Then open the generated lock file and look for the `cron:` line under `on.schedule`:

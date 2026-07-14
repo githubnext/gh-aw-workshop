@@ -73,7 +73,7 @@ safe-outputs:
 ## ✏️ Your Turn — Safe-Outputs
 
 1. In your `daily-status.md`, comment out the entire `safe-outputs:` block.
-2. Run `gh aw compile .github/workflows/daily-status.md --validate`.
+2. Run `gh aw compile --validate`.
 3. Read the error message — what write capability does the agent lose?
 4. Uncomment the block and recompile to confirm the error is gone.
 

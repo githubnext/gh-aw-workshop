@@ -33,7 +33,7 @@ For a deeper look at available trigger options, see [Side Quest: Event-Driven Tr
 mkdir -p .github/workflows
 ```
 
-Open your editor and create `.github/workflows/pr-code-reviewer.md`. Run `gh aw compile .github/workflows/pr-code-reviewer.md` after saving to validate — or keep `gh aw compile .github/workflows/pr-code-reviewer.md --watch` running in a second terminal for continuous feedback.
+Open your editor and create `.github/workflows/pr-code-reviewer.md`. Run `gh aw compile` after saving to validate — or keep `gh aw compile --watch` running in a second terminal for continuous feedback.
 
 ### Add the frontmatter
 
@@ -192,7 +192,7 @@ Findings: {count}
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/pr-code-reviewer.md` exists in your repository
-- [ ] `gh aw compile .github/workflows/pr-code-reviewer.md` reports no errors
+- [ ] `gh aw compile` reports no errors
 - [ ] The file is committed and pushed to `main`
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 

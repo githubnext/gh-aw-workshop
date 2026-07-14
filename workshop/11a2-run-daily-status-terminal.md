@@ -15,7 +15,7 @@ You'll compile and validate `daily-status.md` using `gh aw compile`, then trigge
 Run a full compile-and-validate to confirm the workflow file is error-free:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile --validate
 ```
 
 A successful run produces green output and writes a `.lock.yml` file next to your workflow file. That lock file is what GitHub Actions actually executes.
@@ -69,7 +69,7 @@ If the run failed or the output looks wrong, see [Step 12: Test and Improve Your
 
 ## ✅ Checkpoint
 
-- [ ] `gh aw compile .github/workflows/daily-status.md` reports no errors
+- [ ] `gh aw compile` reports no errors
 - [ ] The `.lock.yml` file is committed and pushed to `main`
 - [ ] A workflow run completed successfully in the Actions tab
 - [ ] A status comment appears on an open issue in your repository

@@ -91,7 +91,7 @@ If a run shows a red ❌, click the failed step to see the raw log. Common cause
 
 - **Missing permissions** — check the `permissions:` block in the frontmatter; for example, `issues: read` must be present. Note: write access for posting comments is handled by `safe-outputs`, not by `issues: write`.
 - **Compile error:**
-  - Run `gh aw compile .github/workflows/daily-status.md --validate` locally, or ask your GitHub Copilot app session to run it and fix the error.
+  - Run `gh aw compile --validate` locally, or ask your GitHub Copilot app session to run it and fix the error.
   - **UI path / no terminal:** check the failed Actions step log for the compile error and line number.
   - To keep `gh aw compile --watch` running, use a local or Codespaces terminal.
   - For common mistakes and fixes, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
@@ -135,7 +135,7 @@ Tailor the prompt to the problem row you identified:
 Review the diff the skill proposes before merging. One clear instruction per session keeps the change easy to evaluate.
 
 > [!TIP]
-> Prefer using an agent with the `/agentic-workflows` skill over hand-editing workflow files. **Agents edit agents.** For terminal users, run `gh aw compile .github/workflows/daily-status.md --watch` for continuous feedback while the agent edits.
+> Prefer using an agent with the `/agentic-workflows` skill over hand-editing workflow files. **Agents edit agents.** For terminal users, run `gh aw compile --watch` for continuous feedback while the agent edits.
 
 <!-- Separate adjacent callouts -->
 

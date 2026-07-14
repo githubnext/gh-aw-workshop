@@ -29,7 +29,7 @@ The workflow must:
   "This issue has the most community support! We'll prioritise it in our next planning session."
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
-Run `gh aw compile .github/workflows/hello-agent.md --validate` in the session
+Run `gh aw compile --validate` in the session
 workspace, fix any errors, commit the source and generated lock file (plus the initialized skill files), and open a
 pull request. Show me the diff before merging.
 ```
@@ -38,7 +38,7 @@ The agent runs validation in its isolated session workspace. You do not need a t
 Before you approve the merge, the agent presents the file changes in its session response for you to review.
 
 > [!NOTE]
-> To keep `gh aw compile .github/workflows/hello-agent.md --watch` running while you edit, use a local or Codespaces terminal instead.
+> To keep `gh aw compile --watch` running while you edit, use a local or Codespaces terminal instead.
 
 ## Review and merge
 
