@@ -110,9 +110,7 @@ Step 8 continues in [Step 8b: Interpret Your First Run](08b-interpret-your-run.m
 At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D). All paths converge at Step 12.
 
 > [!TIP]
-> <details>
-> <summary>If you get stuck, every step links back to the previous one. You can always rewind.</summary>
-> </details>
+> If you get stuck, every step links back to the previous one. You can always rewind.
 
 ## ✅ Checkpoint
 

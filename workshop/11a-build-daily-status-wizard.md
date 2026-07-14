@@ -13,9 +13,7 @@ Instead of writing the `daily-status` workflow file by hand, you'll use the `gh 
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
 > [!NOTE]
-> <details>
-> <summary>This is the **wizard path** for Step 11. If you prefer to understand every line of the workflow file before running it, use the [manual build path](11a-build-daily-status.md) instead. Both paths produce the same result and converge at [Step 12](12-test-and-iterate.md).</summary>
-> </details>
+> This is the **wizard path** for Step 11. If you prefer to understand every line of the workflow file before running it, use the [manual build path](11a-build-daily-status.md) instead. Both paths produce the same result and converge at [Step 12](12-test-and-iterate.md).
 
 ---
 

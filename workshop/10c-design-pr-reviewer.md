@@ -71,9 +71,7 @@ Guardrails:
 ```
 
 > [!TIP]
-> <details>
-> <summary>Want a deeper walkthrough of the brief-writing process? [Side Quest: Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) walks through each component step by step with extra tips on why each decision matters.</summary>
-> </details>
+> Want a deeper walkthrough of the brief-writing process? [Side Quest: Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) walks through each component step by step with extra tips on why each decision matters.
 
 ---
 

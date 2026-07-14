@@ -66,9 +66,7 @@ gh aw add jsmith/my-workshop/daily-status
 Your teammate runs this inside their repository. `gh aw add` copies the Markdown file into their `.github/workflows/` folder and they can then edit and compile it for their own context.
 
 > [!TIP]
-> <details>
-> <summary>You can also pin to a specific version using a tag or commit SHA: `gh aw add jsmith/my-workshop/daily-status@v1.0`. This is useful when you want to guarantee stability for a team-wide rollout.</summary>
-> </details>
+> You can also pin to a specific version using a tag or commit SHA: `gh aw add jsmith/my-workshop/daily-status@v1.0`. This is useful when you want to guarantee stability for a team-wide rollout.
 
 ### Document your template
 
@@ -82,9 +80,7 @@ Add a short comment at the top of your workflow's Markdown task brief so users k
 This hint saves teammates guesswork when they first open the file.
 
 > [!NOTE]
-> <details>
-> <summary>The recipient still needs to compile the workflow (`gh aw compile`) and push it before GitHub Actions will run it. Remind your team of that step.</summary>
-> </details>
+> The recipient still needs to compile the workflow (`gh aw compile`) and push it before GitHub Actions will run it. Remind your team of that step.
 
 ## ✅ Checkpoint
 

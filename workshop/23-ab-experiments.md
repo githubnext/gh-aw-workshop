@@ -136,9 +136,7 @@ On each run, gh-aw:
 After enough runs (10+ per variant reduces variation), compare usefulness and token cost. When one variant wins, keep it as baseline. Remove the `experiments:` frontmatter field and recompile.
 
 > [!TIP]
-> <details>
-> <summary>Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.</summary>
-> </details>
+> Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.
 
 ## ✅ Checkpoint
 

@@ -1,9 +1,7 @@
 # Step 11b: Build the Daily Documentation Updater — GitHub UI Path
 
 > [!NOTE]
-> <details>
-> <summary>Want incremental compiler feedback? Switch to the [Terminal path](11b-build-daily-docs-terminal.md).</summary>
-> </details>
+> Want incremental compiler feedback? Switch to the [Terminal path](11b-build-daily-docs-terminal.md).
 
 ## 🎯 What You'll Do
 
@@ -84,9 +82,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 5. Click **Commit changes**.
 
 > [!NOTE]
-> <details>
-> <summary>The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the workflow when it runs and reports errors in the run log.</summary>
-> </details>
+> The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the workflow when it runs and reports errors in the run log.
 
 ## Understand the guardrails
 

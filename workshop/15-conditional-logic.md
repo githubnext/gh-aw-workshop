@@ -59,9 +59,7 @@ if: steps.recent.outputs.commit_count != '0'
 This condition skips the compiler-generated agent job entirely when `commit_count` is `0`.
 
 > [!TIP]
-> <details>
-> <summary>You can use `${{ steps.recent.outputs.commit_count }}` inside your prompt text too — for example: "Summarise the last ${{ steps.recent.outputs.commit_count }} commits."</summary>
-> </details>
+> You can use `${{ steps.recent.outputs.commit_count }}` inside your prompt text too — for example: "Summarise the last ${{ steps.recent.outputs.commit_count }} commits."
 
 ### Test it locally first
 
@@ -81,9 +79,7 @@ git push
 ```
 
 > [!WARNING]
-> <details>
-> <summary>Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.</summary>
-> </details>
+> Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.
 
 ## ✅ Checkpoint
 

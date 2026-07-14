@@ -1,9 +1,7 @@
 # Step 11a: Build the Daily Repo Status Workflow — GitHub UI Path
 
 > [!NOTE]
-> <details>
-> <summary>Want incremental compiler feedback? Switch to the [Terminal path](11a-build-daily-status-terminal.md).</summary>
-> </details>
+> Want incremental compiler feedback? Switch to the [Terminal path](11a-build-daily-status-terminal.md).
 
 ## 🎯 What You'll Do
 
@@ -85,9 +83,7 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 5. Click **Commit changes**.
 
 > [!NOTE]
-> <details>
-> <summary>The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the workflow when it runs and reports errors in the run log.</summary>
-> </details>
+> The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the workflow when it runs and reports errors in the run log.
 
 ## Understand the guardrails
 
@@ -96,9 +92,7 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 - `safe-outputs.add-comment.max: 1` limits the workflow to one comment per run.
 
 > [!TIP]
-> <details>
-> <summary>For future changes, ask an agent with the `agentic-workflows` skill to update the workflow and review its proposed diff.</summary>
-> </details>
+> For future changes, ask an agent with the `agentic-workflows` skill to update the workflow and review its proposed diff.
 
 ## ✅ Checkpoint
 

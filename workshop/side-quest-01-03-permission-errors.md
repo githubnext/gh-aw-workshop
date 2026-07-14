@@ -34,9 +34,7 @@ Right-click **Windows Terminal** or **PowerShell** and choose **Run as administr
 ---
 
 > [!IMPORTANT]
-> <details>
-> <summary>Only use elevated access when workshop instructions explicitly tell you to. Running everything as root or administrator is not recommended and can cause hard-to-reverse changes.</summary>
-> </details>
+> Only use elevated access when workshop instructions explicitly tell you to. Running everything as root or administrator is not recommended and can cause hard-to-reverse changes.
 
 ---
 

@@ -93,9 +93,7 @@ if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 ```
 
 > [!NOTE]
-> <details>
-> <summary>Values from `$GITHUB_OUTPUT` are always strings. Compare them with quotes: `== '0'`, not `== 0`.</summary>
-> </details>
+> Values from `$GITHUB_OUTPUT` are always strings. Compare them with quotes: `== '0'`, not `== 0`.
 
 ### Use built-in functions
 
@@ -117,9 +115,7 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 ```
 
 > [!WARNING]
-> <details>
-> <summary>Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.</summary>
-> </details>
+> Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.
 
 ## ✅ Checkpoint
 

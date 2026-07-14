@@ -115,9 +115,7 @@ Add short rules that limit write operations, such as posting comments, and tell 
 ```
 
 > [!IMPORTANT]
-> <details>
-> <summary>Skipping guardrails can lead to duplicate comments or guessed data.</summary>
-> </details>
+> Skipping guardrails can lead to duplicate comments or guessed data.
 
 Quick check:
 
@@ -181,9 +179,7 @@ Guardrails:
 ```
 
 > [!TIP]
-> <details>
-> <summary>Once your brief is clear, you can ask Copilot to turn it into a workflow with the `agentic-workflows` skill, which handles [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) syntax and [permission scopes](https://github.github.com/gh-aw/reference/permissions/) for you.</summary>
-> </details>
+> Once your brief is clear, you can ask Copilot to turn it into a workflow with the `agentic-workflows` skill, which handles [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) syntax and [permission scopes](https://github.github.com/gh-aw/reference/permissions/) for you.
 
 ---
 

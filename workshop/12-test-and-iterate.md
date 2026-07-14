@@ -60,9 +60,7 @@ Review each rubric row in order. If a row fails, that is your target for the nex
 If you are not satisfied, make one targeted prompt change and run the workflow again. Small, focused changes are easier to evaluate than large rewrites.
 
 > [!TIP]
-> <details>
-> <summary>**Optional Side Quest:** For a five-row problem-to-fix reference table, a repeatable iteration loop, and help reading the run log for errors, see [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).</summary>
-> </details>
+> **Optional Side Quest:** For a five-row problem-to-fix reference table, a repeatable iteration loop, and help reading the run log for errors, see [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
 
 ### Improve the agent instructions
 
