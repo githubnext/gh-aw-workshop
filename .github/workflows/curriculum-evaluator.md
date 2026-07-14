@@ -17,6 +17,8 @@ permissions:
   contents: read
   issues: read
   copilot-requests: write
+tools:
+  cache-memory: true
 network:
   allowed:
     - defaults
@@ -173,6 +175,10 @@ steps:
       def score_file(text, filename):
           return score_markdown(text, filename)['overall_score']
 
+      # Load score cache (persisted across runs via cache-memory)
+      cache_path = pathlib.Path('/tmp/gh-aw/cache-memory/score-history-cache.json')
+      score_cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
+
       start_ref = git('rev-parse', '--abbrev-ref', 'HEAD')
       if start_ref == 'HEAD':
           start_ref = git('rev-parse', 'HEAD')
@@ -183,15 +189,24 @@ steps:
       try:
           for line in commit_lines:
               sha, committed_at = line.split('|', 1)
-              subprocess.check_call(['git', 'checkout', '--quiet', sha])
+
+              # Only checkout commits that have at least one uncached file
+              uncached_files = [f for f in tracked_files if f'{sha}/{f}' not in score_cache]
+              if uncached_files:
+                  subprocess.check_call(['git', 'checkout', '--quiet', sha])
+                  for filename in uncached_files:
+                      path = pathlib.Path('workshop') / filename
+                      if path.exists():
+                          text = path.read_text(encoding='utf-8')
+                          score_cache[f'{sha}/{filename}'] = score_file(text, filename)
+                      else:
+                          score_cache[f'{sha}/{filename}'] = None
 
               commit_scores = {}
               for filename in tracked_files:
-                  path = pathlib.Path('workshop') / filename
-                  if not path.exists():
-                      continue
-                  text = path.read_text(encoding='utf-8')
-                  commit_scores[filename] = score_file(text, filename)
+                  cached = score_cache.get(f'{sha}/{filename}')
+                  if cached is not None:
+                      commit_scores[filename] = cached
 
               if not commit_scores:
                   continue
@@ -205,6 +220,9 @@ steps:
               })
       finally:
           subprocess.check_call(['git', 'checkout', '--quiet', start_ref])
+          # Persist updated cache for subsequent runs
+          cache_path.parent.mkdir(parents=True, exist_ok=True)
+          cache_path.write_text(json.dumps(score_cache, indent=2))
 
       history.sort(key=lambda row: row['committed_at'])
 
