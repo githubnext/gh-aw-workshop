@@ -4,7 +4,7 @@
 
 Make sure you have completed Step 1, then re-check the items that matter for this path:
 
-- [Prerequisites](01-prerequisites.md) are complete
+- All items in [Prerequisites](01-prerequisites.md) are complete
 - A GitHub account you can use to create a public practice repository (free tier is fine)
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
@@ -51,7 +51,7 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
 3. Click the **Codespaces** tab.
    - Leave **main** selected as the branch.
    - Click **Create codespace on main**.
-4. Wait 30–60 seconds for GitHub to prepare the container and open the editor.
+   - Wait 30–60 seconds for GitHub to prepare the container and open the editor.
 
 ![Open Codespace](images/02a-open-codespace.svg)
 
