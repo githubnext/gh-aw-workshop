@@ -8,7 +8,7 @@ Learn the most common ways agentic workflows fail in production and apply three 
 
 ## 📋 Before You Start
 
-- You have a working scheduled workflow (see [Schedule Your Workflow](13-schedule-it.md)).
+- You have a working scheduled workflow (see [Schedule It to Run Every Day](13-schedule-it.md)).
 - You're comfortable editing workflow frontmatter and task briefs.
 
 ## Steps
@@ -47,11 +47,17 @@ Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` 
 name: Daily Status Report
 on:
   schedule: daily
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  issues: write
 timeout-minutes: 10
 ---
 ```
 
 > [!TIP]
+> `timeout-minutes` belongs at the top level of gh-aw frontmatter. Do not nest it under `jobs:` or `run:`.
+>
 > Start with a generous limit (10–15 minutes) and tighten it once you know how long typical runs take.
 
 ### Add a fallback message to safe outputs
