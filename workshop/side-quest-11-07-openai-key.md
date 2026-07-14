@@ -5,7 +5,7 @@
 By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **OpenAI models**, you'll need an OpenAI API key stored as a repository secret and a one-line change to your workflow frontmatter.
 
 > [!NOTE]
-> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution — it routes requests to OpenAI's current API. The name refers to the engine integration, not the discontinued OpenAI Codex model family.
+> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution — it routes requests to OpenAI's current API. The name refers to the engine integration, not the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
 
 ---
 

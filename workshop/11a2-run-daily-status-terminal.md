@@ -74,7 +74,7 @@ If the run failed or the output looks wrong, see [Step 12: Test and Improve Your
 - [ ] A workflow run completed successfully in the Actions tab
 - [ ] A status comment appears on an open issue in your repository
 
-Want to use a different AI engine? These side quests walk you through switching from Copilot to Claude or Codex:
+Want to use a different AI engine? These side quests walk you through switching from Copilot to [Claude](side-quest-01-02-environment-reference.md#claude) or Codex:
 
 - ➡️ [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — use `engine: claude`
 - ➡️ [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — use `engine: codex`

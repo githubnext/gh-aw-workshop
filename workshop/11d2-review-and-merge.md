@@ -29,7 +29,7 @@ The session typically completes in two to five minutes. You can steer it with fo
 
 ## Review and Merge the Pull Request
 
-When the session ends, open the pull request it created. In the GitHub Copilot app, find it in **My work**. In the Agents tab, use the pull request link in the session.
+When the session ends, open the pull request it created. In the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), find it in **My work**. In the Agents tab, use the pull request link in the session.
 
 ### What to check in the PR diff
 

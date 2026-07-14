@@ -87,7 +87,7 @@ If any row fails, make exactly **one** change to address it, then re-run.
 
 ## Making One Focused Change
 
-Once you know what to fix, use the `agentic-workflows` skill to make the change. Open the GitHub Copilot **Agents** tab (or the GitHub Copilot app) in your practice repository and describe the single improvement you want:
+Once you know what to fix, use the `agentic-workflows` skill to make the change. Open the GitHub Copilot **Agents** tab (or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app)) in your practice repository and describe the single improvement you want:
 
 ```
 Using the agentic-workflows skill, update .github/workflows/daily-status.md

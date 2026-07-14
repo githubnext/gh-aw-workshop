@@ -39,7 +39,7 @@ Complete these checks before you choose your path:
 
 - [ ] You can sign in to GitHub with the account you'll use for the workshop
 - [ ] You know whether you'll use a Codespace, a local terminal, or the GitHub UI path
-- [ ] If you chose a local terminal path, `gh --version` reports GitHub CLI 2.40+
+- [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 

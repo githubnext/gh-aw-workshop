@@ -111,7 +111,7 @@ Go back to the completed run in the **Actions** tab and scroll to the **Summary*
 
 ### Re-run with a twist (optional)
 
-Ask Copilot, Claude, or ChatGPT (with the `agentic-workflows` skill) to change the task — for example, add a label instead of posting a comment. Review the diff, push, and trigger another run. This is the core loop: **design → agent edit → run → observe → refine**.
+Ask Copilot, [Claude](side-quest-01-02-environment-reference.md#claude), or ChatGPT (with the `agentic-workflows` skill) to change the task — for example, add a label instead of posting a comment. Review the diff, push, and trigger another run. This is the core loop: **design → agent edit → run → observe → refine**.
 
 ## ✅ Checkpoint
 

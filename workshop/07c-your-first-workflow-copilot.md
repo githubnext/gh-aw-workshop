@@ -2,7 +2,7 @@
 
 ## 🎯 What You'll Do
 
-You'll ask an agent in the GitHub Copilot app or Agents tab to create and validate `hello-agent.md`, then review and merge its pull request.
+You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab to create and validate `hello-agent.md`, then review and merge its pull request.
 
 ## 📋 Before You Start
 

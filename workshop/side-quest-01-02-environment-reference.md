@@ -12,6 +12,7 @@
 | **GitHub CLI (`gh`)** | GitHub's official CLI, required for this workshop. | [GitHub CLI docs](https://cli.github.com/manual/) |
 | **`gh-aw` CLI extension** | The GitHub Agentic Workflows extension you install and use in the terminal. | [Install `gh-aw`](https://github.com/github/gh-aw#readme) |
 | **GitHub Copilot CLI** | Copilot in the terminal for AI-assisted command and development help. | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
+| **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | [GitHub Copilot app docs](https://docs.github.com/en/copilot/concepts/agents/github-copilot-app) |
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex](https://openai.com/codex/) |
 
@@ -58,6 +59,12 @@ You use `gh aw` to compile, validate, and run agentic workflow files.
 ![Conceptual screenshot of GitHub Copilot CLI showing a terminal prompt alongside AI-assisted command help](images/side-quest-01-02-copilot-cli.svg)
 
 You use GitHub Copilot CLI when you want AI help inside the terminal.
+
+#### GitHub Copilot app
+
+![Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view](images/side-quest-01-02-copilot-app.svg)
+
+You use the GitHub Copilot app when you want to start and steer repository sessions, manage coding tasks, and review pull requests from a Copilot workspace.
 
 #### Claude
 
