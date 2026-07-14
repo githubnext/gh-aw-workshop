@@ -100,7 +100,7 @@ Use this method if you prefer a dedicated token, need to authenticate with a ser
 <!-- -->
 
 > [!NOTE]
-> The `copilot` scope grants API access to GitHub Copilot features. It does not grant any repository or organisation permissions.
+> The `copilot` scope grants API access to GitHub Copilot features. It does not grant any repository or organization permissions.
 
 ### Store the token as a repository secret
 
@@ -159,11 +159,11 @@ Work through these checks in order:
 </details>
 
 <details>
-<summary>403 Forbidden — access blocked by organisation policy</summary>
+<summary>403 Forbidden — access blocked by organization policy</summary>
 
-Enterprise and organisation accounts can restrict Copilot model access. If you see a 403:
+Enterprise and organization accounts can restrict Copilot model access. If you see a 403:
 
-1. Confirm you have a Copilot seat in your organisation (**Settings → Copilot**).
+1. Confirm you have a Copilot seat in your organization (**Settings → Copilot**).
 2. Ask your GitHub org admin to verify that the Copilot policy allows agentic workflows for your account.
 3. See [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for a full checklist.
 
