@@ -96,8 +96,6 @@ Open a real workflow file and identify its trigger — no terminal required, jus
 5. Identify: What triggers this workflow? (Look for the `on:` key.)
 6. Note your answer — you'll use this observation in Step 5.
 
-- [ ] I opened a real workflow file and found the `on:` trigger
-
 ## ✅ Checkpoint
 
 - [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
