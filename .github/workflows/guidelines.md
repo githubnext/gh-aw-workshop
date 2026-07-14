@@ -13,7 +13,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 - For repo/file/edit/commit actions, prefer a UI-first path and provide terminal commands as optional alternatives.
 - Keep any required terminal path concise and explicit.
-- If terminal-only actions are required (for example, local `gh aw compile --validate`), clearly state why and how UI-first learners can continue safely.
+- If terminal-only actions are required (for example, local `gh aw compile`), clearly state why and how UI-first learners can continue safely.
 
 ## Prerequisite discipline
 
@@ -86,8 +86,13 @@ Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do 
 
 - Place the **Terminal path** section before the **GitHub UI path** section for the same action.
 - For the GitHub UI path, always provide the complete file content in a copy-paste block so learners can paste once and commit.
-- For the Terminal path, guide learners to build incrementally and compile after each section: `gh aw compile <file>`. Recommend the `--watch` flag as an alternative: `gh aw compile <file> --watch` keeps a second terminal compiling on save for continuous feedback.
+- For the Terminal path, guide learners to build incrementally and compile after each section with `gh aw compile` (recompiles all workflows). Recommend the `--watch` flag as an alternative: `gh aw compile --watch` keeps a second terminal compiling on save for continuous feedback.
 - After the split sections, add a short bridging paragraph that calls out what each path skips (for example, the UI path skips `gh aw compile` checkpoints).
+
+### Compile defaults
+
+- Prefer `gh aw compile` as the default command in workshop instructions; learners do not need to specify a filename in most cases.
+- Reserve `--validate` for targeted troubleshooting or explicit schema/deprecation audits.
 
 ### Compile checkpoints
 

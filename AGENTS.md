@@ -83,8 +83,10 @@ Compiled lock files (`*.lock.yml`) are generated automatically — **do not edit
 Regenerate a lock file with:
 
 ```bash
-gh aw compile .github/workflows/<workflow>.md --validate
+gh aw compile
 ```
+
+Use `--validate` only when you are troubleshooting compile errors or running a targeted schema/deprecation check.
 
 ## Common tasks
 
@@ -98,7 +100,7 @@ gh aw compile .github/workflows/<workflow>.md --validate
 ### Update an agentic workflow definition
 
 1. Edit the `.md` file in `.github/workflows/`.
-2. Regenerate the lock file: `gh aw compile .github/workflows/<workflow>.md --validate`.
+2. Regenerate lock files: `gh aw compile`.
 3. Commit both the `.md` and the updated `.lock.yml`.
 
 ### Add or update images
