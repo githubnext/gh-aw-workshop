@@ -12,7 +12,7 @@
 | **GitHub CLI (`gh`)** | GitHub's official CLI, required for this workshop. | [GitHub CLI docs](https://cli.github.com/manual/) |
 | **`gh-aw` CLI extension** | The GitHub Agentic Workflows extension you install and use in the terminal. | [Install `gh-aw`](https://github.com/github/gh-aw#readme) |
 | **GitHub Copilot CLI** | Copilot in the terminal for AI-assisted command and development help. | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
-| **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | [GitHub Copilot app docs](https://docs.github.com/en/copilot/concepts/agents/github-copilot-app) |
+| **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | [GitHub Copilot app](https://github.com/features/ai/github-app) |
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex](https://openai.com/codex/) |
 
