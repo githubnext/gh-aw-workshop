@@ -1,6 +1,11 @@
 # Side Quest: How MCP Tool Servers Work
 
-> _Optional: work through this primer if you want to understand how MCP changes the agentic loop before adding tools to your workflow in [Step 17](17-add-mcp-tools.md), then return to the main path._
+> _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._
+
+## 📋 Before You Start
+
+- You have completed [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+- You have a workflow YAML file open in your editor.
 
 By default, a gh-aw agent reads your task brief and produces text. **MCP (Model Context Protocol)** breaks that boundary — it lets the agent call structured tools at runtime and incorporate real data into its output.
 
@@ -43,6 +48,16 @@ The agent can interleave tool calls with its reasoning as many times as it needs
 
 ---
 
+## Hands-On Exercise
+
+Open your workflow's YAML frontmatter. Does it have a `tools:` block? If yes, identify which MCP server is configured and write it in the space below or in a scratch comment in the file.
+
+```text
+Configured MCP server:
+```
+
+---
+
 ## What the `tools:` frontmatter block does
 
 The `tools:` block in your workflow's YAML frontmatter tells gh-aw which MCP servers to start before the agent runs:
@@ -63,6 +78,12 @@ tools:
 
 > [!NOTE]
 > You can have multiple entries under `tools:` if you want to connect more than one MCP server. Each entry starts a separate server process.
+
+If you're working locally, run this command to confirm your `tools:` block has no schema errors:
+
+```bash
+gh aw validate
+```
 
 ---
 
@@ -112,6 +133,7 @@ If the agent makes a tool call you didn't expect, revisit your task brief. Addin
 
 - [ ] You can explain what an MCP tool server is and what it provides to the agent
 - [ ] You understand how enabling MCP changes the agentic reasoning loop
+- [ ] You located the `tools:` block in your workflow and identified the MCP server name
 - [ ] You know what each field in the `tools:` frontmatter block does
 - [ ] You know how to use toolsets to limit the agent's tool access
 - [ ] You know where to find MCP tool calls in the Actions log
