@@ -132,7 +132,7 @@ Using `:latest` means the image can silently change on every pull. A supply-chai
 The `everything` toolset exposes every tool the server provides. You almost never need all of them. Use the narrowest toolset that covers your task — this limits what a compromised server can instruct the agent to do.
 
 **Red flag 3 — over-scoped permissions with no safe-outputs constraints**
-The workflow requests `contents: write`, `issues: write`, and `pull-requests: write`, but `safe-outputs: {}` declares no concrete write targets. This means a poisoned tool response could instruct the agent to write anywhere within those scopes. Pair each `write` permission with a matching `safe-outputs` entry to limit the blast radius.
+The workflow requests `contents: write`, `issues: write`, and `pull-requests: write`, but `safe-outputs: {}` declares no concrete write targets. The `safe-outputs` block (introduced in the [How gh-aw Defends Against It](#how-gh-aw-defends-against-it) section above) pins every allowed write action — for example, `add-comment: {repo: …}`. An empty `{}` means nothing is pinned, so a poisoned tool response could instruct the agent to write anywhere within those scopes. Pair each `write` permission with a matching `safe-outputs` entry to limit the blast radius.
 
 </details>
 
