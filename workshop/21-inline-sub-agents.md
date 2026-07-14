@@ -30,12 +30,12 @@ You'll add an inline sub-agent to your daily-status workflow so the main agent c
 
 When your workflow repeats the same small job for many items, keep the main agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
-A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that looks like `## agent: \`name\``. Put the helper brief under that heading, then call that helper by name from the main workflow brief.
+A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading, then call that helper by name from the main workflow brief.
 
 > 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Write it down — you'll use it in the next section.
 >
 > [!TIP]
-> Want the full rules for names, frontmatter, model aliases, and block placement? Use the [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
+> Want the full rules for names, frontmatter, model aliases, and block placement? See the [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
 
 ## Apply the pattern to your workflow
 
@@ -43,7 +43,7 @@ A sub-agent is just a helper you define inside the same workflow file. In this s
 
 Open your workflow file and choose one bounded task that repeats for each item, such as summarizing one issue or classifying one pull request.
 
-✏️ **Write down two things before you edit:**
+**Action:** Write down two things before you edit:
 
 - the worker name you want to use
 - the one-sentence job that worker should do
@@ -79,7 +79,7 @@ You produce a daily repository health digest.
 4. Post the list as a comment on the repository's main tracking issue.
 ```
 
-✏️ **Try it:** Change one broad instruction in the parent brief into a direct sub-agent call by name. For example, change "summarize all issues" to "For each issue, use the `issue-summarizer` agent."
+**Action:** Change one broad instruction in the parent brief into a direct sub-agent call by name. For example, change "summarize all issues" to "For each issue, use the `issue-summarizer` agent."
 
 ### Compile and check the result
 
