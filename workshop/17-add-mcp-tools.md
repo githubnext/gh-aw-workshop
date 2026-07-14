@@ -35,9 +35,8 @@ Open your daily-status workflow file (`.github/workflows/daily-status.md`) and f
 ---
 name: Daily Status Report
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 9 * * 1-5"
+  workflow_dispatch: {}
+  schedule: daily on weekdays
 permissions:
   contents: read
 tools:

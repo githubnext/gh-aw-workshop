@@ -43,9 +43,10 @@ emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
 
 # ── TRIGGERS ─────────────────────────────────────────────────────────────────
-# `schedule: daily` is an agentic-workflow shorthand for a cron expression that
-# runs once a day at midnight UTC. `workflow_dispatch` adds a manual Run button
-# so you can test or re-run the report without waiting for the schedule.
+# `schedule: daily` is a fuzzy schedule expression that `gh aw compile` converts
+# to a once-per-day cron schedule at a compiler-chosen (scattered) time.
+# `workflow_dispatch` adds a manual Run button so you can test or re-run the
+# report without waiting for the schedule.
 on:
   schedule: daily
   workflow_dispatch: {}

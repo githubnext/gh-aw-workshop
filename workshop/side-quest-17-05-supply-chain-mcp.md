@@ -46,8 +46,8 @@ Example of a well-constrained MCP configuration:
 ---
 name: Daily Status Report
 on:
-  schedule:
-    - cron: "0 9 * * 1-5"
+  schedule: daily on weekdays
+  workflow_dispatch: {}
 permissions:
   contents: read
   issues: read
