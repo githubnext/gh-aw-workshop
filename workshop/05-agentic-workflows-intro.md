@@ -32,11 +32,45 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
 
-**What it is:** A Markdown file (`.md`) with two parts — an Actions-compatible frontmatter block (YAML header between `---` markers, containing triggers, permissions, runners, and optional deterministic steps) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
+**What it is:** A Markdown file (`.md`) with two parts — a YAML frontmatter block and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent. The frontmatter supports the same triggers, permissions, runners, and optional deterministic steps as classic Actions — see [Step 7: Your First Workflow](07-your-first-workflow.md) for the full YAML reference.
 
 **What it produces:** A synthesized, structured output — a report, recommendation, or action taken — that the agent composes at runtime based on live repository data. In [Step 7: Your First Workflow](07-your-first-workflow.md) you'll write exactly this kind of brief; in [Step 8: Run Your Workflow](08-run-your-workflow.md) you'll watch the agent interpret it in real time.
 
 **Why it exists:** Classic GitHub Actions workflows are great for deterministic CI/CD steps. Agentic workflows fill the gap for tasks that need judgment: triage, summarization, reporting, and decisions that change based on context.
+
+**Coming from classic Actions?** Three things to unlearn:
+1. You do NOT write `jobs.steps` — write a goal in plain language instead.
+2. The `.md` file is NOT documentation — it IS the workflow definition.
+3. Output is not logs — it's a synthesized report the agent composes at runtime.
+
+## Classify these tasks
+
+For each task below, decide whether it is a better fit for an **agentic workflow** or a **standard Actions workflow**, then check your answers.
+
+```text
+Task A: Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
+Task B: Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
+Task C: Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
+```
+
+Before you reveal the answers, mark the statements you can explain:
+
+- [ ] I classified Task A as agentic workflow or standard Actions workflow
+- [ ] I classified Task B as agentic workflow or standard Actions workflow
+- [ ] I classified Task C as agentic workflow or standard Actions workflow
+- [ ] I can explain which tasks follow the same fixed steps every run
+- [ ] I can explain which tasks need live repository context or judgment at runtime
+
+<details>
+<summary>Check your answers</summary>
+
+**Task A — Standard Actions workflow:** every run follows the same fixed steps: start the test job, fail on a non-zero exit code, and upload the coverage artifact. No judgment required.
+
+**Task B — Agentic workflow:** the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
+
+**Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
+
+</details>
 
 By the end of this workshop, a scheduled workflow will automatically generate a daily repo status report like this:
 
@@ -53,16 +87,6 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 2. Review PR #412 and PR #415 before noon.
 3. Triage high-priority issue #398 with the platform team.
 ```
-
-> [!IMPORTANT]
-> <details>
-> <summary><b>Coming from classic Actions? Unlearn these 3 things first:</b></summary>
->
-> 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
-> 2. The `.md` file is NOT documentation — it IS the workflow definition.
-> 3. Output is not logs — it's a synthesized report the agent composes at runtime.
->
-> </details>
 
 ## Try it now
 
@@ -93,35 +117,6 @@ Look at the sample above and answer these two questions before continuing:
 Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. You can also run hybrid workflows: keep deterministic jobs or steps for repeatable data collection, then let the agent interpret the results and decide the final output. For a detailed side-by-side comparison, agent anatomy, and YAML authoring details, see [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
 
 If you want a one-page cheat sheet for Actions power users, read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
-
-## Classify these tasks
-
-For each task below, decide whether it is a better fit for an **agentic workflow** or a **standard Actions workflow**, then check your answers.
-
-```text
-Task A: Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
-Task B: Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
-Task C: Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
-```
-
-Before you reveal the answers, mark the statements you can explain:
-
-- [ ] I classified Task A as agentic workflow or standard Actions workflow
-- [ ] I classified Task B as agentic workflow or standard Actions workflow
-- [ ] I classified Task C as agentic workflow or standard Actions workflow
-- [ ] I can explain which tasks follow the same fixed steps every run
-- [ ] I can explain which tasks need live repository context or judgment at runtime
-
-<details>
-<summary>Reveal the answers</summary>
-
-**Task A — Standard Actions workflow:** every run follows the same fixed steps: start the test job, fail on a non-zero exit code, and upload the coverage artifact. No judgment required.
-
-**Task B — Agentic workflow:** the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
-
-**Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
-
-</details>
 
 **Want a first look before you install anything?**
 
