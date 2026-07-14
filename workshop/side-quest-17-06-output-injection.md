@@ -42,13 +42,14 @@ gh-aw keeps the agent itself read-only, then limits which follow-up writes the `
 - **Label scoping on comment targets**
   Adding `required-labels:` to `add-comment` scopes where the workflow may post. If you reserve a label like `daily-status` for the one issue or PR thread your workflow should use, an injected instruction cannot redirect the agent to comment on some unrelated item that lacks that label.
 
-- **Minimal `permissions:`**
-  The agent still runs read-only, but the safe-output step needs GitHub permissions to apply approved writes. Declaring `permissions: contents: read` and omitting `issues: write` when the workflow does not need to post ensures there is no comment-writing path for injected content to exploit.
+- **Minimal read-only `permissions:`**
+  Keep the `permissions:` block read-only. Use it to grant only the read scopes the agent needs to inspect repository state, while `safe-outputs` remains the only place you approve writes. If the workflow does not need issue or PR data, omit those scopes entirely.
 
   ```yaml
   permissions:
     contents: read
-    issues: write        # only add this if the workflow must post comments
+    issues: read         # only add this if the workflow reads issues
+    pull-requests: read  # only add this if the workflow reads PRs
   ```
 
 - **Prefer no write surface when you do not need one**
@@ -62,7 +63,7 @@ gh-aw keeps the agent itself read-only, then limits which follow-up writes the `
 - [ ] Declare only the `safe-outputs` surfaces your workflow genuinely needs. Remove any surface you added speculatively.
 - [ ] Add `required-labels:` to any `add-comment` safe output that should only post to a specific tracking issue or PR thread.
 - [ ] If your workflow does not need to write back to GitHub, leave `safe-outputs` out and keep the result in the Actions run instead.
-- [ ] Scope `permissions:` to `read` for every resource the workflow does not need to modify. Removing `issues: write` when you only need `issues: read` eliminates the write surface entirely.
+- [ ] Scope `permissions:` to `read` for every resource the workflow needs to inspect, and remove any scope the workflow does not use. Keep write approval in `safe-outputs`, not in `permissions:`.
 - [ ] Treat repository content (issue bodies, PR descriptions, file contents) as untrusted input in your task brief. Phrase the brief so the agent summarizes factual data rather than quoting freeform text verbatim.
 
 ## ✅ Checkpoint
