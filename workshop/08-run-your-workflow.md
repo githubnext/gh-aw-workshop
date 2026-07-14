@@ -28,11 +28,22 @@ Before you trigger a run, confirm your workflow is configured to reach an AI mod
 
 Check your configuration based on the engine in your `hello-agent.md` frontmatter:
 
-- **GitHub Copilot (default, no `engine:` line):** if your frontmatter has `copilot-requests: write` under `permissions`, confirm your GitHub account has an active Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot). If it uses `COPILOT_GITHUB_TOKEN` instead, confirm that secret is listed under **Settings → Secrets and variables → Actions**.
-- **Claude (`engine: claude`):** confirm `ANTHROPIC_API_KEY` is listed under **Settings → Secrets and variables → Actions**. See [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
-- **Codex / OpenAI (`engine: codex`):** confirm `OPENAI_API_KEY` is listed under **Settings → Secrets and variables → Actions**. See [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
-- **Gemini or another provider:** confirm the relevant API key secret is listed under **Settings → Secrets and variables → Actions**.
-- Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md` and look for an `engine:` line or a `permissions` block.
+> [!TIP]
+> Complete this check before triggering the run. Most first-run failures trace back to a missing or wrong secret.
+
+<details>
+<summary><b>Engine quick-check — expand to confirm your setup before running</b></summary>
+
+| Engine | How to confirm | Pass | Fail — what to do |
+|--------|----------------|------|-------------------|
+| GitHub Copilot (default, no `engine:` line) | Check `copilot-requests: write` in frontmatter; verify your Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot) | Permission present and subscription active | Activate subscription at [github.com/settings/copilot](https://github.com/settings/copilot); for `actions:write` errors follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md) |
+| Claude (`engine: claude`) | Open **Settings → Secrets and variables → Actions** and look for `ANTHROPIC_API_KEY` | Secret name appears in the list | Follow [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) |
+| Codex / OpenAI (`engine: codex`) | Open **Settings → Secrets and variables → Actions** and look for `OPENAI_API_KEY` | Secret name appears in the list | Follow [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) |
+| Gemini or other provider | Open **Settings → Secrets and variables → Actions** and look for your provider's API key secret | Secret name appears in the list | Check the provider's side-quest or your engine documentation |
+
+</details>
+
+Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md` and look for an `engine:` line or a `permissions` block.
 
 ### Trigger it from the Actions tab
 
