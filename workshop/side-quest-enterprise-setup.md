@@ -2,6 +2,12 @@
 
 > _Required for GHES users before attempting to create or run agentic workflows. Also useful if you are running any setup step in a managed enterprise environment — complete this guide, then return to your current step._
 
+## 📋 Before You Start
+
+- You have a GitHub account and know whether your environment is `github.com`, GitHub Enterprise Cloud (GHEC), or GitHub Enterprise Server (GHES).
+- You can reach your GitHub Enterprise administrator to confirm GHES version and policy settings.
+- You have started [Step 1: Prerequisites](01-prerequisites.md) or an early setup step that directed you here.
+
 Use this side quest if your environment differs from standard `github.com` defaults.
 
 ## Confirm GHES version and agentic workflow support
@@ -36,6 +42,13 @@ Before continuing:
    If Codespaces is unavailable, switch to [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
 3. Use your enterprise hostname in all `gh` auth and extension commands when required (for example, `gh auth login --hostname ghes.example.com`).
    See [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for a complete enterprise hostname command sequence.
+
+> 🤔 **Predict:** Look up your enterprise hostname before continuing. After confirming it, run the following command and verify the output shows your GHES instance:
+>
+> ```bash
+> gh auth login --hostname <your-ghes-hostname>
+> gh auth status
+> ```
 
 ## Self-hosted runner prerequisites
 

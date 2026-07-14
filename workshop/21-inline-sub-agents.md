@@ -33,6 +33,8 @@ Every workflow you have built so far runs as a single agent prompt. That works w
 - **The frontier model reads everything.** Even a simple "summarize this file" call uses frontier-model tokens when a `small` model would do it for roughly 10–20× less cost.
 - **Context bloat.** A monolithic prompt that gathers data, classifies items, writes the summary, and posts the result carries all that context in one call chain. Errors at any stage contaminate the whole context window.
 
+> 🤔 **Predict:** Look at your existing daily-status workflow brief. Identify which parts repeat across multiple items (issues, PRs, files). List them before reading the "Identify the repetitive tasks" step below — then compare your list.
+
 Inline sub-agents solve both problems. You define specialised workers directly in the same Markdown file. At compile time, `gh-aw` extracts each sub-agent block and writes it to the engine-specific agents directory. The parent (orchestrator) agent then calls workers by name and receives compact, structured results.
 
 ## Sub-Agent Syntax
