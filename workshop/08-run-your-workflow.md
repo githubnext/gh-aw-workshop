@@ -28,22 +28,40 @@ Before you trigger a run, confirm your workflow is configured to reach an AI mod
 
 Check your configuration based on the engine in your `hello-agent.md` frontmatter:
 
-> [!TIP]
-> Complete this check before triggering the run. Most first-run failures trace back to a missing or wrong secret.
+> [!IMPORTANT]
+> Complete this quick check before clicking **Run workflow**. Most immediate first-run failures come from missing model access.
+
+| Engine | Required configuration | Setup or verify link |
+|--------|------------------------|-------------------|
+| GitHub Copilot (default, no engine line) | `copilot-requests: write` in frontmatter and an active Copilot subscription | [Open Copilot settings](https://github.com/settings/copilot) |
+| Claude (engine: claude) | ANTHROPIC_API_KEY in **Settings → Secrets and variables → Actions** | [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) |
+| Codex / OpenAI (engine: codex) | OPENAI_API_KEY in **Settings → Secrets and variables → Actions** | [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) |
 
 <details>
-<summary><b>Engine quick-check — expand to confirm your setup before running</b></summary>
+<summary><b>Need deeper troubleshooting for model-access failures?</b></summary>
 
-| Engine | How to confirm | Pass | Fail — what to do |
-|--------|----------------|------|-------------------|
-| GitHub Copilot (default, no `engine:` line) | Check `copilot-requests: write` in frontmatter; verify your Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot) | Permission present and subscription active | Activate subscription at [github.com/settings/copilot](https://github.com/settings/copilot); for `actions:write` errors follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md) |
-| Claude (`engine: claude`) | Open **Settings → Secrets and variables → Actions** and look for `ANTHROPIC_API_KEY` | Secret name appears in the list | Follow [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) |
-| Codex / OpenAI (`engine: codex`) | Open **Settings → Secrets and variables → Actions** and look for `OPENAI_API_KEY` | Secret name appears in the list | Follow [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) |
-| Gemini or other provider | Open **Settings → Secrets and variables → Actions** and look for your provider's API key secret | Secret name appears in the list | Check the provider's side-quest or your engine documentation |
+- For actions:write permission errors in Codespaces, follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+- For Gemini or another provider, confirm the engine-specific API key secret is present in **Settings → Secrets and variables → Actions** and then follow your provider documentation.
 
 </details>
 
 Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md` and look for an `engine:` line or a `permissions` block.
+
+### Before you click Run
+
+#### Prerequisites verified
+
+- [ ] I opened `.github/workflows/hello-agent.md` and confirmed which engine I am using
+- [ ] I verified the required configuration from the quick-check table is present
+- [ ] I checked that **Hello Agent** appears in the **Actions** sidebar
+- [ ] I confirmed I have at least one open issue ready for the workflow to update
+- [ ] I am signed in with the account that has access to this repository and its secrets
+
+#### Ready to proceed
+
+- [ ] I opened the **Actions** tab so I can trigger the run without searching
+- [ ] I know where to open the live job log as soon as the run appears
+- [ ] I know which side quest to open if the run fails immediately with an authentication or model-access error
 
 ### Trigger it from the Actions tab
 
@@ -52,6 +70,8 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
 ![Actions tab showing where to find Hello Agent in the workflow list](images/08-actions-tab.svg)
 
 Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Hello Agent** is missing, refresh the page, confirm the workflow file is on `main`, and run `gh aw compile` from your terminal if you need to check for compile errors.
+
+If the run fails immediately with a model-access or authentication error, stop and use the matching setup link from the quick-check table above before rerunning.
 
 ![Workflow sidebar with the Run workflow button highlighted](images/08-run-workflow-button.svg)
 
