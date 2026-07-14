@@ -6,6 +6,9 @@ _Watching an agent work in real time is fundamentally different from reading abo
 
 You'll trigger the `hello-agent` workflow from Step 7, predict what it will do before it runs, then verify your predictions against the live log.
 
+> [!IMPORTANT]
+> **Using a Codespace?** Codespace tokens lack `actions:write` by default — trigger your workflow from the **Actions** tab (steps below), not from `gh aw run`. If you want the terminal trigger, see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md) first.
+
 ## 📋 Before You Start
 
 - Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
@@ -23,14 +26,17 @@ Before triggering, verify all three:
 
 ### Predict before you run
 
-Before you click anything, write down your predictions:
+Before you click, write down: what do you expect the agent to do first?
 
-1. **What will the agent do first?** Write one sentence describing the first action you expect it to take.
-2. **Which issue will it pick?** If you have multiple open issues, which one do you expect the agent to select, and why?
-3. **What will the output look like?** Will the agent post a comment, create a new issue, or do something else?
-4. **What will you do if the workflow doesn't appear in the Actions sidebar?** Write one recovery step you'd take before asking for help.
+- [ ] **Why do you expect that first action?** Write one sentence describing the clue in your workflow that leads you to that prediction.
+- [ ] **Which issue will it pick?** If you have multiple open issues, which one do you expect the agent to select, and why?
+- [ ] **What will the output look like?** Will the agent post a comment, create a new issue, or do something else?
+- [ ] **What will you do if the workflow doesn't appear in the Actions sidebar?** Write one recovery step you'd take before asking for help.
 
 Keep your predictions handy — you'll check them against the live log in a moment.
+
+> [!NOTE]
+> **Prefer the terminal?** Trigger with `gh aw run hello-agent`, but this requires `actions:write` scope. Codespace tokens do not include this by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ### Trigger the workflow via GitHub Actions UI
 
@@ -55,16 +61,6 @@ Keep your predictions handy — you'll check them against the live log in a mome
 > **Run succeeded but no comment appeared?** The agent needs at least one open issue. Create one in the **Issues** tab and re-run.
 
 <!-- -->
-
-> [!NOTE]
-> **Using `gh aw run` from a Codespace?** Codespace tokens lack `actions:write` by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
-
-<details>
-<summary>Prefer the terminal?</summary>
-
-Trigger with `gh aw run hello-agent`, but this requires `actions:write` scope. Codespace tokens do not include this by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
-
-</details>
 
 ### Annotate a sample log, then analyse your own
 
