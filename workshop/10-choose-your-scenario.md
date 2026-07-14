@@ -77,10 +77,10 @@ Before you read the scenario descriptions, write one sentence describing a repos
 
 ## Commit to Your Choice
 
-If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and continue with [Adventure D](11d-build-copilot-agents.md) after this quick check.
+If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and continue with [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md) after this quick check.
 
 1. Write the adventure you chose and one reason it matches the repository task you wrote down earlier.
-2. Open the next step for that adventure and read the first paragraph to confirm the scenario matches what you want to automate.
+2. Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the first paragraph to confirm the scenario matches what you want to automate.
 3. If you're taking the GitHub Copilot app or Agents tab path, note that you'll jump to Adventure D after this step.
 
 ---
