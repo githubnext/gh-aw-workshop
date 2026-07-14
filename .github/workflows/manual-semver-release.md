@@ -15,12 +15,30 @@ on:
           - major
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
   copilot-requests: write
 strict: true
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+steps:
+  - name: Capture trigger context
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data
+      jq -n \
+        --arg repository "$GITHUB_REPOSITORY" \
+        --arg ref_name "$GITHUB_REF_NAME" \
+        --arg sha "$GITHUB_SHA" \
+        --arg bump "${{ github.event.inputs.bump }}" \
+        '{
+          repository: $repository,
+          ref_name: $ref_name,
+          sha: $sha,
+          bump: $bump
+        }' > /tmp/gh-aw/data/release-trigger.json
 safe-outputs:
   jobs:
     create-release:
@@ -124,10 +142,7 @@ network:
 
 ## Current Context
 
-- Repository: `${{ github.repository }}`
-- Requested version bump: `${{ github.event.inputs.bump }}`
-- Triggering ref: `${{ github.ref_name }}`
-- Triggering SHA: `${{ github.sha }}`
+Read `/tmp/gh-aw/data/release-trigger.json` for the repository, requested bump, triggering ref name, and triggering SHA.
 
 ## Task
 
@@ -166,6 +181,6 @@ When you are ready, call `create_release` exactly once with:
 - `tag` — the new version tag, including the leading `v`
 - `title` — usually the same as the tag
 - `body` — the markdown release notes
-- `target` — the commit SHA or ref to tag; use `${{ github.sha }}` unless you have a clear reason not to
+- `target` — the commit SHA or ref to tag; use the triggering SHA from `release-trigger.json` unless you have a clear reason not to
 
 Do not create releases directly with `gh` or any write-capable GitHub tool from the main agent job.
