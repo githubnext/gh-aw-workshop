@@ -26,7 +26,7 @@ This changes two things:
 | | Daily workflows | PR code reviewer |
 |---|---|---|
 | **Trigger** | `on: schedule: daily` | `on: pull_request: {}` |
-| **Safe output** | `add-comment` (issue comment) | `add-pr-review-comment` (PR review comment) |
+| **Safe output** | `add-comment` (issue comment) | `add-comment` (PR comment) |
 
 > [!TIP]
 > Want a fuller primer on choosing between `pull_request`, `push`, `issues`, and `schedule`? Take [Side Quest: Event-Driven Triggers in Agentic Workflows](side-quest-11-05-event-triggers.md) before you build.
@@ -102,12 +102,12 @@ tools: # Tool access
     toolsets: [default] # Default toolset
 
 safe-outputs: # Write guardrails
-  add-pr-review-comment: # Allow PR review comments
+  add-comment: # Allow PR comments
     max: 5 # Up to five comments per run
 ```
 
 > [!NOTE]
-> `safe-outputs.add-pr-review-comment: max: 5` limits the agent to at most five PR review comments per run. This prevents the agent from flooding a large PR with dozens of low-value findings. If the agent finds more than five issues, the task brief instructs it to list only the top five.
+> `safe-outputs.add-comment: max: 5` limits the agent to at most five PR comments per run. This prevents the agent from flooding a large PR with dozens of low-value findings. If the agent finds more than five issues, the task brief instructs it to list only the top five.
 >
 
 ### Add the agent instructions
@@ -194,7 +194,7 @@ tools:
     toolsets: [default]
 
 safe-outputs:
-  add-pr-review-comment:
+  add-comment:
     max: 5
 ---
 
