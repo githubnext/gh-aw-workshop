@@ -24,7 +24,7 @@ Open the completed **Hello Agent** run from the **Actions** tab and click the jo
 ✅ Done
 ```
 
-The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and note what it was trying to do.
+The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and write one short note about what it was trying to do.
 
 ## Check the output
 
@@ -42,7 +42,7 @@ If your run does not look right, start with these quick checks before changing t
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 
-For a deeper troubleshooting guide, continue to [Step 9: Reading Workflow Output](09-understand-output.md) and use [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) when a run behaves unexpectedly.
+For a deeper troubleshooting guide, see [Step 9: Reading Workflow Output](09-understand-output.md) and [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
 ## ✅ Checkpoint
 
