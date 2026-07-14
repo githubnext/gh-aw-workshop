@@ -1,6 +1,6 @@
 # Side Quest: Evaluating and Iterating on Agent Output
 
-> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the brief, and compare the result — then return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)._
+> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)._
 
 ## 🎯 What You'll Do
 
@@ -44,7 +44,7 @@ Lowest score: Tone
 
 ## Make one targeted change
 
-Pick the lowest-scoring row and change only **one sentence** in your workflow brief to address it.
+Pick the lowest-scoring row and modify or add only **one sentence** in your workflow brief to address it.
 
 - **Accuracy**: add a sentence that tells the agent not to invent numbers and to skip anything it cannot verify.
 - **Completeness**: add a sentence naming the missing field, such as "Include the age of the oldest open PR."
@@ -76,7 +76,7 @@ After:  Accuracy 2, Completeness 2, Tone 2
 Changed sentence: "Write in a friendly, conversational tone."
 ```
 
-If the lowest row did not improve, keep the first change in place, pick one different sentence to edit, and run the same loop again.
+If the lowest row did not improve, keep the first change in place, pick one different instruction to modify or add, and run the same loop again.
 
 <details>
 <summary>Need ideas for what to change or where to look for errors?</summary>
