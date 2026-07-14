@@ -8,7 +8,7 @@ You'll use `gh aw compile` as a fast feedback loop while you edit workflow files
 
 ## What `gh aw compile` does
 
-`gh aw compile` checks your workflow source file, validates the frontmatter and Markdown body structure, and generates the compiled lock file GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
+`gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled lock file GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
 
 Run it any time you edit a workflow file:
 
@@ -98,3 +98,10 @@ on:
 ---
 
 Return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](11a-build-daily-status-terminal.md), or [Step 13](13a-schedule-it-terminal.md).
+
+## 📚 See Also
+
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/)
+- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)
