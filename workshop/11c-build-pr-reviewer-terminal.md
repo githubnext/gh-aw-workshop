@@ -157,7 +157,7 @@ Findings: {count}
 ---
 
 > [!TIP]
-> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying agentic workflows through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
+> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
 
 ### Commit and push
 

@@ -158,3 +158,10 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 
 **Previous:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
 **Next:** [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
