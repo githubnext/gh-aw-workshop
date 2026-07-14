@@ -4,7 +4,7 @@ _Starting with the right setup saves you from frustrating detours later._
 
 ## 📋 Before You Start
 
-This step checks that all the tools and accounts you need are in place before you write any workflow code.
+This step checks that all the tools and accounts you need are in place before you start building workflows.
 
 ## Enterprise users
 
@@ -41,8 +41,8 @@ This step checks that all the tools and accounts you need are in place before yo
 
 Complete these checks before you choose your path:
 
-- [ ] You can sign in to GitHub with the account you'll use for the workshop ([github.com](https://github.com) opens and shows your account menu)
-- [ ] You chose your development environment: Codespace, local terminal, or GitHub UI
+- [ ] You can sign in to GitHub with the account you'll use for the workshop (verify by opening [github.com](https://github.com) and confirming your account menu appears)
+- [ ] You are ready to choose your development environment: Codespace, local terminal, or GitHub UI
 - [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
