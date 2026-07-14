@@ -4,7 +4,7 @@
 
 Make sure you have:
 
-- Completed [Step 1: What You Need Before We Start](01-prerequisites.md)
+- Completed [Step 1: Prerequisites](01-prerequisites.md)
 - A GitHub account (free tier is fine)
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
@@ -84,14 +84,14 @@ The diagram below shows your Codespace connection to GitHub.
    gh extension list
    ```
 
-2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
+2. Confirm `gh --version` shows a recent `gh` version.
 3. Confirm `gh auth status` shows that you're logged in to `github.com`.
 4. Confirm `gh extension list` runs without errors, even if it shows no extensions yet.
 
 _What success looks like:_
 
 ```text
-gh version 2.40.0 (2024-01-01)
+gh version 2.x.x
 ...
 
 github.com
@@ -101,7 +101,7 @@ github.com
 (no extensions installed)
 ```
 
-You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
+You should see a `gh version ...` line and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
 
 > [!IMPORTANT]
 > The Codespace authentication token has a limited set of scopes by default. In particular, it may **not** include `actions:write`, which is required for `gh aw run` to trigger workflows from the terminal (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you want to use `gh aw run` and hit permission errors, jump to [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
@@ -110,7 +110,7 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
-- [ ] `gh --version` returns version 2.40.0 or newer
+- [ ] `gh --version` returns a recent version number
 - [ ] `gh auth status` shows you're logged in to GitHub without errors
 - [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
