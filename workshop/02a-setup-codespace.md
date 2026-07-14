@@ -4,7 +4,7 @@
 
 Make sure you have completed Step 1, then re-check the items that matter for this path:
 
-- Completed [Step 1: Prerequisites](01-prerequisites.md)
+- [Step 1: Prerequisites](01-prerequisites.md) is complete
 - A GitHub account you can use to create a public practice repository (free tier is fine)
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
