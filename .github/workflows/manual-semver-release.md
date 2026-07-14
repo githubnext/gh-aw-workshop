@@ -65,16 +65,46 @@ steps:
         const bump = process.env.BUMP;
         const target = process.env.TARGET_SHA;
 
-        const run = (...args) => execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
+        const run = (...args) => {
+          try {
+            return execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
+          } catch (error) {
+            const output = [error.stdout, error.stderr]
+              .map(value => value && String(value).trim())
+              .filter(Boolean)
+              .join('\n');
+            throw new Error(`Command failed: ${args.join(' ')}${output ? `\n${output}` : ''}`);
+          }
+        };
         const runLines = (...args) => {
           const text = run(...args);
           return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
         };
 
         fs.mkdirSync(path.dirname(planPath), { recursive: true });
+        fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
 
         const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
         const semverTags = new Map();
+        const compareVersions = (left, right) => {
+          for (let index = 0; index < 3; index += 1) {
+            if (left[index] !== right[index]) {
+              return left[index] - right[index];
+            }
+          }
+          return 0;
+        };
+        const pickPreferredTag = tags => [...tags].reduce((best, candidate) => {
+          if (!best) return candidate;
+
+          const bestScore = best.startsWith('v') ? 0 : 1;
+          const candidateScore = candidate.startsWith('v') ? 0 : 1;
+          if (candidateScore !== bestScore) {
+            return candidateScore < bestScore ? candidate : best;
+          }
+
+          return candidate.localeCompare(best) < 0 ? candidate : best;
+        }, null);
 
         for (const tag of runLines('git', 'tag', '--list')) {
           const match = tag.match(semverPattern);
@@ -93,21 +123,14 @@ steps:
         let baseVersion = [0, 0, 0];
 
         if (semverTags.size > 0) {
-          const latest = [...semverTags.values()].sort((left, right) => {
-            for (let index = 0; index < 3; index += 1) {
-              if (left.version[index] !== right.version[index]) {
-                return right.version[index] - left.version[index];
-              }
+          let latest = null;
+          for (const candidate of semverTags.values()) {
+            if (!latest || compareVersions(candidate.version, latest.version) > 0) {
+              latest = candidate;
             }
-            return 0;
-          })[0];
+          }
 
-          previousTag = [...latest.tags].sort((left, right) => {
-            const leftScore = left.startsWith('v') ? 0 : 1;
-            const rightScore = right.startsWith('v') ? 0 : 1;
-            if (leftScore !== rightScore) return leftScore - rightScore;
-            return left.localeCompare(right);
-          })[0];
+          previousTag = pickPreferredTag(latest.tags);
           previousTagDisplay = `v${latest.version.join('.')}`;
           baseVersion = latest.version;
         }
