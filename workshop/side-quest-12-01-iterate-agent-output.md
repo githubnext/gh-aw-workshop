@@ -10,9 +10,8 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 - You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
 - Your workflow posts to a safe output surface such as the **Daily Status Reports** issue.
-- If you are working in a browser-based environment without terminal access, ask a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
 
-## Trigger one baseline run
+## Baseline run
 
 Use the **Actions** tab to trigger your workflow one more time so you have a fresh example to score.
 
@@ -60,13 +59,15 @@ by changing one sentence in the Markdown body to improve Tone.
 Run gh aw compile after the edit.
 ```
 
+If you are working in a browser-based environment without terminal access, use that agent path instead of the terminal path below.
+
 If you have a terminal open, edit the Markdown body of `.github/workflows/daily-status.md`, then recompile:
 
 ```bash
 gh aw compile
 ```
 
-## Re-run and compare
+## Before and after comparison
 
 Trigger the workflow again from **Actions** and score the new output with the same rubric.
 
