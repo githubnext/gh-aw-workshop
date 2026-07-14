@@ -52,6 +52,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 20 | [20-persistent-memory.md](20-persistent-memory.md) | Make Your Workflow Remember Across Runs | ✅ |
 | 21 | [21-inline-sub-agents.md](21-inline-sub-agents.md) | Split Complex Workflows with Inline Sub-Agents | ✅ |
 | 22 | [22-error-handling-and-resilience.md](22-error-handling-and-resilience.md) | Make Your Workflows Resilient to Failure | ✅ |
+| 23 | [23-monitor-and-observe.md](23-monitor-and-observe.md) | Monitor Your Workflow in Production | ✅ |
 
 ## Optional Side Quests
 
