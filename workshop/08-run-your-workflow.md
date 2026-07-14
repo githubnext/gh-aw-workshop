@@ -22,17 +22,17 @@ Start by checking that every item in **Before You Start** is complete. This step
 
 If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option. If that fails in Codespaces with an `actions:write` error, use [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) or continue with the GitHub UI.
 
-> [!IMPORTANT]
-> <details>
-> <summary>**Before you trigger the run:** Confirm that your workflow is configured for Copilot access.</summary>
->
-> - If using the **`copilot-requests: write` permission** (recommended): verify your workflow frontmatter includes `copilot-requests: write` under `permissions` and your GitHub account has an active Copilot subscription.
-> - If using the **`COPILOT_GITHUB_TOKEN` secret** (or another inference provider secret): go to **Settings → Secrets and variables → Actions** in your practice repository and confirm the secret is listed under **Repository secrets**.
-> - Not sure which applies? Complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) before continuing.
->
-> Runs that fail with a model-access or authentication error almost always indicate a missing or expired token or secret.
->
-> </details>
+### Verify Copilot access
+
+Before you trigger a run, confirm your workflow can reach a Copilot model. Runs that fail immediately with a model-access or authentication error almost always indicate a missing or expired token.
+
+**Terminal path —** Run `gh auth status` and look for `copilot` in the token scopes listed in the output.
+
+**GitHub UI path —** Visit [github.com/settings/copilot](https://github.com/settings/copilot) and confirm your plan shows as active.
+
+- If you used **`copilot-requests: write`** in your frontmatter: verify your GitHub account has an active Copilot subscription.
+- If you used **`COPILOT_GITHUB_TOKEN`** or another inference provider secret: go to **Settings → Secrets and variables → Actions** in your practice repository and confirm the secret is listed under **Repository secrets**.
+- Not sure which applies? Complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) before continuing.
 
 ### Trigger it from the Actions tab
 
@@ -62,6 +62,7 @@ Before you move on, continue to [Step 8b: Interpret Your First Run](08b-interpre
 
 ## ✅ Checkpoint
 
+- [ ] I ran the pre-flight check and confirmed Copilot access is ready
 - [ ] My workflow has Copilot access configured — either `copilot-requests: write` in the frontmatter or `COPILOT_GITHUB_TOKEN` (or equivalent inference secret) listed under **Settings → Secrets and variables → Actions**
 - [ ] The **Hello Agent** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
