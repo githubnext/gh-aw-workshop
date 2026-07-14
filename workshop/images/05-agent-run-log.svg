@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" role="img" aria-label="Animated agent run log — the agent plans, calls github.list_issues and github.list_pull_requests, thinks about the results, then posts a comment to GitHub">
-  <title>Agentic workflow in action — agent run log</title>
-  <desc>A terminal-style log showing an AI agent starting, planning its approach, calling github.list_issues and github.list_pull_requests tools, thinking about results, and posting a comment to GitHub.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="480" viewBox="0 0 860 480" role="img" aria-label="Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled and saves results to safe outputs, detection scans for malicious code, and safe-outputs applies changes within guardrails">
+  <title>Agentic workflow security jobs</title>
+  <desc>A terminal-style log showing four GitHub Actions jobs: activation validates the agent is allowed to run, the agent job enables sandbox, firewall, and integrity filter and saves results to safe outputs, detection looks for malicious code in the output, and safe-outputs applies the changes within guardrails.</desc>
 
   <style>
     .line { opacity: 0; }
@@ -16,6 +16,8 @@
     .line10 { animation: fadein 0.4s 5.7s forwards; }
     .line11 { animation: fadein 0.4s 6.3s forwards; }
     .line12 { animation: fadein 0.4s 6.9s forwards; }
+    .line13 { animation: fadein 0.4s 7.5s forwards; }
+    .line14 { animation: fadein 0.4s 8.1s forwards; }
     .cursor { animation: blink 1s 0s infinite; }
     @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
     @keyframes blink  { 0%,49%{ opacity:1; } 50%,100%{ opacity:0; } }
@@ -32,73 +34,63 @@
   <circle cx="70" cy="20" r="7" fill="#28c840"/>
   <text x="430" y="25" font-family="Arial,sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">Actions › Daily Repo Status › Run #7</text>
 
-  <!-- Log lines -->
-  <!-- Line 1: agent job header -->
+  <!-- activation job -->
   <g class="line line1">
-    <text x="30" y="76" font-family="monospace" font-size="13" fill="#8b949e">▶  run-agent</text>
-    <rect x="22" y="83" width="816" height="1" fill="#21262d"/>
+    <text x="30" y="70" font-family="monospace" font-size="13" fill="#8b949e">▶  activation</text>
+    <rect x="22" y="77" width="816" height="1" fill="#21262d"/>
   </g>
-
-  <!-- Line 2: agent start -->
   <g class="line line2">
-    <text x="44" y="106" font-family="monospace" font-size="13" fill="#3fb950">▼  Running agent: Daily Repo Status</text>
+    <text x="44" y="98" font-family="monospace" font-size="12" fill="#3fb950">  ✅ Agent is authorized to run</text>
   </g>
 
-  <!-- Line 3: planning -->
+  <!-- agent job -->
   <g class="line line3">
-    <text x="64" y="130" font-family="monospace" font-size="12" fill="#e3b341">  🤔 Planning...  I need to check open issues, PRs, and recent CI status</text>
+    <text x="30" y="128" font-family="monospace" font-size="13" fill="#8b949e">▶  agent</text>
+    <rect x="22" y="135" width="816" height="1" fill="#21262d"/>
   </g>
-
-  <!-- Line 4: tool call list_issues -->
   <g class="line line4">
-    <text x="64" y="154" font-family="monospace" font-size="12" fill="#c9d1d9">  🔧 Tool call:   <tspan fill="#79c0ff">github.list_issues</tspan><tspan fill="#c9d1d9">  (state=open)</tspan></text>
+    <text x="44" y="156" font-family="monospace" font-size="12" fill="#c9d1d9">  🔒 Sandbox:           <tspan fill="#3fb950">enabled</tspan></text>
   </g>
-
-  <!-- Line 5: tool result -->
   <g class="line line5">
-    <text x="64" y="178" font-family="monospace" font-size="12" fill="#8b949e">  📥 Result:      7 open issues (3 labeled "high-priority")</text>
+    <text x="44" y="178" font-family="monospace" font-size="12" fill="#c9d1d9">  🔥 Firewall:          <tspan fill="#3fb950">enabled</tspan></text>
   </g>
-
-  <!-- Line 6: tool call list_pull_requests -->
   <g class="line line6">
-    <text x="64" y="202" font-family="monospace" font-size="12" fill="#c9d1d9">  🔧 Tool call:   <tspan fill="#79c0ff">github.list_pull_requests</tspan><tspan fill="#c9d1d9">  (state=open)</tspan></text>
+    <text x="44" y="200" font-family="monospace" font-size="12" fill="#c9d1d9">  🔍 Integrity filter:  <tspan fill="#3fb950">enabled</tspan></text>
   </g>
-
-  <!-- Line 7: tool result -->
   <g class="line line7">
-    <text x="64" y="226" font-family="monospace" font-size="12" fill="#8b949e">  📥 Result:      4 open PRs (1 stale &gt; 14 days, 2 awaiting review)</text>
+    <text x="44" y="222" font-family="monospace" font-size="12" fill="#c9d1d9">  💾 Saving results to safe outputs...</text>
   </g>
 
-  <!-- Line 8: thinking -->
+  <!-- detection job -->
   <g class="line line8">
-    <text x="64" y="250" font-family="monospace" font-size="12" fill="#e3b341">  🤔 Thinking...  All data collected — composing status report</text>
+    <text x="30" y="252" font-family="monospace" font-size="13" fill="#8b949e">▶  detection</text>
+    <rect x="22" y="259" width="816" height="1" fill="#21262d"/>
   </g>
-
-  <!-- Line 9: tool call add_comment -->
   <g class="line line9">
-    <text x="64" y="274" font-family="monospace" font-size="12" fill="#c9d1d9">  🔧 Tool call:   <tspan fill="#79c0ff">github.add_comment</tspan><tspan fill="#c9d1d9">  (issue_number=42)</tspan></text>
+    <text x="44" y="280" font-family="monospace" font-size="12" fill="#c9d1d9">  🔎 Scanning output for malicious code...</text>
   </g>
-
-  <!-- Line 10: tool result -->
   <g class="line line10">
-    <text x="64" y="298" font-family="monospace" font-size="12" fill="#8b949e">  📥 Result:      Comment posted</text>
+    <text x="44" y="302" font-family="monospace" font-size="12" fill="#3fb950">  ✅ No threats detected</text>
   </g>
 
-  <!-- Line 11: done -->
+  <!-- safe-outputs job -->
   <g class="line line11">
-    <rect x="22" y="318" width="816" height="1" fill="#21262d"/>
-    <text x="44" y="338" font-family="monospace" font-size="13" fill="#3fb950">✅ Done (41s)</text>
+    <text x="30" y="332" font-family="monospace" font-size="13" fill="#8b949e">▶  safe-outputs</text>
+    <rect x="22" y="339" width="816" height="1" fill="#21262d"/>
+  </g>
+  <g class="line line12">
+    <text x="44" y="360" font-family="monospace" font-size="12" fill="#c9d1d9">  🛡  Applying changes within guardrails...</text>
+  </g>
+  <g class="line line13">
+    <text x="44" y="382" font-family="monospace" font-size="12" fill="#3fb950">  ✅ Changes applied safely</text>
   </g>
 
-  <!-- Line 12: comment preview -->
-  <g class="line line12">
-    <rect x="44" y="356" width="770" height="96" rx="6" fill="#161b22" stroke="#238636" stroke-width="1"/>
-    <text x="64" y="378" font-family="monospace" font-size="12" fill="#3fb950">💬 Posted comment on issue #42:</text>
-    <text x="64" y="400" font-family="monospace" font-size="11" fill="#c9d1d9">  ## Daily Repo Status — July 12</text>
-    <text x="64" y="420" font-family="monospace" font-size="11" fill="#c9d1d9">  7 open issues (3 high-priority) · 4 open PRs (1 stale) · CI passing</text>
-    <text x="64" y="440" font-family="monospace" font-size="11" fill="#8b949e">  Next: triage #301, #318, #327 · review PR #412 today</text>
+  <!-- Workflow complete -->
+  <g class="line line14">
+    <rect x="22" y="402" width="816" height="1" fill="#21262d"/>
+    <text x="30" y="424" font-family="monospace" font-size="13" fill="#3fb950">✅ Workflow completed (34s)</text>
   </g>
 
   <!-- Blinking cursor -->
-  <rect class="cursor" x="30" y="462" width="8" height="14" fill="#c9d1d9"/>
+  <rect class="cursor" x="30" y="440" width="8" height="14" fill="#c9d1d9"/>
 </svg>
