@@ -1,6 +1,6 @@
 # Side Quest: How MCP Tool Servers Work
 
-> _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then return to the main path._
+> _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._
 
 ## 📋 Before You Start
 
@@ -133,7 +133,7 @@ If the agent makes a tool call you didn't expect, revisit your task brief. Addin
 
 - [ ] You can explain what an MCP tool server is and what it provides to the agent
 - [ ] You understand how enabling MCP changes the agentic reasoning loop
-- [ ] I located the `tools:` block in my own workflow and identified the MCP server name
+- [ ] You located the `tools:` block in your workflow and identified the MCP server name
 - [ ] You know what each field in the `tools:` frontmatter block does
 - [ ] You know how to use toolsets to limit the agent's tool access
 - [ ] You know where to find MCP tool calls in the Actions log
