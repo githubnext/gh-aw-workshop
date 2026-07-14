@@ -79,6 +79,9 @@ permissions:
 Review all open issues, summarize the key themes, and post a short digest as a new issue.
 ```
 
+> [!NOTE]
+> `schedule: daily` is the fuzzy shorthand that `gh aw compile` converts into a standard Actions cron expression in the `.lock.yml` file. You never write raw cron syntax in an agentic workflow `.md` file.
+
 Look at the sample above and answer these two questions before continuing:
 
 1. Which part is the **task brief** (the plain-English instructions the agent reads)?
