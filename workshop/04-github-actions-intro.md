@@ -53,9 +53,42 @@ Traditional workflows execute a fixed script path. Agentic workflows still use t
 
 Step 5 is the optional transition if you want the conceptual delta before installing `gh-aw`: _what changes when a workflow can reason and choose next actions_.
 
+## Label a sample workflow
+
+Before reading on, label each highlighted part of the workflow below with its type:
+`trigger`, `job`, `runner`, `step`, or `action`.
+
+```yaml
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm test
+```
+
+- [ ] I labeled `on: [push]`
+- [ ] I labeled `test:` (the job name under `jobs:`)
+- [ ] I labeled `runs-on: ubuntu-latest`
+- [ ] I labeled `uses: actions/checkout@v4`
+- [ ] I labeled `run: npm test`
+
+<details>
+<summary>Reveal the labels</summary>
+
+- `on: [push]` → **trigger** (when this workflow runs)
+- `jobs: test:` → **job** (a group of steps that runs on one machine)
+- `runs-on: ubuntu-latest` → **runner** (the machine type GitHub provisions)
+- `uses: actions/checkout@v4` → **action** (a reusable step from the Actions marketplace)
+- `run: npm test` → **step** (a shell command run directly on the runner)
+
+</details>
+
 ## ✅ Checkpoint
 
 - [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
+- [ ] I labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
 - [ ] I know workflows live in `.github/workflows/`
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
