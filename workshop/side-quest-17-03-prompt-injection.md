@@ -2,7 +2,13 @@
 
 > _Optional: work through this security primer to understand how malicious content in repository data can try to redirect your agent — and why gh-aw's design limits the damage._
 
-When your agent reads live repository data — issue titles, PR bodies, commit messages, file contents — it is reading text written by other people. Some of that text might try to act like an instruction.
+## 📋 Before You Start
+
+- You have completed Step 9 (Reading Workflow Output) and understand what tool calls look like in the run log.
+
+---
+
+Your agent reads live repository data. That includes issue titles, PR bodies, commit messages, and file contents — all written by other people. Some of that text might try to act like an instruction.
 
 That is **prompt injection**: hiding a directive inside data so that the AI treats it as a command.
 
@@ -35,7 +41,7 @@ The agent's core goal comes from your task brief. Injected text in data surfaces
 
 ### The `permissions:` block enforces write boundaries
 
-Even if an injection convinces the agent to attempt an out-of-scope action, the declared permissions determine what the `GITHUB_TOKEN` can actually do. A workflow with:
+Suppose an injection convinces the agent to attempt an out-of-scope action. The declared permissions determine what the `GITHUB_TOKEN` can actually do. A workflow with:
 
 ```yaml
 ---
@@ -49,9 +55,18 @@ cannot write to issues, open pull requests, or push commits — regardless of wh
 
 Keep your `permissions:` block minimal. Request only what your workflow genuinely needs.
 
+> **🏃 Try it:** Open your `daily-status.md` workflow file and look at the `permissions:` block in the frontmatter. Which key would you need to change — and to what value — if your workflow needed to create issues?
+>
+> <details>
+> <summary>Hint</summary>
+>
+> Change `issues: read` to `issues: write`.
+>
+> </details>
+
 ### `safe-outputs` constraints limit available write operations
 
-gh-aw's `safe-outputs` setting in frontmatter limits which write operations the agent can perform at all. If `create-issue` is not in the allowed output set, an injected instruction to create an issue has no execution path — the tool call simply does not exist from the agent's perspective.
+gh-aw's `safe-outputs` setting in frontmatter limits which write operations the agent can perform at all. If `create-issue` is not in the allowed output set, the tool call simply does not exist from the agent's perspective. An injected instruction to create an issue has no execution path.
 
 Example frontmatter that restricts the agent to read-only operations plus issue creation:
 
@@ -65,7 +80,16 @@ safe-outputs:
 ---
 ```
 
-An injection asking the agent to push a commit or delete a file will fail because those operations are not available.
+Suppose an injection asks the agent to push a commit or delete a file. Those operations are not listed under `safe-outputs:`, so the attempt fails immediately.
+
+> **🏃 Try it:** Look at the `safe-outputs:` key in your `daily-status.md` frontmatter. List two write operations your workflow **cannot** perform given the current configuration. Verify your answer by checking which operations are _not_ listed there.
+>
+> <details>
+> <summary>Hint</summary>
+>
+> Any write operation not listed under `safe-outputs:` — such as `push-commit` or `delete-file` — is unavailable to the agent.
+>
+> </details>
 
 ---
 
@@ -97,6 +121,8 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 - [ ] You can explain why the task brief is the primary instruction source in gh-aw
 - [ ] You can list three gh-aw design features that limit the impact of a prompt injection
 - [ ] You know how to use `permissions:` and `safe-outputs` to reduce your workflow's attack surface
+- [ ] You can identify which `permissions:` key controls write access for a given resource type
+- [ ] You can explain how the `safe-outputs:` key determines what write operations are available to the agent
 
 ---
 
