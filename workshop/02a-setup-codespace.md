@@ -1,11 +1,10 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
 > [!IMPORTANT]
-> **Copilot app, GitHub Mobile, or prefer the GitHub web UI with no terminal?**
-> Skip this entire setup step and go directly to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
-> You do not need a terminal for the rest of this workshop on that path.
-
-**New to terminals, but want compiler feedback?** A Codespace gives you a browser-based terminal with the tools you need and no local installation.
+> **Choose your path:**
+> - 🌐 **Browser / Copilot app / Mobile** → [skip to Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+> - ☁️ **Codespace** → ✅ continue below
+> - 💻 **Local terminal** → [switch to Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 
 ## Before You Start
 
@@ -14,15 +13,11 @@ Make sure you have:
 - A GitHub account (free tier or higher)
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
 
-## Which path is right for me?
-
-**Before you start: How do you plan to work through this workshop?** Choose the option that matches how you work:
-
-- 🌐 **Browser / Copilot app / Mobile** — I'll use the GitHub web UI, Copilot app, or GitHub Mobile with no terminal → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-- ☁️ **Codespace** — I want a browser-based terminal with no local installs → ✅ you're in the right place, continue below
-- 💻 **Local terminal** — I want to use my own machine and tools → switch to [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
-
-_A Codespace gives you a full development environment in your browser — no installs, no version conflicts, just you and the workshop._
+| Path | Best for | Action |
+|------|----------|--------|
+| 🌐 Browser / Copilot app / Mobile | No terminal; web UI or mobile preferred | [Skip to Step 3b](03b-create-your-repo-ui.md) |
+| ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
+| 💻 Local terminal | Your own machine and tools | [Switch to Adventure B](02b-setup-local.md) |
 
 ## 🎯 What You'll Do
 
