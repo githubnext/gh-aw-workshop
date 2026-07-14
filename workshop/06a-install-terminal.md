@@ -63,7 +63,7 @@ Before you author your first workflow, initialize and push the generated skill f
 
 ```bash
 gh aw init
-git add .github/ .vscode/
+git add .
 git commit -m "Initialize agentic workflow skills"
 git push
 ```
