@@ -70,7 +70,7 @@ on:
 
 ## Section 3 — Permissions
 
-Add the minimum permissions the workflow needs. `copilot-requests: write` is required by every agentic workflow; the remaining entries are read-only scopes for the data the agent reads.
+Add the minimum permissions the workflow needs. `copilot-requests: write` is required by every agentic workflow; the remaining entries are read-only. Write access for issue comments is declared via `safe-outputs` in Section 5.
 
 ```yaml
 permissions:
@@ -87,7 +87,7 @@ permissions:
 
 ## Section 4 — Tools
 
-The `tools` block enables GitHub API access scoped to the `permissions` above (see [Side Quest: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) for details).
+The `tools` block enables GitHub API access. `mode: gh-proxy` routes all API calls through a controlled proxy that enforces only the scopes declared in `permissions` above (see [Side Quest: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) for details).
 
 ```yaml
 tools:
@@ -102,7 +102,7 @@ tools:
 
 ## Section 5 — Write guardrail
 
-`safe-outputs` declares the only write action allowed: one issue comment per run.
+`safe-outputs` declares the only write action allowed: one issue comment per run. Any other write actions the agent attempts are blocked.
 
 ```yaml
 safe-outputs:
