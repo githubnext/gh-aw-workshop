@@ -1,7 +1,7 @@
 ---
 emoji: 📦
 name: Manual SemVer Release
-description: Creates a GitHub release from the current ref by bumping patch, minor, or major and generating an AI-written change summary.
+description: Creates a GitHub release from the current ref by bumping patch, minor, or major and generating AI-polished release notes from a deterministic change list.
 on:
   workflow_dispatch:
     inputs:
@@ -41,28 +41,126 @@ steps:
           sha: $sha,
           bump: $bump
         }' > /tmp/gh-aw/data/release-trigger.json
+  - name: Compute release plan
+    env:
+      BUMP: ${{ github.event.inputs.bump }}
+      TARGET_SHA: ${{ github.sha }}
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data
+      git fetch --force --tags origin
+
+      python3 <<'PY'
+      import json
+      import os
+      import pathlib
+      import re
+      import subprocess
+
+      plan_path = pathlib.Path("/tmp/gh-aw/data/release-plan.json")
+      description_path = pathlib.Path("/tmp/gh-aw/data/release-description.md")
+      bump = os.environ["BUMP"]
+      target = os.environ["TARGET_SHA"]
+
+      def run(*args):
+          return subprocess.check_output(args, text=True).strip()
+
+      def run_lines(*args):
+          text = run(*args)
+          return [line for line in text.splitlines() if line.strip()]
+
+      tags = run_lines("git", "tag", "--list")
+      stable = {}
+      for tag in tags:
+          match = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)", tag)
+          if not match:
+              continue
+          version = tuple(int(part) for part in match.groups())
+          stable.setdefault(version, []).append(tag)
+
+      previous_tag = None
+      previous_tag_display = "start"
+      base_version = (0, 0, 0)
+
+      if stable:
+          version = max(stable)
+          candidates = sorted(stable[version], key=lambda tag: (not tag.startswith("v"), tag))
+          previous_tag = candidates[0]
+          previous_tag_display = f"v{version[0]}.{version[1]}.{version[2]}"
+          base_version = version
+
+      next_version = {
+          "patch": (base_version[0], base_version[1], base_version[2] + 1),
+          "minor": (base_version[0], base_version[1] + 1, 0),
+          "major": (base_version[0] + 1, 0, 0),
+      }[bump]
+      next_tag = f"v{next_version[0]}.{next_version[1]}.{next_version[2]}"
+
+      plan = {
+          "bump": bump,
+          "previous_tag": previous_tag,
+          "previous_tag_display": previous_tag_display,
+          "next_tag": next_tag,
+          "target": target,
+          "title": next_tag,
+          "has_changes": True,
+      }
+
+      if previous_tag:
+          merge_base = subprocess.run(
+              ["git", "merge-base", "--is-ancestor", previous_tag, target],
+              check=False,
+          )
+          if merge_base.returncode != 0:
+              plan["has_changes"] = False
+              plan["noop_reason"] = (
+                  f"Cannot safely compare {previous_tag_display} to {target} because the tag is not an ancestor of the target commit."
+              )
+              description_path.write_text(
+                  f"## Full change list since {previous_tag_display}\n- Unable to compute safely.\n"
+              )
+              plan_path.write_text(json.dumps(plan, indent=2))
+              raise SystemExit(0)
+          revspec = f"{previous_tag}..{target}"
+      else:
+          revspec = target
+
+      change_lines = run_lines(
+          "git",
+          "log",
+          "--first-parent",
+          "--reverse",
+          "--pretty=format:- %s (%h)",
+          revspec,
+      )
+
+      plan["commit_count"] = len(change_lines)
+      if previous_tag and not change_lines:
+          plan["has_changes"] = False
+          plan["noop_reason"] = f"No meaningful changes were found since {previous_tag_display}."
+
+      heading = (
+          f"## Full change list since {previous_tag_display}"
+          if previous_tag
+          else "## Full change list for the initial release"
+      )
+      if not change_lines:
+          change_lines = ["- No commits found in the selected release range."]
+
+      description_path.write_text(heading + "\n" + "\n".join(change_lines) + "\n")
+      plan_path.write_text(json.dumps(plan, indent=2))
+      PY
+
+      echo "=== Release plan ==="
+      cat /tmp/gh-aw/data/release-plan.json
+      echo
+      echo "=== Deterministic release description ==="
+      cat /tmp/gh-aw/data/release-description.md
 safe-outputs:
   jobs:
     create-release:
-      description: Create the GitHub tag and release from the version and notes computed by the agent.
+      description: Create the GitHub tag and release from the deterministic release plan and full change list prepared before the agent ran.
       output: Release created successfully.
-      inputs:
-        tag:
-          description: Semantic version tag to create, including the leading v.
-          required: true
-          type: string
-        title:
-          description: Release title shown in GitHub Releases.
-          required: true
-          type: string
-        body:
-          description: Markdown release notes body.
-          required: true
-          type: string
-        target:
-          description: Commit SHA or ref to tag. Defaults to the triggering SHA.
-          required: true
-          type: string
       runs-on: ubuntu-latest
       permissions:
         contents: write
@@ -72,6 +170,8 @@ safe-outputs:
           with:
             script: |
               const fs = require('fs');
+              const planPath = '/tmp/gh-aw/data/release-plan.json';
+              const descriptionPath = '/tmp/gh-aw/data/release-description.md';
               const outputPath = process.env.GH_AW_AGENT_OUTPUT;
 
               if (!outputPath) {
@@ -84,6 +184,16 @@ safe-outputs:
                 return;
               }
 
+              if (!fs.existsSync(planPath)) {
+                core.setFailed(`Release plan file not found: ${planPath}`);
+                return;
+              }
+
+              if (!fs.existsSync(descriptionPath)) {
+                core.setFailed(`Release description file not found: ${descriptionPath}`);
+                return;
+              }
+
               const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
               const items = (payload.items || []).filter(item => item.type === 'create_release');
 
@@ -92,13 +202,18 @@ safe-outputs:
                 return;
               }
 
-              const item = items[0];
+              const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
               const owner = context.repo.owner;
               const repo = context.repo.repo;
-              const tag = String(item.tag || '').trim();
-              const title = String(item.title || tag).trim();
-              const body = String(item.body || '').trim();
-              const target = String(item.target || context.sha).trim();
+              const tag = String(plan.next_tag || '').trim();
+              const title = String(plan.title || tag).trim();
+              const body = String(fs.readFileSync(descriptionPath, 'utf8') || '').trim();
+              const target = String(plan.target || context.sha).trim();
+
+              if (plan.has_changes !== true) {
+                core.setFailed(`Release plan is not publishable: ${plan.noop_reason || 'no meaningful changes'}`);
+                return;
+              }
 
               if (!/^v?\d+\.\d+\.\d+$/.test(tag)) {
                 core.setFailed(`Invalid semver tag: ${tag}`);
@@ -146,6 +261,80 @@ safe-outputs:
                 prerelease: false,
                 generate_release_notes: false,
               });
+    update-release:
+      needs: create-release
+      description: Replace the deterministic full change list with concise, human-friendly release notes.
+      output: Release notes updated successfully.
+      inputs:
+        body:
+          description: Markdown release notes body that rewrites the full change list into a concise human summary.
+          required: true
+          type: string
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+      steps:
+        - name: Update GitHub release notes
+          uses: actions/github-script@v7
+          with:
+            script: |
+              const fs = require('fs');
+              const planPath = '/tmp/gh-aw/data/release-plan.json';
+              const outputPath = process.env.GH_AW_AGENT_OUTPUT;
+
+              if (!outputPath) {
+                core.setFailed('GH_AW_AGENT_OUTPUT is not set');
+                return;
+              }
+
+              if (!fs.existsSync(outputPath)) {
+                core.setFailed(`GH_AW_AGENT_OUTPUT file not found: ${outputPath}`);
+                return;
+              }
+
+              if (!fs.existsSync(planPath)) {
+                core.setFailed(`Release plan file not found: ${planPath}`);
+                return;
+              }
+
+              const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+              const items = (payload.items || []).filter(item => item.type === 'update_release');
+
+              if (items.length !== 1) {
+                core.setFailed(`Expected exactly 1 update_release item, got ${items.length}`);
+                return;
+              }
+
+              const item = items[0];
+              const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
+              const owner = context.repo.owner;
+              const repo = context.repo.repo;
+              const body = String(item.body || '').trim();
+              const plannedTag = String(plan.next_tag || '').trim();
+
+              if (!/^v?\d+\.\d+\.\d+$/.test(plannedTag)) {
+                core.setFailed(`Invalid semver tag in release plan: ${plannedTag}`);
+                return;
+              }
+
+              if (!body) {
+                core.setFailed('Release body must not be empty');
+                return;
+              }
+
+              const tag = plannedTag.startsWith('v') ? plannedTag : `v${plannedTag}`;
+              const release = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+
+              await github.rest.repos.updateRelease({
+                owner,
+                repo,
+                release_id: release.data.id,
+                tag_name: tag,
+                name: String(plan.title || tag).trim(),
+                body,
+                draft: false,
+                prerelease: false,
+              });
 network:
   allowed:
     - defaults
@@ -156,22 +345,21 @@ network:
 
 ## Current Context
 
-Read `/tmp/gh-aw/data/release-trigger.json` for the repository, requested bump, triggering ref name, and triggering SHA.
+Read these files before you do anything else:
+
+- `/tmp/gh-aw/data/release-trigger.json` — repository, requested bump, triggering ref name, and triggering SHA
+- `/tmp/gh-aw/data/release-plan.json` — deterministic release metadata including the previous semver tag, next semver tag, target SHA, and whether the release is publishable
+- `/tmp/gh-aw/data/release-description.md` — the deterministic full change list that the workflow will publish unless you replace it with better release notes
 
 ## Task
 
 Create exactly one GitHub release for the current ref using semantic versioning.
 
-1. Inspect the repository's existing tags or releases and find the latest stable tag that matches `vMAJOR.MINOR.PATCH` or `MAJOR.MINOR.PATCH`.
-2. Ignore tags that do not match those stable patterns, including prerelease tags such as `v1.2.3-alpha` and non-version tags such as `release-2024`.
-3. If no prior semver tag exists, use `v0.0.0` as the baseline.
-4. Compute the next version from the `bump` value in `release-trigger.json`:
-   - `patch` → increment patch only
-   - `minor` → increment minor and reset patch to `0`
-   - `major` → increment major and reset minor and patch to `0`
-5. Use a leading `v` in the new tag name.
-6. Summarize the most important changes since the previous semver release tag you identified in step 1. Limit your history inspection to the commits and merged pull requests reachable after that tag. If there is no previous semver release, summarize the repository's purpose, key capabilities, and the most important content currently on the default branch.
-7. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
+1. Treat `/tmp/gh-aw/data/release-plan.json` as the source of truth for the version, title, target SHA, and previous release boundary.
+2. Treat `/tmp/gh-aw/data/release-description.md` as the deterministic full change list. Read it closely and rewrite it into concise, human-friendly release notes.
+3. Inspect commits, merged pull requests, and repository context as needed to improve the rewrite, but do not change the version or release target from the release plan.
+4. If there is no prior semver release, use the full change list plus the repository context to explain the initial release clearly and concisely.
+5. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
 
 ## Required Release Notes Format
 
@@ -185,19 +373,18 @@ Use this structure for the release body:
 - ...
 ```
 
-Call `noop` with a brief explanation instead of creating a duplicate release if:
+Call `noop` with a brief explanation instead of creating or updating a release if:
 
-- there are no meaningful code or content changes since the latest semver release
-- you cannot safely determine the next version
-- you can already see that the computed tag or release exists before attempting the safe output
+- `release-plan.json` says `has_changes` is false
+- you cannot verify the release plan safely
+- you can already see that the computed tag or release exists before attempting the safe outputs
 
 ## Safe Output
 
-When you are ready, call `create_release` exactly once with:
+When you are ready:
 
-- `tag` — the new version tag, including the leading `v`
-- `title` — usually the same as the tag
-- `body` — the markdown release notes
-- `target` — the commit SHA or ref to tag; use the triggering SHA from `release-trigger.json` unless you have a clear reason not to
+1. Call `create_release` exactly once. It will create the tag and release from the deterministic release plan and full change list.
+2. Call `update_release` exactly once with:
+   - `body` — the rewritten markdown release notes
 
 Do not create releases directly with `gh` or any write-capable GitHub tool from the main agent job.
