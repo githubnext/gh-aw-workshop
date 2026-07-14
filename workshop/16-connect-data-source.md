@@ -23,9 +23,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 3. The prompt references the output with `${{ steps.<id>.outputs.<key> }}`.
 
 > [!TIP]
-> If you're unfamiliar with `$GITHUB_OUTPUT`, the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) explains why `export` doesn't work across steps.
-> [!TIP]
-> If you're deciding which parts of this step should be fixed scripts versus AI reasoning, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
+> If you're unfamiliar with `$GITHUB_OUTPUT`, read [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md). If you're deciding which parts should be fixed scripts versus AI reasoning, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
 
 ### Fetch commit history
 

@@ -71,7 +71,7 @@ GitHub alert callouts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`
 ```
 
 - The `<summary>` line is always visible. Make it informative enough to stand alone — a learner should be able to decide whether to expand without reading the body.
-- If the callout has a **bold title** on the first line (e.g. `**Enterprise users only:**`), use that title as the `<summary>` and place the remainder of the content in the body.
+- If the callout has a **bold title** on the first line (e.g. `**Enterprise users: complete this check before continuing.**`), use that title as the `<summary>` and place the remainder of the content in the body.
 - Keep the `>` blockquote prefix on every line including blank separator lines (use `>` on its own for blank lines inside the adornment).
 - Do **not** use `<details open>` — the collapsed default enforces progressive disclosure.
 
