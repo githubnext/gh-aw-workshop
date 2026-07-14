@@ -1,9 +1,7 @@
 # Step 6c: GitHub UI Path — No Installation Needed
 
 > [!NOTE]
-> <details>
-> <summary>Changed your mind and want a terminal? Switch to [Step 6a: Codespace Terminal](06a-install-terminal.md) or [Step 6b: Local Terminal](06b-install-local.md).</summary>
-> </details>
+> Changed your mind and want a terminal? Switch to [Step 6a: Codespace Terminal](06a-install-terminal.md) or [Step 6b: Local Terminal](06b-install-local.md).
 
 ## 🎯 What You'll Do
 

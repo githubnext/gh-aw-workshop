@@ -3,9 +3,7 @@
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
 
 > [!NOTE]
-> <details>
-> <summary>Want to work without a terminal? Switch to the [GitHub UI path](07b-your-first-workflow-ui.md).</summary>
-> </details>
+> Want to work without a terminal? Switch to the [GitHub UI path](07b-your-first-workflow-ui.md).
 
 ## 🎯 What You'll Do
 
@@ -49,9 +47,7 @@ Open `.github/workflows/hello-agent.md` in your editor.
 </details>
 
 > [!IMPORTANT]
-> <details>
-> <summary>This `.md` file is **not** the workflow GitHub Actions executes. You write the goal in Markdown; `gh aw compile` generates the `.lock.yml` file that Actions actually runs.</summary>
-> </details>
+> This `.md` file is **not** the workflow GitHub Actions executes. You write the goal in Markdown; `gh aw compile` generates the `.lock.yml` file that Actions actually runs.
 
 ### Add the starter frontmatter
 

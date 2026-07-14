@@ -28,9 +28,7 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 3. Copy the key value — it starts with `sk-ant-`.
 
 > [!NOTE]
-> <details>
-> <summary>Anthropic only shows the full key once, and usage is billed per token. Save the value before closing the dialog, then review the [Anthropic pricing page](https://www.anthropic.com/pricing) and set a usage limit if you want a spending guardrail.</summary>
-> </details>
+> Anthropic only shows the full key once, and usage is billed per token. Save the value before closing the dialog, then review the [Anthropic pricing page](https://www.anthropic.com/pricing) and set a usage limit if you want a spending guardrail.
 
 ---
 
@@ -43,9 +41,7 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 5. Click **Add secret**.
 
 > [!TIP]
-> <details>
-> <summary>Secret names must use only uppercase letters, digits, and underscores. `ANTHROPIC_API_KEY` is the exact name the `claude` engine looks for — do not rename it.</summary>
-> </details>
+> Secret names must use only uppercase letters, digits, and underscores. `ANTHROPIC_API_KEY` is the exact name the `claude` engine looks for — do not rename it.
 
 ---
 

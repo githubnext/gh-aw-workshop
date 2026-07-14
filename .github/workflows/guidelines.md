@@ -32,11 +32,25 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Do **not** number Markdown headers inside a file. Use descriptive headings such as `### Open the Codespace`, not `### 2. Open the Codespace`.
 - Keep ordering in ordered lists, tables, filenames, and checkpoint lists instead of in the heading text itself.
 
-## Alert callouts: always use progressive disclosure with `<details>`
+## Alert callouts: use `<details>` only for multi-line content
 
-All GitHub alert callouts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`) **must** wrap their content in a `<details>` element nested inside the adornment. This keeps the page scannable by default and reveals supplementary information only when the learner needs it.
+GitHub alert callouts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`) follow two patterns depending on how much content the callout contains.
 
-### Pattern
+**Single-line callout:** place the text directly in the blockquote — no `<details>` wrapper.
+
+**Multi-line callout:** wrap the content in a `<details>` element so the page stays scannable by default and reveals supplementary information only when the learner expands it.
+
+> [!IMPORTANT]
+> Never put all content inside a `<summary>` with an empty `<details>` body. That creates a broken disclosure widget — the learner can click the expand triangle but nothing more appears.
+
+### Pattern — single-line
+
+```markdown
+> [!TYPE]
+> Single informative sentence that stands on its own.
+```
+
+### Pattern — multi-line
 
 ```markdown
 > [!TYPE]
@@ -51,19 +65,16 @@ All GitHub alert callouts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNI
 
 - The `<summary>` line is always visible. Make it informative enough to stand alone — a learner should be able to decide whether to expand without reading the body.
 - If the callout has a **bold title** on the first line (e.g. `**Enterprise users only:**`), use that title as the `<summary>` and place the remainder of the content in the body.
-- If the callout is a single sentence with no additional body, place that sentence in the `<summary>` and omit the body (`</details>` immediately follows `</summary>`).
 - Keep the `>` blockquote prefix on every line including blank separator lines (use `>` on its own for blank lines inside the adornment).
 - Do **not** use `<details open>` — the collapsed default enforces progressive disclosure.
 
 ### Examples
 
-Single-line callout (summary only):
+Single-line callout (plain text, no `<details>`):
 
 ```markdown
 > [!TIP]
-> <details>
-> <summary>**Already know GitHub Actions?** Check the three boxes below and skip ahead.</summary>
-> </details>
+> **Already know GitHub Actions?** Check the three boxes below and skip ahead.
 ```
 
 Multi-line callout (summary + body):

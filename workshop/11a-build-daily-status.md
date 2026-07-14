@@ -31,9 +31,7 @@ safe-outputs:
 The **frontmatter** (between the `---` fences) declares _when_ the workflow runs (`on: schedule: daily`) and _what write actions_ the agent may take (`safe-outputs`). The **Markdown body** below the closing `---` is the task brief — plain-English instructions the AI agent reads each time it runs. Keeping this structure in mind as you follow any path below will make each section feel familiar rather than arbitrary.
 
 > [!TIP]
-> <details>
-> <summary>Refer back to the brief you wrote in Step 10a as you build. Each component of your design maps directly to a section of this skeleton.</summary>
-> </details>
+> Refer back to the brief you wrote in Step 10a as you build. Each component of your design maps directly to a section of this skeleton.
 
 ## Choose Your Path
 

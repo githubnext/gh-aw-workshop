@@ -3,9 +3,7 @@
 **Already familiar with GitHub Actions and LLM agent concepts?** [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
 > [!NOTE]
-> <details>
-> <summary>On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.</summary>
-> </details>
+> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
 
 ## 📋 Before You Start
 
@@ -98,9 +96,7 @@ Before you reveal the answer, mark the statements you can explain:
 </details>
 
 > [!NOTE]
-> <details>
-> <summary>A brand-new repo won't have any workflows yet — the **Actions** tab will show a "Getting started" page. That's expected at this stage. You'll create your first workflow in [Step 7: Your First Workflow](07-your-first-workflow.md).</summary>
-> </details>
+> A brand-new repo won't have any workflows yet — the **Actions** tab will show a "Getting started" page. That's expected at this stage. You'll create your first workflow in [Step 7: Your First Workflow](07-your-first-workflow.md).
 
 ## ✅ Checkpoint
 

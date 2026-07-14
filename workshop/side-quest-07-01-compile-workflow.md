@@ -19,9 +19,7 @@ gh aw compile
 If it succeeds, you should see a green success message and an updated `.lock.yml` file beside your source file.
 
 > [!NOTE]
-> <details>
-> <summary>`gh aw compile` checks file structure, not whether the agent's reasoning or final output is good. You still test the workflow separately after it compiles cleanly.</summary>
-> </details>
+> `gh aw compile` checks file structure, not whether the agent's reasoning or final output is good. You still test the workflow separately after it compiles cleanly.
 
 ## Use `--validate` for quick checkpoints
 
@@ -44,9 +42,7 @@ gh aw compile --watch
 Each save triggers another compile, so you get immediate feedback instead of discovering YAML mistakes later.
 
 > [!TIP]
-> <details>
-> <summary>For the fastest feedback loop, keep `--watch` running in one terminal while you edit in another.</summary>
-> </details>
+> For the fastest feedback loop, keep `--watch` running in one terminal while you edit in another.
 
 ## How to read a compile error
 

@@ -38,9 +38,7 @@ This step checks that all the tools and accounts you need are in place before yo
 <!-- -->
 
 > [!TIP]
-> <details>
-> <summary>**Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)</summary>
-> </details>
+> **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)
 
 ## ✅ Required pre-flight checks
 

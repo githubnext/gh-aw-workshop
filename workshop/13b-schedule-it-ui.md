@@ -1,9 +1,7 @@
 # Schedule It to Run Every Day — GitHub UI Path
 
 > [!NOTE]
-> <details>
-> <summary>Want to compile before committing? Switch to the [Terminal path](13a-schedule-it-terminal.md).</summary>
-> </details>
+> Want to compile before committing? Switch to the [Terminal path](13a-schedule-it-terminal.md).
 
 ## 🎯 What You'll Do
 
@@ -39,16 +37,12 @@ You'll update the fuzzy schedule expression in the GitHub web editor, commit it,
 Keep `workflow_dispatch` so you can still run the workflow on demand.
 
 > [!NOTE]
-> <details>
-> <summary>The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the change and reports syntax errors in the run log.</summary>
-> </details>
+> The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the change and reports syntax errors in the run log.
 
 <!-- Separate adjacent callouts -->
 
 > [!TIP]
-> <details>
-> <summary>See [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) for more cadence options.</summary>
-> </details>
+> See [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) for more cadence options.
 
 ## Confirm the schedule
 

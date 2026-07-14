@@ -37,9 +37,7 @@ In gh-aw, the workflow's Markdown task brief is compiled into the agent's instru
 The agent's core goal comes from your task brief. Injected text in data surfaces competes with that goal rather than replacing it.
 
 > [!NOTE]
-> <details>
-> <summary>This does not make injection impossible — a sufficiently persuasive injection in a data surface can still influence output. But the task brief sets a baseline the agent returns to.</summary>
-> </details>
+> This does not make injection impossible — a sufficiently persuasive injection in a data surface can still influence output. But the task brief sets a baseline the agent returns to.
 
 ### The `permissions:` block enforces write boundaries
 

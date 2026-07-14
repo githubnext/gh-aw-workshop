@@ -117,9 +117,7 @@ permissions:
 - [ ] You understand why `copilot-requests: write` is required
 
 > [!TIP]
-> <details>
-> <summary>Bookmark this page as a quick reference card whenever you write new agentic workflow frontmatter.</summary>
-> </details>
+> Bookmark this page as a quick reference card whenever you write new agentic workflow frontmatter.
 
 ---
 

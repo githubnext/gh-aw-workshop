@@ -23,9 +23,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 3. The prompt references the output with `${{ steps.<id>.outputs.<key> }}`.
 
 > [!TIP]
-> <details>
-> <summary>If you're unfamiliar with `$GITHUB_OUTPUT`, the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) explains why `export` doesn't work across steps.</summary>
-> </details>
+> If you're unfamiliar with `$GITHUB_OUTPUT`, the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) explains why `export` doesn't work across steps.
 
 ### Fetch commit history
 
@@ -119,9 +117,7 @@ Open the **Actions** tab and verify the new steps appear and the AI summary ment
 ![Actions run showing the fetch-issues step and updated summary](images/16-data-source-run.svg)
 
 > [!WARNING]
-> <details>
-> <summary>If your repository has no open issues, the AI will say so — that's expected. Create a test issue to see the integration in action.</summary>
-> </details>
+> If your repository has no open issues, the AI will say so — that's expected. Create a test issue to see the integration in action.
 
 ### Try other data sources
 
@@ -148,9 +144,7 @@ Once you're comfortable with this pattern, the same technique works for:
 **Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
 
 > [!TIP]
-> <details>
-> <summary>Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit. Learn how crafted issue or PR content can attempt to exfiltrate your `GITHUB_TOKEN` — and how gh-aw stops it — in the optional [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).</summary>
-> </details>
+> Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit. Learn how crafted issue or PR content can attempt to exfiltrate your `GITHUB_TOKEN` — and how gh-aw stops it — in the optional [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
 
 ## 📚 See Also
 

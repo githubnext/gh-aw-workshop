@@ -55,9 +55,7 @@ on:
 | `workflow_dispatch: {}` | Adds a **Run workflow** button in the GitHub Actions UI. The `{}` means no custom inputs are required. |
 
 > [!TIP]
-> <details>
-> <summary>Keep `workflow_dispatch` even after going to production — it lets you re-run the report on demand without changing the schedule.</summary>
-> </details>
+> Keep `workflow_dispatch` even after going to production — it lets you re-run the report on demand without changing the schedule.
 
 **✏️ Try it:** Add both trigger keys to your draft file and save.
 
@@ -83,9 +81,7 @@ permissions:
 The five entries above cover reading repository content, issues, pull requests, and workflow runs, plus the `copilot-requests: write` scope that the Copilot engine requires to authenticate with `${{ github.token }}`. Full definitions for each field are in [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md).
 
 > [!NOTE]
-> <details>
-> <summary>There is no `issues: write` here. Write access is handled by `safe-outputs` — covered in [Part B](side-quest-11-08-frontmatter-tools-outputs.md).</summary>
-> </details>
+> There is no `issues: write` here. Write access is handled by `safe-outputs` — covered in [Part B](side-quest-11-08-frontmatter-tools-outputs.md).
 
 **✏️ Try it:** Add the `permissions:` block to your draft. Verify that `copilot-requests: write` is included.
 

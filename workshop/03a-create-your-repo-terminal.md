@@ -12,16 +12,12 @@ You'll create your `my-agentic-workflows` repository, clone it into your working
 - You have a GitHub account and are signed in
 
 > [!NOTE]
-> <details>
-> <summary>Want to work without a terminal? Switch to the [GitHub UI path](03b-create-your-repo-ui.md).</summary>
-> </details>
+> Want to work without a terminal? Switch to the [GitHub UI path](03b-create-your-repo-ui.md).
 
 <!-- Separate adjacent callouts -->
 
 > [!NOTE]
-> <details>
-> <summary>**Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.</summary>
-> </details>
+> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
 
 ## Steps
 
@@ -38,9 +34,7 @@ If you're using a local terminal:
 5. Click **Create repository**.
 
 > [!NOTE]
-> <details>
-> <summary>Adding a README avoids an empty-repository setup edge case and gives you something to clone right away.</summary>
-> </details>
+> Adding a README avoids an empty-repository setup edge case and gives you something to clone right away.
 
 ### Open your practice repository
 
@@ -49,9 +43,7 @@ Open `https://github.com/<your-username>/my-agentic-workflows` in your browser.
 Replace `<your-username>` with your actual GitHub username.
 
 > [!NOTE]
-> <details>
-> <summary>The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.</summary>
-> </details>
+> The repository must be **public** for GitHub Actions to run for free on a personal account. If you use a private repository, Actions minutes will count against your monthly allowance.
 
 ### Confirm the repository directory
 
@@ -74,9 +66,7 @@ cd my-agentic-workflows
 ```
 
 > [!TIP]
-> <details>
-> <summary>Remaining steps that use the terminal assume your shell is inside the `my-agentic-workflows` directory. Keep this terminal open — you'll return to it throughout the workshop.</summary>
-> </details>
+> Remaining steps that use the terminal assume your shell is inside the `my-agentic-workflows` directory. Keep this terminal open — you'll return to it throughout the workshop.
 
 ### Confirm GitHub Actions is enabled
 
@@ -93,9 +83,7 @@ You should see a message like _"Get started with GitHub Actions"_ — that means
 ![Actions tab with getting-started message](images/03-actions-tab.svg)
 
 > [!NOTE]
-> <details>
-> <summary>GitHub Actions is enabled by default for all new public repositories. If you see a prompt to enable it, click the button to turn it on.</summary>
-> </details>
+> GitHub Actions is enabled by default for all new public repositories. If you see a prompt to enable it, click the button to turn it on.
 
 ### Add a .gitignore (optional but tidy)
 
@@ -117,9 +105,7 @@ gh repo view --json name,owner,url
 You should see your username as `owner`, `my-agentic-workflows` as `name`, and a valid GitHub URL.
 
 > [!TIP]
-> <details>
-> <summary>Bookmark the repository URL — you'll visit it often to watch workflows run.</summary>
-> </details>
+> Bookmark the repository URL — you'll visit it often to watch workflows run.
 
 ## ✅ Checkpoint
 

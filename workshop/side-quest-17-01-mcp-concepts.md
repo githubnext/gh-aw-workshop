@@ -77,9 +77,7 @@ tools:
 | `toolsets: [default]` | Specifies which groups of tools to expose. `default` includes issues, PRs, commits, and Actions. |
 
 > [!NOTE]
-> <details>
-> <summary>You can have multiple entries under `tools:` if you want to connect more than one MCP server. Each entry starts a separate server process.</summary>
-> </details>
+> You can have multiple entries under `tools:` if you want to connect more than one MCP server. Each entry starts a separate server process.
 
 If you're working locally, run this command to confirm your `tools:` block has no schema errors:
 

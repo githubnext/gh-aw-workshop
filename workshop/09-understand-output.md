@@ -89,9 +89,7 @@ Key things to check:
 2. **Safe outputs used** — this line shows you whether the agent hit its write limit. A `1 / 1` result means it used its one allowed write. A `0 / 1` means it either had nothing to write or was blocked.
 
 > [!NOTE]
-> <details>
-> <summary>Not all runs produce a summary section. If the run fails mid-way, the summary may be empty or missing. In that case, the live log is your best diagnostic tool.</summary>
-> </details>
+> Not all runs produce a summary section. If the run fails mid-way, the summary may be empty or missing. In that case, the live log is your best diagnostic tool.
 
 ### Exercise: Compare prediction vs. actual summary
 
@@ -112,9 +110,7 @@ The safe-output record is the ground truth — what was actually written to GitH
 For a full walkthrough of how to audit safe-output records and trace mismatches back to their cause, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
 > [!WARNING]
-> <details>
-> <summary>Never edit a comment the agent created just to fix a typo. Instead, ask the `agentic-workflows` skill to fix the workflow instructions and re-run. Editing manually means the next run will post a second comment — now you have two.</summary>
-> </details>
+> Never edit a comment the agent created just to fix a typo. Instead, ask the `agentic-workflows` skill to fix the workflow instructions and re-run. Editing manually means the next run will post a second comment — now you have two.
 
 ### Exercise: Verify one safe output end-to-end
 
@@ -138,9 +134,7 @@ Timestamp aligns with run? yes / no
 - [ ] If summary and GitHub state disagree, trust the safe-output record first.
 
 > [!TIP]
-> <details>
-> <summary>Want a deeper walkthrough? [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) expands each pattern with concrete log examples and step-by-step fixes.</summary>
-> </details>
+> Want a deeper walkthrough? [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) expands each pattern with concrete log examples and step-by-step fixes.
 
 ---
 

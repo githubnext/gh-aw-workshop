@@ -93,9 +93,7 @@ have already reported on. On each run:
 ```
 
 > [!TIP]
-> <details>
-> <summary>Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.</summary>
-> </details>
+> Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
 
 ### Compile and validate
 
@@ -108,9 +106,7 @@ gh aw compile --validate
 Fix any errors before pushing. Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
 
 > [!TIP]
-> <details>
-> <summary>Use `--watch` to recompile automatically as you edit: `gh aw compile --watch`</summary>
-> </details>
+> Use `--watch` to recompile automatically as you edit: `gh aw compile --watch`
 
 ### Push your change and initialize the cache
 
@@ -138,9 +134,7 @@ git push
 3. Confirm the run reports only the new issue.
 
 > [!TIP]
-> <details>
-> <summary>Open the run log for the second run and look for a line where the agent reads its memory. You will see the stored issue numbers that it filters against — that's your workflow remembering across runs.</summary>
-> </details>
+> Open the run log for the second run and look for a line where the agent reads its memory. You will see the stored issue numbers that it filters against — that's your workflow remembering across runs.
 
 ## ✅ Checkpoint
 

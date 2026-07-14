@@ -1,9 +1,7 @@
 # Step 7b: Write Your First Agentic Workflow — GitHub UI Path
 
 > [!NOTE]
-> <details>
-> <summary>Want compiler feedback while you work? Switch to the [Terminal path](07a-your-first-workflow-terminal.md).</summary>
-> </details>
+> Want compiler feedback while you work? Switch to the [Terminal path](07a-your-first-workflow-terminal.md).
 
 ## 🎯 What You'll Do
 
@@ -56,16 +54,12 @@ An agentic workflow source file is a Markdown task brief with YAML frontmatter. 
 ![Workflow file committed in the GitHub UI](images/07-workflow-committed.svg)
 
 > [!NOTE]
-> <details>
-> <summary>This path skips `gh aw compile` checkpoints. GitHub Actions compiles the workflow when you run it in Step 8 and shows any errors in the run log.</summary>
-> </details>
+> This path skips `gh aw compile` checkpoints. GitHub Actions compiles the workflow when you run it in Step 8 and shows any errors in the run log.
 
 <!-- Separate adjacent callouts -->
 
 > [!TIP]
-> <details>
-> <summary>You can ask Copilot to create or revise this file with the `agentic-workflows` skill. Review the proposed diff before you approve it.</summary>
-> </details>
+> You can ask Copilot to create or revise this file with the `agentic-workflows` skill. Review the proposed diff before you approve it.
 
 ## Verify Copilot access
 

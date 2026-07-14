@@ -29,9 +29,7 @@ You do **not** need to write cron by hand for common cases. In `gh-aw`, you can 
 | `schedule: weekly` | `20 4 * * 5` | You want a low-noise roundup or audit-style report. |
 
 > [!TIP]
-> <details>
-> <summary>`gh-aw` **scatters** schedules across different minutes or hours so not every workflow runs at the same time. Your compiled cron value may differ from the examples above — treat your own lock file as the source of truth.</summary>
-> </details>
+> `gh-aw` **scatters** schedules across different minutes or hours so not every workflow runs at the same time. Your compiled cron value may differ from the examples above — treat your own lock file as the source of truth.
 
 ## Verify the compiled cron after `gh aw compile`
 
