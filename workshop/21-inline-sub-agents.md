@@ -18,7 +18,7 @@
 
 ## 🎯 What You'll Do
 
-You'll add an inline sub-agent to your daily-status workflow so the main agent can stay focused on planning and final writing while a smaller sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
+You'll add an inline sub-agent to your daily-status workflow so the main agent can stay focused on planning and final writing while a focused sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
 
 ## 📋 Before You Start
 
@@ -26,11 +26,11 @@ You'll add an inline sub-agent to your daily-status workflow so the main agent c
 - You understand YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
-## Understand the main-agent and sub-agent split
+## Understand the main agent and sub-agent split
 
 When your workflow repeats the same small job for many items, keep the main agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
-A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading, then call that helper by name from the main workflow brief.
+A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading, and add a short frontmatter block if you want fields such as `description` or `model`, then call that helper by name from the main workflow brief.
 
 > 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Write it down — you'll use it in the next section.
 >
@@ -83,6 +83,8 @@ You produce a daily repository health digest.
 
 - Before: "Summarize all issues."
 - After: "For each issue, use the `issue-summarizer` agent."
+
+That pattern tells the main agent to loop over the items, collect one result from the sub-agent for each item, and then combine those results in the next step.
 
 ### Compile and check the result
 
