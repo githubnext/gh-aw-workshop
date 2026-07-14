@@ -45,10 +45,6 @@ steps:
           sha: $sha,
           bump: $bump
         }' > "$RELEASE_TRIGGER_PATH"
-  - name: Fetch release tags
-    run: |
-      set -euo pipefail
-      git fetch --force --tags origin
   - name: Compute release plan
     uses: actions/github-script@v7
     env:
@@ -69,7 +65,9 @@ steps:
           try {
             return execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
           } catch (error) {
-            const output = [error.stdout, error.stderr]
+            const stdout = typeof error === 'object' && error !== null && 'stdout' in error ? error.stdout : '';
+            const stderr = typeof error === 'object' && error !== null && 'stderr' in error ? error.stderr : '';
+            const output = [stdout, stderr]
               .map(value => value && String(value).trim())
               .filter(Boolean)
               .join('\n');
@@ -83,6 +81,7 @@ steps:
 
         fs.mkdirSync(path.dirname(planPath), { recursive: true });
         fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
+        runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
 
         const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
         const semverTags = new Map();
@@ -95,28 +94,34 @@ steps:
           return 0;
         };
         // Prefer the conventional v-prefixed form, then the lexicographically earliest equivalent tag.
-        const selectCanonicalTag = tags => [...tags].reduce((best, candidate) => {
-          if (!best) return candidate;
+        const selectCanonicalTag = tags => {
+          let best = null;
+          let bestPriority = Number.POSITIVE_INFINITY;
 
-          const bestPriority = best.startsWith('v') ? 0 : 1;
-          const candidatePriority = candidate.startsWith('v') ? 0 : 1;
-          if (candidatePriority !== bestPriority) {
-            return candidatePriority < bestPriority ? candidate : best;
+          for (const candidate of tags) {
+            const candidatePriority = candidate.startsWith('v') ? 0 : 1;
+            if (
+              best === null ||
+              candidatePriority < bestPriority ||
+              (candidatePriority === bestPriority && candidate.localeCompare(best) < 0)
+            ) {
+              best = candidate;
+              bestPriority = candidatePriority;
+            }
           }
 
-          return candidate.localeCompare(best) < 0 ? candidate : best;
-        }, null);
+          return best;
+        };
 
         for (const tag of runGitCommandLines('git', 'tag', '--list')) {
           const match = tag.match(semverPattern);
           if (!match) continue;
 
-          const version = match.slice(1).map(Number);
-          const key = version.join('.');
+          const key = match.slice(1).join('.');
           if (!semverTags.has(key)) {
-            semverTags.set(key, { version, tags: [] });
+            semverTags.set(key, []);
           }
-          semverTags.get(key).tags.push(tag);
+          semverTags.get(key).push(tag);
         }
 
         let previousTag = null;
@@ -124,16 +129,19 @@ steps:
         let baseVersion = [0, 0, 0];
 
         if (semverTags.size > 0) {
-          let latest = null;
-          for (const candidate of semverTags.values()) {
-            if (!latest || compareVersions(candidate.version, latest.version) > 0) {
-              latest = candidate;
+          let latestVersion = null;
+          let latestTags = [];
+          for (const [versionKey, tags] of semverTags.entries()) {
+            const version = versionKey.split('.').map(Number);
+            if (!latestVersion || compareVersions(version, latestVersion) > 0) {
+              latestVersion = version;
+              latestTags = tags;
             }
           }
 
-          previousTag = selectCanonicalTag(latest.tags);
-          previousTagDisplay = `v${latest.version.join('.')}`;
-          baseVersion = latest.version;
+          previousTag = selectCanonicalTag(latestTags);
+          previousTagDisplay = `v${latestVersion.join('.')}`;
+          baseVersion = latestVersion;
         }
 
         const nextVersion = {
