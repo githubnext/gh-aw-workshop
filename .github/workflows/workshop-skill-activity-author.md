@@ -98,6 +98,12 @@ Then:
 2. Identify the highest-value content gap, clarity issue, or learner experience improvement.
    Prefer fixing curriculum-flagged files over making other changes when a flagged
    file exists.
+   **Enterprise tie-break rule**: when two candidate improvements are of equal value by the
+   criteria above, prefer the one that better serves enterprise learners (GHES, GHEC, or
+   self-hosted runner users). This includes adding enterprise-specific guidance, clarifying
+   steps that behave differently in enterprise environments, or ensuring examples work in
+   both github.com and GHES contexts. See `.github/workflows/guidelines.md` under
+   "Enterprise user preference in design decisions" for the full policy.
 3. Make a single focused change set (for example: add one missing step file, improve one existing step, or update workshop navigation).
 4. Keep tone aligned with GitHub Skills: short, direct, supportive, and action-oriented.
 5. Keep content practical and learner-first, with clear outcomes and checkpoints.

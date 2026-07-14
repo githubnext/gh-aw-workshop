@@ -156,6 +156,7 @@ Determine the next most valuable node to add by considering:
 - **Add a new branch**: if a step would benefit from offering learners a choice (e.g. by environment, skill level, or goal), split it.
 - **Add a convergence**: if two or more previously diverged paths are ready to rejoin, write the convergence node.
 - **Introduce a new root branch**: if the current graph serves one learner persona well but ignores another (e.g. no path for advanced users), start a new branch from an existing node.
+- **Enterprise tie-break rule**: when two candidate nodes are of equal value by the criteria above, **prefer the one that better serves enterprise learners** (GHES, GHEC, self-hosted runners). Enterprise-relevant content — such as enterprise authentication, proxy configuration, self-hosted runner setup, or GHEC-specific workflow permissions — takes priority over non-enterprise content of comparable scope and impact. See `.github/workflows/guidelines.md` under "Enterprise user preference in design decisions" for the full policy.
 
 If `focus` is provided and non-empty (and not "status"), treat it as a hint that may suggest a specific branch, persona, or topic — but keep the graph coherent and connected.
 
