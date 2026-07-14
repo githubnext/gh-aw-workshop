@@ -48,6 +48,12 @@ For the daily status report:
 
 Write your own version. You can focus on a different repository section (e.g. pull requests only, or CI status only). **Keep it to one sentence.**
 
+Try it now — complete this sentence in your scratch file before expanding the details below:
+
+```
+Every day, I want the agent to _____________________________.
+```
+
 <details>
 <summary>Why one sentence?</summary>
 
@@ -69,6 +75,12 @@ What information does the agent need to produce the report? Think through each p
 - **Last commit** — message and when it was made
 
 Write these down as bullet points. If you're not sure whether a piece of data is available, add a `?` next to it — you can verify it later.
+
+Draft your own inputs list before reading on (add a `?` if you are not sure):
+
+- **___________** — ___________
+- **___________** — ___________
+- **___________** — ___________
 
 <details>
 <summary>How does the agent actually get this data?</summary>
@@ -98,6 +110,8 @@ Decide what the comment should look like. A consistent format makes the report e
 
 Adjust the emoji, wording, or sections to suit your taste. The agent will fill in the `{placeholders}` from real data.
 
+Copy the skeleton above into your scratch file and customise the section labels to match what you want to track before reading on.
+
 <details>
 <summary>Why a literal skeleton instead of a description?</summary>
 
@@ -122,6 +136,11 @@ Write your guardrails as a short bulleted list in plain English. You'll paste th
 > [!WARNING]
 > Skipping guardrails is the most common cause of runaway agents. One missing rule can result in the agent posting dozens of duplicate comments.
 
+Before reading on, check that your guardrail list covers both:
+
+- [ ] I have stated at least one thing the agent must NOT do.
+- [ ] I have stated the maximum number of writes per run.
+
 <details>
 <summary>Default guardrails for any agentic workflow</summary>
 
@@ -141,14 +160,14 @@ Start from this list for every new workflow and add workflow-specific rules on t
 
 ## Step 5: Review Your Brief
 
-Use this table as your acceptance criteria — both before you build and after the first run.
+Work through each row below. Tick the "Before you build" column as you complete each item — then return and fill in the "After the first run" column once the workflow has run.
 
 | Question | Before you build | After the first run |
 |----------|-----------------|---------------------|
-| What is the agent's one-sentence goal? | ✅ written | ✅ output matches? |
-| What data does it need? | ✅ listed | ✅ all data present? |
-| What does the output look like? | ✅ sketched | ✅ format matches? |
-| What rules should it follow? | ✅ written | ✅ no unexpected actions? |
+| What is the agent's one-sentence goal? | [ ] written | [ ] output matches? |
+| What data does it need? | [ ] listed | [ ] all data present? |
+| What does the output look like? | [ ] sketched | [ ] format matches? |
+| What rules should it follow? | [ ] written | [ ] no unexpected actions? |
 
 If any cell in the "before" column is blank, fill it in before moving on. If any "after" cell fails, the brief — not the agent — is the thing to fix.
 
