@@ -1,30 +1,38 @@
 # Adventure B: Set Up Your Local Terminal
 
 > [!CAUTION]
-> **Don't want to use a terminal? Skip here →** Using **GitHub Copilot app**, **GitHub Mobile**, or a **browser-only** setup? You are in the wrong place. Go directly to **[Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)** — no terminal required.
+> Don't want to use a terminal? Skip to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md) and stay browser-only.
 
 ## Which path is right for me?
 
-**Before you start: How do you plan to work through this workshop?** Choose the option that matches how you work:
+Choose the option that matches how you work:
 
-- 📱 **Mobile / Copilot app** — I'll use GitHub Mobile or the Copilot app with no terminal → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-- 🤖 **Copilot Cloud Agent (CCA)** — I'll work browser-only in CCA chat with no local install → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-- ☁️ **Codespace** — I want a browser-based terminal with no local installs → switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
-- 💻 **Local terminal** — I want to use my own machine and tools → ✅ you're in the right place, continue below
+- 📱 Mobile or Copilot app — skip this step and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+- 🤖 Copilot Cloud Agent — stay browser-only and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+- ☁️ Codespace — switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
+- 💻 Local terminal — you're in the right place, continue below
 
 ## 🧪 5-question terminal self-assessment
 
 Check each statement:
 
 - [ ] I have opened a terminal before.
-- [ ] I can run `pwd` (or `cd`) and understand what it shows.
+- [ ] I can tell which folder I am in and change folders in a terminal.
 - [ ] I can copy, paste, and run multi-line commands.
 - [ ] I know how to read command output and spot errors.
 - [ ] I feel comfortable troubleshooting local install or proxy issues.
 
-If any answer is **No**, switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
+If any answer is No, switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
+
+## Choose your operating system
+
+Pick one path now and use only that install section below:
+
+| macOS | Windows | Linux |
+| --- | --- | --- |
+| [macOS install instructions](#macos-quick-install) | [Windows install instructions](#windows-quick-install) | [Linux install instructions](#linux-quick-install) |
 
 ## 🎯 What You'll Do
 
@@ -42,47 +50,13 @@ If this is your first time in a terminal, use this legend while running each ste
 
 ![Annotated terminal screenshot showing prompt, command, and output](images/02b-terminal-command-annotated.svg)
 
-- **Prompt** = where you type
-- **Command** = exactly what to copy/paste from the code block
-- **Output** = what success or errors look like after pressing Enter
+- Prompt = where you type
+- Command = exactly what to copy/paste from the code block
+- Output = what success or errors look like after pressing Enter
 
 All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
-
-**Verify you are on the right path before continuing:**
-
-- [ ] I have a terminal application open on my machine (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
-- [ ] I am comfortable installing command-line tools locally
-
-### Pre-flight check your current `gh` state
-
-Run this before installing anything:
-
-```bash
-gh auth status && gh extension list
-```
-
-_What success looks like:_ the command runs without shell errors and shows your current login state plus any installed extensions.
-
-If the command fails with `gh: command not found`, continue to [Install the gh CLI](#install-the-gh-cli) below, then re-run this pre-flight check.
-
-Expected output includes one of these login states:
-
-```text
-✓ Logged in to github.com account <your-username>
-```
-
-or:
-
-```text
-You are not logged into any GitHub hosts. Run gh auth login to authenticate.
-```
-
-`gh extension list` can show existing extensions or no entries if you have none yet.
-
-> [!IMPORTANT]
-> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below. If you're blocked by SSO, proxy, or host-specific issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 ### Create your practice repository
 
@@ -90,7 +64,7 @@ You are not logged into any GitHub hosts. Run gh auth login to authenticate.
 2. Enter `my-agentic-workflows` for **Repository name**.
 3. Set **Visibility** to **Public**.
 4. Check **Add a README file**.
-5. Click **Create repository**.
+5. Select **Create repository**.
 
 ### Verify Git
 
@@ -104,9 +78,9 @@ _What success looks like:_ a line like `git version 2.x.x`.
 
 You should see `git version 2.x.x` or higher. If you see an error, download Git from [git-scm.com](https://git-scm.com) and re-run the check.
 
-### Install the gh CLI
+### Install the GitHub CLI
 
-The `gh` CLI is GitHub's official command-line tool. Check whether it's already installed:
+GitHub CLI is GitHub's official command-line tool, and you run it with the `gh` command. Check whether it's already installed:
 
 ```bash
 gh --version
@@ -116,9 +90,55 @@ gh --version
 
 _What success looks like:_ version details for `gh` are printed.
 
-If not installed, follow the official instructions for your platform at [cli.github.com](https://cli.github.com), then re-run `gh --version` to confirm.
+If the command works, continue to the authentication section. If it does not, run the quick install command for [macOS](#macos-quick-install), [Windows](#windows-quick-install), or [Linux](#linux-quick-install).
 
-### Authenticate the gh CLI
+#### macOS quick install
+
+```bash
+brew install gh
+```
+
+<details>
+<summary>Don't have Homebrew?</summary>
+
+If Homebrew is missing or blocked, use the macOS installer from [cli.github.com](https://cli.github.com). If Git was not found during [Verify Git](#verify-git), install it from [git-scm.com](https://git-scm.com) before continuing.
+
+</details>
+
+#### Windows quick install
+
+```powershell
+winget install --id GitHub.cli
+```
+
+<details>
+<summary>Don't have winget?</summary>
+
+- If `winget` is unavailable, use the Windows installer from [cli.github.com](https://cli.github.com).
+- If Git was not found during [Verify Git](#verify-git), install Git for Windows from [git-scm.com](https://git-scm.com).
+
+</details>
+
+#### Linux quick install
+
+```bash
+sudo apt update && sudo apt install gh -y
+```
+
+<details>
+<summary>Using a different package manager?</summary>
+
+- The quick install above is for Debian and Ubuntu.
+- For Fedora, Arch, or other package managers, use the Linux instructions at [cli.github.com](https://cli.github.com).
+- If Git was not found during [Verify Git](#verify-git), install it with your distro package manager before continuing.
+
+</details>
+
+Run `gh --version` again after installing to confirm it worked.
+
+If you're on GHES, GHEC, behind SSO, or behind a proxy, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md). If any install step is blocked by proxy, permissions, or host-specific setup issues, use [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
+
+### Authenticate the GitHub CLI
 
 ```bash
 gh auth login
@@ -128,14 +148,14 @@ gh auth login
 
 _What success looks like:_ interactive prompts complete and login succeeds.
 
-Choose **GitHub.com** and then **Login with a web browser**. A one-time code will appear in your terminal — copy it, open the URL shown, and paste the code when prompted.
+Choose GitHub.com and then Login with a web browser. A one-time code will appear in your terminal — copy it, open the URL shown, and paste the code when prompted.
 
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
 ### Clone your practice repository
 
-Replace `YOUR_USERNAME` with your GitHub username:
+Replace the placeholder with your GitHub username:
 
 ```bash
 gh repo clone YOUR_USERNAME/my-agentic-workflows
@@ -144,7 +164,7 @@ cd my-agentic-workflows
 
 ![Example success output after cloning and changing directories](images/02b-terminal-success-12-gh-repo-clone.svg)
 
-_What success looks like:_ clone finishes and `cd` returns you to a prompt inside `my-agentic-workflows`.
+_What success looks like:_ clone finishes and you return to a prompt inside your practice repository.
 
 ## 🛟 Troubleshooting
 
