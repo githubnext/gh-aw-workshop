@@ -10,7 +10,7 @@
 - You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
 - You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
 
-An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically.
+An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
@@ -20,7 +20,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 - **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
-- **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment: triage, summarization, and context-dependent decisions.
+- **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
 ## Classify these tasks
 
@@ -100,8 +100,6 @@ permissions:
 ```
 
 Both files live in `.github/workflows/`. Look at them and answer: which part of the `.md` is the **task brief**, and which part tells GitHub Actions **when** to run?
-
-For a side-by-side comparison with classic Actions, see [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md).
 
 ## ✅ Checkpoint
 
