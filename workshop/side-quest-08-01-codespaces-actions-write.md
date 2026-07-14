@@ -2,9 +2,20 @@
 
 > _Optional: use this guide if Step 8 fails in a Codespace, then return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)._
 
+## 📋 Before You Start
+
+This side quest applies to you if **both** of the following are true:
+
+- You are running `gh aw run` inside a GitHub Codespace (not a local environment).
+- You see an `actions:write` permission error (HTTP 403) in your terminal run log.
+
+If you are not in a Codespace or you do not see the 403 error, return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md) and use the GitHub Actions UI path instead.
+
+---
+
 ## 🎯 What You'll Do
 
-You'll identify the common Codespaces token error that blocks `gh aw run`, use the fastest recovery path, and optionally re-create your Codespace with the extra permissions needed for terminal-based workflow triggers.
+You'll identify the Codespaces token error that blocks `gh aw run` and use the fastest recovery path. Optionally, you can re-create your Codespace with the extra permissions needed for terminal-based workflow triggers.
 
 ---
 
@@ -28,7 +39,7 @@ Some versions of `gh aw` also show a follow-up message explaining that the defau
 
 ## Cause
 
-The default token inside a Codespace usually has enough access to work with your repository, but it may not have the workflow-trigger [permissions](https://github.github.com/gh-aw/reference/permissions/) that `gh aw run` needs. In practice, the missing permissions are usually `actions:write` and `workflows:write`.
+The default token inside a Codespace usually has enough access to work with your repository. However, it may not have the [permissions](https://github.github.com/gh-aw/reference/permissions/) that `gh aw run` needs. In practice, the missing permissions are usually `actions:write` and `workflows:write`.
 
 ---
 
@@ -42,7 +53,7 @@ This is the best path for the workshop because it works even when your Codespace
 
 ## Fix B (advanced): create a new Codespace with extra permissions
 
-If you want `gh aw run` to work from the terminal, add a `.devcontainer/devcontainer.json` file to **your practice repository**, commit it, and then create a brand-new Codespace from that updated repository.
+If you want `gh aw run` to work from the terminal, add a `.devcontainer/devcontainer.json` file to **your practice repository** and commit it. Then create a brand-new Codespace from that updated repository.
 
 ```json
 {
@@ -81,11 +92,10 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 ## ✅ Checkpoint
 
-- [ ] I know the exact error text that signals this Codespaces token problem
-- [ ] I understand why `gh aw run` can fail in a Codespace even when other GitHub commands work
-- [ ] I can use the GitHub Actions UI as the recommended path
-- [ ] I know how to create a new Codespace with `actions:write` and `workflows:write` if I want the advanced terminal path
-- [ ] I'm ready to return to Step 8
+- [ ] I can see `HTTP 403: Resource not accessible by integration` in my terminal when running `gh aw run hello-agent`
+- [ ] A new **Hello Agent** run appears in the **Actions** tab after I trigger it from the UI
+- [ ] If I used Fix B: running `gh aw run hello-agent` in my new Codespace completes without a 403 error and a new run appears in the **Actions** tab
+- [ ] I'm ready to return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
 ---
 
