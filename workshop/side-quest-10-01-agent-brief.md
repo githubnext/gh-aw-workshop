@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Build your brief in a scratch file with five short passes. By the end, you'll have a clearer daily status brief that you can paste into your workflow and reuse later.
+Build your brief in a scratch file with five short steps. By the end, you'll have a clearer daily status brief that you can paste into your workflow and reuse later.
 
 ## 📋 Before You Start
 
@@ -32,7 +32,7 @@ Use the same loop for every step: **write first, check your draft, then expand t
 Write one sentence in your scratch file.
 
 ```text
-Every day, I want the agent to [describe the daily action and result].
+Every day, I want the agent to [summarize open pull requests and post a health report as an issue comment].
 ```
 
 Quick check:
@@ -154,7 +154,7 @@ If you want a starter scaffold, paste this into your scratch file and fill in th
 
 ```md
 Goal:
-Every day, I want the agent to [describe the daily action and result].
+Every day, I want the agent to [summarize open pull requests and post a health report as an issue comment].
 
 Inputs:
 - [input]
