@@ -14,6 +14,17 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
+> [!NOTE]
+> **What does an agentic workflow look like in practice?**
+>
+> | If you use… | An agentic workflow looks like… |
+> |---|---|
+> | GitHub Actions UI / browser | A workflow run in the **Actions** tab that shows step-by-step Copilot reasoning and outputs |
+> | VS Code / Codespace terminal | A `gh aw run` command that prints live agent progress to your terminal |
+> | GitHub Copilot Chat (CCA) | A Copilot conversation that triggers, monitors, and summarizes a workflow for you |
+>
+> All three paths produce the same result: an automated, AI-powered workflow that runs on GitHub infrastructure.
+
 ## Three things to know
 
 ![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
