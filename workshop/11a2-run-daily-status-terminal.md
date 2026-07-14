@@ -6,17 +6,17 @@
 
 You'll compile and validate `daily-status.md` using `gh aw compile`, then trigger the workflow manually from the GitHub Actions UI and read the output report.
 
-## Before You Start
+## 📋 Before You Start
 
 - You've completed [Step 11a](11a-build-daily-status-terminal.md) and pushed `daily-status.md` to `main`
 
 ## Compile and validate
 
-Run a full compile-and-validate to confirm the workflow file is error-free:
-
 ```bash
 gh aw compile --validate
 ```
+
+Run a full compile-and-validate to confirm the workflow file is error-free:
 
 A successful run produces green output and writes a `.lock.yml` file next to your workflow file. That lock file is what GitHub Actions actually executes.
 
@@ -60,6 +60,8 @@ Repository looks healthy. The open PR from 3 days ago may need a review.
 If the run failed or the output looks wrong, see [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) for debugging guidance.
 
 ## Troubleshooting
+
+If your run succeeded, skip this table and continue to the next step.
 
 | Common issue | What you see | How to fix it |
 |---------|--------------|---------------|
