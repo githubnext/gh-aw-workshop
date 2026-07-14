@@ -36,7 +36,7 @@ Pick one path now and use only that install section below:
 
 ## 🎯 What You'll Do
 
-You'll install Git and the `gh` CLI on your own machine, authenticate with GitHub, and clone your practice repository. By the end you'll be at exactly the same starting point as Codespace users — ready to write your first workflow.
+You'll install Git and the `gh` CLI on your own machine and authenticate with GitHub. By the end you'll be ready to create your practice repository in Step 3.
 
 ## 📋 Before You Start
 
@@ -57,14 +57,6 @@ If this is your first time in a terminal, use this legend while running each ste
 All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
-
-### Create your practice repository
-
-1. Open [github.com/new](https://github.com/new).
-2. Enter `my-agentic-workflows` for **Repository name**.
-3. Set **Visibility** to **Public**.
-4. Check **Add a README file**.
-5. Select **Create repository**.
 
 ### Verify Git
 
@@ -153,50 +145,30 @@ Choose GitHub.com and then Login with a web browser. A one-time code will appear
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
-### Clone your practice repository
-
-Replace the placeholder with your GitHub username:
-
-```bash
-gh repo clone YOUR_USERNAME/my-agentic-workflows
-cd my-agentic-workflows
-```
-
-![Example success output after cloning and changing directories](images/02b-terminal-success-12-gh-repo-clone.svg)
-
-_What success looks like:_ clone finishes and you return to a prompt inside your practice repository.
-
 ## 🛟 Troubleshooting
 
 If setup commands fail, use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for quick fixes (`command not found`, permissions, proxy, and GHES-specific setup), then return here.
 
 ## ✅ Verify your setup
 
-Run this exact command from inside `my-agentic-workflows`:
+Run this exact command from your terminal:
 
 ```bash
-gh auth status && gh extension list && gh repo view --json owner,name --jq '"\(.owner.login)/\(.name)"'
+gh auth status && gh extension list
 ```
 
-_What success looks like:_ no errors are shown across all command output, and the final line is exactly:
-
-```text
-<your-username>/my-agentic-workflows
-```
-
-You should see your actual GitHub username in place of `<your-username>` in that final output line.
+_What success looks like:_ no errors are shown, and `gh auth status` confirms you're signed in to GitHub.
 
 If this combined check stops early, run each command on its own to find the failing step.
 
 ## ✅ Checkpoint
 
-- [ ] Your `my-agentic-workflows` repository exists on GitHub with a starter README
 - [ ] `git --version` returns a version number
 - [ ] `gh --version` returns a version number
 - [ ] `gh auth login` completed without errors
-- [ ] You've cloned the repository and `cd`-ed into it
+- [ ] `gh auth status` confirms you're signed in
 
-**Next:** [Step 3a: Create Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
+**Next:** [Step 3: Create and Verify Your Practice Repository](03-create-your-repo.md)
 
 ## 📚 See Also
 
