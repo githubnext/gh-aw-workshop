@@ -43,14 +43,13 @@ The log entries follow a predictable pattern:
 
 Each line type tells you something different:
 
-- `[plan]` — the agent is reasoning. No API call has been made yet.
+- `[plan]` — the agent is reasoning. No API call has been made yet. If you see many `[plan]` lines followed by no `[tool]` lines, the agent may be confused by unclear instructions — ask the `agentic-workflows` skill to tighten the workflow body.
 - `[tool]` — the agent is calling an external API. You can see exactly which API and what parameters were sent.
 - `[result]` — the raw data that came back from the tool call.
 - `[output]` — a write operation is about to be committed (or was blocked by a safe-output limit).
 - `[done]` — the agent finished its task.
 
-> [!TIP]
-> If you see many `[plan]` lines followed by no `[tool]` lines, the agent may be confused by unclear instructions. Ask the `agentic-workflows` skill to tighten the workflow body with more specific guidance.
+**Try it:** Open your completed Step 8 run log and find one `[plan]` line, one `[tool]` line, and one `[result]` line. Copy those three lines into a comment on your practice issue or paste them into a note — you will use them as a reference in later steps.
 
 ---
 
@@ -78,21 +77,15 @@ Key things to check:
 > [!NOTE]
 > Not all runs produce a summary section. If the run fails mid-way, the summary may be empty or missing. In that case, the live log is your best diagnostic tool.
 
+**Try it:** Copy the opening line of your own run's summary — the first sentence the agent wrote. Does the action it describes match what you asked for in Step 7?
+
 ---
 
 ## Verifying the Safe-Output Record
 
-The live log and summary are the agent's own account of what happened. The safe-output record is the ground truth — what was actually written to GitHub.
+The safe-output record is the ground truth — what was actually written to GitHub, not just what the agent reported. To verify a run, open the issue the agent commented on and confirm the comment exists, the content matches your instructions, and the timestamp aligns with the run.
 
-To see what a run committed, click the **Details** link next to the completed job, then look for the `safe-outputs` step in the job timeline.
-
-Alternatively, go directly to where the output landed. For **Hello Agent**, that's the Issues tab of your repository. Open the issue the agent commented on and check:
-
-- Is the comment text what you expected?
-- Does the timestamp match when the run completed?
-- Is the format and tone consistent with your instructions?
-
-If the comment exists but the content is wrong, the agent followed your instructions but your instructions were ambiguous. Ask the `agentic-workflows` skill to clarify the workflow. If no comment exists at all, check the safe-output limit (`max:`) in your workflow frontmatter.
+For a full walkthrough of how to audit safe-output records and trace mismatches back to their cause, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
 > [!WARNING]
 > Never edit a comment the agent created just to fix a typo. Instead, ask the `agentic-workflows` skill to fix the workflow instructions and re-run. Editing manually means the next run will post a second comment — now you have two.
