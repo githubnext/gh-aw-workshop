@@ -16,6 +16,8 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ## Three things to know
 
+![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
+
 **What it is:** A Markdown file (`.md`) with two parts — a standard Actions frontmatter block (YAML header between `---` markers, containing triggers and permissions) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 
 **What it produces:** A synthesized, structured output — a report, recommendation, or action taken — that the agent composes at runtime based on live repository data. In [Step 7: Your First Workflow](07-your-first-workflow.md) you'll write exactly this kind of brief; in [Step 8: Run Your Workflow](08-run-your-workflow.md) you'll watch the agent interpret it in real time.
