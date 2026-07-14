@@ -21,7 +21,7 @@ You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-ma
 
 - A GitHub repository (see [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md) if you haven't created one yet)
 - A GitHub Copilot plan
-- Either the [GitHub Copilot app](https://github.com/github/app) installed or the Copilot coding agent (Agents tab) enabled
+- Either the [GitHub Copilot app](https://github.com/features/ai/github-app) installed or the Copilot coding agent (Agents tab) enabled
 
 The GitHub Copilot app runs on macOS, Windows, and Linux. If you don't see the Agents tab in your repository, ask your organization administrator to enable the Copilot coding agent in [GitHub Copilot feature policies](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies).
 
