@@ -14,7 +14,7 @@ Work through this reference to practice writing correct sub-agent blocks — the
 
 ## Name rules
 
-**🔍 Predict:** Which naming mistakes usually break a sub-agent heading — invalid characters, missing backticks, or the wrong starting character? Make a quick guess before reading the rules.
+**🔍 Predict:** which naming mistakes usually break a sub-agent heading — invalid characters, missing backticks, or the wrong starting character? Make a quick guess before reading the rules.
 
 A sub-agent heading looks like `## agent: \`name\``. The name must:
 
