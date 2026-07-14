@@ -6,7 +6,7 @@ _By the end of this step (3a or 3b), you will have a public `my-agentic-workflow
 
 > [!IMPORTANT]
 > <details>
-> <summary>**Which path is right for me?** Choose the option that matches how you work:</summary>
+> <summary><b>Which path is right for me?</b> Choose the option that matches how you work:</summary>
 >
 > - 🌐 **Browser / Copilot app / Mobile** — I prefer the GitHub web UI with no terminal → go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
 > - ☁️ **Codespace** — I have a Codespace open → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md) (your terminal is already open)
@@ -20,7 +20,7 @@ You have completed Step 2a or Step 2b and your development environment is ready.
 
 > [!TIP]
 > <details>
-> <summary>**Actions tab missing?** If the **Actions** tab is not visible in your repository, GitHub Actions may be disabled on your account or organization.</summary>
+> <summary><b>Actions tab missing?</b> If the <b>Actions</b> tab is not visible in your repository, GitHub Actions may be disabled on your account or organization.</summary>
 >
 > 1. Go to **GitHub.com → Your profile photo → Settings → Actions → General**.
 > 2. Under **Actions permissions**, select **Allow all actions and reusable workflows**.

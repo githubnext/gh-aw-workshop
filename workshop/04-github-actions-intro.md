@@ -2,7 +2,7 @@
 
 > [!TIP]
 > <details>
-> <summary>**Already know GitHub Actions?** Check the three boxes below and skip ahead:</summary>
+> <summary><b>Already know GitHub Actions?</b> Check the three boxes below and skip ahead:</summary>
 >
 > - [ ] I know workflows live in `.github/workflows/` as YAML files
 > - [ ] I can read `on`, `jobs`, and `steps` keys in a workflow file

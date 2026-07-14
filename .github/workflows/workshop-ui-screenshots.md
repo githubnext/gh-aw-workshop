@@ -19,11 +19,15 @@ network:
   allowed:
     - defaults
     - github
+    - local
+    - playwright
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
   bash: true
+  playwright:
+    mode: cli
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop-ui-screenshots] "
@@ -185,6 +189,25 @@ in the exact line where the reference appears.
 
 ---
 
+## Render and QA generated SVGs
+
+If you generated any SVGs in Phase 3:
+
+1. Start a local static file server from the repository root so `workshop/images/`
+   is reachable on `http://127.0.0.1`.
+2. Use Playwright to open each newly generated SVG in a browser tab at least once.
+3. Inspect the rendered output for text bleeding outside buttons, tabs, chips,
+   dialogs, panels, annotations, or other bounding shapes.
+4. If any text bleeds out of its box, fix the SVG before continuing by widening
+   the container, wrapping or shortening the label, moving nearby elements, or
+   reducing font size only as much as needed.
+5. Re-render the updated SVG with Playwright and repeat until every generated
+   SVG is visually contained and readable.
+
+Treat the render check as required final QA, not an optional spot check.
+
+---
+
 ## Report Remaining Broken References
 
 For each `not-generatable` broken reference (real screenshot needed):
@@ -228,6 +251,8 @@ If no SVGs were generated (only `not-generatable` references exist), skip
 
 - Every generated SVG must be valid, self-contained SVG markup (start with
   `<svg xmlns="http://www.w3.org/2000/svg" ...`).
+- Every generated SVG must pass a Playwright render check with no text bleeding
+  outside visual containers.
 - Markdown updates must be minimal line-precise replacements — do not reformat
   surrounding content.
 - Never call write tools other than `create-pull-request`, `create-issue`, and
