@@ -8,8 +8,8 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 
 ## 📋 Before You Start
 
-- [ ] Completed [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
-- [ ] Your **Hello Agent** workflow has at least one completed run
+- Completed [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- Your **Hello Agent** workflow has at least one completed run
 
 ## Read the live log
 
