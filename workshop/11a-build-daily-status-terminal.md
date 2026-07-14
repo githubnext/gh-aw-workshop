@@ -36,22 +36,7 @@ gh aw compile .github/workflows/daily-status.md --watch
 
 Leave the watcher running throughout this step.
 
-<details>
-<summary>📖 Workflow file structure at a glance (expand if you want the overview first)</summary>
-
-An agentic workflow file has two parts: **frontmatter** (YAML between `---` fences) and a **Markdown body** (the agent's instructions below the closing `---`). The table below summarizes the five frontmatter sections you'll add.
-
-| Section | Key(s) | What it does |
-|---------|--------|--------------|
-| Metadata | `emoji`, `description` | Human-readable labels shown in the `gh aw` dashboard and Actions UI. |
-| Triggers | `on:` | Tells GitHub Actions when to run — `schedule: daily` plus a manual `workflow_dispatch` button. |
-| Permissions | `permissions:` | Declares the minimum GitHub API scopes the workflow may use. |
-| Tools | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
-| Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
-
-This file ends in `.md` instead of `.yml` because agentic workflows use Markdown — see the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md).
-
-</details>
+New to workflow file structure? See [Workflow File Structure at a Glance](side-quest-11-01b-workflow-structure.md).
 
 ---
 
@@ -65,10 +50,7 @@ emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
 ```
 
-**✏️ Try it:** Paste the block above into your file and save. Check that the watcher shows no errors. Feel free to swap the emoji or reword the description.
-
-> [!TIP]
-> For a detailed walkthrough of metadata and the other opening sections, see [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md).
+**✏️ Try it:** Paste the block above into your file and save. Check that the watcher shows no errors. Feel free to swap the emoji or reword the description. (See [Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md) for a section-by-section walkthrough.)
 
 ---
 
@@ -82,16 +64,13 @@ on:
   workflow_dispatch: {}
 ```
 
-**✏️ Try it:** Add the `on:` block and save. The watcher should still report no errors.
-
-> [!TIP]
-> Curious how `schedule: daily` maps to a cron expression, or want to use a custom schedule? See [Side Quest: Schedule Expressions](side-quest-13-01-schedule-expressions.md).
+**✏️ Try it:** Add the `on:` block and save. The watcher should still report no errors. (See [Side Quest: Schedule Expressions](side-quest-13-01-schedule-expressions.md) for custom schedule options.)
 
 ---
 
 ## Section 3 — Permissions
 
-Add the minimum permissions the workflow needs. Narrow permissions reduce the blast radius if you misconfigure the prompt.
+Add the minimum permissions the workflow needs. `copilot-requests: write` is required by every agentic workflow; the remaining entries are read-only scopes for the data the agent reads.
 
 ```yaml
 permissions:
@@ -102,16 +81,13 @@ permissions:
   actions: read
 ```
 
-> [!NOTE]
-> `copilot-requests: write` is required for every agentic workflow — it lets the Actions runner call the Copilot AI API. Every other permission here is read-only. Write access for issue comments is handled by `safe-outputs` (Section 5 below).
-
 **✏️ Try it:** Add `permissions:` and save. Confirm the watcher is still green.
 
 ---
 
 ## Section 4 — Tools
 
-The `tools` block tells the agent which GitHub APIs it can call. `mode: gh-proxy` routes all API calls through a controlled proxy that enforces only the scopes you declared in `permissions`.
+The `tools` block enables GitHub API access scoped to the `permissions` above (see [Side Quest: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) for details).
 
 ```yaml
 tools:
@@ -122,14 +98,11 @@ tools:
 
 **✏️ Try it:** Add `tools:` and save.
 
-> [!TIP]
-> Want to understand how `gh-proxy` scoping works? See [Side Quest: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md).
-
 ---
 
 ## Section 5 — Write guardrail
 
-`safe-outputs` is the only place write actions are declared. `add-comment: max: 1` limits the agent to posting at most one issue comment per run — no other write actions are allowed.
+`safe-outputs` declares the only write action allowed: one issue comment per run.
 
 ```yaml
 safe-outputs:
@@ -181,10 +154,7 @@ Find the most recently updated open issue and post a comment in this format:
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
 ```
 
-**✏️ Try it:** Paste the agent body and save. The watcher should confirm the full workflow is valid.
-
-> [!TIP]
-> Want tips on writing clearer agent prompts? See [Side Quest: Writing Better Prompts](side-quest-11-03-better-prompts.md).
+**✏️ Try it:** Paste the agent body and save. The watcher should confirm the full workflow is valid. (See [Side Quest: Writing Better Prompts](side-quest-11-03-better-prompts.md) for tips on clearer agent instructions.)
 
 ---
 
