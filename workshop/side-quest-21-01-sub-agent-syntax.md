@@ -77,7 +77,8 @@ Inside a sub-agent block, keep the frontmatter small:
 - `description` explains the sub-agent's job
 - `model` is optional if you want to override the parent model
 
-The compiler strips any fields other than `description` and `model` from sub-agent frontmatter and emits a warning. For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
+The compiler strips any fields other than `description` and `model` from sub-agent frontmatter and emits a warning.
+For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
 
 **Action:** Remove the unsupported field from the broken block.
 
@@ -94,7 +95,7 @@ Quick check:
 
 ## Move the block to the bottom
 
-The sub-agent block ends when the parser reaches the next `##` heading, so any content after that heading is not part of the sub-agent. That is why sub-agent blocks belong at the bottom of the file, after the main workflow content.
+Sub-agent blocks belong at the bottom of the file so your main workflow content does not get cut off early. The sub-agent block ends when the parser reaches the next `##` heading, so any content after that heading is not part of the sub-agent.
 
 **Action:** Move the sub-agent block so `## How to use this workflow` stays part of the main workflow, not part of the sub-agent.
 
