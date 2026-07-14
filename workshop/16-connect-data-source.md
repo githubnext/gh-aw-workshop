@@ -47,7 +47,7 @@ What this does:
 - `--format="%h %s"` produces a short hash followed by the commit subject, e.g. `a1b2c3d Fix login bug`.
 - The multi-line `<<EOF` syntax stores a multi-line string in `$GITHUB_OUTPUT` (see the [side quest](side-quest-16-01-github-output.md) for details).
 
-🤔 **Predict:** What will `${{ steps.recent.outputs.commit_log }}` contain if no commits were made in the last 24 hours? Form your prediction now, then verify it once the workflow runs after you push.
+🤔 **Predict:** What will `${{ steps.recent.outputs.commit_log }}` contain if no commits were made in the last 24 hours? Form your prediction now and verify it at the checkpoint below, once you've completed the full step and triggered a run.
 
 ### Add a step to fetch open issues
 
@@ -75,7 +75,7 @@ What this does:
 - A second `gh issue list` call counts the total with `--jq 'length'` and stores it as `open_issues_count`.
 - `GH_TOKEN` is set to `secrets.GITHUB_TOKEN`, which GitHub Actions provides automatically in every repository — you do not need to create it.
 
-✏️ **Try it:** To verify this works, run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After the workflow runs, check whether `open_issues_count` in the output matches.
+✏️ **Try it:** Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you complete this step and trigger a workflow run, check whether `open_issues_count` in the output matches.
 
 ### Inject the data into your AI prompt
 
