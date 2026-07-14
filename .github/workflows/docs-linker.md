@@ -41,6 +41,7 @@ safe-outputs:
       - "workshop/*.md"
       - "workshop/**/*.md"
     if-no-changes: warn
+    expires: 1d
 network:
   allowed:
     - defaults

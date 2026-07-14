@@ -28,6 +28,7 @@ safe-outputs:
     labels: [documentation]
     deduplicate-by-title: true
     max: 5
+    expires: 1d
 timeout-minutes: 20
 steps:
   - name: Extract markdown titles

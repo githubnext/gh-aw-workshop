@@ -26,6 +26,7 @@ safe-outputs:
     labels: [automation, workflow-optimization]
     draft: false
     if-no-changes: "ignore"
+    expires: 1d
 
 tools:
   agentic-workflows:

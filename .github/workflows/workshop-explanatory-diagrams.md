@@ -44,6 +44,7 @@ safe-outputs:
       - "workshop/*.md"
       - "workshop/**/*.md"
     if-no-changes: warn
+    expires: 1d
 timeout-minutes: 30
 steps:
   - name: Gather workshop diagram state

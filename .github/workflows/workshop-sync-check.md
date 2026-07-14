@@ -34,6 +34,7 @@ safe-outputs:
     labels: [documentation]
     deduplicate-by-title: true
     max: 5
+    expires: 1d
 timeout-minutes: 30
 steps:
   - name: Capture gh aw CLI help output
