@@ -34,7 +34,7 @@ steps:
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
 
-      python3 <<'PY'
+      python3 -B <<'PY'
       import json, pathlib, sys
 
       sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
@@ -52,7 +52,7 @@ steps:
     run: |
       set -euo pipefail
 
-      python3 <<'PY'
+      python3 -B <<'PY'
       import json, statistics, pathlib
 
       data    = json.loads(pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').read_text())
