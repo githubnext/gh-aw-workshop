@@ -60,6 +60,8 @@ steps:
         const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
         const bump = process.env.BUMP;
         const target = process.env.TARGET_SHA;
+        const owner = context.repo.owner;
+        const repo = context.repo.repo;
 
         const runGitCommand = (...args) => {
           try {
@@ -161,6 +163,24 @@ steps:
           has_changes: true,
         };
 
+        try {
+          await github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag });
+          plan.has_changes = false;
+          plan.noop_reason = `Target release ${nextTag} is already visible before publication.`;
+        } catch (error) {
+          if (error.status !== 404) throw error;
+        }
+
+        if (plan.has_changes) {
+          try {
+            await github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` });
+            plan.has_changes = false;
+            plan.noop_reason = `Target tag ${nextTag} is already visible before publication.`;
+          } catch (error) {
+            if (error.status !== 404) throw error;
+          }
+        }
+
         let revspec = target;
         if (previousTag) {
           const ancestorResult = spawnSync('git', ['merge-base', '--is-ancestor', previousTag, target], { stdio: 'ignore' });
@@ -223,19 +243,14 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
       - name: Create GitHub release
-        id: create-release
         uses: actions/github-script@v7
         env:
           BUMP: ${{ github.event.inputs.bump }}
           TARGET_SHA: ${{ github.sha }}
-          RELEASE_METADATA_PATH: /tmp/gh-aw/data/release-metadata.json
         with:
           script: |
-            const fs = require('fs');
-            const path = require('path');
             const { execFileSync, spawnSync } = require('child_process');
             
-            const metadataPath = process.env.RELEASE_METADATA_PATH;
             const bump = process.env.BUMP;
             const target = process.env.TARGET_SHA;
             const owner = context.repo.owner;
@@ -259,7 +274,6 @@ jobs:
               return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
             };
             
-            fs.mkdirSync(path.dirname(metadataPath), { recursive: true });
             runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
             
             const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
@@ -403,111 +417,11 @@ jobs:
               prerelease: false,
               generate_release_notes: false,
             });
-            
-            fs.writeFileSync(
-              metadataPath,
-              `${JSON.stringify({
-                release_id: release.data.id,
-                tag: nextTag,
-                title,
-              }, null, 2)}\n`,
-            );
-            core.setOutput('release_created', 'true');
-      - name: Upload release metadata
-        if: steps.create-release.outputs.release_created == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-metadata
-          path: /tmp/gh-aw/data/release-metadata.json
+            core.notice(`Created release ${release.data.tag_name}`);
 safe-outputs:
   needs:
     - create-release
-  jobs:
-    update-release:
-      needs:
-        - safe_outputs
-      description: Replace the deterministic full change list with concise, human-friendly release notes.
-      output: Release notes updated successfully.
-      inputs:
-        body:
-          description: Markdown release notes body that rewrites the full change list into a concise human summary.
-          required: true
-          type: string
-      runs-on: ubuntu-latest
-      permissions:
-        contents: write
-      steps:
-        - name: Download release metadata artifact
-          continue-on-error: true
-          uses: actions/download-artifact@v5
-          with:
-            name: release-metadata
-            path: ${{ runner.temp }}/gh-aw/release/
-        - name: Update GitHub release notes
-          uses: actions/github-script@v7
-          with:
-            script: |
-              const fs = require('fs');
-              const outputPath = process.env.GH_AW_AGENT_OUTPUT;
-              const metadataPath = `${process.env.RUNNER_TEMP}/gh-aw/release/release-metadata.json`;
-
-              if (!outputPath) {
-                core.setFailed('GH_AW_AGENT_OUTPUT is not set');
-                return;
-              }
-
-              if (!fs.existsSync(outputPath)) {
-                core.setFailed(`GH_AW_AGENT_OUTPUT file not found: ${outputPath}`);
-                return;
-              }
-
-              if (!fs.existsSync(metadataPath)) {
-                core.notice('No deterministic release metadata artifact was found, so there is no release to update.');
-                return;
-              }
-
-              const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
-              const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
-              const items = (payload.items || []).filter(item => item.type === 'update_release');
-
-              if (items.length !== 1) {
-                core.setFailed(`Expected exactly 1 update_release item, got ${items.length}`);
-                return;
-              }
-
-              const item = items[0];
-              const owner = context.repo.owner;
-              const repo = context.repo.repo;
-              const body = String(item.body || '').trim();
-              const releaseId = Number(metadata.release_id);
-              const tag = String(metadata.tag || '').trim();
-              const title = String(metadata.title || tag).trim();
-
-              if (!Number.isInteger(releaseId) || releaseId <= 0) {
-                core.setFailed(`Invalid release_id in release metadata: ${metadata.release_id}`);
-                return;
-              }
-
-              if (!/^v?\d+\.\d+\.\d+$/.test(tag)) {
-                core.setFailed(`Invalid semver tag in release metadata: ${tag}`);
-                return;
-              }
-
-              if (!body) {
-                core.setFailed('Release body must not be empty');
-                return;
-              }
-
-              await github.rest.repos.updateRelease({
-                owner,
-                repo,
-                release_id: releaseId,
-                tag_name: tag,
-                name: title,
-                body,
-                draft: false,
-                prerelease: false,
-              });
+  update-release:
 network:
   allowed:
     - defaults
@@ -558,6 +472,8 @@ Call `noop` with a brief explanation instead of updating a release if:
 When you are ready:
 
 1. Call `update_release` exactly once with:
+   - `tag` — `next_tag` from `/tmp/gh-aw/data/release-plan.json`
+   - `operation` — `replace`
    - `body` — the rewritten markdown release notes
 
 Do not create releases directly with `gh` or any write-capable GitHub tool from the main agent job.
