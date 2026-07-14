@@ -10,7 +10,7 @@ Verify your tools are ready:
 
 - Git: `git --version`
 - GitHub CLI: `gh --version`
-- gh-aw extension: `gh extension list | grep gh-aw`
+- gh-aw extension: `gh extension list` (look for `gh-aw` in the output)
 
 ## Enterprise users
 
