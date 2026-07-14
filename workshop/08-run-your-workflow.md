@@ -6,30 +6,21 @@ _Watching an agent work in real time is fundamentally different from reading abo
 
 You'll trigger the `hello-agent` workflow from Step 7, predict what it will do before it runs, then verify your predictions against the live log.
 
-> [!IMPORTANT]
-> **Codespace users — before you trigger:** Your Codespace token does not include `actions:write` by default.
-> **Quick fix (30 seconds):**
-> 1. Go to your repository **Settings → Actions → General → Workflow permissions**.
-> 2. Select **Read and write permissions** and click **Save**.
-> 3. Come back here and continue from **Trigger the workflow via GitHub Actions UI** below.
->
-> If you prefer the terminal trigger, see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
-
 ## 📋 Before You Start
 
-- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
-- Your browser is open to your practice repository on GitHub
+- [ ] Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
+- [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`
+- [ ] **Codespace users only:** Set workflow permissions to **Read and write permissions**
+  1. Go to **Settings → Actions → General → Workflow permissions**
+  2. Select **Read and write permissions** and click **Save**
+  3. Verify **Hello Agent** appears in the **Actions** sidebar
+- [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
 ## Steps
 
 ### Confirm your setup
 
-Before triggering, verify all three:
-
-- [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`
-- [ ] The **Actions** tab shows **Hello Agent** in the left workflow sidebar
-- [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not)
-- [ ] (Codespace users) Did the fix work? Confirm the **Hello Agent** workflow appears in the **Actions** tab after updating workflow permissions.
+Before triggering, make sure every item in **Before You Start** is checked.
 
 ### Predict before you run
 
