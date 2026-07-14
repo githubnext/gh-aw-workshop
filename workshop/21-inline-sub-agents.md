@@ -35,7 +35,7 @@ A sub-agent is just a helper you define inside the same workflow file. In this s
 > 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >
 > [!TIP]
-> Want the full rules for names, frontmatter, model aliases, and block placement? See the existing [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
+> Want the full rules in smaller practice chunks? See [Side Quest: Sub-Agent Names and Block Boundaries](side-quest-21-01a-sub-agent-name-and-block-rules.md) and [Side Quest: Sub-Agent Frontmatter Fields and Chaining](side-quest-21-01b-sub-agent-frontmatter-fields.md). Stay on this page if you only want the main path.
 
 ## Apply the pattern to your workflow
 
