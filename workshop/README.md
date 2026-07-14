@@ -24,6 +24,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 7b | [07b-your-first-workflow-ui.md](07b-your-first-workflow-ui.md) | GitHub UI Path — Write Your First Agentic Workflow | ✅ |
 | 7c | [07c-your-first-workflow-copilot.md](07c-your-first-workflow-copilot.md) | GitHub Copilot Path — Write Your First Agentic Workflow | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
+| 8b | [08b-interpret-your-run.md](08b-interpret-your-run.md) | Interpret Your First Run | ✅ |
 | 9 | [09-understand-output.md](09-understand-output.md) | Reading Workflow Output | ✅ |
 | 10 | [10-choose-your-scenario.md](10-choose-your-scenario.md) | Choose Your Scenario | ✅ |
 | 10a | [10a-design-daily-status.md](10a-design-daily-status.md) | ➡️ Adventure A: Design — Daily Repo Status Report | ✅ |

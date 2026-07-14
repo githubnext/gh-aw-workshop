@@ -8,7 +8,7 @@ You'll learn how to interpret the three places where [agentic workflow](https://
 
 ## 📋 Before You Start
 
-- Completed [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- Completed [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
 - Your **Hello Agent** workflow has at least one completed run
 
 ---
