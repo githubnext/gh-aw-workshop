@@ -33,9 +33,18 @@ You have completed Step 2a or Step 2b and your development environment is ready.
 
 You'll create a public `my-agentic-workflows` repository, confirm GitHub Actions is enabled, and prepare it for the rest of the workshop.
 
-## Choose Your Path
+## ✏️ Quick Check
 
-Before choosing, confirm GitHub Actions is enabled on your account: open your GitHub account settings, then go to **Actions** and verify Actions are not disabled.
+Open these pages before you choose a path:
+
+```text
+https://github.com/<your-username>
+https://github.com/settings/actions
+```
+
+Confirm your profile loads and **Actions** is not disabled in settings.
+
+## Choose Your Path
 
 Choose how you want to create and manage files:
 
@@ -52,7 +61,7 @@ Before continuing to Step 4, confirm:
 
 - [ ] My `my-agentic-workflows` repository exists on GitHub and its URL is `github.com/<your-username>/my-agentic-workflows`.
 - [ ] The **Actions** tab is visible at `github.com/<your-username>/my-agentic-workflows/actions`.
-- [ ] If the Actions tab was missing, I followed the recovery steps above and Actions is now enabled.
+- [ ] I confirmed GitHub Actions is not disabled in my account settings.
 - [ ] I have either a Codespace terminal open **or** I can create and edit files directly in the GitHub web UI.
 
 **Next:** Continue with your chosen path above.
