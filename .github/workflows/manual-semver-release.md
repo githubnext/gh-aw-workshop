@@ -94,13 +94,13 @@ steps:
           }
           return 0;
         };
-        const pickPreferredTag = tags => [...tags].reduce((best, candidate) => {
+        const selectCanonicalTag = tags => [...tags].reduce((best, candidate) => {
           if (!best) return candidate;
 
-          const bestScore = best.startsWith('v') ? 0 : 1;
-          const candidateScore = candidate.startsWith('v') ? 0 : 1;
-          if (candidateScore !== bestScore) {
-            return candidateScore < bestScore ? candidate : best;
+          const bestPriority = best.startsWith('v') ? 0 : 1;
+          const candidatePriority = candidate.startsWith('v') ? 0 : 1;
+          if (candidatePriority !== bestPriority) {
+            return candidatePriority < bestPriority ? candidate : best;
           }
 
           return candidate.localeCompare(best) < 0 ? candidate : best;
@@ -130,7 +130,7 @@ steps:
             }
           }
 
-          previousTag = pickPreferredTag(latest.tags);
+          previousTag = selectCanonicalTag(latest.tags);
           previousTagDisplay = `v${latest.version.join('.')}`;
           baseVersion = latest.version;
         }
