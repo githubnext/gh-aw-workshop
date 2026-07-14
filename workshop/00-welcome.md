@@ -30,23 +30,24 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 
 ## Quick check: where are you starting from?
 
-Do this 2-minute warm-up now. Open [github.com/settings/profile](https://github.com/settings/profile), then use this checklist to produce a starting snapshot you can act on:
+Complete this 3-minute warm-up. Open your [GitHub billing summary](https://github.com/settings/billing/summary). Then work through the checklist to determine your next steps.
 
-- [ ] I opened my GitHub profile settings and confirmed I can sign in with the account I'll use
-- [ ] I noted my plan tier so I know whether Step 1's enterprise notes apply to me
-- [ ] I picked the row in the table above that best matches how I want to work today
-- [ ] I confirmed that I have a GitHub account ready for the workshop
-- [ ] I opened the **Actions** tab in any repository and decided whether "I've used GitHub Actions before" is true for me
-- [ ] I named one AI-assisted developer tool I've tried, or wrote down `none yet`
-- [ ] I checked whether my work happens on GitHub Enterprise Cloud (GHEC)
-- [ ] I know whether the skip-ahead checklist in [Step 1](01-prerequisites.md) is worth using
-- [ ] I opened [Step 1](01-prerequisites.md) in a new tab so I know where I'll continue next
+URL reference:
 
-If GitHub CLI is already installed, you can also verify the version now. If not, skip this and let [Step 1](01-prerequisites.md) guide your setup choice.
-
-```bash
-gh --version
 ```
+https://github.com/settings/billing/summary
+```
+
+- [ ] I opened my GitHub account settings and confirmed I can sign in with the account I'll use
+- [ ] I noted the plan name shown on that billing page (for example, Free, Pro, or Enterprise Cloud) so I know whether Step 1's enterprise notes apply to me
+- [ ] I picked the row in the table above that best matches how I want to work today
+- [ ] I confirmed I have a GitHub account ready for the workshop
+- [ ] I opened the **Actions** tab in any public repository, such as [githubnext/gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop/actions), so I could decide whether I want the GitHub Actions background in [Step 4](04-github-actions-intro.md)
+- [ ] I decided whether "I've used GitHub Actions before" is true for me
+- [ ] I identified whether I've used AI-assisted developer tools before
+- [ ] I checked whether my work happens on GitHub Enterprise Cloud (GHEC)
+- [ ] I opened [Step 1](01-prerequisites.md) in a new tab so I know where I'll continue next
+- [ ] I found the skip-ahead checklist in [Step 1](01-prerequisites.md) and know to use it only if it applies
 
 ## Before vs after
 
@@ -99,7 +100,9 @@ You should be comfortable with:
 
 No experience with GitHub Actions or AI tools required.
 
-Each step ends with a checkpoint so you know what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to the right path. Step 7 splits the Terminal path into [Part 1](07a-your-first-workflow-terminal.md) and [Part 2](07a-part2-your-first-workflow-instructions.md). Step 8 continues in [Step 8b: Interpret Your First Run](08b-interpret-your-run.md).
+Each step ends with a checkpoint so you know exactly what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to the right path. Step 7 splits the Terminal path into [Part 1](07a-your-first-workflow-terminal.md) and [Part 2](07a-part2-your-first-workflow-instructions.md) so you can focus on one small task at a time.
+
+Step 8 continues in [Step 8b: Interpret Your First Run](08b-interpret-your-run.md). You first run the workflow, then interpret what happened.
 
 At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D). All paths converge at Step 12.
 
