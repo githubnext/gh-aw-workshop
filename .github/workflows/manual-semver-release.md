@@ -342,7 +342,7 @@ network:
 
 ## Current Context
 
-The `Download release description` step downloads the release body created by the `create-release` job and writes these files before the agent starts. Read them before you do anything else:
+The `Download release description` step fetches the release body from GitHub after the `create-release` job completes. Read these files before you do anything else:
 
 - `/tmp/gh-aw/data/release-trigger.json` — repository, requested bump, triggering ref name, and triggering SHA
 - `/tmp/gh-aw/data/release-plan.json` — release metadata including the next semver tag, target SHA, and whether the release is publishable
@@ -357,7 +357,7 @@ Rewrite the downloaded release description into polished release notes for the G
 1. Treat `/tmp/gh-aw/data/release-plan.json` as the source of truth for the version, title, and target SHA.
 2. Treat `/tmp/gh-aw/data/release-description.md` as the raw release body to summarize. Read it closely and rewrite it into concise, human-friendly release notes.
 3. Inspect commits, merged pull requests, and repository context as needed to improve the rewrite, but do not change the version or release target from the release plan.
-4. If the release description is empty or the change list covers the initial release, use the repository context to explain the release clearly and concisely.
+4. If the release description is empty or indicates this is an initial release, use the repository context to explain the release clearly and concisely.
 5. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
 
 ## Required Release Notes Format
