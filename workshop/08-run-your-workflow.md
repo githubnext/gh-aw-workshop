@@ -24,15 +24,13 @@ If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced o
 
 ### Verify Copilot access
 
-Before you trigger a run, confirm your workflow can reach a Copilot model. Runs that fail immediately with a model-access or authentication error almost always indicate a missing or expired token.
+Before you trigger a run, confirm your workflow is configured to reach a Copilot model. Runs that fail immediately with a model-access or authentication error almost always indicate a missing or expired token.
 
-**Terminal path —** Run `gh auth status` and look for `copilot` in the token scopes listed in the output.
+Check your configuration based on the authentication method in your `hello-agent.md` frontmatter:
 
-**GitHub UI path —** Visit [github.com/settings/copilot](https://github.com/settings/copilot) and confirm your plan shows as active.
-
-- If you used **`copilot-requests: write`** in your frontmatter: verify your GitHub account has an active Copilot subscription.
-- If you used **`COPILOT_GITHUB_TOKEN`** or another inference provider secret: go to **Settings → Secrets and variables → Actions** in your practice repository and confirm the secret is listed under **Repository secrets**.
-- Not sure which applies? Complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) before continuing.
+- If your frontmatter has **`copilot-requests: write`** under `permissions`: confirm your GitHub account has an active Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot).
+- If you configured **`COPILOT_GITHUB_TOKEN`** or another inference provider secret: go to **Settings → Secrets and variables → Actions** in your practice repository and confirm the secret is listed under **Repository secrets**.
+- Not sure which your workflow uses? Open `.github/workflows/hello-agent.md` and look for a `permissions` block or a `secrets` reference, or complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) before continuing.
 
 ### Trigger it from the Actions tab
 
