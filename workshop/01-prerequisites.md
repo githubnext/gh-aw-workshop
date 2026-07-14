@@ -2,6 +2,10 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
+## 📋 Before You Start
+
+This step checks that all the tools and accounts you need are in place before you write any workflow code.
+
 ## Enterprise users
 
 > [!IMPORTANT]
@@ -37,8 +41,8 @@ _Starting with the right setup saves you from frustrating detours later._
 
 Complete these checks before you choose your path:
 
-- [ ] You can sign in to GitHub with the account you'll use for the workshop
-- [ ] You know whether you'll use a Codespace, a local terminal, or the GitHub UI path
+- [ ] You can sign in to GitHub with the account you'll use for the workshop (`https://github.com` opens and shows your account menu)
+- [ ] You know whether you'll use a Codespace, a local terminal, or the GitHub UI path (pick one now before you continue)
 - [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
@@ -73,7 +77,7 @@ Sign in at [github.com](https://github.com). If you do not have an account yet, 
 
 ### Confirm local tools (only if using Adventure B)
 
-If you plan to use your own computer, run:
+If you plan to use your own computer, run `gh --version` to verify GitHub CLI and `git --version` to verify Git.
 
 ```bash
 gh --version
