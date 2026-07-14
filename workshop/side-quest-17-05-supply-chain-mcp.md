@@ -2,6 +2,11 @@
 
 > _A compromised MCP tool server can feed poisoned data back to your agent — gh-aw's network allow-list, explicit tool declarations, and minimal permissions shrink the window for this attack._
 
+## 📋 Before You Start
+
+- Completed Side Quest: [How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md)
+- You have a workflow with a `tools:` block already configured.
+
 ## The Attack
 
 A supply chain attack through MCP happens when a tool server your agent trusts returns
@@ -87,10 +92,55 @@ blocked at each layer.
       looks very different, check the raw log for unexpected instructions in tool
       results.
 
+## 🔍 Spot the Risk
+
+Review the workflow configuration below. It uses a third-party MCP server to pull data from an external source. See if you can spot the supply-chain risks before reading the answers.
+
+```yaml
+---
+name: Repo Health Check
+on:
+  schedule: daily on weekdays
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+network:
+  allowed:
+    - api.github.com
+    - github.com
+    - registry.example.io
+tools:
+  github:
+    mode: gh-proxy
+    toolsets: [default]
+  data-extractor:
+    mode: docker
+    image: someuser/my-mcp-server:latest   # ← anything stand out here?
+    toolsets: [everything]                  # ← and here?
+safe-outputs: {}
+---
+```
+
+<details>
+<summary>Reveal the red flags</summary>
+
+**Red flag 1 — unpinned image tag (`latest`)**
+Using `:latest` means the image can silently change on every pull. A supply-chain attacker who gains push access to `someuser/my-mcp-server` on the registry can ship a compromised image without changing your workflow file. Always pin to a specific digest or version tag (e.g., `someuser/my-mcp-server:1.2.3` or a `sha256:…` digest).
+
+**Red flag 2 — overly broad toolset (`everything`)**
+The `everything` toolset exposes every tool the server provides. You almost never need all of them. Use the narrowest toolset that covers your task — this limits what a compromised server can instruct the agent to do.
+
+**Red flag 3 — over-scoped permissions with no safe-outputs constraints**
+The workflow requests `contents: write`, `issues: write`, and `pull-requests: write`, but `safe-outputs: {}` declares no concrete write targets. This means a poisoned tool response could instruct the agent to write anywhere within those scopes. Pair each `write` permission with a matching `safe-outputs` entry to limit the blast radius.
+
+</details>
+
 ## ✅ Checkpoint
 
 - [ ] I can describe the supply chain via MCP attack in one sentence
 - [ ] I can name the gh-aw features that limit this attack (`network.allowed`, `tools:` block, `permissions:`, `safe-outputs`)
+- [ ] I identified at least 2 supply-chain risk indicators in the example config
 - [ ] I have applied at least one defensive measure to my own workflow
 
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
