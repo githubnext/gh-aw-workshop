@@ -41,8 +41,10 @@ This step checks that all the tools and accounts you need are in place before yo
 
 Complete these checks before you choose your path:
 
-- [ ] You can sign in to GitHub with the account you'll use for the workshop (verify by opening [github.com](https://github.com) and confirming your account menu appears)
-- [ ] You are ready to choose your development environment: Codespace, local terminal, or GitHub UI
+Open [github.com](https://github.com) and confirm your account menu appears. Review the three development environment options now: Codespace, local terminal, and GitHub UI.
+
+- [ ] You can sign in to GitHub with the account you'll use for the workshop
+- [ ] You know the three development environment options: Codespace, local terminal, and GitHub UI
 - [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
