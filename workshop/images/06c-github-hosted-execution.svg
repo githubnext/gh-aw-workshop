@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="GitHub-hosted execution flow for the UI path: the learner uses only a browser to author workflow files in the GitHub web editor and trigger runs from the Actions tab; GitHub's servers handle gh-aw compilation and AI agent execution entirely, with no local installation required">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Main card -->
+  <rect x="40" y="40" width="1120" height="480" rx="12" ry="12"
+        fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="600" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="18"
+        font-weight="600" fill="#24292f" text-anchor="middle">GitHub UI Path — No Local Installation Required</text>
+  <text x="600" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        fill="#57606a" text-anchor="middle">Everything runs on GitHub's infrastructure — your browser is the only tool you need</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="118" x2="1120" y2="118" stroke="#d0d7de" stroke-width="1"/>
+
+  <!-- === LEARNER ZONE (left) === -->
+  <rect x="70" y="138" width="300" height="340" rx="10" ry="10"
+        fill="#f6f8fa" stroke="#d0d7de" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="220" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="12"
+        fill="#57606a" text-anchor="middle" font-weight="500">YOUR DEVICE</text>
+
+  <!-- Browser box -->
+  <rect x="100" y="176" width="240" height="100" rx="8" ry="8"
+        fill="white" stroke="#0969da" stroke-width="2"/>
+  <!-- Browser chrome decoration -->
+  <rect x="100" y="176" width="240" height="24" rx="8" ry="8" fill="#0969da"/>
+  <rect x="100" y="188" width="240" height="12" fill="#0969da"/>
+  <circle cx="116" cy="188" r="5" fill="#79c0ff"/>
+  <circle cx="132" cy="188" r="5" fill="#79c0ff"/>
+  <circle cx="148" cy="188" r="5" fill="#79c0ff"/>
+  <text x="220" y="234" font-family="system-ui, -apple-system, sans-serif" font-size="14"
+        font-weight="600" fill="#0969da" text-anchor="middle">Web Browser</text>
+  <text x="220" y="254" font-family="system-ui, -apple-system, sans-serif" font-size="12"
+        fill="#57606a" text-anchor="middle">github.com</text>
+
+  <!-- Author step -->
+  <rect x="100" y="298" width="240" height="60" rx="8" ry="8"
+        fill="white" stroke="#8250df" stroke-width="1.5"/>
+  <text x="220" y="323" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        font-weight="600" fill="#8250df" text-anchor="middle">① Author workflow</text>
+  <text x="220" y="341" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#57606a" text-anchor="middle">GitHub Web Editor</text>
+
+  <!-- Trigger step -->
+  <rect x="100" y="378" width="240" height="60" rx="8" ry="8"
+        fill="white" stroke="#8250df" stroke-width="1.5"/>
+  <text x="220" y="403" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        font-weight="600" fill="#8250df" text-anchor="middle">② Trigger run</text>
+  <text x="220" y="421" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#57606a" text-anchor="middle">Actions tab → Run workflow</text>
+
+  <!-- Arrow from learner to GitHub infra -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0969da"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a7f37"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8250df"/>
+    </marker>
+  </defs>
+
+  <line x1="340" y1="310" x2="420" y2="310" stroke="#0969da" stroke-width="2"
+        marker-end="url(#arrowBlue)"/>
+  <text x="380" y="303" font-family="system-ui, -apple-system, sans-serif" font-size="10"
+        fill="#57606a" text-anchor="middle">commit</text>
+
+  <line x1="340" y1="408" x2="420" y2="310" stroke="#0969da" stroke-width="2"
+        marker-end="url(#arrowBlue)" stroke-dasharray="4,2"/>
+  <text x="385" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="10"
+        fill="#57606a" text-anchor="middle" transform="rotate(-35, 385, 375)">trigger</text>
+
+  <!-- === GITHUB INFRA ZONE (right) === -->
+  <rect x="430" y="138" width="700" height="340" rx="10" ry="10"
+        fill="#f6f8fa" stroke="#1a7f37" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="780" y="162" font-family="system-ui, -apple-system, sans-serif" font-size="12"
+        fill="#1a7f37" text-anchor="middle" font-weight="600">GITHUB'S INFRASTRUCTURE  ·  runs entirely in the cloud</text>
+
+  <!-- Step A: GitHub Actions -->
+  <rect x="460" y="176" width="180" height="90" rx="8" ry="8"
+        fill="white" stroke="#1a7f37" stroke-width="2"/>
+  <text x="550" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="26"
+        text-anchor="middle">⚡</text>
+  <text x="550" y="234" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        font-weight="600" fill="#1a7f37" text-anchor="middle">GitHub Actions</text>
+  <text x="550" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#57606a" text-anchor="middle">picks up workflow</text>
+
+  <!-- Step B: gh-aw compile -->
+  <rect x="700" y="176" width="180" height="90" rx="8" ry="8"
+        fill="white" stroke="#bf8700" stroke-width="2"/>
+  <text x="790" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="26"
+        text-anchor="middle">⚙️</text>
+  <text x="790" y="234" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        font-weight="600" fill="#bf8700" text-anchor="middle">gh aw compile</text>
+  <text x="790" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#57606a" text-anchor="middle">Markdown → lock.yml</text>
+
+  <!-- Step C: AI Agent -->
+  <rect x="940" y="176" width="160" height="90" rx="8" ry="8"
+        fill="white" stroke="#8250df" stroke-width="2"/>
+  <text x="1020" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="26"
+        text-anchor="middle">🤖</text>
+  <text x="1020" y="234" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        font-weight="600" fill="#8250df" text-anchor="middle">AI Agent</text>
+  <text x="1020" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#57606a" text-anchor="middle">runs your task brief</text>
+
+  <!-- Arrows between infra steps -->
+  <line x1="640" y1="221" x2="698" y2="221" stroke="#1a7f37" stroke-width="2"
+        marker-end="url(#arrowGreen)"/>
+  <line x1="880" y1="221" x2="938" y2="221" stroke="#bf8700" stroke-width="2"
+        marker-end="url(#arrowPurple)"/>
+
+  <!-- Output box -->
+  <rect x="580" y="340" width="400" height="110" rx="8" ry="8"
+        fill="white" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="780" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="13"
+        font-weight="600" fill="#1a7f37" text-anchor="middle">③ Agent output posted back to GitHub</text>
+  <rect x="610" y="382" width="110" height="28" rx="5" ry="5" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="665" y="401" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#1a7f37" text-anchor="middle">Issues / PRs</text>
+  <rect x="735" y="382" width="110" height="28" rx="5" ry="5" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="790" y="401" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#1a7f37" text-anchor="middle">Comments</text>
+  <rect x="860" y="382" width="100" height="28" rx="5" ry="5" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="910" y="401" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#1a7f37" text-anchor="middle">Reports</text>
+  <text x="780" y="436" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        fill="#57606a" text-anchor="middle">Visible in your browser — no local setup needed</text>
+
+  <!-- Arrows to output box -->
+  <line x1="1020" y1="266" x2="1020" y2="340" stroke="#8250df" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="1020" y1="340" x2="980" y2="340" stroke="#8250df" stroke-width="1.5"
+        marker-end="url(#arrowPurple)"/>
+
+  <!-- "No installation" badge -->
+  <rect x="460" y="340" width="100" height="110" rx="8" ry="8"
+        fill="#fff8c5" stroke="#bf8700" stroke-width="2"/>
+  <text x="510" y="382" font-family="system-ui, -apple-system, sans-serif" font-size="22"
+        text-anchor="middle">🚫</text>
+  <text x="510" y="406" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        font-weight="600" fill="#bf8700" text-anchor="middle">No local</text>
+  <text x="510" y="421" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        font-weight="600" fill="#bf8700" text-anchor="middle">install</text>
+  <text x="510" y="436" font-family="system-ui, -apple-system, sans-serif" font-size="11"
+        font-weight="600" fill="#bf8700" text-anchor="middle">needed</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="502" font-family="system-ui, -apple-system, sans-serif" font-size="12"
+        fill="#57606a" text-anchor="middle">You'll confirm gh-aw is working when "Hello Agent" appears in the Actions tab after completing Step 8.</text>
+</svg>

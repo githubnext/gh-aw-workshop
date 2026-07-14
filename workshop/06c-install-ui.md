@@ -17,6 +17,8 @@ You'll confirm that the GitHub UI path does not require a local `gh-aw` installa
 
 `gh-aw` runs on GitHub's infrastructure when your workflow executes. When you trigger a workflow from the **Actions** tab, GitHub handles compilation and execution — your browser is the only tool you need.
 
+![GitHub-hosted execution flow: the learner authors and triggers workflows from a browser; GitHub's infrastructure handles gh-aw compilation and AI agent execution entirely](images/06c-github-hosted-execution.svg)
+
 You'll author workflow files using the GitHub web editor in Step 7b and trigger them from the Actions tab in Step 8. You'll confirm `gh-aw` is working when **Hello Agent** appears in your workflow list.
 
 ## What to do next
