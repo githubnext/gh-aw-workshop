@@ -29,73 +29,38 @@ By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI mod
 
 1. Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys) and sign in (or create an account).
 2. Click **Create new secret key**, give it a name (for example `gh-aw-workshop`), and click **Create secret key**.
-3. Copy the key value — it starts with `sk-`.
+3. Copy the key value immediately — it starts with `sk-` and OpenAI shows it **only once**.
 
 > [!IMPORTANT]
-> OpenAI shows the full key value **only once**. Copy it to your clipboard before you close the dialog or navigate away. If you miss this window, you must delete the key and generate a new one.
->
-> Paste the key into GitHub Secrets (the next section) **before** closing the OpenAI platform tab.
+> Paste the key into GitHub Secrets (the next section) **before** closing the OpenAI platform tab. If you close it first, you must delete the key and generate a new one.
 
-<!-- -->
-
-> [!NOTE]
-> OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before running workflows to avoid surprise charges or throttling.
-
-<details>
-<summary>Key rotation best practices</summary>
-
-- Save the key in GitHub right away because OpenAI only shows the full value once.
-- Use a recognizable name so you can identify its workflow or repository later.
-- Rotate the key immediately if you paste it into the wrong place or think it may have been exposed.
-- Delete old or unused keys from the OpenAI dashboard after you confirm the replacement works.
-
-</details>
+**✏️ Verify:** Confirm your new key appears in the list at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) before continuing.
 
 ---
 
 ## Store the key as a repository secret
 
-Open your repository in a **new tab** so you keep the OpenAI platform tab open until the secret is saved.
+Open your repository in a **new tab** so you keep the OpenAI platform tab open.
 
-1. Open your repository on GitHub.
-2. Click **Settings** → **Secrets and variables** → **Actions**.
-3. Click **New repository secret**.
-4. Set the name to `OPENAI_API_KEY` and paste the key value. Check there is no extra whitespace at the start or end.
-5. Click **Add secret**.
-6. Confirm the secret appears in the list as `OPENAI_API_KEY`.
+1. Click **Settings** → **Secrets and variables** → **Actions**.
+2. Click **New repository secret**.
+3. Set the name to `OPENAI_API_KEY` and paste the key value (no extra whitespace).
+4. Click **Add secret**.
 
-Secret names must use only uppercase letters, digits, and underscores. `OPENAI_API_KEY` is the exact name the `codex` engine looks for, so do not rename it.
+> [!IMPORTANT]
+> The name must be exactly `OPENAI_API_KEY`. Any variation (`openai_api_key`, `OPENAI-API-KEY`) causes a silent authentication failure.
 
-<details>
-<summary>Common mistakes with this secret</summary>
+**✏️ Verify:** Run this command and confirm `OPENAI_API_KEY` appears in the output:
 
-- **Wrong name**: any variation (`openai_api_key`, `OPENAI-API-KEY`, `CODEX_API_KEY`) will cause a silent auth failure. The name must be exactly `OPENAI_API_KEY`.
-- **Copied with extra whitespace**: pasting from some tools adds a leading space. Delete and re-create the secret if you are unsure.
-- **Closed the OpenAI tab before saving**: you cannot retrieve the key again. Delete the key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) and generate a new one.
-- **Network allow-list missing**: the `codex` engine needs outbound access to `api.openai.com`. Make sure it is in your `network.allowed` list (shown in the frontmatter example below).
-
-</details>
+```bash
+gh secret list
+```
 
 ---
 
 ## Update your workflow frontmatter
 
-Open your workflow `.md` file and add the `engine` field to the frontmatter:
-
-```yaml
----
-name: My Workflow
-on:
-  workflow_dispatch:
-permissions:
-  contents: read
-engine: codex
----
-```
-
-You can omit `copilot-requests: write` when using the `codex` engine. That permission is specific to the Copilot engine.
-
-A more complete example with network access configured:
+Add `engine: codex` and the `network.allowed` entry to your workflow's frontmatter. You can omit `copilot-requests: write` — it is specific to the Copilot engine.
 
 ```yaml
 ---
@@ -112,15 +77,19 @@ network:
 ---
 ```
 
-The `codex` engine needs outbound access to `api.openai.com`. If your workflow uses the default `network: defaults` setting, add `api.openai.com` to the allow-list as shown above.
+**✏️ Verify:** Confirm your frontmatter includes `engine: codex` and the secret reference:
+
+```yaml
+engine: codex
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+```
 
 ---
 
 ## Optional: choose a specific OpenAI model
 
-For most workshop workflows, `gpt-4o-mini` is the right choice — it is fast and cheap.
-
-You can pin a specific model version using the extended engine syntax:
+To pin a model version, use the extended engine syntax:
 
 ```yaml
 engine:
@@ -128,7 +97,7 @@ engine:
   model: gpt-4o-mini
 ```
 
-Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team. For more advanced configuration details (including project-scoped keys, quotas, and model availability), use the [OpenAI API docs](https://platform.openai.com/docs/overview).
+Leave `model` out to use the engine's current default, which the `gh-aw` team keeps up to date.
 
 ---
 
@@ -151,9 +120,9 @@ You should see:
 ## ✅ Checkpoint
 
 - [ ] You have an OpenAI account and have generated an API key
-- [ ] `OPENAI_API_KEY` is stored as a repository secret
-- [ ] Your workflow frontmatter has `engine: codex`
+- [ ] My new key is listed at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+- [ ] `OPENAI_API_KEY` is stored as a repository secret (`gh secret list` confirms it)
+- [ ] My workflow frontmatter has `engine: codex` and `api.openai.com` in `network.allowed`
 - [ ] `gh aw compile --validate` reports no errors
-- [ ] (If using network isolation) `api.openai.com` is in the `network.allowed` list
 
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
