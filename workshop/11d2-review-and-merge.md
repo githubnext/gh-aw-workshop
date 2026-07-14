@@ -12,12 +12,12 @@
 
 ## Monitor Your Session
 
-After you submit the prompt, watch the activity feed until the session finishes. Most sessions complete in two to five minutes, and you can steer the work with follow-up prompts if the agent needs more context or starts solving the wrong problem.
+After you submit the prompt, watch the activity feed until the session finishes. Most sessions complete in two to five minutes, and you can steer the work with follow-up prompts if the agent needs more context or takes the wrong direction.
 
 ### ✏️ Exercise: monitor progress and open the PR
 
 1. In the GitHub Copilot app, open your active session in **My work** so you can watch the agent's progress in one place.
-2. Wait for the session to finish, then open the pull request link from the session so you review the exact branch the agent created.
+2. Wait for the session to finish, then open the pull request link from the session so you can review the exact branch the agent created.
 3. Keep the pull request open in a browser tab so the next exercises stay focused on the same change set.
 
 > [!TIP]
@@ -44,9 +44,8 @@ The PR should contain exactly two files: the human-readable task brief (`.md`) a
 
 ### ✏️ Exercise: request a revision with `@copilot`
 
-If the workflow already looks correct, skip this exercise and proceed to merge.
-
 1. Read `.github/workflows/<name>.md` and decide on one change you want so your feedback stays specific and easy for the agent to apply.
+   If the workflow already looks correct after this review, skip the comment and proceed to merge.
 2. In the PR comment box, post a revision request that starts with `@copilot`, because the mention is what routes your instruction back to the agent:
 
 ```
