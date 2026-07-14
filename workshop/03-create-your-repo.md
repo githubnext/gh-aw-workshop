@@ -16,12 +16,12 @@ _By the end of this step (3a or 3b), you will have a public `my-agentic-workflow
 You have completed Step 2a or Step 2b and your development environment is ready.
 
 > [!TIP]
-> **Actions tab missing?** If the **Actions** tab is not visible in your repository, GitHub Actions may be disabled on your account or organisation.
+> **Actions tab missing?** If the **Actions** tab is not visible in your repository, GitHub Actions may be disabled on your account or organization.
 >
 > 1. Go to **GitHub.com → Your profile photo → Settings → Actions → General**.
 > 2. Under **Actions permissions**, select **Allow all actions and reusable workflows**.
 > 3. Click **Save**, then refresh your repository page.
-> 4. If you are on GitHub Enterprise Server or inside an organisation, ask your admin to enable Actions for your account or repository.
+> 4. If you are on GitHub Enterprise Server or inside an organization, ask your admin to enable Actions for your account or repository.
 
 ## 🎯 What You'll Do
 
