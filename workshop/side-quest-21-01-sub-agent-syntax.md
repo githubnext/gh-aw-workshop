@@ -37,7 +37,7 @@ Run it from GitHub Actions.
 This block has three problems:
 
 - the agent name is invalid
-- one frontmatter field does not belong in a sub-agent
+- the `engine` frontmatter field does not belong in a sub-agent
 - the block is in the wrong place
 
 Your job is to fix those three problems in order.
@@ -133,7 +133,7 @@ Open your Step 21 workflow and do one real edit:
 
 1. Add or repair one ``## agent: `name` `` block at the bottom of the file.
 2. Keep only `description` and, if needed, `model` in the sub-agent frontmatter.
-3. Run this command from the repository root:
+3. From the repository root, run:
 
 ```bash
 gh aw compile
