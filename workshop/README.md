@@ -57,6 +57,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 
 ## Optional Side Quests
 
+- [Side Quest: GitHub Actions Vocabulary Builder](side-quest-04-01-actions-vocabulary.md) — hands-on labeling exercise, browser workflow exploration, and true/false quiz for GitHub Actions building blocks; branches from [Step 4](04-github-actions-intro.md).
 - [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md) — one-page cheat sheet for what changes vs what stays the same in agentic workflows; branches from [Step 5](05-agentic-workflows-intro.md).
 - [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
 - [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md) — glossary of workshop environments and tool terms with official docs links; branches from [Step 1](01-prerequisites.md).
