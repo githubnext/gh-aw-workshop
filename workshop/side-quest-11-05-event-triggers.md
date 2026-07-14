@@ -6,6 +6,11 @@
 
 You'll compare scheduled and event-driven triggers, copy four starter trigger blocks, and learn how trigger choice affects `safe-outputs`. By the end you'll know when to reach for `pull_request`, `push`, `issues`, or `schedule`.
 
+## 📋 Before You Start
+
+- You have an existing workflow file from Step 11a or Step 11c, such as `.github/workflows/daily-status.md`.
+- You know how to commit and push changes in your chosen path.
+
 ## Scheduled vs event-driven triggers
 
 A **scheduled** workflow runs because the clock says it is time. An **event-driven** workflow runs because something happened in the repository, like a pull request opening or an issue being reopened.
@@ -69,6 +74,17 @@ on:
 
 This is a good fit for recurring reports like the Daily Repo Status workflow in Step 11a.
 
+## Try It: Swap Your Trigger
+
+Open your workflow file, such as `.github/workflows/daily-status.md`, and replace the existing `on:` block with `workflow_dispatch` plus one event trigger from this page.
+
+Then:
+
+1. Save the workflow file with your updated trigger block.
+2. Run `gh aw compile` to verify the change is valid.
+3. Commit and push the change using your chosen path.
+4. Open the workflow in the GitHub Actions UI, trigger it manually, and confirm it runs.
+
 ## How trigger choice changes `safe-outputs`
 
 The trigger decides **when** the workflow starts. The `safe-outputs` block decides **where it is allowed to write back**.
@@ -113,6 +129,7 @@ That is the core decision: pick the trigger that matches the moment you care abo
 
 - [ ] I can explain the difference between a scheduled workflow and an event-driven workflow
 - [ ] I know starter trigger blocks for `pull_request`, `push`, `issues`, and `schedule`
+- [ ] I changed my workflow's trigger and confirmed it still compiles with `gh aw compile`
 - [ ] I understand that `safe-outputs` controls write access separately from the trigger
 - [ ] I can explain why both Step 11a and Step 11c use `add-comment` as their `safe-outputs` choice
 
