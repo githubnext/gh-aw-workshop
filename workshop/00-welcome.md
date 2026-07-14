@@ -2,6 +2,11 @@
 
 By the end of this workshop, a real AI agent will post a comment on one of your GitHub issues — automatically, every day, without you writing shell-script workflow code.
 
+## 📋 Before You Start
+
+- A GitHub account (free or Enterprise)
+- A web browser — no local tools required for Step 0
+
 ## 👀 What you'll see in 30 seconds
 
 This is the finished workflow run you'll build toward in the GitHub Actions UI.
@@ -25,14 +30,23 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 
 ## Quick check: where are you starting from?
 
-Mark what's already true for you — use these to pick a path in the table above:
+Do this 2-minute warm-up now. Open [github.com/settings/profile](https://github.com/settings/profile), then use this checklist to produce a starting snapshot you can act on:
 
-- [ ] I have a GitHub account
-- [ ] I've used GitHub Actions before
-- [ ] I've tried AI-assisted developer tools
-- [ ] I'm on GitHub Enterprise Cloud (GHEC)
+- [ ] I opened my GitHub profile settings and confirmed I can sign in with the account I'll use
+- [ ] I noted my plan tier so I know whether Step 1's enterprise notes apply to me
+- [ ] I picked the row in the table above that best matches how I want to work today
+- [ ] I confirmed that I have a GitHub account ready for the workshop
+- [ ] I opened the **Actions** tab in any repository and decided whether "I've used GitHub Actions before" is true for me
+- [ ] I named one AI-assisted developer tool I've tried, or wrote down `none yet`
+- [ ] I checked whether my work happens on GitHub Enterprise Cloud (GHEC)
+- [ ] I know whether the skip-ahead checklist in [Step 1](01-prerequisites.md) is worth using
+- [ ] I opened [Step 1](01-prerequisites.md) in a new tab so I know where I'll continue next
 
-If you checked all four boxes, the skip-ahead checklist in [Step 1](01-prerequisites.md) is for you.
+If GitHub CLI is already installed, you can also verify the version now. If not, skip this and let [Step 1](01-prerequisites.md) guide your setup choice.
+
+```bash
+gh --version
+```
 
 ## Before vs after
 
@@ -85,7 +99,7 @@ You should be comfortable with:
 
 No experience with GitHub Actions or AI tools required.
 
-Steps build on each other, and checkboxes at the end of each step tell you exactly what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path. (In Step 7, the Terminal path is split into two short parts: [Part 1](07a-your-first-workflow-terminal.md) and [Part 2](07a-part2-your-first-workflow-instructions.md). Step 8 continues into [Step 8b: Interpret Your First Run](08b-interpret-your-run.md) so you first run the workflow, then read what happened.)
+Each step ends with a checkpoint so you know what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to the right path. Step 7 splits the Terminal path into [Part 1](07a-your-first-workflow-terminal.md) and [Part 2](07a-part2-your-first-workflow-instructions.md). Step 8 continues in [Step 8b: Interpret Your First Run](08b-interpret-your-run.md).
 
 At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D). All paths converge at Step 12.
 
@@ -94,9 +108,12 @@ At **Step 11**, you can build manually (Step 11a), use the guided wizard (Advent
 
 ## ✅ Checkpoint
 
+- [ ] You completed the warm-up and know which path fits you today
 - [ ] You know the concrete outcome you'll build
 - [ ] You know how this differs from a regular GitHub Action
+- [ ] You know whether Step 1's enterprise and skip-ahead notes apply to you
 - [ ] You know which setup and authoring paths you'll take
+- [ ] You know the next file you'll open
 - [ ] You're excited — let's go! 🚀
 
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)
