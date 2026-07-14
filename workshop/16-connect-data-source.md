@@ -29,7 +29,7 @@ The pattern looks like this:
 
 ### Add a step to fetch recent commits
 
-Open your workflow file at `.github/workflows/daily-status.md` and add two steps **before** the AI prompt step.
+Open your workflow file at `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the frontmatter.
 
 First, fetch the recent commit log:
 
@@ -78,24 +78,28 @@ What this does:
 
 ### Inject the data into your AI prompt
 
-Find the AI prompt step in your workflow and update the `prompt:` to include the new context:
+In gh-aw, the AI prompt is not a step — it is the **Markdown body** of the workflow file: the natural-language text that appears after the closing `---` of the YAML frontmatter. The compiler picks this up automatically.
 
-```yaml
-- name: Generate daily summary
-  uses: gh-aw/prompt@v1
-  with:
-    prompt: |
-      Summarise recent activity in this repository.
+Open `.github/workflows/daily-status.md` and update the Markdown body (after the frontmatter) to reference the step outputs you just added:
 
-      Recent commits (last 24 hours):
-      ${{ steps.recent.outputs.commit_log }}
+```markdown
+---
+# … your existing frontmatter with the two new steps …
+---
 
-      Open issues (${{ steps.issues.outputs.open_issues_count }} total):
-      ${{ steps.issues.outputs.open_issues }}
+Summarise recent activity in this repository.
 
-      Write a concise, friendly update — two short paragraphs. 
-      Highlight anything that looks urgent in the issue list.
+Recent commits (last 24 hours):
+${{ steps.recent.outputs.commit_log }}
+
+Open issues (${{ steps.issues.outputs.open_issues_count }} total):
+${{ steps.issues.outputs.open_issues }}
+
+Write a concise, friendly update — two short paragraphs.
+Highlight anything that looks urgent in the issue list.
 ```
+
+The `${{ steps.<id>.outputs.<key> }}` expressions are resolved at runtime and the values are injected into the prompt before the AI sees it.
 
 > [!TIP]
 > The more specific your prompt, the better the output. Tell the model exactly what format you want (e.g., "two short paragraphs") and what to emphasise.
