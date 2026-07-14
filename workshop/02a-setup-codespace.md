@@ -1,9 +1,11 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
-**New to terminals, but want compiler feedback?** A Codespace gives you a browser-based terminal with the tools you need and no local installation.
-
 > [!IMPORTANT]
-> **No terminal? No problem.** If you're using the Copilot app, a mobile device, or prefer the GitHub web UI without opening a terminal at all, skip ahead to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+> **Copilot app, GitHub Mobile, or prefer the GitHub web UI with no terminal?**
+> Skip this entire setup step and go directly to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+> You do not need a terminal for the rest of this workshop on that path.
+
+**New to terminals, but want compiler feedback?** A Codespace gives you a browser-based terminal with the tools you need and no local installation.
 
 ## Before You Start
 
