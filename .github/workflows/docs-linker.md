@@ -72,7 +72,8 @@ steps:
       mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
 
       CACHE_FILE=/tmp/gh-aw/cache-memory/docs-index.json
-      MAX_AGE=604800  # 7 days
+      # 7 days: balances freshness with avoiding excessive HTTP requests on every daily run
+      MAX_AGE=604800
 
       # Reuse cached index if fresh
       if [[ -f "$CACHE_FILE" ]]; then
@@ -92,7 +93,12 @@ steps:
       fi
 
       python3 <<'PYEOF'
-      import json, re, subprocess, time, shutil, os
+      import json
+      import os
+      import re
+      import shutil
+      import subprocess
+      import time
 
       PAGES = [
         ("https://github.github.com/gh-aw/introduction/overview/", "Overview of GitHub Agentic Workflows"),
@@ -158,7 +164,10 @@ steps:
               if text and anchor_id:
                   anchors.append({"id": anchor_id, "text": text, "url": url + "#" + anchor_id})
 
-          # Pattern 2: <a id="anchor"></a> before heading text
+          # Pattern 2 fallback: some Starlight/older static sites emit a bare
+          # <a id="anchor"></a> anchor tag before the heading text rather than
+          # placing id directly on the heading element. Only try this if
+          # Pattern 1 produced no results.
           if not anchors:
               for m in re.finditer(
                   r'<a[^>]*\bid=["\']([^"\']+)["\'][^>]*>\s*</a>\s*(.*?)\s*(?=<(?:h[1-4]|a\s))',
@@ -175,7 +184,9 @@ steps:
 
       for url, title in PAGES:
           status, anchors = fetch_anchors(url)
-          if status is None or not str(status).startswith("2"):
+          # status is None when curl returned no output; otherwise it is a
+          # string HTTP status code (e.g. "200", "404").
+          if status is None or not status.startswith("2"):
               print("SKIP " + url + " - HTTP " + str(status))
               continue
           index["pages"][url] = {"title": title, "anchors": anchors}
