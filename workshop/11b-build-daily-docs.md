@@ -18,7 +18,7 @@ emoji: 📚
 description: Post a daily documentation health report as a GitHub issue comment.
 
 on:
-  schedule: daily       # Compiles to a daily cron schedule (midnight UTC)
+  schedule: daily       # Runs once per day at a compiler-chosen time
   workflow_dispatch: {} # Add a manual Run button in the Actions UI
 
 permissions:
@@ -43,7 +43,7 @@ Scan for stale files, thin pages, and broken internal links.
 Find the issue titled "Daily Docs Health" (or create it) and post one comment with a concise health summary.
 ```
 
-The `on:` block sets when the workflow runs — `schedule: daily` compiles to a daily cron schedule. The `permissions:` block declares the minimum GitHub API scopes the workflow may use. The `safe-outputs:` guardrail limits the agent to posting at most one issue comment per run.
+The `on:` block sets when the workflow runs — `schedule: daily` is a fuzzy expression that `gh aw compile` converts to a once-per-day schedule at a compiler-chosen time. The `permissions:` block declares the minimum GitHub API scopes the workflow may use. The `safe-outputs:` guardrail limits the agent to posting at most one issue comment per run.
 
 ## Choose Your Path
 

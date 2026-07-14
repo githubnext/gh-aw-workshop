@@ -10,7 +10,7 @@
 
 ## 🎯 What You'll Do
 
-You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions cron schedules. By the end, you'll know which fuzzy expression fits your workflow, how to verify the compiled cron value, and when to fall back to raw cron.
+You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions cron schedules. By the end, you'll know which fuzzy expression fits your workflow, how to verify the compiled cron value, and how agentic workflows differ from classic Actions YAML when it comes to scheduling.
 
 ## Cron in one minute
 
@@ -52,23 +52,34 @@ This is the exact schedule GitHub Actions will register for **your** workflow.
 
 ## When should you use raw cron?
 
-Use a raw cron expression only when the fuzzy options do not cover the pattern you need. For example, if you need a specific UTC time like 09:15 on weekdays, write the cron directly:
+Raw cron expressions belong in **classic GitHub Actions YAML** workflows — not in agentic workflow `.md` files. In an agentic workflow, always use a fuzzy expression; `gh aw compile` generates the cron value in the `.lock.yml` automatically.
 
-```yaml
-on:
-  schedule: "15 9 * * 1-5"
-  workflow_dispatch: {}
-```
+If none of the fuzzy options match your exact timing need, choose the closest fuzzy expression. The fuzzy expressions cover the most common cadences, and the compiler scatters the exact minute and hour to avoid load spikes.
 
-For most workshop scenarios, start with fuzzy syntax first — it is easier to read, easier to explain, and easier to change later.
+> In a classic Actions workflow you would write cron directly:
+>
+> ```yaml
+> # classic-actions.yml (NOT an agentic workflow)
+> on:
+>   schedule:
+>     - cron: "15 9 * * 1-5"
+> ```
+>
+> In an agentic workflow `.md`, always use fuzzy syntax instead:
+>
+> ```yaml
+> on:
+>   schedule: daily on weekdays
+>   workflow_dispatch: {}
+> ```
 
 ## ✅ Checkpoint
 
 - [ ] I can explain what a cron expression is at a high level
 - [ ] I know which fuzzy schedule expression best matches my workflow cadence
-- [ ] I know that `gh aw compile` turns fuzzy syntax into a concrete cron value
+- [ ] I know that `gh aw compile` turns fuzzy syntax into a concrete cron value in the `.lock.yml`
 - [ ] I know where to look for the compiled `cron:` line after compilation
-- [ ] I know when to keep fuzzy syntax and when to use raw cron instead
+- [ ] I know that raw cron belongs in classic Actions YAML, not in agentic workflow `.md` files
 
 ---
 
