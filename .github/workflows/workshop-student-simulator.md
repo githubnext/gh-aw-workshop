@@ -367,8 +367,14 @@ Use the pre-computed values from `monte-carlo-replay.json` as the primary data s
 - **Success rate by UI preference** — compare average `successRate` for students where `ui_preferred: true` vs `ui_preferred: false`
 - **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`)
 - **Curriculum quality hotspots** — correlate top-dropout steps with low `overall_score` and weak rubric dimensions from `curriculum-quality-metrics.json`
-- **Improvement opportunities** — specific, actionable suggestions for each top dropout step
-- **Score-safe repairs** — each recommendation must explicitly name the weak rubric dimension(s) it targets and preserve or improve the affected step's `overall_score`. Do not recommend removing checkpoints, practice, or scaffolding unless you replace them with an equal or stronger learning support.
+- **Learning KPI index** — compute the cohort-wide mean of the three learning-outcome dimensions from `curriculum-quality-metrics.json` across all main steps: `active_learning`, `checkpoint_quality`, and `scaffolding`. Report each as a standalone mean score (0–10) and their weighted average using the same weights as the shared rubric: `(2.0 × active_learning + 2.0 × checkpoint_quality + 1.5 × scaffolding) / 5.5`. This index measures whether learners who stay in the workshop are actually building skills, independent of whether others drop out.
+- **Learning-vs-dropout trade-off** — for each top-dropout step, classify the primary failure mode as either *access barrier* (environment setup, tooling, auth) or *learning barrier* (conceptual density, insufficient scaffolding, weak checkpoints). Access barriers can often be reduced (for example by adding alternative paths, clearer setup instructions, or better error recovery guidance) without touching learning KPIs. Learning barriers must be addressed by improving scaffolding, adding intermediate checkpoints, or restructuring concept introduction — not by removing complexity or reducing cognitive demand.
+- **Improvement opportunities** — specific, actionable suggestions for each top dropout step, prioritised by their expected impact on the learning KPI index as well as on the completion rate
+- **Learning-quality-safe repairs** — each recommendation must:
+  - Explicitly name the rubric dimension(s) it targets
+  - Preserve or improve the affected step's `overall_score`
+  - Not reduce the cohort learning KPI index (`active_learning`, `checkpoint_quality`, or `scaffolding` means) relative to their current values
+  - Accept that some students will drop out: do **not** lower the cognitive bar or remove practice just to improve headline completion numbers. A well-scaffolded step that challenging students find hard is not itself a bug. Only recommend simplification when the step has a genuine instructional gap (low `scaffolding` or `active_learning` score) rather than appropriate challenge.
 
 ### Update student profiles
 
@@ -401,19 +407,32 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 - Overall success rate: XX% (from `aggregate.overallSuccessRate`)
 - Highest-dropout step: <step-id> (XX% dropout rate)
 - Lowest curriculum quality step: `<file>` (overall score X.X/10)
+- Learning KPI index: X.X/10 (active_learning X.X · checkpoint_quality X.X · scaffolding X.X)
 
 ### Critical Findings
 1. 2-4 bullets with the most important blockers and who they affect.
+2. Include one bullet on the learning quality health: whether the learning KPI index indicates learners who stay in the workshop are building skills effectively.
 
 ### Top Repairs to Prioritize
-1. Repair summary 1
-2. Repair summary 2
-3. Repair summary 3
+Note: some student dropout is expected and acceptable. Repairs must maintain or improve the learning KPI index — do not lower the cognitive bar or remove practice to chase headline completion numbers.
+
+1. Repair summary 1 (completion impact: ↑/↔/↓ · learning KPI impact: ↑/↔/↓)
+2. Repair summary 2 (completion impact: ↑/↔/↓ · learning KPI impact: ↑/↔/↓)
+3. Repair summary 3 (completion impact: ↑/↔/↓ · learning KPI impact: ↑/↔/↓)
 
 <details>
 <summary>Dropout by step</summary>
 
-Table with: step, dropouts, dropout rate, top reason.
+Table with: step, dropouts, dropout rate, failure mode (access barrier | learning barrier), top reason.
+
+</details>
+
+<details>
+<summary>Learning quality KPIs</summary>
+
+Table with: step file, overall score, active_learning score, checkpoint_quality score, scaffolding score, learning KPI index, repair priority.
+
+Include a row for the cohort mean at the bottom.
 
 </details>
 
@@ -449,8 +468,12 @@ After creating the report issue, create **exactly 3 child issues** using `create
 - includes:
   - problem statement
   - proposed change
-  - quantitative guardrail: current `overall_score`, weakest rubric dimension(s), and why the proposed change should maintain or raise the score
-  - acceptance criteria checklist (2-4 items)
+  - failure mode classification: *access barrier* or *learning barrier*
+  - quantitative guardrail: current `overall_score`, weakest rubric dimension(s), and current learning KPI index values (`active_learning`, `checkpoint_quality`, `scaffolding`) for the affected step — including both the `overall_score` and individual learning KPI dimensions — with an explanation of why the proposed change should maintain or raise all of these scores
+  - acceptance criteria checklist (2-4 items) that includes all three of the following as separate, independently verifiable items:
+    - the shared curriculum quantitative assessment `overall_score` for the affected step stays flat or improves after the change
+    - the step's learning KPI index (`(2.0 × active_learning + 2.0 × checkpoint_quality + 1.5 × scaffolding) / 5.5`) stays flat or improves — confirming that students who remain in the workshop are still building skills effectively
+    - hands-on practice, checkpoints, and scaffolding are preserved or strengthened (not removed or weakened to improve headline completion numbers)
   - suggested owner profile (for example: `copilot coding agent` or `workshop maintainer`)
 
-Choose repairs from the highest-dropout steps and keep each child issue independently actionable and assignable. At least one acceptance criterion in each child issue must assert that the shared curriculum quantitative assessment score for the affected step stays flat or improves overall after the change.
+Choose repairs from the highest-dropout steps and keep each child issue independently actionable and assignable.
