@@ -1,7 +1,12 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
-> [!CAUTION]
-> **Don't want to use a terminal? Skip here →** Using **GitHub Copilot app**, **GitHub Mobile**, or a **browser-only** setup? You are in the wrong place. Go directly to **[Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)** — no terminal required.
+## Which path is right for you?
+
+Check the statement that matches you best, then follow the link:
+
+- [ ] I want to use GitHub Copilot app, GitHub Mobile, or browser-only — **[Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md)**
+- [ ] I want a browser-based terminal with no local installs — ✅ **Continue below (Codespace)**
+- [ ] I have a local terminal and want to install tools myself — **[Go to Adventure B: Local Terminal →](02b-setup-local.md)**
 
 ## Before You Start
 
