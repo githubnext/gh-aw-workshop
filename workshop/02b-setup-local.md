@@ -1,9 +1,7 @@
 # Adventure B: Set Up Your Local Terminal
 
-> [!IMPORTANT]
-> **Copilot app, GitHub Mobile, or prefer the GitHub web UI with no terminal?**
-> Skip this entire setup step and go directly to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
-> You do not need a terminal for the rest of this workshop on that path.
+> [!CAUTION]
+> **Don't want to use a terminal? Skip here →** Using **GitHub Copilot app**, **GitHub Mobile**, or a **browser-only** setup? You are in the wrong place. Go directly to **[Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)** — no terminal required.
 
 ## Which path is right for me?
 
@@ -50,6 +48,11 @@ If this is your first time in a terminal, use this legend while running each ste
 All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
+
+**Verify you are on the right path before continuing:**
+
+- [ ] I have a terminal application open on my machine (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
+- [ ] I am comfortable installing command-line tools locally
 
 ### Pre-flight check your current `gh` state
 

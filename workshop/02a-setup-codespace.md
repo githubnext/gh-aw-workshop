@@ -1,10 +1,7 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
-> [!IMPORTANT]
-> **Choose your path:**
-> - 🌐 **Browser / Copilot app / Mobile** → [skip to Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-> - ☁️ **Codespace** → ✅ continue below
-> - 💻 **Local terminal** → [switch to Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
+> [!CAUTION]
+> **Don't want to use a terminal? Skip here →** Using **GitHub Copilot app**, **GitHub Mobile**, or a **browser-only** setup? You are in the wrong place. Go directly to **[Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)** — no terminal required.
 
 ## Before You Start
 
@@ -24,6 +21,11 @@ Make sure you have:
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
 ## Steps
+
+**Verify you are on the right path before continuing:**
+
+- [ ] I have a GitHub account with access to GitHub Codespaces
+- [ ] I want a browser-based terminal and do not need to install tools locally
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
