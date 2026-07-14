@@ -146,6 +146,10 @@ The first run reports all currently open issues and writes them to memory. The s
 
 ## 📚 See Also
 
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md)
 - [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)

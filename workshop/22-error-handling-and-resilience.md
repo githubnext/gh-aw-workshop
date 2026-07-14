@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Learn the most common ways agentic workflows fail in production and apply three practical techniques — defensive task briefs, timeout settings, and safe-output fallbacks — to keep your workflow useful even when things go wrong.
+Learn the most common ways agentic workflows fail in production and apply three practical techniques — defensive task briefs, timeout settings, and [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) fallbacks — to keep your workflow useful even when things go wrong.
 
 ## 📋 Before You Start
 
@@ -101,6 +101,9 @@ After editing the task brief and frontmatter:
 
 ## 📚 See Also
 
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Side Quest: Debugging Output Patterns](side-quest-09-01-debug-output.md)
 - [Side Quest: Pattern — Safe Output Blocked](side-quest-09-01c-pattern-safe-output-blocked.md)
 - [Side Quest: Pattern — Done but No Write](side-quest-09-01e-pattern-done-no-write.md)
