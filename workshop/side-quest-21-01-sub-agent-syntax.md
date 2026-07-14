@@ -77,7 +77,7 @@ Inside a sub-agent block, keep the frontmatter small:
 - `description` explains the sub-agent's job
 - `model` is optional if you want to override the parent model
 
-The compiler strips any fields other than `description` and `model` from sub-agent frontmatter and emits a warning.
+Any fields other than `description` and `model` are stripped from sub-agent frontmatter at runtime with a warning.
 For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
 
 **Action:** Remove the unsupported field from the broken block.
@@ -155,7 +155,7 @@ When the compile finishes, check that you do **not** see warnings about stripped
 - [ ] I kept only supported sub-agent frontmatter fields
 - [ ] I placed the sub-agent block at the bottom of the file
 - [ ] `gh aw compile` finished after I applied the same pattern to my own workflow
-- [ ] I did not see warnings about stripped sub-agent fields in that compile
+- [ ] I did not see warnings about stripped sub-agent fields in that run
 
 ---
 
