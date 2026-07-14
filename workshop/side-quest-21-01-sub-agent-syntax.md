@@ -31,6 +31,7 @@ engine: openai
 Read one issue and return exactly one sentence.
 
 ## How to use this workflow
+<!-- BROKEN: this heading appears after the sub-agent and ends the block -->
 
 Run it from GitHub Actions.
 ```
@@ -132,7 +133,7 @@ If your version follows the same pattern, you are ready to reuse it in your own 
 
 Open your Step 21 workflow and do one real edit:
 
-1. Add or repair one ``## agent: `name` `` block at the bottom of the file.
+1. Add or repair one sub-agent heading at the bottom of the file.
 2. Keep only `description` and, if needed, `model` in the sub-agent frontmatter.
 3. From the top-level folder of your practice repository, run:
 
