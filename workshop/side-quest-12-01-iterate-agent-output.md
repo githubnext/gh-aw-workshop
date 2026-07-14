@@ -95,6 +95,16 @@ to add a friendly, conversational tone instruction to the Guidelines section.
 Run gh aw compile to validate after the change.
 ```
 
+The skill can also **optimize or debug your prompt automatically** by reading previous workflow run logs. Instead of diagnosing the problem yourself, ask the skill to do it:
+
+```
+Using the agentic-workflows skill, debug .github/workflows/daily-status.md.
+Look at the recent run history to identify why the output format is inconsistent,
+then optimize the agent instructions to fix it.
+```
+
+The skill will examine the historical run data — including past outputs and any errors — to pinpoint what is driving the problem and propose a targeted fix.
+
 Tailor the prompt to the problem row you identified:
 
 | Problem row that failed | Example prompt for the skill |
