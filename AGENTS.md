@@ -32,7 +32,7 @@ IMPORT GUIDELINES TO FOLLLOW: .github/workflows/guidelines.md
 
 - Write in **second person** ("you"), present tense, active voice.
 - Keep steps short and outcome-focused. Each step should answer: _what will the learner do, and what will they have when they're done?_
-- Use `> [!TIP]`, `> [!NOTE]`, and `> [!IMPORTANT]` callouts sparingly — only when the information meaningfully changes what the learner should do. For multi-line callouts, wrap content in a `<details>` element with a `<summary>` heading; for single-line callouts, put the text directly in the blockquote without `<details>` (see the "Alert callouts" section in `.github/workflows/guidelines.md`).
+- Use `> [!TIP]` and `> [!NOTE]` callouts sparingly — only when the information meaningfully changes what the learner should do. Cap alert severity at `[!NOTE]`/`[!TIP]` for regular content; use `[!IMPORTANT]` only when the learner **must** act before continuing, and reserve `[!WARNING]`/`[!CAUTION]` for major security issues only. Never use dramatic or alarmist language. For multi-line callouts, wrap content in a `<details>` element with a `<summary>` heading; for single-line callouts, put the text directly in the blockquote without `<details>` (see the "Alert callouts" section in `.github/workflows/guidelines.md`).
 - End every workshop step with a `## ✅ Checkpoint` section containing a markdown checklist.
 - Do **not** number Markdown headers inside a file. Use descriptive headings and keep step order in lists, filenames, tables, or checkpoints instead.
 - Do **not** front-load prerequisite tool requirements in welcome or introductory steps — prerequisites belong in `01-prerequisites.md`.

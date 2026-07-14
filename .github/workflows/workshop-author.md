@@ -254,7 +254,7 @@ Specific patterns to follow:
 
 ### Formatting conventions
 
-- Use `> [!NOTE]`, `> [!TIP]`, and `> [!WARNING]` callout blocks for important context.
+- Use `> [!NOTE]` and `> [!TIP]` callout blocks for important context. Cap alert severity at `[!NOTE]`/`[!TIP]` for regular content; use `[!IMPORTANT]` only when the learner must act before continuing, and reserve `[!WARNING]`/`[!CAUTION]` for major security issues only. Never use dramatic or alarmist language.
 - Wrap **every** command in a fenced code block with the correct language tag (`bash`, `yaml`, etc.).
 - Use screenshot placeholders where visuals would help: `![Description](images/node-description.png)`
 - Use **bold** for UI labels (e.g., **New repository**) and `inline code` for file names and commands.
