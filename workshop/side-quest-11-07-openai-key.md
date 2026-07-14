@@ -31,6 +31,13 @@ By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI mod
 2. Click **Create new secret key**, give it a name (for example `gh-aw-workshop`), and click **Create secret key**.
 3. Copy the key value — it starts with `sk-`.
 
+> [!IMPORTANT]
+> OpenAI shows the full key value **only once**. Copy it to your clipboard before you close the dialog or navigate away. If you miss this window, you must delete the key and generate a new one.
+>
+> Paste the key into GitHub Secrets (the next section) **before** closing the OpenAI platform tab.
+
+<!-- -->
+
 > [!NOTE]
 > OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before running workflows to avoid surprise charges or throttling.
 
@@ -48,13 +55,26 @@ By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI mod
 
 ## Store the key as a repository secret
 
+Open your repository in a **new tab** so you keep the OpenAI platform tab open until the secret is saved.
+
 1. Open your repository on GitHub.
 2. Click **Settings** → **Secrets and variables** → **Actions**.
 3. Click **New repository secret**.
-4. Set the name to `OPENAI_API_KEY` and paste the key value.
+4. Set the name to `OPENAI_API_KEY` and paste the key value. Check there is no extra whitespace at the start or end.
 5. Click **Add secret**.
+6. Confirm the secret appears in the list as `OPENAI_API_KEY`.
 
 Secret names must use only uppercase letters, digits, and underscores. `OPENAI_API_KEY` is the exact name the `codex` engine looks for, so do not rename it.
+
+<details>
+<summary>Common mistakes with this secret</summary>
+
+- **Wrong name**: any variation (`openai_api_key`, `OPENAI-API-KEY`, `CODEX_API_KEY`) will cause a silent auth failure. The name must be exactly `OPENAI_API_KEY`.
+- **Copied with extra whitespace**: pasting from some tools adds a leading space. Delete and re-create the secret if you are unsure.
+- **Closed the OpenAI tab before saving**: you cannot retrieve the key again. Delete the key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) and generate a new one.
+- **Network allow-list missing**: the `codex` engine needs outbound access to `api.openai.com`. Make sure it is in your `network.allowed` list (shown in the frontmatter example below).
+
+</details>
 
 ---
 
