@@ -49,7 +49,7 @@ timeout-minutes: 30
 checkout:
   repository: github/gh-aw
   sparse-checkout: docs/src
-  path: /tmp/gh-aw-docs-repo
+  path: gh-aw-docs-repo
   github-token: ${{ github.token }}
 steps:
   - name: Gather workshop files
@@ -102,7 +102,7 @@ steps:
       import json, os, re, shutil, time
 
       REPO_URL_BASE = "https://github.github.com/gh-aw"
-      DOCS_REPO     = "/tmp/gh-aw-docs-repo"
+      DOCS_REPO     = os.path.join(os.environ.get("GITHUB_WORKSPACE", "."), "gh-aw-docs-repo")
 
       def find_content_dir(base):
           """Find the Starlight content directory under docs/src/."""
