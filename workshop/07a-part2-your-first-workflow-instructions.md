@@ -73,11 +73,11 @@ git push
 
 For follow-up edits, prefer asking an agent to update workflows with the `agentic-workflows` skill instead of hand-editing every line.
 
-## Checkpoint
+## ✅ Checkpoint
 
 - [ ] `.github/workflows/hello-agent.md` includes `permissions` with `copilot-requests: write`
 - [ ] `.github/workflows/hello-agent.md` includes `safe-outputs` for `add-comment` and `create-issue`
-- [ ] The file includes a `## Task` instructions block below frontmatter
+- [ ] The `## Task` instructions block in your workflow file describes a concrete task in plain language
 - [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports valid
 - [ ] The file is committed and pushed to `main`
-- [ ] I'm ready for [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- [ ] You are ready to trigger the workflow in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)

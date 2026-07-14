@@ -94,10 +94,10 @@ After this first manual setup, prefer asking an agent to edit workflows with the
 
 Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md).
 
-## Checkpoint
+## ✅ Checkpoint
 
 - [ ] `.github/workflows/hello-agent.md` exists
 - [ ] The file starts with valid frontmatter fences (`---` ... `---`)
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
 - [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports valid
-- [ ] I'm ready to continue to [Part 2](07a-part2-your-first-workflow-instructions.md)
+- [ ] `gh extension list` shows `github/gh-aw` is installed
