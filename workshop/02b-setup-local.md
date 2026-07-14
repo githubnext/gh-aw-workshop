@@ -1,7 +1,9 @@
 # Adventure B: Set Up Your Local Terminal
 
-> [!TIP]
-> Not using a terminal? Switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) instead — no local installs required.
+> [!IMPORTANT]
+> **Copilot app, GitHub Mobile, or prefer the GitHub web UI with no terminal?**
+> Skip this entire setup step and go directly to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+> You do not need a terminal for the rest of this workshop on that path.
 
 ## 🧪 5-question terminal self-assessment
 
