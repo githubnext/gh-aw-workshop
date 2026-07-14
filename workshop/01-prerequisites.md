@@ -2,6 +2,16 @@
 
 _Starting with the right setup saves you from frustrating detours later._
 
+## 📋 Before You Start
+
+This step checks that all the tools and accounts you need are in place before you write any workflow code.
+
+Verify your tools are ready:
+
+- Git: `git --version`
+- GitHub CLI: `gh --version`
+- gh-aw extension: `gh extension list | grep gh-aw`
+
 ## Enterprise users
 
 > [!IMPORTANT]
