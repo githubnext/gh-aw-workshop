@@ -449,6 +449,7 @@ jobs:
           TARGET_SHA: ${{ steps.plan-release.outputs.target }}
         run: |
           gh release create "$NEXT_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
             --target "$TARGET_SHA" \
             --title "$RELEASE_TITLE" \
             --notes-file "$RELEASE_DESCRIPTION_PATH"
