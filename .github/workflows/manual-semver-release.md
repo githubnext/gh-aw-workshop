@@ -18,6 +18,10 @@ permissions:
   issues: read
   pull-requests: read
   copilot-requests: write
+env:
+  RELEASE_TRIGGER_PATH: /tmp/gh-aw/data/release-trigger.json
+  RELEASE_PLAN_PATH: /tmp/gh-aw/data/release-plan.json
+  RELEASE_DESCRIPTION_PATH: /tmp/gh-aw/data/release-description.md
 strict: true
 tools:
   github:
@@ -40,7 +44,7 @@ steps:
           ref_name: $ref_name,
           sha: $sha,
           bump: $bump
-        }' > /tmp/gh-aw/data/release-trigger.json
+        }' > "$RELEASE_TRIGGER_PATH"
   - name: Compute release plan
     env:
       BUMP: ${{ github.event.inputs.bump }}
@@ -57,8 +61,8 @@ steps:
       import re
       import subprocess
 
-      plan_path = pathlib.Path("/tmp/gh-aw/data/release-plan.json")
-      description_path = pathlib.Path("/tmp/gh-aw/data/release-description.md")
+      plan_path = pathlib.Path(os.environ["RELEASE_PLAN_PATH"])
+      description_path = pathlib.Path(os.environ["RELEASE_DESCRIPTION_PATH"])
       bump = os.environ["BUMP"]
       target = os.environ["TARGET_SHA"]
 
@@ -72,7 +76,7 @@ steps:
       tags = run_lines("git", "tag", "--list")
       stable = {}
       for tag in tags:
-          match = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)", tag)
+          match = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)$", tag)
           if not match:
               continue
           version = tuple(int(part) for part in match.groups())
@@ -107,11 +111,11 @@ steps:
       }
 
       if previous_tag:
-          merge_base = subprocess.run(
+          ancestor_check = subprocess.run(
               ["git", "merge-base", "--is-ancestor", previous_tag, target],
               check=False,
           )
-          if merge_base.returncode != 0:
+          if ancestor_check.returncode != 0:
               plan["has_changes"] = False
               plan["noop_reason"] = (
                   f"Cannot safely compare {previous_tag_display} to {target} because the tag is not an ancestor of the target commit."
@@ -152,14 +156,14 @@ steps:
       PY
 
       echo "=== Release plan ==="
-      cat /tmp/gh-aw/data/release-plan.json
+      cat "$RELEASE_PLAN_PATH"
       echo
       echo "=== Deterministic release description ==="
-      cat /tmp/gh-aw/data/release-description.md
+      cat "$RELEASE_DESCRIPTION_PATH"
 safe-outputs:
   jobs:
     create-release:
-      description: Create the GitHub tag and release from the deterministic release plan and full change list prepared before the agent ran.
+      description: Create the GitHub tag and release from the deterministic release plan and full change list prepared before the agent ran. This tool takes no arguments.
       output: Release created successfully.
       runs-on: ubuntu-latest
       permissions:
@@ -170,8 +174,8 @@ safe-outputs:
           with:
             script: |
               const fs = require('fs');
-              const planPath = '/tmp/gh-aw/data/release-plan.json';
-              const descriptionPath = '/tmp/gh-aw/data/release-description.md';
+              const planPath = process.env.RELEASE_PLAN_PATH;
+              const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
               const outputPath = process.env.GH_AW_AGENT_OUTPUT;
 
               if (!outputPath) {
@@ -279,7 +283,7 @@ safe-outputs:
           with:
             script: |
               const fs = require('fs');
-              const planPath = '/tmp/gh-aw/data/release-plan.json';
+              const planPath = process.env.RELEASE_PLAN_PATH;
               const outputPath = process.env.GH_AW_AGENT_OUTPUT;
 
               if (!outputPath) {
@@ -375,15 +379,15 @@ Use this structure for the release body:
 
 Call `noop` with a brief explanation instead of creating or updating a release if:
 
-- `release-plan.json` says `has_changes` is false
-- `release-plan.json` is missing required fields or conflicts with what you can see in the repository
+- `/tmp/gh-aw/data/release-plan.json` says `has_changes` is false
+- `/tmp/gh-aw/data/release-plan.json` is missing required fields or conflicts with what you can see in the repository
 - you can already see that the computed tag or release exists before attempting the safe outputs
 
 ## Safe Output
 
 When you are ready:
 
-1. Call `create_release` exactly once with no arguments. It will create the tag and release from the deterministic release plan and full change list.
+1. Call `create_release` exactly once with no arguments. This tool has no input parameters and reads the release plan and raw description from the prepared files.
 2. Call `update_release` exactly once with:
    - `body` — the rewritten markdown release notes
 
