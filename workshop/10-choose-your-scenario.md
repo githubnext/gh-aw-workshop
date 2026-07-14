@@ -100,6 +100,9 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 - ➡️ Adventure C: [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 - ➡️ Adventure D: [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 
+> [!TIP]
+> **Optional Side Quest:** Curious about how attackers can try to override your workflow's task brief using repository content? Read [Side Quest: Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md) to learn how `permissions:` and a well-scoped brief defend against this attack.
+
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
