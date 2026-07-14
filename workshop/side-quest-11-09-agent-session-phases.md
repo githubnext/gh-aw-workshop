@@ -32,7 +32,7 @@ The session typically completes in two to five minutes. If the agent takes the w
 
 - If the agent is building the wrong scenario: _"Stop — I want Scenario A (daily status report), not Scenario B."_
 - If the agent skips compilation: _"Please compile the workflow with `gh aw compile --validate` before opening the pull request."_
-- If the agent opens a PR before the lock file is present: _"The lock file is missing. Please run `gh aw compile .github/workflows/daily-status.md --validate` (replace `daily-status` with your actual workflow filename) and add the generated `.lock.yml` to the pull request."_
+- If the agent opens a PR before the lock file is present: _"The lock file is missing. Please run `gh aw compile --validate` and add the generated `.lock.yml` to the pull request."_
 
 ## Expanding Activity Feed Steps
 
@@ -51,7 +51,7 @@ The GitHub Copilot app supports [**agent merge**](https://docs.github.com/en/cop
 If you want a live compile feedback loop while editing a workflow by hand, install the `gh-aw` CLI (see [Step 6](06-install-gh-aw.md)) and run:
 
 ```bash
-gh aw compile .github/workflows/<name>.md --watch
+gh aw compile --watch
 ```
 
 Each save triggers another compile, so you get immediate feedback instead of discovering YAML mistakes later. See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) for a full walkthrough.

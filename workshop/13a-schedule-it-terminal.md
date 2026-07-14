@@ -54,15 +54,15 @@ on:
 > Keep `workflow_dispatch` in the file even after you go to production. It lets you re-run the report on demand without changing the schedule.
 > **Compile checkpoint:** Save your file, then run:
 > ```bash
-> gh aw compile .github/workflows/daily-status.md
+> gh aw compile
 > ```
 > A green output means your YAML is valid so far. If you see a red error, check indentation in the `on:` block you just edited.
-> For auto-recompile while editing, run `gh aw compile .github/workflows/daily-status.md --watch`.
+> For auto-recompile while editing, run `gh aw compile --watch`.
 
 ### Compile and validate
 
 ```bash
-gh aw compile .github/workflows/daily-status.md
+gh aw compile
 ```
 
 You should see `✅ Compiled successfully`. The compiled `.yml` will contain the expanded cron expression — you don't need to write or maintain it by hand.
@@ -92,7 +92,7 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 
 - [ ] Your `on:` block contains both `workflow_dispatch` and a `schedule` fuzzy expression
 - [ ] The schedule expression reflects the cadence you actually want
-- [ ] `gh aw compile .github/workflows/daily-status.md` reports no errors
+- [ ] `gh aw compile` reports no errors
 - [ ] You have pushed the change and can see the schedule badge in the Actions UI
 - [ ] At least one scheduled (or manual) run has completed successfully after the change
 

@@ -32,7 +32,7 @@ description: Post a daily repository status summary as a GitHub issue comment.
 
 **✏️ Try it:** Update `emoji` and `description` in your draft file to match your workflow.
 
-**✅ Check:** Run `gh aw compile .github/workflows/daily-status.md` — the output should list your workflow with no errors.
+**✅ Check:** Run `gh aw compile` — the output should list your workflow with no errors.
 
 ---
 
@@ -59,7 +59,7 @@ on:
 
 **✏️ Try it:** Add both trigger keys to your draft file and save.
 
-**✅ Check:** Run `gh aw compile .github/workflows/daily-status.md` — the compile should succeed, and you should see both `schedule` and `workflow_dispatch` listed under triggers.
+**✅ Check:** Run `gh aw compile` — the compile should succeed, and you should see both `schedule` and `workflow_dispatch` listed under triggers.
 
 ---
 
@@ -85,7 +85,7 @@ The five entries above cover reading repository content, issues, pull requests, 
 
 **✏️ Try it:** Add the `permissions:` block to your draft. Verify that `copilot-requests: write` is included.
 
-**✅ Check:** Run `gh aw compile .github/workflows/daily-status.md` — the compile should complete with no permission errors.
+**✅ Check:** Run `gh aw compile` — the compile should complete with no permission errors.
 
 ---
 

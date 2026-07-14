@@ -13,7 +13,7 @@ You'll finish `.github/workflows/hello-agent.md` by adding:
 ## 📋 Before You Start
 
 - Completed [Part 1](07a-your-first-workflow-terminal.md)
-- `gh aw compile .github/workflows/hello-agent.md --validate` already passes once
+- `gh aw compile --validate` already passes once
 
 ## Steps
 
@@ -58,10 +58,10 @@ If there are no open issues, create one titled "Community Voting Test" and post 
 Run:
 
 ```bash
-gh aw compile .github/workflows/hello-agent.md --validate
+gh aw compile --validate
 ```
 
-Optional while editing: `gh aw compile .github/workflows/hello-agent.md --watch`.
+Optional while editing: `gh aw compile --watch`.
 
 Then commit and push:
 
@@ -78,6 +78,6 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [ ] `.github/workflows/hello-agent.md` includes `permissions` with `copilot-requests: write`
 - [ ] `.github/workflows/hello-agent.md` includes `safe-outputs` for `add-comment` and `create-issue`
 - [ ] The `## Task` instructions block in your workflow file describes a concrete task in plain language
-- [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports valid
+- [ ] `gh aw compile --validate` reports valid
 - [ ] The file is committed and pushed to `main`
 - [ ] You are ready to trigger the workflow in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)

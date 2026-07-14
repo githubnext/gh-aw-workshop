@@ -80,7 +80,7 @@ gh copilot suggest "how do I install a gh extension"
 ### Run your first compile check
 
 ```bash
-gh aw compile .github/workflows/hello-agent.md --validate
+gh aw compile --validate
 ```
 
 Expected result:
@@ -100,5 +100,5 @@ Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-
 - [ ] `.github/workflows/hello-agent.md` exists
 - [ ] The file starts with valid frontmatter fences (`---` ... `---`)
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
-- [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports valid
+- [ ] `gh aw compile --validate` reports valid
 - [ ] `gh extension list` shows `github/gh-aw` is installed

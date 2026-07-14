@@ -13,7 +13,7 @@ You'll use `gh aw compile` as a fast feedback loop while you edit workflow files
 Run it any time you edit a workflow file:
 
 ```bash
-gh aw compile .github/workflows/hello-agent.md
+gh aw compile
 ```
 
 If it succeeds, you should see a green success message and an updated `.lock.yml` file beside your source file.
@@ -26,7 +26,7 @@ If it succeeds, you should see a green success message and an updated `.lock.yml
 When you only want a yes/no answer while building a file in small sections, use `--validate`:
 
 ```bash
-gh aw compile .github/workflows/hello-agent.md --validate
+gh aw compile --validate
 ```
 
 This is useful after each small edit because it confirms the file structure without making you stop and inspect the generated lock file every time.
@@ -36,7 +36,7 @@ This is useful after each small edit because it confirms the file structure with
 If you're still editing by hand, keep the compiler running:
 
 ```bash
-gh aw compile .github/workflows/hello-agent.md --watch
+gh aw compile --watch
 ```
 
 Each save triggers another compile, so you get immediate feedback instead of discovering YAML mistakes later.
