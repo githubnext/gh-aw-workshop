@@ -22,6 +22,8 @@ You'll create `.github/workflows/hello-agent.md`, a small workflow that reads re
 
 The Terminal path gives you early compiler feedback. The GitHub UI path skips local compile checkpoints; GitHub Actions compiles the workflow when it runs. The GitHub Copilot path delegates `gh aw compile ... --validate` to the agent's session workspace.
 
+![Diagram showing how hello-agent.md is compiled by gh aw compile into hello-agent.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
+
 ## Before You Continue
 
 In one sentence, where will you manually start the first `workflow_dispatch` run in your chosen path?
