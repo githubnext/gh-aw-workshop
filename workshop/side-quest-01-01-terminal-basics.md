@@ -12,7 +12,7 @@
 
 **macOS:** Press **Command ⌘ + Space**, type **Terminal**, and press **Enter**. You'll see a prompt like `yourname@MacBook ~ %`.
 
-**Windows:** Press **Win**, type **Terminal**, and press **Enter**. You'll see a prompt like `C:\Users\yourname>`. Installing [Git for Windows](https://git-scm.com/download/win) also gives you **Git Bash**, which understands the `ls` and `pwd` commands used in this guide.
+**Windows:** Press **Win**, type **Terminal**, and press **Enter**. You'll see a prompt like `C:\Users\yourname>`.
 
 **Linux:** Press **Ctrl + Alt + T**, or right-click the desktop and choose **Open Terminal**. You'll see a prompt like `yourname@machine:~$`.
 
@@ -32,9 +32,9 @@ You should see `hello, terminal!` printed as output. If you do, your terminal is
 
 ---
 
-## Practice 2: Navigate folders
+## Practice 2: See where you are
 
-Your terminal always has a **current directory** — the folder it is "standing" in. Run these two commands to see where you are and what's there:
+Your terminal always has a **current directory** — the folder it is "standing" in. Run:
 
 ```bash
 pwd
@@ -44,53 +44,51 @@ ls
 - `pwd` prints your current directory path (for example `/Users/alice`).
 - `ls` lists the files and folders inside it.
 
-To move into a folder and then back out, run:
+> [!TIP]
+> On Windows Command Prompt, use `cd` (no argument) instead of `pwd`, and `dir` instead of `ls`.
+
+---
+
+## Practice 3: Navigate folders
+
+To move into a folder and then back out, run each command one at a time:
 
 ```bash
 cd Documents
+```
+
+```bash
 cd ..
 ```
 
-> [!TIP]
-> On Windows Command Prompt, use `dir` instead of `ls`, and `cd` (no argument) instead of `pwd`.
+- `cd <folder>` moves into that folder.
+- `cd ..` moves back to the parent folder.
 
 ---
 
-## Practice 3: Create, use, and remove a folder
+## Practice 4: Create and remove a folder
+
+Create a new folder:
 
 ```bash
-mkdir test-dir && cd test-dir && echo "inside test-dir"
+mkdir test-dir
 ```
 
-Then clean up:
+Then step inside it:
 
 ```bash
-cd .. && rm -r test-dir
+cd test-dir
+```
+
+Then step back out and remove it:
+
+```bash
+cd ..
+rm -r test-dir
 ```
 
 > [!TIP]
-> On Windows Command Prompt, use `rmdir /s test-dir` instead of `rm -r test-dir`. Git Bash users can use `rm -r` as shown above.
-
-You created a folder (`mkdir`), moved into it (`cd`), printed a message (`echo`), and deleted the folder (`rm -r`). ✅
-
----
-
-## Practice 4: See a deliberate error
-
-Type a command that doesn't exist:
-
-```bash
-notacommand
-```
-
-You'll see `command not found` or `notacommand: not found`. That's the terminal telling you it doesn't recognise the command — nothing is broken. You'll see this any time a tool isn't installed or you mistype a name.
-
-> [!TIP]
-> The three most common errors beginners encounter:
->
-> - **`command not found`** — the tool isn't installed or the name is misspelled.
-> - **`No such file or directory`** — the path you typed doesn't exist; run `pwd` to check where you are.
-> - **`permission denied`** — your account needs elevated rights. See [Side Quest: Permission Errors](side-quest-01-03-permission-errors.md) for help.
+> `mkdir` works the same on all platforms. On Windows Command Prompt, use `rmdir /s test-dir` instead of `rm -r test-dir`.
 
 ---
 
@@ -99,9 +97,13 @@ You'll see `command not found` or `notacommand: not found`. That's the terminal 
 - [ ] You opened a terminal and saw a prompt (`$`, `%`, or `>`)
 - [ ] You ran `echo "hello, terminal!"` and saw the message printed
 - [ ] You ran `pwd` and `ls` and saw your current directory and its contents
-- [ ] You ran the folder exercise and cleaned up successfully
-- [ ] You ran `notacommand` and saw a `command not found` error
+- [ ] You moved into a folder with `cd` and back out with `cd ..`
+- [ ] You created a folder with `mkdir` and removed it with `rm -r`
 
 ---
 
 When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md).
+
+## 📚 See Also
+
+- [Side Quest: Permission Errors](side-quest-01-03-permission-errors.md) — what to do when the terminal says `permission denied`
