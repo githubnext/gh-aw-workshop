@@ -208,7 +208,7 @@ Choose the best alias for each task before opening the answer.
 
 ### ✏️ Quick Check — Model aliases
 
-You're writing a sub-agent that reads 500 files and summarises each one. Which alias should you use, and why?
+You're writing a sub-agent that reads 500 files and summarizes each one. Which alias should you use, and why?
 
 <details>
 <summary>Answer</summary>
