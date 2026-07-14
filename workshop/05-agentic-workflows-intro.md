@@ -10,7 +10,7 @@
 - You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
 - You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
 
-An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. No shell scripts. No brittle YAML. Just a goal and an agent that figures out the rest.
+An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. This is a smooth transition from classic Actions: you keep the same core workflow model and add agentic reasoning where it helps most.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
@@ -32,7 +32,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
 
-**What it is:** A Markdown file (`.md`) with two parts — a standard Actions frontmatter block (YAML header between `---` markers, containing triggers and permissions) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
+**What it is:** A Markdown file (`.md`) with two parts — an Actions-compatible frontmatter block (YAML header between `---` markers, containing triggers, permissions, runners, and optional deterministic steps) and a plain-language brief for the agent. The `gh aw compile` command converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 
 **What it produces:** A synthesized, structured output — a report, recommendation, or action taken — that the agent composes at runtime based on live repository data. In [Step 7: Your First Workflow](07-your-first-workflow.md) you'll write exactly this kind of brief; in [Step 8: Run Your Workflow](08-run-your-workflow.md) you'll watch the agent interpret it in real time.
 
@@ -64,7 +64,7 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 >
 > </details>
 
-Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. For a detailed side-by-side comparison, agent anatomy, and YAML authoring details, see [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
+Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. You can also run hybrid workflows: keep deterministic jobs or steps for repeatable data collection, then let the agent interpret the results and decide the final output. For a detailed side-by-side comparison, agent anatomy, and YAML authoring details, see [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
 
 If you want a one-page cheat sheet for Actions power users, read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
 

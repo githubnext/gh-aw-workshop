@@ -16,7 +16,7 @@ Review the key shift from classic Actions to agentic workflows, compare concrete
 
 ## The core mental model shift
 
-You keep the same GitHub Actions foundations — triggers, permissions, runners, repo context, and pull-request review flow — but you stop hand-authoring fixed `jobs.steps` logic and instead define a goal in plain language that an agent executes at runtime.
+You keep the same GitHub Actions foundations — triggers, permissions, runners, repo context, and pull-request review flow — and add an agentic layer on top. In practice, this is a smooth transition: frontmatter stays Actions-compatible, while the Markdown body captures the goal and reasoning instructions for the agent.
 
 ## Before and After: Classic Actions vs. Agentic Workflows
 
@@ -59,6 +59,24 @@ Key differences at a glance:
 | **Maintenance** | Update the workflow for each new case | Define guardrails once; agent handles variations |
 | **Best for** | Deterministic, reproducible tasks | Triage, summarization, planning, interpretation |
 
+## Superset, not replacement
+
+Think of agentic workflows as a superset of Actions:
+
+- Frontmatter remains compatible with the Actions model you already know.
+- The Markdown body becomes the runtime prompt and can include templating and inline agent features.
+- You can still keep deterministic logic when that is the right tool for the job.
+
+## Hybrid pattern for real teams
+
+A practical migration path is hybrid:
+
+1. Keep deterministic jobs or steps for stable data operations (fetch, transform, validate).
+2. Pass structured outputs into the workflow body.
+3. Let the agent handle interpretation, prioritization, and communication.
+
+This pattern works well for platform and DevOps teams because you preserve deterministic guardrails while reducing hand-written branching logic for context-heavy decisions.
+
 ## 🛠️ Try it
 
 Open the workflow file you created in Step 4, or find a `run:` step in any `.github/workflows/*.yml` file. Pick one step that handles a decision — checking a label, parsing a PR title, or filtering by file path.
@@ -95,6 +113,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 
 - [ ] I can explain the mental model shift from scripted steps to goal-oriented execution
 - [ ] I can identify what changes in agentic workflows and what stays the same from classic Actions
+- [ ] I can explain why agentic workflows are best described as an Actions-compatible superset
 - [ ] I identified one specific `run:` step in an existing workflow that could be replaced with a goal statement
 - [ ] I can describe one scenario where classic Actions is still the right choice
 - [ ] I can explain why this model can reduce automation maintenance overhead for platform teams

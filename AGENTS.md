@@ -79,6 +79,8 @@ The following rules are **disabled** in `.markdownlint-cli2.yaml` — do not add
 Workflow definitions live in `.github/workflows/*.md`. Each file contains YAML frontmatter
 (between `---` fences) followed by a Markdown task brief for the AI agent.
 
+Position agentic workflows as an **Actions-compatible superset**: frontmatter stays compatible with standard Actions concepts, while the Markdown body adds agentic reasoning and templating capabilities. Favor a smooth transition story and call out hybrid deterministic + agentic patterns when relevant (for example, deterministic data-fetch steps plus agentic analysis in the brief).
+
 Compiled lock files (`*.lock.yml`) are generated automatically — **do not edit them by hand**.
 Regenerate a lock file with:
 
