@@ -18,7 +18,7 @@
 
 ## 🎯 What You'll Do
 
-You'll add inline sub-agents to your daily-status workflow so that cheap, focused worker agents handle repetitive per-item tasks while a frontier model handles planning and synthesis. By the end of this step your workflow will run faster and cost less, without losing output quality.
+You'll add an inline sub-agent to your daily-status workflow so the main agent can stay focused on planning and final writing while a smaller worker handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
 
 ## 📋 Before You Start
 
@@ -26,57 +26,31 @@ You'll add inline sub-agents to your daily-status workflow so that cheap, focuse
 - You understand YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
-## Why Split Into Sub-Agents?
+## Understand the planner-worker split
 
-Every workflow you have built so far runs as a single agent prompt. That works well for small tasks, but as a workflow grows it develops two expensive habits:
+When your workflow repeats the same small job for many items, keep the main agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
-- **The frontier model reads everything.** Even a simple "summarize this file" call uses frontier-model tokens when a `small` model would do it for roughly 10–20× less cost.
-- **Context bloat.** A monolithic prompt that gathers data, classifies items, writes the summary, and posts the result carries all that context in one call chain. Errors at any stage contaminate the whole context window.
+A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that looks like `## agent: \`name\``. Put the helper brief under that heading, then call that helper by name from the main workflow brief.
 
-> 🤔 **Predict:** Look at your existing daily-status workflow brief. Identify which parts repeat across multiple items (issues, PRs, files). List them before reading the "Identify the repetitive tasks" step below — then compare your list.
-
-Inline sub-agents solve both problems. You define specialised workers directly in the same Markdown file. At compile time, `gh-aw` extracts each sub-agent block and writes it to the engine-specific agents directory. The parent (orchestrator) agent then calls workers by name and receives compact, structured results.
-
-## Sub-Agent Syntax
-
-Define a sub-agent anywhere after the main workflow content using a level-2 heading of the form `## agent: \`name\``:
-
-```markdown
-## agent: `file-summarizer`
----
-description: Summarizes the content of a file in a few concise sentences
-model: small
----
-You are a file summarization assistant. When given a file path, read the
-file and return a brief summary (2–4 sentences) describing its purpose
-and key contents. Be concise and factual.
-```
-
-Key rules at a glance:
-
-- **Name:** backtick-wrapped, lowercase letters/digits/hyphens/underscores, starts with a letter
-- **Block end:** the next `##` heading or end of file — no closing marker needed
-- **Frontmatter:** only `description` and `model` are supported; all other fields are stripped
-- **Model:** use `small` for cheap worker tasks, `large` for complex reasoning, `inherited` to match the parent
-
+> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file?
+>
 > [!TIP]
-> For the full name rules, block boundary rules, supported frontmatter fields, and model alias table, see the [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md).
+> Want the full rules for names, frontmatter, model aliases, and block placement? Use the [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
 
-## Steps
+## Apply the pattern to your workflow
 
-### Identify the repetitive tasks in your workflow
+### Pick one repeated task
 
-Open your existing workflow file and read through the task brief. Look for any action that:
+Open your workflow file and choose one bounded task that repeats for each item, such as summarizing one issue or classifying one pull request.
 
-- repeats across multiple items (issues, pull requests, files)
-- does a single bounded thing (read and summarise, classify, extract)
-- does not need to reason about the overall result
+✏️ **Write down two things before you edit:**
 
-These are good candidates to delegate to a `small` sub-agent.
+- the worker name you want to use
+- the one-sentence job that worker should do
 
-### Add sub-agent blocks at the bottom of the file
+### Add one sub-agent block
 
-After all main workflow content, add one `## agent: \`name\`` block per worker. Example for a daily-status workflow:
+At the bottom of the file, add a worker block like this:
 
 ```markdown
 ## agent: `issue-summarizer`
@@ -84,14 +58,16 @@ After all main workflow content, add one `## agent: \`name\`` block per worker. 
 description: Summarizes a single open issue in one sentence
 model: small
 ---
-You receive the title and body of a GitHub issue. Return exactly one
-sentence that captures what the issue is requesting and its current
-status. Be factual and concise. Do not add opinions or formatting.
+
+Read the title and body of one GitHub issue. Return exactly one sentence
+that explains what the issue is asking for and its current status.
 ```
 
-### Update the main task brief to call the workers by name
+Keep the worker brief narrow. If it can answer with one item at a time, it belongs here.
 
-Revise the orchestrator brief so it delegates to the sub-agents by name:
+### Update the main task brief to call the worker
+
+In the main workflow brief, tell the orchestrator when to use the worker:
 
 ```markdown
 You produce a daily repository health digest.
@@ -100,82 +76,38 @@ You produce a daily repository health digest.
 2. For each issue, use the `issue-summarizer` agent to produce a
    one-sentence summary.
 3. Compile the summaries into a numbered list, ordered by issue number.
-4. Post the list as a comment on the repository's main tracking issue
-   (the issue you created in [Step 11a](11a-build-daily-status.md) to
-   receive daily status updates).
+4. Post the list as a comment on the repository's main tracking issue.
+```
+
+✏️ **Try it:** Change one vague instruction in the parent brief into a direct sub-agent call by name.
+
+### Compile and check the result
+
+From the repository root, run:
+
+```bash
+gh aw compile
 ```
 
 > [!TIP]
-> Keep orchestrator instructions short and action-oriented. Move all detailed instructions, output formats, and edge-case handling into the sub-agent briefs where they belong.
+> If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.
 
-### Add `cli-proxy` to your frontmatter
+The compile should finish without errors and regenerate your workflow's `.lock.yml` file.
 
-Sub-agents run in the parent's environment. If they need to call `gh` commands or read repository files, enable the CLI proxy on the parent workflow:
+### Run and verify
 
-```yaml
----
-name: Daily Status Report
-on:
-  schedule: daily
-  workflow_dispatch: {}
-permissions:
-  contents: read
-  issues: write
-tools:
-  github:
-    mode: gh-proxy
-  cli-proxy: true
----
-```
-
-### Compile and validate
-
-After editing the file, compile it to confirm the sub-agent blocks are valid:
-
-```bash
-gh aw compile .github/workflows/daily-status.md --validate
-```
-
-> [!TIP]
-> Use `--watch` to recompile automatically as you edit: `gh aw compile .github/workflows/daily-status.md --watch`
-
-Fix any errors before pushing. Common mistakes include:
-
-- Using uppercase letters or spaces in the agent name
-- Placing `engine:` or `tools:` inside a sub-agent block (not supported — those are stripped)
-- Adding sub-agent blocks before the main workflow content
-
-### Push and verify
-
-Commit both the updated `.md` and the regenerated `.lock.yml`:
-
-```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
-git commit -m "feat: add issue-summarizer sub-agent to daily-status"
-git push
-```
-
-Trigger a manual run and open the run log. You should see the orchestrator calling the `issue-summarizer` agent for each issue and then synthesising the results.
-
-## Sub-Agent Capability Table
-
-| Capability | Supported |
-|------------|-----------|
-| Custom `model:` per agent | ✅ |
-| Custom `description:` | ✅ |
-| Inherits parent tool access | ✅ |
-| Own `engine:` field | ❌ (stripped) |
-| Own `tools:` field | ❌ (stripped) |
-| Own `safe-outputs:` | ❌ (not supported) |
-| Nested sub-agents (sub-agent calls another sub-agent) | ❌ (keep delegation one level deep) |
+Trigger a manual run. In the Actions log, confirm the parent agent calls your worker and then uses the worker result in the final summary.
 
 ## ✅ Checkpoint
 
-- [ ] You identified at least one repetitive task in your workflow to delegate to a sub-agent
-- [ ] Your workflow file has at least one `## agent: \`name\`` block with `model: small`
-- [ ] The main task brief calls the sub-agent by name
-- [ ] `gh aw compile --validate` passes with no errors
-- [ ] You ran the workflow and confirmed the sub-agent is invoked in the run log
+- [ ] You identified one repeated task in your workflow that fits a sub-agent
+- [ ] You wrote a worker name and one-sentence job before editing the file
+- [ ] Your workflow file now includes at least one `## agent: \`name\`` block
+- [ ] You updated the main brief to call the sub-agent by name
+- [ ] `gh aw compile` completed without errors
+- [ ] Your workflow's `.lock.yml` file was regenerated after the compile
+- [ ] A manual run completed and the Actions log showed the sub-agent being called
+- [ ] The final workflow output used the sub-agent result
 
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 
