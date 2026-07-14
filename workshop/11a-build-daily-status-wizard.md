@@ -19,17 +19,7 @@ Instead of writing the `daily-status` workflow file by hand, you'll use the `gh 
 
 ## What `gh aw add-wizard` Does
 
-The `add-wizard` command pulls an existing workflow from the `githubnext/agentics` community catalog and walks you through a short interactive setup:
-
-| Wizard step | What happens |
-|---|---|
-| Engine selection | You pick an AI engine: Copilot, [Claude](side-quest-01-02-environment-reference.md#claude), Codex (OpenAI), Gemini, or Crush (GitHub Next) |
-| Secret configuration | The wizard prompts for any API keys the chosen engine needs and stores them as GitHub Actions secrets |
-| Pull request | The wizard commits the workflow file and opens a pull request in your repository |
-| Optional run | You can trigger the workflow immediately or leave it for the schedule |
-
-> [!TIP]
-> The catalog workflow (`githubnext/agentics/daily-repo-status`) is maintained by the `gh-aw` team and is kept up to date with the latest YAML frontmatter conventions. Adding it via the wizard means you always get a validated, production-ready starting point.
+The `add-wizard` command pulls the `githubnext/agentics` workflow from the community catalog and guides you through one short setup flow: choose an AI engine, add any required secret, open a pull request, and optionally run the workflow right away. Because the catalog workflow is maintained by the `gh-aw` team, you start from an up-to-date, validated template.
 
 ---
 
@@ -58,11 +48,7 @@ The wizard asks which AI engine should power the workflow. Choose **Copilot** to
     Crush
 ```
 
-> [!NOTE]
-> **Using an engine other than Copilot?** You will need an API key for that provider. The wizard will prompt you to enter it and offer to store it as a GitHub Actions secret in your repository so the workflow can use it at runtime.
->
-> - ➡️ [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — for the `claude` engine
-> - ➡️ [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — for the `codex` engine
+If you choose an engine other than Copilot, you will need that provider's API key. The wizard will prompt you to enter it and offer to store it as a GitHub Actions secret for runtime use. If you want help preparing the key first, use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) for `claude` or [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) for `codex`.
 
 ### Review the secret prompt
 
@@ -75,11 +61,11 @@ If you selected Copilot and your repository already has the required secret (or 
 
 Enter `Y` and paste your API key when prompted. The wizard saves it securely — it will never appear in the workflow file.
 
-> [!TIP]
-> Already have the secret stored at the organization level? Run the wizard with `--no-secret` to skip the prompt:
-> ```bash
-> gh aw add-wizard githubnext/agentics/daily-repo-status --no-secret
-> ```
+If you already have the secret stored at the organization level, run the wizard with `--no-secret` to skip the prompt:
+
+```bash
+gh aw add-wizard githubnext/agentics/daily-repo-status --no-secret
+```
 
 ### Confirm the pull request
 
@@ -95,11 +81,11 @@ Enter `Y`. The wizard commits `.github/workflows/daily-status.md` and the compil
 
 After the wizard exits, open the pull request link it printed and merge it into `main`.
 
-> [!TIP]
-> If you prefer to merge from the terminal:
-> ```bash
-> gh pr merge --merge --auto
-> ```
+If you prefer to merge from the terminal, run:
+
+```bash
+gh pr merge --merge --auto
+```
 
 ---
 
@@ -117,8 +103,7 @@ You should see:
 ✔ daily-status.md — valid
 ```
 
-> [!NOTE]
-> The wizard also writes the compiled `.github/workflows/daily-status.lock.yml` file alongside the Markdown source. You do not need to run `gh aw compile` separately — the wizard already did it for you.
+The wizard also writes the compiled `.github/workflows/daily-status.lock.yml` file alongside the Markdown source, so you do not need to run `gh aw compile` separately.
 
 ---
 
@@ -131,8 +116,7 @@ The wizard added two files to your repository:
 | `.github/workflows/daily-status.md` | The Markdown task brief for the AI agent — the human-readable workflow definition |
 | `.github/workflows/daily-status.lock.yml` | The compiled GitHub Actions YAML that GitHub Actions actually runs |
 
-> [!TIP]
-> Curious about what is inside `daily-status.md`? Open it in your editor and compare it to the [manual build walkthrough](11a-build-daily-status.md). The YAML frontmatter sections — `emoji`, `description`, `on`, `permissions`, `tools`, and `safe-outputs` — are explained there in detail.
+If you want to see what is inside `daily-status.md`, open it in your editor and compare it to the [manual build walkthrough](11a-build-daily-status.md). That walkthrough explains the `emoji`, `description`, `on`, `permissions`, `tools`, and `safe-outputs` frontmatter sections in detail.
 
 ---
 
