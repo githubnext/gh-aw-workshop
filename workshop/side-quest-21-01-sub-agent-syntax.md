@@ -21,6 +21,7 @@ Copy this snippet into a scratch file or read it closely before you fix it:
 Write a daily issue digest.
 
 ## agent: `Issue Summarizer`
+<!-- BROKEN: contains spaces and uppercase letters -->
 ---
 description: Summarizes one issue in one sentence
 model: small
@@ -75,7 +76,7 @@ Inside a sub-agent block, keep the frontmatter small:
 - `description` explains the sub-agent's job
 - `model` is optional if you want to override the parent model
 
-Inside sub-agent frontmatter, anything other than `description` and `model` is stripped during compile. For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
+The compiler strips any fields other than `description` and `model` from sub-agent frontmatter and emits a warning. For a repeated worker task like "read one issue and return one sentence," `model: small` is a good default.
 
 **Action:** Remove the unsupported field from the broken block.
 
