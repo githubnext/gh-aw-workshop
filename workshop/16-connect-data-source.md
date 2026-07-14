@@ -21,8 +21,10 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 The pattern looks like this:
 
 1. Run a shell step to fetch the data you need.
-2. Store the result in `$GITHUB_OUTPUT` (not familiar with this? See the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md)).
+2. Store the result in `$GITHUB_OUTPUT`.
 3. Reference the output in your prompt with `${{ steps.<id>.outputs.<key> }}`.
+
+If you're unfamiliar with `$GITHUB_OUTPUT`, the optional [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) explains why `export` doesn't work across steps and how to write multi-line values.
 
 ### Add a step to fetch recent commits
 
@@ -45,7 +47,7 @@ What this does:
 - `--format="%h %s"` produces a short hash followed by the commit subject, e.g. `a1b2c3d Fix login bug`.
 - The multi-line `<<EOF` syntax stores a multi-line string in `$GITHUB_OUTPUT` (see the [side quest](side-quest-16-01-github-output.md) for details).
 
-🤔 **Predict:** Before you push and run the workflow, guess what `${{ steps.recent.outputs.commit_log }}` will contain if no commits were made in the last 24 hours. Write your guess down, then confirm it once the workflow runs.
+🤔 **Predict:** Before you push and run the workflow, think about what `${{ steps.recent.outputs.commit_log }}` will contain if no commits were made in the last 24 hours — then confirm once the workflow runs.
 
 ### Add a step to fetch open issues
 
