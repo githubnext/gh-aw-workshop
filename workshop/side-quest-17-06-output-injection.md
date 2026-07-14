@@ -25,10 +25,10 @@ The risk is especially high when the workflow's output surface is a place humans
 
 ## How AW Defends Against It
 
-gh-aw limits both **where** the agent can write and **how** it signals actions, reducing the blast radius of any injected content.
+gh-aw keeps the agent itself read-only, then limits which follow-up writes the `safe-outputs` machinery may apply, reducing the blast radius of any injected content.
 
 - **Explicit output surfaces via `safe-outputs`**
-  The `safe-outputs` block in the workflow frontmatter declares every surface the agent is allowed to write to. If a surface is not declared, the agent cannot post to it. This means injected instructions telling the agent to "write an approval comment on PR #42" are ignored if `pull-request: write` (or the specific safe-output verb for that action) is not declared.
+  The `safe-outputs` block in the workflow frontmatter declares every write action the workflow may apply after the read-only agent finishes. If a surface is not declared, the safe-output job cannot post to it. This means injected instructions telling the agent to "write an approval comment on PR #42" are ignored if the matching safe-output action is not declared.
 
   ```yaml
   safe-outputs:
@@ -37,13 +37,13 @@ gh-aw limits both **where** the agent can write and **how** it signals actions, 
       required-labels: [daily-status]
   ```
 
-  With this configuration, the agent can post one comment, and only on an issue or pull request that already carries the `daily-status` label. A prompt injection asking it to approve a PR, post somewhere unrelated, or modify files is outside the allowed surface.
+  With this configuration, the workflow can apply one comment, and only on an issue or pull request that already carries the `daily-status` label. A prompt injection asking for a PR approval comment, an unrelated post, or a file change is outside the allowed surface.
 
 - **Label scoping on comment targets**
   Adding `required-labels:` to `add-comment` scopes where the workflow may post. If you reserve a label like `daily-status` for the one issue or PR thread your workflow should use, an injected instruction cannot redirect the agent to comment on some unrelated item that lacks that label.
 
 - **Minimal `permissions:`**
-  Declaring `permissions: contents: read` (and omitting `issues: write` when the workflow does not need to post) prevents the agent from writing to surfaces it has no reason to touch, even if injected content instructs it to.
+  The agent still runs read-only, but the safe-output step needs GitHub permissions to apply approved writes. Declaring `permissions: contents: read` and omitting `issues: write` when the workflow does not need to post ensures there is no comment-writing path for injected content to exploit.
 
   ```yaml
   permissions:
