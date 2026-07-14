@@ -15,7 +15,7 @@ Build your brief in a scratch file with five short passes. By the end, you'll ha
 
 ## At a Glance
 
-Use the same loop for every step: **write first, check your draft, then open "Why this works" if you want the reasoning**.
+Use the same loop for every step: **write first, check your draft, then expand the "Why this works" section if you want the reasoning**.
 
 | Step | Write first | Check before you move on |
 |------|-------------|--------------------------|
@@ -32,7 +32,7 @@ Use the same loop for every step: **write first, check your draft, then open "Wh
 Write one sentence in your scratch file.
 
 ```text
-Every day, I want the agent to ____________________________.
+Every day, I want the agent to [describe the daily action and result].
 ```
 
 Quick check:
@@ -55,9 +55,9 @@ A one-sentence goal forces scope. If you need multiple outcomes, you probably ne
 List the data the agent must collect before it can write the report. Mark uncertain items with a `?` so you can verify them later.
 
 ```md
-- __________________ — __________________
-- __________________ — __________________
-- __________________ — __________________?
+- [input] — [why you need it]
+- [input] — [why you need it]
+- [input] — [why you need it]?
 ```
 
 Quick check:
@@ -107,9 +107,9 @@ A literal skeleton gives the agent fewer format decisions to make. Consistent ou
 Add short rules that limit writes and tell the agent what to do when data is missing.
 
 ```md
-- Do not __________________.
-- Post at most __________________.
-- If __________________, then __________________.
+- Do not [undesired action].
+- Post at most [number of comments or writes].
+- If [data is missing or a prerequisite is absent], then [fallback].
 ```
 
 Quick check:
@@ -154,23 +154,23 @@ If you want a starter scaffold, paste this into your scratch file and fill in th
 
 ```md
 Goal:
-Every day, I want the agent to __________________.
+Every day, I want the agent to [describe the daily action and result].
 
 Inputs:
-- __________________
-- __________________
-- __________________
+- [input]
+- [input]
+- [input]
 
 Output:
 📊 Daily Repo Status — {date}
-__________________
-__________________
-__________________
+[line 1]
+[line 2]
+[line 3]
 
 Guardrails:
-- Do not __________________.
-- Post at most __________________.
-- If __________________, then __________________.
+- Do not [undesired action].
+- Post at most [number of comments or writes].
+- If [data is missing or a prerequisite is absent], then [fallback].
 ```
 
 > [!TIP]
