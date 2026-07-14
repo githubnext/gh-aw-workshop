@@ -11,19 +11,21 @@ You'll add an A/B experiment using `experiments:` and compare outcomes across ru
 - You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
 - You are comfortable editing YAML frontmatter and task briefs.
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
+- Need internals? Jump to [Understand how the round-robin works](#understand-how-the-round-robin-works).
 
 ## Add an experiment to your workflow
 
 > [!TIP]
-> Prefer asking an agent with the `/agentic-workflows` skill to add the experiment rather than editing the workflow file by hand. **Agents edit agents.** For terminal users, run `gh aw compile --watch` for continuous recompilation while you or an agent edits.
+> Prefer asking an agent with the `/agentic-workflows` skill to add the experiment. Use agents to edit agent workflows.
+> Terminal users can run `gh aw compile --watch` for continuous recompilation.
 
 ### Choose one dimension to test
 
-Test one change: output length (`concise` vs `detailed`).
+Start with one change to isolate its effect: output length (`concise` vs `detailed`). Add third variant later.
 
 ### Use an agent to add the experiment (recommended)
 
-Open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab and paste this prompt:
+Open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab and paste this prompt:
 
 ```text
 Add an A/B experiment to `.github/workflows/daily-status.md`.
@@ -33,8 +35,6 @@ Add conditional prompt blocks for `concise` and `detailed`.
 Run `gh aw compile daily-status` and fix any errors.
 Commit both workflow files.
 ```
-
-The agent validates and compiles the workflow in its session workspace. Review the diff before merging.
 
 ### Add the experiment manually (alternative)
 
@@ -85,7 +85,7 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 3. Repeat for your second run and compare the two files.
 4. Confirm both variants now have one assignment each.
 
-## Add a third variant and predict before you run
+## Add a third variant and predict the order
 
 1. Update the frontmatter variants to include a third option:
 
@@ -99,34 +99,40 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
    ```markdown
    {{#if experiments.output_style == "concise" }}
    Write a maximum of 5 bullet points. Each bullet is one sentence.
-   {{#else}}
+   {{#endif}}
    {{#if experiments.output_style == "detailed" }}
    Write a structured report with sections: open issues, merged pull requests,
    and CI status. Include a one-paragraph summary at the top.
-   {{#else}}
-   Write an executive summary with exactly 3 bullets and one "Watch next" line.
    {{#endif}}
+   {{#if experiments.output_style == "executive" }}
+   Write an executive summary with exactly 3 bullets and one "Watch next" line.
    {{#endif}}
    ```
 
-3. Before running again, predict the next three assignments in order.
-4. Run the workflow three times and compare your prediction with the activation logs and `experiment` artifact counts.
+3. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
+4. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
 
 ## Understand how the round-robin works
 
 <details>
 <summary>Open for the mechanism details</summary>
 
-On each run, gh-aw loads state from `experiments/{workflow-id}`, picks the variant with the lowest invocation count (ties break by array order), saves updated counts, uploads the `experiment` artifact, and injects the selected variant into your template conditionals.
+On each run, gh-aw:
+
+1. Loads state from `experiments/{workflow-id}` (created on first run).
+2. Picks the variant with the lowest invocation count (ties are broken by first-in-array order).
+3. Saves the updated counts.
+4. Uploads the `experiment` artifact.
+5. Injects the selected variant into your template conditionals.
 
 </details>
 
 ## Analyse the results
 
-After you collect enough runs, compare output usefulness, run duration, and token cost. When one variant consistently wins, keep it as your baseline, remove `experiments:`, and recompile.
+After enough runs (10+ per variant reduces variation), compare usefulness and token cost. When one variant wins, keep it as baseline. Remove the `experiments:` frontmatter field and recompile.
 
 > [!TIP]
-> Keep the experiment running until you reach your target sample size. Removing `experiments:` early resets counts.
+> Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.
 
 ## ✅ Checkpoint
 
@@ -136,7 +142,7 @@ After you collect enough runs, compare output usefulness, run duration, and toke
 - [ ] The first manual run log shows the `concise` variant was assigned
 - [ ] The second manual run log shows the `detailed` variant was assigned
 - [ ] You can compare `experiment` artifact counts across runs
-- [ ] You can predict and verify assignment order after adding a third variant
+- [ ] You can predict and verify third-variant assignment order from lowest-count selection with first-in-array tie breaks
 - [ ] You can explain what you would do once a winning variant is identified
 
 **Next:** [Learning GitHub Agentic Workflows](README.md)
