@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Build your brief in a scratch file with five short steps. By the end, you'll have your own daily status brief that you can paste into your workflow and reuse later.
+Build your brief in a scratch file in five steps. By the end, you'll have a daily status brief you can paste into your workflow and reuse.
 
 ## 📋 Before You Start
 
@@ -15,7 +15,7 @@ Build your brief in a scratch file with five short steps. By the end, you'll hav
 
 ## At a Glance
 
-Use the same loop for every step: **write first, check your draft, then expand the collapsible "Why this works" section to read the reasoning**.
+For each step: **write first, check your draft, then expand "Why this works" for the reasoning**.
 
 | Step | Write first | Check before you move on |
 |------|-------------|--------------------------|
@@ -114,6 +114,9 @@ Add short rules that limit write operations, such as posting comments, and tell 
 - If [data is missing or a prerequisite is absent], then [fallback].
 ```
 
+> [!IMPORTANT]
+> Skipping guardrails can lead to duplicate comments or guessed data.
+
 Quick check:
 
 - [ ] I included something the agent must not do.
@@ -131,7 +134,7 @@ Guardrails prevent duplicate posts, made-up numbers, and unclear fallback behavi
 
 ## Step 5: Review the Brief
 
-Read the full draft once. Replace vague words like "recent" with "within the last 7 days" or "important" with "labeled priority-1" so the agent has something concrete to observe.
+Read the draft once. Replace vague words like "recent" with "within the last 7 days" or "important" with "labeled priority-1".
 
 Quick check:
 
@@ -176,7 +179,7 @@ Guardrails:
 ```
 
 > [!TIP]
-> Once your brief is clear, you can ask Copilot to turn it into a workflow with the `agentic-workflows` skill.
+> Once your brief is clear, you can ask Copilot to turn it into a workflow with the `agentic-workflows` skill, which handles frontmatter syntax and permission scopes for you.
 
 ---
 
