@@ -131,7 +131,7 @@ If your version follows the same pattern, you are ready to reuse it in your own 
 
 Open your Step 21 workflow and do one real edit:
 
-1. Add or repair one `## agent: \`name\`` block at the bottom of the file.
+1. Add or repair one ``## agent: `name` `` block at the bottom of the file.
 2. Keep only `description` and, if needed, `model` in the sub-agent frontmatter.
 3. Run this command from the repository root:
 
