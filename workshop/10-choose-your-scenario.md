@@ -16,7 +16,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 ## Pick Your Adventure
 
 Before you read the scenario descriptions, write one sentence describing a repository task you'd like to automate in a scratch note, issue draft, or local text file.
-Keep it nearby — you'll compare it to your chosen scenario later in this step.
+Keep it nearby — this helps you compare your idea to the scenarios later in this step.
 
 | Scenario | What it automates | Best for |
 |---|---|---|
@@ -78,10 +78,9 @@ Keep it nearby — you'll compare it to your chosen scenario later in this step.
 
 ## Commit to Your Choice
 
-If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and continue with [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md) after you finish this step.
-
-1. Write the adventure you chose and one reason it matches the repository task you wrote down earlier.
+1. In the same scratch note, write the adventure you chose and one reason it matches the repository task you wrote down earlier.
 2. Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the first paragraph to confirm the scenario matches what you want to automate.
+3. If you're using the GitHub Copilot app or the Agents tab, note in the same scratch note that you'll skip the design step and jump to [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
 
 ---
 
