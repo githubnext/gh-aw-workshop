@@ -79,7 +79,10 @@ You produce a daily repository health digest.
 4. Post the list as a comment on the repository's main tracking issue.
 ```
 
-**Action:** Change one broad instruction in the parent brief into a direct sub-agent call by name. For example, change "summarize all issues" to "For each issue, use the `issue-summarizer` agent."
+**Action:** Change one broad instruction in the parent brief into a direct sub-agent call by name. For example:
+
+- Before: "Summarize all issues."
+- After: "For each issue, use the `issue-summarizer` agent."
 
 ### Compile and check the result
 
