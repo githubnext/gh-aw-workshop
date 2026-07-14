@@ -1,9 +1,9 @@
 # Step 5: What Are Agentic Workflows?
 
-> [!TIP]
-> **Already familiar with GitHub Actions and LLM agent concepts?** → [Skip to Step 6: Install gh-aw](06-install-gh-aw.md)
+**Already familiar with GitHub Actions and LLM agent concepts?** [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
+
 > [!NOTE]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organisation policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
 
 ## 📋 Before You Start
 
