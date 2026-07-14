@@ -45,7 +45,7 @@ The PR should contain exactly two files: the human-readable task brief (`.md`) a
 ### ✏️ Exercise: request a revision with `@copilot`
 
 1. Read `.github/workflows/<name>.md` and decide whether you want any changes so you review the brief before approving it.
-2. If you do not want any changes, skip the remaining steps in this exercise and proceed to merge so you avoid unnecessary churn.
+2. If you do not want any changes, skip the remaining steps in this exercise and proceed to the **Merge and Verify the Pull Request** section so you avoid unnecessary churn.
 3. In the PR comment box, post a revision request that starts with `@copilot`, because the mention is what routes your instruction back to the agent:
 
    ```
@@ -67,7 +67,7 @@ Once you are satisfied with the workflow, complete the merge and verify the resu
 
 1. In the browser, click **Merge pull request** and **Confirm merge** so both workflow files land on the default branch together.
 2. Open your repository on the default branch and confirm both workflow files appear under `.github/workflows/`, because GitHub Actions reads the merged `.md` and `.lock.yml` from there on the next trigger.
-3. Open the **Actions** tab and confirm the workflow appears there so you know GitHub recognized the merged lock file.
+3. Open the **Actions** tab and confirm the workflow appears there by name in the workflow list so you know GitHub recognized the merged lock file.
 
 > [!NOTE]
 > Deleting the branch is optional. You can do it from the merged PR page whenever you want.
