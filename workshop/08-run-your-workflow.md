@@ -28,6 +28,7 @@ Before you click anything, write down your predictions:
 1. **What will the agent do first?** Write one sentence describing the first action you expect it to take.
 2. **Which issue will it pick?** If you have multiple open issues, which one do you expect the agent to select, and why?
 3. **What will the output look like?** Will the agent post a comment, create a new issue, or do something else?
+4. **What will you do if the workflow doesn't appear in the Actions sidebar?** Write one recovery step you'd take before asking for help.
 
 Keep your predictions handy — you'll check them against the live log in a moment.
 
@@ -45,16 +46,23 @@ Keep your predictions handy — you'll check them against the live log in a mome
 
    ![Run workflow confirmation dropdown showing branch selection and final Run workflow button](images/08-run-workflow-confirm-dropdown.svg)
 
+> [!TIP]
+> **Hello Agent not in the sidebar yet?** Wait 30 seconds and refresh. Check that `hello-agent.md` is committed to `main` in `.github/workflows/`.
+
+<!-- -->
+
+> [!TIP]
+> **Run succeeded but no comment appeared?** The agent needs at least one open issue. Create one in the **Issues** tab and re-run.
+
+<!-- -->
+
+> [!NOTE]
+> **Using `gh aw run` from a Codespace?** Codespace tokens lack `actions:write` by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+
 <details>
-<summary>Troubleshooting and advanced: terminal trigger</summary>
+<summary>Prefer the terminal?</summary>
 
-**Hello Agent not in the Actions sidebar?** Wait 30 seconds and refresh. If it still doesn't appear, confirm `.github/workflows/hello-agent.md` is committed to `main`.
-
-**Workflow doesn't start within 60 seconds?** Refresh — GitHub's run queue occasionally takes up to a minute to dispatch a job.
-
-**Run succeeded but no comment was created?** The agent may have found no open issues. Create one and re-run.
-
-**Prefer the terminal?** Trigger with `gh aw run hello-agent`, but this requires `actions:write` scope. Codespace tokens do not include this by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+Trigger with `gh aw run hello-agent`, but this requires `actions:write` scope. Codespace tokens do not include this by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 </details>
 
