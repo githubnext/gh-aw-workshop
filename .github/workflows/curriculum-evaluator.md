@@ -28,6 +28,7 @@ safe-outputs:
     deduplicate-by-title: true
     labels: [curriculum, quality, documentation]
     max: 6
+    expires: 1d
 steps:
   - name: Collect workshop corpus and compute quantitative metrics
     run: |
