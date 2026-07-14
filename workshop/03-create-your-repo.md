@@ -2,6 +2,8 @@
 
 _Now that setup is complete, create the repository where you'll build and test your workflows._
 
+_By the end of this step (3a or 3b), you will have a public `my-agentic-workflows` repository with GitHub Actions enabled._
+
 > [!IMPORTANT]
 > **Which path is right for me?** Choose the option that matches how you work:
 >
@@ -32,9 +34,10 @@ Both paths create the same practice repository and continue to Step 4.
 
 ## ✅ Checkpoint
 
-- [ ] You confirmed that GitHub Actions is enabled on your account
-- [ ] You clicked through to Step 3a or Step 3b and are now on that page
-- [ ] You can name the repository you are about to create (`my-agentic-workflows`)
-- [ ] You understand that both paths end at Step 4 with the same repository
+Before continuing to Step 4, confirm:
+
+- [ ] My `my-agentic-workflows` repository exists on GitHub and its URL is `github.com/<your-username>/my-agentic-workflows`.
+- [ ] The **Actions** tab is visible in my repository (not hidden or blocked).
+- [ ] I have either a Codespace terminal open **or** I can create and edit files directly in the GitHub web UI.
 
 **Next:** Continue with your chosen path above.
