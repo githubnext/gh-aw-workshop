@@ -46,6 +46,11 @@ network:
     - defaults
     - github
 timeout-minutes: 30
+checkout:
+  repository: github/gh-aw
+  sparse-checkout: docs/src
+  path: /tmp/gh-aw-docs-repo
+  github-token: ${{ github.token }}
 steps:
   - name: Gather workshop files
     run: |
@@ -68,8 +73,6 @@ steps:
       echo "=== Workshop files ===" && cat /tmp/gh-aw/data/repo-state.json
 
   - name: Preindex documentation pages
-    env:
-      GITHUB_TOKEN: ${{ github.token }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
@@ -94,19 +97,6 @@ steps:
       else
         echo "No cached doc index. Building from scratch."
       fi
-
-      # Shallow sparse checkout of docs/src/ from github/gh-aw
-      DOCS_REPO=/tmp/gh-aw-docs-repo
-      rm -rf "$DOCS_REPO"
-      git clone \
-        --depth 1 \
-        --filter=blob:none \
-        --sparse \
-        "https://x-access-token:${GITHUB_TOKEN}@github.com/github/gh-aw.git" \
-        "$DOCS_REPO"
-      cd "$DOCS_REPO"
-      git sparse-checkout set docs/src
-      echo "Sparse checkout complete."
 
       python3 <<'PYEOF'
       import json, os, re, shutil, time
@@ -192,8 +182,6 @@ steps:
       shutil.copy("/tmp/gh-aw/data/doc-index.json", "/tmp/gh-aw/cache-memory/docs-index.json")
       print(f"\nDoc index: {len(index['pages'])} pages indexed")
       PYEOF
-
-      rm -rf "$DOCS_REPO"
 ---
 
 # Docs Linker
