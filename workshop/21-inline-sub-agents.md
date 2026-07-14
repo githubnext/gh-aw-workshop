@@ -18,7 +18,7 @@
 
 ## 🎯 What You'll Do
 
-You'll add an inline sub-agent to your daily-status workflow so the main agent can stay focused on planning and final writing while a focused sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
+You'll add a sub-agent to your daily-status workflow so the parent agent can stay focused on planning and final writing while a focused sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
 
 ## 📋 Before You Start
 
@@ -26,11 +26,11 @@ You'll add an inline sub-agent to your daily-status workflow so the main agent c
 - You understand YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
-## Understand the main agent and sub-agent split
+## Understand the parent agent and sub-agent split
 
-When your workflow repeats the same small job for many items, keep the main agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
+When your workflow repeats the same small job for many items, keep the parent agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
-A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading, and add a short frontmatter block if you want fields such as `description` or `model`, then call that helper by name from the main workflow brief.
+A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading. If you want, add a short frontmatter block with fields such as `description` or `model`. Then call that helper by name from the parent workflow brief.
 
 > 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >
@@ -50,7 +50,7 @@ Open your workflow file and choose one bounded task that repeats for each item, 
 
 ### Add one sub-agent block
 
-After your main workflow brief, at the bottom of the file, add a sub-agent block like this:
+After your parent workflow brief, at the bottom of the file, add a sub-agent block like this:
 
 ```markdown
 ## agent: `issue-summarizer`
@@ -65,9 +65,9 @@ that explains what the issue is asking for and its current status.
 
 Keep the sub-agent brief narrow. If it processes one item at a time and returns a single result, it belongs here.
 
-### Update the main task brief to call the sub-agent
+### Update the parent workflow brief to call the sub-agent
 
-In the main workflow brief, tell the main agent when to use the sub-agent:
+In the parent workflow brief, tell the parent agent when to use the sub-agent:
 
 ```markdown
 You produce a daily repository health digest.
@@ -79,12 +79,12 @@ You produce a daily repository health digest.
 4. Post the list as a comment on the repository's main tracking issue.
 ```
 
-**Action:** Change one broad instruction in the parent brief into a direct sub-agent call by name. For example:
+**Action:** Change one broad instruction in the parent workflow brief into a direct sub-agent call by name. For example:
 
 - Before: "Summarize all issues."
 - After: "For each issue, use the `issue-summarizer` agent."
 
-That pattern tells the main agent to loop over the items, collect one result from the sub-agent for each item, and then combine those results in the next step.
+That pattern tells the parent agent to loop over the items, collect one result from the sub-agent for each item, and then combine those results in the next step.
 
 ### Compile and check the result
 
