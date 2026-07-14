@@ -3,11 +3,12 @@ emoji: 🔗
 name: Docs Linker
 description: >
   Daily workflow that cross-correlates workshop tasks and concepts with
-  gh-aw documentation pages. A preindexing step fetches every doc page and
-  extracts section anchors (cached for 7 days), enabling the agent to produce
-  precise URL#anchor links. Uses cache-memory round-robin to process at least
-  10 workshop files per run, then opens a pull request that adds inline links
-  and a "See Also" section pointing to the rendered gh-aw docs
+  gh-aw documentation pages. A preindexing step does a shallow sparse checkout
+  of docs/src/ from github/gh-aw, parses every markdown source to extract
+  section anchors (cached for 7 days), enabling the agent to produce precise
+  URL#anchor links. Uses cache-memory round-robin to process at least 10
+  workshop files per run, then opens a pull request that adds inline links and
+  a "See Also" section pointing to the rendered gh-aw docs
   (Astro Starlight site at https://github.github.com/gh-aw/).
 on:
   schedule: daily
@@ -72,7 +73,7 @@ steps:
       mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
 
       CACHE_FILE=/tmp/gh-aw/cache-memory/docs-index.json
-      # 7 days: balances freshness with avoiding excessive HTTP requests on every daily run
+      # 7 days: balances freshness with avoiding repeated checkouts on every daily run
       MAX_AGE=604800
 
       # Reuse cached index if fresh
@@ -92,113 +93,106 @@ steps:
         echo "No cached doc index. Building from scratch."
       fi
 
+      # Shallow sparse checkout of docs/src/ from github/gh-aw
+      DOCS_REPO=/tmp/gh-aw-docs-repo
+      rm -rf "$DOCS_REPO"
+      git clone \
+        --depth 1 \
+        --filter=blob:none \
+        --sparse \
+        "https://x-access-token:${GITHUB_TOKEN}@github.com/github/gh-aw.git" \
+        "$DOCS_REPO"
+      cd "$DOCS_REPO"
+      git sparse-checkout set docs/src
+      git checkout
+      echo "Sparse checkout complete."
+
       python3 <<'PYEOF'
-      import json
-      import os
-      import re
-      import shutil
-      import subprocess
-      import time
+      import json, os, re, shutil, time
 
-      PAGES = [
-        ("https://github.github.com/gh-aw/introduction/overview/", "Overview of GitHub Agentic Workflows"),
-        ("https://github.github.com/gh-aw/reference/syntax/", "Syntax reference"),
-        ("https://github.github.com/gh-aw/reference/agentic/", "Agentic syntax reference"),
-        ("https://github.github.com/gh-aw/reference/tools/", "Tools reference"),
-        ("https://github.github.com/gh-aw/reference/triggers/", "Triggers reference"),
-        ("https://github.github.com/gh-aw/reference/memory/", "Memory reference"),
-        ("https://github.github.com/gh-aw/reference/safe-outputs/", "Safe Outputs reference"),
-        ("https://github.github.com/gh-aw/reference/safe-outputs-content/", "Safe Outputs - Content types"),
-        ("https://github.github.com/gh-aw/reference/safe-outputs-automation/", "Safe Outputs - Automation types"),
-        ("https://github.github.com/gh-aw/reference/safe-outputs-management/", "Safe Outputs - Management types"),
-        ("https://github.github.com/gh-aw/reference/safe-outputs-runtime/", "Safe Outputs - Runtime types"),
-        ("https://github.github.com/gh-aw/reference/network/", "Network reference"),
-        ("https://github.github.com/gh-aw/reference/messages/", "Messages reference"),
-        ("https://github.github.com/gh-aw/reference/subagents/", "Subagents reference"),
-        ("https://github.github.com/gh-aw/reference/loop/", "Loop reference"),
-        ("https://github.github.com/gh-aw/guides/patterns/", "Patterns guide"),
-        ("https://github.github.com/gh-aw/guides/workflow-patterns/", "Workflow Patterns guide"),
-        ("https://github.github.com/gh-aw/guides/token-optimization/", "Token Optimization guide"),
-        ("https://github.github.com/gh-aw/reference/context/", "Context reference"),
-        ("https://github.github.com/gh-aw/reference/skills/", "Skills reference"),
-        ("https://github.github.com/gh-aw/guides/reuse/", "Reuse guide"),
-        ("https://github.github.com/gh-aw/reference/experiments/", "Experiments reference"),
-        ("https://github.github.com/gh-aw/reference/github-mcp-server/", "GitHub MCP Server reference"),
-        ("https://github.github.com/gh-aw/reference/mcp-clis/", "MCP CLIs reference"),
-        ("https://github.github.com/gh-aw/reference/agentic-workflows-mcp/", "Agentic Workflows MCP reference"),
-        ("https://github.github.com/gh-aw/reference/cli-commands/", "CLI Commands reference"),
-        ("https://github.github.com/gh-aw/guides/pr-reviewer/", "PR Reviewer guide"),
-        ("https://github.github.com/gh-aw/guides/report/", "Report guide"),
-        ("https://github.github.com/gh-aw/reference/llms/", "LLMs reference"),
-        ("https://github.github.com/gh-aw/reference/workflow-constraints/", "Workflow Constraints reference"),
-        ("https://github.github.com/gh-aw/guides/workflow-editing/", "Workflow Editing guide"),
-      ]
+      REPO_URL_BASE = "https://github.github.com/gh-aw"
+      DOCS_REPO     = "/tmp/gh-aw-docs-repo"
 
-      def fetch_anchors(url):
-          """Fetch a doc page and extract headings with anchor IDs."""
-          result = subprocess.run(
-              ["curl", "-sSL", "--max-time", "15", "--retry", "2",
-               "--retry-delay", "1", "--max-redirs", "10", url],
-              capture_output=True, text=True
-          )
-          html = result.stdout
-          if not html:
-              return None, []
-
-          status = subprocess.run(
-              ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}",
-               "--max-time", "10", "-L", "--max-redirs", "10", url],
-              capture_output=True, text=True
-          ).stdout.strip()
-          if not status.startswith("2"):
-              return status, []
-
-          anchors = []
-          # Pattern 1: <h1-4 id="anchor">...</h1-4>
-          for m in re.finditer(
-              r'<(h[1-4])[^>]*\bid=["\']([^"\']+)["\'][^>]*>(.*?)</\1>',
-              html, re.DOTALL | re.IGNORECASE
-          ):
-              anchor_id = m.group(2)
-              text = re.sub(r'<[^>]+>', '', m.group(3)).strip()
-              if text and anchor_id:
-                  anchors.append({"id": anchor_id, "text": text, "url": url + "#" + anchor_id})
-
-          # Pattern 2 fallback: some Starlight/older static sites emit a bare
-          # <a id="anchor"></a> anchor tag before the heading text rather than
-          # placing id directly on the heading element. Only try this if
-          # Pattern 1 produced no results.
-          if not anchors:
-              for m in re.finditer(
-                  r'<a[^>]*\bid=["\']([^"\']+)["\'][^>]*>\s*</a>\s*(.*?)\s*(?=<(?:h[1-4]|a\s))',
-                  html, re.DOTALL | re.IGNORECASE
+      def find_content_dir(base):
+          """Find the Starlight content directory under docs/src/."""
+          for candidate in [
+              os.path.join(base, "docs/src/content/docs"),
+              os.path.join(base, "docs/src/content"),
+              os.path.join(base, "docs/src"),
+          ]:
+              if os.path.isdir(candidate) and any(
+                  fname.endswith((".md", ".mdx"))
+                  for _, _, files in os.walk(candidate)
+                  for fname in files
               ):
-                  anchor_id = m.group(1)
-                  text = re.sub(r'<[^>]+>', '', m.group(2)).strip()
-                  if text and anchor_id:
-                      anchors.append({"id": anchor_id, "text": text, "url": url + "#" + anchor_id})
+                  return candidate
+          return None
 
-          return status, anchors
+      def slugify(text):
+          """Convert heading text to a rehype-slug / GitHub-style anchor ID."""
+          text = re.sub(r"<[^>]+>", "", text)   # strip HTML tags
+          text = text.lower().strip()
+          text = re.sub(r"[^\w\s-]", "", text)  # keep word chars, spaces, hyphens
+          text = re.sub(r"\s+", "-", text)      # spaces → hyphens
+          return text.strip("-")
 
+      content_dir = find_content_dir(DOCS_REPO)
+      if not content_dir:
+          raise SystemExit("ERROR: Could not locate content directory in docs/src/")
+
+      print(f"Content directory: {content_dir}")
       index = {"indexed_at": int(time.time()), "pages": {}}
 
-      for url, title in PAGES:
-          status, anchors = fetch_anchors(url)
-          # status is None when curl returned no output; otherwise it is a
-          # string HTTP status code (e.g. "200", "404").
-          if status is None or not status.startswith("2"):
-              print("SKIP " + url + " - HTTP " + str(status))
-              continue
-          index["pages"][url] = {"title": title, "anchors": anchors}
-          print("OK   " + url + " - " + str(len(anchors)) + " sections")
+      for root, dirs, files in os.walk(content_dir):
+          dirs.sort()
+          for fname in sorted(files):
+              if not re.search(r"\.(mdx?)$", fname):
+                  continue
+              fpath = os.path.join(root, fname)
+              rel   = os.path.relpath(fpath, content_dir).replace(os.sep, "/")
+              slug  = re.sub(r"\.(mdx?)$", "", rel)
+              if slug.endswith("/index"):
+                  slug = slug[:-6]
+              url = f"{REPO_URL_BASE}/{slug}/"
 
-      os.makedirs("/tmp/gh-aw/data", exist_ok=True)
+              with open(fpath, encoding="utf-8") as f:
+                  raw = f.read()
+
+              # Extract title from frontmatter
+              title = slug.split("/")[-1].replace("-", " ").title()
+              fm = re.match(r"^---\n(.*?)\n---", raw, re.DOTALL)
+              if fm:
+                  m = re.search(r"^title:\s*[\"']?(.+?)[\"']?\s*$", fm.group(1), re.MULTILINE)
+                  if m:
+                      title = m.group(1).strip("\"'")
+
+              # Extract section headings from body (skip frontmatter)
+              body = raw[fm.end():] if fm else raw
+              anchors = []
+              for m in re.finditer(r"^#{1,4}\s+(.+)$", body, re.MULTILINE):
+                  raw_text = m.group(1).strip()
+                  clean = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", raw_text)
+                  clean = re.sub(r"[`*_{}]", "", clean).strip()
+                  anchor_id = slugify(clean)
+                  if anchor_id:
+                      anchors.append({
+                          "id":   anchor_id,
+                          "text": clean,
+                          "url":  f"{url}#{anchor_id}",
+                      })
+
+              index["pages"][url] = {"title": title, "anchors": anchors}
+              print(f"OK   {url}  ({len(anchors)} sections)")
+
+      os.makedirs("/tmp/gh-aw/data",         exist_ok=True)
       os.makedirs("/tmp/gh-aw/cache-memory", exist_ok=True)
       with open("/tmp/gh-aw/data/doc-index.json", "w") as f:
           json.dump(index, f, indent=2)
       shutil.copy("/tmp/gh-aw/data/doc-index.json", "/tmp/gh-aw/cache-memory/docs-index.json")
-      print("\nDoc index: " + str(len(index["pages"])) + " pages indexed")
+      print(f"\nDoc index: {len(index['pages'])} pages indexed")
       PYEOF
+
+      rm -rf "$DOCS_REPO"
 ---
 
 # Docs Linker
@@ -379,8 +373,8 @@ anchor text or page title actually covers the concept by checking the doc index:
 - If the matched entry is a **page-level URL** (no anchor), the page title must
   be topically related to the concept. Discard obviously mismatched entries.
 
-This replaces fetching raw source files from `github/gh-aw`, which is
-unavailable during workflow execution.
+This replaces any live API call to `github/gh-aw` during the agent phase —
+the source files were already fetched and parsed by the bash preindex step.
 
 ---
 
