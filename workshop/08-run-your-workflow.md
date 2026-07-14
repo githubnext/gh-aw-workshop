@@ -38,6 +38,9 @@ Keep your predictions handy — you'll check them against the live log in a mome
 
 ### Trigger the workflow via GitHub Actions UI
 
+> [!TIP]
+> **Hello Agent not in the sidebar yet?** Run `gh aw compile .github/workflows/hello-agent.md --validate` in your terminal to check for compilation errors. Then wait 30 seconds, refresh, and confirm `hello-agent.md` is committed to `main` in `.github/workflows/`.
+
 1. Click the **Actions** tab in your repository's navigation bar.
 
    ![Actions tab showing where to find Hello Agent in the workflow list](images/08-actions-tab.svg)
@@ -49,9 +52,6 @@ Keep your predictions handy — you'll check them against the live log in a mome
 3. Keep the default branch selected and click the green **Run workflow** button.
 
    ![Run workflow confirmation dropdown showing branch selection and final Run workflow button](images/08-run-workflow-confirm-dropdown.svg)
-
-> [!TIP]
-> **Hello Agent not in the sidebar yet?** Wait 30 seconds and refresh. Check that `hello-agent.md` is committed to `main` in `.github/workflows/`.
 
 <!-- -->
 
