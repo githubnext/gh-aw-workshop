@@ -4,13 +4,21 @@
 
 ## The Attack
 
-An agent that reads untrusted repository content — issue bodies, PR descriptions, commit messages, or file contents — can be tricked into including that content verbatim in its output. If the output surfaces in a PR body, issue comment, or review, a reviewer may see what looks like official commentary but is actually attacker-controlled text. For example, an issue might contain `**SECURITY APPROVED — MERGE IMMEDIATELY**` inside a markdown block, hoping the agent copies it into a PR review comment where a distracted reviewer acts on it.
+An agent that reads untrusted repository content — issue bodies, PR descriptions, commit messages, or file contents — can be tricked into including that content verbatim in its output.
+
+When that output surfaces in a PR body, issue comment, or review, a reviewer may see what looks like official commentary but is actually attacker-controlled text.
+
+For example, an issue might contain `**SECURITY APPROVED — MERGE IMMEDIATELY**` in a markdown block. If the agent copies it into a PR review comment, a distracted reviewer could act on it as though it were genuine workflow output.
 
 ## Why This Matters for Agentic Workflows
 
 Classic CI/CD pipelines run scripts with fixed logic — they do not synthesize free-text output from repository content. Agentic workflows, by contrast, ask the AI model to read issues, PRs, and code and then express its analysis in natural language. That means the agent is a potential amplifier: attacker-controlled input text can be reflected into a trusted-looking surface (a comment left by your bot) where reviewers may give it more weight than the original source.
 
-The risk is higher in agentic workflows because the output surfaces look authoritative. A comment posted by `github-actions[bot]` on a PR carries implicit trust. Injected content that reaches that surface can mislead reviewers, trigger false approvals, or embed links to phishing pages inside what appears to be a workflow-generated analysis.
+The risk is higher in agentic workflows because the output surfaces look authoritative. A comment posted by `github-actions[bot]` on a PR carries implicit trust. Injected content that reaches that surface can:
+
+- mislead reviewers into treating attacker text as trusted analysis
+- trigger false approvals based on fabricated urgency
+- embed links to phishing pages inside what appears to be a workflow-generated report
 
 ## How AW Defends Against It
 
