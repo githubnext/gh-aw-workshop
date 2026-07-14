@@ -151,7 +151,7 @@ steps:
     run: |
       set -euo pipefail
 
-      python3 <<'PY'
+      python3 -B <<'PY'
       import json
       import pathlib
       import subprocess
