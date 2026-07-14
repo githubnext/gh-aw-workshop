@@ -52,54 +52,18 @@ Read it critically. Ask yourself:
 - Is the tone right — too formal, too casual?
 - Is anything missing (e.g., no mention of stale PRs)?
 
-If you are not sure whether the result is "good enough," compare it to these examples:
+Look for two things: whether the facts match your repository, and whether the format matches the output shape you defined in the prompt. Good output includes accurate numbers, a consistent format, and a tone that feels intentional — not just a robotic list of counts.
 
-#### Needs improvement
+If you are not satisfied, make one targeted prompt change and run the workflow again. Small, focused changes are easier to evaluate than large rewrites.
 
-```markdown
-### Daily Repo Status
-
-- 7 open issues
-- 2 open PRs
-- 1 PR needs review
-```
-
-Why this still needs work:
-- It is technically correct, but it sounds robotic.
-- It does not include the age of the oldest open PR, so you cannot spot stale work.
-- It gives you numbers, but not much help interpreting them.
-
-#### Good output after one iteration
-
-```markdown
-### Daily Repo Status
-
-Good morning! You have 7 open issues and 2 open PRs.
-
-- Oldest open PR: #42, open for 6 days
-- 1 PR is waiting for review
-- No stale issues need attention today
-
-Your queue looks manageable today — one review pass would keep things moving.
-```
-
-Use this pass/fail check on your own output:
-- Pass if the facts match your repository, the tone sounds human, and the comment includes the key detail you wanted to improve.
-- Fail if it is still missing important context, still sounds generic, or still does not match the format you had in mind.
-
-If it fails, make one small prompt change and run the workflow again.
+> [!TIP]
+> **Optional Side Quest:** Want a structured rubric for evaluating output and a five-row problem-to-fix reference table? See [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
 
 ### Improve the agent instructions
 
 Open `.github/workflows/daily-status.md` in your editor. The agent instructions live in the **Markdown body** — the plain-English text below the closing `---` fence. This is the section that starts with `# Daily Repo Status Report`.
 
-Make one concrete change to the body. Some ideas:
-
-| Problem noticed | Suggested fix |
-|-----------------|---------------|
-| Report is too verbose | Add _"Keep the report under 100 words."_ to the Guidelines section |
-| Missing PR age info | Add _"Include the age of the oldest open PR."_ to the Your Task list |
-| Tone feels robotic | Add _"Write in a friendly, conversational tone."_ to the Guidelines section |
+Make one concrete change to the body. Common fixes include adding a word-count limit, including the age of the oldest open PR, or adding a tone instruction. For a full five-row problem-to-fix reference, see the [Optional Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
 
 For example, your updated Guidelines section might look like:
 
