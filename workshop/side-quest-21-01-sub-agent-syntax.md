@@ -14,6 +14,8 @@ Work through this reference to practice writing correct sub-agent blocks — the
 
 ## Name rules
 
+**🔍 Predict:** Which naming mistakes usually break a sub-agent heading — invalid characters, missing backticks, or the wrong starting character? Make a quick guess before reading the rules.
+
 A sub-agent heading looks like `## agent: \`name\``. The name must:
 
 - Be enclosed in backticks: `` `name` ``
@@ -45,6 +47,8 @@ Which of these headings are invalid? Fix each one before reading the answer.
 
 ## Block boundary rules
 
+**🔍 Predict:** If you add another `##` heading after a sub-agent, does that new heading stay inside the sub-agent block or end it?
+
 - The sub-agent block starts immediately after the `` ## agent: `name` `` heading.
 - The block ends at the next level-2 heading (`##`) or at end of file.
 - No closing marker is needed.
@@ -75,6 +79,8 @@ Run via GitHub Actions...
 
 ## Supported frontmatter fields
 
+**🔍 Predict:** Which frontmatter fields should a sub-agent be allowed to override for itself? Pick two before you check the table.
+
 Each sub-agent block may have its own YAML frontmatter fence. Only two fields are meaningful:
 
 | Field | Required | Default | Notes |
@@ -98,6 +104,15 @@ Read the issue body and reply with exactly one label: `bug`, `enhancement`, or `
 ```
 
 In this example, `description` documents the sub-agent's role for readers and tooling, and `model: small` keeps costs low for this bounded classification task.
+
+### ✏️ Try it: keep or strip?
+
+Before reading on, sort these four fields into two buckets: **kept** or **stripped**.
+
+- `description`
+- `model`
+- `engine`
+- `tools`
 
 ### ✏️ Quick Check — Frontmatter fields
 
@@ -127,6 +142,8 @@ Which fields will be kept at compile time, and which will be stripped? What warn
 
 ## Model aliases
 
+**🔍 Predict:** Which alias would you reach for first when a worker does one small, repetitive task hundreds of times?
+
 | Alias | Resolves to | When to use |
 |-------|-------------|-------------|
 | `small` | mini / haiku / gpt-5-mini / gpt-5-nano / gemini-flash | Cheap, fast tasks: extraction, classification, formatting |
@@ -134,6 +151,23 @@ Which fields will be kept at compile time, and which will be stripped? What warn
 | `inherited` | Parent workflow model | Default — use when the sub-agent needs the same capability as the parent |
 
 Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
+
+### ✏️ Try it: match the task to the alias
+
+Choose the best alias for each task before opening the answer.
+
+- Read one issue and return `bug`, `docs`, or `question`
+- Plan the full workflow, choose which workers to call, and write the final report
+- Use the same model as the parent because the worker needs the same reasoning depth
+
+<details>
+<summary>Answer</summary>
+
+- Issue classifier → **`small`**
+- Orchestrator/planner → **`large`**
+- Match the parent model → **`inherited`**
+
+</details>
 
 ### ✏️ Quick Check — Model aliases
 
