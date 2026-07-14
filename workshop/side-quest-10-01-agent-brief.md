@@ -15,15 +15,15 @@ Build your brief in a scratch file with five short steps. By the end, you'll hav
 
 ## At a Glance
 
-Use the same loop for every step: **write first, check your draft, then expand the "Why this works" section if you want the reasoning**.
+Use the same loop for every step: **write first, check your draft, then expand the collapsible "Why this works" section to read the reasoning**.
 
 | Step | Write first | Check before you move on |
 |------|-------------|--------------------------|
-| Goal | One sentence that starts with "Every day, I want the agent to..." | One action, one outcome |
-| Inputs | 3-5 bullets with the data you need | Each line supports the report |
-| Output | A literal report skeleton | Same format every run |
-| Guardrails | Short rules for limits and fallbacks | No duplicate posts, no guessing |
-| Review | A quick pass over the whole brief | Replace vague wording |
+| Goal | One sentence that starts with "Every day, I want the agent to..." | Describes one action with one outcome |
+| Inputs | 3-5 bullets with the data you need | Every input supports a report field |
+| Output | A literal report skeleton | Uses a consistent format with placeholders |
+| Guardrails | Short rules for limits and fallbacks | Prevents duplicates and guessing |
+| Review | A quick pass over the whole brief | Uses concrete, observable language |
 
 ---
 
