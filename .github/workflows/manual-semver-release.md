@@ -293,7 +293,6 @@ jobs:
               return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
             };
             
-            fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
             runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
             
             const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
