@@ -64,6 +64,32 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 >
 > </details>
 
+## Try it now
+
+Here is a minimal agentic workflow file — the same structure you will write in Step 7:
+
+```markdown
+---
+on:
+  schedule: daily
+permissions:
+  issues: read
+---
+
+Review all open issues, summarize the key themes, and post a short digest as a new issue.
+```
+
+> [!NOTE]
+> `schedule: daily` is the fuzzy shorthand that `gh aw compile` converts into a standard Actions cron expression in the `.lock.yml` file. You never write raw cron syntax in an agentic workflow `.md` file.
+
+Look at the sample above and answer these two questions before continuing:
+
+1. Which part is the **task brief** (the plain-English instructions the agent reads)?
+2. Which line or block tells GitHub Actions **when** to run the workflow?
+
+> [!TIP]
+> There is no single right answer — just make sure you can point to these two parts. You will write both in Step 7.
+
 Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. You can also run hybrid workflows: keep deterministic jobs or steps for repeatable data collection, then let the agent interpret the results and decide the final output. For a detailed side-by-side comparison, agent anatomy, and YAML authoring details, see [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
 
 If you want a one-page cheat sheet for Actions power users, read [Side Quest: Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md), then return here.
