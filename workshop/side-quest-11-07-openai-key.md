@@ -2,16 +2,16 @@
 
 > _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
 
-By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **OpenAI models**, you'll need an OpenAI API key stored as a repository secret and a one-line change to your workflow frontmatter.
+By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI models**, store an OpenAI API key as a repository secret and add one frontmatter line.
 
-## Before You Start
+## 📋 Before You Start
 
-- You have completed [Step 11: Build Your Scenario Workflow](11a-build-daily-status.md) or equivalent.
-- You already have a `GITHUB_TOKEN` repository secret in place from [Step 7](07-your-first-workflow.md).
-- You have an OpenAI account at [platform.openai.com](https://platform.openai.com).
+- You have completed [Step 6: Install `gh-aw`](06-install-gh-aw.md) and have a working agentic workflow.
+- You are familiar with YAML frontmatter `env:` blocks (see [Side Quest: Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) if not).
+- You have an OpenAI account or access to an OpenAI API key from your organisation.
 
 > [!NOTE]
-> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution — it routes requests to OpenAI's current API. The name refers to the engine integration, not the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
+> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution. It does not refer to the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
 
 ---
 
@@ -29,10 +29,20 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 
 1. Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys) and sign in (or create an account).
 2. Click **Create new secret key**, give it a name (for example `gh-aw-workshop`), and click **Create secret key**.
-3. Copy the key value — it starts with `sk-`. You won't be able to view it again after closing the dialog.
+3. Copy the key value — it starts with `sk-`.
 
 > [!NOTE]
-> OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before you run workflows to avoid unexpected charges or throttling.
+> OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before running workflows to avoid surprise charges or throttling.
+
+<details>
+<summary>Key rotation best practices</summary>
+
+- Save the key in GitHub right away because OpenAI only shows the full value once.
+- Use a recognizable name so you can identify its workflow or repository later.
+- Rotate the key immediately if you paste it into the wrong place or think it may have been exposed.
+- Delete old or unused keys from the OpenAI dashboard after you confirm the replacement works.
+
+</details>
 
 ---
 
