@@ -93,7 +93,6 @@ steps:
         };
 
         fs.mkdirSync(path.dirname(planPath), { recursive: true });
-        fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
         runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
 
         const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
@@ -409,6 +408,7 @@ jobs:
             }
             
             const body = `${heading}\n${changeLines.join('\n')}\n`.trim();
+            fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
             fs.writeFileSync(descriptionPath, `${body}\n`);
             
             if (!/^v?\d+\.\d+\.\d+$/.test(nextTag)) {
@@ -471,7 +471,7 @@ The `Compute release plan` step creates these files before the agent starts. Rea
 
 - `/tmp/gh-aw/data/release-trigger.json` — repository, requested bump, triggering ref name, and triggering SHA
 - `/tmp/gh-aw/data/release-plan.json` — deterministic release metadata including the previous semver tag, next semver tag, target SHA, and whether the release is publishable
-- `/tmp/gh-aw/data/release-description.md` — the deterministic full change list that the workflow creates first and publishes unless you replace it with better release notes
+- `/tmp/gh-aw/data/release-description.md` — the full change list that the workflow creates first and publishes unless you replace it with better release notes
 
 A separate deterministic `create-release` job uses the same semver rules to create the GitHub release with `gh release create` before your `update_release` safe output runs. Your only write action is to replace that raw body with better release notes.
 
