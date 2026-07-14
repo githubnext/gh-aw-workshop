@@ -13,7 +13,7 @@
 
 Inside a sub-agent block, keep frontmatter small. `description` explains the helper. `model` can stay `inherited` or use `small` for cheap bounded work or `large` for heavier reasoning. Other fields are stripped with a warning.
 
-### 🔍 Predict Again
+### 🔍 Predict — Frontmatter Fields
 
 Which fields stay?
 
@@ -77,7 +77,7 @@ The maintainer notes split the helpers apart. Move `## Notes for maintainers` ab
 
 </details>
 
-### 🔍 Predict
+### 🔍 Predict — Chaining
 
 Which line starts the second helper?
 

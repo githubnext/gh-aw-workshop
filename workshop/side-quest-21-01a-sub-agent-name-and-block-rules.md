@@ -13,7 +13,7 @@
 
 Write each helper as ``## agent: `name` ``. A valid name is wrapped in backticks, starts with a letter, and uses only lowercase letters, digits, `_`, or `-`.
 
-### 🔍 Predict Again
+### 🔍 Predict — Name Rules
 
 Which heading compiles?
 
@@ -75,7 +75,7 @@ Move the whole `summarizer` block below `## How to use this workflow`. A regular
 
 </details>
 
-### 🔍 Predict
+### 🔍 Predict — Block Boundaries
 
 Where does the first block end?
 
