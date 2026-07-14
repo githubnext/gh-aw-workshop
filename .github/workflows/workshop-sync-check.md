@@ -41,33 +41,34 @@ steps:
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
 
-      # Keep this list aligned with workshop command coverage as gh-aw evolves.
-      gh_aw_help="$(gh aw help 2>&1)"
-      compile_help="$(gh aw compile --help 2>&1)"
-      run_help="$(gh aw run --help 2>&1)"
-      logs_help="$(gh aw logs --help 2>&1)"
-      status_help="$(gh aw status --help 2>&1)"
-      update_help="$(gh aw update --help 2>&1)"
-      fix_help="$(gh aw fix --help 2>&1)"
+      # This snapshot describes the terminal `gh aw` CLI only.
+      # It is not the same thing as the internal `agentic-workflows` MCP tool.
+      gh_aw_help="$(gh aw --help 2>&1)"
+
+      mapfile -t gh_aw_subcommands < <(
+        printf '%s\n' "$gh_aw_help" |
+          awk '/^[[:space:]]{2}[^[:space:]-][^[:space:]]*[[:space:]]{2,}/ { print $1 }' |
+          grep -v '^gh$' |
+          sort -u
+      )
+
+      subcommands_jsonl=/tmp/gh-aw/data/gh-aw-cli-subcommands.jsonl
+      : > "$subcommands_jsonl"
+
+      for subcommand in "${gh_aw_subcommands[@]}"; do
+        jq -n \
+          --arg key "$subcommand" \
+          --arg value "$(gh aw "$subcommand" --help 2>&1)" \
+          '{key: $key, value: $value}' \
+          >> "$subcommands_jsonl"
+      done
 
       jq -n \
         --arg gh_aw_help "$gh_aw_help" \
-        --arg compile_help "$compile_help" \
-        --arg run_help "$run_help" \
-        --arg logs_help "$logs_help" \
-        --arg status_help "$status_help" \
-        --arg update_help "$update_help" \
-        --arg fix_help "$fix_help" \
+        --slurpfile subcommands "$subcommands_jsonl" \
         '{
           gh_aw_help: $gh_aw_help,
-          subcommands: {
-            compile: $compile_help,
-            run: $run_help,
-            logs: $logs_help,
-            status: $status_help,
-            update: $update_help,
-            fix: $fix_help
-          }
+          subcommands: ($subcommands | from_entries)
         }' \
         > /tmp/gh-aw/data/gh-aw-cli-help.json
 
@@ -152,6 +153,7 @@ Each daily run reviews **three workshop files** (round-robin) and checks for out
    - `workflow_files` — array of `.github/workflows/*.md` source paths
 
 2. Read `/tmp/gh-aw/data/gh-aw-cli-help.json` and use it as the authoritative source for valid `gh aw` subcommands and flags when reviewing workshop command examples.
+   This snapshot comes from the terminal `gh aw` CLI, not the internal `agentic-workflows` MCP tool used by this workflow.
    If a workshop command or flag is missing from this live help snapshot, treat it as a drift finding for the installed CLI version and include the relevant help excerpt as evidence.
 
 3. Load the cache-memory file `/tmp/gh-aw/cache-memory/sync-state.json` if it exists.
