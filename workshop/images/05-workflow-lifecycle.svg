@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Title -->
+  <text x="600" y="42" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="18" font-weight="600" fill="#24292f" text-anchor="middle">Agentic Workflow Lifecycle</text>
+  <text x="600" y="64" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="13" fill="#57606a" text-anchor="middle">How a Markdown brief becomes a live, AI-powered GitHub Actions workflow</text>
+
+  <!-- Main card -->
+  <rect x="40" y="85" width="1120" height="390" rx="12" ry="12" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+
+  <!-- ── STAGE 1: .md file ── -->
+  <!-- Box -->
+  <rect x="72" y="120" width="190" height="310" rx="8" ry="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <!-- Badge -->
+  <circle cx="167" cy="120" r="13" fill="#0969da"/>
+  <text x="167" y="125" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="700" fill="white" text-anchor="middle">1</text>
+  <!-- Label -->
+  <text x="167" y="156" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="600" fill="#0969da" text-anchor="middle">workflow.md</text>
+
+  <!-- YAML frontmatter sub-box -->
+  <rect x="88" y="168" width="158" height="100" rx="5" ry="5" fill="#ddf4ff" stroke="#0969da" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="167" y="187" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#0969da" text-anchor="middle" font-weight="600">YAML Frontmatter</text>
+  <text x="100" y="205" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f">on: schedule</text>
+  <text x="100" y="219" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f">  cron: '0 8 * * *'</text>
+  <text x="100" y="233" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f">permissions:</text>
+  <text x="100" y="247" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f">  issues: write</text>
+  <text x="100" y="261" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f">  contents: read</text>
+
+  <!-- Task brief sub-box -->
+  <rect x="88" y="280" width="158" height="120" rx="5" ry="5" fill="#fff8c5" stroke="#bf8700" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="167" y="299" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#bf8700" text-anchor="middle" font-weight="600">Task Brief</text>
+  <text x="100" y="317" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">Summarize open issues</text>
+  <text x="100" y="331" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">by theme, flag urgent</text>
+  <text x="100" y="345" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">ones, and post a</text>
+  <text x="100" y="359" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">short triage summary.</text>
+  <text x="100" y="381" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#57606a" font-style="italic">(plain English goal)</text>
+
+  <!-- Stage caption -->
+  <text x="167" y="416" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">You write this</text>
+
+  <!-- Arrow 1 → 2 -->
+  <g transform="translate(278,270)">
+    <!-- compile label above arrow -->
+    <rect x="-44" y="-34" width="90" height="22" rx="4" ry="4" fill="#8250df" opacity="0.1"/>
+    <text x="0" y="-18" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#8250df" text-anchor="middle" font-weight="600">gh aw compile</text>
+    <line x1="0" y1="0" x2="58" y2="0" stroke="#8250df" stroke-width="2" stroke-dasharray="none"/>
+    <polygon points="58,0 48,-6 48,6" fill="#8250df"/>
+  </g>
+
+  <!-- ── STAGE 2: lock.yml ── -->
+  <rect x="352" y="120" width="170" height="310" rx="8" ry="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <circle cx="437" cy="120" r="13" fill="#8250df"/>
+  <text x="437" y="125" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="700" fill="white" text-anchor="middle">2</text>
+  <text x="437" y="156" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="600" fill="#8250df" text-anchor="middle">workflow.lock.yml</text>
+  <!-- lock yaml content -->
+  <rect x="368" y="168" width="138" height="200" rx="5" ry="5" fill="white" stroke="#d0d7de" stroke-width="1"/>
+  <text x="380" y="186" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#24292f">on:</text>
+  <text x="380" y="200" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#24292f">  schedule:</text>
+  <text x="380" y="214" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#24292f">    - cron: '0 8 * * *'</text>
+  <text x="380" y="228" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#24292f">jobs:</text>
+  <text x="380" y="242" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#24292f">  agent:</text>
+  <text x="380" y="256" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#24292f">    runs-on: ubuntu</text>
+  <text x="380" y="270" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#57606a">    steps:</text>
+  <text x="380" y="284" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#57606a">      # agent bootstrap</text>
+  <text x="380" y="298" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#57606a">      # task brief (enc.)</text>
+  <text x="380" y="312" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#57606a">      # safe-outputs</text>
+  <text x="380" y="330" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#57606a">      ...</text>
+  <text x="437" y="354" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#57606a" text-anchor="middle">Standard Actions YAML</text>
+  <text x="437" y="369" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#57606a" text-anchor="middle">(do not edit by hand)</text>
+  <text x="437" y="416" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">Compiled output</text>
+
+  <!-- Arrow 2 → 3 trigger -->
+  <g transform="translate(538,270)">
+    <rect x="-34" y="-34" width="70" height="22" rx="4" ry="4" fill="#1a7f37" opacity="0.1"/>
+    <text x="0" y="-18" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#1a7f37" text-anchor="middle" font-weight="600">trigger</text>
+    <line x1="0" y1="0" x2="58" y2="0" stroke="#1a7f37" stroke-width="2"/>
+    <polygon points="58,0 48,-6 48,6" fill="#1a7f37"/>
+  </g>
+
+  <!-- ── STAGE 3: GitHub Actions ── -->
+  <rect x="612" y="120" width="170" height="160" rx="8" ry="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <circle cx="697" cy="120" r="13" fill="#1a7f37"/>
+  <text x="697" y="125" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="700" fill="white" text-anchor="middle">3</text>
+  <text x="697" y="154" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1a7f37" text-anchor="middle">GitHub Actions</text>
+  <text x="697" y="172" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">Runner environment</text>
+
+  <!-- Runner chips -->
+  <rect x="628" y="184" width="128" height="22" rx="4" ry="4" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="692" y="199" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#1a7f37" text-anchor="middle">🔒 Sandbox</text>
+  <rect x="628" y="211" width="128" height="22" rx="4" ry="4" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="692" y="226" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#1a7f37" text-anchor="middle">🛡 Firewall</text>
+  <rect x="628" y="238" width="128" height="22" rx="4" ry="4" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="692" y="253" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#1a7f37" text-anchor="middle">✅ Safe-outputs</text>
+
+  <!-- Arrow 3 → 4 -->
+  <g transform="translate(697,296)">
+    <line x1="0" y1="0" x2="0" y2="38" stroke="#cf222e" stroke-width="2"/>
+    <polygon points="0,38 -6,28 6,28" fill="#cf222e"/>
+    <text x="12" y="20" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#cf222e" font-weight="600">runs</text>
+  </g>
+
+  <!-- ── STAGE 4: AI Agent ── -->
+  <rect x="612" y="340" width="170" height="130" rx="8" ry="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <circle cx="697" cy="340" r="13" fill="#cf222e"/>
+  <text x="697" y="345" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="700" fill="white" text-anchor="middle">4</text>
+  <text x="697" y="369" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#cf222e" text-anchor="middle">AI Agent</text>
+  <rect x="628" y="378" width="128" height="18" rx="3" ry="3" fill="#ffebe9" stroke="#cf222e" stroke-width="0.8"/>
+  <text x="692" y="391" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#cf222e" text-anchor="middle">reads repo data</text>
+  <rect x="628" y="401" width="128" height="18" rx="3" ry="3" fill="#ffebe9" stroke="#cf222e" stroke-width="0.8"/>
+  <text x="692" y="414" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#cf222e" text-anchor="middle">calls tools (gh, APIs)</text>
+  <rect x="628" y="424" width="128" height="18" rx="3" ry="3" fill="#ffebe9" stroke="#cf222e" stroke-width="0.8"/>
+  <text x="692" y="437" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#cf222e" text-anchor="middle">reasons at runtime</text>
+
+  <!-- Arrow 4 → 5 -->
+  <g transform="translate(796,405)">
+    <line x1="0" y1="0" x2="58" y2="0" stroke="#bf8700" stroke-width="2"/>
+    <polygon points="58,0 48,-6 48,6" fill="#bf8700"/>
+    <text x="20" y="-8" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#bf8700" font-weight="600">posts</text>
+  </g>
+
+  <!-- ── STAGE 5: Output ── -->
+  <rect x="870" y="120" width="252" height="350" rx="8" ry="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <circle cx="996" cy="120" r="13" fill="#bf8700"/>
+  <text x="996" y="125" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="700" fill="white" text-anchor="middle">5</text>
+  <text x="996" y="154" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#bf8700" text-anchor="middle">Structured Output</text>
+  <rect x="886" y="165" width="220" height="270" rx="5" ry="5" fill="white" stroke="#d0d7de" stroke-width="1"/>
+  <!-- markdown output simulation -->
+  <text x="898" y="184" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f" font-weight="600">## Daily Status — July 12</text>
+  <line x1="898" y1="190" x2="1094" y2="190" stroke="#d0d7de" stroke-width="0.8"/>
+  <text x="898" y="207" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#1a7f37">✅ CI: 18 workflows passed</text>
+  <text x="898" y="223" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#cf222e">❌ 1 failed: docs-link-check</text>
+  <text x="898" y="243" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#0969da">🔄 PRs: 7 open (2 need review)</text>
+  <text x="898" y="263" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#bf8700">🐛 Issues: 4 new, 3 closed</text>
+  <line x1="898" y1="275" x2="1094" y2="275" stroke="#d0d7de" stroke-width="0.8"/>
+  <text x="898" y="292" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f" font-weight="600">### Recommended actions</text>
+  <text x="898" y="310" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">1. Re-run docs-link-check</text>
+  <text x="898" y="326" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">2. Review PR #412 before noon</text>
+  <text x="898" y="342" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">3. Triage issue #398 with team</text>
+  <text x="898" y="368" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#57606a" font-style="italic">Posted automatically by the agent</text>
+  <text x="898" y="382" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#57606a" font-style="italic">to GitHub Issues / Discussions</text>
+
+  <text x="996" y="416" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">Agent composes this at runtime</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="500" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#57606a" text-anchor="middle">
+    The <tspan font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="#8250df">gh aw compile</tspan> step runs once when you author the workflow. Steps 3–5 repeat on every trigger.
+  </text>
+  <text x="600" y="520" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" fill="#57606a" text-anchor="middle">
+    The agent decides <tspan font-style="italic">how</tspan> to complete the task at runtime — you only write <tspan font-style="italic">what</tspan> you want.
+  </text>
+</svg>
