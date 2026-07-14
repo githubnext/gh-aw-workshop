@@ -1,6 +1,6 @@
 # Side Quest: Supply Chain Attacks via MCP Tool Servers
 
-> _A compromised MCP tool server can feed poisoned data back to your agent — gh-aw's network allow-list and version pinning shrink the window for this attack._
+> _A compromised MCP tool server can feed poisoned data back to your agent — gh-aw's network allow-list, explicit tool declarations, and minimal permissions shrink the window for this attack._
 
 ## The Attack
 
@@ -26,7 +26,7 @@ connects to it. The blast radius is larger than a traditional dependency vulnera
 because the payload is interpreted by an AI model that may follow the embedded
 instructions.
 
-## How AW Defends Against It
+## How gh-aw Defends Against It
 
 - **Network allow-list (`network.allowed-domains`)** — the runner blocks outbound
   connections to any domain not listed. An attacker cannot redirect your agent to an
