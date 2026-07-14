@@ -2,17 +2,26 @@
 
 > _Optional: work through this guide when your workflow needs a token or API key that shouldn't appear in plain text, then return to your main path._
 
+## 📋 Before You Start
+
+- Familiarity with [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
+- You understand what GitHub Actions workflow YAML looks like.
+
+---
+
 GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **GitHub Secrets** gives you a secure vault for sensitive values that workflows can read without exposing.
 
 ---
 
 ## What is a GitHub Secret?
 
-A secret is a named, encrypted value stored in your repository (or organisation) settings. At runtime, GitHub injects it as an environment variable. Secrets:
+A secret is a named, encrypted value stored in your repository settings. Your workflow reads it with `${{ secrets.SECRET_NAME }}` at runtime. Secrets:
 
 - Are **never** shown in plain text in the UI after you save them.
 - Are **masked** in workflow logs — if a secret's value appears in output, GitHub replaces it with `***`.
-- Are **not** available to forked repositories by default (protecting against pull-request attacks).
+
+> [!NOTE]
+> This side quest focuses on repository secrets. If several repositories need the same credential, you can also store it as an organisation secret and grant access to selected repositories.
 
 ---
 
@@ -24,11 +33,16 @@ You need a secret whenever your workflow authenticates to an external service. C
 |---|---|
 | Calling a third-party API (Slack, Jira, etc.) | API key or bearer token |
 | Posting to an external webhook | Webhook URL (treat URLs with tokens as secrets) |
-| Using a personal access token for broader GitHub access | PAT |
 | Connecting an MCP server that requires auth | Server-specific token |
 
-> [!NOTE]
-> `GITHUB_TOKEN` is different — it's a **built-in secret** automatically created for every workflow run. You do not create it; you just reference it. It expires when the run ends.
+## Choose the right GitHub token
+
+Use this quick comparison when your workflow needs GitHub access:
+
+| If you need to... | Use | Why |
+|---|---|---|
+| Read or act on the same repository during a workflow run | `${{ secrets.GITHUB_TOKEN }}` | GitHub creates it automatically for each run, and it expires when the run ends. |
+| Reach outside this repository — for example, access another repository or trigger a workflow elsewhere — or use scopes the built-in token does not have | A PAT stored as a repository secret | You create it yourself and can give it the specific extra access you need. |
 
 ---
 
@@ -49,6 +63,24 @@ You need a secret whenever your workflow authenticates to an external service. C
 
 ---
 
+## ✏️ Try it: Verify masking
+
+Add a placeholder secret named `WORKSHOP_TOKEN` with any throwaway value, then prove GitHub masks it in logs.
+
+1. Create `WORKSHOP_TOKEN` in **Settings** → **Secrets and variables** → **Actions**.
+2. Add this temporary step to a workflow you can run manually:
+
+   ```yaml
+   - name: Confirm secret masking
+     run: echo "token=${{ secrets.WORKSHOP_TOKEN }}"
+   ```
+
+3. Trigger a manual run from the **Actions** tab.
+4. Open the run logs and confirm the output shows `token=***`, not the value you entered.
+5. Remove the temporary step after you verify masking.
+
+---
+
 ## Reference a secret in your workflow
 
 Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
@@ -61,21 +93,12 @@ Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
       -d '{"text": "Daily status report is ready."}'
 ```
 
-For environment variables, you can also declare them at the step level to keep the `run:` block readable:
+## Going deeper
 
-```yaml
-- name: Call external API
-  env:
-    API_TOKEN: ${{ secrets.MY_API_TOKEN }}
-  run: |
-    curl -H "Authorization: Bearer $API_TOKEN" https://api.example.com/data
-```
+<details>
+<summary>Learn about using the built-in `GITHUB_TOKEN` for GitHub API calls</summary>
 
----
-
-## Using the built-in `GITHUB_TOKEN`
-
-Most GitHub API calls (fetching issues, listing commits, posting comments) work with the automatically provided `GITHUB_TOKEN`:
+Most GitHub API calls in this workshop work with the automatically provided `GITHUB_TOKEN`:
 
 ```yaml
 - name: List open pull requests
@@ -86,12 +109,10 @@ Most GitHub API calls (fetching issues, listing commits, posting comments) work 
 
 The `gh` CLI reads `GH_TOKEN` automatically when it is set as an environment variable.
 
-> [!WARNING]
-> `GITHUB_TOKEN` has scoped permissions defined in your workflow's `permissions:` block. If an API call fails with a 403, check that the required permission (e.g. `pull-requests: read`) is listed in frontmatter.
+</details>
 
----
-
-## Permissions frontmatter
+<details>
+<summary>Learn how permissions frontmatter controls the built-in `GITHUB_TOKEN`</summary>
 
 gh-aw workflows declare required permissions in frontmatter. Only request what you need:
 
@@ -104,7 +125,9 @@ permissions:
 ---
 ```
 
-Keeping permissions minimal reduces the blast radius if a workflow is ever misused.
+If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is listed in frontmatter. Keeping permissions minimal reduces the blast radius if a workflow is ever misused.
+
+</details>
 
 ---
 
