@@ -22,7 +22,7 @@ You keep the same GitHub Actions foundations — triggers, permissions, runners,
 
 The biggest shift is replacing imperative shell steps with a plain-language goal. Here is the same "triage an issue" task written both ways.
 
-**Classic GitHub Actions** — every decision is hard-coded in shell:
+**Classic GitHub Actions** — every decision is hard-coded in shell (simplified for illustration):
 
 ```yaml
 on: [issues]
@@ -36,6 +36,7 @@ jobs:
           if echo "${{ github.event.issue.body }}" | grep -qi "error\|exception"; then
             gh issue edit ${{ github.event.issue.number }} --add-label "bug"
           fi
+          # Real workflows need more checks, error handling, and edge-case branches
 ```
 
 **Agentic workflow** — a plain-language goal replaces the shell logic:
@@ -62,13 +63,13 @@ Key differences at a glance:
 
 Open the workflow file you created in Step 4, or find a `run:` step in any `.github/workflows/*.yml` file. Pick one step that handles a decision — checking a label, parsing a PR title, or filtering by file path.
 
-Add a comment above that step with a one-sentence plain-language goal:
+Add a comment above that step with a one-sentence plain-language goal. The step body below is just a stand-in — your real step keeps its existing logic unchanged:
 
 ```yaml
 # Goal: suggest up to three relevant labels from the repo label list
 - name: Check labels
   run: |
-    echo "Checking labels..."
+    # ... your existing logic stays here unchanged
 ```
 
 Keep this goal statement handy — you will use it when authoring your first agentic workflow in [Step 7](07-your-first-workflow.md).
