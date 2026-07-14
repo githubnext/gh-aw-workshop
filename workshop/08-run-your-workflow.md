@@ -10,7 +10,7 @@ You'll trigger the `hello-agent` workflow from Step 7, watch it start in the **A
 
 - Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
 - `hello-agent.md` is committed to `.github/workflows/` on `main`
-- **Codespace users only:** Set workflow permissions to **Read and write permissions** in **Settings → Actions → General**, then confirm **Hello Agent** appears in the **Actions** sidebar
+- **Codespace users only:** Set workflow permissions to **Read and write permissions** in **Settings → Actions → General** so the workflow can post comments or create issues, then confirm **Hello Agent** appears in the **Actions** sidebar
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
 ## Run the workflow
