@@ -10,7 +10,7 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 - You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
 - Your workflow posts to a safe output surface such as the **Daily Status Reports** issue.
-- If you are not using a terminal, you can still do this side quest by asking a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
+- If you are working in a browser-based environment without terminal access, you can still do this side quest by asking a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
 
 ## Trigger one baseline run
 
@@ -76,7 +76,7 @@ After:  Accuracy 2, Completeness 2, Tone 2
 Changed sentence: "Write in a friendly, conversational tone."
 ```
 
-If the lowest row did not improve, keep the first change, pick one new sentence, and run the same loop again.
+If the lowest row did not improve, keep the first change in place, pick one different sentence to edit, and run the same loop again.
 
 <details>
 <summary>Need ideas for what to change or where to look for errors?</summary>
@@ -85,7 +85,7 @@ Quick problem-to-fix guide:
 
 | Problem you see | One sentence to add or tighten |
 |-----------------|--------------------------------|
-| Facts look guessed | "Use only numbers you can verify from the repository tools." |
+| Facts look guessed | "Use only numbers you can verify from GitHub data or repository files." |
 | A requested field is missing | "Include the age of the oldest open PR if one exists." |
 | Tone feels stiff | "Write in a friendly, conversational tone." |
 | The format drifts | "Follow this exact heading and bullet structure." |
