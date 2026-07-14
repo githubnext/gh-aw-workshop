@@ -15,6 +15,8 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 ## Pick Your Adventure
 
+Before you read the scenario descriptions, write one sentence describing a repository task you'd like to automate. Keep it nearby — you'll compare it to your final choice at the end of this step.
+
 | Scenario | What it automates | Best for |
 |---|---|---|
 | [Daily Repo Status Report](#adventure-a-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |
@@ -73,11 +75,21 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 ---
 
+## Commit to Your Choice
+
+1. Write down the adventure you chose and one reason it matches the repository task you wrote before the table.
+2. Open the next step for that adventure and read the first paragraph to confirm the scenario matches what you want to automate.
+3. If you're using the GitHub Copilot app or the Agents tab, note that you'll skip the design step and continue with [Adventure D](11d-build-copilot-agents.md).
+
+---
+
 ## ✅ Checkpoint
 
-- [ ] I've read all three scenario descriptions
-- [ ] I've picked the scenario I want to build
-- [ ] I'm ready to start the design step for my chosen adventure
+- [ ] I've written one sentence describing a repository task I'd like to automate
+- [ ] I've chosen an adventure and written down one reason it matches that task
+- [ ] I can name the trigger my chosen scenario uses
+- [ ] I've opened the next step for my chosen scenario and read the first paragraph
+- [ ] I know whether I'll follow the design step path or jump to Adventure D with the GitHub Copilot app or Agents tab
 
 **Next (pick one):**
 
