@@ -80,6 +80,17 @@ steps:
           const text = runGitCommand(...args);
           return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
         };
+        const isMissingGitHubResource = async request => {
+          try {
+            await request();
+            return false;
+          } catch (error) {
+            if (error.status === 404) {
+              return true;
+            }
+            throw error;
+          }
+        };
 
         fs.mkdirSync(path.dirname(planPath), { recursive: true });
         fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
@@ -163,22 +174,17 @@ steps:
           has_changes: true,
         };
 
-        try {
-          await github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag });
+        if (!(await isMissingGitHubResource(() => github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag })))) {
           plan.has_changes = false;
           plan.noop_reason = `Target release ${nextTag} is already visible before publication.`;
-        } catch (error) {
-          if (error.status !== 404) throw error;
         }
 
-        if (plan.has_changes) {
-          try {
-            await github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` });
-            plan.has_changes = false;
-            plan.noop_reason = `Target tag ${nextTag} is already visible before publication.`;
-          } catch (error) {
-            if (error.status !== 404) throw error;
-          }
+        if (
+          plan.has_changes &&
+          !(await isMissingGitHubResource(() => github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` })))
+        ) {
+          plan.has_changes = false;
+          plan.noop_reason = `Target tag ${nextTag} is already visible before publication.`;
         }
 
         let revspec = target;
@@ -472,6 +478,7 @@ Call `noop` with a brief explanation instead of updating a release if:
 When you are ready:
 
 1. Call `update_release` exactly once with:
+   - Read `/tmp/gh-aw/data/release-plan.json` first and extract `next_tag` directly from that file before you emit the safe output.
    - `tag` — `next_tag` from `/tmp/gh-aw/data/release-plan.json`
    - `operation` — `replace`
    - `body` — the rewritten markdown release notes
