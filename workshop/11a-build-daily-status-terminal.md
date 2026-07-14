@@ -4,7 +4,7 @@ _You've designed the workflow on paper — now let's turn it into real, running 
 
 > [!TIP]
 > <details>
-> <summary>**Two paths through this step:**</summary>
+> <summary><b>Two paths through this step:</b></summary>
 >
 > - **This page (manual build)** — write the file section by section so every line is clear.
 > - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup.
