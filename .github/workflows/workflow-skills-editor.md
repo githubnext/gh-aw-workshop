@@ -30,6 +30,7 @@ safe-outputs:
       - ".github/workflows/*.md"
       - ".github/workflows/*.lock.yml"
     if-no-changes: warn
+    expires: 1d
 network:
   allowed:
     - defaults

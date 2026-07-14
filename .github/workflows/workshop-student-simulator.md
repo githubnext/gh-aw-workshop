@@ -20,6 +20,7 @@ safe-outputs:
     labels: [workshop, simulation, feedback]
     max: 5
     close-older-issues: true
+    expires: 1d
 network:
   allowed:
     - defaults

@@ -37,6 +37,7 @@ safe-outputs:
       - ".github/workflows/training-plan-research.md"
       - ".github/workflows/training-plan-research.lock.yml"
     if-no-changes: warn
+    expires: 1d
 network:
   allowed:
     - defaults

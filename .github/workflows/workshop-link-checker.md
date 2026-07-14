@@ -29,6 +29,7 @@ safe-outputs:
     labels: [broken-link]
     deduplicate-by-title: true
     max: 1
+    expires: 1d
   add-comment:
     max: 1
 timeout-minutes: 30

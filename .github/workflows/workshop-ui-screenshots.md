@@ -37,11 +37,13 @@ safe-outputs:
       - "workshop/images/*.svg"
       - "workshop/*.md"
     if-no-changes: warn
+    expires: 1d
   create-issue:
     title-prefix: "[workshop-ui-screenshots] "
     labels: [broken-image]
     deduplicate-by-title: true
     max: 20
+    expires: 1d
 timeout-minutes: 30
 steps:
   - name: Scan image references and existing files

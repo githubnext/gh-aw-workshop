@@ -60,11 +60,13 @@ safe-outputs:
       - ".github/workflows/*.lock.yml"
       - ".github/skills/**/*.md"
     if-no-changes: warn
+    expires: 1d
   create-issue:
     title-prefix: "[workshop-builder] "
     labels: [workshop, automation]
     deduplicate-by-title: true
     max: 5
+    expires: 1d
   add-comment:
     max: 1
 timeout-minutes: 20

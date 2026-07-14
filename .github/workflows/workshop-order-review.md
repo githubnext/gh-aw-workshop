@@ -22,6 +22,7 @@ safe-outputs:
     title-prefix: "[ordering-review] "
     deduplicate-by-title: true
     max: 5
+    expires: 1d
 steps:
   - name: Collect ordering requirements and dependencies
     run: |

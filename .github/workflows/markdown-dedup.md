@@ -34,6 +34,7 @@ safe-outputs:
     labels: [documentation, dedup]
     deduplicate-by-title: true
     max: 5
+    expires: 1d
 network:
   allowed:
     - defaults
