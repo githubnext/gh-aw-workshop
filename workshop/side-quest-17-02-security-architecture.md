@@ -79,7 +79,7 @@ tools:
   github:
     mode: gh-proxy
 safe-outputs:
-  write-summary:
+  write-summary: # presence flag — declares this output surface is allowed
 network:
   allowed-domains:
     - api.github.com
