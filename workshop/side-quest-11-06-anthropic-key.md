@@ -27,21 +27,41 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 2. Click **Create Key**, give it a name (for example `gh-aw-workshop`), and click **Create Key**.
 3. Copy the key value — it starts with `sk-ant-`.
 
+> [!IMPORTANT]
+> Anthropic shows the full key value **only once**. Copy it to your clipboard before you close the dialog or navigate away. If you miss this window, you must delete the key and generate a new one.
+>
+> Paste the key into GitHub Secrets (the next section) **before** closing the Anthropic console tab.
+
+<!-- -->
+
 > [!NOTE]
-> Anthropic only shows the full key once, and usage is billed per token. Save the value before closing the dialog, then review the [Anthropic pricing page](https://www.anthropic.com/pricing) and set a usage limit if you want a spending guardrail.
+> Anthropic API usage is billed per token. Review the [Anthropic pricing page](https://www.anthropic.com/pricing) and set a usage limit before running workflows to avoid surprise charges.
 
 ---
 
 ## Store the key as a repository secret
 
+Open your repository in a **new tab** so you keep the Anthropic console tab open until the secret is saved.
+
 1. Open your repository on GitHub.
 2. Click **Settings** → **Secrets and variables** → **Actions**.
 3. Click **New repository secret**.
-4. Set the name to `ANTHROPIC_API_KEY` and paste the key value.
+4. Set the name to `ANTHROPIC_API_KEY` and paste the key value. Check there is no extra whitespace at the start or end.
 5. Click **Add secret**.
+6. Confirm the secret appears in the list as `ANTHROPIC_API_KEY`.
 
 > [!TIP]
-> Secret names must use only uppercase letters, digits, and underscores. `ANTHROPIC_API_KEY` is the exact name the `claude` engine looks for — do not rename it.
+> Secret names must use only uppercase letters, digits, and underscores. `ANTHROPIC_API_KEY` is the exact name the `claude` engine looks for — do not rename it or add hyphens.
+
+<details>
+<summary>Common mistakes with this secret</summary>
+
+- **Wrong name**: any variation (`anthropic_api_key`, `ANTHROPIC-API-KEY`, `CLAUDE_API_KEY`) will cause a silent auth failure. The name must be exactly `ANTHROPIC_API_KEY`.
+- **Copied with extra whitespace**: pasting from some tools adds a leading space. Delete and re-create the secret if you are unsure.
+- **Closed the Anthropic tab before saving**: you cannot retrieve the key again. Delete the key at [console.anthropic.com](https://console.anthropic.com/) and generate a new one.
+- **Network allow-list missing**: the `claude` engine needs outbound access to `api.anthropic.com`. Make sure it is in your `network.allowed` list (shown in the frontmatter example below).
+
+</details>
 
 ---
 

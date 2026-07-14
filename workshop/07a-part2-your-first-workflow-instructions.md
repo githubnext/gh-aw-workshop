@@ -55,6 +55,16 @@ If there are no open issues, create one titled "Community Voting Test" and post 
 
 ### Validate, then commit and push
 
+Before you run the workflow, confirm Copilot access is in place — this is the most common reason first runs fail:
+
+> [!IMPORTANT]
+> Confirm **both** of the following before pushing and running:
+>
+> - Your frontmatter includes `copilot-requests: write` under `permissions` (already done in the step above).
+> - Your GitHub account has an active Copilot subscription — check at [github.com/settings/copilot](https://github.com/settings/copilot).
+>
+> If either is missing, the workflow will fail with a `401 Unauthorized` error the moment it tries to call the Copilot engine. See [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) for details and troubleshooting.
+
 Run:
 
 ```bash

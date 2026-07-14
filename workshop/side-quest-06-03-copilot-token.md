@@ -6,6 +6,24 @@ Agentic workflows that use the Copilot engine (the default) need to authenticate
 
 ---
 
+## ⚠️ Most Common Failures (Read First)
+
+These are the mistakes that trip up learners most often. Read them before you start — they will save you time.
+
+| Failure | What you see | Fix |
+|---|---|---|
+| `copilot-requests: write` missing from frontmatter | `401 Unauthorized` in the run log | Add `copilot-requests: write` under `permissions` in your workflow `.md` file |
+| No active Copilot subscription | `403 Forbidden` or "Copilot not available" | Visit [github.com/settings/copilot](https://github.com/settings/copilot) and confirm a plan is listed |
+| Org policy blocks Copilot access | `403 Forbidden` | Ask your GitHub org admin to enable Copilot model access for your account |
+| Token copied incorrectly (leading/trailing space) | `401 Unauthorized` | Delete and re-create the repository secret, paste carefully without extra whitespace |
+| Wrong secret name (case, typo) | Workflow silently uses no token or falls back to a 401 | Secret name must be exactly `COPILOT_GITHUB_TOKEN` — uppercase, underscores only |
+| PAT expired | `401 Unauthorized` after working previously | Generate a new PAT and update the repository secret |
+| PAT missing `copilot` scope | `403 Forbidden` | Re-generate the token with the `copilot` scope checked |
+
+---
+
+---
+
 ## 📋 Before You Start
 
 Before configuring Copilot authentication, confirm the following:
@@ -72,20 +90,32 @@ Use this method if you prefer a dedicated token, need to authenticate with a ser
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (classic)**.
 2. Give it a descriptive name, for example `gh-aw-copilot`.
-3. Set an expiry (90 days is a reasonable default).
-4. Select the `copilot` scope.
-5. Click **Generate token** and copy the value immediately — you won't see it again.
+3. Set an expiry — **90 days** is a reasonable default. Note the expiry date somewhere so you can rotate it before it expires.
+4. Select the `copilot` scope. No other scopes are required.
+5. Click **Generate token**.
+
+> [!IMPORTANT]
+> GitHub shows the token value **only once**. Copy it to your clipboard immediately — before you navigate away or close the tab. If you miss this window, you must generate a new token.
+
+<!-- -->
 
 > [!NOTE]
 > The `copilot` scope grants API access to GitHub Copilot features. It does not grant any repository or organization permissions.
 
 ### Store the token as a repository secret
 
-1. Open your repository on GitHub.
+Do this immediately after copying the token value — do not close the token page until you have saved it as a secret.
+
+1. Open your repository on GitHub in a **new tab** so you keep the token page open.
 2. Click **Settings** → **Secrets and variables** → **Actions**.
 3. Click **New repository secret**.
-4. Set the name to `COPILOT_GITHUB_TOKEN` and paste the token value.
-5. Click **Add secret**.
+4. Enter the name **`COPILOT_GITHUB_TOKEN`** (uppercase, underscores only — no spaces, no hyphens).
+5. Paste the token value. Check that no extra whitespace was added at the start or end.
+6. Click **Add secret**.
+7. Confirm the secret appears in the list as `COPILOT_GITHUB_TOKEN`.
+
+> [!TIP]
+> If you are unsure whether you copied the token correctly, delete the secret and start over — it only takes 30 seconds and avoids a hard-to-diagnose 401 error later.
 
 ### Verify your frontmatter
 
@@ -104,7 +134,54 @@ Trigger a run to confirm the secret is wired up correctly:
 2. Open the run and expand the Copilot step's logs.
 3. Look for a line like `Authenticated with COPILOT_GITHUB_TOKEN` — this confirms that the engine found and used your secret.
 
-If you see a `401 Unauthorized` error instead, double-check that the secret name is exactly `COPILOT_GITHUB_TOKEN` and that the PAT has the `copilot` scope and has not expired.
+If you see a `401 Unauthorized` error:
+
+- Verify the secret name is exactly `COPILOT_GITHUB_TOKEN`.
+- Verify the PAT has the `copilot` scope at [github.com/settings/tokens](https://github.com/settings/tokens).
+- Verify the PAT has not expired.
+- If in doubt, generate a fresh PAT and replace the secret.
+
+---
+
+## 🛠️ Troubleshooting
+
+<details>
+<summary>401 Unauthorized — Copilot step fails immediately</summary>
+
+Work through these checks in order:
+
+1. Open `.github/workflows/hello-agent.md` (or your workflow file) and confirm `copilot-requests: write` is present under `permissions`.
+2. Verify your GitHub account has an active Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot).
+3. If you are using `COPILOT_GITHUB_TOKEN`: go to **Settings → Secrets and variables → Actions** and confirm the secret exists with that exact name.
+4. If you are using `COPILOT_GITHUB_TOKEN`: open [github.com/settings/tokens](https://github.com/settings/tokens) and check the token has the `copilot` scope and has not expired.
+5. If all looks correct but the error persists, delete and re-create the secret with a freshly generated token.
+
+</details>
+
+<details>
+<summary>403 Forbidden — access blocked by organization policy</summary>
+
+Enterprise and organization accounts can restrict Copilot model access. If you see a 403:
+
+1. Confirm you have a Copilot seat in your organization (**Settings → Copilot**).
+2. Ask your GitHub org admin to verify that the Copilot policy allows agentic workflows for your account.
+3. See [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for a full checklist.
+
+</details>
+
+<details>
+<summary>Token generated but I forgot to copy it</summary>
+
+You cannot retrieve the token value after closing the page. Go back to [github.com/settings/tokens](https://github.com/settings/tokens), delete the old token, generate a new one, and immediately save it as a repository secret before navigating away.
+
+</details>
+
+<details>
+<summary>Workflow worked before but fails with 401 after a while</summary>
+
+Your PAT has likely expired. Generate a new one (same steps as Method 2 above), then go to **Settings → Secrets and variables → Actions**, click on `COPILOT_GITHUB_TOKEN`, and choose **Update** to replace the value.
+
+</details>
 
 ---
 

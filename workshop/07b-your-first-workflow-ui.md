@@ -61,12 +61,16 @@ An agentic workflow source file is a Markdown task brief with YAML frontmatter. 
 > [!TIP]
 > You can ask Copilot to create or revise this file with the `agentic-workflows` skill. Review the proposed diff before you approve it.
 
-## Verify Copilot access
+## Verify Copilot access before your first run
 
-1. Open [GitHub Copilot settings](https://github.com/settings/copilot).
-2. Confirm an active Copilot plan is listed.
+The workflow will fail with a `401 Unauthorized` error if Copilot access is not confirmed. Complete these checks now, **before** you move to Step 8:
 
-If Copilot is managed by your organization, ask your administrator to confirm that Copilot model access is enabled. Enterprise learners can also review [Enterprise Setup Considerations](side-quest-enterprise-setup.md).
+1. Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm an active Copilot plan is listed under your account.
+2. In your workflow file, confirm `copilot-requests: write` is present under `permissions`. It is already included in the template above — double-check you did not accidentally delete it.
+3. If Copilot is managed by your organization, ask your administrator to verify that Copilot model access is enabled for your account.
+
+> [!TIP]
+> If you run into a `401` or `403` error in Step 8, the [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) has a common-failures table and step-by-step troubleshooting. Enterprise learners can also review [Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 
 ## ✅ Checkpoint
 
