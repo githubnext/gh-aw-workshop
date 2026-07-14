@@ -107,6 +107,22 @@ For a full walkthrough of how to audit safe-output records and trace mismatches 
 
 ---
 
+## Try it: Label your log
+
+Open the live log from your completed Step 8 **Hello Agent** run.
+
+- [ ] I found one `[plan]` line and labeled it **Planning**
+- [ ] I found one `[tool]` line and labeled it **Tool call**
+- [ ] I found one `[result]` line and labeled it **Result**
+- [ ] I found one `[done]` line and labeled it **Done**
+- [ ] I wrote one short note about what each line type tells me
+- [ ] I captured the four labeled lines in my notes or practice issue
+- [ ] I counted the total number of `[tool]` lines in the full run
+- [ ] I wrote whether the tool-call count was higher or lower than I expected
+- [ ] I added one sentence explaining why my expectation was right or wrong
+
+---
+
 ## ✅ Checkpoint
 
 - [ ] I can locate the live log for a completed run and identify `[plan]`, `[tool]`, `[result]`, and `[output]` lines
