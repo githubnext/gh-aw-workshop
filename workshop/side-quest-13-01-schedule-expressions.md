@@ -2,38 +2,34 @@
 
 > _Optional: use this quick reference if you want help choosing a schedule expression for [Step 13: Schedule It to Run Every Day](13-schedule-it.md), then return to the main adventure._
 
+## 📋 Before You Start
+
+- You have completed [Step 13: Schedule It to Run Every Day](13-schedule-it.md) or are working through it now.
+- You understand that GitHub Actions schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
+- You know how to run `gh aw compile` to regenerate a workflow's lock file.
+
 ## 🎯 What You'll Do
 
 You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions cron schedules. By the end, you'll know which fuzzy expression fits your workflow, how to verify the compiled cron value, and when to fall back to raw cron.
 
 ## Cron in one minute
 
-GitHub Actions stores schedules as **cron expressions** — five fields that describe **minute, hour, day of month, month, and day of week**.
+GitHub Actions stores schedules as **cron expressions** — five fields: `minute hour day-of-month month day-of-week`.
 
 You do **not** need to write cron by hand for common cases. In `gh-aw`, you can write a fuzzy expression like `daily on weekdays`, then let `gh aw compile` convert it for you.
 
-> [!NOTE]
-> `gh-aw` often **scatters** schedules across different minutes or hours so not every workflow runs at the same time. That means your compiled cron may differ from the examples below. Treat your own compiled output as the source of truth.
-
 ## Fuzzy schedule reference
 
-| What you want | Fuzzy expression | Example compiled cron | What it means |
-|---------------|------------------|-----------------------|---------------|
-| Once a day | `schedule: daily` | `49 23 * * *` | Run once per day at a compiler-chosen UTC time. |
-| Weekdays only | `schedule: daily on weekdays` | `50 11 * * 1-5` | Run once per weekday at a compiler-chosen UTC time. |
-| Once a week | `schedule: weekly` | `20 4 * * 5` | Run once per week at a compiler-chosen UTC day and time. |
-| Every hour | `schedule: hourly` | `30 */1 * * *` | Run every hour, usually at a scattered minute. |
-| Every six hours | `schedule: every 6 hours` | `14 */6 * * *` | Run every six hours, usually at a scattered minute. |
+| Fuzzy expression | Example compiled cron | Best used when… |
+|------------------|-----------------------|-----------------|
+| `schedule: hourly` | `30 */1 * * *` | You want fast feedback while experimenting or monitoring something that changes often. |
+| `schedule: every 6 hours` | `14 */6 * * *` | You want several updates per day without generating hourly noise. |
+| `schedule: daily` | `49 23 * * *` | You need a standard once-a-day summary. |
+| `schedule: daily on weekdays` | `50 11 * * 1-5` | The workflow matters during the work week but can stay quiet on weekends. |
+| `schedule: weekly` | `20 4 * * 5` | You want a low-noise roundup or audit-style report. |
 
-## Which cadence should you choose?
-
-Use this rule of thumb:
-
-- **`hourly`** — use when you want fast feedback while experimenting or monitoring something that changes often.
-- **`every 6 hours`** — use when you want multiple updates per day without generating hourly noise.
-- **`daily`** — use for a standard once-a-day summary.
-- **`daily on weekdays`** — use when the workflow matters during the work week but can stay quiet on weekends.
-- **`weekly`** — use for a low-noise roundup or audit-style report.
+> [!TIP]
+> `gh-aw` **scatters** schedules across different minutes or hours so not every workflow runs at the same time. Your compiled cron value may differ from the examples above — treat your own lock file as the source of truth.
 
 ## Verify the compiled cron after `gh aw compile`
 
