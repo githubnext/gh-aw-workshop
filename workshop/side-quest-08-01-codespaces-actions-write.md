@@ -34,7 +34,7 @@ The default token inside a Codespace usually has enough access to work with your
 
 ## Fix A (recommended): use the GitHub Actions UI
 
-Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-manually-via-github-actions-ui) and trigger the workflow from the **Actions** tab instead.
+Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui) and trigger the workflow from the **Actions** tab instead.
 
 This is the best path for the workshop because it works even when your Codespace terminal token is limited.
 
