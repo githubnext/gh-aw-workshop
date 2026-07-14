@@ -44,7 +44,7 @@ jobs:
               failed=1
             fi
 
-            if grep -niE '\bnode\.?js\b|node --version|\bnodejs\b' "$file" >/tmp/nodejs-references.txt; then
+            if grep -niE '\bnode\.?js\b|\bnode[[:space:]]+--version\b|\bnodejs\b' "$file" >/tmp/nodejs-references.txt; then
               echo "::error file=$file,title=Node.js references are not allowed::Remove Node.js prerequisites, install steps, or node version checks from workshop content."
               cat /tmp/nodejs-references.txt
               failed=1
