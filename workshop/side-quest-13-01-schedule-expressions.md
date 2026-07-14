@@ -5,7 +5,7 @@
 ## 📋 Before You Start
 
 - You have completed [Step 13: Schedule It to Run Every Day](13-schedule-it.md) or are working through it now.
-- You understand that GitHub Actions schedules use **cron expressions** (five fields: `minute hour day-of-month month day-of-week`), for example `0 9 * * 1` runs at 09:00 UTC every Monday.
+- You understand that GitHub Actions schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
 - You know how to run `gh aw compile` to regenerate a workflow's lock file.
 
 ## 🎯 What You'll Do
