@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Build your brief in a scratch file with five short steps. By the end, you'll have a clearer daily status brief that you can paste into your workflow and reuse later.
+Build your brief in a scratch file with five short steps. By the end, you'll have your own daily status brief that you can paste into your workflow and reuse later.
 
 ## 📋 Before You Start
 
@@ -15,7 +15,7 @@ Build your brief in a scratch file with five short steps. By the end, you'll hav
 
 ## At a Glance
 
-Use the same loop for every step: **write first, check your draft, then expand the collapsible "Why this works" section to read the reasoning**.
+Use the same loop for every step: **write first, check your draft, then expand the collapsible "Why this works" section (click to open) to read the reasoning**.
 
 | Step | Write first | Check before you move on |
 |------|-------------|--------------------------|
@@ -23,13 +23,13 @@ Use the same loop for every step: **write first, check your draft, then expand t
 | Inputs | 3-5 bullets with the data you need | Every input supports a report field |
 | Output | A literal report skeleton | Uses a consistent format with placeholders |
 | Guardrails | Short rules for limits and fallbacks | Prevents duplicates and guessing |
-| Review | A quick pass over the whole brief | Uses concrete, observable language |
+| Review | A quick pass over the whole brief | Brief uses concrete, observable language throughout |
 
 ---
 
 ## Step 1: State the Goal in One Sentence
 
-Write one sentence in your scratch file.
+Replace the bracketed example below with your own one-sentence goal.
 
 ```text
 Every day, I want the agent to [summarize open pull requests and post a health report as an issue comment].
@@ -56,9 +56,11 @@ List the data the agent must collect before it can write the report. Mark uncert
 
 ```md
 - [input] — [why you need it]
-- [input] — [why you need it]
+- [input] — [why you need it]?
 - [input] — [why you need it]?
 ```
+
+Add a `?` only on the lines you are not sure about yet.
 
 Quick check:
 
@@ -77,7 +79,7 @@ Inputs turn "summarize the repo" into a concrete data request. They also make it
 
 ## Step 3: Sketch the Output
 
-Show the agent the format you want instead of describing it loosely. Start with a simple skeleton and rename any lines you want to track.
+Show the agent the format you want instead of describing it loosely. Start with a simple skeleton and customize the fields you want to track.
 
 ```text
 📊 Daily Repo Status — {date}
@@ -104,7 +106,7 @@ A literal skeleton gives the agent fewer format decisions to make. Consistent ou
 
 ## Step 4: Write the Guardrails
 
-Add short rules that limit writes and tell the agent what to do when data is missing.
+Add short rules that limit write operations, such as posting comments, and tell the agent what to do when data is missing.
 
 ```md
 - Do not [undesired action].
@@ -129,7 +131,7 @@ Guardrails prevent duplicate posts, made-up numbers, and unclear fallback behavi
 
 ## Step 5: Review the Brief
 
-Read the full draft once. Replace vague words like "recent," "important," or "healthy" with something the agent can observe.
+Read the full draft once. Replace vague words like "recent" with "within the last 7 days" or "important" with "labeled priority-1" so the agent has something concrete to observe.
 
 Quick check:
 
@@ -154,7 +156,7 @@ If you want a starter scaffold, paste this into your scratch file and fill in th
 
 ```md
 Goal:
-Every day, I want the agent to [summarize open pull requests and post a health report as an issue comment].
+Every day, I want the agent to [your goal here].
 
 Inputs:
 - [input]
