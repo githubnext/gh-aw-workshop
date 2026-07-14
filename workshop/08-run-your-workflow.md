@@ -28,7 +28,7 @@ Start by checking that every item in **Before You Start** is complete. This step
 <details>
 <summary><b>Model access pre-check</b></summary>
 
-If you want to confirm model access before running, or if a run fails immediately with a model-access or authentication error, expand this checklist and confirm the secret or permission for the engine in your `hello-agent.md` frontmatter.
+If you want to confirm model access before running, or if a run fails immediately with a model-access or authentication error, expand this section and review the table for the engine in your `hello-agent.md` frontmatter.
 
 | Engine | Frontmatter cue | Secret to check | Where to verify |
 |--------|-----------------|-----------------|-----------------|
