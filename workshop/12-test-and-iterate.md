@@ -63,7 +63,7 @@ If you are not satisfied, make one targeted prompt change and run the workflow a
 
 Open `.github/workflows/daily-status.md` in your editor. The agent instructions live in the **Markdown body** — the plain-English text below the closing `---` fence. This is the section that starts with `# Daily Repo Status Report`.
 
-Make one concrete change to the body. Common fixes include adding a word-count limit, including the age of the oldest open PR, or adding a tone instruction. For a full five-row problem-to-fix reference, see the [Optional Side Quest](#check-the-output) callout above.
+Make one concrete change to the body. Common fixes include adding a word-count limit, including the age of the oldest open PR, or adding a tone instruction. For a full five-row problem-to-fix reference, see the [Optional Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
 
 For example, your updated Guidelines section might look like:
 
