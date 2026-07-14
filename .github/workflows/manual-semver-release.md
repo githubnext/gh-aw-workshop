@@ -25,6 +25,8 @@ tools:
     toolsets: [default]
 steps:
   - name: Capture trigger context
+    env:
+      BUMP: ${{ github.event.inputs.bump }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
@@ -32,7 +34,7 @@ steps:
         --arg repository "$GITHUB_REPOSITORY" \
         --arg ref_name "$GITHUB_REF_NAME" \
         --arg sha "$GITHUB_SHA" \
-        --arg bump "${{ github.event.inputs.bump }}" \
+        --arg bump "$BUMP" \
         '{
           repository: $repository,
           ref_name: $ref_name,
