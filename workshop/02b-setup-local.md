@@ -1,6 +1,6 @@
 # Adventure B: Set Up Your Local Terminal
 
-> [!CAUTION]
+> [!TIP]
 > Don't want to use a terminal? Skip to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md) and stay browser-only.
 
 ## Which path is right for me?

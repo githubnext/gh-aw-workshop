@@ -116,7 +116,7 @@ Open the **Actions** tab and verify the new steps appear and the AI summary ment
 
 ![Actions run showing the fetch-issues step and updated summary](images/16-data-source-run.svg)
 
-> [!WARNING]
+> [!TIP]
 > If your repository has no open issues, the AI will say so — that's expected. Create a test issue to see the integration in action.
 
 ### Try other data sources

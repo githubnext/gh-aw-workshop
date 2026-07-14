@@ -78,7 +78,7 @@ git commit -m "feat: skip summary on days with no commits"
 git push
 ```
 
-> [!WARNING]
+> [!NOTE]
 > Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.
 
 ## ✅ Checkpoint

@@ -109,7 +109,7 @@ The safe-output record is the ground truth — what was actually written to GitH
 
 For a full walkthrough of how to audit safe-output records and trace mismatches back to their cause, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
-> [!WARNING]
+> [!TIP]
 > Never edit a comment the agent created just to fix a typo. Instead, ask the `agentic-workflows` skill to fix the workflow instructions and re-run. Editing manually means the next run will post a second comment — now you have two.
 
 ### Exercise: Verify one safe output end-to-end

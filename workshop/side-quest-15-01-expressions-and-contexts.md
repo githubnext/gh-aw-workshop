@@ -114,7 +114,7 @@ Example — check whether a commit message contains a keyword:
 if: contains(github.event.head_commit.message, '[skip ci]')
 ```
 
-> [!WARNING]
+> [!NOTE]
 > Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.
 
 ## ✅ Checkpoint

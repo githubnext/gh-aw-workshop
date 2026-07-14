@@ -41,6 +41,16 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 ## Alert callouts: use `<details>` only for multi-line content
 
+### Alert level ceiling
+
+Use the **lowest alert level that accurately conveys the information**. For regular workshop content, cap callout severity at `[!NOTE]` or `[!TIP]`. Do **not** escalate to `[!WARNING]` or `[!CAUTION]` unless the situation is a **major security issue** — for example, a step that could expose credentials or grant unintended broad permissions.
+
+- Prefer `[!TIP]` for helpful hints and shortcuts.
+- Prefer `[!NOTE]` for important-but-not-urgent context that a learner should read.
+- Use `[!IMPORTANT]` sparingly for information the learner **must** act on before continuing safely.
+- Reserve `[!WARNING]` and `[!CAUTION]` for **major security issues only** (e.g., credential exposure, irreversible destructive actions with significant consequences). Do not use them for ordinary setup caveats, optional tool differences, or anything that would merely inconvenience a learner.
+- Never use dramatic or alarmist language in callout body text. Keep the tone calm and matter-of-fact even when the level is high.
+
 GitHub alert callouts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`) follow two patterns depending on how much content the callout contains.
 
 **Single-line callout:** place the text directly in the blockquote — no `<details>` wrapper.
