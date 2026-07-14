@@ -99,6 +99,18 @@ Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do 
 - Skip `gh aw compile` checkpoints for UI-path learners — compilation happens implicitly when GitHub Actions runs the workflow.
 - For Terminal-path learners, place a compile checkpoint after each meaningful addition to the workflow file.
 
+## Enterprise user preference in design decisions
+
+When two workshop design choices are of equal or comparable value, **favor the option that better serves enterprise users** — learners using GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or self-hosted runners. Apply this rule at every decision point:
+
+- **Path prioritization**: when two candidate nodes or improvements are comparable in scope and impact, choose the one that closes a gap for enterprise learners first.
+- **Default examples**: when selecting a code example, URL, or configuration snippet and multiple options are valid, prefer one that works in both github.com and enterprise environments (for example, avoid hardcoded `github.com` URLs where an enterprise base URL would be needed).
+- **Credential and network guidance**: when documenting authentication, token, or network steps, include enterprise-specific notes (SSO, SAML, proxy configuration) alongside the standard path — even when they are not the primary path.
+- **Tie-breaking in UI vs. CLI decisions**: when it is genuinely unclear whether a step should be UI-first or CLI-first, prefer the approach that works reliably in enterprise environments (some enterprises restrict browser-based agent sessions; CLI paths may be more reliable in those contexts).
+- **Side-quest and branch selection**: when choosing which optional content to add next, enterprise-relevant topics (self-hosted runners, GHES configuration, enterprise authentication) take precedence over non-enterprise topics of equal priority.
+
+This rule does not override clearly superior choices for all learners. It is a tie-breaker, not an absolute reorder of priorities.
+
 ## Consistency check
 
 Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, and do not reference Node.js as a prerequisite.
