@@ -1,5 +1,5 @@
-# gh-aw-metadata: {"schema_version":"v4","frontmatter_hash":"f68188aaddba5b9a99b907542dd89ce86a40d28cc100519dff804df70758fde2","body_hash":"5cf59a53ae5856b91734451f3052a321e4693d8cd17677e7a2d9907a35f9ff95","compiler_version":"v0.81.6","strict":true,"agent_id":"copilot","engine_versions":{"copilot":"1.0.65"}}
-# gh-aw-manifest: {"version":1,"secrets":["GH_AW_GITHUB_MCP_SERVER_TOKEN","GH_AW_GITHUB_TOKEN","GITHUB_TOKEN"],"actions":[{"repo":"actions/cache/restore","sha":"27d5ce7f107fe9357f9df03efb73ab90386fccae","version":"v5.0.5"},{"repo":"actions/cache/save","sha":"27d5ce7f107fe9357f9df03efb73ab90386fccae","version":"v5.0.5"},{"repo":"actions/checkout","sha":"9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0","version":"v7.0.0"},{"repo":"actions/download-artifact","sha":"3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c","version":"v8.0.1"},{"repo":"actions/github-script","sha":"3a2844b7e9c422d3c10d287c895573f7108da1b3","version":"v9.0.0"},{"repo":"actions/github-script","sha":"v7","version":"v7"},{"repo":"actions/setup-node","sha":"48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e","version":"v6.4.0"},{"repo":"actions/upload-artifact","sha":"043fb46d1a93c77aae656e7c1c64a875d1fc6a0a","version":"v7.0.1"},{"repo":"github/gh-aw-actions/setup","sha":"v0.81.6","version":"v0.81.6"}],"resolution_failures":[{"repo":"actions/github-script","ref":"v7","error_type":"dynamic_resolution_failed"}],"containers":[{"image":"ghcr.io/github/gh-aw-firewall/agent:0.27.11","digest":"sha256:979723c628182da7729333f2208bb249fd25ddee579645cf9a3892d681a929c7","pinned_image":"ghcr.io/github/gh-aw-firewall/agent:0.27.11@sha256:979723c628182da7729333f2208bb249fd25ddee579645cf9a3892d681a929c7"},{"image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.27.11","digest":"sha256:807e4831999b44513b0a66e5859d478dc4da7ae74ab1918cec967d513f95bf9d","pinned_image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.27.11@sha256:807e4831999b44513b0a66e5859d478dc4da7ae74ab1918cec967d513f95bf9d"},{"image":"ghcr.io/github/gh-aw-firewall/cli-proxy:0.27.11"},{"image":"ghcr.io/github/gh-aw-firewall/squid:0.27.11","digest":"sha256:ff27ea0525ad953a6adee28a5fbe9d2e22be47dbec755c15767af4ea3f91df7d","pinned_image":"ghcr.io/github/gh-aw-firewall/squid:0.27.11@sha256:ff27ea0525ad953a6adee28a5fbe9d2e22be47dbec755c15767af4ea3f91df7d"},{"image":"ghcr.io/github/gh-aw-mcpg:v0.3.30","digest":"sha256:35625d1a2269b1238606078c879f59a91cffc4ac33eb54bf39c6418822c1a8be","pinned_image":"ghcr.io/github/gh-aw-mcpg:v0.3.30@sha256:35625d1a2269b1238606078c879f59a91cffc4ac33eb54bf39c6418822c1a8be"},{"image":"ghcr.io/github/gh-aw-node","digest":"sha256:529d02eb970b1161aa25c593a9c3df57fdfad5a8add328cb3b6eccef66f3183b","pinned_image":"ghcr.io/github/gh-aw-node@sha256:529d02eb970b1161aa25c593a9c3df57fdfad5a8add328cb3b6eccef66f3183b"},{"image":"ghcr.io/github/github-mcp-server:v1.4.0","digest":"sha256:2afb26356481d1a350e14544a6e160f7f7ec1561a1ea309b823665abf0309036","pinned_image":"ghcr.io/github/github-mcp-server:v1.4.0@sha256:2afb26356481d1a350e14544a6e160f7f7ec1561a1ea309b823665abf0309036"}]}
+# gh-aw-metadata: {"schema_version":"v4","frontmatter_hash":"e848fc2296c52924ec0b8a5ce2b89e211eb479486dfc6baa02d95bc93af8138d","body_hash":"7b8842f3432db4352a4c07d4c2a8da330602103b2e95620bde7cd01324d2557e","compiler_version":"v0.81.6","strict":true,"agent_id":"copilot","engine_versions":{"copilot":"1.0.65"}}
+# gh-aw-manifest: {"version":1,"secrets":["GH_AW_GITHUB_MCP_SERVER_TOKEN","GH_AW_GITHUB_TOKEN","GITHUB_TOKEN"],"actions":[{"repo":"actions/cache/restore","sha":"27d5ce7f107fe9357f9df03efb73ab90386fccae","version":"v5.0.5"},{"repo":"actions/cache/save","sha":"27d5ce7f107fe9357f9df03efb73ab90386fccae","version":"v5.0.5"},{"repo":"actions/checkout","sha":"9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0","version":"v7.0.0"},{"repo":"actions/checkout","sha":"v5","version":"v5"},{"repo":"actions/download-artifact","sha":"3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c","version":"v8.0.1"},{"repo":"actions/download-artifact","sha":"v5","version":"v5"},{"repo":"actions/github-script","sha":"3a2844b7e9c422d3c10d287c895573f7108da1b3","version":"v9.0.0"},{"repo":"actions/github-script","sha":"v7","version":"v7"},{"repo":"actions/setup-node","sha":"48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e","version":"v6.4.0"},{"repo":"actions/upload-artifact","sha":"043fb46d1a93c77aae656e7c1c64a875d1fc6a0a","version":"v7.0.1"},{"repo":"actions/upload-artifact","sha":"v4","version":"v4"},{"repo":"github/gh-aw-actions/setup","sha":"v0.81.6","version":"v0.81.6"}],"resolution_failures":[{"repo":"actions/checkout","ref":"v5","error_type":"dynamic_resolution_failed"},{"repo":"actions/download-artifact","ref":"v5","error_type":"dynamic_resolution_failed"},{"repo":"actions/github-script","ref":"v7","error_type":"dynamic_resolution_failed"},{"repo":"actions/upload-artifact","ref":"v4","error_type":"dynamic_resolution_failed"}],"containers":[{"image":"ghcr.io/github/gh-aw-firewall/agent:0.27.11","digest":"sha256:979723c628182da7729333f2208bb249fd25ddee579645cf9a3892d681a929c7","pinned_image":"ghcr.io/github/gh-aw-firewall/agent:0.27.11@sha256:979723c628182da7729333f2208bb249fd25ddee579645cf9a3892d681a929c7"},{"image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.27.11","digest":"sha256:807e4831999b44513b0a66e5859d478dc4da7ae74ab1918cec967d513f95bf9d","pinned_image":"ghcr.io/github/gh-aw-firewall/api-proxy:0.27.11@sha256:807e4831999b44513b0a66e5859d478dc4da7ae74ab1918cec967d513f95bf9d"},{"image":"ghcr.io/github/gh-aw-firewall/cli-proxy:0.27.11"},{"image":"ghcr.io/github/gh-aw-firewall/squid:0.27.11","digest":"sha256:ff27ea0525ad953a6adee28a5fbe9d2e22be47dbec755c15767af4ea3f91df7d","pinned_image":"ghcr.io/github/gh-aw-firewall/squid:0.27.11@sha256:ff27ea0525ad953a6adee28a5fbe9d2e22be47dbec755c15767af4ea3f91df7d"},{"image":"ghcr.io/github/gh-aw-mcpg:v0.3.30","digest":"sha256:35625d1a2269b1238606078c879f59a91cffc4ac33eb54bf39c6418822c1a8be","pinned_image":"ghcr.io/github/gh-aw-mcpg:v0.3.30@sha256:35625d1a2269b1238606078c879f59a91cffc4ac33eb54bf39c6418822c1a8be"},{"image":"ghcr.io/github/gh-aw-node","digest":"sha256:529d02eb970b1161aa25c593a9c3df57fdfad5a8add328cb3b6eccef66f3183b","pinned_image":"ghcr.io/github/gh-aw-node@sha256:529d02eb970b1161aa25c593a9c3df57fdfad5a8add328cb3b6eccef66f3183b"},{"image":"ghcr.io/github/github-mcp-server:v1.4.0","digest":"sha256:2afb26356481d1a350e14544a6e160f7f7ec1561a1ea309b823665abf0309036","pinned_image":"ghcr.io/github/github-mcp-server:v1.4.0@sha256:2afb26356481d1a350e14544a6e160f7f7ec1561a1ea309b823665abf0309036"}]}
 # This file was automatically generated by gh-aw (v0.81.6). DO NOT EDIT. To debug this workflow, load the skill at https://github.com/github/gh-aw/blob/main/debug.md
 #
 #    ___                   _   _      
@@ -39,12 +39,15 @@
 #   - actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
 #   - actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
 #   - actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+#   - actions/checkout@v5
 #   - actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+#   - actions/download-artifact@v5
 #   - actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
 #   - actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0 (source v9)
 #   - actions/github-script@v7
 #   - actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
 #   - actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+#   - actions/upload-artifact@v4
 #   - github/gh-aw-actions/setup@v0.81.6
 #
 # Container images used:
@@ -256,20 +259,20 @@ jobs:
         run: |
           bash "${RUNNER_TEMP}/gh-aw/actions/create_prompt_first.sh"
           {
-          cat << 'GH_AW_PROMPT_9cead8f3a76a9d18_EOF'
+          cat << 'GH_AW_PROMPT_bad2d6acc0bc81a6_EOF'
           <system>
-          GH_AW_PROMPT_9cead8f3a76a9d18_EOF
+          GH_AW_PROMPT_bad2d6acc0bc81a6_EOF
           cat "${RUNNER_TEMP}/gh-aw/prompts/xpia.md"
           cat "${RUNNER_TEMP}/gh-aw/prompts/temp_folder_prompt.md"
           cat "${RUNNER_TEMP}/gh-aw/prompts/markdown.md"
           cat "${RUNNER_TEMP}/gh-aw/prompts/safe_outputs_prompt.md"
-          cat << 'GH_AW_PROMPT_9cead8f3a76a9d18_EOF'
+          cat << 'GH_AW_PROMPT_bad2d6acc0bc81a6_EOF'
           <safe-output-tools>
-          Tools: missing_tool, missing_data, noop, create_release, update_release
+          Tools: missing_tool, missing_data, noop, update_release
           </safe-output-tools>
-          GH_AW_PROMPT_9cead8f3a76a9d18_EOF
+          GH_AW_PROMPT_bad2d6acc0bc81a6_EOF
           cat "${RUNNER_TEMP}/gh-aw/prompts/mcp_cli_tools_prompt.md"
-          cat << 'GH_AW_PROMPT_9cead8f3a76a9d18_EOF'
+          cat << 'GH_AW_PROMPT_bad2d6acc0bc81a6_EOF'
           <github-context>
           The following GitHub context information is available for this workflow:
           {{#if github.actor}}
@@ -298,12 +301,12 @@ jobs:
           {{/if}}
           </github-context>
           
-          GH_AW_PROMPT_9cead8f3a76a9d18_EOF
+          GH_AW_PROMPT_bad2d6acc0bc81a6_EOF
           cat "${RUNNER_TEMP}/gh-aw/prompts/cli_proxy_with_safeoutputs_prompt.md"
-          cat << 'GH_AW_PROMPT_9cead8f3a76a9d18_EOF'
+          cat << 'GH_AW_PROMPT_bad2d6acc0bc81a6_EOF'
           </system>
           {{#runtime-import .github/workflows/manual-semver-release.md}}
-          GH_AW_PROMPT_9cead8f3a76a9d18_EOF
+          GH_AW_PROMPT_bad2d6acc0bc81a6_EOF
           } > "$GH_AW_PROMPT"
       - name: Interpolate variables and render templates
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
@@ -381,7 +384,9 @@ jobs:
           retention-days: 1
 
   agent:
-    needs: activation
+    needs:
+      - activation
+      - create-release
     if: needs.activation.outputs.daily_ai_credits_exceeded != 'true'
     runs-on: ubuntu-latest
     permissions:
@@ -523,9 +528,9 @@ jobs:
           mkdir -p "${RUNNER_TEMP}/gh-aw/safeoutputs"
           mkdir -p /tmp/gh-aw/safeoutputs
           mkdir -p /tmp/gh-aw/mcp-logs/safeoutputs
-          cat > "${RUNNER_TEMP}/gh-aw/safeoutputs/config.json" << 'GH_AW_SAFE_OUTPUTS_CONFIG_1c1d2750d0c8002c_EOF'
-          {"create-release":{"description":"Create the GitHub tag and release from the deterministic release plan and full change list prepared before the agent ran. This tool takes no arguments.","output":"Release created successfully."},"create_report_incomplete_issue":{},"missing_data":{},"missing_tool":{},"noop":{"max":1,"report-as-issue":"true"},"report_incomplete":{},"update-release":{"description":"Replace the deterministic full change list with concise, human-friendly release notes.","inputs":{"body":{"default":null,"description":"Markdown release notes body that rewrites the full change list into a concise human summary.","required":true,"type":"string"}},"output":"Release notes updated successfully."}}
-          GH_AW_SAFE_OUTPUTS_CONFIG_1c1d2750d0c8002c_EOF
+          cat > "${RUNNER_TEMP}/gh-aw/safeoutputs/config.json" << 'GH_AW_SAFE_OUTPUTS_CONFIG_bc959159a9df99ae_EOF'
+          {"create_report_incomplete_issue":{},"missing_data":{},"missing_tool":{},"noop":{"max":1,"report-as-issue":"true"},"report_incomplete":{},"update-release":{"description":"Replace the deterministic full change list with concise, human-friendly release notes.","inputs":{"body":{"default":null,"description":"Markdown release notes body that rewrites the full change list into a concise human summary.","required":true,"type":"string"}},"output":"Release notes updated successfully."}}
+          GH_AW_SAFE_OUTPUTS_CONFIG_bc959159a9df99ae_EOF
       - name: Generate Safe Outputs Tools
         env:
           GH_AW_TOOLS_META_JSON: |
@@ -533,15 +538,6 @@ jobs:
               "description_suffixes": {},
               "repo_params": {},
               "dynamic_tools": [
-                {
-                  "description": "Create the GitHub tag and release from the deterministic release plan and full change list prepared before the agent ran. This tool takes no arguments.",
-                  "inputSchema": {
-                    "additionalProperties": false,
-                    "properties": {},
-                    "type": "object"
-                  },
-                  "name": "create_release"
-                },
                 {
                   "description": "Replace the deterministic full change list with concise, human-friendly release notes.",
                   "inputSchema": {
@@ -983,7 +979,7 @@ jobs:
     needs:
       - activation
       - agent
-      - create_release
+      - create-release
       - detection
       - safe_outputs
       - update_release
@@ -1226,96 +1222,185 @@ jobs:
             const { main } = require('${{ runner.temp }}/gh-aw/actions/handle_agent_failure.cjs');
             await main();
 
-  create_release:
-    needs:
-      - agent
-      - detection
-    if: (!cancelled()) && needs.agent.result != 'skipped' && contains(needs.agent.outputs.output_types, 'create_release')
+  create-release:
+    needs: activation
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
-      - name: Download agent output artifact
-        continue-on-error: true
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      - name: Configure GH_HOST for enterprise compatibility
+        id: ghes-host-config
+        shell: bash
+        run: | # zizmor: ignore[github-env] - GITHUB_SERVER_URL is set by GitHub Actions, not user input.
+          # Derive GH_HOST from GITHUB_SERVER_URL so the gh CLI targets the correct
+          # GitHub instance (GHES/GHEC). On github.com this is a harmless no-op.
+          GH_HOST="${GITHUB_SERVER_URL#https://}"
+          GH_HOST="${GH_HOST#http://}"
+          echo "GH_HOST=${GH_HOST}" >> "$GITHUB_ENV"
+      - name: Checkout repository
+        uses: actions/checkout@v5
         with:
-          name: agent
-          path: ${{ runner.temp }}/gh-aw/safe-jobs/
+          fetch-depth: 0
+          persist-credentials: false
       - name: Create GitHub release
+        id: create-release
         uses: actions/github-script@v7
         env:
-          GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/gh-aw/safe-jobs/agent_output.json
+          BUMP: ${{ github.event.inputs.bump }}
+          RELEASE_METADATA_PATH: /tmp/gh-aw/data/release-metadata.json
+          TARGET_SHA: ${{ github.sha }}
         with:
           script: |
             const fs = require('fs');
-            const planPath = process.env.RELEASE_PLAN_PATH;
-            const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
-            const outputPath = process.env.GH_AW_AGENT_OUTPUT;
+            const path = require('path');
+            const { execFileSync, spawnSync } = require('child_process');
 
-            if (!outputPath) {
-              core.setFailed('GH_AW_AGENT_OUTPUT is not set');
-              return;
-            }
-
-            if (!fs.existsSync(outputPath)) {
-              core.setFailed(`GH_AW_AGENT_OUTPUT file not found: ${outputPath}`);
-              return;
-            }
-
-            if (!fs.existsSync(planPath)) {
-              core.setFailed(`Release plan file not found: ${planPath}`);
-              return;
-            }
-
-            if (!fs.existsSync(descriptionPath)) {
-              core.setFailed(`Release description file not found: ${descriptionPath}`);
-              return;
-            }
-
-            const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
-            const items = (payload.items || []).filter(item => item.type === 'create_release');
-
-            if (items.length !== 1) {
-              core.setFailed(`Expected exactly 1 create_release item, got ${items.length}`);
-              return;
-            }
-
-            const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
+            const metadataPath = process.env.RELEASE_METADATA_PATH;
+            const bump = process.env.BUMP;
+            const target = process.env.TARGET_SHA;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const tag = String(plan.next_tag || '').trim();
-            const title = String(plan.title || tag).trim();
-            const body = String(fs.readFileSync(descriptionPath, 'utf8') || '').trim();
-            const target = String(plan.target || context.sha).trim();
 
-            if (plan.has_changes !== true) {
-              core.setFailed(`Release plan is not publishable: ${plan.noop_reason || 'no meaningful changes'}`);
+            const runGitCommand = (...args) => {
+              try {
+                return execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
+              } catch (error) {
+                const stdout = typeof error === 'object' && error !== null && 'stdout' in error ? error.stdout : '';
+                const stderr = typeof error === 'object' && error !== null && 'stderr' in error ? error.stderr : '';
+                const output = [stdout, stderr]
+                  .map(value => value && String(value).trim())
+                  .filter(Boolean)
+                  .join('\n');
+                throw new Error(`Command failed: ${args.join(' ')}${output ? `\n${output}` : ''}`);
+              }
+            };
+            const runGitCommandLines = (...args) => {
+              const text = runGitCommand(...args);
+              return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
+            };
+
+            fs.mkdirSync(path.dirname(metadataPath), { recursive: true });
+            runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
+
+            const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
+            const semverTags = new Map();
+            const compareVersions = (left, right) => {
+              for (let index = 0; index < 3; index += 1) {
+                if (left[index] !== right[index]) {
+                  return left[index] - right[index];
+                }
+              }
+              return 0;
+            };
+            const selectCanonicalTag = tags => {
+              let best = null;
+              let bestPriority = Number.POSITIVE_INFINITY;
+
+              for (const candidate of tags) {
+                const candidatePriority = candidate.startsWith('v') ? 0 : 1;
+                if (
+                  best === null ||
+                  candidatePriority < bestPriority ||
+                  (candidatePriority === bestPriority && candidate.localeCompare(best) < 0)
+                ) {
+                  best = candidate;
+                  bestPriority = candidatePriority;
+                }
+              }
+
+              return best;
+            };
+
+            for (const tag of runGitCommandLines('git', 'tag', '--list')) {
+              const match = tag.match(semverPattern);
+              if (!match) continue;
+
+              const key = match.slice(1).join('.');
+              if (!semverTags.has(key)) {
+                semverTags.set(key, []);
+              }
+              semverTags.get(key).push(tag);
+            }
+
+            let previousTag = null;
+            let previousTagDisplay = 'start';
+            let baseVersion = [0, 0, 0];
+
+            if (semverTags.size > 0) {
+              let latestVersion = null;
+              let latestTags = [];
+              for (const [versionKey, tags] of semverTags.entries()) {
+                const version = versionKey.split('.').map(Number);
+                if (!latestVersion || compareVersions(version, latestVersion) > 0) {
+                  latestVersion = version;
+                  latestTags = tags;
+                }
+              }
+
+              previousTag = selectCanonicalTag(latestTags);
+              previousTagDisplay = `v${latestVersion.join('.')}`;
+              baseVersion = latestVersion;
+            }
+
+            const nextVersion = {
+              patch: [baseVersion[0], baseVersion[1], baseVersion[2] + 1],
+              minor: [baseVersion[0], baseVersion[1] + 1, 0],
+              major: [baseVersion[0] + 1, 0, 0],
+            }[bump];
+            const nextTag = `v${nextVersion.join('.')}`;
+
+            let revspec = target;
+            if (previousTag) {
+              const ancestorResult = spawnSync('git', ['merge-base', '--is-ancestor', previousTag, target], { stdio: 'ignore' });
+              if (ancestorResult.status !== 0) {
+                core.notice(`Skipping release creation: Cannot safely compare ${previousTagDisplay} to ${target} because the tag is not an ancestor of the target commit.`);
+                return;
+              }
+              revspec = `${previousTag}..${target}`;
+            }
+
+            let changeLines = runGitCommandLines(
+              'git',
+              'log',
+              '--first-parent',
+              '--reverse',
+              '--pretty=format:- %s (%h)',
+              revspec,
+            );
+
+            if (previousTag && changeLines.length === 0) {
+              core.notice(`Skipping release creation: No meaningful changes were found since ${previousTagDisplay}.`);
               return;
             }
 
-            if (!/^v?\d+\.\d+\.\d+$/.test(tag)) {
-              core.setFailed(`Invalid semver tag: ${tag}`);
-              return;
+            const heading = previousTag
+              ? `## Full change list since ${previousTagDisplay}`
+              : '## Full change list for the initial release';
+
+            if (changeLines.length === 0) {
+              changeLines = ['- No commits found in the selected release range.'];
             }
 
-            if (!body) {
-              core.setFailed('Release body must not be empty');
+            const body = `${heading}\n${changeLines.join('\n')}\n`.trim();
+            const title = nextTag;
+
+            if (!/^v?\d+\.\d+\.\d+$/.test(nextTag)) {
+              core.notice(`Skipping release creation: Invalid semver tag ${nextTag}.`);
               return;
             }
-
-            const normalizedTag = tag.startsWith('v') ? tag : `v${tag}`;
 
             try {
-              await github.rest.repos.getReleaseByTag({ owner, repo, tag: normalizedTag });
-              core.setFailed(`Release ${normalizedTag} already exists`);
+              await github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag });
+              core.notice(`Skipping release creation: Release ${nextTag} already exists.`);
               return;
             } catch (error) {
               if (error.status !== 404) throw error;
             }
 
             try {
-              await github.rest.git.getRef({ owner, repo, ref: `tags/${normalizedTag}` });
-              core.setFailed(`Tag ${normalizedTag} already exists`);
+              await github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` });
+              core.notice(`Skipping release creation: Tag ${nextTag} already exists.`);
               return;
             } catch (error) {
               if (error.status !== 404) throw error;
@@ -1324,14 +1409,14 @@ jobs:
             await github.rest.git.createRef({
               owner,
               repo,
-              ref: `refs/tags/${normalizedTag}`,
+              ref: `refs/tags/${nextTag}`,
               sha: target,
             });
 
-            await github.rest.repos.createRelease({
+            const release = await github.rest.repos.createRelease({
               owner,
               repo,
-              tag_name: normalizedTag,
+              tag_name: nextTag,
               target_commitish: target,
               name: title,
               body,
@@ -1339,6 +1424,22 @@ jobs:
               prerelease: false,
               generate_release_notes: false,
             });
+
+            fs.writeFileSync(
+              metadataPath,
+              `${JSON.stringify({
+                release_id: release.data.id,
+                tag: nextTag,
+                title,
+              }, null, 2)}\n`,
+            );
+            core.setOutput('release_created', 'true');
+      - name: Upload release metadata
+        if: steps.create-release.outputs.release_created == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-metadata
+          path: /tmp/gh-aw/data/release-metadata.json
 
   detection:
     needs:
@@ -1592,6 +1693,7 @@ jobs:
     needs:
       - activation
       - agent
+      - create-release
       - detection
     if: (!cancelled()) && needs.agent.result != 'skipped' && needs.detection.result == 'success'
     runs-on: ubuntu-slim
@@ -1668,7 +1770,7 @@ jobs:
           GH_AW_ALLOWED_DOMAINS: "*.githubusercontent.com,api.business.githubcopilot.com,api.enterprise.githubcopilot.com,api.github.com,api.githubcopilot.com,api.individual.githubcopilot.com,api.snapcraft.io,archive.ubuntu.com,azure.archive.ubuntu.com,codeload.github.com,crl.geotrust.com,crl.globalsign.com,crl.identrust.com,crl.sectigo.com,crl.thawte.com,crl.usertrust.com,crl.verisign.com,crl3.digicert.com,crl4.digicert.com,crls.ssl.com,docs.github.com,github-cloud.githubusercontent.com,github-cloud.s3.amazonaws.com,github.blog,github.com,github.githubassets.com,host.docker.internal,json-schema.org,json.schemastore.org,keyserver.ubuntu.com,lfs.github.com,objects.githubusercontent.com,ocsp.digicert.com,ocsp.geotrust.com,ocsp.globalsign.com,ocsp.identrust.com,ocsp.sectigo.com,ocsp.ssl.com,ocsp.thawte.com,ocsp.usertrust.com,ocsp.verisign.com,packagecloud.io,packages.cloud.google.com,packages.microsoft.com,patch-diff.githubusercontent.com,ppa.launchpad.net,raw.githubusercontent.com,registry.npmjs.org,s.symcb.com,s.symcd.com,security.ubuntu.com,telemetry.enterprise.githubcopilot.com,ts-crl.ws.symantec.com,ts-ocsp.ws.symantec.com,www.googleapis.com"
           GITHUB_SERVER_URL: ${{ github.server_url }}
           GITHUB_API_URL: ${{ github.api_url }}
-          GH_AW_SAFE_OUTPUT_JOBS: "{\"create_release\":\"\",\"update_release\":\"\"}"
+          GH_AW_SAFE_OUTPUT_JOBS: "{\"update_release\":\"\"}"
           GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: "{\"create_report_incomplete_issue\":{},\"missing_data\":{},\"missing_tool\":{},\"noop\":{\"max\":1,\"report-as-issue\":\"true\"},\"report_incomplete\":{}}"
         with:
           github-token: ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
@@ -1690,8 +1792,8 @@ jobs:
   update_release:
     needs:
       - agent
-      - create_release
       - detection
+      - safe_outputs
     if: (!cancelled()) && needs.agent.result != 'skipped' && contains(needs.agent.outputs.output_types, 'update_release')
     runs-on: ubuntu-latest
     permissions:
@@ -1703,6 +1805,14 @@ jobs:
         with:
           name: agent
           path: ${{ runner.temp }}/gh-aw/safe-jobs/
+      - name: Download release metadata artifact
+        uses: actions/download-artifact@v5
+        env:
+          GH_AW_AGENT_OUTPUT: ${{ runner.temp }}/gh-aw/safe-jobs/agent_output.json
+        with:
+          name: release-metadata
+          path: ${{ runner.temp }}/gh-aw/release/
+        continue-on-error: true
       - name: Update GitHub release notes
         uses: actions/github-script@v7
         env:
@@ -1710,8 +1820,8 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const planPath = process.env.RELEASE_PLAN_PATH;
             const outputPath = process.env.GH_AW_AGENT_OUTPUT;
+            const metadataPath = `${process.env.RUNNER_TEMP}/gh-aw/release/release-metadata.json`;
 
             if (!outputPath) {
               core.setFailed('GH_AW_AGENT_OUTPUT is not set');
@@ -1723,12 +1833,13 @@ jobs:
               return;
             }
 
-            if (!fs.existsSync(planPath)) {
-              core.setFailed(`Release plan file not found: ${planPath}`);
+            if (!fs.existsSync(metadataPath)) {
+              core.notice('No deterministic release metadata artifact was found, so there is no release to update.');
               return;
             }
 
             const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+            const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
             const items = (payload.items || []).filter(item => item.type === 'update_release');
 
             if (items.length !== 1) {
@@ -1737,14 +1848,20 @@ jobs:
             }
 
             const item = items[0];
-            const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const body = String(item.body || '').trim();
-            const plannedTag = String(plan.next_tag || '').trim();
+            const releaseId = Number(metadata.release_id);
+            const tag = String(metadata.tag || '').trim();
+            const title = String(metadata.title || tag).trim();
 
-            if (!/^v?\d+\.\d+\.\d+$/.test(plannedTag)) {
-              core.setFailed(`Invalid semver tag in release plan: ${plannedTag}`);
+            if (!Number.isInteger(releaseId) || releaseId <= 0) {
+              core.setFailed(`Invalid release_id in release metadata: ${metadata.release_id}`);
+              return;
+            }
+
+            if (!/^v?\d+\.\d+\.\d+$/.test(tag)) {
+              core.setFailed(`Invalid semver tag in release metadata: ${tag}`);
               return;
             }
 
@@ -1753,15 +1870,12 @@ jobs:
               return;
             }
 
-            const tag = plannedTag.startsWith('v') ? plannedTag : `v${plannedTag}`;
-            const release = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
-
             await github.rest.repos.updateRelease({
               owner,
               repo,
-              release_id: release.data.id,
+              release_id: releaseId,
               tag_name: tag,
-              name: String(plan.title || tag).trim(),
+              name: title,
               body,
               draft: false,
               prerelease: false,

@@ -211,113 +211,221 @@ steps:
         core.info(fs.readFileSync(planPath, 'utf8'));
         core.info('=== Deterministic release description ===');
         core.info(fs.readFileSync(descriptionPath, 'utf8'));
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Create GitHub release
+        id: create-release
+        uses: actions/github-script@v7
+        env:
+          BUMP: ${{ github.event.inputs.bump }}
+          TARGET_SHA: ${{ github.sha }}
+          RELEASE_METADATA_PATH: /tmp/gh-aw/data/release-metadata.json
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { execFileSync, spawnSync } = require('child_process');
+            
+            const metadataPath = process.env.RELEASE_METADATA_PATH;
+            const bump = process.env.BUMP;
+            const target = process.env.TARGET_SHA;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            
+            const runGitCommand = (...args) => {
+              try {
+                return execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
+              } catch (error) {
+                const stdout = typeof error === 'object' && error !== null && 'stdout' in error ? error.stdout : '';
+                const stderr = typeof error === 'object' && error !== null && 'stderr' in error ? error.stderr : '';
+                const output = [stdout, stderr]
+                  .map(value => value && String(value).trim())
+                  .filter(Boolean)
+                  .join('\n');
+                throw new Error(`Command failed: ${args.join(' ')}${output ? `\n${output}` : ''}`);
+              }
+            };
+            const runGitCommandLines = (...args) => {
+              const text = runGitCommand(...args);
+              return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
+            };
+            
+            fs.mkdirSync(path.dirname(metadataPath), { recursive: true });
+            runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
+            
+            const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
+            const semverTags = new Map();
+            const compareVersions = (left, right) => {
+              for (let index = 0; index < 3; index += 1) {
+                if (left[index] !== right[index]) {
+                  return left[index] - right[index];
+                }
+              }
+              return 0;
+            };
+            const selectCanonicalTag = tags => {
+              let best = null;
+              let bestPriority = Number.POSITIVE_INFINITY;
+            
+              for (const candidate of tags) {
+                const candidatePriority = candidate.startsWith('v') ? 0 : 1;
+                if (
+                  best === null ||
+                  candidatePriority < bestPriority ||
+                  (candidatePriority === bestPriority && candidate.localeCompare(best) < 0)
+                ) {
+                  best = candidate;
+                  bestPriority = candidatePriority;
+                }
+              }
+            
+              return best;
+            };
+            
+            for (const tag of runGitCommandLines('git', 'tag', '--list')) {
+              const match = tag.match(semverPattern);
+              if (!match) continue;
+            
+              const key = match.slice(1).join('.');
+              if (!semverTags.has(key)) {
+                semverTags.set(key, []);
+              }
+              semverTags.get(key).push(tag);
+            }
+            
+            let previousTag = null;
+            let previousTagDisplay = 'start';
+            let baseVersion = [0, 0, 0];
+            
+            if (semverTags.size > 0) {
+              let latestVersion = null;
+              let latestTags = [];
+              for (const [versionKey, tags] of semverTags.entries()) {
+                const version = versionKey.split('.').map(Number);
+                if (!latestVersion || compareVersions(version, latestVersion) > 0) {
+                  latestVersion = version;
+                  latestTags = tags;
+                }
+              }
+            
+              previousTag = selectCanonicalTag(latestTags);
+              previousTagDisplay = `v${latestVersion.join('.')}`;
+              baseVersion = latestVersion;
+            }
+            
+            const nextVersion = {
+              patch: [baseVersion[0], baseVersion[1], baseVersion[2] + 1],
+              minor: [baseVersion[0], baseVersion[1] + 1, 0],
+              major: [baseVersion[0] + 1, 0, 0],
+            }[bump];
+            const nextTag = `v${nextVersion.join('.')}`;
+            
+            let revspec = target;
+            if (previousTag) {
+              const ancestorResult = spawnSync('git', ['merge-base', '--is-ancestor', previousTag, target], { stdio: 'ignore' });
+              if (ancestorResult.status !== 0) {
+                core.notice(`Skipping release creation: Cannot safely compare ${previousTagDisplay} to ${target} because the tag is not an ancestor of the target commit.`);
+                return;
+              }
+              revspec = `${previousTag}..${target}`;
+            }
+            
+            let changeLines = runGitCommandLines(
+              'git',
+              'log',
+              '--first-parent',
+              '--reverse',
+              '--pretty=format:- %s (%h)',
+              revspec,
+            );
+            
+            if (previousTag && changeLines.length === 0) {
+              core.notice(`Skipping release creation: No meaningful changes were found since ${previousTagDisplay}.`);
+              return;
+            }
+            
+            const heading = previousTag
+              ? `## Full change list since ${previousTagDisplay}`
+              : '## Full change list for the initial release';
+            
+            if (changeLines.length === 0) {
+              changeLines = ['- No commits found in the selected release range.'];
+            }
+            
+            const body = `${heading}\n${changeLines.join('\n')}\n`.trim();
+            const title = nextTag;
+            
+            if (!/^v?\d+\.\d+\.\d+$/.test(nextTag)) {
+              core.notice(`Skipping release creation: Invalid semver tag ${nextTag}.`);
+              return;
+            }
+            
+            try {
+              await github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag });
+              core.notice(`Skipping release creation: Release ${nextTag} already exists.`);
+              return;
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
+            
+            try {
+              await github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` });
+              core.notice(`Skipping release creation: Tag ${nextTag} already exists.`);
+              return;
+            } catch (error) {
+              if (error.status !== 404) throw error;
+            }
+            
+            await github.rest.git.createRef({
+              owner,
+              repo,
+              ref: `refs/tags/${nextTag}`,
+              sha: target,
+            });
+            
+            const release = await github.rest.repos.createRelease({
+              owner,
+              repo,
+              tag_name: nextTag,
+              target_commitish: target,
+              name: title,
+              body,
+              draft: false,
+              prerelease: false,
+              generate_release_notes: false,
+            });
+            
+            fs.writeFileSync(
+              metadataPath,
+              `${JSON.stringify({
+                release_id: release.data.id,
+                tag: nextTag,
+                title,
+              }, null, 2)}\n`,
+            );
+            core.setOutput('release_created', 'true');
+      - name: Upload release metadata
+        if: steps.create-release.outputs.release_created == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-metadata
+          path: /tmp/gh-aw/data/release-metadata.json
 safe-outputs:
+  needs:
+    - create-release
   jobs:
-    create-release:
-      description: Create the GitHub tag and release from the deterministic release plan and full change list prepared before the agent ran. This tool takes no arguments.
-      output: Release created successfully.
-      runs-on: ubuntu-latest
-      permissions:
-        contents: write
-      steps:
-        - name: Create GitHub release
-          uses: actions/github-script@v7
-          with:
-            script: |
-              const fs = require('fs');
-              const planPath = process.env.RELEASE_PLAN_PATH;
-              const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
-              const outputPath = process.env.GH_AW_AGENT_OUTPUT;
-
-              if (!outputPath) {
-                core.setFailed('GH_AW_AGENT_OUTPUT is not set');
-                return;
-              }
-
-              if (!fs.existsSync(outputPath)) {
-                core.setFailed(`GH_AW_AGENT_OUTPUT file not found: ${outputPath}`);
-                return;
-              }
-
-              if (!fs.existsSync(planPath)) {
-                core.setFailed(`Release plan file not found: ${planPath}`);
-                return;
-              }
-
-              if (!fs.existsSync(descriptionPath)) {
-                core.setFailed(`Release description file not found: ${descriptionPath}`);
-                return;
-              }
-
-              const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
-              const items = (payload.items || []).filter(item => item.type === 'create_release');
-
-              if (items.length !== 1) {
-                core.setFailed(`Expected exactly 1 create_release item, got ${items.length}`);
-                return;
-              }
-
-              const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
-              const owner = context.repo.owner;
-              const repo = context.repo.repo;
-              const tag = String(plan.next_tag || '').trim();
-              const title = String(plan.title || tag).trim();
-              const body = String(fs.readFileSync(descriptionPath, 'utf8') || '').trim();
-              const target = String(plan.target || context.sha).trim();
-
-              if (plan.has_changes !== true) {
-                core.setFailed(`Release plan is not publishable: ${plan.noop_reason || 'no meaningful changes'}`);
-                return;
-              }
-
-              if (!/^v?\d+\.\d+\.\d+$/.test(tag)) {
-                core.setFailed(`Invalid semver tag: ${tag}`);
-                return;
-              }
-
-              if (!body) {
-                core.setFailed('Release body must not be empty');
-                return;
-              }
-
-              const normalizedTag = tag.startsWith('v') ? tag : `v${tag}`;
-
-              try {
-                await github.rest.repos.getReleaseByTag({ owner, repo, tag: normalizedTag });
-                core.setFailed(`Release ${normalizedTag} already exists`);
-                return;
-              } catch (error) {
-                if (error.status !== 404) throw error;
-              }
-
-              try {
-                await github.rest.git.getRef({ owner, repo, ref: `tags/${normalizedTag}` });
-                core.setFailed(`Tag ${normalizedTag} already exists`);
-                return;
-              } catch (error) {
-                if (error.status !== 404) throw error;
-              }
-
-              await github.rest.git.createRef({
-                owner,
-                repo,
-                ref: `refs/tags/${normalizedTag}`,
-                sha: target,
-              });
-
-              await github.rest.repos.createRelease({
-                owner,
-                repo,
-                tag_name: normalizedTag,
-                target_commitish: target,
-                name: title,
-                body,
-                draft: false,
-                prerelease: false,
-                generate_release_notes: false,
-              });
     update-release:
-      needs: create-release
+      needs:
+        - safe_outputs
       description: Replace the deterministic full change list with concise, human-friendly release notes.
       output: Release notes updated successfully.
       inputs:
@@ -329,13 +437,19 @@ safe-outputs:
       permissions:
         contents: write
       steps:
+        - name: Download release metadata artifact
+          continue-on-error: true
+          uses: actions/download-artifact@v5
+          with:
+            name: release-metadata
+            path: ${{ runner.temp }}/gh-aw/release/
         - name: Update GitHub release notes
           uses: actions/github-script@v7
           with:
             script: |
               const fs = require('fs');
-              const planPath = process.env.RELEASE_PLAN_PATH;
               const outputPath = process.env.GH_AW_AGENT_OUTPUT;
+              const metadataPath = `${process.env.RUNNER_TEMP}/gh-aw/release/release-metadata.json`;
 
               if (!outputPath) {
                 core.setFailed('GH_AW_AGENT_OUTPUT is not set');
@@ -347,12 +461,13 @@ safe-outputs:
                 return;
               }
 
-              if (!fs.existsSync(planPath)) {
-                core.setFailed(`Release plan file not found: ${planPath}`);
+              if (!fs.existsSync(metadataPath)) {
+                core.notice('No deterministic release metadata artifact was found, so there is no release to update.');
                 return;
               }
 
               const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+              const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
               const items = (payload.items || []).filter(item => item.type === 'update_release');
 
               if (items.length !== 1) {
@@ -361,14 +476,20 @@ safe-outputs:
               }
 
               const item = items[0];
-              const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
               const owner = context.repo.owner;
               const repo = context.repo.repo;
               const body = String(item.body || '').trim();
-              const plannedTag = String(plan.next_tag || '').trim();
+              const releaseId = Number(metadata.release_id);
+              const tag = String(metadata.tag || '').trim();
+              const title = String(metadata.title || tag).trim();
 
-              if (!/^v?\d+\.\d+\.\d+$/.test(plannedTag)) {
-                core.setFailed(`Invalid semver tag in release plan: ${plannedTag}`);
+              if (!Number.isInteger(releaseId) || releaseId <= 0) {
+                core.setFailed(`Invalid release_id in release metadata: ${metadata.release_id}`);
+                return;
+              }
+
+              if (!/^v?\d+\.\d+\.\d+$/.test(tag)) {
+                core.setFailed(`Invalid semver tag in release metadata: ${tag}`);
                 return;
               }
 
@@ -377,15 +498,12 @@ safe-outputs:
                 return;
               }
 
-              const tag = plannedTag.startsWith('v') ? plannedTag : `v${plannedTag}`;
-              const release = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
-
               await github.rest.repos.updateRelease({
                 owner,
                 repo,
-                release_id: release.data.id,
+                release_id: releaseId,
                 tag_name: tag,
-                name: String(plan.title || tag).trim(),
+                name: title,
                 body,
                 draft: false,
                 prerelease: false,
@@ -406,9 +524,11 @@ The `Compute release plan` step creates these files before the agent starts. Rea
 - `/tmp/gh-aw/data/release-plan.json` — deterministic release metadata including the previous semver tag, next semver tag, target SHA, and whether the release is publishable
 - `/tmp/gh-aw/data/release-description.md` — the deterministic full change list that the workflow will publish unless you replace it with better release notes
 
+A separate deterministic `create-release` job uses the same semver rules to create the GitHub release with the raw full change list. Your only write action is to replace that raw body with better release notes.
+
 ## Task
 
-Create exactly one GitHub release for the current ref using semantic versioning.
+Rewrite the deterministic release description into polished release notes for the GitHub release created for the current ref.
 
 1. Treat `/tmp/gh-aw/data/release-plan.json` as the source of truth for the version, title, target SHA, and previous release boundary.
 2. Treat `/tmp/gh-aw/data/release-description.md` as the deterministic full change list. Read it closely and rewrite it into concise, human-friendly release notes.
@@ -428,18 +548,16 @@ Use this structure for the release body:
 - ...
 ```
 
-Call `noop` with a brief explanation instead of creating or updating a release if:
+Call `noop` with a brief explanation instead of updating a release if:
 
 - `/tmp/gh-aw/data/release-plan.json` says `has_changes` is false
 - `/tmp/gh-aw/data/release-plan.json` is missing required fields or conflicts with what you can see in the repository
-- you can already see that the computed tag or release exists before attempting the safe outputs
 
 ## Safe Output
 
 When you are ready:
 
-1. Call `create_release` exactly once with no arguments. This tool has no input parameters and reads the release plan and raw description from the prepared files.
-2. Call `update_release` exactly once with:
+1. Call `update_release` exactly once with:
    - `body` — the rewritten markdown release notes
 
 Do not create releases directly with `gh` or any write-capable GitHub tool from the main agent job.
