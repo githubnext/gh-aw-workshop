@@ -81,7 +81,6 @@ If you're using the GitHub Copilot app or the Agents tab, you'll skip the design
 
 1. Write the adventure you chose and one reason it matches the repository task you wrote down earlier.
 2. Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the first paragraph to confirm the scenario matches what you want to automate.
-3. If you're taking the GitHub Copilot app or Agents tab path, note that you'll jump to Adventure D after this step.
 
 ---
 
@@ -91,7 +90,7 @@ If you're using the GitHub Copilot app or the Agents tab, you'll skip the design
 - [ ] I've chosen an adventure and written down one reason it matches that task
 - [ ] I can name the trigger my chosen scenario uses
 - [ ] I've opened the next step for my chosen scenario and read the first paragraph
-- [ ] I know whether I'll follow the design step path or jump to Adventure D with the GitHub Copilot app or Agents tab
+- [ ] I know whether I'll follow the design step path or jump to Step 11d with the GitHub Copilot app or Agents tab
 
 **Next (pick one):**
 
