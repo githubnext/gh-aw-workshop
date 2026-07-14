@@ -74,7 +74,7 @@
   <rect x="738" y="208" width="274" height="88" rx="8" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
   <text x="875" y="227" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#7d4e00" text-anchor="middle">📝 Task Brief + Safety Config</text>
   <text x="875" y="244" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#7d4e00" text-anchor="middle" font-style="italic">"Create a daily repo status update."</text>
-  <text x="875" y="259" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#9a6700" text-anchor="middle">permissions: read  ·  tools: gh-proxy</text>
+  <text x="875" y="259" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#9a6700" text-anchor="middle">permissions: read · tools: gh-proxy</text>
   <text x="875" y="274" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#9a6700" text-anchor="middle">safe-outputs: write-summary</text>
   <text x="875" y="289" font-family="'Segoe UI',system-ui,sans-serif" font-size="9" fill="#a57800" text-anchor="middle">~20 lines of Markdown</text>
 
