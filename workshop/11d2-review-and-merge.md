@@ -38,14 +38,15 @@ The PR should contain exactly two files: the human-readable task brief (`.md`) a
 ### ✏️ Exercise: inspect the diff and validate the lock file
 
 1. Open the pull request the agent created so you can review the proposed workflow before it reaches your default branch.
-2. In the **Files changed** tab, confirm the PR includes both `.github/workflows/<name>.md` and `.github/workflows/<name>.lock.yml`, because the brief defines the workflow and the lock file is what Actions actually runs.
+2. In the **Files changed** tab, confirm the PR includes both `.github/workflows/<name>.md` and `.github/workflows/<name>.lock.yml`, because GitHub Actions needs both files to run the workflow.
 3. Open `.github/workflows/<name>.lock.yml` in the diff and confirm it is not empty, because an empty lock file means the workflow did not compile into runnable instructions.
 4. Add a PR comment that pastes the first 10 lines of `.github/workflows/<name>.lock.yml` in a fenced code block so you practice checking the compiled artifact directly.
 
 ### ✏️ Exercise: request a revision with `@copilot`
 
-1. Read `.github/workflows/<name>.md` and decide on one change you want so your feedback stays specific and easy for the agent to apply. If you do not want any changes after this review, skip the remaining steps in this exercise and proceed to merge.
-2. In the PR comment box, post a revision request that starts with `@copilot`, because the mention is what routes your instruction back to the agent:
+1. Read `.github/workflows/<name>.md` and decide whether you want any changes so you review the brief before approving it.
+1. If you do not want any changes, skip the remaining steps in this exercise and proceed to merge so you avoid unnecessary churn.
+1. In the PR comment box, post a revision request that starts with `@copilot`, because the mention is what routes your instruction back to the agent:
 
 ```
 @copilot Please change the schedule to weekly instead of daily.
