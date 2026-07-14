@@ -163,7 +163,7 @@ Read `/tmp/gh-aw/data/release-trigger.json` for the repository, requested bump, 
 Create exactly one GitHub release for the current ref using semantic versioning.
 
 1. Inspect the repository's existing tags or releases and find the latest stable tag that matches `vMAJOR.MINOR.PATCH` or `MAJOR.MINOR.PATCH`.
-2. Ignore non-semver tags.
+2. Ignore tags that do not match those stable patterns, including prerelease tags such as `v1.2.3-alpha` and non-version tags such as `release-2024`.
 3. If no prior semver tag exists, use `v0.0.0` as the baseline.
 4. Compute the next version from the `bump` value in `release-trigger.json`:
    - `patch` → increment patch only
@@ -171,7 +171,7 @@ Create exactly one GitHub release for the current ref using semantic versioning.
    - `major` → increment major and reset minor and patch to `0`
 5. Use a leading `v` in the new tag name.
 6. Semver-sort the matching tags and choose the highest stable version.
-7. Summarize the most important changes since the previous semver release. Prefer merged pull requests, release-worthy commits, and notable documentation or workflow updates. If there is no previous semver release, summarize the repository's current state instead.
+7. Summarize the most important changes since the previous semver release. Prefer merged pull requests, release-worthy commits, and notable documentation or workflow updates. If there is no previous semver release, summarize the repository's purpose, key capabilities, and the most important content currently on the default branch.
 8. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
 
 ## Required Release Notes Format
@@ -186,7 +186,11 @@ Use this structure for the release body:
 - ...
 ```
 
-If there are no meaningful code or content changes since the latest semver release, if you cannot safely determine the next version, or if the computed tag already exists, call `noop` with a brief explanation instead of creating a duplicate release.
+Call `noop` with a brief explanation instead of creating a duplicate release if:
+
+- there are no meaningful code or content changes since the latest semver release
+- you cannot safely determine the next version
+- the computed tag already exists
 
 ## Safe Output
 
