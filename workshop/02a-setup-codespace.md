@@ -16,11 +16,11 @@ Make sure you have:
 
 ## Which path is right for me?
 
-| I am… | Go to… |
-|-------|--------|
-| **Browser / Copilot app / Mobile** — no terminal, using GitHub web UI, Copilot app, or mobile | ➡️ [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md) — skip terminal setup entirely |
-| **Codespace user** — browser terminal, no local install | ✅ You're in the right place — continue below |
-| **Local terminal user** — prefer my own machine and tools | ➡️ [Adventure B: Set Up Your Local Terminal](02b-setup-local.md) |
+**Before you start: How do you plan to work through this workshop?** Choose the option that matches how you work:
+
+- 🌐 **Browser / Copilot app / Mobile** — I'll use the GitHub web UI, Copilot app, or GitHub Mobile with no terminal → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+- ☁️ **Codespace** — I want a browser-based terminal with no local installs → ✅ you're in the right place, continue below
+- 💻 **Local terminal** — I want to use my own machine and tools → switch to [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
 
 _A Codespace gives you a full development environment in your browser — no installs, no version conflicts, just you and the workshop._
 
@@ -29,6 +29,8 @@ _A Codespace gives you a full development environment in your browser — no ins
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
 ## Steps
+
+These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
 ### Open the Codespace
 
@@ -42,7 +44,12 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 ![Open Codespace](images/02a-open-codespace.svg)
 
-GitHub will spin up a container attached to your practice repository. This takes about 30–60 seconds on first launch. If you are on GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC), review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+GitHub will spin up a container attached to your practice repository. This takes about 30–60 seconds on first launch.
+
+> [!IMPORTANT]
+> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.
+
+While the Codespace spins up (30–60 seconds), you can read the enterprise side quest.
 
 > [!TIP]
 > Codespaces auto-saves your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.

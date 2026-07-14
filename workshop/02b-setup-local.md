@@ -5,6 +5,14 @@
 > Skip this entire setup step and go directly to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
 > You do not need a terminal for the rest of this workshop on that path.
 
+## Which path is right for me?
+
+**Before you start: How do you plan to work through this workshop?** Choose the option that matches how you work:
+
+- 🌐 **Browser / Copilot app / Mobile** — I'll use the GitHub web UI, Copilot app, or GitHub Mobile with no terminal → skip this step entirely and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+- ☁️ **Codespace** — I want a browser-based terminal with no local installs → switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
+- 💻 **Local terminal** — I want to use my own machine and tools → ✅ you're in the right place, continue below
+
 ## 🧪 5-question terminal self-assessment
 
 Check each statement:
@@ -69,8 +77,8 @@ You are not logged into any GitHub hosts. Run gh auth login to authenticate.
 
 `gh extension list` can show existing extensions or no entries if you have none yet.
 
-> [!NOTE]
-> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing. If you're blocked by SSO, proxy, or host-specific issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
+> [!IMPORTANT]
+> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below. If you're blocked by SSO, proxy, or host-specific issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 ### Create your practice repository
 
