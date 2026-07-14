@@ -4,6 +4,11 @@
 
 By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **Claude**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your workflow frontmatter.
 
+## 📋 Before You Start
+
+- You have an Anthropic account at [console.anthropic.com](https://console.anthropic.com/).
+- You have a practice repository with at least one agentic workflow `.md` file.
+
 ---
 
 ## What you'll set up
@@ -19,12 +24,11 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 ## Get an Anthropic API key
 
 1. Go to [console.anthropic.com](https://console.anthropic.com/) and sign in (or create an account).
-2. Navigate to **API Keys** in the left sidebar.
-3. Click **Create Key**, give it a name (for example `gh-aw-workshop`), and click **Create Key**.
-4. Copy the key value — it starts with `sk-ant-`. You won't be able to view it again after closing the dialog.
+2. Click **Create Key**, give it a name (for example `gh-aw-workshop`), and click **Create Key**.
+3. Copy the key value — it starts with `sk-ant-`.
 
 > [!NOTE]
-> Anthropic API keys are billed per token. Check the [Anthropic pricing page](https://www.anthropic.com/pricing) for current model costs and set a usage limit in the console to avoid unexpected charges.
+> Anthropic only shows the full key once, and usage is billed per token. Save the value before closing the dialog, then review the [Anthropic pricing page](https://www.anthropic.com/pricing) and set a usage limit if you want a spending guardrail.
 
 ---
 
@@ -43,7 +47,7 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 
 ## Update your workflow frontmatter
 
-Open your workflow `.md` file and add the `engine` field to the frontmatter:
+Open your workflow `.md` file and update the frontmatter:
 
 ```yaml
 ---
@@ -51,33 +55,16 @@ name: My Workflow
 on:
   workflow_dispatch:
 permissions:
-  contents: read
-engine: claude
----
-```
-
-> [!NOTE]
-> You can omit `copilot-requests: write` when using the `claude` engine — that permission is specific to the Copilot engine. Leave it out to keep permissions minimal.
-
-A more complete example with network access configured:
-
-```yaml
----
-name: My Workflow
-on:
-  workflow_dispatch:
-permissions:
-  contents: read
-engine: claude
+  contents: read        # keep only the scopes your workflow needs
+engine: claude          # switch from the default Copilot engine to Claude
 network:
   allowed:
-    - defaults
-    - api.anthropic.com
+    - defaults          # keep the standard allow-list entries
+    - api.anthropic.com # required so the workflow can reach Anthropic
 ---
 ```
 
-> [!TIP]
-> The `claude` engine requires outbound access to `api.anthropic.com`. If your workflow uses the default `network: defaults` setting, add `api.anthropic.com` to the allow-list as shown above.
+If you previously added `copilot-requests: write` for the Copilot engine, you can remove it when switching to `claude`.
 
 ---
 
