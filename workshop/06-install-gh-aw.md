@@ -4,6 +4,10 @@
 
 ## Choose Your Path
 
+The diagram below shows how the three paths diverge and then rejoin at Step 7.
+
+![Installation path decision: choose Codespace terminal, local terminal, or GitHub UI, all leading to Step 7](images/06-install-path-decision.svg)
+
 | Path | Best for | Continue |
 |---|---|---|
 | **Codespace terminal** | Learners using a GitHub Codespace, including GitHub Copilot Cloud Agent (CCA) users | [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md) |
