@@ -60,6 +60,10 @@ Step 5 is the optional transition if you want the conceptual delta before instal
 
 ## Label a sample workflow
 
+The diagram below shows how the five key parts fit together in every workflow file.
+
+![GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers](images/04-actions-anatomy.svg)
+
 Before reading on, label each highlighted part of the workflow below with its type:
 `trigger`, `job`, `runner`, `step`, or `action`.
 
