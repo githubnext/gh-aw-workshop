@@ -42,6 +42,8 @@ https://github.com/<your-username>
 https://github.com/settings/actions
 ```
 
+Replace `<your-username>` with your GitHub username.
+
 Confirm your profile loads and **Actions** is not disabled in settings.
 
 ## Choose Your Path
