@@ -1,6 +1,6 @@
 # Side Quest: How MCP Tool Servers Work
 
-> _Optional: work through this primer if you want to understand how MCP changes the agentic loop before adding tools to your workflow in [Step 17](17-add-mcp-tools.md), then return to the main path._
+> _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then return to the main path._
 
 ## 📋 Before You Start
 
