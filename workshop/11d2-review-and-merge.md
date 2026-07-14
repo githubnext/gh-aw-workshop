@@ -66,7 +66,7 @@ Once you are satisfied with the workflow, complete the merge and verify the resu
 ### ✏️ Exercise: merge the PR and confirm the workflow is live
 
 1. In the browser, click **Merge pull request** and **Confirm merge** so both workflow files land on the default branch together.
-2. Confirm that both workflow files are on your default branch, because GitHub Actions reads the merged `.md` and `.lock.yml` from there on the next trigger.
+2. Open your repository on the default branch and confirm both workflow files appear under `.github/workflows/`, because GitHub Actions reads the merged `.md` and `.lock.yml` from there on the next trigger.
 3. Open the **Actions** tab and confirm the workflow appears there so you know GitHub recognized the merged lock file.
 
 > [!NOTE]
