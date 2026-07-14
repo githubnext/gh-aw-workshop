@@ -12,32 +12,34 @@
 
 ## Monitor Your Session
 
-After submitting the prompt, watch the activity feed. The agent works through five phases: **Reading** → **Planning** → **Writing** → **Compiling** → **Opening PR**. The session typically completes in two to five minutes. You can steer it with follow-up prompts if it needs more context or takes the wrong direction.
+After submitting the prompt, watch the activity feed. The session typically completes in two to five minutes. You can steer it with follow-up prompts if it needs more context or takes the wrong direction.
+
+### ✏️ Exercise: monitor progress and open the PR
+
+1. In the GitHub Copilot app, open your active session in **My work**.
+2. Wait for the session to finish, then open the pull request link from the session.
+3. Keep the pull request open in a browser tab for the next exercises.
 
 > [!TIP]
-> For a full breakdown of each phase, what to look for, and how to steer the session, see [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md).
+> Want a detailed walkthrough of each agent phase? See [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md).
 
 ---
 
-## Review and Merge the Pull Request
+## Review the Pull Request
 
 When the session ends, open the pull request it created. In the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), find it in **My work**. In the Agents tab, use the pull request link in the session.
 
-### What to check in the PR diff
-
-The PR adds two files:
-
-| File | What to verify |
-|---|---|
-| `.github/workflows/<name>.md` | Frontmatter keys match the scenario; the task brief describes what you want; `safe-outputs` limits write actions |
-| `.github/workflows/<name>.lock.yml` | Exists and is non-empty — this is the compiled GitHub Actions YAML that the runner executes |
-
-### ✏️ Exercise: inspect the diff and request a revision
+### ✏️ Exercise: inspect the diff and validate the lock file
 
 1. Open the pull request the agent created.
-2. In the **Files changed** tab, click `.github/workflows/<name>.lock.yml` and confirm the file is non-empty — you are looking at the compiled YAML the runner will execute.
-3. Read the task brief in `.github/workflows/<name>.md`. Check that the schedule, permission scope, and `safe-outputs` action match your intended scenario.
-4. If anything looks wrong, post a revision request in the PR comment box. Start the comment with `@copilot`:
+2. In the **Files changed** tab, confirm the PR includes both `.github/workflows/<name>.md` and `.github/workflows/<name>.lock.yml`.
+3. Open `.github/workflows/<name>.lock.yml` in the diff and confirm it is not empty.
+4. Add a PR comment that pastes the first 10 lines of `.github/workflows/<name>.lock.yml` in a fenced code block.
+
+### ✏️ Exercise: request a revision with `@copilot`
+
+1. Read `.github/workflows/<name>.md` and decide on one change you want.
+2. In the PR comment box, post a revision request that starts with `@copilot`:
 
 ```
 @copilot Please change the schedule to weekly instead of daily.
@@ -46,30 +48,19 @@ The PR adds two files:
 > [!IMPORTANT]
 > Comments directed at the Copilot agent **must** begin with `@copilot`. Without it, the agent will not see or act on your message. You can also start or continue a session for the PR in the GitHub Copilot app.
 
-The agent will push an updated commit to the same branch. If everything looks correct, skip step 4 and proceed to merge.
+1. Wait for the agent response. If everything already looks correct, skip this exercise and proceed to merge.
 
-### Merge the pull request
+## Merge the Pull Request
 
 Once you are satisfied with the workflow:
 
 1. In the browser, click **Merge pull request** and **Confirm merge**.
 2. Confirm that both workflow files are on your default branch.
-3. Delete the branch (optional but recommended).
+
+> [!NOTE]
+> Deleting the branch is optional. You can do it from the merged PR page whenever you want.
 
 The workflow is now live on your default branch. GitHub Actions will pick it up on the next scheduled trigger or when you click **Run workflow** in the Actions tab.
-
----
-
-## What Was Added
-
-After merging, your repository contains:
-
-| File | Purpose |
-|---|---|
-| `.github/workflows/<name>.md` | The Markdown task brief — the human-readable workflow definition you and the agent can edit |
-| `.github/workflows/<name>.lock.yml` | The compiled GitHub Actions YAML — generated automatically, do not edit by hand |
-
-You can continue iterating through a GitHub Copilot app or Agents-tab session and let the agent handle edits and recompilation.
 
 ---
 
@@ -77,7 +68,7 @@ You can continue iterating through a GitHub Copilot app or Agents-tab session an
 
 - [ ] The agent session completed and the pull request is open in your practice repository
 - [ ] The PR diff shows both `.github/workflows/<name>.md` and `.github/workflows/<name>.lock.yml`
-- [ ] You opened `.github/workflows/<name>.lock.yml` in the PR diff and confirmed it is non-empty
+- [ ] You posted a PR comment with the first 10 lines of `.github/workflows/<name>.lock.yml`
 - [ ] You reviewed the task brief and posted a `@copilot` revision comment (or confirmed no changes were needed)
 - [ ] You merged the pull request and both workflow files exist on your default branch
 - [ ] The workflow appears in the GitHub Actions tab of your practice repository
