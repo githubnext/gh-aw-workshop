@@ -53,8 +53,7 @@ jobs:
 
 ```markdown
 ---
-on:
-  schedule: "0 8 * * *"
+on: daily
 ---
 Create a daily repository status update in GitHub.
 ```
