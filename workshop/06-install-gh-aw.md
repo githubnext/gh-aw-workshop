@@ -2,6 +2,11 @@
 
 `gh-aw` is the CLI extension that compiles your agentic workflow Markdown files and triggers runs from your terminal. If you're on the GitHub UI path, `gh-aw` runs on GitHub's infrastructure — no local installation is needed.
 
+## 📋 Before You Start
+
+- You have completed [Step 5: Agentic Workflows Intro](05-agentic-workflows-intro.md)
+- Your development environment is ready (Codespace from Step 2a, or local terminal from Step 2b)
+
 ## Choose Your Path
 
 The diagram below shows how the three paths diverge and then rejoin at Step 7.
