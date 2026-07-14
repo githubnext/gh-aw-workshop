@@ -68,6 +68,8 @@ steps:
       echo "=== Workshop files ===" && cat /tmp/gh-aw/data/repo-state.json
 
   - name: Preindex documentation pages
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
