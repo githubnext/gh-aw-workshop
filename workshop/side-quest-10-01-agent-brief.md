@@ -27,7 +27,7 @@ Use the same loop for every step: **write first, check your draft, then open "Wh
 
 ---
 
-## Step 1: Name the Goal
+## Step 1: State the Goal in One Sentence
 
 Write one sentence in your scratch file.
 
@@ -57,7 +57,7 @@ List the data the agent must collect before it can write the report. Mark uncert
 ```md
 - __________________ — __________________
 - __________________ — __________________
-- __________________ — __________________
+- __________________ — __________________?
 ```
 
 Quick check:
@@ -84,7 +84,7 @@ Show the agent the format you want instead of describing it loosely. Start with 
 PRs: {count}
 Issues: {count}
 CI: {status}
-Next action: {one sentence}
+Health check: {one sentence}
 ```
 
 Quick check:
