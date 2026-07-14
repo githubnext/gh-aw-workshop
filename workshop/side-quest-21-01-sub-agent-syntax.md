@@ -29,7 +29,7 @@ Invalid examples: `` `File Summarizer` `` (spaces and uppercase), `` `1st-agent`
 <details>
 <summary>Answer</summary>
 
-The most common problems in that list are **missing backticks**, **invalid characters** (such as spaces or uppercase letters), and **the wrong starting character**. A valid name must be wrapped in backticks, use only lowercase letters/digits/hyphens/underscores, and start with a letter.
+All three are common problems: **missing backticks**, **invalid characters** (such as spaces or uppercase letters), and **the wrong starting character**. A valid name must be wrapped in backticks, use only lowercase letters/digits/hyphens/underscores, and start with a letter.
 
 </details>
 
@@ -119,6 +119,13 @@ Read the issue body and reply with exactly one label: `bug`, `enhancement`, or `
 
 In this example, `description` documents the sub-agent's role for readers and tooling, and `model: small` keeps costs low for this bounded classification task.
 
+<details>
+<summary>Answer</summary>
+
+The best candidates are **`description`** and **`model`**. They are the two fields most specific to an individual sub-agent's role and cost, while engine, tools, and network settings stay inherited from the parent workflow.
+
+</details>
+
 ### ✏️ Try it: keep or strip?
 
 Before reading on, sort these four fields into two buckets: **kept** or **stripped**.
@@ -127,6 +134,15 @@ Before reading on, sort these four fields into two buckets: **kept** or **stripp
 - `model`
 - `engine`
 - `tools`
+
+<details>
+<summary>Answer</summary>
+
+**Kept:** `description`, `model`
+
+**Stripped:** `engine`, `tools`
+
+</details>
 
 ### ✏️ Quick Check — Frontmatter fields
 
