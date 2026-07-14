@@ -28,7 +28,7 @@ instructions.
 
 ## How gh-aw Defends Against It
 
-- **Network allow-list (`network.allowed-domains`)** — the runner blocks outbound
+- **Network allow-list (`network.allowed`)** — the runner blocks outbound
   connections to any domain not listed. An attacker cannot redirect your agent to an
   unknown exfiltration endpoint even if the MCP server tries.
 - **Explicit `tools:` block** — you declare exactly which MCP servers the agent may
@@ -52,7 +52,7 @@ permissions:
   contents: read
   issues: read
 network:
-  allowed-domains:
+  allowed:
     - api.github.com
     - github.com
 tools:
@@ -60,7 +60,7 @@ tools:
     mode: gh-proxy
     toolsets: [default]
 safe-outputs:
-  issue-comment:
+  add-comment:
     repo: ${{ github.repository }}
 ---
 ```
@@ -77,7 +77,7 @@ blocked at each layer.
 
 - [ ] List only the MCP servers you actually need in the `tools:` block — remove any
       you added "just in case".
-- [ ] Add a `network.allowed-domains` block that names only the domains your workflow
+- [ ] Add a `network.allowed` block that names only the domains your workflow
       legitimately contacts.
 - [ ] Set `permissions:` to the minimum scope required (prefer `read` over `write`
       unless the task requires writing).
@@ -90,7 +90,7 @@ blocked at each layer.
 ## ✅ Checkpoint
 
 - [ ] I can describe the supply chain via MCP attack in one sentence
-- [ ] I can name the gh-aw features that limit this attack (`network.allowed-domains`, `tools:` block, `permissions:`, `safe-outputs`)
+- [ ] I can name the gh-aw features that limit this attack (`network.allowed`, `tools:` block, `permissions:`, `safe-outputs`)
 - [ ] I have applied at least one defensive measure to my own workflow
 
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
