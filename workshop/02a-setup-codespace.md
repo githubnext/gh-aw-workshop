@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Completed [Step 1: Prerequisites](01-prerequisites.md)
-- A GitHub account (free tier is fine)
+- A GitHub account you can use to create a public practice repository (free tier is fine)
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
 
@@ -55,8 +55,6 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
 
 > [!IMPORTANT]
 > **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.
-> [!TIP]
-> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
@@ -65,6 +63,9 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 1. When the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac).
 2. Wait for the terminal prompt to appear.
 3. Keep this terminal open. It is already inside your practice repository.
+
+> [!TIP]
+> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 If this is your first time in a terminal, see [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) for a quick orientation on navigating folders and running commands.
 
