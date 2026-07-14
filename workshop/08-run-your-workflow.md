@@ -29,7 +29,7 @@ Before triggering, verify all three:
 - [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`
 - [ ] The **Actions** tab shows **Hello Agent** in the left workflow sidebar
 - [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not)
-- [ ] (Codespace users) Did the fix work? Confirm you can see the workflow in the **Actions** tab after updating workflow permissions.
+- [ ] (Codespace users) Did the fix work? Confirm the **Hello Agent** workflow appears in the **Actions** tab after updating workflow permissions.
 
 ### Predict before you run
 
