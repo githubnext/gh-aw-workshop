@@ -8,7 +8,7 @@ By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI mod
 
 - You have completed [Step 6: Install `gh-aw`](06-install-gh-aw.md) and have a working agentic workflow.
 - You are familiar with YAML frontmatter `env:` blocks (see [Side Quest: Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) if not).
-- You have an OpenAI account or access to an OpenAI API key from your organisation.
+- You have an OpenAI account or access to an OpenAI API key from your organization.
 
 > [!NOTE]
 > In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution. It does not refer to the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
