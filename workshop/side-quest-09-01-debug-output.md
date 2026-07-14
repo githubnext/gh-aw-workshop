@@ -6,7 +6,7 @@
 
 You will diagnose five common output patterns one at a time. Each micro-step includes a short explanation, a realistic log snippet, and an identify-before-reveal exercise.
 
-## Before You Start
+## 📋 Before You Start
 
 - Complete [Step 9: Reading Workflow Output](09-understand-output.md)
 
