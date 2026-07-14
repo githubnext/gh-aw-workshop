@@ -1,18 +1,12 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 
-## Which path is right for you?
+## 📋 Before You Start
 
-Check the statement that matches you best, then follow the link:
+Make sure you have completed Step 1, then re-check the items that matter for this path:
 
-- [ ] I want to use GitHub Copilot app, GitHub Mobile, or browser-only — **[Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md)**
-- [ ] I want a browser-based terminal with no local installs — ✅ **Continue below (Codespace)**
-- [ ] I have a local terminal and want to install tools myself — **[Go to Adventure B: Local Terminal →](02b-setup-local.md)**
-
-## Before You Start
-
-Make sure you have:
-
-- A GitHub account (free tier or higher)
+- All items in [Prerequisites](01-prerequisites.md) are complete
+- A GitHub account you can use to create a public practice repository (free tier is fine)
+- Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
 
 | Path | Best for | Action |
@@ -24,6 +18,14 @@ Make sure you have:
 
 > [!NOTE]
 > GitHub Mobile and Copilot Cloud Agent paths do not require a terminal. Continue on the GitHub UI path and trigger workflows from the Actions tab in your browser.
+
+## Which path is right for you?
+
+Check the statement that matches you best, then follow the link:
+
+- [ ] I want to use GitHub Copilot app, GitHub Mobile, or browser-only — **[Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md)**
+- [ ] I want a browser-based terminal with no local installs — ✅ **Continue below (Codespace)**
+- [ ] I have a local terminal and want to install tools myself — **[Go to Adventure B: Local Terminal →](02b-setup-local.md)**
 
 ## 🎯 What You'll Do
 
@@ -47,16 +49,14 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
    - Click **Create repository**.
 2. In your new repository, click the green **Code** button.
 3. Click the **Codespaces** tab.
-4. Click **Create codespace on main**.
+   - Leave **main** selected as the branch.
+   - Click **Create codespace on main**.
+   - Wait 30–60 seconds for GitHub to prepare the container and open the editor.
 
 ![Open Codespace](images/02a-open-codespace.svg)
 
-GitHub will spin up a container attached to your practice repository. This takes about 30–60 seconds on first launch.
-
 > [!IMPORTANT]
 > **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.
-
-While the Codespace spins up (30–60 seconds), you can read the enterprise side quest.
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
@@ -66,21 +66,28 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 2. Wait for the terminal prompt to appear.
 3. Keep this terminal open. It is already inside your practice repository.
 
+> [!TIP]
+> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
+
 If this is your first time in a terminal, see [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) for a quick orientation on navigating folders and running commands.
 
 ### Verify your Codespace is ready
 
-The diagram below shows what's inside your Codespace and how it connects to GitHub — everything is pre-installed and pre-authenticated so you can focus on the workshop.
+The diagram below shows your Codespace connection to GitHub.
 
 ![Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub](images/02a-codespace-architecture.svg)
 
-Run these commands in the Codespace terminal:
+1. Run these commands in the Codespace terminal:
 
-```bash
-gh --version
-gh auth status
-gh extension list
-```
+   ```bash
+   gh --version
+   gh auth status
+   gh extension list
+   ```
+
+2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
+3. Confirm `gh auth status` shows that you're logged in to `github.com`.
+4. Confirm `gh extension list` runs without errors, even if it shows no extensions yet.
 
 _What success looks like:_
 
