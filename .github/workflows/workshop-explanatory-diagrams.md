@@ -24,12 +24,16 @@ network:
   allowed:
     - defaults
     - github
+    - local
+    - playwright
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
   cache-memory: true
   bash: true
+  playwright:
+    mode: cli
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop-diagrams] "
@@ -244,6 +248,25 @@ After generating the SVG:
 
 ---
 
+## Render and QA the diagram
+
+After generating the SVG and updating markdown:
+
+1. Start a local static file server from the repository root so the new
+   `workshop/images/*.svg` file is reachable on `http://127.0.0.1`.
+2. Use Playwright to render the new SVG in a browser tab.
+3. Check that all text stays inside its boxes, chips, badges, callouts, and
+   other visual containers at normal browser zoom.
+4. If any label bleeds out of a box, revise the SVG before continuing by
+   widening the shape, wrapping or shortening the text, adjusting spacing, or
+   slightly reducing font size.
+5. Re-render after each fix until the final image is visually clean and easy to
+   read.
+
+Treat this render pass as required final QA for every generated diagram.
+
+---
+
 ## Pull request requirements
 
 If you generated a diagram, call `create-pull-request` with:
@@ -272,5 +295,7 @@ Call `noop` with a concise explanation when:
 
 - Make only one coherent diagram change set per run.
 - Keep the markdown edit smaller than the SVG addition.
+- Ensure the final SVG passes a Playwright render check with no text bleeding
+  outside its visual containers.
 - Do not modify files outside `workshop/`.
 - Never use write tools other than `create-pull-request` and `noop`.
