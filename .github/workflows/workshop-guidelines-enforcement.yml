@@ -1,0 +1,59 @@
+name: Workshop Guidelines Enforcement
+
+on:
+  pull_request:
+    paths:
+      - "workshop/*.md"
+      - ".github/workflows/guidelines.md"
+      - ".github/workflows/workshop-guidelines-enforcement.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "workshop/*.md"
+      - ".github/workflows/guidelines.md"
+      - ".github/workflows/workshop-guidelines-enforcement.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  enforce:
+    name: Enforce workshop guidelines
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate workshop markdown rules
+        run: |
+          set -euo pipefail
+
+          mapfile -t files < <(find workshop -maxdepth 1 -type f -name '*.md' ! -name 'README.md' | sort)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No workshop markdown files found."
+            exit 0
+          fi
+
+          failed=0
+
+          for file in "${files[@]}"; do
+            if grep -nE '^[[:space:]]*#{1,6}[[:space:]]+[0-9]+([.)][[:space:]]+|[[:space:]]+)' "$file" >/tmp/numbered-headers.txt; then
+              echo "::error file=$file,title=Numbered headers are not allowed::Found numbered markdown headers. Use descriptive headers and keep ordering in lists/filenames."
+              cat /tmp/numbered-headers.txt
+              failed=1
+            fi
+
+            if grep -niE '\bnode\.?js\b|node --version|\bnodejs\b' "$file" >/tmp/nodejs-references.txt; then
+              echo "::error file=$file,title=Node.js references are not allowed::Remove Node.js prerequisites, install steps, or node version checks from workshop content."
+              cat /tmp/nodejs-references.txt
+              failed=1
+            fi
+          done
+
+          if [ "$failed" -ne 0 ]; then
+            echo "Workshop guideline enforcement failed."
+            exit 1
+          fi
+
+          echo "Workshop guideline checks passed."
