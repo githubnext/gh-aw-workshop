@@ -242,6 +242,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      RELEASE_DESCRIPTION_PATH: /tmp/gh-aw/data/release-description.md
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
