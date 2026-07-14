@@ -98,8 +98,7 @@ engine:
   model: gpt-4o-mini
 ```
 
-Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team.
-For project-scoped keys, quotas, and model availability details, use the [OpenAI API docs](https://platform.openai.com/docs/overview).
+Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team. For more advanced configuration details (including project-scoped keys, quotas, and model availability), use the [OpenAI API docs](https://platform.openai.com/docs/overview).
 
 ---
 
