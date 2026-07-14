@@ -92,7 +92,7 @@ Write the final digest.
 <details>
 <summary>Answer</summary>
 
-``## agent: `writer` `` starts the second helper. It also ends the first helper block.
+The `writer` agent heading starts the second helper. It also ends the first helper block.
 
 </details>
 

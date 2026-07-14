@@ -90,7 +90,7 @@ Write the final digest.
 <details>
 <summary>Answer</summary>
 
-The `collector` block ends right before ``## agent: `writer` ``. That second level-2 heading starts a new sub-agent block.
+The `collector` block ends right before the `writer` agent heading. That second level-2 heading starts a new sub-agent block.
 
 </details>
 
