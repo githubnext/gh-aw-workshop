@@ -49,7 +49,7 @@ on:
 | Field | Purpose |
 |-------|---------|
 | `on:` | Declares all triggers. Every GitHub Actions workflow must have this key. |
-| `schedule: daily` | Runs once per day at midnight UTC. Also available: `hourly`, `weekly`. |
+| `schedule: daily` | Runs once per day at a compiler-assigned time (scattered to avoid load spikes). Also available: `hourly`, `weekly`. |
 | `workflow_dispatch: {}` | Adds a **Run workflow** button in the GitHub Actions UI. The `{}` means no custom inputs are required. |
 
 > [!TIP]
