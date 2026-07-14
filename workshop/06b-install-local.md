@@ -68,7 +68,8 @@ git commit -m "Initialize agentic workflow skills"
 git push
 ```
 
-This creates `.github/skills/agentic-workflows/`, which later authoring steps rely on.
+This creates `.github/skills/agentic-workflows/`, including the `SKILL.md` file used by the
+`agentic-workflows` skill during workflow authoring.
 
 ## 🏃 Try It
 

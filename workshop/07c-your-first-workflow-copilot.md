@@ -18,7 +18,7 @@ Paste this prompt:
 ```text
 Create `.github/workflows/hello-agent.md` as a GitHub Agentic Workflow.
 
-Before authoring, run `gh aw init`, commit and push the generated `.github/skills/agentic-workflows/` files.
+Before authoring, run `gh aw init` from the repository root, then commit and push the generated `.github/skills/agentic-workflows/` files.
 
 The workflow must:
 - Be named "Hello Agent"

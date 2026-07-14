@@ -477,7 +477,7 @@ function buildTransitions() {
         state.flags.awSkillInitialized && state.flags.awSkillPushed,
         "The required agentic workflow skill is missing because `gh aw init` was not completed and pushed before authoring.",
         "aw-init-missing",
-        "Run `gh aw init`, commit the generated `.github/skills/agentic-workflows/` files, and push before creating the first workflow."
+        "Run `gh aw init` in your repository root, commit the generated `.github/skills/agentic-workflows/` files, and push before creating the first workflow."
       );
       if (!initCheck.ok) return initCheck;
       const readiness = contentReadinessCheck(state, context, {
