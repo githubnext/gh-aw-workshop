@@ -141,7 +141,7 @@ The workflow should:
 - Post a structured review comment listing findings (or a clean bill of health if none are found)
 - Post at most five review comments per run
 - Use minimum required permissions: contents: read, copilot-requests: write, pull-requests: write
-- Use safe-outputs: add-pr-review-comment with max: 5
+- Use safe-outputs: add-comment with max: 5
 
 Save the workflow as `.github/workflows/pr-code-reviewer.md`.
 Compile it with `gh aw compile .github/workflows/pr-code-reviewer.md --validate`.

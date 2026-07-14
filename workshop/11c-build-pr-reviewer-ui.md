@@ -38,7 +38,7 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
        toolsets: [default]
 
    safe-outputs:
-     add-pr-review-comment:
+     add-comment:
        max: 5
    ---
 
