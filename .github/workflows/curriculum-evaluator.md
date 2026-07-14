@@ -143,6 +143,10 @@ steps:
       print(f"Corpus mean: {corpus_mean} | stdev: {corpus_stdev} | flagged: {len(findings)}")
       PY
 
+  - name: Deepen git history for trend analysis
+    run: |
+      git fetch --depth=100 origin HEAD || git fetch --unshallow || true
+
   - name: Compute score history trends from git history
     run: |
       set -euo pipefail
