@@ -27,7 +27,13 @@ After submitting the prompt, watch the activity feed. The session typically comp
 
 ## Review the Pull Request
 
-When the session ends, open the pull request it created. In the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), find it in **My work**. In the Agents tab, use the pull request link in the session.
+When the session ends, open the pull request it created. In the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), find it in **My work**. In the Agents tab, use the pull request link in the session. Alternatively, if you are working in a terminal or Codespace, run this command inside your practice repository to list open PRs and locate the one the agent created:
+
+```sh
+gh pr list --state open
+```
+
+The PR should contain exactly two files: the human-readable task brief (`.md`) and the compiled lock file (`.lock.yml`). The lock file is the artifact that GitHub Actions actually executes — without it, your trigger will fire but nothing will run, because the runtime has no instructions to follow. Reviewing both files in the diff before merging ensures you have a working workflow rather than a broken deployment.
 
 ### ✏️ Exercise: inspect the diff and validate the lock file
 
@@ -51,6 +57,8 @@ When the session ends, open the pull request it created. In the [GitHub Copilot 
 1. Wait for the agent response. If everything already looks correct, skip this exercise and proceed to merge.
 
 ## Merge the Pull Request
+
+Merging makes the workflow the source of truth on your default branch. After merging, GitHub Actions reads the lock file every time the trigger fires, so both the `.md` and `.lock.yml` must land on the default branch together. If the lock file is absent or mismatched, the workflow will be unrecognized or will fail at runtime — which is why confirming both files in the diff before clicking merge is essential, not optional.
 
 Once you are satisfied with the workflow:
 
