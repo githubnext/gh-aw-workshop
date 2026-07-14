@@ -18,7 +18,7 @@ Repair one broken sub-agent block, then reuse the same pattern in your own workf
 Copy this snippet into a scratch file or read it closely before you fix it:
 
 ```markdown
-# Daily Issue Digest
+Write a daily issue digest.
 
 ## agent: `Issue Summarizer`
 ---
@@ -108,7 +108,7 @@ Quick check:
 After your edits, your snippet should look like this:
 
 ```markdown
-# Daily Issue Digest
+Write a daily issue digest.
 
 ## How to use this workflow
 
