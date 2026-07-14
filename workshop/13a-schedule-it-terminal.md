@@ -85,7 +85,7 @@ Navigate to your repository on GitHub, then **Actions → daily-status**. On the
 
 ![Scheduled workflow badge visible in the Actions sidebar](images/13-schedule-badge.svg)
 
-> [!WARNING]
+> [!NOTE]
 > GitHub may delay the very first scheduled run by up to 15 minutes after you push. If the workflow doesn't fire at the expected time, check **Actions** for queued runs before assuming something is broken.
 
 ### Wait for or trigger a run
