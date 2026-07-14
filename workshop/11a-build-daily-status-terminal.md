@@ -11,17 +11,35 @@ _You've designed the workflow on paper — now let's turn it into real, running 
 
 ## 🎯 What You'll Do
 
-You'll write the complete `daily-status.md` agentic workflow file, placing it in `.github/workflows/`. This step walks through every line so nothing is mysterious. When you're done, commit the file and continue to [Step 11a2](11a2-run-daily-status-terminal.md) to compile and run it.
+You'll write the `daily-status.md` agentic workflow file in `.github/workflows/`, one section at a time. Each section ends with a short **✏️ Try it** activity so you can compile and check your work before moving on. When you're done, commit the file and continue to [Step 11a2](11a2-run-daily-status-terminal.md) to run it.
 
-## Before You Start
+## 📋 Before You Start
 
-- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
-- Your terminal is inside `my-agentic-workflows`
+- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md) and have your agent brief ready
+- Your terminal is open inside `my-agentic-workflows`
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md)
 
-## The Workflow File at a Glance
+## Create the file and start the watcher
 
-An agentic workflow file has two parts: **frontmatter** (YAML between `---` fences) and a **Markdown body** (the agent's instructions below the closing `---`). The table below summarizes the five frontmatter sections you'll build.
+Run these commands once before you begin writing:
+
+```bash
+mkdir -p .github/workflows
+touch .github/workflows/daily-status.md
+```
+
+In a **second terminal**, start the compiler in watch mode so it reports errors as you save:
+
+```bash
+gh aw compile .github/workflows/daily-status.md --watch
+```
+
+Leave the watcher running throughout this step.
+
+<details>
+<summary>📖 Workflow file structure at a glance (expand if you want the overview first)</summary>
+
+An agentic workflow file has two parts: **frontmatter** (YAML between `---` fences) and a **Markdown body** (the agent's instructions below the closing `---`). The table below summarizes the five frontmatter sections you'll add.
 
 | Section | Key(s) | What it does |
 |---------|--------|--------------|
@@ -31,30 +49,32 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 | Tools | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
 | Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
 
-This file ends in `.md` instead of `.yml` because agentic workflows use Markdown — see the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md). For deeper context on any key, see [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md) and [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
+This file ends in `.md` instead of `.yml` because agentic workflows use Markdown — see the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md).
 
-## Create the workflow file
+</details>
 
-```bash
-mkdir -p .github/workflows
-```
+---
 
-Open your editor and create `.github/workflows/daily-status.md`. Build it section by section below, keeping `gh aw compile .github/workflows/daily-status.md --watch` running in a second terminal for continuous feedback as you save each change.
+## Section 1 — Metadata
 
-### Add the frontmatter basics
-
-Start with the opening fence and the two metadata keys. `emoji` is a visual label in workflow lists; `description` is the plain-English summary shown in the `gh aw` dashboard and the Actions UI.
+Start with the opening fence and the two metadata keys. `emoji` is the visual label shown in `gh aw list`; `description` is the one-sentence summary displayed in the GitHub Actions UI.
 
 ```yaml
 ---
 emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
----
 ```
 
-### Add the trigger block
+**✏️ Try it:** Paste the block above into your file and save. Check that the watcher shows no errors. Feel free to swap the emoji or reword the description.
 
-Add the trigger block after the `description` line, before the closing `---`. `schedule: daily` is `gh-aw`'s shorthand for a daily cron schedule (compiles to `0 0 * * *`, midnight UTC). `workflow_dispatch: {}` adds a manual **Run workflow** button in the Actions UI so you can test on demand.
+> [!TIP]
+> For a detailed walkthrough of metadata and the other opening sections, see [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md).
+
+---
+
+## Section 2 — Triggers
+
+Add the trigger block after the `description` line. `schedule: daily` is `gh-aw`'s shorthand that compiles to a once-per-day cron schedule. `workflow_dispatch: {}` adds a **Run workflow** button in the Actions UI so you can test on demand without waiting for the schedule.
 
 ```yaml
 on:
@@ -62,9 +82,16 @@ on:
   workflow_dispatch: {}
 ```
 
-### Add the permissions block
+**✏️ Try it:** Add the `on:` block and save. The watcher should still report no errors.
 
-Add the minimum permissions the workflow needs. Keeping permissions narrow reduces the blast radius if you misconfigure the prompt.
+> [!TIP]
+> Curious how `schedule: daily` maps to a cron expression, or want to use a custom schedule? See [Side Quest: Schedule Expressions](side-quest-13-01-schedule-expressions.md).
+
+---
+
+## Section 3 — Permissions
+
+Add the minimum permissions the workflow needs. Narrow permissions reduce the blast radius if you misconfigure the prompt.
 
 ```yaml
 permissions:
@@ -76,11 +103,15 @@ permissions:
 ```
 
 > [!NOTE]
-> `copilot-requests: write` is required for every agentic workflow — it grants the Actions runner permission to call the Copilot AI API on your behalf. Every other permission is read-only.
+> `copilot-requests: write` is required for every agentic workflow — it lets the Actions runner call the Copilot AI API. Every other permission here is read-only. Write access for issue comments is handled by `safe-outputs` (Section 5 below).
 
-### Add the tools block
+**✏️ Try it:** Add `permissions:` and save. Confirm the watcher is still green.
 
-The `tools` block tells the agent how to talk to GitHub. `mode: gh-proxy` routes all GitHub API calls through a controlled proxy that enforces only the scopes in `permissions`.
+---
+
+## Section 4 — Tools
+
+The `tools` block tells the agent which GitHub APIs it can call. `mode: gh-proxy` routes all API calls through a controlled proxy that enforces only the scopes you declared in `permissions`.
 
 ```yaml
 tools:
@@ -89,19 +120,31 @@ tools:
     toolsets: [default]
 ```
 
-### Add the safe-outputs guardrail
+**✏️ Try it:** Add `tools:` and save.
 
-`safe-outputs.add-comment: max: 1` limits the agent to posting at most one issue comment per run — no other write actions are permitted.
+> [!TIP]
+> Want to understand how `gh-proxy` scoping works? See [Side Quest: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md).
+
+---
+
+## Section 5 — Write guardrail
+
+`safe-outputs` is the only place write actions are declared. `add-comment: max: 1` limits the agent to posting at most one issue comment per run — no other write actions are allowed.
 
 ```yaml
 safe-outputs:
   add-comment:
     max: 1
+---
 ```
 
-### Add the agent instructions
+**✏️ Try it:** Add `safe-outputs:` and the closing `---` fence, then save. The watcher should now show a valid (though bodyless) workflow.
 
-Add the Markdown body below the closing `---`. This is the brief the AI agent follows at runtime.
+---
+
+## Section 6 — Agent instructions
+
+Add the Markdown body **below** the closing `---`. This is the brief the AI agent reads and follows at runtime.
 
 ```markdown
 # Daily Repo Status Report
@@ -138,7 +181,16 @@ Find the most recently updated open issue and post a comment in this format:
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
 ```
 
+**✏️ Try it:** Paste the agent body and save. The watcher should confirm the full workflow is valid.
+
+> [!TIP]
+> Want tips on writing clearer agent prompts? See [Side Quest: Writing Better Prompts](side-quest-11-03-better-prompts.md).
+
+---
+
 ## Commit and push
+
+Once the watcher reports no errors:
 
 ```bash
 git add .github/workflows/daily-status.md
@@ -166,5 +218,7 @@ Before moving on, confirm all of the following:
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
+- [Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md)
+- [Schedule Expressions](side-quest-13-01-schedule-expressions.md)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Tools reference](https://github.github.com/gh-aw/reference/tools/)
