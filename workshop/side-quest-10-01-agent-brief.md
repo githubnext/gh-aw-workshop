@@ -15,7 +15,7 @@ Build your brief in a scratch file with five short steps. By the end, you'll hav
 
 ## At a Glance
 
-Use the same loop for every step: **write first, check your draft, then expand the collapsible "Why this works" section (click to open) to read the reasoning**.
+Use the same loop for every step: **write first, check your draft, then expand the collapsible "Why this works" section to read the reasoning**.
 
 | Step | Write first | Check before you move on |
 |------|-------------|--------------------------|
@@ -156,7 +156,7 @@ If you want a starter scaffold, paste this into your scratch file and fill in th
 
 ```md
 Goal:
-Every day, I want the agent to [your goal here].
+Every day, I want the agent to [summarize X and post Y].
 
 Inputs:
 - [input]
