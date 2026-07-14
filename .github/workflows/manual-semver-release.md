@@ -65,7 +65,7 @@ steps:
         const bump = process.env.BUMP;
         const target = process.env.TARGET_SHA;
 
-        const run = (...args) => {
+        const runGitCommand = (...args) => {
           try {
             return execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
           } catch (error) {
@@ -76,8 +76,8 @@ steps:
             throw new Error(`Command failed: ${args.join(' ')}${output ? `\n${output}` : ''}`);
           }
         };
-        const runLines = (...args) => {
-          const text = run(...args);
+        const runGitCommandLines = (...args) => {
+          const text = runGitCommand(...args);
           return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
         };
 
@@ -94,6 +94,7 @@ steps:
           }
           return 0;
         };
+        // Prefer the conventional v-prefixed form, then the lexicographically earliest equivalent tag.
         const selectCanonicalTag = tags => [...tags].reduce((best, candidate) => {
           if (!best) return candidate;
 
@@ -106,7 +107,7 @@ steps:
           return candidate.localeCompare(best) < 0 ? candidate : best;
         }, null);
 
-        for (const tag of runLines('git', 'tag', '--list')) {
+        for (const tag of runGitCommandLines('git', 'tag', '--list')) {
           const match = tag.match(semverPattern);
           if (!match) continue;
 
@@ -172,7 +173,7 @@ steps:
           revspec = `${previousTag}..${target}`;
         }
 
-        let changeLines = runLines(
+        let changeLines = runGitCommandLines(
           'git',
           'log',
           '--first-parent',
