@@ -70,7 +70,19 @@ safe-outputs:
           with:
             script: |
               const fs = require('fs');
-              const payload = JSON.parse(fs.readFileSync(process.env.GH_AW_AGENT_OUTPUT, 'utf8'));
+              const outputPath = process.env.GH_AW_AGENT_OUTPUT;
+
+              if (!outputPath) {
+                core.setFailed('GH_AW_AGENT_OUTPUT is not set');
+                return;
+              }
+
+              if (!fs.existsSync(outputPath)) {
+                core.setFailed(`GH_AW_AGENT_OUTPUT file not found: ${outputPath}`);
+                return;
+              }
+
+              const payload = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
               const items = (payload.items || []).filter(item => item.type === 'create_release');
 
               if (items.length !== 1) {
@@ -151,7 +163,7 @@ Create exactly one GitHub release for the current ref using semantic versioning.
 1. Inspect the repository's existing tags or releases and find the latest stable tag that matches `vMAJOR.MINOR.PATCH` or `MAJOR.MINOR.PATCH`.
 2. Ignore non-semver tags.
 3. If no prior semver tag exists, use `v0.0.0` as the baseline.
-4. Compute the next version from `${{ github.event.inputs.bump }}`:
+4. Compute the next version from the `bump` value in `release-trigger.json`:
    - `patch` → increment patch only
    - `minor` → increment minor and reset patch to `0`
    - `major` → increment major and reset minor and patch to `0`
