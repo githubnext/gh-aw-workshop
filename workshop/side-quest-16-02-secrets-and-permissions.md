@@ -4,7 +4,8 @@
 
 ## 📋 Before You Start
 
-- Familiarity with [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful, and you understand what GitHub Actions workflow YAML looks like.
+- Familiarity with [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
+- You understand what GitHub Actions workflow YAML looks like.
 
 ---
 
@@ -95,7 +96,7 @@ Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
 ## Going deeper
 
 <details>
-<summary>Using the built-in `GITHUB_TOKEN` for GitHub API calls</summary>
+<summary>Learn about using the built-in `GITHUB_TOKEN` for GitHub API calls</summary>
 
 Most GitHub API calls in this workshop work with the automatically provided `GITHUB_TOKEN`:
 
@@ -111,7 +112,7 @@ The `gh` CLI reads `GH_TOKEN` automatically when it is set as an environment var
 </details>
 
 <details>
-<summary>How permissions frontmatter controls the built-in `GITHUB_TOKEN`</summary>
+<summary>Learn how permissions frontmatter controls the built-in `GITHUB_TOKEN`</summary>
 
 gh-aw workflows declare required permissions in frontmatter. Only request what you need:
 
