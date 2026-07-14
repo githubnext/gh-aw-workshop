@@ -10,7 +10,8 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 - You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
 - Your workflow posts to a safe output surface such as the **Daily Status Reports** issue.
-- If you are working in a browser-based environment without terminal access, you can still do this side quest by asking a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
+- If you are working in a browser-based environment without terminal access, you can still complete this side quest.
+- Ask a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
 
 ## Trigger one baseline run
 
@@ -46,9 +47,11 @@ Lowest score: Tone
 
 Pick the lowest-scoring row and modify or add only **one sentence** in your workflow brief to address it.
 
-- **Accuracy**: add a sentence that tells the agent not to invent numbers and to skip anything it cannot verify.
-- **Completeness**: add a sentence naming the missing field, such as "Include the age of the oldest open PR."
-- **Tone**: add a sentence describing the voice you want, such as "Write in a friendly, conversational tone."
+| Lowest score | One sentence to modify or add |
+|--------------|-------------------------------|
+| Accuracy | Tell the agent not to invent numbers and to skip anything it cannot verify. |
+| Completeness | Name the missing field, such as "Include the age of the oldest open PR." |
+| Tone | Describe the voice you want, such as "Write in a friendly, conversational tone." |
 
 If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), ask for one focused update:
 
