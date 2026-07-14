@@ -248,19 +248,31 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-      - name: Create GitHub release
+      - name: Plan GitHub release
+        id: plan-release
         uses: actions/github-script@v7
         env:
           BUMP: ${{ github.event.inputs.bump }}
           TARGET_SHA: ${{ github.sha }}
         with:
           script: |
+            const fs = require('fs');
+            const path = require('path');
             const { execFileSync, spawnSync } = require('child_process');
             
             const bump = process.env.BUMP;
             const target = process.env.TARGET_SHA;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
+            const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
+            
+            const finish = plan => {
+              core.setOutput('has_changes', String(plan.has_changes));
+              core.setOutput('next_tag', plan.next_tag || '');
+              core.setOutput('title', plan.title || '');
+              core.setOutput('target', plan.target || '');
+              core.setOutput('noop_reason', plan.noop_reason || '');
+            };
             
             const runGitCommand = (...args) => {
               try {
@@ -280,6 +292,7 @@ jobs:
               return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
             };
             
+            fs.mkdirSync(path.dirname(descriptionPath), { recursive: true });
             runGitCommand('git', 'fetch', '--force', '--tags', 'origin');
             
             const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
@@ -348,12 +361,21 @@ jobs:
               major: [baseVersion[0] + 1, 0, 0],
             }[bump];
             const nextTag = `v${nextVersion.join('.')}`;
+            const plan = {
+              has_changes: true,
+              next_tag: nextTag,
+              target,
+              title: nextTag,
+            };
             
             let revspec = target;
             if (previousTag) {
               const ancestorResult = spawnSync('git', ['merge-base', '--is-ancestor', previousTag, target], { stdio: 'ignore' });
               if (ancestorResult.status !== 0) {
-                core.notice(`Skipping release creation: Cannot safely compare ${previousTagDisplay} to ${target} because the tag is not an ancestor of the target commit.`);
+                plan.has_changes = false;
+                plan.noop_reason = `Cannot safely compare ${previousTagDisplay} to ${target} because the tag is not an ancestor of the target commit.`;
+                core.notice(`Skipping release creation: ${plan.noop_reason}`);
+                finish(plan);
                 return;
               }
               revspec = `${previousTag}..${target}`;
@@ -369,7 +391,10 @@ jobs:
             );
             
             if (previousTag && changeLines.length === 0) {
-              core.notice(`Skipping release creation: No meaningful changes were found since ${previousTagDisplay}.`);
+              plan.has_changes = false;
+              plan.noop_reason = `No meaningful changes were found since ${previousTagDisplay}.`;
+              core.notice(`Skipping release creation: ${plan.noop_reason}`);
+              finish(plan);
               return;
             }
             
@@ -382,16 +407,22 @@ jobs:
             }
             
             const body = `${heading}\n${changeLines.join('\n')}\n`.trim();
-            const title = nextTag;
+            fs.writeFileSync(descriptionPath, `${body}\n`);
             
             if (!/^v?\d+\.\d+\.\d+$/.test(nextTag)) {
-              core.notice(`Skipping release creation: Invalid semver tag ${nextTag}.`);
+              plan.has_changes = false;
+              plan.noop_reason = `Invalid semver tag ${nextTag}.`;
+              core.notice(`Skipping release creation: ${plan.noop_reason}`);
+              finish(plan);
               return;
             }
             
             try {
               await github.rest.repos.getReleaseByTag({ owner, repo, tag: nextTag });
-              core.notice(`Skipping release creation: Release ${nextTag} already exists.`);
+              plan.has_changes = false;
+              plan.noop_reason = `Release ${nextTag} already exists.`;
+              core.notice(`Skipping release creation: ${plan.noop_reason}`);
+              finish(plan);
               return;
             } catch (error) {
               if (error.status !== 404) throw error;
@@ -399,31 +430,27 @@ jobs:
             
             try {
               await github.rest.git.getRef({ owner, repo, ref: `tags/${nextTag}` });
-              core.notice(`Skipping release creation: Tag ${nextTag} already exists.`);
+              plan.has_changes = false;
+              plan.noop_reason = `Tag ${nextTag} already exists.`;
+              core.notice(`Skipping release creation: ${plan.noop_reason}`);
+              finish(plan);
               return;
             } catch (error) {
               if (error.status !== 404) throw error;
             }
-            
-            await github.rest.git.createRef({
-              owner,
-              repo,
-              ref: `refs/tags/${nextTag}`,
-              sha: target,
-            });
-            
-            const release = await github.rest.repos.createRelease({
-              owner,
-              repo,
-              tag_name: nextTag,
-              target_commitish: target,
-              name: title,
-              body,
-              draft: false,
-              prerelease: false,
-              generate_release_notes: false,
-            });
-            core.notice(`Created release ${release.data.tag_name}`);
+            finish(plan);
+      - name: Create GitHub release with gh
+        if: steps.plan-release.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT_TAG: ${{ steps.plan-release.outputs.next_tag }}
+          RELEASE_TITLE: ${{ steps.plan-release.outputs.title }}
+          TARGET_SHA: ${{ steps.plan-release.outputs.target }}
+        run: |
+          gh release create "$NEXT_TAG" \
+            --target "$TARGET_SHA" \
+            --title "$RELEASE_TITLE" \
+            --notes-file "$RELEASE_DESCRIPTION_PATH"
 safe-outputs:
   needs:
     - create-release
@@ -442,9 +469,9 @@ The `Compute release plan` step creates these files before the agent starts. Rea
 
 - `/tmp/gh-aw/data/release-trigger.json` — repository, requested bump, triggering ref name, and triggering SHA
 - `/tmp/gh-aw/data/release-plan.json` — deterministic release metadata including the previous semver tag, next semver tag, target SHA, and whether the release is publishable
-- `/tmp/gh-aw/data/release-description.md` — the deterministic full change list that the workflow will publish unless you replace it with better release notes
+- `/tmp/gh-aw/data/release-description.md` — the deterministic full change list that the workflow creates first and publishes unless you replace it with better release notes
 
-A separate deterministic `create-release` job uses the same semver rules to create the GitHub release with the raw full change list. Your only write action is to replace that raw body with better release notes.
+A separate deterministic `create-release` job uses the same semver rules to create the GitHub release with `gh release create` before your `update_release` safe output runs. Your only write action is to replace that raw body with better release notes.
 
 ## Task
 
