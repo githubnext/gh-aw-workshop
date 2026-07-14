@@ -47,6 +47,8 @@ The wizard will guide you through each step interactively. Here is what to expec
 
 The wizard asks which AI engine should power the workflow. Choose **Copilot** to use GitHub Copilot (no additional API key needed if your account has Copilot access).
 
+> 🤔 **Predict:** Before you run the wizard, decide which AI engine you want to use and whether you have an API key for it. If you choose anything other than Copilot, have your API key ready before you proceed.
+
 ```
 ? Select AI engine:
   ❯ Copilot

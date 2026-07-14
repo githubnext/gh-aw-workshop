@@ -6,7 +6,9 @@ Work through this reference to practice writing correct sub-agent blocks — the
 
 ## 📋 Before You Start
 
-Complete [Step 21 (Inline Sub-Agents)](21-inline-sub-agents.md) or work through this guide before starting Step 21.
+- You understand the sub-agent concept introduced in [Step 21: Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md).
+- You are familiar with YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ---
 

@@ -2,6 +2,12 @@
 
 > _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)._
 
+## 📋 Before You Start
+
+- You've started [Adventure D: Build and Run — use the Copilot app](11d-build-and-run.md) (or another Step 11 path) and have an active or recently completed agent session.
+- You have [`gh aw` installed and authenticated](06-install-gh-aw.md) — completed in Step 6.
+- You understand the purpose of agentic workflows from [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+
 ## 🎯 What You'll Learn
 
 You'll learn what each phase of the agent session does, what to look for in the activity feed, and how to steer the session if it takes the wrong direction.
@@ -17,6 +23,8 @@ After you submit the scenario prompt, the session shows a live activity feed. Th
 | **Writing** | The agent creates the workflow `.md` file in `.github/workflows/` | The file should contain a YAML frontmatter block between `---` fences and a Markdown task brief |
 | **Compiling** | The agent runs `gh aw compile --validate` and fixes any errors it finds | A green success message indicates the `.lock.yml` was generated without errors |
 | **Opening PR** | The agent commits both files and opens a pull request | The pull request should list two changed files: the `.md` source and the `.lock.yml` |
+
+> 🤔 **Predict:** Before you open the activity feed on your next run, guess which phase will take the longest. Then expand the individual steps to check — was it the Planning phase (deciding frontmatter), the Writing phase (generating the file), or the Compiling phase (fixing errors)?
 
 ## Steering the Session
 

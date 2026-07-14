@@ -2,6 +2,12 @@
 
 > _Optional: work through this security primer to understand how crafted repository content can try to trick your agent into leaking tokens or API keys — and why gh-aw's design makes that very difficult._
 
+## 📋 Before You Start
+
+- You have a basic agentic workflow from [Step 11a: Build Your Daily Status Workflow](11a-build-daily-status.md) or equivalent.
+- You understand `safe-outputs` and `permissions` frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have started [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+
 When your agent reads live repository content — issue bodies, PR descriptions, commit messages, file contents — it reads text written by other people. Some of that text might try to act like an instruction aimed at your secrets.
 
 That is **secret exfiltration**: an attacker hides a directive inside repository data to redirect the agent's output toward printing sensitive values — or to send them somewhere the attacker controls.
@@ -108,6 +114,8 @@ cannot write, delete, or push even if an attacker crafts an instruction to do so
 ---
 
 ## Layered defences at a glance
+
+> 🤔 **Predict:** Before reading the table below, list from memory as many gh-aw defences against token exfiltration as you can. Then check your list against the table.
 
 | Layer | What it does |
 |---|---|

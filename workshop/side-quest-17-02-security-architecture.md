@@ -2,6 +2,12 @@
 
 > _Optional: work through this visual primer if you want an intuitive mental model for why gh-aw uses a sandbox, where the agent runs, and what outputs are considered safe._
 
+## 📋 Before You Start
+
+- You understand the basics of agentic workflows from [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+- You have a workflow with `permissions` and `tools` frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have started or are about to start [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
 Think of your workflow like a smart helper in a playroom.
 
 - The **repository** is your toy box.
@@ -61,6 +67,27 @@ Good output usually:
 ## Security architecture in one sentence
 
 You declare **permissions + tools + task intent**, the runner enforces boundaries, and the agent produces constrained output from allowed data.
+
+Here is what a well-scoped workflow frontmatter looks like in practice:
+
+```yaml
+---
+permissions:
+  contents: read
+  issues: read
+tools:
+  github:
+    mode: gh-proxy
+safe-outputs:
+  write-summary:
+network:
+  allowed-domains:
+    - api.github.com
+    - copilot-proxy.githubusercontent.com
+---
+```
+
+> 🤔 **Predict:** What would happen if you removed `network.allowed-domains` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
 
 ---
 
