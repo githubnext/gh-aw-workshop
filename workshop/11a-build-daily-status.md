@@ -46,7 +46,7 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-status.md` exists in your repository.
-- [ ] Running `gh aw compile .github/workflows/daily-status.md --validate` exits with no errors.
+- [ ] Running `gh aw compile --validate` exits with no errors.
 - [ ] The workflow file includes the `trigger:`, `task:`, and at least one data-source section.
 - [ ] A commit containing the new workflow file appears in your repository's commit history.
 

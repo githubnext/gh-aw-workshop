@@ -104,7 +104,7 @@ Key things to note:
 - **An output format template** (not shown above, but part of the full workflow) pins the exact text the agent should generate.
 - **Guidelines** handle edge cases (already posted today, no open issues) so the agent doesn't have to guess.
 
-**✏️ Try it:** Add the body below the closing `---` in your draft file, then run `gh aw compile .github/workflows/daily-status.md --validate` to check for errors.
+**✏️ Try it:** Add the body below the closing `---` in your draft file, then run `gh aw compile --validate` to check for errors.
 
 ---
 

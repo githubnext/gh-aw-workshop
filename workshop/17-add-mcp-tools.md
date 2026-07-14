@@ -68,7 +68,7 @@ The agent will read this brief, decide which MCP tool calls to make, and weave t
 If you're working locally, compile before pushing:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile --validate
 ```
 
 <details>

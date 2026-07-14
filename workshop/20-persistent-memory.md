@@ -107,13 +107,13 @@ When you need state that survives cache eviction, switch to `repo-memory`. It st
 After editing the frontmatter, compile the workflow to confirm the memory block is valid:
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile --validate
 ```
 
 Fix any errors before pushing. Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
 
 > [!TIP]
-> Use `--watch` to recompile automatically as you edit: `gh aw compile .github/workflows/daily-status.md --watch`
+> Use `--watch` to recompile automatically as you edit: `gh aw compile --watch`
 
 ### Test the memory across two runs
 

@@ -84,7 +84,7 @@ For example, your updated Guidelines section might look like:
 > [!NOTE]
 > The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).
 >
-> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile .github/workflows/daily-status.md --validate` in its session workspace, and update the pull request.
+> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile --validate` in its session workspace, and update the pull request.
 
 ### Commit your change
 

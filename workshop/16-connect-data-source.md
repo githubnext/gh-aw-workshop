@@ -101,7 +101,7 @@ Highlight anything that looks urgent in the issue list.
 ### Compile and test
 
 ```bash
-gh aw compile .github/workflows/daily-status.md --validate
+gh aw compile --validate
 ```
 
 Fix any errors, then push and trigger a manual run:
