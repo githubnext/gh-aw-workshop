@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Conceptual screenshot of Visual Studio Code">
+      <rect width="960" height="560" fill="#f6f8fa"/>
+      <text x="480.0" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#24292f">Visual Studio Code</text>
+      <text x="480.0" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#57606a">The editor workspace where you browse files, edit workflows, and open an integrated terminal</text>
+      <rect x="60" y="90" width="840" height="380" rx="18" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="60" y="90" width="840" height="46" rx="18" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<circle cx="92" cy="113" r="6" fill="#ff5f57"/>
+<circle cx="114" cy="113" r="6" fill="#febc2e"/>
+<circle cx="136" cy="113" r="6" fill="#28c840"/>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0969da">daily-status.md — Visual Studio Code</text>
+      <rect x="84" y="156" width="56" height="290" rx="10" fill="#1f2937"/>
+<rect x="96" y="176" width="32" height="32" rx="8" fill="#0969da"/>
+<rect x="96" y="224" width="32" height="32" rx="8" fill="#57606a"/>
+<rect x="96" y="272" width="32" height="32" rx="8" fill="#57606a"/>
+<rect x="154" y="156" width="180" height="290" rx="10" fill="#0d1117"/>
+<text x="174" y="184" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">Explorer</text>
+<text x="174" y="216" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#8b949e">.github</text>
+<text x="190" y="242" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#f0f6fc">workflows</text>
+<text x="206" y="268" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#7ee787">daily-status.md</text>
+<text x="174" y="308" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#8b949e">workshop</text>
+<rect x="350" y="156" width="526" height="214" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="350" y="156" width="526" height="32" rx="10" fill="#eaeef2" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="364" y="158" width="140" height="30" rx="15" fill="#ddf4ff"/>
+<text x="434.0" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0969da">daily-status.md</text>
+<rect x="510" y="158" width="110" height="30" rx="15" fill="#f6f8fa"/>
+<text x="565.0" y="178" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#57606a">README.md</text>
+<text x="372" y="214" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">## Your Task</text>
+<text x="372" y="244" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400" fill="#24292f">1. Fetch the last 5 commits</text>
+<text x="372" y="272" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400" fill="#24292f">2. List open bug issues</text>
+<text x="372" y="300" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400" fill="#24292f">3. Post a concise summary</text>
+<rect x="350" y="384" width="526" height="62" rx="10" fill="#0d1117"/>
+<text x="372" y="418" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#7ee787">$ gh aw compile .github/workflows/daily-status.md</text>
+      <rect x="60" y="490" width="840" height="34" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+      <text x="480" y="512" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#57606a">Use this visual as a quick mental model, not a literal product screenshot.</text>
+    </svg>
