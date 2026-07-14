@@ -32,6 +32,8 @@ description: Post a daily repository status summary as a GitHub issue comment.
 
 **✏️ Try it:** Update `emoji` and `description` in your draft file to match your workflow.
 
+**✅ Check:** Run `gh aw compile .github/workflows/daily-status.md` — the output should list your workflow with no errors.
+
 ---
 
 ## Section 2 — `on:` triggers
@@ -57,6 +59,8 @@ on:
 
 **✏️ Try it:** Add both trigger keys to your draft file and save.
 
+**✅ Check:** Run `gh aw compile .github/workflows/daily-status.md` — the compile should succeed, and you should see both `schedule` and `workflow_dispatch` listed under triggers.
+
 ---
 
 ## Section 3 — `permissions:`
@@ -74,26 +78,24 @@ permissions:
 
 **What this section does:** Declares exactly which GitHub API scopes this workflow is allowed to use. Minimal permissions are a security best practice.
 
-| Field | Why it's needed |
-|-------|----------------|
-| `contents: read` | Lets the agent read files and commits. |
-| `copilot-requests: write` | Required for the Copilot engine to authenticate with `${{ github.token }}`. |
-| `issues: read` | Lets the agent list and read open issues. |
-| `pull-requests: read` | Lets the agent list open pull requests. |
-| `actions: read` | Lets the agent read recent workflow runs. |
+The five entries above cover reading repository content, issues, pull requests, and workflow runs, plus the `copilot-requests: write` scope that the Copilot engine requires to authenticate with `${{ github.token }}`. Full definitions for each field are in [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md).
 
 > [!NOTE]
 > There is no `issues: write` here. Write access is handled by `safe-outputs` — covered in [Part B](side-quest-11-08-frontmatter-tools-outputs.md).
 
 **✏️ Try it:** Add the `permissions:` block to your draft. Verify that `copilot-requests: write` is included.
 
+**✅ Check:** Run `gh aw compile .github/workflows/daily-status.md` — the compile should complete with no permission errors.
+
 ---
 
 ## ✅ Checkpoint
 
-- [ ] You updated `emoji` and `description` in your draft
-- [ ] You added both `schedule: daily` and `workflow_dispatch` triggers
-- [ ] You can name all five permissions and explain why `copilot-requests: write` is required
+- [ ] You updated `emoji` and `description` in your draft and `gh aw compile` produced no errors.
+- [ ] You added both `schedule: daily` and `workflow_dispatch` triggers, and `gh aw compile` lists both with no errors.
+- [ ] The `workflow_dispatch` trigger appears in your Actions UI after pushing the file.
+- [ ] You added the `permissions:` block with all five entries and `copilot-requests: write` is present.
+- [ ] You can explain why `copilot-requests: write` is required and where to find full field definitions.
 
 ---
 
