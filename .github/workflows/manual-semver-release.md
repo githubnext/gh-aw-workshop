@@ -345,7 +345,7 @@ network:
 
 ## Current Context
 
-Read these files before you do anything else:
+The `Compute release plan` step creates these files before the agent starts. Read them before you do anything else:
 
 - `/tmp/gh-aw/data/release-trigger.json` — repository, requested bump, triggering ref name, and triggering SHA
 - `/tmp/gh-aw/data/release-plan.json` — deterministic release metadata including the previous semver tag, next semver tag, target SHA, and whether the release is publishable
@@ -376,14 +376,14 @@ Use this structure for the release body:
 Call `noop` with a brief explanation instead of creating or updating a release if:
 
 - `release-plan.json` says `has_changes` is false
-- you cannot verify the release plan safely
+- `release-plan.json` is missing required fields or conflicts with what you can see in the repository
 - you can already see that the computed tag or release exists before attempting the safe outputs
 
 ## Safe Output
 
 When you are ready:
 
-1. Call `create_release` exactly once. It will create the tag and release from the deterministic release plan and full change list.
+1. Call `create_release` exactly once with no arguments. It will create the tag and release from the deterministic release plan and full change list.
 2. Call `update_release` exactly once with:
    - `body` — the rewritten markdown release notes
 
