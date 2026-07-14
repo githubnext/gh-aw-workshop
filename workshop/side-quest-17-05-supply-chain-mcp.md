@@ -7,7 +7,7 @@
 - Completed Side Quest: [How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md)
 - You have a workflow with a `tools:` block already configured.
 
-## The risk in one sentence
+## The Risk in One Sentence
 
 A supply chain attack through MCP starts when you trust a tool server, package, or image that can change outside your repository, and that server returns data your agent treats as real.
 
@@ -24,7 +24,7 @@ Use this table as a quick threat model when you add or review an MCP server.
 
 ## ✏️ Exercise: Inspect This `.mcp.json`
 
-Read this fictional config and decide which entry you would question first.
+Read this fictional config and look for the warning signs from the attack-surface table above.
 
 ```json
 {
@@ -57,7 +57,7 @@ Before you trust a server like this, verify who publishes it, confirm the expect
 
 ## Three Habits That Lower the Risk
 
-Follow these three habits:
+Adopt these habits when you work with MCP servers:
 
 1. **Pin the server you run.** Prefer a specific version or image digest over a mutable default like `latest`.
 2. **Restrict permissions and outputs.** Keep `permissions:` minimal and declare only the write surfaces you actually need in `safe-outputs`.
