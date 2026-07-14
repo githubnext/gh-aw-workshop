@@ -32,7 +32,7 @@ When your workflow repeats the same small job for many items, keep the main agen
 
 A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading, and add a short frontmatter block if you want fields such as `description` or `model`, then call that helper by name from the main workflow brief.
 
-> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Write it down — you'll use it in the next section.
+> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >
 > [!TIP]
 > Want the full rules for names, frontmatter, model aliases, and block placement? See the existing [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
@@ -43,14 +43,14 @@ A sub-agent is just a helper you define inside the same workflow file. In this s
 
 Open your workflow file and choose one bounded task that repeats for each item, such as summarizing one issue or classifying one pull request.
 
-**Action:** Write down two things before you edit:
+**Action:** Before you edit, choose these two things:
 
 - the sub-agent name you want to use
 - the one-sentence job that sub-agent should do
 
 ### Add one sub-agent block
 
-At the bottom of the file, add a sub-agent block like this:
+After your main workflow brief, at the bottom of the file, add a sub-agent block like this:
 
 ```markdown
 ## agent: `issue-summarizer`
