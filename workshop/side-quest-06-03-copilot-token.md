@@ -6,6 +6,16 @@ Agentic workflows that use the Copilot engine (the default) need to authenticate
 
 ---
 
+## 📋 Before You Start
+
+Before configuring Copilot authentication, confirm the following:
+
+- [ ] You arrived here from **Step 6** (Install the gh-aw CLI Extension) or **Step 11a** (Add a Copilot-powered step to your workflow).
+- [ ] You have an **active GitHub Copilot subscription** on the account that owns the repository (required for Method 1 — check at [github.com/settings/copilot](https://github.com/settings/copilot)).
+- [ ] Your workflow file is open and ready to edit.
+
+---
+
 ## Choose your authentication method
 
 | Method | What you need | When to use it |
@@ -35,6 +45,22 @@ With this in place, the workflow authenticates automatically using `${{ github.t
 
 > [!TIP]
 > The `copilot` engine is the default — you don't need to write `engine: copilot` explicitly. If your frontmatter has `copilot-requests: write`, the workflow is already configured.
+
+### ✅ Verify it works
+
+After adding `copilot-requests: write` to your workflow frontmatter, trigger your workflow manually:
+
+1. Go to your repository on GitHub and click the **Actions** tab.
+2. Select your workflow from the left sidebar and click **Run workflow**.
+3. Watch the run — if the Copilot step completes without a `401 Unauthorized` error, your token is configured correctly.
+
+You can also confirm your account's Copilot access before running:
+
+```bash
+gh auth status
+```
+
+Look for the `copilot` scope in the output, or verify your plan is active at [github.com/settings/copilot](https://github.com/settings/copilot).
 
 ---
 
@@ -70,20 +96,15 @@ permissions:
   copilot-requests: write
 ```
 
----
+### 🔍 Test your secret
 
-## Verify Copilot access
+Trigger a run to confirm the secret is wired up correctly:
 
-You can confirm that your account has an active Copilot subscription by running:
+1. Go to the **Actions** tab in your repository and run your workflow manually.
+2. Open the run and expand the Copilot step's logs.
+3. Look for a line like `Authenticated with COPILOT_GITHUB_TOKEN` — this confirms that the engine found and used your secret.
 
-```bash
-gh auth status
-```
-
-Look for a line that mentions the `copilot` scope or check that your Copilot plan is active at [github.com/settings/copilot](https://github.com/settings/copilot).
-
-> [!TIP]
-> If the workflow fails with a `401 Unauthorized` error on the Copilot step, the most common cause is either a missing Copilot subscription or the `copilot-requests: write` permission being absent from the frontmatter.
+If you see a `401 Unauthorized` error instead, double-check that the secret name is exactly `COPILOT_GITHUB_TOKEN` and that the PAT has the `copilot` scope and has not expired.
 
 ---
 
