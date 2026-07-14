@@ -85,11 +85,23 @@ jobs:
 
 </details>
 
+## Try it: Find a workflow trigger in the wild
+
+Open a real workflow file and identify its trigger — no terminal required, just your browser.
+
+1. Open any public repository on GitHub (for example, the [gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) repository).
+2. Click the **Actions** tab.
+3. Click any workflow in the left sidebar.
+4. Click **View workflow file** (top right of the run list).
+5. Identify: What triggers this workflow? (Look for the `on:` key.)
+6. Note your answer — you'll use this observation in Step 5.
+
 ## ✅ Checkpoint
 
 - [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] I labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
 - [ ] I know workflows live in `.github/workflows/`
+- [ ] I found and identified at least one workflow trigger in a public repository
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
