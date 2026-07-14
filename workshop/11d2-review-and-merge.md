@@ -44,8 +44,7 @@ The PR should contain exactly two files: the human-readable task brief (`.md`) a
 
 ### ✏️ Exercise: request a revision with `@copilot`
 
-1. Read `.github/workflows/<name>.md` and decide on one change you want so your feedback stays specific and easy for the agent to apply.
-   If the workflow already looks correct after this review, skip the comment and proceed to merge.
+1. Read `.github/workflows/<name>.md` and decide on one change you want so your feedback stays specific and easy for the agent to apply. If you do not want any changes after this review, skip the remaining steps in this exercise and proceed to merge.
 2. In the PR comment box, post a revision request that starts with `@copilot`, because the mention is what routes your instruction back to the agent:
 
 ```
@@ -59,7 +58,7 @@ The PR should contain exactly two files: the human-readable task brief (`.md`) a
 
 ## Merge and Verify the Pull Request
 
-Merging makes the workflow your source of truth on the default branch. After the merge, GitHub Actions reads the lock file every time the trigger fires, so both the `.md` and `.lock.yml` files must land on the default branch together. If the lock file is absent or mismatched, the workflow will be unrecognized or fail at runtime, which is why your final verification matters as much as the merge click itself.
+Merging makes the workflow your source of truth on the default branch. GitHub Actions reads the lock file every time the trigger fires, so both the `.md` and `.lock.yml` files must land on the default branch together. If the lock file is absent or mismatched, the workflow will be unrecognized or fail at runtime. That is why your final verification matters as much as the merge click itself.
 
 Once you are satisfied with the workflow, complete the merge and verify the result:
 
