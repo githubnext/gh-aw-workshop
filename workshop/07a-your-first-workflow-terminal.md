@@ -96,7 +96,7 @@ Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-
 
 ## ✅ Checkpoint
 
-- [ ] `.github/workflows/hello-agent.md` exists at `.github/workflows/hello-agent.md`
+- [ ] `.github/workflows/hello-agent.md` exists
 - [ ] The file starts with valid frontmatter fences (`---` ... `---`)
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
 - [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports valid

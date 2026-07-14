@@ -79,5 +79,5 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [ ] `.github/workflows/hello-agent.md` includes `safe-outputs` for `add-comment` and `create-issue`
 - [ ] The `## Task` instructions block in your workflow file describes a concrete task in plain language
 - [ ] `gh aw compile .github/workflows/hello-agent.md --validate` reports valid
-- [ ] The file is saved and committed to `main`
+- [ ] The file is committed and pushed to `main`
 - [ ] You are ready to trigger the workflow in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
