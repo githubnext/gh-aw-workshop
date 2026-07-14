@@ -37,16 +37,13 @@ Every workflow run you have built so far starts with a blank slate. That is fine
 - **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
 - **Scan incrementally** — skip pull requests you have already reviewed.
 
-`gh-aw` provides two memory primitives: **`cache-memory`** (backed by the GitHub Actions cache, ideal for short-lived deduplication) and **`repo-memory`** (backed by a committed file, ideal for durable baselines). This step focuses on `cache-memory` — the simpler and more common choice.
-
-> [!TIP]
-> **Optional Side Quest:** Want a deeper comparison of both primitives, a decision guide, and full field-by-field references for each? See [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md).
+You will use `cache-memory` in this step; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison.
 
 ## Steps
 
 ### Choose the right memory tool
 
-For a deduplication use case (the example in this step), `cache-memory` is the right choice. A few repeated alerts on cache expiry is tolerable. If you need state that must survive cache eviction — for example, a baseline comparison where losing state would trigger a flood of false positives — use `repo-memory` instead (see the side quest above).
+For this deduplication use case, `cache-memory` is the right choice.
 
 ### Add `cache-memory` to your frontmatter
 
@@ -98,10 +95,6 @@ have already reported on. On each run:
 > [!TIP]
 > Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
 
-### Use `repo-memory` for durable baselines
-
-When you need state that survives cache eviction, switch to `repo-memory`. It stores a JSON file directly in your repository and requires `contents: write` in your `permissions` block. For a full field reference, example task brief, and guidance on when to choose `repo-memory`, see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md).
-
 ### Compile and validate
 
 After editing the frontmatter, compile the workflow to confirm the memory block is valid:
@@ -115,9 +108,9 @@ Fix any errors before pushing. Common mistakes include putting `cache-memory:` a
 > [!TIP]
 > Use `--watch` to recompile automatically as you edit: `gh aw compile --watch`
 
-### Test the memory across two runs
+### Push your change and initialize the cache
 
-Push your changes and run the workflow twice in a row:
+Push your workflow update:
 
 ```bash
 git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
@@ -125,22 +118,32 @@ git commit -m "feat: add cache-memory deduplication to daily-status"
 git push
 ```
 
-1. Trigger the first run manually in **Actions → Daily Status Report → Run workflow**.
-2. Open a new issue in your practice repository.
-3. Trigger a second run.
+1. Trigger a manual run in **Actions → Daily Status Report → Run workflow**.
+2. Open the run log and confirm it contains `cache-memory: loaded 0 items`. This confirms the cache starts empty and initializes correctly.
 
-The first run reports all currently open issues and writes them to memory. The second run reads the memory, finds only the new issue you just opened, and reports only that one.
+### Trigger a second run and confirm memory reuse
+
+1. Trigger the workflow a second time with no new issues.
+2. Open the second run log and find `cache-memory: loaded N items`.
+3. Confirm `N` matches the number of issues processed in the first run.
+
+### Test deduplication with a new issue
+
+1. Open a new issue in your practice repository.
+2. Trigger the workflow again.
+3. Confirm the run reports only the new issue.
 
 > [!TIP]
 > Open the run log for the second run and look for a line where the agent reads its memory. You will see the stored issue numbers that it filters against — that's your workflow remembering across runs.
 
 ## ✅ Checkpoint
 
-- [ ] Your workflow frontmatter has `cache-memory:` or `repo-memory:` nested under `tools:`
+- [ ] Your workflow frontmatter has `cache-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot
 - [ ] `gh aw compile --validate` passes with no errors
-- [ ] You ran the workflow twice and confirmed the second run skips previously seen items
-- [ ] You can explain the difference between `cache-memory` and `repo-memory` and when to use each
+- [ ] The first manual run log includes `cache-memory: loaded 0 items`
+- [ ] The second run log includes `cache-memory: loaded N items`, and `N` matches the number of items from the first run
+- [ ] After opening a new issue and running again, only the new issue is reported
 
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 

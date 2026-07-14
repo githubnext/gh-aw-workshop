@@ -4,6 +4,12 @@
 
 By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **OpenAI models**, you'll need an OpenAI API key stored as a repository secret and a one-line change to your workflow frontmatter.
 
+## Before You Start
+
+- You have completed [Step 11: Build Your Scenario Workflow](11a-build-daily-status.md) or equivalent.
+- You already have a `GITHUB_TOKEN` repository secret in place from [Step 7](07-your-first-workflow.md).
+- You have an OpenAI account at [platform.openai.com](https://platform.openai.com).
+
 > [!NOTE]
 > In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution — it routes requests to OpenAI's current API. The name refers to the engine integration, not the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
 
@@ -26,7 +32,7 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 3. Copy the key value — it starts with `sk-`. You won't be able to view it again after closing the dialog.
 
 > [!NOTE]
-> OpenAI API keys are billed per token. Check the [OpenAI pricing page](https://openai.com/pricing) for current model costs and configure a usage limit in your OpenAI account settings to avoid unexpected charges.
+> OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before you run workflows to avoid unexpected charges or throttling.
 
 ---
 
@@ -38,8 +44,7 @@ By default, agentic workflows run on the GitHub Copilot engine. If you prefer to
 4. Set the name to `OPENAI_API_KEY` and paste the key value.
 5. Click **Add secret**.
 
-> [!TIP]
-> Secret names must use only uppercase letters, digits, and underscores. `OPENAI_API_KEY` is the exact name the `codex` engine looks for — do not rename it.
+Secret names must use only uppercase letters, digits, and underscores. `OPENAI_API_KEY` is the exact name the `codex` engine looks for, so do not rename it.
 
 ---
 
@@ -58,8 +63,7 @@ engine: codex
 ---
 ```
 
-> [!NOTE]
-> You can omit `copilot-requests: write` when using the `codex` engine — that permission is specific to the Copilot engine. Leave it out to keep permissions minimal.
+You can omit `copilot-requests: write` when using the `codex` engine. That permission is specific to the Copilot engine.
 
 A more complete example with network access configured:
 
@@ -78,22 +82,23 @@ network:
 ---
 ```
 
-> [!TIP]
-> The `codex` engine requires outbound access to `api.openai.com`. If your workflow uses the default `network: defaults` setting, add `api.openai.com` to the allow-list as shown above.
+The `codex` engine needs outbound access to `api.openai.com`. If your workflow uses the default `network: defaults` setting, add `api.openai.com` to the allow-list as shown above.
 
 ---
 
 ## Optional: choose a specific OpenAI model
+
+For most workshop workflows, `gpt-4o-mini` is the right choice — it is fast and cheap.
 
 You can pin a specific model version using the extended engine syntax:
 
 ```yaml
 engine:
   id: codex
-  model: o4-mini
+  model: gpt-4o-mini
 ```
 
-Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team.
+Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team. For more advanced configuration details (including project-scoped keys, quotas, and model availability), use the [OpenAI API docs](https://platform.openai.com/docs/overview).
 
 ---
 
