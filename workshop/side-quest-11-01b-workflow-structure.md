@@ -4,7 +4,7 @@
 
 ## 📋 Before You Start
 
-- Read [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md) so you know what this file structure supports.
+- Keep [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md) open so you can map each section here to the workflow you build next.
 
 ---
 
@@ -13,7 +13,7 @@ An agentic workflow file has two parts:
 - **Frontmatter** — YAML between `---` fences at the top of the file. This configures how and when the workflow runs.
 - **Markdown body** — the agent's task brief, written below the closing `---`. The AI reads this at runtime.
 
-The file ends in `.md` instead of `.yml` because agentic workflows use Markdown — see the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md).
+The file ends in `.md` instead of `.yml` because the frontmatter is only the opening config block — the rest of the file is a Markdown brief that the agent reads at runtime. See the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md).
 
 ---
 
