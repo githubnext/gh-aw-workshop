@@ -85,7 +85,7 @@ You should be comfortable with:
 
 No experience with GitHub Actions or AI tools required.
 
-Steps build on each other, and checkboxes at the end of each step tell you exactly what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path. (In Step 7, the Terminal path is split into two short parts: [Part 1](07a-your-first-workflow-terminal.md) and [Part 2](07a-part2-your-first-workflow-instructions.md).)
+Steps build on each other, and checkboxes at the end of each step tell you exactly what to verify before moving on. Shared landing pages at Steps 3, 7, 11, and 13 link to focused instructions for each path. (In Step 7, the Terminal path is split into two short parts: [Part 1](07a-your-first-workflow-terminal.md) and [Part 2](07a-part2-your-first-workflow-instructions.md). Step 8 continues into [Step 8b: Interpret Your First Run](08b-interpret-your-run.md) so you first run the workflow, then read what happened.)
 
 At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D). All paths converge at Step 12.
 
