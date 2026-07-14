@@ -1,5 +1,8 @@
 # GitHub Agentic Workflows Workshop
 
+> [!IMPORTANT]
+> GitHub Agentic Workflows and the `gh-aw` CLI are in public preview. You may notice product changes, rough edges, or minor differences from the screenshots and examples in this workshop.
+
 Build a real AI-powered GitHub workflow from scratch and leave with a production-style automation you can adapt to your own repositories.
 
 ![Preview of a completed workflow run in the GitHub Actions UI](workshop/images/00-workflow-run-complete.svg)
