@@ -7,7 +7,13 @@ _Watching an agent work in real time is fundamentally different from reading abo
 You'll trigger the `hello-agent` workflow from Step 7, predict what it will do before it runs, then verify your predictions against the live log.
 
 > [!IMPORTANT]
-> **Using a Codespace?** Codespace tokens lack `actions:write` by default — trigger your workflow from the **Actions** tab (steps below), not from `gh aw run`. If you want the terminal trigger, see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md) first.
+> **Codespace users — before you trigger:** Your Codespace token does not include `actions:write` by default.
+> **Quick fix (30 seconds):**
+> 1. Go to your repository **Settings → Actions → General → Workflow permissions**.
+> 2. Select **Read and write permissions** and click **Save**.
+> 3. Come back here and continue from **Trigger the workflow via GitHub Actions UI** below.
+>
+> If you prefer the terminal trigger, see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ## 📋 Before You Start
 
@@ -23,6 +29,7 @@ Before triggering, verify all three:
 - [ ] `hello-agent.md` is committed to `.github/workflows/` on `main`
 - [ ] The **Actions** tab shows **Hello Agent** in the left workflow sidebar
 - [ ] Your practice repository has at least one open issue (create one in the **Issues** tab if not)
+- [ ] (Codespace users) Did the fix work? Confirm you can see the workflow in the **Actions** tab after updating workflow permissions.
 
 ### Predict before you run
 
