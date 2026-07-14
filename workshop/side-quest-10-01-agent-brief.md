@@ -179,7 +179,7 @@ Guardrails:
 ```
 
 > [!TIP]
-> Once your brief is clear, you can ask Copilot to turn it into a workflow with the `agentic-workflows` skill, which handles frontmatter syntax and permission scopes for you.
+> Once your brief is clear, you can ask Copilot to turn it into a workflow with the `agentic-workflows` skill, which handles [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) syntax and [permission scopes](https://github.github.com/gh-aw/reference/permissions/) for you.
 
 ---
 
@@ -194,3 +194,10 @@ Guardrails:
 ---
 
 Return to [Step 10: Design Your Daily Repo Status Report](10a-design-daily-status.md) or continue to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md).
+
+## 📚 See Also
+
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

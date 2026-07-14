@@ -12,7 +12,7 @@ An empty result does not always mean failure. The call may succeed but return ze
 
 Use this sequence:
 
-1. Confirm the required read scope in workflow frontmatter (for example, `issues: read`).
+1. Confirm the required read scope in workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (for example, `issues: read`).
 2. Re-run with broader filters (or no optional filters).
 3. Compare with repository reality in the GitHub UI.
 
@@ -42,3 +42,10 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 - [ ] I can verify required read scopes in `permissions:`
 - [ ] I can test a broader query to isolate filter problems
 - [ ] I can validate whether matching repository data actually exists
+
+## 📚 See Also
+
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)

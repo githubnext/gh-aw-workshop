@@ -43,3 +43,9 @@ Pattern: **`safe-output: BLOCKED (limit reached)`**. Decide whether the second w
 - [ ] I can decide when increasing `max` is appropriate
 - [ ] I can add a guideline that prevents duplicate writes
 - [ ] I can keep safe-output limits intentionally small for safety
+
+## 📚 See Also
+
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
+- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

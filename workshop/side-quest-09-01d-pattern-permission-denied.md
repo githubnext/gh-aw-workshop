@@ -19,7 +19,7 @@ A quick check:
 
 - If the failing call changes GitHub state, inspect `safe-outputs:` first.
 - If the call only retrieves data, inspect `permissions:` first.
-- If you want a second set of eyes, ask the `agentic-workflows` skill to validate your frontmatter.
+- If you want a second set of eyes, ask the `agentic-workflows` skill to validate your [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
 ## Hands-On Exercise
 
@@ -43,3 +43,10 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 - [ ] I can fix missing read access in `permissions:`
 - [ ] I can fix missing write allowlisting in `safe-outputs:`
 - [ ] I can keep scopes and allowed outputs to the minimum needed
+
+## 📚 See Also
+
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
