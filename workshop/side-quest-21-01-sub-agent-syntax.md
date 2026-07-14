@@ -14,6 +14,8 @@ Work through this reference to practice writing correct sub-agent blocks — the
 
 ## Name rules
 
+**🔍 Predict:** which naming mistakes usually break a sub-agent heading — invalid characters, missing backticks, or the wrong starting character? Make a quick guess before reading the rules.
+
 A sub-agent heading looks like `## agent: \`name\``. The name must:
 
 - Be enclosed in backticks: `` `name` ``
@@ -23,6 +25,13 @@ A sub-agent heading looks like `## agent: \`name\``. The name must:
 Valid examples: `` `planner` ``, `` `file-summarizer` ``, `` `code-reviewer` ``
 
 Invalid examples: `` `File Summarizer` `` (spaces and uppercase), `` `1st-agent` `` (starts with a digit)
+
+<details>
+<summary>Answer</summary>
+
+All three are common problems: **missing backticks**, **invalid characters** (such as spaces or uppercase letters), and **the wrong starting character**. A valid name must be wrapped in backticks, use only lowercase letters/digits/hyphens/underscores, and start with a letter.
+
+</details>
 
 ### ✏️ Try it: fix the broken names
 
@@ -45,10 +54,19 @@ Which of these headings are invalid? Fix each one before reading the answer.
 
 ## Block boundary rules
 
+**🔍 Predict:** If you add another `##` heading after a sub-agent, does that new heading stay inside the sub-agent block or end it?
+
 - The sub-agent block starts immediately after the `` ## agent: `name` `` heading.
 - The block ends at the next level-2 heading (`##`) or at end of file.
 - No closing marker is needed.
 - Always place sub-agent blocks **at the bottom** of the file, after all main workflow content.
+
+<details>
+<summary>Answer</summary>
+
+Another `##` heading **ends** the sub-agent block. The parser treats the next level-2 heading as the start of a new top-level section.
+
+</details>
 
 ### ✏️ Quick Check — Block boundaries
 
@@ -75,6 +93,8 @@ Run via GitHub Actions...
 
 ## Supported frontmatter fields
 
+**🔍 Predict:** If a sub-agent could only override the fields most specific to its own role and cost, which fields would you expect those to be?
+
 Each sub-agent block may have its own YAML frontmatter fence. Only two fields are meaningful:
 
 | Field | Required | Default | Notes |
@@ -98,6 +118,31 @@ Read the issue body and reply with exactly one label: `bug`, `enhancement`, or `
 ```
 
 In this example, `description` documents the sub-agent's role for readers and tooling, and `model: small` keeps costs low for this bounded classification task.
+
+<details>
+<summary>Answer</summary>
+
+The best candidates are **`description`** and **`model`**. They are the two fields most specific to an individual sub-agent's role and cost, while engine, tools, and network settings stay inherited from the parent workflow.
+
+</details>
+
+### ✏️ Try it: keep or strip?
+
+Before reading on, sort these four fields into two buckets: **kept** or **stripped**.
+
+- `description`
+- `model`
+- `engine`
+- `tools`
+
+<details>
+<summary>Answer</summary>
+
+**Kept:** `description`, `model`
+
+**Stripped:** `engine`, `tools`
+
+</details>
 
 ### ✏️ Quick Check — Frontmatter fields
 
@@ -127,6 +172,8 @@ Which fields will be kept at compile time, and which will be stripped? What warn
 
 ## Model aliases
 
+**🔍 Predict:** Which alias would you reach for first when a worker does one small, repetitive task hundreds of times?
+
 | Alias | Resolves to | When to use |
 |-------|-------------|-------------|
 | `small` | mini / haiku / gpt-5-mini / gpt-5-nano / gemini-flash | Cheap, fast tasks: extraction, classification, formatting |
@@ -135,9 +182,33 @@ Which fields will be kept at compile time, and which will be stripped? What warn
 
 Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
 
+<details>
+<summary>Answer</summary>
+
+Start with **`small`**. Repetitive worker tasks usually benefit most from the cheapest bounded model, while the parent agent keeps the heavier planning and synthesis work.
+
+</details>
+
+### ✏️ Try it: match the task to the alias
+
+Choose the best alias for each task before opening the answer.
+
+- Read one issue and return `bug`, `docs`, or `question`
+- Plan the full workflow, choose which workers to call, and write the final report
+- Use the same model as the parent because the worker needs the same reasoning depth
+
+<details>
+<summary>Answer</summary>
+
+- Issue classifier → **`small`**
+- Orchestrator/planner → **`large`**
+- Match the parent model → **`inherited`**
+
+</details>
+
 ### ✏️ Quick Check — Model aliases
 
-You're writing a sub-agent that reads 500 files and summarises each one. Which alias should you use, and why?
+You're writing a sub-agent that reads 500 files and summarizes each one. Which alias should you use, and why?
 
 <details>
 <summary>Answer</summary>
