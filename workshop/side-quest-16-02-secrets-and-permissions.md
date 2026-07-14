@@ -19,6 +19,9 @@ A secret is a named, encrypted value stored in your repository settings. Your wo
 - Are **never** shown in plain text in the UI after you save them.
 - Are **masked** in workflow logs — if a secret's value appears in output, GitHub replaces it with `***`.
 
+> [!NOTE]
+> This side quest focuses on repository secrets. If several repositories need the same credential, you can also store it as an organisation secret and grant access to selected repositories.
+
 ---
 
 ## When do you need a secret?
@@ -38,7 +41,7 @@ Use this quick comparison when your workflow needs GitHub access:
 | If you need to... | Use | Why |
 |---|---|---|
 | Read or act on the same repository during a workflow run | `${{ secrets.GITHUB_TOKEN }}` | GitHub creates it automatically for each run, and it expires when the run ends. |
-| Reach outside the repository or use scopes the built-in token does not have | A PAT stored as a repository secret | You create it yourself and can give it the specific extra access you need. |
+| Reach outside this repository — for example, access another repository or trigger a workflow elsewhere — or use scopes the built-in token does not have | A PAT stored as a repository secret | You create it yourself and can give it the specific extra access you need. |
 
 ---
 
