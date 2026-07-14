@@ -282,7 +282,7 @@ Read all generated files before writing any issues:
 1. `/tmp/gh-aw/data/corpus-metrics.json` — raw per-file metrics for every workshop step
 2. `/tmp/gh-aw/data/rubric-results.json` — rubric scores per dimension, corpus statistics, and flagged findings
 3. `/tmp/gh-aw/data/score-history.json` — per-file score history across recent workshop commits and trend analysis
-4. `.github/skills/curriculum-quantitative-assessment/SKILL.md` — the shared quantitative rubric source of truth
+4. `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py` — the shared quantitative rubric implementation and source of truth
 
 ---
 

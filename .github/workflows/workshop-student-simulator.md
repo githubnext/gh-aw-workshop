@@ -198,7 +198,9 @@ Read `/tmp/gh-aw/agent/sim/data/curriculum.json`. It contains:
 
 Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, and `title` is the heading extracted from that file. Do not rely on any previously known or hardcoded list of steps.
 
-Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`). These metrics come from the shared rubric in `.github/skills/curriculum-quantitative-assessment/SKILL.md`; treat that rubric as the educational score source of truth when you recommend repairs. Use this data to ground dropout analysis and repair recommendations.
+Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`).
+These metrics come from the shared rubric in `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py`.
+Treat that rubric as the educational score source of truth when you recommend repairs, and use this data to ground dropout analysis and repair recommendations.
 
 The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main steps** (plus side quests listed in `curriculum.json`).
 
