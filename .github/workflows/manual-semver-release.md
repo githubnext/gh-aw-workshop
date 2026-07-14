@@ -170,9 +170,8 @@ Create exactly one GitHub release for the current ref using semantic versioning.
    - `minor` → increment minor and reset patch to `0`
    - `major` → increment major and reset minor and patch to `0`
 5. Use a leading `v` in the new tag name.
-6. Semver-sort the matching tags and choose the highest stable version.
-7. Summarize the most important changes since the previous semver release. Prefer merged pull requests, release-worthy commits, and notable documentation or workflow updates. If there is no previous semver release, summarize the repository's purpose, key capabilities, and the most important content currently on the default branch.
-8. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
+6. Summarize the most important changes since the previous semver release tag you identified in step 1. Limit your history inspection to the commits and merged pull requests reachable after that tag. If there is no previous semver release, summarize the repository's purpose, key capabilities, and the most important content currently on the default branch.
+7. Keep the release notes concise, factual, and written in GitHub-flavored markdown.
 
 ## Required Release Notes Format
 
@@ -190,7 +189,7 @@ Call `noop` with a brief explanation instead of creating a duplicate release if:
 
 - there are no meaningful code or content changes since the latest semver release
 - you cannot safely determine the next version
-- the computed tag already exists
+- you can already see that the computed tag or release exists before attempting the safe output
 
 ## Safe Output
 
