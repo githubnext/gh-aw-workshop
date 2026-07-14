@@ -3,9 +3,12 @@ emoji: 🔗
 name: Docs Linker
 description: >
   Daily workflow that cross-correlates workshop tasks and concepts with
-  gh-aw documentation pages. Uses cache-memory round-robin to process
-  at least 10 workshop files per run, then opens a pull request that adds inline
-  links and a "See Also" section pointing to the rendered gh-aw docs
+  gh-aw documentation pages. A preindexing step does a shallow sparse checkout
+  of docs/src/ from github/gh-aw, parses every markdown source to extract
+  section anchors (cached for 7 days), enabling the agent to produce precise
+  URL#anchor links. Uses cache-memory round-robin to process at least 10
+  workshop files per run, then opens a pull request that adds inline links and
+  a "See Also" section pointing to the rendered gh-aw docs
   (Astro Starlight site at https://github.github.com/gh-aw/).
 on:
   schedule: daily
@@ -63,6 +66,132 @@ steps:
         > /tmp/gh-aw/data/repo-state.json
 
       echo "=== Workshop files ===" && cat /tmp/gh-aw/data/repo-state.json
+
+  - name: Preindex documentation pages
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
+
+      CACHE_FILE=/tmp/gh-aw/cache-memory/docs-index.json
+      # 7 days: balances freshness with avoiding repeated checkouts on every daily run
+      MAX_AGE=604800
+
+      # Reuse cached index if fresh
+      if [[ -f "$CACHE_FILE" ]]; then
+        indexed_at=$(python3 -c "import json; print(json.load(open('$CACHE_FILE')).get('indexed_at', 0))" 2>/dev/null || echo 0)
+        age=$(( $(date +%s) - indexed_at ))
+        if [[ "$age" -lt "$MAX_AGE" ]]; then
+          echo "Doc index is fresh (${age}s old). Reusing cached index."
+          cp "$CACHE_FILE" /tmp/gh-aw/data/doc-index.json
+          echo "=== Cached doc index ===" && \
+            jq -r '.pages | to_entries[] | "  \(.key): \(.value.anchors | length) sections"' \
+            /tmp/gh-aw/data/doc-index.json
+          exit 0
+        fi
+        echo "Doc index is stale (${age}s old). Re-fetching."
+      else
+        echo "No cached doc index. Building from scratch."
+      fi
+
+      # Shallow sparse checkout of docs/src/ from github/gh-aw
+      DOCS_REPO=/tmp/gh-aw-docs-repo
+      rm -rf "$DOCS_REPO"
+      git clone \
+        --depth 1 \
+        --filter=blob:none \
+        --sparse \
+        "https://x-access-token:${GITHUB_TOKEN}@github.com/github/gh-aw.git" \
+        "$DOCS_REPO"
+      cd "$DOCS_REPO"
+      git sparse-checkout set docs/src
+      echo "Sparse checkout complete."
+
+      python3 <<'PYEOF'
+      import json, os, re, shutil, time
+
+      REPO_URL_BASE = "https://github.github.com/gh-aw"
+      DOCS_REPO     = "/tmp/gh-aw-docs-repo"
+
+      def find_content_dir(base):
+          """Find the Starlight content directory under docs/src/."""
+          for candidate in [
+              os.path.join(base, "docs/src/content/docs"),
+              os.path.join(base, "docs/src/content"),
+              os.path.join(base, "docs/src"),
+          ]:
+              if os.path.isdir(candidate) and any(
+                  fname.endswith((".md", ".mdx"))
+                  for _, _, files in os.walk(candidate)
+                  for fname in files
+              ):
+                  return candidate
+          return None
+
+      def slugify(text):
+          """Convert heading text to a rehype-slug / GitHub-style anchor ID."""
+          text = re.sub(r"<[^>]+>", "", text)   # strip HTML tags
+          text = text.lower().strip()
+          text = re.sub(r"[^\w\s-]", "", text)  # keep word chars, spaces, hyphens
+          text = re.sub(r"\s+", "-", text)      # spaces → hyphens
+          return text.strip("-")
+
+      content_dir = find_content_dir(DOCS_REPO)
+      if not content_dir:
+          raise SystemExit("ERROR: Could not locate content directory in docs/src/")
+
+      print(f"Content directory: {content_dir}")
+      index = {"indexed_at": int(time.time()), "pages": {}}
+
+      for root, dirs, files in os.walk(content_dir):
+          dirs.sort()
+          for fname in sorted(files):
+              if not re.search(r"\.mdx?$", fname):
+                  continue
+              fpath = os.path.join(root, fname)
+              rel   = os.path.relpath(fpath, content_dir).replace(os.sep, "/")
+              slug  = re.sub(r"\.mdx?$", "", rel)
+              if slug.endswith("/index"):
+                  slug = slug[:-6]
+              url = f"{REPO_URL_BASE}/{slug}/"
+
+              with open(fpath, encoding="utf-8") as f:
+                  raw = f.read()
+
+              # Extract title from frontmatter
+              title = slug.split("/")[-1].replace("-", " ").title()
+              fm = re.match(r"^---\n(.*?)\n---", raw, re.DOTALL)
+              if fm:
+                  m = re.search(r"^title:\s*[\"']?(.+?)[\"']?\s*$", fm.group(1), re.MULTILINE)
+                  if m:
+                      title = m.group(1).strip("\"'")
+
+              # Extract section headings from body (skip frontmatter)
+              body = raw[fm.end():] if fm else raw
+              anchors = []
+              for m in re.finditer(r"^#{1,4}\s+(.+)$", body, re.MULTILINE):
+                  raw_text = m.group(1).strip()
+                  clean = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", raw_text)
+                  clean = re.sub(r"[`*_{}]", "", clean).strip()
+                  anchor_id = slugify(clean)
+                  if anchor_id:
+                      anchors.append({
+                          "id":   anchor_id,
+                          "text": clean,
+                          "url":  f"{url}#{anchor_id}",
+                      })
+
+              index["pages"][url] = {"title": title, "anchors": anchors}
+              print(f"OK   {url}  ({len(anchors)} sections)")
+
+      os.makedirs("/tmp/gh-aw/data",         exist_ok=True)
+      os.makedirs("/tmp/gh-aw/cache-memory", exist_ok=True)
+      with open("/tmp/gh-aw/data/doc-index.json", "w") as f:
+          json.dump(index, f, indent=2)
+      shutil.copy("/tmp/gh-aw/data/doc-index.json", "/tmp/gh-aw/cache-memory/docs-index.json")
+      print(f"\nDoc index: {len(index['pages'])} pages indexed")
+      PYEOF
+
+      rm -rf "$DOCS_REPO"
 ---
 
 # Docs Linker
@@ -146,6 +275,30 @@ docs, add them to its working knowledge.
    }
    ```
 
+3. Read the prebuilt doc index from `/tmp/gh-aw/data/doc-index.json`. This index maps
+   each doc page URL to its title and a list of extracted section anchors:
+
+   ```json
+   {
+     "indexed_at": 1234567890,
+     "pages": {
+       "https://github.github.com/gh-aw/reference/safe-outputs/": {
+         "title": "Safe Outputs reference",
+         "anchors": [
+           { "id": "create-pull-request", "text": "Create Pull Request",
+             "url": "https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request" },
+           ...
+         ]
+       },
+       ...
+     }
+   }
+   ```
+
+   All page-level URLs in this index have already been validated as reachable.
+   Use the anchor URLs to produce precise `URL#anchor` links when a concept
+   matches a specific section heading.
+
 ---
 
 ## Select Files (Round-Robin)
@@ -174,15 +327,31 @@ above. Consider:
 - Concepts like subagents, memory, loop, patterns, token optimization
 - CLI commands (`gh aw compile`, `gh aw run`, etc.)
 
+For each matched concept, resolve the most precise URL using the doc index loaded
+in the previous step:
+
+1. Look up the page URL for the concept in the docs-site table.
+2. If the doc index has anchors for that page, find the anchor whose `text` most
+   closely matches the concept term (case-insensitive, partial match allowed).
+3. If a matching anchor is found, use its `url` field (which includes `#anchor-id`)
+   as the `doc_url` for that mapping entry.
+4. If no anchor match is found, fall back to the page-level URL.
+
 Build a mapping:
 
 ```json
 [
   {
-    "term": "safe-outputs",
+    "term": "create-pull-request",
     "context": "the sentence or heading where the term appears",
-    "doc_url": "https://github.github.com/gh-aw/reference/safe-outputs/",
-    "doc_title": "Safe Outputs"
+    "doc_url": "https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request",
+    "doc_title": "Safe Outputs — Create Pull Request"
+  },
+  {
+    "term": "schedule",
+    "context": "the sentence or heading where the term appears",
+    "doc_url": "https://github.github.com/gh-aw/reference/triggers/#schedule",
+    "doc_title": "Triggers — schedule"
   },
   ...
 ]
@@ -192,25 +361,29 @@ Only include entries where a matching URL exists in the table.
 
 ---
 
-## Fetch Reference Docs (Spot-Check)
+## Verify Concept Coverage (Doc Index Check)
 
-For the **top 3–5 most prominent concept matches**, fetch the raw source file
-from `github/gh-aw` to confirm the doc still covers the concept:
+For the **top 3–5 most prominent concept matches**, confirm that the matched
+anchor text or page title actually covers the concept by checking the doc index:
 
-```bash
-gh api repos/github/gh-aw/contents/.github/aw/<filename> \
-  --jq '.content' | base64 -d
-```
+- If the matched entry came from a **section anchor**, its `text` field must
+  contain at least one word from the identified concept term. Discard the entry
+  if it does not.
+- If the matched entry is a **page-level URL** (no anchor), the page title must
+  be topically related to the concept. Discard obviously mismatched entries.
 
-Discard a mapping entry if the fetched file does not mention the identified term
-(avoids creating dead or misleading links).
+This replaces any live API call to `github/gh-aw` during the agent phase —
+the source files were already fetched and parsed by the bash preindex step.
 
 ---
 
 ## Phase 4b — Validate Rendered URLs (Live HTTP Check)
 
-Before adding any link, verify that the rendered doc URL is actually reachable.
-For **every** mapping entry that survived Phase 4, run:
+URLs for pages that appear in the doc index are already confirmed reachable —
+skip the HTTP check for those entries.
+
+For any mapping entry whose `doc_url` is **not** covered by the doc index
+(e.g., a newly discovered page or an anchor URL not seen before), run:
 
 ```bash
 http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 \
@@ -235,10 +408,12 @@ Do **not** add any link whose URL fails this check.
 
 For each verified mapping entry, search the current target file for the **first bare
 occurrence** of the term (i.e., the term appears as plain text, not already
-inside a Markdown link). Wrap only that **first** occurrence with a hyperlink:
+inside a Markdown link). Wrap only that **first** occurrence with a hyperlink.
+Use the most precise URL available — prefer `URL#anchor` links from the doc index
+over bare page-level URLs:
 
 ```markdown
-[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+[create-pull-request](https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request)
 ```
 
 Rules:
