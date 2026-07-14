@@ -26,6 +26,13 @@ Valid examples: `` `planner` ``, `` `file-summarizer` ``, `` `code-reviewer` ``
 
 Invalid examples: `` `File Summarizer` `` (spaces and uppercase), `` `1st-agent` `` (starts with a digit)
 
+<details>
+<summary>Answer</summary>
+
+The most common problems in that list are **missing backticks**, **invalid characters** (such as spaces or uppercase letters), and **the wrong starting character**. A valid name must be wrapped in backticks, use only lowercase letters/digits/hyphens/underscores, and start with a letter.
+
+</details>
+
 ### ✏️ Try it: fix the broken names
 
 Which of these headings are invalid? Fix each one before reading the answer.
@@ -54,6 +61,13 @@ Which of these headings are invalid? Fix each one before reading the answer.
 - No closing marker is needed.
 - Always place sub-agent blocks **at the bottom** of the file, after all main workflow content.
 
+<details>
+<summary>Answer</summary>
+
+Another `##` heading **ends** the sub-agent block. The parser treats the next level-2 heading as the start of a new top-level section.
+
+</details>
+
 ### ✏️ Quick Check — Block boundaries
 
 Consider this workflow snippet. Is the sub-agent block placement correct? If not, what needs to change?
@@ -79,7 +93,7 @@ Run via GitHub Actions...
 
 ## Supported frontmatter fields
 
-**🔍 Predict:** Which frontmatter fields should a sub-agent be allowed to override for itself? Pick two before you check the table.
+**🔍 Predict:** If a sub-agent could only override the fields most specific to its own role and cost, which fields would you expect those to be?
 
 Each sub-agent block may have its own YAML frontmatter fence. Only two fields are meaningful:
 
@@ -151,6 +165,13 @@ Which fields will be kept at compile time, and which will be stripped? What warn
 | `inherited` | Parent workflow model | Default — use when the sub-agent needs the same capability as the parent |
 
 Use `small` for any bounded retrieval, extraction, or one-shot summarization task. Reserve `large` or `inherited` for the orchestrator, which plans, synthesizes, and decides.
+
+<details>
+<summary>Answer</summary>
+
+Start with **`small`**. Repetitive worker tasks usually benefit most from the cheapest bounded model, while the parent agent keeps the heavier planning and synthesis work.
+
+</details>
 
 ### ✏️ Try it: match the task to the alias
 
