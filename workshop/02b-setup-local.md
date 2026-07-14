@@ -1,7 +1,9 @@
 # Adventure B: Set Up Your Local Terminal
 
 > [!CAUTION]
-> **Don't want to use a terminal? Skip here →** Using **GitHub Copilot app**, **GitHub Mobile**, or a **browser-only** setup? You are in the wrong place. Go directly to **[Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)** — no terminal required.
+> <details>
+> <summary>**Don't want to use a terminal? Skip here →** Using **GitHub Copilot app**, **GitHub Mobile**, or a **browser-only** setup? You are in the wrong place. Go directly to **[Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)** — no terminal required.</summary>
+> </details>
 
 ## Which path is right for me?
 
@@ -82,7 +84,9 @@ You are not logged into any GitHub hosts. Run gh auth login to authenticate.
 `gh extension list` can show existing extensions or no entries if you have none yet.
 
 > [!IMPORTANT]
-> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below. If you're blocked by SSO, proxy, or host-specific issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).
+> <details>
+> <summary>**On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below. If you're blocked by SSO, proxy, or host-specific issues, also use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md).</summary>
+> </details>
 
 ### Create your practice repository
 
@@ -131,7 +135,9 @@ _What success looks like:_ interactive prompts complete and login succeeds.
 Choose **GitHub.com** and then **Login with a web browser**. A one-time code will appear in your terminal — copy it, open the URL shown, and paste the code when prompted.
 
 > [!WARNING]
-> Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
+> <details>
+> <summary>Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.</summary>
+> </details>
 
 ### Clone your practice repository
 

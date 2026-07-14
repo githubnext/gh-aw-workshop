@@ -38,7 +38,9 @@ The agent runs validation in its isolated session workspace. You do not need a t
 Before you approve the merge, the agent presents the file changes in its session response for you to review.
 
 > [!NOTE]
-> To keep `gh aw compile --watch` running while you edit, use a local or Codespaces terminal instead.
+> <details>
+> <summary>To keep `gh aw compile --watch` running while you edit, use a local or Codespaces terminal instead.</summary>
+> </details>
 
 ## Review and merge
 

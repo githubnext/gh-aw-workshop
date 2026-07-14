@@ -60,7 +60,9 @@ Good output usually:
 - Stays within the permissions and intent you defined.
 
 > [!IMPORTANT]
-> Treat logs and comments as public-to-collaborators surfaces. Never design prompts that ask the agent to print secrets.
+> <details>
+> <summary>Treat logs and comments as public-to-collaborators surfaces. Never design prompts that ask the agent to print secrets.</summary>
+> </details>
 
 ---
 

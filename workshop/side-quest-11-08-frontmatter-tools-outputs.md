@@ -51,7 +51,9 @@ safe-outputs:
 | `max: 1` | Hard limit — the agent can post at most one comment per run. Extra posts are silently dropped. |
 
 > [!IMPORTANT]
-> Without `safe-outputs`, the agent cannot write anything — even if you ask it to in the body. The YAML frontmatter is the source of truth for write access, not the prose instructions.
+> <details>
+> <summary>Without `safe-outputs`, the agent cannot write anything — even if you ask it to in the body. The YAML frontmatter is the source of truth for write access, not the prose instructions.</summary>
+> </details>
 
 **✏️ Try it:** Add `safe-outputs` to your draft. Verify that `max: 1` is indented under `add-comment:`.
 

@@ -13,7 +13,9 @@ You'll write `pr-code-reviewer.md`, place it in `.github/workflows/`, and compil
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
 > [!NOTE]
-> Want to work in the browser? Switch to the [GitHub UI path](11c-build-pr-reviewer-ui.md).
+> <details>
+> <summary>Want to work in the browser? Switch to the [GitHub UI path](11c-build-pr-reviewer-ui.md).</summary>
+> </details>
 
 ---
 
@@ -63,7 +65,9 @@ safe-outputs:
 ```
 
 > [!TIP]
-> `pull-requests: write` enables writing PR comments; `safe-outputs: add-comment: max: 5` caps the volume at five per run. For more on permission scoping and output guardrails, see [Side Quest: Frontmatter — Tools and Outputs](side-quest-11-08-frontmatter-tools-outputs.md).
+> <details>
+> <summary>`pull-requests: write` enables writing PR comments; `safe-outputs: add-comment: max: 5` caps the volume at five per run. For more on permission scoping and output guardrails, see [Side Quest: Frontmatter — Tools and Outputs](side-quest-11-08-frontmatter-tools-outputs.md).</summary>
+> </details>
 
 ### Add the agent instructions
 
@@ -197,7 +201,9 @@ Findings: {count}
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 
 > [!NOTE]
-> The PR reviewer triggers on `pull_request`, so [Step 13: Schedule It to Run Every Day](13-schedule-it.md) does not apply. Jump straight to [Step 14: What's Next?](14-next-steps.md), or go to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) to practice reading the run log.
+> <details>
+> <summary>The PR reviewer triggers on `pull_request`, so [Step 13: Schedule It to Run Every Day](13-schedule-it.md) does not apply. Jump straight to [Step 14: What's Next?](14-next-steps.md), or go to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) to practice reading the run log.</summary>
+> </details>
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)

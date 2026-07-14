@@ -5,23 +5,29 @@ _Now that setup is complete, create the repository where you'll build and test y
 _By the end of this step (3a or 3b), you will have a public `my-agentic-workflows` repository with GitHub Actions enabled._
 
 > [!IMPORTANT]
-> **Which path is right for me?** Choose the option that matches how you work:
+> <details>
+> <summary>**Which path is right for me?** Choose the option that matches how you work:</summary>
 >
 > - 🌐 **Browser / Copilot app / Mobile** — I prefer the GitHub web UI with no terminal → go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
 > - ☁️ **Codespace** — I have a Codespace open → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md) (your terminal is already open)
 > - 💻 **Local terminal** — I want to use my own machine → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md)
+>
+> </details>
 
 ## 📋 Before You Start
 
 You have completed Step 2a or Step 2b and your development environment is ready.
 
 > [!TIP]
-> **Actions tab missing?** If the **Actions** tab is not visible in your repository, GitHub Actions may be disabled on your account or organization.
+> <details>
+> <summary>**Actions tab missing?** If the **Actions** tab is not visible in your repository, GitHub Actions may be disabled on your account or organization.</summary>
 >
 > 1. Go to **GitHub.com → Your profile photo → Settings → Actions → General**.
 > 2. Under **Actions permissions**, select **Allow all actions and reusable workflows**.
 > 3. Click **Save**, then refresh your repository page.
 > 4. If you are on GitHub Enterprise Server or inside an organization, ask your admin to enable Actions for your account or repository.
+>
+> </details>
 
 ## 🎯 What You'll Do
 

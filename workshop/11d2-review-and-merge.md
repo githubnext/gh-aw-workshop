@@ -21,7 +21,9 @@ After submitting the prompt, watch the activity feed. The session typically comp
 3. Keep the pull request open in a browser tab for the next exercises.
 
 > [!TIP]
-> Want a detailed walkthrough of each agent phase? See [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md).
+> <details>
+> <summary>Want a detailed walkthrough of each agent phase? See [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md).</summary>
+> </details>
 
 ---
 
@@ -46,7 +48,9 @@ When the session ends, open the pull request it created. In the [GitHub Copilot 
 ```
 
 > [!IMPORTANT]
-> Comments directed at the Copilot agent **must** begin with `@copilot`. Without it, the agent will not see or act on your message. You can also start or continue a session for the PR in the GitHub Copilot app.
+> <details>
+> <summary>Comments directed at the Copilot agent **must** begin with `@copilot`. Without it, the agent will not see or act on your message. You can also start or continue a session for the PR in the GitHub Copilot app.</summary>
+> </details>
 
 1. Wait for the agent response. If everything already looks correct, skip this exercise and proceed to merge.
 
@@ -58,7 +62,9 @@ Once you are satisfied with the workflow:
 2. Confirm that both workflow files are on your default branch.
 
 > [!NOTE]
-> Deleting the branch is optional. You can do it from the merged PR page whenever you want.
+> <details>
+> <summary>Deleting the branch is optional. You can do it from the merged PR page whenever you want.</summary>
+> </details>
 
 The workflow is now live on your default branch. GitHub Actions will pick it up on the next scheduled trigger or when you click **Run workflow** in the Actions tab.
 

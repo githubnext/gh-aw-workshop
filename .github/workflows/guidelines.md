@@ -32,6 +32,53 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Do **not** number Markdown headers inside a file. Use descriptive headings such as `### Open the Codespace`, not `### 2. Open the Codespace`.
 - Keep ordering in ordered lists, tables, filenames, and checkpoint lists instead of in the heading text itself.
 
+## Alert callouts: always use progressive disclosure with `<details>`
+
+All GitHub alert callouts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`) **must** wrap their content in a `<details>` element nested inside the adornment. This keeps the page scannable by default and reveals supplementary information only when the learner needs it.
+
+### Pattern
+
+```markdown
+> [!TYPE]
+> <details>
+> <summary>One-line summary visible when collapsed</summary>
+>
+> Full content revealed when expanded. Can include lists,
+> tables, code blocks, and other Markdown.
+>
+> </details>
+```
+
+- The `<summary>` line is always visible. Make it informative enough to stand alone — a learner should be able to decide whether to expand without reading the body.
+- If the callout has a **bold title** on the first line (e.g. `**Enterprise users only:**`), use that title as the `<summary>` and place the remainder of the content in the body.
+- If the callout is a single sentence with no additional body, place that sentence in the `<summary>` and omit the body (`</details>` immediately follows `</summary>`).
+- Keep the `>` blockquote prefix on every line including blank separator lines (use `>` on its own for blank lines inside the adornment).
+- Do **not** use `<details open>` — the collapsed default enforces progressive disclosure.
+
+### Examples
+
+Single-line callout (summary only):
+
+```markdown
+> [!TIP]
+> <details>
+> <summary>**Already know GitHub Actions?** Check the three boxes below and skip ahead.</summary>
+> </details>
+```
+
+Multi-line callout (summary + body):
+
+```markdown
+> [!IMPORTANT]
+> <details>
+> <summary>**Enterprise users: complete this check before continuing.**</summary>
+>
+> - [ ] Copilot Enterprise is enabled for the organization
+> - [ ] A Copilot Enterprise seat is assigned to your account
+>
+> </details>
+```
+
 ## Step ordering: environment before tools, credentials before running
 
 - Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).

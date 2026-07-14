@@ -5,7 +5,9 @@
 <!-- Separate adjacent callouts -->
 
 > [!NOTE]
-> **Using the Copilot app or a mobile device?** You can complete this workshop entirely in the browser. Steps 4–10, 11 (UI builds), 13b, and 15–16 all have browser-friendly versions. Steps 17–21 may require terminal access for the most advanced activities, but optional terminal-based alternatives exist if you gain access later. Want to use a terminal now? Switch to the [Terminal path](03a-create-your-repo-terminal.md).
+> <details>
+> <summary>**Using the Copilot app or a mobile device?** You can complete this workshop entirely in the browser. Steps 4–10, 11 (UI builds), 13b, and 15–16 all have browser-friendly versions. Steps 17–21 may require terminal access for the most advanced activities, but optional terminal-based alternatives exist if you gain access later. Want to use a terminal now? Switch to the [Terminal path](03a-create-your-repo-terminal.md).</summary>
+> </details>
 
 ## 🎯 What You'll Do
 
@@ -17,7 +19,9 @@ You'll create your `my-agentic-workflows` repository, keep it open in your brows
 - You have a GitHub account and are signed in
 
 > [!NOTE]
-> **Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+> <details>
+> <summary>**Using GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC)?** Review [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.</summary>
+> </details>
 
 ## Steps
 
@@ -40,14 +44,18 @@ You should see a message like _"Get started with GitHub Actions"_.
 ![Actions tab with getting-started message](images/03-actions-tab.svg)
 
 > [!NOTE]
-> GitHub Actions is enabled by default for new public repositories. If you see a prompt to enable it, click the button to turn it on.
+> <details>
+> <summary>GitHub Actions is enabled by default for new public repositories. If you see a prompt to enable it, click the button to turn it on.</summary>
+> </details>
 
 ### Verify your setup
 
 Confirm `my-agentic-workflows` and your username appear in the page header.
 
 > [!TIP]
-> Bookmark the repository URL — you'll visit it often to watch workflows run.
+> <details>
+> <summary>Bookmark the repository URL — you'll visit it often to watch workflows run.</summary>
+> </details>
 
 ## ✅ Checkpoint
 

@@ -3,7 +3,9 @@
 **Already familiar with GitHub Actions and LLM agent concepts?** [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
 > [!NOTE]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+> <details>
+> <summary>On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.</summary>
+> </details>
 
 ## 📋 Before You Start
 
@@ -15,7 +17,8 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
 > [!NOTE]
-> **What does an agentic workflow look like in practice?**
+> <details>
+> <summary>**What does an agentic workflow look like in practice?**</summary>
 >
 > | If you use… | An agentic workflow looks like… |
 > |---|---|
@@ -24,6 +27,8 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 > | GitHub Copilot Chat (CCA) | A Copilot conversation that triggers, monitors, and summarizes a workflow for you |
 >
 > All three paths produce the same result: an automated, AI-powered workflow that runs on GitHub infrastructure.
+>
+> </details>
 
 ## Three things to know
 
@@ -52,10 +57,14 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 ```
 
 > [!IMPORTANT]
-> **Coming from classic Actions? Unlearn these 3 things first:**
+> <details>
+> <summary>**Coming from classic Actions? Unlearn these 3 things first:**</summary>
+>
 > 1. You do NOT write `jobs.steps` — write a goal in plain language instead.
 > 2. The `.md` file is NOT documentation — it IS the workflow definition.
 > 3. Output is not logs — it's a synthesized report the agent composes at runtime.
+>
+> </details>
 
 Both workflow types live in `.github/workflows/` and share the same `on:` triggers and `permissions:` blocks — only the task description format changes. For a detailed side-by-side comparison, agent anatomy, and YAML authoring details, see [Step 7: Your First Workflow](07-your-first-workflow.md) when you write one yourself.
 
@@ -89,7 +98,9 @@ Before you reveal the answer, mark the statements you can explain:
 </details>
 
 > [!NOTE]
-> A brand-new repo won't have any workflows yet — the **Actions** tab will show a "Getting started" page. That's expected at this stage. You'll create your first workflow in [Step 7: Your First Workflow](07-your-first-workflow.md).
+> <details>
+> <summary>A brand-new repo won't have any workflows yet — the **Actions** tab will show a "Getting started" page. That's expected at this stage. You'll create your first workflow in [Step 7: Your First Workflow](07-your-first-workflow.md).</summary>
+> </details>
 
 ## ✅ Checkpoint
 

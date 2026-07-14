@@ -16,8 +16,12 @@ You'll add an A/B experiment using `experiments:` and compare outcomes across ru
 ## Add an experiment to your workflow
 
 > [!TIP]
-> Prefer asking an agent with the `/agentic-workflows` skill to add the experiment. Use agents to edit agent workflows.
+> <details>
+> <summary>Prefer asking an agent with the `/agentic-workflows` skill to add the experiment. Use agents to edit agent workflows.</summary>
+>
 > Terminal users can run `gh aw compile --watch` for continuous recompilation.
+>
+> </details>
 
 ### Choose one dimension to test
 
@@ -132,7 +136,9 @@ On each run, gh-aw:
 After enough runs (10+ per variant reduces variation), compare usefulness and token cost. When one variant wins, keep it as baseline. Remove the `experiments:` frontmatter field and recompile.
 
 > [!TIP]
-> Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.
+> <details>
+> <summary>Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.</summary>
+> </details>
 
 ## ✅ Checkpoint
 

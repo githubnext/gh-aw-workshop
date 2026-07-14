@@ -23,7 +23,9 @@ on:
 ```
 
 > [!NOTE]
-> The exact cron value is randomized by `gh aw compile` to prevent all workflows from running at the same time. Your compiled output may differ from the example above — that is expected.
+> <details>
+> <summary>The exact cron value is randomized by `gh aw compile` to prevent all workflows from running at the same time. Your compiled output may differ from the example above — that is expected.</summary>
+> </details>
 
 ## Choose Your Path
 

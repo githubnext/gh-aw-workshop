@@ -23,7 +23,9 @@ A successful run produces green output and writes a `.lock.yml` file next to you
 If you see a red error, the message names the key and the line that failed. Check indentation — two-space indentation is required throughout, and tabs are not valid. For a quick-fix table covering the five most common YAML mistakes, see [Side Quest: YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md).
 
 > [!NOTE]
-> If `gh aw compile` throws a YAML parse error, start by checking indentation under nested keys (`on:`, `permissions:`, `tools:`, `safe-outputs:`) — that is the most common culprit. See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) for broken ❌ and correct ✅ examples.
+> <details>
+> <summary>If `gh aw compile` throws a YAML parse error, start by checking indentation under nested keys (`on:`, `permissions:`, `tools:`, `safe-outputs:`) — that is the most common culprit. See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) for broken ❌ and correct ✅ examples.</summary>
+> </details>
 
 ## Commit the lock file
 
@@ -40,7 +42,9 @@ git push
 Open your repository on GitHub, go to **Actions → Daily Repo Status**, and click **Run workflow**. The workflow runs and posts a comment on your most recently updated open issue.
 
 > [!TIP]
-> You can also trigger the workflow from the terminal with `gh aw run daily-status`. The `workflow_dispatch` trigger in the frontmatter is what creates the **Run workflow** button in the UI.
+> <details>
+> <summary>You can also trigger the workflow from the terminal with `gh aw run daily-status`. The `workflow_dispatch` trigger in the frontmatter is what creates the **Run workflow** button in the UI.</summary>
+> </details>
 
 ## Read the output report
 

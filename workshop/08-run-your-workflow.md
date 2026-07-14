@@ -23,13 +23,16 @@ Start by checking that every item in **Before You Start** is complete. This step
 If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option. If that fails in Codespaces with an `actions:write` error, use [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) or continue with the GitHub UI.
 
 > [!IMPORTANT]
-> **Before you trigger the run:** Confirm that your workflow is configured for Copilot access.
+> <details>
+> <summary>**Before you trigger the run:** Confirm that your workflow is configured for Copilot access.</summary>
 >
 > - If using the **`copilot-requests: write` permission** (recommended): verify your workflow frontmatter includes `copilot-requests: write` under `permissions` and your GitHub account has an active Copilot subscription.
 > - If using the **`COPILOT_GITHUB_TOKEN` secret** (or another inference provider secret): go to **Settings → Secrets and variables → Actions** in your practice repository and confirm the secret is listed under **Repository secrets**.
 > - Not sure which applies? Complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) before continuing.
 >
 > Runs that fail with a model-access or authentication error almost always indicate a missing or expired token or secret.
+>
+> </details>
 
 ### Trigger it from the Actions tab
 

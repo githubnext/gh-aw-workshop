@@ -83,7 +83,9 @@ For a repeated worker task like "read one issue and return one sentence," `model
 **Action:** Remove the unsupported field from the broken block.
 
 > [!TIP]
-> If the worker needs the same reasoning depth as the parent, you can omit `model` and let it inherit the parent model.
+> <details>
+> <summary>If the worker needs the same reasoning depth as the parent, you can omit `model` and let it inherit the parent model.</summary>
+> </details>
 
 Quick check:
 
@@ -143,7 +145,9 @@ gh aw compile
 ```
 
 > [!TIP]
-> If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.
+> <details>
+> <summary>If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.</summary>
+> </details>
 
 When the compile finishes, check that you do **not** see warnings about stripped sub-agent fields such as `engine` or `tools`.
 

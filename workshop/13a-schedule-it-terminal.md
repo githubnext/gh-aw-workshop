@@ -13,7 +13,9 @@ You'll update the `schedule` trigger in your workflow using gh-aw's fuzzy schedu
 - Your workflow file lives at `.github/workflows/daily-status.md`.
 
 > [!NOTE]
-> Want to edit in the browser? Switch to the [GitHub UI path](13b-schedule-it-ui.md).
+> <details>
+> <summary>Want to edit in the browser? Switch to the [GitHub UI path](13b-schedule-it-ui.md).</summary>
+> </details>
 
 ## What a compile error looks like
 
@@ -40,7 +42,9 @@ on:
 gh-aw accepts natural-language [schedule expressions](https://github.github.com/gh-aw/reference/triggers/) — no cron syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
 
 > [!TIP]
-> Want the full reference table, example compiled cron values, and help choosing the right cadence? See [Side Quest: Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md).
+> <details>
+> <summary>Want the full reference table, example compiled cron values, and help choosing the right cadence? See [Side Quest: Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md).</summary>
+> </details>
 
 Pick the cadence that fits your team and update the `schedule:` line accordingly. For example, to run only on weekdays:
 
@@ -51,13 +55,17 @@ on:
 ```
 
 > [!TIP]
-> Keep `workflow_dispatch` in the file even after you go to production. It lets you re-run the report on demand without changing the schedule.
+> <details>
+> <summary>Keep `workflow_dispatch` in the file even after you go to production. It lets you re-run the report on demand without changing the schedule.</summary>
+>
 > **Compile checkpoint:** Save your file, then run:
 > ```bash
 > gh aw compile
 > ```
 > A green output means your YAML is valid so far. If you see a red error, check indentation in the `on:` block you just edited.
 > For auto-recompile while editing, run `gh aw compile --watch`.
+>
+> </details>
 
 ### Compile and validate
 
@@ -82,7 +90,9 @@ Navigate to your repository on GitHub, then **Actions → daily-status**. On the
 ![Scheduled workflow badge visible in the Actions sidebar](images/13-schedule-badge.svg)
 
 > [!WARNING]
-> GitHub may delay the very first scheduled run by up to 15 minutes after you push. If the workflow doesn't fire at the expected time, check **Actions** for queued runs before assuming something is broken.
+> <details>
+> <summary>GitHub may delay the very first scheduled run by up to 15 minutes after you push. If the workflow doesn't fire at the expected time, check **Actions** for queued runs before assuming something is broken.</summary>
+> </details>
 
 ### Wait for or trigger a run
 

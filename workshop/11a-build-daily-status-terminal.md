@@ -3,11 +3,15 @@
 _You've designed the workflow on paper — now let's turn it into real, running YAML._
 
 > [!TIP]
-> **Two paths through this step:**
+> <details>
+> <summary>**Two paths through this step:**</summary>
+>
 > - **This page (manual build)** — write the file section by section so every line is clear.
 > - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup.
 >
 > Both paths produce the same workflow and converge at [Step 12](12-test-and-iterate.md). Prefer the browser? Switch to the [GitHub UI path](11a-build-daily-status-ui.md).
+>
+> </details>
 
 ## 🎯 What You'll Do
 
@@ -169,7 +173,9 @@ git push
 ```
 
 > [!TIP]
-> When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile --watch` for continuous feedback as you edit. **Agents edit agents.**
+> <details>
+> <summary>When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile --watch` for continuous feedback as you edit. **Agents edit agents.**</summary>
+> </details>
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 **Next:** [Step 11a2: Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)

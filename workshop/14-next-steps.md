@@ -35,7 +35,9 @@ Here's a quick recap of the concepts you've touched:
 | Iterative debugging | Running, reading output, tweaking, repeating |
 
 > [!TIP]
-> If any of these feel shaky, go back and re-read the relevant node. The workshop is a graph — you can revisit any step at any time.
+> <details>
+> <summary>If any of these feel shaky, go back and re-read the relevant node. The workshop is a graph — you can revisit any step at any time.</summary>
+> </details>
 
 ### Pick your next challenge
 
@@ -77,7 +79,9 @@ Found a gap? Have a better explanation? Open an issue or pull request in this re
 - **Community discussions**: look for the `gh-aw` topic on GitHub to see what others have built.
 
 > [!NOTE]
-> gh-aw is evolving quickly. Check the release notes regularly — new syntax and capabilities land frequently.
+> <details>
+> <summary>gh-aw is evolving quickly. Check the release notes regularly — new syntax and capabilities land frequently.</summary>
+> </details>
 
 ## ✅ Checkpoint
 
