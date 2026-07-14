@@ -64,4 +64,5 @@ GitHub may delay the first scheduled run. Use **Run workflow** to confirm the ed
 
 ## 📚 See Also
 
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

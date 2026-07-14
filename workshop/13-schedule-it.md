@@ -47,3 +47,8 @@ After completing your chosen path, verify:
 - [ ] At least one run has completed successfully after the schedule change.
 
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

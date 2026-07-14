@@ -79,7 +79,7 @@ For example, your updated Guidelines section might look like:
 ```
 
 > [!NOTE]
-> The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and safe-outputs).
+> The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).
 
 <!-- Separate adjacent callouts -->
 
