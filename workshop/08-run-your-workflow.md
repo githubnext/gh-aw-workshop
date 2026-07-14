@@ -36,6 +36,17 @@ Keep your predictions handy — you'll check them against the live log in a mome
 > [!NOTE]
 > **Prefer the terminal?** Trigger with `gh aw run hello-agent`, but this requires `actions:write` scope. Codespace tokens do not include this by default — see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
+<!-- -->
+
+> [!IMPORTANT]
+> **Codespace users — one-time permission setup required before triggering:**
+>
+> 1. In your practice repository, click **Settings → Actions → General**.
+> 2. Under **Workflow permissions**, select **Read and write permissions** and click **Save**.
+> 3. Confirm **Hello Agent** appears in the **Actions** sidebar before continuing.
+>
+> Skip this block if you are using a local terminal or the GitHub UI path.
+
 ### Trigger the workflow via GitHub Actions UI
 
 > [!TIP]
@@ -96,6 +107,11 @@ Now watch your own run's live log and answer these questions:
 1. Which `tool_call` did the agent make first?
 2. How many reasoning steps (`🤔`) did the agent take before posting a comment or creating an issue?
 3. Does the agent's behavior match your predictions? Note any surprises.
+
+**Predict, then check:**
+
+- [ ] Which line type appears most often in the six-line sample log in this section — `Planning`, `Tool call`, `Result`, or `Done`?
+- [ ] Return to the **Predict before you run** section and compare your written prediction to what the agent actually did first. Note one thing that matched and one thing that surprised you.
 
 ### Check the outcome
 
