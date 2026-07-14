@@ -39,12 +39,16 @@ permissions:
 With this in place, the workflow authenticates automatically using `${{ github.token }}` — the same token GitHub Actions uses for all other API calls in the same run.
 
 > [!IMPORTANT]
-> Your GitHub account must have an active GitHub Copilot subscription. The token inherits Copilot access from the account that owns the repository. If you are running inside a GitHub organization, the organization Copilot policy must allow agentic workflows.
+> <details>
+> <summary>Your GitHub account must have an active GitHub Copilot subscription. The token inherits Copilot access from the account that owns the repository. If you are running inside a GitHub organization, the organization Copilot policy must allow agentic workflows.</summary>
+> </details>
 
 <!-- -->
 
 > [!TIP]
-> The `copilot` engine is the default — you don't need to write `engine: copilot` explicitly. If your frontmatter has `copilot-requests: write`, the workflow is already configured.
+> <details>
+> <summary>The `copilot` engine is the default — you don't need to write `engine: copilot` explicitly. If your frontmatter has `copilot-requests: write`, the workflow is already configured.</summary>
+> </details>
 
 ### ✅ Verify it works
 
@@ -77,7 +81,9 @@ Use this method if you prefer a dedicated token, need to authenticate with a ser
 5. Click **Generate token** and copy the value immediately — you won't see it again.
 
 > [!NOTE]
-> The `copilot` scope grants API access to GitHub Copilot features. It does not grant any repository or organization permissions.
+> <details>
+> <summary>The `copilot` scope grants API access to GitHub Copilot features. It does not grant any repository or organization permissions.</summary>
+> </details>
 
 ### Store the token as a repository secret
 

@@ -1,13 +1,17 @@
 # Step 4: GitHub Actions in 5 Minutes
 
 > [!TIP]
-> **Already know GitHub Actions?** Check the three boxes below and skip ahead:
+> <details>
+> <summary>**Already know GitHub Actions?** Check the three boxes below and skip ahead:</summary>
+>
 > - [ ] I know workflows live in `.github/workflows/` as YAML files
 > - [ ] I can read `on`, `jobs`, and `steps` keys in a workflow file
 > - [ ] I know each step runs on a GitHub-hosted runner
 >
 > **→ [Skip to Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
 > (or [jump to Step 6: Install gh-aw](06-install-gh-aw.md) if you know both)
+>
+> </details>
 
 ## 🎯 What You'll Do
 

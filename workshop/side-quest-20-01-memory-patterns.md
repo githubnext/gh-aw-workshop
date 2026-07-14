@@ -96,7 +96,9 @@ have already reported on. On each run:
 ```
 
 > [!TIP]
-> Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
+> <details>
+> <summary>Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.</summary>
+> </details>
 
 ---
 
@@ -128,7 +130,9 @@ tools:
 | `repo-memory:` | Enables repository-backed memory for this workflow (`true` to enable). |
 
 > [!IMPORTANT]
-> `repo-memory` requires `contents: write` in your `permissions` block so the agent can commit the updated file. Add it alongside your existing permissions. This is a broader permission than `cache-memory` requires — keep the stored data small and review commits regularly.
+> <details>
+> <summary>`repo-memory` requires `contents: write` in your `permissions` block so the agent can commit the updated file. Add it alongside your existing permissions. This is a broader permission than `cache-memory` requires — keep the stored data small and review commits regularly.</summary>
+> </details>
 
 Keep the stored data small — a list of IDs or a compact summary object — to avoid cluttering your commit history with large file changes.
 

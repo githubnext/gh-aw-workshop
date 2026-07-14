@@ -35,7 +35,9 @@ A sub-agent is just a helper you define inside the same workflow file. In this s
 > 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >
 > [!TIP]
-> Want the full rules for names, frontmatter, model aliases, and block placement? See the existing [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
+> <details>
+> <summary>Want the full rules for names, frontmatter, model aliases, and block placement? See the existing [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.</summary>
+> </details>
 
 ## Apply the pattern to your workflow
 
@@ -95,7 +97,9 @@ gh aw compile
 ```
 
 > [!TIP]
-> If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.
+> <details>
+> <summary>If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.</summary>
+> </details>
 
 The compile should finish without errors and regenerate your workflow's `.lock.yml` file.
 

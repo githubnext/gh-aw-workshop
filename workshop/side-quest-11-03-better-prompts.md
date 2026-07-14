@@ -141,7 +141,9 @@ posted to the Actions run summary.
 ```
 
 > [!TIP]
-> Small changes to the task brief can have large effects on output quality. Treat it like code — version it, test it, iterate.
+> <details>
+> <summary>Small changes to the task brief can have large effects on output quality. Treat it like code — version it, test it, iterate.</summary>
+> </details>
 
 ---
 

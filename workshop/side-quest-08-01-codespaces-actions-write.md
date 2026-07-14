@@ -75,7 +75,9 @@ If you want `gh aw run` to work from the terminal, add a `.devcontainer/devconta
 Existing Codespaces do not pick up new permissions after a rebuild, so you must create a new Codespace after the file is committed. For more detail, see [Managing access to other repositories within your codespace](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-repository-access-for-your-codespaces).
 
 > [!IMPORTANT]
-> Add this file to your **practice repository**, not to `githubnext/gh-aw-workshop`.
+> <details>
+> <summary>Add this file to your **practice repository**, not to `githubnext/gh-aw-workshop`.</summary>
+> </details>
 
 ---
 

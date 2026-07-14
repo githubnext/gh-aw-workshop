@@ -60,7 +60,9 @@ Review each rubric row in order. If a row fails, that is your target for the nex
 If you are not satisfied, make one targeted prompt change and run the workflow again. Small, focused changes are easier to evaluate than large rewrites.
 
 > [!TIP]
-> **Optional Side Quest:** For a five-row problem-to-fix reference table, a repeatable iteration loop, and help reading the run log for errors, see [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
+> <details>
+> <summary>**Optional Side Quest:** For a five-row problem-to-fix reference table, a repeatable iteration loop, and help reading the run log for errors, see [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).</summary>
+> </details>
 
 ### Improve the agent instructions
 
@@ -82,9 +84,12 @@ For example, your updated Guidelines section might look like:
 ```
 
 > [!NOTE]
-> The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).
+> <details>
+> <summary>The agent instructions are **not** stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).</summary>
 >
 > **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile --validate` in its session workspace, and update the pull request.
+>
+> </details>
 
 ### Commit your change
 

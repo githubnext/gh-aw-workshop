@@ -46,11 +46,15 @@ if: github.event_name == 'workflow_dispatch'
 ```
 
 > [!TIP]
-> You can see the full contents of every context by adding a debug step:
+> <details>
+> <summary>You can see the full contents of every context by adding a debug step:</summary>
+>
 > ```yaml
 > - name: Dump contexts
 >   run: echo '${{ toJSON(github) }}'
 > ```
+>
+> </details>
 
 ### Use outputs between steps
 
@@ -89,7 +93,9 @@ if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 ```
 
 > [!NOTE]
-> Values from `$GITHUB_OUTPUT` are always strings. Compare them with quotes: `== '0'`, not `== 0`.
+> <details>
+> <summary>Values from `$GITHUB_OUTPUT` are always strings. Compare them with quotes: `== '0'`, not `== 0`.</summary>
+> </details>
 
 ### Use built-in functions
 
@@ -111,7 +117,9 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 ```
 
 > [!WARNING]
-> Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.
+> <details>
+> <summary>Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.</summary>
+> </details>
 
 ## ✅ Checkpoint
 

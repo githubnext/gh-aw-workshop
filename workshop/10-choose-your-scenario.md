@@ -26,12 +26,16 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 | [PR Code Reviewer](#adventure-c-pr-code-reviewer) | Reviews every pull request for duplicate code — checking both the changes and the existing codebase — and posts a structured review comment | Teams that want automated duplication detection in code review |
 
 > [!TIP]
-> Not sure which to pick? Start with **Adventure A** — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
+> <details>
+> <summary>Not sure which to pick? Start with **Adventure A** — it's the most detailed and has the most supporting side quests. You can always come back and try the others.</summary>
+> </details>
 
 <!-- -->
 
 > [!NOTE]
-> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
+> <details>
+> <summary>**Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).</summary>
+> </details>
 
 ---
 

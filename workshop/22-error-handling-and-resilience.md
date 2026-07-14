@@ -56,9 +56,12 @@ timeout-minutes: 10
 ```
 
 > [!TIP]
-> `timeout-minutes` belongs at the top level of gh-aw frontmatter. Do not nest it under `jobs:` or `run:`.
+> <details>
+> <summary>`timeout-minutes` belongs at the top level of gh-aw frontmatter. Do not nest it under `jobs:` or `run:`.</summary>
 >
 > Start with a generous limit (10–15 minutes) and tighten it once you know how long typical runs take.
+>
+> </details>
 
 ### Add a fallback message to safe outputs
 

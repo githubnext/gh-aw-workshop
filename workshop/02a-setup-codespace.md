@@ -17,7 +17,9 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B](02b-setup-local.md) |
 
 > [!NOTE]
-> GitHub Mobile and Copilot Cloud Agent paths do not require a terminal. Continue on the GitHub UI path and trigger workflows from the Actions tab in your browser.
+> <details>
+> <summary>GitHub Mobile and Copilot Cloud Agent paths do not require a terminal. Continue on the GitHub UI path and trigger workflows from the Actions tab in your browser.</summary>
+> </details>
 
 ## Which path is right for you?
 
@@ -56,7 +58,9 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
 ![Open Codespace](images/02a-open-codespace.svg)
 
 > [!IMPORTANT]
-> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.
+> <details>
+> <summary>**On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.</summary>
+> </details>
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
@@ -67,7 +71,9 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 3. Keep this terminal open. It is already inside your practice repository.
 
 > [!TIP]
-> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
+> <details>
+> <summary>If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).</summary>
+> </details>
 
 If this is your first time in a terminal, see [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) for a quick orientation on navigating folders and running commands.
 
@@ -105,7 +111,9 @@ github.com
 You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
 
 > [!IMPORTANT]
-> The Codespace authentication token has a limited set of scopes by default. In particular, it may **not** include `actions:write`, which is required for `gh aw run` to trigger workflows from the terminal (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you want to use `gh aw run` and hit permission errors, jump to [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+> <details>
+> <summary>The Codespace authentication token has a limited set of scopes by default. In particular, it may **not** include `actions:write`, which is required for `gh aw run` to trigger workflows from the terminal (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you want to use `gh aw run` and hit permission errors, jump to [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).</summary>
+> </details>
 
 ## ✅ Checkpoint
 

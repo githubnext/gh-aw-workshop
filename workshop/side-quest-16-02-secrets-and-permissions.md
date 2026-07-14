@@ -21,7 +21,9 @@ A secret is a named, encrypted value stored in your repository settings. Your wo
 - Are **masked** in workflow logs — if a secret's value appears in output, GitHub replaces it with `***`.
 
 > [!NOTE]
-> This side quest focuses on repository secrets. If several repositories need the same credential, you can also store it as an organisation secret and grant access to selected repositories.
+> <details>
+> <summary>This side quest focuses on repository secrets. If several repositories need the same credential, you can also store it as an organisation secret and grant access to selected repositories.</summary>
+> </details>
 
 ---
 
@@ -59,7 +61,9 @@ Use this quick comparison when your workflow needs GitHub access:
 ![Repository secrets page](images/side-quest-secrets-settings.svg)
 
 > [!TIP]
-> Secret names must use only uppercase letters, digits, and underscores. By convention, use `SCREAMING_SNAKE_CASE`.
+> <details>
+> <summary>Secret names must use only uppercase letters, digits, and underscores. By convention, use `SCREAMING_SNAKE_CASE`.</summary>
+> </details>
 
 ---
 

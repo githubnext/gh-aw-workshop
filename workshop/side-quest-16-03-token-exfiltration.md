@@ -43,7 +43,9 @@ GitHub Actions automatically redacts any value stored as a secret from all workf
 This protects values that are declared in `secrets:` — including `GITHUB_TOKEN` — from appearing in plain text anywhere in the run log.
 
 > [!NOTE]
-> Log masking covers the Actions log surface. It does not stop an agent from passing a secret to an external HTTP endpoint — which is why the firewall layer below matters.
+> <details>
+> <summary>Log masking covers the Actions log surface. It does not stop an agent from passing a secret to an external HTTP endpoint — which is why the firewall layer below matters.</summary>
+> </details>
 
 ### `safe-outputs` removes unintended write surfaces
 
@@ -77,7 +79,9 @@ network:
 Even if an injected instruction tells the agent to `curl https://attacker.example.com`, the network layer blocks that connection before a single byte leaves the runner.
 
 > [!TIP]
-> Keep `allowed` as narrow as possible. Start with only the domains your workflow's tools actually call, and add more only when a specific tool requires it.
+> <details>
+> <summary>Keep `allowed` as narrow as possible. Start with only the domains your workflow's tools actually call, and add more only when a specific tool requires it.</summary>
+> </details>
 
 ### Inject secrets only in the step that needs them
 

@@ -45,7 +45,9 @@ ls
 - `ls` lists the files and folders inside it.
 
 > [!TIP]
-> On Windows Command Prompt, use `cd` (no argument) instead of `pwd`, and `dir` instead of `ls`.
+> <details>
+> <summary>On Windows Command Prompt, use `cd` (no argument) instead of `pwd`, and `dir` instead of `ls`.</summary>
+> </details>
 
 ---
 
@@ -88,7 +90,9 @@ rm -r test-dir
 ```
 
 > [!TIP]
-> `mkdir` works the same on all platforms. On Windows Command Prompt, use `rmdir /s test-dir` instead of `rm -r test-dir`.
+> <details>
+> <summary>`mkdir` works the same on all platforms. On Windows Command Prompt, use `rmdir /s test-dir` instead of `rm -r test-dir`.</summary>
+> </details>
 
 ---
 

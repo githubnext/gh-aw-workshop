@@ -1,7 +1,9 @@
 # Step 6a: Install gh-aw — Codespace Terminal
 
 > [!NOTE]
-> Using a local terminal instead? Switch to [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).
+> <details>
+> <summary>Using a local terminal instead? Switch to [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).</summary>
+> </details>
 
 ## 🎯 What You'll Do
 

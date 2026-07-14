@@ -9,7 +9,8 @@ This step checks that all the tools and accounts you need are in place before yo
 ## Enterprise users
 
 > [!IMPORTANT]
-> **Using GHEC, GHES, or EMU? Complete this check before you continue.**
+> <details>
+> <summary>**Using GHEC, GHES, or EMU? Complete this check before you continue.**</summary>
 >
 > Agentic workflows will not run until all three Copilot Enterprise prerequisites are true for the organization that owns your workshop repository:
 >
@@ -31,11 +32,15 @@ This step checks that all the tools and accounts you need are in place before yo
 > > Please enable Copilot Enterprise, assign me a seat, and confirm the policy is active for my account.
 >
 > Review [About GitHub Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent) for current enterprise and GHES capability constraints.
+>
+> </details>
 
 <!-- -->
 
 > [!TIP]
-> **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)
+> <details>
+> <summary>**Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. Your only prerequisite is a free GitHub account. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)</summary>
+> </details>
 
 ## ✅ Required pre-flight checks
 

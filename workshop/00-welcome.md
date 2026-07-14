@@ -24,9 +24,12 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 | **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with GitHub Copilot](11d-build-copilot-agents.md) | No installation needed — start a browser session, paste a prompt, and merge a PR |
 
 > [!NOTE]
-> If you're using the **GitHub Copilot Cloud Agent (CCA)**, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.
+> <details>
+> <summary>If you're using the **GitHub Copilot Cloud Agent (CCA)**, you'll open a Codespace terminal in [Step 6](06-install-gh-aw.md) to install `gh-aw` — no extra setup needed now.</summary>
 >
 > **Experienced developer or Enterprise Cloud user?** See [Step 1: What You Need Before We Start](01-prerequisites.md) for the skip-ahead checklist and platform compatibility notes.
+>
+> </details>
 
 ## Quick check: where are you starting from?
 
@@ -107,7 +110,9 @@ Step 8 continues in [Step 8b: Interpret Your First Run](08b-interpret-your-run.m
 At **Step 11**, you can build manually (Step 11a), use the guided wizard (Adventure A), or let an agent build it (Adventure D). All paths converge at Step 12.
 
 > [!TIP]
-> If you get stuck, every step links back to the previous one. You can always rewind.
+> <details>
+> <summary>If you get stuck, every step links back to the previous one. You can always rewind.</summary>
+> </details>
 
 ## ✅ Checkpoint
 

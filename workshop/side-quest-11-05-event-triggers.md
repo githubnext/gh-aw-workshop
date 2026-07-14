@@ -97,7 +97,9 @@ The trigger decides **when** the workflow starts. The `safe-outputs` block decid
 | `schedule` | Usually a standing issue or report thread | `add-comment` |
 
 > [!IMPORTANT]
-> The trigger does **not** automatically grant write access. You still need to choose the right `safe-outputs` entry for the place you want the agent to write.
+> <details>
+> <summary>The trigger does **not** automatically grant write access. You still need to choose the right `safe-outputs` entry for the place you want the agent to write.</summary>
+> </details>
 
 ## Three questions to pick the right trigger
 

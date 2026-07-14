@@ -41,9 +41,12 @@ This shell command:
 - Writes the result to `$GITHUB_OUTPUT` so the next step can read it.
 
 > [!NOTE]
-> `$GITHUB_OUTPUT` is a special GitHub Actions file. Anything you write in the format `key=value` becomes available to later steps as `steps.<id>.outputs.key`.
+> <details>
+> <summary>`$GITHUB_OUTPUT` is a special GitHub Actions file. Anything you write in the format `key=value` becomes available to later steps as `steps.<id>.outputs.key`.</summary>
 >
 > Want to understand how `${{ steps.recent.outputs.commit_count }}` works and what other context objects exist? See [Side Quest: GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md).
+>
+> </details>
 
 ### Add a top-level condition in frontmatter
 
@@ -56,7 +59,9 @@ if: steps.recent.outputs.commit_count != '0'
 This condition skips the compiler-generated agent job entirely when `commit_count` is `0`.
 
 > [!TIP]
-> You can use `${{ steps.recent.outputs.commit_count }}` inside your prompt text too — for example: "Summarise the last ${{ steps.recent.outputs.commit_count }} commits."
+> <details>
+> <summary>You can use `${{ steps.recent.outputs.commit_count }}` inside your prompt text too — for example: "Summarise the last ${{ steps.recent.outputs.commit_count }} commits."</summary>
+> </details>
 
 ### Test it locally first
 
@@ -76,7 +81,9 @@ git push
 ```
 
 > [!WARNING]
-> Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.
+> <details>
+> <summary>Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.</summary>
+> </details>
 
 ## ✅ Checkpoint
 

@@ -13,7 +13,9 @@ You'll write the complete `daily-docs.md` agentic workflow file, placing it in `
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
 > [!NOTE]
-> Want to work in the browser? Switch to the [GitHub UI path](11b-build-daily-docs-ui.md).
+> <details>
+> <summary>Want to work in the browser? Switch to the [GitHub UI path](11b-build-daily-docs-ui.md).</summary>
+> </details>
 
 ---
 
@@ -72,8 +74,9 @@ permissions: # Required GitHub scopes
 ```
 
 > [!NOTE]
-> `copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. The other permissions here are read-only. The only write action is the issue comment, which is gated by the `safe-outputs` guardrail below.
->
+> <details>
+> <summary>`copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. The other permissions here are read-only. The only write action is the issue comment, which is gated by the `safe-outputs` guardrail below.</summary>
+> </details>
 
 ### Add tools and output guardrails
 
@@ -131,7 +134,9 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 ---
 
 > [!TIP]
-> This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**
+> <details>
+> <summary>This step has you assemble the workflow manually so you can see how the file is structured. After you understand the format, prefer modifying [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) through an agent using the `/agentic-workflows` skill instead of changing workflow files by hand. **Agents edit agents.**</summary>
+> </details>
 
 ### Commit and push
 

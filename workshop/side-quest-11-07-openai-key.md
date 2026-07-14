@@ -11,7 +11,9 @@ By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI mod
 - You have an OpenAI account or access to an OpenAI API key from your organization.
 
 > [!NOTE]
-> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution. It does not refer to the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
+> <details>
+> <summary>In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution. It does not refer to the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.</summary>
+> </details>
 
 ---
 
@@ -32,7 +34,9 @@ By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI mod
 3. Copy the key value — it starts with `sk-`.
 
 > [!NOTE]
-> OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before running workflows to avoid surprise charges or throttling.
+> <details>
+> <summary>OpenAI API keys are billed per token and are subject to account limits. Check the [OpenAI pricing page](https://openai.com/pricing) and your [OpenAI usage limits](https://platform.openai.com/settings/organization/limits) before running workflows to avoid surprise charges or throttling.</summary>
+> </details>
 
 <details>
 <summary>Key rotation best practices</summary>
