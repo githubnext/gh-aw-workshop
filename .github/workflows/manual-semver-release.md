@@ -60,6 +60,7 @@ steps:
       import pathlib
       import re
       import subprocess
+      import sys
 
       plan_path = pathlib.Path(os.environ["RELEASE_PLAN_PATH"])
       description_path = pathlib.Path(os.environ["RELEASE_DESCRIPTION_PATH"])
@@ -124,7 +125,7 @@ steps:
                   f"## Full change list since {previous_tag_display}\n- Unable to compute safely.\n"
               )
               plan_path.write_text(json.dumps(plan, indent=2))
-              raise SystemExit(0)
+              sys.exit(0)
           revspec = f"{previous_tag}..{target}"
       else:
           revspec = target
