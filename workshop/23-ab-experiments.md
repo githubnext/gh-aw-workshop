@@ -59,6 +59,9 @@ The first run gets the first variant in your array. The second run gets the seco
 
 ## Add an experiment to your workflow
 
+> [!TIP]
+> Prefer asking an agent with the `/agentic-workflows` skill to add the experiment rather than editing the workflow file by hand. **Agents edit agents.** For terminal users, run `gh aw compile --watch` for continuous recompilation while you or an agent edits.
+
 ### Choose one dimension to test
 
 A good experiment changes exactly one thing. Pick a single dimension from your task brief — for example:
@@ -70,9 +73,35 @@ A good experiment changes exactly one thing. Pick a single dimension from your t
 > [!TIP]
 > Resist the urge to test two things at once. If you change both output length and tone in the same experiment, you cannot tell which change drove any difference you see.
 
-### Add the `experiments:` block to your frontmatter
+### Use an agent to add the experiment (recommended)
 
-Open your workflow file at `.github/workflows/daily-status.md` and add `experiments:` at the top level of the frontmatter:
+Open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab and paste this prompt:
+
+```text
+Add an A/B experiment to `.github/workflows/daily-status.md`.
+
+Use the `/agentic-workflows` skill.
+
+The experiment should test output verbosity:
+- Experiment name: output_style
+- Variants: concise, detailed
+- concise variant: write a maximum of 5 bullet points, one sentence each
+- detailed variant: write a structured report with sections for open issues,
+  merged pull requests, and CI status, with a one-paragraph summary at the top
+
+Steps:
+1. Add `experiments: { output_style: [concise, detailed] }` to the frontmatter.
+2. Add `{{#if experiments.output_style == "concise" }}` / `{{#else}}` / `{{#endif}}`
+   blocks around the output instructions in the task brief.
+3. Run `gh aw compile daily-status` and fix any errors.
+4. Commit both `daily-status.md` and `daily-status.lock.yml`.
+```
+
+The agent validates and compiles the workflow in its session workspace. Review the diff before merging.
+
+### Add the experiment manually (alternative)
+
+If you prefer to edit the file directly, open `.github/workflows/daily-status.md` and add `experiments:` at the top level of the frontmatter:
 
 ```yaml
 ---
@@ -96,8 +125,6 @@ What each part does:
 | `output_style` | The experiment name. Must match `[a-zA-Z_][a-zA-Z0-9_]*` — `lowercase_with_underscores` is the recommended convention. Names that don't match this pattern are silently skipped at compile time. |
 | `[concise, detailed]` | The two variants. First variant runs first; they alternate each run. |
 
-### Update your task brief to use the variant
-
 Below the frontmatter, add conditional blocks that swap the prompt instructions based on the active variant:
 
 ```markdown
@@ -115,17 +142,10 @@ Always call the safe output tool — even if there is no activity.
 
 The `{{#if experiments.output_style == "concise" }}` block is resolved before the agent sees the prompt. From the agent's perspective, only one set of instructions exists on any given run.
 
-### Compile and push
-
-Compile the workflow to regenerate the lock file:
+Compile and push:
 
 ```bash
 gh aw compile daily-status
-```
-
-Push the changes:
-
-```bash
 git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
 git commit -m "feat: add output_style A/B experiment to daily-status"
 git push
