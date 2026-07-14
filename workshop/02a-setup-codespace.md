@@ -104,6 +104,17 @@ github.com
 
 You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
 
+> [!NOTE]
+> <details>
+> <summary><b>If <code>gh auth status</code> shows an error:</b></summary>
+>
+> - **Codespaces on github.com (free/Pro/Team):** run `gh auth login` in the terminal, choose **GitHub.com**, and follow the prompts. Then re-run `gh auth status`.
+> - **GHES, GHEC, or EMU:** your token scope may be restricted by organization policy. Open [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+>
+> </details>
+
+<!-- -->
+
 > [!IMPORTANT]
 > The Codespace authentication token has a limited set of scopes by default. In particular, it may **not** include `actions:write`, which is required for `gh aw run` to trigger workflows from the terminal (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you want to use `gh aw run` and hit permission errors, jump to [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
 
