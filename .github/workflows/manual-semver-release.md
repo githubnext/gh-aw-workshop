@@ -45,122 +45,140 @@ steps:
           sha: $sha,
           bump: $bump
         }' > "$RELEASE_TRIGGER_PATH"
+  - name: Fetch release tags
+    run: |
+      set -euo pipefail
+      git fetch --force --tags origin
   - name: Compute release plan
+    uses: actions/github-script@v7
     env:
       BUMP: ${{ github.event.inputs.bump }}
       TARGET_SHA: ${{ github.sha }}
-    run: |
-      set -euo pipefail
-      mkdir -p /tmp/gh-aw/data
-      git fetch --force --tags origin
+    with:
+      script: |
+        const fs = require('fs');
+        const path = require('path');
+        const { execFileSync, spawnSync } = require('child_process');
 
-      python3 <<'PY'
-      import json
-      import os
-      import pathlib
-      import re
-      import subprocess
-      import sys
+        const planPath = process.env.RELEASE_PLAN_PATH;
+        const descriptionPath = process.env.RELEASE_DESCRIPTION_PATH;
+        const bump = process.env.BUMP;
+        const target = process.env.TARGET_SHA;
 
-      plan_path = pathlib.Path(os.environ["RELEASE_PLAN_PATH"])
-      description_path = pathlib.Path(os.environ["RELEASE_DESCRIPTION_PATH"])
-      bump = os.environ["BUMP"]
-      target = os.environ["TARGET_SHA"]
+        const run = (...args) => execFileSync(args[0], args.slice(1), { encoding: 'utf8' }).trim();
+        const runLines = (...args) => {
+          const text = run(...args);
+          return text ? text.split(/\r?\n/).filter(line => line.trim()) : [];
+        };
 
-      def run(*args):
-          return subprocess.check_output(args, text=True).strip()
+        fs.mkdirSync(path.dirname(planPath), { recursive: true });
 
-      def run_lines(*args):
-          text = run(*args)
-          return [line for line in text.splitlines() if line.strip()]
+        const semverPattern = /^v?(\d+)\.(\d+)\.(\d+)$/;
+        const semverTags = new Map();
 
-      tags = run_lines("git", "tag", "--list")
-      semver_tags = {}
-      for tag in tags:
-          match = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)$", tag)
-          if not match:
-              continue
-          version = tuple(int(part) for part in match.groups())
-          semver_tags.setdefault(version, []).append(tag)
+        for (const tag of runLines('git', 'tag', '--list')) {
+          const match = tag.match(semverPattern);
+          if (!match) continue;
 
-      previous_tag = None
-      previous_tag_display = "start"
-      base_version = (0, 0, 0)
+          const version = match.slice(1).map(Number);
+          const key = version.join('.');
+          if (!semverTags.has(key)) {
+            semverTags.set(key, { version, tags: [] });
+          }
+          semverTags.get(key).tags.push(tag);
+        }
 
-      if semver_tags:
-          version = max(semver_tags)
-          candidates = sorted(semver_tags[version], key=lambda tag: (not tag.startswith("v"), tag))
-          previous_tag = candidates[0]
-          previous_tag_display = f"v{version[0]}.{version[1]}.{version[2]}"
-          base_version = version
+        let previousTag = null;
+        let previousTagDisplay = 'start';
+        let baseVersion = [0, 0, 0];
 
-      next_version = {
-          "patch": (base_version[0], base_version[1], base_version[2] + 1),
-          "minor": (base_version[0], base_version[1] + 1, 0),
-          "major": (base_version[0] + 1, 0, 0),
-      }[bump]
-      next_tag = f"v{next_version[0]}.{next_version[1]}.{next_version[2]}"
+        if (semverTags.size > 0) {
+          const latest = [...semverTags.values()].sort((left, right) => {
+            for (let index = 0; index < 3; index += 1) {
+              if (left.version[index] !== right.version[index]) {
+                return right.version[index] - left.version[index];
+              }
+            }
+            return 0;
+          })[0];
 
-      plan = {
-          "bump": bump,
-          "previous_tag": previous_tag,
-          "previous_tag_display": previous_tag_display,
-          "next_tag": next_tag,
-          "target": target,
-          "title": next_tag,
-          "has_changes": True,
-      }
+          previousTag = [...latest.tags].sort((left, right) => {
+            const leftScore = left.startsWith('v') ? 0 : 1;
+            const rightScore = right.startsWith('v') ? 0 : 1;
+            if (leftScore !== rightScore) return leftScore - rightScore;
+            return left.localeCompare(right);
+          })[0];
+          previousTagDisplay = `v${latest.version.join('.')}`;
+          baseVersion = latest.version;
+        }
 
-      if previous_tag:
-          ancestor_result = subprocess.run(
-              ["git", "merge-base", "--is-ancestor", previous_tag, target],
-              check=False,
-          )
-          if ancestor_result.returncode != 0:
-              plan["has_changes"] = False
-              plan["noop_reason"] = (
-                  f"Cannot safely compare {previous_tag_display} to {target} because the tag is not an ancestor of the target commit."
-              )
-              description_path.write_text(
-                  f"## Full change list since {previous_tag_display}\n- Unable to compute safely.\n"
-              )
-              plan_path.write_text(json.dumps(plan, indent=2))
-              sys.exit(0)
-          revspec = f"{previous_tag}..{target}"
-      else:
-          revspec = target
+        const nextVersion = {
+          patch: [baseVersion[0], baseVersion[1], baseVersion[2] + 1],
+          minor: [baseVersion[0], baseVersion[1] + 1, 0],
+          major: [baseVersion[0] + 1, 0, 0],
+        }[bump];
+        const nextTag = `v${nextVersion.join('.')}`;
 
-      change_lines = run_lines(
-          "git",
-          "log",
-          "--first-parent",
-          "--reverse",
-          "--pretty=format:- %s (%h)",
+        const plan = {
+          bump,
+          previous_tag: previousTag,
+          previous_tag_display: previousTagDisplay,
+          next_tag: nextTag,
+          target,
+          title: nextTag,
+          has_changes: true,
+        };
+
+        let revspec = target;
+        if (previousTag) {
+          const ancestorResult = spawnSync('git', ['merge-base', '--is-ancestor', previousTag, target], { stdio: 'ignore' });
+          if (ancestorResult.status !== 0) {
+            plan.has_changes = false;
+            plan.noop_reason = `Cannot safely compare ${previousTagDisplay} to ${target} because the tag is not an ancestor of the target commit.`;
+            fs.writeFileSync(
+              descriptionPath,
+              `## Full change list since ${previousTagDisplay}\n- Unable to compute safely.\n`,
+            );
+            fs.writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`);
+            core.info('=== Release plan ===');
+            core.info(fs.readFileSync(planPath, 'utf8'));
+            core.info('=== Deterministic release description ===');
+            core.info(fs.readFileSync(descriptionPath, 'utf8'));
+            return;
+          }
+          revspec = `${previousTag}..${target}`;
+        }
+
+        let changeLines = runLines(
+          'git',
+          'log',
+          '--first-parent',
+          '--reverse',
+          '--pretty=format:- %s (%h)',
           revspec,
-      )
+        );
 
-      plan["commit_count"] = len(change_lines)
-      if previous_tag and not change_lines:
-          plan["has_changes"] = False
-          plan["noop_reason"] = f"No meaningful changes were found since {previous_tag_display}."
+        plan.commit_count = changeLines.length;
+        if (previousTag && changeLines.length === 0) {
+          plan.has_changes = false;
+          plan.noop_reason = `No meaningful changes were found since ${previousTagDisplay}.`;
+        }
 
-      heading = (
-          f"## Full change list since {previous_tag_display}"
-          if previous_tag
-          else "## Full change list for the initial release"
-      )
-      if not change_lines:
-          change_lines = ["- No commits found in the selected release range."]
+        const heading = previousTag
+          ? `## Full change list since ${previousTagDisplay}`
+          : '## Full change list for the initial release';
 
-      description_path.write_text(heading + "\n" + "\n".join(change_lines) + "\n")
-      plan_path.write_text(json.dumps(plan, indent=2))
-      PY
+        if (changeLines.length === 0) {
+          changeLines = ['- No commits found in the selected release range.'];
+        }
 
-      echo "=== Release plan ==="
-      cat "$RELEASE_PLAN_PATH"
-      echo
-      echo "=== Deterministic release description ==="
-      cat "$RELEASE_DESCRIPTION_PATH"
+        fs.writeFileSync(descriptionPath, `${heading}\n${changeLines.join('\n')}\n`);
+        fs.writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`);
+
+        core.info('=== Release plan ===');
+        core.info(fs.readFileSync(planPath, 'utf8'));
+        core.info('=== Deterministic release description ===');
+        core.info(fs.readFileSync(descriptionPath, 'utf8'));
 safe-outputs:
   jobs:
     create-release:
