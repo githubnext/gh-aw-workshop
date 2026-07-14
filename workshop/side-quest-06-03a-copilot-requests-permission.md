@@ -19,7 +19,7 @@ permissions:
 ---
 ```
 
-That single line is the only change required. The `copilot` engine is the default, so you do not need to add `engine: copilot` explicitly.
+That single line is the only change required.
 
 ## Run your workflow
 

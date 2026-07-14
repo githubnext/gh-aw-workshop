@@ -8,7 +8,7 @@ This method stores a Personal Access Token (PAT) with the `copilot` scope as a r
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (classic)**.
 2. Give it a name, for example `gh-aw-copilot`.
-3. Set an expiry — 90 days is a reasonable default. Note the date so you can rotate it before it expires.
+3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
 4. Select the `copilot` scope. No other scopes are required.
 5. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
 
@@ -48,7 +48,7 @@ Trigger a manual run to confirm the secret is wired up correctly:
 1. Go to the **Actions** tab in your repository.
 2. Select your workflow and click **Run workflow** → **Run workflow**.
 3. Open the run and expand the Copilot step logs.
-4. Look for a line like `Authenticated with COPILOT_GITHUB_TOKEN` — this confirms the engine found and used your secret.
+4. Look for a line containing `COPILOT_GITHUB_TOKEN` in the log output — this confirms the engine found and used your secret.
 
 ## ✅ Checkpoint
 
