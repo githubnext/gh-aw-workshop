@@ -12,13 +12,13 @@ _You've designed the workflow on paper — now choose how you want to create it.
 
 Both paths produce `.github/workflows/daily-docs.md` — a workflow that reads your repository's documentation files and posts a daily health report as a GitHub issue comment. Here is a complete skeleton to orient you before you start:
 
-```yaml
+```markdown
 ---
 emoji: 📚
 description: Post a daily documentation health report as a GitHub issue comment.
 
 on:
-  schedule: daily       # Run automatically each day
+  schedule: daily       # Compiles to a daily cron schedule (midnight UTC)
   workflow_dispatch: {} # Add a manual Run button in the Actions UI
 
 permissions:
