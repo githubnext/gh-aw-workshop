@@ -249,7 +249,7 @@ Specific patterns to follow:
 | Create repository | _(optional)_ `gh repo create ...` | Preferred: [github.com/new](https://github.com/new) — fill in the form |
 | Create file | _(optional)_ editor + `git add/commit/push` | Preferred: **Add file → Create new file** → **Commit new file** |
 | Edit file | _(optional)_ editor + `git add/commit/push` | Preferred: pencil icon (✏️) → **Commit changes** |
-| Compile/validate | `gh aw compile ... --validate` | _(terminal only)_ — explain limitation and provide UI-first continuation guidance |
+| Compile | `gh aw compile` | _(terminal only)_ — explain limitation and provide UI-first continuation guidance; use `--validate` only for targeted troubleshooting/audits |
 
 ### Formatting conventions
 
