@@ -14,8 +14,8 @@ This is the finished workflow run you'll build toward in the GitHub Actions UI.
 |---|---|---|
 | **UI learner** (GitHub web UI, little or no terminal experience) | ➡️ [Step 3b: Create Your Repository in the GitHub UI](03b-create-your-repo-ui.md) | Stay in the browser without terminal setup |
 | **CLI user** (comfortable in a terminal) | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Use your existing local workflow and tools |
-| **VS Code user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
-| **GitHub Copilot app user** | ➡️ [Adventure D (Step 11d): Build with GitHub Copilot](11d-build-copilot-agents.md) | Open your repository in the desktop app, steer an agent, and land its pull request |
+| **[VS Code](side-quest-01-02-environment-reference.md#visual-studio-code-vs-code) user** | ➡️ [Adventure B (Step 2b): Set Up Local Environment](02b-setup-local.md) | Keep working in VS Code with your local repository |
+| **[GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) user** | ➡️ [Adventure D (Step 11d): Build with GitHub Copilot](11d-build-copilot-agents.md) | Open your repository in the desktop app, steer an agent, and land its pull request |
 | **GitHub Copilot user with the Agents tab enabled** | ➡️ [Adventure D (Step 11d): Build with GitHub Copilot](11d-build-copilot-agents.md) | No installation needed — start a browser session, paste a prompt, and merge a PR |
 
 > [!NOTE]

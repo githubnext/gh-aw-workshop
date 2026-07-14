@@ -12,7 +12,7 @@
 Make sure you have:
 
 - A GitHub account (free tier or higher)
-- Access to GitHub Codespaces on your plan (available on GitHub Free for public repositories and on paid plans)
+- Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
 
 ## Which path is right for me?
 

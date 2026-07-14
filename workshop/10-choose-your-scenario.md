@@ -27,7 +27,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 <!-- -->
 
 > [!NOTE]
-> **Using the GitHub Copilot app or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
+> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
 
 ---
 

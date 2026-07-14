@@ -23,7 +23,7 @@ The `add-wizard` command pulls an existing workflow from the `githubnext/agentic
 
 | Wizard step | What happens |
 |---|---|
-| Engine selection | You pick an AI engine: Copilot, Claude, Codex (OpenAI), Gemini, or Crush (GitHub Next) |
+| Engine selection | You pick an AI engine: Copilot, [Claude](side-quest-01-02-environment-reference.md#claude), Codex (OpenAI), Gemini, or Crush (GitHub Next) |
 | Secret configuration | The wizard prompts for any API keys the chosen engine needs and stores them as GitHub Actions secrets |
 | Pull request | The wizard commits the workflow file and opens a pull request in your repository |
 | Optional run | You can trigger the workflow immediately or leave it for the schedule |

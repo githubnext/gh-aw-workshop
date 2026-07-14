@@ -37,7 +37,7 @@ touch .github/workflows/hello-agent.md
 Open `.github/workflows/hello-agent.md` in your editor.
 
 <details>
-<summary>Using VS Code? Quick setup for cleaner YAML editing</summary>
+<summary>Using [VS Code](side-quest-01-02-environment-reference.md#visual-studio-code-vs-code)? Quick setup for cleaner YAML editing</summary>
 
 - Install the [YAML extension for VS Code](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
 - Set `editor.tabSize` to `2`

@@ -30,7 +30,7 @@ gh aw --version
 ```
 
 - **Version shown?** Update the extension: `gh extension upgrade github/gh-aw`
-- **Command not found?** Install the extension (open your terminal — in VS Code use `` Ctrl+` `` / `` Cmd+` ``):
+- **Command not found?** Install the extension (open your terminal — in [VS Code](side-quest-01-02-environment-reference.md#visual-studio-code-vs-code) use `` Ctrl+` `` / `` Cmd+` ``):
 
 ```bash
 gh extension install github/gh-aw
