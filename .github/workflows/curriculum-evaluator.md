@@ -33,154 +33,12 @@ steps:
       mkdir -p /tmp/gh-aw/data
 
       python3 <<'PY'
-      import json, re, pathlib, math
+      import json, pathlib, sys
 
-      workshop_dir = pathlib.Path('workshop')
-      files = sorted(
-          p for p in workshop_dir.glob('*.md')
-          if p.name not in ('README.md',)
-      )
+      sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
+      from curriculum_assessment import score_workshop_file, sorted_workshop_files
 
-      def sort_key(p):
-          m = re.match(r'(\d+)([a-z]?)', p.stem)
-          if not m:
-              return (999, p.stem)
-          return (int(m.group(1)), m.group(2) or 'z')
-
-      # ---------- helpers ----------
-      HEADING_RE    = re.compile(r'^(#{1,6})\s+(.+)', re.MULTILINE)
-      CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
-      INLINE_CMD_RE = re.compile(r'`([^`\n]+)`')
-      LINK_RE       = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
-      CHECKPOINT_RE = re.compile(r'## ✅ Checkpoint', re.MULTILINE)
-      CHECKLIST_RE  = re.compile(r'^\s*-\s+\[[ xX]\]', re.MULTILINE)
-      CALLOUT_RE    = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
-      NUMBERED_HDR  = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
-
-      BLOOM_SIGNALS = {
-          'remember':   ['welcome', 'reference', 'vocabulary', 'definition', 'terminology', 'glossary', 'prerequisite'],
-          'understand': ['intro', 'introduction', 'overview', 'understand', 'concept', 'architecture', 'explain', 'at a glance'],
-          'apply':      ['run', 'execute', 'install', 'setup', 'configure', 'connect', 'schedule', 'use'],
-          'analyze':    ['analyze', 'analyse', 'inspect', 'debug', 'diagnose', 'compare', 'output', 'troubleshoot', 'investigate'],
-          'evaluate':   ['evaluate', 'assess', 'judge', 'review', 'validate', 'verify', 'test', 'iterate'],
-          'create':     ['create', 'build', 'design', 'author', 'compose', 'construct', 'generate', 'write'],
-      }
-      BLOOM_LEVELS = ['remember', 'understand', 'apply', 'analyze', 'evaluate', 'create']
-      BLOOM_TIE_BREAK = {level: len(BLOOM_LEVELS) - idx for idx, level in enumerate(BLOOM_LEVELS)}  # Higher value = lower-order level.
-      INTRO_TOKEN_LIMIT = 220  # Limit intro analysis to the first 220 matched words.
-      TITLE_WEIGHT = 3
-      INTRO_WEIGHT = 1
-      MIN_UNDERSTAND_STEPS = 3
-      MIN_ANALYZE_STEPS = 2
-
-      def classify_bloom_level(title, text, filename):
-          title_text = f"{filename} {title}".lower()
-          prose = CODE_FENCE_RE.sub('', text).lower()
-          intro = ' '.join(re.findall(r"[a-z']+", prose)[:INTRO_TOKEN_LIMIT])
-
-          scores = {level: 0 for level in BLOOM_LEVELS}
-          evidence = {level: [] for level in BLOOM_LEVELS}
-
-          for level in BLOOM_LEVELS:
-              for cue in BLOOM_SIGNALS[level]:
-                  if re.search(r'\b' + re.escape(cue) + r'\b', title_text):
-                      scores[level] += TITLE_WEIGHT
-                      evidence[level].append(f"title:{cue}")
-                  if re.search(r'\b' + re.escape(cue) + r'\b', intro):
-                      scores[level] += INTRO_WEIGHT
-                      evidence[level].append(f"intro:{cue}")
-
-          if len(CODE_FENCE_RE.findall(text)) > 0 or len(INLINE_CMD_RE.findall(text)) >= 3:
-              scores['apply'] += 1
-              evidence['apply'].append('activity:commands_or_code')
-          if CHECKPOINT_RE.search(text):
-              scores['evaluate'] += 1
-              evidence['evaluate'].append('activity:checkpoint')
-
-          # On score ties, prefer lower-order levels first to avoid over-tagging as "create".
-          selected = max(BLOOM_LEVELS, key=lambda level: (scores[level], BLOOM_TIE_BREAK[level]))
-
-          if scores[selected] == 0:
-              return 'unknown', "No reliable Bloom cues found in title or intro."
-
-          top_cues = ', '.join(evidence[selected][:2])
-          if not top_cues:
-              top_cues = 'general activity cues'
-          return selected, f"Primary cues: {top_cues}."
-
-      def fk_grade(text):
-          """Flesch–Kincaid Grade Level (approximate)."""
-          words = re.findall(r"[a-zA-Z']+", text)
-          sentences = max(1, len(re.findall(r'[.!?]+', text)))
-          syllables = sum(
-              max(1, len(re.findall(r'[aeiouAEIOU]+', w)))
-              for w in words
-          )
-          if not words:
-              return 0.0
-          return 0.39 * (len(words) / sentences) + 11.8 * (syllables / len(words)) - 15.59
-
-      def count_new_concepts(text):
-          """Heuristic: count bold/code terms introduced for the first time."""
-          bold = re.findall(r'\*\*([^*\n]{2,40})\*\*', text)
-          code_short = [t for t in re.findall(r'`([^`\n]{2,30})`', text)
-                        if not t.startswith(('gh ', 'git ', 'cd ', 'cat ', 'echo ', 'mkdir '))]
-          return len(set(bold)) + len(set(code_short))
-
-      entries = []
-      for path in sorted(files, key=sort_key):
-          raw = path.read_text(encoding='utf-8')
-
-          # strip code fences for prose analysis
-          prose = CODE_FENCE_RE.sub('', raw)
-
-          words        = re.findall(r"[a-zA-Z']+", prose)
-          sentences    = max(1, len(re.findall(r'[.!?]+', prose)))
-          headings     = HEADING_RE.findall(raw)
-          h2_count     = sum(1 for h,_ in headings if h == '##')
-          code_blocks  = CODE_FENCE_RE.findall(raw)
-          inline_cmds  = INLINE_CMD_RE.findall(raw)
-          links        = LINK_RE.findall(raw)
-          has_checkpoint = bool(CHECKPOINT_RE.search(raw))
-          checklist_items = len(CHECKLIST_RE.findall(raw))
-          callout_count   = len(CALLOUT_RE.findall(raw))
-          numbered_hdrs   = len(NUMBERED_HDR.findall(raw))
-          new_concepts    = count_new_concepts(prose)
-          fk              = round(fk_grade(prose), 1)
-
-          # scaffolding proxy: does it link to a prerequisite section?
-          has_prereq_link = bool(re.search(r'##\s+📋\s*Before You Start', raw, re.IGNORECASE) or
-                                 re.search(r'##\s+Prerequisites', raw, re.IGNORECASE))
-
-          # active-learning ratio: code blocks + checklist items vs. word count
-          activity_density = round((len(code_blocks) + checklist_items) / max(1, len(words) / 100), 2)
-
-          title = next((t.strip() for _,t in headings if _ == '#'), path.stem)
-
-          bloom, bloom_reason = classify_bloom_level(title, raw, path.name)
-
-          entries.append({
-              'file':             path.name,
-              'title':            title,
-              'sort_key':         list(sort_key(path)),
-              'word_count':       len(words),
-              'sentence_count':   sentences,
-              'h2_sections':      h2_count,
-              'code_blocks':      len(code_blocks),
-              'inline_commands':  len(inline_cmds),
-              'external_links':   sum(1 for _,u in links if u.startswith('http')),
-              'internal_links':   sum(1 for _,u in links if not u.startswith('http')),
-              'has_checkpoint':   has_checkpoint,
-              'checklist_items':  checklist_items,
-              'callout_count':    callout_count,
-              'numbered_headings': numbered_hdrs,
-              'new_concepts':     new_concepts,
-              'fk_grade':         fk,
-              'activity_density': activity_density,
-              'has_prereq_section': has_prereq_link,
-              'bloom_level':      bloom,
-              'bloom_justification': bloom_reason,
-          })
+      entries = [score_workshop_file(path) for path in sorted_workshop_files('workshop')]
 
       pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').write_text(
           json.dumps({'files': entries, 'total': len(entries)}, indent=2)
@@ -193,78 +51,12 @@ steps:
       set -euo pipefail
 
       python3 <<'PY'
-      import json, statistics, pathlib, textwrap, sys
+      import json, statistics, pathlib
 
       data    = json.loads(pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').read_text())
-      files   = data['files']
+      scored  = data['files']
       MIN_UNDERSTAND_STEPS = 3
       MIN_ANALYZE_STEPS = 2
-
-      module_path = pathlib.Path('/tmp/gh-aw/data/rubric_scoring.py')
-      module_path.write_text(textwrap.dedent('''
-          DIMENSIONS = {
-              'cognitive_load': 2.0,
-              'readability': 1.5,
-              'active_learning': 2.0,
-              'checkpoint_quality': 2.0,
-              'scaffolding': 1.5,
-              'style_compliance': 1.0,
-          }
-
-          def score_cognitive_load(f):
-              wc = f['word_count']
-              nc = f['new_concepts']
-              wc_score = max(0, 10 - max(0, (wc - 800) / 100))
-              nc_score = max(0, 10 - max(0, (nc - 15) / 2))
-              return round((wc_score + nc_score) / 2, 1)
-
-          def score_readability(f):
-              fk = f['fk_grade']
-              if 8 <= fk <= 12:
-                  return 10.0
-              return round(max(0, 10 - abs(fk - 10) * 0.8), 1)
-
-          def score_active_learning(f):
-              return round(min(10, f['activity_density'] * 3.3), 1)
-
-          def score_checkpoint_quality(f):
-              if not f['has_checkpoint']:
-                  return 0.0
-              return round(min(10, f['checklist_items'] * 2.5), 1)
-
-          def score_scaffolding(f):
-              return 10.0 if f['has_prereq_section'] else 5.0
-
-          def score_style_compliance(f):
-              penalty = f['numbered_headings'] * 2 + max(0, f['callout_count'] - 3) * 1.5
-              return round(max(0, 10 - penalty), 1)
-
-          SCORE_FNS = {
-              'cognitive_load': score_cognitive_load,
-              'readability': score_readability,
-              'active_learning': score_active_learning,
-              'checkpoint_quality': score_checkpoint_quality,
-              'scaffolding': score_scaffolding,
-              'style_compliance': score_style_compliance,
-          }
-
-          def overall_score_from_metrics(metrics):
-              dim_scores = {}
-              weighted_sum = 0.0
-              total_weight = sum(DIMENSIONS.values())
-              for dim, weight in DIMENSIONS.items():
-                  score = SCORE_FNS[dim](metrics)
-                  dim_scores[dim] = score
-                  weighted_sum += score * weight
-              return dim_scores, round(weighted_sum / total_weight, 2)
-      ''').strip() + '\n')
-      sys.path.insert(0, str(module_path.parent))
-      from rubric_scoring import overall_score_from_metrics
-
-      scored = []
-      for f in files:
-          dim_scores, overall = overall_score_from_metrics(f)
-          scored.append({**f, 'dim_scores': dim_scores, 'overall_score': overall})
 
       # corpus statistics
       overall_scores = [f['overall_score'] for f in scored]
@@ -356,7 +148,6 @@ steps:
       python3 <<'PY'
       import json
       import pathlib
-      import re
       import subprocess
       import sys
 
@@ -376,55 +167,11 @@ steps:
       def git(*args):
           return subprocess.check_output(['git', *args], text=True).strip()
 
-      CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
-      CHECKPOINT_RE = re.compile(r'## ✅ Checkpoint', re.MULTILINE)
-      CHECKLIST_RE = re.compile(r'^\s*-\s+\[[ xX]\]', re.MULTILINE)
-      CALLOUT_RE = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
-      NUMBERED_HDR = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
-      sys.path.insert(0, '/tmp/gh-aw/data')
-      from rubric_scoring import overall_score_from_metrics
+      sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
+      from curriculum_assessment import score_markdown
 
-      def fk_grade(text):
-          words = re.findall(r"[a-zA-Z']+", text)
-          if not words:
-              return 0.0
-          sentences = max(1, len(re.findall(r'[.!?]+', text)))
-          syllables = sum(max(1, len(re.findall(r'[aeiouAEIOU]+', w))) for w in words)
-          return 0.39 * (len(words) / sentences) + 11.8 * (syllables / len(words)) - 15.59
-
-      def count_new_concepts(text):
-          bold = re.findall(r'\*\*([^*\n]{2,40})\*\*', text)
-          code_short = [t for t in re.findall(r'`([^`\n]{2,30})`', text)
-                        if not t.startswith(('gh ', 'git ', 'cd ', 'cat ', 'echo ', 'mkdir '))]
-          return len(set(bold)) + len(set(code_short))
-
-      def score_file(text):
-          prose = CODE_FENCE_RE.sub('', text)
-          words = re.findall(r"[a-zA-Z']+", prose)
-          code_blocks = CODE_FENCE_RE.findall(text)
-          has_checkpoint = bool(CHECKPOINT_RE.search(text))
-          checklist_items = len(CHECKLIST_RE.findall(text))
-          callout_count = len(CALLOUT_RE.findall(text))
-          numbered_headings = len(NUMBERED_HDR.findall(text))
-          new_concepts = count_new_concepts(prose)
-          fk = round(fk_grade(prose), 1)
-          has_prereq_section = bool(
-              re.search(r'##\s+📋\s*Before You Start', text, re.IGNORECASE) or
-              re.search(r'##\s+Prerequisites', text, re.IGNORECASE)
-          )
-          activity_density = round((len(code_blocks) + checklist_items) / max(1, len(words) / 100), 2)
-          metrics = {
-              'word_count': len(words),
-              'new_concepts': new_concepts,
-              'fk_grade': fk,
-              'activity_density': activity_density,
-              'has_checkpoint': has_checkpoint,
-              'checklist_items': checklist_items,
-              'has_prereq_section': has_prereq_section,
-              'numbered_headings': numbered_headings,
-              'callout_count': callout_count,
-          }
-          return overall_score_from_metrics(metrics)[1]
+      def score_file(text, filename):
+          return score_markdown(text, filename)['overall_score']
 
       start_ref = git('rev-parse', '--abbrev-ref', 'HEAD')
       if start_ref == 'HEAD':
@@ -444,7 +191,7 @@ steps:
                   if not path.exists():
                       continue
                   text = path.read_text(encoding='utf-8')
-                  commit_scores[filename] = score_file(text)
+                  commit_scores[filename] = score_file(text, filename)
 
               if not commit_scores:
                   continue
@@ -535,6 +282,7 @@ Read all generated files before writing any issues:
 1. `/tmp/gh-aw/data/corpus-metrics.json` — raw per-file metrics for every workshop step
 2. `/tmp/gh-aw/data/rubric-results.json` — rubric scores per dimension, corpus statistics, and flagged findings
 3. `/tmp/gh-aw/data/score-history.json` — per-file score history across recent workshop commits and trend analysis
+4. `.github/skills/curriculum-quantitative-assessment/SKILL.md` — the shared quantitative rubric source of truth
 
 ---
 

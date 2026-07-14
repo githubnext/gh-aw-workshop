@@ -98,7 +98,7 @@ steps:
     run: |
       mkdir -p /tmp/gh-aw/agent/sim/data
       python3 <<'PY'
-      import json, pathlib, re, statistics
+      import json, pathlib, statistics, sys
 
       workshop = pathlib.Path('workshop')
       if not workshop.is_dir():
@@ -110,132 +110,19 @@ steps:
               ef.write('WORKSHOP_STEP_COUNT=0\n')
           exit(0)
 
-      CHECKPOINT_RE = re.compile(r'##\s+✅\s*Checkpoint', re.IGNORECASE)
-      CHECKLIST_RE = re.compile(r'^\s*-\s+\[[ xX]\]', re.MULTILINE)
-      CODE_FENCE_RE = re.compile(r'```[^\n]*\n(.*?)```', re.DOTALL)
-      CALLOUT_RE = re.compile(r'^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]', re.MULTILINE)
-      NUMBERED_HDR_RE = re.compile(r'^#{1,6}\s+\d+[.)]\s+', re.MULTILINE)
-      SENTENCE_RE = re.compile(r'[.!?]')
+      sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
+      from curriculum_assessment import extract_title, score_workshop_file, sorted_workshop_files
 
-      OPTIMAL_WORD_COUNT = 800
-      WORD_COUNT_PENALTY_PER = 100
-      READABILITY_IDEAL_MIN = 8
-      READABILITY_IDEAL_MAX = 12
-      READABILITY_TARGET = 10
-      READABILITY_PENALTY_SCALE = 0.8
-      ACTIVITY_DENSITY_SCALE = 3.3
-      CHECKPOINT_ITEM_SCALE = 2.5
-      STYLE_BASE_SCORE = 10
-      STYLE_NUMBERED_HEADING_PENALTY = 2
-      STYLE_CALLOUT_GRACE = 3
-      STYLE_EXTRA_CALLOUT_PENALTY = 1.5
-
-      def extract_title(raw, fallback):
-          for line in raw.splitlines():
-              if line.startswith('# '):
-                  return line[2:].strip()
-          return fallback
-
-      def fk_grade(text):
-          """Approximate FK grade for directional curriculum scoring."""
-          words = re.findall(r"[a-zA-Z']+", text)
-          sentences = max(1, len(SENTENCE_RE.findall(text)))
-          syllables = 0
-          for w in words:
-              vowel_groups = len(re.findall(r'[aeiouAEIOU]+', w))
-              syllables += vowel_groups if vowel_groups > 0 else 1
-          if not words:
-              return 0.0
-          return round(0.39 * (len(words) / sentences) + 11.8 * (syllables / len(words)) - 15.59, 1)
-
-      def quality_metrics_for(raw, file_name, title):
-          prose = CODE_FENCE_RE.sub('', raw)
-          words = len(re.findall(r"[a-zA-Z']+", prose))
-          code_blocks = len(CODE_FENCE_RE.findall(raw))
-          checklist_items = len(CHECKLIST_RE.findall(raw))
-          has_checkpoint = bool(CHECKPOINT_RE.search(raw))
-          callout_count = len(CALLOUT_RE.findall(raw))
-          numbered_headings = len(NUMBERED_HDR_RE.findall(raw))
-          fk = fk_grade(prose)
-          # Activities per 100 words so longer steps without added practice score lower.
-          activity_density = round((code_blocks + checklist_items) / max(1, words / 100), 2)
-
-          word_excess = max(0, words - OPTIMAL_WORD_COUNT)
-          cognitive_penalty = word_excess / WORD_COUNT_PENALTY_PER
-          cognitive_load = round(max(0, 10 - cognitive_penalty), 1)
-          readability = (
-              10.0 if READABILITY_IDEAL_MIN <= fk <= READABILITY_IDEAL_MAX
-              else round(max(0, 10 - abs(fk - READABILITY_TARGET) * READABILITY_PENALTY_SCALE), 1)
-          )
-          active_learning = round(min(10, activity_density * ACTIVITY_DENSITY_SCALE), 1)
-          checkpoint_quality = 0.0 if not has_checkpoint else round(min(10, checklist_items * CHECKPOINT_ITEM_SCALE), 1)
-          style_compliance = round(max(
-              0,
-              STYLE_BASE_SCORE - (
-                  numbered_headings * STYLE_NUMBERED_HEADING_PENALTY
-                  + max(0, callout_count - STYLE_CALLOUT_GRACE) * STYLE_EXTRA_CALLOUT_PENALTY
-              )
-          ), 1)
-
-          dimensions = {
-              'cognitive_load': cognitive_load,
-              'readability': readability,
-              'active_learning': active_learning,
-              'checkpoint_quality': checkpoint_quality,
-              'style_compliance': style_compliance,
-          }
-          # Keep weights aligned with .github/workflows/curriculum-evaluator.md so dropout
-          # analysis can correlate simulator friction with the same rubric emphasis.
-          weights = {
-              'cognitive_load': 2.0,
-              'readability': 1.5,
-              'active_learning': 2.0,
-              'checkpoint_quality': 2.0,
-              'style_compliance': 1.0,
-          }
-          weighted = sum(dimensions[k] * weights[k] for k in dimensions)
-          overall = round(weighted / sum(weights.values()), 2)
-
-          return {
-              'file': file_name,
-              'title': title,
-              'word_count': words,
-              'fk_grade': fk,
-              'activity_density': activity_density,
-              'has_checkpoint': has_checkpoint,
-              'checklist_items': checklist_items,
-              'callout_count': callout_count,
-              'numbered_headings': numbered_headings,
-              'dim_scores': dimensions,
-              'overall_score': overall,
-          }
-
-      def sort_key(name):
-          """Sort workshop filenames in curriculum order.
-
-          Numbered files (e.g. 02a-setup.md) are sorted numerically with the
-          optional letter suffix sorted alphabetically (02a < 02b). Files without
-          a leading number (e.g. side-quest-*.md) sort last, alphabetically.
-          """
-          m = re.match(r'^(\d+)([a-z]?)', name)
-          if not m:
-              return (999, name)
-          return (int(m.group(1)), m.group(2) or '')
-
-      all_files = sorted(
-          (f for f in workshop.glob('*.md') if f.name != 'README.md'),
-          key=lambda f: sort_key(f.name)
-      )
+      all_files = sorted_workshop_files(workshop)
       main_steps = [f for f in all_files if not f.name.startswith('side-quest')]
       side_quests = [f for f in all_files if f.name.startswith('side-quest')]
 
       curriculum = []
       quality_metrics = []
       for i, f in enumerate(main_steps):
-          raw = f.read_text(encoding='utf-8')
-          title = extract_title(raw, f.stem)
-          curriculum.append({'index': i, 'file': f.name, 'title': title})
-          quality_metrics.append(quality_metrics_for(raw, f.name, title))
+          scored = score_workshop_file(f)
+          curriculum.append({'index': i, 'file': f.name, 'title': scored['title']})
+          quality_metrics.append(scored)
 
       side_quest_list = []
       for f in side_quests:
@@ -311,7 +198,7 @@ Read `/tmp/gh-aw/agent/sim/data/curriculum.json`. It contains:
 
 Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, and `title` is the heading extracted from that file. Do not rely on any previously known or hardcoded list of steps.
 
-Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `style_compliance`). Use this data to ground dropout analysis and repair recommendations.
+Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`). These metrics come from the shared rubric in `.github/skills/curriculum-quantitative-assessment/SKILL.md`; treat that rubric as the educational score source of truth when you recommend repairs. Use this data to ground dropout analysis and repair recommendations.
 
 The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main steps** (plus side quests listed in `curriculum.json`).
 
@@ -474,6 +361,7 @@ Use the pre-computed values from `monte-carlo-replay.json` as the primary data s
 - **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`)
 - **Curriculum quality hotspots** — correlate top-dropout steps with low `overall_score` and weak rubric dimensions from `curriculum-quality-metrics.json`
 - **Improvement opportunities** — specific, actionable suggestions for each top dropout step
+- **Score-safe repairs** — each recommendation must explicitly name the weak rubric dimension(s) it targets and preserve or improve the affected step's `overall_score`. Do not recommend removing checkpoints, practice, or scaffolding unless you replace them with an equal or stronger learning support.
 
 ### Update student profiles
 
@@ -550,10 +438,12 @@ After creating the report issue, create **exactly 3 child issues** using `create
 - sets `parent: "aw_workshop_simulation_parent"` to link directly to the parent from step 7
 - has a concise, imperative title starting with `Repair:` or `Improve:`
 - describes one concrete workshop improvement only
+- ties the change back to the current quantitative rubric scores for that step
 - includes:
   - problem statement
   - proposed change
+  - quantitative guardrail: current `overall_score`, weakest rubric dimension(s), and why the proposed change should maintain or raise the score
   - acceptance criteria checklist (2-4 items)
   - suggested owner profile (for example: `copilot coding agent` or `workshop maintainer`)
 
-Choose repairs from the highest-dropout steps and keep each child issue independently actionable and assignable.
+Choose repairs from the highest-dropout steps and keep each child issue independently actionable and assignable. At least one acceptance criterion in each child issue must assert that the shared curriculum quantitative assessment score for the affected step stays flat or improves overall after the change.
