@@ -38,15 +38,17 @@ jobs:
           failed=0
 
           for file in "${files[@]}"; do
-            if grep -nE '^[[:space:]]*#{1,6}[[:space:]]+[0-9]+([.)]?[[:space:]]' "$file" >/tmp/numbered-headers.txt; then
+            numbered_headers=$(grep -nE '^[[:space:]]*#{1,6}[[:space:]]+[0-9]+' "$file" || true)
+            if [ -n "$numbered_headers" ]; then
               echo "::error file=$file,title=Numbered headers are not allowed::Found numbered markdown headers. Use descriptive headers and keep ordering in lists/filenames."
-              cat /tmp/numbered-headers.txt
+              echo "$numbered_headers"
               failed=1
             fi
 
-            if grep -niE '\bnode\.?js\b|\bnode[[:space:]]+--version\b' "$file" >/tmp/nodejs-references.txt; then
+            nodejs_references=$(grep -nE '[Nn]ode\.?[Jj][Ss]|[Nn]ode[[:space:]]+--version' "$file" || true)
+            if [ -n "$nodejs_references" ]; then
               echo "::error file=$file,title=Node.js references are not allowed::Remove Node.js prerequisites, install steps, or node version checks from workshop content."
-              cat /tmp/nodejs-references.txt
+              echo "$nodejs_references"
               failed=1
             fi
           done
