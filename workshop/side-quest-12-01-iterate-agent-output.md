@@ -10,8 +10,7 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 - You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
 - Your workflow posts to a safe output surface such as the **Daily Status Reports** issue.
-- If you are working in a browser-based environment without terminal access, you can still complete this side quest.
-- Ask a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
+- If you are working in a browser-based environment without terminal access, ask a Copilot agent to make the one-sentence edit and run `gh aw compile` for you.
 
 ## Trigger one baseline run
 
@@ -75,7 +74,7 @@ Write your result in a short before/after comparison:
 
 ```text
 Before: Accuracy 2, Completeness 1, Tone 0
-After:  Accuracy 2, Completeness 2, Tone 2
+After: Accuracy 2, Completeness 2, Tone 2
 Changed sentence: "Write in a friendly, conversational tone."
 ```
 
