@@ -77,7 +77,7 @@ Keep this goal statement handy — you will use it when authoring your first age
 ## What stays the same
 
 - Workflows still run in GitHub Actions runners
-- Triggers, permissions, and repository context still matter
+- [Triggers](https://github.github.com/gh-aw/reference/triggers/), permissions, and repository context still matter
 - You still version workflows in git and review them like code
 
 The same authoring and review workflow applies everywhere — only the runner configuration differs.
@@ -102,3 +102,8 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 ---
 
 Return to the main adventure: [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

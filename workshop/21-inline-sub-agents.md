@@ -179,6 +179,9 @@ Trigger a manual run and open the run log. You should see the orchestrator calli
 
 ## 📚 See Also
 
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
 - [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
 - [Make Your Workflow Remember Across Runs](20-persistent-memory.md)

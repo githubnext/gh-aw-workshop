@@ -95,3 +95,9 @@ Look for a line that mentions the `copilot` scope or check that your Copilot pla
 - [ ] Your GitHub account has an active Copilot subscription
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) or [Write Your First Agentic Workflow](07-your-first-workflow.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
