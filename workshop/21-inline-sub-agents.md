@@ -32,7 +32,7 @@ When your workflow repeats the same small job for many items, keep the main agen
 
 A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that looks like `## agent: \`name\``. Put the helper brief under that heading, then call that helper by name from the main workflow brief.
 
-> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file?
+> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Write it down — you'll use it in the next section.
 >
 > [!TIP]
 > Want the full rules for names, frontmatter, model aliases, and block placement? Use the [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
@@ -63,7 +63,7 @@ Read the title and body of one GitHub issue. Return exactly one sentence
 that explains what the issue is asking for and its current status.
 ```
 
-Keep the worker brief narrow. If it can answer with one item at a time, it belongs here.
+Keep the worker brief narrow. If it processes one item at a time and returns a single result, it belongs here.
 
 ### Update the main task brief to call the worker
 
@@ -79,7 +79,7 @@ You produce a daily repository health digest.
 4. Post the list as a comment on the repository's main tracking issue.
 ```
 
-✏️ **Try it:** Change one vague instruction in the parent brief into a direct sub-agent call by name.
+✏️ **Try it:** Change one broad instruction in the parent brief into a direct sub-agent call by name. For example, change "summarize all issues" to "For each issue, use the `issue-summarizer` agent."
 
 ### Compile and check the result
 
