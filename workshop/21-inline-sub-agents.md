@@ -18,7 +18,7 @@
 
 ## 🎯 What You'll Do
 
-You'll add an inline sub-agent to your daily-status workflow so the main agent can stay focused on planning and final writing while a smaller worker handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
+You'll add an inline sub-agent to your daily-status workflow so the main agent can stay focused on planning and final writing while a smaller sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
 
 ## 📋 Before You Start
 
@@ -26,7 +26,7 @@ You'll add an inline sub-agent to your daily-status workflow so the main agent c
 - You understand YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
-## Understand the planner-worker split
+## Understand the main-agent and sub-agent split
 
 When your workflow repeats the same small job for many items, keep the main agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
@@ -45,12 +45,12 @@ Open your workflow file and choose one bounded task that repeats for each item, 
 
 **Action:** Write down two things before you edit:
 
-- the worker name you want to use
-- the one-sentence job that worker should do
+- the sub-agent name you want to use
+- the one-sentence job that sub-agent should do
 
 ### Add one sub-agent block
 
-At the bottom of the file, add a worker block like this:
+At the bottom of the file, add a sub-agent block like this:
 
 ```markdown
 ## agent: `issue-summarizer`
@@ -63,11 +63,11 @@ Read the title and body of one GitHub issue. Return exactly one sentence
 that explains what the issue is asking for and its current status.
 ```
 
-Keep the worker brief narrow. If it processes one item at a time and returns a single result, it belongs here.
+Keep the sub-agent brief narrow. If it processes one item at a time and returns a single result, it belongs here.
 
-### Update the main task brief to call the worker
+### Update the main task brief to call the sub-agent
 
-In the main workflow brief, tell the orchestrator when to use the worker:
+In the main workflow brief, tell the main agent when to use the sub-agent:
 
 ```markdown
 You produce a daily repository health digest.
@@ -99,12 +99,12 @@ The compile should finish without errors and regenerate your workflow's `.lock.y
 
 ### Run and verify
 
-Trigger a manual run. In the Actions log, confirm the parent agent calls your worker and then uses the worker result in the final summary.
+Trigger a manual run. In the Actions log, confirm the parent agent calls your sub-agent and then uses the sub-agent result in the final summary.
 
 ## ✅ Checkpoint
 
 - [ ] You identified one repeated task in your workflow that fits a sub-agent
-- [ ] You wrote a worker name and one-sentence job before editing the file
+- [ ] You wrote a sub-agent name and one-sentence job before editing the file
 - [ ] Your workflow file now includes at least one `## agent: \`name\`` block
 - [ ] You updated the main brief to call the sub-agent by name
 - [ ] `gh aw compile` completed without errors
