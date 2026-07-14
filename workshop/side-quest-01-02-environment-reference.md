@@ -2,7 +2,13 @@
 
 > _Optional: use this quick glossary and visual reference to understand the environments and AI tools used throughout the workshop._
 
+## 📋 Before You Start
+
+You have a terminal open inside your practice repository (see [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md)).
+
 ## Environment and tool glossary
+
+Knowing which name maps to which role helps you follow workshop instructions without stopping to wonder what "the terminal" or "Codespaces" means in context.
 
 | Term | What it means in this workshop | Official documentation |
 |------|------|------|
@@ -16,7 +22,19 @@
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex](https://openai.com/codex/) |
 
+### ✅ Verify your tools are ready
+
+Run these commands in your terminal to confirm the required tools are installed and accessible:
+
+```bash
+gh --version
+gh aw --version
+git --version
+```
+
 ## Conceptual screenshots
+
+Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app."
 
 These visuals are simplified mental models, not literal product screenshots. Use them to recognize what each name refers to when it appears in later steps.
 
@@ -80,6 +98,9 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 
 ## ✅ Checkpoint
 
+- [ ] You ran `gh --version` in your terminal and it returned a version number
+- [ ] You ran `gh aw --version` in your terminal and it returned a version number
+- [ ] You ran `git --version` in your terminal and it returned a version number
 - [ ] You can identify each environment and tool name used in the tutorial
 - [ ] You can match each item to its conceptual screenshot
 - [ ] You know where to find official docs for each item
