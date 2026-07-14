@@ -68,7 +68,7 @@ By the end of this workshop, a scheduled workflow will automatically generate a 
 
 Here is a minimal agentic workflow file — the same structure you will write in Step 7:
 
-```
+```markdown
 ---
 on:
   schedule: daily
