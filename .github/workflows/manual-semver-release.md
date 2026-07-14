@@ -74,21 +74,21 @@ steps:
           return [line for line in text.splitlines() if line.strip()]
 
       tags = run_lines("git", "tag", "--list")
-      stable = {}
+      semver_tags = {}
       for tag in tags:
           match = re.fullmatch(r"v?(\d+)\.(\d+)\.(\d+)$", tag)
           if not match:
               continue
           version = tuple(int(part) for part in match.groups())
-          stable.setdefault(version, []).append(tag)
+          semver_tags.setdefault(version, []).append(tag)
 
       previous_tag = None
       previous_tag_display = "start"
       base_version = (0, 0, 0)
 
-      if stable:
-          version = max(stable)
-          candidates = sorted(stable[version], key=lambda tag: (not tag.startswith("v"), tag))
+      if semver_tags:
+          version = max(semver_tags)
+          candidates = sorted(semver_tags[version], key=lambda tag: (not tag.startswith("v"), tag))
           previous_tag = candidates[0]
           previous_tag_display = f"v{version[0]}.{version[1]}.{version[2]}"
           base_version = version
@@ -111,11 +111,11 @@ steps:
       }
 
       if previous_tag:
-          ancestor_check = subprocess.run(
+          ancestor_result = subprocess.run(
               ["git", "merge-base", "--is-ancestor", previous_tag, target],
               check=False,
           )
-          if ancestor_check.returncode != 0:
+          if ancestor_result.returncode != 0:
               plan["has_changes"] = False
               plan["noop_reason"] = (
                   f"Cannot safely compare {previous_tag_display} to {target} because the tag is not an ancestor of the target commit."
