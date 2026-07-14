@@ -78,7 +78,7 @@ The diagram below shows your Codespace connection to GitHub.
 ![Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub](images/02a-codespace-architecture.svg)
 
 > [!TIP]
-> **No terminal? Verify Copilot access via your browser:** Open [github.com/settings/copilot](https://github.com/settings/copilot) — if you see a green checkmark next to your Copilot plan, your access is active. Mobile and Copilot app users can skip straight to [Step 3b](03b-create-your-repo-ui.md).
+> **Prefer to verify via your browser?** Open [github.com/settings/copilot](https://github.com/settings/copilot) — if you see a green checkmark next to your Copilot plan, your access is active. This is a co-equal alternative to running `gh auth status`. Mobile and Copilot app users who landed here by mistake can skip to [Step 3b](03b-create-your-repo-ui.md) instead.
 
 1. Run these commands in the Codespace terminal:
 
