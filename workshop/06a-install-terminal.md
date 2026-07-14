@@ -57,6 +57,19 @@ gh aw --version
 
 You should see output like `gh-aw version 0.81.6`.
 
+## Initialize agentic workflow skills
+
+Before you author your first workflow, initialize and push the generated skill files:
+
+```bash
+gh aw init
+git add .github/skills/agentic-workflows/
+git commit -m "Initialize agentic workflow skills"
+git push
+```
+
+This creates `.github/skills/agentic-workflows/`, which later authoring steps rely on.
+
 ## 🏃 Try It
 
 Run `gh aw --help` and scan the list of sub-commands.
@@ -67,6 +80,8 @@ Which one sub-command do you expect to use in Step 7 when you create and run you
 
 - [ ] `gh auth status` shows you are logged in to github.com
 - [ ] `gh aw --version` returns a version number
+- [ ] `gh aw init` has been run in your practice repository
+- [ ] The generated `.github/skills/agentic-workflows/` files are committed and pushed
 - [ ] You can name one `gh aw` sub-command from `gh aw --help`
 
 Want to understand how Copilot authenticates with your workflow?

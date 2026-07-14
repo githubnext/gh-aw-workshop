@@ -453,6 +453,8 @@ function buildTransitions() {
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
       next.installed.aw = "latest";
+      next.flags.awSkillInitialized = true;
+      next.flags.awSkillPushed = true;
       return { ok: true, state: applyLearning(next, context, { terminal: 0.06, agentic: 0.05, troubleshooting: 0.04 }) };
     },
     "07-first-workflow": (state, context) => {
@@ -471,6 +473,13 @@ function buildTransitions() {
         "Install gh-aw before creating the first agentic workflow."
       );
       if (!precheck.ok) return precheck;
+      const initCheck = ensure(
+        state.flags.awSkillInitialized && state.flags.awSkillPushed,
+        "The required agentic workflow skill is missing because `gh aw init` was not completed and pushed before authoring.",
+        "aw-init-missing",
+        "Run `gh aw init`, commit the generated `.github/skills/agentic-workflows/` files, and push before creating the first workflow."
+      );
+      if (!initCheck.ok) return initCheck;
       const readiness = contentReadinessCheck(state, context, {
         salt: 113,
         category: "workflow-authoring-friction",

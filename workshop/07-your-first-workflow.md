@@ -10,6 +10,7 @@ You'll create `.github/workflows/hello-agent.md`, a small workflow that reads re
 
 - Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command is available in your terminal (or you'll use the GitHub UI path)
+- If you are using Terminal or Copilot paths, `gh aw init` has been run and pushed in your practice repository
 
 ## Choose Your Path
 
