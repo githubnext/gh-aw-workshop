@@ -13,6 +13,11 @@
 
 You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file — a skill you'll build on immediately in Steps 5 and 6.
 
+## 📋 Before You Start
+
+- You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+- No credentials needed — works entirely in your browser
+
 ## Classic Actions vs [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 
 If you already know Actions, here's the key shift at a glance:
@@ -85,23 +90,51 @@ jobs:
 
 </details>
 
-## Try it: Find a workflow trigger in the wild
+## Try it: Explore a real workflow
 
-Open a real workflow file and identify its trigger — no terminal required, just your browser.
+Open a real workflow file and find the three core building blocks — no terminal or credentials required, just your browser.
 
 1. Open any public repository on GitHub (for example, the [gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) repository).
 2. Click the **Actions** tab.
 3. Click any workflow in the left sidebar.
 4. Click **View workflow file** (top right of the run list).
-5. Identify: What triggers this workflow? (Look for the `on:` key.)
-6. Note your answer — you'll use this observation in Step 5.
+5. In the YAML, find and note:
+   - The `on:` trigger — what event starts this workflow?
+   - One `jobs:` entry — what is the job named?
+   - One `steps` item — what command does it run?
+
+You don't need to understand every line. The goal is to see that a real workflow follows exactly the structure described above.
+
+- [ ] I found the `on:` trigger in a real workflow
+- [ ] I identified a job name under `jobs:`
+- [ ] I found at least one `steps` command
+
+## Check your understanding
+
+Mark each statement as true or false, then reveal the answers:
+
+- [ ] Workflow files live in `.github/workflows/` as YAML
+- [ ] The `on:` key defines when a workflow runs, not which commands to execute
+- [ ] Each step in a job runs on its own separate virtual machine
+- [ ] Agentic workflows replace scripted steps with a plain-language brief
+
+<details>
+<summary>Reveal answers</summary>
+
+1. True — workflow files live in `.github/workflows/` as YAML.
+2. True — `on:` is the trigger; commands go in `steps` entries.
+3. False — steps within a job share one runner; a new machine is provisioned per job.
+4. True — agentic workflows use a Markdown brief in place of scripted `steps`; the agent decides the how.
+
+</details>
 
 ## ✅ Checkpoint
 
 - [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] I labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
 - [ ] I know workflows live in `.github/workflows/`
-- [ ] I found and identified at least one workflow trigger in a public repository
+- [ ] I explored a real workflow and found its trigger, a job name, and a step command
+- [ ] I answered the check-your-understanding questions
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
