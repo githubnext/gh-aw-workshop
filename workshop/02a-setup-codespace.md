@@ -2,7 +2,7 @@
 
 ## 📋 Before You Start
 
-Make sure you have:
+Make sure you have completed Step 1, then re-check the items that matter for this path:
 
 - Completed [Step 1: Prerequisites](01-prerequisites.md)
 - A GitHub account you can use to create a public practice repository (free tier is fine)
@@ -48,7 +48,9 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
    - Check **Add a README file**.
    - Click **Create repository**.
 2. In your new repository, click the green **Code** button.
-3. Click the **Codespaces** tab, leave **main** selected as the branch, and click **Create codespace on main**.
+3. Click the **Codespaces** tab.
+   - Leave **main** selected as the branch.
+   - Click **Create codespace on main**.
 4. Wait 30–60 seconds for GitHub to prepare the container and open the editor.
 
 ![Open Codespace](images/02a-open-codespace.svg)
@@ -83,14 +85,14 @@ The diagram below shows your Codespace connection to GitHub.
    gh extension list
    ```
 
-2. Confirm `gh --version` shows a version line such as `gh version 2.x.x`.
+2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
 3. Confirm `gh auth status` shows that you're logged in to `github.com`.
 4. Confirm `gh extension list` runs without errors, even if it shows no extensions yet.
 
 _What success looks like:_
 
 ```text
-gh version 2.x.x
+gh version 2.40.0 (2024-01-01)
 ...
 
 github.com
@@ -100,7 +102,7 @@ github.com
 (no extensions installed)
 ```
 
-You should see a `gh version ...` line and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
+You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
 
 > [!IMPORTANT]
 > The Codespace authentication token has a limited set of scopes by default. In particular, it may **not** include `actions:write`, which is required for `gh aw run` to trigger workflows from the terminal (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you want to use `gh aw run` and hit permission errors, jump to [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
@@ -109,7 +111,7 @@ You should see a `gh version ...` line and a line confirming you're logged in to
 
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
-- [ ] `gh --version` returns a version line such as `gh version 2.x.x`
+- [ ] `gh --version` returns version 2.40.0 or newer
 - [ ] `gh auth status` shows you're logged in to GitHub without errors
 - [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
