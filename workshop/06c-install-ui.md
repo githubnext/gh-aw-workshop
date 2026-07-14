@@ -15,9 +15,9 @@ You'll confirm that the GitHub UI path does not require a local `gh-aw` installa
 
 ## Why no installation is needed
 
-`gh-aw` runs on GitHub's infrastructure when your workflow executes. When you trigger a workflow from the **Actions** tab, GitHub handles compilation and execution — your browser is the only tool you need.
+The compiled `.lock.yml` file is what GitHub actually runs. In Step 7b you'll paste the complete compiled workflow directly into the web editor — no local compile step needed. GitHub's infrastructure then executes the compiled workflow when you trigger it from the Actions tab.
 
-![GitHub-hosted execution flow: the learner authors and triggers workflows from a browser; GitHub's infrastructure handles gh-aw compilation and AI agent execution entirely](images/06c-github-hosted-execution.svg)
+![GitHub-hosted execution flow: the learner authors and triggers workflows from a browser; GitHub's infrastructure executes the pre-compiled .lock.yml workflow and runs AI agents entirely](images/06c-github-hosted-execution.svg)
 
 You'll author workflow files using the GitHub web editor in Step 7b and trigger them from the Actions tab in Step 8. You'll confirm `gh-aw` is working when **Hello Agent** appears in your workflow list.
 
