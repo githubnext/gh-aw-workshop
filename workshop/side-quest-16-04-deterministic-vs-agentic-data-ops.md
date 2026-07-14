@@ -2,7 +2,12 @@
 
 > _Optional: use this guide when you are unsure which parts of a data workflow should stay deterministic and which parts should be agentic, then return to [Step 16](16-connect-data-source.md)._
 
-Data-heavy workflows are strongest when you split responsibilities on purpose. Keep repeatable data operations deterministic. Use the agent where judgment is required.
+Data workflows work best when you split jobs on purpose. Keep repeatable operations deterministic. Use the agent when you need judgment.
+
+## 📋 Before You Start
+
+- Complete [Step 16: Connect a Live Data Source](16-connect-data-source.md) (required)
+- Be familiar with `gh` CLI commands
 
 ---
 
@@ -11,9 +16,10 @@ Data-heavy workflows are strongest when you split responsibilities on purpose. K
 Use this quick test:
 
 - If you can define exact pass/fail logic in advance, keep it deterministic.
-- If the task depends on interpretation, ambiguity, prioritization, or communication quality, make it agentic.
+- If you need to decide which of 40 open issues is most urgent, make it agentic.
+- If you need to explain trend changes to leadership, make it agentic.
 
-You do not need to choose one mode for the entire workflow. Most production workflows are hybrid.
+You do not need one mode for the whole workflow. Most production workflows are hybrid.
 
 ---
 
@@ -30,7 +36,7 @@ You do not need to choose one mode for the entire workflow. Most production work
 
 ---
 
-## Hybrid blueprint you can reuse
+## Hybrid blueprint
 
 Follow this structure for repository status, incident triage, and reporting flows:
 
@@ -39,7 +45,34 @@ Follow this structure for repository status, incident triage, and reporting flow
 3. **Agentic interpretation**: ask the agent to identify risk, priority, and notable patterns.
 4. **Agentic communication**: ask for role-specific output (engineering digest, leadership summary, on-call handoff).
 
-This keeps your pipeline reliable while still getting adaptive reasoning where scripts become brittle.
+This keeps your pipeline reliable. It also gives you flexible reasoning where scripts become brittle.
+
+## 🛠️ Try it: Label each step D or A
+
+Read the workflow snippet. In the comment block, label each step as **D** (deterministic) or **A** (agentic).
+
+```yaml
+# 1) Fetch open issues from the last 24 hours.
+gh issue list --state open --search "updated:>=2026-07-13" --json number,title,labels,updatedAt
+
+# 2) Shape the output into a sorted table with issue number, label count, and last update time.
+
+# 3) Decide which three issues need maintainer attention today and explain why.
+
+# Your labels:
+# 1) _
+# 2) _
+# 3) _
+```
+
+<details>
+<summary>Show answer key</summary>
+
+- Step 1: **D** — fixed command and fixed fields.
+- Step 2: **D** — fixed transform and sort rules.
+- Step 3: **A** — requires prioritization and explanation.
+
+</details>
 
 ---
 
