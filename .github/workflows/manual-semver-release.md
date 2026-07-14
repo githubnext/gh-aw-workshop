@@ -478,8 +478,7 @@ Call `noop` with a brief explanation instead of updating a release if:
 When you are ready:
 
 1. Call `update_release` exactly once with:
-   - Read `/tmp/gh-aw/data/release-plan.json` first and extract `next_tag` directly from that file before you emit the safe output.
-   - `tag` — `next_tag` from `/tmp/gh-aw/data/release-plan.json`
+   - `tag` — read `/tmp/gh-aw/data/release-plan.json` first and extract `next_tag` directly from that file
    - `operation` — `replace`
    - `body` — the rewritten markdown release notes
 
