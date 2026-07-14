@@ -36,10 +36,10 @@ Check your configuration based on the engine in your `hello-agent.md` frontmatte
 
 | Engine | How to confirm | Pass | Fail — what to do |
 |--------|----------------|------|-------------------|
-| GitHub Copilot (default, no `engine:` line) | `copilot-requests: write` in frontmatter | Copilot subscription active at [github.com/settings/copilot](https://github.com/settings/copilot) | Follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md) |
-| Claude (`engine: claude`) | `ANTHROPIC_API_KEY` in **Settings → Secrets and variables → Actions** | Secret listed | Follow [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) |
-| Codex / OpenAI (`engine: codex`) | `OPENAI_API_KEY` in **Settings → Secrets and variables → Actions** | Secret listed | Follow [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) |
-| Gemini or other provider | Relevant API key secret in **Settings → Secrets and variables → Actions** | Secret listed | Check the provider's side-quest or your engine documentation |
+| GitHub Copilot (default, no `engine:` line) | Check `copilot-requests: write` in frontmatter; verify your Copilot subscription at [github.com/settings/copilot](https://github.com/settings/copilot) | Permission present and subscription active | Follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md) |
+| Claude (`engine: claude`) | Open **Settings → Secrets and variables → Actions** and look for `ANTHROPIC_API_KEY` | Secret name appears in the list | Follow [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) |
+| Codex / OpenAI (`engine: codex`) | Open **Settings → Secrets and variables → Actions** and look for `OPENAI_API_KEY` | Secret name appears in the list | Follow [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) |
+| Gemini or other provider | Open **Settings → Secrets and variables → Actions** and look for your provider's API key secret | Secret name appears in the list | Check the provider's side-quest or your engine documentation |
 
 </details>
 
