@@ -17,6 +17,10 @@ You'll finish `.github/workflows/hello-agent.md` by adding:
 
 ## Steps
 
+Each section of your workflow file serves a distinct purpose at runtime — the diagram below shows what each part controls.
+
+![Agentic workflow file anatomy: frontmatter sections and the Task body, each mapped to its runtime purpose](images/07a-workflow-file-anatomy.svg)
+
 ### Add `permissions` and `safe-outputs`
 
 In `.github/workflows/hello-agent.md`, update frontmatter so it looks like this:

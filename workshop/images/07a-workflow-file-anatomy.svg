@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Agentic workflow file anatomy: frontmatter sections (name, on, permissions, safe-outputs) and the Task body, each mapped to its runtime purpose">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Title -->
+  <text x="600" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#24292f">Agentic Workflow File Anatomy</text>
+  <text x="600" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#57606a">Every field in hello-agent.md has a specific runtime role</text>
+
+  <!-- File card -->
+  <rect x="60" y="76" width="340" height="440" rx="8" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="60" y="76" width="340" height="32" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <rect x="60" y="96" width="340" height="12" fill="#f6f8fa" stroke="none"/>
+  <text x="80" y="96" font-family="ui-monospace, monospace" font-size="12" fill="#57606a">hello-agent.md</text>
+
+  <!-- --- top fence -->
+  <text x="80" y="124" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
+
+  <!-- name row -->
+  <rect x="72" y="130" width="316" height="22" rx="3" fill="#ddf4ff" stroke="none"/>
+  <text x="80" y="145" font-family="ui-monospace, monospace" font-size="12" fill="#0969da">name: Hello Agent</text>
+
+  <!-- on row -->
+  <rect x="72" y="156" width="316" height="34" rx="3" fill="#fff8c5" stroke="none"/>
+  <text x="80" y="170" font-family="ui-monospace, monospace" font-size="12" fill="#bf8700">on:</text>
+  <text x="80" y="184" font-family="ui-monospace, monospace" font-size="12" fill="#bf8700">  workflow_dispatch:</text>
+
+  <!-- permissions row -->
+  <rect x="72" y="194" width="316" height="58" rx="3" fill="#dafbe1" stroke="none"/>
+  <text x="80" y="209" font-family="ui-monospace, monospace" font-size="12" fill="#1a7f37">permissions:</text>
+  <text x="80" y="223" font-family="ui-monospace, monospace" font-size="12" fill="#1a7f37">  contents: read</text>
+  <text x="80" y="237" font-family="ui-monospace, monospace" font-size="12" fill="#1a7f37">  issues: read</text>
+  <text x="80" y="251" font-family="ui-monospace, monospace" font-size="12" fill="#1a7f37">  copilot-requests: write</text>
+
+  <!-- safe-outputs row -->
+  <rect x="72" y="256" width="316" height="58" rx="3" fill="#fbefff" stroke="none"/>
+  <text x="80" y="271" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">safe-outputs:</text>
+  <text x="80" y="285" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">  add-comment:</text>
+  <text x="80" y="299" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">    max: 1</text>
+  <text x="80" y="313" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">  create-issue:</text>
+
+  <!-- --- bottom fence -->
+  <text x="80" y="328" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
+
+  <!-- Task block -->
+  <rect x="72" y="334" width="316" height="166" rx="3" fill="#fff1e5" stroke="none"/>
+  <text x="80" y="350" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#bc4c00">## Task</text>
+  <text x="80" y="366" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Search open issues.</text>
+  <text x="80" y="380" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Find the one with the</text>
+  <text x="80" y="394" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">most 👍 reactions.</text>
+  <text x="80" y="408" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Post a comment on it...</text>
+  <text x="80" y="422" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">If no issues, create</text>
+  <text x="80" y="436" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">one titled "Community</text>
+  <text x="80" y="450" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Voting Test".</text>
+
+  <!-- Arrows + annotation cards on right side -->
+
+  <!-- Arrow: name -->
+  <line x1="392" y1="141" x2="470" y2="141" stroke="#0969da" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
+
+  <!-- Arrow: on -->
+  <line x1="392" y1="173" x2="470" y2="210" stroke="#bf8700" stroke-width="1.5" marker-end="url(#gold-arrow)"/>
+
+  <!-- Arrow: permissions -->
+  <line x1="392" y1="223" x2="470" y2="290" stroke="#1a7f37" stroke-width="1.5" marker-end="url(#green-arrow)"/>
+
+  <!-- Arrow: safe-outputs -->
+  <line x1="392" y1="285" x2="470" y2="372" stroke="#8250df" stroke-width="1.5" marker-end="url(#purple-arrow)"/>
+
+  <!-- Arrow: task -->
+  <line x1="392" y1="417" x2="470" y2="454" stroke="#bc4c00" stroke-width="1.5" marker-end="url(#orange-arrow)"/>
+
+  <!-- Annotation cards -->
+
+  <!-- name card -->
+  <rect x="470" y="116" width="290" height="52" rx="6" fill="white" stroke="#0969da" stroke-width="1.5"/>
+  <text x="486" y="133" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#0969da">Workflow name</text>
+  <text x="486" y="150" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Identifies the workflow in Actions UI</text>
+  <text x="486" y="163" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">and in the compiled lock file.</text>
+
+  <!-- on card -->
+  <rect x="470" y="184" width="290" height="52" rx="6" fill="white" stroke="#bf8700" stroke-width="1.5"/>
+  <text x="486" y="201" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#bf8700">Trigger</text>
+  <text x="486" y="218" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">When the workflow runs — manual,</text>
+  <text x="486" y="231" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">scheduled, or event-based.</text>
+
+  <!-- permissions card -->
+  <rect x="470" y="252" width="290" height="64" rx="6" fill="white" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="486" y="269" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1a7f37">Permissions</text>
+  <text x="486" y="286" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Scopes the agent's read access.</text>
+  <text x="486" y="300" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">copilot-requests: write is required</text>
+  <text x="486" y="313" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">to call the Copilot engine.</text>
+
+  <!-- safe-outputs card -->
+  <rect x="470" y="332" width="290" height="52" rx="6" fill="white" stroke="#8250df" stroke-width="1.5"/>
+  <text x="486" y="349" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#8250df">Safe-outputs</text>
+  <text x="486" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Declares allowed write actions and</text>
+  <text x="486" y="379" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">caps how many times each can fire.</text>
+
+  <!-- task card -->
+  <rect x="470" y="430" width="290" height="64" rx="6" fill="white" stroke="#bc4c00" stroke-width="1.5"/>
+  <text x="486" y="447" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#bc4c00">Task instructions</text>
+  <text x="486" y="464" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Plain-language goals the AI agent</text>
+  <text x="486" y="478" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">reads at runtime to decide what to</text>
+  <text x="486" y="492" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">do and which outputs to produce.</text>
+
+  <!-- Arrowhead markers -->
+  <defs>
+    <marker id="blue-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0969da"/>
+    </marker>
+    <marker id="gold-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#bf8700"/>
+    </marker>
+    <marker id="green-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1a7f37"/>
+    </marker>
+    <marker id="purple-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8250df"/>
+    </marker>
+    <marker id="orange-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#bc4c00"/>
+    </marker>
+  </defs>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="530" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#57606a">Frontmatter (between --- fences) is compiled by gh aw compile · The ## Task block is the agent's runtime brief</text>
+</svg>
