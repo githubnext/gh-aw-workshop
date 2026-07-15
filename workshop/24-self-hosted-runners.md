@@ -32,7 +32,9 @@ runs-on: ubuntu-latest
 
 The only change needed is the value of `runs-on:`.
 
-## Update the runner label
+## ✏️ Exercise: Update your frontmatter
+
+Update your workflow's `runs-on:` field to point at your self-hosted runner.
 
 ### Open your workflow file
 
@@ -64,13 +66,13 @@ code .github/workflows/daily-status.md
 Replace `ubuntu-latest` with your runner's label.
 Use a list if your runner has multiple required labels:
 
-**Single label:**
+Single label:
 
 ```yaml
 runs-on: self-hosted
 ```
 
-**Multiple labels (all must match):**
+Multiple labels (all must match):
 
 ```yaml
 runs-on: [self-hosted, linux, x64]
@@ -78,22 +80,26 @@ runs-on: [self-hosted, linux, x64]
 
 The labels must exactly match what your admin registered on the runner.
 Ask your admin if you are unsure — they can find the labels in the runner's
-registration settings under **Settings → Actions → Runners**.
+registration settings (Settings → Actions → Runners).
 
 > [!TIP]
-> Labels act as filters. A workflow job is dispatched to the first idle runner that satisfies **all** labels in the list. Adding `linux` alongside `self-hosted` ensures the job only lands on Linux runners when your fleet is mixed.
+> Labels act as filters. A workflow job is dispatched to the first idle runner that satisfies all labels in the list. Adding `linux` alongside `self-hosted` ensures the job only lands on Linux runners when your fleet is mixed.
 
-## If you adapt another workflow, update activation and safe-outputs too
 
-If you copied a workflow from another workshop step or repository, do a quick frontmatter pass before compiling:
+<details>
+<summary>Advanced: ephemeral and isolated runners</summary>
 
-- **Activation (`on:`):** replace the trigger with how you want this workflow to start in your repository (`workflow_dispatch`, `schedule`, `pull_request`, and so on).
-- **Safe outputs (`safe-outputs:`):** replace write actions to match your task. Keep only the minimum actions you actually want this workflow to perform.
-- **Other runner entries:** if the file has more than one `runs-on:` value, replace each GitHub-hosted label (`ubuntu-latest`, `windows-latest`, `macos-latest`) with your self-hosted label strategy.
+### Ephemeral and JIT runners
 
-This keeps runner routing, workflow activation, and write permissions aligned after you reuse an existing workflow.
+Ephemeral runners are destroyed after a single job — each run starts on a fresh machine,
+preventing state from leaking between executions. Register one using the ephemeral flag
+and target it with the same label strategy described above.
 
-## Handle proxy and network requirements
+Just-in-time (JIT) runners are provisioned on demand and deregistered immediately after use.
+They require a registration token scoped to your organisation or repository and are typically
+managed by a runner controller such as actions-runner-controller.
+
+### Proxy and network requirements
 
 Self-hosted runners in enterprise environments often sit behind an outbound proxy.
 The agentic engine needs to reach model endpoints and GitHub APIs.
@@ -113,9 +119,17 @@ inherits them from the system environment automatically.
 > [!NOTE]
 > The exact proxy hostname and port come from your network team or enterprise admin. The values above are examples only.
 
-## Compile and commit
+### Network isolation
 
-If you are on the terminal path, recompile after editing the frontmatter:
+If your runner operates in an air-gapped or restricted environment, ensure it can reach
+the GitHub API, your model endpoint, and any MCP tool servers your workflow calls.
+Work with your network admin to allowlist these endpoints before running agentic workflows.
+
+</details>
+
+## ✏️ Exercise: Compile and commit
+
+Recompile after editing the frontmatter, then commit both files:
 
 ```bash
 gh aw compile daily-status
@@ -133,12 +147,12 @@ UI-first learners: commit the `.md` file using the web editor. The lock file reg
 automatically on the next workflow run when you push the updated source — you do not need to
 compile locally.
 
-## Verify the run lands on your runner
+## ✏️ Exercise: Verify the run lands on your runner
 
 1. Go to the **Actions** tab in your repository.
-2. Trigger your workflow with **Run workflow**.
+2. Click Run workflow.
 3. Open the run and look at the job summary.
-4. Confirm the **Runner** field shows your self-hosted runner name (not `GitHub Actions`).
+4. Confirm the Runner field shows your self-hosted runner name (not `GitHub Actions`).
 
 ![Runner name shown in the Actions job summary](images/24-self-hosted-runner-job.svg)
 
@@ -146,10 +160,13 @@ compile locally.
 
 - [ ] Your workflow's `runs-on:` value matches the label of your self-hosted runner
 - [ ] `gh aw compile` (if used) completed without errors
-- [ ] The updated `.github/workflows/daily-status.md` is committed and pushed
-- [ ] A manual workflow run completed and the Actions log shows your self-hosted runner name
+- [ ] `daily-status.md` and its `.lock.yml` file are committed and pushed
+- [ ] A manual workflow run started without an error
+- [ ] The Actions job summary Runner field shows your self-hosted runner's name, not `GitHub Actions`
+- [ ] The workflow run log shows your runner's hostname in the job header
 - [ ] You can explain why a list of labels (`[self-hosted, linux, x64]`) narrows runner selection
-- [ ] You know where to configure proxy environment variables for a self-hosted runner
+- [ ] You know where to find proxy and ephemeral runner guidance if your environment needs it
+- [ ] No workflow steps failed due to runner availability or label mismatch
 
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 
