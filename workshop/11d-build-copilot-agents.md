@@ -103,8 +103,8 @@ The workflow should:
 - Scan documentation files (Markdown files under docs/ or in the repository root) for staleness, missing sections, and broken cross-references
 - Post a structured health report as a comment on an issue titled "Daily Docs Health" (create the issue if it does not exist)
 - Post at most one comment per calendar day
-- Use minimum required permissions: contents: read, copilot-requests: write, issues: read
-- Limit safe-outputs to add-comment with max: 1
+- Use minimum required permissions: contents: read, copilot-requests: write, issues: write
+- Limit safe-outputs to create-issue with max: 1 and add-comment with max: 1
 
 Save the workflow as `.github/workflows/daily-docs.md`.
 Compile it with `gh aw compile --validate`.

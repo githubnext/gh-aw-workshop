@@ -24,7 +24,7 @@ on:
 permissions:
   contents: read          # Read files in the repository
   copilot-requests: write # Required for every agentic workflow
-  issues: read            # Read issues and find where to post the report
+  issues: write           # Read issues and create or comment on the report issue
 
 tools:
   github:
@@ -32,6 +32,8 @@ tools:
     toolsets: [default]
 
 safe-outputs:
+  create-issue:
+    max: 1              # The agent may create the tracking issue if it is missing
   add-comment:
     max: 1              # The agent may post at most one comment per run
 ---
@@ -43,7 +45,7 @@ Scan for stale files, thin pages, and broken internal links.
 Find the issue titled "Daily Docs Health" (or create it) and post one comment with a concise health summary.
 ```
 
-The `on:` block sets when the workflow runs — `schedule: daily` is a fuzzy expression that `gh aw compile` converts to a once-per-day schedule at a compiler-chosen time. The `permissions:` block declares the minimum GitHub API scopes the workflow may use. The `safe-outputs:` guardrail limits the agent to posting at most one issue comment per run.
+The `on:` block sets when the workflow runs — `schedule: daily` is a fuzzy expression that `gh aw compile` converts to a once-per-day schedule at a compiler-chosen time. The `permissions:` block declares the minimum GitHub API scopes the workflow may use. The `safe-outputs:` guardrails let the agent create the tracking issue once if needed and post at most one issue comment per run.
 
 ## Choose Your Path
 

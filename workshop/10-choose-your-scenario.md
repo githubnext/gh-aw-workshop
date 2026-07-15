@@ -56,9 +56,9 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 
 **Trigger:** Runs once per day on a schedule.
 
-**Key permissions:** `contents: read`, `issues: read`
+**Key permissions:** `contents: read`, `issues: write`
 
-**Safe output:** One issue comment per day.
+**Safe outputs:** Create the tracking issue if needed, then post one issue comment per day.
 
 ➡️ [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 
