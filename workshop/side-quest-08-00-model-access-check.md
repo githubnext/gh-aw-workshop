@@ -22,9 +22,9 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 Your workflow uses GitHub Copilot when the frontmatter has no `engine:` line.
 
-If you have not configured Copilot access yet, or if you want the full walkthrough, complete [the Copilot setup overview](side-quest-06-03-copilot-token.md) — the guide for Method 1 (`copilot-requests: write`) and Method 2 (`COPILOT_GITHUB_TOKEN`) — and then return here.
+If you have not configured Copilot access yet, or if you want the full walkthrough, complete [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) — the guide for Method 1 (`copilot-requests: write`) and Method 2 (`COPILOT_GITHUB_TOKEN`) — and then return here.
 
-1. Confirm your workflow uses one of the supported Copilot auth methods from that side quest:
+1. Confirm your workflow uses one of the supported Copilot authentication methods:
    - **Method 1 (permission-based):** `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
    - **Method 2 (token-based):** `COPILOT_GITHUB_TOKEN` is present in **Settings → Secrets and variables → Actions**.
 2. Confirm you have an active GitHub Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot).
