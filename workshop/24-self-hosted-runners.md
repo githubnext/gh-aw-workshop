@@ -168,7 +168,7 @@ compile locally.
 - [ ] You know where to find proxy and ephemeral runner guidance if your environment needs it
 - [ ] No workflow steps failed due to runner availability or label mismatch
 
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Lock Down Your Workflow's Network Access](25-network-firewall.md)
 
 ## 📚 See Also
 

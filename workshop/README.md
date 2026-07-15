@@ -55,6 +55,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 22 | [22-error-handling-and-resilience.md](22-error-handling-and-resilience.md) | Make Your Workflows Resilient to Failure | ✅ |
 | 23 | [23-ab-experiments.md](23-ab-experiments.md) | Test Your Prompt Ideas with A/B Experiments | ✅ |
 | 24 | [24-self-hosted-runners.md](24-self-hosted-runners.md) | Run Your Agentic Workflow on a Self-Hosted Runner | ✅ |
+| 25 | [25-network-firewall.md](25-network-firewall.md) | Lock Down Your Workflow's Network Access | ✅ |
 
 ## Optional Side Quests
 
