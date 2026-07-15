@@ -137,25 +137,20 @@ function prefersBrowserPath(state, context) {
   );
 }
 
-function canCompileWithCloudAgent(state) {
+function hasCloudAgentCompilerAccess(state) {
   return state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess;
 }
 
 function canCompileWorkflow(state, context, options = {}) {
-  return !prefersBrowserPath(state, context) || (options.allowCloudAgent === true && canCompileWithCloudAgent(state));
+  return !prefersBrowserPath(state, context) || (options.allowCloudAgent === true && hasCloudAgentCompilerAccess(state));
 }
 
 function updateWorkflowCompileState(state, context, options = {}) {
   const next = cloneState(state);
+  const workflowReadyToRun = canCompileWorkflow(state, context, options);
   next.flags.hasWorkflowFile = true;
-  next.flags.hasCompiledWorkflowLock = false;
-  next.flags.workflowReadyToRun = false;
-
-  if (canCompileWorkflow(state, context, options)) {
-    next.flags.hasCompiledWorkflowLock = true;
-    next.flags.workflowReadyToRun = true;
-  }
-
+  next.flags.hasCompiledWorkflowLock = workflowReadyToRun;
+  next.flags.workflowReadyToRun = workflowReadyToRun;
   return next;
 }
 
