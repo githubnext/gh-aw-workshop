@@ -98,14 +98,11 @@ github.com
 
 You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`. The extension list will be empty at this point — `gh aw` is installed in a later step. Codespaces usually include `gh` already and are often pre-authenticated, but this quick check confirms the environment is ready.
 
-> [!NOTE]
-> <details>
-> <summary><b>If <code>gh auth status</code> shows an error:</b></summary>
->
-> - **Codespaces on github.com (free/Pro/Team):** run `gh auth login` in the terminal, choose **GitHub.com**, and follow the prompts. Then re-run `gh auth status`.
-> - **GHES, GHEC, or EMU:** your token scope may be restricted by organization policy. Open [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
->
-> </details>
+**What does your `gh auth status` output show?** Read the result and follow the matching path before continuing:
+
+- ✅ **`✓ Logged in to github.com account <your-username>` is present** — your Codespace is authenticated. Confirm this line appears in your output, then continue to the checkpoint.
+- ❌ **`You are not logged into any GitHub hosts.`** — your Codespace token was not automatically authenticated. Run `gh auth login` in the terminal, choose **GitHub.com**, follow the prompts, then re-run `gh auth status` to confirm.
+- ❌ **`Token does not have required scope`** or an organization-policy error — your Codespace token scope is restricted. Open [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing, then re-run `gh auth status`.
 
 <!-- -->
 
