@@ -13,7 +13,7 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 - No `engine:` line means GitHub Copilot (the default).
 - `engine: claude` means the workflow uses Claude.
-- `engine: codex` means the workflow uses OpenAI. In this workshop, `codex` is the engine identifier for the OpenAI path.
+- `engine: codex` means the workflow uses OpenAI. In this workshop, `codex` is the historical engine identifier for the OpenAI path.
 
 ## Match the check to your engine
 
@@ -45,7 +45,7 @@ Need to set this up? See [Side Quest: Configure an Anthropic API Key](side-quest
 </details>
 
 <details>
-<summary><b>OpenAI (<code>engine: codex</code>)</b></summary>
+<summary><b>OpenAI (historical <code>engine: codex</code> identifier)</b></summary>
 
 Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
 
