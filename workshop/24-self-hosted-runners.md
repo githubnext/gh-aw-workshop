@@ -140,7 +140,7 @@ compile locally.
 3. Open the run and look at the job summary.
 4. Confirm the **Runner** field shows your self-hosted runner name (not `GitHub Actions`).
 
-![Runner name shown in the Actions job summary](images/24-self-hosted-runner-job.png)
+![Runner name shown in the Actions job summary](images/24-self-hosted-runner-job.svg)
 
 ## ✅ Checkpoint
 
