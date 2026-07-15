@@ -37,7 +37,7 @@ Classify each task on your own, then reveal the answer before moving to the next
 
 **Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
-- [ ] I classified Task A as agentic workflow or standard Actions workflow
+- [ ] I have classified Task A
 
 <details>
 <summary>Check Task A answer</summary>
@@ -48,7 +48,7 @@ Classify each task on your own, then reveal the answer before moving to the next
 
 **Task B:** Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
 
-- [ ] I classified Task B as agentic workflow or standard Actions workflow
+- [ ] I have classified Task B
 
 <details>
 <summary>Check Task B answer</summary>
@@ -59,7 +59,7 @@ Classify each task on your own, then reveal the answer before moving to the next
 
 **Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
 
-- [ ] I classified Task C as agentic workflow or standard Actions workflow
+- [ ] I have classified Task C
 
 <details>
 <summary>Check Task C answer</summary>
