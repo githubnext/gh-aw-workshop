@@ -24,7 +24,7 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 | [Daily Repo Status Report](#adventure-a-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |
 | [Daily Documentation Updater](#adventure-b-daily-documentation-updater) | Scans your docs files every day and posts a health report highlighting staleness, missing sections, and broken links | Projects where docs drift out of sync with the code |
 | [PR Code Reviewer](#adventure-c-pr-code-reviewer) | Reviews every pull request for duplicate code — checking both the changes and the existing codebase — and posts a structured review comment | Teams that want automated duplication detection in code review |
-| [Browser-Only Path (CCA / Mobile)](#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile) | Pre-written daily status workflow for the browser; no terminal needed | Mobile, CCA, and browser-only learners |
+| [Browser-Only Path (CCA / Mobile)](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) | Pre-written daily status workflow for the browser; no terminal needed | Mobile, CCA, and browser-only learners |
 
 > [!TIP]
 > Not sure which to pick? Start with **Adventure A** — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
@@ -32,7 +32,7 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 <!-- -->
 
 > [!NOTE]
-> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md). **On mobile or in a browser-only setup with no terminal?** Go to [Adventure E](#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile) below.
+> **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md). **On mobile or in a browser-only setup with no terminal?** Go to [Adventure E](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) below.
 
 ---
 
@@ -78,7 +78,7 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 
 ---
 
-## Adventure E: Build a Daily Status Workflow from Your Browser (CCA / Mobile)
+## Adventure E: Browser-Only Daily Status Workflow for CCA and Mobile
 
 For mobile, CCA, and browser-only learners. No terminal needed.
 
@@ -143,7 +143,7 @@ Open PRs: 2  |  Open issues: 5  |  Last commit: "fix README" (1 hour ago)
 - ➡️ Adventure B: [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - ➡️ Adventure C: [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 - ➡️ Adventure D: [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
-- ➡️ Adventure E: [Build a Daily Status Workflow from Your Browser (CCA / Mobile)](#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile)
+- ➡️ Adventure E: [Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
 
 > [!TIP]
 > **Curious about security?** Before you build, explore how adversarial instructions in repository content can try to override your agent's task brief — and how gh-aw's layered architecture limits the impact. [Side Quest: Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md)

@@ -27,7 +27,7 @@ CCA and mobile learners are already authenticated — you signed in to GitHub to
 
 After you commit a workflow file in [Step 7b](07b-your-first-workflow-ui.md) or a later step, navigate to the **Actions** tab in your repository, select the workflow name in the sidebar, and click **Run workflow**. You do not need `gh aw run`.
 
-If you want a browser-only scenario with a complete pre-written workflow template, [Adventure E in Step 10](10-choose-your-scenario.md#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile) provides a paste-and-commit workflow and trigger instructions — no terminal required at any stage.
+If you want a browser-only scenario with a complete pre-written workflow template, [Adventure E in Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) provides a paste-and-commit workflow and trigger instructions — no terminal required at any stage.
 
 ## What to do next
 
