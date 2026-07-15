@@ -64,7 +64,7 @@ Trigger a manual run to confirm the secret is wired up correctly:
 
 - [ ] You generated a fine-grained PAT at [github.com/settings/tokens](https://github.com/settings/tokens) with **Repository access: Public repositories** and **Copilot requests: Read-only**
 - [ ] `COPILOT_GITHUB_TOKEN` is stored as a repository secret (exact name, no spaces or hyphens)
-- [ ] Your workflow frontmatter has `copilot-requests: read` under `permissions`
+- [ ] Your workflow frontmatter has `copilot-requests: read` (required even when using `COPILOT_GITHUB_TOKEN`) under `permissions`
 - [ ] A manual run completed and the Copilot step shows it authenticated with `COPILOT_GITHUB_TOKEN`
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
@@ -86,5 +86,7 @@ Work through these checks if a run fails with `401 Unauthorized`:
 1. In **Settings → Secrets and variables → Actions**, confirm the secret exists with the exact name `COPILOT_GITHUB_TOKEN`.
 2. At [github.com/settings/tokens](https://github.com/settings/tokens), confirm the fine-grained PAT has **Repository access: Public repositories**, **Copilot requests: Read-only**, and has not expired.
 3. If in doubt, delete the secret, generate a fresh PAT, and re-add the secret — it takes less than two minutes.
+
+The workshop path assumes a public practice repository, so keep token visibility at **Public repositories**.
 
 </details>
