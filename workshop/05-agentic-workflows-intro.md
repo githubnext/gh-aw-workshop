@@ -9,8 +9,8 @@ Before skipping, confirm you already know both of these:
 
 If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
-> [!NOTE]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
+> [!IMPORTANT]
+> On GHEC, GHES, or EMU, confirm you can open the **Actions** tab. If you cannot, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
 
 ## 📋 Before You Start
 
@@ -21,19 +21,9 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
-## Three things to know
-
-![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
-
-- **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
-- **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
-- **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
-
-If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
-
 ## Classify these tasks
 
-For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box to confirm, then reveal the answer before proceeding to the next task:
+Try this first: classify each task as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
 
 **Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
@@ -67,6 +57,18 @@ For each task below: classify it as **agentic workflow** or **standard Actions w
 **Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
 
 </details>
+
+## Three things to know
+
+Now compare your answers to the three core ideas below.
+
+![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
+
+- **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
+- **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
+- **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
+
+If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
 
 ## Reflection
 
