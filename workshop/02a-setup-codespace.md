@@ -88,10 +88,10 @@ The diagram below shows your Codespace connection to GitHub.
 5. Run the Copilot access check:
 
    ```bash
-   gh api user/copilot_billing 2>&1 | grep -q '"plan_type"' && echo "✅ Copilot active" || echo "❌ Copilot not enabled"
+   gh api user/copilot_billing --silent && echo "✅ Copilot active" || echo "❌ Copilot check failed"
    ```
 
-6. Confirm the output shows `✅ Copilot active`. If you see `❌ Copilot not enabled`, return to [github.com/settings/copilot](https://github.com/settings/copilot) to enable or upgrade your plan before continuing.
+6. Confirm the output shows `✅ Copilot active`. If you see `❌ Copilot check failed`, either Copilot is not active on your account or a connectivity issue occurred — verify your plan at [github.com/settings/copilot](https://github.com/settings/copilot).
 
 _What success looks like:_
 
