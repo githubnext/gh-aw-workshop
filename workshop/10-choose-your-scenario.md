@@ -84,36 +84,18 @@ For mobile, CCA, and browser-only learners. No terminal needed.
 
 Use the **Agentic Workflows** agent in the GitHub Copilot app or Agents tab to create your daily status workflow — the agent handles authoring, compiling, and committing for you.
 
-### Open a session
+### Open the Agentic Workflows agent
 
 1. Open your practice repository on GitHub.com.
-2. Click the **Copilot** tab (or **Agents** tab if your organisation uses that label) and click **New session** — or open the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) and connect to your practice repository in **Interactive** mode.
+2. Click the **Copilot** tab and select the **Agentic Workflows** agent.
+3. Click **New session**.
 
-### Paste the prompt
+### Describe what you want
 
-The prompt below tells the agent two things:
-1. Where to learn the agentic workflow file format (the `create.md` reference guide from the `github/gh-aw` repository).
-2. What workflow to create for your repository.
-
-Copy and paste the following prompt into the agent session:
+Describe your intent in plain language — the agent handles the workflow format, compilation, and pull request for you:
 
 ```
-Read the agentic workflow creation guide at:
-https://github.com/github/gh-aw/blob/main/create.md
-
-Then create a daily repository status report agentic workflow for this repository.
-
-The workflow should:
-- Trigger on a daily schedule and support manual triggering via workflow_dispatch
-- Count open pull requests and open issues in this repository
-- Find or create an issue titled "Daily Status Reports" and post one comment with open PR count, open issue count, and the title of the most recently updated issue
-- Skip posting if a comment was already posted today
-- Use minimum required permissions: contents: read, copilot-requests: write, issues: read, pull-requests: read
-- Limit safe-outputs to add-comment with max: 1
-
-Save the workflow as `.github/workflows/daily-status.md`.
-Compile it with `gh aw compile --validate`.
-Commit the `.md` file and the generated `.lock.yml`, then open a pull request for review.
+Create a daily status workflow that posts a summary of open PRs and issues to an issue comment every day.
 ```
 
 The agent creates the workflow, compiles it, and opens a pull request. Review the diff and merge it into `main`.
