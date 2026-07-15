@@ -27,7 +27,7 @@ If you have not configured Copilot access yet, or if you want the full walkthrou
 - [Side Quest: Method 1 — Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) — Recommended workshop path
 - [Side Quest: Method 2 — `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md) — Use this if Method 1 is not available in your environment or you need a PAT-based setup
 
-1. After completing the appropriate setup side quest, if you have not already configured Copilot access, verify that at least one of the following Copilot authentication methods is configured:
+1. After completing the appropriate setup side quest, verify that at least one of the following Copilot authentication methods is configured:
    - **Method 1 (permission-based):** `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
    - **Method 2 (token-based):** `COPILOT_GITHUB_TOKEN` appears in **Settings → Secrets and variables → Actions**.
 2. Confirm you have an active GitHub Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot).
