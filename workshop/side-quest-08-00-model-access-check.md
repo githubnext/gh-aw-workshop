@@ -13,7 +13,7 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 - No `engine:` line means GitHub Copilot (the default).
 - `engine: claude` means the workflow uses Claude.
-- `engine: codex` means the workflow uses Codex / OpenAI.
+- `engine: codex` means the workflow uses OpenAI.
 
 ## Match the check to your engine
 
@@ -45,9 +45,9 @@ Need to set this up? See [Side Quest: Configure an Anthropic API Key](side-quest
 </details>
 
 <details>
-<summary><b>Codex / OpenAI (<code>engine: codex</code>)</b></summary>
+<summary><b>OpenAI (<code>engine: codex</code>)</b></summary>
 
-Your workflow uses Codex when the frontmatter contains `engine: codex`.
+Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
 
 1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
@@ -58,7 +58,7 @@ Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11
 </details>
 
 > [!NOTE]
-> Before you return to Step 8, describe in one sentence what would happen if you clicked **Run workflow** without completing your engine's check.
+> Before you return to Step 8, say out loud or jot down one sentence describing what would happen if you clicked **Run workflow** without completing your engine's check.
 
 ## Optional: terminal runs from a Codespace
 
