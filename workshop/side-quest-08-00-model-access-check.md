@@ -13,7 +13,7 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 - No `engine:` line means GitHub Copilot (the default).
 - `engine: claude` means the workflow uses Claude.
-- `engine: codex` means the workflow uses OpenAI.
+- `engine: codex` means the workflow uses OpenAI. In this workshop, `codex` is the engine identifier for the OpenAI path.
 
 ## Match the check to your engine
 
@@ -58,7 +58,7 @@ Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11
 </details>
 
 > [!NOTE]
-> Before you return to Step 8, say out loud or jot down one sentence describing what would happen if you clicked **Run workflow** without completing your engine's check.
+> Before you return to Step 8, say out loud or jot down one sentence describing the kind of error you would expect if your workflow did not have model access configured.
 
 ## Optional: terminal runs from a Codespace
 
