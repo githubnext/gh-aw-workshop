@@ -30,7 +30,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
    permissions:
      contents: read
      copilot-requests: write
-     issues: write
+     issues: read
 
    tools:
      github:
@@ -38,7 +38,6 @@ You'll paste a complete documentation health workflow into the GitHub web editor
        toolsets: [default]
 
    safe-outputs:
-     create-issue: {}
      add-comment:
        max: 1
    ---
@@ -58,7 +57,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 
    ## Output Format
 
-   Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and post a comment in this format:
+   Find the issue titled "Daily Docs Health" and post a comment in this format:
 
    ```
    📚 Docs Health Report — {today's date}
@@ -76,7 +75,6 @@ You'll paste a complete documentation health workflow into the GitHub web editor
    - Post only one comment per calendar day. If today's report already exists, stop.
    - Never edit or commit changes to any file — read only.
    - Write "unknown" for any field where data is unavailable.
-   - If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
    ```
 
 4. Select **Commit directly to the `main` branch**.
@@ -87,9 +85,9 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 
 ## Understand the guardrails
 
-- `issues: write` lets the agent read issues and create the tracking issue on first run.
+- Read-only permissions let the agent inspect documentation and issues.
 - The GitHub tool uses the scoped proxy.
-- `safe-outputs` limits the workflow to one new issue (if needed) and one comment per run.
+- `safe-outputs` limits the workflow to one issue comment.
 
 ## ✅ Checkpoint
 

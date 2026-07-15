@@ -62,17 +62,17 @@ on: # Run triggers
 
 ### Add the permissions block
 
-This workflow reads files and issues, and creates the tracking issue on its first run. It never writes to code. Keeping permissions narrow limits what the agent can do if the task brief is ever misconfigured.
+This workflow only reads files and issues — it never writes to code. Keeping permissions narrow limits what the agent can do if the task brief is ever misconfigured.
 
 ```yaml
 permissions: # Required GitHub scopes
   contents: read # Read files in the repo
   copilot-requests: write # Call Copilot APIs
-  issues: write # Read and create issues
+  issues: read # Read issues
 ```
 
 > [!NOTE]
-> `copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. `issues: write` lets the agent read existing issues and create the tracking issue on first run. The only write actions are gated by the `safe-outputs` guardrail below.
+> `copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. The other permissions here are read-only. The only write action is the issue comment, which is gated by the `safe-outputs` guardrail below.
 
 ### Add tools and output guardrails
 
@@ -83,7 +83,6 @@ tools: # Tool access
     toolsets: [default] # Default toolset
 
 safe-outputs: # Write guardrails
-  create-issue: {} # Allow creating the tracking issue
   add-comment: # Allow comments
     max: 1 # One comment max
 ```
@@ -107,7 +106,7 @@ Collect and summarise:
 
 ## Output Format
 
-Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and post a comment in this format:
+Find the issue titled "Daily Docs Health" and post a comment in this format:
 
 ```
 📚 Docs Health Report — {today's date}
@@ -125,7 +124,6 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 - Post only one comment per calendar day. If today's report already exists, stop.
 - Never edit or commit changes to any file — read only.
 - Write "unknown" for any field where data is unavailable.
-- If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
 ```
 
 ---
@@ -160,7 +158,7 @@ on:
 permissions:
   contents: read
   copilot-requests: write
-  issues: write
+  issues: read
 
 tools:
   github:
@@ -168,7 +166,6 @@ tools:
     toolsets: [default]
 
 safe-outputs:
-  create-issue: {}
   add-comment:
     max: 1
 ---
@@ -187,7 +184,7 @@ Collect and summarise:
 
 ## Output Format
 
-Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and post a comment in this format:
+Find the issue titled "Daily Docs Health" and post a comment in this format:
 
 ```
 📚 Docs Health Report — {today's date}
@@ -205,7 +202,6 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 - Post only one comment per calendar day. If today's report already exists, stop.
 - Never edit or commit changes to any file — read only.
 - Write "unknown" for any field where data is unavailable.
-- If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
 ```
 
 </details>
