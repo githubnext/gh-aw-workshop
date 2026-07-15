@@ -9,7 +9,7 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 ## 📋 Before You Start
 
 - You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
-- Your workflow posts to a safe output surface such as the **Daily Status Reports** issue.
+- Your workflow posts to a [safe output surface](https://github.github.com/gh-aw/reference/safe-outputs/) such as the **Daily Status Reports** issue.
 
 ## Baseline run
 
@@ -113,3 +113,8 @@ Quick run-log check:
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
 Return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+
+## 📚 See Also
+
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

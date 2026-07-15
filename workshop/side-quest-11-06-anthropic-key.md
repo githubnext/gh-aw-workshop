@@ -2,7 +2,7 @@
 
 > _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the AI engine for your agentic workflow, then return to your main path._
 
-By default, agentic workflows run on the GitHub Copilot engine. If you prefer to use **Claude**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your workflow frontmatter.
+By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the GitHub Copilot engine. If you prefer to use **Claude**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your workflow frontmatter.
 
 ## 📋 Before You Start
 
@@ -127,3 +127,9 @@ You should see:
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+
+## 📚 See Also
+
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Authentication reference](https://github.github.com/gh-aw/reference/auth/#claude)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

@@ -24,7 +24,7 @@ tools:
 | Field | Purpose |
 |-------|---------|
 | `tools:` | Parent key listing every tool integration the agent may use. |
-| `github:` | Enables the GitHub MCP tool — the interface the agent uses to call GitHub APIs (list issues, list PRs, check CI runs, etc.). |
+| `github:` | Enables the [GitHub MCP tool](https://github.github.com/gh-aw/guides/mcps/#github-mcp-server) — the interface the agent uses to call GitHub APIs (list issues, list PRs, check CI runs, etc.). |
 | `mode: gh-proxy` | Routes API calls through a secure proxy that enforces the `permissions` declared above, preventing calls beyond what you've allowed. |
 | `toolsets: [default]` | Activates the standard set of GitHub tools (issues, PRs, commits, actions). Add `discussions` to expand later. |
 
@@ -118,3 +118,10 @@ Key things to note:
 ---
 
 Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+
+## 📚 See Also
+
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
+- [Using MCPs](https://github.github.com/gh-aw/guides/mcps/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

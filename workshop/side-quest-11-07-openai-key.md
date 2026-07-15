@@ -2,7 +2,7 @@
 
 > _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
 
-By default, agentic workflows use the GitHub Copilot engine. To use **OpenAI models**, store an OpenAI API key as a repository secret and add one frontmatter line.
+By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) use the GitHub Copilot engine. To use **OpenAI models**, store an OpenAI API key as a repository secret and add one frontmatter line.
 
 ## 📋 Before You Start
 
@@ -126,3 +126,9 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+
+## 📚 See Also
+
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Authentication reference](https://github.github.com/gh-aw/reference/auth/#codex)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
