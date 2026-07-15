@@ -24,8 +24,6 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 If you already trust GitHub Actions, the trust model stays the same here. Agentic workflows run inside the standard GitHub Actions sandbox with the same permissions, firewall controls, and secret isolation shown in the security diagram above. You are not creating a new trust boundary.
 
-- [ ] I can explain why this uses the same trust model as GitHub Actions
-
 ## Classify these tasks
 
 Classify each task as **agentic workflow** or **standard Actions workflow**:
@@ -54,8 +52,6 @@ Mark each statement before revealing the answers:
 </details>
 
 In one sentence, describe what you would want _your_ agentic workflow to do. You'll use this idea in Step 7.
-
-- [ ] I wrote one sentence describing what I want my own agentic workflow to do
 
 ## What the agent decided
 
@@ -112,7 +108,9 @@ Both files live in `.github/workflows/`. Look at them and answer: which part of 
 ## ✅ Checkpoint
 
 - [ ] I described what an agentic workflow is in one sentence
+- [ ] I can explain why agentic workflows use the same trust model as GitHub Actions
 - [ ] I classified all three tasks and verified my reasoning in the reveal
+- [ ] I wrote one sentence describing what I want my own agentic workflow to do
 - [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
