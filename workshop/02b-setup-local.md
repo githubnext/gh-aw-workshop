@@ -130,7 +130,7 @@ Run `gh --version` again after installing to confirm it worked.
 
 If you're on GHES, GHEC, behind SSO, or behind a proxy, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md). If any install step is blocked by proxy, permissions, or host-specific setup issues, use [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
-### Authenticate the GitHub CLI
+### Authenticate the `gh` CLI
 
 ```bash
 gh auth login

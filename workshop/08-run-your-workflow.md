@@ -66,7 +66,7 @@ Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md
 > [!IMPORTANT]
 > Do not proceed until all items in the pre-flight checklist above are checked. Missing model access causes an immediate run failure.
 
-### Trigger it from the Actions tab
+### Trigger the workflow via GitHub Actions UI
 
 Open your practice repository in GitHub and click **Actions** in the top navigation. In the left sidebar, select **Hello Agent**.
 

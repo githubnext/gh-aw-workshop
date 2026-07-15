@@ -154,7 +154,6 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Experiments reference](https://github.github.com/gh-aw/reference/experiments/)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
 - [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md)
 - [Make Your Workflow Remember Across Runs](20-persistent-memory.md)

@@ -81,6 +81,8 @@ Changed sentence: "Write in a friendly, conversational tone."
 
 If the lowest row did not improve, keep the first change in place, pick one different instruction to modify or add, and run the same loop again.
 
+## Read the run log for errors
+
 <details>
 <summary>Need ideas for what to change or where to look for errors?</summary>
 
