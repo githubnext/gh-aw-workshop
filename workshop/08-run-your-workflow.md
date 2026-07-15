@@ -16,7 +16,7 @@ You'll trigger the `hello-agent` workflow from Step 7, watch it start in the **A
 
 Start by checking that every item in **Before You Start** is complete. This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
-Confirm your model access is configured — [Model Access Check →](side-quest-08-00-model-access-check.md) — then return here to trigger your first run.
+Before triggering your first run, confirm your model access is configured — [Model Access Check →](side-quest-08-00-model-access-check.md) — then return here.
 
 If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option after you finish the model access check. If that command fails in Codespaces, use the GitHub UI path instead.
 
