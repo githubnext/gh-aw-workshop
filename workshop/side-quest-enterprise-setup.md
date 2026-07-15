@@ -1,6 +1,6 @@
 # Side Quest: Enterprise Setup Considerations
 
-> _Required for GHES users before attempting to create or run agentic workflows. Also useful if you are running any setup step in a managed enterprise environment — complete this guide, then return to your current step._
+> _Required for GHES users before attempting to create or run [agentic workflows](https://github.github.com/gh-aw/introduction/overview/). Also useful if you are running any setup step in a managed enterprise environment — complete this guide, then return to your current step._
 
 ## 📋 Before You Start
 
@@ -82,3 +82,9 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 
 Return to the workshop step where you opened this side quest.
 Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Network Permissions reference](https://github.github.com/gh-aw/reference/network/)
+- [Workflow Constraints reference](https://github.github.com/gh-aw/reference/workflow-constraints/)

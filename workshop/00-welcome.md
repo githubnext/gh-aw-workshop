@@ -84,7 +84,7 @@ The same trigger now hands off to an AI agent instead of a chain of shell script
 
 ## 🎯 What You'll Do
 
-You'll build an **agentic workflow**: a GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a schedule — practical enough to adapt for real teams.
+You'll build an **[agentic workflow](https://github.github.com/gh-aw/introduction/overview/)**: a GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a schedule — practical enough to adapt for real teams.
 
 What makes it different from regular GitHub Actions:
 

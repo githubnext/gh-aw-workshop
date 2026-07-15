@@ -71,3 +71,7 @@ Before continuing to Step 4, confirm:
 - [ ] I have either a Codespace terminal open **or** I can create and edit files directly in the GitHub web UI.
 
 **Next:** Continue with your chosen path above.
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

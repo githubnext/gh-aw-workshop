@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Repair one broken sub-agent block, then reuse the same pattern in your own workflow. By the end, you'll have one valid block that compiles cleanly and is easy to extend later.
+Repair one broken [sub-agent](https://github.github.com/gh-aw/reference/subagents/) block, then reuse the same pattern in your own workflow. By the end, you'll have one valid block that compiles cleanly and is easy to extend later.
 
 ## 📋 Before You Start
 
@@ -160,3 +160,8 @@ When the compile finishes, check that you do **not** see warnings about stripped
 ---
 
 Return to [Step 21: Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md).
+
+## 📚 See Also
+
+- [Sub-Agents reference](https://github.github.com/gh-aw/reference/subagents/)
+- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)
