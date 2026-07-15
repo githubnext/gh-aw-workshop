@@ -9,7 +9,7 @@ You'll learn how to interpret the three places where [agentic workflow](https://
 ## 📋 Before You Start
 
 - Completed [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
-- Your **Hello Agent** workflow has at least one completed run
+- Your **Daily Report Status** workflow has at least one completed run
 
 ---
 
@@ -27,7 +27,7 @@ An agentic workflow produces output in three distinct places. Think of them as t
 
 ## Anatomy of the Live Log
 
-Open the **Actions** tab, click your completed **Hello Agent** run, then click the job name to open the log.
+Open the **Actions** tab, click your completed **Daily Report Status** run, then click the job name to open the log.
 
 The log entries follow a predictable pattern:
 
@@ -140,7 +140,7 @@ Timestamp aligns with run? yes / no
 
 ## Try it: Label your log
 
-Open the live log from your completed Step 8 **Hello Agent** run.
+Open the live log from your completed Step 8 **Daily Report Status** run.
 
 - [ ] I found one `[plan]` line and labeled it **Planning**
 - [ ] I found one `[tool]` line and labeled it **Tool call**

@@ -4,20 +4,20 @@
 
   <!-- Title -->
   <text x="600" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#24292f">Agentic Workflow File Anatomy</text>
-  <text x="600" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#57606a">Every field in hello-agent.md has a specific runtime role</text>
+  <text x="600" y="56" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#57606a">Every field in daily-report-status.md has a specific runtime role</text>
 
   <!-- File card -->
   <rect x="60" y="76" width="340" height="440" rx="8" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
   <rect x="60" y="76" width="340" height="32" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
   <rect x="60" y="96" width="340" height="12" fill="#f6f8fa" stroke="none"/>
-  <text x="80" y="96" font-family="ui-monospace, monospace" font-size="12" fill="#57606a">hello-agent.md</text>
+  <text x="80" y="96" font-family="ui-monospace, monospace" font-size="12" fill="#57606a">daily-report-status.md</text>
 
   <!-- --- top fence -->
   <text x="80" y="124" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
 
   <!-- name row -->
   <rect x="72" y="130" width="316" height="22" rx="3" fill="#ddf4ff" stroke="none"/>
-  <text x="80" y="145" font-family="ui-monospace, monospace" font-size="12" fill="#0969da">name: Hello Agent</text>
+  <text x="80" y="145" font-family="ui-monospace, monospace" font-size="12" fill="#0969da">name: Daily Report Status</text>
 
   <!-- on row -->
   <rect x="72" y="156" width="316" height="34" rx="3" fill="#fff8c5" stroke="none"/>

@@ -21,13 +21,13 @@
   <text x="396" y="74" font-family="Arial,sans-serif" font-size="14" fill="#57606a" font-weight="normal">Settings</text>
 
   <!-- Breadcrumb -->
-  <text x="80" y="125" font-family="Arial,sans-serif" font-size="13" fill="#0969da">Hello Agent Workflow</text>
+  <text x="80" y="125" font-family="Arial,sans-serif" font-size="13" fill="#0969da">Daily Report Status Workflow</text>
   <text x="250" y="125" font-family="Arial,sans-serif" font-size="13" fill="#57606a"> / Run #1</text>
   <!-- Summary header -->
   <rect x="60" y="135" width="1080" height="70" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <circle cx="105" cy="170" r="20" fill="#1a7f37"/>
   <text x="105" y="178" font-family="Arial,sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">✓</text>
-  <text x="140" y="162" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1f2328">Hello Agent Workflow</text>
+  <text x="140" y="162" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1f2328">Daily Report Status Workflow</text>
   <text x="140" y="184" font-family="Arial,sans-serif" font-size="13" fill="#57606a">Triggered via workflow_dispatch  · 30 seconds ago  · completed in 45s</text>
   <!-- Jobs panel -->
   <rect x="60" y="220" width="280" height="220" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
@@ -39,7 +39,7 @@
   <!-- Log panel -->
   <rect x="360" y="220" width="780" height="220" rx="4" fill="#0d1117"/>
   <text x="380" y="250" font-family="monospace" font-size="13" fill="#3fb950">✓  Set up job</text>
-  <text x="380" y="275" font-family="monospace" font-size="13" fill="#3fb950">✓  Run gh aw run hello-agent.md</text>
+  <text x="380" y="275" font-family="monospace" font-size="13" fill="#3fb950">✓  Run gh aw run daily-report-status.md</text>
   <text x="380" y="300" font-family="monospace" font-size="13" fill="#c9d1d9">    Hello from the agent!</text>
   <text x="380" y="325" font-family="monospace" font-size="13" fill="#3fb950">✓  Complete job</text>
   <text x="600" y="540" font-family="Arial,sans-serif" font-size="24" fill="#57606a" text-anchor="middle">Workflow run summary panel</text>

@@ -9,11 +9,11 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 ## 📋 Before You Start
 
 - Completed [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
-- Your **Hello Agent** workflow has at least one completed run
+- Your **Daily Report Status** workflow has at least one completed run
 
 ## Read the live log
 
-Open the completed **Hello Agent** run from the **Actions** tab and click the job name. The log usually moves through a simple pattern: the agent thinks, calls a tool, receives a result, and finishes.
+Open the completed **Daily Report Status** run from the **Actions** tab and click the job name. The log usually moves through a simple pattern: the agent thinks, calls a tool, receives a result, and finishes.
 
 ```text
 🤔 Planning...  Searching for open issues with 👍 reactions
@@ -30,7 +30,7 @@ The important question is not "Can I read every line?" It is "Can I tell where t
 
 After the run finishes, scroll to the **Summary** section on the run page. This gives you the short version of what the agent believes it did, including the safe-output action it used.
 
-Then verify the real output in your repository. For **Hello Agent**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the safe-output record.
+Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the safe-output record.
 
 ![Workflow run summary panel](images/08-run-summary.svg)
 

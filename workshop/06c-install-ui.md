@@ -19,7 +19,7 @@ The compiled `.lock.yml` file is what GitHub actually runs. In Step 7b you'll pa
 
 ![GitHub-hosted execution flow: the learner authors and triggers workflows from a browser; GitHub's infrastructure executes the pre-compiled .lock.yml workflow and runs AI agents entirely](images/06c-github-hosted-execution.svg)
 
-You'll author workflow files using the GitHub web editor in Step 7b and trigger them from the Actions tab in Step 8. You'll confirm `gh-aw` is working when **Hello Agent** appears in your workflow list.
+You'll author workflow files using the GitHub web editor in Step 7b and trigger them from the Actions tab in Step 8. You'll confirm `gh-aw` is working when **Daily Report Status** appears in your workflow list.
 
 ## Triggering your workflow from the browser
 

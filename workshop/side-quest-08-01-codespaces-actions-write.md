@@ -24,7 +24,7 @@ You'll identify the Codespaces token error that blocks `gh aw run` and use the f
 When you run:
 
 ```bash
-gh aw run hello-agent
+gh aw run daily-report-status
 ```
 
 you may see:
@@ -81,10 +81,10 @@ Existing Codespaces do not pick up new permissions after a rebuild, so you must 
 
 ## Verify the fix
 
-Before you retry `gh aw run hello-agent`, confirm one of these is true:
+Before you retry `gh aw run daily-report-status`, confirm one of these is true:
 
-- A new **Hello Agent** run appears after you use the Actions tab
-- A new **Hello Agent** run appears after you run `gh aw run hello-agent` from your newly created Codespace
+- A new **Daily Report Status** run appears after you use the Actions tab
+- A new **Daily Report Status** run appears after you run `gh aw run daily-report-status` from your newly created Codespace
 
 If you still see the same 403 error and no new run appears in the **Actions** tab, go back to **Fix A** and use the UI path for this workshop.
 
@@ -92,9 +92,9 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 ## ✅ Checkpoint
 
-- [ ] I can see `HTTP 403: Resource not accessible by integration` in my terminal when running `gh aw run hello-agent`
-- [ ] A new **Hello Agent** run appears in the **Actions** tab after I trigger it from the UI
-- [ ] If I used Fix B: running `gh aw run hello-agent` in my new Codespace completes without a 403 error and a new run appears in the **Actions** tab
+- [ ] I can see `HTTP 403: Resource not accessible by integration` in my terminal when running `gh aw run daily-report-status`
+- [ ] A new **Daily Report Status** run appears in the **Actions** tab after I trigger it from the UI
+- [ ] If I used Fix B: running `gh aw run daily-report-status` in my new Codespace completes without a 403 error and a new run appears in the **Actions** tab
 - [ ] I'm ready to return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
 ---

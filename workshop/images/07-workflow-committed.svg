@@ -23,22 +23,22 @@
   <!-- Breadcrumb -->
   <text x="80" y="130" font-family="Arial,sans-serif" font-size="14" fill="#0969da">your-repo</text>
   <text x="170" y="130" font-family="Arial,sans-serif" font-size="14" fill="#57606a">/ .github / workflows /</text>
-  <text x="345" y="130" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1f2328">hello-agent.md</text>
+  <text x="345" y="130" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1f2328">daily-report-status.md</text>
   <!-- File header -->
   <rect x="60" y="145" width="1080" height="40" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
   <text x="90" y="170" font-family="Arial,sans-serif" font-size="13" fill="#57606a">1 contributor   · Last commit </text>
-  <text x="320" y="170" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1f2328">Add hello-agent workflow</text>
+  <text x="320" y="170" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1f2328">Add daily-report-status workflow</text>
   <text x="600" y="170" font-family="Arial,sans-serif" font-size="13" fill="#57606a">  2 minutes ago</text>
   <rect x="980" y="153" width="140" height="26" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <text x="1050" y="170" font-family="Arial,sans-serif" font-size="12" fill="#57606a" text-anchor="middle">✏ Edit file</text>
   <!-- Code content -->
   <rect x="60" y="185" width="1080" height="300" rx="0" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <text x="100" y="215" font-family="monospace" font-size="13" fill="#cf222e">---</text>
-  <text x="100" y="235" font-family="monospace" font-size="13" fill="#0550ae">name</text><text x="145" y="235" font-family="monospace" font-size="13" fill="#1f2328">: Hello Agent Workflow</text>
+  <text x="100" y="235" font-family="monospace" font-size="13" fill="#0550ae">name</text><text x="145" y="235" font-family="monospace" font-size="13" fill="#1f2328">: Daily Report Status Workflow</text>
   <text x="100" y="255" font-family="monospace" font-size="13" fill="#0550ae">on</text><text x="125" y="255" font-family="monospace" font-size="13" fill="#1f2328">: [workflow_dispatch]</text>
   <text x="100" y="275" font-family="monospace" font-size="13" fill="#cf222e">---</text>
-  <text x="100" y="310" font-family="monospace" font-size="13" fill="#57606a"># Hello Agent — workshop step 07</text>
-  <text x="100" y="335" font-family="monospace" font-size="13" fill="#1f2328">Run the Hello Agent workflow.</text>
+  <text x="100" y="310" font-family="monospace" font-size="13" fill="#57606a"># Daily Report Status — workshop step 07</text>
+  <text x="100" y="335" font-family="monospace" font-size="13" fill="#1f2328">Run the Daily Report Status workflow.</text>
   <text x="600" y="540" font-family="Arial,sans-serif" font-size="24" fill="#57606a" text-anchor="middle">Workflow file committed in the GitHub UI</text>
 
 </svg>

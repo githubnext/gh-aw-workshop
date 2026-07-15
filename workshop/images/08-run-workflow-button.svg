@@ -24,10 +24,10 @@
   <rect x="60" y="105" width="240" height="400" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <text x="80" y="135" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1f2328">Workflows</text>
   <rect x="60" y="145" width="240" height="36" fill="#ddf4ff" rx="0"/>
-  <text x="85" y="168" font-family="Arial,sans-serif" font-size="13" fill="#0969da">⚡ Hello Agent Workflow</text>
+  <text x="85" y="168" font-family="Arial,sans-serif" font-size="13" fill="#0969da">⚡ Daily Report Status Workflow</text>
   <!-- Main panel -->
   <rect x="320" y="105" width="820" height="400" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
-  <text x="350" y="135" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1f2328">Hello Agent Workflow</text>
+  <text x="350" y="135" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1f2328">Daily Report Status Workflow</text>
   <!-- Run workflow dropdown open -->
   <rect x="950" y="115" width="160" height="34" rx="6" fill="#0969da"/>
   <text x="1030" y="137" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Run workflow ▾</text>

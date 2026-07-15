@@ -4,7 +4,7 @@ _You now have a valid starter file. In this part, you complete it and push it._
 
 ## 🎯 What You'll Do
 
-You'll finish `.github/workflows/hello-agent.md` by adding:
+You'll finish `.github/workflows/daily-report-status.md` by adding:
 
 - `permissions` and `safe-outputs` in frontmatter
 - a `## Task` instructions block below frontmatter
@@ -23,11 +23,11 @@ Each section of your workflow file serves a distinct purpose at runtime — the 
 
 ### Add `permissions` and `safe-outputs`
 
-In `.github/workflows/hello-agent.md`, update frontmatter so it looks like this:
+In `.github/workflows/daily-report-status.md`, update frontmatter so it looks like this:
 
 ```yaml
 ---
-name: Hello Agent
+name: Daily Report Status
 on:
   workflow_dispatch:
 permissions:
@@ -80,8 +80,8 @@ Optional while editing: `gh aw compile --watch`.
 Then commit and push:
 
 ```bash
-git add .github/workflows/hello-agent.md
-git commit -m "Add hello-agent agentic workflow"
+git add .github/workflows/daily-report-status.md
+git commit -m "Add daily-report-status agentic workflow"
 git push
 ```
 
@@ -89,8 +89,8 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 
 ## ✅ Checkpoint
 
-- [ ] `.github/workflows/hello-agent.md` includes `permissions` with `copilot-requests: write`
-- [ ] `.github/workflows/hello-agent.md` includes `safe-outputs` for `add-comment` and `create-issue`
+- [ ] `.github/workflows/daily-report-status.md` includes `permissions` with `copilot-requests: write`
+- [ ] `.github/workflows/daily-report-status.md` includes `safe-outputs` for `add-comment` and `create-issue`
 - [ ] The `## Task` instructions block in your workflow file describes a concrete task in plain language
 - [ ] `gh aw compile --validate` reports valid
 - [ ] The file is committed and pushed to `main`
