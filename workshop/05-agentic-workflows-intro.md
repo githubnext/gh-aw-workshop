@@ -22,7 +22,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
-If you already trust GitHub Actions, the trust model stays the same here. Agentic workflows run inside the standard GitHub Actions sandbox with the same permissions, firewall controls, and secret isolation shown in the image above. You are not creating a new trust boundary.
+If you already trust GitHub Actions, the trust model stays the same here. Agentic workflows run in the standard GitHub Actions sandbox with the same permissions, firewall controls, and secret isolation shown in the Actions run image above. You are not creating a new trust boundary.
 
 ## Classify these tasks
 
@@ -53,7 +53,7 @@ Mark each statement before revealing the answers:
 
 ## Reflection
 
-In one sentence, describe what you would want _your_ agentic workflow to do. You'll use this idea in Step 7.
+In one sentence, describe what you would want _your_ agentic workflow to do. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
 
 ## What the agent decided
 
@@ -113,6 +113,7 @@ Both files live in `.github/workflows/`. Look at them and answer: which part of 
 - [ ] I can explain why agentic workflows use the same trust model as GitHub Actions
 - [ ] I classified all three tasks and verified my reasoning in the reveal
 - [ ] I wrote one sentence describing what I want my own agentic workflow to do
+- [ ] My workflow idea needs judgment, not a fixed script
 - [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
