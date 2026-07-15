@@ -57,6 +57,10 @@ Choose how you want to create and manage files:
 
 Both paths create the same practice repository and continue to Step 4.
 
+**Quick check:** In 1–2 sentences, describe what your repository contains and why it matters for Step 4. _(Hint: look at the files listed in your repo.)_
+
+- [ ] I can explain what files are in my repository and why they matter for Step 4.
+
 ## ✅ Checkpoint
 
 Before continuing to Step 4, confirm:
