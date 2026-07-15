@@ -56,7 +56,7 @@ Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11
 
 </details>
 
-> **Reflection:** In one sentence, describe what would happen if you clicked **Run workflow** right now without completing your engine's check.
+> **Reflection:** In one sentence, describe what would happen if you returned to Step 8 and clicked **Run workflow** without completing your engine's check.
 
 ## Optional: terminal runs from a Codespace
 
