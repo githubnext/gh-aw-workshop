@@ -57,6 +57,19 @@ For each task below: classify it as **agentic workflow** or **standard Actions w
 > [!IMPORTANT]
 > On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
 
+<details>
+<summary>What to verify before continuing on GHEC/GHES/EMU</summary>
+
+Complete these three checks to confirm you can proceed without the full side quest:
+
+- [ ] **Actions tab visible** — navigate to your practice repository and confirm the **Actions** tab appears in the top navigation.
+- [ ] **Workflow permissions enabled** — go to **Settings → Actions → General** and confirm that a policy allowing workflow runs is selected (for example, **Allow all actions and reusable workflows**).
+- [ ] **Token scope sufficient** — if you are using a Personal Access Token, confirm it includes the `workflow` scope (classic tokens) or the **Actions: Read and write** permission (fine-grained tokens).
+
+If all three checks pass, continue to the next section. If any check fails, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before proceeding.
+
+</details>
+
 ## Reflection
 
 Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
@@ -161,6 +174,27 @@ Does your answer include:
 
 > [!TIP]
 > If this still feels fuzzy, Step 7 makes the distinction concrete. Return here after Step 7.
+
+<details>
+<summary>Common issues at this step</summary>
+
+**Q: The Actions tab is missing — what do I do?**
+
+Your organization policy may be restricting the Actions tab for non-admin members. Ask your GitHub organization administrator to enable Actions for your repository, or work through [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for the full enterprise checklist.
+
+**Q: I already know GitHub Actions — should I skip to Step 6?**
+
+Only skip if _both_ conditions at the top of this step apply: you can describe what a workflow trigger does _and_ you have worked with AI agent execution environments in a production or CI/CD context. If either condition is uncertain, the classification exercises (Task A–D) will confirm your baseline quickly — they take just a few minutes.
+
+**Q: The classification exercise answers are not revealing when I click them.**
+
+GitHub renders `<details>` blocks as collapsible sections. Click the triangle or the summary text to expand an answer. If the page is not rendering, try a hard reload (`Ctrl+Shift+R` / `Cmd+Shift+R`) or open the file in a fresh browser tab.
+
+**Q: I'm on GHES and workflows I create later never appear in the Actions tab.**
+
+Self-hosted GHES instances may require a site admin to enable GitHub Actions at the instance level. If your Actions tab exists but newly committed workflows do not appear, check with your GHES administrator and refer to [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
+
+</details>
 
 ## ✅ Checkpoint
 
