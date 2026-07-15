@@ -144,7 +144,15 @@ Once you're comfortable with this pattern, the same technique works for:
 **Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
 
 > [!TIP]
-> Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit. Learn how crafted issue or PR content can attempt to exfiltrate your `GITHUB_TOKEN` — and how gh-aw stops it — in the optional [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
+> <details>
+> <summary>Security reading: token exfiltration and long-lived credential risks</summary>
+>
+> Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit:
+>
+> - **Token exfiltration**: learn how crafted issue or PR content can attempt to leak your `GITHUB_TOKEN` — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
+> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how `permissions:` minimization and `network.allowed-domains` contain the blast radius.
+>
+> </details>
 
 ## 📚 See Also
 
