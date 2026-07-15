@@ -5,7 +5,7 @@
 Before skipping, confirm you already know both of these:
 
 - You can describe what an Actions workflow trigger does
-- You have used an LLM tool in a production or CI/CD context
+- You have worked with AI agent execution environments in a production or CI/CD context
 
 If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
