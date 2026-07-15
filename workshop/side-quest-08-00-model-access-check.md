@@ -68,7 +68,7 @@ Step 8 uses the GitHub Actions UI because it works for every learner. If you pla
 
 - [ ] If I am running from a Codespace terminal, I set **Read and write permissions** in **Settings → Actions → General**.
 
-If you still hit an `actions:write` or `HTTP 403: Resource not accessible by integration` error in a Codespace, use [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+If you still hit an `actions:write` or `HTTP 403: Resource not accessible by integration` error in a Codespace, use [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ## ✅ Checkpoint
 
