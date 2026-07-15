@@ -142,7 +142,7 @@ function usesTerminalPath(state, context) {
 }
 
 function canUseCCACompiler(state) {
-  return state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess;
+  return Boolean(state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess);
 }
 
 function canCompileWorkflow(state, context, options = {}) {
@@ -532,7 +532,7 @@ function buildTransitions() {
       const compiledWorkflowCheck = ensureCompiledWorkflow(
         state,
         "workflow-not-compiled",
-        "Compile the workflow with `gh aw compile` in a terminal, or run the compiler in a CCA session before running the workflow. Pushing the `.md` file alone does not create the `.lock.yml` that GitHub Actions runs."
+        "Compile the workflow with `gh aw compile` in a terminal, or run the compiler in a Copilot coding agent (CCA) session before running the workflow. Pushing the `.md` file alone does not create the `.lock.yml` that GitHub Actions runs."
       );
       if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
 
