@@ -24,8 +24,6 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
-Note: If you switch to [Step 3b](03b-create-your-repo-ui.md), you can continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile).
-
 ## Steps
 
 **Verify you are on the right path before continuing:**
