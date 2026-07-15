@@ -98,6 +98,8 @@ Before you move on, continue to [Step 8b: Interpret Your First Run](08b-interpre
 
 - [ ] I ran the pre-flight check and confirmed my workflow's model access is ready
 - [ ] My workflow has model access configured — either `copilot-requests: write` in the frontmatter or the relevant API key secret listed under **Settings → Secrets and variables → Actions**
+- [ ] I confirmed my model-access configuration using the quick-check table (Copilot subscription active, or API key secret present for my engine)
+- [ ] I am aware of the side quest to use if the run fails immediately with an authentication or model-access error
 - [ ] The **Hello Agent** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active
