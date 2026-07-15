@@ -531,6 +531,19 @@ function buildTransitions() {
         );
       }
 
+      if (
+        state.actions?.inferenceProvider === "github" &&
+        state.github?.repositoryOwnerType === "organization" &&
+        state.actions?.secrets?.COPILOT_GITHUB_TOKEN !== true
+      ) {
+        return ensure(
+          false,
+          "Regular organization-owned repositories cannot rely on `permissions.copilot-requests: write` alone for GitHub inference.",
+          "org-repo-copilot-token-required",
+          "Use Method 2 and add `COPILOT_GITHUB_TOKEN`, while keeping `permissions.copilot-requests: write` in the workflow frontmatter."
+        );
+      }
+
       if (!usingBrowserPath && state.actions?.permissions?.copilotRequestsWrite !== true) {
         if (state.auth?.accountType === "enterprise-managed") {
           return ensure(

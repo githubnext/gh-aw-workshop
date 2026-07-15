@@ -1,6 +1,6 @@
 # Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method when you need a dedicated PAT for Copilot access — for example, a service account, an older workflow, or an org-level override. If you have an active GitHub Copilot subscription, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
+> _Optional: use this method when you need a dedicated PAT for Copilot access — for example, a repository owned by a regular GitHub organization, a service account, an older workflow, or an org-level override. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
 
 This method stores a Personal Access Token (PAT) with the `copilot` scope as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
 

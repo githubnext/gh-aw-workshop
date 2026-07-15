@@ -51,7 +51,7 @@ Model environment state with explicit fields for:
 - agent authentication material (`hasApiKey`, `hasCopilotRequestToken`)
 - Actions model inference provider configuration (`github`, `anthropic`, `openai`)
 - provider-specific Actions secrets (`COPILOT_GITHUB_TOKEN`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`)
-- workflow permission gate for GitHub inference (`permissions.copilot-requests: write`), including enterprise org-billing behavior
+- workflow permission gate for GitHub inference (`permissions.copilot-requests: write`), including enterprise org-billing behavior and regular org-owned repo fallbacks
 - gh token scope (`user`, `org`)
 - account type (`personal`, `enterprise-managed`)
 - deployment type (`github.com`, `ghec`, `ghes`)
