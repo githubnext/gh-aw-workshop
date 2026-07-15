@@ -10,7 +10,7 @@ Before skipping, confirm you already know both of these:
 If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
 > [!IMPORTANT]
-> On GHEC, GHES, or EMU, confirm you can open the **Actions** tab. If you cannot, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
+> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
 
 ## 📋 Before You Start
 
@@ -23,7 +23,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 
 ## Classify these tasks
 
-Try this first: classify each task as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
+For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
 
 **Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
@@ -60,7 +60,7 @@ Try this first: classify each task as **agentic workflow** or **standard Actions
 
 ## Three things to know
 
-Now compare your answers to the three core ideas below.
+Compare your answers to the three ideas below.
 
 ![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
 
