@@ -141,12 +141,12 @@ function usesTerminalPath(state, context) {
   return !prefersBrowserPath(state, context);
 }
 
-function hasCloudAgentCompilerAccess(state) {
+function canUseCCACompiler(state) {
   return state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess;
 }
 
 function canCompileWorkflow(state, context, options = {}) {
-  return usesTerminalPath(state, context) || (options.allowCloudAgent && hasCloudAgentCompilerAccess(state));
+  return usesTerminalPath(state, context) || (options.allowCloudAgent && canUseCCACompiler(state));
 }
 
 function updateWorkflowCompileState(state, context, options = {}) {
@@ -160,7 +160,7 @@ function updateWorkflowCompileState(state, context, options = {}) {
 
 function ensureCompiledWorkflow(state, category, remediation) {
   return ensure(
-    state.flags.hasWorkflowFile && state.flags.hasCompiledWorkflowLock && state.flags.workflowReadyToRun,
+    state.flags.hasWorkflowFile && state.flags.workflowReadyToRun,
     "The learner has a workflow `.md` file, but the matching `.lock.yml` was never generated or is stale.",
     category,
     remediation
@@ -532,7 +532,7 @@ function buildTransitions() {
       const compiledWorkflowCheck = ensureCompiledWorkflow(
         state,
         "workflow-not-compiled",
-        "Compile the workflow with `gh aw compile` in a terminal, or run the compiler in a CCA session before Step 8. Pushing the `.md` file alone does not create the `.lock.yml` that GitHub Actions runs."
+        "Compile the workflow with `gh aw compile` in a terminal, or run the compiler in a CCA session before running the workflow. Pushing the `.md` file alone does not create the `.lock.yml` that GitHub Actions runs."
       );
       if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
 
