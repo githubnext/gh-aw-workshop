@@ -38,7 +38,7 @@ Open your repository in a **new tab** so you keep the token page open until the 
 
 ## Add the permission to your workflow
 
-Your workflow still needs `copilot-requests: read` in the frontmatter:
+If your workflow declares `copilot-requests` in frontmatter, set it to `read`:
 
 ```yaml
 ---
@@ -47,7 +47,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  copilot-requests: read   # required even when using COPILOT_GITHUB_TOKEN
+  copilot-requests: read   # use read when declaring this permission
 ---
 ```
 
@@ -64,7 +64,7 @@ Trigger a manual run to confirm the secret is wired up correctly:
 
 - [ ] You generated a fine-grained PAT at [github.com/settings/tokens](https://github.com/settings/tokens) with **Repository access: Public repositories** and **Copilot requests: Read-only**
 - [ ] `COPILOT_GITHUB_TOKEN` is stored as a repository secret (exact name, no spaces or hyphens)
-- [ ] Your workflow frontmatter has `copilot-requests: read` (required even when using `COPILOT_GITHUB_TOKEN`) under `permissions`
+- [ ] If your workflow frontmatter includes `copilot-requests`, it is set to `read`
 - [ ] A manual run completed and the Copilot step shows it authenticated with `COPILOT_GITHUB_TOKEN`
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
