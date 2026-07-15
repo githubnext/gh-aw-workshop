@@ -22,7 +22,7 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 Your workflow uses GitHub Copilot when the frontmatter has no `engine:` line.
 
-If you have not configured Copilot access yet, or if you want the full walkthrough, use one of these side quests before continuing:
+If you still need to set up Copilot access, or if you want the full walkthrough, use one of these side quests before continuing:
 
 - [Side Quest: Method 1 — Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) — Recommended workshop path
 - [Side Quest: Method 2 — `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md) — Use this if Method 1 is not available in your environment or you need a PAT-based setup
@@ -42,7 +42,9 @@ If you have not configured Copilot access yet, or if you want the full walkthrou
 
 Your workflow uses Claude when the frontmatter contains `engine: claude`.
 
-If you have not configured Claude access yet, or if you want the full walkthrough, complete [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) before continuing.
+If you still need to set up Claude access, or if you want the full walkthrough, use this side quest before continuing:
+
+- [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md)
 
 1. Confirm `ANTHROPIC_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
@@ -55,7 +57,9 @@ If you have not configured Claude access yet, or if you want the full walkthroug
 
 Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
 
-If you have not configured OpenAI access yet, or if you want the full walkthrough, complete [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) before continuing.
+If you still need to set up OpenAI access, or if you want the full walkthrough, use this side quest before continuing:
+
+- [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md)
 
 1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
