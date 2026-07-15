@@ -106,7 +106,7 @@ Collect and summarise:
 
 ## Output Format
 
-Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and post a comment in this format:
+Find the issue titled "Daily Docs Health" and post a comment in this format:
 
 ```
 📚 Docs Health Report — {today's date}
@@ -124,7 +124,6 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 - Post only one comment per calendar day. If today's report already exists, stop.
 - Never edit or commit changes to any file — read only.
 - Write "unknown" for any field where data is unavailable.
-- If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
 ```
 
 ---
@@ -185,7 +184,7 @@ Collect and summarise:
 
 ## Output Format
 
-Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and post a comment in this format:
+Find the issue titled "Daily Docs Health" and post a comment in this format:
 
 ```
 📚 Docs Health Report — {today's date}
@@ -203,7 +202,6 @@ Find the issue titled "Daily Docs Health" (create it if it doesn't exist) and po
 - Post only one comment per calendar day. If today's report already exists, stop.
 - Never edit or commit changes to any file — read only.
 - Write "unknown" for any field where data is unavailable.
-- If the "Daily Docs Health" issue doesn't exist, create it, then post the first comment.
 ```
 
 </details>
