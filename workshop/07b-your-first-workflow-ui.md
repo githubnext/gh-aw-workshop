@@ -5,16 +5,17 @@
 
 ## 🎯 What You'll Do
 
-You'll create a complete `hello-agent.md` workflow in the GitHub web editor and commit it without using a terminal.
+You'll create a complete `hello-agent.md` workflow in the GitHub web editor, then use the **Agentic Workflows** agent in the **Agents** tab to compile and commit the generated `hello-agent.lock.yml` file without using a terminal.
 
 ## 📋 Before You Start
 
 - Your practice repository is open in your browser
 - You can create files in the repository
+- The repository is available in the **Agents** tab
 
 ## Understand the file
 
-An agentic workflow source file is a Markdown task brief with YAML frontmatter. GitHub Actions runs the compiled `.lock.yml`; you only edit the `.md` source.
+An agentic workflow source file is a Markdown task brief with YAML frontmatter. GitHub Actions runs the compiled `.lock.yml`; you edit the `.md` source first, then compile it into the `.lock.yml` file before Step 8.
 
 ## Create the workflow
 
@@ -53,8 +54,24 @@ An agentic workflow source file is a Markdown task brief with YAML frontmatter. 
 
 ![Workflow file committed in the GitHub UI](images/07-workflow-committed.svg)
 
+## Compile the workflow in the Agents tab
+
+Open your repository's **Agents** tab and start a new session with the **Agentic Workflows** agent.
+
+Paste this prompt:
+
+```text
+Compile `.github/workflows/hello-agent.md` with `gh aw compile`.
+
+If the compile succeeds, commit the generated `.github/workflows/hello-agent.lock.yml` file to `main` and show me the diff before I approve it.
+
+If the compile fails, fix the workflow and show me the diff before you commit.
+```
+
+Review the proposed diff. Confirm both `.github/workflows/hello-agent.md` and `.github/workflows/hello-agent.lock.yml` are included before you approve the commit.
+
 > [!NOTE]
-> This path skips `gh aw compile` checkpoints. GitHub Actions compiles the workflow when you run it in Step 8 and shows any errors in the run log.
+> This path skips local compile checkpoints. The **Agentic Workflows** agent must generate the `.lock.yml` file before the workflow appears in **Actions**.
 
 <!-- Separate adjacent callouts -->
 
@@ -75,8 +92,10 @@ The workflow will fail with a `401 Unauthorized` error if Copilot access is not 
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/hello-agent.md` exists in the repository
+- [ ] `.github/workflows/hello-agent.lock.yml` exists in the repository
 - [ ] The file contains the complete frontmatter and task brief
-- [ ] The file is committed to `main`
+- [ ] You reviewed the agent's compile diff before approving the commit
+- [ ] Both workflow files are committed to `main`
 - [ ] Copilot model access is enabled for your account
 
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
