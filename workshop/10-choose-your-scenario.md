@@ -24,7 +24,7 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 | [Daily Repo Status Report](#adventure-a-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |
 | [Daily Documentation Updater](#adventure-b-daily-documentation-updater) | Scans your docs files every day and posts a health report highlighting staleness, missing sections, and broken links | Projects where docs drift out of sync with the code |
 | [PR Code Reviewer](#adventure-c-pr-code-reviewer) | Reviews every pull request for duplicate code — checking both the changes and the existing codebase — and posts a structured review comment | Teams that want automated duplication detection in code review |
-| [Browser-Only Path (CCA / Mobile)](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) | Pre-written daily status workflow for the browser; no terminal needed | Mobile, CCA, and browser-only learners |
+| [Browser-Only Path (CCA / Mobile)](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) | Creates a daily status workflow via the Agentic Workflows agent; no terminal needed | Mobile, CCA, and browser-only learners |
 
 > [!TIP]
 > Not sure which to pick? Start with **Adventure A** — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
@@ -82,38 +82,37 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 
 For mobile, CCA, and browser-only learners. No terminal needed.
 
-Open your repository, click Add file → Create new file, name the file `.github/workflows/daily-status.md`, paste the template below, commit directly to the main branch, then go to Actions → Daily Status Report → Run workflow.
+Use the **Agentic Workflows** agent in the GitHub Copilot app or Agents tab to create your daily status workflow — the agent handles authoring, compiling, and committing for you.
 
-```markdown
----
-name: Daily Status Report
-on:
-  workflow_dispatch: {}
-  schedule: daily
-permissions:
-  contents: read
-  issues: read
-  pull-requests: read
-  copilot-requests: write
-safe-outputs:
-  add-comment:
-    max: 1
----
+### Open a session
 
-## Task
+1. Open your practice repository on GitHub.com.
+2. Click the **Copilot** tab (or **Agents** tab if your organisation uses that label) and click **New session** — or open the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) and connect to your practice repository in **Interactive** mode.
 
-Count open pull requests and open issues in this repository.
-Find or create an issue titled "Daily Status Reports".
-Post one comment with: open PR count, open issue count, and the title
-of the most recently updated issue. Skip if a comment was posted today.
-```
+### Paste the prompt
 
-Your issue receives a comment like this:
+Copy and paste the following prompt into the agent session:
 
 ```
-📊 Daily Status — 2025-07-15
-Open PRs: 2  |  Open issues: 5  |  Last commit: "fix README" (1 hour ago)
+Read the agentic workflow creation guide at:
+https://github.com/github/gh-aw/blob/main/create.md
+
+Then create a daily repository status report agentic workflow for this repository.
+
+The workflow should:
+- Trigger on a daily schedule and support manual triggering via workflow_dispatch
+- Count open pull requests and open issues in this repository
+- Find or create an issue titled "Daily Status Reports" and post one comment with open PR count, open issue count, and the title of the most recently updated issue
+- Skip posting if a comment was already posted today
+- Use minimum required permissions: contents: read, copilot-requests: write, issues: read, pull-requests: read
+- Limit safe-outputs to add-comment with max: 1
+
+Save the workflow as `.github/workflows/daily-status.md`.
+Compile it with `gh aw compile --validate`.
+Commit the `.md` file and the generated `.lock.yml`, then open a pull request for review.
 ```
+
+The agent creates the workflow, compiles it, and opens a pull request. Review the diff and merge.
 
 ➡️ [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
 
@@ -135,7 +134,7 @@ Open PRs: 2  |  Open issues: 5  |  Last commit: "fix README" (1 hour ago)
 - [ ] I've opened the next step for my chosen scenario and read the first paragraph
 - [ ] I know whether I'll follow the design step path or jump to Step 11d with the GitHub Copilot app or Agents tab
 - [ ] I know Adventure E is the browser-only path for mobile and CCA learners
-- [ ] If following Adventure E, the workflow file is committed to my repository
+- [ ] If following Adventure E, the agent has created and merged a pull request with the workflow file
 
 **Next (pick one):**
 
