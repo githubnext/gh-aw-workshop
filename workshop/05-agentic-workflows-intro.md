@@ -58,6 +58,21 @@ For each task below: classify it as **agentic workflow** or **standard Actions w
 
 </details>
 
+**Task D:** On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
+
+- [ ] I have classified Task D
+
+<details>
+<summary>Check Task D answer</summary>
+
+**Task D — Agentic (hybrid) workflow:** ESLint is deterministic — same result every run. The AI summary requires judgment: reading the diff and deciding how to describe the change. Combining fixed and AI steps makes a workflow agentic.
+
+- [ ] The ESLint step produces the same pass-or-fail result every run
+- [ ] The AI step produces different output based on what it reads in the diff
+- [ ] A workflow mixing deterministic and AI steps is still agentic overall
+
+</details>
+
 ## Three things to know
 
 Compare your answers to the three ideas below.
@@ -126,11 +141,34 @@ permissions:
 
 Both files live in `.github/workflows/`. Look at them and answer: which part of the `.md` is the **task brief**, and which part tells GitHub Actions **when** to run?
 
+## Self-check
+
+What makes a workflow agentic rather than standard? Write your answer in your notes.
+
+- [ ] I wrote my self-check answer in my notes
+
+<details>
+<summary>Show model answer</summary>
+
+A workflow is agentic when an AI agent makes judgment calls — reading context, deciding what matters, and producing output that differs each run. Standard workflows follow fixed steps.
+
+Does your answer include:
+- [ ] AI making judgment calls on live context
+- [ ] Output that varies each run
+- [ ] Contrast with standard fixed-step workflows
+
+</details>
+
+> [!TIP]
+> If this still feels fuzzy, Step 7 makes the distinction concrete. Return here after Step 7.
+
 ## ✅ Checkpoint
 
 - [ ] I described what an agentic workflow is in one sentence
 - [ ] I understand that agentic workflows use the same trust model as GitHub Actions
-- [ ] I classified all three tasks and verified my reasoning in the reveal
+- [ ] I classified all four tasks and verified my reasoning in the reveal
+- [ ] I can explain why Task D is agentic despite its deterministic ESLint step
+- [ ] I answered the self-check and compared my answer to the model
 - [ ] I wrote one sentence describing what I want my own agentic workflow to do
 - [ ] I recorded my workflow idea in my workshop notes
 - [ ] My workflow idea needs judgment, not a fixed script
