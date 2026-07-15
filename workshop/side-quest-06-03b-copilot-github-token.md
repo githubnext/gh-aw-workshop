@@ -35,21 +35,6 @@ Open your repository in a **new tab** so you keep the token page open until the 
 
 **Verify:** `COPILOT_GITHUB_TOKEN` appears in the Secrets list — then you can safely close the token tab.
 
-## Add the permission to your workflow
-
-Your workflow still needs `copilot-requests: write` in the frontmatter:
-
-```yaml
----
-name: my-workflow
-on:
-  workflow_dispatch:
-permissions:
-  contents: read
-  copilot-requests: write   # required even when using COPILOT_GITHUB_TOKEN
----
-```
-
 ## Run your workflow
 
 Trigger a manual run to confirm the secret is wired up correctly:
