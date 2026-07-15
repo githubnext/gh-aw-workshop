@@ -25,9 +25,9 @@ An agentic workflow file has two parts: **frontmatter** (YAML between `---` fenc
 |---------|--------|--------------|
 | Metadata | `emoji`, `description` | Human-readable labels shown in the `gh aw` dashboard and Actions UI. |
 | Triggers | `on:` | `schedule: daily` for the automated run plus `workflow_dispatch` for manual testing. |
-| Permissions | `permissions:` | Minimum scopes needed — read-only for repo content, plus issue write access for the tracking issue and report comment. |
+| Permissions | `permissions:` | Minimum scopes needed — read-only for repo content and issues. |
 | Tools | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
-| Write guardrail | `safe-outputs:` | Allows one tracking issue creation if needed and one issue comment per run. |
+| Write guardrail | `safe-outputs:` | One issue comment per run — the only write action allowed. |
 
 ---
 
@@ -62,17 +62,17 @@ on: # Run triggers
 
 ### Add the permissions block
 
-This workflow reads files and issues, then writes only to the tracking issue it uses for the daily report. Keeping permissions narrow limits what the agent can do if the task brief is ever misconfigured.
+This workflow only reads files and issues — it never writes to code. Keeping permissions narrow limits what the agent can do if the task brief is ever misconfigured.
 
 ```yaml
 permissions: # Required GitHub scopes
   contents: read # Read files in the repo
   copilot-requests: write # Call Copilot APIs
-  issues: write # Read, create, and comment on the tracking issue
+  issues: read # Read issues
 ```
 
 > [!NOTE]
-> `copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. `issues: write` is needed because the workflow may create the `Daily Docs Health` issue on the first run before posting its daily comment. The `safe-outputs` guardrails below keep that write surface narrow.
+> `copilot-requests: write` is required for every agentic workflow — it allows the runner to call the Copilot AI API. The other permissions here are read-only. The only write action is the issue comment, which is gated by the `safe-outputs` guardrail below.
 
 ### Add tools and output guardrails
 
@@ -83,8 +83,6 @@ tools: # Tool access
     toolsets: [default] # Default toolset
 
 safe-outputs: # Write guardrails
-  create-issue: # Allow creating the tracking issue
-    max: 1 # One issue max
   add-comment: # Allow comments
     max: 1 # One comment max
 ```
@@ -161,7 +159,7 @@ on:
 permissions:
   contents: read
   copilot-requests: write
-  issues: write
+  issues: read
 
 tools:
   github:
@@ -169,8 +167,6 @@ tools:
     toolsets: [default]
 
 safe-outputs:
-  create-issue:
-    max: 1
   add-comment:
     max: 1
 ---

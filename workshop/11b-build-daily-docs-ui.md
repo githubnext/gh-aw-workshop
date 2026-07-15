@@ -30,7 +30,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
    permissions:
      contents: read
      copilot-requests: write
-     issues: write
+     issues: read
 
    tools:
      github:
@@ -38,8 +38,6 @@ You'll paste a complete documentation health workflow into the GitHub web editor
        toolsets: [default]
 
    safe-outputs:
-     create-issue:
-       max: 1
      add-comment:
        max: 1
    ---
@@ -88,16 +86,16 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 
 ## Understand the guardrails
 
-- `issues: write` lets the agent create the `Daily Docs Health` issue on the first run and post the daily report comment there.
+- Read-only permissions let the agent inspect documentation and issues.
 - The GitHub tool uses the scoped proxy.
-- `safe-outputs` limits the workflow to one tracking issue creation and one issue comment per run.
+- `safe-outputs` limits the workflow to one issue comment.
 
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-docs.md` exists
 - [ ] The complete workflow is committed to `main`
 - [ ] You understand that compilation occurs when GitHub Actions runs the workflow
-- [ ] You understand the workflow's issue-write scope and output guardrails
+- [ ] You understand the workflow's read-only scope and output guardrail
 
 **Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
