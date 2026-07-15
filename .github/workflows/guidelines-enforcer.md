@@ -169,7 +169,7 @@ For each file in `target_files`:
 
 1. Read the full file content.
 2. Check it against every applicable rule in `.github/workflows/guidelines.md`. Key checks:
-   - **No numbered headings**: headings like `### 1. Open the Codespace` are violations; `### Open the Codespace` is correct.
+   - **No numbered headers inside files**: headings like `### 1. Open the Codespace` are violations; `### Open the Codespace` is correct. Number ordering belongs in lists, filenames, tables, and checkpoints — not in heading text.
    - **Alert callout rules**: single-line callouts must not use `<details>`; multi-line callouts must use `<details>` with a `<summary>`. Alert level must be capped at `[!NOTE]`/`[!TIP]` for regular content — only escalate when the rule allows it.
    - **Tooling progression**: `gh` setup must not appear before the dedicated install step; no Node.js prerequisites anywhere.
    - **Step ordering**: environment setup must precede tool install; credential setup must precede CLI usage.
