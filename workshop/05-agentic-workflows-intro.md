@@ -9,9 +9,6 @@ Before skipping, confirm you already know both of these:
 
 If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
-> [!IMPORTANT]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
-
 ## 📋 Before You Start
 
 - You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
@@ -20,6 +17,16 @@ If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
+
+## Three things to know
+
+![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
+
+- **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
+- **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
+- **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
+
+If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
 
 ## Classify these tasks
 
@@ -47,43 +54,8 @@ For each task below: classify it as **agentic workflow** or **standard Actions w
 
 </details>
 
-**Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
-
-- [ ] I have classified Task C
-
-<details>
-<summary>Check Task C answer</summary>
-
-**Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
-
-</details>
-
-**Task D:** On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
-
-- [ ] I have classified Task D
-
-<details>
-<summary>Check Task D answer</summary>
-
-**Task D — Agentic (hybrid) workflow:** ESLint is deterministic — same result every run. The AI summary requires judgment: reading the diff and deciding how to describe the change. Combining fixed and AI steps makes a workflow agentic.
-
-- [ ] The ESLint step produces the same pass-or-fail result every run
-- [ ] The AI step produces different output based on what it reads in the diff
-- [ ] A workflow mixing deterministic and AI steps is still agentic overall
-
-</details>
-
-## Three things to know
-
-Compare your answers to the three ideas below.
-
-![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
-
-- **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
-- **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
-- **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
-
-If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
+> [!IMPORTANT]
+> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
 
 ## Reflection
 
@@ -139,7 +111,35 @@ permissions:
   issues: read
 ```
 
-Both files live in `.github/workflows/`. Look at them and answer: which part of the `.md` is the **task brief**, and which part tells GitHub Actions **when** to run?
+Both files live in `.github/workflows/`. Look at them and answer: which part of the `.md` is the **task brief**, and which part tells GitHub Actions when to run?
+
+## Classify more tasks
+
+**Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
+
+- [ ] I have classified Task C
+
+<details>
+<summary>Check Task C answer</summary>
+
+**Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
+
+</details>
+
+**Task D:** On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
+
+- [ ] I have classified Task D
+
+<details>
+<summary>Check Task D answer</summary>
+
+**Task D — Agentic (hybrid) workflow:** ESLint is deterministic — same result every run. The AI summary requires judgment: reading the diff and deciding how to describe the change. Combining fixed and AI steps makes a workflow agentic.
+
+- [ ] The ESLint step produces the same pass-or-fail result every run
+- [ ] The AI step produces different output based on what it reads in the diff
+- [ ] A workflow mixing deterministic and AI steps is still agentic overall
+
+</details>
 
 ## Self-check
 
