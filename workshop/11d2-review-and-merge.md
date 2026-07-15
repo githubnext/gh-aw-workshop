@@ -12,31 +12,13 @@
 
 ## Monitor Your Session
 
-After you submit the prompt, watch the activity feed until the session finishes. Most sessions complete in two to five minutes.
-
-### ✏️ Exercise: monitor progress and open the PR
-
-1. In the GitHub Copilot app, open your active session in **My work**.
-2. Wait for the session to finish.
-3. Open the pull request link from the session.
-4. Keep the pull request open in a browser tab for the exercises below.
-
-> [!TIP]
-> Want a walkthrough of each agent phase? See [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md).
+After you submit the prompt, watch the activity feed until the session finishes — most sessions complete in two to five minutes. In the GitHub Copilot app, open **My work**, select your active session, and wait for it to reach a completed state. Once it finishes, open the pull request link and keep the pull request open in a browser tab for the exercises below. For a detailed walkthrough of each agent phase, see [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md).
 
 ---
 
 ## Review the Pull Request
 
-When the session ends, locate the pull request. Choose the method that matches where you started the session:
-
-- **GitHub Copilot app:** Open **My work**, select your session, and click its pull request link.
-- **Agents tab:** Open the session timeline and click the pull request link there.
-- **Terminal or Codespace:** Run this command to list open pull requests:
-
-  ```bash
-  gh pr list --state open
-  ```
+When the session ends, locate the pull request using the method that matches where you started the session. In the **GitHub Copilot app**, open **My work**, select your session, and click its pull request link. In the **Agents tab**, open the session timeline and click the link there. Alternatively, from a **Terminal or Codespace**, run `gh pr list --state open` to find the PR number.
 
 > [!NOTE]
 > <details>
@@ -46,63 +28,34 @@ When the session ends, locate the pull request. Choose the method that matches w
 >
 > </details>
 
-### ✏️ Exercise: confirm both files are present
+### ✏️ Exercise: confirm both files are present and validate the lock file
 
-1. Open the **Files changed** tab of the pull request.
-2. Confirm `.github/workflows/<name>.md` appears in the diff.
-3. Confirm `.github/workflows/<name>.lock.yml` also appears in the diff.
-
-### ✏️ Exercise: validate the lock file
-
-1. Click `.github/workflows/<name>.lock.yml` to expand it in the diff.
-2. Scroll through the file to confirm it is not empty.
-3. Add a PR comment that pastes the first 10 lines of the lock file in a fenced code block.
+Open the **Files changed** tab and verify that both `.github/workflows/<name>.md` and `.github/workflows/<name>.lock.yml` appear in the diff. Then expand the lock file entry, scroll through it to confirm it is not empty, and post a PR comment that pastes the first 10 lines of the lock file in a fenced code block.
 
 ### ✏️ Exercise: request a revision with `@copilot`
 
-1. Read `.github/workflows/<name>.md` in the diff.
-2. Decide whether you want any changes. If not, skip to **Merge the Pull Request**.
-3. Post a revision request starting with `@copilot`:
+Read `.github/workflows/<name>.md` in the diff and decide whether the workflow needs any changes — if it looks good, skip ahead to **Merge the Pull Request**. To request a revision, post a comment that begins with `@copilot` and describes what you want changed, for example:
 
-   ```
-   @copilot Please change the schedule to weekly instead of daily.
-   ```
+```
+@copilot Please change the schedule to weekly instead of daily.
+```
 
-   > [!IMPORTANT]
-   > Comments directed at Copilot **must** begin with `@copilot`. Without the mention, the agent will not see your message.
+> [!IMPORTANT]
+> Comments directed at Copilot **must** begin with `@copilot`. Without the mention, the agent will not see your message.
 
-4. Wait for the agent to respond. Review the updated file before merging.
+After posting, wait for the agent to respond and review the updated file before merging.
 
 ---
 
 ## Merge the Pull Request
 
-Once you are satisfied with the workflow, merge the pull request and confirm the result.
+Once you are satisfied with the workflow, merge the pull request. Both the task brief and the compiled lock file must land on the default branch together — GitHub Actions reads the lock file on every trigger, so both files must be present for the workflow to run correctly. In the browser, click **Merge pull request** and then **Confirm merge**, or merge from the terminal using the command below (include `--delete-branch` if you want to remove the feature branch at the same time):
 
-> [!NOTE]
-> <details>
-> <summary>Why do both files need to land on the default branch together?</summary>
->
-> GitHub Actions reads the lock file on every trigger. If the lock file is missing or mismatched, the workflow will fail at runtime. Merging both files together ensures the workflow is immediately usable.
->
-> </details>
+```bash
+gh pr merge <pr-number> --merge --delete-branch
+```
 
-### ✏️ Exercise: merge the PR and confirm the workflow is live
-
-1. In the browser, click **Merge pull request** and then **Confirm merge**.
-2. Alternatively, merge from the terminal:
-
-   ```bash
-   gh pr merge <pr-number> --merge --delete-branch
-   ```
-
-3. Open your repository on the default branch. Confirm both files appear under `.github/workflows/`.
-4. Open the **Actions** tab. Confirm your workflow appears by name in the list.
-
-> [!NOTE]
-> Deleting the merged branch is optional. Use the merged PR page or pass `--delete-branch` in the command above.
-
-The workflow is now live. GitHub Actions picks it up on the next scheduled trigger or when you click **Run workflow**.
+After merging, open your repository on the default branch and confirm both files appear under `.github/workflows/`. Then open the **Actions** tab and verify that your workflow appears by name — it is now live and GitHub Actions will pick it up on the next scheduled trigger or when you click **Run workflow**.
 
 ---
 
