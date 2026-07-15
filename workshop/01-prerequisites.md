@@ -12,7 +12,7 @@ This step checks that all the tools and accounts you need are in place before yo
 > <details>
 > <summary><b>Using GHEC, GHES, or EMU? Complete this check before you continue.</b></summary>
 >
-> Agentic workflows will not run until all three Copilot Enterprise prerequisites are true for the organization that owns your workshop repository:
+> [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) will not run until all three Copilot Enterprise prerequisites are true for the organization that owns your workshop repository:
 >
 > - [ ] Copilot Enterprise is enabled for the organization
 > - [ ] A Copilot Enterprise seat is assigned to your account
