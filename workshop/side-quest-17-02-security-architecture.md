@@ -12,7 +12,7 @@ Think of your workflow like a smart helper in a playroom.
 
 - The **repository** is your toy box.
 - The **agent** is the helper who can look at toys and organize them.
-- The **sandbox** is the play area boundary that keeps the helper from running into the street.
+- The **[sandbox](https://github.github.com/gh-aw/reference/sandbox/)** is the play area boundary that keeps the helper from running into the street.
 
 ---
 
@@ -66,7 +66,7 @@ Good output usually:
 
 ## Security architecture in one sentence
 
-You declare **permissions + tools + task intent**, the runner enforces boundaries, and the agent produces constrained output from allowed data.
+You declare **[permissions](https://github.github.com/gh-aw/reference/permissions/) + tools + task intent**, the runner enforces boundaries, and the agent produces constrained output from allowed data.
 
 Here is what a well-scoped workflow frontmatter looks like in practice:
 
@@ -101,3 +101,11 @@ network:
 ---
 
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
+## 📚 See Also
+
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
+- [Sandbox Configuration](https://github.github.com/gh-aw/reference/sandbox/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

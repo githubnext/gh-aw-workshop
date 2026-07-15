@@ -109,3 +109,10 @@ The parser reads `required-labels` in [`pkg/workflow/safe_outputs_parser.go`](ht
 - [ ] I linked to the gh-aw source line that validates or sanitizes a safe output
 
 Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
+## 📚 See Also
+
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [GitHub Integrity Filtering](https://github.github.com/gh-aw/reference/integrity/)

@@ -63,7 +63,7 @@ An injection asking the agent to open an issue or post a comment will fail becau
 
 ### `network.allowed` blocks outbound exfiltration
 
-gh-aw lets you declare a firewall allowlist of domains the workflow runner may contact. Any outbound connection to a domain not in the list is rejected.
+gh-aw lets you declare a [firewall](https://github.github.com/gh-aw/reference/network/) allowlist of domains the workflow runner may contact. Any outbound connection to a domain not in the list is rejected.
 
 ```yaml
 ---
@@ -97,7 +97,7 @@ With this pattern, `GITHUB_TOKEN` is only available to the shell in that one ste
 
 ### Keep `permissions:` minimal
 
-A narrow permissions block limits what `GITHUB_TOKEN` is authorized to do. A workflow with:
+A narrow [permissions](https://github.github.com/gh-aw/reference/permissions/) block limits what `GITHUB_TOKEN` is authorized to do. A workflow with:
 
 ```yaml
 ---
@@ -149,3 +149,10 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 ---
 
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+
+## 📚 See Also
+
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)

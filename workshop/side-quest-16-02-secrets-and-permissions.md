@@ -114,7 +114,7 @@ The `gh` CLI reads `GH_TOKEN` automatically when it is set as an environment var
 <details>
 <summary>Learn how permissions frontmatter controls the built-in `GITHUB_TOKEN`</summary>
 
-gh-aw workflows declare required permissions in frontmatter. Only request what you need:
+gh-aw workflows declare required [permissions](https://github.github.com/gh-aw/reference/permissions/) in frontmatter. Only request what you need:
 
 ```yaml
 ---
@@ -139,3 +139,9 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 - [ ] You can explain why hard-coding credentials in workflow files is risky
 
 **Return to:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) or [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
+
+## 📚 See Also
+
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
