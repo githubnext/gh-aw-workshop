@@ -22,9 +22,12 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 Your workflow uses GitHub Copilot when the frontmatter has no `engine:` line.
 
-If you have not configured Copilot access yet, or if you want the full walkthrough, complete [Side Quest: Method 1 — Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for the recommended workshop path, or [Side Quest: Method 2 — `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md) if you need the advanced token-based path, then return here.
+If you have not configured Copilot access yet, or if you want the full walkthrough, use one of these side quests before continuing:
 
-1. Choose one Copilot authentication method to verify:
+- [Side Quest: Method 1 — Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for the recommended workshop path
+- [Side Quest: Method 2 — `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md) if you need the advanced token-based path
+
+1. Verify that one of the following Copilot authentication methods is configured:
    - **Method 1 (permission-based):** `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
    - **Method 2 (token-based):** `COPILOT_GITHUB_TOKEN` is present in **Settings → Secrets and variables → Actions**.
 2. Confirm you have an active GitHub Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot).
@@ -39,7 +42,7 @@ If you have not configured Copilot access yet, or if you want the full walkthrou
 
 Your workflow uses Claude when the frontmatter contains `engine: claude`.
 
-If you have not configured Claude access yet, or if you want the full walkthrough, complete [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and then return here.
+If you have not configured Claude access yet, or if you want the full walkthrough, complete [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) before continuing.
 
 1. Confirm `ANTHROPIC_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
@@ -52,7 +55,7 @@ If you have not configured Claude access yet, or if you want the full walkthroug
 
 Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
 
-If you have not configured OpenAI access yet, or if you want the full walkthrough, complete [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and then return here.
+If you have not configured OpenAI access yet, or if you want the full walkthrough, complete [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) before continuing.
 
 1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
