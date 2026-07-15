@@ -34,8 +34,8 @@ Confirm the permissions block in `daily-report-status.md` includes `copilot-requ
 
 ```yaml
 permissions:
-  issues: write
-  copilot-requests: write
+  issues: write           # create and update issues
+  copilot-requests: write # enable model access
 ```
 
 Terminal verify:
@@ -66,7 +66,7 @@ Open Settings → Secrets and variables → Actions in your practice repository.
 
 </details>
 
-If access is still not configured, complete the [Model Access Check](side-quest-08-00-model-access-check.md) for troubleshooting.
+If access is not configured, complete the [Model Access Check](side-quest-08-00-model-access-check.md) for troubleshooting.
 
 - [ ] I confirmed which engine `daily-report-status.md` uses
 - [ ] Model access is configured for my engine
