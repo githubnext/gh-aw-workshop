@@ -41,7 +41,7 @@ The agent's core goal comes from your task brief. Injected text in data surfaces
 
 ### The `permissions:` block enforces write boundaries
 
-Suppose an injection convinces the agent to attempt an out-of-scope action. The declared permissions determine what the `GITHUB_TOKEN` can actually do. A workflow with:
+Suppose an injection convinces the agent to attempt an out-of-scope action. The declared [permissions](https://github.github.com/gh-aw/reference/permissions/) determine what the `GITHUB_TOKEN` can actually do. A workflow with:
 
 ```yaml
 ---
@@ -127,3 +127,10 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 ---
 
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
+## 📚 See Also
+
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [GitHub Integrity Filtering](https://github.github.com/gh-aw/reference/integrity/)

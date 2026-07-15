@@ -78,3 +78,10 @@ Further reading:
 - [ ] I applied at least one of the three hardening habits to my own workflow
 
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
+## 📚 See Also
+
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
