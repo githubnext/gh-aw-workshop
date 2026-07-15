@@ -1,4 +1,6 @@
 # Adventure A: Set Up a Codespace _(recommended for new users)_
+> [!IMPORTANT]
+> On mobile, in the Copilot app, or using Copilot Cloud Agent (CCA)? Stop here: [Step 3b →](03b-create-your-repo-ui.md).
 
 ## 📋 Before You Start
 
@@ -11,13 +13,10 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 
 | Path | Best for | Action |
 |------|----------|--------|
-| 📱 Mobile / Copilot app | No terminal; GitHub Mobile or Copilot app | [Skip to Step 3b](03b-create-your-repo-ui.md) |
+| 📱 Mobile / Copilot app | No terminal; GitHub Mobile or Copilot app | **If you're on mobile or in the Copilot app, stop here.** [Step 3b →](03b-create-your-repo-ui.md) |
 | 🤖 Copilot Cloud Agent (CCA) | Browser-only, no local install; CCA chat | [Skip to Step 3b](03b-create-your-repo-ui.md) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B](02b-setup-local.md) |
-
-> [!NOTE]
-> GitHub Mobile and Copilot Cloud Agent paths do not require a terminal. Continue on the GitHub UI path and trigger workflows from the Actions tab in your browser.
 
 ## Which path is right for you?
 
