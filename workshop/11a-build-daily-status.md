@@ -10,7 +10,7 @@ _You've designed the workflow on paper — now choose how you want to create it.
 
 ## 🎯 What You'll Have When You're Done
 
-You'll have `.github/workflows/daily-status.md` committed to your repository and passing `gh aw compile --validate` with no errors. The workflow file will include all required sections — `trigger:`, `task:`, and at least one data-source — and will be ready to test in Step 12.
+You'll have `.github/workflows/daily-status.md` committed to your repository and passing `gh aw compile --validate` with no errors. The workflow file will include all required sections — `on:`, `task:`, and at least one data-source — and will be ready to test in Step 12.
 
 ## What You'll Build
 
@@ -21,7 +21,7 @@ Every daily-status workflow file has the same three-part skeleton, regardless of
 on:
   schedule: daily
 safe-outputs:
-  - post-issue-comment
+  add-comment: {}
 ---
 ## Task
 
@@ -47,7 +47,7 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 
 - [ ] `.github/workflows/daily-status.md` exists in your repository.
 - [ ] Running `gh aw compile --validate` exits with no errors.
-- [ ] The workflow file includes the `trigger:`, `task:`, and at least one data-source section.
+- [ ] The workflow file includes the `on:`, `task:`, and at least one data-source section.
 - [ ] A commit containing the new workflow file appears in your repository's commit history.
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
