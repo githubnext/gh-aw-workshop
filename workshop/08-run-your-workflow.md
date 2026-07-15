@@ -18,7 +18,7 @@ Start by checking that every item in **Before You Start** is complete. This step
 
 Before triggering your first run, confirm your model access is configured — [Model Access Check →](side-quest-08-00-model-access-check.md) — then return here.
 
-If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option after you finish the model access check. If that command fails in Codespaces, use the GitHub UI path instead.
+If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option after you finish the model access check. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ### Before you click Run
 
