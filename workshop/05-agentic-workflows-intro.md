@@ -22,6 +22,8 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
+If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
+
 ## Classify these tasks
 
 Classify each task as **agentic workflow** or **standard Actions workflow**:
@@ -48,6 +50,10 @@ Mark each statement before revealing the answers:
 **Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
 
 </details>
+
+## Reflection
+
+Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
 
 ## What the agent decided
 
@@ -104,7 +110,11 @@ Both files live in `.github/workflows/`. Look at them and answer: which part of 
 ## ✅ Checkpoint
 
 - [ ] I described what an agentic workflow is in one sentence
+- [ ] I understand that agentic workflows use the same trust model as GitHub Actions
 - [ ] I classified all three tasks and verified my reasoning in the reveal
+- [ ] I wrote one sentence describing what I want my own agentic workflow to do
+- [ ] I recorded my workflow idea in my workshop notes
+- [ ] My workflow idea needs judgment, not a fixed script
 - [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
