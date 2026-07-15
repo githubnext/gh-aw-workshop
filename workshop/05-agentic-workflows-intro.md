@@ -53,7 +53,7 @@ Mark each statement before revealing the answers:
 
 ## Reflection
 
-Before you check the reflection items in the checkpoint below, write one sentence wherever you keep workshop notes — your editor, a scratch file, or a notes app — describing what you would want _your_ agentic workflow to do. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
+Before you check the reflection items in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
 
 ## What the agent decided
 
@@ -113,6 +113,7 @@ Both files live in `.github/workflows/`. Look at them and answer: which part of 
 - [ ] I understand that agentic workflows use the same trust model as GitHub Actions
 - [ ] I classified all three tasks and verified my reasoning in the reveal
 - [ ] I wrote one sentence describing what I want my own agentic workflow to do
+- [ ] I recorded my workflow idea in my workshop notes
 - [ ] My workflow idea needs judgment, not a fixed script
 - [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
