@@ -22,12 +22,14 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 Your workflow uses GitHub Copilot when the frontmatter has no `engine:` line.
 
-1. Confirm `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
+If you have not configured Copilot access yet, or if you want the full Method 1 / Method 2 walkthrough, complete [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and then return here.
+
+1. Confirm your workflow uses one of the supported Copilot auth methods from that side quest:
+   - **Method 1:** `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
+   - **Method 2:** `COPILOT_GITHUB_TOKEN` is present in **Settings → Secrets and variables → Actions**.
 2. Confirm you have an active GitHub Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot).
 
-- [ ] I confirmed `copilot-requests: write` is in my frontmatter and my Copilot subscription is active.
-
-Not sure about the `permissions` block? See [Side Quest: Method 1 — Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md).
+- [ ] I confirmed my workflow uses either `copilot-requests: write` or `COPILOT_GITHUB_TOKEN`, and my Copilot subscription is active.
 
 </details>
 
@@ -36,11 +38,11 @@ Not sure about the `permissions` block? See [Side Quest: Method 1 — Copilot Re
 
 Your workflow uses Claude when the frontmatter contains `engine: claude`.
 
+If you have not configured Claude access yet, complete [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and then return here.
+
 1. Confirm `ANTHROPIC_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
 - [ ] I confirmed `ANTHROPIC_API_KEY` is present in **Settings → Secrets and variables → Actions**.
-
-Need to set this up? See [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
 
 </details>
 
@@ -49,11 +51,11 @@ Need to set this up? See [Side Quest: Configure an Anthropic API Key](side-quest
 
 Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
 
+If you have not configured OpenAI access yet, complete [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and then return here.
+
 1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
 - [ ] I confirmed `OPENAI_API_KEY` is present in **Settings → Secrets and variables → Actions**.
-
-Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
 
 </details>
 
@@ -76,6 +78,6 @@ If you still hit an `actions:write` or `HTTP 403: Resource not accessible by int
 
 - [ ] I opened `.github/workflows/hello-agent.md` and confirmed which engine I am using
 - [ ] I completed the matching model-access check for my workflow
-- [ ] My workflow has model access configured — either `copilot-requests: write` in the frontmatter or the relevant API key secret listed under **Settings → Secrets and variables → Actions**
+- [ ] My workflow has model access configured — either `copilot-requests: write`, `COPILOT_GITHUB_TOKEN`, or the relevant API key secret listed under **Settings → Secrets and variables → Actions**
 - [ ] If I am running from a Codespace terminal, I set **Read and write permissions** in **Settings → Actions → General**
 - [ ] I am ready to return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
