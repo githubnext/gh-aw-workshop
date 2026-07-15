@@ -83,6 +83,16 @@ registration settings under **Settings → Actions → Runners**.
 > [!TIP]
 > Labels act as filters. A workflow job is dispatched to the first idle runner that satisfies **all** labels in the list. Adding `linux` alongside `self-hosted` ensures the job only lands on Linux runners when your fleet is mixed.
 
+## If you adapt another workflow, update activation and safe outputs too
+
+If you copied a workflow from another node or repository, do a quick frontmatter pass before compiling:
+
+- **Activation (`on:`):** replace the trigger with how you want this workflow to start in your repository (`workflow_dispatch`, `schedule`, `pull_request`, and so on).
+- **Safe outputs (`safe-outputs:`):** replace write actions to match your task. Keep only the minimum actions you actually want this workflow to perform.
+- **Other runner entries:** if the file has more than one `runs-on:` value, replace each GitHub-hosted label (`ubuntu-latest`, `windows-latest`, `macos-latest`) with your self-hosted label strategy.
+
+This keeps runner routing, workflow activation, and write permissions aligned after you reuse an existing workflow.
+
 ## Handle proxy and network requirements
 
 Self-hosted runners in enterprise environments often sit behind an outbound proxy.
