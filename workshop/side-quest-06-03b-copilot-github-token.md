@@ -15,8 +15,8 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 2. Give it a name, for example `gh-aw-copilot`.
 3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
 4. Set **Repository access** to **Public repositories**.
-   - The workshop uses a public practice repository. If you later use a private repository, generate a new token scoped to that repository.
-   - For private repos, choose **Only select repositories** and select your private repository.
+   - The workshop uses a public practice repository.
+   - If you are doing this outside the workshop with a private repository, choose **Only select repositories** and select your private repository.
 5. Under **Permissions**, expand **Account permissions** and set **Copilot requests** to **Read-only**.
 6. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
 
@@ -66,7 +66,7 @@ Trigger a manual run to confirm the secret is wired up correctly:
 
 - [ ] You generated a fine-grained PAT at [github.com/settings/tokens](https://github.com/settings/tokens) with **Repository access: Public repositories** and **Copilot requests: Read-only**
 - [ ] `COPILOT_GITHUB_TOKEN` is stored as a repository secret (exact name, no spaces or hyphens)
-- [ ] Your workflow frontmatter sets `copilot-requests: read` under `permissions` (Method 2: for GitHub token-based Copilot API calls)
+- [ ] Your workflow frontmatter sets `copilot-requests: read` under `permissions` (read-only when using `COPILOT_GITHUB_TOKEN`)
 - [ ] A manual run completed and the Copilot step shows it authenticated with `COPILOT_GITHUB_TOKEN`
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
