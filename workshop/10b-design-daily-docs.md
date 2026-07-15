@@ -69,6 +69,9 @@ Guardrails:
 
 ---
 
+> [!TIP]
+> Use the **`/agentic-workflows` Copilot skill** in Copilot Chat to design and build your workflow prompts interactively — describe what you want and the skill will guide you through goal, inputs, output format, and guardrails.
+
 ## Thinking Through the Design
 
 Before moving on, ask yourself these questions:
