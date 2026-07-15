@@ -11,11 +11,11 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 
 ## ✏️ Exercise: Generate a token
 
-1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token** under **Fine-grained personal access tokens**.
+1. Go to [github.com/settings/tokens?type=beta](https://github.com/settings/tokens?type=beta) and click **Generate new token**.
 2. Give it a name, for example `gh-aw-copilot`.
 3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
 4. Set **Repository access** to **Public repositories**.
-5. Under **Permissions**, set **Copilot requests** to **Read-only** (the only available option).
+5. Under **Permissions**, expand **Account permissions** and set **Copilot requests** to **Read-only**.
 6. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
 
 > [!IMPORTANT]
@@ -47,7 +47,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  copilot-requests: read   # use read when declaring this permission
+  copilot-requests: read   # for GitHub token-based Copilot API calls
 ---
 ```
 
