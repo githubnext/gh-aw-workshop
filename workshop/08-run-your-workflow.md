@@ -12,17 +12,34 @@ You'll trigger the `hello-agent` workflow from Step 7, watch it start in the **A
 - `hello-agent.md` and `hello-agent.lock.yml` are committed to `.github/workflows/` on `main`
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
+## Before You Trigger: Verify Model Access
+
+Before clicking Run, confirm your workflow has model access — this is the most common reason first runs fail.
+
+1. Open `hello-agent.md` and check for an `engine:` line in the frontmatter. Terminal-path learners can identify their engine at a glance:
+
+   ```bash
+   grep "^engine:" .github/workflows/hello-agent.md
+   # Returns nothing        → GitHub Copilot (default)
+   # Returns engine: claude → Claude
+   # Returns engine: codex  → OpenAI
+   ```
+
+2. Confirm model access is configured for your engine. For the default Copilot path, check that the permissions block in `hello-agent.md` includes `copilot-requests: write`. For other engines, open **Settings → Secrets and variables → Actions** and confirm the relevant API key secret is present (ANTHROPIC_API_KEY for Claude, OPENAI_API_KEY for OpenAI).
+
+3. If access is not configured, complete the [Model Access Check](side-quest-08-00-model-access-check.md) before continuing.
+
+- [ ] I confirmed which engine `hello-agent.md` uses
+- [ ] Model access is configured for my engine
+
 ## Run the workflow
 
 Start by checking that every item in **Before You Start** is complete. This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
-Before triggering your first run, confirm your model access is configured — [Model Access Check →](side-quest-08-00-model-access-check.md) — then return here.
-
-If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option after you finish the model access check. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option after completing the model access gate above. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ### Before you click Run
 
-- [ ] I completed the [Model Access Check](side-quest-08-00-model-access-check.md)
 - [ ] **Hello Agent** appears in the **Actions** sidebar
 - [ ] I have at least one open issue in my practice repository
 
@@ -56,7 +73,7 @@ Before you move on, continue to [Step 8b: Interpret Your First Run](08b-interpre
 
 ## ✅ Checkpoint
 
-- [ ] I completed the [Model Access Check](side-quest-08-00-model-access-check.md) and confirmed my workflow's engine access is ready
+- [ ] I completed the model access gate at the top of this step and my engine access is ready
 - [ ] The **Hello Agent** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active
