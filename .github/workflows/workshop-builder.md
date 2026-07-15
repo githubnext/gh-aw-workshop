@@ -50,6 +50,7 @@ safe-outputs:
       - workshop-link-checker
       - workshop-ui-screenshots
       - curriculum-evaluator
+      - guidelines-enforcer
     max: 1
   create-pull-request:
     title-prefix: "[workshop-builder] "
@@ -244,6 +245,7 @@ For each workflow, compute whether it is **eligible** for dispatch:
 | `workshop-link-checker` | nodes ≥ 3, last dispatch > 24 h ago or never |
 | `workshop-ui-screenshots` | nodes ≥ 3, last dispatch > 24 h ago or never |
 | `curriculum-evaluator` | nodes ≥ 3, last dispatch > 24 h ago or never |
+| `guidelines-enforcer` | nodes ≥ 3, last dispatch > 24 h ago or never |
 
 Use the timestamps from `last_dispatch` in the loaded state and the current
 `timestamp` from the repo state to evaluate "last dispatch > N h ago". If a
@@ -283,6 +285,7 @@ Select the highest-priority **eligible** workflow (most urgent first):
 14. `markdown-dedup` — detects and flags near-duplicate sections across files
 15. `workshop-link-checker` — validates external URLs and internal anchors
 16. `workshop-ui-screenshots` — generates SVG illustrations for missing UI images
+17. `guidelines-enforcer` — daily round-robin enforcement of authoring guidelines; creates issues for violations
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
 that may shift priority toward a specific workflow (e.g. "add content" → prefer
@@ -295,7 +298,8 @@ that may shift priority toward a specific workflow (e.g. "add content" → prefe
 "visual" → prefer `workshop-explanatory-diagrams`; "docs" or "link" → prefer
 `docs-linker`; "dedup" or "duplicate" → prefer `markdown-dedup`; "broken" or
 "checker" → prefer `workshop-link-checker`; "screenshot" or "image" → prefer
-`workshop-ui-screenshots`).
+`workshop-ui-screenshots`; "guidelines", "rules", or "enforce" → prefer
+`guidelines-enforcer`).
 
 When dispatching `workshop-author`, `training-plan-research`,
 `workflow-skills-editor`, `side-quest`, `security-side-quest`,
