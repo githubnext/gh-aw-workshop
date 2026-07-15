@@ -148,6 +148,11 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     0
   );
   const uiAlternativeCount = countMatches(text, /\b(UI alternative|GitHub UI path|browser path|Path C)\b/gi);
+  const workflowCompileCueCount = countMatches(text, /\bgh aw compile(?:\s|`|$)|\.lock\.yml\b|compiled?\b/gi);
+  const workflowLockPublishCueCount = countMatches(
+    text,
+    /\.lock\.yml[\s\S]{0,500}\b(commit(?: changes)?|push|approve the commit)\b|\b(commit(?: changes)?|push|approve the commit)\b[\s\S]{0,500}\.lock\.yml/gi
+  );
   const complexity = clamp(
     0.12 +
       Math.min(wordCount / WORD_COUNT_COMPLEXITY_THRESHOLD, 0.32) +
@@ -198,6 +203,8 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     commandLineCount,
     clickCueCount,
     uiAlternativeCount,
+    workflowCompileCueCount,
+    workflowLockPublishCueCount,
     authDemand,
     browserSupport,
     complexity,
@@ -292,17 +299,24 @@ function buildStepContentById({
           .filter((entry) => entry.file.replace(/\.md$/i, "") === stepId)
           .map((entry) => entry.file);
     const existingFiles = candidateFiles.filter((file) => fs.existsSync(path.resolve(workshopDir, file)));
-    const markdown = existingFiles
-      .map((file) => fs.readFileSync(path.resolve(workshopDir, file), "utf8"))
-      .join("\n\n");
+    const fileContents = existingFiles.map((file) => ({
+      file,
+      title: curriculumByFile.get(file)?.title || file.replace(/\.md$/i, ""),
+      markdown: fs.readFileSync(path.resolve(workshopDir, file), "utf8")
+    }));
+    const markdown = fileContents.map(({ markdown: fileMarkdown }) => fileMarkdown).join("\n\n");
     stepContentById[stepId] = deepFreeze({
       ...analyzeStepMarkdown(
         stepId,
         markdown,
-        existingFiles.map((file) => ({
+        fileContents.map(({ file, title }) => ({ file, title }))
+      ),
+      fileSignals: fileContents.map(({ file, title, markdown: fileMarkdown }) =>
+        deepFreeze({
           file,
-          title: curriculumByFile.get(file)?.title || file.replace(/\.md$/i, "")
-        }))
+          title,
+          ...analyzeStepMarkdown(file, fileMarkdown, [{ file, title }])
+        })
       ),
       agentInsight: agentInsightsByStep[stepId] || null
     });
@@ -473,6 +487,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
       repoVerified: false,
       hasWorkflowFile: false,
       hasCompiledWorkflowLock: false,
+      hasPushedCompiledWorkflowLock: false,
       ranWorkflow: false,
       workflowReadyToRun: false,
       environmentReady: false
