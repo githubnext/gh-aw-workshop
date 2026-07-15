@@ -153,5 +153,5 @@
 
   <!-- Bottom annotation -->
   <text x="600" y="502" font-family="system-ui, -apple-system, sans-serif" font-size="12"
-        fill="#57606a" text-anchor="middle">You'll confirm gh-aw is working when "Hello Agent" appears in the Actions tab after completing Step 8.</text>
+        fill="#57606a" text-anchor="middle">You'll confirm gh-aw is working when "Daily Report Status" appears in the Actions tab after completing Step 8.</text>
 </svg>

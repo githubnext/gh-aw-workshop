@@ -5,7 +5,7 @@
 
 ## 🎯 What You'll Do
 
-You'll create a complete `hello-agent.md` workflow in the GitHub web editor, then use the **Agentic Workflows** agent in the **Agents** tab to compile and commit the generated `hello-agent.lock.yml` file without using a terminal.
+You'll create a complete `daily-report-status.md` workflow in the GitHub web editor, then use the **Agentic Workflows** agent in the **Agents** tab to compile and commit the generated `daily-report-status.lock.yml` file without using a terminal.
 
 ## 📋 Before You Start
 
@@ -20,12 +20,12 @@ An agentic workflow source file is a Markdown task brief with YAML frontmatter. 
 ## Create the workflow
 
 1. Click **Add file** → **Create new file**.
-2. Enter `.github/workflows/hello-agent.md` as the filename.
+2. Enter `.github/workflows/daily-report-status.md` as the filename.
 3. Paste the complete content below:
 
    ```markdown
    ---
-   name: Hello Agent
+   name: Daily Report Status
    on:
      workflow_dispatch:
    permissions:
@@ -61,14 +61,14 @@ Open your repository's **Agents** tab and start a new session with the **Agentic
 Paste this prompt:
 
 ```text
-Compile `.github/workflows/hello-agent.md` with `gh aw compile`.
+Compile `.github/workflows/daily-report-status.md` with `gh aw compile`.
 
-If the compile succeeds, commit the generated `.github/workflows/hello-agent.lock.yml` file to `main` and show me the diff before I approve it.
+If the compile succeeds, commit the generated `.github/workflows/daily-report-status.lock.yml` file to `main` and show me the diff before I approve it.
 
 If the compile fails, fix the workflow and show me the diff before you commit.
 ```
 
-Review the proposed diff. Confirm both `.github/workflows/hello-agent.md` and `.github/workflows/hello-agent.lock.yml` are included before you approve the commit.
+Review the proposed diff. Confirm both `.github/workflows/daily-report-status.md` and `.github/workflows/daily-report-status.lock.yml` are included before you approve the commit.
 
 > [!NOTE]
 > This path skips local compile checkpoints. The **Agentic Workflows** agent must generate the `.lock.yml` file before the workflow appears in **Actions**.
@@ -91,8 +91,8 @@ The workflow will fail with a `401 Unauthorized` error if Copilot access is not 
 
 ## ✅ Checkpoint
 
-- [ ] `.github/workflows/hello-agent.md` exists in the repository
-- [ ] `.github/workflows/hello-agent.lock.yml` exists in the repository
+- [ ] `.github/workflows/daily-report-status.md` exists in the repository
+- [ ] `.github/workflows/daily-report-status.lock.yml` exists in the repository
 - [ ] The file contains the complete frontmatter and task brief
 - [ ] You reviewed the agent's compile diff before approving the commit
 - [ ] Both workflow files are committed to `main`

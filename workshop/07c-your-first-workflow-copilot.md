@@ -2,7 +2,7 @@
 
 ## 🎯 What You'll Do
 
-You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab to create and validate `hello-agent.md`, then review and merge its pull request.
+You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab to create and validate `daily-report-status.md`, then review and merge its pull request.
 
 ## 📋 Before You Start
 
@@ -16,12 +16,12 @@ Open your practice repository in the GitHub Copilot app and start a session in *
 Paste this prompt:
 
 ```text
-Create `.github/workflows/hello-agent.md` as a GitHub Agentic Workflow.
+Create `.github/workflows/daily-report-status.md` as a GitHub Agentic Workflow.
 
 Before authoring, run `gh aw init` from the repository root, then commit and push the generated `.github/skills/agentic-workflows/` files.
 
 The workflow must:
-- Be named "Hello Agent"
+- Be named "Daily Report Status"
 - Support manual runs with `workflow_dispatch`
 - Use `contents: read`, `issues: read`, and `copilot-requests: write`
 - Allow at most one comment and at most one new issue through safe outputs
@@ -42,14 +42,14 @@ Before you approve the merge, the agent presents the file changes in its session
 
 ## Review and merge
 
-1. Confirm `.github/workflows/hello-agent.md` contains the requested trigger, permissions, safe outputs, and task.
-2. Confirm `.github/workflows/hello-agent.lock.yml` exists.
+1. Confirm `.github/workflows/daily-report-status.md` contains the requested trigger, permissions, safe outputs, and task.
+2. Confirm `.github/workflows/daily-report-status.lock.yml` exists.
 3. Ask the agent to correct anything that does not match the prompt.
 4. Merge the pull request into `main`.
 
 ## ✅ Checkpoint
 
-- [ ] `.github/workflows/hello-agent.md` exists in the repository
+- [ ] `.github/workflows/daily-report-status.md` exists in the repository
 - [ ] `.github/skills/agentic-workflows/` exists in the repository from `gh aw init`
 - [ ] The agent validated the workflow in its session workspace
 - [ ] You reviewed the source and generated lock file

@@ -24,15 +24,15 @@
   <rect x="60" y="105" width="1080" height="410" rx="4" fill="#0d1117"/>
   <text x="80" y="135" font-family="monospace" font-size="13" fill="#57606a">▼  run-agent  (completed in 42s)</text>
   <line x1="60" y1="148" x2="1140" y2="148" stroke="#30363d" stroke-width="1"/>
-  <text x="80" y="175" font-family="monospace" font-size="13" fill="#3fb950">▼  Run gh aw run hello-agent.md</text>
-  <text x="100" y="200" font-family="monospace" font-size="12" fill="#c9d1d9">  Running agent: Hello Agent Workflow</text>
+  <text x="80" y="175" font-family="monospace" font-size="13" fill="#3fb950">▼  Run gh aw run daily-report-status.md</text>
+  <text x="100" y="200" font-family="monospace" font-size="12" fill="#c9d1d9">  Running agent: Daily Report Status Workflow</text>
   <text x="100" y="222" font-family="monospace" font-size="12" fill="#c9d1d9">  Calling tool: list_open_issues</text>
   <text x="100" y="244" font-family="monospace" font-size="12" fill="#c9d1d9">  Found 3 open issues</text>
   <text x="100" y="266" font-family="monospace" font-size="12" fill="#c9d1d9">  Calling tool: get_recent_commits</text>
   <text x="100" y="288" font-family="monospace" font-size="12" fill="#c9d1d9">  Found 5 recent commits</text>
   <text x="100" y="310" font-family="monospace" font-size="12" fill="#c9d1d9">  Generating status report...</text>
   <text x="100" y="332" font-family="monospace" font-size="12" fill="#c9d1d9">  Report written to run summary.</text>
-  <text x="80" y="360" font-family="monospace" font-size="13" fill="#3fb950">✓  Run gh aw run hello-agent.md  (15s)</text>
+  <text x="80" y="360" font-family="monospace" font-size="13" fill="#3fb950">✓  Run gh aw run daily-report-status.md  (15s)</text>
   <text x="80" y="390" font-family="monospace" font-size="13" fill="#3fb950">✓  Complete job</text>
   <text x="80" y="415" font-family="monospace" font-size="13" fill="#3fb950">✓  Post Set up job</text>
   <text x="600" y="540" font-family="Arial,sans-serif" font-size="24" fill="#57606a" text-anchor="middle">Workflow run log</text>

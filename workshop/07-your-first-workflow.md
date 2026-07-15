@@ -4,7 +4,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 ## 🎯 What You'll Do
 
-You'll create `.github/workflows/hello-agent.md`, a small workflow that reads repository issues and posts one controlled response.
+You'll create `.github/workflows/daily-report-status.md`, a small workflow that reads repository issues and posts one controlled response.
 
 ## 📋 Before You Start
 
@@ -22,7 +22,7 @@ You'll create `.github/workflows/hello-agent.md`, a small workflow that reads re
 
 The Terminal path gives you early compiler feedback. The GitHub UI path skips local compile checkpoints and uses the **Agentic Workflows** agent in the **Agents** tab to generate the lock file. The GitHub Copilot path delegates `gh aw compile ... --validate` to the agent's session workspace.
 
-![Diagram showing how hello-agent.md is compiled by gh aw compile into hello-agent.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
+![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
 
 ## Before You Continue
 
@@ -31,8 +31,8 @@ In one sentence, where will you manually start the first `workflow_dispatch` run
 ## ✅ Checkpoint
 
 - [ ] You chose one path (Terminal, GitHub UI, or GitHub Copilot) and are ready to follow that step
-- [ ] You can explain in one sentence how `hello-agent.md` differs from `hello-agent.lock.yml`
+- [ ] You can explain in one sentence how `daily-report-status.md` differs from `daily-report-status.lock.yml`
 - [ ] You know the compile command for an agentic workflow file: `gh aw compile`
-- [ ] You know the compiled file location: `.github/workflows/hello-agent.lock.yml`
+- [ ] You know the compiled file location: `.github/workflows/daily-report-status.lock.yml`
 
 **Next:** Continue with your chosen path above.

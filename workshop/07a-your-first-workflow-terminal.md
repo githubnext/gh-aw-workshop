@@ -7,7 +7,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 ## 🎯 What You'll Do
 
-You'll create the first version of `.github/workflows/hello-agent.md` with just two frontmatter fields:
+You'll create the first version of `.github/workflows/daily-report-status.md` with just two frontmatter fields:
 
 - `name` (workflow label)
 - `on.workflow_dispatch` (manual trigger)
@@ -32,10 +32,10 @@ mkdir -p .github/workflows
 ### Create your first workflow file
 
 ```bash
-touch .github/workflows/hello-agent.md
+touch .github/workflows/daily-report-status.md
 ```
 
-Open `.github/workflows/hello-agent.md` in your editor.
+Open `.github/workflows/daily-report-status.md` in your editor.
 
 <details>
 <summary>Using [VS Code](side-quest-01-02-environment-reference.md#visual-studio-code-vs-code)? Quick setup for cleaner YAML editing</summary>
@@ -55,7 +55,7 @@ Paste this at the top of the file:
 
 ```yaml
 ---
-name: Hello Agent
+name: Daily Report Status
 on:
   workflow_dispatch:
 ---
@@ -88,7 +88,7 @@ gh aw compile --validate
 Expected result:
 
 ```text
-✔ hello-agent.md — valid
+✔ daily-report-status.md — valid
 ```
 
 If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
@@ -99,7 +99,7 @@ Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-
 
 ## ✅ Checkpoint
 
-- [ ] `.github/workflows/hello-agent.md` exists
+- [ ] `.github/workflows/daily-report-status.md` exists
 - [ ] The file starts with valid frontmatter fences (`---` ... `---`)
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
 - [ ] `gh aw compile --validate` reports valid

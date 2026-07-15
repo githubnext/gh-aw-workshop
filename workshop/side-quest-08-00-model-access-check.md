@@ -5,11 +5,11 @@
 
 ## 🎯 What You'll Do
 
-You'll confirm that your `hello-agent` workflow can reach the right model and, if you plan to use `gh aw run` from a Codespace, you'll confirm the extra repository permissions that path needs.
+You'll confirm that your `daily-report-status` workflow can reach the right model and, if you plan to use `gh aw run` from a Codespace, you'll confirm the extra repository permissions that path needs.
 
 ## Identify your workflow engine
 
-Open `.github/workflows/hello-agent.md` in your practice repository and look for an `engine:` line in the frontmatter.
+Open `.github/workflows/daily-report-status.md` in your practice repository and look for an `engine:` line in the frontmatter.
 
 - No `engine:` line means GitHub Copilot (the default).
 - `engine: claude` means the workflow uses Claude.
@@ -28,7 +28,7 @@ If you still need to set up Copilot access, or if you want the full walkthrough,
 - [Side Quest: Method 2 — `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md) — Use this if Method 1 is not available in your environment or you need a PAT-based setup
 
 1. Verify that at least one of the following Copilot authentication methods is configured (complete the appropriate setup side quest above if needed):
-   - **Method 1 (permission-based):** `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
+   - **Method 1 (permission-based):** `copilot-requests: write` appears in the `permissions:` block of your `daily-report-status.md`.
    - **Method 2 (token-based):** `COPILOT_GITHUB_TOKEN` appears in **Settings → Secrets and variables → Actions**.
 2. Confirm you have an active GitHub Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot).
 
@@ -72,11 +72,11 @@ If you still need to set up OpenAI access, or if you want the full walkthrough, 
 
 ## Optional: terminal runs from a Codespace
 
-Step 8 uses the GitHub Actions UI because it works for every learner. If you plan to use `gh aw run hello-agent` from a GitHub Codespace instead, confirm the repository is ready for that advanced path.
+Step 8 uses the GitHub Actions UI because it works for every learner. If you plan to use `gh aw run daily-report-status` from a GitHub Codespace instead, confirm the repository is ready for that advanced path.
 
 1. Open **Settings → Actions → General** in your practice repository.
 2. Select **Read and write permissions** and click **Save**.
-3. Confirm **Hello Agent** appears in the **Actions** sidebar.
+3. Confirm **Daily Report Status** appears in the **Actions** sidebar.
 
 - [ ] If I am running from a Codespace terminal, I set **Read and write permissions** in **Settings → Actions → General**.
 
@@ -84,7 +84,7 @@ If you still hit an `actions:write` or `HTTP 403: Resource not accessible by int
 
 ## ✅ Checkpoint
 
-- [ ] I opened `.github/workflows/hello-agent.md` and confirmed which engine I am using
+- [ ] I opened `.github/workflows/daily-report-status.md` and confirmed which engine I am using
 - [ ] I completed the matching model-access check for my workflow
 - [ ] My workflow has model access configured — either `copilot-requests: write`, `COPILOT_GITHUB_TOKEN`, or the relevant API key secret listed under **Settings → Secrets and variables → Actions**
 - [ ] If I am running from a Codespace terminal, I set **Read and write permissions** in **Settings → Actions → General**
