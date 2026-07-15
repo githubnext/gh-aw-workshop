@@ -21,6 +21,14 @@ The compiled `.lock.yml` file is what GitHub actually runs. In Step 7b you'll pa
 
 You'll author workflow files using the GitHub web editor in Step 7b and trigger them from the Actions tab in Step 8. You'll confirm `gh-aw` is working when **Hello Agent** appears in your workflow list.
 
+## Triggering your workflow from the browser
+
+CCA and mobile learners are already authenticated — you signed in to GitHub to reach this step. No additional authentication or terminal is needed.
+
+After you commit a workflow file in [Step 7b](07b-your-first-workflow-ui.md) or a later step, navigate to the **Actions** tab in your repository, select the workflow name in the sidebar, and click **Run workflow**. You do not need `gh aw run`.
+
+If you want a browser-only scenario with a complete pre-written workflow template, [Adventure E in Step 10](10-choose-your-scenario.md#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile) provides a paste-and-commit workflow and trigger instructions — no terminal required at any stage.
+
 ## What to do next
 
 Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
@@ -31,5 +39,6 @@ Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-
 - [ ] You have your practice repository open and ready
 - [ ] You understand that the GitHub UI path does not require a local `gh-aw` installation
 - [ ] You understand that you will confirm `gh-aw` is working in [Step 8](08-run-your-workflow.md) via the Actions tab
+- [ ] You know that CCA and mobile learners can trigger workflows from the **Actions** tab without `gh aw run`
 
 **Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)

@@ -14,7 +14,7 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 | Path | Best for | Action |
 |------|----------|--------|
 | 📱 Mobile / Copilot app | No terminal; GitHub Mobile or Copilot app | **If you're on mobile or in the Copilot app, stop here.** [Step 3b →](03b-create-your-repo-ui.md) |
-| 🤖 Copilot Cloud Agent (CCA) | Browser-only, no local install; CCA chat | [Skip to Step 3b](03b-create-your-repo-ui.md) |
+| 🤖 Copilot Cloud Agent (CCA) | Browser-only, no local install; CCA chat | [GitHub UI Path →](03b-create-your-repo-ui.md) — browser-only adventure at [Step 10](10-choose-your-scenario.md#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B](02b-setup-local.md) |
 
@@ -126,7 +126,7 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 - [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
 - [ ] I know GitHub Mobile and Copilot app users should continue on [Step 3b](03b-create-your-repo-ui.md)
-- [ ] I know Copilot Cloud Agent (CCA) users should continue on [Step 3b](03b-create-your-repo-ui.md)
+- [ ] I know Copilot Cloud Agent (CCA) users follow the [GitHub UI Path](03b-create-your-repo-ui.md) and have a dedicated browser-only adventure at [Step 10](10-choose-your-scenario.md#adventure-e-build-a-daily-status-workflow-from-your-browser-cca--mobile)
 
 **Next:** [Step 3a: Verify Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
 
