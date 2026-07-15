@@ -63,18 +63,6 @@ The prompt below tells the agent two things:
 
 **Choose the prompt for the scenario you picked in [Step 10](10-choose-your-scenario.md).**
 
-### ✏️ Exercise: probe the agent before the full prompt
-
-Before submitting the full scenario prompt, test that your agent session is working by sending this short probe:
-
-```
-Fetch the file at https://github.com/github/gh-aw/blob/main/create.md and tell me the top-level sections in that document.
-```
-
-The agent should reply with a list that includes sections such as **Frontmatter schema**, **Triggers**, **Permissions**, and **Safe outputs**. If you see those headings in the response, the agent can reach the reference guide and you are ready to proceed.
-
----
-
 ### Scenario A prompt — Daily Repo Status Report
 
 Copy and paste the following prompt into the Agents session input:
