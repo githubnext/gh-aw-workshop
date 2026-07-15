@@ -13,18 +13,18 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 
 | Path | Best for | Next step |
 |------|----------|-----------|
-| 📱 Mobile / Copilot app / Copilot Cloud Agent (CCA) | Browser-only; no terminal or local install | **Stop here.** [Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
+| 📱 Mobile / Copilot app / Copilot Cloud Agent (CCA) | No terminal or local install | **Stop here.** [Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
 
 > [!IMPORTANT]
-> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail when you run the authentication commands in the verification step below.
+> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail later when you verify your setup.
 
 ## 🎯 What You'll Do
 
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
-If you switch to [Step 3b](03b-create-your-repo-ui.md), you can continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile).
+Note: If you switch to [Step 3b](03b-create-your-repo-ui.md), you can continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile).
 
 ## Steps
 
