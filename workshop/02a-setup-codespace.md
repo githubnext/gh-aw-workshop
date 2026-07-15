@@ -13,7 +13,8 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 
 | Path | Best for | Next step |
 |------|----------|-----------|
-| 📱 Mobile / Copilot app / Copilot Cloud Agent (CCA) | No terminal or local install | **Stop here.** [Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
+| 📱 Mobile / Copilot app | No terminal or local install | **Stop here.** [Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
+| 🤖 Copilot Cloud Agent (CCA) | Browser-only with CCA; no local install | [Start at Step 3b →](03b-create-your-repo-ui.md), then continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
 
@@ -32,7 +33,7 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 - [ ] I want a browser-based terminal and do not need to install tools locally
 - [ ] I am ready to open my practice repository in a Codespace
 - [ ] I know mobile, Copilot app, and CCA users should switch to [Step 3b](03b-create-your-repo-ui.md) instead of continuing here
-- [ ] I know GHES, GHEC, and self-hosted runner users should read the enterprise side quest before running `gh auth status`
+- [ ] I know GHES, GHEC, and self-hosted runner users should read the enterprise side quest before verifying setup
 - [ ] I know I will open the built-in Codespace terminal after the editor loads
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
