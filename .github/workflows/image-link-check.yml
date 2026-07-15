@@ -71,11 +71,6 @@ jobs:
                   print(f"::error file={filepath},line={lineno}::Broken image link: {ref} (resolved: {resolved})")
               sys.exit(1)
           else:
-              count = sum(
-                  len(re.findall(r'!\[.*?\]\([^)]+\)', open(os.path.join(r, f), encoding='utf-8').read()))
-                  for r, _, files in os.walk('.')
-                  for f in files if f.endswith('.md')
-              )
               print(f"All local image links are valid. Checked across all markdown files.")
           PYEOF
 
