@@ -141,6 +141,7 @@ function usesTerminalPath(state, context) {
   return !prefersBrowserPath(state, context);
 }
 
+// CCA = Copilot coding agent, used here for browser-based compile-and-commit flows.
 function canUseCCACompiler(state) {
   return Boolean(state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess);
 }
@@ -161,7 +162,7 @@ function updateWorkflowCompileState(state, context, options = {}) {
 function ensureCompiledWorkflow(state, category, remediation) {
   return ensure(
     state.flags.hasWorkflowFile && state.flags.workflowReadyToRun,
-    "The learner has a workflow `.md` file, but the matching `.lock.yml` was never generated or is stale.",
+    "The learner has a workflow `.md` file, but the matching `.lock.yml` is not ready for GitHub Actions to run.",
     category,
     remediation
   );
