@@ -47,7 +47,7 @@ Need to set this up? See [Side Quest: Configure an Anthropic API Key](side-quest
 <details>
 <summary><b>OpenAI (<code>engine: codex</code>)</b></summary>
 
-Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
+Your workflow uses OpenAI when the frontmatter contains `engine: codex`. In this workshop, `codex` is the engine identifier for the OpenAI path.
 
 1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
