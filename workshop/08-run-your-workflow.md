@@ -9,7 +9,7 @@ You'll trigger the `hello-agent` workflow from Step 7, watch it start in the **A
 ## 📋 Before You Start
 
 - Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
-- `hello-agent.md` is committed to `.github/workflows/` on `main`
+- `hello-agent.md` and `hello-agent.lock.yml` are committed to `.github/workflows/` on `main`
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
 ## Run the workflow
@@ -100,7 +100,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
 
 ![Actions tab showing where to find Hello Agent in the workflow list](images/08-actions-tab.svg)
 
-Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Hello Agent** is missing, refresh the page, confirm the workflow file is on `main`, and run `gh aw compile` from your terminal if you need to check for compile errors.
+Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Hello Agent** is missing, refresh the page and confirm both workflow files are on `main`. If you used the GitHub UI path, go back to [Step 7b](07b-your-first-workflow-ui.md) and use the **Agentic Workflows** agent to compile the lock file. If you used the Terminal path, run `gh aw compile` to check for compile errors.
 
 If the run fails immediately with a model-access or authentication error, stop and expand the matching engine check from the wizard above before rerunning.
 
