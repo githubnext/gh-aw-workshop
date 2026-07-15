@@ -17,10 +17,13 @@ Choose the method that fits your situation:
 
 | Method | Best for | Guide |
 |---|---|---|
-| **Copilot requests permission** (recommended) | Most workflows — active Copilot subscription, no secret needed | [Method 1 →](side-quest-06-03a-copilot-requests-permission.md) |
-| **`COPILOT_GITHUB_TOKEN` secret** | Service accounts, older workflows, or org-level overrides | [Method 2 →](side-quest-06-03b-copilot-github-token.md) |
+| **Copilot requests permission** (recommended) | Personal repositories, or enterprise-managed orgs with org-billed Copilot requests | [Method 1 →](side-quest-06-03a-copilot-requests-permission.md) |
+| **`COPILOT_GITHUB_TOKEN` secret** | Regular organization-owned repositories, service accounts, older workflows, or org-level overrides | [Method 2 →](side-quest-06-03b-copilot-github-token.md) |
 
-If you are unsure, start with **Method 1**. It requires no secrets and works for the vast majority of learners.
+If you are unsure, check who owns your practice repository first:
+
+- Personal account or supported enterprise org → start with **Method 1**
+- Regular GitHub organization → go directly to **Method 2**
 
 ## ✅ Checkpoint
 

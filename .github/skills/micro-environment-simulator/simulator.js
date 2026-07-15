@@ -67,6 +67,23 @@ function hasThirdPartyProviderSecret(level, seed, missingRemainder) {
   return seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== missingRemainder;
 }
 
+function resolveRepositoryOwnerType(student, isEnterprise, seed) {
+  if (isEnterprise) {
+    return "enterprise-organization";
+  }
+  const goal = String(student.goal || "");
+  if (goal === "team-evaluation") {
+    return "organization";
+  }
+  if (goal === "work-project") {
+    return seed % 10 < 7 ? "organization" : "personal";
+  }
+  if (goal === "teaching-others") {
+    return seed % 10 < 4 ? "organization" : "personal";
+  }
+  return "personal";
+}
+
 function deepFreeze(obj) {
   if (obj && typeof obj === "object" && !Object.isFrozen(obj)) {
     Object.freeze(obj);
@@ -310,6 +327,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     ? deterministicChoice(seed + 1, ["ghec", "ghes"])
     : "github.com";
   const accountType = isEnterprise ? "enterprise-managed" : "personal";
+  const repositoryOwnerType = resolveRepositoryOwnerType(student, isEnterprise, seed);
 
   const os = deterministicChoice(seed + 2, ["macos", "linux", "windows"]);
   const terminal = deterministicChoice(seed + 3, Array.from(VALID_TERMINALS[os]));
@@ -389,7 +407,8 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
       tokenScope
     },
     github: {
-      deployment
+      deployment,
+      repositoryOwnerType
     },
     workspace: {
       context: inCodespaces ? "codespaces" : "local",
