@@ -137,12 +137,16 @@ function prefersBrowserPath(state, context) {
   );
 }
 
+function usesTerminalPath(state, context) {
+  return !prefersBrowserPath(state, context);
+}
+
 function hasCloudAgentCompilerAccess(state) {
   return state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess;
 }
 
 function canCompileWorkflow(state, context, options = {}) {
-  return !prefersBrowserPath(state, context) || (options.allowCloudAgent === true && hasCloudAgentCompilerAccess(state));
+  return usesTerminalPath(state, context) || (options.allowCloudAgent && hasCloudAgentCompilerAccess(state));
 }
 
 function updateWorkflowCompileState(state, context, options = {}) {
@@ -689,7 +693,6 @@ function buildTransitions() {
       });
       if (!readiness.ok) return readiness;
       const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      next.flags.ranWorkflow = true;
       return { ok: true, state: applyLearning(next, context, { troubleshooting: 0.08, agentic: 0.05 }) };
     },
     "13-schedule": (state, context) => {
