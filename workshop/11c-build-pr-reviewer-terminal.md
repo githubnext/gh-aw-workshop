@@ -33,7 +33,7 @@ For a deeper look at available trigger options, see [Side Quest: Event-Driven Tr
 mkdir -p .github/workflows
 ```
 
-Open your editor and create `.github/workflows/pr-code-reviewer.md`. Run `gh aw compile` after saving to validate — or keep `gh aw compile --watch` running in a second terminal for continuous feedback.
+Open your editor and create `.github/workflows/pr-code-reviewer.md`. Run `gh aw compile` after saving to validate.
 
 ### Add the frontmatter
 
@@ -49,7 +49,6 @@ on:
 permissions:
   contents: read        # read repo files
   copilot-requests: write
-  pull-requests: write  # post review comments on the PR
 
 tools:
   github:
@@ -63,7 +62,7 @@ safe-outputs:
 ```
 
 > [!TIP]
-> `pull-requests: write` enables writing PR comments; `safe-outputs: add-comment: max: 5` caps the volume at five per run. For more on permission scoping and output guardrails, see [Side Quest: Frontmatter — Tools and Outputs](side-quest-11-08-frontmatter-tools-outputs.md).
+> `safe-outputs: add-comment: max: 5` caps the volume of PR comments at five per run. For more on permission scoping and output guardrails, see [Side Quest: Frontmatter — Tools and Outputs](side-quest-11-08-frontmatter-tools-outputs.md).
 
 ### Add the agent instructions
 
@@ -136,7 +135,6 @@ on:
 permissions:
   contents: read
   copilot-requests: write
-  pull-requests: write
 
 tools:
   github:
