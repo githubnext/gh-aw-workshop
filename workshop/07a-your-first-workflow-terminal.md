@@ -82,14 +82,12 @@ gh copilot suggest "how do I install a gh extension"
 ### Run your first compile check
 
 ```bash
-gh aw compile --validate
+gh aw compile
 ```
 
 Expected result:
 
-```text
-✔ daily-report-status.md — valid
-```
+You see a green success message and a generated `.lock.yml` file next to `daily-report-status.md`.
 
 If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
@@ -102,5 +100,5 @@ Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-
 - [ ] `.github/workflows/daily-report-status.md` exists
 - [ ] The file starts with valid frontmatter fences (`---` ... `---`)
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
-- [ ] `gh aw compile --validate` reports valid
+- [ ] `gh aw compile` succeeds and generates `daily-report-status.lock.yml`
 - [ ] `gh extension list` shows `github/gh-aw` is installed
