@@ -8,7 +8,7 @@ You have read [Step 11](11a-build-daily-status.md) and have a draft frontmatter 
 
 ---
 
-An agentic workflow file opens with a YAML **frontmatter** block between `---` fences. This block configures when the workflow runs and what it is allowed to do. This page covers the first three sections: metadata, triggers, and permissions.
+An agentic workflow file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between `---` fences. This block configures when the workflow runs and what it is allowed to do. This page covers the first three sections: metadata, triggers, and permissions.
 
 ---
 
@@ -100,3 +100,10 @@ The five entries above cover reading repository content, issues, pull requests, 
 ---
 
 Continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md), or return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+
+## 📚 See Also
+
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [CLI Commands](https://github.github.com/gh-aw/setup/cli/)
