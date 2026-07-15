@@ -2,7 +2,7 @@
 
 **Already familiar with both GitHub Actions and AI agent execution environments?**
 
-Before skipping, make sure both of these describe you:
+Before skipping, confirm you already know both of these:
 
 - You can describe what an Actions workflow trigger does
 - You have used an LLM tool in a production or CI/CD context
@@ -33,7 +33,7 @@ If you already trust GitHub Actions, the trust model stays the same here. The op
 
 ## Classify these tasks
 
-For each task below, make your classification, check the box, then reveal the answer before proceeding to the next task:
+For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box to confirm, then reveal the answer before proceeding to the next task:
 
 **Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
