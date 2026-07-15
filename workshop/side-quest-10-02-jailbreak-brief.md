@@ -117,6 +117,26 @@ network:
 
 Any attempt to reach an unlisted domain fails at the network layer, even if the agent is convinced to try.
 
+### The agentic threat detection job reviews agent output before writes land
+
+Every compiled agentic workflow includes a `detection` job that runs after the main agent finishes, in its own isolated sandbox. This job uses a separate AI model to review the agent's proposed output and flag behavior that looks anomalous — including signs that a jailbreak succeeded.
+
+The `safe-outputs` job only runs if the detection job passes:
+
+```yaml
+safe_outputs:
+  needs:
+    - agent
+    - detection
+  if: (!cancelled()) && needs.agent.result != 'skipped' && needs.detection.result == 'success'
+```
+
+If detection identifies suspicious content in the agent output — for example, instructions embedded in the agent's response that look like a redirected task brief — it can fail the workflow before any write operation executes. The detection job has no access to external network destinations and runs with its own minimal context, which means a successful jailbreak of the main agent does not automatically jailbreak the detection pass.
+
+You do not need to configure the detection job explicitly. It is part of every compiled `gh-aw` workflow by default.
+
+> **🏃 Try it:** Open the Actions log for a recent workflow run and look at the job list. Find the `detection` job and note its outcome. Expanding the job steps shows what the detection agent reviewed and whether it flagged anything.
+
 ---
 
 ## What you can do as a workflow author
@@ -127,6 +147,7 @@ Any attempt to reach an unlisted domain fails at the network layer, even if the 
 | Keep `permissions:` to the minimum the task needs | Caps what the agent can authorize even if a jailbreak partially succeeds |
 | Declare only the `safe-outputs` your workflow uses | Removes write paths that a jailbreak could otherwise exploit |
 | Restrict `network.allowed-domains` to the services you need | Blocks exfiltration even if the agent is redirected |
+| Rely on the built-in detection job | Catches anomalous agent output before any write lands, without extra configuration |
 | Treat issue bodies, PR descriptions, and file text as untrusted input | Don't structure your brief in a way that blends easily with data content |
 | Avoid briefing the agent to reproduce raw user content verbatim | Reduces the chance that injected text flows unfiltered into output |
 
@@ -134,7 +155,7 @@ Any attempt to reach an unlisted domain fails at the network layer, even if the 
 
 ## A note on defence in depth
 
-No single layer stops every jailbreak attempt. The compiled task brief, minimal permissions, narrow safe-outputs, and restricted network access work together as a stack. A partial jailbreak that gets past one layer still has to get past the others.
+No single layer stops every jailbreak attempt. The compiled task brief, minimal permissions, narrow safe-outputs, restricted network access, and the agentic threat detection job work together as a stack. A partial jailbreak that gets past one layer still has to get past the others.
 
 The practical outcome for most jailbreak payloads in repository content:
 
@@ -142,8 +163,9 @@ The practical outcome for most jailbreak payloads in repository content:
 2. Permission scopes stop any write API calls the brief does not authorize.
 3. `safe-outputs` removes write tool paths that were never declared.
 4. `network.allowed-domains` blocks exfiltration to unlisted endpoints.
+5. The agentic threat detection job reviews agent output in a separate sandbox and blocks safe-outputs from running if it finds suspicious behavior.
 
-Designing with all four layers in mind makes the attack surface narrow enough that a jailbreak attempt in an issue body cannot turn a read-only daily summary into a meaningful security incident.
+Designing with all five layers in mind makes the attack surface narrow enough that a jailbreak attempt in an issue body cannot turn a read-only daily summary into a meaningful security incident.
 
 ---
 
@@ -151,10 +173,11 @@ Designing with all four layers in mind makes the attack surface narrow enough th
 
 - [ ] I can explain what makes a jailbreak attack different from a simple prompt injection
 - [ ] I can describe how the task brief is positioned as the authoritative instruction source in gh-aw
-- [ ] I can name the four gh-aw layers that limit what a jailbreak attempt can achieve
+- [ ] I can name the five gh-aw layers that limit what a jailbreak attempt can achieve
 - [ ] I reviewed my own workflow's `permissions:` block and removed at least one unnecessary scope (or confirmed each scope is needed)
 - [ ] I can explain why `safe-outputs` removes execution paths, not just makes them harder to reach
 - [ ] I can explain what `network.allowed-domains` prevents even after a partial jailbreak succeeds
+- [ ] I can describe what the agentic threat detection job does and when it blocks the safe-outputs job
 
 ---
 
