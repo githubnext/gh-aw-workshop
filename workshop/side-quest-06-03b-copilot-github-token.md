@@ -2,7 +2,7 @@
 
 > _Optional: use this method when you need a dedicated PAT for Copilot access — for example, a service account, an older workflow, or an org-level override. If you have an active GitHub Copilot subscription, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
 
-This method stores a Personal Access Token (PAT) with the `copilot` scope as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
+This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
 
 ## 📋 Before You Start
 
@@ -11,11 +11,14 @@ This method stores a Personal Access Token (PAT) with the `copilot` scope as a r
 
 ## ✏️ Exercise: Generate a token
 
-1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (classic)**.
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Give it a name, for example `gh-aw-copilot`.
 3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
-4. Select the `copilot` scope. No other scopes are required.
-5. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
+4. Set **Repository access** to **Public repositories**.
+   - The workshop uses a public practice repository.
+   - If you are doing this outside the workshop with a private repository, choose **Only select repositories** and select your private repository.
+5. Under **Permissions**, expand **Account permissions** (not **Repository permissions**) and set **Copilot requests** to **Read-only**.
+6. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
 
 > [!IMPORTANT]
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
@@ -46,9 +49,9 @@ Trigger a manual run to confirm the secret is wired up correctly:
 
 ## ✅ Checkpoint
 
-- [ ] You generated a PAT with the `copilot` scope at [github.com/settings/tokens](https://github.com/settings/tokens)
+- [ ] You generated a fine-grained PAT at [github.com/settings/tokens](https://github.com/settings/tokens) with **Repository access: Public repositories** and **Copilot requests: Read-only**
 - [ ] `COPILOT_GITHUB_TOKEN` is stored as a repository secret (exact name, no spaces or hyphens)
-- [ ] Your workflow frontmatter has `copilot-requests: write` under `permissions`
+- [ ] Your workflow frontmatter sets `copilot-requests: read` under `permissions` (read-only when using `COPILOT_GITHUB_TOKEN`)
 - [ ] A manual run completed and the Copilot step shows it authenticated with `COPILOT_GITHUB_TOKEN`
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
@@ -62,13 +65,13 @@ Trigger a manual run to confirm the secret is wired up correctly:
 |---|---|---|
 | Wrong secret name (case, typo) | Workflow silently uses no token or falls back to a 401 | Secret name must be exactly `COPILOT_GITHUB_TOKEN` — uppercase, underscores only |
 | Token copied incorrectly (leading/trailing space) | `401 Unauthorized` | Delete and re-create the repository secret, paste carefully without extra whitespace |
-| PAT missing `copilot` scope | `403 Forbidden` | Re-generate the token with the `copilot` scope checked |
+| PAT missing `Copilot requests: Read-only` permission | `403 Forbidden` | Re-generate the token and set **Copilot requests** to **Read-only** |
 | PAT expired | `401 Unauthorized` after working previously | Generate a new PAT and update the repository secret |
 
 Work through these checks if a run fails with `401 Unauthorized`:
 
 1. In **Settings → Secrets and variables → Actions**, confirm the secret exists with the exact name `COPILOT_GITHUB_TOKEN`.
-2. At [github.com/settings/tokens](https://github.com/settings/tokens), confirm the PAT has the `copilot` scope and has not expired.
+2. At [github.com/settings/tokens](https://github.com/settings/tokens), confirm the fine-grained PAT has **Copilot requests: Read-only**, has not expired, and is scoped to your repository type (public workshop repo or your specific private repo).
 3. If in doubt, delete the secret, generate a fresh PAT, and re-add the secret — it takes less than two minutes.
 
 </details>
