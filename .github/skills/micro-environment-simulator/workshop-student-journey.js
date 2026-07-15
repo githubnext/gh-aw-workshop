@@ -28,7 +28,12 @@ const STEP_FILE_ALIASES = {
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "06-install-gh-aw": ["06-install-gh-aw.md"],
-  "07-first-workflow": ["07-your-first-workflow.md", "07a-your-first-workflow-terminal.md", "07b-your-first-workflow-ui.md"],
+  "07-first-workflow": [
+    "07-your-first-workflow.md",
+    "07a-your-first-workflow-terminal.md",
+    "07a-part2-your-first-workflow-instructions.md",
+    "07b-your-first-workflow-ui.md"
+  ],
   "08-run-workflow": ["08-run-your-workflow.md"],
   "09-understand-output": ["09-understand-output.md"],
   "10-design": ["10-choose-your-scenario.md", "10a-design-daily-status.md", "10b-design-daily-docs.md", "10c-design-pr-reviewer.md"],
@@ -134,6 +139,57 @@ function prefersBrowserPath(state, context) {
     state.tool === "CCA" ||
     state.tool === "mobile" ||
     contentSignal(context, "browserSupport") >= contentSignal(context, "terminalDemand")
+  );
+}
+
+function usesTerminalPath(state, context) {
+  return !prefersBrowserPath(state, context);
+}
+
+// CCA = Copilot coding agent, used here for browser-based compile-and-commit flows.
+function canUseCCACompiler(state) {
+  return Boolean(state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess);
+}
+
+function canCompileWorkflow(state, context, options = {}) {
+  return usesTerminalPath(state, context) || (options.allowCloudAgent && canUseCCACompiler(state));
+}
+
+function stepMetric(state, context, metric) {
+  const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
+  if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
+    const relevantFiles = prefersBrowserPath(state, context)
+      ? new Set(["07b-your-first-workflow-ui.md"])
+      : new Set(["07a-your-first-workflow-terminal.md", "07a-part2-your-first-workflow-instructions.md"]);
+    return fileSignals
+      .filter(({ file }) => relevantFiles.has(file))
+      .reduce((sum, fileSignal) => sum + Number(fileSignal?.[metric] || 0), 0);
+  }
+  return contentSignal(context, metric);
+}
+
+function updateWorkflowCompileState(state, context, options = {}) {
+  const next = cloneState(state);
+  const hasCompiledWorkflowLock =
+    canCompileWorkflow(state, context, options) && stepMetric(state, context, "workflowCompileCueCount") > 0;
+  const hasPushedCompiledWorkflowLock =
+    hasCompiledWorkflowLock && stepMetric(state, context, "workflowLockPublishCueCount") > 0;
+  next.flags.hasWorkflowFile = true;
+  next.flags.hasCompiledWorkflowLock = hasCompiledWorkflowLock;
+  next.flags.hasPushedCompiledWorkflowLock = hasPushedCompiledWorkflowLock;
+  next.flags.workflowReadyToRun = hasPushedCompiledWorkflowLock;
+  return next;
+}
+
+function ensureCompiledWorkflow(state, category, remediation) {
+  return ensure(
+    state.flags.hasWorkflowFile &&
+      state.flags.hasCompiledWorkflowLock &&
+      state.flags.hasPushedCompiledWorkflowLock &&
+      state.flags.workflowReadyToRun,
+    "The learner has a workflow `.md` file, but the matching `.lock.yml` has not been compiled and pushed where GitHub Actions can run it.",
+    category,
+    remediation
   );
 }
 
@@ -488,8 +544,7 @@ function buildTransitions() {
         emphasis: { bias: 0.14, terminalWeight: 0.16, conceptWeight: 0.12, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
-      const next = cloneState(state);
-      next.flags.hasWorkflowFile = true;
+      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
       return { ok: true, state: applyLearning(next, context, { agentic: 0.08, terminal: 0.04, github: 0.03 }) };
     },
     "08-run-workflow": (state, context) => {
@@ -500,6 +555,12 @@ function buildTransitions() {
         "Generate the workflow file before trying to run it."
       );
       if (!workflowCheck.ok) return workflowCheck;
+      const compiledWorkflowCheck = ensureCompiledWorkflow(
+        state,
+        "workflow-not-compiled",
+        "Compile the workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a Copilot coding agent (CCA) session that compiles and commits the lock file before running the workflow. Pushing the `.md` file alone does not create the `.lock.yml` that GitHub Actions runs."
+      );
+      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
 
       const usingBrowserPath = prefersBrowserPath(state, context);
       const authCheck = ensure(
@@ -632,9 +693,16 @@ function buildTransitions() {
         emphasis: { bias: 0.08 }
       });
       if (!readiness.ok) return readiness;
-      return { ok: true, state: applyLearning(state, context, { agentic: 0.1, terminal: 0.05, troubleshooting: 0.05 }) };
+      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.1, terminal: 0.05, troubleshooting: 0.05 }) };
     },
     "12-test-iterate": (state, context) => {
+      const compiledWorkflowCheck = ensureCompiledWorkflow(
+        state,
+        "workflow-not-compiled",
+        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying to run it from Step 12."
+      );
+      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
       const runCheck = ensure(
         state.flags.ranWorkflow,
         "Cannot iterate without an executed workflow run",
@@ -650,9 +718,16 @@ function buildTransitions() {
         emphasis: { bias: 0.1 }
       });
       if (!readiness.ok) return readiness;
-      return { ok: true, state: applyLearning(state, context, { troubleshooting: 0.08, agentic: 0.05 }) };
+      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
+      return { ok: true, state: applyLearning(next, context, { troubleshooting: 0.08, agentic: 0.05 }) };
     },
     "13-schedule": (state, context) => {
+      const compiledWorkflowCheck = ensureCompiledWorkflow(
+        state,
+        "workflow-not-compiled",
+        "Compile the latest workflow source and push the generated `.lock.yml` before changing or verifying the schedule. GitHub does not compile a pushed `.md` file into `.lock.yml` automatically."
+      );
+      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
       const accountCheck = ensure(
         state.auth.accountType === "enterprise-managed" || state.auth.accountType === "personal",
         "Unknown account type for scheduling assumptions",
@@ -668,7 +743,8 @@ function buildTransitions() {
         emphasis: { bias: 0.12 }
       });
       if (!readiness.ok) return readiness;
-      return { ok: true, state: applyLearning(state, context, { actions: 0.05, agentic: 0.04 }) };
+      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
+      return { ok: true, state: applyLearning(next, context, { actions: 0.05, agentic: 0.04 }) };
     },
     "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) })
   };
