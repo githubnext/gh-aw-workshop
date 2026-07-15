@@ -1,6 +1,7 @@
 # Side Quest: Confirm Model Access Before Your First Run
 
-> _Use this quick check before [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md), then return to Step 8 to trigger your first run._
+> [!NOTE]
+> Use this quick check before [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md), then return to Step 8 to trigger your first run.
 
 ## 🎯 What You'll Do
 
@@ -56,7 +57,8 @@ Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11
 
 </details>
 
-> **Reflection:** In one sentence, describe what would happen if you returned to Step 8 and clicked **Run workflow** without completing your engine's check.
+> [!TIP]
+> Reflection: In one sentence, describe what would happen if you returned to Step 8 and clicked **Run workflow** without completing your engine's check.
 
 ## Optional: terminal runs from a Codespace
 
