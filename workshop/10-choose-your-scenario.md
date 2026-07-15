@@ -91,6 +91,10 @@ Use the **Agentic Workflows** agent in the GitHub Copilot app or Agents tab to c
 
 ### Paste the prompt
 
+The prompt below tells the agent two things:
+1. Where to learn the agentic workflow file format (the `create.md` reference guide from the `github/gh-aw` repository).
+2. What workflow to create for your repository.
+
 Copy and paste the following prompt into the agent session:
 
 ```
@@ -112,7 +116,7 @@ Compile it with `gh aw compile --validate`.
 Commit the `.md` file and the generated `.lock.yml`, then open a pull request for review.
 ```
 
-The agent creates the workflow, compiles it, and opens a pull request. Review the diff and merge.
+The agent creates the workflow, compiles it, and opens a pull request. Review the diff and merge it into `main`.
 
 ➡️ [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
 
