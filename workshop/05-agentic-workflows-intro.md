@@ -2,10 +2,10 @@
 
 **Already familiar with both GitHub Actions and AI agent execution environments?**
 
-Before skipping, confirm both apply to you:
+Before skipping, make sure both of these describe you:
 
-- [ ] I can describe what an Actions workflow trigger does
-- [ ] I have used an LLM tool in a production or CI/CD context
+- You can describe what an Actions workflow trigger does
+- You have used an LLM tool in a production or CI/CD context
 
 If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
@@ -33,7 +33,7 @@ If you already trust GitHub Actions, the trust model stays the same here. The op
 
 ## Classify these tasks
 
-Classify each task on your own, then reveal the answer before moving to the next one:
+For each task below, make your classification, check the box, then reveal the answer before proceeding to the next task:
 
 **Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
