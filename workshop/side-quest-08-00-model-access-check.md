@@ -58,7 +58,7 @@ Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11
 </details>
 
 > [!NOTE]
-> Reflection: In one sentence, describe what would happen if you returned to Step 8 and clicked **Run workflow** without completing your engine's check.
+> Before you return to Step 8, describe in one sentence what would happen if you clicked **Run workflow** without completing your engine's check.
 
 ## Optional: terminal runs from a Codespace
 
@@ -79,5 +79,3 @@ If you still hit an `actions:write` or `HTTP 403: Resource not accessible by int
 - [ ] My workflow has model access configured — either `copilot-requests: write` in the frontmatter or the relevant API key secret listed under **Settings → Secrets and variables → Actions**
 - [ ] If I am running from a Codespace terminal, I set **Read and write permissions** in **Settings → Actions → General**
 - [ ] I am ready to return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
-
-Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md).
