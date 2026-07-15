@@ -1,7 +1,7 @@
 # Side Quest: Confirm Model Access Before Your First Run
 
 > [!NOTE]
-> Use this quick check before [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md), then return to Step 8 to trigger your first run.
+> [Step 8](08-run-your-workflow.md) now includes an inline model access gate. Use this side quest for detailed setup help or troubleshooting if the inline gate flags a problem.
 
 ## 🎯 What You'll Do
 
