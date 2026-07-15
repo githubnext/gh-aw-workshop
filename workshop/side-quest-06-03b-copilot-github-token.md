@@ -4,7 +4,12 @@
 
 This method stores a Personal Access Token (PAT) with the `copilot` scope as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
 
-## Create a Personal Access Token
+## 📋 Before You Start
+
+- You have a GitHub account with an active Copilot subscription.
+- You have read [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and chosen Method 2.
+
+## ✏️ Exercise: Generate a token
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (classic)**.
 2. Give it a name, for example `gh-aw-copilot`.
@@ -15,7 +20,9 @@ This method stores a Personal Access Token (PAT) with the `copilot` scope as a r
 > [!IMPORTANT]
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
 
-## Store the token as a repository secret
+**Verify:** The token value is visible on screen and copied to your clipboard before continuing.
+
+## ✏️ Exercise: Add the secret
 
 Open your repository in a **new tab** so you keep the token page open until the secret is saved.
 
@@ -25,6 +32,8 @@ Open your repository in a **new tab** so you keep the token page open until the 
 4. Paste the token value. Confirm no extra whitespace was added at the start or end.
 5. Click **Add secret**.
 6. Confirm the secret appears in the list as `COPILOT_GITHUB_TOKEN`.
+
+**Verify:** `COPILOT_GITHUB_TOKEN` appears in the Secrets list — then you can safely close the token tab.
 
 ## Add the permission to your workflow
 
