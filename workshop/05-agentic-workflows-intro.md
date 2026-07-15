@@ -53,7 +53,7 @@ Mark each statement before revealing the answers:
 
 ## Reflection
 
-Write one sentence in a temporary note or document describing what you would want _your_ agentic workflow to do. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
+Write one sentence in a scratch note in your editor describing what you would want _your_ agentic workflow to do. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
 
 ## What the agent decided
 
