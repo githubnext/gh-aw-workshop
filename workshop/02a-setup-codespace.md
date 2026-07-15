@@ -11,20 +11,14 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
 
-| Path | Best for | Action |
-|------|----------|--------|
-| 📱 Mobile / Copilot app | No terminal; GitHub Mobile or Copilot app | **If you're on mobile or in the Copilot app, stop here.** [Step 3b →](03b-create-your-repo-ui.md) |
-| 🤖 Copilot Cloud Agent (CCA) | Browser-only, no local install; CCA chat | [GitHub UI Path →](03b-create-your-repo-ui.md) — browser-only adventure at [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
+| Path | Best for | Next step |
+|------|----------|-----------|
+| 📱 Mobile / Copilot app / Copilot Cloud Agent (CCA) | Browser-only; no terminal or local install | **Stop here.** [Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) — CCA and mobile learners can continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
-| 💻 Local terminal | Your own machine and tools | [Switch to Adventure B](02b-setup-local.md) |
+| 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
 
-## Which path is right for you?
-
-Check the statement that matches you best, then follow the link:
-
-- [ ] I want to use GitHub Copilot app, GitHub Mobile, or browser-only — **[Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md)**
-- [ ] I want a browser-based terminal with no local installs — ✅ **Continue below (Codespace)**
-- [ ] I have a local terminal and want to install tools myself — **[Go to Adventure B: Local Terminal →](02b-setup-local.md)**
+> [!IMPORTANT]
+> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.
 
 ## 🎯 What You'll Do
 
@@ -36,7 +30,10 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 - [ ] I have a GitHub account with access to GitHub Codespaces
 - [ ] I want a browser-based terminal and do not need to install tools locally
-- [ ] Mobile and CCA users should follow [Step 3b](03b-create-your-repo-ui.md) instead
+- [ ] I am ready to open my practice repository in a Codespace
+- [ ] I know mobile, Copilot app, and CCA users should switch to [Step 3b](03b-create-your-repo-ui.md) instead of continuing here
+- [ ] I know GHES, GHEC, and self-hosted runner users should read the enterprise side quest before running `gh auth status`
+- [ ] I know I will open the built-in Codespace terminal after the editor loads
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
@@ -53,9 +50,6 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
    - Wait 30–60 seconds for GitHub to prepare the container and open the editor.
 
 ![Open Codespace](images/02a-open-codespace.svg)
-
-> [!IMPORTANT]
-> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail at the verification step below.
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
