@@ -22,7 +22,7 @@ An **agentic workflow** is a plain-English task brief that an AI agent executes 
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
-If you already trust GitHub Actions, the trust model stays the same here. As shown in the execution animation, agentic workflows run in the standard GitHub Actions sandbox with the same permissions, firewall controls, and secret isolation. You are not creating a new trust boundary.
+If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
 
 ## Classify these tasks
 
@@ -53,7 +53,7 @@ Mark each statement before revealing the answers:
 
 ## Reflection
 
-Write one sentence wherever you keep workshop notes — your editor, a scratch file, or a notes app — describing what you would want _your_ agentic workflow to do. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
+Before you check the reflection items in the checkpoint below, write one sentence wherever you keep workshop notes — your editor, a scratch file, or a notes app — describing what you would want _your_ agentic workflow to do. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
 
 ## What the agent decided
 
