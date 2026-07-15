@@ -11,7 +11,7 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 
 ## ✏️ Exercise: Generate a token
 
-1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token** (fine-grained).
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens), open **Generate new token**, and select **Fine-grained personal access token**.
 2. Give it a name, for example `gh-aw-copilot`.
 3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
 4. Set **Repository access** to **Public repositories**.
@@ -43,7 +43,7 @@ If your workflow declares `copilot-requests` in frontmatter, set it to `read`:
 
 ```yaml
 ---
-name: my-workflow
+name: my-copilot-workflow
 on:
   workflow_dispatch:
 permissions:
