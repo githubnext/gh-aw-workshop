@@ -11,13 +11,13 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 
 ## ✏️ Exercise: Generate a token
 
-1. Go to [github.com/settings/tokens](https://github.com/settings/tokens), click the **Generate new token** dropdown, and select **Fine-grained personal access token**.
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Give it a name, for example `gh-aw-copilot`.
 3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
 4. Set **Repository access** to **Public repositories**.
    - The workshop uses a public practice repository.
    - If you are doing this outside the workshop with a private repository, choose **Only select repositories** and select your private repository.
-5. Under **Permissions**, expand **Account permissions** and set **Copilot requests** to **Read-only**.
+5. Under **Permissions**, expand **Account permissions** (not **Repository permissions**) and set **Copilot requests** to **Read-only**.
 6. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
 
 > [!IMPORTANT]
