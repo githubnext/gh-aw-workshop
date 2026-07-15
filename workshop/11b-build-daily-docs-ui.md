@@ -30,7 +30,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
    permissions:
      contents: read
      copilot-requests: write
-     issues: read
+     issues: write
 
    tools:
      github:
@@ -38,6 +38,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
        toolsets: [default]
 
    safe-outputs:
+     create-issue: {}
      add-comment:
        max: 1
    ---
@@ -86,9 +87,9 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 
 ## Understand the guardrails
 
-- Read-only permissions let the agent inspect documentation and issues.
+- `issues: write` lets the agent read issues and create the tracking issue on first run.
 - The GitHub tool uses the scoped proxy.
-- `safe-outputs` limits the workflow to one issue comment.
+- `safe-outputs` limits the workflow to one new issue (if needed) and one comment per run.
 
 ## ✅ Checkpoint
 
