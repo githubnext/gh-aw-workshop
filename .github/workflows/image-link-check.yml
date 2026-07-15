@@ -29,50 +29,58 @@ jobs:
       - name: Check local image links
         id: check
         continue-on-error: true
-        run: |
-          python3 - << 'PYEOF'
-          import os
-          import re
-          import sys
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs')
+            const path = require('path')
 
-          broken = []
+            const IMAGE_REF_RE = /!\[.*?\]\(([^)]+)\)/g
+            const FENCED_BLOCK_RE = /^```[\s\S]*?^```|^~~~[\s\S]*?^~~~/gm
 
-          for root, dirs, files in os.walk('.'):
-              # Skip hidden directories
-              dirs[:] = [d for d in dirs if not d.startswith('.')]
-              for filename in files:
-                  if not filename.endswith('.md'):
-                      continue
-                  filepath = os.path.join(root, filename)
-                  with open(filepath, encoding='utf-8') as f:
-                      content = f.read()
+            function walkMdFiles(dir) {
+              const results = []
+              for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+                if (entry.name.startsWith('.')) continue
+                const full = path.join(dir, entry.name)
+                if (entry.isDirectory()) results.push(...walkMdFiles(full))
+                else if (entry.isFile() && entry.name.endsWith('.md')) results.push(full)
+              }
+              return results
+            }
 
-                  # Remove fenced code blocks to avoid matching image syntax inside them
-                  content_stripped = re.sub(r'```.*?```', '', content, flags=re.DOTALL)
-                  content_stripped = re.sub(r'~~~.*?~~~', '', content_stripped, flags=re.DOTALL)
+            const broken = []
 
-                  for i, line in enumerate(content_stripped.splitlines(), start=1):
-                      for match in re.finditer(r'!\[.*?\]\(([^)]+)\)', line):
-                          img_ref = match.group(1).strip()
-                          # Only check local (non-URL) references
-                          if img_ref.startswith('http://') or img_ref.startswith('https://'):
-                              continue
-                          # Strip any title attribute: e.g. "path/img.png \"title\""
-                          img_path = img_ref.split()[0]
-                          # Resolve relative to the markdown file's directory
-                          base_dir = os.path.dirname(filepath)
-                          resolved = os.path.normpath(os.path.join(base_dir, img_path))
-                          if not os.path.exists(resolved):
-                              broken.append((filepath.lstrip('./'), i, img_path, resolved.lstrip('./')))
+            for (const filepath of walkMdFiles('.')) {
+              const raw = fs.readFileSync(filepath, 'utf8')
+              // Strip fenced code blocks to avoid matching image syntax inside them
+              const content = raw.replace(FENCED_BLOCK_RE, m => '\n'.repeat(m.split('\n').length - 1))
+              const lines = content.split('\n')
 
-          if broken:
-              print(f"::error::Found {len(broken)} broken local image link(s):")
-              for filepath, lineno, ref, resolved in broken:
-                  print(f"::error file={filepath},line={lineno}::Broken image link: {ref} (resolved: {resolved})")
-              sys.exit(1)
-          else:
-              print(f"All local image links are valid. Checked across all markdown files.")
-          PYEOF
+              for (let i = 0; i < lines.length; i++) {
+                const line = lines[i]
+                let match
+                IMAGE_REF_RE.lastIndex = 0
+                while ((match = IMAGE_REF_RE.exec(line)) !== null) {
+                  const imgRef = match[1].trim()
+                  // Skip external URLs
+                  if (imgRef.startsWith('http://') || imgRef.startsWith('https://')) continue
+                  // Strip optional title attribute (e.g. 'path/img.png "title"')
+                  const imgPath = imgRef.split(/\s+/)[0]
+                  const resolved = path.normalize(path.join(path.dirname(filepath), imgPath))
+                  if (!fs.existsSync(resolved)) {
+                    broken.push({ file: filepath.replace(/^\.\//, ''), line: i + 1, ref: imgPath, resolved: resolved.replace(/^\.\//, '') })
+                    core.error(`Broken image link: ${imgPath} (resolved: ${resolved.replace(/^\.\//, '')})`, { file: filepath.replace(/^\.\//, ''), startLine: i + 1 })
+                  }
+                }
+              }
+            }
+
+            if (broken.length > 0) {
+              core.setFailed(`Found ${broken.length} broken local image link(s).`)
+            } else {
+              core.info('All local image links are valid. Checked across all markdown files.')
+            }
 
       - name: File issue for broken images on main
         if: steps.check.outcome == 'failure' && github.event_name == 'push' && github.ref == 'refs/heads/main'
