@@ -60,7 +60,7 @@ description: Post a daily repository status summary as a GitHub issue comment.
 
 ## Section 2 — Triggers
 
-Add the trigger block after the `description` line. `schedule: daily` is `gh-aw`'s shorthand that compiles to a once-per-day cron schedule. `workflow_dispatch: {}` adds a **Run workflow** button in the Actions UI so you can test on demand without waiting for the schedule.
+Add the trigger block after the `description` line. `schedule: daily` is `gh-aw`'s shorthand that compiles to a once-per-day cron schedule. The compiler automatically adds a **Run workflow** button for any scheduled workflow; you may include `workflow_dispatch: {}` explicitly here for clarity, but it is not required.
 
 ```yaml
 on:
