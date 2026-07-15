@@ -78,14 +78,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm test
+      - run: echo "All checks passed"
 ```
 
 - [ ] I labeled `on: [push]`
 - [ ] I labeled `test:` (the job name under `jobs:`)
 - [ ] I labeled `runs-on: ubuntu-latest`
 - [ ] I labeled `uses: actions/checkout@v4`
-- [ ] I labeled `run: npm test`
+- [ ] I labeled `run: echo "All checks passed"`
 
 <details>
 <summary>Reveal the labels</summary>
@@ -94,7 +94,7 @@ jobs:
 - `jobs: test:` → **job** (a group of steps that runs on one machine)
 - `runs-on: ubuntu-latest` → **runner** (the machine type GitHub provisions)
 - `uses: actions/checkout@v4` → **action** (a reusable step from the Actions marketplace)
-- `run: npm test` → **step** (a shell command run directly on the runner)
+- `run: echo "All checks passed"` → **step** (a shell command run directly on the runner)
 
 </details>
 
