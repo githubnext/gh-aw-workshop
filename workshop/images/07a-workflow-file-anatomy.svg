@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Agentic workflow file anatomy: frontmatter sections (name, on, permissions, safe-outputs) and the Task body, each mapped to its runtime purpose">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 574" width="1200" height="574" role="img" aria-label="Agentic workflow file anatomy: frontmatter sections (name, on, permissions, safe-outputs) and the Task body, each mapped to its runtime purpose">
   <!-- Background -->
-  <rect width="1200" height="560" fill="#f6f8fa"/>
+  <rect width="1200" height="574" fill="#f6f8fa"/>
 
   <!-- Title -->
   <text x="600" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#24292f">Agentic Workflow File Anatomy</text>
@@ -32,25 +32,26 @@
   <text x="80" y="251" font-family="ui-monospace, monospace" font-size="12" fill="#1a7f37">  copilot-requests: write</text>
 
   <!-- safe-outputs row -->
-  <rect x="72" y="256" width="316" height="58" rx="3" fill="#fbefff" stroke="none"/>
+  <rect x="72" y="256" width="316" height="72" rx="3" fill="#fbefff" stroke="none"/>
   <text x="80" y="271" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">safe-outputs:</text>
   <text x="80" y="285" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">  add-comment:</text>
   <text x="80" y="299" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">    max: 1</text>
   <text x="80" y="313" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">  create-issue:</text>
+  <text x="80" y="327" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">    max: 1</text>
 
   <!-- --- bottom fence -->
-  <text x="80" y="328" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
+  <text x="80" y="342" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
 
   <!-- Task block -->
-  <rect x="72" y="334" width="316" height="166" rx="3" fill="#fff1e5" stroke="none"/>
-  <text x="80" y="350" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#bc4c00">## Task</text>
-  <text x="80" y="366" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Search open issues.</text>
-  <text x="80" y="380" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Find the one with the</text>
-  <text x="80" y="394" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">most 👍 reactions.</text>
-  <text x="80" y="408" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Post a comment on it...</text>
-  <text x="80" y="422" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">If no issues, create</text>
-  <text x="80" y="436" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">one titled "Community</text>
-  <text x="80" y="450" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Voting Test".</text>
+  <rect x="72" y="348" width="316" height="166" rx="3" fill="#fff1e5" stroke="none"/>
+  <text x="80" y="364" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#bc4c00">## Task</text>
+  <text x="80" y="380" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Search open issues.</text>
+  <text x="80" y="394" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Find the one with the</text>
+  <text x="80" y="408" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">most 👍 reactions.</text>
+  <text x="80" y="422" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Post a comment on it...</text>
+  <text x="80" y="436" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">If no issues, create</text>
+  <text x="80" y="450" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">one titled "Community</text>
+  <text x="80" y="464" font-family="ui-monospace, monospace" font-size="11" fill="#bc4c00">Voting Test".</text>
 
   <!-- Arrows + annotation cards on right side -->
 
@@ -67,7 +68,7 @@
   <line x1="392" y1="285" x2="470" y2="372" stroke="#8250df" stroke-width="1.5" marker-end="url(#purple-arrow)"/>
 
   <!-- Arrow: task -->
-  <line x1="392" y1="417" x2="470" y2="454" stroke="#bc4c00" stroke-width="1.5" marker-end="url(#orange-arrow)"/>
+  <line x1="392" y1="431" x2="470" y2="468" stroke="#bc4c00" stroke-width="1.5" marker-end="url(#orange-arrow)"/>
 
   <!-- Annotation cards -->
 
@@ -97,11 +98,11 @@
   <text x="486" y="379" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">caps how many times each can fire.</text>
 
   <!-- task card -->
-  <rect x="470" y="430" width="290" height="64" rx="6" fill="white" stroke="#bc4c00" stroke-width="1.5"/>
-  <text x="486" y="447" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#bc4c00">Task instructions</text>
-  <text x="486" y="464" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Plain-language goals the AI agent</text>
-  <text x="486" y="478" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">reads at runtime to decide what to</text>
-  <text x="486" y="492" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">do and which outputs to produce.</text>
+  <rect x="470" y="444" width="290" height="64" rx="6" fill="white" stroke="#bc4c00" stroke-width="1.5"/>
+  <text x="486" y="461" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#bc4c00">Task instructions</text>
+  <text x="486" y="478" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Plain-language goals the AI agent</text>
+  <text x="486" y="492" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">reads at runtime to decide what to</text>
+  <text x="486" y="506" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">do and which outputs to produce.</text>
 
   <!-- Arrowhead markers -->
   <defs>
@@ -123,5 +124,5 @@
   </defs>
 
   <!-- Bottom annotation -->
-  <text x="600" y="530" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#57606a">Frontmatter (between --- fences) is compiled by gh aw compile · The ## Task block is the agent's runtime brief</text>
+  <text x="600" y="544" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#57606a">Frontmatter (between --- fences) is compiled by gh aw compile · The ## Task block is the agent's runtime brief</text>
 </svg>
