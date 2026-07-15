@@ -472,7 +472,9 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
       repoHasReadme: false,
       repoVerified: false,
       hasWorkflowFile: false,
+      hasCompiledWorkflowLock: false,
       ranWorkflow: false,
+      workflowReadyToRun: false,
       environmentReady: false
     }
   });
