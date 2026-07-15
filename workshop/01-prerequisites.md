@@ -78,7 +78,7 @@ In this step, you confirm your account and tool prerequisites, then choose your 
 
 ### Confirm account access
 
-Sign in at [github.com](https://github.com). If you do not have an account yet, create one at [github.com/signup](https://github.com/signup).
+Sign in at [github.com](https://github.com). If you do not have an account yet, create one at github.com/signup.
 
 ### Confirm local tools (only if using Adventure B)
 
