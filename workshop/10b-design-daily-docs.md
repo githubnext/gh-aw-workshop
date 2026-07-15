@@ -70,7 +70,7 @@ Guardrails:
 ---
 
 > [!TIP]
-> Use the **`/agentic-workflows` Copilot skill** to design and refine your workflow prompts interactively. Open Copilot Chat, type `/agentic-workflows`, and describe what you want — the skill will interview you through the goal, inputs, output format, and guardrails, then generate a ready-to-use workflow brief.
+> Use the **`/agentic-workflows` Copilot skill** in Copilot Chat to design and build your workflow prompts interactively — describe what you want and the skill will guide you through goal, inputs, output format, and guardrails.
 
 ## Thinking Through the Design
 
