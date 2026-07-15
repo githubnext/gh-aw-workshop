@@ -63,7 +63,7 @@ Before you run the workflow, confirm Copilot access is in place — this is the 
 
 > [!IMPORTANT]
 > <details>
-> <summary><b>Confirm Copilot access before you push</b></summary>
+> <summary><b>Confirm Copilot access before you push.</b></summary>
 > 
 > - Your frontmatter includes `copilot-requests: write` under `permissions` (already done in the step above).
 > - Your GitHub account has an active Copilot subscription — check at [github.com/settings/copilot](https://github.com/settings/copilot).
