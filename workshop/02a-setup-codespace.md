@@ -13,7 +13,7 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 
 | Path | Best for | Next step |
 |------|----------|-----------|
-| 📱 Mobile / Copilot app | No terminal or local install | **Stop here.** [Go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
+| 📱 Mobile / Copilot app | No terminal or local install | Not this path — [go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
 | 🤖 Copilot Cloud Agent (CCA) | Browser-only with CCA; no local install | [Start at Step 3b →](03b-create-your-repo-ui.md), then continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
 | ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
