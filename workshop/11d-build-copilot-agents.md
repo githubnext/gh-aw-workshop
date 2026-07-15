@@ -101,7 +101,7 @@ Then create a daily documentation health report agentic workflow for this reposi
 The workflow should:
 - Trigger on a daily schedule and support manual triggering via workflow_dispatch
 - Scan documentation files (Markdown files under docs/ or in the repository root) for staleness, missing sections, and broken cross-references
-- Post a structured health report as a comment on an issue titled "Daily Docs Health" (create the issue if it does not exist)
+- Post a structured health report as a comment on the existing issue titled "Daily Docs Health"
 - Post at most one comment per calendar day
 - Use minimum required permissions: contents: read, copilot-requests: write, issues: read
 - Limit safe-outputs to add-comment with max: 1

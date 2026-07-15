@@ -40,7 +40,7 @@ safe-outputs:
 
 You are an AI assistant that monitors this repository's documentation.
 Scan for stale files, thin pages, and broken internal links.
-Find the issue titled "Daily Docs Health" (or create it) and post one comment with a concise health summary.
+Find the existing issue titled "Daily Docs Health" and post one comment with a concise health summary.
 ```
 
 The `on:` block sets when the workflow runs — `schedule: daily` is a fuzzy expression that `gh aw compile` converts to a once-per-day schedule at a compiler-chosen time. The `permissions:` block declares the minimum GitHub API scopes the workflow may use. The `safe-outputs:` guardrail limits the agent to posting at most one issue comment per run.

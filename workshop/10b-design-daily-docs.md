@@ -38,8 +38,7 @@ Copy this into a scratch file and personalise it:
 
 ```
 Every day, scan this repository's documentation files and post a short
-health summary as a comment on the issue titled "Daily Docs Health" (create
-the issue if it doesn't exist).
+health summary as a comment on the existing issue titled "Daily Docs Health".
 
 Inputs to collect:
 - All Markdown files in the docs/ directory and the root README.md
@@ -61,7 +60,7 @@ Guardrails:
 - Post only one comment per calendar day. If today's report already exists, stop.
 - Never edit or commit changes to documentation files — read only.
 - Write "unknown" for any field where data is unavailable.
-- If the "Daily Docs Health" issue doesn't exist, create it, then comment.
+- If the "Daily Docs Health" issue doesn't exist, stop without posting.
 ```
 
 > [!TIP]
