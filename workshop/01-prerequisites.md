@@ -47,6 +47,7 @@ Complete these checks before you continue:
 **Action:** Open [github.com](https://github.com) and confirm your account menu appears. Review the three development environment options now: Codespace, local terminal, and GitHub UI.
 
 - [ ] You can sign in to GitHub with the account you'll use for the workshop
+- [ ] Your GitHub account has an active Copilot plan (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - [ ] You have chosen which development environment you'll use: Codespace, local terminal, or GitHub UI
 - [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
@@ -109,6 +110,7 @@ Continue with exactly one of these paths:
 
 - [ ] **If you're on GHEC, GHES, or EMU:** You reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment meets the enterprise requirements
 - [ ] You can sign in to GitHub with the account you'll use for the workshop
+- [ ] Your GitHub account has an active Copilot plan (verified at [github.com/settings/copilot](https://github.com/settings/copilot))
 - [ ] You chose one path: Codespace (02a), Local (02b), or GitHub UI (03b)
 - [ ] If using Local (02b), `gh` CLI 2.40+ and Git are available
 - [ ] You know which file you will open next

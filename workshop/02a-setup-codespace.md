@@ -19,6 +19,11 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
 
 > [!IMPORTANT]
+> This workshop requires an active GitHub Copilot plan. Verify yours at [github.com/settings/copilot](https://github.com/settings/copilot) before continuing — if Copilot is not active on your account, enable or upgrade your plan first.
+
+<!-- -->
+
+> [!IMPORTANT]
 > **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail later when you verify your setup.
 
 ## 🎯 What You'll Do
@@ -30,6 +35,7 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 **Verify you are on the right path before continuing:**
 
 - [ ] I have a GitHub account with access to GitHub Codespaces
+- [ ] I have an active GitHub Copilot plan (verified at [github.com/settings/copilot](https://github.com/settings/copilot))
 - [ ] I want a browser-based terminal and do not need to install tools locally
 - [ ] I am ready to open my practice repository in a Codespace
 - [ ] I know mobile, Copilot app, and CCA users should switch to [Step 3b](03b-create-your-repo-ui.md) instead of continuing here
@@ -57,11 +63,8 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 ### Open the Codespace terminal
 
 1. When the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac).
-2. Wait for the terminal prompt to appear.
+2. Wait for the terminal prompt to appear. A `$` sign means the container is ready. If you see an error instead, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
 3. Keep this terminal open. It is already inside your practice repository.
-
-> [!TIP]
-> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
 If this is your first time in a terminal, see [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) for a quick orientation on navigating folders and running commands.
 
@@ -82,6 +85,13 @@ The diagram below shows your Codespace connection to GitHub.
 2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
 3. Confirm `gh auth status` shows that you're logged in to `github.com`.
 4. Confirm `gh extension list` runs without errors, even if it shows no extensions yet.
+5. Run the Copilot access check:
+
+   ```bash
+   gh api user/copilot_billing 2>&1 | grep -q '"plan_type"' && echo "✅ Copilot active" || echo "❌ Copilot not enabled — see https://github.com/settings/copilot"
+   ```
+
+6. Confirm the output shows `✅ Copilot active`. If you see `❌ Copilot not enabled`, visit [github.com/settings/copilot](https://github.com/settings/copilot) to enable or upgrade your plan before continuing.
 
 _What success looks like:_
 
@@ -107,10 +117,7 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 >
 > </details>
 
-<!-- -->
-
-> [!IMPORTANT]
-> The Codespace authentication token has a limited set of scopes by default. In particular, it may **not** include `actions:write`, which is required for `gh aw run` to trigger workflows from the terminal (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you want to use `gh aw run` and hit permission errors, jump to [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md).
+The Codespace authentication token may not include the `actions:write` scope by default, which is required for `gh aw run` (used in [Step 8](08-run-your-workflow.md)). In this workshop, prefer triggering runs from the **GitHub Actions UI** in [Step 8](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui). If you hit permission errors with `gh aw run`, see [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ## ✅ Checkpoint
 
@@ -119,6 +126,7 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 - [ ] `gh --version` returns version 2.40.0 or newer
 - [ ] `gh auth status` shows you're logged in to GitHub without errors
 - [ ] `gh extension list` runs without errors (the list is empty at this point — `gh aw` is installed in a later step)
+- [ ] `gh api user/copilot_billing` confirms Copilot is active on your account
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
 - [ ] I know GitHub Mobile and Copilot app users should continue on [Step 3b](03b-create-your-repo-ui.md)
 - [ ] I know Copilot Cloud Agent (CCA) users follow the [GitHub UI Path](03b-create-your-repo-ui.md) and have a dedicated browser-only adventure at [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
