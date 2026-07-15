@@ -22,7 +22,7 @@ Open `.github/workflows/hello-agent.md` in your practice repository and look for
 
 Your workflow uses GitHub Copilot when the frontmatter has no `engine:` line.
 
-If you have not configured Copilot access yet, or if you want the full walkthrough, complete [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) — the overview for Method 1 (`copilot-requests: write`) and Method 2 (`COPILOT_GITHUB_TOKEN`) — and then return here.
+If you have not configured Copilot access yet, or if you want the full walkthrough, complete [the Copilot setup overview](side-quest-06-03-copilot-token.md) — the guide for Method 1 (`copilot-requests: write`) and Method 2 (`COPILOT_GITHUB_TOKEN`) — and then return here.
 
 1. Confirm your workflow uses one of the supported Copilot auth methods from that side quest:
    - **Method 1 (permission-based):** `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
@@ -38,7 +38,7 @@ If you have not configured Copilot access yet, or if you want the full walkthrou
 
 Your workflow uses Claude when the frontmatter contains `engine: claude`.
 
-If you have not configured Claude access yet, complete [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and then return here.
+If you have not configured Claude access yet, or if you want the full walkthrough, complete [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and then return here.
 
 1. Confirm `ANTHROPIC_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
@@ -51,7 +51,7 @@ If you have not configured Claude access yet, complete [Side Quest: Configure an
 
 Your workflow uses OpenAI when the frontmatter contains `engine: codex`.
 
-If you have not configured OpenAI access yet, complete [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and then return here.
+If you have not configured OpenAI access yet, or if you want the full walkthrough, complete [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and then return here.
 
 1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
 
