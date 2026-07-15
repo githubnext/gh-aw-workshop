@@ -1,0 +1,126 @@
+name: Local Image Link Check
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "workshop/images/**"
+      - ".github/workflows/image-link-check.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.md"
+      - "workshop/images/**"
+      - ".github/workflows/image-link-check.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  image-link-check:
+    name: Check Local Image Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check local image links
+        id: check
+        continue-on-error: true
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs')
+            const path = require('path')
+
+            const IMAGE_REF_RE = /!\[.*?\]\(([^)]+)\)/g
+            const FENCED_BLOCK_RE = /^```[\s\S]*?^```|^~~~[\s\S]*?^~~~/gm
+
+            function walkMdFiles(dir) {
+              const results = []
+              for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+                if (entry.name.startsWith('.')) continue
+                const full = path.join(dir, entry.name)
+                if (entry.isDirectory()) results.push(...walkMdFiles(full))
+                else if (entry.isFile() && entry.name.endsWith('.md')) results.push(full)
+              }
+              return results
+            }
+
+            const broken = []
+
+            for (const filepath of walkMdFiles('.')) {
+              const raw = fs.readFileSync(filepath, 'utf8')
+              // Strip fenced code blocks to avoid matching image syntax inside them
+              const content = raw.replace(FENCED_BLOCK_RE, m => '\n'.repeat(m.split('\n').length - 1))
+              const lines = content.split('\n')
+
+              for (let i = 0; i < lines.length; i++) {
+                const line = lines[i]
+                let match
+                IMAGE_REF_RE.lastIndex = 0
+                while ((match = IMAGE_REF_RE.exec(line)) !== null) {
+                  const imgRef = match[1].trim()
+                  // Skip external URLs
+                  if (imgRef.startsWith('http://') || imgRef.startsWith('https://')) continue
+                  // Strip optional title attribute (e.g. 'path/img.png "title"')
+                  const imgPath = imgRef.split(/\s+/)[0]
+                  const resolved = path.normalize(path.join(path.dirname(filepath), imgPath))
+                  if (!fs.existsSync(resolved)) {
+                    broken.push({ file: filepath.replace(/^\.\//, ''), line: i + 1, ref: imgPath, resolved: resolved.replace(/^\.\//, '') })
+                    core.error(`Broken image link: ${imgPath} (resolved: ${resolved.replace(/^\.\//, '')})`, { file: filepath.replace(/^\.\//, ''), startLine: i + 1 })
+                  }
+                }
+              }
+            }
+
+            if (broken.length > 0) {
+              core.setFailed(`Found ${broken.length} broken local image link(s).`)
+            } else {
+              core.info('All local image links are valid. Checked across all markdown files.')
+            }
+
+      - name: File issue for broken images on main
+        if: steps.check.outcome == 'failure' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const title = 'Broken local image links on main'
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            const body = [
+              'The local image link check failed on `main`.',
+              '',
+              `Workflow run: ${runUrl}`,
+              '',
+              'One or more markdown files reference image files that do not exist.',
+              'Please fix the broken image links reported in the workflow run.',
+            ].join('\n')
+            const { owner, repo } = context.repo
+            const { data: searchResults } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${owner}/${repo} is:issue is:open in:title "${title}"`,
+              per_page: 10,
+            })
+            const existingIssue = searchResults.items.find(
+              (issue) => issue.title === title
+            )
+            if (existingIssue) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existingIssue.number,
+                body,
+              })
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+              })
+            }
+
+      - name: Fail job when broken links found
+        if: steps.check.outcome == 'failure'
+        run: exit 1
