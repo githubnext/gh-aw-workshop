@@ -110,7 +110,7 @@ Both files live in `.github/workflows/`. Look at them and answer: which part of 
 ## ✅ Checkpoint
 
 - [ ] I described what an agentic workflow is in one sentence
-- [ ] I can explain why agentic workflows use the same trust model as GitHub Actions
+- [ ] I understand that agentic workflows use the same trust model as GitHub Actions
 - [ ] I classified all three tasks and verified my reasoning in the reveal
 - [ ] I wrote one sentence describing what I want my own agentic workflow to do
 - [ ] My workflow idea needs judgment, not a fixed script
