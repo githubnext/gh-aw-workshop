@@ -207,7 +207,7 @@ def overall_score_from_metrics(metrics: dict) -> tuple[dict, float]:
 def score_markdown(raw: str, filename: str, *, title: str | None = None) -> dict:
     metrics = collect_metrics_from_text(raw, filename, title=title)
     dim_scores, overall_score = overall_score_from_metrics(metrics)
-    return {**metrics, "dim_scores": dim_scores, "overall_score": overall_score}
+    return {**metrics, **dim_scores, "dim_scores": dim_scores, "overall_score": overall_score}
 
 
 def score_workshop_file(path: str | pathlib.Path) -> dict:
