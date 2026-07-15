@@ -64,6 +64,8 @@ on:
 - `name` is what you see in the Actions UI.
 - `workflow_dispatch` means you can run it manually while testing.
 
+![How workflow_dispatch works: author the .md file, compile to a lock.yml, push to GitHub, then click Run workflow in the Actions tab to trigger the agent](images/07a-workflow-dispatch-trigger.svg)
+
 <details>
 <summary>Terminal tip (VS Code + Copilot)</summary>
 
