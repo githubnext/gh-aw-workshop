@@ -10,10 +10,6 @@ You'll trigger the `hello-agent` workflow from Step 7, watch it start in the **A
 
 - Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
 - `hello-agent.md` is committed to `.github/workflows/` on `main`
-- **Codespace users only:** Set workflow permissions to **Read and write permissions** so the workflow can post comments or create issues:
-  1. Open **Settings → Actions → General**.
-  2. Select **Read and write permissions** and click **Save**.
-  3. Confirm **Hello Agent** appears in the **Actions** sidebar.
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
 ## Run the workflow
@@ -22,20 +18,66 @@ Start by checking that every item in **Before You Start** is complete. This step
 
 If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced option. If that fails in Codespaces with an `actions:write` error, use [Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) or continue with the GitHub UI.
 
-### Verify model access
+### Model access wizard
 
-Before you trigger a run, confirm your workflow is configured to reach an AI model. Runs that fail immediately with a model-access or authentication error almost always indicate a missing or expired token.
+Before you trigger a run, confirm your workflow can reach an AI model. Runs that fail immediately with a model-access or authentication error almost always indicate a missing or expired token.
 
-Check your configuration based on the engine in your `hello-agent.md` frontmatter. Check only the item that matches your engine:
+**Which engine does your `hello-agent.md` use?** Open `.github/workflows/hello-agent.md` and look for an `engine:` line in the frontmatter. No `engine:` line means GitHub Copilot (the default). Expand only the option that matches your workflow.
 
-> [!IMPORTANT]
-> Complete this quick check before clicking **Run workflow**. Most immediate first-run failures come from missing model access.
+<details>
+<summary><b>GitHub Copilot (default — no <code>engine:</code> line in the frontmatter)</b></summary>
 
-- [ ] I confirmed my engine is **GitHub Copilot** (default, no `engine:` line) and `copilot-requests: write` is in my frontmatter with an active Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot)
-- [ ] I confirmed my engine is **Claude** (`engine: claude`) and ANTHROPIC_API_KEY is set in **Settings → Secrets and variables → Actions** — [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md)
-- [ ] I confirmed my engine is **Codex / OpenAI** (`engine: codex`) and OPENAI_API_KEY is set in **Settings → Secrets and variables → Actions** — [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md)
+Your workflow uses GitHub Copilot when the frontmatter has no `engine:` line.
 
-> **Reflection:** In one sentence, describe what would happen if you clicked Run workflow right now without completing item 2.
+1. Confirm `copilot-requests: write` appears in the `permissions:` block of your `hello-agent.md`.
+2. Confirm you have an active GitHub Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot).
+
+- [ ] I confirmed `copilot-requests: write` is in my frontmatter and my Copilot subscription is active.
+
+Not sure about the `permissions` block? See [Side Quest: Method 1 — Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md).
+
+</details>
+
+<details>
+<summary><b>Claude (<code>engine: claude</code>)</b></summary>
+
+Your workflow uses Claude when the frontmatter contains `engine: claude`.
+
+1. Confirm `ANTHROPIC_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
+
+- [ ] I confirmed `ANTHROPIC_API_KEY` is present in **Settings → Secrets and variables → Actions**.
+
+Need to set this up? See [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
+
+</details>
+
+<details>
+<summary><b>Codex / OpenAI (<code>engine: codex</code>)</b></summary>
+
+Your workflow uses Codex when the frontmatter contains `engine: codex`.
+
+1. Confirm `OPENAI_API_KEY` is set in **Settings → Secrets and variables → Actions** in your practice repository.
+
+- [ ] I confirmed `OPENAI_API_KEY` is present in **Settings → Secrets and variables → Actions**.
+
+Need to set this up? See [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
+
+</details>
+
+> **Reflection:** In one sentence, describe what would happen if you clicked Run workflow right now without completing your engine's check above.
+
+<details>
+<summary><b>Running in a GitHub Codespace? Expand for one extra step.</b></summary>
+
+Codespace workflows need write access to post comments or create issues. Complete this before triggering the run:
+
+1. Open **Settings → Actions → General** in your practice repository.
+2. Select **Read and write permissions** and click **Save**.
+3. Confirm **Hello Agent** appears in the **Actions** sidebar.
+
+- [ ] I set **Read and write permissions** in **Settings → Actions → General**.
+
+</details>
 
 <details>
 <summary><b>Need deeper troubleshooting for model-access failures?</b></summary>
@@ -45,26 +87,12 @@ Check your configuration based on the engine in your `hello-agent.md` frontmatte
 
 </details>
 
-Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md` and look for an `engine:` line or a `permissions` block.
-
 ### Before you click Run
 
-#### Prerequisites verified
-
 - [ ] I opened `.github/workflows/hello-agent.md` and confirmed which engine I am using
-- [ ] I verified the required configuration from the pre-flight checklist is present
-- [ ] I checked that **Hello Agent** appears in the **Actions** sidebar
-- [ ] I confirmed I have at least one open issue ready for the workflow to update
-- [ ] I am signed in with the account that has access to this repository and its secrets
-
-#### Ready to proceed
-
-- [ ] I opened the **Actions** tab so I can trigger the run without searching
-- [ ] I know where to open the live job log as soon as the run appears
-- [ ] I know which side quest to open if the run fails immediately with an authentication or model-access error
-
-> [!IMPORTANT]
-> Do not proceed until all items in the pre-flight checklist above are checked. Missing model access causes an immediate run failure.
+- [ ] I completed the matching engine check from the wizard above
+- [ ] **Hello Agent** appears in the **Actions** sidebar
+- [ ] I have at least one open issue in my practice repository
 
 ### Trigger the workflow via GitHub Actions UI
 
@@ -74,7 +102,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
 
 Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Hello Agent** is missing, refresh the page, confirm the workflow file is on `main`, and run `gh aw compile` from your terminal if you need to check for compile errors.
 
-If the run fails immediately with a model-access or authentication error, stop and use the matching setup link from the pre-flight checklist above before rerunning.
+If the run fails immediately with a model-access or authentication error, stop and expand the matching engine check from the wizard above before rerunning.
 
 ![Workflow sidebar with the Run workflow button highlighted](images/08-run-workflow-button.svg)
 
@@ -96,10 +124,9 @@ Before you move on, continue to [Step 8b: Interpret Your First Run](08b-interpre
 
 ## ✅ Checkpoint
 
-- [ ] I ran the pre-flight check and confirmed my workflow's model access is ready
+- [ ] I used the model access wizard and confirmed my workflow's engine access is ready
 - [ ] My workflow has model access configured — either `copilot-requests: write` in the frontmatter or the relevant API key secret listed under **Settings → Secrets and variables → Actions**
-- [ ] I confirmed my model-access configuration using the quick-check table (Copilot subscription active, or API key secret present for my engine)
-- [ ] I am aware of the side quest to use if the run fails immediately with an authentication or model-access error
+- [ ] If I am running in a Codespace, I set **Read and write permissions** in **Settings → Actions → General**
 - [ ] The **Hello Agent** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active

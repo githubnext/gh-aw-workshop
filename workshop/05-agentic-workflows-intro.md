@@ -1,6 +1,13 @@
 # Step 5: What Are Agentic Workflows?
 
-**Already familiar with GitHub Actions and LLM agent concepts?** [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
+**Already familiar with both GitHub Actions and AI agent execution environments?**
+
+Before skipping, confirm you already know both of these:
+
+- You can describe what an Actions workflow trigger does
+- You have worked with AI agent execution environments in a production or CI/CD context
+
+If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
 > [!NOTE]
 > On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If you can't access it, follow [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) before continuing.
@@ -26,26 +33,36 @@ If you already trust GitHub Actions, the trust model stays the same here. The op
 
 ## Classify these tasks
 
-Classify each task as **agentic workflow** or **standard Actions workflow**:
+For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box to confirm, then reveal the answer before proceeding to the next task:
 
-```text
-Task A: Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
-Task B: Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
-Task C: Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
-```
+**Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
-Mark each statement before revealing the answers:
-
-- [ ] I classified Task A as agentic workflow or standard Actions workflow
-- [ ] I classified Task B as agentic workflow or standard Actions workflow
-- [ ] I classified Task C as agentic workflow or standard Actions workflow
+- [ ] I have classified Task A
 
 <details>
-<summary>Check your answers</summary>
+<summary>Check Task A answer</summary>
 
 **Task A — Standard Actions workflow:** every run follows the same fixed steps: start the test job, fail on a non-zero exit code, and upload the coverage artifact. No judgment required.
 
+</details>
+
+**Task B:** Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
+
+- [ ] I have classified Task B
+
+<details>
+<summary>Check Task B answer</summary>
+
 **Task B — Agentic workflow:** the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
+
+</details>
+
+**Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
+
+- [ ] I have classified Task C
+
+<details>
+<summary>Check Task C answer</summary>
 
 **Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
 
