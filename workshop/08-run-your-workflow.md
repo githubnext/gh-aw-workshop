@@ -16,18 +16,57 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 Before clicking Run, confirm your workflow has model access — this is the most common reason first runs fail.
 
-1. Open `daily-report-status.md` and check for an `engine:` line in the frontmatter. Terminal-path learners can identify their engine at a glance:
+Open `daily-report-status.md` and check for an `engine:` line in the frontmatter. Terminal-path learners can identify their engine at a glance:
 
-   ```bash
-   grep "^engine:" .github/workflows/daily-report-status.md
-   # Returns nothing        → GitHub Copilot (default)
-   # Returns engine: claude → Claude
-   # Returns engine: codex  → OpenAI
-   ```
+```bash
+grep "^engine:" .github/workflows/daily-report-status.md
+# Returns nothing        → GitHub Copilot (default)
+# Returns engine: claude → Claude
+# Returns engine: codex  → OpenAI
+```
 
-2. Confirm model access is configured for your engine. For the default Copilot path, check that the permissions block in `daily-report-status.md` includes `copilot-requests: write`. For other engines, open **Settings → Secrets and variables → Actions** and confirm the relevant API key secret is present (ANTHROPIC_API_KEY for Claude, OPENAI_API_KEY for OpenAI).
+Expand your engine section below and confirm or configure access:
 
-3. If access is not configured, complete the [Model Access Check](side-quest-08-00-model-access-check.md) before continuing.
+<details>
+<summary><b>GitHub Copilot (default — no <code>engine:</code> line)</b></summary>
+
+Confirm the permissions block in `daily-report-status.md` includes `copilot-requests: write`. If it is missing, add it:
+
+```yaml
+permissions:
+  issues: write
+  copilot-requests: write
+```
+
+Terminal verify:
+
+```bash
+grep -A5 'permissions:' .github/workflows/daily-report-status.md
+```
+
+- [ ] `copilot-requests: write` is in the permissions block
+
+</details>
+
+<details>
+<summary><b>Claude (<code>engine: claude</code>)</b></summary>
+
+Open Settings → Secrets and variables → Actions in your practice repository. Confirm `ANTHROPIC_API_KEY` is listed under Repository secrets. If missing, click New repository secret, enter `ANTHROPIC_API_KEY` as the name, paste your key, and save.
+
+- [ ] `ANTHROPIC_API_KEY` is set in Settings → Secrets and variables → Actions
+
+</details>
+
+<details>
+<summary><b>OpenAI (<code>engine: codex</code>)</b></summary>
+
+Open Settings → Secrets and variables → Actions in your practice repository. Confirm `OPENAI_API_KEY` is listed under Repository secrets. If missing, click New repository secret, enter `OPENAI_API_KEY` as the name, paste your key, and save.
+
+- [ ] `OPENAI_API_KEY` is set in Settings → Secrets and variables → Actions
+
+</details>
+
+If access is still not configured, complete the [Model Access Check](side-quest-08-00-model-access-check.md) for troubleshooting.
 
 - [ ] I confirmed which engine `daily-report-status.md` uses
 - [ ] Model access is configured for my engine
