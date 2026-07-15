@@ -15,6 +15,7 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 2. Give it a name, for example `gh-aw-copilot`.
 3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
 4. Set **Repository access** to **Public repositories**.
+   - The workshop uses a public practice repository, so keep this setting.
 5. Under **Permissions**, expand **Account permissions** and set **Copilot requests** to **Read-only**.
 6. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
 
@@ -64,7 +65,7 @@ Trigger a manual run to confirm the secret is wired up correctly:
 
 - [ ] You generated a fine-grained PAT at [github.com/settings/tokens](https://github.com/settings/tokens) with **Repository access: Public repositories** and **Copilot requests: Read-only**
 - [ ] `COPILOT_GITHUB_TOKEN` is stored as a repository secret (exact name, no spaces or hyphens)
-- [ ] If your workflow frontmatter includes `copilot-requests`, it is set to `read`
+- [ ] Your workflow frontmatter either omits `copilot-requests` or sets it to `read`
 - [ ] A manual run completed and the Copilot step shows it authenticated with `COPILOT_GITHUB_TOKEN`
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
@@ -86,7 +87,5 @@ Work through these checks if a run fails with `401 Unauthorized`:
 1. In **Settings → Secrets and variables → Actions**, confirm the secret exists with the exact name `COPILOT_GITHUB_TOKEN`.
 2. At [github.com/settings/tokens](https://github.com/settings/tokens), confirm the fine-grained PAT has **Repository access: Public repositories**, **Copilot requests: Read-only**, and has not expired.
 3. If in doubt, delete the secret, generate a fresh PAT, and re-add the secret — it takes less than two minutes.
-
-The workshop path assumes a public practice repository, so keep token visibility at **Public repositories**.
 
 </details>
