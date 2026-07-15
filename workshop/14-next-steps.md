@@ -47,6 +47,7 @@ Add branching logic to your daily-status workflow. For example:
 
 - Only post the summary if there were commits in the last 24 hours → ➡️ [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
 - Include a different AI prompt on Mondays (weekly review) vs. other days (daily diff).
+- Compare two prompt strategies head to head → ➡️ [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md)
 
 #### Connect a new data source
 
@@ -55,6 +56,16 @@ gh-aw can call GitHub APIs, run shell commands, and pass results to your AI prom
 - Open issues or pull requests
 - CI/CD status of recent runs
 - Dependency vulnerability alerts
+
+See ➡️ [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) or ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+
+#### Make your workflow production-ready
+
+Once your workflow is running, take it further:
+
+- **Remember across runs** — skip issues you've already reported with persistent memory → ➡️ [Make Your Workflow Remember Across Runs](20-persistent-memory.md)
+- **Handle failures gracefully** — add defensive briefs, timeouts, and fallback outputs → ➡️ [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md)
+- **Split complex tasks** — keep your main prompt lean by delegating repeated sub-tasks to inline agents → ➡️ [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md)
 
 #### Follow a workflow-reuse learning path
 
@@ -95,6 +106,11 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) — add conditions so your workflow only runs when there is meaningful activity to report.
 - ➡️ [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
 - ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
+- ➡️ [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md) — publish your workflow to a catalog so others can install it with one command.
+- ➡️ [Make Your Workflow Remember Across Runs](20-persistent-memory.md) — add cache-backed memory so your workflow skips items it has already reported on.
+- ➡️ [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md) — use the planner-worker pattern to keep your main prompt lean and reduce token cost.
+- ➡️ [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) — add defensive briefs, timeouts, and fallback outputs so unattended runs stay reliable.
+- ➡️ [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) — compare prompt variants across runs and let data decide which one to keep.
 - ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
 
 ## 📚 See Also
