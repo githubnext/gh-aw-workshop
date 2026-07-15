@@ -26,16 +26,16 @@ If you prefer the terminal, you can use `gh aw run hello-agent` as an advanced o
 
 Before you trigger a run, confirm your workflow is configured to reach an AI model. Runs that fail immediately with a model-access or authentication error almost always indicate a missing or expired token.
 
-Check your configuration based on the engine in your `hello-agent.md` frontmatter:
+Check your configuration based on the engine in your `hello-agent.md` frontmatter. Check only the item that matches your engine:
 
 > [!IMPORTANT]
 > Complete this quick check before clicking **Run workflow**. Most immediate first-run failures come from missing model access.
 
-| Engine | Required configuration | Setup or verify link |
-|--------|------------------------|-------------------|
-| GitHub Copilot (default, no engine line) | `copilot-requests: write` in frontmatter and an active Copilot subscription | [Open Copilot settings](https://github.com/settings/copilot) |
-| Claude (engine: claude) | ANTHROPIC_API_KEY in **Settings → Secrets and variables → Actions** | [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) |
-| Codex / OpenAI (engine: codex) | OPENAI_API_KEY in **Settings → Secrets and variables → Actions** | [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) |
+- [ ] I confirmed my engine is **GitHub Copilot** (default, no `engine:` line) and `copilot-requests: write` is in my frontmatter with an active Copilot subscription — [Open Copilot settings](https://github.com/settings/copilot)
+- [ ] I confirmed my engine is **Claude** (`engine: claude`) and ANTHROPIC_API_KEY is set in **Settings → Secrets and variables → Actions** — [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md)
+- [ ] I confirmed my engine is **Codex / OpenAI** (`engine: codex`) and OPENAI_API_KEY is set in **Settings → Secrets and variables → Actions** — [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md)
+
+> **Reflection:** In one sentence, describe what would happen if you clicked Run workflow right now without completing item 2.
 
 <details>
 <summary><b>Need deeper troubleshooting for model-access failures?</b></summary>
@@ -52,7 +52,7 @@ Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md
 #### Prerequisites verified
 
 - [ ] I opened `.github/workflows/hello-agent.md` and confirmed which engine I am using
-- [ ] I verified the required configuration from the quick-check table is present
+- [ ] I verified the required configuration from the pre-flight checklist is present
 - [ ] I checked that **Hello Agent** appears in the **Actions** sidebar
 - [ ] I confirmed I have at least one open issue ready for the workflow to update
 - [ ] I am signed in with the account that has access to this repository and its secrets
@@ -63,6 +63,9 @@ Not sure which engine your workflow uses? Open `.github/workflows/hello-agent.md
 - [ ] I know where to open the live job log as soon as the run appears
 - [ ] I know which side quest to open if the run fails immediately with an authentication or model-access error
 
+> [!IMPORTANT]
+> Do not proceed until all items in the pre-flight checklist above are checked. Missing model access causes an immediate run failure.
+
 ### Trigger it from the Actions tab
 
 Open your practice repository in GitHub and click **Actions** in the top navigation. In the left sidebar, select **Hello Agent**.
@@ -71,7 +74,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
 
 Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Hello Agent** is missing, refresh the page, confirm the workflow file is on `main`, and run `gh aw compile` from your terminal if you need to check for compile errors.
 
-If the run fails immediately with a model-access or authentication error, stop and use the matching setup link from the quick-check table above before rerunning.
+If the run fails immediately with a model-access or authentication error, stop and use the matching setup link from the pre-flight checklist above before rerunning.
 
 ![Workflow sidebar with the Run workflow button highlighted](images/08-run-workflow-button.svg)
 
