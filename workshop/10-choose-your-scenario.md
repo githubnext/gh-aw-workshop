@@ -52,7 +52,8 @@ Use this quick checklist before you choose:
 | [PR Code Reviewer](#adventure-c-pr-code-reviewer) | Reviews every pull request for duplicate code — checking both the changes and the existing codebase — and posts a structured review comment | Teams that want automated duplication detection in code review |
 | [Browser-Only Path (CCA / Mobile)](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) | Creates a daily status workflow via the Agentic Workflows agent; no terminal needed | Mobile, CCA, and browser-only learners |
 
-Not sure which to pick? Start with Adventure A — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
+> [!TIP]
+> Not sure which to pick? Start with Adventure A — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
 
 <!-- -->
 
@@ -156,8 +157,7 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 - ➡️ Adventure D: [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 - ➡️ Adventure E: [Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
 
-> [!TIP]
-> **Curious about security?** Before you build, explore how adversarial instructions in repository content can try to override your agent's task brief — and how gh-aw's layered architecture limits the impact. [Side Quest: Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md)
+**Curious about security?** Before you build, explore how adversarial instructions in repository content can try to override your agent's task brief — and how gh-aw's layered architecture limits the impact. [Side Quest: Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md)
 
 ## 📚 See Also
 
