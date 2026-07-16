@@ -51,6 +51,7 @@ Complete these checks before you continue:
 - [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
+- [ ] Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both **Copilot is enabled** and **Models: available**
 
 ## 🔀 Choose Your Setup Path
 
@@ -97,6 +98,18 @@ Need extra help before Step 2?
 - [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)
 - [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)
 
+### Verify AI engine access
+
+Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both show:
+
+- **Copilot is enabled**
+- **Models: available**
+
+Claude, Codex, or Gemini? Confirm your API key.
+
+> [!IMPORTANT]
+> Complete this check now — Step 7 will not work without it.
+
 ### Continue to your path file
 
 Continue with exactly one of these paths:
@@ -111,6 +124,7 @@ Continue with exactly one of these paths:
 - [ ] You can sign in to GitHub with the account you'll use for the workshop
 - [ ] You chose one path: Codespace (02a), Local (02b), or GitHub UI (03b)
 - [ ] If using Local (02b), `gh` CLI 2.40+ and Git are available
+- [ ] You confirmed Copilot is enabled and Models: available at [github.com/settings/copilot](https://github.com/settings/copilot)
 - [ ] You know which file you will open next
 
 **Next:** Open your selected path file now — [Adventure A](02a-setup-codespace.md), [Adventure B](02b-setup-local.md), or [Step 3b](03b-create-your-repo-ui.md).
