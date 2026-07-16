@@ -15,35 +15,38 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 ## Pick Your Adventure
 
-Before you read the scenario descriptions, write one sentence describing a repository task you'd like to automate.
-Put it in a note in your preferred editor, a GitHub issue draft, or a local text file.
-Keep it nearby — this helps you compare your idea to the scenarios later in this step.
+Before you compare the scenarios, open a note in your preferred editor, a GitHub issue draft, or a local text file and fill in this chooser template:
 
-> [!TIP]
-> <details>
-> <summary><b>Pause for a 60-second scenario reflection before you choose.</b></summary>
->
-> In your note, answer these three questions:
->
-> - [ ] What problem in my repository does this workflow solve?
-> - [ ] Who will benefit from the output?
-> - [ ] What data source does this workflow need access to?
->
-> Example answers by adventure:
->
-> - Adventure A (Daily Repo Status): "Summarize open PRs, issues, CI, and recent commits for maintainers each morning."
-> - Adventure B (Docs Updater): "Report stale or missing docs for docs maintainers using repository markdown files."
-> - Adventure C (PR Code Reviewer): "Flag duplicate code in pull requests for reviewers and authors."
-> - Adventure D (Copilot app / Agents tab): "Build one of these workflows through a natural-language Copilot conversation instead of editing files yourself."
-> - Adventure E (Browser-Only Path): "Create the same daily status report as Adventure A without using a terminal."
->
-> </details>
->
+```text
+Repository task:
+Who benefits:
+Data source:
+Best trigger:
+Likely adventure:
+Why this fits:
+```
+
 Use this quick checklist before you choose:
 
 - [ ] I can name the repository problem this workflow will solve
 - [ ] I can name who will use or benefit from the output
 - [ ] I can name the repository data this workflow needs
+
+Use this decision tree to narrow the list:
+
+```text
+Need a browser-only path with no terminal?
+→ Yes: Adventure E
+→ No: Continue
+
+Need the workflow to run on every pull request?
+→ Yes: Adventure C
+→ No: Continue
+
+Need a daily report about documentation health?
+→ Yes: Adventure B
+→ No: Adventure A
+```
 
 | Scenario | What it automates | Best for |
 |---|---|---|
@@ -64,13 +67,9 @@ Use this quick checklist before you choose:
 
 ## Adventure A: Daily Repo Status Report
 
-**What you'll build:** A scheduled workflow that posts a concise daily health summary as an issue comment — open PRs, issues, CI status, and the most recent commit.
-
-**Trigger:** Runs once per day on a schedule.
-
-**Key permissions:** `issues: read`, `pull-requests: read`, `actions: read`
-
-**Safe output:** One issue comment per day.
+- What you'll build: A scheduled workflow that posts a concise daily health summary as an issue comment — open PRs, issues, CI status, and the most recent commit.
+- Trigger: Runs once per day on a schedule.
+- Safe output: One issue comment per day.
 
 ➡️ [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 
@@ -78,13 +77,9 @@ Use this quick checklist before you choose:
 
 ## Adventure B: Daily Documentation Updater
 
-**What you'll build:** A scheduled workflow that scans your repository's documentation files and posts a daily health report — flagging stale content, missing sections, and broken cross-references.
-
-**Trigger:** Runs once per day on a schedule.
-
-**Key permissions:** `contents: read`, `issues: read`
-
-**Safe output:** One issue comment per day.
+- What you'll build: A scheduled workflow that scans your repository's documentation files and posts a daily health report — flagging stale content, missing sections, and broken cross-references.
+- Trigger: Runs once per day on a schedule.
+- Safe output: One issue comment per day.
 
 ➡️ [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 
@@ -92,13 +87,9 @@ Use this quick checklist before you choose:
 
 ## Adventure C: PR Code Reviewer
 
-**What you'll build:** A workflow that triggers on every pull request and checks the changed files for duplicate code patterns — both within the PR diff and against the existing codebase. It posts a structured review comment with its findings.
-
-**Trigger:** Fires on `pull_request` events (open, synchronize).
-
-**Key permissions:** `contents: read`, `pull-requests: read`
-
-**Safe output:** Up to five review comments per PR (posted via `safe-outputs`).
+- What you'll build: A workflow that triggers on every pull request and checks the changed files for duplicate code patterns — both within the PR diff and against the existing codebase. It posts a structured review comment with its findings.
+- Trigger: Fires on pull request events when the PR is opened or updated.
+- Safe output: Up to five review comments per PR.
 
 ➡️ [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 
@@ -133,7 +124,7 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 ## Commit to Your Choice
 
 - In your note or draft from earlier, write the adventure you chose and one reason it matches the repository task you wrote down earlier.
-- Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the first paragraph to confirm the scenario matches what you want to automate.
+- Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the **What You'll Do** section to confirm the scenario matches what you want to automate.
 - If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and jump to [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
 
 ---
@@ -144,7 +135,7 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 - [ ] I've chosen an adventure and written down one reason it matches that task
 - [ ] I can describe in one sentence what my chosen workflow will produce
 - [ ] I can name the trigger my chosen scenario uses
-- [ ] I've opened the next step for my chosen scenario and read the first paragraph
+- [ ] I've opened the design step for my chosen scenario and read the **What You'll Do** section
 - [ ] I know whether I'll follow the design step path or jump to Step 11d with the GitHub Copilot app or Agents tab
 - [ ] I know Adventure E is the browser-only path for mobile and CCA learners
 - [ ] If following Adventure E, the agent has created and merged a pull request with the workflow file
