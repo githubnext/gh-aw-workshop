@@ -6,12 +6,6 @@ _Watching an agent work in real time makes the workflow feel concrete._
 
 You'll trigger the `daily-report-status` workflow from Step 7, watch it start in the **Actions** tab, and confirm it finishes successfully.
 
-## 📋 Before You Start
-
-- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
-- `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
-- Your practice repository has at least one open issue (create one in the **Issues** tab if not)
-
 ## Before You Trigger: Verify Model Access
 
 Before clicking Run, confirm your workflow has model access — this is the most common reason first runs fail.
@@ -29,12 +23,26 @@ Before clicking Run, confirm your workflow has model access — this is the most
 
 3. If access is not configured, complete the [Model Access Check](side-quest-08-00-model-access-check.md) before continuing.
 
+If your first run fails, check the table below before retrying:
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| copilot: permission denied | Missing `copilot-requests: write` | Add the permission block ([Model Access Check](side-quest-08-00-model-access-check.md)) |
+| API key not found | Missing Actions secret | Add the secret in **Settings → Secrets and variables → Actions** |
+| No `engine:` in frontmatter | Defaulting to Copilot | Check access at [github.com/settings/copilot](https://github.com/settings/copilot) |
+
 - [ ] I confirmed which engine `daily-report-status.md` uses
 - [ ] Model access is configured for my engine
 
+## 📋 Before You Start
+
+- Completed either the [Terminal path](07a-your-first-workflow-terminal.md) or [GitHub UI path](07b-your-first-workflow-ui.md)
+- `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
+- Your practice repository has at least one open issue (create one in the **Issues** tab if not)
+
 ## Run the workflow
 
-Start by checking that every item in **Before You Start** is complete. This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
+This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
 If you prefer the terminal, you can use `gh aw run daily-report-status` as an advanced option after completing the model access gate above. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
@@ -67,10 +75,6 @@ You do not need to decode every line yet. For now, just confirm that the workflo
 
 Wait for the run to turn green with a ✅. Then open the **Issues** tab in your repository and confirm that the agent updated an issue or created a new one.
 
-This is the moment to compare what happened with what you expected from your Step 7 instructions. If the result surprises you, keep going to the next step so you can interpret the log and summary before changing the workflow.
-
-Before you move on, continue to [Step 8b: Interpret Your First Run](08b-interpret-your-run.md). That follow-up step helps you read the log, locate the output, and spot the first signs of trouble.
-
 ## ✅ Checkpoint
 
 - [ ] I completed the model access gate at the top of this step and my engine access is ready
@@ -80,6 +84,9 @@ Before you move on, continue to [Step 8b: Interpret Your First Run](08b-interpre
 - [ ] The run completed with a green ✅
 - [ ] I confirmed the agent updated my repository
 - [ ] I am ready to interpret the run in [Step 8b](08b-interpret-your-run.md)
+
+> [!TIP]
+> If your run failed, see [Step 8b](08b-interpret-your-run.md) for a log walk-through and common failure patterns.
 
 **Next:** [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
 
