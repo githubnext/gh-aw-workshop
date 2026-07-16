@@ -58,8 +58,8 @@ Both paths produce `.github/workflows/daily-docs.md` and converge at Step 12.
 
 - [ ] You chose the path that matches how you want to work
 - [ ] You know both paths produce the same workflow file
-- [ ] My workflow file includes a valid `on:` trigger and `permissions:` block
-- [ ] I can explain in one sentence what my agent brief instructs the agent to do
+- [ ] Your workflow file includes a valid `on:` trigger and `permissions:` block
+- [ ] You can explain in one sentence what your agent brief instructs the agent to do
 
 **Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 **Next:** Continue with your chosen path above.
