@@ -36,8 +36,8 @@ You'll update the fuzzy schedule expression in the GitHub web editor, commit it,
 
 Keep `workflow_dispatch` so you can still run the workflow on demand.
 
-> [!NOTE]
-> The GitHub UI path skips local compile checkpoints. GitHub Actions compiles the change and reports syntax errors in the run log.
+> [!IMPORTANT]
+> Committing the `.md` file via the web editor does **not** automatically recompile the lock file. After committing, open your Codespace or local terminal and run `gh aw compile`, then push the updated `.lock.yml`.
 
 <!-- Separate adjacent callouts -->
 

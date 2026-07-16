@@ -65,6 +65,9 @@ on:
 
 ### Compile and validate
 
+> [!IMPORTANT]
+> Run `gh aw compile` after editing the schedule — this is required before committing.
+
 ```bash
 gh aw compile
 ```

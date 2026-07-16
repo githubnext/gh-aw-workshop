@@ -38,6 +38,7 @@ Both paths update the same fuzzy schedule expression and finish by confirming it
 
 After completing your chosen path, verify:
 
+- [ ] I ran `gh aw compile` after editing the schedule expression and confirmed the lock file updated.
 - [ ] I can explain what a `schedule:` trigger does in GitHub Actions — it runs the workflow automatically at the defined cadence without manual intervention.
 - [ ] I understand that `gh aw compile` converts a fuzzy expression like `daily on weekdays` into a valid cron string in the lock file.
 - [ ] The `schedule:` field in `.github/workflows/daily-status.md` contains a valid schedule expression (for example, `daily on weekdays`).
