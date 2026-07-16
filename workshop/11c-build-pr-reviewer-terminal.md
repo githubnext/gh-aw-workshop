@@ -66,7 +66,8 @@ safe-outputs:
 
 ### Add the agent instructions
 
-Below the closing `---`, add this heading and paste your final starter brief from
+Below the closing `---`, keep this heading, then replace the placeholder line with
+your final starter brief from
 [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief):
 
 ```markdown

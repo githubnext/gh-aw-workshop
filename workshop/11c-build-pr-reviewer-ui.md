@@ -16,9 +16,9 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
 
 1. Click **Add file** → **Create new file**.
 2. Enter `.github/workflows/pr-code-reviewer.md` as the filename.
-3. Paste this file, then replace the exact placeholder line
-   `[Paste the full Step 10c starter brief here, replacing this line.]` with your
-   final starter brief from
+3. Paste this workflow template. In the template below, replace the exact
+   placeholder line `[Paste the full Step 10c starter brief here, replacing this line.]`
+   with your final starter brief from
    [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief):
 
    ```markdown
