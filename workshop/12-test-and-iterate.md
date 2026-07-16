@@ -18,7 +18,7 @@ You'll trigger your daily-status workflow manually, read the resulting issue com
 
 Choose the path that matches how you want to trigger the run.
 
-#### Terminal path — trigger with `gh aw`
+### Terminal path — trigger with `gh aw`
 
 If you already have CLI trigger permissions configured, you can trigger the same run from the terminal:
 
@@ -26,7 +26,7 @@ If you already have CLI trigger permissions configured, you can trigger the same
 gh aw run daily-status
 ```
 
-#### GitHub UI path — trigger from Actions (recommended)
+### GitHub UI path — trigger from Actions (recommended)
 
 Open your repository's **Actions** tab, select **Daily Repo Status**, then click **Run workflow** → **Run workflow**.
 
