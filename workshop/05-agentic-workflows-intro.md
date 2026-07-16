@@ -18,6 +18,20 @@ An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
+> [!NOTE]
+> <details>
+> <summary>Why not just use a standard Actions workflow?</summary>
+>
+> Three concrete differences a DevOps engineer will notice immediately:
+>
+> - **Agent reasoning loop:** Each run, the agent reads live repository context, decides what matters, and composes output that differs every time — no two runs are identical.
+> - **Natural-language task brief:** You write what you want in plain English. No `run:` scripts, no fixed shell commands.
+> - **Dynamic tool use:** The agent calls tools (read files, list issues, search code) based on what it discovers at runtime — not a predetermined sequence of steps hardcoded in YAML.
+>
+> If you already write Actions YAML, the frontmatter stays the same (triggers, permissions, runners). And it is not one-or-the-other: agentic workflows can include custom jobs and deterministic steps alongside the AI agent — fixed data-fetch steps can run first, then the agent interprets and synthesizes the results.
+>
+> </details>
+
 ## Three things to know
 
 ![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
@@ -165,6 +179,7 @@ Does your answer include:
 ## ✅ Checkpoint
 
 - [ ] I described what an agentic workflow is in one sentence
+- [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
 - [ ] I understand that agentic workflows use the same trust model as GitHub Actions
 - [ ] I classified all four tasks and verified my reasoning in the reveal
 - [ ] I can explain why Task D is agentic despite its deterministic ESLint step
