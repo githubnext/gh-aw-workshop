@@ -23,7 +23,7 @@ on:
     types: [opened, synchronize] # run when a PR opens or receives new commits
 engine:
   id: copilot
-  model: gpt-4.1   # LLM used for the review
+  model: gpt-5.4-mini   # LLM used for the review
 tools: [github] # required so the agent can read PR diffs and post review comments
 ---
 ```
