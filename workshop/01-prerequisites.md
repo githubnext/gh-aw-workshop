@@ -98,12 +98,14 @@ Need extra help before Step 2?
 - [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)
 - [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)
 
-### Verify Copilot model access
+### Verify AI engine access
 
 Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both show:
 
 - **Copilot is enabled**
 - **Models: available**
+
+Claude, Codex, or Gemini? Confirm your API key.
 
 > [!IMPORTANT]
 > Complete this check now — Step 7 will not work without it.
