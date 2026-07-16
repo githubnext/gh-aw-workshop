@@ -12,13 +12,15 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 ## ✏️ Sub-exercise A: Generate the token
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
-2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Consider setting a reminder (for example, in your calendar or task app) so you rotate the token before it expires.
+2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Set a reminder so you rotate the token before it expires.
 3. Set **Repository access** based on your workshop repository visibility:
    - For a public repository, choose **Public repositories**.
    - For a private repository, choose **Only select repositories** and pick your repository.
 4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
 5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
 
+> [!TIP]
+> Set a calendar reminder before your PAT expiry date so token rotation is easy to track.
 > [!IMPORTANT]
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
 
@@ -63,7 +65,7 @@ Quick check:
 - [ ] `COPILOT_GITHUB_TOKEN` exists in **Settings** → **Secrets and variables** → **Actions**
 - [ ] A manual workflow run completed after you added the secret
 - [ ] The run logs show the Copilot step completed without 401 Unauthorized or 403 Forbidden
-- [ ] You noted the PAT expiry date and a rotation reminder
+- [ ] You set a reminder to rotate the PAT before the expiry date
 - [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
 
 Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
