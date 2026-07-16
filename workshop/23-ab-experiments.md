@@ -54,11 +54,11 @@ Below the frontmatter, add conditional blocks that swap the prompt instructions 
 ```markdown
 Summarise the activity in ${{ github.repository }} since yesterday.
 
-{{#if experiments.output_style == "concise" }}
-Write a maximum of 5 bullet points. Each bullet is one sentence.
-{{#else}}
-Write a structured report with sections: open issues, merged pull requests,
-and CI status. Include a one-paragraph summary at the top.
+{{#if experiments.output_style }}
+Write according to the output_style: ${{ experiments.output_style }}.
+- concise: maximum 5 bullet points, one sentence each.
+- detailed: structured report with sections: open issues, merged pull requests,
+  CI status, and a one-paragraph summary at the top.
 {{#endif}}
 
 Always call the safe output tool — even if there is no activity.
@@ -101,15 +101,12 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 2. Update the task brief so each variant has explicit instructions:
 
    ```markdown
-   {{#if experiments.output_style == "concise" }}
-   Write a maximum of 5 bullet points. Each bullet is one sentence.
-   {{#endif}}
-   {{#if experiments.output_style == "detailed" }}
-   Write a structured report with sections: open issues, merged pull requests,
-   and CI status. Include a one-paragraph summary at the top.
-   {{#endif}}
-   {{#if experiments.output_style == "executive" }}
-   Write an executive summary with exactly 3 bullets and one "Watch next" line.
+   {{#if experiments.output_style }}
+   Write a report according to the output_style: ${{ experiments.output_style }}.
+   - concise: Write a maximum of 5 bullet points. Each bullet is one sentence.
+   - detailed: Write a structured report with sections: open issues, merged pull requests,
+     and CI status. Include a one-paragraph summary at the top.
+   - executive: Write an executive summary with exactly 3 bullets and one "Watch next" line.
    {{#endif}}
    ```
 
@@ -141,7 +138,7 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 ## ✅ Checkpoint
 
 - [ ] Your workflow frontmatter has an `experiments:` block with at least two variants
-- [ ] Your task brief uses `{{#if experiments.<name> == "<variant>" }}` blocks to swap instructions
+- [ ] Your task brief uses `{{#if experiments.<name> }}` blocks to swap instructions (the active variant is available as `${{ experiments.<name> }}`)
 - [ ] `gh aw compile daily-status` passes with no errors
 - [ ] The first manual run log shows the `concise` variant was assigned
 - [ ] The second manual run log shows the `detailed` variant was assigned
