@@ -103,17 +103,7 @@ Leave `model` out to use the engine's current default, which the `gh-aw` team ke
 
 ## Compile and validate
 
-After updating your frontmatter, recompile the workflow to check for errors:
-
-```bash
-gh aw compile --validate
-```
-
-You should see:
-
-```
-✔ <your-workflow>.md — valid
-```
+Follow the same compile and validate steps described in [Side Quest 11-06: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md#compile-and-validate).
 
 ---
 
