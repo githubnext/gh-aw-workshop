@@ -11,6 +11,7 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 - Completed [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command is available in your terminal (or you'll use the GitHub UI path)
 - If you are using Terminal or Copilot paths, `gh aw init` has been run and pushed in your practice repository
+- If you skipped the Copilot access check in Step 1, complete [Step 7d: Confirm Model Access](07d-confirm-model-access.md) before choosing your path.
 
 ## Choose Your Path
 
