@@ -80,6 +80,19 @@ Practice by reusing proven workflows before designing your own from scratch:
 
 Found a gap? Have a better explanation? Open an issue or pull request in this repository. The workshop itself is a living document.
 
+### ✏️ Exercise: Draft Your Next Workflow
+
+Open a new file in your editor (or a GitHub issue draft) and write a two-sentence brief for the next agentic workflow you want to build:
+
+```text
+Workflow name:
+What it automates (one sentence):
+Trigger (schedule / PR / push):
+Safe output (what it posts or creates):
+```
+
+This takes 5 minutes and gives you a concrete starting point the next time you open this repository.
+
 ### Explore further resources
 
 - **gh-aw documentation**: run `gh aw --help` or visit the extension's GitHub page for the full reference.
@@ -95,6 +108,7 @@ Found a gap? Have a better explanation? Open an issue or pull request in this re
 - [ ] Your scheduled workflow has completed at least one successful automated run
 - [ ] You can describe, in plain English, what agentic workflows are and why they're useful
 - [ ] You have at least one idea for the next workflow you want to build
+- [ ] You drafted a two-sentence brief for your next agentic workflow
 - [ ] You know where to find the gh-aw docs when you need them
 
 You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
