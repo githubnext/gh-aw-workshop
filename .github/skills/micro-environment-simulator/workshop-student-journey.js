@@ -27,12 +27,19 @@ const STEP_FILE_ALIASES = {
   "03-create-your-repo": ["03-create-your-repo.md", "03a-create-your-repo-terminal.md", "03b-create-your-repo-ui.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
-  "06-install-gh-aw": ["06-install-gh-aw.md"],
+  "06-install-gh-aw": [
+    "06-install-gh-aw.md",
+    "06a-install-terminal.md",
+    "06b-install-local.md",
+    "06c-install-ui.md"
+  ],
   "07-first-workflow": [
     "07-your-first-workflow.md",
     "07a-your-first-workflow-terminal.md",
     "07a-part2-your-first-workflow-instructions.md",
-    "07b-your-first-workflow-ui.md"
+    "07b-your-first-workflow-ui.md",
+    "07c-your-first-workflow-copilot.md",
+    "07d-confirm-model-access.md"
   ],
   "08-run-workflow": ["08-run-your-workflow.md"],
   "09-understand-output": ["09-understand-output.md"],
@@ -146,21 +153,28 @@ function usesTerminalPath(state, context) {
   return !prefersBrowserPath(state, context);
 }
 
-// CCA = Copilot coding agent, used here for browser-based compile-and-commit flows.
-function canUseCCACompiler(state) {
-  return Boolean(state.tool === "CCA" && state.auth?.hasGithubSession && state.auth?.hasCopilotAccess);
+function canUseBrowserAgentCompiler(state) {
+  return Boolean(state.auth?.hasGithubSession && state.auth?.hasCopilotAccess);
 }
 
 function canCompileWorkflow(state, context, options = {}) {
-  return usesTerminalPath(state, context) || (options.allowCloudAgent && canUseCCACompiler(state));
+  return usesTerminalPath(state, context) || (options.allowCloudAgent && canUseBrowserAgentCompiler(state));
 }
 
 function stepMetric(state, context, metric) {
   const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
     const relevantFiles = prefersBrowserPath(state, context)
-      ? new Set(["07b-your-first-workflow-ui.md"])
-      : new Set(["07a-your-first-workflow-terminal.md", "07a-part2-your-first-workflow-instructions.md"]);
+      ? new Set([
+          "07b-your-first-workflow-ui.md",
+          "07c-your-first-workflow-copilot.md",
+          "07d-confirm-model-access.md"
+        ])
+      : new Set([
+          "07a-your-first-workflow-terminal.md",
+          "07a-part2-your-first-workflow-instructions.md",
+          "07d-confirm-model-access.md"
+        ]);
     return fileSignals
       .filter(({ file }) => relevantFiles.has(file))
       .reduce((sum, fileSignal) => sum + Number(fileSignal?.[metric] || 0), 0);
@@ -178,6 +192,17 @@ function updateWorkflowCompileState(state, context, options = {}) {
   next.flags.hasCompiledWorkflowLock = hasCompiledWorkflowLock;
   next.flags.hasPushedCompiledWorkflowLock = hasPushedCompiledWorkflowLock;
   next.flags.workflowReadyToRun = hasPushedCompiledWorkflowLock;
+  return next;
+}
+
+function configureFirstWorkflowAuth(state, context) {
+  const next = cloneState(state);
+  const usesCentralizedBilling = next.actions?.centralizedCopilotBilling === true;
+  next.actions.inferenceProvider = "github";
+  next.actions.permissions.copilotRequestsWrite =
+    usesCentralizedBilling && stepMetric(state, context, "copilotRequestsWriteCueCount") > 0;
+  next.actions.secrets.COPILOT_GITHUB_TOKEN =
+    !usesCentralizedBilling && stepMetric(state, context, "copilotGithubTokenCueCount") > 0;
   return next;
 }
 
@@ -377,12 +402,9 @@ function buildTransitions() {
     },
     "02-setup": (state, context) => {
       if (state.tool === "mobile") {
-        return ensure(
-          false,
-          "The setup step assumes access to a desktop-class browser or terminal, which the mobile-only path cannot provide.",
-          "mobile-terminal-gap",
-          "Explicitly direct mobile learners to switch to a laptop/desktop and open a Codespace before continuing."
-        );
+        const next = cloneState(state);
+        next.flags.environmentReady = true;
+        return { ok: true, state: applyLearning(next, context, { github: 0.04, confidence: 0.01 }) };
       }
       const terminalCheck = ensure(
         VALID_TERMINALS[state.os] && VALID_TERMINALS[state.os].has(state.terminal),
@@ -491,7 +513,8 @@ function buildTransitions() {
         "Complete the setup step (02-setup) before installing the gh-aw extension."
       );
       if (!envCheck.ok) return envCheck;
-      if (!state.installed.gh) {
+      const terminalPath = usesTerminalPath(state, context);
+      if (terminalPath && !state.installed.gh) {
         return ensure(
           false,
           "gh CLI is not installed",
@@ -508,29 +531,24 @@ function buildTransitions() {
       });
       if (!readiness.ok) return readiness;
       const next = cloneState(state);
-      next.installed.aw = "latest";
-      next.flags.awSkillInitialized = true;
-      next.flags.awSkillPushed = true;
+      if (terminalPath) {
+        next.installed.aw = "latest";
+        next.flags.awSkillInitialized = true;
+        next.flags.awSkillPushed = true;
+      }
       return { ok: true, state: applyLearning(next, context, { terminal: 0.06, agentic: 0.05, troubleshooting: 0.04 }) };
     },
     "07-first-workflow": (state, context) => {
-      if (state.tool === "mobile") {
-        return ensure(
-          false,
-          "GitHub Mobile cannot realistically create and edit the workflow file used in this step.",
-          "mobile-authoring-gap",
-          "Tell mobile learners to switch to a desktop browser, Codespace, or VS Code before the first workflow-authoring step."
-        );
-      }
+      const terminalPath = usesTerminalPath(state, context);
       const precheck = ensure(
-        Boolean(state.installed.aw),
+        !terminalPath || Boolean(state.installed.aw),
         "gh-aw CLI is not installed",
         "aw-missing",
         "Install gh-aw before creating the first agentic workflow."
       );
       if (!precheck.ok) return precheck;
       const initCheck = ensure(
-        state.flags.awSkillInitialized && state.flags.awSkillPushed,
+        !terminalPath || (state.flags.awSkillInitialized && state.flags.awSkillPushed),
         "The required agentic workflow skill is missing because `gh aw init` was not completed and pushed before authoring.",
         "aw-init-missing",
         "Run `gh aw init` in your repository root, commit the generated `.github/skills/agentic-workflows/` files, and push before creating the first workflow."
@@ -544,7 +562,17 @@ function buildTransitions() {
         emphasis: { bias: 0.14, terminalWeight: 0.16, conceptWeight: 0.12, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
-      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
+      const copilotCheck = ensure(
+        state.auth.hasCopilotAccess,
+        "The learner cannot complete the required model-access activity because the selected account has no usable Copilot access.",
+        "copilot-access-missing",
+        "Confirm organization centralized billing or an active Copilot license before continuing to Step 8."
+      );
+      if (!copilotCheck.ok) return copilotCheck;
+      const next = configureFirstWorkflowAuth(
+        updateWorkflowCompileState(state, context, { allowCloudAgent: true }),
+        context
+      );
       return { ok: true, state: applyLearning(next, context, { agentic: 0.08, terminal: 0.04, github: 0.03 }) };
     },
     "08-run-workflow": (state, context) => {
@@ -575,14 +603,6 @@ function buildTransitions() {
       );
       if (!authCheck.ok) return authCheck;
 
-      const copilotCheck = ensure(
-        state.auth.hasCopilotAccess,
-        "The workflow can be triggered, but the account does not appear to have usable Copilot model access for the run.",
-        "copilot-access-missing",
-        "Complete the Copilot access check before running the workflow, or add a clearer fallback for accounts without model access."
-      );
-      if (!copilotCheck.ok) return copilotCheck;
-
       if (!usingBrowserPath && state.workspace?.context === "codespaces" && state.auth?.tokenScope === "org") {
         return ensure(
           false,
@@ -592,35 +612,16 @@ function buildTransitions() {
         );
       }
 
-      if (
-        state.actions?.inferenceProvider === "github" &&
-        state.github?.repositoryOwnerType === "organization" &&
-        state.actions?.secrets?.COPILOT_GITHUB_TOKEN !== true
-      ) {
-        return ensure(
-          false,
-          "Regular organization-owned repositories cannot rely on `permissions.copilot-requests: write` alone for GitHub inference.",
-          "org-repo-copilot-token-required",
-          "Use Method 2 and add `COPILOT_GITHUB_TOKEN`, while keeping `permissions.copilot-requests: write` in the workflow frontmatter."
-        );
-      }
-
-      if (!usingBrowserPath && state.actions?.permissions?.copilotRequestsWrite !== true) {
-        if (state.auth?.accountType === "enterprise-managed") {
-          return ensure(
-            false,
-            "Enterprise GitHub inference requires `permissions.copilot-requests: write` to enable org billing.",
-            "org-billing-not-enabled",
-            "Set `permissions.copilot-requests: write` for enterprise workflows that use GitHub inference."
-          );
-        }
-        return ensure(
-          false,
-          "Workflow is missing `permissions.copilot-requests: write` for GitHub inference.",
-          "copilot-permission-missing",
-          "Add `permissions.copilot-requests: write` to the workflow frontmatter."
-        );
-      }
+      const modelAccessCheck = ensure(
+        state.actions?.centralizedCopilotBilling === true
+          ? state.actions?.permissions?.copilotRequestsWrite === true
+          : state.actions?.permissions?.copilotRequestsWrite !== true &&
+              state.actions?.secrets?.COPILOT_GITHUB_TOKEN === true,
+        "The workflow's Copilot authentication does not match its selected billing method.",
+        "model-access-not-configured",
+        "Return to Step 7d, select one billing method, then recompile and commit the lock file."
+      );
+      if (!modelAccessCheck.ok) return modelAccessCheck;
 
       const readiness = contentReadinessCheck(state, context, {
         salt: usingBrowserPath ? 131 : 149,
@@ -632,8 +633,8 @@ function buildTransitions() {
           ? "Keep the browser-first trigger path prominent and reduce the amount of adjacent advanced CLI detail."
           : "Push the CLI trigger into a more clearly optional path and keep Codespaces token caveats attached to it.",
         emphasis: usingBrowserPath
-          ? { terminalWeight: 0.04, authWeight: 0.08, complexityWeight: 0.12, bias: 0.16 }
-          : { bias: 0.02, terminalWeight: 0.14, authWeight: 0.14, complexityWeight: 0.12 }
+          ? { terminalWeight: 0.04, authWeight: 0, complexityWeight: 0.12, bias: 0.16 }
+          : { bias: 0.02, terminalWeight: 0.14, authWeight: 0, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
 

@@ -22,6 +22,8 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 
 The Terminal path gives you early compiler feedback. The GitHub UI path skips local compile checkpoints and uses the **Agentic Workflows** agent in the **Agents** tab to generate the lock file. The GitHub Copilot path delegates `gh aw compile ... --validate` to the agent's session workspace.
 
+All three authoring paths converge at [Step 7d: Confirm Model Access](07d-confirm-model-access.md) before you run the workflow.
+
 ![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
 
 ## Before You Continue

@@ -16,16 +16,7 @@ const PROVIDER_SECRET_BY_NAME = {
   anthropic: "ANTHROPIC_API_KEY",
   openai: "OPENAI_API_KEY"
 };
-const INFERENCE_PROVIDERS = Object.keys(PROVIDER_SECRET_BY_NAME);
-const INFERENCE_PROVIDER_SEED_OFFSET = 4;
-const COPILOT_SECRET_PRIMARY_MODULO = 5;
-const COPILOT_SECRET_SECONDARY_MODULO = 7;
-const THIRD_PARTY_SECRET_BEGINNER_MODULO = 3;
-const THIRD_PARTY_SECRET_SECONDARY_MODULO = 8;
-const ANTHROPIC_MISSING_REMAINDER = 0;
-const OPENAI_MISSING_REMAINDER = 1;
-const COPILOT_PERMISSION_GITHUB_MODULO = 4;
-const COPILOT_PERMISSION_OTHER_MODULO = 3;
+const INFERENCE_PROVIDERS = ["github"];
 const WORD_COUNT_COMPLEXITY_THRESHOLD = 1400;
 const COMMAND_LINE_COMPLEXITY_THRESHOLD = 18;
 const CALLOUT_COMPLEXITY_THRESHOLD = 18;
@@ -58,13 +49,6 @@ function toDayOfYear(isoDate) {
 function deterministicChoice(seed, choices) {
   const index = Math.abs(seed) % choices.length;
   return choices[index];
-}
-
-function hasThirdPartyProviderSecret(level, seed, missingRemainder) {
-  if (level !== "beginner") {
-    return true;
-  }
-  return seed % THIRD_PARTY_SECRET_BEGINNER_MODULO !== missingRemainder;
 }
 
 function resolveRepositoryOwnerType(student, isEnterprise, seed) {
@@ -153,6 +137,11 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     text,
     /\.lock\.yml[\s\S]{0,500}\b(commit(?: changes)?|push|approve the commit)\b|\b(commit(?: changes)?|push|approve the commit)\b[\s\S]{0,500}\.lock\.yml/gi
   );
+  const copilotRequestsWriteCueCount = countMatches(
+    text,
+    /^\s*copilot-requests:\s*write\s*(?:#.*)?$/gim
+  );
+  const copilotGithubTokenCueCount = countMatches(text, /\bCOPILOT_GITHUB_TOKEN\b/g);
   const complexity = clamp(
     0.12 +
       Math.min(wordCount / WORD_COUNT_COMPLEXITY_THRESHOLD, 0.32) +
@@ -205,6 +194,8 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     uiAlternativeCount,
     workflowCompileCueCount,
     workflowLockPublishCueCount,
+    copilotRequestsWriteCueCount,
+    copilotGithubTokenCueCount,
     authDemand,
     browserSupport,
     complexity,
@@ -368,26 +359,13 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     (level === "advanced" ||
       level === "actions-user" ||
       (isEnterprise ? seed % 6 !== 0 : seed % (uiPreferred ? 4 : 5) !== 0));
-  const inferenceProvider = deterministicChoice(seed + INFERENCE_PROVIDER_SEED_OFFSET, INFERENCE_PROVIDERS);
-  const hasCopilotGithubToken =
-    isLoggedIn &&
-    (inferenceProvider === "github"
-      ? seed % COPILOT_SECRET_PRIMARY_MODULO !== 0
-      : seed % COPILOT_SECRET_SECONDARY_MODULO === 0);
-  const hasAnthropicApiKey =
-    isLoggedIn &&
-    (inferenceProvider === "anthropic"
-      ? hasThirdPartyProviderSecret(level, seed, ANTHROPIC_MISSING_REMAINDER)
-      : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 0);
-  const hasOpenAiApiKey =
-    isLoggedIn &&
-    (inferenceProvider === "openai"
-      ? hasThirdPartyProviderSecret(level, seed, OPENAI_MISSING_REMAINDER)
-      : seed % THIRD_PARTY_SECRET_SECONDARY_MODULO === 1);
-  const hasCopilotRequestsWrite =
-    inferenceProvider === "github"
-      ? seed % COPILOT_PERMISSION_GITHUB_MODULO !== 0
-      : seed % COPILOT_PERMISSION_OTHER_MODULO !== 0;
+  const inferenceProvider = "github";
+  const centralizedCopilotBilling =
+    repositoryOwnerType !== "personal" && (isEnterprise || seed % 2 === 0);
+  const hasCopilotGithubToken = false;
+  const hasAnthropicApiKey = false;
+  const hasOpenAiApiKey = false;
+  const hasCopilotRequestsWrite = false;
   const baseConfidence = clamp(
     0.3 +
       (level === "advanced"
@@ -430,6 +408,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     },
     actions: {
       inferenceProvider,
+      centralizedCopilotBilling,
       permissions: {
         copilotRequestsWrite: hasCopilotRequestsWrite
       },
@@ -609,11 +588,26 @@ function aggregateDropoutRates(monteCarlo, totalStudents, runsCount) {
   return dropoutRateByStep;
 }
 
+function aggregateFailureCategories(monteCarlo) {
+  const failureCategoriesByStep = {};
+  for (const result of monteCarlo) {
+    for (const [stepId, categories] of Object.entries(result.failureCategoriesByStep || {})) {
+      failureCategoriesByStep[stepId] ||= {};
+      for (const [category, count] of Object.entries(categories)) {
+        failureCategoriesByStep[stepId][category] =
+          (failureCategoriesByStep[stepId][category] || 0) + count;
+      }
+    }
+  }
+  return failureCategoriesByStep;
+}
+
 function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}) {
   const dayOfYear = toDayOfYear(date);
   return students.map((student) => {
     let successes = 0;
     const failuresByStep = {};
+    const failureCategoriesByStep = {};
 
     for (let runIndex = 0; runIndex < runsCount; runIndex++) {
       const initialState =
@@ -638,6 +632,10 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
       } else if (result.firstFailingStep) {
         failuresByStep[result.firstFailingStep] =
           (failuresByStep[result.firstFailingStep] || 0) + 1;
+        const category = result.category || "unknown";
+        failureCategoriesByStep[result.firstFailingStep] ||= {};
+        failureCategoriesByStep[result.firstFailingStep][category] =
+          (failureCategoriesByStep[result.firstFailingStep][category] || 0) + 1;
       }
     }
 
@@ -649,6 +647,7 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
       successes,
       successRate: successes / runsCount,
       failuresByStep,
+      failureCategoriesByStep,
       mostCommonFailureStep: sortedFailures.length > 0 ? sortedFailures[0][0] : null
     };
   });
@@ -724,7 +723,8 @@ function runCli() {
       aggregate: {
         overallSuccessRate:
           monteCarlo.reduce((sum, r) => sum + r.successRate, 0) / monteCarlo.length,
-        dropoutRateByStep: aggregateDropoutRates(monteCarlo, students.length, runsCount)
+        dropoutRateByStep: aggregateDropoutRates(monteCarlo, students.length, runsCount),
+        failureCategoriesByStep: aggregateFailureCategories(monteCarlo)
       }
     };
   } else {
@@ -761,7 +761,8 @@ const exportedApi = {
   replayWorkshop,
   simulateStudents,
   simulateStudentsMonteCarlo,
-  aggregateDropoutRates
+  aggregateDropoutRates,
+  aggregateFailureCategories
 };
 
 module.exports = exportedApi;
