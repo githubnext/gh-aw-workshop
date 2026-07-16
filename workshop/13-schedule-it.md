@@ -23,7 +23,7 @@ on:
 ```
 
 > [!NOTE]
-> The exact cron value is randomized by `gh aw compile` to prevent all workflows from running at the same time. Your compiled output may differ from the example above — that is expected.
+> The exact cron value is determined at compile time by `gh aw compile` using your repository as a seed, scattering execution to avoid load spikes. Your compiled output may differ from the example above, but it stays the same on subsequent compiles of the same repository.
 
 ## Choose Your Path
 
