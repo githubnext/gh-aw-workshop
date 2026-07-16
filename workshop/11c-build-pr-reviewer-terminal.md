@@ -66,46 +66,12 @@ safe-outputs:
 
 ### Add the agent instructions
 
-Below the closing `---`, add the Markdown task brief:
+Below the closing `---`, add a title and then paste your final starter brief from
+[Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief):
 
 ```markdown
 # PR Code Review: Duplicate Code Detection
-
-You are an AI code reviewer. When a pull request is opened or updated, check the changed files for duplicate code patterns — both within the PR diff and against the existing codebase.
-
-## Your Task
-
-1. **List changed files** — get the list of files modified in this pull request
-2. **Read the diff** — retrieve the added and modified lines for each changed file
-3. **Sample the codebase** — read existing source files in the same directories as the changed files (up to ten files per directory) to use as a comparison baseline
-4. **Identify duplicates** — look for blocks of five or more lines in the diff that appear with minor variations elsewhere in the changed files or in the sampled existing files
-
-## Output Format
-
-Post a PR review comment with this structure:
-
-```
-🔍 Duplicate Code Review
-════════════════════════
-Files reviewed: {count changed files} changed, {count existing files} sampled
-Findings: {count}
-
-{For each finding, up to five:}
-📋 **Possible duplicate** in `{file}` (lines {start}–{end})
-   Similar to: `{other file or location}`
-   Suggestion: {one sentence — e.g. extract to a shared helper, or confirm intentional copy}
-
-{If no findings:}
-✅ No significant code duplication detected in this PR.
-```
-
-## Guidelines
-
-- Post at most five findings. If there are more, add a note: "Additional findings omitted — showing top 5 by similarity."
-- Do not approve or request changes on the PR — only add a comment.
-- Do not flag: comments, blank lines, import/require statements, licence headers, or boilerplate (e.g. `package main`, `if __name__ == "__main__"`).
-- If the PR touches only documentation, configuration, or lock files, reply: "No source code changes to review."
-- Keep each finding description under 50 words.
+<!-- Paste your Step 10c starter brief here -->
 ```
 
 ### Commit and push
@@ -118,74 +84,8 @@ git push
 
 ---
 
-## Complete Workflow (Reference Copy)
-
-<details>
-<summary>Complete workflow file</summary>
-
-```markdown
----
-emoji: 🔍
-description: Review pull requests for duplicate code and post a structured review comment.
-
-on:
-  pull_request: {}
-  workflow_dispatch: {}
-
-permissions:
-  contents: read
-  copilot-requests: write
-
-tools:
-  github:
-    mode: gh-proxy
-    toolsets: [default]
-
-safe-outputs:
-  add-comment:
-    max: 5
----
-
-# PR Code Review: Duplicate Code Detection
-
-You are an AI code reviewer. When a pull request is opened or updated, check the changed files for duplicate code patterns — both within the PR diff and against the existing codebase.
-
-## Your Task
-
-1. **List changed files** — get the list of files modified in this pull request
-2. **Read the diff** — retrieve the added and modified lines for each changed file
-3. **Sample the codebase** — read existing source files in the same directories as the changed files (up to ten files per directory) to use as a comparison baseline
-4. **Identify duplicates** — look for blocks of five or more lines in the diff that appear with minor variations elsewhere in the changed files or in the sampled existing files
-
-## Output Format
-
-Post a PR review comment with this structure:
-
-```
-🔍 Duplicate Code Review
-════════════════════════
-Files reviewed: {count changed files} changed, {count existing files} sampled
-Findings: {count}
-
-{For each finding, up to five:}
-📋 **Possible duplicate** in `{file}` (lines {start}–{end})
-   Similar to: `{other file or location}`
-   Suggestion: {one sentence — e.g. extract to a shared helper, or confirm intentional copy}
-
-{If no findings:}
-✅ No significant code duplication detected in this PR.
-```
-
-## Guidelines
-
-- Post at most five findings. If there are more, add a note: "Additional findings omitted — showing top 5 by similarity."
-- Do not approve or request changes on the PR — only add a comment.
-- Do not flag: comments, blank lines, import/require statements, licence headers, or boilerplate (e.g. `package main`, `if __name__ == "__main__"`).
-- If the PR touches only documentation, configuration, or lock files, reply: "No source code changes to review."
-- Keep each finding description under 50 words.
-```
-
-</details>
+> [!TIP]
+> Need the full brief again? Refer back to [Step 10c's complete starter brief](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief).
 
 ## ✅ Checkpoint
 
