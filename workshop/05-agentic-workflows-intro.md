@@ -4,7 +4,7 @@
 
 Before skipping, confirm you already know both of these:
 
-- You can describe what an Actions workflow trigger does
+- You can describe what an Actions workflow [trigger](https://github.github.com/gh-aw/reference/triggers/) does
 - You have worked with AI agent execution environments in a production or CI/CD context
 
 If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
@@ -14,7 +14,7 @@ If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 - You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
 - You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
 
-An **agentic workflow** is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
+An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
@@ -177,3 +177,11 @@ Does your answer include:
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [How Agentic Workflows Work](https://github.github.com/gh-aw/introduction/how-they-work/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Schedule Syntax](https://github.github.com/gh-aw/reference/schedule-syntax/)

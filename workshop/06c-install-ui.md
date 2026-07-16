@@ -15,7 +15,7 @@ You'll confirm that the GitHub UI path does not require a local `gh-aw` installa
 
 ## Why no installation is needed
 
-The compiled `.lock.yml` file is what GitHub actually runs. In Step 7b you'll paste the complete compiled workflow directly into the web editor — no local compile step needed. GitHub's infrastructure then executes the compiled workflow when you trigger it from the Actions tab.
+The compiled `.lock.yml` file is what GitHub actually runs. In Step 7b you'll paste the complete [compiled workflow](https://github.github.com/gh-aw/reference/compilation-process/) directly into the web editor — no local compile step needed. GitHub's infrastructure then executes the compiled workflow when you trigger it from the Actions tab.
 
 ![GitHub-hosted execution flow: the learner authors and triggers workflows from a browser; GitHub's infrastructure executes the pre-compiled .lock.yml workflow and runs AI agents entirely](images/06c-github-hosted-execution.svg)
 
@@ -42,3 +42,9 @@ Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-
 - [ ] You know that CCA and mobile learners can trigger workflows from the **Actions** tab without `gh aw run`
 
 **Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)
