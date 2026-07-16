@@ -45,6 +45,43 @@ Use this quick checklist before you choose:
 - [ ] I can name who will use or benefit from the output
 - [ ] I can name the repository data this workflow needs
 
+As you answer these three questions, record your responses in a local note, editor draft, or GitHub issue draft:
+
+1. Output target: **Issues** or **PRs**?
+2. Tooling path: terminal or browser-only?
+3. Goal: extend later or finish quickly?
+
+These three dimensions help you avoid picking a scenario that doesn't match your output target, tool access, or time goal.
+
+Then map your answers:
+
+- Issues + terminal + fastest leads to **Adventure A** ([Daily Repo Status Report](#adventure-a-daily-repo-status-report))
+- Issues + terminal + docs/extend leads to **Adventure B** ([Daily Documentation Updater](#adventure-b-daily-documentation-updater))
+- PRs + terminal leads to **Adventure C** ([PR Code Reviewer](#adventure-c-pr-code-reviewer))
+- Browser-only/mobile leads to **Adventure E** ([Browser-Only Path](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile))
+- If your combination is not listed: start with **Adventure E** if you're browser-only/mobile. If you have terminal access, pick A or B for Issues output (A = fastest, B = docs/extend), or pick C for PR output.
+
+Check your decision:
+
+- [ ] I picked my output target (Issues or PRs).
+- [ ] I picked my tooling path (terminal or browser-only).
+- [ ] I picked my goal (extend later or finish quickly).
+- [ ] I mapped my answers to A, B, C, or E.
+- [ ] I wrote one reason for my choice.
+- [ ] I know where output will be posted.
+- [ ] I know whether my path needs terminal commands.
+- [ ] I can name my recommended adventure in one sentence.
+- [ ] I opened my chosen adventure section.
+- [ ] I can name the trigger type for that adventure.
+- [ ] I can restate the expected output in one sentence.
+- [ ] I can say why my chosen path is right for this repository.
+- [ ] I can explain one tradeoff of my chosen path.
+- [ ] I can name one reason not to pick another path.
+- [ ] I can explain my scenario choice in one sentence.
+- [ ] I know what to do if my answer combination is not listed.
+- [ ] I can restate my fallback choice in one sentence.
+- [ ] If my combination was not listed, I chose my fallback: Adventure E now, or terminal path first.
+
 | Scenario | What it automates | Best for |
 |---|---|---|
 | [Daily Repo Status Report](#adventure-a-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |

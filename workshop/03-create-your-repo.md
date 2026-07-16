@@ -61,6 +61,26 @@ Both paths create the same practice repository and continue to Step 4.
 
 - [ ] I can explain what files are in my repository and why they matter for Step 4.
 
+## 🔎 Verify Repository Access
+
+Try one of these now:
+
+- **Terminal path:** run `gh repo view --web` from your practice repository folder, then confirm `README.md` is visible.
+- **GitHub UI path:** open your repository URL directly, then confirm `README.md` is visible.
+
+> [!TIP]
+> <details>
+> <summary><b>Command failed?</b> Recover your GitHub CLI auth first.</summary>
+>
+> If `gh repo view --web` fails because you're not signed in or authenticated, complete [Side Quest: Install `gh-aw` Troubleshooting (includes general `gh auth` recovery)](side-quest-06-01-install-troubleshooting.md), then come back and retry this check.
+>
+> </details>
+
+- [ ] I ran `gh repo view --web` (or opened the repository URL in the UI path).
+- [ ] I confirmed my repository opened and `README.md` is visible.
+- [ ] If access failed, I completed the auth troubleshooting side quest and retried.
+- [ ] I can repeat this repo-open check before Step 6 if auth stops working later.
+
 ## ✅ Checkpoint
 
 Before continuing to Step 4, confirm:
