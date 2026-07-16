@@ -28,7 +28,7 @@ An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/
 > - **Natural-language task brief:** You write what you want in plain English. No `run:` scripts, no fixed shell commands.
 > - **Dynamic tool use:** The agent calls tools (read files, list issues, search code) based on what it discovers at runtime — not a predetermined sequence of steps hardcoded in YAML.
 >
-> If you already write Actions YAML, the frontmatter stays the same (triggers, permissions, runners). Only the job body changes: a plain-English brief replaces `steps:`.
+> If you already write Actions YAML, the frontmatter stays the same (triggers, permissions, runners). And it is not one-or-the-other: agentic workflows can include custom jobs and deterministic steps alongside the AI agent — fixed data-fetch steps can run first, then the agent interprets and synthesizes the results.
 >
 > </details>
 
