@@ -62,6 +62,14 @@ Trigger a manual run from the GitHub Actions web UI to confirm the permission wo
 4. Open the run once it starts and expand the Copilot step logs.
 5. Confirm the step completes without a `401 Unauthorized` error.
 
+After the run finishes, verify the result from your terminal:
+
+```bash
+gh run list --limit 1
+```
+
+The status column should show `completed` with conclusion `success`. If you see `failure`, open the run logs and look for a `401 Unauthorized` error in the Copilot step.
+
 You can also verify the Copilot access that backs this repository before running:
 
 ```bash
@@ -78,6 +86,7 @@ If the repository is in an enterprise-managed org, confirm your org admin enable
 - [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
 - [ ] I confirmed the Copilot access that backs this repository is active
 - [ ] A manual workflow run completed without a `401 Unauthorized` error
+- [ ] `gh run list --limit 1` shows `completed` / `success` (or you confirmed the same in the Actions UI)
 - [ ] You did not need to create any repository secret
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
