@@ -28,15 +28,15 @@ For a scheduled, unattended agentic workflow that runs every day, this distincti
 
 Classic CI/CD scripts are narrow and deterministic: they run a fixed set of commands. If a PAT leaks from a classic pipeline, the attacker gains whatever those specific commands needed.
 
-An agentic workflow is broader. The agent decides at runtime which tools to call. If an agentic workflow uses a PAT with wide scopes, and that PAT leaks through:
+An agentic workflow is broader. The agent decides at runtime which tools to call. If a wide-scoped PAT leaks, it can happen through:
 
 - A compromised dependency
 - A crafted issue or PR body that tricks the agent into printing it
 - A misconfigured `safe-outputs` surface
 
-…the attacker gains access to every repository and organisation the PAT covers, not just the one the workflow ran against. And because the PAT does not expire, that access persists until someone notices and revokes it manually.
+When that happens, the attacker gains access to every repository and organisation the PAT covers — not just the one the workflow ran against. The PAT does not expire on its own. It persists until someone notices and revokes it manually.
 
-Unattended workflows by definition run without a human watching every log. The window between a leak and discovery can be hours or days.
+Unattended workflows run without a human watching every log. The window between a leak and discovery can be hours or days.
 
 ---
 
@@ -60,9 +60,20 @@ For any operation that touches only the current repository, use `${{ secrets.GIT
 
 ### Keep `permissions:` minimal
 
-Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the permissions your task actually needs:
+Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the permissions your task actually needs. Compare the two blocks below:
 
 ```yaml
+# ❌ Risky: broad write scopes for a read-only task
+---
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+---
+```
+
+```yaml
+# ✅ Safe: minimal scopes matching actual needs
 ---
 permissions:
   contents: read
@@ -108,6 +119,28 @@ When you must use a PAT:
 
 ---
 
+## ✏️ Exercise: Audit your current workflow
+
+Open your workflow file (e.g., `.github/workflows/daily-report.md`) and answer the following questions:
+
+- [ ] Verify that the workflow uses `GITHUB_TOKEN` rather than a PAT stored in a secret wherever possible.
+- [ ] If a PAT is present, confirm that its scopes are limited to the minimum required and do not include write access to other repositories.
+- [ ] Verify that the workflow declares a `permissions:` block limiting token scope to only what is needed.
+
+Use the checklist below to record your findings in a comment or your workflow's issue log:
+
+```markdown
+## Credential audit — <workflow name>
+
+- [ ] Uses `GITHUB_TOKEN` (ephemeral) rather than a PAT where possible
+- [ ] PAT scopes are fine-grained and limited to the minimum required
+- [ ] `permissions:` block is present and restricts to read-only where applicable
+- [ ] `network.allowed-domains` is set to prevent outbound credential exfiltration
+- [ ] Documented credential type used (PAT or `GITHUB_TOKEN`) and the reason for the choice
+```
+
+---
+
 ## Comparison at a glance
 
 > 🤔 **Predict:** Before reading the table below, list from memory which properties of a PAT make it riskier than `GITHUB_TOKEN` in an unattended workflow. Then check your list against the table.
@@ -142,6 +175,7 @@ When you must use a PAT:
 - [ ] You know how to keep `permissions:` minimal and can explain why it matters
 - [ ] You know how to add `network.allowed-domains` to block credential exfiltration
 - [ ] You can list two practices that reduce risk when a PAT is unavoidable
+- [ ] You identified whether your workflow uses a PAT or the ephemeral `GITHUB_TOKEN` and noted the difference in your log or issue
 
 ---
 
