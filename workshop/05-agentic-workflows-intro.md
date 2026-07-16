@@ -14,6 +14,9 @@ If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 - You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
 - You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
 
+> [!TIP]
+> If you already work with LLM APIs or orchestration frameworks: an agentic workflow is similar to a tool-calling agent loop, but the "tools" are GitHub Actions steps and the "runtime" is GitHub Actions — not a local process.
+
 An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
@@ -128,6 +131,36 @@ permissions:
 
 Both files live in `.github/workflows/`. Look at them and answer: which part of the `.md` is the **task brief**, and which part tells GitHub Actions when to run?
 
+## Concept check — before you continue
+
+Before you reveal the answers below, write a one-sentence definition for each term:
+
+- [ ] Agentic workflow
+- [ ] Lock file
+- [ ] Engine
+- [ ] `workflow_dispatch`
+
+<details>
+<summary>Check your answers</summary>
+
+| Term | Plain-language meaning |
+|---|---|
+| Agentic workflow | A GitHub Actions workflow that uses an AI model to reason and act |
+| Lock file | The compiled YAML that GitHub Actions actually runs |
+| Engine | The AI model provider (for example, GitHub Copilot) used by the workflow |
+| `workflow_dispatch` | A manual trigger — you start the run by clicking a button in the Actions tab |
+
+Confirm each:
+
+- [ ] Lock file: compiled, not hand-edited
+- [ ] Engine: AI model provider
+- [ ] `workflow_dispatch`: manual trigger from Actions
+- [ ] Agentic workflow: AI reasoning loop
+
+</details>
+
+If you had to look up more than one term, take a moment to review that section before continuing.
+
 ## Classify more tasks
 
 **Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
@@ -191,6 +224,11 @@ Does your answer include:
 - [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
+- [ ] I completed the concept-check exercise before revealing the answers
+- [ ] I can define 'engine' as the AI model provider used during a workflow run
+- [ ] I know that `workflow_dispatch` is a manual trigger started from the Actions tab
+- [ ] I understand that `gh aw compile` generates the lock file and it must not be edited by hand
+- [ ] I can explain, in my own words, how agentic workflows relate to tool-calling or LLM APIs if I already use them
 
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
 
