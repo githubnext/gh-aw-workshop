@@ -17,7 +17,7 @@ Claude and Codex are optional engines introduced in later side quests. You do no
 
 ## Choose one Copilot billing path
 
-Choose exactly one method. The methods are alternatives, not fallbacks used together.
+Choose exactly one method.
 
 ### Organization with centralized Copilot billing
 

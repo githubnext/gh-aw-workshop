@@ -362,6 +362,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const inferenceProvider = "github";
   const centralizedCopilotBilling =
     repositoryOwnerType !== "personal" && (isEnterprise || seed % 2 === 0);
+  // The Step 7 transition fills these fields after the required model-access activity.
   const hasCopilotGithubToken = null;
   const hasAnthropicApiKey = null;
   const hasOpenAiApiKey = null;

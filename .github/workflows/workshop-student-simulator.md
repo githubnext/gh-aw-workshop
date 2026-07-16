@@ -238,7 +238,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 46 students**, simulate their experience step-by-step using the following rules:
 
-First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the selected Step 7 path and its shared model-access activity before adjusting Step 8.
+First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
 
 Use this JSON shape:
 
@@ -343,7 +343,7 @@ Then, for each student, use the environment assumptions modelled by the simulato
 - The likely environment or profile reason (OS, tool, auth, level, personality)
 - The likely content reason (for example: terminal-heavy instructions, browser-friendly fallback, auth-heavy setup, or high conceptual density)
 - Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
-- Do not infer a failure reason from lexical signals such as `authDemand`, or from credentials and engines that the curriculum did not select. Use `failureCategoriesByStep` as the source of truth for the top reason.
+- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
 
 #### Qualitative depth for top-failure students
 

@@ -15,7 +15,7 @@ If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](s
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Name the token (for example, `gh-aw-copilot`) and set an expiry (90 days is a common default).
-3. Choose **Only select repositories** and select your workshop repository. If GitHub offers only the public-repository option for your public practice repository, choose **Public repositories**.
+3. For a public workshop repository, choose **Public repositories**. For a private workshop repository, choose **Only select repositories** and select it.
 4. Under **Permissions** → **Account permissions**, set **Copilot requests** to **Read-only**.
 5. Click **Generate token** and copy the value immediately — GitHub shows it only once.
 

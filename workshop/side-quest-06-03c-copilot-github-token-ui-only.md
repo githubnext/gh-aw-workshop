@@ -1,6 +1,6 @@
 # Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled, and you want to complete setup in the GitHub web UI._
+> _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-billing setup without terminal commands._
 
 This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
 

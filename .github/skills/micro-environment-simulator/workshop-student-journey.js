@@ -197,8 +197,10 @@ function updateWorkflowCompileState(state, context, options = {}) {
 
 function configureFirstWorkflowAuth(state, context) {
   const next = cloneState(state);
+  if (next.actions?.inferenceProvider !== "github") {
+    return next;
+  }
   const usesCentralizedBilling = next.actions?.centralizedCopilotBilling === true;
-  next.actions.inferenceProvider = "github";
   next.actions.permissions.copilotRequestsWrite =
     usesCentralizedBilling && stepMetric(state, context, "copilotRequestsWriteCueCount") > 0;
   next.actions.secrets.COPILOT_GITHUB_TOKEN =
