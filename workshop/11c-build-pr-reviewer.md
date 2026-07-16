@@ -44,10 +44,10 @@ Hints:
 
 Use this quick self-check before you move on:
 
-- [ ] I can point to the exact trigger line in the YAML frontmatter
-- [ ] I can describe one prompt change that narrows reviews to security findings
-- [ ] I can explain why `tools: [github]` is required for PR-aware reviews
-- [ ] I can describe one extra PR event type I might include and why
+- [ ] You can point to the exact trigger line in the YAML frontmatter
+- [ ] You can describe one prompt change that narrows reviews to security findings
+- [ ] You can explain why `tools: [github]` is required for PR-aware reviews
+- [ ] You can describe one extra PR event type you might include and why
 
 ## ✅ Checkpoint
 
