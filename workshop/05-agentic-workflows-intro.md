@@ -18,19 +18,18 @@ An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
-> [!NOTE]
-> <details>
-> <summary>Why not just use a standard Actions workflow?</summary>
->
-> Three concrete differences a DevOps engineer will notice immediately:
->
-> - **Agent reasoning loop:** Each run, the agent reads live repository context, decides what matters, and composes output that differs every time — no two runs are identical.
-> - **Natural-language task brief:** You write what you want in plain English. No `run:` scripts, no fixed shell commands.
-> - **Dynamic tool use:** The agent calls tools (read files, list issues, search code) based on what it discovers at runtime — not a predetermined sequence of steps hardcoded in YAML.
->
-> If you already write Actions YAML, the frontmatter stays the same (triggers, permissions, runners). And it is not one-or-the-other: agentic workflows can include custom jobs and deterministic steps alongside the AI agent — fixed data-fetch steps can run first, then the agent interprets and synthesizes the results.
->
-> </details>
+<details>
+<summary>Why not just use a standard Actions workflow?</summary>
+
+Three concrete differences a DevOps engineer will notice immediately:
+
+- **Agent reasoning loop:** Each run, the agent reads live repository context, decides what matters, and composes output that differs every time — no two runs are identical.
+- **Natural-language task brief:** You write what you want in plain English. No `run:` scripts, no fixed shell commands.
+- **Dynamic tool use:** The agent calls tools (read files, list issues, search code) based on what it discovers at runtime — not a predetermined sequence of steps hardcoded in YAML.
+
+If you already write Actions YAML, the frontmatter stays the same (triggers, permissions, runners). And it is not one-or-the-other: agentic workflows can include custom jobs and deterministic steps alongside the AI agent — fixed data-fetch steps can run first, then the agent interprets and synthesizes the results.
+
+</details>
 
 ## Three things to know
 
@@ -45,6 +44,8 @@ If you already trust GitHub Actions, the trust model stays the same here. The op
 ## Classify these tasks
 
 For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
+
+You just saw how a standard Actions workflow follows fixed steps. Agentic workflows replace those fixed steps with a plain-English task brief — use that contrast to classify the tasks below.
 
 **Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
