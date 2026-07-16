@@ -27,7 +27,7 @@ If you are unsure, check who owns your practice repository first:
 - Personal repository or organization without centralized billing → use **Method 2**
 
 > [!IMPORTANT]
-> Choose one method. When `copilot-requests: write` is present, `COPILOT_GITHUB_TOKEN` is ignored for inference.
+> Choose one method. When `copilot-requests: write` is present, `COPILOT_GITHUB_TOKEN` is ignored for inference. Remove the permission and recompile when switching to personal billing.
 
 ## ✅ Checkpoint
 

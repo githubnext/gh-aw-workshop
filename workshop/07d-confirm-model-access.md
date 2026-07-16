@@ -21,7 +21,7 @@ Choose exactly one method.
 
 ### Organization with centralized Copilot billing
 
-Use this path only when the organization that owns the repository has centralized Copilot billing enabled for Actions.
+Use this path when the organization that owns the repository has centralized Copilot billing enabled for Actions.
 
 1. Ask your organization administrator to confirm centralized billing is enabled.
 2. Keep `copilot-requests: write` in the workflow's `permissions:` block.

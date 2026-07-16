@@ -153,12 +153,12 @@ function usesTerminalPath(state, context) {
   return !prefersBrowserPath(state, context);
 }
 
-function canUseBrowserAgentCompiler(state) {
+function hasAgentCompilerAuth(state) {
   return Boolean(state.auth?.hasGithubSession && state.auth?.hasCopilotAccess);
 }
 
 function canCompileWorkflow(state, context, options = {}) {
-  return usesTerminalPath(state, context) || (options.allowCloudAgent && canUseBrowserAgentCompiler(state));
+  return usesTerminalPath(state, context) || (options.allowCloudAgent && hasAgentCompilerAuth(state));
 }
 
 function stepMetric(state, context, metric) {

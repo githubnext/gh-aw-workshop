@@ -360,6 +360,8 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
       level === "actions-user" ||
       (isEnterprise ? seed % 6 !== 0 : seed % (uiPreferred ? 4 : 5) !== 0));
   const inferenceProvider = "github";
+  // Model a mixed organization cohort: enterprise organizations have centralized
+  // billing, while half of other organizations have enabled it.
   const centralizedCopilotBilling =
     repositoryOwnerType !== "personal" && (isEnterprise || seed % 2 === 0);
   // The Step 7 transition fills these fields after the required model-access activity.
