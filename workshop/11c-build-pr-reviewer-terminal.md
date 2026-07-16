@@ -66,12 +66,13 @@ safe-outputs:
 
 ### Add the agent instructions
 
-Below the closing `---`, add a title and then paste your final starter brief from
+Below the closing `---`, add this heading and paste your final starter brief from
 [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief):
 
 ```markdown
 # PR Code Review: Duplicate Code Detection
-<!-- Paste your Step 10c starter brief here -->
+
+[Paste the full Step 10c starter brief here, replacing this line.]
 ```
 
 ### Commit and push
@@ -81,11 +82,6 @@ git add .github/workflows/pr-code-reviewer.md
 git commit -m "feat: add pr code reviewer agentic workflow"
 git push
 ```
-
----
-
-> [!TIP]
-> Need the full brief again? Refer back to [Step 10c's complete starter brief](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief).
 
 ## ✅ Checkpoint
 
