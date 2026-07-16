@@ -8,7 +8,7 @@ You'll finish `.github/workflows/daily-report-status.md` by adding:
 
 - `permissions` and `safe-outputs` in frontmatter
 - a `## Task` instructions block below frontmatter
-- a final compile check, commit, and push
+- a [compile](https://github.github.com/gh-aw/reference/compilation-process/) check, commit, and push
 
 ## 📋 Before You Start
 
@@ -98,3 +98,10 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [ ] `gh aw compile` reports valid
 - [ ] The file is committed and pushed to `main`
 - [ ] You are ready to trigger the workflow in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+
+## 📚 See Also
+
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)

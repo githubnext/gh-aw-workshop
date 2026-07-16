@@ -57,7 +57,7 @@ gh aw --version
 
 You should see output like `gh-aw version 0.81.6`.
 
-## Initialize agentic workflow skills
+## Initialize [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) skills
 
 Before you author your first workflow, initialize and push the generated skill files:
 
@@ -92,3 +92,10 @@ Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 **Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/)
