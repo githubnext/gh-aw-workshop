@@ -184,7 +184,7 @@ Before moving on, confirm all of the following:
 
 - [ ] `.github/workflows/daily-status.md` exists in my repository
 - [ ] The workflow file contains all five frontmatter sections: `emoji`/`description`, `on:`, `permissions:`, `tools:`, and `safe-outputs:`
-- [ ] `gh aw compile --validate` exits with no errors
+- [ ] `gh aw compile` exits with no errors
 - [ ] `git log --oneline -1` shows my commit `feat: add daily repo status agentic workflow`
 - [ ] `git push` completed successfully and the file is visible on GitHub
 
