@@ -15,7 +15,7 @@ You'll create a complete `daily-report-status.md` workflow in the GitHub web edi
 
 ## Understand the file
 
-An agentic workflow source file is a Markdown task brief with YAML frontmatter. GitHub Actions runs the compiled `.lock.yml`; you edit the `.md` source first, then compile it into the `.lock.yml` file before Step 8.
+An agentic workflow source file is a Markdown task brief with YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/). GitHub Actions runs the compiled `.lock.yml`; you edit the `.md` source first, then [compile](https://github.github.com/gh-aw/reference/compilation-process/) it into the `.lock.yml` file before Step 8.
 
 ## Create the workflow
 
@@ -96,4 +96,7 @@ Review the proposed diff. Confirm both `.github/workflows/daily-report-status.md
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)

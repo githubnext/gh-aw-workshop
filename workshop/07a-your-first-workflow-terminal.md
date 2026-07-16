@@ -7,7 +7,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 ## 🎯 What You'll Do
 
-You'll create the first version of `.github/workflows/daily-report-status.md` with just two frontmatter fields:
+You'll create the first version of `.github/workflows/daily-report-status.md` with just two [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields:
 
 - `name` (workflow label)
 - `on.workflow_dispatch` (manual trigger)
@@ -102,3 +102,11 @@ Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
 - [ ] `gh aw compile` succeeds and generates `daily-report-status.lock.yml`
 - [ ] `gh extension list` shows `github/gh-aw` is installed
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/#dispatch-triggers-workflowdispatch)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/)

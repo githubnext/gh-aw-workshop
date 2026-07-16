@@ -30,7 +30,7 @@ The important question is not "Can I read every line?" It is "Can I tell where t
 
 After the run finishes, scroll to the **Summary** section on the run page. This gives you the short version of what the agent believes it did, including the safe-output action it used.
 
-Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the safe-output record.
+Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) record.
 
 ![Workflow run summary panel](images/08-run-summary.svg)
 
@@ -58,3 +58,5 @@ For a deeper troubleshooting guide, see [Step 9: Reading Workflow Output](09-und
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/)

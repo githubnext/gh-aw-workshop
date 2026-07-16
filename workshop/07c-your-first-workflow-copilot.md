@@ -24,7 +24,7 @@ The workflow must:
 - Be named "Daily Report Status"
 - Support manual runs with `workflow_dispatch`
 - Use `contents: read`, `issues: read`, and `copilot-requests: write`
-- Allow at most one comment and at most one new issue through safe outputs
+- Allow at most one comment and at most one new issue through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 - Search open issues for the issue with the most 👍 reactions and comment:
   "This issue has the most community support! We'll prioritise it in our next planning session."
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
@@ -57,3 +57,11 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)
