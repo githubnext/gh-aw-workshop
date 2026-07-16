@@ -70,21 +70,47 @@ Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
 
 ![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
-### Commit and push your conditional logic
+### Compile your changes
+
+After editing the frontmatter, compile the workflow to confirm everything is valid:
 
 ```bash
-git add .github/workflows/daily-status.md
+gh aw compile
+```
+
+You should see `✅ Compiled successfully`. This regenerates your `.lock.yml` file with the updated conditional logic.
+
+> [!NOTE]
+> The `if:` condition is applied during compilation — it won't take effect until you compile and push both files.
+
+### Commit and push your conditional logic
+
+#### Terminal path
+
+```bash
+git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
 git commit -m "feat: skip summary on days with no commits"
 git push
 ```
 
-> [!NOTE]
-> Make sure the commit-count command stays in frontmatter `steps:` so `commit_count` is available to the top-level `if:`.
+<details>
+<summary>🖥️ GitHub UI path</summary>
+
+1. Navigate to `.github/workflows/daily-status.md` in your repository on GitHub.
+2. Click the **pencil icon (✏️)** to open the editor.
+3. Add the `steps:` block and `if:` field to the frontmatter.
+4. Click **Commit changes**.
+
+The lock file regenerates automatically when the workflow next runs — you don't need to compile locally.
+
+</details>
 
 ## ✅ Checkpoint
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
 - [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`
+- [ ] `gh aw compile` completed without errors (terminal path), or the workflow was committed via the GitHub UI
+- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are committed and pushed (terminal path)
 - [ ] You triggered the workflow manually and confirmed the conditional behaviour in the run log
 - [ ] The workflow still posts a summary on days with commits
 
