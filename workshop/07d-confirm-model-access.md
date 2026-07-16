@@ -13,7 +13,7 @@ You'll choose the billing and authentication method for the first workflow, conf
 
 Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
 
-Claude and Codex are optional engines introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
+Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
 
 ## Choose one Copilot billing path
 
@@ -59,3 +59,10 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I am ready for [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+
+## 📚 See Also
+
+- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)
+- [Authentication reference](https://github.github.com/gh-aw/reference/auth/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write)
+- [Billing reference](https://github.github.com/gh-aw/reference/billing/)
