@@ -2,6 +2,12 @@
 
 > _Optional: use this method when your practice repository is owned by your personal account, or by an enterprise-managed org that can bill Copilot requests through GitHub Actions. If your repository belongs to a regular GitHub organization, use [Method 2](side-quest-06-03b-copilot-github-token.md) instead._
 
+## 📋 Before You Start
+
+- You have a GitHub account with an active Copilot subscription on a personal account or an enterprise-managed org.
+- You completed [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and confirmed Method 1 applies to your repository.
+- Your practice repository was created in [Step 3](03-create-your-repo.md).
+
 This is the simplest way to give your agentic workflow Copilot API access when the repository owner can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the `copilot-requests: write` permission.
 
 It does **not** cover regular organization-owned repositories that rely on an individual member's Copilot subscription. In that case, add `COPILOT_GITHUB_TOKEN` with [Method 2](side-quest-06-03b-copilot-github-token.md).
@@ -15,6 +21,23 @@ It does **not** cover regular organization-owned repositories that rely on an in
 ## Add the permission to your workflow
 
 Open your workflow `.md` file and add `copilot-requests: write` under the `permissions` block in the YAML frontmatter:
+
+```yaml
+---
+name: my-workflow
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: read
+  copilot-requests: write
+tools:
+  github:
+    allowed: read
+---
+```
+
+If you are adding this to an existing workflow, the minimum change is still one line under `permissions`:
 
 ```yaml
 ---
