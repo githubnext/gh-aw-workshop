@@ -34,6 +34,7 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 > - Adventure A (Daily Repo Status): "Summarize open PRs, issues, CI, and recent commits for maintainers each morning."
 > - Adventure B (Docs Updater): "Report stale or missing docs for docs maintainers using repository markdown files."
 > - Adventure C (PR Code Reviewer): "Flag duplicate code in pull requests for reviewers and authors."
+> - Adventure D (Copilot app / Agents tab): "Use one of the A-C outputs above and have Copilot build that workflow for you."
 > - Adventure E (Browser-Only Path): "Create the same daily status report as Adventure A without using a terminal."
 >
 > </details>
