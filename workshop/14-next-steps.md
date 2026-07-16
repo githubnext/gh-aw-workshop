@@ -108,7 +108,7 @@ This takes 5 minutes and gives you a concrete starting point the next time you o
 - [ ] Your scheduled workflow has completed at least one successful automated run
 - [ ] You can describe, in plain English, what agentic workflows are and why they're useful
 - [ ] You have at least one idea for the next workflow you want to build
-- [ ] I drafted a two-sentence brief for my next agentic workflow
+- [ ] You drafted a two-sentence brief for your next agentic workflow
 - [ ] You know where to find the gh-aw docs when you need them
 
 You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
