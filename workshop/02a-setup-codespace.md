@@ -19,7 +19,12 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 | 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
 
 > [!IMPORTANT]
-> **On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?** Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail later when you verify your setup.
+> <details>
+> <summary><b>On GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or using self-hosted runners?</b></summary>
+>
+> Complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) now before continuing. Skipping it will cause `gh auth status` to fail later when you verify your setup.
+>
+> </details>
 
 ## 🎯 What You'll Do
 
@@ -78,6 +83,9 @@ The diagram below shows your Codespace connection to GitHub.
    gh auth status
    gh extension list
    ```
+
+   > [!TIP]
+   > If `gh auth status` shows "not logged in", run `gh auth login` and choose **GitHub.com → HTTPS → browser**. If the terminal shows no `$` prompt after 60 seconds, reload the page and reopen the terminal.
 
 2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
 3. Confirm `gh auth status` shows that you're logged in to `github.com`.
