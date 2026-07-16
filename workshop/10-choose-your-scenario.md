@@ -19,6 +19,31 @@ Before you read the scenario descriptions, write one sentence describing a repos
 Put it in a note in your preferred editor, a GitHub issue draft, or a local text file.
 Keep it nearby — this helps you compare your idea to the scenarios later in this step.
 
+> [!TIP]
+> <details>
+> <summary><b>Pause for a 60-second scenario reflection before you choose.</b></summary>
+>
+> In your note, answer these three questions:
+>
+> - [ ] What problem in my repository does this workflow solve?
+> - [ ] Who will benefit from the output?
+> - [ ] What data source does this workflow need access to?
+>
+> Example answers by adventure:
+>
+> - Adventure A (Daily Repo Status): "Summarize open PRs, issues, CI, and recent commits for maintainers each morning."
+> - Adventure B (Docs Updater): "Report stale or missing docs for docs maintainers using repository markdown files."
+> - Adventure C (PR Code Reviewer): "Flag duplicate code in pull requests for reviewers and authors."
+> - Adventure E (Browser-Only path): "Create the same daily status report as Adventure A without using a terminal."
+>
+> </details>
+>
+Use this quick checklist before you choose:
+
+- [ ] I can name the repository problem this workflow will solve
+- [ ] I can name who will use or benefit from the output
+- [ ] I can name the repository data this workflow needs
+
 | Scenario | What it automates | Best for |
 |---|---|---|
 | [Daily Repo Status Report](#adventure-a-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |
@@ -26,8 +51,7 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 | [PR Code Reviewer](#adventure-c-pr-code-reviewer) | Reviews every pull request for duplicate code — checking both the changes and the existing codebase — and posts a structured review comment | Teams that want automated duplication detection in code review |
 | [Browser-Only Path (CCA / Mobile)](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) | Creates a daily status workflow via the Agentic Workflows agent; no terminal needed | Mobile, CCA, and browser-only learners |
 
-> [!TIP]
-> Not sure which to pick? Start with **Adventure A** — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
+Not sure which to pick? Start with Adventure A — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
 
 <!-- -->
 
@@ -116,6 +140,7 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 
 - [ ] I've written one sentence describing a repository task I'd like to automate
 - [ ] I've chosen an adventure and written down one reason it matches that task
+- [ ] I can describe in one sentence what my chosen workflow will produce
 - [ ] I can name the trigger my chosen scenario uses
 - [ ] I've opened the next step for my chosen scenario and read the first paragraph
 - [ ] I know whether I'll follow the design step path or jump to Step 11d with the GitHub Copilot app or Agents tab
