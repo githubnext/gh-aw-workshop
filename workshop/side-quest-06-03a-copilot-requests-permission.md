@@ -15,6 +15,8 @@ It does **not** cover personal repositories or organizations without centralized
 
 ## Confirm this method matches your repository
 
+If you have not confirmed the billing setting yet, ask your organization administrator before you choose this method.
+
 - Continue with Method 1 if an organization owns the repository and its administrator confirmed centralized Copilot billing is enabled.
 - Stop here and switch to [Method 2](side-quest-06-03b-copilot-github-token.md) for a personal repository or an organization without centralized billing.
 

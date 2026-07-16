@@ -362,10 +362,10 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const inferenceProvider = "github";
   const centralizedCopilotBilling =
     repositoryOwnerType !== "personal" && (isEnterprise || seed % 2 === 0);
-  const hasCopilotGithubToken = false;
-  const hasAnthropicApiKey = false;
-  const hasOpenAiApiKey = false;
-  const hasCopilotRequestsWrite = false;
+  const hasCopilotGithubToken = null;
+  const hasAnthropicApiKey = null;
+  const hasOpenAiApiKey = null;
+  const hasCopilotRequestsWrite = null;
   const baseConfidence = clamp(
     0.3 +
       (level === "advanced"

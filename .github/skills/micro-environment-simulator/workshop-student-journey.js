@@ -402,6 +402,14 @@ function buildTransitions() {
     },
     "02-setup": (state, context) => {
       if (state.tool === "mobile") {
+        const readiness = contentReadinessCheck(state, context, {
+          salt: 23,
+          category: "mobile-setup-friction",
+          failedAssumption: "The learner cannot complete the browser and agent setup path from a mobile device.",
+          remediation: "Keep the mobile browser path explicit and offer a desktop or Codespace handoff when the device cannot complete an activity.",
+          emphasis: { bias: 0.12, terminalWeight: 0, complexityWeight: 0.1 }
+        });
+        if (!readiness.ok) return readiness;
         const next = cloneState(state);
         next.flags.environmentReady = true;
         return { ok: true, state: applyLearning(next, context, { github: 0.04, confidence: 0.01 }) };
