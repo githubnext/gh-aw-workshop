@@ -82,7 +82,7 @@ The workflow should:
 - Limit safe-outputs to add-comment with max: 1
 
 Save the workflow as `.github/workflows/daily-status.md`.
-Compile it with `gh aw compile --validate`.
+Compile it with `gh aw compile`.
 Commit the `.md` file and the generated `.lock.yml`, then open a pull request for review.
 ```
 
@@ -107,7 +107,7 @@ The workflow should:
 - Limit safe-outputs to add-comment with max: 1
 
 Save the workflow as `.github/workflows/daily-docs.md`.
-Compile it with `gh aw compile --validate`.
+Compile it with `gh aw compile`.
 Commit the `.md` file and the generated `.lock.yml`, then open a pull request for review.
 ```
 
@@ -132,7 +132,7 @@ The workflow should:
 - Use safe-outputs: add-comment with max: 5
 
 Save the workflow as `.github/workflows/pr-code-reviewer.md`.
-Compile it with `gh aw compile --validate`.
+Compile it with `gh aw compile`.
 Commit the `.md` file and the generated `.lock.yml`, then open a pull request for review.
 ```
 
