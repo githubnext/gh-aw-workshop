@@ -101,7 +101,7 @@ Highlight anything that looks urgent in the issue list.
 ### Compile and test
 
 ```bash
-gh aw compile --validate
+gh aw compile
 ```
 
 Fix any errors, then push and trigger a manual run:
