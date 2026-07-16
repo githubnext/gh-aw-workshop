@@ -66,9 +66,10 @@ safe-outputs:
 
 ### Add the agent instructions
 
-Below the closing `---`, keep the heading `# PR Code Review: Duplicate Code Detection`,
-then replace the placeholder line with your final starter brief from
-[Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief):
+Below the closing `---`, paste your final starter brief from
+[Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md#a-ready-to-use-starter-brief)
+after the heading `# PR Code Review: Duplicate Code Detection`, replacing the
+placeholder line:
 
 ```markdown
 # PR Code Review: Duplicate Code Detection
