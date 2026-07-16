@@ -12,8 +12,10 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 ## ✏️ Sub-exercise A: Generate the token
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
-2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Add a calendar reminder so you rotate the token before it expires.
-3. Set **Repository access** to **Public repositories** for the workshop repo. For private repositories, choose **Only select repositories** and pick your repo.
+2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Consider setting a reminder so you rotate the token before it expires.
+3. Set **Repository access** based on your workshop repository visibility:
+   - For a public repository, choose **Public repositories**.
+   - For a private repository, choose **Only select repositories** and pick your repository.
 4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
 5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
 
@@ -35,7 +37,7 @@ Open your repository in a new tab so you keep the token page open until the secr
 1. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
 2. Click **New repository secret**.
 3. Enter the name `COPILOT_GITHUB_TOKEN` (uppercase with underscores).
-4. Paste the token value and confirm there is no leading or trailing whitespace.
+4. Paste the token value, then visually confirm there are no spaces before or after the token string.
 5. Click **Add secret**.
 6. Confirm the secret appears in the list as `COPILOT_GITHUB_TOKEN`.
 
