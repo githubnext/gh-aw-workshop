@@ -19,6 +19,7 @@ Choose the method that fits your situation:
 |---|---|---|
 | **Copilot requests permission** (recommended) | Personal repositories, or enterprise-managed orgs with org-billed Copilot requests | [Method 1 →](side-quest-06-03a-copilot-requests-permission.md) |
 | **`COPILOT_GITHUB_TOKEN` secret** | Regular organization-owned repositories, service accounts, older workflows, or org-level overrides | [Method 2 →](side-quest-06-03b-copilot-github-token.md) |
+| **`COPILOT_GITHUB_TOKEN` secret (UI-only)** | Same as Method 2, but using only GitHub web UI steps | [Method 2 (UI-only) →](side-quest-06-03c-copilot-github-token-ui-only.md) |
 
 If you are unsure, check who owns your practice repository first:
 

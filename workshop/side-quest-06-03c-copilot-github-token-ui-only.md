@@ -1,10 +1,8 @@
-# Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
+# Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method when you need a dedicated PAT for Copilot access — for example, a repository owned by a regular GitHub organization, a service account, an older workflow, or an org-level override. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
+> _Optional: use this method when you need a dedicated PAT for Copilot access and want to complete setup entirely in the GitHub web UI. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
 
 This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
-
-If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 
 ## 📋 Before You Start
 
@@ -23,14 +21,6 @@ If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](s
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
 
 **Verify:** The token value is visible on screen and copied to your clipboard before continuing.
-
-Optional terminal artifact (no token value shown):
-
-```bash
-printf 'Rotate COPILOT_GITHUB_TOKEN by YYYY-MM-DD\n' >> ~/copilot-token-rotation.txt
-```
-
-Replace YYYY-MM-DD with your actual token expiry date.
 
 Quick check:
 
@@ -51,20 +41,6 @@ Open your repository in a new tab so you keep the token page open until the secr
 
 **Verify:** `COPILOT_GITHUB_TOKEN` appears in the Secrets list — then you can safely close the token tab.
 
-Optional terminal path:
-
-```bash
-gh secret set COPILOT_GITHUB_TOKEN
-```
-
-This command prompts for the token value interactively.
-
-Optional terminal verify:
-
-```bash
-gh secret list | grep COPILOT_GITHUB_TOKEN
-```
-
 Quick check:
 
 - [ ] The secret name is exactly `COPILOT_GITHUB_TOKEN`
@@ -77,24 +53,6 @@ Quick check:
 2. Select your workflow and click Run workflow.
 3. Open the run and expand the Copilot step logs.
 4. Confirm the Copilot step completes without 401 Unauthorized or 403 Forbidden.
-
-Optional terminal path:
-
-```bash
-gh aw run
-```
-
-Optional terminal run check:
-
-```bash
-gh run list --limit 1 --json status,conclusion
-```
-
-Optional terminal log check:
-
-```bash
-gh run view --log
-```
 
 ## ✅ Checkpoint
 
