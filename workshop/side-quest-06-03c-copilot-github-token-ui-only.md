@@ -1,10 +1,8 @@
-# Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
+# Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method when you need a dedicated PAT for Copilot access — for example, a repository owned by a regular GitHub organization, a service account, an older workflow, or an org-level override. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
+> _Optional: use this method when you need a dedicated PAT for Copilot access and want to complete setup entirely in the GitHub web UI. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
 
 This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
-
-If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 
 ## 📋 Before You Start
 
@@ -14,8 +12,10 @@ If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](s
 ## ✏️ Sub-exercise A: Generate the token
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
-2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Add a calendar reminder so you rotate the token before it expires.
-3. Set **Repository access** to **Public repositories** for the workshop repo. For private repositories, choose **Only select repositories** and pick your repo.
+2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Set a reminder so you rotate the token before it expires.
+3. Set **Repository access** based on your workshop repository visibility:
+   - For a public repository, choose **Public repositories**.
+   - For a private repository, choose **Only select repositories** and pick your repository.
 4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
 5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
 
@@ -24,19 +24,11 @@ If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](s
 
 **Verify:** The token value is visible on screen and copied to your clipboard before continuing.
 
-Optional terminal artifact (no token value shown):
-
-```bash
-printf 'Rotate COPILOT_GITHUB_TOKEN by YYYY-MM-DD\n' >> ~/copilot-token-rotation.txt
-```
-
-Replace YYYY-MM-DD with your actual token expiry date.
-
 Quick check:
 
 - [ ] I can see a newly created PAT in my token list
 - [ ] I copied the token value before leaving the page
-- [ ] I noted the token rotation date
+- [ ] I noted the token expiry date
 
 ## ✏️ Sub-exercise B: Store the secret
 
@@ -45,25 +37,11 @@ Open your repository in a new tab so you keep the token page open until the secr
 1. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
 2. Click **New repository secret**.
 3. Enter the name `COPILOT_GITHUB_TOKEN` (uppercase with underscores).
-4. Paste the token value and confirm there is no leading or trailing whitespace.
+4. Paste the token value and verify no extra spaces were added before or after the token string.
 5. Click **Add secret**.
 6. Confirm the secret appears in the list as `COPILOT_GITHUB_TOKEN`.
 
 **Verify:** `COPILOT_GITHUB_TOKEN` appears in the Secrets list — then you can safely close the token tab.
-
-Optional terminal path:
-
-```bash
-gh secret set COPILOT_GITHUB_TOKEN
-```
-
-This command prompts for the token value interactively.
-
-Optional terminal verify:
-
-```bash
-gh secret list | grep COPILOT_GITHUB_TOKEN
-```
 
 Quick check:
 
@@ -78,24 +56,6 @@ Quick check:
 3. Open the run and expand the Copilot step logs.
 4. Confirm the Copilot step completes without 401 Unauthorized or 403 Forbidden.
 
-Optional terminal path:
-
-```bash
-gh aw run
-```
-
-Optional terminal run check:
-
-```bash
-gh run list --limit 1 --json status,conclusion
-```
-
-Optional terminal log check:
-
-```bash
-gh run view --log
-```
-
 ## ✅ Checkpoint
 
 - [ ] You generated a new fine-grained PAT and copied it before leaving the token page
@@ -103,7 +63,7 @@ gh run view --log
 - [ ] `COPILOT_GITHUB_TOKEN` exists in **Settings** → **Secrets and variables** → **Actions**
 - [ ] A manual workflow run completed after you added the secret
 - [ ] The run logs show the Copilot step completed without 401 Unauthorized or 403 Forbidden
-- [ ] You noted the PAT expiry date and a rotation reminder
+- [ ] You set a reminder to rotate the PAT before the expiry date
 - [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
 
 Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
