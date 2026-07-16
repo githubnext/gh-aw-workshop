@@ -19,8 +19,6 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
 5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
 
-> [!TIP]
-> Set a calendar reminder before your PAT expiry date so token rotation is easy to track.
 > [!IMPORTANT]
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
 
