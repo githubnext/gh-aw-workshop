@@ -143,9 +143,12 @@ git commit -m "chore: target self-hosted runner for daily-status workflow"
 git push
 ```
 
-UI-first learners: commit the `.md` file using the web editor. The lock file regenerates
-automatically on the next workflow run when you push the updated source — you do not need to
-compile locally.
+UI-first learners: after committing the `.md` file via the web editor, open a Codespace or
+the GitHub web terminal and run `gh aw compile daily-status` to regenerate the `.lock.yml`.
+Commit the updated lock file before triggering your next workflow run.
+
+> [!TIP]
+> You can also use the `/agentic-workflows` Copilot skill to edit the workflow — it compiles and commits both files together, so you never end up with a stale lock file.
 
 ## ✏️ Exercise: Verify the run lands on your runner
 
