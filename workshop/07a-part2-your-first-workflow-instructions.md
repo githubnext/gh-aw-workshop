@@ -59,19 +59,6 @@ If there are no open issues, create one titled "Community Voting Test" and post 
 
 ### Validate, then commit and push
 
-Before you run the workflow, confirm Copilot access is in place — this is the most common reason first runs fail:
-
-> [!IMPORTANT]
-> <details>
-> <summary><b>Confirm Copilot access before you push.</b></summary>
-> 
-> - Your frontmatter includes `copilot-requests: write` under `permissions` (already done in the step above).
-> - Your GitHub account has an active Copilot subscription — check at [github.com/settings/copilot](https://github.com/settings/copilot).
-> 
-> If either is missing, the workflow will fail with a `401 Unauthorized` error the moment it tries to call the Copilot engine. See [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) for details and troubleshooting.
->
-> </details>
-
 Run:
 
 ```bash
@@ -97,7 +84,7 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [ ] The `## Task` instructions block in your workflow file describes a concrete task in plain language
 - [ ] `gh aw compile` reports valid
 - [ ] The file is committed and pushed to `main`
-- [ ] You are ready to trigger the workflow in [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- [ ] You are ready to choose the workflow's billing and authentication method
 
 ## 📚 See Also
 
@@ -105,3 +92,5 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
 - [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
 - [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+
+**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)

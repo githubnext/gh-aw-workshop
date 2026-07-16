@@ -54,5 +54,6 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] The agent validated the workflow in its session workspace
 - [ ] You reviewed the source and generated lock file
 - [ ] You merged the pull request into `main`
+- [ ] You are ready to choose the workflow's billing and authentication method
 
-**Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)

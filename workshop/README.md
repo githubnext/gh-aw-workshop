@@ -23,6 +23,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 7a-part2 | [07a-part2-your-first-workflow-instructions.md](07a-part2-your-first-workflow-instructions.md) | Terminal Path (Part 2) — Add Instructions and Finish Your First Workflow | ✅ |
 | 7b | [07b-your-first-workflow-ui.md](07b-your-first-workflow-ui.md) | GitHub UI Path — Write Your First Agentic Workflow | ✅ |
 | 7c | [07c-your-first-workflow-copilot.md](07c-your-first-workflow-copilot.md) | GitHub Copilot Path — Write Your First Agentic Workflow | ✅ |
+| 7d | [07d-confirm-model-access.md](07d-confirm-model-access.md) | Confirm Model Access | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
 | 8b | [08b-interpret-your-run.md](08b-interpret-your-run.md) | Interpret Your First Run | ✅ |
 | 9 | [09-understand-output.md](09-understand-output.md) | Reading Workflow Output | ✅ |
@@ -87,7 +88,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md) — explains how over-scoped workflow authority lets a misdirected agent attempt changes the task never needed, and how minimal `permissions:`, `safe-outputs`, and `protected-files` enforce least privilege; branches from [Step 17](17-add-mcp-tools.md).
 - [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md) — explains how a compromised or malicious MCP server can feed poisoned tool results to your agent, and how `network.allowed-domains`, the explicit `tools:` block, minimal permissions, and `safe-outputs` reduce that risk; branches from [Step 17](17-add-mcp-tools.md).
 - [Side Quest: Output Injection via Safe Outputs](side-quest-17-06-output-injection.md) — explains how crafted repository content can embed misleading markdown into agent output to fool human reviewers, and how `safe-outputs` surface declarations and label scoping prevent it; branches from [Step 17](17-add-mcp-tools.md).
-- [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) — explains the two Copilot authentication methods (feature flag vs `COPILOT_GITHUB_TOKEN` PAT) and when to use each; branches from [Step 6](06-install-gh-aw.md).
+- [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) — explains organization centralized billing and personal `COPILOT_GITHUB_TOKEN` billing; branches from [Step 7d](07d-confirm-model-access.md).
 - [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — step-by-step guide to generating an Anthropic key, storing it as a repository secret, and switching your workflow to `engine: claude`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — step-by-step guide to generating an OpenAI key, storing it as a repository secret, and switching your workflow to `engine: codex`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) — decision guide, full field references, and example task briefs for both `cache-memory` and `repo-memory`; branches from [Step 20](20-persistent-memory.md).

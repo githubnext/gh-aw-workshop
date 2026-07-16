@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily Monte Carlo simulation of 46 students (100 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily Monte Carlo simulation of 46 students (1000 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -238,7 +238,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the e
 
 For **each of the 46 students**, simulate their experience step-by-step using the following rules:
 
-First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`, inspect the most instruction-heavy workshop files for those steps, and write `/tmp/gh-aw/agent/sim/data/agent-step-insights.json` with any step-specific probability adjustments that come from your understanding of the actual workshop content and quality metrics.
+First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
 
 Use this JSON shape:
 
@@ -318,13 +318,19 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
       "successes": <N>,
       "successRate": <0.0–1.0>,
       "failuresByStep": { "<step-id>": <count>, ... },
+      "failureCategoriesByStep": {
+        "<step-id>": { "<failure-category>": <count>, ... }
+      },
       "mostCommonFailureStep": "<step-id> | null"
     },
     ...
   ],
   "aggregate": {
     "overallSuccessRate": <0.0–1.0>,
-    "dropoutRateByStep": { "<step-id>": <rate 0.0–1.0>, ... }
+    "dropoutRateByStep": { "<step-id>": <rate 0.0–1.0>, ... },
+    "failureCategoriesByStep": {
+      "<step-id>": { "<failure-category>": <count>, ... }
+    }
   }
 }
 ```
@@ -336,7 +342,8 @@ Then, for each student, use the environment assumptions modelled by the simulato
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} runs
 - The likely environment or profile reason (OS, tool, auth, level, personality)
 - The likely content reason (for example: terminal-heavy instructions, browser-friendly fallback, auth-heavy setup, or high conceptual density)
-- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when the workflow itself depends on repository-side Actions secrets or model access that the learner was expected to configure.
+- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
+- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
 
 #### Qualitative depth for top-failure students
 
@@ -366,7 +373,7 @@ Use the pre-computed values from `monte-carlo-replay.json` as the primary data s
 - **Success rate by technical level** — group `monteCarlo` entries by student level and average `successRate`
 - **Success rate by personality** — group `monteCarlo` entries by student personality and average `successRate`
 - **Success rate by UI preference** — compare average `successRate` for students where `ui_preferred: true` vs `ui_preferred: false`
-- **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`)
+- **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`; use `aggregate.failureCategoriesByStep` for the exact causes)
 - **Curriculum quality hotspots** — correlate top-dropout steps with low `overall_score` and weak rubric dimensions from `curriculum-quality-metrics.json`
 - **Learning KPI index** — compute the cohort-wide mean of the three learning-outcome dimensions from `curriculum-quality-metrics.json` across all main steps: `active_learning`, `checkpoint_quality`, and `scaffolding`. Report each as a standalone mean score (0–10) and their weighted average using the same weights as the shared rubric: `(2.0 × active_learning + 2.0 × checkpoint_quality + 1.5 × scaffolding) / 5.5`. This index measures whether learners who stay in the workshop are actually building skills, independent of whether others drop out.
 - **Learning-vs-dropout trade-off** — for each top-dropout step, classify the primary failure mode as either *access barrier* (environment setup, tooling, auth) or *learning barrier* (conceptual density, insufficient scaffolding, weak checkpoints). Access barriers can often be reduced (for example by adding alternative paths, clearer setup instructions, or better error recovery guidance) without touching learning KPIs. Learning barriers must be addressed by improving scaffolding, adding intermediate checkpoints, or restructuring concept introduction — not by removing complexity or reducing cognitive demand.
@@ -424,7 +431,7 @@ Note: some student dropout is expected and acceptable. Repairs must maintain or 
 <details>
 <summary>Dropout by step</summary>
 
-Table with: step, dropouts, dropout rate, failure mode (access barrier | learning barrier), top reason.
+Table with: step, dropouts, dropout rate, failure mode (access barrier | learning barrier), top reason. The top reason must be the highest-count category in `aggregate.failureCategoriesByStep[step]`, translated into plain language without changing its meaning.
 
 </details>
 

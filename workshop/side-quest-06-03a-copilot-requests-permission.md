@@ -1,22 +1,24 @@
 # Side Quest: Method 1 — Copilot Requests Permission
 
-> _Optional: use this method when your practice repository is owned by your personal account, or by an enterprise-managed org that can bill Copilot requests through GitHub Actions. If your repository belongs to a regular GitHub organization, use [Method 2](side-quest-06-03b-copilot-github-token.md) instead._
+> _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method 2](side-quest-06-03b-copilot-github-token.md)._
 
 ## 📋 Before You Start
 
-- You have a GitHub account with an active Copilot subscription on a personal account or an enterprise-managed org.
+- An organization owns your practice repository.
+- An organization administrator confirmed centralized Copilot billing is enabled for GitHub Actions.
 - You completed [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and confirmed Method 1 applies to your repository.
 - Your practice repository was created in [Step 3](03-create-your-repo.md).
 
-This is the simplest way to give your agentic workflow Copilot API access when the repository owner can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the `copilot-requests: write` permission.
+This is the simplest way to give your agentic workflow Copilot API access when the organization can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the `copilot-requests: write` permission.
 
-It does **not** cover regular organization-owned repositories that rely on an individual member's Copilot subscription. In that case, add `COPILOT_GITHUB_TOKEN` with [Method 2](side-quest-06-03b-copilot-github-token.md).
+It does **not** cover personal repositories or organizations without centralized billing. In those cases, use `COPILOT_GITHUB_TOKEN` with [Method 2](side-quest-06-03b-copilot-github-token.md).
 
 ## Confirm this method matches your repository
 
-- Continue with Method 1 if your practice repository is owned by your personal account.
-- Continue with Method 1 if your repository is in an enterprise-managed org and your org admin enabled Copilot access for Actions runs.
-- Stop here and switch to [Method 2](side-quest-06-03b-copilot-github-token.md) if your repository is owned by a regular GitHub organization.
+If you have not confirmed the billing setting yet, ask your organization administrator before you choose this method.
+
+- Continue with Method 1 if an organization owns the repository and its administrator confirmed centralized Copilot billing is enabled.
+- Stop here and switch to [Method 2](side-quest-06-03b-copilot-github-token.md) for a personal repository or an organization without centralized billing.
 
 ## Add the permission to your workflow
 
@@ -50,43 +52,13 @@ permissions:
 ---
 ```
 
-That single line is the only workflow change required for repositories that can use Method 1.
-
-## Run your workflow
-
-Trigger a manual run from the GitHub Actions web UI to confirm the permission works:
-
-1. Go to your repository on GitHub and click the **Actions** tab.
-2. Select your workflow in the left sidebar.
-3. Click **Run workflow** → **Run workflow**.
-4. Open the run once it starts and expand the Copilot step logs.
-5. Confirm the step completes without a `401 Unauthorized` error.
-
-After the run finishes, verify the result from your terminal:
-
-```bash
-gh aw logs
-```
-
-The output should show the Copilot step completing without a `401 Unauthorized` error. If the step failed, look for `401 Unauthorized` in the log output and double-check that `copilot-requests: write` is present under `permissions` in your workflow frontmatter.
-
-You can also verify the Copilot access that backs this repository before running:
-
-```bash
-gh auth status
-```
-
-If the repository is in your personal account, look for the `copilot` scope in the output or confirm your plan is active at [github.com/settings/copilot](https://github.com/settings/copilot).
-
-If the repository is in an enterprise-managed org, confirm your org admin enabled Copilot access for your account and for Actions-based usage.
+That single line is the only workflow authentication change required for repositories that can use Method 1. Recompile and commit the lock file after changing the source workflow.
 
 ## ✅ Checkpoint
 
-- [ ] I confirmed Method 1 matches my repository owner (personal account or supported enterprise org)
+- [ ] I confirmed the owning organization has centralized Copilot billing enabled
 - [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
-- [ ] I confirmed the Copilot access that backs this repository is active
-- [ ] A manual workflow run completed without a `401 Unauthorized` error
-- [ ] `gh aw logs` shows the Copilot step completed without a `401 Unauthorized` error (or you confirmed the same in the Actions UI)
+- [ ] I recompiled and committed the matching lock file
 - [ ] You did not need to create any repository secret
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
@@ -98,14 +70,14 @@ If the repository is in an enterprise-managed org, confirm your org admin enable
 
 | Failure | What you see | Fix |
 |---|---|---|
-| Repository belongs to a regular GitHub organization | `401 Unauthorized` or repeated Copilot auth failures even though `copilot-requests: write` is present | Switch to [Method 2](side-quest-06-03b-copilot-github-token.md) and add `COPILOT_GITHUB_TOKEN` |
+| Organization does not have centralized Copilot billing | `401 Unauthorized` or repeated Copilot auth failures even though `copilot-requests: write` is present | Switch to [Method 2](side-quest-06-03b-copilot-github-token.md) |
 | `copilot-requests: write` missing from frontmatter | `401 Unauthorized` in the run log | Add `copilot-requests: write` under `permissions` in your workflow `.md` file |
 | No active Copilot subscription | `403 Forbidden` or "Copilot not available" | Visit [github.com/settings/copilot](https://github.com/settings/copilot) and confirm a plan is listed |
 | Org policy blocks Copilot access | `403 Forbidden` | Ask your GitHub org admin to enable Copilot model access for your account |
 
 Work through these checks in order if the run still fails:
 
-1. Confirm the repository owner matches Method 1. If the repository belongs to a regular GitHub organization, switch to [Method 2](side-quest-06-03b-copilot-github-token.md).
+1. Confirm the owning organization has centralized Copilot billing. If it does not, switch to [Method 2](side-quest-06-03b-copilot-github-token.md).
 2. Open your workflow `.md` file and confirm `copilot-requests: write` is present under `permissions`.
 3. Verify the Copilot access that backs this repository is active.
 4. If you are in an enterprise-managed organization, confirm the org Copilot policy allows agentic workflows — see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).

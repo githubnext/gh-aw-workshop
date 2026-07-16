@@ -1,6 +1,6 @@
 # Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method when you need a dedicated PAT for Copilot access — for example, a repository owned by a regular GitHub organization, a service account, an older workflow, or an org-level override. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
+> _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled._
 
 This method stores a Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
 
@@ -15,7 +15,7 @@ If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](s
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Name the token (for example, `gh-aw-copilot`) and set an expiry (90 days is a common default).
-3. Set **Repository access** to **Public repositories**.
+3. For a public workshop repository, choose **Public repositories**. For a private workshop repository, choose **Only select repositories** and select it.
 4. Under **Permissions** → **Account permissions**, set **Copilot requests** to **Read-only**.
 5. Click **Generate token** and copy the value immediately — GitHub shows it only once.
 
@@ -54,29 +54,26 @@ You should see `COPILOT_GITHUB_TOKEN` in the output. Once confirmed, you can saf
 - [ ] `COPILOT_GITHUB_TOKEN` appears in the repository secrets list
 - [ ] I closed the token tab only after confirming the secret was saved
 
-## Run your workflow
+## Select the token in your workflow
 
-Trigger a manual run and confirm authentication succeeds:
-
-```bash
-gh aw run
-```
-
-Then check the logs:
+Remove `copilot-requests: write` from the source workflow. When that permission is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 
 ```bash
-gh run view --log
+gh aw compile
+git add .github/workflows/
+git commit -m "Use personal Copilot billing"
+git push
 ```
 
-Confirm the Copilot step completes without `401 Unauthorized` or `403 Forbidden`.
+The compile updates the lock file so it uses the token-based method.
 
 ## ✅ Checkpoint
 
 - [ ] You generated a fine-grained PAT with **Copilot requests: Read-only** under **Account permissions**
 - [ ] `COPILOT_GITHUB_TOKEN` exists in your repository's Actions secrets
 - [ ] `gh secret list` confirms the secret is present
-- [ ] A manual workflow run completed after you added the secret
-- [ ] The run logs show no auth errors (`401 Unauthorized` or `403 Forbidden`)
+- [ ] `copilot-requests: write` is not present in the source workflow
+- [ ] The recompiled source and lock files are committed
 - [ ] You noted the PAT expiry date and have a rotation reminder
 
 Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).

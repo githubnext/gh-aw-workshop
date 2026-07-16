@@ -1,6 +1,6 @@
 # Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method when you need a dedicated PAT for Copilot access and want to complete setup entirely in the GitHub web UI. If your repository is in your personal account or a supported enterprise org, prefer [Method 1](side-quest-06-03a-copilot-requests-permission.md) instead._
+> _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-billing setup without terminal commands._
 
 This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
 
@@ -49,20 +49,21 @@ Quick check:
 - [ ] The secret now appears in the repository Actions secrets list
 - [ ] I closed the token tab only after confirming the secret was saved
 
-## Run your workflow
+## Select the token in your workflow
 
-1. Open the **Actions** tab in your repository.
-2. Select your workflow and click Run workflow.
-3. Open the run and expand the Copilot step logs.
-4. Confirm the Copilot step completes without 401 Unauthorized or 403 Forbidden.
+1. Edit the source workflow and remove `copilot-requests: write`.
+2. Commit the source change.
+3. Ask the **Agentic Workflows** agent to run `gh aw compile` and commit the updated lock file.
+
+When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 
 ## ✅ Checkpoint
 
 - [ ] You generated a new fine-grained PAT and copied it before leaving the token page
 - [ ] The token has **Copilot requests: Read-only** under **Account permissions**
 - [ ] `COPILOT_GITHUB_TOKEN` exists in **Settings** → **Secrets and variables** → **Actions**
-- [ ] A manual workflow run completed after you added the secret
-- [ ] The run logs show the Copilot step completed without 401 Unauthorized or 403 Forbidden
+- [ ] `copilot-requests: write` is not present in the source workflow
+- [ ] The agent recompiled and committed the updated lock file
 - [ ] You set a reminder to rotate the PAT before the expiry date
 - [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
 
