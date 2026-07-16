@@ -21,14 +21,16 @@ name: pr-reviewer # workflow name shown in the Actions sidebar
 on:
   pull_request:
     types: [opened, synchronize] # run when a PR opens or receives new commits
-model: gpt-4o # LLM used for the review
+engine:
+  id: copilot
+  model: gpt-5.4-mini   # LLM used for the review
 tools: [github] # required so the agent can read PR diffs and post review comments
 ---
 ```
 
 After this frontmatter block, add your workflow prompt body in Markdown (for example: "Read the diff, find security and reliability risks, and post sections for Findings, Suggested Fixes, and Final Verdict.").
 
-This is intentionally small: just enough to understand what each top-level key controls before you write or paste the complete workflow in your chosen build path.
+This is intentionally small: just enough to understand what each top-level key controls before you write or paste the complete workflow in your chosen build path. Note that `model` is a sub-field of `engine:`, not a top-level key.
 
 ## Check your understanding
 
