@@ -9,69 +9,99 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 - You have a GitHub account with an active Copilot subscription.
 - You have read [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and chosen Method 2.
 
-## ✏️ Exercise: Generate a token
+## ✏️ Sub-exercise A: Generate the token
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
-2. Give it a name, for example `gh-aw-copilot`.
-3. Set an expiry — 90 days is a reasonable default. Add a calendar reminder for that date so you remember to rotate the token before it expires.
-4. Set **Repository access** to **Public repositories**.
-   - The workshop uses a public practice repository.
-   - If you are doing this outside the workshop with a private repository, choose **Only select repositories** and select your private repository.
-5. Under **Permissions**, expand **Account permissions** (not **Repository permissions**) and set **Copilot requests** to **Read-only**.
-6. Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
+2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Add a calendar reminder so you rotate the token before it expires.
+3. Set **Repository access** to **Public repositories** for the workshop repo. For private repositories, choose **Only select repositories** and pick your repo.
+4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
+5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
+
+Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
 
 > [!IMPORTANT]
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
 
 **Verify:** The token value is visible on screen and copied to your clipboard before continuing.
 
-## ✏️ Exercise: Add the secret
+Optional terminal artifact (no token value shown):
 
-Open your repository in a **new tab** so you keep the token page open until the secret is saved.
+```bash
+printf 'Rotate COPILOT_GITHUB_TOKEN by YYYY-MM-DD\n' >> ~/copilot-token-rotation.txt
+```
 
-1. In your repository, click **Settings** → **Secrets and variables** → **Actions**.
+Quick check:
+
+- [ ] I can see a newly created PAT in my token list
+- [ ] I copied the token value before leaving the page
+- [ ] I noted the token rotation date
+
+## ✏️ Sub-exercise B: Store the secret
+
+Open your repository in a new tab so you keep the token page open until the secret is saved.
+
+1. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
 2. Click **New repository secret**.
-3. Enter the name **`COPILOT_GITHUB_TOKEN`** — uppercase, underscores only, no spaces or hyphens.
-4. Paste the token value. Confirm no extra whitespace was added at the start or end.
+3. Enter the name `COPILOT_GITHUB_TOKEN` (uppercase with underscores).
+4. Paste the token value and confirm there is no leading or trailing whitespace.
 5. Click **Add secret**.
 6. Confirm the secret appears in the list as `COPILOT_GITHUB_TOKEN`.
 
 **Verify:** `COPILOT_GITHUB_TOKEN` appears in the Secrets list — then you can safely close the token tab.
 
+Optional terminal path:
+
+```bash
+gh secret set COPILOT_GITHUB_TOKEN
+```
+
+This command prompts for the token value interactively.
+
+Optional terminal verify:
+
+```bash
+gh secret list | grep COPILOT_GITHUB_TOKEN
+```
+
+Quick check:
+
+- [ ] The secret name is exactly `COPILOT_GITHUB_TOKEN`
+- [ ] The secret now appears in the repository Actions secrets list
+- [ ] I closed the token tab only after confirming the secret was saved
+
 ## Run your workflow
 
-Trigger a manual run to confirm the secret is wired up correctly:
-
-1. Go to the **Actions** tab in your repository.
-2. Select your workflow and click **Run workflow** → **Run workflow**.
+1. Open the **Actions** tab in your repository.
+2. Select your workflow and click Run workflow.
 3. Open the run and expand the Copilot step logs.
-4. Look for a line containing `COPILOT_GITHUB_TOKEN` in the log output — this confirms the engine found and used your secret.
+4. Confirm the Copilot step completes without 401 Unauthorized or 403 Forbidden.
+
+Optional terminal path:
+
+```bash
+gh aw run
+```
+
+Optional terminal run check:
+
+```bash
+gh run list --limit 1
+```
+
+Optional terminal log check:
+
+```bash
+gh run view --log
+```
 
 ## ✅ Checkpoint
 
-- [ ] You generated a fine-grained PAT at [github.com/settings/tokens](https://github.com/settings/tokens) with **Repository access: Public repositories** and **Copilot requests: Read-only**
-- [ ] `COPILOT_GITHUB_TOKEN` is stored as a repository secret (exact name, no spaces or hyphens)
-- [ ] Your workflow frontmatter sets `copilot-requests: read` under `permissions` (read-only when using `COPILOT_GITHUB_TOKEN`)
-- [ ] A manual run completed and the Copilot step shows it authenticated with `COPILOT_GITHUB_TOKEN`
+- [ ] You generated a new fine-grained PAT and copied it before leaving the token page
+- [ ] The token has **Copilot requests: Read-only** under **Account permissions**
+- [ ] `COPILOT_GITHUB_TOKEN` exists in **Settings** → **Secrets and variables** → **Actions**
+- [ ] A manual workflow run completed after you added the secret
+- [ ] The run logs show the Copilot step completed without 401 Unauthorized or 403 Forbidden
+- [ ] You noted the PAT expiry date and a rotation reminder
+- [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
 
-**Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
-
-## Troubleshooting
-
-<details>
-<summary>Common failures and fixes</summary>
-
-| Failure | What you see | Fix |
-|---|---|---|
-| Wrong secret name (case, typo) | Workflow silently uses no token or falls back to a 401 | Secret name must be exactly `COPILOT_GITHUB_TOKEN` — uppercase, underscores only |
-| Token copied incorrectly (leading/trailing space) | `401 Unauthorized` | Delete and re-create the repository secret, paste carefully without extra whitespace |
-| PAT missing `Copilot requests: Read-only` permission | `403 Forbidden` | Re-generate the token and set **Copilot requests** to **Read-only** |
-| PAT expired | `401 Unauthorized` after working previously | Generate a new PAT and update the repository secret |
-
-Work through these checks if a run fails with `401 Unauthorized`:
-
-1. In **Settings → Secrets and variables → Actions**, confirm the secret exists with the exact name `COPILOT_GITHUB_TOKEN`.
-2. At [github.com/settings/tokens](https://github.com/settings/tokens), confirm the fine-grained PAT has **Copilot requests: Read-only**, has not expired, and is scoped to your repository type (public workshop repo or your specific private repo).
-3. If in doubt, delete the secret, generate a fresh PAT, and re-add the secret — it takes less than two minutes.
-
-</details>
+**Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md)
