@@ -17,8 +17,6 @@ This method stores a fine-grained Personal Access Token (PAT) as a repository se
 4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
 5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
 
-Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
-
 > [!IMPORTANT]
 > Copy the token before you navigate away or close the tab. If you miss this window, you must generate a new token.
 
@@ -29,6 +27,8 @@ Optional terminal artifact (no token value shown):
 ```bash
 printf 'Rotate COPILOT_GITHUB_TOKEN by YYYY-MM-DD\n' >> ~/copilot-token-rotation.txt
 ```
+
+Replace YYYY-MM-DD with your actual token expiry date.
 
 Quick check:
 
@@ -85,7 +85,7 @@ gh aw run
 Optional terminal run check:
 
 ```bash
-gh run list --limit 1
+gh run list --limit 1 --json status,conclusion
 ```
 
 Optional terminal log check:
@@ -103,5 +103,7 @@ gh run view --log
 - [ ] The run logs show the Copilot step completed without 401 Unauthorized or 403 Forbidden
 - [ ] You noted the PAT expiry date and a rotation reminder
 - [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
+
+Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
 
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md)
