@@ -15,7 +15,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 ## Pick Your Adventure
 
-Before you compare the scenarios, open a note in your preferred editor, a GitHub issue draft, or a local text file and fill in this chooser template:
+Before you compare the scenarios, open a note in your preferred editor, a GitHub issue draft, or a local text file. Fill in **Repository task**, **Who benefits**, and **Data source** first. You'll come back to the other fields after you review the scenario table:
 
 ```text
 Repository task:
@@ -35,6 +35,10 @@ Use this quick checklist before you choose:
 Use this decision tree to narrow the list:
 
 ```text
+Want GitHub Copilot to build the workflow from a prompt?
+→ Yes: Adventure D
+→ No: Continue
+
 Need a browser-only path with no terminal?
 → Yes: Adventure E
 → No: Continue
@@ -45,7 +49,11 @@ Need the workflow to run on every pull request?
 
 Need a daily report about documentation health?
 → Yes: Adventure B
-→ No: Adventure A
+→ No: Continue
+
+Need a daily report about PRs, issues, and CI status?
+→ Yes: Adventure A
+→ No: Re-check the scenario table below and choose the closest fit
 ```
 
 | Scenario | What it automates | Best for |
@@ -62,6 +70,8 @@ Need a daily report about documentation health?
 
 > [!NOTE]
 > **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the Agents tab?** You can skip the design step and have an agent build any of these scenarios. Pick a scenario from the table above to understand what it does, then jump to [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md). **On mobile or in a browser-only setup with no terminal?** Go to [Adventure E](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) below.
+
+Now go back to your note and finish **Best trigger**, **Likely adventure**, and **Why this fits**.
 
 ---
 
@@ -124,8 +134,9 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 ## Commit to Your Choice
 
 - In your note or draft from earlier, write the adventure you chose and one reason it matches the repository task you wrote down earlier.
-- Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the **What You'll Do** section to confirm the scenario matches what you want to automate.
-- If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and jump to [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
+- If you chose Adventure A, B, or C, open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the top **🎯 What You'll Do** section to confirm the scenario matches what you want to automate.
+- If you chose Adventure D, open [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md) and find the prompt for your scenario.
+- If you chose Adventure E, stay on this page and read [Adventure E: Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) before you continue.
 
 ---
 
@@ -135,7 +146,10 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 - [ ] I've chosen an adventure and written down one reason it matches that task
 - [ ] I can describe in one sentence what my chosen workflow will produce
 - [ ] I can name the trigger my chosen scenario uses
-- [ ] I've opened the design step for my chosen scenario and read the **What You'll Do** section
+- [ ] I've completed the next-step check for my chosen path:
+  - Adventure A, B, or C: I opened the design step and read the top **🎯 What You'll Do** section
+  - Adventure D: I opened Step 11d and found the prompt for my scenario
+  - Adventure E: I read the browser-only section on this page and I'm ready to start the Copilot session
 - [ ] I know whether I'll follow the design step path or jump to Step 11d with the GitHub Copilot app or Agents tab
 - [ ] I know Adventure E is the browser-only path for mobile and CCA learners
 - [ ] If following Adventure E, the agent has created and merged a pull request with the workflow file
