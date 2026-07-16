@@ -126,6 +126,7 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) — add defensive briefs, timeouts, and fallback outputs so unattended runs stay reliable.
 - ➡️ [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) — compare prompt variants across runs and let data decide which one to keep.
 - ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
+- ➡️ [Lock Down Your Agent's Network Access](25-network-firewall.md) — declare exactly which domains your agent is allowed to contact, satisfying enterprise security policies with a single auditable YAML stanza.
 
 ## 📚 See Also
 
