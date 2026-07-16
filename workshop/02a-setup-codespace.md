@@ -11,12 +11,12 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
 
-| Path | Best for | Next step |
-|------|----------|-----------|
-| 📱 Mobile / Copilot app | No terminal or local install | Not this path — [go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
-| 🤖 Copilot Cloud Agent (CCA) | Browser-only with CCA; no local install | [Start at Step 3b →](03b-create-your-repo-ui.md), then continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
-| ☁️ Codespace | Browser terminal; no local installs | ✅ Continue below |
-| 💻 Local terminal | Your own machine and tools | [Switch to Adventure B →](02b-setup-local.md) |
+| Path | Best for | Plan required | Next step |
+|------|----------|---------------|-----------|
+| 📱 Mobile / Copilot app | No terminal or local install | None | Not this path — [go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
+| 🤖 Copilot Cloud Agent (CCA) | Browser-only with CCA; no local install | Copilot access | [Start at Step 3b →](03b-create-your-repo-ui.md), then continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
+| ☁️ Codespace | Browser terminal; no local installs | Codespaces access (free for public repos) | ✅ Continue below |
+| 💻 Local terminal | Your own machine and tools | None | [Switch to Adventure B →](02b-setup-local.md) |
 
 > [!IMPORTANT]
 > <details>
@@ -68,7 +68,12 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 > [!TIP]
 > If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
-If this is your first time in a terminal, see [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) for a quick orientation on navigating folders and running commands.
+<details>
+<summary>First time in a terminal?</summary>
+
+Type your command after the `$` prompt and press Enter. Output appears below; a new `$` prompt means the command finished. See [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) for more.
+
+</details>
 
 ### Verify your Codespace is ready
 
@@ -119,6 +124,7 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 
 ## ✅ Checkpoint
 
+- [ ] I confirmed my GitHub plan includes Codespaces access (free for public repositories)
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
 - [ ] `gh --version` returns version 2.40.0 or newer
