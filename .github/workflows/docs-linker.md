@@ -211,44 +211,8 @@ conventions:
 https://github.github.com/gh-aw/<category>/<page-slug>/
 ```
 
-Use the table below as your authoritative map of source reference files to
-rendered doc URLs. When the agent discovers additional pages while fetching
-docs, add them to its working knowledge.
-
-| Source file in github/gh-aw | Rendered URL |
-|---|---|
-| `.github/aw/github-agentic-workflows.md` | `https://github.github.com/gh-aw/introduction/overview/` |
-| `.github/aw/syntax-core.md` | `https://github.github.com/gh-aw/reference/syntax/` |
-| `.github/aw/syntax-agentic.md` | `https://github.github.com/gh-aw/reference/agentic/` |
-| `.github/aw/syntax-tools-imports.md` | `https://github.github.com/gh-aw/reference/tools/` |
-| `.github/aw/triggers.md` | `https://github.github.com/gh-aw/reference/triggers/` |
-| `.github/aw/memory.md` | `https://github.github.com/gh-aw/reference/memory/` |
-| `.github/aw/safe-outputs.md` | `https://github.github.com/gh-aw/reference/safe-outputs/` |
-| `.github/aw/safe-outputs-content.md` | `https://github.github.com/gh-aw/reference/safe-outputs-content/` |
-| `.github/aw/safe-outputs-automation.md` | `https://github.github.com/gh-aw/reference/safe-outputs-automation/` |
-| `.github/aw/safe-outputs-management.md` | `https://github.github.com/gh-aw/reference/safe-outputs-management/` |
-| `.github/aw/safe-outputs-runtime.md` | `https://github.github.com/gh-aw/reference/safe-outputs-runtime/` |
-| `.github/aw/network.md` | `https://github.github.com/gh-aw/reference/network/` |
-| `.github/aw/messages.md` | `https://github.github.com/gh-aw/reference/messages/` |
-| `.github/aw/subagents.md` | `https://github.github.com/gh-aw/reference/subagents/` |
-| `.github/aw/loop.md` | `https://github.github.com/gh-aw/reference/loop/` |
-| `.github/aw/patterns.md` | `https://github.github.com/gh-aw/guides/patterns/` |
-| `.github/aw/workflow-patterns.md` | `https://github.github.com/gh-aw/guides/workflow-patterns/` |
-| `.github/aw/token-optimization.md` | `https://github.github.com/gh-aw/guides/token-optimization/` |
-| `.github/aw/context.md` | `https://github.github.com/gh-aw/reference/context/` |
-| `.github/aw/skills.md` | `https://github.github.com/gh-aw/reference/skills/` |
-| `.github/aw/reuse.md` | `https://github.github.com/gh-aw/guides/reuse/` |
-| `.github/aw/experiments.md` | `https://github.github.com/gh-aw/reference/experiments/` |
-| `.github/aw/github-mcp-server.md` | `https://github.github.com/gh-aw/reference/github-mcp-server/` |
-| `.github/aw/mcp-clis.md` | `https://github.github.com/gh-aw/reference/mcp-clis/` |
-| `.github/aw/agentic-workflows-mcp.md` | `https://github.github.com/gh-aw/reference/agentic-workflows-mcp/` |
-| `.github/aw/cli-commands.md` | `https://github.github.com/gh-aw/reference/cli-commands/` |
-| `.github/aw/pr-reviewer.md` | `https://github.github.com/gh-aw/guides/pr-reviewer/` |
-| `.github/aw/report.md` | `https://github.github.com/gh-aw/guides/report/` |
-| `.github/aw/llms.md` | `https://github.github.com/gh-aw/reference/llms/` |
-| `.github/aw/workflow-constraints.md` | `https://github.github.com/gh-aw/reference/workflow-constraints/` |
-| `.github/aw/workflow-editing.md` | `https://github.github.com/gh-aw/guides/workflow-editing/` |
-| `github.blog/tag/github-for-beginners/` | `https://github.blog/tag/github-for-beginners/` |
+Use the prebuilt doc index at `/tmp/gh-aw/data/doc-index.json` as the
+authoritative source of rendered doc page URLs and section anchors.
 
 ---
 
@@ -308,7 +272,7 @@ docs, add them to its working knowledge.
 ## Identify Concepts and Tasks
 
 For each file in `target_files`, scan the file for every **concept**, **task**,
-**term**, or **feature** that has a matching reference page in the docs-site table
+**term**, or **feature** that has a matching reference page in the doc index
 above. Consider:
 
 - Frontmatter fields mentioned (`on:`, `permissions:`, `tools:`, `safe-outputs:`,
@@ -322,7 +286,7 @@ above. Consider:
 For each matched concept, resolve the most precise URL using the doc index loaded
 in the previous step:
 
-1. Look up the page URL for the concept in the docs-site table.
+1. Look up the page URL for the concept in the doc index.
 2. If the doc index has anchors for that page, find the anchor whose `text` most
    closely matches the concept term (case-insensitive, partial match allowed).
 3. If a matching anchor is found, use its `url` field (which includes `#anchor-id`)
@@ -349,7 +313,7 @@ Build a mapping:
 ]
 ```
 
-Only include entries where a matching URL exists in the table.
+Only include entries where a matching URL exists in the doc index.
 
 ---
 
