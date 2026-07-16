@@ -248,6 +248,7 @@ docs, add them to its working knowledge.
 | `.github/aw/llms.md` | `https://github.github.com/gh-aw/reference/llms/` |
 | `.github/aw/workflow-constraints.md` | `https://github.github.com/gh-aw/reference/workflow-constraints/` |
 | `.github/aw/workflow-editing.md` | `https://github.github.com/gh-aw/guides/workflow-editing/` |
+| `github.blog/tag/github-for-beginners/` | `https://github.blog/tag/github-for-beginners/` |
 
 ---
 
