@@ -56,6 +56,10 @@ An agentic workflow source file is a Markdown task brief with YAML frontmatter. 
 
 ## Compile the workflow in the Agents tab
 
+The diagram below shows what happens when you ask the agent to compile your workflow file — no terminal needed.
+
+![Agent-assisted compile loop: user writes a Markdown source file, pastes a compile prompt to the agent, the agent compiles and proposes a diff, and you approve the commit.](images/07b-agent-compile-loop.svg)
+
 Open your repository's **Agents** tab and start a new session with the **Agentic Workflows** agent.
 
 Paste this prompt:
