@@ -7,7 +7,8 @@
 
 - You completed [Step 6: Install `gh-aw`](06-install-gh-aw.md).
 - Your practice repository is ready from [Step 3](03-create-your-repo.md).
-- Your GitHub account has an active GitHub Copilot subscription.
+- Your GitHub account has an active GitHub Copilot subscription (verify at [github.com/settings/copilot](https://github.com/settings/copilot)).
+- You know which authentication method you are using (see [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md)).
 
 ## 🎯 What You'll Do
 
