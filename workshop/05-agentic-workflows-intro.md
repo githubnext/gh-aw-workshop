@@ -11,6 +11,9 @@ If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
 ## 📋 Before You Start
 
+> [!IMPORTANT]
+> Agentic workflows require an active Copilot subscription (Individual, Business, or Enterprise). If you are on GHES or EMU, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) to confirm your access before the hands-on steps.
+
 - You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
 - You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
 
@@ -44,13 +47,13 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 
 If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
 
+_Pause and connect:_ Before classifying the tasks below, identify which of the three core concepts — the reasoning loop, the natural-language brief, or dynamic tool use — is most relevant to work you do today. Write one sentence in your notes, then continue.
+
 ## Classify these tasks
 
 For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
 
-You just saw how a standard Actions workflow follows fixed steps. Agentic workflows replace those fixed steps with a plain-English task brief — use that contrast to classify the tasks below.
-
-**Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
+Task A: Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
 
 - [ ] I have classified Task A
 
@@ -61,7 +64,7 @@ You just saw how a standard Actions workflow follows fixed steps. Agentic workfl
 
 </details>
 
-**Task B:** Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
+Task B: Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
 
 - [ ] I have classified Task B
 
@@ -71,9 +74,6 @@ You just saw how a standard Actions workflow follows fixed steps. Agentic workfl
 **Task B — Agentic workflow:** the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
 
 </details>
-
-> [!IMPORTANT]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
 
 ## Reflection
 
@@ -97,7 +97,7 @@ A scheduled agentic workflow generates a report like this:
 3. Triage high-priority issue #398 with the platform team.
 ```
 
-**Your turn:** Answer in your own words — _what did the agent decide on its own?_ Identify at least two lines where the agent made a judgment call rather than just reading a number.
+Your turn: Answer in your own words — _what did the agent decide on its own?_ Identify at least two lines where the agent made a judgment call rather than just reading a number.
 
 ## The two files
 
@@ -163,7 +163,7 @@ If you had to look up more than one term, take a moment to review that section b
 
 ## Classify more tasks
 
-**Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
+Task C: Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
 
 - [ ] I have classified Task C
 
@@ -174,7 +174,7 @@ If you had to look up more than one term, take a moment to review that section b
 
 </details>
 
-**Task D:** On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
+Task D: On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
 
 - [ ] I have classified Task D
 
@@ -212,6 +212,8 @@ Does your answer include:
 
 ## ✅ Checkpoint
 
+- [ ] I identified which of the three core concepts — reasoning loop, natural-language brief, or dynamic tool use — is most relevant to my current role
+- [ ] I confirmed I have an active Copilot subscription before continuing (or completed the Enterprise Setup side quest)
 - [ ] I described what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
 - [ ] I understand that agentic workflows use the same trust model as GitHub Actions
