@@ -56,7 +56,7 @@
 name: "Workshop Author: Learning GitHub Agentic Workflows"
 on:
   schedule:
-  - cron: "21 */6 * * *"
+  - cron: "53 */6 * * *"
     # Friendly format: every 6 hours (scattered)
   # skip-if-match: is:pr is:open label:workshop # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
