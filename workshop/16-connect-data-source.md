@@ -16,12 +16,12 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 ### Understand the data-flow pattern
 
-[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, you will use one shell step to collect data and a later prompt section to turn that data into a summary.
+[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, you will use shell steps to collect data and a later prompt section to turn that data into a summary.
 
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
 > [!TIP]
-> If step outputs or the here-document syntax are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md). If you want help deciding what should stay scripted versus what the AI should interpret, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
+> If step outputs, here-document syntax, or the scripted-versus-agentic split are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) and [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
 
 ### Fetch commit history
 
@@ -130,8 +130,8 @@ Once you're comfortable with this pattern, the same technique works for:
 
 ## ✅ Checkpoint
 
-- [ ] Your workflow has a recent-commits step with the recent step ID
-- [ ] Your workflow has an open-issues step with the issues step ID
+- [ ] Your workflow has a recent-commits step with `id: recent`
+- [ ] Your workflow has an open-issues step with `id: issues`
 - [ ] Your AI prompt uses both saved outputs
 - [ ] `gh aw compile` reports no errors
 - [ ] A manual run completes and the summary mentions both commits and open issues
