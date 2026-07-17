@@ -73,7 +73,7 @@ This writes `log.md` (agent conversation) and `firewall.md` (network access summ
 
 The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh aw audit` — contains the full record of what the agent did. After downloading, look for:
 
-| File | What it tells you |
+| File (inside the agent artifact) | What it tells you |
 |---|---|
 | `safeoutputs.jsonl` | Every safe-output declaration the agent emitted |
 | `mcp-logs/` | One log file per MCP server, listing every tool call and result |
@@ -87,7 +87,7 @@ The `usage` artifact contains token consumption broken down by job. It is also s
 Use this data to spot unexpectedly long runs, track cost trends over time, and set a budget baseline before enabling a scheduled trigger.
 
 > [!NOTE]
-> AIC (AI Credits) is the billing unit for agentic workflow inference. Confirmed billing figures appear in your GitHub billing dashboard.
+> AIC (AI Credits) is the billing unit for agentic workflow inference and is derived from token consumption. Exact billing figures appear in your GitHub billing dashboard.
 
 ### Check the firewall log
 
