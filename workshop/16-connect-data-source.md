@@ -16,18 +16,16 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 ### Understand the data-flow pattern
 
-[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so you can run any shell command — including `gh`. The pattern has three parts:
+[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, you will use one shell step to collect data and a later prompt section to turn that data into a summary.
 
-1. A shell step fetches data and writes it to `$GITHUB_OUTPUT`.
-2. A step ID (e.g., `id: recent`) names the step.
-3. The prompt references the output with `${{ steps.<id>.outputs.<key> }}`.
+Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
 > [!TIP]
-> If you're unfamiliar with `$GITHUB_OUTPUT`, read [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md). If you're deciding which parts should be fixed scripts versus AI reasoning, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
+> If step outputs or the heredoc pattern are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md). If you want help deciding what should stay scripted versus what the AI should interpret, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
 
 ### Fetch commit history
 
-Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the frontmatter.
+Open the daily-status workflow file at .github/workflows/daily-status.md and add two steps to the frontmatter steps block.
 
 First, fetch the recent commit log:
 
@@ -43,7 +41,7 @@ First, fetch the recent commit log:
     echo "EOF" >> $GITHUB_OUTPUT
 ```
 
-🤔 **Predict:** What will `${{ steps.recent.outputs.commit_log }}` contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
+🤔 Pause and predict: What will the recent commit output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
 
 ### Fetch open issues
 
@@ -67,13 +65,13 @@ Next, add a step to fetch open issues:
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided automatically — no setup needed
 ```
 
-✏️ **Try it:** Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you trigger a workflow run, check whether `open_issues_count` matches.
+✏️ Try it: Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you trigger a workflow run, check whether the workflow reports the same total.
 
-🤔 **Predict:** What will the AI receive if `open_issues` is empty (no open issues in the repo)? Will the prompt still produce a useful output?
+🤔 Pause and predict: What will the AI receive if the issue list is empty? Will the prompt still produce a useful output?
 
 ### Inject data into your AI prompt
 
-The AI prompt is the **Markdown body** after the closing `---` of the frontmatter — update it to reference the step outputs:
+The AI prompt lives in the Markdown body after the frontmatter. Update that section so it uses the step outputs:
 
 ```markdown
 ---
@@ -92,11 +90,11 @@ Write a concise, friendly update — two short paragraphs.
 Highlight anything that looks urgent in the issue list.
 ```
 
-`${{ steps.<id>.outputs.<key> }}` expressions are resolved at runtime before the AI sees the prompt.
+GitHub resolves the step-output expressions before the AI sees the prompt, so the model receives plain text instead of workflow syntax.
 
-🤔 **Predict:** If `commit_log` is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
+🤔 Pause and predict: If the recent commit output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
 
-✏️ **Try it:** Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
+✏️ Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
 
 ### Compile and test
 
@@ -132,14 +130,13 @@ Once you're comfortable with this pattern, the same technique works for:
 
 ## ✅ Checkpoint
 
-- [ ] Your workflow has a `fetch recent commits` step with `id: recent`
-- [ ] Your workflow has a `fetch open issues` step with `id: issues`
-- [ ] Your AI prompt references `steps.recent.outputs.commit_log` and `steps.issues.outputs.open_issues`
+- [ ] Your workflow has a recent-commits step with the recent step ID
+- [ ] Your workflow has an open-issues step with the issues step ID
+- [ ] Your AI prompt uses both saved outputs
 - [ ] `gh aw compile` reports no errors
 - [ ] A manual run completes and the summary mentions both commits and open issues
-- [ ] You can explain the `<<EOF` multi-line output syntax in your own words
-- [ ] You can explain why `export` doesn't pass data between steps and `$GITHUB_OUTPUT` does
-- [ ] You can describe what happens if `commit_log` is empty and how your prompt handles it
+- [ ] You can explain how the workflow passes fetched data into the prompt
+- [ ] You can describe what happens if the recent commit output is empty and how your prompt handles it
 
 **Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
 
@@ -149,8 +146,8 @@ Once you're comfortable with this pattern, the same technique works for:
 >
 > Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit:
 >
-> - **Token exfiltration**: learn how crafted issue or PR content can attempt to leak your `GITHUB_TOKEN` — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
-> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how `permissions:` minimization and `network.allowed-domains` contain the blast radius.
+> - Token exfiltration: learn how crafted issue or PR content can attempt to leak your GitHub token — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
+> - Long-lived credential risks: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how permission minimization and domain allowlists contain the blast radius.
 >
 > </details>
 
