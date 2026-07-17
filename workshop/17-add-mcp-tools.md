@@ -28,6 +28,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 > - Want to see how an over-powered workflow can give a misdirected agent more authority than the task really needs? Work through [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).  
 > - Want to understand how a compromised MCP server could feed poisoned data to your agent — and how `network.allowed-domains` and minimal permissions defend against it? Work through [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md).  
 > - Want to see how crafted issue or PR content can embed misleading text into agent output — and how `safe-outputs` label scoping keeps reviewers from being fooled? Work through [Side Quest: Output Injection via Safe Outputs](side-quest-17-06-output-injection.md).  
+> - Want to understand how a misdirected agent with write access could commit backdoors or overwrite sensitive files — and how `contents: read`, `protected-files`, and `safe-outputs: create-pull-request` prevent it? Work through [Side Quest: Repository Poisoning via Agentic Write Access](side-quest-17-07-repo-poisoning.md).  
 > Then come back here.
 >
 > </details>
