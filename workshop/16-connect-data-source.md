@@ -21,7 +21,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
 > [!TIP]
-> If step outputs, here-document syntax, or the scripted-versus-agentic split are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) and [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
+> If step outputs, here-document syntax, or the scripted versus agentic split are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) and [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
 
 ### Fetch commit history
 
@@ -41,7 +41,7 @@ First, fetch the recent commit log:
     echo "EOF" >> $GITHUB_OUTPUT
 ```
 
-🤔 Pause and predict: What will the recent commit output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
+🤔 Pause and predict: What will the `commit_log` output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
 
 ### Fetch open issues
 
@@ -92,7 +92,7 @@ Highlight anything that looks urgent in the issue list.
 
 GitHub resolves the step-output expressions before the AI sees the prompt, so the model receives plain text instead of workflow syntax.
 
-🤔 Pause and predict: If the recent commit output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
+🤔 Pause and predict: If the `commit_log` output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
 
 ✏️ Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
 
