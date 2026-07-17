@@ -4,6 +4,8 @@
 
 You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab to create and validate `daily-report-status.md`, then review and merge its pull request.
 
+![Copilot agent session flow: prompt to pull request merge](images/07c-copilot-agent-session-flow.svg)
+
 ## 📋 Before You Start
 
 - Your practice repository is connected to the GitHub Copilot app or available in the Agents tab
