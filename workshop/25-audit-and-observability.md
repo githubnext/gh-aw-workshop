@@ -87,7 +87,7 @@ For more targeted guidance, use the **`/agentic-workflows` skill** in the chat:
 /agentic-workflows Here is my audit log. The firewall blocked calls to
 api.example.com. Can you help me add the correct network.allow entry?
 
-<paste firewall.md here>
+<paste firewall audit here>
 ```
 
 The `/agentic-workflows` skill understands agentic workflow frontmatter and
