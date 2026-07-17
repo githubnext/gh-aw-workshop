@@ -21,7 +21,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
 > [!TIP]
-> If step outputs or the heredoc pattern are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md). If you want help deciding what should stay scripted versus what the AI should interpret, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
+> If step outputs or the here-document syntax are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md). If you want help deciding what should stay scripted versus what the AI should interpret, read [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
 
 ### Fetch commit history
 
@@ -146,8 +146,8 @@ Once you're comfortable with this pattern, the same technique works for:
 >
 > Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit:
 >
-> - **Token exfiltration**: learn how crafted issue or PR content can attempt to leak your GITHUB_TOKEN — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
-> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how `permissions:` minimization and the `network.allowed-domains` field contain the blast radius.
+> - **Token exfiltration**: learn how crafted issue or PR content can attempt to leak your `GITHUB_TOKEN` — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
+> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how `permissions:` minimization and `network.allowed-domains` contain the blast radius.
 >
 > </details>
 
