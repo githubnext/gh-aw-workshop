@@ -19,14 +19,14 @@ tools:
     toolsets: [default]
 ```
 
-**What this section does:** Configures which external tools the AI agent can call during its run.
+**What this section does:** Declares which external tool servers the agent may call during its run.
 
 | Field | Purpose |
 |-------|---------|
-| `tools:` | Parent key listing every tool integration the agent may use. |
-| `github:` | Enables the [GitHub MCP tool](https://github.github.com/gh-aw/guides/mcps/#github-mcp-server) — the interface the agent uses to call GitHub APIs (list issues, list PRs, check CI runs, etc.). |
-| `mode: gh-proxy` | Routes API calls through a secure proxy that enforces the `permissions` declared above, preventing calls beyond what you've allowed. |
-| `toolsets: [default]` | Activates the standard set of GitHub tools (issues, PRs, commits, actions). Add `discussions` to expand later. |
+| `tools:` | Declares every tool server the agent is allowed to call. At least one entry is required for an agent that reads GitHub data. |
+| `github:` | Connects the agent to the [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/#github-mcp-server) so it can query issues, pull requests, commits, and workflow runs. |
+| `mode: gh-proxy` | Routes every GitHub API call through a proxy that enforces the `permissions:` you declared, blocking any call you have not pre-approved. |
+| `toolsets: [default]` | Activates the standard GitHub toolset covering issues, pull requests, commits, and Actions runs. |
 
 **✏️ Try it:** Add the `tools:` block to your draft file. Double-check that `mode` and `toolsets` are indented under `github:`.
 
@@ -42,13 +42,13 @@ safe-outputs:
     max: 1
 ```
 
-**What this section does:** Defines the _only_ write actions the agent is permitted to take. This is the safety guardrail that prevents the agent from doing anything you haven't explicitly approved.
+**What this section does:** Lists every write action the agent is allowed to perform. Any write operation not listed here is blocked at runtime, regardless of what the agent body requests.
 
 | Field | Purpose |
 |-------|---------|
-| `safe-outputs:` | Parent key listing approved write operations. |
-| `add-comment:` | Allows the agent to post a comment on an issue or pull request. |
-| `max: 1` | Hard limit — the agent can post at most one comment per run. Extra posts are silently dropped. |
+| `safe-outputs:` | Declares every write operation the agent may perform. Any write not listed here is silently blocked. |
+| `add-comment:` | Permits the agent to post a comment on an issue or pull request. |
+| `max: 1` | Caps the operation at one comment per run. A second attempt is silently dropped. |
 
 > [!IMPORTANT]
 > Without `safe-outputs`, the agent cannot write anything — even if you ask it to in the body. The YAML frontmatter is the source of truth for write access, not the prose instructions.
@@ -65,15 +65,15 @@ safe-outputs:
 ---
 ```
 
-**What this section does:** Closes the YAML frontmatter. Everything below this line is the Markdown body — the agent's instructions.
+**What this section does:** Closes the YAML frontmatter block. Everything below this line is the Markdown body — the agent's plain-English task brief.
 
 **✏️ Try it:** Add the closing `---` to your draft. Confirm the file now has exactly two `---` fences.
 
 ---
 
-## Section 7 — The Markdown body (agent instructions)
+## Section 7 — The Markdown body
 
-**🔍 Predict:** The agent must collect four data points from the repository. What four things would you list in the task brief?
+**🔍 Predict:** The agent must collect four data points from the repository. What four things would you list?
 
 ```markdown
 # Daily Repo Status Report
@@ -90,34 +90,34 @@ Collect and summarize:
 
 ## Guidelines
 
-- Post only one comment. If you have already posted today, skip.
+- Post only one comment per run. If you have already posted today, skip.
 - Keep the report factual. Do not invent numbers.
 - If no open issue exists, create one titled "Daily Status Reports" and post the first comment there.
 ```
 
-**What this section does:** This is the plain-English brief you hand to the AI agent — a job description the agent reads at runtime.
+**What this section does:** This is the plain-English brief the AI agent reads at runtime — a job description telling it what to collect and how to respond.
 
-Key things to note:
+Three conventions keep a task brief reliable:
 
-- **Section headers** (`##`) are for human readability; the agent treats the whole body as a single prompt.
-- **Numbered lists** help the agent approach tasks in order.
-- **An output format template** (not shown above, but part of the full workflow) pins the exact text the agent should generate.
-- **Guidelines** handle edge cases (already posted today, no open issues) so the agent doesn't have to guess.
+- **A title and role statement** anchor the agent's purpose at the very top of the body.
+- **A numbered task list** helps the agent work through each data point in a predictable order.
+- **A guidelines block** handles edge cases — such as "already posted today" — so the agent does not have to guess.
 
-**✏️ Try it:** Add the body below the closing `---` in your draft file, then run `gh aw compile --validate` to check for errors.
+**✏️ Try it:** Add the body below the closing `---` in your draft file, then run `gh aw compile` to check for errors.
 
 ---
 
 ## ✅ Checkpoint
 
-- [ ] You can explain what `mode: gh-proxy` does and why it matters
-- [ ] You understand that `safe-outputs` is the true source of write access
+- [ ] You can explain what `mode: gh-proxy` does and why it matters for security
+- [ ] You understand that `safe-outputs` is the only source of write access — not the body text
 - [ ] Your draft file has two `---` fences with the agent body below the second
+- [ ] The agent body contains a title, a numbered task list, and a guidelines block
 - [ ] The file compiles without errors
 
 ---
 
-Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+Continue to [Part C: Token and Usage Metadata](side-quest-11-08b-frontmatter-usage-metadata.md) for an optional deep dive into how the model reports token usage after each run, or return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
 
 ## 📚 See Also
 
