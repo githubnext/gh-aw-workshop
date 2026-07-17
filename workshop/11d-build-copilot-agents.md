@@ -68,7 +68,10 @@ The prompt below tells the agent two things:
 Copy and paste the following prompt into the Agents session input:
 
 ```
-Read the agentic workflow creation guide at:
+Initialize this repository for GitHub Agentic Workflows using:
+https://raw.githubusercontent.com/github/gh-aw/main/install.md
+
+Then read the agentic workflow creation guide at:
 https://github.com/github/gh-aw/blob/main/create.md
 
 Then create a daily repository status report agentic workflow for this repository.
@@ -93,7 +96,10 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 Copy and paste the following prompt into the Agents session input:
 
 ```
-Read the agentic workflow creation guide at:
+Initialize this repository for GitHub Agentic Workflows using:
+https://raw.githubusercontent.com/github/gh-aw/main/install.md
+
+Then read the agentic workflow creation guide at:
 https://github.com/github/gh-aw/blob/main/create.md
 
 Then create a daily documentation health report agentic workflow for this repository.
@@ -118,7 +124,10 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 Copy and paste the following prompt into the Agents session input:
 
 ```
-Read the agentic workflow creation guide at:
+Initialize this repository for GitHub Agentic Workflows using:
+https://raw.githubusercontent.com/github/gh-aw/main/install.md
+
+Then read the agentic workflow creation guide at:
 https://github.com/github/gh-aw/blob/main/create.md
 
 Then create a pull request code reviewer agentic workflow for this repository.

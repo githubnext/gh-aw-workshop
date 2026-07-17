@@ -11,7 +11,21 @@ If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](s
 - You have a GitHub account with an active Copilot subscription.
 - You have read [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and chosen Method 2.
 
-## ✏️ Sub-exercise A: Generate the token
+## Shortest terminal path
+
+If your workflow currently includes `copilot-requests: write`, remove that line first. When it is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
+
+Then run:
+
+```bash
+gh aw secrets bootstrap --engine copilot
+```
+
+This guided flow checks whether the secret is missing, walks you through creating or pasting a valid fine-grained PAT, and stores it as `COPILOT_GITHUB_TOKEN`.
+
+If you prefer to create and store the PAT manually, follow the full procedure below.
+
+## ✏️ Sub-exercise A: Generate the token manually
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Name the token (for example, `gh-aw-copilot`) and set an expiry (90 days is a common default).
@@ -33,7 +47,7 @@ Replace `YYYY-MM-DD` with your token expiry date.
 - [ ] I copied the token value before leaving the page
 - [ ] I noted the token rotation date
 
-## ✏️ Sub-exercise B: Store the secret
+## ✏️ Sub-exercise B: Store the secret manually
 
 Store the token as a repository secret:
 
@@ -56,7 +70,7 @@ You should see `COPILOT_GITHUB_TOKEN` in the output. Once confirmed, you can saf
 
 ## Select the token in your workflow
 
-Remove `copilot-requests: write` from the source workflow. When that permission is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
+If you have not already done so, remove `copilot-requests: write` from the source workflow. When that permission is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 
 ```bash
 gh aw compile

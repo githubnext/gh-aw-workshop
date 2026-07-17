@@ -16,9 +16,9 @@ Open your practice repository in the GitHub Copilot app and start a session in *
 Paste this prompt:
 
 ```text
-Create `.github/workflows/daily-report-status.md` as a GitHub Agentic Workflow.
+Initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
 
-Before authoring, run `gh aw init` from the repository root, then commit and push the generated `.github/skills/agentic-workflows/` files.
+Then create a workflow for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/create.md
 
 The workflow must:
 - Be named "Daily Report Status"
@@ -29,9 +29,7 @@ The workflow must:
   "This issue has the most community support! We'll prioritise it in our next planning session."
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
-Run `gh aw compile --validate` in the session
-workspace, fix any errors, commit the source and generated lock file (plus the initialized skill files), and open a
-pull request. Show me the diff before merging.
+Run `gh aw compile --validate` in the session workspace, fix any errors, commit the source and generated lock file (plus any initialized skill files), and open a pull request. Show me the diff before merging.
 ```
 
 The agent runs validation in its isolated session workspace. You do not need a terminal for this path.

@@ -121,7 +121,11 @@ Use the **Agentic Workflows** agent in the GitHub Copilot app or Agents tab to c
 Describe your intent in plain language — the agent handles the workflow format, compilation, and pull request for you:
 
 ```
-Create a daily status workflow that posts a summary of open PRs and issues to an issue comment every day.
+Initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
+
+Then create a workflow for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/create.md
+
+The purpose of the workflow is a daily status report on recent repository activity, delivered as an issue comment. Summarize open pull requests and open issues every day.
 ```
 
 The agent creates the workflow, compiles it, and opens a pull request. Review the diff and merge it into `main`.
