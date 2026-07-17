@@ -10,8 +10,7 @@ on:
     paths:
       - "*.md"
       - "workshop/**/*.md"
-      - ".github/workflows/*.md"
-      - ".github/skills/**/*.md"
+      - ".github/**/*.md"
 permissions:
   contents: read
   pull-requests: read
