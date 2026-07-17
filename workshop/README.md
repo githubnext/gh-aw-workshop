@@ -57,6 +57,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 23 | [23-ab-experiments.md](23-ab-experiments.md) | Test Your Prompt Ideas with A/B Experiments | ✅ |
 | 24 | [24-self-hosted-runners.md](24-self-hosted-runners.md) | Run Your Agentic Workflow on a Self-Hosted Runner | ✅ |
 | 25 | [25-audit-and-observability.md](25-audit-and-observability.md) | Audit and Monitor Your Agentic Workflows | ✅ |
+| 26 | [26-enterprise-governance.md](26-enterprise-governance.md) | Enforce Organisation-Wide Workflow Policies | ✅ |
 
 ## Optional Side Quests
 
