@@ -52,7 +52,7 @@
 name: "Curriculum Quality Evaluator"
 on:
   schedule:
-  - cron: "21 3 * * *"
+  - cron: "38 12 * * *"
     # Friendly format: daily (scattered)
   workflow_dispatch:
     inputs:

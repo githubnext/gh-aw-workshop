@@ -61,7 +61,7 @@ on:
     - opened
     - synchronize
   schedule:
-  - cron: "36 13 * * *"
+  - cron: "49 3 * * *"
     # Friendly format: daily (scattered)
   workflow_dispatch:
     inputs:

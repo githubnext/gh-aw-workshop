@@ -56,7 +56,7 @@
 name: "Side Quest"
 on:
   schedule:
-  - cron: "36 23 * * *"
+  - cron: "37 13 * * *"
     # Friendly format: daily (scattered)
   # skip-if-match: is:pr is:open label:side-quest # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
