@@ -117,7 +117,7 @@ Three conventions keep a task brief reliable:
 
 ---
 
-Continue to [Part C: Token and Usage Metadata](side-quest-11-08b-frontmatter-usage-metadata.md) for an optional deep dive into how the model reports token usage after each run, or return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
 
 ## 📚 See Also
 
