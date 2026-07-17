@@ -8,9 +8,7 @@ on:
   pull_request:
     types: [ready_for_review]
     paths:
-      - "*.md"
-      - "workshop/**/*.md"
-      - ".github/**/*.md"
+      - "**/*.md"
 permissions:
   contents: read
   pull-requests: read
