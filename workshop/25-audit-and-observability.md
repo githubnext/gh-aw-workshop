@@ -159,7 +159,7 @@ GitHub retains artifacts for **90 days** by default. For enterprise compliance, 
 - [ ] You can describe what a compliance reviewer would find in the `agent` artifact
 - [ ] You know your organisation's artifact retention policy (or know who to ask)
 
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)
 
 ## 📚 See Also
 
