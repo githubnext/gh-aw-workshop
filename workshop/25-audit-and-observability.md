@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You will use the `gh aw logs` and `gh aw audit` commands to read the built-in artifacts that every agentic workflow run produces, understand token usage, and identify the audit trail your organisation needs for enterprise compliance. By the end you will know exactly where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
+You will use the `gh aw logs` and `gh aw audit` commands to read the built-in artifacts that every agentic workflow run produces, understand token usage, and identify the audit trail your organisation needs for enterprise compliance. You will also learn to bring audit output to an agent using the `/agentic-workflows` Copilot skill to debug unexpected behavior and iterate on your workflow. By the end you will know exactly where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
 
 ## 📋 Before You Start
 
@@ -69,6 +69,34 @@ This writes `log.md` (agent conversation) and `firewall.md` (network access summ
 > [!TIP]
 > Pass the run URL directly from your browser's address bar — `gh aw audit` accepts both numeric run IDs and full GitHub Actions URLs.
 
+### Debug with an agent and the /agentic-workflows skill
+
+Once you have an audit report, the fastest way to interpret it and improve your workflow is to bring it to an agent. Open GitHub Copilot Chat, then paste the contents of the audit report and describe what puzzled you:
+
+```text
+Here is the audit report for my last run. The agent called github.list_issues
+three times in a row and the total AIC was higher than I expected.
+Help me understand why and suggest how to reduce it.
+
+<paste report here>
+```
+
+For more targeted guidance, use the **`/agentic-workflows` skill** in the chat:
+
+```text
+/agentic-workflows Here is my audit log. The firewall blocked calls to
+api.example.com. Can you help me add the correct network.allow entry?
+
+<paste firewall.md here>
+```
+
+The `/agentic-workflows` skill understands agentic workflow frontmatter and
+safe-output rules. It can validate your changes, suggest a more efficient prompt,
+or walk you through adding a `network.allow` entry — all without you leaving the chat.
+
+> [!TIP]
+> For follow-up edits to the workflow file, ask the agent to make the changes directly rather than hand-editing every line. This way the agent runs `gh aw compile` to validate the result before committing.
+
 ### Read the agent artifact
 
 The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh aw audit` — contains the full record of what the agent did. After downloading, look for:
@@ -125,6 +153,7 @@ GitHub retains artifacts for **90 days** by default. For enterprise compliance, 
 
 - [ ] You ran `gh aw logs <your-workflow-id>` and read the AIC summary for your workflow
 - [ ] You ran `gh aw audit <run-id>` and reviewed the generated report
+- [ ] You pasted an audit report into Copilot Chat with the `/agentic-workflows` skill and got actionable feedback
 - [ ] You located the `safeoutputs.jsonl` and `mcp-logs/` files in the `agent` artifact
 - [ ] You checked the firewall log for blocked domains
 - [ ] You can describe what a compliance reviewer would find in the `agent` artifact
