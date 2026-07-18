@@ -73,24 +73,6 @@ The output shows a **P50 (median)** projection and a **P10–P90** confidence in
 > [!TIP]
 > Run `gh aw forecast` after your workflow has at least a few days of run history. Results improve as more runs are sampled.
 
-### Set a spending limit (enterprise)
-
-If you have admin access to a GitHub Enterprise Cloud (GHEC) organisation:
-
-1. Go to your organisation page → **Settings** → **Billing and plans**.
-2. Click **Spending limits**.
-3. Set a monthly AIC cap for your team.
-
-> [!NOTE]
-> Runs that would exceed the cap are blocked rather than run — workflows fail gracefully instead of generating an unexpected bill.
-
-<details>
-<summary>🖥️ No admin access?</summary>
-
-Ask your administrator to share the current spending limit. You can see your own usage in **Settings → Billing and plans** but cannot set organisation-level limits without admin rights.
-
-</details>
-
 ### Reduce token consumption and set guardrails
 
 A few techniques keep spend in check:
@@ -128,7 +110,6 @@ gh aw compile
 - [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
 - [ ] You calculated an estimated monthly AIC cost for your scheduled workflow
 - [ ] You ran `gh aw forecast` and identified the P50 and P90 projections for your workflow
-- [ ] You can explain what happens when a spending limit is reached
 - [ ] You added `max-ai-credits` and `max-daily-ai-credits` to your workflow frontmatter
 - [ ] You added or verified a `timeout-minutes` value in your workflow frontmatter
 - [ ] You identified at least one technique to reduce token consumption
@@ -138,7 +119,6 @@ gh aw compile
 ## 📚 See Also
 
 - [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot)
-- [Spending limits for Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/managing-the-spending-limit-for-github-copilot)
 - [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md)
 - [Make Your Workflow Remember Across Runs](20-persistent-memory.md)
 - [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md)
