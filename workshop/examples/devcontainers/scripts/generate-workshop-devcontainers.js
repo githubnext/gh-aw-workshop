@@ -8,6 +8,13 @@ const tutorialBaseUrl = "https://github.github.com/gh-aw/workshop/";
 const hashFormat = "#j=<journeyId>&s=<scenarioId>&t=<stepKey>";
 const startupCommandId = "simpleBrowser.show";
 const copilotCliFeatureRef = "ghcr.io/devcontainers/features/copilot-cli:1";
+const githubCliFeatureRef = "ghcr.io/devcontainers/features/github-cli:1";
+const repositoryPermissions = {
+  actions: "write",
+  workflows: "write",
+  issues: "write",
+  pull_requests: "write"
+};
 const workflowFileByScenario = {
   foundation: ".github/workflows/daily-report-status.md",
   "daily-status": ".github/workflows/daily-status.md",
@@ -261,9 +268,17 @@ function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, 
     name: `gh-aw workshop: ${journey.label} / ${scenarioId}`,
     image: "mcr.microsoft.com/devcontainers/universal:2",
     features: {
-      [copilotCliFeatureRef]: {}
+      [copilotCliFeatureRef]: {},
+      [githubCliFeatureRef]: {}
     },
     customizations: {
+      codespaces: {
+        repositories: {
+          "YOUR-USERNAME/YOUR-REPO": {
+            permissions: repositoryPermissions
+          }
+        }
+      },
       vscode: {
         extensions: ["GitHub.copilot", "GitHub.copilot-chat"],
         settings

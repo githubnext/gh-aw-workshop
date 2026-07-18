@@ -2,9 +2,22 @@
   "name": "gh-aw workshop: codespaces terminal / foundation",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers/features/copilot-cli:1": {}
+    "ghcr.io/devcontainers/features/copilot-cli:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
+    "codespaces": {
+      "repositories": {
+        "YOUR-USERNAME/YOUR-REPO": {
+          "permissions": {
+            "actions": "write",
+            "workflows": "write",
+            "issues": "write",
+            "pull_requests": "write"
+          }
+        }
+      }
+    },
     "vscode": {
       "extensions": [
         "GitHub.copilot",

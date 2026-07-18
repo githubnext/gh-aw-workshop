@@ -1,13 +1,18 @@
 {
   "name": "gh-aw workshop (terminal triggers)",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
   "customizations": {
     "codespaces": {
       "repositories": {
         "YOUR-USERNAME/YOUR-REPO": {
           "permissions": {
             "actions": "write",
-            "workflows": "write"
+            "workflows": "write",
+            "issues": "write",
+            "pull_requests": "write"
           }
         }
       }
