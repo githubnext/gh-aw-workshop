@@ -7,14 +7,10 @@ const path = require("node:path");
 const tutorialBaseUrl = "https://github.github.com/gh-aw/workshop/";
 const hashFormat = "#j=<journeyId>&s=<scenarioId>&t=<stepKey>";
 const startupCommandId = "simpleBrowser.show";
-const copilotCliFeatureRef = "ghcr.io/devcontainers/features/copilot-cli:1";
+const devcontainerImage = "mcr.microsoft.com/devcontainers/base:ubuntu-24.04";
 const githubCliFeatureRef = "ghcr.io/devcontainers/features/github-cli:1";
-const repositoryPermissions = {
-  actions: "write",
-  workflows: "write",
-  issues: "write",
-  pull_requests: "write"
-};
+const nodeFeatureRef = "ghcr.io/devcontainers/features/node:1";
+const postCreateCommand = "bash -lc 'gh extension install github/gh-copilot --force && npm install -g @github/copilot@latest'";
 const workflowFileByScenario = {
   foundation: ".github/workflows/daily-report-status.md",
   "daily-status": ".github/workflows/daily-status.md",
@@ -228,6 +224,10 @@ function launchUrlFor(journeyId, scenarioId, stepKey) {
   return `${tutorialBaseUrl}#j=${journeyId}&s=${scenarioId}&t=${stepKey}`;
 }
 
+function postAttachCommandFor(launchUrl) {
+  return `bash -lc 'printf "\\nWorkshop URL: ${launchUrl}\\n\\n"; gh --version; node --version'`;
+}
+
 function writeJson(filePath, value) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
@@ -250,6 +250,7 @@ function removeStaleProfileDirs(validProfileIds) {
 function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, optionalStarterId) {
   const journey = journeyDefinitions[journeyId];
   const firstStep = stepKeys[0];
+  const launchUrl = launchUrlFor(journeyId, scenarioId, firstStep);
   const settings = {
     "gh-aw-workshop.profileVersion": 1,
     "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
@@ -257,7 +258,7 @@ function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, 
     "gh-aw-workshop.tutorialBaseUrl": tutorialBaseUrl,
     "gh-aw-workshop.hashFormat": hashFormat,
     "gh-aw-workshop.startupCommandId": startupCommandId,
-    "gh-aw-workshop.launchUrl": launchUrlFor(journeyId, scenarioId, firstStep),
+    "gh-aw-workshop.launchUrl": launchUrl,
     "gh-aw-workshop.journeyId": journeyId,
     "gh-aw-workshop.scenarioId": scenarioId,
     "gh-aw-workshop.workflowFile": workflowFile,
@@ -266,24 +267,21 @@ function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, 
 
   const devcontainer = {
     name: `gh-aw workshop: ${journey.label} / ${scenarioId}`,
-    image: "mcr.microsoft.com/devcontainers/universal:2",
+    image: devcontainerImage,
     features: {
-      [copilotCliFeatureRef]: {},
-      [githubCliFeatureRef]: {}
+      [githubCliFeatureRef]: {},
+      [nodeFeatureRef]: {
+        version: "lts"
+      }
     },
     customizations: {
-      codespaces: {
-        repositories: {
-          "YOUR-USERNAME/YOUR-REPO": {
-            permissions: repositoryPermissions
-          }
-        }
-      },
       vscode: {
         extensions: ["GitHub.copilot", "GitHub.copilot-chat"],
         settings
       }
-    }
+    },
+    postCreateCommand,
+    postAttachCommand: postAttachCommandFor(launchUrl)
   };
 
   const profile = {

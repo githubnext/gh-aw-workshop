@@ -1,23 +1,13 @@
 {
   "name": "gh-aw workshop: local terminal / foundation",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
   "features": {
-    "ghcr.io/devcontainers/features/copilot-cli:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
   },
   "customizations": {
-    "codespaces": {
-      "repositories": {
-        "YOUR-USERNAME/YOUR-REPO": {
-          "permissions": {
-            "actions": "write",
-            "workflows": "write",
-            "issues": "write",
-            "pull_requests": "write"
-          }
-        }
-      }
-    },
     "vscode": {
       "extensions": [
         "GitHub.copilot",
@@ -45,5 +35,7 @@
         ]
       }
     }
-  }
+  },
+  "postCreateCommand": "bash -lc 'gh extension install github/gh-copilot --force && npm install -g @github/copilot@latest'",
+  "postAttachCommand": "bash -lc 'printf \"\\nWorkshop URL: https://github.github.com/gh-aw/workshop/#j=local-terminal&s=foundation&t=02b-setup-local\\n\\n\"; gh --version; node --version'"
 }
