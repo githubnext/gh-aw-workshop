@@ -79,6 +79,7 @@ permissions:
 engine: claude          # switch from the default Copilot engine to Claude
 network:
   allowed:
+    - defaults
     - api.anthropic.com # required so the workflow can reach Anthropic
 ---
 ```
