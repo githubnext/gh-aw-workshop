@@ -28,7 +28,7 @@ tools: [github] # required so the agent can read PR diffs and post review commen
 ---
 ```
 
-After this frontmatter block, add your workflow prompt body in Markdown (for example: "Read the diff, find security and reliability risks, and post sections for Findings, Suggested Fixes, and Final Verdict.").
+After this [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) block, add your workflow prompt body in Markdown (for example: "Read the diff, find security and reliability risks, and post sections for Findings, Suggested Fixes, and Final Verdict.").
 
 This is intentionally small: just enough to understand what each top-level key controls before you write or paste the complete workflow in your chosen build path. Note that `model` is a sub-field of `engine:`, not a top-level key.
 
@@ -58,7 +58,8 @@ Use this quick self-check before you move on:
 **Next:** Continue with your chosen path above.
 
 ## 📚 See Also
-
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)

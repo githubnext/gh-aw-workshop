@@ -6,12 +6,12 @@
 
 This adventure builds on:
 
-- **Step 7** ([Your first workflow](07-your-first-workflow.md)): writing a Markdown task brief with YAML frontmatter
+- **Step 7** ([Your first workflow](07-your-first-workflow.md)): writing a Markdown task brief with YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
 - **Compile guidance** ([Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)): using `gh aw compile` to generate and validate lock files
 - **Step 10** ([Choose your scenario](10-choose-your-scenario.md)): the scenario (A, B, or C) you selected to build
 - **Step 11 (any path)** ([11a](11a-build-daily-status.md), [11b](11b-build-daily-docs.md), or [11c](11c-build-pr-reviewer.md)): how frontmatter keys such as `triggers`, `permissions`, and `safe-outputs` shape what the workflow can do
 
-You do not need the `gh-aw` CLI installed locally — the agent handles compilation in its own workspace.
+You do not need the `gh-aw` CLI installed locally — the agent handles [compilation](https://github.github.com/gh-aw/reference/compilation-process/) in its own workspace.
 
 ## 🎯 What You'll Do
 
@@ -141,15 +141,18 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 ## ✅ Checkpoint
 
 - [ ] You have opened a session for your practice repository in the GitHub Copilot app or Agents tab
-- [ ] You confirmed the agent can reach the reference guide (probe returned Frontmatter schema, Triggers, Permissions, and Safe outputs)
+- [ ] You confirmed the agent can reach the reference guide (probe returned Frontmatter schema, Triggers, [Permissions](https://github.github.com/gh-aw/reference/permissions/), and Safe outputs)
 - [ ] You submitted the scenario prompt (A, B, or C) to the agent
 
 **Previous:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
 **Next:** [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)
 
 ## 📚 See Also
-
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Tools reference](https://github.github.com/gh-aw/reference/tools/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Permissions reference](https://github.github.com/gh-aw/reference/permissions/)
+- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)

@@ -97,15 +97,16 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
 
 - [ ] `.github/workflows/pr-code-reviewer.md` exists
 - [ ] The complete workflow is committed to `main`
-- [ ] You understand that compilation occurs when GitHub Actions runs the workflow
-- [ ] You understand the workflow's permissions and five-comment limit
+- [ ] You understand that [compilation](https://github.github.com/gh-aw/reference/compilation-process/) occurs when GitHub Actions runs the workflow
+- [ ] You understand the workflow's [permissions](https://github.github.com/gh-aw/reference/permissions/) and five-comment limit
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
 
 ## 📚 See Also
-
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Tools reference](https://github.github.com/gh-aw/reference/tools/)
+- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Permissions reference](https://github.github.com/gh-aw/reference/permissions/)

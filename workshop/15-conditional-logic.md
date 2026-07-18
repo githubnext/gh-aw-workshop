@@ -20,7 +20,7 @@ Right now your daily-status workflow runs every weekday — even on days when no
 The approach:
 1. Run a shell command to count recent commits.
 2. Store the result in an output variable.
-3. Add a top-level `if:` in workflow frontmatter to skip the agent job when the count is zero.
+3. Add a top-level `if:` in workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to skip the agent job when the count is zero.
 
 ### Add a commit-count step
 
@@ -81,7 +81,7 @@ gh aw compile
 You should see `✅ Compiled successfully`. This regenerates your `.lock.yml` file with the updated conditional logic.
 
 > [!NOTE]
-> The `if:` condition is applied during compilation — it won't take effect until you compile and push both files.
+> The `if:` condition is applied during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) — it won't take effect until you compile and push both files.
 
 ### Commit and push your conditional logic
 
@@ -118,6 +118,8 @@ git push
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
 
 ## 📚 See Also
-
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Templating reference](https://github.github.com/gh-aw/reference/templating/)

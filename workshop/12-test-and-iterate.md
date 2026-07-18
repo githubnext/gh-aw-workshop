@@ -20,7 +20,7 @@ Choose the path that matches how you want to trigger the run.
 
 ### Terminal path — trigger with `gh aw`
 
-If you already have CLI trigger permissions configured, you can trigger the same run from the terminal:
+If you already have CLI trigger [permissions](https://github.github.com/gh-aw/reference/permissions/) configured, you can trigger the same run from the terminal:
 
 ```bash
 gh aw run daily-status
@@ -83,7 +83,7 @@ For example, your updated Guidelines section might look like:
 
 > [!NOTE]
 > <details>
-> <summary>The agent instructions are <b>not</b> stored in the YAML frontmatter — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).</summary>
+> <summary>The agent instructions are <b>not</b> stored in the YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) — they live in the Markdown body below the closing `---` fence. The frontmatter only contains machine-readable configuration (triggers, permissions, tools, and [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)).</summary>
 >
 > **Using the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab?** Ask the agent to make one focused improvement, run `gh aw compile --validate` in its session workspace, and update the pull request.
 >
@@ -118,7 +118,9 @@ For troubleshooting run failures, see [Side Quest: Evaluating and Iterating on A
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
 
 ## 📚 See Also
-
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Permissions reference](https://github.github.com/gh-aw/reference/permissions/)
+- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)
