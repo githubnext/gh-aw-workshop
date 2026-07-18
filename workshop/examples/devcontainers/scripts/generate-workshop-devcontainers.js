@@ -7,8 +7,7 @@ const path = require("node:path");
 const tutorialBaseUrl = "https://github.github.com/gh-aw/workshop/";
 const hashFormat = "#j=<journeyId>&s=<scenarioId>&t=<stepKey>";
 const startupCommandId = "simpleBrowser.show";
-const postCreateCommand =
-  "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'";
+const copilotCliFeatureRef = "ghcr.io/devcontainers/features/copilot-cli:1";
 const workflowFileByScenario = {
   foundation: ".github/workflows/daily-report-status.md",
   "daily-status": ".github/workflows/daily-status.md",
@@ -261,13 +260,15 @@ function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, 
   const devcontainer = {
     name: `gh-aw workshop: ${journey.label} / ${scenarioId}`,
     image: "mcr.microsoft.com/devcontainers/universal:2",
+    features: {
+      [copilotCliFeatureRef]: {}
+    },
     customizations: {
       vscode: {
         extensions: ["GitHub.copilot", "GitHub.copilot-chat"],
         settings
       }
-    },
-    postCreateCommand
+    }
   };
 
   const profile = {

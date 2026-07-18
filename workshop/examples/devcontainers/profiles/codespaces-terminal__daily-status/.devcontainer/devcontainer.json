@@ -1,6 +1,9 @@
 {
   "name": "gh-aw workshop: codespaces terminal / daily-status",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/copilot-cli:1": {}
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -28,6 +31,5 @@
         ]
       }
     }
-  },
-  "postCreateCommand": "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'"
+  }
 }
