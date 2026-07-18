@@ -73,8 +73,8 @@ Practice by reusing proven workflows before designing your own from scratch:
 
 1. Browse the [available workflow catalog in `githubnext/agentics`](https://github.com/githubnext/agentics#-available-workflows), then pick a workflow ID (for example, `ci-doctor`).
 2. Run `gh aw add githubnext/agentics/ci-doctor` in your repository (replace `ci-doctor` with the workflow ID you picked).
-3. Open the added workflow file, read the frontmatter and task brief, then run it.
-4. Adapt one part (trigger, permissions, or prompt) and re-run to compare behavior.
+3. Open the added workflow file, read the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task brief, then run it.
+4. Adapt one part (trigger, [permissions](https://github.github.com/gh-aw/reference/permissions/), or prompt) and re-run to compare behavior.
 
 #### Contribute to the workshop
 
@@ -130,6 +130,9 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
 
 ## 📚 See Also
-
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Permissions reference](https://github.github.com/gh-aw/reference/permissions/)
+- [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/)
+- [Cost Management reference](https://github.github.com/gh-aw/reference/cost-management/)
