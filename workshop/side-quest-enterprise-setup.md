@@ -87,4 +87,3 @@ Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventur
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Network Permissions reference](https://github.github.com/gh-aw/reference/network/)
-- [Workflow Constraints reference](https://github.github.com/gh-aw/reference/workflow-constraints/)
