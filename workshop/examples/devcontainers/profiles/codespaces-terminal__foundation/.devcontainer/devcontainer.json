@@ -37,5 +37,5 @@
     }
   },
   "postCreateCommand": "bash -lc 'gh extension install github/gh-copilot --force && npm install -g @github/copilot@latest'",
-  "postAttachCommand": "bash -lc \"printf '\\nWorkshop URL: %s\\n\\n' 'https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=foundation&t=02a-setup-codespace'; gh --version; node --version\""
+  "postAttachCommand": "bash -lc \"printf '\\nWorkshop URL: %s\\n\\n' \"\\$1\"; gh --version; node --version\" -- 'https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=foundation&t=02a-setup-codespace'"
 }

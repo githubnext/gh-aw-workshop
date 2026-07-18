@@ -229,7 +229,7 @@ function shellSingleQuoted(value) {
 }
 
 function postAttachCommandFor(launchUrl) {
-  return `bash -lc "printf '\\nWorkshop URL: %s\\n\\n' ${shellSingleQuoted(launchUrl)}; gh --version; node --version"`;
+  return `bash -lc "printf '\\nWorkshop URL: %s\\n\\n' \"\\$1\"; gh --version; node --version" -- ${shellSingleQuoted(launchUrl)}`;
 }
 
 function writeJson(filePath, value) {
