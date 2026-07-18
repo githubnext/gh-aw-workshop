@@ -101,7 +101,8 @@ git push
 3. Add the `steps:` block and `if:` field to the frontmatter.
 4. Click **Commit changes**.
 
-The lock file regenerates automatically when the workflow next runs — you don't need to compile locally.
+> [!IMPORTANT]
+> Committing the `.md` file via the web editor does **not** automatically recompile the lock file. After committing, open your Codespace or local terminal and run `gh aw compile`, then push the updated `.lock.yml`. The `if:` condition will not take effect until the compiled lock file is pushed.
 
 </details>
 
@@ -109,8 +110,8 @@ The lock file regenerates automatically when the workflow next runs — you don'
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
 - [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`
-- [ ] `gh aw compile` completed without errors (terminal path), or the workflow was committed via the GitHub UI
-- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are committed and pushed (terminal path)
+- [ ] `gh aw compile` completed without errors and the updated `.lock.yml` is committed and pushed
+- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are committed and pushed
 - [ ] You triggered the workflow manually and confirmed the conditional behaviour in the run log
 - [ ] The workflow still posts a summary on days with commits
 
