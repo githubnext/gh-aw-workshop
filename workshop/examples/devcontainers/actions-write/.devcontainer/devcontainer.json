@@ -1,0 +1,23 @@
+{
+  "name": "gh-aw workshop (terminal triggers)",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "YOUR-USERNAME/YOUR-REPO": {
+          "permissions": {
+            "actions": "write",
+            "workflows": "write"
+          }
+        }
+      }
+    },
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
+}

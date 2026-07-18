@@ -1,0 +1,33 @@
+{
+  "name": "gh-aw workshop: codespaces terminal / daily-status",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "gh-aw-workshop.profileVersion": 1,
+        "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
+        "gh-aw-workshop.profileId": "codespaces-terminal__daily-status",
+        "gh-aw-workshop.tutorialBaseUrl": "https://github.github.com/gh-aw/workshop/",
+        "gh-aw-workshop.hashFormat": "#j=<journeyId>&s=<scenarioId>&t=<stepKey>",
+        "gh-aw-workshop.startupCommandId": "simpleBrowser.show",
+        "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=daily-status&t=10a-design-daily-status",
+        "gh-aw-workshop.journeyId": "codespaces-terminal",
+        "gh-aw-workshop.scenarioId": "daily-status",
+        "gh-aw-workshop.workflowFile": ".github/workflows/daily-status.md",
+        "gh-aw-workshop.stepKeys": [
+          "10a-design-daily-status",
+          "11a-build-daily-status",
+          "11a-build-daily-status-terminal",
+          "11a2-run-daily-status-terminal",
+          "12-test-and-iterate",
+          "13a-schedule-it-terminal"
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "gh-aw workshop: GitHub UI / daily-docs",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "gh-aw-workshop.profileVersion": 1,
+        "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
+        "gh-aw-workshop.profileId": "github-ui__daily-docs",
+        "gh-aw-workshop.tutorialBaseUrl": "https://github.github.com/gh-aw/workshop/",
+        "gh-aw-workshop.hashFormat": "#j=<journeyId>&s=<scenarioId>&t=<stepKey>",
+        "gh-aw-workshop.startupCommandId": "simpleBrowser.show",
+        "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=github-ui&s=daily-docs&t=10b-design-daily-docs",
+        "gh-aw-workshop.journeyId": "github-ui",
+        "gh-aw-workshop.scenarioId": "daily-docs",
+        "gh-aw-workshop.workflowFile": ".github/workflows/daily-docs.md",
+        "gh-aw-workshop.stepKeys": [
+          "10b-design-daily-docs",
+          "11b-build-daily-docs",
+          "11b-build-daily-docs-ui",
+          "12-test-and-iterate"
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'"
+}

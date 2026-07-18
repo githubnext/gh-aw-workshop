@@ -1,0 +1,31 @@
+{
+  "name": "gh-aw workshop: Copilot agent / foundation",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "gh-aw-workshop.profileVersion": 1,
+        "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
+        "gh-aw-workshop.profileId": "copilot-agent__foundation",
+        "gh-aw-workshop.tutorialBaseUrl": "https://github.github.com/gh-aw/workshop/",
+        "gh-aw-workshop.hashFormat": "#j=<journeyId>&s=<scenarioId>&t=<stepKey>",
+        "gh-aw-workshop.startupCommandId": "simpleBrowser.show",
+        "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=copilot-agent&s=foundation&t=03b-create-your-repo-ui",
+        "gh-aw-workshop.journeyId": "copilot-agent",
+        "gh-aw-workshop.scenarioId": "foundation",
+        "gh-aw-workshop.workflowFile": ".github/workflows/daily-report-status.md",
+        "gh-aw-workshop.stepKeys": [
+          "03b-create-your-repo-ui",
+          "07c-your-first-workflow-copilot",
+          "07d-confirm-model-access",
+          "08-run-your-workflow"
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'"
+}

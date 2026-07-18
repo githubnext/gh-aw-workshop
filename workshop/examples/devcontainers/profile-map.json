@@ -1,0 +1,350 @@
+{
+  "version": 1,
+  "generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
+  "tutorialBaseUrl": "https://github.github.com/gh-aw/workshop/",
+  "hashFormat": "#j=<journeyId>&s=<scenarioId>&t=<stepKey>",
+  "startupCommandId": "simpleBrowser.show",
+  "schema": {
+    "tutorialBaseUrl": "Hosted workshop entry page for browser-based routing",
+    "hashFormat": "URL hash contract used by the tutorial browser state",
+    "startupCommandId": "VS Code command palette command that should open the hosted workshop inside the integrated browser",
+    "journeyId": "Tutorial path identifier used by the workshop browser state",
+    "scenarioId": "Scenario identifier used by the workshop browser state",
+    "stepKeyHints": "Workshop step keys stored in the URL hash `t` parameter that should resolve to this profile",
+    "devcontainerPath": "Relative path to the self-contained profile folder"
+  },
+  "profiles": [
+    {
+      "id": "codespaces-terminal__foundation",
+      "journeyId": "codespaces-terminal",
+      "scenarioId": "foundation",
+      "devcontainerPath": "profiles/codespaces-terminal__foundation/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-report-status.md",
+      "stepFiles": [
+        "02a-setup-codespace.md",
+        "03a-create-your-repo-terminal.md",
+        "06a-install-terminal.md",
+        "07a-your-first-workflow-terminal.md",
+        "07a-part2-your-first-workflow-instructions.md",
+        "07d-confirm-model-access.md",
+        "08-run-your-workflow.md"
+      ],
+      "stepKeyHints": [
+        "02a-setup-codespace",
+        "03a-create-your-repo-terminal",
+        "06a-install-terminal",
+        "07a-your-first-workflow-terminal",
+        "07a-part2-your-first-workflow-instructions",
+        "07d-confirm-model-access",
+        "08-run-your-workflow"
+      ],
+      "optionalStarterId": "actions-write"
+    },
+    {
+      "id": "local-terminal__foundation",
+      "journeyId": "local-terminal",
+      "scenarioId": "foundation",
+      "devcontainerPath": "profiles/local-terminal__foundation/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-report-status.md",
+      "stepFiles": [
+        "02b-setup-local.md",
+        "03a-create-your-repo-terminal.md",
+        "06b-install-local.md",
+        "07a-your-first-workflow-terminal.md",
+        "07a-part2-your-first-workflow-instructions.md",
+        "07d-confirm-model-access.md",
+        "08-run-your-workflow.md"
+      ],
+      "stepKeyHints": [
+        "02b-setup-local",
+        "03a-create-your-repo-terminal",
+        "06b-install-local",
+        "07a-your-first-workflow-terminal",
+        "07a-part2-your-first-workflow-instructions",
+        "07d-confirm-model-access",
+        "08-run-your-workflow"
+      ]
+    },
+    {
+      "id": "github-ui__foundation",
+      "journeyId": "github-ui",
+      "scenarioId": "foundation",
+      "devcontainerPath": "profiles/github-ui__foundation/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-report-status.md",
+      "stepFiles": [
+        "03b-create-your-repo-ui.md",
+        "06c-install-ui.md",
+        "07b-your-first-workflow-ui.md",
+        "07d-confirm-model-access.md",
+        "08-run-your-workflow.md"
+      ],
+      "stepKeyHints": [
+        "03b-create-your-repo-ui",
+        "06c-install-ui",
+        "07b-your-first-workflow-ui",
+        "07d-confirm-model-access",
+        "08-run-your-workflow"
+      ]
+    },
+    {
+      "id": "copilot-agent__foundation",
+      "journeyId": "copilot-agent",
+      "scenarioId": "foundation",
+      "devcontainerPath": "profiles/copilot-agent__foundation/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-report-status.md",
+      "stepFiles": [
+        "03b-create-your-repo-ui.md",
+        "07c-your-first-workflow-copilot.md",
+        "07d-confirm-model-access.md",
+        "08-run-your-workflow.md"
+      ],
+      "stepKeyHints": [
+        "03b-create-your-repo-ui",
+        "07c-your-first-workflow-copilot",
+        "07d-confirm-model-access",
+        "08-run-your-workflow"
+      ]
+    },
+    {
+      "id": "codespaces-terminal__daily-status",
+      "journeyId": "codespaces-terminal",
+      "scenarioId": "daily-status",
+      "devcontainerPath": "profiles/codespaces-terminal__daily-status/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-status.md",
+      "stepFiles": [
+        "10a-design-daily-status.md",
+        "11a-build-daily-status.md",
+        "11a-build-daily-status-terminal.md",
+        "11a2-run-daily-status-terminal.md",
+        "12-test-and-iterate.md",
+        "13a-schedule-it-terminal.md"
+      ],
+      "stepKeyHints": [
+        "10a-design-daily-status",
+        "11a-build-daily-status",
+        "11a-build-daily-status-terminal",
+        "11a2-run-daily-status-terminal",
+        "12-test-and-iterate",
+        "13a-schedule-it-terminal"
+      ],
+      "optionalStarterId": "actions-write"
+    },
+    {
+      "id": "local-terminal__daily-status",
+      "journeyId": "local-terminal",
+      "scenarioId": "daily-status",
+      "devcontainerPath": "profiles/local-terminal__daily-status/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-status.md",
+      "stepFiles": [
+        "10a-design-daily-status.md",
+        "11a-build-daily-status.md",
+        "11a-build-daily-status-terminal.md",
+        "11a2-run-daily-status-terminal.md",
+        "12-test-and-iterate.md",
+        "13a-schedule-it-terminal.md"
+      ],
+      "stepKeyHints": [
+        "10a-design-daily-status",
+        "11a-build-daily-status",
+        "11a-build-daily-status-terminal",
+        "11a2-run-daily-status-terminal",
+        "12-test-and-iterate",
+        "13a-schedule-it-terminal"
+      ]
+    },
+    {
+      "id": "github-ui__daily-status",
+      "journeyId": "github-ui",
+      "scenarioId": "daily-status",
+      "devcontainerPath": "profiles/github-ui__daily-status/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-status.md",
+      "stepFiles": [
+        "10a-design-daily-status.md",
+        "11a-build-daily-status.md",
+        "11a-build-daily-status-ui.md",
+        "12-test-and-iterate.md",
+        "13b-schedule-it-ui.md"
+      ],
+      "stepKeyHints": [
+        "10a-design-daily-status",
+        "11a-build-daily-status",
+        "11a-build-daily-status-ui",
+        "12-test-and-iterate",
+        "13b-schedule-it-ui"
+      ]
+    },
+    {
+      "id": "copilot-agent__daily-status",
+      "journeyId": "copilot-agent",
+      "scenarioId": "daily-status",
+      "devcontainerPath": "profiles/copilot-agent__daily-status/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-status.md",
+      "stepFiles": [
+        "10-choose-your-scenario.md",
+        "11d-build-copilot-agents.md",
+        "11d2-review-and-merge.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10-choose-your-scenario",
+        "11d-build-copilot-agents",
+        "11d2-review-and-merge",
+        "12-test-and-iterate"
+      ]
+    },
+    {
+      "id": "codespaces-terminal__daily-docs",
+      "journeyId": "codespaces-terminal",
+      "scenarioId": "daily-docs",
+      "devcontainerPath": "profiles/codespaces-terminal__daily-docs/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-docs.md",
+      "stepFiles": [
+        "10b-design-daily-docs.md",
+        "11b-build-daily-docs.md",
+        "11b-build-daily-docs-terminal.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10b-design-daily-docs",
+        "11b-build-daily-docs",
+        "11b-build-daily-docs-terminal",
+        "12-test-and-iterate"
+      ],
+      "optionalStarterId": "actions-write"
+    },
+    {
+      "id": "local-terminal__daily-docs",
+      "journeyId": "local-terminal",
+      "scenarioId": "daily-docs",
+      "devcontainerPath": "profiles/local-terminal__daily-docs/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-docs.md",
+      "stepFiles": [
+        "10b-design-daily-docs.md",
+        "11b-build-daily-docs.md",
+        "11b-build-daily-docs-terminal.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10b-design-daily-docs",
+        "11b-build-daily-docs",
+        "11b-build-daily-docs-terminal",
+        "12-test-and-iterate"
+      ]
+    },
+    {
+      "id": "github-ui__daily-docs",
+      "journeyId": "github-ui",
+      "scenarioId": "daily-docs",
+      "devcontainerPath": "profiles/github-ui__daily-docs/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-docs.md",
+      "stepFiles": [
+        "10b-design-daily-docs.md",
+        "11b-build-daily-docs.md",
+        "11b-build-daily-docs-ui.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10b-design-daily-docs",
+        "11b-build-daily-docs",
+        "11b-build-daily-docs-ui",
+        "12-test-and-iterate"
+      ]
+    },
+    {
+      "id": "copilot-agent__daily-docs",
+      "journeyId": "copilot-agent",
+      "scenarioId": "daily-docs",
+      "devcontainerPath": "profiles/copilot-agent__daily-docs/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/daily-docs.md",
+      "stepFiles": [
+        "10-choose-your-scenario.md",
+        "11d-build-copilot-agents.md",
+        "11d2-review-and-merge.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10-choose-your-scenario",
+        "11d-build-copilot-agents",
+        "11d2-review-and-merge",
+        "12-test-and-iterate"
+      ]
+    },
+    {
+      "id": "codespaces-terminal__pr-reviewer",
+      "journeyId": "codespaces-terminal",
+      "scenarioId": "pr-reviewer",
+      "devcontainerPath": "profiles/codespaces-terminal__pr-reviewer/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/pr-code-reviewer.md",
+      "stepFiles": [
+        "10c-design-pr-reviewer.md",
+        "11c-build-pr-reviewer.md",
+        "11c-build-pr-reviewer-terminal.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10c-design-pr-reviewer",
+        "11c-build-pr-reviewer",
+        "11c-build-pr-reviewer-terminal",
+        "12-test-and-iterate"
+      ],
+      "optionalStarterId": "actions-write"
+    },
+    {
+      "id": "local-terminal__pr-reviewer",
+      "journeyId": "local-terminal",
+      "scenarioId": "pr-reviewer",
+      "devcontainerPath": "profiles/local-terminal__pr-reviewer/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/pr-code-reviewer.md",
+      "stepFiles": [
+        "10c-design-pr-reviewer.md",
+        "11c-build-pr-reviewer.md",
+        "11c-build-pr-reviewer-terminal.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10c-design-pr-reviewer",
+        "11c-build-pr-reviewer",
+        "11c-build-pr-reviewer-terminal",
+        "12-test-and-iterate"
+      ]
+    },
+    {
+      "id": "github-ui__pr-reviewer",
+      "journeyId": "github-ui",
+      "scenarioId": "pr-reviewer",
+      "devcontainerPath": "profiles/github-ui__pr-reviewer/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/pr-code-reviewer.md",
+      "stepFiles": [
+        "10c-design-pr-reviewer.md",
+        "11c-build-pr-reviewer.md",
+        "11c-build-pr-reviewer-ui.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10c-design-pr-reviewer",
+        "11c-build-pr-reviewer",
+        "11c-build-pr-reviewer-ui",
+        "12-test-and-iterate"
+      ]
+    },
+    {
+      "id": "copilot-agent__pr-reviewer",
+      "journeyId": "copilot-agent",
+      "scenarioId": "pr-reviewer",
+      "devcontainerPath": "profiles/copilot-agent__pr-reviewer/.devcontainer/devcontainer.json",
+      "workflowFile": ".github/workflows/pr-code-reviewer.md",
+      "stepFiles": [
+        "10-choose-your-scenario.md",
+        "11d-build-copilot-agents.md",
+        "11d2-review-and-merge.md",
+        "12-test-and-iterate.md"
+      ],
+      "stepKeyHints": [
+        "10-choose-your-scenario",
+        "11d-build-copilot-agents",
+        "11d2-review-and-merge",
+        "12-test-and-iterate"
+      ]
+    }
+  ]
+}

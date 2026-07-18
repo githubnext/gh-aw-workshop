@@ -1,0 +1,34 @@
+{
+  "name": "gh-aw workshop: codespaces terminal / foundation",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "gh-aw-workshop.profileVersion": 1,
+        "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
+        "gh-aw-workshop.profileId": "codespaces-terminal__foundation",
+        "gh-aw-workshop.tutorialBaseUrl": "https://github.github.com/gh-aw/workshop/",
+        "gh-aw-workshop.hashFormat": "#j=<journeyId>&s=<scenarioId>&t=<stepKey>",
+        "gh-aw-workshop.startupCommandId": "simpleBrowser.show",
+        "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=foundation&t=02a-setup-codespace",
+        "gh-aw-workshop.journeyId": "codespaces-terminal",
+        "gh-aw-workshop.scenarioId": "foundation",
+        "gh-aw-workshop.workflowFile": ".github/workflows/daily-report-status.md",
+        "gh-aw-workshop.stepKeys": [
+          "02a-setup-codespace",
+          "03a-create-your-repo-terminal",
+          "06a-install-terminal",
+          "07a-your-first-workflow-terminal",
+          "07a-part2-your-first-workflow-instructions",
+          "07d-confirm-model-access",
+          "08-run-your-workflow"
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'"
+}

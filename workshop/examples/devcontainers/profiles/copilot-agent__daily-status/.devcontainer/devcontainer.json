@@ -1,0 +1,31 @@
+{
+  "name": "gh-aw workshop: Copilot agent / daily-status",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "gh-aw-workshop.profileVersion": 1,
+        "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
+        "gh-aw-workshop.profileId": "copilot-agent__daily-status",
+        "gh-aw-workshop.tutorialBaseUrl": "https://github.github.com/gh-aw/workshop/",
+        "gh-aw-workshop.hashFormat": "#j=<journeyId>&s=<scenarioId>&t=<stepKey>",
+        "gh-aw-workshop.startupCommandId": "simpleBrowser.show",
+        "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=copilot-agent&s=daily-status&t=10-choose-your-scenario",
+        "gh-aw-workshop.journeyId": "copilot-agent",
+        "gh-aw-workshop.scenarioId": "daily-status",
+        "gh-aw-workshop.workflowFile": ".github/workflows/daily-status.md",
+        "gh-aw-workshop.stepKeys": [
+          "10-choose-your-scenario",
+          "11d-build-copilot-agents",
+          "11d2-review-and-merge",
+          "12-test-and-iterate"
+        ]
+      }
+    }
+  },
+  "postCreateCommand": "bash -lc 'if command -v code >/dev/null 2>&1; then code --install-extension GitHub.copilot --force && code --install-extension GitHub.copilot-chat --force; fi'"
+}
