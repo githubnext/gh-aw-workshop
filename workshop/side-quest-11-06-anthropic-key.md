@@ -79,26 +79,12 @@ permissions:
 engine: claude          # switch from the default Copilot engine to Claude
 network:
   allowed:
-    - defaults          # keep the standard allow-list entries
+    - defaults
     - api.anthropic.com # required so the workflow can reach Anthropic
 ---
 ```
 
 If you previously added `copilot-requests: write` for the Copilot engine, you can remove it when switching to `claude`.
-
----
-
-## Optional: choose a specific Claude model
-
-You can pin a specific Claude model version using the extended engine syntax:
-
-```yaml
-engine:
-  id: claude
-  model: claude-opus-4-5
-```
-
-Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team.
 
 ---
 
@@ -133,3 +119,4 @@ You should see:
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Authentication reference](https://github.github.com/gh-aw/reference/auth/#claude)
 - [Network Permissions](https://github.github.com/gh-aw/reference/network/)
+- [Anthropic Claude models](https://docs.anthropic.com/en/docs/about-claude/models/)
