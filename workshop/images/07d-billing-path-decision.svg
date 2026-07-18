@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="Decision flow for choosing Copilot billing path: organization centralized billing or personal billing">
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Main card -->
+  <rect x="40" y="30" width="1120" height="490" rx="12" ry="12" fill="white" stroke="#d0d7de" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="600" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#24292f">Choosing Your Copilot Billing Path</text>
+  <text x="600" y="88" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">Configure inference authentication before running your first workflow</text>
+
+  <!-- Start node -->
+  <rect x="476" y="108" width="248" height="52" rx="26" fill="#0969da" stroke="none"/>
+  <text x="600" y="128" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="white">Workflow needs</text>
+  <text x="600" y="148" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="white">Copilot model access</text>
+
+  <!-- Arrow down from start -->
+  <line x1="600" y1="160" x2="600" y2="198" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Decision diamond -->
+  <polygon points="600,200 740,258 600,316 460,258" fill="#ddf4ff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="600" y="251" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#0969da">Does your org provide</text>
+  <text x="600" y="268" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#0969da">centralized Copilot billing?</text>
+
+  <!-- YES arrow left -->
+  <line x1="460" y1="258" x2="310" y2="258" stroke="#1a7f37" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="385" y="248" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#1a7f37">YES</text>
+
+  <!-- NO arrow right -->
+  <line x1="740" y1="258" x2="890" y2="258" stroke="#cf222e" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="815" y="248" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#cf222e">NO</text>
+
+  <!-- Left path: Organization billing -->
+  <rect x="110" y="300" width="200" height="130" rx="8" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="210" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#1a7f37">Organization Billing</text>
+  <!-- Step badges -->
+  <circle cx="130" cy="348" r="10" fill="#1a7f37"/>
+  <text x="130" y="353" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">1</text>
+  <text x="145" y="352" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Confirm org admin enabled</text>
+  <text x="145" y="366" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">centralized billing</text>
+
+  <circle cx="130" cy="385" r="10" fill="#1a7f37"/>
+  <text x="130" y="390" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">2</text>
+  <text x="145" y="389" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Keep</text>
+  <rect x="180" y="378" width="116" height="18" rx="4" fill="#0969da"/>
+  <text x="238" y="391" text-anchor="middle" font-family="monospace, monospace" font-size="10" fill="white">copilot-requests: write</text>
+
+  <circle cx="130" cy="413" r="10" fill="#1a7f37"/>
+  <text x="130" y="418" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">3</text>
+  <text x="145" y="418" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">No secret needed</text>
+
+  <!-- Right path: Personal billing -->
+  <rect x="890" y="300" width="220" height="130" rx="8" fill="#ffeff7" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="1000" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#cf222e">Personal Billing</text>
+
+  <circle cx="910" cy="348" r="10" fill="#cf222e"/>
+  <text x="910" y="353" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">1</text>
+  <text x="925" y="352" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Add secret</text>
+  <rect x="985" y="341" width="110" height="18" rx="4" fill="#8250df"/>
+  <text x="1040" y="354" text-anchor="middle" font-family="monospace, monospace" font-size="10" fill="white">COPILOT_GITHUB_TOKEN</text>
+
+  <circle cx="910" cy="375" r="10" fill="#cf222e"/>
+  <text x="910" y="380" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">2</text>
+  <text x="925" y="379" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Remove</text>
+  <rect x="985" y="368" width="116" height="18" rx="4" fill="#6e7781"/>
+  <text x="1043" y="381" text-anchor="middle" font-family="monospace, monospace" font-size="10" fill="white">copilot-requests: write</text>
+
+  <circle cx="910" cy="402" r="10" fill="#cf222e"/>
+  <text x="910" y="407" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">3</text>
+  <text x="925" y="407" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Recompile lock file</text>
+
+  <!-- Arrow from left box down -->
+  <line x1="210" y1="430" x2="210" y2="466" stroke="#57606a" stroke-width="2"/>
+  <line x1="210" y1="466" x2="555" y2="466" stroke="#57606a" stroke-width="2"/>
+  <line x1="555" y1="466" x2="555" y2="484" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow from right box down -->
+  <line x1="1000" y1="430" x2="1000" y2="466" stroke="#57606a" stroke-width="2"/>
+  <line x1="1000" y1="466" x2="645" y2="466" stroke="#57606a" stroke-width="2"/>
+  <line x1="645" y1="466" x2="645" y2="484" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Final node -->
+  <rect x="476" y="484" width="248" height="24" rx="12" fill="#1a7f37"/>
+  <text x="600" y="500" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="white">Ready to run your workflow ✓</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#57606a"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1a7f37"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#cf222e"/>
+    </marker>
+  </defs>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="536" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#57606a">
+    ⚠ When
+  </text>
+  <text x="600" y="536" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#57606a">    ⚠ When copilot-requests: write is present, the COPILOT_GITHUB_TOKEN secret is ignored for inference.</text>
+</svg>

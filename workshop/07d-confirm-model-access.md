@@ -17,7 +17,9 @@ Claude and Codex are optional [engines](https://github.github.com/gh-aw/referenc
 
 ## Choose one Copilot billing path
 
-Choose exactly one method.
+Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
+
+![Decision flow for choosing Copilot billing path: organization centralized billing or personal billing](images/07d-billing-path-decision.svg)
 
 ### Organization with centralized Copilot billing
 
