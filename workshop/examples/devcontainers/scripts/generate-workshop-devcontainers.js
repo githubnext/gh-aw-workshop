@@ -224,8 +224,12 @@ function launchUrlFor(journeyId, scenarioId, stepKey) {
   return `${tutorialBaseUrl}#j=${journeyId}&s=${scenarioId}&t=${stepKey}`;
 }
 
+function shellSingleQuoted(value) {
+  return `'${String(value).replace(/'/g, `'\"'\"'`)}'`;
+}
+
 function postAttachCommandFor(launchUrl) {
-  return `bash -lc 'printf "\\nWorkshop URL: ${launchUrl}\\n\\n"; gh --version; node --version'`;
+  return `bash -lc "printf '\\nWorkshop URL: %s\\n\\n' ${shellSingleQuoted(launchUrl)}; gh --version; node --version"`;
 }
 
 function writeJson(filePath, value) {

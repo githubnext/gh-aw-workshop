@@ -34,5 +34,5 @@
     }
   },
   "postCreateCommand": "bash -lc 'gh extension install github/gh-copilot --force && npm install -g @github/copilot@latest'",
-  "postAttachCommand": "bash -lc 'printf \"\\nWorkshop URL: https://github.github.com/gh-aw/workshop/#j=local-terminal&s=pr-reviewer&t=10c-design-pr-reviewer\\n\\n\"; gh --version; node --version'"
+  "postAttachCommand": "bash -lc \"printf '\\nWorkshop URL: %s\\n\\n' 'https://github.github.com/gh-aw/workshop/#j=local-terminal&s=pr-reviewer&t=10c-design-pr-reviewer'; gh --version; node --version\""
 }
