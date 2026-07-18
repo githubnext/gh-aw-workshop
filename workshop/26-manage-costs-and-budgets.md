@@ -112,12 +112,12 @@ name: Daily Status Report
 on:
   schedule: daily on weekdays
 timeout-minutes: 10
-max-ai-credits: 5
-max-daily-ai-credits: 20
+max-ai-credits: 1000
+max-daily-ai-credits: 2500
 ---
 ```
 
-In this example, each run is limited to 5 AIC and the 24-hour total is capped at 20 AIC — roughly four runs before the guardrail engages. Compile after editing:
+In this example, each run is capped at 1000 AIC and the 24-hour total is capped at 2500 AIC — roughly two full runs before the daily guardrail engages. Compile after editing:
 
 ```bash
 gh aw compile
