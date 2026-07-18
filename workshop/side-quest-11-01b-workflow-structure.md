@@ -45,9 +45,10 @@ permissions:
   issues: read
 tools:
   github:
-    allowed: read
+    mode: gh-proxy
 safe-outputs:
-  issue_comments: 1
+  add-comment:
+    max: 1
 ---
 Summarize the open issues, recent pull requests, and latest workflow runs.
 ```
