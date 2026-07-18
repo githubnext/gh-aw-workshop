@@ -44,6 +44,34 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 
 If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
 
+## Match the examples
+
+The workflow you will build in Step 7 is `daily-report-status.md`. It reads your repository's issues and produces a short daily status digest.
+
+Match each item below to the correct bullet from "Three things to know" above — **What it is**, **What it produces**, or **Why it exists**:
+
+**Example 1:** `daily-report-status.md` — a Markdown file with YAML frontmatter (`on: workflow_dispatch`) and this task brief: "Read all open issues and post a short status digest."
+
+- [ ] I have matched Example 1
+
+<details>
+<summary>Check Example 1 answer</summary>
+
+**Example 1 → What it is:** `daily-report-status.md` is the Markdown source file you write. It contains YAML frontmatter and a plain-language task brief. `gh aw compile` converts it into the `.lock.yml` file that GitHub Actions actually runs.
+
+</details>
+
+**Example 2:** A comment posted to your repository that lists open issues grouped by theme — different each day based on which issues are open when the workflow runs.
+
+- [ ] I have matched Example 2
+
+<details>
+<summary>Check Example 2 answer</summary>
+
+**Example 2 → What it produces:** The daily digest is the agent's synthesized output, composed from live repository data. It looks different each run depending on which issues are open that day.
+
+</details>
+
 ## Classify these tasks
 
 For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
@@ -73,7 +101,7 @@ You just saw how a standard Actions workflow follows fixed steps. Agentic workfl
 </details>
 
 > [!IMPORTANT]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
+> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md), then return here to continue.
 
 ## Reflection
 
