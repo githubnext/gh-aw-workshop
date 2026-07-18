@@ -5,7 +5,7 @@
 ## 📋 Before You Start
 
 - You have completed [Step 13: Schedule It to Run Every Day](13-schedule-it.md) or are working through it now.
-- You understand that [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/) schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
+- You understand that [GitHub Actions](https://github.github.com/gh-aw/reference/triggers/) schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
 - You know how to run `gh aw compile` to regenerate a workflow's lock file.
 
 ## 🎯 What You'll Do
@@ -87,6 +87,6 @@ Return to the main adventure: [Step 13: Schedule It to Run Every Day](13-schedul
 
 ## 📚 See Also
 
-- [GitHub Actions Primer](https://github.github.com/gh-aw/guides/github-actions-primer/)
+- [GitHub Actions Triggers](https://github.github.com/gh-aw/reference/triggers/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
