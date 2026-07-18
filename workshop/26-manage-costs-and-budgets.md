@@ -50,6 +50,29 @@ monthly cost = average AIC per run × runs per day × 30
 
 If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC per month`. Share this estimate with your GitHub administrator before enabling a high-frequency schedule.
 
+### Project costs with gh aw forecast
+
+`gh aw forecast` uses your actual run history and Monte Carlo simulation to project future AIC consumption, accounting for run frequency, per-run usage, and success rate:
+
+```bash
+# Project monthly AIC for all workflows in the repository
+gh aw forecast
+
+# Project monthly AIC for a single workflow
+gh aw forecast daily-status
+
+# Project weekly instead of monthly
+gh aw forecast daily-status --period week
+
+# Use only the last 7 days of history (useful for recently-changed workflows)
+gh aw forecast daily-status --days 7
+```
+
+The output shows a **P50 (median)** projection and a **P10–P90** confidence interval. Use the P90 figure as a conservative upper bound when requesting a spending limit from your administrator.
+
+> [!TIP]
+> Run `gh aw forecast` after your workflow has at least a few days of run history. Results improve as more runs are sampled.
+
 ### Set a spending limit (enterprise)
 
 If you have admin access to a GitHub Enterprise Cloud (GHEC) organisation:
@@ -68,7 +91,7 @@ Ask your administrator to share the current spending limit. You can see your own
 
 </details>
 
-### Reduce token consumption and set a timeout
+### Reduce token consumption and set guardrails
 
 A few techniques keep spend in check:
 
@@ -77,23 +100,36 @@ A few techniques keep spend in check:
 - **Cache results with persistent memory** — skip re-processing unchanged data. See [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 - **Reduce run frequency** — fewer runs means fewer AIC.
 
-Adding a `timeout-minutes` field prevents runaway runs from consuming unexpected AIC. GitHub cancels the run if the agent does not finish in time, and you are only billed for tokens consumed before cancellation:
+Three frontmatter fields enforce hard limits directly in the workflow file:
+
+- **`timeout-minutes`** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
+- **`max-ai-credits`** caps the AIC a single run may consume at the model API level. The default when omitted is 1000 AIC. Set to `-1` to disable enforcement.
+- **`max-daily-ai-credits`** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. Omit this field to leave the guardrail disabled.
 
 ```yaml
 ---
 name: Daily Status Report
 on:
-  schedule:
-    - cron: "0 9 * * 1-5"
+  schedule: daily on weekdays
 timeout-minutes: 10
+max-ai-credits: 5
+max-daily-ai-credits: 20
 ---
+```
+
+In this example, each run is limited to 5 AIC and the 24-hour total is capped at 20 AIC — roughly four runs before the guardrail engages. Compile after editing:
+
+```bash
+gh aw compile
 ```
 
 ## ✅ Checkpoint
 
 - [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
 - [ ] You calculated an estimated monthly AIC cost for your scheduled workflow
+- [ ] You ran `gh aw forecast` and identified the P50 and P90 projections for your workflow
 - [ ] You can explain what happens when a spending limit is reached
+- [ ] You added `max-ai-credits` and `max-daily-ai-credits` to your workflow frontmatter
 - [ ] You added or verified a `timeout-minutes` value in your workflow frontmatter
 - [ ] You identified at least one technique to reduce token consumption
 
