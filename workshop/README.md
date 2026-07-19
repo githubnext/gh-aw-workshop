@@ -99,6 +99,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md) — full phase reference table, activity feed tips, steering prompts, and advanced agent merge / `--watch` paths; branches from [Step 11d2](11d2-review-and-merge.md).
 - [Side Quest: Audit Reference — Artifacts, Firewall Logs, and Report Contents](side-quest-25-01-audit-reference.md) — detailed breakdown of `gh aw audit` report fields, agent artifact files, ⌖ AIC billing, `firewall.md`, and `network.allow`; branches from [Step 25](25-audit-and-observability.md).
 - [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) — full walkthrough of `gh aw forecast`: reading P10/P50/P90 output, using `--period week` and `--days 7`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 figure; branches from [Step 26](26-manage-costs-and-budgets.md).
+- [Step 27: Control Outbound Network Access with the Workflow Firewall](27-network-firewall-config.md) — add a `network.allowed-domains` allowlist to your workflow frontmatter, inspect the `firewall.md` run artifact, and tighten outbound access to only the services your workflow needs; extends the enterprise security track alongside [Step 24](24-self-hosted-runners.md) and [Step 25](25-audit-and-observability.md).
 
 ## Getting Started
 
