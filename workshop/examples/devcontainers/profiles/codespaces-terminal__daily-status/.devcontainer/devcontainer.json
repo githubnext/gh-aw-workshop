@@ -23,6 +23,14 @@
         "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=daily-status&t=10a-design-daily-status",
         "gh-aw-workshop.journeyId": "codespaces-terminal",
         "gh-aw-workshop.scenarioId": "daily-status",
+        "gh-aw-workshop.journeys": [
+          "all",
+          "terminal"
+        ],
+        "gh-aw-workshop.adventures": [
+          "core",
+          "scenario-a"
+        ],
         "gh-aw-workshop.workflowFile": ".github/workflows/daily-status.md",
         "gh-aw-workshop.stepKeys": [
           "10a-design-daily-status",

@@ -10,6 +10,8 @@
     "startupCommandId": "VS Code command palette command that should open the hosted workshop inside the integrated browser",
     "journeyId": "Tutorial path identifier used by the workshop browser state",
     "scenarioId": "Scenario identifier used by the workshop browser state",
+    "journeys": "Unique set of `journey` frontmatter values present in the mapped workshop steps",
+    "adventures": "Unique set of `adventure` frontmatter values present in the mapped workshop steps",
     "stepKeyHints": "Workshop step keys stored in the URL hash `t` parameter that should resolve to this profile",
     "devcontainerPath": "Relative path to the self-contained profile folder"
   },
@@ -18,6 +20,15 @@
       "id": "codespaces-terminal__foundation",
       "journeyId": "codespaces-terminal",
       "scenarioId": "foundation",
+      "journeys": [
+        "all",
+        "codespace",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "setup"
+      ],
       "devcontainerPath": "profiles/codespaces-terminal__foundation/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-report-status.md",
       "stepFiles": [
@@ -44,6 +55,15 @@
       "id": "local-terminal__foundation",
       "journeyId": "local-terminal",
       "scenarioId": "foundation",
+      "journeys": [
+        "all",
+        "local",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "setup"
+      ],
       "devcontainerPath": "profiles/local-terminal__foundation/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-report-status.md",
       "stepFiles": [
@@ -69,6 +89,14 @@
       "id": "github-ui__foundation",
       "journeyId": "github-ui",
       "scenarioId": "foundation",
+      "journeys": [
+        "all",
+        "ui"
+      ],
+      "adventures": [
+        "core",
+        "setup"
+      ],
       "devcontainerPath": "profiles/github-ui__foundation/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-report-status.md",
       "stepFiles": [
@@ -90,6 +118,14 @@
       "id": "copilot-agent__foundation",
       "journeyId": "copilot-agent",
       "scenarioId": "foundation",
+      "journeys": [
+        "all",
+        "copilot",
+        "ui"
+      ],
+      "adventures": [
+        "core"
+      ],
       "devcontainerPath": "profiles/copilot-agent__foundation/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-report-status.md",
       "stepFiles": [
@@ -109,6 +145,14 @@
       "id": "codespaces-terminal__daily-status",
       "journeyId": "codespaces-terminal",
       "scenarioId": "daily-status",
+      "journeys": [
+        "all",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "scenario-a"
+      ],
       "devcontainerPath": "profiles/codespaces-terminal__daily-status/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-status.md",
       "stepFiles": [
@@ -133,6 +177,14 @@
       "id": "local-terminal__daily-status",
       "journeyId": "local-terminal",
       "scenarioId": "daily-status",
+      "journeys": [
+        "all",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "scenario-a"
+      ],
       "devcontainerPath": "profiles/local-terminal__daily-status/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-status.md",
       "stepFiles": [
@@ -156,6 +208,14 @@
       "id": "github-ui__daily-status",
       "journeyId": "github-ui",
       "scenarioId": "daily-status",
+      "journeys": [
+        "all",
+        "ui"
+      ],
+      "adventures": [
+        "core",
+        "scenario-a"
+      ],
       "devcontainerPath": "profiles/github-ui__daily-status/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-status.md",
       "stepFiles": [
@@ -177,6 +237,14 @@
       "id": "copilot-agent__daily-status",
       "journeyId": "copilot-agent",
       "scenarioId": "daily-status",
+      "journeys": [
+        "all",
+        "copilot"
+      ],
+      "adventures": [
+        "core",
+        "scenario-d"
+      ],
       "devcontainerPath": "profiles/copilot-agent__daily-status/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-status.md",
       "stepFiles": [
@@ -196,6 +264,14 @@
       "id": "codespaces-terminal__daily-docs",
       "journeyId": "codespaces-terminal",
       "scenarioId": "daily-docs",
+      "journeys": [
+        "all",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "scenario-b"
+      ],
       "devcontainerPath": "profiles/codespaces-terminal__daily-docs/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-docs.md",
       "stepFiles": [
@@ -216,6 +292,14 @@
       "id": "local-terminal__daily-docs",
       "journeyId": "local-terminal",
       "scenarioId": "daily-docs",
+      "journeys": [
+        "all",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "scenario-b"
+      ],
       "devcontainerPath": "profiles/local-terminal__daily-docs/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-docs.md",
       "stepFiles": [
@@ -235,6 +319,14 @@
       "id": "github-ui__daily-docs",
       "journeyId": "github-ui",
       "scenarioId": "daily-docs",
+      "journeys": [
+        "all",
+        "ui"
+      ],
+      "adventures": [
+        "core",
+        "scenario-b"
+      ],
       "devcontainerPath": "profiles/github-ui__daily-docs/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-docs.md",
       "stepFiles": [
@@ -254,6 +346,14 @@
       "id": "copilot-agent__daily-docs",
       "journeyId": "copilot-agent",
       "scenarioId": "daily-docs",
+      "journeys": [
+        "all",
+        "copilot"
+      ],
+      "adventures": [
+        "core",
+        "scenario-d"
+      ],
       "devcontainerPath": "profiles/copilot-agent__daily-docs/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/daily-docs.md",
       "stepFiles": [
@@ -273,6 +373,14 @@
       "id": "codespaces-terminal__pr-reviewer",
       "journeyId": "codespaces-terminal",
       "scenarioId": "pr-reviewer",
+      "journeys": [
+        "all",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "scenario-c"
+      ],
       "devcontainerPath": "profiles/codespaces-terminal__pr-reviewer/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/pr-code-reviewer.md",
       "stepFiles": [
@@ -293,6 +401,14 @@
       "id": "local-terminal__pr-reviewer",
       "journeyId": "local-terminal",
       "scenarioId": "pr-reviewer",
+      "journeys": [
+        "all",
+        "terminal"
+      ],
+      "adventures": [
+        "core",
+        "scenario-c"
+      ],
       "devcontainerPath": "profiles/local-terminal__pr-reviewer/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/pr-code-reviewer.md",
       "stepFiles": [
@@ -312,6 +428,14 @@
       "id": "github-ui__pr-reviewer",
       "journeyId": "github-ui",
       "scenarioId": "pr-reviewer",
+      "journeys": [
+        "all",
+        "ui"
+      ],
+      "adventures": [
+        "core",
+        "scenario-c"
+      ],
       "devcontainerPath": "profiles/github-ui__pr-reviewer/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/pr-code-reviewer.md",
       "stepFiles": [
@@ -331,6 +455,14 @@
       "id": "copilot-agent__pr-reviewer",
       "journeyId": "copilot-agent",
       "scenarioId": "pr-reviewer",
+      "journeys": [
+        "all",
+        "copilot"
+      ],
+      "adventures": [
+        "core",
+        "scenario-d"
+      ],
       "devcontainerPath": "profiles/copilot-agent__pr-reviewer/.devcontainer/devcontainer.json",
       "workflowFile": ".github/workflows/pr-code-reviewer.md",
       "stepFiles": [

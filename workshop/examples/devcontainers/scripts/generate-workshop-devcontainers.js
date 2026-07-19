@@ -70,6 +70,23 @@ function toStem(fileName) {
   return fileName.replace(/\.md$/i, "");
 }
 
+function parseWorkshopFrontmatter(filePath) {
+  const content = fs.readFileSync(filePath, "utf8");
+  const frontmatterMatch = /^---\n([\s\S]*?)\n---/m.exec(content);
+  if (!frontmatterMatch) {
+    return {};
+  }
+
+  const metadata = {};
+  for (const line of frontmatterMatch[1].split("\n")) {
+    const match = /^\s*([a-zA-Z][\w-]*)\s*:\s*(.+?)\s*$/.exec(line);
+    if (match) {
+      metadata[match[1]] = match[2];
+    }
+  }
+  return metadata;
+}
+
 function listWorkshopStepFiles() {
   const readmePath = path.join(workshopDir, "README.md");
   const collator = new Intl.Collator("en", { numeric: true, sensitivity: "base" });
@@ -84,7 +101,8 @@ function listWorkshopStepFiles() {
     )
     .map((entry) => ({
       file: entry.name,
-      stepKey: toStem(entry.name)
+      stepKey: toStem(entry.name),
+      ...parseWorkshopFrontmatter(path.join(workshopDir, entry.name))
     }));
 
   const defaultOrder = [...fileEntries].sort((left, right) => collator.compare(left.file, right.file));
@@ -251,10 +269,16 @@ function removeStaleProfileDirs(validProfileIds) {
   }
 }
 
-function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, optionalStarterId) {
+function metadataValues(stepKeys, stepByKey, field) {
+  return [...new Set(stepKeys.map((stepKey) => stepByKey.get(stepKey)?.[field]).filter(Boolean))].sort();
+}
+
+function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, optionalStarterId, stepByKey) {
   const journey = journeyDefinitions[journeyId];
   const firstStep = stepKeys[0];
   const launchUrl = launchUrlFor(journeyId, scenarioId, firstStep);
+  const journeys = metadataValues(stepKeys, stepByKey, "journey");
+  const adventures = metadataValues(stepKeys, stepByKey, "adventure");
   const settings = {
     "gh-aw-workshop.profileVersion": 1,
     "gh-aw-workshop.generatedBy": "workshop/examples/devcontainers/scripts/generate-workshop-devcontainers.js",
@@ -265,6 +289,8 @@ function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, 
     "gh-aw-workshop.launchUrl": launchUrl,
     "gh-aw-workshop.journeyId": journeyId,
     "gh-aw-workshop.scenarioId": scenarioId,
+    "gh-aw-workshop.journeys": journeys,
+    "gh-aw-workshop.adventures": adventures,
     "gh-aw-workshop.workflowFile": workflowFile,
     "gh-aw-workshop.stepKeys": stepKeys
   };
@@ -292,6 +318,8 @@ function buildProfile(profileId, journeyId, scenarioId, workflowFile, stepKeys, 
     id: profileId,
     journeyId,
     scenarioId,
+    journeys,
+    adventures,
     devcontainerPath: `profiles/${profileId}/.devcontainer/devcontainer.json`,
     workflowFile,
     stepFiles: stepKeys.map((stepKey) => `${stepKey}.md`),
@@ -334,7 +362,8 @@ function main() {
         scenarioId,
         scenario.workflowFile,
         stepKeys,
-        journey.optionalStarterId
+        journey.optionalStarterId,
+        workshopStepByKey
       );
       profiles.push(profile);
       writeJson(path.join(profilesDir, profileId, ".devcontainer", "devcontainer.json"), devcontainer);
@@ -356,6 +385,8 @@ function main() {
         "VS Code command palette command that should open the hosted workshop inside the integrated browser",
       journeyId: "Tutorial path identifier used by the workshop browser state",
       scenarioId: "Scenario identifier used by the workshop browser state",
+      journeys: "Unique set of `journey` frontmatter values present in the mapped workshop steps",
+      adventures: "Unique set of `adventure` frontmatter values present in the mapped workshop steps",
       stepKeyHints: "Workshop step keys stored in the URL hash `t` parameter that should resolve to this profile",
       devcontainerPath: "Relative path to the self-contained profile folder"
     },

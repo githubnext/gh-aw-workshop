@@ -23,6 +23,14 @@
         "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=local-terminal&s=daily-docs&t=10b-design-daily-docs",
         "gh-aw-workshop.journeyId": "local-terminal",
         "gh-aw-workshop.scenarioId": "daily-docs",
+        "gh-aw-workshop.journeys": [
+          "all",
+          "terminal"
+        ],
+        "gh-aw-workshop.adventures": [
+          "core",
+          "scenario-b"
+        ],
         "gh-aw-workshop.workflowFile": ".github/workflows/daily-docs.md",
         "gh-aw-workshop.stepKeys": [
           "10b-design-daily-docs",

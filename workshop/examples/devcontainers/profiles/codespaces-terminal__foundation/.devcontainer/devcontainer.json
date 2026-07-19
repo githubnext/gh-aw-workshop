@@ -23,6 +23,15 @@
         "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=foundation&t=02a-setup-codespace",
         "gh-aw-workshop.journeyId": "codespaces-terminal",
         "gh-aw-workshop.scenarioId": "foundation",
+        "gh-aw-workshop.journeys": [
+          "all",
+          "codespace",
+          "terminal"
+        ],
+        "gh-aw-workshop.adventures": [
+          "core",
+          "setup"
+        ],
         "gh-aw-workshop.workflowFile": ".github/workflows/daily-report-status.md",
         "gh-aw-workshop.stepKeys": [
           "02a-setup-codespace",

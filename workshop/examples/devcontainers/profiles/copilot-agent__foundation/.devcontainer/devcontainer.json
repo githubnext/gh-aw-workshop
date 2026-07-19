@@ -23,6 +23,14 @@
         "gh-aw-workshop.launchUrl": "https://github.github.com/gh-aw/workshop/#j=copilot-agent&s=foundation&t=03b-create-your-repo-ui",
         "gh-aw-workshop.journeyId": "copilot-agent",
         "gh-aw-workshop.scenarioId": "foundation",
+        "gh-aw-workshop.journeys": [
+          "all",
+          "copilot",
+          "ui"
+        ],
+        "gh-aw-workshop.adventures": [
+          "core"
+        ],
         "gh-aw-workshop.workflowFile": ".github/workflows/daily-report-status.md",
         "gh-aw-workshop.stepKeys": [
           "03b-create-your-repo-ui",
