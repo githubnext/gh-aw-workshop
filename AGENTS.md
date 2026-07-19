@@ -90,6 +90,95 @@ gh aw compile
 
 Use `--validate` only when you are troubleshooting compile errors or running a targeted schema/deprecation check.
 
+## gh-aw documentation site
+
+The official gh-aw docs are published at `https://github.github.com/gh-aw/` from the
+`github/gh-aw` repository (Astro Starlight layout). Source files live at:
+
+```text
+docs/src/content/docs/<section>/<slug>.md   (or .mdx)
+```
+
+URL scheme: `https://github.github.com/gh-aw/<section>/<slug>/`
+
+**To validate a link**, search for the corresponding file in `github/gh-aw`:
+
+```
+filename:<slug>.md  repo:github/gh-aw
+```
+
+### Known doc sections and pages
+
+| Section | Slug | URL |
+|---------|------|-----|
+| reference | artifacts | `https://github.github.com/gh-aw/reference/artifacts/` |
+| reference | audit | `https://github.github.com/gh-aw/reference/audit/` |
+| reference | auth | `https://github.github.com/gh-aw/reference/auth/` |
+| reference | billing | `https://github.github.com/gh-aw/reference/billing/` |
+| reference | cache-memory | `https://github.github.com/gh-aw/reference/cache-memory/` |
+| reference | checkout | `https://github.github.com/gh-aw/reference/checkout/` |
+| reference | compilation-process | `https://github.github.com/gh-aw/reference/compilation-process/` |
+| reference | concurrency | `https://github.github.com/gh-aw/reference/concurrency/` |
+| reference | copilot-cloud-agent | `https://github.github.com/gh-aw/reference/copilot-cloud-agent/` |
+| reference | copilot-custom-agents | `https://github.github.com/gh-aw/reference/copilot-custom-agents/` |
+| reference | cost-management | `https://github.github.com/gh-aw/reference/cost-management/` |
+| reference | cross-repository | `https://github.github.com/gh-aw/reference/cross-repository/` |
+| reference | engines | `https://github.github.com/gh-aw/reference/engines/` |
+| reference | environment-variables | `https://github.github.com/gh-aw/reference/environment-variables/` |
+| reference | ephemerals | `https://github.github.com/gh-aw/reference/ephemerals/` |
+| reference | faq | `https://github.github.com/gh-aw/reference/faq/` |
+| reference | footers | `https://github.github.com/gh-aw/reference/footers/` |
+| reference | frontmatter | `https://github.github.com/gh-aw/reference/frontmatter/` |
+| reference | github-tools | `https://github.github.com/gh-aw/reference/github-tools/` |
+| reference | glossary | `https://github.github.com/gh-aw/reference/glossary/` |
+| reference | imports | `https://github.github.com/gh-aw/reference/imports/` |
+| reference | inline-sub-agents | `https://github.github.com/gh-aw/reference/inline-sub-agents/` |
+| reference | markdown | `https://github.github.com/gh-aw/reference/markdown/` |
+| reference | mcp-gateway | `https://github.github.com/gh-aw/reference/mcp-gateway/` |
+| reference | mcp-scripts | `https://github.github.com/gh-aw/reference/mcp-scripts/` |
+| reference | network | `https://github.github.com/gh-aw/reference/network/` |
+| reference | outcomes | `https://github.github.com/gh-aw/reference/outcomes/` |
+| reference | permissions | `https://github.github.com/gh-aw/reference/permissions/` |
+| reference | qmd | `https://github.github.com/gh-aw/reference/qmd/` |
+| reference | rate-limiting-controls | `https://github.github.com/gh-aw/reference/rate-limiting-controls/` |
+| reference | releases | `https://github.github.com/gh-aw/reference/releases/` |
+| reference | repo-memory | `https://github.github.com/gh-aw/reference/repo-memory/` |
+| reference | safe-outputs | `https://github.github.com/gh-aw/reference/safe-outputs/` |
+| reference | sandbox | `https://github.github.com/gh-aw/reference/sandbox/` |
+| reference | self-hosted-runners | `https://github.github.com/gh-aw/reference/self-hosted-runners/` |
+| reference | serena | `https://github.github.com/gh-aw/reference/serena/` |
+| reference | staged-mode | `https://github.github.com/gh-aw/reference/staged-mode/` |
+| reference | steps-jobs | `https://github.github.com/gh-aw/reference/steps-jobs/` |
+| reference | templating | `https://github.github.com/gh-aw/reference/templating/` |
+| reference | tools | `https://github.github.com/gh-aw/reference/tools/` |
+| reference | triggers | `https://github.github.com/gh-aw/reference/triggers/` |
+| reference | workflow-structure | `https://github.github.com/gh-aw/reference/workflow-structure/` |
+| guides | agentic-authoring | `https://github.github.com/gh-aw/guides/agentic-authoring/` |
+| guides | arc-dind-copilot-agent | `https://github.github.com/gh-aw/guides/arc-dind-copilot-agent/` |
+| guides | governance | `https://github.github.com/gh-aw/guides/governance/` |
+| guides | mcps | `https://github.github.com/gh-aw/guides/mcps/` |
+| guides | open-telemetry | `https://github.github.com/gh-aw/guides/open-telemetry/` |
+| guides | reusing-workflows | `https://github.github.com/gh-aw/guides/reusing-workflows/` |
+| guides | third-party-agent | `https://github.github.com/gh-aw/guides/third-party-agent/` |
+| guides | upgrading | `https://github.github.com/gh-aw/guides/upgrading/` |
+| guides | using-at-scale | `https://github.github.com/gh-aw/guides/using-at-scale/` |
+| setup | cli | `https://github.github.com/gh-aw/setup/cli/` |
+| setup | creating-workflows | `https://github.github.com/gh-aw/setup/creating-workflows/` |
+| setup | quick-start | `https://github.github.com/gh-aw/setup/quick-start/` |
+| introduction | architecture | `https://github.github.com/gh-aw/introduction/architecture/` |
+| introduction | how-they-work | `https://github.github.com/gh-aw/introduction/how-they-work/` |
+| introduction | overview | `https://github.github.com/gh-aw/introduction/overview/` |
+| patterns | batch-ops | `https://github.github.com/gh-aw/patterns/batch-ops/` |
+| patterns | chat-ops | `https://github.github.com/gh-aw/patterns/chat-ops/` |
+| patterns | issue-ops | `https://github.github.com/gh-aw/patterns/issue-ops/` |
+| patterns | label-ops | `https://github.github.com/gh-aw/patterns/label-ops/` |
+| patterns | memory-ops | `https://github.github.com/gh-aw/patterns/memory-ops/` |
+| patterns | project-ops | `https://github.github.com/gh-aw/patterns/project-ops/` |
+| patterns | spec-ops | `https://github.github.com/gh-aw/patterns/spec-ops/` |
+| patterns | workqueue-ops | `https://github.github.com/gh-aw/patterns/workqueue-ops/` |
+| experimental | experiments | `https://github.github.com/gh-aw/experimental/experiments/` |
+| examples | multi-repo | `https://github.github.com/gh-aw/examples/multi-repo/` |
+
 ## Common tasks
 
 ### Edit a workshop step
