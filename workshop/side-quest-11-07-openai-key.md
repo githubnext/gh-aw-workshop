@@ -130,5 +130,5 @@ You should see:
 ## 📚 See Also
 
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Engine configuration](https://github.github.com/gh-aw/reference/agentic/)
+- [Engine configuration](https://github.github.com/gh-aw/reference/auth/)
 - [Network Permissions](https://github.github.com/gh-aw/reference/network/)
