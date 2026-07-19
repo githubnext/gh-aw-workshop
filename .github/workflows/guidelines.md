@@ -224,3 +224,78 @@ TOC generation rules (script-friendly):
    - Side quest: `NN-SQMM`
 
 This keeps IDs lexically sortable, preserves the choose-your-adventure branch model, and cleanly groups optional side quests under their parent step.
+
+## Workshop page frontmatter schema
+
+Every Markdown file in `workshop/` (except `README.md`) carries a YAML frontmatter block that describes the user journey and adventure category of the page. Tools and tables of contents use these fields to filter pages by learner profile.
+
+### Frontmatter format
+
+```yaml
+---
+journey: <value>
+adventure: <value>
+---
+```
+
+Place this block as the **very first content** in the file, before the `#` heading.
+
+### `journey` — learner path
+
+Describes which learner profile the page targets.
+
+| Value | Meaning |
+|-------|---------|
+| `all` | Applicable to every learner regardless of environment |
+| `ui` | GitHub web UI path only (no terminal required) |
+| `terminal` | Any terminal user — Codespace or local |
+| `codespace` | Codespace-specific instructions (subset of `terminal`) |
+| `local` | Local terminal-specific instructions (subset of `terminal`) |
+| `copilot` | GitHub Copilot app or Agents tab users |
+
+Rules for assigning `journey`:
+
+- Use `all` for shared hub pages and conceptual introductions that every learner reads.
+- Use `terminal` for pages where the primary instructions require a shell (Codespace or local). Use `codespace` or `local` only when the content is specific to one of those environments and would not apply to the other.
+- Use `ui` for pages written exclusively for learners who stay in the GitHub browser UI.
+- Use `copilot` for pages that target the Copilot desktop app or the browser-based Agents tab (Adventure D).
+
+### `adventure` — content category
+
+Describes the role the page plays in the overall workshop structure.
+
+| Value | Meaning |
+|-------|---------|
+| `core` | Required shared path — every learner follows these pages |
+| `setup` | Environment or tool setup steps (Codespace, local, gh-aw install) |
+| `scenario-a` | Adventure A — Daily Repo Status Report |
+| `scenario-b` | Adventure B — Daily Documentation Updater |
+| `scenario-c` | Adventure C — PR Code Reviewer |
+| `scenario-d` | Adventure D — Build with GitHub Copilot (Agents tab / CCA) |
+| `advanced` | Optional post-core topics (steps 14 and above) |
+| `side-quest` | Optional deep-dive supplementary content branching off a main step |
+
+### Assignment rules by file pattern
+
+| Filename pattern | Typical `journey` | Typical `adventure` |
+|-----------------|-------------------|---------------------|
+| `NN-<slug>.md` (core/shared) | `all` | `core` or `advanced` |
+| `NNa-<slug>-terminal.md` | `terminal` | matches parent step |
+| `NNb-<slug>-ui.md` | `ui` | matches parent step |
+| `NNc-<slug>-copilot.md` | `copilot` | matches parent step |
+| `10a-*`, `11a-*`, `11a2-*` | `all` or split by sub-path | `scenario-a` |
+| `10b-*`, `11b-*` | `all` or split by sub-path | `scenario-b` |
+| `10c-*`, `11c-*` | `all` or split by sub-path | `scenario-c` |
+| `11d-*` | `copilot` | `scenario-d` |
+| `02a-*`, `06a-*` | `codespace` | `setup` |
+| `02b-*`, `06b-*` | `local` | `setup` |
+| `06c-*` | `ui` | `setup` |
+| `side-quest-NN-MM-<slug>.md` | varies (see below) | `side-quest` |
+
+Side quest `journey` assignment:
+
+- `terminal` — content is exclusively about terminal commands or `gh aw compile` (e.g., `side-quest-07-01-compile-workflow.md`).
+- `codespace` — content addresses a Codespaces-specific error or configuration (e.g., `side-quest-08-01-codespaces-actions-write.md`).
+- `ui` — content is only applicable to GitHub UI path learners (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
+- `copilot` — content is specific to the Copilot CCA or Agents tab environment (e.g., `side-quest-06-02-cca-codespace.md`).
+- `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).

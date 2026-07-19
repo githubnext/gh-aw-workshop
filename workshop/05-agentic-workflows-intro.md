@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 5: What Are Agentic Workflows?
 
 **Already familiar with both GitHub Actions and AI agent execution environments?**

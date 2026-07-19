@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: scenario-c
+---
 # Step 11c: Build — PR Code Reviewer
 
 _You've designed the workflow on paper — now choose how you want to create it._

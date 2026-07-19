@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Workflow File Structure at a Glance
 
 > _Optional: read this before building Step 11 to understand what you are writing, then return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)._

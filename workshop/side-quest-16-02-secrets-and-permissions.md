@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Storing Credentials with GitHub Secrets
 
 > _Optional: work through this guide when your workflow needs a token or API key that shouldn't appear in plain text, then return to your main path._

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 <!--
 <research-metadata>
   <focus>Inline sub-agents — the `## agent: \`name\`` syntax in gh-aw that lets a workflow define specialised worker agents directly inside a single Markdown file, with per-agent `model:` overrides</focus>

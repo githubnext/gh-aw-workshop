@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Run Your Agentic Workflow on a Self-Hosted Runner
 
 > _Enterprise teams often need workflows to run on their own infrastructure — this step shows you exactly how._

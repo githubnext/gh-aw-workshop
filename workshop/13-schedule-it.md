@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Schedule It to Run Every Day
 
 _Automating the trigger turns a one-off workflow into a recurring service._

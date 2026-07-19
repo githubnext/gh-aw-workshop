@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01d: Pattern — `permission denied`
 
 ## 🎯 What You'll Do

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Enterprise Setup Considerations
 
 > _Required for GHES users before attempting to create or run [agentic workflows](https://github.github.com/gh-aw/introduction/overview/). Also useful if you are running any setup step in a managed enterprise environment — complete this guide, then return to your current step._

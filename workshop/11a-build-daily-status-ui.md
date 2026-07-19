@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: scenario-a
+---
 # Step 11a: Build the Daily Repo Status Workflow — GitHub UI Path
 
 > [!NOTE]

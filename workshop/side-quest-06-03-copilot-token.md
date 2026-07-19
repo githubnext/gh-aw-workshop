@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Configure GitHub Copilot Authentication
 
 > _Optional: work through this guide when you need to configure Copilot authentication for an agentic workflow, then return to your main path._
