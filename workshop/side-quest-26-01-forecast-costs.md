@@ -80,10 +80,10 @@ The `max-daily-ai-credits` field caps how many AIC a workflow can consume across
 
 | Metric | Value |
 |---|---|
-| P90 monthly | 68 AIC |
-| P90 daily (÷ 30) | 2.3 AIC |
-| Safety margin (× 1.5) | 3.4 AIC |
-| Rounded `max-daily-ai-credits` | **4** |
+| P90 monthly | 10000 AIC |
+| P90 daily (÷ 30) | 333 AIC |
+| Safety margin (× 1.5) | 500 AIC |
+| Rounded `max-daily-ai-credits` | **500** |
 
 Add that value to your workflow frontmatter:
 
@@ -92,7 +92,7 @@ Add that value to your workflow frontmatter:
 name: Daily Status Report
 on:
   schedule: daily on weekdays
-max-daily-ai-credits: 4
+max-daily-ai-credits: 500
 ---
 ```
 
