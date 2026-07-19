@@ -72,6 +72,7 @@ permissions:
 engine: codex
 network:
   allowed:
+    - defaults
     - api.openai.com
 ---
 ```
