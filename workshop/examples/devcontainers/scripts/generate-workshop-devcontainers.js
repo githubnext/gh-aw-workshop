@@ -77,14 +77,19 @@ function parseWorkshopFrontmatter(filePath) {
     return {};
   }
 
-  const metadata = {};
-  for (const line of frontmatterMatch[1].split("\n")) {
-    const match = /^\s*([a-zA-Z][\w-]*)\s*:\s*(.+?)\s*$/.exec(line);
-    if (match) {
-      metadata[match[1]] = match[2];
-    }
-  }
-  return metadata;
+  const normalizeScalar = (value) => {
+    const trimmed = value.trim();
+    const quotedMatch = /^(["'])([\s\S]*)\1$/.exec(trimmed);
+    return quotedMatch ? quotedMatch[2] : trimmed;
+  };
+
+  const journeyMatch = /^\s*journey\s*:\s*(.+?)\s*$/m.exec(frontmatterMatch[1]);
+  const adventureMatch = /^\s*adventure\s*:\s*(.+?)\s*$/m.exec(frontmatterMatch[1]);
+
+  return {
+    ...(journeyMatch ? { journey: normalizeScalar(journeyMatch[1]) } : {}),
+    ...(adventureMatch ? { adventure: normalizeScalar(adventureMatch[1]) } : {})
+  };
 }
 
 function listWorkshopStepFiles() {
