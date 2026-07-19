@@ -70,4 +70,3 @@ Return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-mer
 ## 📚 See Also
 
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [How They Work](https://github.github.com/gh-aw/introduction/how-they-work/)
