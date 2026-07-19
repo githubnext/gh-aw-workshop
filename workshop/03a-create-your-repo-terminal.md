@@ -119,4 +119,3 @@ You should see your username as `owner`, `my-agentic-workflows` as `name`, and a
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)

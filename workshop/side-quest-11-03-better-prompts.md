@@ -15,7 +15,7 @@ Learn five practical techniques for writing AI task briefs that produce clearer,
 
 ## What Is a Task Brief?
 
-The **task brief** is the Markdown body of your workflow file — everything below the closing `---` of the [YAML frontmatter](https://github.github.com/gh-aw/reference/syntax/). It's the natural-language instruction the AI agent reads before it acts.
+The **task brief** is the Markdown body of your workflow file — everything below the closing `---` of the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/). It's the natural-language instruction the AI agent reads before it acts.
 
 Unlike a chat message, the task brief runs unattended. The AI can't ask clarifying questions, so everything it needs must be in the brief itself.
 
@@ -158,6 +158,6 @@ Return to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-statu
 
 ## 📚 See Also
 
-- [Syntax / Frontmatter reference](https://github.github.com/gh-aw/reference/syntax/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-You'll extend your daily-status workflow to fetch open issues from your repository using the [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-), then inject that data into your AI prompt. By the end, your summary will include an overview of outstanding issues alongside the commit activity.
+You'll extend your daily-status workflow to fetch open issues from your repository using the [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh), then inject that data into your AI prompt. By the end, your summary will include an overview of outstanding issues alongside the commit activity.
 
 ## 📋 Before You Start
 

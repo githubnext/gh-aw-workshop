@@ -11,7 +11,7 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 
 - You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You've completed [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
-- The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-cli))
+- The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 Run this to confirm `gh` is authenticated before continuing:
 
@@ -19,7 +19,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-cli).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
 
 ## Install from terminal
 
