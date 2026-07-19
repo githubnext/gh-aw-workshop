@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Long-Lived Credential Risks in Agentic Workflows
 
 > _Optional: work through this security primer to understand why personal access tokens create a larger attack surface than the ephemeral `GITHUB_TOKEN` — especially in unattended agentic workflows._

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Test Your Prompt Ideas with A/B Experiments
 
 > _Stop guessing which prompt works better — let alternating runs tell you._

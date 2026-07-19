@@ -1,10 +1,14 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Sub-Agent Syntax Reference
 
 > _Optional: use this short repair exercise if you want one clean sub-agent pattern before you return to [Step 21](21-inline-sub-agents.md)._
 
 ## 🎯 What You'll Do
 
-Repair one broken [sub-agent](https://github.github.com/gh-aw/reference/subagents/) block, then reuse the same pattern in your own workflow. By the end, you'll have one valid block that compiles cleanly and is easy to extend later.
+Repair one broken [sub-agent](https://github.github.com/gh-aw/reference/inline-sub-agents/) block, then reuse the same pattern in your own workflow. By the end, you'll have one valid block that compiles cleanly and is easy to extend later.
 
 ## 📋 Before You Start
 
@@ -163,5 +167,4 @@ Return to [Step 21: Split Complex Workflows with Inline Sub-Agents](21-inline-su
 
 ## 📚 See Also
 
-- [Sub-Agents reference](https://github.github.com/gh-aw/reference/subagents/)
-- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)
+- [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/)

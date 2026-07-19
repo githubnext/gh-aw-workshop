@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: scenario-c
+---
 # Step 11c: Build the PR Code Reviewer — GitHub UI Path
 
 > [!NOTE]

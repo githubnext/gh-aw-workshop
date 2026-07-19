@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Configure an OpenAI API Key
 
 > _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
@@ -130,5 +134,5 @@ You should see:
 ## 📚 See Also
 
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Authentication reference](https://github.github.com/gh-aw/reference/auth/#codex)
+- [Engine configuration](https://github.github.com/gh-aw/reference/auth/)
 - [Network Permissions](https://github.github.com/gh-aw/reference/network/)

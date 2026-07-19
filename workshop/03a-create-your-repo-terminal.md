@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: core
+---
 # Step 3a: Create Your Practice Repository — Terminal Path
 
 > _When you're done with this step, you'll have a public `my-agentic-workflows` repository cloned locally or in your Codespace, with GitHub Actions enabled and ready for the rest of the workshop._
@@ -119,4 +123,3 @@ You should see your username as `owner`, `my-agentic-workflows` as `name`, and a
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)

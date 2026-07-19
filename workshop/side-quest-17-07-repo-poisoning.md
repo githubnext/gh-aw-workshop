@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Repository Poisoning via Agentic Write Access
 
 > _An agent granted `contents: write` can be tricked into committing backdoors or overwriting sensitive files — keeping the workflow read-only, and routing any genuine writes through a pull request, closes that door entirely._

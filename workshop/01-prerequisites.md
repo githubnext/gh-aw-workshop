@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 1: What You Need Before We Start
 
 _Starting with the right setup saves you from frustrating detours later._
@@ -48,7 +52,7 @@ Complete these checks before you continue:
 
 - [ ] You can sign in to GitHub with the account you'll use for the workshop
 - [ ] You have chosen which development environment you'll use: Codespace, local terminal, or GitHub UI
-- [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-) 2.40+
+- [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 - [ ] Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both **Copilot is enabled** and **Models: available**

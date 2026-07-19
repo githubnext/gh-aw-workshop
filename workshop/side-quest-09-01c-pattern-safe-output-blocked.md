@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01c: Pattern — `safe-output: BLOCKED`
 
 ## 🎯 What You'll Do

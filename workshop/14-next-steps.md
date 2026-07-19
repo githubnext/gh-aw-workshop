@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # What's Next? Keep Exploring
 
 > _You've built a real, scheduled AI workflow — here's how to keep growing from here._
@@ -21,6 +25,14 @@ You've gone from zero to a fully automated, AI-powered workflow that:
 - Posts a daily summary without any manual intervention
 
 That is a real, production-capable workflow. Nicely done.
+
+### Reflect and Plan
+
+Answer each question (in your notes or a new GitHub issue in your practice repository), then check the box:
+
+- [ ] What was the hardest part of this workshop, and why?
+- [ ] How would you change your daily-status workflow prompt to get better output?
+- [ ] What is the next workflow you want to build, and what data source would it need?
 
 ### Review what you've learned
 
@@ -79,6 +91,16 @@ Practice by reusing proven workflows before designing your own from scratch:
 #### Contribute to the workshop
 
 Found a gap? Have a better explanation? Open an issue or pull request in this repository. The workshop itself is a living document.
+
+### Quick Experiment
+
+Before moving on, make one small change to your workflow:
+
+1. Open your `daily-status.md` file.
+2. Change the first sentence of the opening paragraph in the Markdown task brief (below the frontmatter `---` fence) to be more specific — add a repo name, team name, or time constraint.
+3. Run the workflow manually and compare the output to your previous run.
+
+- [ ] I changed the prompt and re-ran the workflow.
 
 ### ✏️ Exercise: Draft Your Next Workflow
 

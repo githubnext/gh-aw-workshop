@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Frontmatter Deep Dive — Part B
 
 > _Optional continuation of [Part A](side-quest-11-01-frontmatter-deep-dive.md): covers tools, safe-outputs, the closing fence, and the agent body. Return to the main path when done._
@@ -24,7 +28,7 @@ tools:
 | Field | Purpose |
 |-------|---------|
 | `tools:` | Declares every tool server the agent is allowed to call. At least one entry is required for an agent that reads GitHub data. |
-| `github:` | Connects the agent to the [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/#github-mcp-server) so it can query issues, pull requests, commits, and workflow runs. |
+| `github:` | Connects the agent to the [GitHub MCP server](https://github.github.com/gh-aw/reference/tools/) so it can query issues, pull requests, commits, and workflow runs. |
 | `mode: gh-proxy` | Routes every GitHub API call through a proxy that enforces the `permissions:` you declared, blocking any call you have not pre-approved. |
 | `toolsets: [default]` | Activates the standard GitHub toolset covering issues, pull requests, commits, and Actions runs. |
 
@@ -122,6 +126,5 @@ Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status
 ## 📚 See Also
 
 - [Tools reference](https://github.github.com/gh-aw/reference/tools/)
-- [Using MCPs](https://github.github.com/gh-aw/guides/mcps/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

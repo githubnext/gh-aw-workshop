@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Make Your Workflow Smarter with Conditional Logic
 
 > _A workflow that always runs is useful — a workflow that only runs when it matters is elegant._

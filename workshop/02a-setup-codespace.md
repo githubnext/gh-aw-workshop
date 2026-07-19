@@ -1,3 +1,7 @@
+---
+journey: codespace
+adventure: setup
+---
 # Adventure A: Set Up a Codespace _(recommended for new users)_
 > [!IMPORTANT]
 > On mobile, in the Copilot app, or using Copilot Cloud Agent (CCA)? Stop here: [Step 3b →](03b-create-your-repo-ui.md).

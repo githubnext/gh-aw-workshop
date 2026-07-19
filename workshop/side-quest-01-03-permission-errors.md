@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Permission Errors
 
 > _Optional: read this if you see a `permission denied` error and need help resolving it._

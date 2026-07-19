@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Choosing Between Cache Memory and Repo Memory
 
 > _Optional: work through this reference if you want to understand both `cache-memory` and `repo-memory` in depth before or after completing [Step 20](20-persistent-memory.md), then return to the main path._
@@ -166,5 +170,4 @@ Return to [Step 20: Make Your Workflow Remember Across Runs](20-persistent-memor
 - [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/)
 - [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/)
 - [MemoryOps pattern](https://github.github.com/gh-aw/patterns/memory-ops/)
-- [Memory reference](https://github.github.com/gh-aw/reference/memory/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

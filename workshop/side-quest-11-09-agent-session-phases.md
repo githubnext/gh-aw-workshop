@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Agent Session Phases Explained
 
 > _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)._
@@ -70,4 +74,3 @@ Return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-mer
 ## 📚 See Also
 
 - [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [How They Work](https://github.github.com/gh-aw/introduction/how-they-work/)

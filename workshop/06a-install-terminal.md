@@ -1,3 +1,7 @@
+---
+journey: codespace
+adventure: setup
+---
 # Step 6a: Install gh-aw — Codespace Terminal
 
 > [!NOTE]

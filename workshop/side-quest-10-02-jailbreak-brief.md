@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Jailbreaking the Agent Brief
 
 > _Optional: work through this security primer to understand how adversarial instructions embedded in repository content can attempt to override your agent's task brief — and why gh-aw's layered architecture limits what any partial success can actually do._
@@ -122,5 +126,5 @@ Return to [Step 10: Choose Your Scenario](10-choose-your-scenario.md).
 - [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md)
 - [OWASP LLM01: Prompt Injection](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Assigning permissions to jobs (GitHub Actions docs)](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-can-do/assigning-permissions-to-jobs)
+- [Assigning permissions to jobs (GitHub Actions docs)](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
 - [Network configuration reference](https://github.github.com/gh-aw/reference/network/)

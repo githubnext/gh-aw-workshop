@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Token and Secret Exfiltration in Agentic Workflows
 
 > _Optional: work through this security primer to understand how crafted repository content can try to trick your agent into leaking tokens or API keys — and why gh-aw's design makes that very difficult._

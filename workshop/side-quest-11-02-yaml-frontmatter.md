@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: YAML Frontmatter Pitfalls
 
 > _Optional: work through these common YAML mistakes if you hit a compile error in Step 11, then return to the main path._
@@ -125,6 +129,5 @@ Return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md
 
 ## 📚 See Also
 
-- [Frontmatter / Syntax reference](https://github.github.com/gh-aw/reference/syntax/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [CLI Commands](https://github.github.com/gh-aw/reference/cli-commands/)

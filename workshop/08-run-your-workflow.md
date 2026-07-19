@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 8: Run and Watch Your Workflow
 
 _Watching an agent work in real time makes the workflow feel concrete._
@@ -38,6 +42,10 @@ If the run fails immediately with a model-access or authentication error, return
 ![Run workflow confirmation dropdown showing branch selection and final Run workflow button](images/08-run-workflow-confirm-dropdown.svg)
 
 ### Watch the run start
+
+The diagram below shows the full lifecycle of a workflow run, from the moment you click **Run workflow** through to the agent updating your repository.
+
+![Workflow run lifecycle: from manual dispatch through queued, running, and finished states, ending with the agent updating a repository issue](images/08-run-lifecycle.svg)
 
 After a few seconds, a new run appears with a yellow spinning icon. Click the run, then click the job name to open the live log.
 

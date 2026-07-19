@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Install `gh-aw` Troubleshooting
 
 > _Optional: use this guide if Step 6 install fails, then return to the main path._
