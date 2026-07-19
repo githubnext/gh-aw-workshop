@@ -52,26 +52,16 @@ If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC 
 
 ### Project costs with gh aw forecast
 
-`gh aw forecast` uses your actual run history and Monte Carlo simulation to project future AIC consumption, accounting for run frequency, per-run usage, and success rate:
+`gh aw forecast` uses your actual run history and Monte Carlo simulation to project future AIC consumption. Run it for a single workflow to see a P10/P50/P90 probability distribution:
 
 ```bash
-# Project monthly AIC for all workflows in the repository
-gh aw forecast
-
-# Project monthly AIC for a single workflow
 gh aw forecast daily-status
-
-# Project weekly instead of monthly
-gh aw forecast daily-status --period week
-
-# Use only the last 7 days of history (useful for recently-changed workflows)
-gh aw forecast daily-status --days 7
 ```
 
-The output shows a **P50 (median)** projection and a **P10–P90** confidence interval. Use the P90 figure as a conservative upper bound when requesting a spending limit from your administrator.
+Use the **P90** figure as a conservative upper bound when requesting a spending limit from your administrator or setting `max-daily-ai-credits`.
 
 > [!TIP]
-> Run `gh aw forecast` after your workflow has at least a few days of run history. Results improve as more runs are sampled.
+> For the full walkthrough — weekly projections, limiting history with `--days`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 — see [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md).
 
 ### Reduce token consumption and set guardrails
 
