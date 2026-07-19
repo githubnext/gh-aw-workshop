@@ -30,26 +30,6 @@ You have two options:
 
 For this step, you'll use your own practice repository. If you later want to move the template to a dedicated repo, the process is identical.
 
-> [!NOTE]
-> <details>
-> <summary><b>Enterprise users (GHEC or GHES):</b> use internal or private repositories to share workflows without exposing them publicly.</summary>
->
-> On **GitHub Enterprise Cloud (GHEC)**, repositories can have **internal** visibility — accessible to all members of your enterprise but not to the public. This is the recommended visibility for shared workflow templates inside a company.
->
-> On **GitHub Enterprise Server (GHES)**, the equivalent is a private repository inside a shared organization. All organization members with read access can pull from it.
->
-> `gh aw add` works with private and internal repositories as long as you are authenticated (`gh auth login`) and have at least read access:
->
-> ```bash
-> gh aw add your-org/workflow-templates/daily-status
-> ```
->
-> If the repository is private or internal, the `gh` CLI uses your stored token automatically — no extra flags needed.
->
-> Ask your GitHub administrator which organization owns the central workflow template repository and confirm your account has read access before sharing the `gh aw add` command with your team.
->
-> </details>
-
 ### Verify your workflow file is committed
 
 Your workflow lives at `.github/workflows/<name>.md` in your repository. Make sure the latest version is committed and pushed.
@@ -115,5 +95,3 @@ This hint saves teammates guesswork when they first open the file.
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md)
-- [About repository visibility](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories#about-repository-visibility)
