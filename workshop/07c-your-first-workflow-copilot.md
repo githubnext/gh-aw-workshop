@@ -31,7 +31,7 @@ The workflow must:
   "This issue has the most community support! We'll prioritise it in our next planning session."
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
-Run `gh aw compile --validate` in the session
+Run `gh aw compile` in the session
 workspace, fix any errors, commit the source and generated lock file (plus the initialized skill files), and open a
 pull request. Show me the diff before merging.
 ```
