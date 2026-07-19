@@ -230,10 +230,6 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 
 ## Simulation Task
 
-### Load student profiles
-
-Read `/tmp/gh-aw/cache-memory/profiles.json`. You will update this file at the end with accumulated run counts.
-
 ### Simulate each student through the workshop
 
 For **each of the 46 students**, simulate their experience step-by-step using the following rules:
