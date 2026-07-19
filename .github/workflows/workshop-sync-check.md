@@ -21,6 +21,7 @@ network:
   allowed:
     - defaults
     - github
+    - gh-aw
 tools:
   github:
     mode: gh-proxy

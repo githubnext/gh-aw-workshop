@@ -46,6 +46,7 @@ network:
   allowed:
     - defaults
     - github
+    - gh-aw
 timeout-minutes: 30
 checkout:
   repository: github/gh-aw
