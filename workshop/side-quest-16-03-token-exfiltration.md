@@ -49,10 +49,11 @@ This protects values that are declared in `secrets:` — including `GITHUB_TOKEN
 
 gh-aw's `safe-outputs` frontmatter key declares the exact output surfaces the agent is allowed to write to. If `create-issue` or `post-comment` are not in that list, the agent has no tool to write those outputs — and therefore no surface to exfiltrate data through those channels.
 
-Example frontmatter that keeps the workflow read-only:
+Example frontmatter that keeps the workflow fully read-only by declaring an empty `safe-outputs` list:
 
 ```yaml
 ---
+safe-outputs: []
 permissions:
   contents: read
   issues: read
