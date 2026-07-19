@@ -1,3 +1,7 @@
+---
+journey: local
+adventure: setup
+---
 # Step 6b: Install gh-aw — Local Terminal
 
 > [!NOTE]

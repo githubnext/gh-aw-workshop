@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 8: Run and Watch Your Workflow
 
 _Watching an agent work in real time makes the workflow feel concrete._

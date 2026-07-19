@@ -1,3 +1,7 @@
+---
+journey: codespace
+adventure: side-quest
+---
 # Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`
 
 > _Optional: use this guide if Step 8 fails in a Codespace, then return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)._

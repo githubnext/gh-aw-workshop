@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Manage Costs and AI Credit Budgets
 
 > _Agentic workflows consume AI Credits (AIC) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._

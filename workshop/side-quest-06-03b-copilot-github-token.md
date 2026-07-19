@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
 
 > _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled._

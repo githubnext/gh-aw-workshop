@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: scenario-b
+---
 # Step 11b: Build the Daily Documentation Updater — GitHub UI Path
 
 > [!NOTE]

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 7: Write Your First Agentic Workflow
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._

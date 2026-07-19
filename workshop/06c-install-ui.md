@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: setup
+---
 # Step 6c: GitHub UI Path — No Installation Needed
 
 > [!NOTE]

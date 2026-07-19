@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Give Your Agent More Tools with MCP
 
 > _MCP servers turn your agent from a text generator into an active participant that can read, fetch, and act._

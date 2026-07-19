@@ -1,3 +1,7 @@
+---
+journey: copilot
+adventure: core
+---
 # Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path
 
 ## 🎯 What You'll Do

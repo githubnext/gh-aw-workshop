@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 10: Choose Your Scenario
 
 > _The best way to learn agentic workflows is to build one you'd actually use. Pick the scenario that matches what you want to automate._

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: scenario-a
+---
 # Step 11a: Build — Daily Repo Status Workflow
 
 _You've designed the workflow on paper — now choose how you want to create it._

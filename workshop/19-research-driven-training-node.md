@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Build a Research-Driven Next Training Node
 
 > _Strong workshop content comes from real product signals, not guesses._

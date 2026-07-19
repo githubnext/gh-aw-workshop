@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Audit and Monitor Your Agentic Workflows
 
 > _Knowing what your agent did — and proving it — is what turns a useful automation into a trustworthy one._

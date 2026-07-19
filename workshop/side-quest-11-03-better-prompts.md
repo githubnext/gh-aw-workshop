@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Write Better AI Task Briefs
 
 > _Optional: work through this guide if you want to get more useful, consistent output from your agentic workflows — then return to [Step 11](11a-build-daily-status.md) or [Step 12](12-test-and-iterate.md)._
