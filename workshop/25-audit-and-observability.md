@@ -75,7 +75,7 @@ suggest how to reduce it.
 <paste report here>
 ```
 
-The skill understands agentic workflow frontmatter and safe-output rules. It can suggest a more efficient prompt, validate your changes, or walk you through a fix — all without leaving the chat. Ask the agent to make edits directly so it can run `gh aw compile` to validate before committing.
+The skill understands agentic workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and safe-output rules. It can suggest a more efficient prompt, validate your changes, or walk you through a fix — all without leaving the chat. Ask the agent to make edits directly so it can run `gh aw compile` to validate before committing.
 
 ### Browse artifacts in the GitHub UI
 
@@ -105,6 +105,9 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Auditing Workflows reference](https://github.github.com/gh-aw/reference/audit/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/)
 - [Network reference](https://github.github.com/gh-aw/reference/network/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Side Quest: Audit Reference — Artifacts, Firewall Logs, and Report Contents](side-quest-25-01-audit-reference.md)

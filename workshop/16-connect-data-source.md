@@ -29,7 +29,7 @@ Think of it as a handoff. First, the workflow gathers facts in a predictable way
 
 ### Fetch commit history
 
-Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the frontmatter.
+Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
 First, fetch the recent commit log:
 
@@ -158,4 +158,7 @@ Once you're comfortable with this pattern, the same technique works for:
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [GitHub Tools reference](https://github.github.com/gh-aw/reference/github-tools/)
+- [Templating reference](https://github.github.com/gh-aw/reference/templating/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

@@ -16,7 +16,7 @@ adventure: advanced
 </research-metadata>
 -->
 
-# Split Complex Workflows with Inline Sub-Agents
+# Split Complex Workflows with [Inline Sub-Agents](https://github.github.com/gh-aw/reference/inline-sub-agents/)
 
 > _One workflow file, multiple specialised agents — each doing exactly one thing, at the right cost._
 
@@ -123,6 +123,7 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/)
 - [Tools reference](https://github.github.com/gh-aw/reference/tools/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)

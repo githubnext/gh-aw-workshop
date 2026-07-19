@@ -41,7 +41,7 @@ Read your existing workshop path and ask one practical question: _what can a lea
 
 ### Draft a node proposal with clear scope
 
-Write a one-paragraph node scope and list the exact artifacts it should change:
+Write a one-paragraph node scope and list the exact [artifacts](https://github.github.com/gh-aw/reference/artifacts/) it should change:
 
 - one new `workshop/<step>-<slug>.md` file
 - one curriculum row in `workshop/README.md`
@@ -89,6 +89,7 @@ gh aw compile --validate
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/)
 - [Training Plan Researcher workflow](../.github/workflows/training-plan-research.md)
 - [Docs Linker workflow example](../.github/workflows/docs-linker.md)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)

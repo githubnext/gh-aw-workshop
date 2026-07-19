@@ -154,6 +154,8 @@ git push
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/)
+- [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/)
 - [Tools reference](https://github.github.com/gh-aw/reference/tools/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

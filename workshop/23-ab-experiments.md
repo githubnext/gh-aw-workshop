@@ -2,7 +2,7 @@
 journey: all
 adventure: advanced
 ---
-# Test Your Prompt Ideas with A/B Experiments
+# Test Your Prompt Ideas with [A/B Experiments](https://github.github.com/gh-aw/experimental/experiments/)
 
 > _Stop guessing which prompt works better — let alternating runs tell you._
 
@@ -13,7 +13,7 @@ You'll add an A/B experiment using `experiments:` and compare outcomes across ru
 ## 📋 Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
-- You are comfortable editing YAML frontmatter and task briefs.
+- You are comfortable editing YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 - Need internals? Jump to [Understand how the round-robin works](#understand-how-the-round-robin-works).
 
@@ -86,7 +86,7 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 4. Trigger a second manual run. This time the `detailed` variant should be assigned.
 5. Compare the two outputs side by side.
 
-### Compare assignment counts from artifacts
+### Compare assignment counts from [artifacts](https://github.github.com/gh-aw/reference/artifacts/)
 
 1. Open your first run, scroll to **Artifacts**, and download `experiment`.
 2. Open the JSON file and note the counts for `concise` and `detailed`.
@@ -155,6 +155,9 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [A/B Experiments reference](https://github.github.com/gh-aw/experimental/experiments/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/)
 - [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
 - [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md)
 - [Make Your Workflow Remember Across Runs](20-persistent-memory.md)

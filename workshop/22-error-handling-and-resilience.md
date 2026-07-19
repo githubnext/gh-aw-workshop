@@ -13,7 +13,7 @@ Learn the most common ways agentic workflows fail in production and apply three 
 ## 📋 Before You Start
 
 - You have a working scheduled workflow (see [Schedule It to Run Every Day](13-schedule-it.md)).
-- You're comfortable editing workflow frontmatter and task briefs.
+- You're comfortable editing workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
 
 ## Steps
 
@@ -109,6 +109,7 @@ After editing the task brief and frontmatter:
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
 - [Side Quest: Debugging Output Patterns](side-quest-09-01-debug-output.md)

@@ -98,4 +98,5 @@ This hint saves teammates guesswork when they first open the file.
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Reusing workflows guide](https://github.github.com/gh-aw/guides/reusing-workflows/)
 - [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
