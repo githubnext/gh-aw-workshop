@@ -8,7 +8,7 @@ adventure: advanced
 
 ## 🎯 What You'll Do
 
-You'll add an MCP (Model Context Protocol) server to your workflow's frontmatter, giving the AI agent access to a new set of [tools](https://github.github.com/gh-aw/reference/tools/) it can call at runtime. By the end, your daily-status workflow will be able to do more than just generate text — it can interact with live data sources using structured tool calls.
+You'll add an MCP (Model Context Protocol) server to your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), giving the AI agent access to a new set of [tools](https://github.github.com/gh-aw/reference/tools/) it can call at runtime. By the end, your daily-status workflow will be able to do more than just generate text — it can interact with live data sources using structured tool calls.
 
 ## 📋 Before You Start
 
@@ -122,4 +122,7 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Using MCPs guide](https://github.github.com/gh-aw/guides/mcps/)
+- [MCP Scripts reference](https://github.github.com/gh-aw/reference/mcp-scripts/)
 - [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/)
