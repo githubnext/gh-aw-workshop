@@ -21,6 +21,7 @@ network:
   allowed:
     - defaults
     - github
+    - gh-aw
 tools:
   github:
     mode: gh-proxy
@@ -136,6 +137,115 @@ steps:
 
       echo "=== Reference docs ready at /tmp/gh-aw/data/ref/ ==="
       ls -lh /tmp/gh-aw/data/ref/
+
+  - name: Build and validate documentation URL map
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
+
+      OUT_FILE=/tmp/gh-aw/data/doc-url-map-validated.json
+      CACHE_FILE=/tmp/gh-aw/cache-memory/doc-url-map-validated.json
+      # 1 day: re-validates daily so stale entries are detected promptly
+      MAX_AGE=86400
+
+      if [[ -f "$CACHE_FILE" ]]; then
+        validated_at=$(python3 -c "import json; print(json.load(open('$CACHE_FILE')).get('validated_at', 0))" 2>/dev/null || echo 0)
+        age=$(( $(date +%s) - validated_at ))
+        if [[ "$age" -lt "$MAX_AGE" ]]; then
+          echo "Doc URL map cache is fresh (${age}s old). Reusing."
+          cp "$CACHE_FILE" "$OUT_FILE"
+          jq -r '"Valid entries: " + (.doc_url_map | length | tostring)' "$OUT_FILE"
+          exit 0
+        fi
+        echo "Doc URL map cache is stale (${age}s old). Re-validating."
+      else
+        echo "No doc URL map cache. Validating all URLs."
+      fi
+
+      python3 <<'PYEOF'
+      import json, shutil, subprocess, sys, time
+
+      OUT_FILE   = "/tmp/gh-aw/data/doc-url-map-validated.json"
+      CACHE_FILE = "/tmp/gh-aw/cache-memory/doc-url-map-validated.json"
+
+      # Authoritative mapping: source file path in github/gh-aw → rendered docs URL.
+      # Update this map when new reference docs are added to the gh-aw repo.
+      SOURCE_TO_URL = {
+          ".github/aw/github-agentic-workflows.md": "https://github.github.com/gh-aw/introduction/overview/",
+          ".github/aw/syntax-core.md":              "https://github.github.com/gh-aw/reference/syntax/",
+          ".github/aw/syntax-agentic.md":           "https://github.github.com/gh-aw/reference/agentic/",
+          ".github/aw/syntax-tools-imports.md":     "https://github.github.com/gh-aw/reference/tools/",
+          ".github/aw/triggers.md":                 "https://github.github.com/gh-aw/reference/triggers/",
+          ".github/aw/memory.md":                   "https://github.github.com/gh-aw/reference/memory/",
+          ".github/aw/safe-outputs.md":             "https://github.github.com/gh-aw/reference/safe-outputs/",
+          ".github/aw/safe-outputs-content.md":     "https://github.github.com/gh-aw/reference/safe-outputs-content/",
+          ".github/aw/safe-outputs-automation.md":  "https://github.github.com/gh-aw/reference/safe-outputs-automation/",
+          ".github/aw/safe-outputs-management.md":  "https://github.github.com/gh-aw/reference/safe-outputs-management/",
+          ".github/aw/safe-outputs-runtime.md":     "https://github.github.com/gh-aw/reference/safe-outputs-runtime/",
+          ".github/aw/network.md":                  "https://github.github.com/gh-aw/reference/network/",
+          ".github/aw/messages.md":                 "https://github.github.com/gh-aw/reference/messages/",
+          ".github/aw/subagents.md":                "https://github.github.com/gh-aw/reference/subagents/",
+          ".github/aw/loop.md":                     "https://github.github.com/gh-aw/reference/loop/",
+          ".github/aw/patterns.md":                 "https://github.github.com/gh-aw/guides/patterns/",
+          ".github/aw/workflow-patterns.md":        "https://github.github.com/gh-aw/guides/workflow-patterns/",
+          ".github/aw/token-optimization.md":       "https://github.github.com/gh-aw/guides/token-optimization/",
+          ".github/aw/context.md":                  "https://github.github.com/gh-aw/reference/context/",
+          ".github/aw/skills.md":                   "https://github.github.com/gh-aw/reference/skills/",
+          ".github/aw/reuse.md":                    "https://github.github.com/gh-aw/guides/reuse/",
+          ".github/aw/experiments.md":              "https://github.github.com/gh-aw/reference/experiments/",
+          ".github/aw/github-mcp-server.md":        "https://github.github.com/gh-aw/reference/github-mcp-server/",
+          ".github/aw/mcp-clis.md":                 "https://github.github.com/gh-aw/reference/mcp-clis/",
+          ".github/aw/agentic-workflows-mcp.md":    "https://github.github.com/gh-aw/reference/agentic-workflows-mcp/",
+          ".github/aw/cli-commands.md":             "https://github.github.com/gh-aw/reference/cli-commands/",
+          ".github/aw/pr-reviewer.md":              "https://github.github.com/gh-aw/guides/pr-reviewer/",
+          ".github/aw/report.md":                   "https://github.github.com/gh-aw/guides/report/",
+          ".github/aw/llms.md":                     "https://github.github.com/gh-aw/reference/llms/",
+          ".github/aw/workflow-constraints.md":     "https://github.github.com/gh-aw/reference/workflow-constraints/",
+          ".github/aw/workflow-editing.md":         "https://github.github.com/gh-aw/guides/workflow-editing/",
+      }
+
+      valid_map   = {}
+      invalid_map = []
+
+      for source_path, url in SOURCE_TO_URL.items():
+          result = subprocess.run(
+              [
+                  "curl", "-s", "-o", "/dev/null", "-w", "%{http_code}",
+                  "--max-time", "10",
+                  "--retry", "2", "--retry-delay", "1", "--retry-max-time", "15",
+                  "-L", "--max-redirs", "10",
+                  "-I",  # HEAD request — checks reachability without downloading the body
+                  url,
+              ],
+              capture_output=True, text=True,
+          )
+          http_code = result.stdout.strip()
+          if http_code.startswith("2"):
+              valid_map[source_path] = url
+              print(f"OK   {http_code}  {url}")
+          else:
+              invalid_map.append({"source": source_path, "url": url, "http_code": http_code})
+              print(f"FAIL {http_code}  {url}", file=sys.stderr)
+
+      result_data = {
+          "validated_at": int(time.time()),
+          "doc_url_map": valid_map,
+      }
+
+      with open(OUT_FILE, "w") as f:
+          json.dump(result_data, f, indent=2)
+      shutil.copy(OUT_FILE, CACHE_FILE)
+
+      print(f"\nURL map validation: {len(valid_map)} valid, {len(invalid_map)} invalid")
+      if invalid_map:
+          print("Invalid entries (excluded from validated map):")
+          for entry in invalid_map:
+              print(f"  {entry['http_code']}  {entry['url']}  ({entry['source']})")
+      PYEOF
+
+      echo "=== Validated doc URL map ===" && \
+        jq -r '.doc_url_map | to_entries[] | "  \(.key) → \(.value)"' \
+        /tmp/gh-aw/data/doc-url-map-validated.json
 ---
 
 # Workshop Sync Check
@@ -224,49 +334,32 @@ If a new gh-aw release was found in Phase 2, record the release notes body in a 
 
 ## Valid External Documentation URLs
 
-Workshop files may contain external links to the rendered gh-aw documentation site. The canonical URL format follows the [Astro Starlight](https://starlight.astro.build/) pattern:
+The setup step has already built and HTTP-validated a mapping of gh-aw source
+files to their rendered documentation URLs. Read this mapping from the file:
 
+```bash
+cat /tmp/gh-aw/data/doc-url-map-validated.json
 ```
-https://github.github.com/gh-aw/<category>/<page-slug>/
+
+The file contains a `doc_url_map` object mapping source file paths to
+confirmed-reachable rendered URLs:
+
+```json
+{
+  "validated_at": 1234567890,
+  "doc_url_map": {
+    ".github/aw/github-agentic-workflows.md": "https://github.github.com/gh-aw/introduction/overview/",
+    ".github/aw/triggers.md": "https://github.github.com/gh-aw/reference/triggers/",
+    ...
+  }
+}
 ```
 
-The table below is the authoritative mapping from source reference files (in `github/gh-aw`) to their rendered URLs. When a workshop file links to one of these URLs, treat it as **verified** — do **not** flag these as unverified external links:
-
-| Source file | Rendered URL |
-|---|---|
-| `.github/aw/github-agentic-workflows.md` | `https://github.github.com/gh-aw/introduction/overview/` |
-| `.github/aw/syntax-core.md` | `https://github.github.com/gh-aw/reference/syntax/` |
-| `.github/aw/syntax-agentic.md` | `https://github.github.com/gh-aw/reference/agentic/` |
-| `.github/aw/syntax-tools-imports.md` | `https://github.github.com/gh-aw/reference/tools/` |
-| `.github/aw/triggers.md` | `https://github.github.com/gh-aw/reference/triggers/` |
-| `.github/aw/memory.md` | `https://github.github.com/gh-aw/reference/memory/` |
-| `.github/aw/safe-outputs.md` | `https://github.github.com/gh-aw/reference/safe-outputs/` |
-| `.github/aw/safe-outputs-content.md` | `https://github.github.com/gh-aw/reference/safe-outputs-content/` |
-| `.github/aw/safe-outputs-automation.md` | `https://github.github.com/gh-aw/reference/safe-outputs-automation/` |
-| `.github/aw/safe-outputs-management.md` | `https://github.github.com/gh-aw/reference/safe-outputs-management/` |
-| `.github/aw/safe-outputs-runtime.md` | `https://github.github.com/gh-aw/reference/safe-outputs-runtime/` |
-| `.github/aw/network.md` | `https://github.github.com/gh-aw/reference/network/` |
-| `.github/aw/messages.md` | `https://github.github.com/gh-aw/reference/messages/` |
-| `.github/aw/subagents.md` | `https://github.github.com/gh-aw/reference/subagents/` |
-| `.github/aw/loop.md` | `https://github.github.com/gh-aw/reference/loop/` |
-| `.github/aw/patterns.md` | `https://github.github.com/gh-aw/guides/patterns/` |
-| `.github/aw/workflow-patterns.md` | `https://github.github.com/gh-aw/guides/workflow-patterns/` |
-| `.github/aw/token-optimization.md` | `https://github.github.com/gh-aw/guides/token-optimization/` |
-| `.github/aw/context.md` | `https://github.github.com/gh-aw/reference/context/` |
-| `.github/aw/skills.md` | `https://github.github.com/gh-aw/reference/skills/` |
-| `.github/aw/reuse.md` | `https://github.github.com/gh-aw/guides/reuse/` |
-| `.github/aw/experiments.md` | `https://github.github.com/gh-aw/reference/experiments/` |
-| `.github/aw/github-mcp-server.md` | `https://github.github.com/gh-aw/reference/github-mcp-server/` |
-| `.github/aw/mcp-clis.md` | `https://github.github.com/gh-aw/reference/mcp-clis/` |
-| `.github/aw/agentic-workflows-mcp.md` | `https://github.github.com/gh-aw/reference/agentic-workflows-mcp/` |
-| `.github/aw/cli-commands.md` | `https://github.github.com/gh-aw/reference/cli-commands/` |
-| `.github/aw/pr-reviewer.md` | `https://github.github.com/gh-aw/guides/pr-reviewer/` |
-| `.github/aw/report.md` | `https://github.github.com/gh-aw/guides/report/` |
-| `.github/aw/llms.md` | `https://github.github.com/gh-aw/reference/llms/` |
-| `.github/aw/workflow-constraints.md` | `https://github.github.com/gh-aw/reference/workflow-constraints/` |
-| `.github/aw/workflow-editing.md` | `https://github.github.com/gh-aw/guides/workflow-editing/` |
-
-Pass this table to each `workshop-sync-reviewer` subagent as `doc_url_map` so it can validate external links without false positives.
+Every URL present in `doc_url_map` was confirmed reachable (HTTP 2xx) by the
+bash prevalidation step. Pass the `doc_url_map` value to each
+`workshop-sync-reviewer` subagent so it can treat those URLs as verified — and
+flag any `https://github.github.com/gh-aw/...` URL found in workshop files that
+is **not** present in the map as an unverified or potentially broken link.
 
 ---
 
