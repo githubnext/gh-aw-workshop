@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-<!-- learning: false -->
+<!-- learning:false -->
 
 # Welcome — What We'll Build
 
