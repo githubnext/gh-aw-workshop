@@ -165,5 +165,4 @@ When the compile finishes, check that you do **not** see warnings about stripped
 Return to [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md).
 <!-- /journey -->
 
-For more details, see [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/).
 

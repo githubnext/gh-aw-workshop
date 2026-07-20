@@ -70,5 +70,4 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 **Next:** [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

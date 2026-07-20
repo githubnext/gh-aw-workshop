@@ -165,5 +165,4 @@ previous run. On each run:
 Return to [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 <!-- /journey -->
 
-For more details, see [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/), [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/), [MemoryOps pattern](https://github.github.com/gh-aw/patterns/memory-ops/), and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

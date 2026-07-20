@@ -48,5 +48,4 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 - [ ] I can define a clear ranking rule the agent can execute
 
 <!-- /journey -->
-For more details, see [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).
 

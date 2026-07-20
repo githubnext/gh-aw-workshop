@@ -48,5 +48,4 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 - [ ] I can keep scopes and allowed outputs to the minimum needed
 
 <!-- /journey -->
-For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), and [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/).
 

@@ -50,5 +50,4 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 - [ ] I can add a fallback output rule for no-action scenarios
 
 <!-- /journey -->
-For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 

@@ -76,5 +76,4 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 **Next:** [Run and Watch Your Workflow](08-run-your-workflow.md)
 <!-- /journey -->
 
-For more details, see [AI Engines reference](https://github.github.com/gh-aw/reference/engines/), [Authentication reference](https://github.github.com/gh-aw/reference/auth/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write), and [Billing reference](https://github.github.com/gh-aw/reference/billing/).
 

@@ -121,5 +121,4 @@ git push
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/), and [Templating reference](https://github.github.com/gh-aw/reference/templating/).
 

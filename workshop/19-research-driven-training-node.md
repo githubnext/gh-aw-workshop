@@ -85,7 +85,6 @@ gh aw compile --validate
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/), [Training Plan Researcher workflow](../.github/workflows/training-plan-research.md), [Docs Linker workflow example](../.github/workflows/docs-linker.md), and [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 <!--
 <research-node-metadata>

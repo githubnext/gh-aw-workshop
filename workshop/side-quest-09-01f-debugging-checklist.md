@@ -29,5 +29,4 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 - [ ] I can gather a minimal log snippet to share for deeper diagnosis
 
 <!-- /journey -->
-For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/), and [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/).
 

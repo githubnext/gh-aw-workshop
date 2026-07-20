@@ -66,5 +66,4 @@ Share the allowed-domains list from a successful run with your enterprise securi
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 <!-- /journey -->
 
-For more details, see [Network reference](https://github.github.com/gh-aw/reference/network/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 

@@ -130,5 +130,4 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

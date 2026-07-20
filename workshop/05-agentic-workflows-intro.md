@@ -255,5 +255,4 @@ Does your answer include:
 **Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [How Agentic Workflows Work](https://github.github.com/gh-aw/introduction/how-they-work/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Schedule Syntax](https://github.github.com/gh-aw/reference/schedule-syntax/).
 

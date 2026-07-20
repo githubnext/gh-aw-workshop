@@ -33,5 +33,4 @@ Need a reusable triage flow after the pattern drills? Open the [Debugging Checkl
 - [ ] I know to return to [Step 9](09-understand-output.md) after this side quest
 
 <!-- /journey -->
-For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 

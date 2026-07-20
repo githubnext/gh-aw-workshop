@@ -1,4 +1,4 @@
-name: No See Also Sections
+name: No See Also Sections or For-More-Details Footers
 
 on:
   pull_request:
@@ -18,13 +18,13 @@ permissions:
 
 jobs:
   no-see-also:
-    name: Check for banned See Also sections
+    name: Check for banned See Also sections and For-More-Details footers
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Check for See Also sections
+      - name: Check for banned patterns
         id: check
         continue-on-error: true
         uses: actions/github-script@v8
@@ -34,6 +34,7 @@ jobs:
             const path = require('path')
 
             const SEE_ALSO_RE = /^\s*##\s+(📚\s+)?See Also\s*$/m
+            const FOR_MORE_DETAILS_RE = /^For more details, see /m
 
             function walkMdFiles(dir) {
               const results = []
@@ -50,22 +51,30 @@ jobs:
 
             for (const filepath of walkMdFiles('.')) {
               const raw = fs.readFileSync(filepath, 'utf8')
+              const rel = filepath.replace(/^\.\//, '')
               if (SEE_ALSO_RE.test(raw)) {
-                violations.push(filepath.replace(/^\.\//, ''))
+                violations.push(rel)
                 core.error(
                   '"See Also" sections are not allowed. Use inline hyperlinks instead. See guidelines.md.',
-                  { file: filepath.replace(/^\.\//, '') }
+                  { file: rel }
+                )
+              }
+              if (FOR_MORE_DETAILS_RE.test(raw)) {
+                violations.push(rel)
+                core.error(
+                  '"For more details, see …" footers are not allowed. Link docs inline in the prose instead. See guidelines.md.',
+                  { file: rel }
                 )
               }
             }
 
             if (violations.length > 0) {
               core.setFailed(
-                `Found ${violations.length} file(s) with a "See Also" section. ` +
-                'Remove the section and link docs inline instead.'
+                `Found ${violations.length} file(s) with banned patterns ("See Also" sections or "For more details" footers). ` +
+                'Remove them and link docs inline instead.'
               )
             } else {
-              core.info('No "See Also" sections found. All good.')
+              core.info('No banned patterns found. All good.')
             }
 
       - name: File issue for violation on main
@@ -73,16 +82,18 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            const title = '"See Also" section violation on main'
+            const title = 'Banned documentation pattern violation on main'
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
             const body = [
-              'One or more markdown files contain a banned `## See Also` section.',
+              'One or more markdown files contain a banned documentation pattern:',
+              '- `## See Also` section, or',
+              '- `For more details, see …` footer line.',
               '',
               `Workflow run: ${runUrl}`,
               '',
               'Per the authoring guidelines, documentation links must appear as inline',
-              'hyperlinks in the prose — not in a dedicated "See Also" section.',
-              'Please remove the sections flagged in the workflow run.',
+              'hyperlinks in the prose — not in dedicated sections or trailing footers.',
+              'Please remove the patterns flagged in the workflow run.',
             ].join('\n')
             const { owner, repo } = context.repo
             const { data: searchResults } = await github.rest.search.issuesAndPullRequests({
