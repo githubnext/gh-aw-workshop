@@ -16,8 +16,8 @@ Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `eng
 
 Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
 
-- **Claude Code:** stay on the default Copilot engine for now. When you are ready to switch to `engine: claude`, follow [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and the [Claude Code docs](https://docs.anthropic.com/claude-code).
-- **OpenAI Codex:** stay on the default Copilot engine for now. When you are ready to switch to `engine: codex`, follow [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and the [OpenAI Codex docs](https://platform.openai.com/docs/agents/codex).
+- **Claude Code:** stay on the default Copilot engine for now. When you are ready to switch to `engine: claude`, follow [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and the [Claude entry in the environment reference](side-quest-01-02-environment-reference.md#claude).
+- **OpenAI Codex:** stay on the default Copilot engine for now. When you are ready to switch to `engine: codex`, follow [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and the [OpenAI Codex entry in the environment reference](side-quest-01-02-environment-reference.md#openai-codex).
 
 ## Choose one Copilot billing path
 
@@ -77,4 +77,3 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 <!-- journey: all -->
 **Next:** [Run and Watch Your Workflow](08-run-your-workflow.md)
 <!-- /journey -->
-
