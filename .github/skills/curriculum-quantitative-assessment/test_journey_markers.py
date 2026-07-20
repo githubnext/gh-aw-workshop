@@ -15,7 +15,7 @@ NAV_RE = re.compile(
 )
 
 ALLOWED_EXPERIENCES = {"workshop", "standalone"}
-EXP_OPEN_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*experience:\s*([a-z,\s]+?)\s*-->\s*$")
+EXP_OPEN_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*experience:\s*([a-z]+)\s*-->\s*$")
 EXP_CLOSE_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*/experience\s*-->\s*$")
 
 
