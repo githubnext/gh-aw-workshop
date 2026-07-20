@@ -68,6 +68,15 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 1. When the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac).
 2. Wait for the terminal prompt to appear.
 3. Keep this terminal open. It is already inside your practice repository.
+4. Run `gh auth status` in the terminal and confirm the output includes your GitHub username:
+
+   ```bash
+   gh auth status
+   ```
+
+   _What success looks like:_ a line confirming `✓ Logged in to github.com account <your-username>`.
+
+   If you see `You are not logged into any GitHub hosts.` instead, run `gh auth login`, choose **GitHub.com → HTTPS → browser**, then re-run `gh auth status` to confirm.
 
 > [!TIP]
 > If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).

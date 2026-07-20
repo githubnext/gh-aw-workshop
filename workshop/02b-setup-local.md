@@ -149,6 +149,11 @@ Choose GitHub.com and then Login with a web browser. A one-time code will appear
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
+<!-- -->
+
+> [!TIP]
+> If `gh auth login` fails with a network or proxy error, see [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for proxy, firewall, and corporate-network fixes.
+
 ## 🛟 Troubleshooting
 
 If setup commands fail, use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for quick fixes (`command not found`, permissions, proxy, and GHES-specific setup), then return here.
