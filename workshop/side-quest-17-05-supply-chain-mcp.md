@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- journey: all -->
+<!-- adventure: side-quest -->
 # Side Quest: Supply Chain Attacks via MCP Tool Servers
 
 > _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the trust boundary early and keep the workflow's write surface narrow._

@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- journey: all -->
+<!-- adventure: side-quest -->
 # Side Quest: Agentic Workflows for GitHub Actions Power Users
 
 > _Optional: read this quick-reference guide if you already know GitHub Actions and want a fast comparison before continuing with [Step 5](05-agentic-workflows-intro.md)._

@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: side-quest
----
+<!-- journey: terminal -->
+<!-- adventure: side-quest -->
 # Side Quest: Terminal Basics
 
 > _Optional: complete this quick primer if you're new to the terminal, then return to Step 1._

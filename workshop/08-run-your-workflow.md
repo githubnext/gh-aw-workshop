@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # Run and Watch Your Workflow
 
 _Watching an agent work in real time makes the workflow feel concrete._

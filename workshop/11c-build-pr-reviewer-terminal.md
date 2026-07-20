@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: scenario-c
----
+<!-- journey: terminal -->
+<!-- adventure: scenario-c -->
 # Build the PR Code Reviewer — Terminal Path
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._

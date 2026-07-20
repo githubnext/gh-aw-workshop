@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- journey: all -->
+<!-- adventure: side-quest -->
 # Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)
 
 > _Optional: work through this visual primer if you want an intuitive mental model for why gh-aw uses a sandbox, where the agent runs, and what outputs are considered safe._

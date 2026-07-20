@@ -1,7 +1,5 @@
----
-journey: local
-adventure: setup
----
+<!-- journey: local -->
+<!-- adventure: setup -->
 # Adventure B: Set Up Your Local Terminal
 
 > [!TIP]

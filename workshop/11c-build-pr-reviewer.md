@@ -1,7 +1,5 @@
----
-journey: all
-adventure: scenario-c
----
+<!-- journey: all -->
+<!-- adventure: scenario-c -->
 # Build — PR Code Reviewer
 
 _You've designed the workflow on paper — now choose how you want to create it._

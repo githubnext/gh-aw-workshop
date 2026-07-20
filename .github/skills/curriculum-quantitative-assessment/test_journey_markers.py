@@ -8,14 +8,56 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 WORKSHOP_DIR = ROOT / "workshop"
 ALLOWED_JOURNEYS = {"all", "ui", "terminal", "codespace", "local", "copilot"}
+ALLOWED_ADVENTURES = {
+    "core", "setup", "scenario-a", "scenario-b", "scenario-c", "scenario-d",
+    "advanced", "side-quest",
+}
+# Section-level journey block opener: <!-- journey: X --> ... <!-- /journey -->
 OPEN_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*journey:\s*([a-z,\s]+?)\s*-->\s*$")
 CLOSE_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*/journey\s*-->\s*$")
+# Page-level annotation comments (lines 1–2, no closing tag)
+PAGE_JOURNEY_RE = re.compile(r"^<!--\s*journey:\s*([a-z,\s]+?)\s*-->\s*$")
+PAGE_ADVENTURE_RE = re.compile(r"^<!--\s*adventure:\s*([a-z-]+)\s*-->\s*$")
 NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
 
 
 class JourneyMarkerTests(unittest.TestCase):
+    def test_page_annotations_present_and_valid(self) -> None:
+        """Every workshop page must start with <!-- journey: X --> and <!-- adventure: Y -->."""
+        for path in sorted(WORKSHOP_DIR.glob("*.md")):
+            if path.name == "README.md":
+                continue
+
+            with self.subTest(file=path.name):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                self.assertGreaterEqual(len(lines), 2, f"{path.name} must have at least 2 lines")
+
+                journey_match = PAGE_JOURNEY_RE.match(lines[0])
+                self.assertIsNotNone(
+                    journey_match,
+                    f"Line 1 of {path.name} must be a page-level journey annotation: <!-- journey: X -->",
+                )
+                journey_values = [v.strip() for v in journey_match.group(1).split(",")]
+                invalid_journey = [v for v in journey_values if v not in ALLOWED_JOURNEYS]
+                self.assertFalse(
+                    invalid_journey,
+                    f"Invalid journey value(s) in {path.name}: {invalid_journey}",
+                )
+
+                adventure_match = PAGE_ADVENTURE_RE.match(lines[1])
+                self.assertIsNotNone(
+                    adventure_match,
+                    f"Line 2 of {path.name} must be a page-level adventure annotation: <!-- adventure: Y -->",
+                )
+                adventure_value = adventure_match.group(1).strip()
+                self.assertIn(
+                    adventure_value,
+                    ALLOWED_ADVENTURES,
+                    f"Invalid adventure value in {path.name}: {adventure_value!r}",
+                )
+
     def test_journey_markers_have_valid_syntax_and_are_balanced(self) -> None:
         for path in sorted(WORKSHOP_DIR.glob("*.md")):
             if path.name == "README.md":
@@ -27,6 +69,10 @@ class JourneyMarkerTests(unittest.TestCase):
 
                 stack: list[int] = []
                 for line_number, line in enumerate(text.splitlines(), start=1):
+                    # Line 1 is the page-level journey annotation — skip balance tracking.
+                    if line_number == 1:
+                        continue
+
                     opener = OPEN_RE.match(line)
                     if opener:
                         self.assertFalse(stack, f"Nested journey marker in {path.name}:{line_number}")
@@ -57,6 +103,10 @@ class JourneyMarkerTests(unittest.TestCase):
             with self.subTest(file=path.name):
                 depth = 0
                 for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                    # Line 1 is the page-level journey annotation — skip depth tracking.
+                    if line_number == 1:
+                        continue
+
                     if OPEN_RE.match(line):
                         depth += 1
 

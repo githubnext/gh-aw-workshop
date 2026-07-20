@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # GitHub Actions in 5 Minutes
 
 > [!TIP]

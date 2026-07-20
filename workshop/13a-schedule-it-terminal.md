@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: core
----
+<!-- journey: terminal -->
+<!-- adventure: core -->
 # Schedule It to Run Every Day — Terminal Path
 
 > _Automating the trigger is what turns a one-off script into a true workflow — after this step your report will arrive without you lifting a finger._

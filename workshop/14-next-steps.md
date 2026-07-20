@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- journey: all -->
+<!-- adventure: advanced -->
 # What's Next? Keep Exploring
 
 > _You've built a real, scheduled AI workflow — here's how to keep growing from here._

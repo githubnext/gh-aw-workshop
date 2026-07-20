@@ -1,7 +1,5 @@
----
-journey: copilot
-adventure: core
----
+<!-- journey: copilot -->
+<!-- adventure: core -->
 # Write Your First Agentic Workflow — GitHub Copilot Path
 
 ## 🎯 What You'll Do

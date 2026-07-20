@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: scenario-b
----
+<!-- journey: ui -->
+<!-- adventure: scenario-b -->
 # Build the Daily Documentation Updater — GitHub UI Path
 
 > [!NOTE]

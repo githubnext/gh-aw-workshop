@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # Confirm Model Access
 
 ## 📋 Before You Start

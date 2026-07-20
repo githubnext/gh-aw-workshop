@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # Install the gh-aw CLI Extension
 
 `gh-aw` is the CLI extension that compiles your agentic workflow Markdown files and triggers runs from your terminal. If you're on the GitHub UI path, no local installation is needed: an agent compiles the workflow, and GitHub Actions executes the committed lock file.

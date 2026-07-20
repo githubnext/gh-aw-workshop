@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- journey: all -->
+<!-- adventure: side-quest -->
 # Side Quest: Writing a Clear Agent Brief
 
 > _Optional: use this quick exercise to shape your brief before you return to [Step 10](10a-design-daily-status.md) or move on to [Step 11](11a-build-daily-status.md)._

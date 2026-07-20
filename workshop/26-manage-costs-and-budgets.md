@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- journey: all -->
+<!-- adventure: advanced -->
 # Manage Costs and AI Credit Budgets
 
 > _Agentic workflows consume [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._

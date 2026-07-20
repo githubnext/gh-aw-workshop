@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- journey: all -->
+<!-- adventure: side-quest -->
 # Side Quest 09-01a: Pattern — Long `[plan]` Chains
 
 ## 🎯 What You'll Do

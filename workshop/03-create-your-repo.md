@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 <!-- learning:false -->
 # Create and Verify Your Practice Repository
 

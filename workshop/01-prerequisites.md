@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # What You Need Before We Start
 
 _Starting with the right setup saves you from frustrating detours later._

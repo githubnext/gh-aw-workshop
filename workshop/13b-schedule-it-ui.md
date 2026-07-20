@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: core
----
+<!-- journey: ui -->
+<!-- adventure: core -->
 # Schedule It to Run Every Day — GitHub UI Path
 
 > [!NOTE]

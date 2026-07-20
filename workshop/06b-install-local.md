@@ -1,7 +1,5 @@
----
-journey: local
-adventure: setup
----
+<!-- journey: local -->
+<!-- adventure: setup -->
 # Install gh-aw — Local Terminal
 
 > [!NOTE]

@@ -139,18 +139,20 @@ steps:
               return None
           return pathlib.Path(clean).name
 
+      _PAGE_JOURNEY_RE = re.compile(r'^<!--\s*journey:\s*([a-z,\s]+?)\s*-->\s*$')
+      _PAGE_ADVENTURE_RE = re.compile(r'^<!--\s*adventure:\s*([a-z-]+)\s*-->\s*$')
+
       def parse_frontmatter(text: str):
-          if not text.startswith('---\n'):
-              return {}
-          parts = text.split('---\n', 2)
-          if len(parts) < 3:
-              return {}
+          lines = text.splitlines()
           data = {}
-          for line in parts[1].splitlines():
-              if ':' not in line:
-                  continue
-              key, value = line.split(':', 1)
-              data[key.strip()] = value.strip()
+          if lines:
+              m = _PAGE_JOURNEY_RE.match(lines[0])
+              if m:
+                  data['journey'] = m.group(1).strip()
+          if len(lines) > 1:
+              m = _PAGE_ADVENTURE_RE.match(lines[1])
+              if m:
+                  data['adventure'] = m.group(1).strip()
           return data
 
       def gather_commands(text: str):

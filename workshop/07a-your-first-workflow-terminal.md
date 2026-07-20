@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: core
----
+<!-- journey: terminal -->
+<!-- adventure: core -->
 # Write Your First Agentic Workflow — Terminal Path
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._

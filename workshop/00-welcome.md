@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # Welcome — What We'll Build
 
 By the end of this workshop, a real AI agent will post a comment on one of your GitHub issues — automatically, every day, without you writing shell-script workflow code.

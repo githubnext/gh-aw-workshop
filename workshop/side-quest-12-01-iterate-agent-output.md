@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- journey: all -->
+<!-- adventure: side-quest -->
 # Side Quest: Evaluating and Iterating on Agent Output
 
 > _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)._

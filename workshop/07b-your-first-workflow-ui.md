@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: core
----
+<!-- journey: ui -->
+<!-- adventure: core -->
 # Write Your First Agentic Workflow — GitHub UI Path
 
 > [!NOTE]

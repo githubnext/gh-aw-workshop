@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: setup
----
+<!-- journey: ui -->
+<!-- adventure: setup -->
 # GitHub UI Path — No Installation Needed
 
 > [!NOTE]

@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- journey: all -->
+<!-- adventure: core -->
 # Interpret Your First Run
 
 _Your first run is more useful when you can explain what the agent did and why._

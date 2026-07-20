@@ -1,7 +1,5 @@
----
-journey: copilot
-adventure: side-quest
----
+<!-- journey: copilot -->
+<!-- adventure: side-quest -->
 # Side Quest: Use `gh-aw` with the GitHub Copilot Cloud Agent
 
 Use this side quest if you're working in the **[GitHub Copilot Cloud Agent](https://github.github.com/gh-aw/reference/copilot-cloud-agent/) (CCA)** and need a terminal for `gh-aw` commands.
