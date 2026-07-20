@@ -40,8 +40,6 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
-If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
-
 ## Classify these tasks
 
 For each task below: classify it as **agentic workflow** or **standard Actions workflow**, check the box, then reveal the answer before the next task:
