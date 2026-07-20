@@ -60,6 +60,18 @@ If the compiler reports an error, fix that first. Do not start a new test run un
 > [!TIP]
 > If you expect to make several small edits in a row, `gh aw compile --watch` can speed up the loop by recompiling after each save.
 
+## If You Cannot Run the Terminal
+
+If you are using GitHub Copilot Cloud Agent (CCA) or working from mobile, ask Copilot to compile for you:
+
+```text
+Ask Copilot to compile the workflow and commit the updated lock file.
+```
+
+Then review the commit and confirm your workflow `.lock.yml` file changed before you trigger the next run.
+
+If you want a guided browser-first loop, use [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md), which includes a Copilot agent path for running `gh aw compile` without using your own terminal.
+
 ## Commit Both Workflow Files
 
 After `gh aw compile` succeeds, commit both the source workflow and the regenerated lock file:
@@ -92,6 +104,7 @@ If you want a stricter review loop, score each run for accuracy, completeness, a
 - [ ] I changed only one instruction or configuration detail before testing again
 - [ ] I ran `gh aw compile` after the edit and before triggering the next run
 - [ ] I committed both the workflow `.md` file and the regenerated `.lock.yml` file
+- [ ] If I used a browser or Copilot agent path, I confirmed the latest commit updated the `.lock.yml` file
 - [ ] I compared the new run with the previous run and decided what to change next
 
 <!-- journey: all -->
