@@ -257,9 +257,11 @@ Use inline XML wrappers when only part of a page should be shown for a specific 
 Rules:
 
 - `include` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
+- Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `include="all"`.
 - Keep `journey` frontmatter at the top of the file. Inline tags are for section-level filtering inside a page, not page-level routing.
 - Prefer inline tags for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
+- Do not nest `<journey>` tags. Keep each `<journey>` block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
 
 Example patterns:
 

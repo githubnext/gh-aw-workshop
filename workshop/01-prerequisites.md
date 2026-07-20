@@ -146,7 +146,7 @@ Continue with exactly one of these paths:
 **Next:** Open [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
 </journey>
 <journey include="ui,copilot">
-**Next:** Open [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md).
+**Next:** Open [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
 </journey>
 
 ## 📚 See Also
