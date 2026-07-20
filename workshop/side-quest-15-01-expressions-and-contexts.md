@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: GitHub Actions Expressions and Contexts
 
 > _The `${{ }}` syntax unlocks a whole language inside your workflow — learn to read it and you can make workflows that adapt to anything._
@@ -132,5 +130,4 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

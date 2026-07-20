@@ -1,11 +1,9 @@
----
-journey: local
-adventure: setup
----
+<!-- page-journey: local -->
+<!-- page-adventure: setup -->
 # Install gh-aw — Local Terminal
 
 > [!NOTE]
-> Using a Codespace instead? Switch to [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md).
+> Using a Codespace instead? Switch to [Install gh-aw — Codespace Terminal](06a-install-terminal.md).
 
 ## 🎯 What You'll Do
 
@@ -13,8 +11,8 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 
 ## 📋 Before You Start
 
-- You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
-- You've completed [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
+- You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+- You've completed [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md)
 - The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 Run this to confirm `gh` is authenticated before continuing:
@@ -23,7 +21,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
 
 ## Install from terminal
 
@@ -109,8 +107,7 @@ Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 <!-- journey: local -->
-**Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/).
 

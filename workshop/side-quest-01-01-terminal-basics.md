@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: side-quest
----
+<!-- page-journey: terminal -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Terminal Basics
 
 > _Optional: complete this quick primer if you're new to the terminal, then return to Step 1._
@@ -107,8 +105,7 @@ rm -r test-dir
 
 ---
 
-When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md).
+When you're done here, return to [What You Need Before We Start](01-prerequisites.md).
 
 <!-- /journey -->
-For more details, see [Side Quest: Permission Errors](side-quest-01-03-permission-errors.md) — what to do when the terminal says `permission denied`.
 

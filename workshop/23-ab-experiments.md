@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Test Your Prompt Ideas with [A/B Experiments](https://github.github.com/gh-aw/experimental/experiments/)
 
 > _Stop guessing which prompt works better — let alternating runs tell you._
@@ -154,5 +152,4 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [A/B Experiments reference](https://github.github.com/gh-aw/experimental/experiments/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/), [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md), [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md), [Make Your Workflow Remember Across Runs](20-persistent-memory.md), and [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md).
 

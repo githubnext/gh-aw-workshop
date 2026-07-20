@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Run Your Agentic Workflow on a Self-Hosted Runner
 
 > _Enterprise teams often need workflows to run on their own infrastructure — this step shows you exactly how._
@@ -14,7 +12,7 @@ rather than a GitHub-hosted machine.
 
 ## 📋 Before You Start
 
-- Your agentic workflow runs successfully (see [Step 12: Test and Iterate](12-test-and-iterate.md)).
+- Your agentic workflow runs successfully (see [Test and Iterate](12-test-and-iterate.md)).
 - A self-hosted runner is registered and **online** for your repository or organisation.
   If you need to set one up first, see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 - You know the label assigned to your runner (for example, `self-hosted`, `ubuntu-self-hosted`, or a custom label your admin configured).
@@ -179,5 +177,4 @@ Commit the updated lock file before triggering your next workflow run.
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
 
-For more details, see [Self-Hosted Runners reference](https://github.github.com/gh-aw/reference/self-hosted-runners/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners), [Runner labels reference](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/using-labels-with-self-hosted-runners), [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md), and [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 

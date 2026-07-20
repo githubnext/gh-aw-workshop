@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 <!--
 <research-metadata>
   <focus>Inline sub-agents — the `## agent: \`name\`` syntax in gh-aw that lets a workflow define specialised worker agents directly inside a single Markdown file, with per-agent `model:` overrides</focus>
@@ -27,7 +25,7 @@ You'll add a sub-agent to your daily-status workflow so the parent agent can sta
 ## 📋 Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
-- You understand YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You understand YAML frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ## Understand the parent agent and sub-agent split
@@ -122,5 +120,4 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/), [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md), [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md), [Make Your Workflow Remember Across Runs](20-persistent-memory.md), and [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 

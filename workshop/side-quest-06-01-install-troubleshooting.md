@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Install `gh-aw` Troubleshooting
 
 > _Optional: use this guide if Step 6 install fails, then return to the main path._
@@ -10,7 +8,7 @@ If `gh extension install github/gh-aw` fails, use the matching fix below and ret
 
 ---
 
-## Local terminal setup quick fixes (Adventure B)
+## Local terminal setup quick fixes (Adventure Local)
 
 If you are still in local terminal setup and not yet installing `gh-aw`, use this table first:
 
@@ -117,10 +115,10 @@ Use this checklist to confirm the install issue is fully resolved before returni
 - [ ] `gh extension install github/gh-aw` completed without an HTTP 4xx or network error
 - [ ] `gh aw --version` prints a version number (for example, `gh-aw 1.x.x`)
 - [ ] `gh extension list` shows `github/gh-aw` in the output
-- [ ] I am ready to return to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md) and continue
+- [ ] I am ready to return to [Install the gh-aw CLI Extension](06-install-gh-aw.md) and continue
 
 ---
 
 <!-- journey: all -->
-Return to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
+Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
 <!-- /journey -->

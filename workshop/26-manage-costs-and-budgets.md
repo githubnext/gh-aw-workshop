@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Manage Costs and AI Credit Budgets
 
 > _Agentic workflows consume [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._
@@ -112,5 +110,4 @@ gh aw compile
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
 
-For more details, see [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot), [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md), [Make Your Workflow Remember Across Runs](20-persistent-memory.md), and [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 

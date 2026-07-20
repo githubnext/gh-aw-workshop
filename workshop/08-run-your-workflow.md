@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # Run and Watch Your Workflow
 
 _Watching an agent work in real time makes the workflow feel concrete._
@@ -12,7 +10,7 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 ## 📋 Before You Start
 
-- Completed [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+- Completed [Confirm Model Access](07d-confirm-model-access.md)
 - `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
@@ -33,7 +31,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
 
 ![Actions tab showing where to find Daily Report Status in the workflow list](images/08-actions-tab.svg)
 
-Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page and confirm both workflow files are on `main`. If you used the GitHub UI path, go back to [Step 7b](07b-your-first-workflow-ui.md) and use the **Agentic Workflows** agent to compile the lock file. If you used the Terminal path, run `gh aw compile` to check for compile errors.
+Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page and confirm both workflow files are on `main`. If you used the GitHub Copilot path, return to [Step 7c](07c-your-first-workflow-copilot.md) and confirm the workflow pull request was merged. If you used the Terminal path, run `gh aw compile` to check for compile errors.
 
 If the run fails immediately with a model-access or authentication error, return to [Step 7d](07d-confirm-model-access.md) and confirm the selected billing method matches the workflow.
 
@@ -57,20 +55,12 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 
 ## ✅ Checkpoint
 
-- [ ] I completed Step 7d and configured model access
 - [ ] The **Daily Report Status** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active
 - [ ] The run completed with a green ✅
-- [ ] I confirmed the agent updated my repository
-- [ ] I am ready to interpret the run in [Step 8b](08b-interpret-your-run.md)
-
-> [!TIP]
-> If your run failed, see [Step 8b](08b-interpret-your-run.md) for a log walk-through and common failure patterns.
 
 <!-- journey: all -->
-**Next:** [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
+**Next:** [Interpret Your First Run](08b-interpret-your-run.md)
 <!-- /journey -->
-
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

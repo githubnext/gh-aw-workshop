@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # Interpret Your First Run
 
 _Your first run is more useful when you can explain what the agent did and why._
@@ -12,7 +10,7 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 
 ## 📋 Before You Start
 
-- Completed [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- Completed [Run and Watch Your Workflow](08-run-your-workflow.md)
 - Your **Daily Report Status** workflow has at least one completed run
 
 ## Read the live log
@@ -48,19 +46,16 @@ If your run does not look right, start with these quick checks before changing t
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 
-For a deeper troubleshooting guide, see [Step 9: Reading Workflow Output](09-understand-output.md) and [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
+For a deeper troubleshooting guide, see [Reading Workflow Output](09-understand-output.md) and [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
 ## ✅ Checkpoint
 
-- [ ] I found the first `Tool call` in my completed run
-- [ ] I can point to a planning line, a result line, and the final `Done` line
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
 
 <!-- journey: all -->
-**Next:** [Step 9: Reading Workflow Output](09-understand-output.md)
+**Next:** [Reading Workflow Output](09-understand-output.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/).
 

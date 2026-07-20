@@ -1,14 +1,12 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Storing Credentials with GitHub Secrets
 
 > _Optional: work through this guide when your workflow needs a token or API key that shouldn't appear in plain text, then return to your main path._
 
 ## 📋 Before You Start
 
-- Familiarity with [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
+- Familiarity with [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
 - You understand what GitHub Actions workflow YAML looks like.
 
 ---
@@ -146,5 +144,4 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 **Return to:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) or [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
 <!-- /journey -->
 
-For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), and [Network Permissions](https://github.github.com/gh-aw/reference/network/).
 

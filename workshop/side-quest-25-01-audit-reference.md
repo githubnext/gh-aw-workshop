@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Audit Reference — Artifacts, Firewall Logs, and Report Contents
 
 > _A detailed companion to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md). Use this side quest when you want to understand the full contents of an audit report or dig into individual artifact files._
@@ -68,5 +66,4 @@ Share the allowed-domains list from a successful run with your enterprise securi
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 <!-- /journey -->
 
-For more details, see [Network reference](https://github.github.com/gh-aw/reference/network/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 

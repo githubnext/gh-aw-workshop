@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Writing a Clear Agent Brief
 
 > _Optional: use this quick exercise to shape your brief before you return to [Step 10](10a-design-daily-status.md) or move on to [Step 11](11a-build-daily-status.md)._
@@ -12,7 +10,7 @@ Build your brief in a scratch file in five steps. By the end, you'll have a dail
 
 ## 📋 Before You Start
 
-- You've completed [Step 9: Reading Workflow Output](09-understand-output.md)
+- You've completed [Reading Workflow Output](09-understand-output.md)
 - You have a practice repository created in [Step 3](03-create-your-repo.md)
 
 ---
@@ -198,8 +196,7 @@ Guardrails:
 ---
 
 <!-- journey: all -->
-Return to [Step 10: Design Your Daily Repo Status Report](10a-design-daily-status.md) or continue to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md).
+Return to [Design Your Daily Repo Status Report](10a-design-daily-status.md) or continue to [Build Your Daily Repo Status Workflow](11a-build-daily-status.md).
 <!-- /journey -->
 
-For more details, see [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

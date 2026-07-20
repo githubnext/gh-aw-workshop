@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Build a Research-Driven Next Training Node
 
 > _Strong workshop content comes from real product signals, not guesses._
@@ -12,7 +10,7 @@ In this step, you will turn `github/gh-aw` research into a concrete training pla
 
 ## 📋 Before You Start
 
-- You completed [Step 18: Share and Reuse Your Agentic Workflows](18-share-and-reuse.md).
+- You completed [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md).
 - You can open `workshop/README.md` and identify where new nodes belong in the curriculum table.
 - You can run `gh aw compile` for workflow validation from earlier steps.
 
@@ -87,7 +85,6 @@ gh aw compile --validate
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/), [Training Plan Researcher workflow](../.github/workflows/training-plan-research.md), [Docs Linker workflow example](../.github/workflows/docs-linker.md), and [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 <!--
 <research-node-metadata>

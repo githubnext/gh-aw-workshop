@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Connect a Live Data Source to Your Workflow
 
 > _Workflows become truly powerful when they act on real, up-to-the-minute data — not just canned prompts._
@@ -12,7 +10,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 ## 📋 Before You Start
 
-- You have installed the `gh-aw` extension in [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
+- You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](11a-build-daily-status.md).
 - You're comfortable running and iterating on workflows from [Test and Improve Your Workflow](12-test-and-iterate.md).
 

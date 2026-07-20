@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT
 
 > _Optional: work through this deep-dive if you want to understand how data flows between steps, then return to [Step 16](16-connect-data-source.md)._
@@ -117,8 +115,7 @@ The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is
 ---
 
 <!-- journey: all -->
-Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+Return to [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 <!-- /journey -->
 
-For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/) and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

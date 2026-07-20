@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 <!--
 <research-metadata>
   <focus>Persistent memory in agentic workflows — cache-memory and repo-memory frontmatter tools</focus>
@@ -30,7 +28,7 @@ You'll add persistent memory to your agentic workflow so it can carry state betw
 ## 📋 Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
-- You are comfortable editing YAML frontmatter from [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+- You are comfortable editing YAML frontmatter from [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You understand how `safe-outputs` controls write access (see [Side Quest: Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) if you need a refresher).
 
 ## Why Memory Matters
@@ -153,5 +151,4 @@ git push
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/), [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/), [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md), [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md), [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md), and [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 

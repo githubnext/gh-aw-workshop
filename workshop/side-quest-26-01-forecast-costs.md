@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Project Future AI Credit Costs with `gh aw forecast`
 
 > _A deeper companion to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md). Use this side quest when you want a full walkthrough of `gh aw forecast` — what the output means, how to tune projections, and how to translate the P90 figure into a practical `max-daily-ai-credits` value._
@@ -117,5 +115,4 @@ gh aw compile
 Return to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 <!-- /journey -->
 
-For more details, see [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot) and [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 

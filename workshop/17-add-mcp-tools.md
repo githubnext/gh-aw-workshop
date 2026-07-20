@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Give Your Agent More Tools with MCP
 
 > _MCP servers turn your agent from a text generator into an active participant that can read, fetch, and act._
@@ -12,7 +10,7 @@ You'll add an MCP (Model Context Protocol) server to your workflow's [frontmatte
 
 ## 📋 Before You Start
 
-- You have installed the `gh-aw` extension in [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
+- You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](11a-build-daily-status.md).
 - You're comfortable editing the YAML frontmatter section at the top of your workflow file.
 
@@ -121,5 +119,4 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 **Next:** [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Using MCPs guide](https://github.github.com/gh-aw/guides/mcps/), [MCP Scripts reference](https://github.github.com/gh-aw/reference/mcp-scripts/), and [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/).
 

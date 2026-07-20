@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Write Better AI Task Briefs
 
 > _Optional: work through this guide if you want to get more useful, consistent output from your agentic workflows — then return to [Step 11](11a-build-daily-status.md) or [Step 12](12-test-and-iterate.md)._
@@ -159,8 +157,7 @@ posted to the Actions run summary.
 ---
 
 <!-- journey: all -->
-Return to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md) or continue to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+Return to [Build Your Daily Repo Status Workflow](11a-build-daily-status.md) or continue to [Test and Improve Your Workflow](12-test-and-iterate.md).
 <!-- /journey -->
 
-For more details, see [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

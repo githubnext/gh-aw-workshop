@@ -21,30 +21,10 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 7 | [07-your-first-workflow.md](07-your-first-workflow.md) | Write Your First Agentic Workflow | ✅ |
 | 7a | [07a-your-first-workflow-terminal.md](07a-your-first-workflow-terminal.md) | Terminal Path — Write Your First Agentic Workflow | ✅ |
 | 7a-part2 | [07a-part2-your-first-workflow-instructions.md](07a-part2-your-first-workflow-instructions.md) | Terminal Path (Part 2) — Add Instructions and Finish Your First Workflow | ✅ |
-| 7b | [07b-your-first-workflow-ui.md](07b-your-first-workflow-ui.md) | GitHub UI Path — Write Your First Agentic Workflow | ✅ |
 | 7c | [07c-your-first-workflow-copilot.md](07c-your-first-workflow-copilot.md) | GitHub Copilot Path — Write Your First Agentic Workflow | ✅ |
 | 7d | [07d-confirm-model-access.md](07d-confirm-model-access.md) | Confirm Model Access | ✅ |
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
 | 8b | [08b-interpret-your-run.md](08b-interpret-your-run.md) | Interpret Your First Run | ✅ |
-| 9 | [09-understand-output.md](09-understand-output.md) | Reading Workflow Output | ✅ |
-| 10 | [10-choose-your-scenario.md](10-choose-your-scenario.md) | Choose Your Scenario | ✅ |
-| 10a | [10a-design-daily-status.md](10a-design-daily-status.md) | ➡️ Adventure A: Design — Daily Repo Status Report | ✅ |
-| 10b | [10b-design-daily-docs.md](10b-design-daily-docs.md) | ➡️ Adventure B: Design — Daily Documentation Updater | ✅ |
-| 10c | [10c-design-pr-reviewer.md](10c-design-pr-reviewer.md) | ➡️ Adventure C: Design — PR Code Reviewer | ✅ |
-| 11a | [11a-build-daily-status.md](11a-build-daily-status.md) | ➡️ Adventure A: Build — Daily Repo Status Workflow | ✅ |
-| 11a | [Terminal](11a-build-daily-status-terminal.md) **or** [GitHub UI](11a-build-daily-status-ui.md) | Adventure A Build Paths | ✅ |
-| 11a2 | [11a2-run-daily-status-terminal.md](11a2-run-daily-status-terminal.md) | Terminal Path — Compile and Run the Daily Status Workflow | ✅ |
-| 11a✨ | [11a-build-daily-status-wizard.md](11a-build-daily-status-wizard.md) | ➡️ Adventure A (wizard): Build Daily Status with the Add Wizard | ✅ |
-| 11b | [11b-build-daily-docs.md](11b-build-daily-docs.md) | ➡️ Adventure B: Build — Daily Documentation Updater | ✅ |
-| 11b | [Terminal](11b-build-daily-docs-terminal.md) **or** [GitHub UI](11b-build-daily-docs-ui.md) | Adventure B Build Paths | ✅ |
-| 11c | [11c-build-pr-reviewer.md](11c-build-pr-reviewer.md) | ➡️ Adventure C: Build — PR Code Reviewer | ✅ |
-| 11c | [Terminal](11c-build-pr-reviewer-terminal.md) **or** [GitHub UI](11c-build-pr-reviewer-ui.md) | Adventure C Build Paths | ✅ |
-| 11d | [11d-build-copilot-agents.md](11d-build-copilot-agents.md) | ➡️ Adventure D: Build Any Workflow with GitHub Copilot | ✅ |
-| 11d2 | [11d2-review-and-merge.md](11d2-review-and-merge.md) | ➡️ Adventure D (Part 2): Monitor, Review, and Merge | ✅ |
-| 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
-| 13 | [13-schedule-it.md](13-schedule-it.md) | Schedule It to Run Every Day | ✅ |
-| 13a | [13a-schedule-it-terminal.md](13a-schedule-it-terminal.md) | Terminal Path — Schedule the Workflow | ✅ |
-| 13b | [13b-schedule-it-ui.md](13b-schedule-it-ui.md) | GitHub UI Path — Schedule the Workflow | ✅ |
 | 14 | [14-next-steps.md](14-next-steps.md) | What's Next? Keep Exploring | ✅ |
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
 | 16 | [16-connect-data-source.md](16-connect-data-source.md) | Connect a Live Data Source to Your Workflow | ✅ |
@@ -102,4 +82,4 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 
 ## Getting Started
 
-Start at [Step 0: Welcome](00-welcome.md) — it shows you what you'll build and sets you up for success.
+Start at [Welcome](00-welcome.md) — it shows you what you'll build and sets you up for success.

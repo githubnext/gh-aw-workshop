@@ -1,14 +1,12 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Workflow File Structure at a Glance
 
-> _Optional: read this before building Step 11 to understand what you are writing, then return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)._
+> _Optional: read this before building Step 11 to understand what you are writing, then return to [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)._
 
 ## 📋 Before You Start
 
-- Keep [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md) open so you can map each section here to the workflow you build next.
+- Keep [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md) open so you can map each section here to the workflow you build next.
 
 ---
 
@@ -82,8 +80,7 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 ---
 
 <!-- journey: all -->
-Return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md).
+Return to [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md).
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Workflow Structure reference](https://github.github.com/gh-aw/reference/workflow-structure/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).
 

@@ -1,11 +1,9 @@
----
-journey: codespace
-adventure: setup
----
+<!-- page-journey: codespace -->
+<!-- page-adventure: setup -->
 # Install gh-aw — Codespace Terminal
 
 > [!NOTE]
-> Using a local terminal instead? Switch to [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).
+> Using a local terminal instead? Switch to [Install gh-aw — Local Terminal](06b-install-local.md).
 
 ## 🎯 What You'll Do
 
@@ -13,9 +11,8 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 
 ## 📋 Before You Start
 
-- You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
-- You have a Codespace terminal open (from [Step 2a: Set Up a Codespace](02a-setup-codespace.md))
-- **GitHub Copilot Cloud Agent (CCA) users:** If you don't have a Codespace terminal open yet, complete [Side Quest: Use gh-aw with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md) first, then return here.
+- You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+- You have a Codespace terminal open (from [Set Up a Codespace](02a-setup-codespace.md))
 
 Run this to confirm `gh` is authenticated before continuing:
 
@@ -23,7 +20,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error, return to [Step 2a: Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error, return to [Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready).
 
 ## Install from terminal
 
@@ -38,10 +35,12 @@ gh aw --version
 
 ```bash
 gh extension install github/gh-aw
+gh aw --version
 ```
 
-<details>
-<summary>Troubleshooting: 403 Forbidden on install</summary>
+You should see output like `gh-aw version 0.81.6`.
+
+### Troubleshooting: 403 Forbidden on install
 
 Your org token may not allow public extension installs. Use the fallback installer:
 
@@ -51,19 +50,7 @@ curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh |
 
 Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
-</details>
-
-Verify the extension is ready:
-
-```bash
-gh aw --version
-```
-
-You should see output like `gh-aw version 0.81.6`.
-
 ## Run a quick diagnostic
-
-Now run:
 
 ```bash
 gh aw doctor
@@ -109,8 +96,7 @@ Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 <!-- journey: codespace -->
-**Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/).
 

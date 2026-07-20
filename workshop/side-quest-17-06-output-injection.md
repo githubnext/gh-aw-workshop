@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Output Injection via Safe Outputs
 
 > _Output injection is a technique where crafted repository content tries to embed markdown, HTML, or instructions into an agent's output to mislead the people who read it — and gh-aw's `safe-outputs` block keeps agent output constrained to approved surfaces and shapes._
@@ -116,5 +114,4 @@ The parser reads `required-labels` in [`pkg/workflow/safe_outputs_parser.go`](ht
 Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 <!-- /journey -->
 
-For more details, see [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), and [GitHub Integrity Filtering](https://github.github.com/gh-aw/reference/integrity/).
 

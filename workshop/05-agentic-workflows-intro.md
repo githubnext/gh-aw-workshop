@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # What Are Agentic Workflows?
 
 **Already familiar with both GitHub Actions and AI agent execution environments?**
@@ -11,17 +9,13 @@ Before skipping, confirm you already know both of these:
 - You can describe what an Actions workflow [trigger](https://github.github.com/gh-aw/reference/triggers/) does
 - You have worked with AI agent execution environments in a production or CI/CD context
 
-If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
+If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 ## 📋 Before You Start
 
-- You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
-- You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
+- You've read [What Are GitHub Actions?](04-github-actions-intro.md)
 
-> [!TIP]
-> If you already work with LLM APIs or orchestration frameworks: an agentic workflow is similar to a tool-calling agent loop, but the "tools" are GitHub Actions steps and the "runtime" is GitHub Actions — not a local process.
-
-An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
+An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
@@ -45,8 +39,6 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
-
-If you already trust GitHub Actions, the trust model stays the same here. The opening animation in this step shows the same permissions, firewall controls, and isolated execution environment that agentic workflows use in the standard GitHub Actions sandbox. You are not creating a new trust boundary.
 
 ## Classify these tasks
 
@@ -76,31 +68,9 @@ You just saw how a standard Actions workflow follows fixed steps. Agentic workfl
 
 </details>
 
-> [!IMPORTANT]
-> On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
-
-<!-- -->
-
-> [!NOTE]
-> <details>
-> <summary><b>On GHES or GHEC? Map the cloud examples to your environment.</b></summary>
->
-> The examples in this step use `github.com` cloud workflows. If you are on GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC), everything still applies — here is how the key pieces map:
->
-> | Cloud example | GHES / GHEC equivalent |
-> |---|---|
-> | `github.com` repository | Your enterprise-hosted repository |
-> | GitHub-hosted runner (`ubuntu-latest`) | Your organization's runner (GitHub-hosted or self-hosted, depending on admin policy) |
-> | Copilot cloud agent | Copilot Enterprise (requires GHES 3.12+ and admin-enabled Copilot policy) |
-> | Actions tab | Same location — **repository → Actions** |
->
-> If `github.com` cloud access is unavailable in your environment, you can follow along in read-only mode and run the execution steps on a personal `github.com` account. See [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for GHES version requirements and runner prerequisites.
->
-> </details>
-
 ## Reflection
 
-Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
+Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in later.
 
 ## What the agent decided
 
@@ -237,25 +207,11 @@ Does your answer include:
 
 - [ ] I described what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
-- [ ] I understand that agentic workflows use the same trust model as GitHub Actions
-- [ ] I classified all four tasks and verified my reasoning in the reveal
-- [ ] I can explain why Task D is agentic despite its deterministic ESLint step
-- [ ] I answered the self-check and compared my answer to the model
-- [ ] I wrote one sentence describing what I want my own agentic workflow to do
-- [ ] I recorded my workflow idea in my workshop notes
-- [ ] My workflow idea needs judgment, not a fixed script
-- [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
-- [ ] I completed the concept-check exercise before revealing the answers
-- [ ] I can define 'engine' as the AI model provider used during a workflow run
-- [ ] I know that `workflow_dispatch` is a manual trigger started from the Actions tab
-- [ ] I understand that `gh aw compile` generates the lock file and it must not be edited by hand
-- [ ] I can explain, in my own words, how agentic workflows relate to tool-calling or LLM APIs if I already use them
 
 <!-- journey: all -->
-**Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
+**Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [How Agentic Workflows Work](https://github.github.com/gh-aw/introduction/how-they-work/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Schedule Syntax](https://github.github.com/gh-aw/reference/schedule-syntax/).
 

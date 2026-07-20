@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Share and Reuse Your Agentic Workflows
 
 > _Your workflow is worth more than one repository — learn how to turn it into a reusable template your whole team can adopt._
@@ -12,7 +10,7 @@ You'll copy your finished workflow file into a shared location so that teammates
 
 ## 📋 Before You Start
 
-- You have a working agentic workflow (completed [Step 13: Schedule It to Run Every Day](13-schedule-it.md) or any of the build steps).
+- You have a working agentic workflow (completed [Schedule It to Run Every Day](13-schedule-it.md) or any of the build steps).
 - You have push access to at least one repository where you want to share the workflow (this can be the same practice repo).
 
 ## Steps
@@ -97,5 +95,4 @@ This hint saves teammates guesswork when they first open the file.
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Reusing workflows guide](https://github.github.com/gh-aw/guides/reusing-workflows/), and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

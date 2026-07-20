@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # GitHub Actions in 5 Minutes
 
 > [!TIP]
@@ -12,19 +10,14 @@ adventure: core
 > - [ ] I can read `on`, `jobs`, and `steps` keys in a workflow file
 > - [ ] I know each step runs on a GitHub-hosted runner
 >
-> **→ [Skip to Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
-> (or [jump to Step 6: Install gh-aw](06-install-gh-aw.md) if you know both)
+> **→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
+> (or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
 >
 > </details>
 
 ## 🎯 What You'll Do
 
-You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file — a skill you'll build on immediately in Steps 5 and 6.
-
-## 📋 Before You Start
-
-- You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
-- No credentials needed — works entirely in your browser
+You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file.
 
 ## Classic Actions vs [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 
@@ -63,8 +56,6 @@ jobs:
 ## Why This Matters for Agentic Workflows
 
 Traditional workflows execute a fixed script path. Agentic workflows still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
-
-Step 5 is the optional transition if you want the conceptual delta before installing `gh-aw`: _what changes when a workflow can reason and choose next actions_.
 
 ## Label a sample workflow
 
@@ -150,8 +141,7 @@ Mark each statement as true or false, then reveal the answers:
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 <!-- journey: all -->
-**Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+**Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

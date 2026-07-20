@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Configure an OpenAI API Key
 
 > _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
@@ -10,7 +8,7 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 
 ## 📋 Before You Start
 
-- You have completed [Step 6: Install `gh-aw`](06-install-gh-aw.md) and have a working agentic workflow.
+- You have completed [Install `gh-aw`](06-install-gh-aw.md) and have a working agentic workflow.
 - You are familiar with YAML frontmatter `env:` blocks. If frontmatter is new, skim [Side Quest: Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) before continuing.
 - You have an OpenAI account or access to an OpenAI API key from your organization.
 
@@ -130,8 +128,7 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+**Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Engine configuration](https://github.github.com/gh-aw/reference/auth/), and [Network Permissions](https://github.github.com/gh-aw/reference/network/).
 

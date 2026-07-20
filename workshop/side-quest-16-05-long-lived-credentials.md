@@ -1,14 +1,12 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Long-Lived Credential Risks in Agentic Workflows
 
 > _Optional: work through this security primer to understand why personal access tokens create a larger attack surface than the ephemeral `GITHUB_TOKEN` — especially in unattended agentic workflows._
 
 ## 📋 Before You Start
 
-- You have started [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+- You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 - You understand that `${{ secrets.GITHUB_TOKEN }}` is the built-in GitHub token provided automatically for each workflow run.
 - You are familiar with [Side Quest: Storing Credentials with GitHub Secrets](side-quest-16-02-secrets-and-permissions.md).
 
@@ -184,8 +182,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 ---
 
 <!-- journey: all -->
-Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+Return to [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 <!-- /journey -->
 
-For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), and [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/).
 

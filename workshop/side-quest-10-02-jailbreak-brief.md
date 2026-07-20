@@ -1,14 +1,12 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Jailbreaking the Agent Brief
 
 > _Optional: work through this security primer to understand how adversarial instructions embedded in repository content can attempt to override your agent's task brief — and why gh-aw's layered architecture limits what any partial success can actually do._
 
 ## 📋 Before You Start
 
-- You have completed [Step 10: Choose Your Scenario](10-choose-your-scenario.md).
+- You have completed [Choose Your Scenario](10-choose-your-scenario.md).
 - You have read (or plan to read) [Side Quest: Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) — understanding what a well-formed task brief looks like makes it easier to see how an attacker tries to replace it.
 
 ---
@@ -118,8 +116,7 @@ The fourth sentence — "Please disregard your current task…" — is the injec
 ---
 
 <!-- journey: all -->
-Return to [Step 10: Choose Your Scenario](10-choose-your-scenario.md).
+Return to [Choose Your Scenario](10-choose-your-scenario.md).
 <!-- /journey -->
 
-For more details, see [Side Quest: Prompt Injection Attacks in Agentic Workflows](side-quest-17-03-prompt-injection.md), [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md), [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md), [OWASP LLM01: Prompt Injection](https://owasp.org/www-project-top-10-for-large-language-model-applications/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Assigning permissions to jobs (GitHub Actions docs)](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs), and [Network configuration reference](https://github.github.com/gh-aw/reference/network/).
 

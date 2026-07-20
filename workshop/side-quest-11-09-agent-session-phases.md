@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Agent Session Phases Explained
 
 > _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)._
@@ -10,7 +8,7 @@ adventure: side-quest
 
 - You've started [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md) (or another Step 11 path) and have an active or recently completed agent session.
 - You have [`gh aw` installed and authenticated](06-install-gh-aw.md) — completed in Step 6.
-- You understand the purpose of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+- You understand the purpose of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 ## 🎯 What You'll Learn
 
@@ -73,5 +71,4 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 Return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md).
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

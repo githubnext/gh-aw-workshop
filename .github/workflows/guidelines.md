@@ -119,7 +119,7 @@ Multi-line callout (summary + body):
 
 - Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
 - Prefer guiding learners to trigger manual workflow runs from the GitHub Actions web UI.
-- If a step includes `gh aw run`, present it as an optional advanced path and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Step 6: Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
+- If a step includes `gh aw run`, present it as an optional advanced path and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
 ## Schedule triggers: always use fuzzy syntax in agentic workflow files
 
@@ -194,12 +194,13 @@ When two workshop design choices are of equal or comparable value, **favor the o
 
 This rule does not override clearly superior choices for all learners. It is a tie-breaker, not an absolute reorder of priorities.
 
-## No "See Also" sections — documentation links belong inline
+## No "See Also" sections or "For more details" footers — documentation links belong inline
 
 - Do **not** add `## See Also`, `## 📚 See Also`, or any equivalent dedicated "See Also" section to workshop files.
+- Do **not** add a `For more details, see …` sentence at the end of a step or section. These trailing footers add noise without improving comprehension.
 - When a concept or term has a matching reference page in the gh-aw docs, link it **inline** at its first bare occurrence in the prose (e.g., `[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)`).
 - If you want to surface a relevant doc URL without anchoring it to specific prose, place the bare URL on its own line in the text — do **not** wrap it in a `[title](url)` list under a "See Also" heading.
-- Any existing `## See Also` / `## 📚 See Also` sections are violations of this rule and must be removed.
+- Any existing `## See Also` / `## 📚 See Also` sections and any `For more details, see …` lines are violations of this rule and must be removed.
 
 ## Consistency check
 
@@ -239,20 +240,20 @@ TOC generation rules (script-friendly):
 
 This keeps IDs lexically sortable, preserves the choose-your-adventure branch model, and cleanly groups optional side quests under their parent step.
 
-## Workshop page frontmatter schema
+## Workshop page annotation schema
 
-Every Markdown file in `workshop/` (except `README.md`) carries a YAML frontmatter block that describes the user journey and adventure category of the page. Tools and tables of contents use these fields to filter pages by learner profile.
+Every Markdown file in `workshop/` (except `README.md`) starts with two XML comment lines that describe the user journey and adventure category of the page. Tools and tables of contents use these fields to filter pages by learner profile. XML comments are not rendered by GitHub Markdown, so learners never see them.
 
-### Frontmatter format
+### Page annotation format
 
-```yaml
----
-journey: <value>
-adventure: <value>
----
+```markdown
+<!-- page-journey: <value> -->
+<!-- page-adventure: <value> -->
 ```
 
-Place this block as the **very first content** in the file, before the `#` heading.
+These two lines must be the **very first content** in the file, before the `#` heading.
+
+The `page-` prefix distinguishes page-level annotations from section-level `<!-- journey: X -->` / `<!-- /journey -->` region markers used inside the page body.
 
 ### `journey` — learner path
 
@@ -272,7 +273,7 @@ Rules:
 
 - `journey:` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
 - Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `journey: all`.
-- Keep `journey` frontmatter at the top of the file. Inline comment markers are for section-level filtering inside a page, not page-level routing.
+- Keep the page-level `<!-- page-journey: X -->` annotation on line 1 of the file. Section-level comment markers (`<!-- journey: X -->` / `<!-- /journey -->`) are for filtering content blocks inside a page, not page-level routing.
 - Prefer journey comment markers for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
 - Do not nest journey markers. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
@@ -286,7 +287,7 @@ Example patterns:
 <!-- /journey -->
 
 <!-- journey: local -->
-**Next:** [Step 2b: Set Up Your Local Terminal](02b-setup-local.md)
+**Next:** [Set Up Your Local Terminal](02b-setup-local.md)
 <!-- /journey -->
 ```
 
@@ -314,8 +315,8 @@ Describes the role the page plays in the overall workshop structure.
 |-------|---------|
 | `core` | Required shared path — every learner follows these pages |
 | `setup` | Environment or tool setup steps (Codespace, local, gh-aw install) |
-| `scenario-a` | Adventure A — Daily Repo Status Report |
-| `scenario-b` | Adventure B — Daily Documentation Updater |
+| `scenario-a` | Adventure Codespace — Daily Repo Status Report |
+| `scenario-b` | Adventure Local — Daily Documentation Updater |
 | `scenario-c` | Adventure C — PR Code Reviewer |
 | `scenario-d` | Adventure D — Build with GitHub Copilot (Agents tab / CCA) |
 | `advanced` | Optional post-core topics (steps 14 and above) |
@@ -352,13 +353,11 @@ Some workshop pages are not substantive learning steps — they are **dispatcher
 
 ### Marking a page as a dispatcher
 
-Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the frontmatter block:
+Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the page annotation lines:
 
 ```markdown
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 <!-- learning:false -->
 # Choose Your Scenario
 ```

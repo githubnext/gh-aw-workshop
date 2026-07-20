@@ -1,7 +1,5 @@
----
-journey: copilot
-adventure: core
----
+<!-- page-journey: copilot -->
+<!-- page-adventure: core -->
 # Write Your First Agentic Workflow — GitHub Copilot Path
 
 ## 🎯 What You'll Do
@@ -61,8 +59,7 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 <!-- journey: copilot -->
-**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+**Next:** [Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [AI Engines reference](https://github.github.com/gh-aw/reference/engines/).
 

@@ -139,18 +139,20 @@ steps:
               return None
           return pathlib.Path(clean).name
 
-      def parse_frontmatter(text: str):
-          if not text.startswith('---\n'):
-              return {}
-          parts = text.split('---\n', 2)
-          if len(parts) < 3:
-              return {}
+      _PAGE_JOURNEY_RE = re.compile(r'^<!--\s*page-journey:\s*([a-z,\s]+?)\s*-->\s*$')
+      _PAGE_ADVENTURE_RE = re.compile(r'^<!--\s*page-adventure:\s*([a-z-]+)\s*-->\s*$')
+
+      def parse_page_annotations(text: str):
+          lines = text.splitlines()
           data = {}
-          for line in parts[1].splitlines():
-              if ':' not in line:
-                  continue
-              key, value = line.split(':', 1)
-              data[key.strip()] = value.strip()
+          if lines:
+              m = _PAGE_JOURNEY_RE.match(lines[0])
+              if m:
+                  data['journey'] = m.group(1).strip()
+          if len(lines) > 1:
+              m = _PAGE_ADVENTURE_RE.match(lines[1])
+              if m:
+                  data['adventure'] = m.group(1).strip()
           return data
 
       def gather_commands(text: str):
@@ -193,7 +195,7 @@ steps:
       for path in sorted(files, key=lambda p: activity_metadata(p)['sort_key']):
           text = path.read_text()
           metadata = activity_metadata(path)
-          frontmatter = parse_frontmatter(text)
+          frontmatter = parse_page_annotations(text)
           title = next((line[2:].strip() for line in text.splitlines() if line.startswith('# ')), path.stem)
           before_section = extract_section(text, '📋 Before You Start')
           choice_section = extract_section(text, '🔀 Choose Your Path')

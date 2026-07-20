@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Configure an Anthropic API Key
 
 > _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the AI engine for your agentic workflow, then return to your main path._
@@ -117,8 +115,7 @@ You should see:
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+**Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Authentication reference](https://github.github.com/gh-aw/reference/auth/#claude), [Network Permissions](https://github.github.com/gh-aw/reference/network/), and [Anthropic Claude models](https://docs.anthropic.com/en/docs/about-claude/models/).
 

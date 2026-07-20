@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Frontmatter Deep Dive — Part B
 
 > _Optional continuation of [Part A](side-quest-11-01-frontmatter-deep-dive.md): covers tools, safe-outputs, the closing fence, and the agent body. Return to the main path when done._
@@ -122,8 +120,7 @@ Three conventions keep a task brief reliable:
 ---
 
 <!-- journey: all -->
-Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+Return to [Build — Daily Repo Status Workflow](11a-build-daily-status.md).
 <!-- /journey -->
 
-For more details, see [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

@@ -1,10 +1,8 @@
----
-journey: codespace
-adventure: side-quest
----
+<!-- page-journey: codespace -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`
 
-> _Optional: use this guide if Step 8 fails in a Codespace, then return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)._
+> _Optional: use this guide if Step 8 fails in a Codespace, then return to [Run and Watch Your Workflow](08-run-your-workflow.md)._
 
 ## 📋 Before You Start
 
@@ -13,7 +11,7 @@ This side quest applies to you if **both** of the following are true:
 - You are running `gh aw run` inside a GitHub Codespace (not a local environment).
 - You see an `actions:write` permission error (HTTP 403) in your terminal run log.
 
-If you are not in a Codespace or you do not see the 403 error, return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md) and use the GitHub Actions UI path instead.
+If you are not in a Codespace or you do not see the 403 error, return to [Run and Watch Your Workflow](08-run-your-workflow.md) and use the GitHub Actions UI path instead.
 
 ---
 
@@ -50,7 +48,7 @@ The default token inside a Codespace usually has enough access to work with your
 ## Fix A (recommended): use the GitHub Actions UI
 
 <!-- journey: codespace -->
-Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui) and trigger the workflow from the **Actions** tab instead.
+Return to [Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui) and trigger the workflow from the **Actions** tab instead.
 <!-- /journey -->
 
 This is the best path for the workshop because it works even when your Codespace terminal token is limited.
@@ -101,13 +99,12 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 - [ ] I can see `HTTP 403: Resource not accessible by integration` in my terminal when running `gh aw run daily-report-status`
 - [ ] A new **Daily Report Status** run appears in the **Actions** tab after I trigger it from the UI
 - [ ] If I used Fix B: running `gh aw run daily-report-status` in my new Codespace completes without a 403 error and a new run appears in the **Actions** tab
-- [ ] I'm ready to return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- [ ] I'm ready to return to [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 ---
 
 <!-- journey: codespace -->
-Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md).
+Return to [Run and Watch Your Workflow](08-run-your-workflow.md).
 <!-- /journey -->
 
-For more details, see [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

@@ -1,8 +1,6 @@
----
-journey: local
-adventure: setup
----
-# Adventure B: Set Up Your Local Terminal
+<!-- page-journey: local -->
+<!-- page-adventure: setup -->
+# Adventure Local: Set Up Your Local Terminal
 
 ## 🧪 5-question terminal self-assessment
 
@@ -24,7 +22,7 @@ You'll install Git and the `gh` CLI on your own machine and authenticate with Gi
 
 ## 📋 Before You Start
 
-- You've completed [Step 1: What You Need Before We Start](01-prerequisites.md)
+- You've completed [What You Need Before We Start](01-prerequisites.md)
 - You have a free GitHub account and are signed in
 - You have a terminal application open (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
 
@@ -117,29 +115,27 @@ Choose GitHub.com and then Login with a web browser. A one-time code will appear
 > [!WARNING]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
-## 🛟 Troubleshooting
+### New repository
 
-If setup commands fail, use [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for quick fixes (`command not found`, permissions, proxy, and GHES-specific setup), then return here.
+1. Create your own public repository at [github.com/new](https://github.com/new):
+   - Name it `my-agentic-workflows`.
+   - Check **Add a README file**.
+   - Click **Create repository**.
+2. Clone the repository to your local machine:
 
-## ✅ Verify your setup
-
-Run this exact command from your terminal:
+### Clone repository
 
 ```bash
-gh auth status && gh extension list
+gh repo clone my-agentic-workflows
+cd my-agentic-workflows
 ```
-
-_What success looks like:_ no errors are shown, and `gh auth status` confirms you're signed in to GitHub.
-
-If this combined check stops early, run each command on its own to find the failing step.
 
 ## ✅ Checkpoint
 
-- [ ] `git --version` returns a version number
-- [ ] `gh --version` returns a version number
-- [ ] `gh auth login` completed without errors
-- [ ] `gh auth status` confirms you're signed in
+- [ ] I have cloned the `my-agentic-workflows` repository to my local machine
+- [ ] I have navigated into the `my-agentic-workflows` directory in my terminal
+- [ ] `gh --version` returns version 2.40.0 or newer
 
 <!-- journey: local -->
-**Next:** [Step 3: Create and Verify Your Practice Repository](03-create-your-repo.md)
+**Next:** [GitHub Actions Intro](04-github-actions-intro.md)
 <!-- /journey -->
