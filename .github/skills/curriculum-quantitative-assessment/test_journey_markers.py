@@ -39,6 +39,8 @@ class JourneyMarkerTests(unittest.TestCase):
                     journey_match,
                     f"Line 1 of {path.name} must be a page-level journey annotation: <!-- journey: X -->",
                 )
+                if journey_match is None:
+                    continue
                 journey_values = [v.strip() for v in journey_match.group(1).split(",")]
                 invalid_journey = [v for v in journey_values if v not in ALLOWED_JOURNEYS]
                 self.assertFalse(
@@ -51,6 +53,8 @@ class JourneyMarkerTests(unittest.TestCase):
                     adventure_match,
                     f"Line 2 of {path.name} must be a page-level adventure annotation: <!-- adventure: Y -->",
                 )
+                if adventure_match is None:
+                    continue
                 adventure_value = adventure_match.group(1).strip()
                 self.assertIn(
                     adventure_value,
