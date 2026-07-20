@@ -40,6 +40,7 @@ steps:
 
       command_fence = re.compile(r'```(?:bash|sh|shell|yaml)?\n(.*?)```', re.DOTALL)
       next_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+\[[^\]]+\]\(([^)]+)\)')
+      table_link_re = re.compile(r'\|[^\n]*?\[[^\]]+\]\(([^)]+)\)')
       link_re = re.compile(r'\[[^\]]+\]\(([^)]+\.md(?:#[^)]+)?)\)')
       inline_command_re = re.compile(r'`([^`\n]+)`')
 
@@ -199,7 +200,7 @@ steps:
 
           before_links = sorted(filter(None, {normalize_link(link) for link in link_re.findall(before_section)}))
           next_links = sorted(filter(None, {normalize_link(link) for link in next_link_re.findall(text)}))
-          choice_links = sorted(filter(None, {normalize_link(link) for link in link_re.findall(choice_section)}))
+          choice_links = sorted(filter(None, {normalize_link(link) for link in table_link_re.findall(choice_section)}))
 
           provides = []
           lower_name = path.name.lower()
@@ -397,14 +398,14 @@ steps:
               target_order = tuple(files_by_name[edge['target']]['order'])
               if target_order < source_order:
                   findings.append({
-                    'type': 'backward_next_edge',
-                    'file': edge['source'],
-                    'title': files_by_name[edge['source']]['title'],
-                    'capability': 'graph_order',
-                    'required_before': edge['target'],
-                    'reason': f"{edge['source']} points forward to {edge['target']} as a next step, but the target sorts earlier in the workshop graph.",
-                    'evidence': [{'edge_type': edge['type'], 'source': edge['source'], 'target': edge['target']}],
-                    'related_files': [edge['source'], edge['target']],
+                      'type': 'backward_next_edge',
+                      'file': edge['source'],
+                      'title': files_by_name[edge['source']]['title'],
+                      'capability': 'graph_order',
+                      'required_before': edge['target'],
+                      'reason': f"{edge['source']} points forward to {edge['target']} as a next step, but the target sorts earlier in the workshop graph.",
+                      'evidence': [{'edge_type': edge['type'], 'source': edge['source'], 'target': edge['target']}],
+                      'related_files': [edge['source'], edge['target']],
                   })
 
       index_ref = [0]
@@ -435,7 +436,7 @@ steps:
                   on_stack.remove(member)
                   component.append(member)
                   if member == node:
-                    break
+                      break
               components.append(sorted(component))
 
       for node in files_by_name:
@@ -459,8 +460,8 @@ steps:
           for source in component:
               for target in adjacency.get(source, []):
                   if target in component:
-                    edge_types.update(edge['type'] for edge in edge_lookup[(source, target)])
-                    cycle_edges.extend(edge_lookup[(source, target)])
+                     edge_types.update(edge['type'] for edge in edge_lookup[(source, target)])
+                     cycle_edges.extend(edge_lookup[(source, target)])
 
           cycle_data = {
               'nodes': component,
@@ -522,7 +523,10 @@ steps:
       deduped = []
       seen = set()
       for finding in findings:
-          key = (finding['type'], finding['file'], json.dumps(finding['required_before'], sort_keys=True))
+          required_before = finding['required_before']
+          if isinstance(required_before, list):
+              required_before = sorted(required_before)
+          key = (finding['type'], finding['file'], json.dumps(required_before, sort_keys=True))
           if key not in seen:
               seen.add(key)
               deduped.append(finding)
