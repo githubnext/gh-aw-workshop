@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Method 1 — Copilot Requests Permission
 
-> _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method 2](side-quest-06-03b-copilot-github-token.md)._
+> _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method PAT](side-quest-06-03b-copilot-github-token.md)._
 
 ## 📋 Before You Start
 
@@ -20,28 +20,11 @@ It does **not** cover personal repositories or organizations without centralized
 If you have not confirmed the billing setting yet, ask your organization administrator before you choose this method.
 
 - Continue with Method 1 if an organization owns the repository and its administrator confirmed centralized Copilot billing is enabled.
-- Stop here and switch to [Method 2](side-quest-06-03b-copilot-github-token.md) for a personal repository or an organization without centralized billing.
+- Stop here and switch to [Method PAT](side-quest-06-03b-copilot-github-token.md) for a personal repository or an organization without centralized billing.
 
 ## Add the permission to your workflow
 
 Open your workflow `.md` file and add `copilot-requests: write` under the `permissions` block in the YAML frontmatter:
-
-```yaml
----
-name: my-workflow
-on:
-  workflow_dispatch:
-permissions:
-  contents: read
-  issues: read
-  copilot-requests: write
-tools:
-  github:
-    allowed: read
----
-```
-
-If you are adding this to an existing workflow, the minimum change is still one line under `permissions`:
 
 ```yaml
 ---
