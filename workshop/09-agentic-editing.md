@@ -26,7 +26,7 @@ You invoke it in the GitHub Copilot **Chat** or **Agents** tab:
 Using the agentic-workflows skill, [your request here]
 ```
 
-The skill recognises three core task types for day-to-day workflow maintenance:
+The skill recognizes three core task types for day-to-day workflow maintenance:
 
 | Task type | When to use it | Example trigger phrase |
 |-----------|---------------|------------------------|
@@ -57,7 +57,7 @@ The skill loads the update prompt, makes the targeted change to the Markdown bod
 Open `.github/workflows/daily-report-status.md` and add one sentence to the Markdown body, such as:
 
 ```text
-After identifying the issue, write one sentence explaining why resolving it
+After identifying the most-reacted issue, write one sentence explaining why resolving it
 would benefit the team, based on the issue title and description.
 ```
 
