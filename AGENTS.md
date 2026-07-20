@@ -16,6 +16,7 @@ automated tooling (author review, student simulation, order checks) under `.gith
 README.md               # Workshop landing page (GitHub Skills style)
 AGENTS.md               # This file — tips for AI agents
 workshop/               # Step-by-step workshop content (00-welcome.md … 16-connect-data-source.md)
+  examples/event-provisioning/ # Example assets for provisioned org README and learner-repo Codespaces launchers
 .github/
   workflows/            # Agentic workflow definition files (*.md) and compiled lock files (*.lock.yml)
   skills/               # Copilot skill definitions for agentic-workflows and agentic-workflow-designer
@@ -66,6 +67,8 @@ The following rules are **disabled** in `.markdownlint-cli2.yaml` — do not add
 
 **Never configure Codespace badges or `devcontainer.json` to open from this (`gh-aw-workshop`) repository.** The workshop repository itself is not a suitable Codespace base — learners work in their own practice repositories, not a clone of this one. Any Codespace badge or devcontainer setup must point to the learner's own repository.
 
+The checked-in examples under `workshop/examples/event-provisioning/` are exceptions for template authoring only. They exist so event provisioning systems can copy a launcher into each learner's own repository; do not treat them as launchers for this repository itself.
+
 ## Working with workshop content
 
 - Workshop steps are numbered files in `workshop/` (e.g., `07-your-first-workflow.md`).
@@ -73,6 +76,8 @@ The following rules are **disabled** in `.markdownlint-cli2.yaml` — do not add
 - Keep `workshop/README.md` in sync whenever you add or rename a step.
 - Run the markdown linter before committing any workshop step edits.
 - When adding a new step, follow the existing file naming pattern and update the curriculum table in both `workshop/README.md` and `workshop/00-welcome.md`.
+- When editing shared intro or onboarding copy that may be reused outside the workshop pages, preserve and update the HTML reuse markers in `workshop/00-welcome.md`.
+- Treat `workshop/examples/event-provisioning/` as maintained examples. Keep the org-profile README and devcontainer launcher aligned with the corresponding marked source content in `workshop/00-welcome.md`.
 
 ## Working with agentic workflow files
 
