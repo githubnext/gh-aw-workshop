@@ -96,11 +96,11 @@ steps:
                   'sort_key': (step, 2, sq, ''),
               }
 
-          branch = re.match(r'^(\d{2})([a-z])(?:-part(\d+)|(\d+))?-', stem)
+          branch = re.match(r'^(\d{2})([a-z])(?:(?:-part)?(\d+))?-', stem)
           if branch:
               step = int(branch.group(1))
               suffix = branch.group(2)
-              sequence = int(branch.group(3) or branch.group(4) or 0)
+              sequence = int(branch.group(3) or 0)
               label = f'{step:02d}{suffix}'
               if sequence:
                   label = f'{label}.{sequence}'
@@ -460,8 +460,9 @@ steps:
           for source in component:
               for target in adjacency.get(source, []):
                   if target in component:
-                     edge_types.update(edge['type'] for edge in edge_lookup[(source, target)])
-                     cycle_edges.extend(edge_lookup[(source, target)])
+                     component_edges = edge_lookup[(source, target)]
+                     edge_types.update(edge['type'] for edge in component_edges)
+                     cycle_edges.extend(component_edges)
 
           cycle_data = {
               'nodes': component,
