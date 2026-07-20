@@ -50,8 +50,6 @@ For a deeper troubleshooting guide, see [Reading Workflow Output](09-understand-
 
 ## ✅ Checkpoint
 
-- [ ] I found the first `Tool call` in my completed run
-- [ ] I can point to a planning line, a result line, and the final `Done` line
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
