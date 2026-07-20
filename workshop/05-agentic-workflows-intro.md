@@ -13,13 +13,9 @@ If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 ## 📋 Before You Start
 
-- You've completed [Create Your Practice Repository](03-create-your-repo.md)
 - You've read [What Are GitHub Actions?](04-github-actions-intro.md)
 
-> [!TIP]
-> If you already work with LLM APIs or orchestration frameworks: an agentic workflow is similar to a tool-calling agent loop, but the "tools" are GitHub Actions steps and the "runtime" is GitHub Actions — not a local process.
-
-An [**agentic workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
+An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
