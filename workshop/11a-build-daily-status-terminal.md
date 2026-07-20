@@ -9,7 +9,7 @@ _You've designed the workflow on paper — now let's turn it into real, running 
 > <summary><b>Two paths through this step:</b></summary>
 >
 > - **This page (manual build)** — write the file section by section so every line is clear.
-> - **[Adventure A: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup.
+> - **[Adventure Codespace: Add Wizard](11a-build-daily-status-wizard.md)** — use `gh aw add-wizard` for a guided, interactive setup.
 >
 > Both paths produce the same workflow and converge at [Step 12](12-test-and-iterate.md). Prefer the browser? Switch to the [GitHub UI path](11a-build-daily-status-ui.md).
 >

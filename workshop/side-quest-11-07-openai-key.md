@@ -128,7 +128,7 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+**Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
 <!-- /journey -->
 
 
