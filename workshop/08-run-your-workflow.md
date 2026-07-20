@@ -60,11 +60,6 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active
 - [ ] The run completed with a green ✅
-- [ ] I confirmed the agent updated my repository
-- [ ] I am ready to interpret the run in [Step 8b](08b-interpret-your-run.md)
-
-> [!TIP]
-> If your run failed, see [Step 8b](08b-interpret-your-run.md) for a log walk-through and common failure patterns.
 
 <!-- journey: all -->
 **Next:** [Interpret Your First Run](08b-interpret-your-run.md)
