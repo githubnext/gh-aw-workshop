@@ -29,10 +29,7 @@ Both authoring paths converge at [Confirm Model Access](07d-confirm-model-access
 <!-- journey: codespace,local,terminal -->
 Continue with [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md).
 <!-- /journey -->
-<!-- journey: copilot -->
-Continue with [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
-<!-- /journey -->
-<!-- journey: ui -->
+<!-- journey: ui,copilot -->
 Continue with [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
 <!-- /journey -->
 
@@ -52,10 +49,6 @@ In one sentence, where will you manually start the first `workflow_dispatch` run
 <!-- journey: codespace,local,terminal -->
 **Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
-<!-- journey: copilot -->
+<!-- journey: ui,copilot -->
 **Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
 <!-- /journey -->
-<!-- journey: ui -->
-**Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
-<!-- /journey -->
-
