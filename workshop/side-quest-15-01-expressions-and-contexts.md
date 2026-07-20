@@ -16,7 +16,7 @@ Explore the expression and context system that powers GitHub Actions conditions,
 
 ### Understand the expression syntax
 
-Anywhere in a GitHub Actions YAML file, you can embed a dynamic value using double curly braces:
+Anywhere in a [GitHub Actions](https://github.github.com/gh-aw/introduction/how-they-work/) YAML file, you can embed a dynamic value using double curly braces:
 
 ```yaml
 ${{ <expression> }}

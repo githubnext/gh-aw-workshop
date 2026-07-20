@@ -35,7 +35,7 @@ You need a secret whenever your workflow authenticates to an external service. C
 |---|---|
 | Calling a third-party API (Slack, Jira, etc.) | API key or bearer token |
 | Posting to an external webhook | Webhook URL (treat URLs with tokens as secrets) |
-| Connecting an MCP server that requires auth | Server-specific token |
+| Connecting an [MCP server](https://github.github.com/gh-aw/reference/mcp-gateway/) that requires auth | Server-specific token |
 
 ## Choose the right GitHub token
 
