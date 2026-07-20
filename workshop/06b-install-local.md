@@ -12,7 +12,7 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 ## 📋 Before You Start
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
-- You've completed [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
+- You've completed [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md)
 - The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 Run this to confirm `gh` is authenticated before continuing:

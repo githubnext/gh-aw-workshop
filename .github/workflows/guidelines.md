@@ -308,8 +308,8 @@ Describes the role the page plays in the overall workshop structure.
 |-------|---------|
 | `core` | Required shared path — every learner follows these pages |
 | `setup` | Environment or tool setup steps (Codespace, local, gh-aw install) |
-| `scenario-a` | Adventure A — Daily Repo Status Report |
-| `scenario-b` | Adventure B — Daily Documentation Updater |
+| `scenario-a` | Adventure Codespace — Daily Repo Status Report |
+| `scenario-b` | Adventure Local — Daily Documentation Updater |
 | `scenario-c` | Adventure C — PR Code Reviewer |
 | `scenario-d` | Adventure D — Build with GitHub Copilot (Agents tab / CCA) |
 | `advanced` | Optional post-core topics (steps 14 and above) |

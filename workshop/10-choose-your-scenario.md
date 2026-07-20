@@ -34,11 +34,11 @@ Keep it nearby — this helps you compare your idea to the scenarios later in th
 >
 > Example answers by adventure:
 >
-> - Adventure A (Daily Repo Status): "Summarize open PRs, issues, CI, and recent commits for maintainers each morning."
-> - Adventure B (Docs Updater): "Report stale or missing docs for docs maintainers using repository markdown files."
+> - Adventure Codespace (Daily Repo Status): "Summarize open PRs, issues, CI, and recent commits for maintainers each morning."
+> - Adventure Local (Docs Updater): "Report stale or missing docs for docs maintainers using repository markdown files."
 > - Adventure C (PR Code Reviewer): "Flag duplicate code in pull requests for reviewers and authors."
 > - Adventure D (Copilot app / Agents tab): "Build one of these workflows through a natural-language Copilot conversation instead of editing files yourself."
-> - Adventure E (Browser-Only Path): "Create the same daily status report as Adventure A without using a terminal."
+> - Adventure E (Browser-Only Path): "Create the same daily status report as Adventure Codespace without using a terminal."
 >
 > </details>
 >
@@ -50,13 +50,13 @@ Use this quick checklist before you choose:
 
 | Scenario | What it automates | Best for |
 |---|---|---|
-| [Daily Repo Status Report](#adventure-a-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |
-| [Daily Documentation Updater](#adventure-b-daily-documentation-updater) | Scans your docs files every day and posts a health report highlighting staleness, missing sections, and broken links | Projects where docs drift out of sync with the code |
+| [Daily Repo Status Report](#adventure-codespace-daily-repo-status-report) | Posts a daily health summary of open PRs, issues, CI status, and recent commits | Teams that want a zero-effort morning standup digest |
+| [Daily Documentation Updater](#adventure-local-daily-documentation-updater) | Scans your docs files every day and posts a health report highlighting staleness, missing sections, and broken links | Projects where docs drift out of sync with the code |
 | [PR Code Reviewer](#adventure-c-pr-code-reviewer) | Reviews every pull request for duplicate code — checking both the changes and the existing codebase — and posts a structured review comment | Teams that want automated duplication detection in code review |
 | [Browser-Only Path (CCA / Mobile)](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) | Creates a daily status workflow via the Agentic Workflows agent; no terminal needed | Mobile, CCA, and browser-only learners |
 
 > [!TIP]
-> Not sure which to pick? Start with Adventure A — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
+> Not sure which to pick? Start with Adventure Codespace — it's the most detailed and has the most supporting side quests. You can always come back and try the others.
 
 <!-- -->
 
@@ -65,7 +65,7 @@ Use this quick checklist before you choose:
 
 ---
 
-## Adventure A: Daily Repo Status Report
+## Adventure Codespace: Daily Repo Status Report
 
 **What you'll build:** A scheduled workflow that posts a concise daily health summary as an issue comment — open PRs, issues, CI status, and the most recent commit.
 
@@ -79,7 +79,7 @@ Use this quick checklist before you choose:
 
 ---
 
-## Adventure B: Daily Documentation Updater
+## Adventure Local: Daily Documentation Updater
 
 **What you'll build:** A scheduled workflow that scans your repository's documentation files and posts a daily health report — flagging stale content, missing sections, and broken cross-references.
 
@@ -159,8 +159,8 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 <!-- journey: all -->
 **Next (pick one):**
 
-- ➡️ Adventure A: [Design — Daily Repo Status Report](10a-design-daily-status.md)
-- ➡️ Adventure B: [Design — Daily Documentation Updater](10b-design-daily-docs.md)
+- ➡️ Adventure Codespace: [Design — Daily Repo Status Report](10a-design-daily-status.md)
+- ➡️ Adventure Local: [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - ➡️ Adventure C: [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 - ➡️ Adventure D: [Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 - ➡️ Adventure E: [Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)

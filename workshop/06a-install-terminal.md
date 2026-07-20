@@ -35,10 +35,12 @@ gh aw --version
 
 ```bash
 gh extension install github/gh-aw
+gh aw --version
 ```
 
-<details>
-<summary>Troubleshooting: 403 Forbidden on install</summary>
+You should see output like `gh-aw version 0.81.6`.
+
+### Troubleshooting: 403 Forbidden on install
 
 Your org token may not allow public extension installs. Use the fallback installer:
 
@@ -48,19 +50,7 @@ curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh |
 
 Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
-</details>
-
-Verify the extension is ready:
-
-```bash
-gh aw --version
-```
-
-You should see output like `gh-aw version 0.81.6`.
-
 ## Run a quick diagnostic
-
-Now run:
 
 ```bash
 gh aw doctor

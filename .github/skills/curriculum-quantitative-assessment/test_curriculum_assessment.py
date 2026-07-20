@@ -31,8 +31,8 @@ DISPATCHER_MARKDOWN = """# Choose Your Path
 
 Pick the adventure that suits you.
 
-- [Adventure A](10a.md)
-- [Adventure B](10b.md)
+- [Adventure Codespace](10a.md)
+- [Adventure Local](10b.md)
 
 <!-- journey: all -->
 **Next:** Choose one of the adventures above.

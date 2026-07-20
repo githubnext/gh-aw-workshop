@@ -40,8 +40,8 @@ Codespaces availability varies by platform and policy:
 Before continuing:
 
 1. Ask your enterprise admin whether Codespaces is enabled for your organization and repository.
-2. If Codespaces is available, continue with [Adventure A: Set Up a Codespace](02a-setup-codespace.md).
-   If Codespaces is unavailable, switch to [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
+2. If Codespaces is available, continue with [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md).
+   If Codespaces is unavailable, switch to [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md).
 3. Use your enterprise hostname in all `gh` auth and extension commands when required (for example, `gh auth login --hostname ghes.example.com`).
    See [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for a complete enterprise hostname command sequence.
 
@@ -84,7 +84,7 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+Common return points are [Prerequisites](01-prerequisites.md), [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md), [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 <!-- /journey -->
 

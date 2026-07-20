@@ -49,7 +49,7 @@ Both paths update the same fuzzy schedule expression and finish by confirming it
 > git push
 > ```
 >
-> **Mobile users:** this step requires the terminal path. If you are on a mobile device or in the Copilot app, you must switch to a Codespace environment to complete this step. See [Adventure A: Set Up a Codespace](02a-setup-codespace.md) for instructions.
+> **Mobile users:** this step requires the terminal path. If you are on a mobile device or in the Copilot app, you must switch to a Codespace environment to complete this step. See [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md) for instructions.
 >
 > </details>
 
