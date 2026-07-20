@@ -30,6 +30,7 @@ IMPORT GUIDELINES TO FOLLLOW: .github/workflows/guidelines.md
 
 ### Workshop tone and voice
 
+- The workshop is structured as a small number of **linear learner paths**. Choices happen only at explicit decision points; once a learner has chosen a path, each page must link only to the next step on that same path until a defined convergence point. Do not link to sibling path files or reference steps from other paths while the learner is mid-journey.
 - Write in **second person** ("you"), present tense, active voice.
 - Keep steps short and outcome-focused. Each step should answer: _what will the learner do, and what will they have when they're done?_
 - Use `> [!TIP]` and `> [!NOTE]` callouts sparingly — only when the information meaningfully changes what the learner should do. Cap alert severity at `[!NOTE]`/`[!TIP]` for regular content; use `[!IMPORTANT]` only when the learner **must** act before continuing, and reserve `[!WARNING]`/`[!CAUTION]` for major security issues only. Never use dramatic or alarmist language. For multi-line callouts, wrap content in a `<details>` element with a `<summary>` heading; for single-line callouts, put the text directly in the blockquote without `<details>` (see the "Alert callouts" section in `.github/workflows/guidelines.md`).
