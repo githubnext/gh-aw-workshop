@@ -4,7 +4,7 @@ adventure: advanced
 ---
 # Manage Costs and AI Credit Budgets
 
-> _Agentic workflows consume AI Credits (AIC) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._
+> _Agentic workflows consume [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._
 
 ## 🎯 What You'll Do
 
@@ -54,7 +54,7 @@ monthly cost = average AIC per run × runs per day × 30
 
 If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC per month`. Share this estimate with your GitHub administrator before enabling a high-frequency schedule.
 
-### Project costs with gh aw forecast
+### Project costs with [gh aw forecast](https://github.github.com/gh-aw/setup/cli/#forecast-experimental)
 
 `gh aw forecast` uses your actual run history and Monte Carlo simulation to project future AIC consumption. Run it for a single workflow to see a P10/P50/P90 probability distribution:
 
@@ -78,9 +78,9 @@ A few techniques keep spend in check:
 
 Three frontmatter fields enforce hard limits directly in the workflow file:
 
-- **`timeout-minutes`** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
-- **`max-ai-credits`** caps the AIC a single run may consume at the model API level. The default when omitted is 1000 AIC. Set to `-1` to disable enforcement.
-- **`max-daily-ai-credits`** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. Omit this field to leave the guardrail disabled.
+- **[`timeout-minutes`](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
+- **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume at the model API level. The default when omitted is 1000 AIC. Set to `-1` to disable enforcement.
+- **[`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow)** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. Omit this field to leave the guardrail disabled.
 
 ```yaml
 ---
