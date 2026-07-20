@@ -73,6 +73,5 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 Return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md).
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

@@ -64,6 +64,5 @@ Confirm `my-agentic-workflows` and your username appear in the page header.
 **Next:** [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

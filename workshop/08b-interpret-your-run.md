@@ -62,9 +62,5 @@ For a deeper troubleshooting guide, see [Step 9: Reading Workflow Output](09-und
 **Next:** [Step 9: Reading Workflow Output](09-understand-output.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/)

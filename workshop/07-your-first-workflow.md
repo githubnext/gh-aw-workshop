@@ -62,9 +62,5 @@ In one sentence, where will you manually start the first `workflow_dispatch` run
 **Next:** [Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

@@ -90,12 +90,7 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [ ] The file is committed and pushed to `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
-## 📚 See Also
-
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/).
 
 <!-- journey: terminal -->
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)

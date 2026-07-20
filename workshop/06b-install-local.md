@@ -99,9 +99,5 @@ Want to understand how Copilot authenticates with your workflow?
 **Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/)

@@ -125,8 +125,5 @@ Three conventions keep a task brief reliable:
 Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

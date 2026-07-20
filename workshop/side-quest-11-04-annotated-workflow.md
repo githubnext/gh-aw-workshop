@@ -107,10 +107,5 @@ safe-outputs:
 Return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md).
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Network Permissions](https://github.github.com/gh-aw/reference/network/).
 
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

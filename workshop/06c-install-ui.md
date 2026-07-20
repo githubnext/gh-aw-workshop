@@ -51,8 +51,5 @@ Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-
 **Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)
