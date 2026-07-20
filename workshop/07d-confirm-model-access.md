@@ -18,8 +18,8 @@ Claude and Codex are optional [engines](https://github.github.com/gh-aw/referenc
 
 If you are working in Claude Code or OpenAI Codex, keep this first workflow on Copilot and switch later if you want:
 
-- **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) and the [Claude entry in the environment reference](side-quest-01-02-environment-reference.md#claude).
-- **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) and the [OpenAI Codex entry in the environment reference](side-quest-01-02-environment-reference.md#openai-codex).
+- **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
+- **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
 
 ## Choose one Copilot billing path
 
