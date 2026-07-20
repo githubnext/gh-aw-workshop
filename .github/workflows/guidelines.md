@@ -187,6 +187,13 @@ When two workshop design choices are of equal or comparable value, **favor the o
 
 This rule does not override clearly superior choices for all learners. It is a tie-breaker, not an absolute reorder of priorities.
 
+## No "See Also" sections — documentation links belong inline
+
+- Do **not** add `## See Also`, `## 📚 See Also`, or any equivalent dedicated "See Also" section to workshop files.
+- When a concept or term has a matching reference page in the gh-aw docs, link it **inline** at its first bare occurrence in the prose (e.g., `[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)`).
+- If you want to surface a relevant doc URL without anchoring it to specific prose, place the bare URL on its own line in the text — do **not** wrap it in a `[title](url)` list under a "See Also" heading.
+- Any existing `## See Also` / `## 📚 See Also` sections are violations of this rule and must be removed.
+
 ## Consistency check
 
 Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, and do not reference Node.js as a prerequisite.
