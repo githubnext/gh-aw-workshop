@@ -33,13 +33,12 @@ marked.use({
         // Extract inline tokens after the checkbox token. In tight lists the
         // item tokens are [checkbox, ...inline]; in loose lists they are
         // [paragraph{ tokens: [checkbox, ...inline] }, ...].
-        const inlineTokens = item.loose
+        const inlineTokens = item.loose && item.tokens[0]?.tokens
           ? item.tokens[0].tokens.slice(1)
           : item.tokens.slice(1);
         const text = this.parser.parseInline(inlineTokens);
-        const attrs = item.checked
-          ? 'class="task-list-item-checkbox" checked="" disabled="" type="checkbox"'
-          : 'class="task-list-item-checkbox" disabled="" type="checkbox"';
+        const baseAttrs = 'class="task-list-item-checkbox" disabled="" type="checkbox"';
+        const attrs = item.checked ? `${baseAttrs} checked=""` : baseAttrs;
         return `<li class="task-list-item"><input ${attrs}> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
