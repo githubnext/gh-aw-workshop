@@ -338,3 +338,47 @@ Side quest `journey` assignment:
 - `ui` — content is only applicable to GitHub UI path learners (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
 - `copilot` — content is specific to the Copilot CCA or Agents tab environment (e.g., `side-quest-06-02-cca-codespace.md`).
 - `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).
+
+## Dispatcher and choice-hub pages: `<!-- learning:false -->`
+
+Some workshop pages are not substantive learning steps — they are **dispatcher pages** (also called choice hubs) that exist purely to route learners to the right branch or to present a brief navigation decision. Examples: "Create and Verify Your Practice Repository" (step 3, which forks to 3a/3b) and "Choose Your Scenario" (step 10, which routes to scenarios A–E).
+
+### Marking a page as a dispatcher
+
+Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the frontmatter block:
+
+```markdown
+---
+journey: all
+adventure: core
+---
+<!-- learning:false -->
+# Choose Your Scenario
+```
+
+### Effect on quality scoring
+
+Dispatcher pages are **not excluded from scoring**; they are scored using a different dimension profile that rewards clarity and simplicity rather than active learning:
+
+| Dimension | Dispatcher weight | Learning-step weight |
+|-----------|:-----------------:|:--------------------:|
+| `cognitive_load` | 2.0 | 1.0 |
+| `readability` | 2.0 | 1.0 |
+| `style_compliance` | 2.0 | 1.0 |
+| `active_learning` | 0.0 | 2.0 |
+| `checkpoint_quality` | 0.0 | 1.5 |
+| `scaffolding` | 0.0 | 1.5 |
+
+This means automated tools will flag a dispatcher page for being hard to read or cognitively overloaded, but will not penalize it for lacking exercises or checkpoints.
+
+### What to optimize in dispatcher pages
+
+When writing or reviewing a dispatcher page, focus on:
+
+- **Clarity** — every branch option is immediately obvious; no explanation is needed to understand what each path leads to.
+- **Brevity** — the page should contain only the decision point and enough context to make the choice. Remove any instructional prose that belongs in the destination page.
+- **Cognitive load** — avoid walls of text, nested lists, or multiple callouts. One short paragraph or a simple list is the target.
+
+### When to use this marker
+
+Apply `<!-- learning:false -->` only to pure routing/navigation pages that contain no hands-on activities, no checkpoints, and no substantive technical instruction. Do not apply it to introductory or conceptual pages that teach background knowledge — those are learning pages even if they contain no hands-on steps.
