@@ -311,7 +311,7 @@ Use XML comments with an `experience` marker when only part of a page should be 
 
 Rules:
 
-- `experience:` accepts one or more comma-separated experience values from this schema: `workshop`, `standalone`.
+- `experience:` accepts exactly one experience value from this schema: `workshop` or `standalone`.
 - Use `workshop` for content that is only relevant when learners are building and configuring their environment from scratch (for example, tool installation steps, repository creation, or Codespace setup instructions that are already handled in the standalone experience).
 - Use `standalone` for content that is only relevant in a pre-configured Codespace where prerequisites are already installed and the environment is ready to use (for example, orientation notes about what has been pre-configured).
 - Do not wrap content that is relevant to both experiences — leave it unwrapped.

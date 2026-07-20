@@ -87,17 +87,16 @@ class ExperienceMarkerTests(unittest.TestCase):
                     opener = EXP_OPEN_RE.match(line)
                     if opener:
                         self.assertFalse(stack, f"Nested experience marker in {path.name}:{line_number}")
-                        values = [value.strip() for value in opener.group(1).split(",")]
-                        self.assertTrue(all(values), f"Empty experience value in {path.name}:{line_number}")
-                        self.assertEqual(
-                            len(values),
-                            len(set(values)),
-                            f"Duplicate experience value in {path.name}:{line_number}",
+                        raw = opener.group(1).strip()
+                        self.assertNotIn(
+                            ",",
+                            raw,
+                            f"Experience marker accepts exactly one value (no comma-separated list) in {path.name}:{line_number}",
                         )
-                        invalid = [value for value in values if value not in ALLOWED_EXPERIENCES]
-                        self.assertFalse(
-                            invalid,
-                            f"Invalid experience value in {path.name}:{line_number}: {invalid}",
+                        self.assertIn(
+                            raw,
+                            ALLOWED_EXPERIENCES,
+                            f"Invalid experience value '{raw}' in {path.name}:{line_number}",
                         )
                         stack.append(line_number)
                         continue
