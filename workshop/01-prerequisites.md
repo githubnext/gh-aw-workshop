@@ -1,5 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
+<!-- learning: false -->
 
 # Before we start
 
@@ -40,3 +41,12 @@ Choose your adventure.
 <!-- journey: local -->
 **Next:** Open [Set Up Your Local Terminal](02b-setup-local.md).
 <!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** Open [Install GitHub CLI and gh-aw](06c-install-ui.md).
+<!-- /journey -->
+
+## ✅ Checkpoint
+
+- [ ] You can sign in to your GitHub account.
+- [ ] You chose your setup path (Codespace, local terminal, or GitHub UI/Copilot).
+- [ ] You verified Copilot access and model availability at `github.com/settings/copilot`.
