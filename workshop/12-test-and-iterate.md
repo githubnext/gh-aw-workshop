@@ -65,12 +65,12 @@ If the compiler reports an error, fix that first. Do not start a new test run un
 If you are using GitHub Copilot Cloud Agent (CCA) or working from mobile, ask Copilot to compile for you:
 
 ```text
-Ask Copilot to compile the workflow and commit the updated lock file.
+Please run `gh aw compile` and commit both the workflow `.md` file and the regenerated `.lock.yml` file.
 ```
 
 Then review the commit and confirm your workflow `.lock.yml` file changed before you trigger the next run.
 
-If you want a guided browser-first loop, use [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md), which includes a Copilot agent path for running `gh aw compile` without using your own terminal.
+For a guided browser-first approach, use [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md), which includes a Copilot agent workflow for this loop.
 
 ## Commit Both Workflow Files
 
