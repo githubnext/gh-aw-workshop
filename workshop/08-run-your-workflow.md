@@ -10,14 +10,14 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 ## 📋 Before You Start
 
-- [ ] I completed [Step 7d: Confirm Model Access](07d-confirm-model-access.md#check-the-final-configuration) and matched my billing path
+- [ ] Completed [Step 7d: Confirm Model Access](07d-confirm-model-access.md#check-the-final-configuration) and matched your billing path
 - `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
 ## Run the workflow
 
 > [!IMPORTANT]
-> **Before you click Run:** Confirm you completed [Step 7d: Confirm Model Access](07d-confirm-model-access.md#check-the-final-configuration). If the run fails with a model or authentication error, go back to Step 7d and verify your billing method and secret before retrying.
+> **Before you click Run:** Use [Step 7d: Confirm Model Access](07d-confirm-model-access.md#check-the-final-configuration) to verify your billing method and secret. If the run fails with a model or authentication error, go back to Step 7d before retrying.
 
 This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
