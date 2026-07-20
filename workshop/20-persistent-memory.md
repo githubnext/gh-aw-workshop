@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 <!--
 <research-metadata>
   <focus>Persistent memory in agentic workflows — cache-memory and repo-memory frontmatter tools</focus>

@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Jailbreaking the Agent Brief
 
 > _Optional: work through this security primer to understand how adversarial instructions embedded in repository content can attempt to override your agent's task brief — and why gh-aw's layered architecture limits what any partial success can actually do._

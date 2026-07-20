@@ -232,20 +232,20 @@ TOC generation rules (script-friendly):
 
 This keeps IDs lexically sortable, preserves the choose-your-adventure branch model, and cleanly groups optional side quests under their parent step.
 
-## Workshop page frontmatter schema
+## Workshop page annotation schema
 
-Every Markdown file in `workshop/` (except `README.md`) carries a YAML frontmatter block that describes the user journey and adventure category of the page. Tools and tables of contents use these fields to filter pages by learner profile.
+Every Markdown file in `workshop/` (except `README.md`) starts with two XML comment lines that describe the user journey and adventure category of the page. Tools and tables of contents use these fields to filter pages by learner profile. XML comments are not rendered by GitHub Markdown, so learners never see them.
 
-### Frontmatter format
+### Page annotation format
 
-```yaml
----
-journey: <value>
-adventure: <value>
----
+```markdown
+<!-- page-journey: <value> -->
+<!-- page-adventure: <value> -->
 ```
 
-Place this block as the **very first content** in the file, before the `#` heading.
+These two lines must be the **very first content** in the file, before the `#` heading.
+
+The `page-` prefix distinguishes page-level annotations from section-level `<!-- journey: X -->` / `<!-- /journey -->` region markers used inside the page body.
 
 ### `journey` — learner path
 
@@ -265,7 +265,7 @@ Rules:
 
 - `journey:` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
 - Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `journey: all`.
-- Keep `journey` frontmatter at the top of the file. Inline comment markers are for section-level filtering inside a page, not page-level routing.
+- Keep the page-level `<!-- page-journey: X -->` annotation on line 1 of the file. Section-level comment markers (`<!-- journey: X -->` / `<!-- /journey -->`) are for filtering content blocks inside a page, not page-level routing.
 - Prefer journey comment markers for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
 - Do not nest journey markers. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
@@ -345,13 +345,11 @@ Some workshop pages are not substantive learning steps — they are **dispatcher
 
 ### Marking a page as a dispatcher
 
-Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the frontmatter block:
+Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the page annotation lines:
 
 ```markdown
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 <!-- learning:false -->
 # Choose Your Scenario
 ```

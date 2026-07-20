@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Frontmatter Deep Dive — Part B
 
 > _Optional continuation of [Part A](side-quest-11-01-frontmatter-deep-dive.md): covers tools, safe-outputs, the closing fence, and the agent body. Return to the main path when done._

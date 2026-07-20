@@ -1,7 +1,5 @@
----
-journey: copilot
-adventure: scenario-d
----
+<!-- page-journey: copilot -->
+<!-- page-adventure: scenario-d -->
 # Adventure D (Part 2): Monitor, Review, and Merge
 
 > _Once the agent session ends, you'll review its pull request, ask for any revisions, and merge your workflow._

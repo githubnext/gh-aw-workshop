@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 
 # Before we start
 
@@ -64,4 +62,3 @@ Choose your adventure.
 <!-- journey: ui,copilot -->
 **Next:** Open [Use GitHub Web or Copilot App](03b-create-your-repo-ui.md).
 <!-- /journey -->
-

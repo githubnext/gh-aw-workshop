@@ -1,7 +1,5 @@
----
-journey: codespace
-adventure: setup
----
+<!-- page-journey: codespace -->
+<!-- page-adventure: setup -->
 # Set Up a Codespace _(recommended for new users)_
 
 ## 🎯 What You'll Do
@@ -89,4 +87,3 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 <!-- journey: codespace -->
 **Next:** [GitHub Actions Intro](04-github-actions-intro.md)
 <!-- /journey -->
-

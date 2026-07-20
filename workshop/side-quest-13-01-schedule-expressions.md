@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Fuzzy Schedule Expressions
 
 > _Optional: use this quick reference if you want help choosing a schedule expression for [Step 13: Schedule It to Run Every Day](13-schedule-it.md), then return to the main adventure._

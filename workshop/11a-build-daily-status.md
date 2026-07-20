@@ -1,7 +1,5 @@
----
-journey: all
-adventure: scenario-a
----
+<!-- page-journey: all -->
+<!-- page-adventure: scenario-a -->
 # Build — Daily Repo Status Workflow
 
 _You've designed the workflow on paper — now choose how you want to create it._

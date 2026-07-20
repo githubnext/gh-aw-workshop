@@ -1,7 +1,5 @@
----
-journey: all
-adventure: scenario-a
----
+<!-- page-journey: all -->
+<!-- page-adventure: scenario-a -->
 # Adventure A: Build Daily Status with the Add Wizard
 
 > _The add wizard is the fastest way to get a curated workflow running — it handles engine selection, secrets, and the pull request for you._

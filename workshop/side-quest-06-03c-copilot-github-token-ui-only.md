@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: side-quest
----
+<!-- page-journey: ui -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
 > _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-billing setup without terminal commands._

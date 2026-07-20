@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: side-quest
----
+<!-- page-journey: terminal -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Using `gh aw compile` to Catch Errors Early
 
 > _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](11a-build-daily-status-terminal.md), or [Step 13](13a-schedule-it-terminal.md)._

@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: setup
----
+<!-- page-journey: ui -->
+<!-- page-adventure: setup -->
 # GitHub UI Path — No Installation Needed
 
 > [!NOTE]

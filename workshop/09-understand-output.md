@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # Reading Workflow Output
 
 > _An agentic workflow is only as useful as what you can learn from its output — knowing how to read the results is the skill that lets you improve fast._

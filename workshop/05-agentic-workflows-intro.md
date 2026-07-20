@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # What Are Agentic Workflows?
 
 **Already familiar with both GitHub Actions and AI agent execution environments?**

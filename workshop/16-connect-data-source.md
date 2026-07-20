@@ -1,7 +1,5 @@
----
-journey: all
-adventure: advanced
----
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Connect a Live Data Source to Your Workflow
 
 > _Workflows become truly powerful when they act on real, up-to-the-minute data — not just canned prompts._

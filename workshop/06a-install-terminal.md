@@ -1,7 +1,5 @@
----
-journey: codespace
-adventure: setup
----
+<!-- page-journey: codespace -->
+<!-- page-adventure: setup -->
 # Install gh-aw — Codespace Terminal
 
 > [!NOTE]

@@ -1,7 +1,5 @@
----
-journey: terminal
-adventure: scenario-b
----
+<!-- page-journey: terminal -->
+<!-- page-adventure: scenario-b -->
 # Build the Daily Documentation Updater — Terminal Path
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._

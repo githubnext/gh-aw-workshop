@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Event-Driven Triggers in Agentic Workflows
 
 > _Optional: use this primer if you want help choosing between scheduled and event-driven workflows before you finish [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md), then return to the main adventure._

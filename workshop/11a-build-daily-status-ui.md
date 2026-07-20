@@ -1,7 +1,5 @@
----
-journey: ui
-adventure: scenario-a
----
+<!-- page-journey: ui -->
+<!-- page-adventure: scenario-a -->
 # Build the Daily Repo Status Workflow — GitHub UI Path
 
 > [!NOTE]

@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 <!-- learning: false -->
 
 # Welcome — What We'll Build
@@ -15,4 +13,3 @@ You'll build an **[Agentic Workflow](https://github.github.com/gh-aw/introductio
 <!-- journey: all -->
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)
 <!-- /journey -->
-

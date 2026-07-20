@@ -1,7 +1,5 @@
----
-journey: all
-adventure: side-quest
----
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Method 1 — Copilot Requests Permission
 
 > _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method 2](side-quest-06-03b-copilot-github-token.md)._

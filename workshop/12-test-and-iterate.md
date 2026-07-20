@@ -1,7 +1,5 @@
----
-journey: all
-adventure: core
----
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # Test and Improve Your Workflow
 
 > _Running a workflow once is good; understanding why it did what it did — and making it better — is where the real learning happens._
