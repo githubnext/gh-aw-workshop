@@ -21,24 +21,6 @@ If you choose the GitHub UI path, you can complete the main workshop steps in yo
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
-
-### Confirm local tools (only if using local terminal)
-
-If you plan to use your own computer, run `gh --version` to verify GitHub CLI and `git --version` to verify Git.
-
-```bash
-gh --version
-git --version
-```
-
-If `gh` is missing, install it from [cli.github.com](https://cli.github.com), re-run `gh --version`, then continue in [Adventure B](02b-setup-local.md) for full local setup.
-If both commands work, continue in [Adventure B](02b-setup-local.md).
-
-Need extra help before Step 2?
-
-- [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md)
-- [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)
-
 ## Verify AI engine access
 
 Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both show:
@@ -47,7 +29,6 @@ Open [github.com/settings/copilot](https://github.com/settings/copilot) and conf
 - **Models: available**
 
 Claude, Codex, or Gemini? Confirm your API key.
-
 
 ## Let's get started!
 
@@ -58,7 +39,4 @@ Choose your adventure.
 <!-- /journey -->
 <!-- journey: local -->
 **Next:** Open [Set Up Your Local Terminal](02b-setup-local.md).
-<!-- /journey -->
-<!-- journey: ui,copilot -->
-**Next:** Open [Use GitHub Web or Copilot App](03b-create-your-repo-ui.md).
 <!-- /journey -->
