@@ -7,7 +7,7 @@
 ## 📋 Before You Start
 
 - You have completed [Agentic Workflows Intro](05-agentic-workflows-intro.md)
-- Your development environment is ready (Codespace from Step 2a, or local terminal from Step 2b)
+- Your development environment is ready (Codespace or local terminal)
 
 ## Choose Your Path
 
