@@ -8,7 +8,7 @@ If `gh extension install github/gh-aw` fails, use the matching fix below and ret
 
 ---
 
-## Local terminal setup quick fixes (Adventure B)
+## Local terminal setup quick fixes (Adventure Local)
 
 If you are still in local terminal setup and not yet installing `gh-aw`, use this table first:
 

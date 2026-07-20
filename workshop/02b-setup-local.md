@@ -1,6 +1,6 @@
 <!-- page-journey: local -->
 <!-- page-adventure: setup -->
-# Adventure B: Set Up Your Local Terminal
+# Adventure Local: Set Up Your Local Terminal
 
 ## 🧪 5-question terminal self-assessment
 
