@@ -624,7 +624,7 @@ Read these generated files first:
 
 Then read only the workshop files cited by the findings or graph anomalies you decide to verify.
 
-> **Dispatcher and informational pages:** Pages with `is_learning_page: false` in the context JSON are marked with `<!-- learning:false -->` and serve as navigation hubs. They are **intentionally excluded from learning KPIs**. Do not flag ordering issues caused solely by a dispatcher page lacking prerequisite sections or checkpoint items — those issues should be raised against the substantive steps they link to, not the dispatcher.
+> **Dispatcher and informational pages:** Pages with `is_learning_page: false` in the context JSON are marked with `<!-- learning:false -->` and serve as navigation hubs. They are scored for **clarity and simplicity** (cognitive load, readability, style compliance only — no active learning, checkpoint, or scaffolding requirements). Do not flag ordering issues caused solely by a dispatcher page lacking prerequisite sections or checkpoint items — those issues should be raised against the substantive steps they link to, not the dispatcher.
 
 ### Task
 

@@ -128,9 +128,7 @@ steps:
       for i, f in enumerate(main_steps):
           scored = score_workshop_file(f)
           curriculum.append({'index': i, 'file': f.name, 'title': scored['title'], 'is_learning_page': scored.get('is_learning_page', True)})
-          # Exclude dispatcher/informational pages (learning:false) from quality KPIs
-          if scored.get('is_learning_page', True):
-              quality_metrics.append(scored)
+          quality_metrics.append(scored)
 
       side_quest_list = []
       for f in side_quests:
@@ -160,8 +158,8 @@ steps:
       env_file = os.environ['GITHUB_ENV']
       with open(env_file, 'a') as ef:
           ef.write(f"WORKSHOP_STEP_COUNT={len(curriculum)}\n")
-      non_learning_count = len(main_steps) - len(quality_metrics)
-      print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests ({non_learning_count} dispatcher/informational pages excluded from quality KPIs)")
+      non_learning_count = sum(1 for m in quality_metrics if not m.get('is_learning_page', True))
+      print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests ({non_learning_count} dispatcher pages scored for clarity/simplicity)")
       print(f"Curriculum quality mean score: {quality_mean}")
       if lowest_quality:
           print(f"Lowest quality step: {lowest_quality['file']} ({lowest_quality['overall_score']}/10)")

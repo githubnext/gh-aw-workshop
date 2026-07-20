@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from curriculum_assessment import DIMENSIONS, is_non_learning_page, score_markdown
+from curriculum_assessment import DIMENSIONS, DISPATCHER_DIMENSIONS, is_non_learning_page, score_markdown
 
 
 SAMPLE_MARKDOWN = """# Example Step
@@ -59,6 +59,12 @@ class ScoreMarkdownTests(unittest.TestCase):
     def test_is_learning_page_false_for_dispatcher_page(self) -> None:
         scored = score_markdown(DISPATCHER_MARKDOWN, "dispatcher.md")
         self.assertFalse(scored["is_learning_page"])
+
+    def test_dispatcher_page_uses_dispatcher_weights(self) -> None:
+        scored = score_markdown(DISPATCHER_MARKDOWN, "dispatcher.md")
+        weighted_sum = sum(scored["dim_scores"][dimension] * weight for dimension, weight in DISPATCHER_DIMENSIONS.items())
+        expected_overall = round(weighted_sum / sum(DISPATCHER_DIMENSIONS.values()), 2)
+        self.assertEqual(scored["overall_score"], expected_overall)
 
 
 class IsNonLearningPageTests(unittest.TestCase):

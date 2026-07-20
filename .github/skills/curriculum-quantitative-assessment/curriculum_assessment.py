@@ -38,6 +38,16 @@ DIMENSIONS = {
     "scaffolding": 1.5,
     "style_compliance": 1.0,
 }
+# Dispatcher/informational pages are scored for clarity and simplicity only.
+# Active learning, checkpoint quality, and scaffolding are not expected.
+DISPATCHER_DIMENSIONS = {
+    "cognitive_load": 2.0,
+    "readability": 2.0,
+    "active_learning": 0.0,
+    "checkpoint_quality": 0.0,
+    "scaffolding": 0.0,
+    "style_compliance": 2.0,
+}
 
 
 def sort_workshop_key(name: str) -> tuple[int, str]:
@@ -50,8 +60,12 @@ def sort_workshop_key(name: str) -> tuple[int, str]:
 def is_non_learning_page(raw: str) -> bool:
     """Return True if the page is marked as a dispatcher or informational page.
 
-    Pages marked with ``<!-- learning:false -->`` are excluded from learning
-    KPIs, engagement metrics, and Bloom's Taxonomy analysis.
+    Pages marked with ``<!-- learning:false -->`` are dispatcher/choice hubs that
+    remain part of the workshop navigation graph but are scored for clarity and
+    simplicity rather than active learning.  The ``active_learning``,
+    ``checkpoint_quality``, and ``scaffolding`` dimensions are given zero weight;
+    ``cognitive_load``, ``readability``, and ``style_compliance`` are emphasised
+    (see :data:`DISPATCHER_DIMENSIONS`).
 
     Matching is case-insensitive and tolerates minor whitespace variations.
     Accepted formats include::
@@ -236,15 +250,17 @@ SCORE_FNS = {
 }
 
 
-def overall_score_from_metrics(metrics: dict) -> tuple[dict, float]:
+def overall_score_from_metrics(metrics: dict, weights: dict | None = None) -> tuple[dict, float]:
+    effective_weights = weights if weights is not None else DIMENSIONS
     dim_scores = {dimension: score_fn(metrics) for dimension, score_fn in SCORE_FNS.items()}
-    weighted_sum = sum(dim_scores[dimension] * weight for dimension, weight in DIMENSIONS.items())
-    return dim_scores, round(weighted_sum / sum(DIMENSIONS.values()), 2)
+    weighted_sum = sum(dim_scores[dimension] * effective_weights[dimension] for dimension in effective_weights)
+    return dim_scores, round(weighted_sum / sum(effective_weights.values()), 2)
 
 
 def score_markdown(raw: str, filename: str, *, title: str | None = None) -> dict:
     metrics = collect_metrics_from_text(raw, filename, title=title)
-    dim_scores, overall_score = overall_score_from_metrics(metrics)
+    weights = DISPATCHER_DIMENSIONS if not metrics["is_learning_page"] else None
+    dim_scores, overall_score = overall_score_from_metrics(metrics, weights=weights)
     return {**metrics, **dim_scores, "dim_scores": dim_scores, "overall_score": overall_score}
 
 
