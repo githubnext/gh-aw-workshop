@@ -371,8 +371,16 @@ File a suggestion issue via `create-issue`:
 
 ### No-op rule
 
-If none of the three tiers produce an action, call `noop` with a concise
-explanation covering what was checked and why nothing was needed.
+**You must always call exactly one primary safe output tool before proceeding to
+Phase 4.** This is a hard requirement — producing no safe output is a workflow
+failure that will trigger an automated alert.
+
+| Result of Phases 1–3 | Safe output to call |
+|---|---|
+| Dispatched a workflow (Tier A) | `dispatch-workflow` — done, proceed to Phase 4 |
+| Opened a modification PR (Tier B) | `create-pull-request` — done, proceed to Phase 4 |
+| Filed a suggestion issue (Tier C) | `create-issue` — done, proceed to Phase 4 |
+| None of the above | Call `noop` with a concise explanation of what was checked and why no action was needed |
 
 ---
 
