@@ -4,18 +4,6 @@ adventure: setup
 ---
 # Adventure B: Set Up Your Local Terminal
 
-> [!TIP]
-> Don't want to use a terminal? Skip to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md) and stay browser-only.
-
-## Which path is right for me?
-
-Choose the option that matches how you work:
-
-- 📱 Mobile or Copilot app — skip this step and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-- 🤖 Copilot Cloud Agent — stay browser-only and go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-- ☁️ Codespace — switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md)
-- 💻 Local terminal — you're in the right place, continue below
-
 ## 🧪 5-question terminal self-assessment
 
 Check each statement:
@@ -26,17 +14,9 @@ Check each statement:
 - [ ] I know how to read command output and spot errors.
 - [ ] I feel comfortable troubleshooting local install or proxy issues.
 
-If any answer is No, switch to [Adventure A: Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
+If any answer is No, switch to [Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
-
-## Choose your operating system
-
-Pick one path now and use only that install section below:
-
-| macOS | Windows | Linux |
-| --- | --- | --- |
-| [macOS install instructions](#macos-quick-install) | [Windows install instructions](#windows-quick-install) | [Linux install instructions](#linux-quick-install) |
 
 ## 🎯 What You'll Do
 
@@ -47,18 +27,6 @@ You'll install Git and the `gh` CLI on your own machine and authenticate with Gi
 - You've completed [Step 1: What You Need Before We Start](01-prerequisites.md)
 - You have a free GitHub account and are signed in
 - You have a terminal application open (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
-
-## 🧭 Terminal Basics
-
-If this is your first time in a terminal, use this legend while running each step:
-
-![Annotated terminal screenshot showing prompt, command, and output](images/02b-terminal-command-annotated.svg)
-
-- Prompt = where you type
-- Command = exactly what to copy/paste from the code block
-- Output = what success or errors look like after pressing Enter
-
-All command blocks below are copy-paste-ready (no leading `$`).
 
 ## Steps
 
@@ -175,6 +143,3 @@ If this combined check stops early, run each command on its own to find the fail
 <!-- journey: local -->
 **Next:** [Step 3: Create and Verify Your Practice Repository](03-create-your-repo.md)
 <!-- /journey -->
-
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/).
-
