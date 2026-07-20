@@ -117,6 +117,10 @@ Your mission on every run: **select exactly one action** that advances workshop
 quality, execute it, and record your reasoning in persistent state so the next
 run can pick up where you left off.
 
+Before you finish the run, you must emit at least one safe output item. If no
+dispatch/PR/issue action is valid, call `noop` with a concise summary of what
+you checked and why no action was needed. Never end with text-only output.
+
 ---
 
 ## Load State
@@ -381,6 +385,9 @@ failure that will trigger an automated alert.
 | Opened a modification PR (Tier B) | `create-pull-request` — done, proceed to Phase 4 |
 | Filed a suggestion issue (Tier C) | `create-issue` — done, proceed to Phase 4 |
 | None of the above | Call `noop` with a concise explanation of what was checked and why no action was needed |
+
+Before ending the run, re-check this requirement: if you have not yet produced
+one of the safe outputs listed above, call `noop` immediately.
 
 ---
 
