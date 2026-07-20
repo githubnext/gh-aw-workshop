@@ -85,8 +85,5 @@ Guardrails:
 **Next:** [Step 11a: Build — Daily Repo Status Workflow](11a-build-daily-status.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

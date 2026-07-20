@@ -153,15 +153,5 @@ git push
 **Next:** [Learning GitHub Agentic Workflows](README.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/), [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/), [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md), [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md), [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md), and [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/)
-- [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md)
-- [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
-- [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
-- [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)

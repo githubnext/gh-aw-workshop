@@ -198,10 +198,5 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/), [Safe Outputs (Pull Requests)](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), and [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).
 
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
-- [Safe Outputs (Pull Requests)](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
-- [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md)

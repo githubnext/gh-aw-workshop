@@ -187,9 +187,5 @@ Use the checklist below to record your findings in a comment or your workflow's 
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), and [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/).
 
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
-- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)

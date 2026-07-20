@@ -132,6 +132,5 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 **Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

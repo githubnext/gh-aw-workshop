@@ -52,8 +52,5 @@ Continue with [Step 6c: GitHub UI Path — No Installation Needed](06c-install-u
 **Next:** [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md), and [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md)
-- [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)

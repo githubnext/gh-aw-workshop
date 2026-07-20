@@ -111,7 +111,5 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
 
-## 📚 See Also
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/)
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/).
+

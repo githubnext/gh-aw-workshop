@@ -149,7 +149,5 @@ Continue with exactly one of these paths:
 **Next:** Open [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)

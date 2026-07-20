@@ -176,6 +176,5 @@ If this combined check stops early, run each command on its own to find the fail
 **Next:** [Step 3: Create and Verify Your Practice Repository](03-create-your-repo.md)
 <!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

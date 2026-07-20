@@ -63,9 +63,5 @@ Use this quick self-check before you move on:
 **Next:** Continue with your chosen path above.
 <!-- /journey -->
 
-## 📚 See Also
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), and [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/).
+
