@@ -14,6 +14,10 @@ NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
 
+ALLOWED_EXPERIENCES = {"workshop", "standalone"}
+EXP_OPEN_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*experience:\s*([a-z,\s]+?)\s*-->\s*$")
+EXP_CLOSE_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*/experience\s*-->\s*$")
+
 
 class JourneyMarkerTests(unittest.TestCase):
     def test_journey_markers_have_valid_syntax_and_are_balanced(self) -> None:
@@ -69,6 +73,43 @@ class JourneyMarkerTests(unittest.TestCase):
 
                     if CLOSE_RE.match(line):
                         depth -= 1
+
+
+class ExperienceMarkerTests(unittest.TestCase):
+    def test_experience_markers_have_valid_syntax_and_are_balanced(self) -> None:
+        for path in sorted(WORKSHOP_DIR.glob("*.md")):
+            if path.name == "README.md":
+                continue
+
+            with self.subTest(file=path.name):
+                stack: list[int] = []
+                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                    opener = EXP_OPEN_RE.match(line)
+                    if opener:
+                        self.assertFalse(stack, f"Nested experience marker in {path.name}:{line_number}")
+                        values = [value.strip() for value in opener.group(1).split(",")]
+                        self.assertTrue(all(values), f"Empty experience value in {path.name}:{line_number}")
+                        self.assertEqual(
+                            len(values),
+                            len(set(values)),
+                            f"Duplicate experience value in {path.name}:{line_number}",
+                        )
+                        invalid = [value for value in values if value not in ALLOWED_EXPERIENCES]
+                        self.assertFalse(
+                            invalid,
+                            f"Invalid experience value in {path.name}:{line_number}: {invalid}",
+                        )
+                        stack.append(line_number)
+                        continue
+
+                    if EXP_CLOSE_RE.match(line):
+                        self.assertTrue(
+                            stack, f"Closing experience marker without opener in {path.name}:{line_number}"
+                        )
+                        stack.pop()
+
+                if stack:
+                    self.fail(f"Unclosed experience marker in {path.name}:{stack[-1]}")
 
 
 if __name__ == "__main__":

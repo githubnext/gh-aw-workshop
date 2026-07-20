@@ -299,6 +299,44 @@ Rules for assigning `journey`:
 - Use `ui` for pages written exclusively for learners who stay in the GitHub browser UI.
 - Use `copilot` for pages that target the Copilot desktop app or the browser-based Agents tab (Adventure D).
 
+### Experience comment markers for deployment-context sections
+
+Use XML comments with an `experience` marker when only part of a page should be shown for a specific workshop deployment context (for example, a standalone/everything-preconfigured Codespace versus the standard workshop where learners set up tools themselves).
+
+```xml
+<!-- experience: standalone -->
+...content shown only in the standalone/preconfigured setup...
+<!-- /experience -->
+```
+
+Rules:
+
+- `experience:` accepts one or more comma-separated experience values from this schema: `workshop`, `standalone`.
+- Use `workshop` for content that is only relevant when learners are building and configuring their environment from scratch (for example, tool installation steps, repository creation, or Codespace setup instructions that are already handled in the standalone experience).
+- Use `standalone` for content that is only relevant in a pre-configured Codespace where prerequisites are already installed and the environment is ready to use (for example, orientation notes about what has been pre-configured).
+- Do not wrap content that is relevant to both experiences — leave it unwrapped.
+- Do not nest `experience` markers. Keep each block self-contained and placed at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
+- `experience` markers are independent of `journey` markers and may appear inside or alongside them. Maintain the same no-nesting rule for each marker type separately — you may interleave an `experience` block with a `journey` block as siblings, but do not place one inside the other.
+
+| Value | Meaning |
+|-------|---------|
+| `workshop` | Standard workshop — learner sets up tools and environment from scratch |
+| `standalone` | Standalone/preconfigured Codespace — prerequisites and environment are already set up |
+
+Example pattern:
+
+```markdown
+<!-- experience: workshop -->
+> [!TIP]
+> If you haven't set up a Codespace yet, follow [Step 2a](02a-setup-codespace.md) first.
+<!-- /experience -->
+
+<!-- experience: standalone -->
+> [!NOTE]
+> Your Codespace is already configured — the `gh-aw` CLI extension is pre-installed and ready to use.
+<!-- /experience -->
+```
+
 ### `adventure` — content category
 
 Describes the role the page plays in the overall workshop structure.
