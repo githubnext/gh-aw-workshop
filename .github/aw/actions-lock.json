@@ -26,11 +26,6 @@
       "image": "alpine:latest",
       "digest": "sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b",
       "pinned_image": "alpine:latest@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b"
-    },
-    "ghcr.io/github/gh-aw-firewall/cli-proxy:0.27.11": {
-      "image": "ghcr.io/github/gh-aw-firewall/cli-proxy:0.27.11",
-      "digest": "sha256:1f989a7f2869c6a1b5f76bbbc645027966aa7e87b066d94734a901a7f371dfcd",
-      "pinned_image": "ghcr.io/github/gh-aw-firewall/cli-proxy:0.27.11@sha256:1f989a7f2869c6a1b5f76bbbc645027966aa7e87b066d94734a901a7f371dfcd"
     }
   }
 }
