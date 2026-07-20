@@ -55,7 +55,6 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 
 ## ✅ Checkpoint
 
-- [ ] I completed Step 7d and configured model access
 - [ ] The **Daily Report Status** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active
