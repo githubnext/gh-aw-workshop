@@ -87,20 +87,20 @@ steps:
 
       def activity_metadata(path: pathlib.Path):
           stem = path.stem
-          side_quest = re.match(r'^side-quest-(\d{2})-(\d{2})-', stem)
-          if side_quest:
-              step = int(side_quest.group(1))
-              sq = int(side_quest.group(2))
+          side_quest_match = re.match(r'^side-quest-(\d{2})-(\d{2})-', stem)
+          if side_quest_match:
+              step = int(side_quest_match.group(1))
+              sq = int(side_quest_match.group(2))
               return {
                   'label': f'{step:02d}-SQ{sq:02d}',
                   'sort_key': (step, 2, sq, ''),
               }
 
-          branch = re.match(r'^(\d{2})([a-z])(?:(?:-part)?(\d+))?-', stem)
-          if branch:
-              step = int(branch.group(1))
-              suffix = branch.group(2)
-              sequence = int(branch.group(3) or 0)
+          branch_match = re.match(r'^(\d{2})([a-z])(?:(?:-part)?(\d+))?-', stem)
+          if branch_match:
+              step = int(branch_match.group(1))
+              suffix = branch_match.group(2)
+              sequence = int(branch_match.group(3) or 0)
               label = f'{step:02d}{suffix}'
               if sequence:
                   label = f'{label}.{sequence}'
@@ -109,10 +109,10 @@ steps:
                   'sort_key': (step, 1, suffix, sequence),
               }
 
-          core = re.match(r'^(\d{2})(?:-part(\d+))?-', stem)
-          if core:
-              step = int(core.group(1))
-              sequence = int(core.group(2) or 0)
+          core_match = re.match(r'^(\d{2})(?:-part(\d+))?-', stem)
+          if core_match:
+              step = int(core_match.group(1))
+              sequence = int(core_match.group(2) or 0)
               label = f'{step:02d}'
               if sequence:
                   label = f'{label}.{sequence}'
@@ -460,9 +460,9 @@ steps:
           for source in component:
               for target in adjacency.get(source, []):
                   if target in component:
-                       component_edges = edge_lookup[(source, target)]
-                       edge_types.update(edge['type'] for edge in component_edges)
-                       cycle_edges.extend(component_edges)
+                      component_edges = edge_lookup[(source, target)]
+                      edge_types.update(edge['type'] for edge in component_edges)
+                      cycle_edges.extend(component_edges)
 
           cycle_data = {
               'nodes': component,
