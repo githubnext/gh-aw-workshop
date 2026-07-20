@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-<!-- <learning:false> -->
+<!-- learning:false -->
 # Create and Verify Your Practice Repository
 
 _Now that setup is complete, create the repository where you'll build and test your workflows._

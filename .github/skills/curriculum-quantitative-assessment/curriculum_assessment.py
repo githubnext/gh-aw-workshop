@@ -13,8 +13,8 @@ CALLOUT_RE = re.compile(r"^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]", re.MULTILINE)
 NUMBERED_HDR_RE = re.compile(r"^#{1,6}\s+\d+[.)]\s+", re.MULTILINE)
 SENTENCE_RE = re.compile(r"[.!?]+")
 # Marks a page as a dispatcher or informational page excluded from learning KPIs.
-# Usage in a workshop markdown file: <!-- <learning:false> -->
-LEARNING_FALSE_RE = re.compile(r"<!--\s*<learning\s*:\s*false\s*/?>\s*-->", re.IGNORECASE)
+# Usage in a workshop markdown file: <!-- learning:false -->
+LEARNING_FALSE_RE = re.compile(r"<!--\s*learning\s*:\s*false\s*-->", re.IGNORECASE)
 
 BLOOM_SIGNALS = {
     "remember": ["welcome", "reference", "vocabulary", "definition", "terminology", "glossary", "prerequisite"],
@@ -50,16 +50,15 @@ def sort_workshop_key(name: str) -> tuple[int, str]:
 def is_non_learning_page(raw: str) -> bool:
     """Return True if the page is marked as a dispatcher or informational page.
 
-    Pages marked with ``<!-- <learning:false> -->`` are excluded from learning
+    Pages marked with ``<!-- learning:false -->`` are excluded from learning
     KPIs, engagement metrics, and Bloom's Taxonomy analysis.
 
-    Matching is case-insensitive and tolerates minor whitespace variations and
-    self-closing syntax.  Accepted formats include::
+    Matching is case-insensitive and tolerates minor whitespace variations.
+    Accepted formats include::
 
-        <!-- <learning:false> -->
-        <!-- <learning:false/> -->
-        <!-- <Learning:False> -->
-        <!--   <learning : false >   -->
+        <!-- learning:false -->
+        <!-- Learning:False -->
+        <!--   learning : false   -->
     """
     return bool(LEARNING_FALSE_RE.search(raw))
 
@@ -75,7 +74,7 @@ def sorted_workshop_files(
         workshop_dir: Path to the workshop directory.
         include_readme: When True, include README.md in the results.
         learning_only: When True, exclude pages marked with
-            ``<!-- <learning:false> -->``.  Note that enabling this option reads
+            ``<!-- learning:false -->``.  Note that enabling this option reads
             each file once during filtering; callers that subsequently call
             :func:`score_workshop_file` on the returned paths will read each
             file a second time.

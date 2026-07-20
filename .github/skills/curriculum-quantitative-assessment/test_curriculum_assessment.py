@@ -27,7 +27,7 @@ gh aw compile
 
 DISPATCHER_MARKDOWN = """# Choose Your Path
 
-<!-- <learning:false> -->
+<!-- learning:false -->
 
 Pick the adventure that suits you.
 
@@ -66,16 +66,13 @@ class IsNonLearningPageTests(unittest.TestCase):
         self.assertFalse(is_non_learning_page(SAMPLE_MARKDOWN))
 
     def test_returns_true_for_bare_tag(self) -> None:
-        self.assertTrue(is_non_learning_page("<!-- <learning:false> -->"))
-
-    def test_returns_true_for_self_closing_tag(self) -> None:
-        self.assertTrue(is_non_learning_page("<!-- <learning:false/> -->"))
+        self.assertTrue(is_non_learning_page("<!-- learning:false -->"))
 
     def test_returns_true_case_insensitive(self) -> None:
-        self.assertTrue(is_non_learning_page("<!-- <Learning:False> -->"))
+        self.assertTrue(is_non_learning_page("<!-- Learning:False -->"))
 
     def test_returns_true_with_extra_whitespace(self) -> None:
-        self.assertTrue(is_non_learning_page("<!--   <learning : false >   -->"))
+        self.assertTrue(is_non_learning_page("<!--   learning : false   -->"))
 
     def test_returns_false_when_absent(self) -> None:
         self.assertFalse(is_non_learning_page("# Normal page\n\nSome content.\n"))

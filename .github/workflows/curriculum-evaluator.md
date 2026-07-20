@@ -297,7 +297,7 @@ Read all generated files before writing any issues:
 3. `/tmp/gh-aw/data/score-history.json` — per-file score history across recent workshop commits and trend analysis
 4. `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py` — the shared quantitative rubric implementation and source of truth
 
-> **Non-learning pages:** The corpus was collected with `learning_only=True`, so dispatcher and informational pages marked with `<!-- <learning:false> -->` are already excluded from all scores and KPIs. Do not flag the absence of these pages as an issue.
+> **Non-learning pages:** The corpus was collected with `learning_only=True`, so dispatcher and informational pages marked with `<!-- learning:false -->` are already excluded from all scores and KPIs. Do not flag the absence of these pages as an issue.
 
 ---
 
