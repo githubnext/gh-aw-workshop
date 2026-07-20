@@ -18,10 +18,12 @@ marked.use({
   renderer: {
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
-      // Strip HTML tags to get plain text for slug generation
-      const raw = text.replace(/<[^>]+>/g, '').trim();
+      // Extract plain text from tokens (avoids regex-based HTML stripping)
+      const raw = tokens.map(function extract(t) {
+        return t.tokens ? t.tokens.map(extract).join('') : (t.text || t.raw || '');
+      }).join('').trim();
       const id = slugger.slug(raw);
-      return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-hidden="true">#</a> ${text}</h${depth}>\n`;
+      return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-label="Link to this heading">#</a> ${text}</h${depth}>\n`;
     },
   },
 });
