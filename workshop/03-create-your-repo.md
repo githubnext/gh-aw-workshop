@@ -12,15 +12,15 @@ _By the end of this step (3a or 3b), you will have a public `my-agentic-workflow
 > <details>
 > <summary><b>Which path is right for me?</b> Choose the option that matches how you work:</summary>
 >
-> <!-- <journey include="ui,copilot"> -->
+> <!-- journey: ui,copilot -->
 > - 🌐 **Browser / Copilot app / Mobile** — I prefer the GitHub web UI with no terminal → go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
-> <!-- </journey> -->
-> <!-- <journey include="codespace"> -->
+> <!-- /journey -->
+> <!-- journey: codespace -->
 > - ☁️ **Codespace** — I have a Codespace open → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md) (your terminal is already open)
-> <!-- </journey> -->
-> <!-- <journey include="local,terminal"> -->
+> <!-- /journey -->
+> <!-- journey: local,terminal -->
 > - 💻 **Local terminal** — I want to use my own machine → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md)
-> <!-- </journey> -->
+> <!-- /journey -->
 >
 > </details>
 
@@ -80,12 +80,12 @@ Before continuing to Step 4, confirm:
 - [ ] I confirmed GitHub Actions is not disabled in my account settings.
 - [ ] I have either a Codespace terminal open **or** I can create and edit files directly in the GitHub web UI.
 
-<!-- <journey include="codespace,local,terminal"> -->
+<!-- journey: codespace,local,terminal -->
 **Next:** Continue with [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md).
-<!-- </journey> -->
-<!-- <journey include="ui,copilot"> -->
+<!-- /journey -->
+<!-- journey: ui,copilot -->
 **Next:** Continue with [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
-<!-- </journey> -->
+<!-- /journey -->
 
 ## 📚 See Also
 
