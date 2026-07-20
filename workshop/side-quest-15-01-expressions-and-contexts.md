@@ -129,7 +129,7 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 - [ ] You can write an `if:` condition that skips a step based on a previous output
 
 <!-- journey: all -->
-**Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
+**Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
 <!-- /journey -->
 
 For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
