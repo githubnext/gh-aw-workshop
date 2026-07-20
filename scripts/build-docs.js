@@ -27,6 +27,22 @@ marked.use({
       // text is the HTML output of parseInline(), which escapes user content
       return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-label="Link to this heading">#</a> ${text}</h${depth}>\n`;
     },
+    // Plugin: render GFM task list items with GitHub-compatible CSS classes
+    listitem(item) {
+      if (item.task) {
+        // Extract inline tokens after the checkbox token. In tight lists the
+        // item tokens are [checkbox, ...inline]; in loose lists they are
+        // [paragraph{ tokens: [checkbox, ...inline] }, ...].
+        const inlineTokens = item.loose && item.tokens[0]?.tokens
+          ? item.tokens[0].tokens.slice(1)
+          : item.tokens.slice(1);
+        const text = this.parser.parseInline(inlineTokens);
+        const baseAttrs = 'class="task-list-item-checkbox" disabled="" type="checkbox"';
+        const attrs = item.checked ? `${baseAttrs} checked=""` : baseAttrs;
+        return `<li class="task-list-item"><input ${attrs}> ${text}</li>\n`;
+      }
+      return false; // use default rendering for non-task items
+    },
   },
 });
 
@@ -58,11 +74,11 @@ if (fs.existsSync(workshopImagesDir)) {
   fs.cpSync(workshopImagesDir, distImagesDir, { recursive: true });
 }
 
-// Copy Primer CSS
-const primerCssSrc = path.join(
-  __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
+// Copy GitHub Markdown CSS
+const markdownCssSrc = path.join(
+  __dirname, '..', 'node_modules', 'github-markdown-css', 'github-markdown.css'
 );
-fs.copyFileSync(primerCssSrc, path.join(distDir, 'primer.css'));
+fs.copyFileSync(markdownCssSrc, path.join(distDir, 'github-markdown.css'));
 
 // Write single-page HTML
 const page = `<!DOCTYPE html>
@@ -71,10 +87,14 @@ const page = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>gh-aw Workshop</title>
-  <link rel="stylesheet" href="primer.css">
+  <link rel="stylesheet" href="github-markdown.css">
+  <style>
+    body { box-sizing: border-box; min-width: 200px; max-width: 980px; margin: 0 auto; padding: 45px; }
+    @media (max-width: 767px) { body { padding: 15px; } }
+  </style>
 </head>
 <body>
-  <div class="container-xl px-3 py-5 markdown-body">
+  <div class="markdown-body">
 ${htmlContent}</div>
 </body>
 </html>
