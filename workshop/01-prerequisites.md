@@ -30,7 +30,7 @@ Open [github.com/settings/copilot](https://github.com/settings/copilot) and conf
 
 Claude, Codex, or Gemini? Confirm your API key.
 
-## Let's get started!
+## Let's get started
 
 Choose your adventure.
 
