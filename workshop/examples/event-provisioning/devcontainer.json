@@ -1,0 +1,17 @@
+{
+  "name": "gh-aw workshop launcher: provisioned codespaces terminal",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'gh extension install github/gh-copilot --force && gh extension install github/gh-aw --force'",
+  "postAttachCommand": "bash -lc 'url=https://github.github.com/gh-aw/workshop/#j=codespaces-terminal&s=foundation&t=04-github-actions-intro; printf \"\\nWorkshop URL: %s\\n\\n\" \"$url\"; if command -v xdg-open >/dev/null 2>&1; then xdg-open \"$url\" >/dev/null 2>&1 || true; fi; gh --version; gh aw --version'"
+}

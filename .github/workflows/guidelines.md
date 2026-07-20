@@ -27,6 +27,13 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
+## Event provisioning surfaces
+
+- Some workshop content is intentionally reused in provisioned event environments such as an org profile README and a learner-repository Codespaces launcher.
+- The maintained example assets live in `workshop/examples/event-provisioning/` and represent downstream copies, not primary authored content.
+- When you change workshop onboarding language that should also appear in those provisioned surfaces, update the marked source blocks in `workshop/00-welcome.md` and keep the examples in sync.
+- For provisioned learner repositories, prefer a Codespaces launcher entry point that starts at Step 4 or Step 5 because org invite, repository creation, and Codespace creation are already complete.
+
 ## Positioning agentic workflows as an Actions-compatible superset
 
 - Present agentic workflows as a **smooth transition from classic GitHub Actions**, not a replacement that forces learners to start over.
@@ -196,7 +203,7 @@ This rule does not override clearly superior choices for all learners. It is a t
 
 ## Consistency check
 
-Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, and do not reference Node.js as a prerequisite.
+Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, do not reference Node.js as a prerequisite, and keep any event-provisioning examples synchronized with the marked workshop source content.
 
 ## Activity numbering for a sortable adventure graph
 
