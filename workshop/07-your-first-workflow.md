@@ -11,7 +11,7 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 ## 📋 Before You Start
 
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
-- The `gh aw` command is available in your terminal, or you have browser access to GitHub Copilot or the repository's **Agents** tab
+- The `gh aw` command is available in your terminal, or you can open GitHub Copilot for a browser-based session
 - If you are using the Terminal path, `gh aw init` has been run and pushed in your practice repository
 
 ## Choose Your Path
@@ -29,5 +29,7 @@ Continue with [Write Your First Agentic Workflow — Terminal Path](07a-your-fir
 <!-- journey: ui,copilot -->
 Continue with [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
 <!-- /journey -->
+
+Both paths create the same source-and-compiled workflow pair shown below.
 
 ![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
