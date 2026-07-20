@@ -9,7 +9,7 @@ Before skipping, confirm you already know both of these:
 - You can describe what an Actions workflow [trigger](https://github.github.com/gh-aw/reference/triggers/) does
 - You have worked with AI agent execution environments in a production or CI/CD context
 
-If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
+If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 ## 📋 Before You Start
 
