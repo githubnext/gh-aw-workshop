@@ -31,6 +31,10 @@ steps:
       import json
       import pathlib
       import re
+      import sys
+
+      sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
+      from curriculum_assessment import is_non_learning_page
 
       repo = pathlib.Path('.')
       workshop_dir = repo / 'workshop'
@@ -227,6 +231,7 @@ steps:
               'title': title,
               'activity_id': metadata['label'],
               'order': metadata['sort_key'],
+              'is_learning_page': not is_non_learning_page(text),
               'journey': frontmatter.get('journey', ''),
               'adventure': frontmatter.get('adventure', ''),
               'before_links': before_links,
@@ -305,6 +310,7 @@ steps:
                       'activity_id': entry['activity_id'],
                       'title': entry['title'],
                       'order': entry['order'],
+                      'is_learning_page': entry['is_learning_page'],
                       'journey': entry['journey'],
                       'adventure': entry['adventure'],
                   }
@@ -535,6 +541,7 @@ steps:
           '',
           '## Summary',
           f"- Files reviewed: {len(files)}",
+          f"- Dispatcher/informational pages (learning:false): {sum(1 for n in graph['nodes'] if not n.get('is_learning_page', True))}",
           f"- Graph nodes: {len(graph['nodes'])}",
           f"- Graph edges: {len(graph['edges'])}",
           f"- Constraints listed: {len(graph['constraints'])}",
@@ -616,6 +623,8 @@ Read these generated files first:
 - `/tmp/gh-aw/data/order-review-report.md`
 
 Then read only the workshop files cited by the findings or graph anomalies you decide to verify.
+
+> **Dispatcher and informational pages:** Pages with `is_learning_page: false` in the context JSON are marked with `<!-- <learning:false> -->` and serve as navigation hubs. They are **intentionally excluded from learning KPIs**. Do not flag ordering issues caused solely by a dispatcher page lacking prerequisite sections or checkpoint items — those issues should be raised against the substantive steps they link to, not the dispatcher.
 
 ### Task
 

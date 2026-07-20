@@ -12,6 +12,9 @@ CHECKLIST_RE = re.compile(r"^\s*-\s+\[[ xX]\]", re.MULTILINE)
 CALLOUT_RE = re.compile(r"^>\s*\[!(TIP|NOTE|IMPORTANT|WARNING)\]", re.MULTILINE)
 NUMBERED_HDR_RE = re.compile(r"^#{1,6}\s+\d+[.)]\s+", re.MULTILINE)
 SENTENCE_RE = re.compile(r"[.!?]+")
+# Marks a page as a dispatcher or informational page excluded from learning KPIs.
+# Usage in a workshop markdown file: <!-- <learning:false> -->
+LEARNING_FALSE_RE = re.compile(r"<!--\s*<learning\s*:\s*false\s*/?>\s*-->", re.IGNORECASE)
 
 BLOOM_SIGNALS = {
     "remember": ["welcome", "reference", "vocabulary", "definition", "terminology", "glossary", "prerequisite"],
@@ -44,9 +47,30 @@ def sort_workshop_key(name: str) -> tuple[int, str]:
     return (int(match.group(1)), match.group(2) or "")
 
 
-def sorted_workshop_files(workshop_dir: str | pathlib.Path, include_readme: bool = False) -> list[pathlib.Path]:
+def is_non_learning_page(raw: str) -> bool:
+    """Return True if the page is marked as a dispatcher or informational page.
+
+    Pages marked with ``<!-- <learning:false> -->`` are excluded from learning
+    KPIs, engagement metrics, and Bloom's Taxonomy analysis.
+    """
+    return bool(LEARNING_FALSE_RE.search(raw))
+
+
+def sorted_workshop_files(
+    workshop_dir: str | pathlib.Path,
+    include_readme: bool = False,
+    learning_only: bool = False,
+) -> list[pathlib.Path]:
+    """Return sorted workshop markdown files.
+
+    Args:
+        workshop_dir: Path to the workshop directory.
+        include_readme: When True, include README.md in the results.
+        learning_only: When True, exclude pages marked with
+            ``<!-- <learning:false> -->``.
+    """
     root = pathlib.Path(workshop_dir)
-    return sorted(
+    paths = sorted(
         (
             path
             for path in root.glob("*.md")
@@ -54,6 +78,9 @@ def sorted_workshop_files(workshop_dir: str | pathlib.Path, include_readme: bool
         ),
         key=lambda path: sort_workshop_key(path.name),
     )
+    if learning_only:
+        paths = [p for p in paths if not is_non_learning_page(p.read_text(encoding="utf-8"))]
+    return paths
 
 
 def extract_title(raw: str, fallback: str) -> str:
@@ -133,6 +160,7 @@ def collect_metrics_from_text(raw: str, filename: str, *, title: str | None = No
         "file": filename,
         "title": page_title,
         "sort_key": list(sort_workshop_key(filename)),
+        "is_learning_page": not is_non_learning_page(raw),
         "word_count": len(words),
         "sentence_count": max(1, len(SENTENCE_RE.findall(prose))),
         "h2_sections": sum(1 for level, _ in headings if level == "##"),

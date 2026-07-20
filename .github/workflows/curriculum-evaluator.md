@@ -41,7 +41,7 @@ steps:
       sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
       from curriculum_assessment import score_workshop_file, sorted_workshop_files
 
-      entries = [score_workshop_file(path) for path in sorted_workshop_files('workshop')]
+      entries = [score_workshop_file(path) for path in sorted_workshop_files('workshop', learning_only=True)]
 
       pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').write_text(
           json.dumps({'files': entries, 'total': len(entries)}, indent=2)
@@ -296,6 +296,8 @@ Read all generated files before writing any issues:
 2. `/tmp/gh-aw/data/rubric-results.json` — rubric scores per dimension, corpus statistics, and flagged findings
 3. `/tmp/gh-aw/data/score-history.json` — per-file score history across recent workshop commits and trend analysis
 4. `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py` — the shared quantitative rubric implementation and source of truth
+
+> **Non-learning pages:** The corpus was collected with `learning_only=True`, so dispatcher and informational pages marked with `<!-- <learning:false> -->` are already excluded from all scores and KPIs. Do not flag the absence of these pages as an issue.
 
 ---
 
