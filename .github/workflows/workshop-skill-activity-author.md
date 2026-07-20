@@ -71,7 +71,7 @@ steps:
       echo "Found $count open curriculum quality issue(s)."
 ---
 
-## Task
+# Workshop Skill Activity Author
 
 Create exactly one pull request per run with one meaningful improvement to the `workshop/` learning content.
 
