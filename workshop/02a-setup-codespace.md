@@ -16,14 +16,17 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
-### Open the Codespace
+### New repository
 
 1. Create your own public repository at [github.com/new](https://github.com/new):
    - Name it `my-agentic-workflows`.
    - Check **Add a README file**.
    - Click **Create repository**.
-2. In your new repository, click the green **Code** button.
-3. Click the **Codespaces** tab.
+
+### Open the Codespace
+
+1. In your new repository, click the green **Code** button.
+2. Click the **Codespaces** tab.
    - Leave **main** selected as the branch.
    - Click **Create codespace on main**.
    - Wait 30–60 seconds for GitHub to prepare the container and open the editor.
@@ -82,5 +85,5 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
 
 <!-- journey: codespace -->
-**Next:** [Step 3a: Verify Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
+**Next:** [GitHub Actions Intro](04-github-actions-intro.md)
 <!-- /journey -->
