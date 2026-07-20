@@ -4,7 +4,6 @@
 
 ## 📋 Before You Start
 
-- You completed one Step 7 authoring path.
 - `daily-report-status.md` and `daily-report-status.lock.yml` are committed to your practice repository.
 
 ## 🎯 What You'll Do
@@ -46,10 +45,10 @@ Use this path for a personal repository, or when the owning organization does no
    ```
 
    This guided flow checks whether `COPILOT_GITHUB_TOKEN` is needed, prompts for it if missing, and stores it as a repository secret.
-3. If you are staying in the browser, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
+3. If you are staying in the browser, use [Method PAT (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 4. Recompile and commit `daily-report-status.lock.yml`.
 
-If you want the full manual PAT procedure, use [Method 2: `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md).
+If you want the full manual PAT procedure, use [Method PAT: `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md).
 
 > [!IMPORTANT]
 > When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission and recompile when you choose personal billing.
