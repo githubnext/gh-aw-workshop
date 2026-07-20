@@ -2,7 +2,7 @@
 <!-- page-adventure: core -->
 <!-- learning: false -->
 
-# github agentic workflows factory tour
+# GitHub Agentic Workflows Factory Tour
 
 <!-- reuse:event-org-readme-intro:start -->
 By the end of this workshop, a real AI agent will create an issue with a summary of the activity in your repository over the latest 24h, every day, without you writing shell-script workflow code.
