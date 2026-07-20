@@ -14,7 +14,7 @@ NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
 
-ALLOWED_EXPERIENCES = {"workshop", "standalone"}
+ALLOWED_EXPERIENCES = {"workshop", "event"}
 EXP_OPEN_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*experience:\s*([a-z]+)\s*-->\s*$")
 EXP_CLOSE_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*/experience\s*-->\s*$")
 

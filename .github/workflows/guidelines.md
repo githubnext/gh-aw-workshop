@@ -299,9 +299,9 @@ Rules for assigning `journey`:
 - Use `ui` for pages written exclusively for learners who stay in the GitHub browser UI.
 - Use `copilot` for pages that target the Copilot desktop app or the browser-based Agents tab (Adventure D).
 
-### Experience comment markers for deployment-context sections
+### Experience comment markers for setup-phase provisioning sections
 
-Use XML comments with an `experience` marker when only part of a page should be shown for a specific workshop deployment context. Both experiences are workshops, but they differ in how they are provisioned:
+Use XML comments with an `experience` marker only when a setup-heavy page needs a small provisioning-specific variation. This is not a separate learner journey. It is a narrow way to distinguish the standard self-setup workshop flow from a pre-provisioned event flow when learners are still following the same Codespace-oriented path.
 
 - **`workshop`** — the standard self-setup experience: learners follow the setup steps (prerequisites, environment, tool installation) on their own before building workflows.
 - **`event`** — an org-provisioned event experience: a GitHub organization is pre-configured with Copilot and agents enabled, each registered participant gets their own repository, and a Codespace paid by the org is ready to open. Learners skip environment and tooling setup steps and start working immediately.
@@ -315,11 +315,13 @@ Use XML comments with an `experience` marker when only part of a page should be 
 Rules:
 
 - `experience:` accepts exactly one value: either `workshop` or `event`.
-- Use `workshop` for content that only applies when learners set up their own environment (for example, tool installation steps, repository creation, Codespace configuration, Copilot access verification).
-- Use `event` for content that only applies in the org-provisioned event experience (for example, notes about what the org has already configured, instructions for opening the pre-provisioned Codespace, or references to the shared org URL).
+- Use `workshop` for setup or install content that only applies when learners provision their own environment (for example, tool installation steps, repository creation, Codespace configuration, Copilot access verification).
+- Use `event` for setup or install content that only applies in the org-provisioned event experience (for example, notes about what the org has already configured, instructions for opening the pre-provisioned Codespace, or references to the shared org URL).
 - Do not wrap content that is relevant to both experiences — leave it unwrapped.
+- Use `experience` sparingly and keep it out of general scenario, architecture, and post-setup workflow-building content.
 - Do not nest `experience` markers. Keep each block self-contained and placed at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
-- `experience` markers are independent of `journey` markers and may appear inside or alongside them. Maintain the same no-nesting rule for each marker type separately — you may interleave an `experience` block with a `journey` block as siblings, but do not place one inside the other.
+- Prefer `journey` for environment and tool-surface routing. Use `experience` only when a setup page needs to say that a step is skipped because the environment is already provisioned.
+- Avoid combining `experience` and `journey` markers unless a setup page truly needs both. If both are needed, keep them as sibling blocks rather than nesting one inside the other.
 
 | Value | Meaning |
 |-------|---------|
