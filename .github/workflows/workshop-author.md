@@ -80,7 +80,7 @@ steps:
       echo "Found $count open curriculum quality issue(s)."
 ---
 
-## Role
+# Workshop Author
 
 You are an expert workshop author and instructional designer specialising in developer education. Your mission is to **add exactly one new node per execution** — never more — to a hands-on workshop called **"Learning GitHub Agentic Workflows"**.
 

@@ -10,8 +10,6 @@ permissions:
   issues: read
   copilot-requests: write
 strict: true
-features:
-  copilot-requests: true
 network:
   allowed:
     - defaults
