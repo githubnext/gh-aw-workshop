@@ -207,21 +207,8 @@ Does your answer include:
 
 - [ ] I described what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
-- [ ] I understand that agentic workflows use the same trust model as GitHub Actions
-- [ ] I classified all four tasks and verified my reasoning in the reveal
-- [ ] I can explain why Task D is agentic despite its deterministic ESLint step
-- [ ] I answered the self-check and compared my answer to the model
-- [ ] I wrote one sentence describing what I want my own agentic workflow to do
-- [ ] I recorded my workflow idea in my workshop notes
-- [ ] My workflow idea needs judgment, not a fixed script
-- [ ] I identified at least two agent judgment calls in the sample daily-status report
 - [ ] I can point to the task brief and the trigger in the sample `.md` file
 - [ ] I can describe the difference between the `.md` source file and the compiled `.lock.yml`
-- [ ] I completed the concept-check exercise before revealing the answers
-- [ ] I can define 'engine' as the AI model provider used during a workflow run
-- [ ] I know that `workflow_dispatch` is a manual trigger started from the Actions tab
-- [ ] I understand that `gh aw compile` generates the lock file and it must not be edited by hand
-- [ ] I can explain, in my own words, how agentic workflows relate to tool-calling or LLM APIs if I already use them
 
 <!-- journey: all -->
 **Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
