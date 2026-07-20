@@ -28,7 +28,7 @@ You'll add persistent memory to your agentic workflow so it can carry state betw
 ## 📋 Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
-- You are comfortable editing YAML frontmatter from [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+- You are comfortable editing YAML frontmatter from [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You understand how `safe-outputs` controls write access (see [Side Quest: Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) if you need a refresher).
 
 ## Why Memory Matters

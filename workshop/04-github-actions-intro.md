@@ -21,7 +21,7 @@ You'll do a fast refresher on the Actions primitives used in this workshop: [tri
 
 ## 📋 Before You Start
 
-- You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
+- You've completed [Create Your Practice Repository](03-create-your-repo.md)
 - No credentials needed — works entirely in your browser
 
 ## Classic Actions vs [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
@@ -148,7 +148,7 @@ Mark each statement as true or false, then reveal the answers:
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
 <!-- journey: all -->
-**Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+**Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).

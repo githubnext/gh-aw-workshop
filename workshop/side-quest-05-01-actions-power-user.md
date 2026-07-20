@@ -8,9 +8,9 @@
 
 To get the most out of this fast-track guide, you should have already:
 
-- Completed [Step 4: GitHub Actions in 5 Minutes](04-github-actions-intro.md) — or have hands-on experience authoring `.github/workflows/*.yml` files.
+- Completed [GitHub Actions in 5 Minutes](04-github-actions-intro.md) — or have hands-on experience authoring `.github/workflows/*.yml` files.
 - Understood the core Actions concepts: triggers (`on:`), jobs, steps, and runners.
-- Optionally reviewed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md) for a beginner-friendly introduction before using this cheat sheet.
+- Optionally reviewed [What Are Agentic Workflows?](05-agentic-workflows-intro.md) for a beginner-friendly introduction before using this cheat sheet.
 
 ## 🎯 What You'll Do
 
@@ -123,7 +123,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 
 ---
 
-Return to the main adventure: [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 <!-- /journey -->
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).

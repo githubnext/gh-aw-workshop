@@ -22,7 +22,7 @@ You'll install Git and the `gh` CLI on your own machine and authenticate with Gi
 
 ## 📋 Before You Start
 
-- You've completed [Step 1: What You Need Before We Start](01-prerequisites.md)
+- You've completed [What You Need Before We Start](01-prerequisites.md)
 - You have a free GitHub account and are signed in
 - You have a terminal application open (Terminal on macOS, Windows Terminal or Git Bash on Windows, any terminal on Linux)
 

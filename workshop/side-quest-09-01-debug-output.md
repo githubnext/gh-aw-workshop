@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Diagnosing Common Agent Output Patterns
 
-> _Optional: use this side quest when a run behaves unexpectedly, then return to [Step 9: Reading Workflow Output](09-understand-output.md)._
+> _Optional: use this side quest when a run behaves unexpectedly, then return to [Reading Workflow Output](09-understand-output.md)._
 
 ## 🎯 What You'll Do
 
@@ -10,7 +10,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 
 ## 📋 Before You Start
 
-- Complete [Step 9: Reading Workflow Output](09-understand-output.md)
+- Complete [Reading Workflow Output](09-understand-output.md)
 
 ## Pattern Lab Index
 

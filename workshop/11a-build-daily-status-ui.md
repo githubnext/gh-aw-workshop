@@ -105,7 +105,7 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: ui -->
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/), and [GitHub Tools read permissions](https://github.github.com/gh-aw/reference/permissions/).

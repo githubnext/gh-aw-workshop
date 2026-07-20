@@ -104,7 +104,7 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 <!-- journey: ui -->
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/), and [Permissions reference](https://github.github.com/gh-aw/reference/permissions/).

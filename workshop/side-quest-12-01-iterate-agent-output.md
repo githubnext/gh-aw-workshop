@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Evaluating and Iterating on Agent Output
 
-> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)._
+> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Test and Improve Your Workflow](12-test-and-iterate.md)._
 
 ## 🎯 What You'll Do
 
@@ -115,7 +115,7 @@ Quick run-log check:
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
 <!-- journey: all -->
-Return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+Return to [Test and Improve Your Workflow](12-test-and-iterate.md).
 <!-- /journey -->
 
 For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/) and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).

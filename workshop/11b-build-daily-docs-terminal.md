@@ -217,7 +217,7 @@ Find the issue titled "Daily Docs Health" and post a comment in this format:
 
 **Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
 <!-- journey: terminal -->
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).

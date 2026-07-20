@@ -112,7 +112,7 @@ Multi-line callout (summary + body):
 
 - Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
 - Prefer guiding learners to trigger manual workflow runs from the GitHub Actions web UI.
-- If a step includes `gh aw run`, present it as an optional advanced path and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Step 6: Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
+- If a step includes `gh aw run`, present it as an optional advanced path and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
 ## Schedule triggers: always use fuzzy syntax in agentic workflow files
 

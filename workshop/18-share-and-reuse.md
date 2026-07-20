@@ -10,7 +10,7 @@ You'll copy your finished workflow file into a shared location so that teammates
 
 ## 📋 Before You Start
 
-- You have a working agentic workflow (completed [Step 13: Schedule It to Run Every Day](13-schedule-it.md) or any of the build steps).
+- You have a working agentic workflow (completed [Schedule It to Run Every Day](13-schedule-it.md) or any of the build steps).
 - You have push access to at least one repository where you want to share the workflow (this can be the same practice repo).
 
 ## Steps

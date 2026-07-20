@@ -129,7 +129,7 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 ---
 
 <!-- journey: all -->
-Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 <!-- /journey -->
 
 For more details, see [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), and [GitHub Integrity Filtering](https://github.github.com/gh-aw/reference/integrity/).

@@ -10,7 +10,7 @@ You'll design a **PR Code Reviewer** workflow that automatically checks every pu
 
 ## 📋 Before You Start
 
-- You've completed [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+- You've completed [Choose Your Scenario](10-choose-your-scenario.md)
 - You have a practice repository created in [Step 3](03-create-your-repo.md)
 
 ---

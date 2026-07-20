@@ -102,4 +102,4 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 
 ## Getting Started
 
-Start at [Step 0: Welcome](00-welcome.md) — it shows you what you'll build and sets you up for success.
+Start at [Welcome](00-welcome.md) — it shows you what you'll build and sets you up for success.

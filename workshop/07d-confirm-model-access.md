@@ -70,10 +70,10 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I completed the matching authentication guide
 - [ ] My source and compiled lock file use the selected method
 - [ ] Both workflow files are committed to `main`
-- [ ] I am ready for [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+- [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 <!-- journey: all -->
-**Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+**Next:** [Run and Watch Your Workflow](08-run-your-workflow.md)
 <!-- /journey -->
 
 For more details, see [AI Engines reference](https://github.github.com/gh-aw/reference/engines/), [Authentication reference](https://github.github.com/gh-aw/reference/auth/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write), and [Billing reference](https://github.github.com/gh-aw/reference/billing/).

@@ -10,7 +10,7 @@ In this step, you will turn `github/gh-aw` research into a concrete training pla
 
 ## 📋 Before You Start
 
-- You completed [Step 18: Share and Reuse Your Agentic Workflows](18-share-and-reuse.md).
+- You completed [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md).
 - You can open `workshop/README.md` and identify where new nodes belong in the curriculum table.
 - You can run `gh aw compile` for workflow validation from earlier steps.
 

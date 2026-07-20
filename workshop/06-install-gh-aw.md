@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You have completed [Step 5: Agentic Workflows Intro](05-agentic-workflows-intro.md)
+- You have completed [Agentic Workflows Intro](05-agentic-workflows-intro.md)
 - Your development environment is ready (Codespace from Step 2a, or local terminal from Step 2b)
 
 ## Choose Your Path
@@ -21,7 +21,7 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 | **Local terminal** | Learners running a local terminal with `gh` already set up | [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md) |
 | **GitHub UI** | Browser-only learners (Copilot Chat, Copilot app, or no terminal access) | [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md) |
 
-All paths converge at [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+All paths converge at [Write Your First Agentic Workflow](07-your-first-workflow.md).
 
 <!-- journey: codespace -->
 Continue with [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md).

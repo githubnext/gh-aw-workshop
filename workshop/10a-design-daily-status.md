@@ -10,7 +10,7 @@ You'll design your first real-world [agentic workflow](https://github.github.com
 
 ## 📋 Before You Start
 
-- You've completed [Step 9: Reading Workflow Output](09-understand-output.md)
+- You've completed [Reading Workflow Output](09-understand-output.md)
 - You have a practice repository created in [Step 3](03-create-your-repo.md)
 
 ---

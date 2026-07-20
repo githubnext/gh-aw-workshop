@@ -102,7 +102,7 @@ The five entries above cover reading repository content, issues, pull requests, 
 ---
 
 <!-- journey: all -->
-Continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md), or return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+Continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md), or return to [Build — Daily Repo Status Workflow](11a-build-daily-status.md).
 <!-- /journey -->
 
 For more details, see [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [CLI Commands](https://github.github.com/gh-aw/setup/cli/).
