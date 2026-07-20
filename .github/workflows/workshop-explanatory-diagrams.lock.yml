@@ -55,7 +55,7 @@
 name: "Workshop Explanatory Diagram Generator"
 on:
   schedule:
-    - cron: "35 4 * * *"  # Friendly format: daily (scattered)
+    - cron: "8 2 * * *"  # Friendly format: daily (scattered)
   # skip-if-match: is:pr is:open label:diagram-generator # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:
