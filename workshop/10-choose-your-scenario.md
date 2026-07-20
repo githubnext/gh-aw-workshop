@@ -75,7 +75,7 @@ Use this quick checklist before you choose:
 
 **Safe output:** One issue comment per day.
 
-➡️ [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+➡️ [Design — Daily Repo Status Report](10a-design-daily-status.md)
 
 ---
 
@@ -89,7 +89,7 @@ Use this quick checklist before you choose:
 
 **Safe output:** One issue comment per day.
 
-➡️ [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+➡️ [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 
 ---
 
@@ -103,7 +103,7 @@ Use this quick checklist before you choose:
 
 **Safe output:** Up to five review comments per PR (posted via `safe-outputs`).
 
-➡️ [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+➡️ [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 
 ---
 
@@ -141,7 +141,7 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 
 - In your note or draft from earlier, write the adventure you chose and one reason it matches the repository task you wrote down earlier.
 - Open the matching design step — [Step 10a](10a-design-daily-status.md), [Step 10b](10b-design-daily-docs.md), or [Step 10c](10c-design-pr-reviewer.md) — and read the first paragraph to confirm the scenario matches what you want to automate.
-- If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and jump to [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
+- If you're using the GitHub Copilot app or the Agents tab, you'll skip the design step and jump to [Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md).
 
 ---
 
@@ -159,10 +159,10 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 <!-- journey: all -->
 **Next (pick one):**
 
-- ➡️ Adventure Codespace: [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
-- ➡️ Adventure Local: [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
-- ➡️ Adventure C: [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
-- ➡️ Adventure D: [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
+- ➡️ Adventure Codespace: [Design — Daily Repo Status Report](10a-design-daily-status.md)
+- ➡️ Adventure Local: [Design — Daily Documentation Updater](10b-design-daily-docs.md)
+- ➡️ Adventure C: [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+- ➡️ Adventure D: [Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 - ➡️ Adventure E: [Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
 
 <!-- /journey -->

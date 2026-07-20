@@ -13,7 +13,7 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command is available in your terminal (or you'll use the GitHub UI path)
 - If you are using Terminal or Copilot paths, `gh aw init` has been run and pushed in your practice repository
-- If you skipped the Copilot access check in Step 1, complete [Step 7d: Confirm Model Access](07d-confirm-model-access.md) before choosing your path.
+- If you skipped the Copilot access check in Step 1, complete [Confirm Model Access](07d-confirm-model-access.md) before choosing your path.
 
 ## Choose Your Path
 
@@ -25,16 +25,16 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 
 The Terminal path gives you early compiler feedback. The GitHub UI path skips local compile checkpoints and uses the **Agentic Workflows** agent in the **Agents** tab to generate the lock file. The GitHub Copilot path delegates `gh aw compile` to the agent's session workspace.
 
-All three authoring paths converge at [Step 7d: Confirm Model Access](07d-confirm-model-access.md) before you run the workflow.
+All three authoring paths converge at [Confirm Model Access](07d-confirm-model-access.md) before you run the workflow.
 
 <!-- journey: codespace,local,terminal -->
-Continue with [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md).
+Continue with [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md).
 <!-- /journey -->
 <!-- journey: ui -->
-Continue with [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
+Continue with [Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
 <!-- /journey -->
 <!-- journey: copilot -->
-Continue with [Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
+Continue with [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
 <!-- /journey -->
 
 ![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
@@ -51,13 +51,13 @@ In one sentence, where will you manually start the first `workflow_dispatch` run
 - [ ] You know the compiled file location: `.github/workflows/daily-report-status.lock.yml`
 
 <!-- journey: codespace,local,terminal -->
-**Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
 <!-- journey: ui -->
-**Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
+**Next:** [Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
 <!-- /journey -->
 <!-- journey: copilot -->
-**Next:** [Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
+**Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
 <!-- /journey -->
 
 

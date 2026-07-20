@@ -8,7 +8,7 @@ _Automating the trigger turns a one-off workflow into a recurring service._
 
 - [Test and Improve Your Workflow](12-test-and-iterate.md) is complete and your workflow has run successfully at least once.
 - `.github/workflows/daily-status.md` is committed to your repository.
-- You are familiar with the `schedule:` trigger syntax introduced in [Step 7a: Your First Workflow (Terminal)](07a-your-first-workflow-terminal.md).
+- You are familiar with the `schedule:` trigger syntax introduced in [Your First Workflow (Terminal)](07a-your-first-workflow-terminal.md).
 - A fuzzy expression like `daily on weekdays` is plain English that `gh aw compile` converts to a valid [cron](https://github.github.com/gh-aw/reference/schedule-syntax/) string at compile time — you never need to write cron syntax by hand.
 
 For example, the fuzzy expression `schedule: daily` compiles to a cron value such as `"49 23 * * *"` in the generated lock file:

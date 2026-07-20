@@ -10,7 +10,7 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 ## 📋 Before You Start
 
-- Completed [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+- Completed [Confirm Model Access](07d-confirm-model-access.md)
 - `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
@@ -67,7 +67,7 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 > If your run failed, see [Step 8b](08b-interpret-your-run.md) for a log walk-through and common failure patterns.
 
 <!-- journey: all -->
-**Next:** [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
+**Next:** [Interpret Your First Run](08b-interpret-your-run.md)
 <!-- /journey -->
 
 

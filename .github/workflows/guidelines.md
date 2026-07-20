@@ -280,7 +280,7 @@ Example patterns:
 <!-- /journey -->
 
 <!-- journey: local -->
-**Next:** [Step 2b: Set Up Your Local Terminal](02b-setup-local.md)
+**Next:** [Set Up Your Local Terminal](02b-setup-local.md)
 <!-- /journey -->
 ```
 

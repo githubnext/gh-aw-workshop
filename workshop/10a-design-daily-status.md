@@ -80,7 +80,7 @@ Guardrails:
 - [ ] I've written at least two guardrail rules
 
 <!-- journey: all -->
-**Next:** [Step 11a: Build — Daily Repo Status Workflow](11a-build-daily-status.md)
+**Next:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md)
 <!-- /journey -->
 
 

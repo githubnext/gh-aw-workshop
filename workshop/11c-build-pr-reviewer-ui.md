@@ -11,7 +11,7 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
 
 ## 📋 Before You Start
 
-- You've completed [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+- You've completed [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 - Your practice repository is open on GitHub
 
 ## Create the workflow
@@ -102,7 +102,7 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
 - [ ] You understand that [compilation](https://github.github.com/gh-aw/reference/compilation-process/) occurs when GitHub Actions runs the workflow
 - [ ] You understand the workflow's [permissions](https://github.github.com/gh-aw/reference/permissions/) and five-comment limit
 
-**Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+**Previous:** [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 <!-- journey: ui -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

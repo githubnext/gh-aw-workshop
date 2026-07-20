@@ -3,7 +3,7 @@
 # GitHub UI Path — No Installation Needed
 
 > [!NOTE]
-> Changed your mind and want a terminal? Switch to [Step 6a: Codespace Terminal](06a-install-terminal.md) or [Step 6b: Local Terminal](06b-install-local.md).
+> Changed your mind and want a terminal? Switch to [Codespace Terminal](06a-install-terminal.md) or [Local Terminal](06b-install-local.md).
 
 ## 🎯 What You'll Do
 
@@ -13,7 +13,7 @@ You'll confirm that the GitHub UI path does not require a local `gh-aw` installa
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You are signed in to [github.com](https://github.com)
-- You have your practice repository ready (from [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md))
+- You have your practice repository ready (from [GitHub UI Path](03b-create-your-repo-ui.md))
 
 ## Why no installation is needed
 
@@ -34,7 +34,7 @@ If you want a browser-only scenario with no terminal, [Adventure E in Step 10](1
 ## What to do next
 
 <!-- journey: ui -->
-Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
+Continue to [Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
 <!-- /journey -->
 
 ## ✅ Checkpoint
@@ -46,7 +46,7 @@ Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-
 - [ ] You know that CCA and mobile learners can trigger workflows from the **Actions** tab without `gh aw run`
 
 <!-- journey: ui -->
-**Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
+**Next:** [Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
 <!-- /journey -->
 
 

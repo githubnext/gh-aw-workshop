@@ -11,7 +11,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 
 ## 📋 Before You Start
 
-- You've completed [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+- You've completed [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - Your practice repository is open on GitHub
 
 ## Create the workflow
@@ -98,7 +98,7 @@ You'll paste a complete documentation health workflow into the GitHub web editor
 - [ ] You understand that compilation occurs when GitHub Actions runs the workflow
 - [ ] You understand the workflow's read-only scope and output guardrail
 
-**Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+**Previous:** [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 <!-- journey: ui -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

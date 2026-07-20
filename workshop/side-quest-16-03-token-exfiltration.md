@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You have a basic agentic workflow from [Step 11a: Build Your Daily Status Workflow](11a-build-daily-status.md) or equivalent.
+- You have a basic agentic workflow from [Build Your Daily Status Workflow](11a-build-daily-status.md) or equivalent.
 - You understand `safe-outputs` and `permissions` frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 

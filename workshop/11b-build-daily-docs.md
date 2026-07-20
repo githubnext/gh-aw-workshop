@@ -6,7 +6,7 @@ _You've designed the workflow on paper — now choose how you want to create it.
 
 ## 📋 Before You Start
 
-- You've completed [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+- You've completed [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - Your practice repository is ready
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
@@ -63,7 +63,7 @@ Both paths produce `.github/workflows/daily-docs.md` and converge at Step 12.
 - [ ] Your workflow file includes a valid `on:` trigger and `permissions:` block
 - [ ] You can explain in one sentence what your agent brief instructs the agent to do
 
-**Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+**Previous:** [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 <!-- journey: all -->
 **Next:** Continue with your chosen path above.
 <!-- /journey -->

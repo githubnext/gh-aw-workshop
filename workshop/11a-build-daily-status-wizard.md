@@ -10,7 +10,7 @@ Instead of writing the `daily-status` workflow file by hand, you'll use the `gh 
 
 ## 📋 Before You Start
 
-- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+- You've completed [Design — Daily Repo Status Report](10a-design-daily-status.md)
 - Your terminal is inside `my-agentic-workflows`
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
@@ -123,7 +123,7 @@ If you want to see what is inside `daily-status.md`, open it in your editor and 
 - [ ] `.github/workflows/daily-status.md` exists in your repository
 - [ ] `gh aw compile` completes without errors
 
-**Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+**Previous:** [Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: all -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

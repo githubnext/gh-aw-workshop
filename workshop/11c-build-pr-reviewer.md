@@ -56,7 +56,7 @@ Use this quick self-check before you move on:
 - [ ] You chose the path that matches how you want to work
 - [ ] You know both paths produce the same workflow file
 
-**Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+**Previous:** [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 <!-- journey: all -->
 **Next:** Continue with your chosen path above.
 <!-- /journey -->

@@ -94,7 +94,7 @@ Review the proposed diff. Confirm both `.github/workflows/daily-report-status.md
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 <!-- journey: ui -->
-**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+**Next:** [Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->
 
 
