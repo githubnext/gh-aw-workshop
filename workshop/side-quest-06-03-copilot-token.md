@@ -17,7 +17,7 @@ Agentic workflows call the GitHub Copilot API at runtime to run AI reasoning ste
 
 If you are using a terminal, prefer the guided `gh-aw` setup flows where possible:
 
-- `gh aw secrets bootstrap --engine copilot` after you choose personal billing
+- [`gh aw secrets bootstrap --engine copilot`](https://github.github.com/gh-aw/setup/cli/#secrets) after you choose personal billing
 - `gh aw add-wizard ...` when you are installing a curated workflow and want setup prompts inline
 
 Use the manual guides below when you need or prefer the step-by-step browser procedure.
@@ -30,7 +30,7 @@ Choose the method that fits your situation:
 |---|---|---|
 | **Copilot requests permission** (recommended) | Organizations with centralized Copilot billing enabled for Actions | [Method 1 →](side-quest-06-03a-copilot-requests-permission.md) |
 | **`COPILOT_GITHUB_TOKEN` secret** | Personal billing, or organizations without centralized Copilot billing | [Method 2 →](side-quest-06-03b-copilot-github-token.md) |
-| **`COPILOT_GITHUB_TOKEN` secret (UI-only)** | Same as Method 2, but using only GitHub web UI steps | [Method 2 (UI-only) →](side-quest-06-03c-copilot-github-token-ui-only.md) |
+| **[`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken) secret (UI-only)** | Same as Method 2, but using only GitHub web UI steps | [Method 2 (UI-only) →](side-quest-06-03c-copilot-github-token-ui-only.md) |
 
 If you are unsure, check who owns your practice repository first:
 
@@ -38,7 +38,7 @@ If you are unsure, check who owns your practice repository first:
 - Personal repository or organization without centralized billing → use **Method 2**
 
 > [!IMPORTANT]
-> Choose one method. When `copilot-requests: write` is present, `COPILOT_GITHUB_TOKEN` is ignored for inference. Remove the permission and recompile when switching to personal billing.
+> Choose one method. When [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) is present, `COPILOT_GITHUB_TOKEN` is ignored for inference. Remove the permission and recompile when switching to personal billing.
 
 ## ✅ Checkpoint
 

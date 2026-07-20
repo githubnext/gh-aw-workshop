@@ -3,8 +3,15 @@ journey: codespace
 adventure: setup
 ---
 # Adventure A: Set Up a Codespace _(recommended for new users)_
-> [!IMPORTANT]
-> On mobile, in the Copilot app, or using Copilot Cloud Agent (CCA)? Stop here: [Step 3b →](03b-create-your-repo-ui.md).
+
+**Are you on the right path?** Pick your situation before reading further:
+
+| Situation | What to do |
+|-----------|-----------|
+| 📱 Mobile device or Copilot app | **Stop here** — [go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
+| 🤖 Copilot Cloud Agent (CCA) | **Stop here** — [Start at Step 3b →](03b-create-your-repo-ui.md), then pick the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
+| ☁️ Browser-based terminal (Codespace) | ✅ Continue below |
+| 💻 Local terminal on your own machine | [Switch to Adventure B →](02b-setup-local.md) |
 
 ## 📋 Before You Start
 
@@ -14,13 +21,6 @@ Make sure you have completed Step 1, then re-check the items that matter for thi
 - A GitHub account you can use to create a public practice repository (free tier is fine)
 - Copilot access enabled on your account (verify at [github.com/settings/copilot](https://github.com/settings/copilot))
 - Access to [GitHub Codespaces](side-quest-01-02-environment-reference.md#github-codespaces) on your plan (available on GitHub Free for public repositories and on paid plans)
-
-| Path | Best for | Plan required | Next step |
-|------|----------|---------------|-----------|
-| 📱 Mobile / Copilot app | No terminal or local install | None | Not this path — [go to Step 3b: GitHub UI Path →](03b-create-your-repo-ui.md) |
-| 🤖 Copilot Cloud Agent (CCA) | Browser-only with CCA; no local install | Copilot access | [Start at Step 3b →](03b-create-your-repo-ui.md), then continue later with the browser-only adventure in [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) |
-| ☁️ Codespace | Browser terminal; no local installs | Codespaces access (free for public repos) | ✅ Continue below |
-| 💻 Local terminal | Your own machine and tools | None | [Switch to Adventure B →](02b-setup-local.md) |
 
 > [!IMPORTANT]
 > <details>

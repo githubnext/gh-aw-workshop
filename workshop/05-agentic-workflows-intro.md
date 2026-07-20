@@ -79,6 +79,25 @@ You just saw how a standard Actions workflow follows fixed steps. Agentic workfl
 > [!IMPORTANT]
 > On GHEC, GHES, or EMU, the **Actions** tab may be restricted by organization policy. If it is, complete [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) first.
 
+<!-- -->
+
+> [!NOTE]
+> <details>
+> <summary><b>On GHES or GHEC? Map the cloud examples to your environment.</b></summary>
+>
+> The examples in this step use `github.com` cloud workflows. If you are on GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC), everything still applies — here is how the key pieces map:
+>
+> | Cloud example | GHES / GHEC equivalent |
+> |---|---|
+> | `github.com` repository | Your enterprise-hosted repository |
+> | GitHub-hosted runner (`ubuntu-latest`) | Your organization's runner (GitHub-hosted or self-hosted, depending on admin policy) |
+> | Copilot cloud agent | Copilot Enterprise (requires GHES 3.12+ and admin-enabled Copilot policy) |
+> | Actions tab | Same location — **repository → Actions** |
+>
+> If `github.com` cloud access is unavailable in your environment, you can follow along in read-only mode and run the execution steps on a personal `github.com` account. See [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) for GHES version requirements and runner prerequisites.
+>
+> </details>
+
 ## Reflection
 
 Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
