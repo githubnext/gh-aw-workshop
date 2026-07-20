@@ -151,6 +151,7 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
 - ➡️ [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
 - ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
+- ➡️ [Govern Your Agentic Workflows at Scale](27-governance-and-policy.md) — tighten token permissions, add human approval gates, and use a pre-production checklist to promote workflows safely (enterprise teams).
 
 <!-- /journey -->
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Permissions reference](https://github.github.com/gh-aw/reference/permissions/), [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/), and [Cost Management reference](https://github.github.com/gh-aw/reference/cost-management/).
