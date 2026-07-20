@@ -147,7 +147,7 @@ steps:
       quality_metrics = []
       for i, f in enumerate(main_steps):
           scored = score_workshop_file(f)
-          curriculum.append({'index': i, 'file': f.name, 'title': scored['title']})
+          curriculum.append({'index': i, 'file': f.name, 'title': scored['title'], 'is_learning_page': scored.get('is_learning_page', True)})
           quality_metrics.append(scored)
 
       side_quest_list = []
@@ -178,12 +178,14 @@ steps:
       env_file = os.environ['GITHUB_ENV']
       with open(env_file, 'a') as ef:
           ef.write(f"WORKSHOP_STEP_COUNT={len(curriculum)}\n")
-      print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests")
+      non_learning_count = sum(1 for m in quality_metrics if not m.get('is_learning_page', True))
+      print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests ({non_learning_count} dispatcher pages scored for clarity/simplicity)")
       print(f"Curriculum quality mean score: {quality_mean}")
       if lowest_quality:
           print(f"Lowest quality step: {lowest_quality['file']} ({lowest_quality['overall_score']}/10)")
       for entry in curriculum:
-          print(f"  [{entry['index']}] {entry['file']}: {entry['title']}")
+          tag = '' if entry['is_learning_page'] else ' [dispatcher]'
+          print(f"  [{entry['index']}] {entry['file']}: {entry['title']}{tag}")
       PY
 
   - name: Run Monte Carlo simulation (${{ env.MONTE_CARLO_RUNS }} runs per student)

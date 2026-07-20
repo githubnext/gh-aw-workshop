@@ -297,6 +297,8 @@ Read all generated files before writing any issues:
 3. `/tmp/gh-aw/data/score-history.json` — per-file score history across recent workshop commits and trend analysis
 4. `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py` — the shared quantitative rubric implementation and source of truth
 
+> **Dispatcher and informational pages:** Pages with `is_learning_page: false` are marked with `<!-- learning:false -->` and serve as navigation hubs. They are scored for **clarity and simplicity** — only the `cognitive_load`, `readability`, and `style_compliance` dimensions contribute to their `overall_score` (see `DISPATCHER_DIMENSIONS` in `curriculum_assessment.py`). Do not expect or flag the absence of checkpoints, active learning activities, or prerequisite sections on these pages.
+
 ---
 
 ## Evaluation Framework
