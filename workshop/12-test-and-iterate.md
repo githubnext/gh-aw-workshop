@@ -58,7 +58,7 @@ This updates the compiled lock file that GitHub Actions actually executes.
 If the compiler reports an error, fix that first. Do not start a new test run until compilation succeeds.
 
 > [!TIP]
-> If you expect to make several small edits in a row, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) to learn when `gh aw compile --watch` can speed up the loop.
+> If you expect to make several small edits in a row, `gh aw compile --watch` can speed up the loop by recompiling after each save.
 
 ## Commit Both Workflow Files
 
@@ -84,7 +84,7 @@ Ask yourself:
 
 If yes, keep the change. If not, leave the first change in place only if it still helps, then repeat the loop with one different adjustment.
 
-For a more structured scoring method, continue with [Side Quest: Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md).
+If you want a stricter review loop, score each run for accuracy, completeness, and tone before you decide what to change next.
 
 ## ✅ Checkpoint
 
