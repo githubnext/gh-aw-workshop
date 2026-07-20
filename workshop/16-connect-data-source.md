@@ -151,6 +151,6 @@ Once you're comfortable with this pattern, the same technique works for:
 > Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit:
 >
 > - **Token exfiltration**: learn how crafted issue or PR content can attempt to leak your `GITHUB_TOKEN` — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
-> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how `permissions:` minimization and `network.allowed-domains` contain the blast radius.
+> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how `permissions:` minimization and `network.allowed` contain the blast radius.
 >
 > </details>
