@@ -95,19 +95,13 @@ gh pr merge --merge --auto
 
 ## Verify the Workflow File
 
-After merging, confirm the workflow file landed correctly:
+After merging, confirm the workflow file compiles correctly:
 
 ```bash
-gh aw validate .github/workflows/daily-status.md
+gh aw compile
 ```
 
-You should see:
-
-```
-✔ daily-status.md — valid
-```
-
-The wizard also writes the compiled `.github/workflows/daily-status.lock.yml` file alongside the Markdown source, so you do not need to run `gh aw compile` separately.
+You should see output confirming that `daily-status.lock.yml` was written successfully.
 
 ---
 
@@ -129,7 +123,7 @@ If you want to see what is inside `daily-status.md`, open it in your editor and 
 - [ ] `gh aw add-wizard githubnext/agentics/daily-repo-status` completed without errors
 - [ ] The pull request was created and merged into `main`
 - [ ] `.github/workflows/daily-status.md` exists in your repository
-- [ ] `gh aw validate .github/workflows/daily-status.md` reports no errors
+- [ ] `gh aw compile` completes without errors
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: all -->
