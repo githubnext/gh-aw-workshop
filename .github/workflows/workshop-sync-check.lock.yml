@@ -56,7 +56,7 @@
 name: "Workshop Sync Check"
 on:
   schedule:
-    - cron: "20 11 * * *"  # Friendly format: daily (scattered)
+    - cron: "36 4 * * *"  # Friendly format: daily (scattered)
   workflow_dispatch:
     inputs:
       aw_context:

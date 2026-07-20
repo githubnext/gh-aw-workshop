@@ -57,7 +57,7 @@
 name: "Training Plan Researcher"
 on:
   schedule:
-    - cron: "6 19 * * 2"  # Friendly format: weekly (scattered)
+    - cron: "54 15 * * 5"  # Friendly format: weekly (scattered)
   # skip-if-match: is:pr is:open label:training-plan # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:

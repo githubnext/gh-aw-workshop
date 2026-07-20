@@ -57,7 +57,7 @@
 name: "Docs Linker"
 on:
   schedule:
-    - cron: "7 6 * * *"  # Friendly format: daily (scattered)
+    - cron: "51 8 * * *"  # Friendly format: daily (scattered)
   # skip-if-match: is:pr is:open label:docs-linker # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:

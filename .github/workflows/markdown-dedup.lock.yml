@@ -57,7 +57,7 @@
 name: "Markdown Dedup"
 on:
   schedule:
-    - cron: "22 5 * * *"  # Friendly format: daily (scattered)
+    - cron: "51 13 * * *"  # Friendly format: daily (scattered)
   # skip-if-match: is:issue is:open label:dedup # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:
