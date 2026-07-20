@@ -108,8 +108,3 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 - [ ] At least one scheduled (or manual) run has completed successfully after the change
 
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
-
-## 📚 See Also
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/)

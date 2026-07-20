@@ -65,10 +65,3 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I am ready for [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
-
-## 📚 See Also
-
-- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)
-- [Authentication reference](https://github.github.com/gh-aw/reference/auth/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write)
-- [Billing reference](https://github.github.com/gh-aw/reference/billing/)

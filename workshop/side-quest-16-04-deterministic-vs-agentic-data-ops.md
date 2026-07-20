@@ -100,9 +100,3 @@ gh issue list --state open --search "updated:>=2026-07-13" --json number,title,l
 ---
 
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
-
-## 📚 See Also
-
-- [DeterministicOps pattern](https://github.github.com/gh-aw/patterns/deterministic-ops/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [How They Work](https://github.github.com/gh-aw/introduction/how-they-work/)

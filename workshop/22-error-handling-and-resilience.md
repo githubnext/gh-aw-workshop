@@ -121,14 +121,3 @@ After pushing:
 - [ ] You can name at least two common agentic workflow failure modes and how to mitigate them
 
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Side Quest: Debugging Output Patterns](side-quest-09-01-debug-output.md)
-- [Side Quest: Pattern — Safe Output Blocked](side-quest-09-01c-pattern-safe-output-blocked.md)
-- [Side Quest: Pattern — Done but No Write](side-quest-09-01e-pattern-done-no-write.md)
-- [Test and Iterate on Your Workflow](12-test-and-iterate.md)

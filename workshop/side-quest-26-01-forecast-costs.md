@@ -114,8 +114,3 @@ gh aw compile
 - [ ] You derived a `max-daily-ai-credits` value from the P90 figure and added it to your workflow
 
 Return to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
-
-## 📚 See Also
-
-- [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot)
-- [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md)

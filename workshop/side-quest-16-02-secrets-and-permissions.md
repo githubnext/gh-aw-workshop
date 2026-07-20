@@ -143,9 +143,3 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 - [ ] You can explain why hard-coding credentials in workflow files is risky
 
 **Return to:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) or [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
-
-## 📚 See Also
-
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

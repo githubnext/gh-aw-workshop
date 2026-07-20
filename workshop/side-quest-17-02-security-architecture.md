@@ -105,11 +105,3 @@ network:
 ---
 
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
-
-## 📚 See Also
-
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
-- [Sandbox Configuration](https://github.github.com/gh-aw/reference/sandbox/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

@@ -112,10 +112,3 @@ on:
 ---
 
 Return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](11a-build-daily-status-terminal.md), or [Step 13](13a-schedule-it-terminal.md).
-
-## 📚 See Also
-
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

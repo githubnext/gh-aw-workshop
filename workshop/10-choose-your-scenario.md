@@ -162,9 +162,3 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 - ➡️ Adventure E: [Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
 
 **Curious about security?** Before you build, explore how adversarial instructions in repository content can try to override your agent's task brief — and how gh-aw's layered architecture limits the impact. [Side Quest: Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

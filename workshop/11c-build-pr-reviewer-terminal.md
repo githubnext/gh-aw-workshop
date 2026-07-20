@@ -203,11 +203,3 @@ Findings: {count}
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/)

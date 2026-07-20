@@ -104,7 +104,3 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 ---
 
 Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md).
-
-## 📚 See Also
-
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

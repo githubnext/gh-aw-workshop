@@ -117,8 +117,3 @@ The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is
 ---
 
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
-
-## 📚 See Also
-
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

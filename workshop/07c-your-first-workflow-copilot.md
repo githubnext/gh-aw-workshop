@@ -63,11 +63,3 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)

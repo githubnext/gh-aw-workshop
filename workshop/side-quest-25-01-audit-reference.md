@@ -65,9 +65,3 @@ Share the allowed-domains list from a successful run with your enterprise securi
 - [ ] You know what the threat detection verdict checks for
 
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
-
-## 📚 See Also
-
-- [Network reference](https://github.github.com/gh-aw/reference/network/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)

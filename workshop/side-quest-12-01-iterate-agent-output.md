@@ -117,8 +117,3 @@ Quick run-log check:
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
 Return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
-
-## 📚 See Also
-
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

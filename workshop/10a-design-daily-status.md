@@ -82,9 +82,3 @@ Guardrails:
 - [ ] I've written at least two guardrail rules
 
 **Next:** [Step 11a: Build — Daily Repo Status Workflow](11a-build-daily-status.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

@@ -107,7 +107,3 @@ rm -r test-dir
 ---
 
 When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md).
-
-## 📚 See Also
-
-- [Side Quest: Permission Errors](side-quest-01-03-permission-errors.md) — what to do when the terminal says `permission denied`

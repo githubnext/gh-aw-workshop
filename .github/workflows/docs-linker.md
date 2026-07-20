@@ -7,9 +7,8 @@ description: >
   of docs/src/ from github/gh-aw, parses every markdown source to extract
   section anchors (cached for 7 days), enabling the agent to produce precise
   URL#anchor links. Uses cache-memory round-robin to process at least 10
-  workshop files per run, then opens a pull request that adds inline links and
-  a "See Also" section pointing to the rendered gh-aw docs
-  (Astro Starlight site at https://github.github.com/gh-aw/).
+  workshop files per run, then opens a pull request that adds inline links to
+  the rendered gh-aw docs (Astro Starlight site at https://github.github.com/gh-aw/).
 on:
   schedule: daily
   workflow_dispatch:
@@ -279,9 +278,8 @@ steps:
 You are a documentation curator for the **"Learning GitHub Agentic Workflows"** workshop.
 
 Your job is to keep at least 10 workshop files per run well-connected to the official
-gh-aw documentation, by adding precise **inline hyperlinks** and a **"📚 See
-Also"** section at the bottom. You never remove content — you only enrich it
-with links.
+gh-aw documentation, by adding precise **inline hyperlinks** at the first bare occurrence
+of each matched concept. You never remove content — you only enrich it with inline links.
 
 ---
 
@@ -452,39 +450,14 @@ Rules:
 
 ---
 
-## Add or Update "See Also" Section
-
-For each file in `target_files`, locate any existing `## 📚 See Also` (or
-`## See Also`) section at the bottom of the current file. If it exists, update
-it. If not, append one.
-
-The section must list **every** doc page referenced by the inline links added in
-Phase 5, **plus** any additional highly relevant docs for the file's topic that
-were not linked inline (e.g., overview pages that provide broader context).
-Format:
-
-```markdown
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-```
-
-Place the section at the very end of the file, after `**Next:**` or `**Return to:**`
-navigation links (if they exist), so it does not interrupt the learning flow.
-
----
-
 ## Decide and Act
 
 ### Nothing to change
 
 Call `noop` with a concise explanation when **all** of the following are true:
 - No new concept matches were found for all selected files (or all matching terms are already hyperlinked)
-- All selected files already have a complete and up-to-date `## 📚 See Also` section covering all relevant doc pages
 
-If there are inline links to add **or** the "See Also" section needs updating, proceed with changes.
+If there are inline links to add, proceed with changes.
 
 ### Changes to make
 
@@ -493,7 +466,7 @@ Write updated content back to each changed file in `target_files` using the
 create a pull request with:
 
 - **Title**: `workshop docs: add gh-aw doc links` (the `[docs-linker]` prefix is added automatically)
-- **Body**: group by file, listing each term linked, the doc URL it points to, and the updated "See Also" entries.
+- **Body**: group by file, listing each term linked and the doc URL it points to.
 
 ---
 

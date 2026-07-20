@@ -88,9 +88,3 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 ---
 
 Return to the main adventure: [Step 13: Schedule It to Run Every Day](13-schedule-it.md).
-
-## 📚 See Also
-
-- [GitHub Actions Triggers](https://github.github.com/gh-aw/reference/triggers/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
