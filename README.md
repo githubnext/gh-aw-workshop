@@ -33,13 +33,6 @@ You'll build a scheduled, AI-powered repository status report that runs in GitHu
 | A platform or DevOps engineer | A reusable pattern for AI-assisted repository triage with auditable runs in GitHub |
 | An evaluator, mentor, or workshop host | A hands-on artifact that makes agentic workflow concepts easy to demonstrate and assess |
 
-## Start here
-
-1. Open [Welcome](workshop/00-welcome.md).
-2. Follow the workshop in order.
-3. Use the checkpoint at the end of each step before moving on.
-4. Refer to [workshop/README.md](workshop/README.md) any time you want the full curriculum view.
-
 ## What makes this different from a classic Actions tutorial
 
 Instead of spending most of your time wiring together scripts, conditionals, and API calls, you define the workflow in a Markdown brief and let the agent reason over the repository at runtime.
@@ -50,27 +43,6 @@ That means you focus on:
 - the repository context the agent should use
 - the trigger that should run the workflow
 - the output that should be published back to GitHub
-
-## Workshop structure
-
-The workshop is self-paced and step-based.
-
-- You start with a short introduction and environment check.
-- You choose either a Codespaces path or a local-terminal path.
-- You learn the core agentic workflow concepts.
-- You build, run, test, and schedule your own workflow.
-- You can continue with advanced steps for conditional logic, external data, MCP tools, and reuse.
-
-For the complete step list, see [workshop/README.md](workshop/README.md).
-
-## Repository layout
-
-```text
-README.md               Workshop landing page
-workshop/               Step-by-step workshop content
-workshop/images/        Images used throughout the workshop
-.github/workflows/      Workshop automation and agentic workflow definitions
-```
 
 ## Ready to begin?
 
