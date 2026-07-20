@@ -13,7 +13,6 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command is available in your terminal (or you'll use the GitHub UI path)
 - If you are using Terminal or Copilot paths, `gh aw init` has been run and pushed in your practice repository
-- If you skipped the Copilot access check in Step 1, complete [Confirm Model Access](07d-confirm-model-access.md) before choosing your path.
 
 ## Choose Your Path
 
@@ -23,8 +22,6 @@ You'll create `.github/workflows/daily-report-status.md`, a small workflow that 
 | **GitHub Copilot path** | Ask an agent to create and validate the workflow, then review and merge its pull request | [Write the workflow with GitHub Copilot](07c-your-first-workflow-copilot.md) |
 
 The Terminal path gives you early compiler feedback. The GitHub UI path skips local compile checkpoints and uses the **Agentic Workflows** agent in the **Agents** tab to generate the lock file. The GitHub Copilot path delegates `gh aw compile` to the agent's session workspace.
-
-All three authoring paths converge at [Confirm Model Access](07d-confirm-model-access.md) before you run the workflow.
 
 <!-- journey: codespace,local,terminal -->
 Continue with [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md).
