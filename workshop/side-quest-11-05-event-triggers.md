@@ -141,5 +141,4 @@ That is the core decision: pick the trigger that matches the moment you care abo
 Return to the main adventure: [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md).
 
 <!-- /journey -->
-For more details, see [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

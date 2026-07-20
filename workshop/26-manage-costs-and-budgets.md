@@ -110,5 +110,4 @@ gh aw compile
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
 
-For more details, see [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot), [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md), [Make Your Workflow Remember Across Runs](20-persistent-memory.md), and [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 

@@ -118,5 +118,4 @@ Quick run-log check:
 Return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
 <!-- /journey -->
 
-For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/) and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 

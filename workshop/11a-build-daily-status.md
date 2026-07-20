@@ -57,5 +57,4 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 **Next:** Continue with your chosen path above.
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).
 

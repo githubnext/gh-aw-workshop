@@ -47,5 +47,4 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 - [ ] I can validate whether matching repository data actually exists
 
 <!-- /journey -->
-For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/).
 

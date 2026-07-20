@@ -131,5 +131,4 @@ You should see:
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
 <!-- /journey -->
 
-For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Engine configuration](https://github.github.com/gh-aw/reference/auth/), and [Network Permissions](https://github.github.com/gh-aw/reference/network/).
 

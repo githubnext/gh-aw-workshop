@@ -48,5 +48,4 @@ Pattern: **`safe-output: BLOCKED (limit reached)`**. Decide whether the second w
 - [ ] I can keep safe-output limits intentionally small for safety
 
 <!-- /journey -->
-For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 

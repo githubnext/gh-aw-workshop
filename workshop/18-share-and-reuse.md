@@ -95,5 +95,4 @@ This hint saves teammates guesswork when they first open the file.
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Reusing workflows guide](https://github.github.com/gh-aw/guides/reusing-workflows/), and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 

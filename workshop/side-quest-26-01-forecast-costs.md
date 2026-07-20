@@ -115,5 +115,4 @@ gh aw compile
 Return to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 <!-- /journey -->
 
-For more details, see [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot) and [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 

@@ -151,5 +151,4 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
 
 <!-- /journey -->
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Permissions reference](https://github.github.com/gh-aw/reference/permissions/), [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/), and [Cost Management reference](https://github.github.com/gh-aw/reference/cost-management/).
 

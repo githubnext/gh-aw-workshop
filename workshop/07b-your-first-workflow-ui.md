@@ -97,5 +97,4 @@ Review the proposed diff. Confirm both `.github/workflows/daily-report-status.md
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->
 
-For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/).
 

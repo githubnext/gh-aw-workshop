@@ -112,7 +112,7 @@ Requirements:
 - Do not number headers.
 - Include one short "why this matters" framing paragraph.
 - Include at least one actionable step that references a real gh-aw concept discovered during research.
-- Link relevant gh-aw docs inline in the prose at the first mention of each concept instead of adding a dedicated "See Also" section.
+- Link relevant gh-aw docs inline in the prose at the first mention of each concept instead of adding a dedicated "See Also" section or a "For more details, see …" footer line.
 - Add an XML comment block in the node file with:
   - the selected research focus,
   - top source URLs (including the LLMs.txt download source),
