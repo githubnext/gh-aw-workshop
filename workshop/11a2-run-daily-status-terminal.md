@@ -2,7 +2,7 @@
 journey: terminal
 adventure: scenario-a
 ---
-# Step 11a2: Compile and Run the Daily Status Workflow — Terminal Path
+# Compile and Run the Daily Status Workflow — Terminal Path
 
 > _The workflow file is written — now let's validate it and see it run._
 

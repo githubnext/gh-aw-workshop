@@ -2,7 +2,7 @@
 journey: all
 adventure: scenario-c
 ---
-# Step 10c: Design — PR Code Reviewer
+# Design — PR Code Reviewer
 
 > _Great [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) start with a clear brief — writing down what you want before you code anything saves hours of debugging later._
 

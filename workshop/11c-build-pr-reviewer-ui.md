@@ -2,7 +2,7 @@
 journey: ui
 adventure: scenario-c
 ---
-# Step 11c: Build the PR Code Reviewer — GitHub UI Path
+# Build the PR Code Reviewer — GitHub UI Path
 
 > [!NOTE]
 > Want incremental compiler feedback? Switch to the [Terminal path](11c-build-pr-reviewer-terminal.md).

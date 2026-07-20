@@ -2,7 +2,7 @@
 journey: ui
 adventure: scenario-b
 ---
-# Step 11b: Build the Daily Documentation Updater — GitHub UI Path
+# Build the Daily Documentation Updater — GitHub UI Path
 
 > [!NOTE]
 > Want incremental compiler feedback? Switch to the [Terminal path](11b-build-daily-docs-terminal.md).

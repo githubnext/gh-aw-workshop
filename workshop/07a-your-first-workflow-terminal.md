@@ -2,7 +2,7 @@
 journey: terminal
 adventure: core
 ---
-# Step 7a: Write Your First Agentic Workflow — Terminal Path
+# Write Your First Agentic Workflow — Terminal Path
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
 

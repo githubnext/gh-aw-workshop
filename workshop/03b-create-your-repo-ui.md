@@ -2,7 +2,7 @@
 journey: ui
 adventure: core
 ---
-# Step 3b: Create Your Practice Repository — GitHub UI Path
+# Create Your Practice Repository — GitHub UI Path
 
 > _When you're done with this step, you'll have a public `my-agentic-workflows` repository open in your browser, with GitHub Actions enabled and ready for the rest of the workshop — no terminal required._
 

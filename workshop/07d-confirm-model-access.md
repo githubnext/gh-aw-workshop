@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-# Step 7d: Confirm Model Access
+# Confirm Model Access
 
 ## 📋 Before You Start
 

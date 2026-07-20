@@ -2,7 +2,7 @@
 journey: all
 adventure: scenario-b
 ---
-# Step 11b: Build — Daily Documentation Updater
+# Build — Daily Documentation Updater
 
 _You've designed the workflow on paper — now choose how you want to create it._
 

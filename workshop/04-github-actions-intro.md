@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-# Step 4: GitHub Actions in 5 Minutes
+# GitHub Actions in 5 Minutes
 
 > [!TIP]
 > <details>
