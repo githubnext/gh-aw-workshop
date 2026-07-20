@@ -126,8 +126,3 @@ permissions:
 ---
 
 Return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md).
-
-## 📚 See Also
-
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

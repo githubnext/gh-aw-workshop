@@ -139,7 +139,3 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 - [ ] I know Copilot Cloud Agent (CCA) users follow the [GitHub UI Path](03b-create-your-repo-ui.md) and have a dedicated browser-only adventure at [Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
 
 **Next:** [Step 3a: Verify Your Practice Repository — Terminal Path](03a-create-your-repo-terminal.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

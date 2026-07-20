@@ -46,9 +46,3 @@ Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-
 - [ ] You know that CCA and mobile learners can trigger workflows from the **Actions** tab without `gh aw run`
 
 **Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)

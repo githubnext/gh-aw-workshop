@@ -167,8 +167,3 @@ Open the live log from your completed Step 8 **Daily Report Status** run.
 - [ ] I can name the first three checks to run when output looks wrong
 
 **Next:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

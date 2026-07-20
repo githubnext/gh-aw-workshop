@@ -43,10 +43,3 @@ In one sentence, where will you manually start the first `workflow_dispatch` run
 - [ ] You know the compiled file location: `.github/workflows/daily-report-status.lock.yml`
 
 **Next:** Continue with your chosen path above.
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

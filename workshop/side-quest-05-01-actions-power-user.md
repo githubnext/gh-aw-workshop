@@ -125,8 +125,3 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 ---
 
 Return to the main adventure: [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

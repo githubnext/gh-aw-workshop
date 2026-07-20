@@ -61,7 +61,3 @@ Confirm `my-agentic-workflows` and your username appear in the page header.
 - [ ] Your username appears as the repository owner
 
 **Next:** [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

@@ -132,8 +132,3 @@ Continue with exactly one of these paths:
 - [ ] You know which file you will open next
 
 **Next:** Open your selected path file now — [Adventure A](02a-setup-codespace.md), [Adventure B](02b-setup-local.md), or [Step 3b](03b-create-your-repo-ui.md).
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)

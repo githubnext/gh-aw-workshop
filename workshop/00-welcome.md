@@ -127,8 +127,3 @@ At **Step 11**, you can build manually (Step 11a), use the guided wizard (Advent
 - [ ] You're excited — let's go! 🚀
 
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

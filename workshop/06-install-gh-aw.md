@@ -33,9 +33,3 @@ All paths converge at [Step 7: Write Your First Agentic Workflow](07-your-first-
 - [ ] You're ready to proceed to Step 7 after completing your chosen path
 
 **Next:** Continue with your chosen path above.
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md)
-- [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)

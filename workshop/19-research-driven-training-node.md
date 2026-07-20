@@ -84,23 +84,3 @@ gh aw compile --validate
 - [ ] You ran lint and compile validation before preparing a PR
 
 **Next:** [Learning GitHub Agentic Workflows](README.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/)
-- [Training Plan Researcher workflow](../.github/workflows/training-plan-research.md)
-- [Docs Linker workflow example](../.github/workflows/docs-linker.md)
-- [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
-
-<!--
-<research-node-metadata>
-  <intent>Teach maintainers how to choose and justify the next workshop node using live gh-aw research.</intent>
-  <primary-source>https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt</primary-source>
-  <secondary-sources>
-    <source>https://github.github.com/gh-aw/reference/llms/</source>
-    <source>https://github.github.com/gh-aw/guides/workflow-patterns/</source>
-  </secondary-sources>
-</research-node-metadata>
--->

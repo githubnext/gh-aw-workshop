@@ -173,7 +173,3 @@ If this combined check stops early, run each command on its own to find the fail
 - [ ] `gh auth status` confirms you're signed in
 
 **Next:** [Step 3: Create and Verify Your Practice Repository](03-create-your-repo.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

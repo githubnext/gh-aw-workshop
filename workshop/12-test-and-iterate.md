@@ -120,11 +120,3 @@ For troubleshooting run failures, see [Side Quest: Evaluating and Iterating on A
 - [ ] Your improved workflow has run at least once and produced output that matches your formatting expectations
 
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
-
-## 📚 See Also
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Permissions reference](https://github.github.com/gh-aw/reference/permissions/)
-- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)

@@ -86,8 +86,3 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 
 Return to the workshop step where you opened this side quest.
 Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Network Permissions reference](https://github.github.com/gh-aw/reference/network/)

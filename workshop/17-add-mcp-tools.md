@@ -118,11 +118,3 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 - [ ] The workflow output reflects live data retrieved via MCP, not just static text
 
 **Next:** [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Using MCPs guide](https://github.github.com/gh-aw/guides/mcps/)
-- [MCP Scripts reference](https://github.github.com/gh-aw/reference/mcp-scripts/)
-- [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/)

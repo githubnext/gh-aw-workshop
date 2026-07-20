@@ -60,10 +60,3 @@ Use this quick self-check before you move on:
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 **Next:** Continue with your chosen path above.
-
-## 📚 See Also
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/)

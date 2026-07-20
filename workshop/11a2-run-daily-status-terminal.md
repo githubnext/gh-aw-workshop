@@ -87,10 +87,3 @@ Want to use a different AI engine? These side quests walk you through switching 
 
 **Previous:** [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
