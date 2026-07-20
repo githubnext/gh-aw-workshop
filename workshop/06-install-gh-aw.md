@@ -25,15 +25,15 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 
 All paths converge at [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 
-<journey include="codespace">
+<!-- <journey include="codespace"> -->
 Continue with [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md).
-</journey>
-<journey include="local,terminal">
+<!-- </journey> -->
+<!-- <journey include="local,terminal"> -->
 Continue with [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).
-</journey>
-<journey include="ui,copilot">
+<!-- </journey> -->
+<!-- <journey include="ui,copilot"> -->
 Continue with [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md).
-</journey>
+<!-- </journey> -->
 
 ## ✅ Checkpoint
 
@@ -42,15 +42,15 @@ Continue with [Step 6c: GitHub UI Path — No Installation Needed](06c-install-u
 - [ ] You understand that the GitHub UI path skips installation entirely
 - [ ] You're ready to proceed to Step 7 after completing your chosen path
 
-<journey include="codespace">
+<!-- <journey include="codespace"> -->
 **Next:** [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md)
-</journey>
-<journey include="local,terminal">
+<!-- </journey> -->
+<!-- <journey include="local,terminal"> -->
 **Next:** [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md)
-</journey>
-<journey include="ui,copilot">
+<!-- </journey> -->
+<!-- <journey include="ui,copilot"> -->
 **Next:** [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md)
-</journey>
+<!-- </journey> -->
 
 ## 📚 See Also
 

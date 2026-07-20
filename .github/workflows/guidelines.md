@@ -244,36 +244,36 @@ Place this block as the **very first content** in the file, before the `#` headi
 
 Describes which learner profile the page targets.
 
-### Inline `<journey>` XML tags for conditional sections
+### Inline journey XML comment tags for conditional sections
 
-Use inline XML wrappers when only part of a page should be shown for a specific learner journey.
+Use XML comments with `journey` tags when only part of a page should be shown for a specific learner journey.
 
 ```xml
-<journey include="ui">
+<!-- <journey include="ui"> -->
 ...content shown only for the UI journey...
-</journey>
+<!-- </journey> -->
 ```
 
 Rules:
 
 - `include` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
 - Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `include="all"`.
-- Keep `journey` frontmatter at the top of the file. Inline tags are for section-level filtering inside a page, not page-level routing.
+- Keep `journey` frontmatter at the top of the file. Inline comment tags are for section-level filtering inside a page, not page-level routing.
 - Prefer inline tags for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
-- Do not nest `<journey>` tags. Keep each `<journey>` block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
+- Do not nest journey tags. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
 
 Example patterns:
 
 ```markdown
-<journey include="codespace">
+<!-- <journey include="codespace"> -->
 > [!TIP]
 > Using a Codespace? Continue to [Step 2a](02a-setup-codespace.md).
-</journey>
+<!-- </journey> -->
 
-<journey include="local">
+<!-- <journey include="local"> -->
 **Next:** [Step 2b: Set Up Your Local Terminal](02b-setup-local.md)
-</journey>
+<!-- </journey> -->
 ```
 
 | Value | Meaning |

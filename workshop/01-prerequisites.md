@@ -41,10 +41,10 @@ This step checks that all the tools and accounts you need are in place before yo
 
 <!-- -->
 
-<journey include="codespace">
+<!-- <journey include="codespace"> -->
 > [!TIP]
 > **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. A free GitHub account is enough to begin. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)
-</journey>
+<!-- </journey> -->
 
 ## ✅ Required pre-flight checks
 
@@ -120,15 +120,15 @@ Claude, Codex, or Gemini? Confirm your API key.
 
 Continue with exactly one of these paths:
 
-<journey include="codespace">
+<!-- <journey include="codespace"> -->
 - **Adventure A (Codespace):** open a Codespace and verify preinstalled tools in [02a-setup-codespace.md](02a-setup-codespace.md).
-</journey>
-<journey include="local">
+<!-- </journey> -->
+<!-- <journey include="local"> -->
 - **Adventure B (Local):** install or verify local prerequisites and authentication in [02b-setup-local.md](02b-setup-local.md).
-</journey>
-<journey include="ui,copilot">
+<!-- </journey> -->
+<!-- <journey include="ui,copilot"> -->
 - **GitHub UI path:** skip terminal setup and continue in [03b-create-your-repo-ui.md](03b-create-your-repo-ui.md).
-</journey>
+<!-- </journey> -->
 
 ## ✅ Checkpoint
 
@@ -139,15 +139,15 @@ Continue with exactly one of these paths:
 - [ ] You confirmed Copilot is enabled and Models: available at [github.com/settings/copilot](https://github.com/settings/copilot)
 - [ ] You know which file you will open next
 
-<journey include="codespace">
+<!-- <journey include="codespace"> -->
 **Next:** Open [Adventure A: Set Up a Codespace](02a-setup-codespace.md).
-</journey>
-<journey include="local">
+<!-- </journey> -->
+<!-- <journey include="local"> -->
 **Next:** Open [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
-</journey>
-<journey include="ui,copilot">
+<!-- </journey> -->
+<!-- <journey include="ui,copilot"> -->
 **Next:** Open [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
-</journey>
+<!-- </journey> -->
 
 ## 📚 See Also
 
