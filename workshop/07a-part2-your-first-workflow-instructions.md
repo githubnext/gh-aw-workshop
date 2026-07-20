@@ -21,8 +21,6 @@ You'll finish `.github/workflows/daily-report-status.md` by adding:
 
 Each section of your workflow file serves a distinct purpose at runtime — the diagram below shows what each part controls.
 
-![Agentic workflow file anatomy: frontmatter sections and the Task body, each mapped to its runtime purpose](images/07a-workflow-file-anatomy.svg)
-
 ### Add `permissions` and `safe-outputs`
 
 In `.github/workflows/daily-report-status.md`, update frontmatter so it looks like this:
@@ -37,10 +35,7 @@ permissions:
   issues: read
   copilot-requests: write
 safe-outputs:
-  add-comment:
-    max: 1
   create-issue:
-    max: 1
 ---
 ```
 
@@ -49,14 +44,7 @@ safe-outputs:
 Below the closing `---`, add:
 
 ```markdown
-## Task
-
-Search the open issues in this repository.
-Find the issue with the most 👍 reactions.
-Post a comment on that issue saying:
-"This issue has the most community support! We'll prioritise it in our next planning session."
-
-If there are no open issues, create one titled "Community Voting Test" and post the same comment.
+Generate an activity report in a new issue.
 ```
 
 ### Validate, then commit and push
@@ -82,13 +70,10 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-report-status.md` includes `permissions` with `copilot-requests: write`
-- [ ] `.github/workflows/daily-report-status.md` includes `safe-outputs` for `add-comment` and `create-issue`
-- [ ] The `## Task` instructions block in your workflow file describes a concrete task in plain language
 - [ ] `gh aw compile` reports valid
 - [ ] The file is committed and pushed to `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
-
 <!-- journey: terminal -->
-**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+**Next:** [Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->
