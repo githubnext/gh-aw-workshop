@@ -78,13 +78,11 @@ Example frontmatter that restricts the agent to read-only operations plus issue 
 ---
 permissions:
   contents: read
-  issues: read
+  issues: write
 safe-outputs:
   create-issue:
 ---
 ```
-
-The `permissions:` block stays read-only in this example. Write capability for issue creation comes from the declared `safe-outputs` type, not from setting `issues: write` on the token.
 
 Suppose an injection asks the agent to push a commit or delete a file. Those operations are not listed under `safe-outputs:`, so the attempt fails immediately.
 
@@ -132,4 +130,13 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [GitHub Integrity Filtering](https://github.github.com/gh-aw/reference/integrity/)

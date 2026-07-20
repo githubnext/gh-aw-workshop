@@ -41,9 +41,17 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can recognize a planning loop from log lines alone
 - [ ] I can explain why ambiguous goals create delayed tool use
 - [ ] I can add a concrete first tool call to my workflow brief
 - [ ] I can define a clear ranking rule the agent can execute
+
+<!-- /journey -->
+## 📚 See Also
+
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

@@ -107,4 +107,11 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 - [ ] You have pushed the change and can see the schedule badge in the Actions UI
 - [ ] At least one scheduled (or manual) run has completed successfully after the change
 
+<!-- journey: terminal -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
+
+## 📚 See Also
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/)

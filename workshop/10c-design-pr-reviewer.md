@@ -104,4 +104,13 @@ If your repo has a `vendor/`, `generated/`, or `third_party/` directory, add a g
 - [ ] I've sketched the review comment format (even a rough draft counts)
 - [ ] I've written at least two guardrail rules
 
+<!-- journey: all -->
 **Next:** [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

@@ -100,4 +100,19 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 - [ ] You can browse artifacts in the GitHub Actions UI
 - [ ] You know your organisation's artifact retention policy (or know who to ask)
 
+<!-- journey: all -->
 **Next:** [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Auditing Workflows reference](https://github.github.com/gh-aw/reference/audit/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Artifacts reference](https://github.github.com/gh-aw/reference/artifacts/)
+- [Network reference](https://github.github.com/gh-aw/reference/network/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Side Quest: Audit Reference — Artifacts, Firewall Logs, and Report Contents](side-quest-25-01-audit-reference.md)
+- [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md)
+- [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md)
+- [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md)

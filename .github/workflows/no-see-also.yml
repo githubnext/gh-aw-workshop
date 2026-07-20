@@ -33,7 +33,7 @@ jobs:
             const fs = require('fs')
             const path = require('path')
 
-            const SEE_ALSO_RE = /^##\s+(📚\s+)?See Also\s*$/m
+            const SEE_ALSO_RE = /^\s*##\s+(📚\s+)?See Also\s*$/m
 
             function walkMdFiles(dir) {
               const results = []

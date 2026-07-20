@@ -108,4 +108,13 @@ gh aw compile
 - [ ] You added or verified a `timeout-minutes` value in your workflow frontmatter
 - [ ] You identified at least one technique to reduce token consumption
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [About billing for GitHub Copilot](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot)
+- [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md)
+- [Make Your Workflow Remember Across Runs](20-persistent-memory.md)
+- [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md)

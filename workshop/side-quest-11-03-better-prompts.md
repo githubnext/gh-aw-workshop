@@ -158,4 +158,12 @@ posted to the Actions run summary.
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md) or continue to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

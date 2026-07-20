@@ -41,9 +41,18 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can classify denied calls as read or write operations
 - [ ] I can fix missing read access in `permissions:`
 - [ ] I can fix missing write allowlisting in `safe-outputs:`
 - [ ] I can keep scopes and allowed outputs to the minimum needed
+
+<!-- /journey -->
+## 📚 See Also
+
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)

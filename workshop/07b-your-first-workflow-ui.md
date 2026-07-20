@@ -95,4 +95,14 @@ Review the proposed diff. Confirm both `.github/workflows/daily-report-status.md
 - [ ] Both workflow files are committed to `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
+<!-- journey: ui -->
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)

@@ -146,4 +146,14 @@ Write your prediction here, then save and run the workflow to check it:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Safe Outputs (Pull Requests)](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/)
+- [Sandbox Configuration](https://github.github.com/gh-aw/reference/sandbox/)

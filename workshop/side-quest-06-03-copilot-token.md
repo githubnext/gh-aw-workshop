@@ -40,4 +40,6 @@ If you are unsure, check who owns your practice repository first:
 - [ ] My workflow source and compiled lock file use only the selected method.
 - [ ] I have returned to my main workshop path.
 
+<!-- journey: all -->
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md)
+<!-- /journey -->

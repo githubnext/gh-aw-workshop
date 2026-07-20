@@ -153,6 +153,7 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 - [ ] I know Adventure E is the browser-only path for mobile and CCA learners
 - [ ] If following Adventure E, the agent has created and merged a pull request with the workflow file
 
+<!-- journey: all -->
 **Next (pick one):**
 
 - ➡️ Adventure A: [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
@@ -161,4 +162,5 @@ The agent creates the workflow, compiles it, and opens a pull request. Review th
 - ➡️ Adventure D: [Step 11d: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 - ➡️ Adventure E: [Browser-Only Daily Status Workflow for CCA and Mobile](#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile)
 
+<!-- /journey -->
 **Curious about security?** Before you build, explore how adversarial instructions in repository content can try to override your agent's task brief — and how gh-aw's layered architecture limits the impact. [Side Quest: Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md)

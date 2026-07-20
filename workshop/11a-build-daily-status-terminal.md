@@ -180,7 +180,9 @@ git push
 > When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile --watch` for continuous feedback as you edit. **Agents edit agents.**
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+<!-- journey: terminal -->
 **Next:** [Step 11a2: Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)
+<!-- /journey -->
 
 ## ✅ Checkpoint
 

@@ -129,4 +129,12 @@ You should see:
 - [ ] My workflow frontmatter has `engine: codex` and `api.openai.com` in `network.allowed`
 - [ ] `gh aw compile --validate` reports no errors
 
+<!-- journey: all -->
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Engine configuration](https://github.github.com/gh-aw/reference/auth/)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

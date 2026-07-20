@@ -116,4 +116,13 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
+<!-- journey: all -->
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Authentication reference](https://github.github.com/gh-aw/reference/auth/#claude)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
+- [Anthropic Claude models](https://docs.anthropic.com/en/docs/about-claude/models/)

@@ -58,4 +58,13 @@ For a deeper troubleshooting guide, see [Step 9: Reading Workflow Output](09-und
 - [ ] I verified the real GitHub output that the workflow created
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
 
+<!-- journey: all -->
 **Next:** [Step 9: Reading Workflow Output](09-understand-output.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/)

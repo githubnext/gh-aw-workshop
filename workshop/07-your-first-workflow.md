@@ -29,6 +29,16 @@ The Terminal path gives you early compiler feedback. The GitHub UI path skips lo
 
 All three authoring paths converge at [Step 7d: Confirm Model Access](07d-confirm-model-access.md) before you run the workflow.
 
+<!-- journey: codespace,local,terminal -->
+Continue with [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md).
+<!-- /journey -->
+<!-- journey: ui -->
+Continue with [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
+<!-- /journey -->
+<!-- journey: copilot -->
+Continue with [Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
+<!-- /journey -->
+
 ![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
 
 ## Before You Continue
@@ -42,4 +52,19 @@ In one sentence, where will you manually start the first `workflow_dispatch` run
 - [ ] You know the compile command for an agentic workflow file: `gh aw compile`
 - [ ] You know the compiled file location: `.github/workflows/daily-report-status.lock.yml`
 
-**Next:** Continue with your chosen path above.
+<!-- journey: codespace,local,terminal -->
+**Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+<!-- /journey -->
+<!-- journey: ui -->
+**Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
+<!-- /journey -->
+<!-- journey: copilot -->
+**Next:** [Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

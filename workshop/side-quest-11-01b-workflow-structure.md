@@ -81,4 +81,15 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md).
+<!-- /journey -->
+
+## 📚 See Also
+
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Workflow Structure reference](https://github.github.com/gh-aw/reference/workflow-structure/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)

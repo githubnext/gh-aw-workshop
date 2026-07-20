@@ -35,7 +35,9 @@ If you want a browser-only scenario with no terminal, [Adventure E in Step 10](1
 
 ## What to do next
 
+<!-- journey: ui -->
 Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md).
+<!-- /journey -->
 
 ## ✅ Checkpoint
 
@@ -45,4 +47,12 @@ Continue to [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-
 - [ ] You understand that you will confirm `gh-aw` is working in [Step 8](08-run-your-workflow.md) via the Actions tab
 - [ ] You know that CCA and mobile learners can trigger workflows from the **Actions** tab without `gh aw run`
 
+<!-- journey: ui -->
 **Next:** [Step 7b: Write Your First Agentic Workflow — GitHub UI Path](07b-your-first-workflow-ui.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)

@@ -64,4 +64,12 @@ Share the allowed-domains list from a successful run with your enterprise securi
 - [ ] You can use `firewall.md` to identify blocked domains and add them to `network.allow`
 - [ ] You know what the threat detection verdict checks for
 
+<!-- journey: all -->
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Network reference](https://github.github.com/gh-aw/reference/network/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)

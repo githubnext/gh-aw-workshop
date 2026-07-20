@@ -149,4 +149,11 @@ Mark each statement as true or false, then reveal the answers:
 - [ ] I answered the check-your-understanding questions
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
+<!-- journey: all -->
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

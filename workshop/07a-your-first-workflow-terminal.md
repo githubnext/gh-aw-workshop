@@ -97,7 +97,9 @@ If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Earl
 
 After this first manual setup, prefer asking an agent to edit workflows with the `agentic-workflows` skill.
 
+<!-- journey: terminal -->
 Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md).
+<!-- /journey -->
 
 ## ✅ Checkpoint
 

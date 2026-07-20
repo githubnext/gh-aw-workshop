@@ -118,4 +118,10 @@ You should see your username as `owner`, `my-agentic-workflows` as `name`, and a
 - [ ] The **Actions** tab is visible and enabled on GitHub
 - [ ] You can confirm your username is the repository owner
 
+<!-- journey: terminal -->
 **Next:** [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

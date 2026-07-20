@@ -93,4 +93,12 @@ This hint saves teammates guesswork when they first open the file.
 - [ ] You've added a brief template comment explaining what to customise
 - [ ] A teammate (or you in a second repo) has successfully imported the template with `gh aw add`
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Reusing workflows guide](https://github.github.com/gh-aw/guides/reusing-workflows/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

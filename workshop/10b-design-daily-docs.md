@@ -98,4 +98,12 @@ The brief scans `docs/` and `README.md`. If your project stores documentation el
 - [ ] I've sketched the comment format (even a rough draft counts)
 - [ ] I've written at least two guardrail rules
 
+<!-- journey: all -->
 **Next:** [Step 11b: Build — Daily Documentation Updater](11b-build-daily-docs.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

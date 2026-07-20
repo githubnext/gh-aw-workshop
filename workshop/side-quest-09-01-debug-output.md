@@ -26,9 +26,18 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 
 Need a reusable triage flow after the pattern drills? Open the [Debugging Checklist](side-quest-09-01f-debugging-checklist.md).
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can choose the right micro-step from the pattern table
 - [ ] I can use the exercise format to identify each pattern before checking the answer
 - [ ] I can open the checklist page when I need full run triage
 - [ ] I know to return to [Step 9](09-understand-output.md) after this side quest
+
+<!-- /journey -->
+## 📚 See Also
+
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
+- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

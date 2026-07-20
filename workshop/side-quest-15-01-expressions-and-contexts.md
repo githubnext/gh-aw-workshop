@@ -128,4 +128,10 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 - [ ] You understand how `id:` connects a step's output to the `steps` context
 - [ ] You can write an `if:` condition that skips a step based on a previous output
 
+<!-- journey: all -->
 **Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

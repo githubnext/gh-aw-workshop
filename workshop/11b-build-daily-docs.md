@@ -66,4 +66,13 @@ Both paths produce `.github/workflows/daily-docs.md` and converge at Step 12.
 - [ ] You can explain in one sentence what your agent brief instructs the agent to do
 
 **Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+<!-- journey: all -->
 **Next:** Continue with your chosen path above.
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)

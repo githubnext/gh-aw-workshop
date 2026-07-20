@@ -22,9 +22,18 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 6. Open the [safe-output record](https://github.github.com/gh-aw/reference/safe-outputs/) in the job details and treat it as source of truth for writes.
 7. If behavior is still unclear, ask the `agentic-workflows` skill to diagnose your workflow with a pasted snippet.
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can run this checklist in order without skipping steps
 - [ ] I know where to find both live logs and safe-output records
 - [ ] I can decide whether the root cause is prompt, data, permissions, or output limits
 - [ ] I can gather a minimal log snippet to share for deeper diagnosis
+
+<!-- /journey -->
+## 📚 See Also
+
+- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
+- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
+- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)
+- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)

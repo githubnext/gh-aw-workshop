@@ -101,6 +101,7 @@ on:
 | `unexpected end of stream` or frontmatter/document errors | The frontmatter fences are incomplete | Confirm the file has both the opening `---` and the closing `---` |
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
+<!-- journey: terminal -->
 ## ✅ Checkpoint
 
 - [ ] I know what `gh aw compile` checks before a workflow runs
@@ -112,3 +113,11 @@ on:
 ---
 
 Return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](11a-build-daily-status-terminal.md), or [Step 13](13a-schedule-it-terminal.md).
+
+<!-- /journey -->
+## 📚 See Also
+
+- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/)
+- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

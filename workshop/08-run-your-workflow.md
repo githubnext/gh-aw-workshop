@@ -68,4 +68,11 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 > [!TIP]
 > If your run failed, see [Step 8b](08b-interpret-your-run.md) for a log walk-through and common failure patterns.
 
+<!-- journey: all -->
 **Next:** [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

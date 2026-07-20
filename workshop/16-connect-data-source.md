@@ -142,7 +142,9 @@ Once you're comfortable with this pattern, the same technique works for:
 - [ ] You can explain how the workflow passes fetched data into the prompt
 - [ ] You can describe what happens if the recent commit output is empty and how your prompt handles it
 
+<!-- journey: all -->
 **Next:** [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
+<!-- /journey -->
 
 > [!TIP]
 > <details>

@@ -64,4 +64,11 @@ GitHub may delay the first scheduled run. Use **Run workflow** to confirm the ed
 - [ ] The schedule badge appears in GitHub Actions
 - [ ] A manual or scheduled run completes successfully
 
+<!-- journey: ui -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
+
+## 📚 See Also
+- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
+- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
+- [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/)

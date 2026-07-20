@@ -156,4 +156,13 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
+
+## 📚 See Also
+
+- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
+- [GitHub Tools read permissions](https://github.github.com/gh-aw/reference/permissions/)
+- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
+- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)

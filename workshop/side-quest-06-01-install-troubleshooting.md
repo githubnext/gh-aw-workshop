@@ -121,4 +121,6 @@ Use this checklist to confirm the install issue is fully resolved before returni
 
 ---
 
+<!-- journey: all -->
 Return to [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md).
+<!-- /journey -->
