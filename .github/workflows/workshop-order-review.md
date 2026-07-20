@@ -39,7 +39,7 @@ steps:
       files = sorted(p for p in workshop_dir.glob('*.md') if p.name != 'README.md')
 
       command_fence = re.compile(r'```(?:bash|sh|shell|yaml)?\n(.*?)```', re.DOTALL)
-      next_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+\[[^\]]+\]\(([^)]+)\)')
+      navigation_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+\[[^\]]+\]\(([^)]+)\)')
       table_link_re = re.compile(r'\|[^\n]*?\[[^\]]+\]\(([^)]+)\)')
       link_re = re.compile(r'\[[^\]]+\]\(([^)]+\.md(?:#[^)]+)?)\)')
       inline_command_re = re.compile(r'`([^`\n]+)`')
@@ -199,7 +199,7 @@ steps:
           evidence = command_evidence(text)
 
           before_links = sorted(filter(None, {normalize_link(link) for link in link_re.findall(before_section)}))
-          next_links = sorted(filter(None, {normalize_link(link) for link in next_link_re.findall(text)}))
+          next_links = sorted(filter(None, {normalize_link(link) for link in navigation_link_re.findall(text)}))
           choice_links = sorted(filter(None, {normalize_link(link) for link in table_link_re.findall(choice_section)}))
 
           provides = []
@@ -460,9 +460,9 @@ steps:
           for source in component:
               for target in adjacency.get(source, []):
                   if target in component:
-                     component_edges = edge_lookup[(source, target)]
-                     edge_types.update(edge['type'] for edge in component_edges)
-                     cycle_edges.extend(component_edges)
+                       component_edges = edge_lookup[(source, target)]
+                       edge_types.update(edge['type'] for edge in component_edges)
+                       cycle_edges.extend(component_edges)
 
           cycle_data = {
               'nodes': component,
