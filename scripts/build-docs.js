@@ -10,12 +10,17 @@ const markedAlert = require('marked-alert');
 // Plugin: clickable heading anchors with GitHub-compatible IDs
 const slugger = new GithubSlugger();
 marked.use({
+  // Reset the slugger before each marked() call to avoid duplicate-ID drift
+  hooks: {
+    preprocess(src) { slugger.reset(); return src; },
+  },
   useNewRenderer: true,
   renderer: {
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
-      const raw = text.replace(/<[!/a-z][^>]*>/gi, '').trim();
-      const id = slugger.slug(raw.toLowerCase());
+      // Strip HTML tags to get plain text for slug generation
+      const raw = text.replace(/<[^>]+>/g, '').trim();
+      const id = slugger.slug(raw);
       return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-hidden="true">#</a> ${text}</h${depth}>\n`;
     },
   },
