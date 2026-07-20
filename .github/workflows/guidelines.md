@@ -244,6 +244,36 @@ Place this block as the **very first content** in the file, before the `#` headi
 
 Describes which learner profile the page targets.
 
+### Inline `<journey>` XML tags for conditional sections
+
+Use inline XML wrappers when only part of a page should be shown for a specific learner journey.
+
+```xml
+<journey include="ui">
+...content shown only for the UI journey...
+</journey>
+```
+
+Rules:
+
+- `include` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
+- Keep `journey` frontmatter at the top of the file. Inline tags are for section-level filtering inside a page, not page-level routing.
+- Prefer inline tags for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
+- Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
+
+Example patterns:
+
+```markdown
+<journey include="codespace">
+> [!TIP]
+> Using a Codespace? Continue to [Step 2a](02a-setup-codespace.md).
+</journey>
+
+<journey include="local">
+**Next:** [Step 2b: Set Up Your Local Terminal](02b-setup-local.md)
+</journey>
+```
+
 | Value | Meaning |
 |-------|---------|
 | `all` | Applicable to every learner regardless of environment |
