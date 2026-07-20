@@ -62,9 +62,14 @@ const files = fs.readdirSync(workshopDir)
 // Render each file as a closed <details> section with the first heading as <summary>
 const htmlContent = files.map(f => {
   const markdown = fs.readFileSync(path.join(workshopDir, f), 'utf8').trim();
-  // Extract plain text of the first heading (strip leading # characters)
+  // Extract plain text of the first heading (strip leading # characters).
+  // Workshop files use HTML comments (not YAML frontmatter), so the multiline
+  // regex safely finds the first heading regardless of leading comment lines.
   const headingMatch = markdown.match(/^#{1,6}\s+(.+)$/m);
-  const title = headingMatch ? headingMatch[1].trim() : path.basename(f, '.md');
+  const slug = path.basename(f, '.md').replace(/^\d+-?/, '').replace(/-/g, ' ');
+  const title = headingMatch
+    ? headingMatch[1].trim()
+    : slug.charAt(0).toUpperCase() + slug.slice(1);
   const content = marked(markdown);
   return `<details>\n<summary>${title}</summary>\n${content}\n</details>`;
 }).join('\n\n');
