@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Explore and Adapt an Annotated Workflow
 
 > _Optional: work through this guide to understand the design choices in `daily-status.md` and adapt them in your own copy — then return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md)._

@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest 09-01f: Debugging Checklist
 
 ## 🎯 What You'll Do

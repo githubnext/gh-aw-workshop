@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: scenario-b -->
+<!-- page-journey: all -->
+<!-- page-adventure: scenario-b -->
 # Build — Daily Documentation Updater
 
 _You've designed the workflow on paper — now choose how you want to create it._

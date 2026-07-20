@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Environment Reference
 
 > _Optional: use this quick glossary and visual reference to understand the environments and AI tools used throughout the workshop._

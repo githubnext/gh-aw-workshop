@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: core -->
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 <!-- learning:false -->
 # Create and Verify Your Practice Repository
 

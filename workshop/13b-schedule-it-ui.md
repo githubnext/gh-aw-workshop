@@ -1,5 +1,5 @@
-<!-- journey: ui -->
-<!-- adventure: core -->
+<!-- page-journey: ui -->
+<!-- page-adventure: core -->
 # Schedule It to Run Every Day — GitHub UI Path
 
 > [!NOTE]

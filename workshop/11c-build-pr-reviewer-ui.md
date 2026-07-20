@@ -1,5 +1,5 @@
-<!-- journey: ui -->
-<!-- adventure: scenario-c -->
+<!-- page-journey: ui -->
+<!-- page-adventure: scenario-c -->
 # Build the PR Code Reviewer — GitHub UI Path
 
 > [!NOTE]

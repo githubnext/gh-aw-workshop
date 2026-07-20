@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Prompt Injection Attacks in Agentic Workflows
 
 > _Optional: work through this security primer to understand how malicious content in repository data can try to redirect your agent — and why gh-aw's design limits the damage._

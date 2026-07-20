@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: How MCP Tool Servers Work
 
 > _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._

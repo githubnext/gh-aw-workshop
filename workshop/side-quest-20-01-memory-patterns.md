@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Choosing Between Cache Memory and Repo Memory
 
 > _Optional: work through this reference if you want to understand both `cache-memory` and `repo-memory` in depth before or after completing [Step 20](20-persistent-memory.md), then return to the main path._

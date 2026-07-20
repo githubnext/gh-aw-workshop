@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: core -->
+<!-- page-journey: all -->
+<!-- page-adventure: core -->
 # Confirm Model Access
 
 ## 📋 Before You Start

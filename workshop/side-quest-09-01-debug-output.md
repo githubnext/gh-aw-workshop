@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Diagnosing Common Agent Output Patterns
 
 > _Optional: use this side quest when a run behaves unexpectedly, then return to [Step 9: Reading Workflow Output](09-understand-output.md)._

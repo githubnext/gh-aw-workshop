@@ -1,5 +1,5 @@
-<!-- journey: terminal -->
-<!-- adventure: scenario-a -->
+<!-- page-journey: terminal -->
+<!-- page-adventure: scenario-a -->
 # Compile and Run the Daily Status Workflow — Terminal Path
 
 > _The workflow file is written — now let's validate it and see it run._

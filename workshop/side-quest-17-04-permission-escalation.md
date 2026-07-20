@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Permission Escalation in Agentic Workflows
 
 > _Optional: work through this security primer to see how an over-scoped workflow can give a misdirected agent more authority than your task needs._

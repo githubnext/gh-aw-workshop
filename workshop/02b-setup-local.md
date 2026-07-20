@@ -1,5 +1,5 @@
-<!-- journey: local -->
-<!-- adventure: setup -->
+<!-- page-journey: local -->
+<!-- page-adventure: setup -->
 # Adventure B: Set Up Your Local Terminal
 
 > [!TIP]

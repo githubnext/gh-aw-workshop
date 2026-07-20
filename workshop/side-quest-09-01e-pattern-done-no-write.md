@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest 09-01e: Pattern — "Done" but Nothing Written
 
 ## 🎯 What You'll Do

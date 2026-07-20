@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: advanced -->
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Make Your Workflows Resilient to Failure
 
 > _A workflow that handles errors gracefully is one you can trust to run unattended, week after week._

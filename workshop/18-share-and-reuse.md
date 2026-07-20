@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: advanced -->
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Share and Reuse Your Agentic Workflows
 
 > _Your workflow is worth more than one repository — learn how to turn it into a reusable template your whole team can adopt._

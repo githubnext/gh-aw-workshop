@@ -1,5 +1,5 @@
-<!-- journey: terminal -->
-<!-- adventure: core -->
+<!-- page-journey: terminal -->
+<!-- page-adventure: core -->
 # Add Instructions and Finish the Workflow — Terminal Path
 
 _You now have a valid starter file. In this part, you complete it and push it._

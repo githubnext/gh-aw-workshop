@@ -139,8 +139,8 @@ steps:
               return None
           return pathlib.Path(clean).name
 
-      _PAGE_JOURNEY_RE = re.compile(r'^<!--\s*journey:\s*([a-z,\s]+?)\s*-->\s*$')
-      _PAGE_ADVENTURE_RE = re.compile(r'^<!--\s*adventure:\s*([a-z-]+)\s*-->\s*$')
+      _PAGE_JOURNEY_RE = re.compile(r'^<!--\s*page-journey:\s*([a-z,\s]+?)\s*-->\s*$')
+      _PAGE_ADVENTURE_RE = re.compile(r'^<!--\s*page-adventure:\s*([a-z-]+)\s*-->\s*$')
 
       def parse_page_annotations(text: str):
           lines = text.splitlines()

@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: advanced -->
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 # Test Your Prompt Ideas with [A/B Experiments](https://github.github.com/gh-aw/experimental/experiments/)
 
 > _Stop guessing which prompt works better — let alternating runs tell you._

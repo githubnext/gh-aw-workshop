@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: GitHub Actions Expressions and Contexts
 
 > _The `${{ }}` syntax unlocks a whole language inside your workflow — learn to read it and you can make workflows that adapt to anything._

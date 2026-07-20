@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: side-quest -->
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest 09-01b: Pattern — Empty `[result]` Data
 
 ## 🎯 What You'll Do

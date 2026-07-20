@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: scenario-b -->
+<!-- page-journey: all -->
+<!-- page-adventure: scenario-b -->
 # Design — Daily Documentation Updater
 
 > _Great [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) start with a clear brief — writing down what you want before you code anything saves hours of debugging later._

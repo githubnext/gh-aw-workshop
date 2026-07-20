@@ -1,5 +1,5 @@
-<!-- journey: copilot -->
-<!-- adventure: scenario-d -->
+<!-- page-journey: copilot -->
+<!-- page-adventure: scenario-d -->
 # Adventure D: Build Any Workflow with GitHub Copilot
 
 > _You can use the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or the browser-based Agents tab to start an agent session, steer the work, review the changes, and land an agentic workflow._

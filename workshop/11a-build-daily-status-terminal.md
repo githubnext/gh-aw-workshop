@@ -1,5 +1,5 @@
-<!-- journey: terminal -->
-<!-- adventure: scenario-a -->
+<!-- page-journey: terminal -->
+<!-- page-adventure: scenario-a -->
 # Build the Daily Repo Status Workflow — Terminal Path
 
 _You've designed the workflow on paper — now let's turn it into real, running YAML._

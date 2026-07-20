@@ -16,8 +16,8 @@ ALLOWED_ADVENTURES = {
 OPEN_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*journey:\s*([a-z,\s]+?)\s*-->\s*$")
 CLOSE_RE = re.compile(r"^\s*(?:>\s*)?<!--\s*/journey\s*-->\s*$")
 # Page-level annotation comments (lines 1–2, no closing tag)
-PAGE_JOURNEY_RE = re.compile(r"^<!--\s*journey:\s*([a-z,\s]+?)\s*-->\s*$")
-PAGE_ADVENTURE_RE = re.compile(r"^<!--\s*adventure:\s*([a-z-]+)\s*-->\s*$")
+PAGE_JOURNEY_RE = re.compile(r"^<!--\s*page-journey:\s*([a-z,\s]+?)\s*-->\s*$")
+PAGE_ADVENTURE_RE = re.compile(r"^<!--\s*page-adventure:\s*([a-z-]+)\s*-->\s*$")
 NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
@@ -25,7 +25,7 @@ NAV_RE = re.compile(
 
 class JourneyMarkerTests(unittest.TestCase):
     def test_page_annotations_present_and_valid(self) -> None:
-        """Every workshop page must start with <!-- journey: X --> and <!-- adventure: Y -->."""
+        """Every workshop page must start with <!-- page-journey: X --> and <!-- page-adventure: Y -->."""
         for path in sorted(WORKSHOP_DIR.glob("*.md")):
             if path.name == "README.md":
                 continue
@@ -37,7 +37,7 @@ class JourneyMarkerTests(unittest.TestCase):
                 journey_match = PAGE_JOURNEY_RE.match(lines[0])
                 self.assertIsNotNone(
                     journey_match,
-                    f"Line 1 of {path.name} must be a page-level journey annotation: <!-- journey: X -->",
+                    f"Line 1 of {path.name} must be a page-level journey annotation: <!-- page-journey: X -->",
                 )
                 if journey_match is None:
                     continue
@@ -51,7 +51,7 @@ class JourneyMarkerTests(unittest.TestCase):
                 adventure_match = PAGE_ADVENTURE_RE.match(lines[1])
                 self.assertIsNotNone(
                     adventure_match,
-                    f"Line 2 of {path.name} must be a page-level adventure annotation: <!-- adventure: Y -->",
+                    f"Line 2 of {path.name} must be a page-level adventure annotation: <!-- page-adventure: Y -->",
                 )
                 if adventure_match is None:
                     continue
@@ -69,14 +69,13 @@ class JourneyMarkerTests(unittest.TestCase):
 
             with self.subTest(file=path.name):
                 text = path.read_text(encoding="utf-8")
-                self.assertIn("<!-- journey:", text, "Every workshop page must include journey markers")
+                self.assertIn("<!-- page-journey:", text, "Every workshop page must include a page-journey annotation")
 
                 stack: list[int] = []
                 for line_number, line in enumerate(text.splitlines(), start=1):
-                    # Line 1 is the page-level journey annotation — skip balance tracking.
-                    if line_number == 1:
-                        continue
-
+                    # Lines 1–2 are page-level annotations (<!-- page-journey: X --> / <!-- page-adventure: Y -->)
+                    # and cannot match OPEN_RE, so no skip is needed. The section-level OPEN_RE only
+                    # matches <!-- journey: X --> (no "page-" prefix).
                     opener = OPEN_RE.match(line)
                     if opener:
                         self.assertFalse(stack, f"Nested journey marker in {path.name}:{line_number}")
@@ -107,10 +106,8 @@ class JourneyMarkerTests(unittest.TestCase):
             with self.subTest(file=path.name):
                 depth = 0
                 for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-                    # Line 1 is the page-level journey annotation — skip depth tracking.
-                    if line_number == 1:
-                        continue
-
+                    # Page-level annotations (<!-- page-journey: X --> / <!-- page-adventure: Y -->) on lines 1–2
+                    # do not match OPEN_RE, so no special skip is needed here.
                     if OPEN_RE.match(line):
                         depth += 1
 

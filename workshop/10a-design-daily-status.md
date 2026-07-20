@@ -1,5 +1,5 @@
-<!-- journey: all -->
-<!-- adventure: scenario-a -->
+<!-- page-journey: all -->
+<!-- page-adventure: scenario-a -->
 # Design — Daily Repo Status Report
 
 > _Great agentic workflows start with a clear brief — writing down what you want before you code anything saves hours of debugging later._
