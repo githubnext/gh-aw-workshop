@@ -78,11 +78,13 @@ Example frontmatter that restricts the agent to read-only operations plus issue 
 ---
 permissions:
   contents: read
-  issues: write
+  issues: read
 safe-outputs:
   create-issue:
 ---
 ```
+
+The `permissions:` block stays read-only in this example. Write capability for issue creation comes from the declared `safe-outputs` type, not from setting `issues: write` on the token.
 
 Suppose an injection asks the agent to push a commit or delete a file. Those operations are not listed under `safe-outputs:`, so the attempt fails immediately.
 
