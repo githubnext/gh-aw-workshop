@@ -74,11 +74,56 @@ if (fs.existsSync(workshopImagesDir)) {
   fs.cpSync(workshopImagesDir, distImagesDir, { recursive: true });
 }
 
-// Copy GitHub Markdown CSS
-const markdownCssSrc = path.join(
-  __dirname, '..', 'node_modules', 'github-markdown-css', 'github-markdown.css'
+// Copy Primer CSS
+const primerCssSrc = path.join(
+  __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
 );
-fs.copyFileSync(markdownCssSrc, path.join(distDir, 'github-markdown.css'));
+fs.copyFileSync(primerCssSrc, path.join(distDir, 'primer.css'));
+
+// Generate alert callout CSS for marked-alert GFM rendering
+const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / etc. */
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  border-left: 0.25em solid;
+  border-radius: 6px;
+}
+.markdown-alert > :first-child { margin-top: 0; }
+.markdown-alert > :last-child { margin-bottom: 0; }
+.markdown-alert-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.markdown-alert-title svg { margin-right: 8px; }
+.markdown-alert-note {
+  border-color: #0969da;
+  background-color: #ddf4ff;
+}
+.markdown-alert-note .markdown-alert-title { color: #0969da; }
+.markdown-alert-tip {
+  border-color: #1a7f37;
+  background-color: #dafbe1;
+}
+.markdown-alert-tip .markdown-alert-title { color: #1a7f37; }
+.markdown-alert-important {
+  border-color: #8250df;
+  background-color: #fbefff;
+}
+.markdown-alert-important .markdown-alert-title { color: #8250df; }
+.markdown-alert-warning {
+  border-color: #9a6700;
+  background-color: #fff8c5;
+}
+.markdown-alert-warning .markdown-alert-title { color: #9a6700; }
+.markdown-alert-caution {
+  border-color: #d1242f;
+  background-color: #ffebe9;
+}
+.markdown-alert-caution .markdown-alert-title { color: #d1242f; }
+`;
+fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 
 // Write single-page HTML
 const page = `<!DOCTYPE html>
@@ -87,14 +132,11 @@ const page = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>gh-aw Workshop</title>
-  <link rel="stylesheet" href="github-markdown.css">
-  <style>
-    body { box-sizing: border-box; min-width: 200px; max-width: 980px; margin: 0 auto; padding: 45px; }
-    @media (max-width: 767px) { body { padding: 15px; } }
-  </style>
+  <link rel="stylesheet" href="primer.css">
+  <link rel="stylesheet" href="alerts.css">
 </head>
 <body>
-  <div class="markdown-body">
+  <div class="container-xl px-3 py-5 markdown-body">
 ${htmlContent}</div>
 </body>
 </html>
