@@ -13,7 +13,6 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You have a Codespace terminal open (from [Step 2a: Set Up a Codespace](02a-setup-codespace.md))
-- **GitHub Copilot Cloud Agent (CCA) users:** If you don't have a Codespace terminal open yet, complete [Side Quest: Use gh-aw with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md) first, then return here.
 
 Run this to confirm `gh` is authenticated before continuing:
 
