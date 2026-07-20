@@ -46,7 +46,7 @@ steps:
           bump: $bump
         }' > "$RELEASE_TRIGGER_PATH"
   - name: Download release description
-    uses: actions/github-script@v7
+    uses: actions/github-script@v9.0.0
     env:
       NEXT_TAG: ${{ needs.create-release.outputs.next_tag }}
       CREATE_RELEASE_HAS_CHANGES: ${{ needs.create-release.outputs.has_changes }}
@@ -120,13 +120,13 @@ jobs:
       RELEASE_DESCRIPTION_PATH: /tmp/gh-aw/data/release-description.md
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7.0.0
         with:
           persist-credentials: false
           fetch-depth: 0
       - name: Plan GitHub release
         id: plan-release
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9.0.0
         env:
           BUMP: ${{ github.event.inputs.bump }}
           TARGET_SHA: ${{ github.sha }}

@@ -44,6 +44,8 @@ steps:
     run: pip install --quiet mistletoe
 
   - name: Chunk markdown files using AST parser
+    env:
+      EXPR_6e274c4c: ${{ inputs.focus || '' }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
@@ -174,7 +176,7 @@ steps:
 
       # -- file collection ---------------------------------------------------
 
-      focus = "${{ inputs.focus || '' }}"
+      focus = "$EXPR_6e274c4c"
       files_to_scan = []
 
       if focus != "workflows":
