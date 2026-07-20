@@ -25,7 +25,7 @@ Good examples:
 - The summary is too generic.
 - An important detail is missing.
 - The tone feels too stiff.
-- The run used an older version of the workflow than you expected.
+- The formatting is inconsistent.
 
 Pick only one problem for this round. Small, isolated changes make it much easier to tell what actually improved the result.
 
@@ -40,7 +40,7 @@ Examples of focused changes:
 - add a fallback instruction for empty results
 - tighten one permission or safe-output rule
 
-If you are using a Copilot agent to edit the file, tell it to make the change and then run `gh aw compile` before you review the diff.
+If you are using a Copilot agent to edit the file, tell it to make the change, review the diff, and then run `gh aw compile` before testing.
 
 > [!IMPORTANT]
 > Compile after every workflow edit before you test it. GitHub Actions runs the compiled `.lock.yml` file, not the source `.md` file, so skipping `gh aw compile` often means you are testing stale workflow logic.
@@ -82,7 +82,7 @@ Ask yourself:
 - Is the output more useful than before?
 - Did you improve the original problem without creating a new one?
 
-If yes, keep the change. If not, leave the first change in place only if it still helps, then repeat the loop with one different adjustment.
+If yes, keep the change. If not, revert the change and try a different adjustment.
 
 If you want a stricter review loop, score each run for accuracy, completeness, and tone before you decide what to change next.
 
