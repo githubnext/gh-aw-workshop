@@ -26,6 +26,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 8 | [08-run-your-workflow.md](08-run-your-workflow.md) | Run and Watch Your Workflow | ✅ |
 | 8b | [08b-interpret-your-run.md](08b-interpret-your-run.md) | Interpret Your First Run | ✅ |
 | 9 | [09-agentic-editing.md](09-agentic-editing.md) | Refine Your Workflow with Agentic Editing | ✅ |
+| 10 | [10-choose-your-scenario.md](10-choose-your-scenario.md) | Choose Your Workflow Scenario | ✅ |
 | 12 | [12-test-and-iterate.md](12-test-and-iterate.md) | Test and Improve Your Workflow | ✅ |
 | 14 | [14-next-steps.md](14-next-steps.md) | What's Next? Keep Exploring | ✅ |
 | 15 | [15-conditional-logic.md](15-conditional-logic.md) | Make Your Workflow Smarter with Conditional Logic | ✅ |
