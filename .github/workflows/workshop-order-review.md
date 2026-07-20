@@ -277,7 +277,8 @@ steps:
           for prerequisite in entry['before_links']:
               add_edge(prerequisite, entry['file'], 'before', f"{entry['file']} lists {prerequisite} in its Before You Start section.")
           for capability in entry['requires']:
-              for provider in providers.get(capability, []):
+              provider = next((candidate for candidate in providers.get(capability, []) if candidate != entry['file']), None)
+              if provider:
                   add_edge(provider, entry['file'], f'capability:{capability}', f"{entry['file']} requires {capability_help[capability]}, which {provider} appears to provide.")
 
       node_ids = {entry['file']: f"node_{index:03d}" for index, entry in enumerate(entries, start=1)}
