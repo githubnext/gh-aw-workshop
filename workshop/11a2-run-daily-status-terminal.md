@@ -83,7 +83,7 @@ Want to use a different AI engine? These side quests walk you through switching 
 - ➡️ [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — use `engine: claude`
 - ➡️ [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — use `engine: codex`
 
-**Previous:** [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)
+**Previous:** [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)
 <!-- journey: terminal -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

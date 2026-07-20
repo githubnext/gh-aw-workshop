@@ -21,7 +21,7 @@ You'll write the `daily-status.md` agentic workflow file in `.github/workflows/`
 
 ## 📋 Before You Start
 
-- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md) and have your agent brief ready
+- You've completed [Design — Daily Repo Status Report](10a-design-daily-status.md) and have your agent brief ready
 - Your terminal is open inside `my-agentic-workflows`
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md)
 
@@ -177,9 +177,9 @@ git push
 > [!TIP]
 > When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile --watch` for continuous feedback as you edit. **Agents edit agents.**
 
-**Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+**Previous:** [Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: terminal -->
-**Next:** [Step 11a2: Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)
+**Next:** [Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)
 <!-- /journey -->
 
 ## ✅ Checkpoint

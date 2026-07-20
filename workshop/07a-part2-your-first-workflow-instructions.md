@@ -90,5 +90,5 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 
 
 <!-- journey: terminal -->
-**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+**Next:** [Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->

@@ -17,13 +17,13 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 ![Installation path decision: choose Codespace terminal, local terminal, or GitHub UI, all leading to Step 7](images/06-install-path-decision.svg)
 
 <!-- journey: codespace -->
-Continue with [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md).
+Continue with [Install gh-aw — Codespace Terminal](06a-install-terminal.md).
 <!-- /journey -->
 <!-- journey: local,terminal -->
-Continue with [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).
+Continue with [Install gh-aw — Local Terminal](06b-install-local.md).
 <!-- /journey -->
 <!-- journey: ui,copilot -->
-Continue with [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md).
+Continue with [GitHub UI Path — No Installation Needed](06c-install-ui.md).
 <!-- /journey -->
 
 All paths converge at [Write Your First Agentic Workflow](07-your-first-workflow.md).

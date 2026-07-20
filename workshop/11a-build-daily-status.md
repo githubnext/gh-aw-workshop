@@ -6,7 +6,7 @@ _You've designed the workflow on paper — now choose how you want to create it.
 
 ## 📋 Before You Start
 
-- [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md) is complete and you have a written design for your daily-status workflow.
+- [Design — Daily Repo Status Report](10a-design-daily-status.md) is complete and you have a written design for your daily-status workflow.
 - You know which build path you will use (terminal, GitHub UI, or Add Wizard).
 - Your practice repository exists and you have write access to it.
 
@@ -52,7 +52,7 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 - [ ] The workflow file includes the `on:`, `task:`, and at least one data-source section.
 - [ ] A commit containing the new workflow file appears in your repository's commit history.
 
-**Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+**Previous:** [Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: all -->
 **Next:** Continue with your chosen path above.
 <!-- /journey -->

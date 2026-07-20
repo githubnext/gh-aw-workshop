@@ -11,7 +11,7 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 
 ## 📋 Before You Start
 
-- You've completed [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+- You've completed [Design — Daily Repo Status Report](10a-design-daily-status.md)
 - Your practice repository is open on GitHub
 
 ## Create the workflow
@@ -103,7 +103,7 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 - [ ] You understand that [compilation](https://github.github.com/gh-aw/reference/compilation-process/) occurs when GitHub Actions runs the workflow
 - [ ] You understand the workflow's permissions and output guardrail
 
-**Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+**Previous:** [Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: ui -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

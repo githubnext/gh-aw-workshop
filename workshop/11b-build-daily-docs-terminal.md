@@ -10,7 +10,7 @@ You'll write the complete `daily-docs.md` agentic workflow file, placing it in `
 
 ## 📋 Before You Start
 
-- You've completed [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+- You've completed [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 - Your terminal is inside your practice repository
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
@@ -215,7 +215,7 @@ Find the issue titled "Daily Docs Health" and post a comment in this format:
 - [ ] The file is committed and pushed to `main`
 - [ ] Every top-level YAML key in the frontmatter makes sense to you
 
-**Previous:** [Step 10b: Design — Daily Documentation Updater](10b-design-daily-docs.md)
+**Previous:** [Design — Daily Documentation Updater](10b-design-daily-docs.md)
 <!-- journey: terminal -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

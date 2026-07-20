@@ -10,7 +10,7 @@ You'll write `pr-code-reviewer.md`, place it in `.github/workflows/`, and compil
 
 ## 📋 Before You Start
 
-- You've completed [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+- You've completed [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 - Your terminal is inside your practice repository
 - [`gh aw` is installed and authenticated](06-install-gh-aw.md) — completed in Step 6
 
@@ -199,7 +199,7 @@ Findings: {count}
 > [!NOTE]
 > The PR reviewer triggers on `pull_request`, so [Schedule It to Run Every Day](13-schedule-it.md) does not apply. Jump straight to [What's Next?](14-next-steps.md), or go to [Test and Improve Your Workflow](12-test-and-iterate.md) to practice reading the run log.
 
-**Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+**Previous:** [Design — PR Code Reviewer](10c-design-pr-reviewer.md)
 <!-- journey: terminal -->
 **Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

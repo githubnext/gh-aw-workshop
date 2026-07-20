@@ -103,7 +103,7 @@ If your repo has a `vendor/`, `generated/`, or `third_party/` directory, add a g
 - [ ] I've written at least two guardrail rules
 
 <!-- journey: all -->
-**Next:** [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md)
+**Next:** [Build — PR Code Reviewer](11c-build-pr-reviewer.md)
 <!-- /journey -->
 
 

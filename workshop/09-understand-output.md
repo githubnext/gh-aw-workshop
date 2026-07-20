@@ -10,7 +10,7 @@ You'll learn how to interpret the three places where [agentic workflow](https://
 
 ## 📋 Before You Start
 
-- Completed [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
+- Completed [Interpret Your First Run](08b-interpret-your-run.md)
 - Your **Daily Report Status** workflow has at least one completed run
 
 ---

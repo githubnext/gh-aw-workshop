@@ -10,8 +10,8 @@
 > - [ ] I can read `on`, `jobs`, and `steps` keys in a workflow file
 > - [ ] I know each step runs on a GitHub-hosted runner
 >
-> **→ [Skip to Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
-> (or [jump to Step 6: Install gh-aw](06-install-gh-aw.md) if you know both)
+> **→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
+> (or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
 >
 > </details>
 

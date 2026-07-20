@@ -3,7 +3,7 @@
 # Install gh-aw — Codespace Terminal
 
 > [!NOTE]
-> Using a local terminal instead? Switch to [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).
+> Using a local terminal instead? Switch to [Install gh-aw — Local Terminal](06b-install-local.md).
 
 ## 🎯 What You'll Do
 
@@ -12,7 +12,7 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 ## 📋 Before You Start
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
-- You have a Codespace terminal open (from [Step 2a: Set Up a Codespace](02a-setup-codespace.md))
+- You have a Codespace terminal open (from [Set Up a Codespace](02a-setup-codespace.md))
 
 Run this to confirm `gh` is authenticated before continuing:
 
@@ -20,7 +20,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error, return to [Step 2a: Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error, return to [Verify your Codespace is ready](02a-setup-codespace.md#verify-your-codespace-is-ready).
 
 ## Install from terminal
 

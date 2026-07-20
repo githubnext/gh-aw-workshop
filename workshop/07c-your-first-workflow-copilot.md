@@ -59,7 +59,7 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 <!-- journey: copilot -->
-**Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+**Next:** [Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->
 
 

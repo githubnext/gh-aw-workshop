@@ -97,7 +97,7 @@ The brief scans `docs/` and `README.md`. If your project stores documentation el
 - [ ] I've written at least two guardrail rules
 
 <!-- journey: all -->
-**Next:** [Step 11b: Build — Daily Documentation Updater](11b-build-daily-docs.md)
+**Next:** [Build — Daily Documentation Updater](11b-build-daily-docs.md)
 <!-- /journey -->
 
 
