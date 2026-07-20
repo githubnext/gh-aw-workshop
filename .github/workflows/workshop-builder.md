@@ -207,20 +207,8 @@ gh search issues --repo "$GITHUB_REPOSITORY" --state open \
 
 Record:
 
-- Whether an open PR with label `workshop` exists (blocks `workshop-author`)
-- Whether an open PR with label `workflow-editor` exists (blocks
-  `workflow-skills-editor`)
-- Whether an open PR with label `side-quest` exists (blocks `side-quest`)
-- Whether an open PR with label `skill-activity` exists (blocks
-  `workshop-skill-activity-author`)
-- Whether an open PR with label `security-side-quest` exists (blocks
-  `security-side-quest`)
-- Whether an open PR with label `training-plan` exists (blocks
-  `training-plan-research`)
-- Whether an open issue with label `dedup` exists (blocks `markdown-dedup`)
-- Whether an open PR with label `diagram-generator` exists (blocks
-  `workshop-explanatory-diagrams`)
-- Whether an open PR with label `docs-linker` exists (blocks `docs-linker`)
+- Whether the open PRs and issues satisfy the label-based blockers in the
+  eligibility table in section 2c
 - Any open issues suggesting improvements or reporting errors
 
 ### 2c. Derive dispatch eligibility
@@ -288,18 +276,23 @@ Select the highest-priority **eligible** workflow (most urgent first):
 17. `guidelines-enforcer` — daily round-robin enforcement of authoring guidelines; creates issues for violations
 
 If `${{ inputs.focus }}` is provided (and not `"status"`), treat it as a hint
-that may shift priority toward a specific workflow (e.g. "add content" → prefer
-`workshop-author` or `training-plan-research`; "workflow", "tone",
-"duplication", or "bloat" → prefer `workflow-skills-editor`; "side quest" or
-"tutorial" → prefer `side-quest`; "security" → prefer `security-side-quest`;
-"quality", "curriculum", "rubric", "cognitive", or "scaffold" → prefer
-`curriculum-evaluator`; "fix sync" → prefer `workshop-sync-check`; "title",
-"heading", or "similar" → prefer `title-similarity-review`; "diagram" or
-"visual" → prefer `workshop-explanatory-diagrams`; "docs" or "link" → prefer
-`docs-linker`; "dedup" or "duplicate" → prefer `markdown-dedup`; "broken" or
-"checker" → prefer `workshop-link-checker`; "screenshot" or "image" → prefer
-`workshop-ui-screenshots`; "guidelines", "rules", or "enforce" → prefer
-`guidelines-enforcer`).
+that may shift priority toward a specific workflow:
+
+| Focus keywords | Preferred workflow |
+|---|---|
+| `add content` | `workshop-author` or `training-plan-research` |
+| `workflow`, `tone`, `duplication`, `bloat` | `workflow-skills-editor` |
+| `side quest`, `tutorial` | `side-quest` |
+| `security` | `security-side-quest` |
+| `quality`, `curriculum`, `rubric`, `cognitive`, `scaffold` | `curriculum-evaluator` |
+| `fix sync` | `workshop-sync-check` |
+| `title`, `heading`, `similar` | `title-similarity-review` |
+| `diagram`, `visual` | `workshop-explanatory-diagrams` |
+| `docs`, `link` | `docs-linker` |
+| `dedup`, `duplicate` | `markdown-dedup` |
+| `broken`, `checker` | `workshop-link-checker` |
+| `screenshot`, `image` | `workshop-ui-screenshots` |
+| `guidelines`, `rules`, `enforce` | `guidelines-enforcer` |
 
 When dispatching `workshop-author`, `training-plan-research`,
 `workflow-skills-editor`, `side-quest`, `security-side-quest`,
