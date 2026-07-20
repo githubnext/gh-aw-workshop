@@ -5,7 +5,7 @@
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
 
 > [!NOTE]
-> Want to work without a terminal? Switch to the [GitHub UI path](07b-your-first-workflow-ui.md).
+> Want to work without a terminal? Switch to the [GitHub Copilot path](07c-your-first-workflow-copilot.md).
 
 ## 🎯 What You'll Do
 
