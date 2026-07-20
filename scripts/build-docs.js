@@ -4,10 +4,25 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
-const { gfmHeadingId } = require('marked-gfm-heading-id');
+const { default: GithubSlugger } = require('github-slugger');
+const markedAlert = require('marked-alert');
 
-// Enable GFM heading ID plugin
-marked.use(gfmHeadingId());
+// Plugin: clickable heading anchors with GitHub-compatible IDs
+const slugger = new GithubSlugger();
+marked.use({
+  useNewRenderer: true,
+  renderer: {
+    heading({ tokens, depth }) {
+      const text = this.parser.parseInline(tokens);
+      const raw = text.replace(/<[!/a-z][^>]*>/gi, '').trim();
+      const id = slugger.slug(raw.toLowerCase());
+      return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-hidden="true">#</a> ${text}</h${depth}>\n`;
+    },
+  },
+});
+
+// Plugin: render GitHub GFM alert callouts (> [!NOTE], > [!TIP], etc.)
+marked.use(markedAlert());
 
 const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
