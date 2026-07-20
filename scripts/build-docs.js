@@ -11,6 +11,8 @@ marked.use(gfmHeadingId());
 
 const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
+const workshopImagesDir = path.join(workshopDir, 'images');
+const distImagesDir = path.join(distDir, 'images');
 
 // Collect and sort workshop markdown files (excludes non-md files; keeps README)
 const files = fs.readdirSync(workshopDir)
@@ -26,6 +28,11 @@ const htmlContent = marked(combinedMarkdown);
 
 // Set up output directory
 fs.mkdirSync(distDir, { recursive: true });
+
+// Copy workshop images for rendered markdown links
+if (fs.existsSync(workshopImagesDir)) {
+  fs.cpSync(workshopImagesDir, distImagesDir, { recursive: true });
+}
 
 // Copy Primer CSS
 const primerCssSrc = path.join(
