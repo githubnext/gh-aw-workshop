@@ -131,5 +131,5 @@ Review the Markdown body of your workflow and remove any sentences that repeat t
 - [ ] I re-ran the workflow from **Actions** and confirmed the updated output matches my intent
 
 <!-- journey: all -->
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->

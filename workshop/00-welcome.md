@@ -10,6 +10,8 @@ By the end of this workshop, a real AI agent will create an issue with a summary
 
 You'll build an **[Agentic Workflow](https://github.github.com/gh-aw/introduction/overview/)**: a GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a schedule — practical enough to adapt for real teams.
 
+Along the way, you'll compile the workflow, trigger test runs, and iterate on the prompt until the output matches your intent.
+
 ![Preview of a completed workflow run in the Actions tab](images/00-workflow-run-complete.svg)
 
 <!-- journey: all -->
