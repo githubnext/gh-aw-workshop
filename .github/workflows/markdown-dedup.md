@@ -15,6 +15,10 @@ on:
         description: "Optional: 'workshop' to scan workshop/ only, 'workflows' to scan .github/workflows/ only"
         required: false
         type: string
+      page:
+        description: "Optional: path to a single markdown file to scan (e.g. workshop/07-your-first-workflow.md)"
+        required: false
+        type: string
   skip-if-match: "is:issue is:open label:dedup"
 permissions:
   contents: read
@@ -46,6 +50,7 @@ steps:
   - name: Chunk markdown files using AST parser
     env:
       EXPR_6e274c4c: ${{ inputs.focus || '' }}
+      EXPR_page: ${{ inputs.page || '' }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
@@ -177,19 +182,28 @@ steps:
       # -- file collection ---------------------------------------------------
 
       focus = "$EXPR_6e274c4c"
+      page = "$EXPR_page"
       files_to_scan = []
 
-      if focus != "workflows":
-          workshop_dir = pathlib.Path("workshop")
-          if workshop_dir.exists():
-              files_to_scan.extend(
-                  sorted(p for p in workshop_dir.glob("*.md") if p.name != "README.md")
-              )
+      if page:
+          page_path = pathlib.Path(page)
+          if page_path.exists() and page_path.is_file():
+              files_to_scan.append(page_path)
+          else:
+              print(f"Warning: page path '{page}' not found, falling back to focus-based scan", file=sys.stderr)
 
-      if focus != "workshop":
-          wf_dir = pathlib.Path(".github/workflows")
-          if wf_dir.exists():
-              files_to_scan.extend(sorted(p for p in wf_dir.glob("*.md")))
+      if not files_to_scan:
+          if focus != "workflows":
+              workshop_dir = pathlib.Path("workshop")
+              if workshop_dir.exists():
+                  files_to_scan.extend(
+                      sorted(p for p in workshop_dir.glob("*.md") if p.name != "README.md")
+                  )
+
+          if focus != "workshop":
+              wf_dir = pathlib.Path(".github/workflows")
+              if wf_dir.exists():
+                  files_to_scan.extend(sorted(p for p in wf_dir.glob("*.md")))
 
       # -- chunk all files ---------------------------------------------------
 
