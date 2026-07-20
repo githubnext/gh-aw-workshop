@@ -31,7 +31,7 @@ Pick only one problem for this round. Small, isolated changes make it much easie
 
 ## Make One Targeted Change
 
-Open your workflow source file, such as `.github/workflows/daily-status.md`, and change only one instruction in the Markdown body or frontmatter.
+Open your workflow source file, such as `.github/workflows/daily-status.md`, and change only one instruction in the Markdown body or the YAML frontmatter at the top of the file.
 
 Examples of focused changes:
 
@@ -43,7 +43,7 @@ Examples of focused changes:
 If you are using a Copilot agent to edit the file, tell it to make the change, review the diff, and then run `gh aw compile` before testing.
 
 > [!IMPORTANT]
-> Compile after every workflow edit before you test it. GitHub Actions runs the compiled `.lock.yml` file, not the source `.md` file, so skipping `gh aw compile` often means you are testing stale workflow logic.
+> Compile after every workflow edit before you test it. GitHub Actions runs the compiled `.lock.yml` file, not the source `.md` file, so skipping `gh aw compile` means you are testing stale workflow logic.
 
 ## Compile Before You Test
 
