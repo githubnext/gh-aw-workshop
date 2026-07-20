@@ -12,7 +12,7 @@ By the end of this step, you'll have a repeatable iteration loop you can use any
 
 ## 📋 Before You Start
 
-- You have a working workflow draft from [Build: Daily Repo Status Workflow](11a-build-daily-status.md) or an equivalent build step.
+- You have a working workflow draft from [Refine Your Workflow with Agentic Editing](09-agentic-editing.md) or an equivalent earlier build step in your chosen path.
 - You have at least one completed workflow run to inspect.
 - You can edit the workflow in a terminal, Codespace, or Copilot agent session.
 
