@@ -10,7 +10,8 @@ You'll learn what the `/agentic-workflows` Copilot skill is, how `gh aw init` in
 
 ## 📋 Before You Start
 
-- You have run `gh aw init` and pushed `.github/skills/agentic-workflows/SKILL.md` to your practice repository (covered in [Install the gh-aw CLI Extension](06-install-gh-aw.md) or [Write Your First Agentic Workflow](07-your-first-workflow.md)).
+- You have run your first agentic workflow in [Run and Watch Your Workflow](08-run-your-workflow.md).
+- You have run `gh aw init` and pushed `.github/skills/agentic-workflows/SKILL.md` to your practice repository (covered in [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
 - You have an active GitHub Copilot plan and can open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab.
 
 ---
@@ -124,5 +125,5 @@ The `/agentic-workflows` skill is a prompt router — it does not run your workf
 ---
 
 <!-- journey: all -->
-Return to [Write Your First Agentic Workflow](07-your-first-workflow.md) or continue to the next step in your journey.
+Return to [Interpret Your First Run](08b-interpret-your-run.md) or continue to the next step in your journey.
 <!-- /journey -->
