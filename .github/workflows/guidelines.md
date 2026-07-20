@@ -244,7 +244,7 @@ Place this block as the **very first content** in the file, before the `#` headi
 
 Describes which learner profile the page targets.
 
-### Journey XML comment markers for conditional sections
+### Journey comment markers for conditional sections
 
 Use XML comments with a `journey` marker when only part of a page should be shown for a specific learner journey.
 
