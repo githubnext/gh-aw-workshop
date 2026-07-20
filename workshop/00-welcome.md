@@ -6,16 +6,7 @@ adventure: core
 
 # Welcome — What We'll Build
 
-By the end of this workshop, a real AI agent will post a comment on one of your GitHub issues — automatically, every day, without you writing shell-script workflow code.
-
-## Before You Start
-
-- A GitHub account (free or Enterprise)
-- A web browser — no local tools required for Step 0
-
-## What you'll build
-
-You will build a workflow that generates a daily activity report for your repository using your agent.
+By the end of this workshop, a real AI agent will create an issue with a summary of the activity in your repostiory over the latest 24h, every day, without you writing shell-script workflow code.
 
 ![Preview of a completed workflow run in the Actions tab](images/00-workflow-run-complete.svg)
 
