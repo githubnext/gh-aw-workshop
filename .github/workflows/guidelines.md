@@ -244,7 +244,7 @@ Place this block as the **very first content** in the file, before the `#` headi
 
 Describes which learner profile the page targets.
 
-### Journey XML comment tags for conditional sections
+### Journey XML comment markers for conditional sections
 
 Use XML comments with a `journey` marker when only part of a page should be shown for a specific learner journey.
 
@@ -258,8 +258,8 @@ Rules:
 
 - `journey:` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
 - Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `journey: all`.
-- Keep `journey` frontmatter at the top of the file. Inline comment tags are for section-level filtering inside a page, not page-level routing.
-- Prefer journey comment tags for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
+- Keep `journey` frontmatter at the top of the file. Inline comment markers are for section-level filtering inside a page, not page-level routing.
+- Prefer journey comment markers for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
 - Do not nest journey markers. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
 
