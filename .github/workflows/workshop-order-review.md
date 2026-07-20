@@ -1,7 +1,7 @@
 ---
 emoji: 🧭
 name: Workshop Order Review
-description: Daily reviewer that detects step-ordering inconsistencies in workshop instructions and opens issues for agent follow-up.
+description: Daily reviewer that maps workshop page ordering, detects graph anomalies, and opens issues for agent follow-up.
 on:
   schedule: daily
   workflow_dispatch:
@@ -21,7 +21,7 @@ safe-outputs:
   create-issue:
     title-prefix: "[ordering-review] "
     deduplicate-by-title: true
-    max: 5
+    max: 1
     expires: 1d
 steps:
   - name: Collect ordering requirements and dependencies
@@ -39,11 +39,9 @@ steps:
       files = sorted(p for p in workshop_dir.glob('*.md') if p.name != 'README.md')
 
       command_fence = re.compile(r'```(?:bash|sh|shell|yaml)?\n(.*?)```', re.DOTALL)
-      next_link_re = re.compile(r'\*\*Next:\*\*\s+\[[^\]]+\]\(([^)]+)\)')
-      table_link_re = re.compile(r'\|[^\n]*?\[[^\]]+\]\(([^)]+)\)')
+      next_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+\[[^\]]+\]\(([^)]+)\)')
       link_re = re.compile(r'\[[^\]]+\]\(([^)]+\.md(?:#[^)]+)?)\)')
       inline_command_re = re.compile(r'`([^`\n]+)`')
-      step_heading_re = re.compile(r'^###\s+(\d+)\.\s+(.*)$')
 
       command_prefixes = (
           'git ', 'gh ', 'cd ', 'curl ',
@@ -86,18 +84,71 @@ steps:
           'practice_repo_ready': 'the learner inside their practice repository',
       }
 
-      def sort_key(path: pathlib.Path):
-          match = re.match(r'(\d+)([a-z]?)', path.stem)
-          if not match:
-              return (999, path.stem)
-          number = int(match.group(1))
-          suffix = match.group(2) or 'z'
-          return (number, suffix)
+      def activity_metadata(path: pathlib.Path):
+          stem = path.stem
+          side_quest = re.match(r'^side-quest-(\d{2})-(\d{2})-', stem)
+          if side_quest:
+              step = int(side_quest.group(1))
+              sq = int(side_quest.group(2))
+              return {
+                  'label': f'{step:02d}-SQ{sq:02d}',
+                  'sort_key': (step, 2, sq, ''),
+              }
+
+          branch = re.match(r'^(\d{2})([a-z])(?:-part(\d+)|(\d+))?-', stem)
+          if branch:
+              step = int(branch.group(1))
+              suffix = branch.group(2)
+              sequence = int(branch.group(3) or branch.group(4) or 0)
+              label = f'{step:02d}{suffix}'
+              if sequence:
+                  label = f'{label}.{sequence}'
+              return {
+                  'label': label,
+                  'sort_key': (step, 1, suffix, sequence),
+              }
+
+          core = re.match(r'^(\d{2})(?:-part(\d+))?-', stem)
+          if core:
+              step = int(core.group(1))
+              sequence = int(core.group(2) or 0)
+              label = f'{step:02d}'
+              if sequence:
+                  label = f'{label}.{sequence}'
+              return {
+                  'label': label,
+                  'sort_key': (step, 0, '', sequence),
+              }
+
+          return {
+              'label': stem,
+              'sort_key': (999, 9, stem, 0),
+          }
 
       def extract_section(text: str, heading: str) -> str:
           pattern = re.compile(rf'^##\s+{re.escape(heading)}\s*$(.*?)(?=^##\s+|\Z)', re.MULTILINE | re.DOTALL)
           match = pattern.search(text)
           return match.group(1).strip() if match else ''
+
+      def normalize_link(link: str):
+          clean = link.split('#', 1)[0].strip()
+          if not clean.endswith('.md'):
+              return None
+          return pathlib.Path(clean).name
+
+      def parse_frontmatter(text: str):
+          if not text.startswith('---\n'):
+              return {}
+          parts = text.split('---\n', 2)
+          if len(parts) < 3:
+              return {}
+          data = {}
+          for line in parts[1].splitlines():
+              if ':' not in line:
+                  continue
+              key, value = line.split(':', 1)
+              data[key.strip()] = value.strip()
+          return data
 
       def gather_commands(text: str):
           commands = []
@@ -136,17 +187,19 @@ steps:
           return evidence
 
       entries = []
-      for path in sorted(files, key=sort_key):
+      for path in sorted(files, key=lambda p: activity_metadata(p)['sort_key']):
           text = path.read_text()
+          metadata = activity_metadata(path)
+          frontmatter = parse_frontmatter(text)
           title = next((line[2:].strip() for line in text.splitlines() if line.startswith('# ')), path.stem)
           before_section = extract_section(text, '📋 Before You Start')
           choice_section = extract_section(text, '🔀 Choose Your Path')
           commands = gather_commands(text)
           evidence = command_evidence(text)
 
-          before_links = sorted({link.split('#', 1)[0] for link in link_re.findall(before_section)})
-          next_links = sorted({link.split('#', 1)[0] for link in next_link_re.findall(text)})
-          choice_links = sorted({link.split('#', 1)[0] for link in table_link_re.findall(choice_section)})
+          before_links = sorted(filter(None, {normalize_link(link) for link in link_re.findall(before_section)}))
+          next_links = sorted(filter(None, {normalize_link(link) for link in next_link_re.findall(text)}))
+          choice_links = sorted(filter(None, {normalize_link(link) for link in link_re.findall(choice_section)}))
 
           provides = []
           lower_name = path.name.lower()
@@ -173,7 +226,10 @@ steps:
           entries.append({
               'file': path.name,
               'title': title,
-              'order': sort_key(path),
+              'activity_id': metadata['label'],
+              'order': metadata['sort_key'],
+              'journey': frontmatter.get('journey', ''),
+              'adventure': frontmatter.get('adventure', ''),
               'before_links': before_links,
               'next_links': next_links,
               'choice_links': choice_links,
@@ -187,10 +243,77 @@ steps:
           for capability in entry['provides']:
               providers.setdefault(capability, []).append(entry['file'])
 
+      files_by_name = {entry['file']: entry for entry in entries}
+      edges = []
+      constraints = []
+      seen_constraints = set()
+
+      def add_edge(source: str, target: str, edge_type: str, reason: str):
+          if source not in files_by_name or target not in files_by_name:
+              return
+          edges.append({
+              'source': source,
+              'target': target,
+              'type': edge_type,
+              'reason': reason,
+          })
+          if (source, target, edge_type) in seen_constraints:
+              return
+          seen_constraints.add((source, target, edge_type))
+          source_entry = files_by_name[source]
+          target_entry = files_by_name[target]
+          constraints.append({
+              'source': source,
+              'target': target,
+              'type': edge_type,
+              'text': f"{source_entry['activity_id']} {source} must come before {target_entry['activity_id']} {target} because {reason}",
+          })
+
+      for entry in entries:
+          for target in entry['next_links']:
+              add_edge(entry['file'], target, 'next', f"{entry['file']} explicitly links to {target} as the next or continue step.")
+          for target in entry['choice_links']:
+              add_edge(entry['file'], target, 'choice', f"{entry['file']} offers {target} as a choose-your-path destination.")
+          for prerequisite in entry['before_links']:
+              add_edge(prerequisite, entry['file'], 'before', f"{entry['file']} lists {prerequisite} in its Before You Start section.")
+          for capability in entry['requires']:
+              for provider in providers.get(capability, []):
+                  add_edge(provider, entry['file'], f'capability:{capability}', f"{entry['file']} requires {capability_help[capability]}, which {provider} appears to provide.")
+
+      node_ids = {entry['file']: f"node_{index:03d}" for index, entry in enumerate(entries, start=1)}
+
+      def mermaid_label(entry):
+          label = f"{entry['activity_id']} {entry['file']}\\n{entry['title']}"
+          return label.replace('"', '\\"')
+
+      mermaid_lines = ['graph TD']
+      for entry in entries:
+          mermaid_lines.append(f'  {node_ids[entry["file"]]}["{mermaid_label(entry)}"]')
+      for edge in edges:
+          mermaid_lines.append(
+              f'  {node_ids[edge["source"]]} -->|{edge["type"]}| {node_ids[edge["target"]]}'
+          )
+
       context = {
           'files': entries,
           'providers': providers,
           'capability_help': capability_help,
+          'graph': {
+              'nodes': [
+                  {
+                      'file': entry['file'],
+                      'activity_id': entry['activity_id'],
+                      'title': entry['title'],
+                      'order': entry['order'],
+                      'journey': entry['journey'],
+                      'adventure': entry['adventure'],
+                  }
+                  for entry in entries
+              ],
+              'edges': edges,
+              'constraints': constraints,
+              'mermaid': '\n'.join(mermaid_lines),
+          },
       }
       pathlib.Path('/tmp/gh-aw/data/order-review-context.json').write_text(json.dumps(context, indent=2))
       PY
@@ -202,10 +325,13 @@ steps:
       python3 <<'PY'
       import json
       import pathlib
+      from collections import defaultdict
 
       context = json.loads(pathlib.Path('/tmp/gh-aw/data/order-review-context.json').read_text())
       files = context['files']
       capability_help = context['capability_help']
+      graph = context['graph']
+      files_by_name = {entry['file']: entry for entry in files}
 
       provider_order = {}
       provider_file = {}
@@ -229,6 +355,7 @@ steps:
                       'required_before': provider_file[capability],
                       'reason': f"This step asks the learner to use {capability_help[capability]} before any earlier step appears to provide it.",
                       'evidence': matches[:3],
+                      'related_files': [entry['file'], provider_file[capability]],
                   })
 
           if entry['requires'].get('environment_ready') and current_order < provider_order.get('environment_ready', current_order):
@@ -240,6 +367,7 @@ steps:
                   'required_before': provider_file.get('environment_ready'),
                   'reason': 'This shared step contains terminal commands before either setup path opens a Codespace or local terminal workflow step.',
                   'evidence': entry['requires']['environment_ready'][:3],
+                  'related_files': [entry['file'], provider_file.get('environment_ready')],
               })
 
           if entry['requires'].get('gh_authenticated') and entry['before_links']:
@@ -254,24 +382,212 @@ steps:
                       'required_before': sorted(auth_providers),
                       'reason': 'This step depends on an authenticated gh session, but its Before You Start links do not point to any step that provides it.',
                       'evidence': entry['requires']['gh_authenticated'][:3],
+                      'related_files': [entry['file'], *sorted(auth_providers)],
                   })
+
+      adjacency = defaultdict(list)
+      edge_lookup = defaultdict(list)
+      for edge in graph['edges']:
+          adjacency[edge['source']].append(edge['target'])
+          edge_lookup[(edge['source'], edge['target'])].append(edge)
+
+          if edge['type'] == 'next':
+              source_order = tuple(files_by_name[edge['source']]['order'])
+              target_order = tuple(files_by_name[edge['target']]['order'])
+              if target_order < source_order:
+                  findings.append({
+                    'type': 'backward_next_edge',
+                    'file': edge['source'],
+                    'title': files_by_name[edge['source']]['title'],
+                    'capability': 'graph_order',
+                    'required_before': edge['target'],
+                    'reason': f"{edge['source']} points forward to {edge['target']} as a next step, but the target sorts earlier in the workshop graph.",
+                    'evidence': [{'edge_type': edge['type'], 'source': edge['source'], 'target': edge['target']}],
+                    'related_files': [edge['source'], edge['target']],
+                  })
+
+      index_ref = [0]
+      indices = {}
+      lowlinks = {}
+      stack = []
+      on_stack = set()
+      components = []
+
+      def strongconnect(node):
+          indices[node] = index_ref[0]
+          lowlinks[node] = index_ref[0]
+          index_ref[0] += 1
+          stack.append(node)
+          on_stack.add(node)
+
+          for neighbor in adjacency.get(node, []):
+              if neighbor not in indices:
+                  strongconnect(neighbor)
+                  lowlinks[node] = min(lowlinks[node], lowlinks[neighbor])
+              elif neighbor in on_stack:
+                  lowlinks[node] = min(lowlinks[node], indices[neighbor])
+
+          if lowlinks[node] == indices[node]:
+              component = []
+              while True:
+                  member = stack.pop()
+                  on_stack.remove(member)
+                  component.append(member)
+                  if member == node:
+                    break
+              components.append(sorted(component))
+
+      for node in files_by_name:
+          if node not in indices:
+              strongconnect(node)
+
+      cycles = []
+      feedback_loops = []
+      weird_cycles = []
+      self_loops = []
+
+      for component in components:
+          if len(component) == 1:
+              node = component[0]
+              if node in adjacency and node in adjacency[node]:
+                  self_loops.append(component)
+              continue
+
+          cycle_edges = []
+          edge_types = set()
+          for source in component:
+              for target in adjacency.get(source, []):
+                  if target in component:
+                    edge_types.update(edge['type'] for edge in edge_lookup[(source, target)])
+                    cycle_edges.extend(edge_lookup[(source, target)])
+
+          cycle_data = {
+              'nodes': component,
+              'edge_types': sorted(edge_types),
+              'edges': cycle_edges,
+          }
+          cycles.append(cycle_data)
+
+          reciprocal_pairs = {
+              tuple(sorted((edge['source'], edge['target'])))
+              for edge in cycle_edges
+              if edge['source'] != edge['target'] and (edge['target'], edge['source']) in edge_lookup
+          }
+          if reciprocal_pairs:
+              feedback_loops.append({
+                  'nodes': component,
+                  'pairs': sorted(list(pair) for pair in reciprocal_pairs),
+                  'edge_types': sorted(edge_types),
+              })
+          if len(edge_types) > 1 or any(edge['type'] not in {'next', 'choice'} for edge in cycle_edges):
+              weird_cycles.append(cycle_data)
+
+      for loop in self_loops:
+          findings.append({
+              'type': 'self_loop',
+              'file': loop[0],
+              'title': files_by_name[loop[0]]['title'],
+              'capability': 'graph_cycle',
+              'required_before': loop[0],
+              'reason': f"{loop[0]} points to itself in the workshop graph.",
+              'evidence': [{'edge_type': edge['type'], 'source': edge['source'], 'target': edge['target']} for edge in edge_lookup[(loop[0], loop[0])]],
+              'related_files': [loop[0]],
+          })
+
+      for cycle in cycles:
+          findings.append({
+              'type': 'cycle',
+              'file': cycle['nodes'][0],
+              'title': files_by_name[cycle['nodes'][0]]['title'],
+              'capability': 'graph_cycle',
+              'required_before': cycle['nodes'],
+              'reason': f"These pages participate in a directed cycle: {', '.join(cycle['nodes'])}.",
+              'evidence': [{'edge_type': edge['type'], 'source': edge['source'], 'target': edge['target']} for edge in cycle['edges'][:10]],
+              'related_files': cycle['nodes'],
+          })
+
+      for cycle in weird_cycles:
+          findings.append({
+              'type': 'weird_cycle',
+              'file': cycle['nodes'][0],
+              'title': files_by_name[cycle['nodes'][0]]['title'],
+              'capability': 'graph_cycle',
+              'required_before': cycle['nodes'],
+              'reason': f"These pages participate in a mixed-edge cycle that likely needs human review: {', '.join(cycle['nodes'])}.",
+              'evidence': [{'edge_type': edge['type'], 'source': edge['source'], 'target': edge['target']} for edge in cycle['edges'][:10]],
+              'related_files': cycle['nodes'],
+          })
 
       deduped = []
       seen = set()
       for finding in findings:
-          key = (finding['type'], finding['file'], finding['capability'])
+          key = (finding['type'], finding['file'], json.dumps(finding['required_before'], sort_keys=True))
           if key not in seen:
               seen.add(key)
               deduped.append(finding)
 
+      report_lines = [
+          '# Workshop order graph report',
+          '',
+          '## Summary',
+          f"- Files reviewed: {len(files)}",
+          f"- Graph nodes: {len(graph['nodes'])}",
+          f"- Graph edges: {len(graph['edges'])}",
+          f"- Constraints listed: {len(graph['constraints'])}",
+          f"- Potential findings: {len(deduped)}",
+          f"- Cycles: {len(cycles)}",
+          f"- Feedback loops: {len(feedback_loops)}",
+          f"- Weird cycles: {len(weird_cycles)}",
+          f"- Self loops: {len(self_loops)}",
+          '',
+          '## Mermaid graph',
+          '```mermaid',
+          graph['mermaid'],
+          '```',
+          '',
+          '## Ordering constraints',
+      ]
+
+      for constraint in graph['constraints']:
+          report_lines.append(f"- {constraint['text']}")
+
+      if cycles or feedback_loops or weird_cycles:
+          report_lines.extend(['', '## Graph anomalies'])
+          if cycles:
+              for cycle in cycles:
+                  report_lines.append(f"- Cycle: {', '.join(cycle['nodes'])} (edge types: {', '.join(cycle['edge_types'])})")
+          if feedback_loops:
+              for loop in feedback_loops:
+                  pairs = '; '.join(' ↔ '.join(pair) for pair in loop['pairs'])
+                  report_lines.append(f"- Feedback loop: {pairs} (edge types: {', '.join(loop['edge_types'])})")
+          if weird_cycles:
+              for cycle in weird_cycles:
+                  report_lines.append(f"- Weird cycle: {', '.join(cycle['nodes'])} (edge types: {', '.join(cycle['edge_types'])})")
+
       result = {
           'summary': {
               'files_reviewed': len(files),
+              'graph_nodes': len(graph['nodes']),
+              'graph_edges': len(graph['edges']),
+              'constraints': len(graph['constraints']),
               'potential_findings': len(deduped),
+              'cycles': len(cycles),
+              'feedback_loops': len(feedback_loops),
+              'weird_cycles': len(weird_cycles),
+              'self_loops': len(self_loops),
+          },
+          'graph': {
+              'mermaid': graph['mermaid'],
+              'constraints': graph['constraints'],
+              'cycles': cycles,
+              'feedback_loops': feedback_loops,
+              'weird_cycles': weird_cycles,
+              'self_loops': self_loops,
           },
           'findings': deduped,
       }
       pathlib.Path('/tmp/gh-aw/data/order-review-findings.json').write_text(json.dumps(result, indent=2))
+      pathlib.Path('/tmp/gh-aw/data/order-review-report.md').write_text('\n'.join(report_lines) + '\n')
       print(json.dumps(result, indent=2))
       PY
 ---
@@ -280,7 +596,7 @@ steps:
 
 You are a specialized reviewer for the workshop content in `workshop/*.md`.
 
-Your focus is **instruction ordering**: detect cases where learners are told to do something before the workshop has prepared the required environment, tool, authentication, or repository state.
+Your focus is **instruction ordering**: map the full workshop page graph, list its ordering constraints, and detect cases where learners are told to do something before the workshop has prepared the required environment, tool, authentication, or repository state.
 
 Examples of the kinds of problems to flag:
 - asking learners to check for Git or `gh` before they have opened the right terminal or Codespace path
@@ -293,34 +609,40 @@ Examples of the kinds of problems to flag:
 Read these generated files first:
 - `/tmp/gh-aw/data/order-review-context.json`
 - `/tmp/gh-aw/data/order-review-findings.json`
+- `/tmp/gh-aw/data/order-review-report.md`
 
-Then read only the workshop files cited by the findings you decide to verify.
+Then read only the workshop files cited by the findings or graph anomalies you decide to verify.
 
 ### Task
 
-1. Review each potential finding from the heuristics output.
-2. Confirm whether it is a real ordering inconsistency by checking the cited workshop file and the earlier step that should come first.
+1. Review the generated Mermaid graph, ordering constraints, and potential findings.
+2. Confirm whether each cited finding, cycle, feedback loop, or weird cycle is a real ordering problem by checking the cited workshop files and the earlier step that should come first.
 3. Ignore false positives.
-4. When you find a real problem, create a focused issue for that single inconsistency.
+4. If you confirm one or more real graph or ordering problems, create exactly one issue that summarizes the results.
 
 ### Issue requirements
 
-Create at most 5 issues. Use one issue per problem area. Each issue body must include:
-- the workshop file reviewed
-- the exact quoted instruction or command that appears too early
-- the missing prerequisite, dependency, or earlier step that should come first
-- why the current order could confuse or block a learner
-- a concrete suggested fix
+Create at most 1 issue. The issue body must include:
+- a short summary of the graph health review
+- the Mermaid graph in a fenced `mermaid` block
+- the ordering constraints list
+- any confirmed cycles, feedback loops, or weird cycles
+- each verified ordering problem with:
+  - the workshop file reviewed
+  - the exact quoted instruction or command that appears too early
+  - the missing prerequisite, dependency, or earlier step that should come first
+  - why the current order could confuse or block a learner
+  - a concrete suggested fix
 - a short note that the issue is ready for an agent to resolve
 
-Use concise titles in this form:
-`<file>: <short ordering problem>`
+Use this title form:
+`workshop order graph: <short status>`
 
 ### No-op rule
 
-If the heuristics output is empty or every candidate is a false positive, call `noop` with a short explanation.
+If the heuristics output has no confirmed ordering or graph anomalies, call `noop` with a short explanation.
 
 ### Safe Outputs
 
-- Use `create-issue` for verified ordering problems.
+- Use `create-issue` for the single verified graph report issue.
 - Use `noop` when no issue should be created.
