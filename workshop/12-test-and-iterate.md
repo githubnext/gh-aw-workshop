@@ -16,7 +16,7 @@ By the end of this step, you'll have a repeatable iteration loop you can use any
 - You have at least one completed workflow run to inspect.
 - You can edit the workflow in a terminal, Codespace, or Copilot agent session.
 
-## Start with one concrete observation
+## Start With One Concrete Observation
 
 Open the latest run in the **Actions** tab and look for one thing you want to improve.
 
@@ -29,7 +29,7 @@ Good examples:
 
 Pick only one problem for this round. Small, isolated changes make it much easier to tell what actually improved the result.
 
-## Make one targeted change
+## Make One Targeted Change
 
 Open your workflow source file, such as `.github/workflows/daily-status.md`, and change only one instruction in the Markdown body or frontmatter.
 
@@ -45,7 +45,7 @@ If you are using a Copilot agent to edit the file, tell it to make the change an
 > [!IMPORTANT]
 > Compile after every workflow edit before you test it. GitHub Actions runs the compiled `.lock.yml` file, not the source `.md` file, so skipping `gh aw compile` often means you are testing stale workflow logic.
 
-## Compile before you test
+## Compile Before You Test
 
 From your repository root, run:
 
@@ -60,7 +60,7 @@ If the compiler reports an error, fix that first. Do not start a new test run un
 > [!TIP]
 > If you expect to make several small edits in a row, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) to learn when `gh aw compile --watch` can speed up the loop.
 
-## Commit both workflow files
+## Commit Both Workflow Files
 
 After `gh aw compile` succeeds, commit both the source workflow and the regenerated lock file:
 
@@ -72,7 +72,7 @@ git push
 
 If your workflow uses a different filename, stage that `.md` file and its matching `.lock.yml` file instead.
 
-## Trigger a fresh run and compare
+## Trigger a Fresh Run and Compare
 
 Use **workflow_dispatch** from the **Actions** tab to trigger a new run. Then compare the latest result with the previous one.
 
