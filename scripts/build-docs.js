@@ -44,7 +44,7 @@ const page = `<!DOCTYPE html>
 </head>
 <body>
   <div class="container-xl px-3 py-5 markdown-body">
-${htmlContent}  </div>
+${htmlContent}</div>
 </body>
 </html>
 `;
