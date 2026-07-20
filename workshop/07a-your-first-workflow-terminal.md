@@ -12,7 +12,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 You'll create the first version of `.github/workflows/daily-report-status.md` with just two [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields:
 
 - `name` (workflow label)
-- `on.workflow_dispatch` (manual trigger)
+- `on.schedule` (manual trigger)
 
 Then you'll run your first compile check.
 
@@ -21,7 +21,6 @@ Then you'll run your first compile check.
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command works in your terminal
 - You already ran `gh aw init` and pushed `.github/skills/agentic-workflows/`
-- Your practice repository is open (from [Step 3](03-create-your-repo.md))
 
 ## Steps
 
@@ -39,15 +38,6 @@ touch .github/workflows/daily-report-status.md
 
 Open `.github/workflows/daily-report-status.md` in your editor.
 
-<details>
-<summary>Using [VS Code](side-quest-01-02-environment-reference.md#visual-studio-code-vs-code)? Quick setup for cleaner YAML editing</summary>
-
-- Install the [YAML extension for VS Code](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-- Set `editor.tabSize` to `2`
-- Enable `editor.formatOnSave`
-
-</details>
-
 > [!IMPORTANT]
 > This `.md` file is **not** the workflow GitHub Actions executes. You write the goal in Markdown; `gh aw compile` generates the `.lock.yml` file that Actions actually runs.
 
@@ -59,27 +49,14 @@ Paste this at the top of the file:
 ---
 name: Daily Report Status
 on:
-  workflow_dispatch:
+  schedule: daily
 ---
 ```
 
 - `name` is what you see in the Actions UI.
-- `workflow_dispatch` means you can run it manually while testing.
+- `schedule: daily` means it triggers once a day. The compiler automatically adds the `workflow_dispatch` event as well.
 
 ![How workflow_dispatch works: author the .md file, compile to a lock.yml, push to GitHub, then click Run workflow in the Actions tab to trigger the agent](images/07a-workflow-dispatch-trigger.svg)
-
-<details>
-<summary>Terminal tip (VS Code + Copilot)</summary>
-
-In VS Code, open the integrated terminal with ``Ctrl+` `` (macOS: ``Cmd+` ``) and run `gh aw` commands there.
-
-If you're unsure about a command, you can ask:
-
-```bash
-gh copilot suggest "how do I install a gh extension"
-```
-
-</details>
 
 ### Run your first compile check
 
@@ -93,16 +70,15 @@ You see a green success message and a generated `.lock.yml` file next to `daily-
 
 If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
-After this first manual setup, prefer asking an agent to edit workflows with the `agentic-workflows` skill.
+
+## ✅ Checkpoint
+
+- [ ] `.github/workflows/daily-report-status.md` exists
+- [ ] You ran `gh aw compile` successfully
 
 <!-- journey: terminal -->
 Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md).
 <!-- /journey -->
 
-## ✅ Checkpoint
-
-- [ ] `.github/workflows/daily-report-status.md` exists
-- [ ] The file starts with valid frontmatter fences (`---` ... `---`)
-- [ ] The frontmatter includes `name` and `on.workflow_dispatch`
 - [ ] `gh aw compile` succeeds and generates `daily-report-status.lock.yml`
 - [ ] `gh extension list` shows `github/gh-aw` is installed
