@@ -90,7 +90,7 @@ With read-only permissions, a compromised or misdirected token cannot push code,
 
 ### Use `network.allowed-domains` to block exfiltration
 
-If a PAT is present in the workflow environment, the main concern is that it could be sent to an attacker-controlled endpoint. A `network` allowlist stops that at the network layer:
+If a PAT is present in the workflow environment, the main concern is that it could be sent to an attacker-controlled endpoint. A `network` allowlist stops that at the [network layer](https://github.github.com/gh-aw/reference/network/):
 
 ```yaml
 ---
