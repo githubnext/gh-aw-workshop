@@ -112,12 +112,12 @@ Even if an injected prompt convinces the agent to propose a change to a workflow
 
 ### Limit network destinations
 
-Combine file restrictions with `network.allowed-domains` to close the exfiltration channel:
+Combine file restrictions with `network.allowed` to close the exfiltration channel:
 
 ```yaml
 ---
 network:
-  allowed-domains:
+  allowed:
     - "api.github.com"
 ---
 ```
@@ -179,7 +179,7 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 - [ ] Use `safe-outputs: create-pull-request` instead of direct commits whenever a write is needed.
 - [ ] Declare `allowed-files` to restrict the PR to only the paths the task should touch.
 - [ ] Add `protected-files.exclude` entries for `.github/workflows/**`, `README.md`, and any other sensitive paths.
-- [ ] Set `network.allowed-domains` to block exfiltration to attacker-controlled destinations.
+- [ ] Set `network.allowed` to block exfiltration to attacker-controlled destinations.
 - [ ] Treat all issue bodies, PR descriptions, and file content as untrusted input.
 
 ---
@@ -199,7 +199,7 @@ Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 ## 📚 See Also
 
 - [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
-- [Safe Outputs (Pull Requests)](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/)
+- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
 - [Network Permissions](https://github.github.com/gh-aw/reference/network/)
 - [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md)
