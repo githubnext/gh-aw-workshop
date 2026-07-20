@@ -56,6 +56,8 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 22 | [22-error-handling-and-resilience.md](22-error-handling-and-resilience.md) | Make Your Workflows Resilient to Failure | ✅ |
 | 23 | [23-ab-experiments.md](23-ab-experiments.md) | Test Your Prompt Ideas with A/B Experiments | ✅ |
 | 24 | [24-self-hosted-runners.md](24-self-hosted-runners.md) | Run Your Agentic Workflow on a Self-Hosted Runner | ✅ |
+| 25 | [25-audit-and-observability.md](25-audit-and-observability.md) | Audit and Monitor Your Agentic Workflows | ✅ |
+| 26 | [26-manage-costs-and-budgets.md](26-manage-costs-and-budgets.md) | Manage Costs and AI Credit Budgets | ✅ |
 
 ## Optional Side Quests
 
@@ -88,12 +90,15 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md) — explains how over-scoped workflow authority lets a misdirected agent attempt changes the task never needed, and how minimal `permissions:`, `safe-outputs`, and `protected-files` enforce least privilege; branches from [Step 17](17-add-mcp-tools.md).
 - [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md) — explains how a compromised or malicious MCP server can feed poisoned tool results to your agent, and how `network.allowed-domains`, the explicit `tools:` block, minimal permissions, and `safe-outputs` reduce that risk; branches from [Step 17](17-add-mcp-tools.md).
 - [Side Quest: Output Injection via Safe Outputs](side-quest-17-06-output-injection.md) — explains how crafted repository content can embed misleading markdown into agent output to fool human reviewers, and how `safe-outputs` surface declarations and label scoping prevent it; branches from [Step 17](17-add-mcp-tools.md).
+- [Side Quest: Repository Poisoning via Agentic Write Access](side-quest-17-07-repo-poisoning.md) — explains how a misdirected agent granted `contents: write` could be tricked into committing backdoors or overwriting sensitive files, and how `contents: read`, `protected-files`, and `safe-outputs: create-pull-request` close that path entirely; branches from [Step 17](17-add-mcp-tools.md).
 - [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) — explains organization centralized billing and personal `COPILOT_GITHUB_TOKEN` billing; branches from [Step 7d](07d-confirm-model-access.md).
 - [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) — step-by-step guide to generating an Anthropic key, storing it as a repository secret, and switching your workflow to `engine: claude`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — step-by-step guide to generating an OpenAI key, storing it as a repository secret, and switching your workflow to `engine: codex`; branches from [Step 11a](11a-build-daily-status.md).
 - [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) — decision guide, full field references, and example task briefs for both `cache-memory` and `repo-memory`; branches from [Step 20](20-persistent-memory.md).
 - [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md) — name rules, block boundary rules, supported frontmatter fields, and model alias table for inline sub-agents; branches from [Step 21](21-inline-sub-agents.md).
 - [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md) — full phase reference table, activity feed tips, steering prompts, and advanced agent merge / `--watch` paths; branches from [Step 11d2](11d2-review-and-merge.md).
+- [Side Quest: Audit Reference — Artifacts, Firewall Logs, and Report Contents](side-quest-25-01-audit-reference.md) — detailed breakdown of `gh aw audit` report fields, agent artifact files, ⌖ AIC billing, `firewall.md`, and `network.allow`; branches from [Step 25](25-audit-and-observability.md).
+- [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) — full walkthrough of `gh aw forecast`: reading P10/P50/P90 output, using `--period week` and `--days 7`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 figure; branches from [Step 26](26-manage-costs-and-budgets.md).
 
 ## Getting Started
 

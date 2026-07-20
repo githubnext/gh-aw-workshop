@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: How MCP Tool Servers Work
 
 > _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._
@@ -152,11 +156,9 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Tools reference](https://github.github.com/gh-aw/reference/tools/), [GitHub Tools read permissions](https://github.github.com/gh-aw/reference/permissions/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), and [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/).
 
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
-- [GitHub Tools read permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)

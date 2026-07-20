@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 3: Create and Verify Your Practice Repository
 
 _Now that setup is complete, create the repository where you'll build and test your workflows._
@@ -8,9 +12,15 @@ _By the end of this step (3a or 3b), you will have a public `my-agentic-workflow
 > <details>
 > <summary><b>Which path is right for me?</b> Choose the option that matches how you work:</summary>
 >
+> <!-- journey: ui,copilot -->
 > - 🌐 **Browser / Copilot app / Mobile** — I prefer the GitHub web UI with no terminal → go to [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md)
+> <!-- /journey -->
+> <!-- journey: codespace -->
 > - ☁️ **Codespace** — I have a Codespace open → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md) (your terminal is already open)
+> <!-- /journey -->
+> <!-- journey: local,terminal -->
 > - 💻 **Local terminal** — I want to use my own machine → go to [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md)
+> <!-- /journey -->
 >
 > </details>
 
@@ -70,8 +80,12 @@ Before continuing to Step 4, confirm:
 - [ ] I confirmed GitHub Actions is not disabled in my account settings.
 - [ ] I have either a Codespace terminal open **or** I can create and edit files directly in the GitHub web UI.
 
-**Next:** Continue with your chosen path above.
+<!-- journey: codespace,local,terminal -->
+**Next:** Continue with [Step 3a: Create Your Repository — Terminal Path](03a-create-your-repo-terminal.md).
+<!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** Continue with [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

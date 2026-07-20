@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Configure an OpenAI API Key
 
 > _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
@@ -125,10 +129,9 @@ You should see:
 - [ ] My workflow frontmatter has `engine: codex` and `api.openai.com` in `network.allowed`
 - [ ] `gh aw compile --validate` reports no errors
 
+<!-- journey: all -->
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Engine configuration](https://github.github.com/gh-aw/reference/auth/), and [Network Permissions](https://github.github.com/gh-aw/reference/network/).
 
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Authentication reference](https://github.github.com/gh-aw/reference/auth/#codex)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

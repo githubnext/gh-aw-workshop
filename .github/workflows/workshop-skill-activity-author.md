@@ -53,6 +53,8 @@ steps:
         echo '{"files":[],"count":0}' > /tmp/gh-aw/data/workshop-state.json
       fi
   - name: Fetch open curriculum quality issues
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     run: |
       set -euo pipefail
       mkdir -p /tmp/gh-aw/data
@@ -68,8 +70,6 @@ steps:
       count=$(jq length /tmp/gh-aw/data/curriculum-issues.json)
       echo "Found $count open curriculum quality issue(s)."
 ---
-
-# Workshop Skill Activity Author
 
 ## Task
 

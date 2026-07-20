@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
 
 > _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled._
@@ -90,6 +94,10 @@ The compile updates the lock file so it uses the token-based method.
 - [ ] The recompiled source and lock files are committed
 - [ ] You noted the PAT expiry date and have a rotation reminder
 
+<!-- journey: all -->
 Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
+<!-- /journey -->
 
+<!-- journey: all -->
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md)
+<!-- /journey -->

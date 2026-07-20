@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01e: Pattern — "Done" but Nothing Written
 
 ## 🎯 What You'll Do
@@ -39,6 +43,7 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain why a successful run might skip writing
@@ -46,8 +51,6 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 - [ ] I can check that `safe-outputs:` includes the needed write action
 - [ ] I can add a fallback output rule for no-action scenarios
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

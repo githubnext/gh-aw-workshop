@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: scenario-c
+---
 # Step 11c: Build the PR Code Reviewer — Terminal Path
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._
@@ -35,7 +39,7 @@ mkdir -p .github/workflows
 
 Open your editor and create `.github/workflows/pr-code-reviewer.md`. Run `gh aw compile` after saving to validate.
 
-### Add the frontmatter
+### Add the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
 
 ```yaml
 ---
@@ -198,10 +202,9 @@ Findings: {count}
 > The PR reviewer triggers on `pull_request`, so [Step 13: Schedule It to Run Every Day](13-schedule-it.md) does not apply. Jump straight to [Step 14: What's Next?](14-next-steps.md), or go to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) to practice reading the run log.
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+<!-- journey: terminal -->
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/).
 
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/)

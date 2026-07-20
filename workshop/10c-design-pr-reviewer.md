@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: scenario-c
+---
 # Step 10c: Design — PR Code Reviewer
 
 > _Great [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) start with a clear brief — writing down what you want before you code anything saves hours of debugging later._
@@ -100,10 +104,9 @@ If your repo has a `vendor/`, `generated/`, or `third_party/` directory, add a g
 - [ ] I've sketched the review comment format (even a rough draft counts)
 - [ ] I've written at least two guardrail rules
 
+<!-- journey: all -->
 **Next:** [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Diagnosing Common Agent Output Patterns
 
 > _Optional: use this side quest when a run behaves unexpectedly, then return to [Step 9: Reading Workflow Output](09-understand-output.md)._
@@ -22,6 +26,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 
 Need a reusable triage flow after the pattern drills? Open the [Debugging Checklist](side-quest-09-01f-debugging-checklist.md).
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can choose the right micro-step from the pattern table
@@ -29,9 +34,6 @@ Need a reusable triage flow after the pattern drills? Open the [Debugging Checkl
 - [ ] I can open the checklist page when I need full run triage
 - [ ] I know to return to [Step 9](09-understand-output.md) after this side quest
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

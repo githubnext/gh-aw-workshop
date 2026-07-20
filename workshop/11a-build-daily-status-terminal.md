@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: scenario-a
+---
 # Step 11a: Build the Daily Repo Status Workflow — Terminal Path
 
 _You've designed the workflow on paper — now let's turn it into real, running YAML._
@@ -44,7 +48,7 @@ New to workflow file structure? See [Workflow File Structure at a Glance](side-q
 
 ---
 
-## Section 1 — Metadata
+## Metadata
 
 Start with the opening fence and the two metadata keys. `emoji` is the visual label shown in `gh aw list`; `description` is the one-sentence summary displayed in the GitHub Actions UI.
 
@@ -58,7 +62,7 @@ description: Post a daily repository status summary as a GitHub issue comment.
 
 ---
 
-## Section 2 — Triggers
+## Triggers
 
 Add the trigger block after the `description` line. `schedule: daily` is `gh-aw`'s shorthand that compiles to a once-per-day cron schedule. The compiler automatically adds a **Run workflow** button for any scheduled workflow; you may include `workflow_dispatch: {}` explicitly here for clarity, but it is not required.
 
@@ -72,9 +76,9 @@ on:
 
 ---
 
-## Section 3 — Permissions
+## Permissions
 
-Add the minimum permissions the workflow needs. `copilot-requests: write` is required by every agentic workflow; the remaining entries are read-only. Write access for issue comments is declared via `safe-outputs` in Section 5.
+Add the minimum permissions the workflow needs. `copilot-requests: write` is required by every agentic workflow; the remaining entries are read-only. Write access for issue comments is declared via `safe-outputs` in the [Write guardrail](#write-guardrail) section.
 
 ```yaml
 permissions:
@@ -89,7 +93,7 @@ permissions:
 
 ---
 
-## Section 4 — Tools
+## Tools
 
 The `tools` block enables GitHub API access. `mode: gh-proxy` routes all API calls through a controlled proxy that enforces only the scopes declared in `permissions` above (see [Side Quest: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) for details).
 
@@ -104,7 +108,7 @@ tools:
 
 ---
 
-## Section 5 — Write guardrail
+## Write guardrail
 
 `safe-outputs` declares the only write action allowed: one issue comment per run. Any other write actions the agent attempts are blocked.
 
@@ -119,7 +123,7 @@ safe-outputs:
 
 ---
 
-## Section 6 — Agent instructions
+## Agent instructions
 
 Add the Markdown body **below** the closing `---`. This is the brief the AI agent reads and follows at runtime.
 
@@ -176,7 +180,9 @@ git push
 > When you need to modify this workflow later, prefer using an agent with the `/agentic-workflows` skill or run `gh aw compile --watch` for continuous feedback as you edit. **Agents edit agents.**
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+<!-- journey: terminal -->
 **Next:** [Step 11a2: Compile and Run the Daily Status Workflow](11a2-run-daily-status-terminal.md)
+<!-- /journey -->
 
 ## ✅ Checkpoint
 
@@ -187,12 +193,3 @@ Before moving on, confirm all of the following:
 - [ ] `gh aw compile` exits with no errors
 - [ ] `git log --oneline -1` shows my commit `feat: add daily repo status agentic workflow`
 - [ ] `git push` completed successfully and the file is visible on GitHub
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
-- [Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md)
-- [Schedule Expressions](side-quest-13-01-schedule-expressions.md)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01f: Debugging Checklist
 
 ## 🎯 What You'll Do
@@ -18,6 +22,7 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 6. Open the [safe-output record](https://github.github.com/gh-aw/reference/safe-outputs/) in the job details and treat it as source of truth for writes.
 7. If behavior is still unclear, ask the `agentic-workflows` skill to diagnose your workflow with a pasted snippet.
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can run this checklist in order without skipping steps
@@ -25,9 +30,6 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 - [ ] I can decide whether the root cause is prompt, data, permissions, or output limits
 - [ ] I can gather a minimal log snippet to share for deeper diagnosis
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/), and [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/).
 
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)

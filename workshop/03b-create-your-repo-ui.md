@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: core
+---
 # Step 3b: Create Your Practice Repository — GitHub UI Path
 
 > _When you're done with this step, you'll have a public `my-agentic-workflows` repository open in your browser, with GitHub Actions enabled and ready for the rest of the workshop — no terminal required._
@@ -56,8 +60,9 @@ Confirm `my-agentic-workflows` and your username appear in the page header.
 - [ ] The **Actions** tab is visible and enabled
 - [ ] Your username appears as the repository owner
 
+<!-- journey: ui -->
 **Next:** [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

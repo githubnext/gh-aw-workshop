@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Evaluating and Iterating on Agent Output
 
 > _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)._
@@ -112,9 +116,9 @@ Quick run-log check:
 - [ ] You recompiled with `gh aw compile` or had a Copilot agent do it for you
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
+<!-- journey: all -->
 Return to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/) and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

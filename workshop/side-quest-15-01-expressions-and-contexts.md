@@ -1,10 +1,14 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: GitHub Actions Expressions and Contexts
 
 > _The `${{ }}` syntax unlocks a whole language inside your workflow — learn to read it and you can make workflows that adapt to anything._
 
 ## 🎯 What You'll Do
 
-Explore the expression and context system that powers [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/) conditions, output references, and dynamic values. By the end, the `${{ steps.recent.outputs.commit_count }}` style syntax in your conditional workflow will feel natural.
+Explore the expression and context system that powers GitHub Actions conditions, output references, and dynamic values. By the end, the `${{ steps.recent.outputs.commit_count }}` style syntax in your conditional workflow will feel natural.
 
 ## 📋 Before You Start
 
@@ -124,9 +128,9 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 - [ ] You understand how `id:` connects a step's output to the `steps` context
 - [ ] You can write an `if:` condition that skips a step based on a previous output
 
+<!-- journey: all -->
 **Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [GitHub Actions Primer](https://github.github.com/gh-aw/guides/github-actions-primer/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

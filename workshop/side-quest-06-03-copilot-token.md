@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Configure GitHub Copilot Authentication
 
 > _Optional: work through this guide when you need to configure Copilot authentication for an agentic workflow, then return to your main path._
@@ -43,4 +47,6 @@ If you are unsure, check who owns your practice repository first:
 - [ ] My workflow source and compiled lock file use only the selected method.
 - [ ] I have returned to my main workshop path.
 
+<!-- journey: all -->
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md)
+<!-- /journey -->

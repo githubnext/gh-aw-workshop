@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: core
+---
 # Step 7a (Part 2): Add Instructions and Finish the Workflow — Terminal Path
 
 _You now have a valid starter file. In this part, you complete it and push it._
@@ -86,11 +90,8 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [ ] The file is committed and pushed to `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
-## 📚 See Also
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/).
 
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-
+<!-- journey: terminal -->
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+<!-- /journey -->

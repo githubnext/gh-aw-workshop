@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 <!--
 <research-metadata>
   <focus>Inline sub-agents — the `## agent: \`name\`` syntax in gh-aw that lets a workflow define specialised worker agents directly inside a single Markdown file, with per-agent `model:` overrides</focus>
@@ -12,7 +16,7 @@
 </research-metadata>
 -->
 
-# Split Complex Workflows with Inline Sub-Agents
+# Split Complex Workflows with [Inline Sub-Agents](https://github.github.com/gh-aw/reference/inline-sub-agents/)
 
 > _One workflow file, multiple specialised agents — each doing exactly one thing, at the right cost._
 
@@ -114,14 +118,9 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 - [ ] A manual run completed and the Actions log showed the sub-agent being called
 - [ ] The final workflow output used the sub-agent result
 
+<!-- journey: all -->
 **Next:** [Learning GitHub Agentic Workflows](README.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/), [Tools reference](https://github.github.com/gh-aw/reference/tools/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md), [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md), [Make Your Workflow Remember Across Runs](20-persistent-memory.md), and [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md)
-- [Side Quest: Frontmatter Deep Dive](side-quest-11-01-frontmatter-deep-dive.md)
-- [Make Your Workflow Remember Across Runs](20-persistent-memory.md)
-- [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)

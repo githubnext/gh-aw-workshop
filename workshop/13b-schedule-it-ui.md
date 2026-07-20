@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: core
+---
 # Schedule It to Run Every Day — GitHub UI Path
 
 > [!NOTE]
@@ -60,9 +64,9 @@ GitHub may delay the first scheduled run. Use **Run workflow** to confirm the ed
 - [ ] The schedule badge appears in GitHub Actions
 - [ ] A manual or scheduled run completes successfully
 
+<!-- journey: ui -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

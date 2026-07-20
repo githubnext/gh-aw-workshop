@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # Make Your Workflow Smarter with Conditional Logic
 
 > _A workflow that always runs is useful — a workflow that only runs when it matters is elegant._
@@ -20,7 +24,7 @@ Right now your daily-status workflow runs every weekday — even on days when no
 The approach:
 1. Run a shell command to count recent commits.
 2. Store the result in an output variable.
-3. Add a top-level `if:` in workflow frontmatter to skip the agent job when the count is zero.
+3. Add a top-level `if:` in workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to skip the agent job when the count is zero.
 
 ### Add a commit-count step
 
@@ -81,7 +85,7 @@ gh aw compile
 You should see `✅ Compiled successfully`. This regenerates your `.lock.yml` file with the updated conditional logic.
 
 > [!NOTE]
-> The `if:` condition is applied during compilation — it won't take effect until you compile and push both files.
+> The `if:` condition is applied during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) — it won't take effect until you compile and push both files.
 
 ### Commit and push your conditional logic
 
@@ -101,7 +105,8 @@ git push
 3. Add the `steps:` block and `if:` field to the frontmatter.
 4. Click **Commit changes**.
 
-The lock file regenerates automatically when the workflow next runs — you don't need to compile locally.
+> [!IMPORTANT]
+> Committing the `.md` file via the web editor does **not** automatically recompile the lock file. After committing, open your Codespace or local terminal and run `gh aw compile`, then push the updated `.lock.yml`. The `if:` condition will not take effect until the compiled lock file is pushed.
 
 </details>
 
@@ -109,14 +114,14 @@ The lock file regenerates automatically when the workflow next runs — you don'
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
 - [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`
-- [ ] `gh aw compile` completed without errors (terminal path), or the workflow was committed via the GitHub UI
-- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are committed and pushed (terminal path)
+- [ ] `gh aw compile` completed without errors and the updated `.lock.yml` is committed and pushed
+- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are committed and pushed
 - [ ] You triggered the workflow manually and confirmed the conditional behaviour in the run log
 - [ ] The workflow still posts a summary on days with commits
 
+<!-- journey: all -->
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Compilation Process reference](https://github.github.com/gh-aw/reference/compilation-process/), and [Templating reference](https://github.github.com/gh-aw/reference/templating/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

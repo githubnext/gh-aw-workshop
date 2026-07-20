@@ -1,10 +1,14 @@
+---
+journey: terminal
+adventure: side-quest
+---
 # Side Quest: Using `gh aw compile` to Catch Errors Early
 
 > _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](11a-build-daily-status-terminal.md), or [Step 13](13a-schedule-it-terminal.md)._
 
 ## 🎯 What You'll Do
 
-You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to run `--validate`, when to keep `--watch` running, and how to fix the most common compile errors.
+You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for deeper validation, when to keep `--watch` running, and how to fix the most common compile errors.
 
 ## What `gh aw compile` does
 
@@ -21,15 +25,25 @@ If it succeeds, you should see a green success message and an updated `.lock.yml
 > [!NOTE]
 > `gh aw compile` checks file structure, not whether the agent's reasoning or final output is good. You still test the workflow separately after it compiles cleanly.
 
-## Use `--validate` for quick checkpoints
+## Use `--no-emit` for quick structure checks
 
-When you only want a yes/no answer while building a file in small sections, use `--validate`:
+When you only want a yes/no answer without generating a lock file, use `--no-emit`:
+
+```bash
+gh aw compile --no-emit
+```
+
+This is useful after each small edit because it confirms the file structure without writing or overwriting the generated lock file every time.
+
+## Use `--validate` for deeper validation
+
+When you want stricter checks on top of normal compilation, add `--validate`:
 
 ```bash
 gh aw compile --validate
 ```
 
-This is useful after each small edit because it confirms the file structure without making you stop and inspect the generated lock file every time.
+This enables GitHub Actions workflow schema validation, container image validation, and action SHA validation. It is more thorough than a plain compile but also slower, so it is best reserved for a pre-commit or CI check rather than every small edit.
 
 ## Use `--watch` while you iterate
 
@@ -87,10 +101,11 @@ on:
 | `unexpected end of stream` or frontmatter/document errors | The frontmatter fences are incomplete | Confirm the file has both the opening `---` and the closing `---` |
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
+<!-- journey: terminal -->
 ## ✅ Checkpoint
 
 - [ ] I know what `gh aw compile` checks before a workflow runs
-- [ ] I can use `--validate` for quick structure checks
+- [ ] I can use `--no-emit` for quick structure checks without generating a lock file
 - [ ] I can use `--watch` for live feedback while I edit
 - [ ] I can spot indentation mistakes in a compile error example
 - [ ] I know the first places to check when compilation fails
@@ -99,9 +114,6 @@ on:
 
 Return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](11a-build-daily-status-terminal.md), or [Step 13](13a-schedule-it-terminal.md).
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

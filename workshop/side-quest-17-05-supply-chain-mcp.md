@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Supply Chain Attacks via MCP Tool Servers
 
 > _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the trust boundary early and keep the workflow's write surface narrow._
@@ -77,11 +81,9 @@ Further reading:
 - [ ] I identified the suspicious `.mcp.json` entry and explained why it is risky
 - [ ] I applied at least one of the three hardening habits to my own workflow
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), and [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/).
 
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)

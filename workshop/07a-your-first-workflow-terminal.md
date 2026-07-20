@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: core
+---
 # Step 7a: Write Your First Agentic Workflow — Terminal Path
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
@@ -93,7 +97,9 @@ If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Earl
 
 After this first manual setup, prefer asking an agent to edit workflows with the `agentic-workflows` skill.
 
+<!-- journey: terminal -->
 Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md).
+<!-- /journey -->
 
 ## ✅ Checkpoint
 
@@ -102,11 +108,3 @@ Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-
 - [ ] The frontmatter includes `name` and `on.workflow_dispatch`
 - [ ] `gh aw compile` succeeds and generates `daily-report-status.lock.yml`
 - [ ] `gh extension list` shows `github/gh-aw` is installed
-
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/#dispatch-triggers-workflowdispatch)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Workflow Structure](https://github.github.com/gh-aw/reference/workflow-structure/)

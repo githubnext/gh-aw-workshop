@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)
 
 > _Optional: work through this visual primer if you want an intuitive mental model for why gh-aw uses a sandbox, where the agent runs, and what outputs are considered safe._
@@ -100,12 +104,9 @@ network:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/), [Sandbox Configuration](https://github.github.com/gh-aw/reference/sandbox/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), and [Network Permissions](https://github.github.com/gh-aw/reference/network/).
 
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)
-- [Sandbox Configuration](https://github.github.com/gh-aw/reference/sandbox/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

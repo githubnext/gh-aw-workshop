@@ -1,8 +1,12 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT
 
 > _Optional: work through this deep-dive if you want to understand how data flows between steps, then return to [Step 16](16-connect-data-source.md)._
 
-[GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/) runs each step in its own shell process. That means a plain `export MY_VAR=value` in one step **is invisible** to the next step — the environment is thrown away when the step exits. `$GITHUB_OUTPUT` is the official mechanism for persisting data across steps.
+[GitHub Actions](https://github.github.com/gh-aw/introduction/overview/) runs each step in its own shell process. That means a plain `export MY_VAR=value` in one step **is invisible** to the next step — the environment is thrown away when the step exits. `$GITHUB_OUTPUT` is the official mechanism for persisting data across steps.
 
 ---
 
@@ -112,10 +116,9 @@ The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is
 
 ---
 
+<!-- journey: all -->
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/) and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [GitHub Actions Primer](https://github.github.com/gh-aw/guides/github-actions-primer/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

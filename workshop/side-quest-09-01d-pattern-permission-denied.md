@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01d: Pattern — `permission denied`
 
 ## 🎯 What You'll Do
@@ -37,6 +41,7 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can classify denied calls as read or write operations
@@ -44,9 +49,6 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 - [ ] I can fix missing write allowlisting in `safe-outputs:`
 - [ ] I can keep scopes and allowed outputs to the minimum needed
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), and [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/).
 
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)

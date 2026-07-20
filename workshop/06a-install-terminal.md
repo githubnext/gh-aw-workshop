@@ -1,3 +1,7 @@
+---
+journey: codespace
+adventure: setup
+---
 # Step 6a: Install gh-aw — Codespace Terminal
 
 > [!NOTE]
@@ -104,11 +108,9 @@ Which one sub-command do you expect to use in Step 7 when you create and run you
 Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
+<!-- journey: codespace -->
 **Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/)

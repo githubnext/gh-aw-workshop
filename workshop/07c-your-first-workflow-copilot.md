@@ -1,8 +1,14 @@
+---
+journey: copilot
+adventure: core
+---
 # Step 7c: Write Your First Agentic Workflow — GitHub Copilot Path
 
 ## 🎯 What You'll Do
 
 You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab to create and validate `daily-report-status.md`, then review and merge its pull request.
+
+![Copilot agent session flow: prompt to pull request merge](images/07c-copilot-agent-session-flow.svg)
 
 ## 📋 Before You Start
 
@@ -54,12 +60,9 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] You merged the pull request into `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
+<!-- journey: copilot -->
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [AI Engines reference](https://github.github.com/gh-aw/reference/engines/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)

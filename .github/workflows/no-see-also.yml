@@ -1,0 +1,113 @@
+name: No See Also Sections
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - ".github/workflows/no-see-also.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.md"
+      - ".github/workflows/no-see-also.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  no-see-also:
+    name: Check for banned See Also sections
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Check for See Also sections
+        id: check
+        continue-on-error: true
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs')
+            const path = require('path')
+
+            const SEE_ALSO_RE = /^\s*##\s+(📚\s+)?See Also\s*$/m
+
+            function walkMdFiles(dir) {
+              const results = []
+              for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+                if (entry.name.startsWith('.')) continue
+                const full = path.join(dir, entry.name)
+                if (entry.isDirectory()) results.push(...walkMdFiles(full))
+                else if (entry.isFile() && entry.name.endsWith('.md')) results.push(full)
+              }
+              return results
+            }
+
+            const violations = []
+
+            for (const filepath of walkMdFiles('.')) {
+              const raw = fs.readFileSync(filepath, 'utf8')
+              if (SEE_ALSO_RE.test(raw)) {
+                violations.push(filepath.replace(/^\.\//, ''))
+                core.error(
+                  '"See Also" sections are not allowed. Use inline hyperlinks instead. See guidelines.md.',
+                  { file: filepath.replace(/^\.\//, '') }
+                )
+              }
+            }
+
+            if (violations.length > 0) {
+              core.setFailed(
+                `Found ${violations.length} file(s) with a "See Also" section. ` +
+                'Remove the section and link docs inline instead.'
+              )
+            } else {
+              core.info('No "See Also" sections found. All good.')
+            }
+
+      - name: File issue for violation on main
+        if: steps.check.outcome == 'failure' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const title = '"See Also" section violation on main'
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            const body = [
+              'One or more markdown files contain a banned `## See Also` section.',
+              '',
+              `Workflow run: ${runUrl}`,
+              '',
+              'Per the authoring guidelines, documentation links must appear as inline',
+              'hyperlinks in the prose — not in a dedicated "See Also" section.',
+              'Please remove the sections flagged in the workflow run.',
+            ].join('\n')
+            const { owner, repo } = context.repo
+            const { data: searchResults } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${owner}/${repo} is:issue is:open in:title "${title}"`,
+              per_page: 10,
+            })
+            const existingIssue = searchResults.items.find(
+              (issue) => issue.title === title
+            )
+            if (existingIssue) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existingIssue.number,
+                body,
+              })
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+              })
+            }
+
+      - name: Fail job when violations found
+        if: steps.check.outcome == 'failure'
+        run: exit 1

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Schedule It to Run Every Day
 
 _Automating the trigger turns a one-off workflow into a recurring service._
@@ -7,7 +11,7 @@ _Automating the trigger turns a one-off workflow into a recurring service._
 - [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) is complete and your workflow has run successfully at least once.
 - `.github/workflows/daily-status.md` is committed to your repository.
 - You are familiar with the `schedule:` trigger syntax introduced in [Step 7a: Your First Workflow (Terminal)](07a-your-first-workflow-terminal.md).
-- A fuzzy expression like `daily on weekdays` is plain English that `gh aw compile` converts to a valid cron string at compile time — you never need to write cron syntax by hand.
+- A fuzzy expression like `daily on weekdays` is plain English that `gh aw compile` converts to a valid [cron](https://github.github.com/gh-aw/reference/schedule-syntax/) string at compile time — you never need to write cron syntax by hand.
 
 For example, the fuzzy expression `schedule: daily` compiles to a cron value such as `"49 23 * * *"` in the generated lock file:
 
@@ -47,9 +51,9 @@ After completing your chosen path, verify:
 - [ ] The **Actions** tab shows the schedule badge for your **daily-status** workflow.
 - [ ] At least one run has completed successfully after the schedule change.
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

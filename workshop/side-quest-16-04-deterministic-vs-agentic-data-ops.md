@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Deterministic vs Agentic Data Ops
 
 > _Optional: use this guide when you are unsure which parts of a data workflow should stay deterministic and which parts should be agentic, then return to [Step 16](16-connect-data-source.md)._
@@ -95,10 +99,9 @@ gh issue list --state open --search "updated:>=2026-07-13" --json number,title,l
 
 ---
 
+<!-- journey: all -->
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [DeterministicOps pattern](https://github.github.com/gh-aw/patterns/deterministic-ops/), [About Workflows](https://github.github.com/gh-aw/introduction/overview/), and [How They Work](https://github.github.com/gh-aw/introduction/how-they-work/).
 
-- [DeterministicOps pattern](https://github.github.com/gh-aw/patterns/deterministic-ops/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [How They Work](https://github.github.com/gh-aw/introduction/how-they-work/)

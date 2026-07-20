@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: scenario-b
+---
 # Step 10b: Design — Daily Documentation Updater
 
 > _Great [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) start with a clear brief — writing down what you want before you code anything saves hours of debugging later._
@@ -94,10 +98,9 @@ The brief scans `docs/` and `README.md`. If your project stores documentation el
 - [ ] I've sketched the comment format (even a rough draft counts)
 - [ ] I've written at least two guardrail rules
 
+<!-- journey: all -->
 **Next:** [Step 11b: Build — Daily Documentation Updater](11b-build-daily-docs.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

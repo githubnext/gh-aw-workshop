@@ -1,3 +1,7 @@
+---
+journey: codespace
+adventure: side-quest
+---
 # Side Quest: Fix Codespaces `actions:write` Errors When Running `gh aw run`
 
 > _Optional: use this guide if Step 8 fails in a Codespace, then return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)._
@@ -39,13 +43,15 @@ Some versions of `gh aw` also show a follow-up message explaining that the defau
 
 ## Cause
 
-The default token inside a Codespace usually has enough access to work with your repository. However, it may not have the [permissions](https://github.github.com/gh-aw/reference/permissions/) that `gh aw run` needs. In practice, the missing permissions are usually `actions:write` and `workflows:write`.
+The default token inside a Codespace usually has enough access to work with your repository. However, it may not have the permissions that `gh aw run` needs. In practice, the missing permissions are usually `actions:write` and `workflows:write`.
 
 ---
 
 ## Fix A (recommended): use the GitHub Actions UI
 
+<!-- journey: codespace -->
 Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui) and trigger the workflow from the **Actions** tab instead.
+<!-- /journey -->
 
 This is the best path for the workshop because it works even when your Codespace terminal token is limited.
 
@@ -99,11 +105,9 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 ---
 
+<!-- journey: codespace -->
 Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)

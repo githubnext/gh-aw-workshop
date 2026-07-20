@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Event-Driven Triggers in Agentic Workflows
 
 > _Optional: use this primer if you want help choosing between scheduled and event-driven workflows before you finish [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md), then return to the main adventure._
@@ -125,6 +129,7 @@ The Daily Repo Status workflow in [Step 11a](11a-build-daily-status.md) and the 
 
 That is the core decision: pick the trigger that matches the moment you care about, then pick the write target that matches the object you want the workflow to answer.
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain the difference between a scheduled workflow and an event-driven workflow
@@ -137,8 +142,6 @@ That is the core decision: pick the trigger that matches the moment you care abo
 
 Return to the main adventure: [Step 11c: Build — PR Code Reviewer](11c-build-pr-reviewer.md).
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [About Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)

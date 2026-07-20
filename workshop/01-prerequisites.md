@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 1: What You Need Before We Start
 
 _Starting with the right setup saves you from frustrating detours later._
@@ -37,8 +41,10 @@ This step checks that all the tools and accounts you need are in place before yo
 
 <!-- -->
 
+<!-- journey: codespace -->
 > [!TIP]
 > **Using a Codespace (recommended for new users)?** The `gh` CLI and `gh-aw` extension come pre-installed. A free GitHub account is enough to begin. → [Skip to Adventure A: Codespace Setup](02a-setup-codespace.md)
+<!-- /journey -->
 
 ## ✅ Required pre-flight checks
 
@@ -48,7 +54,7 @@ Complete these checks before you continue:
 
 - [ ] You can sign in to GitHub with the account you'll use for the workshop
 - [ ] You have chosen which development environment you'll use: Codespace, local terminal, or GitHub UI
-- [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-) 2.40+
+- [ ] If you chose a local terminal path, `gh --version` reports [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh) 2.40+
 - [ ] If you chose a local terminal path, `git --version` works
 - [ ] If you're on GHEC, GHES, or EMU, you reviewed [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md) and confirmed your environment is ready
 - [ ] Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both **Copilot is enabled** and **Models: available**
@@ -114,9 +120,15 @@ Claude, Codex, or Gemini? Confirm your API key.
 
 Continue with exactly one of these paths:
 
+<!-- journey: codespace -->
 - **Adventure A (Codespace):** open a Codespace and verify preinstalled tools in [02a-setup-codespace.md](02a-setup-codespace.md).
+<!-- /journey -->
+<!-- journey: local -->
 - **Adventure B (Local):** install or verify local prerequisites and authentication in [02b-setup-local.md](02b-setup-local.md).
+<!-- /journey -->
+<!-- journey: ui,copilot -->
 - **GitHub UI path:** skip terminal setup and continue in [03b-create-your-repo-ui.md](03b-create-your-repo-ui.md).
+<!-- /journey -->
 
 ## ✅ Checkpoint
 
@@ -127,9 +139,15 @@ Continue with exactly one of these paths:
 - [ ] You confirmed Copilot is enabled and Models: available at [github.com/settings/copilot](https://github.com/settings/copilot)
 - [ ] You know which file you will open next
 
-**Next:** Open your selected path file now — [Adventure A](02a-setup-codespace.md), [Adventure B](02b-setup-local.md), or [Step 3b](03b-create-your-repo-ui.md).
+<!-- journey: codespace -->
+**Next:** Open [Adventure A: Set Up a Codespace](02a-setup-codespace.md).
+<!-- /journey -->
+<!-- journey: local -->
+**Next:** Open [Adventure B: Set Up Your Local Terminal](02b-setup-local.md).
+<!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** Open [Step 3b: Create Your Repository — GitHub UI Path](03b-create-your-repo-ui.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Side Quest: Environment Reference](side-quest-01-02-environment-reference.md)

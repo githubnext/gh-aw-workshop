@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 6: Install the gh-aw CLI Extension
 
 `gh-aw` is the CLI extension that compiles your agentic workflow Markdown files and triggers runs from your terminal. If you're on the GitHub UI path, no local installation is needed: an agent compiles the workflow, and GitHub Actions executes the committed lock file.
@@ -21,6 +25,16 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 
 All paths converge at [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
 
+<!-- journey: codespace -->
+Continue with [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md).
+<!-- /journey -->
+<!-- journey: local,terminal -->
+Continue with [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md).
+<!-- /journey -->
+<!-- journey: ui,copilot -->
+Continue with [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md).
+<!-- /journey -->
+
 ## ✅ Checkpoint
 
 - [ ] You know which path matches your setup
@@ -28,10 +42,15 @@ All paths converge at [Step 7: Write Your First Agentic Workflow](07-your-first-
 - [ ] You understand that the GitHub UI path skips installation entirely
 - [ ] You're ready to proceed to Step 7 after completing your chosen path
 
-**Next:** Continue with your chosen path above.
+<!-- journey: codespace -->
+**Next:** [Step 6a: Install gh-aw — Codespace Terminal](06a-install-terminal.md)
+<!-- /journey -->
+<!-- journey: local,terminal -->
+**Next:** [Step 6b: Install gh-aw — Local Terminal](06b-install-local.md)
+<!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** [Step 6c: GitHub UI Path — No Installation Needed](06c-install-ui.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md), and [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md)
-- [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)

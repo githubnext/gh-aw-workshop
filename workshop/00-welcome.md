@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 0: Welcome — What We'll Build
 
 By the end of this workshop, a real AI agent will post a comment on one of your GitHub issues — automatically, every day, without you writing shell-script workflow code.
@@ -122,9 +126,9 @@ At **Step 11**, you can build manually (Step 11a), use the guided wizard (Advent
 - [ ] You know the next file you'll open
 - [ ] You're excited — let's go! 🚀
 
+<!-- journey: all -->
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

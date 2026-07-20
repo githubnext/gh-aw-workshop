@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Workflow File Structure at a Glance
 
 > _Optional: read this before building Step 11 to understand what you are writing, then return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)._
@@ -45,9 +49,10 @@ permissions:
   issues: read
 tools:
   github:
-    allowed: read
+    mode: gh-proxy
 safe-outputs:
-  issue_comments: 1
+  add-comment:
+    max: 1
 ---
 Summarize the open issues, recent pull requests, and latest workflow runs.
 ```
@@ -76,13 +81,9 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Workflow Structure reference](https://github.github.com/gh-aw/reference/workflow-structure/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).
 
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Workflow Structure reference](https://github.github.com/gh-aw/reference/workflow-structure/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)

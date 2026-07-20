@@ -7,9 +7,8 @@ description: >
   of docs/src/ from github/gh-aw, parses every markdown source to extract
   section anchors (cached for 7 days), enabling the agent to produce precise
   URL#anchor links. Uses cache-memory round-robin to process at least 10
-  workshop files per run, then opens a pull request that adds inline links and
-  a "See Also" section pointing to the rendered gh-aw docs
-  (Astro Starlight site at https://github.github.com/gh-aw/).
+  workshop files per run, then opens a pull request that adds inline links to
+  the rendered gh-aw docs (Astro Starlight site at https://github.github.com/gh-aw/).
 on:
   schedule: daily
   workflow_dispatch:
@@ -46,6 +45,7 @@ network:
   allowed:
     - defaults
     - github
+    - gh-aw
 timeout-minutes: 30
 checkout:
   repository: github/gh-aw
@@ -183,6 +183,94 @@ steps:
       shutil.copy("/tmp/gh-aw/data/doc-index.json", "/tmp/gh-aw/cache-memory/docs-index.json")
       print(f"\nDoc index: {len(index['pages'])} pages indexed")
       PYEOF
+
+  - name: Validate indexed documentation URLs
+    run: |
+      set -euo pipefail
+      mkdir -p /tmp/gh-aw/data /tmp/gh-aw/cache-memory
+
+      INDEX_FILE=/tmp/gh-aw/data/doc-index.json
+      OUT_FILE=/tmp/gh-aw/data/validated-doc-index.json
+      CACHE_FILE=/tmp/gh-aw/cache-memory/validated-doc-index.json
+      # 1 day: re-validates daily so broken/moved pages are detected promptly
+      MAX_AGE=86400
+
+      if [[ ! -f "$INDEX_FILE" ]]; then
+        echo "No doc index found — skipping URL validation."
+        echo '{"indexed_at":0,"validated_at":0,"pages":{}}' > "$OUT_FILE"
+        exit 0
+      fi
+
+      # Reuse cached validation result if it is fresh AND was built from the same index
+      if [[ -f "$CACHE_FILE" ]]; then
+        validated_at=$(python3 -c "import json; print(json.load(open('$CACHE_FILE')).get('validated_at', 0))" 2>/dev/null || echo 0)
+        cached_index_at=$(python3 -c "import json; print(json.load(open('$CACHE_FILE')).get('indexed_at', 0))" 2>/dev/null || echo 0)
+        index_at=$(python3 -c "import json; print(json.load(open('$INDEX_FILE')).get('indexed_at', 0))" 2>/dev/null || echo 0)
+        age=$(( $(date +%s) - validated_at ))
+        if [[ "$age" -lt "$MAX_AGE" && "$cached_index_at" -eq "$index_at" ]]; then
+          echo "Validated URL cache is fresh (${age}s old, matches index). Reusing."
+          cp "$CACHE_FILE" "$OUT_FILE"
+          jq -r '"Valid pages: " + (.pages | length | tostring)' "$OUT_FILE"
+          exit 0
+        fi
+        echo "Validated URL cache is stale or index changed (age=${age}s). Re-validating."
+      else
+        echo "No validated URL cache. Validating all indexed URLs."
+      fi
+
+      python3 <<'PYEOF'
+      import json, shutil, subprocess, sys, time
+
+      INDEX_FILE  = "/tmp/gh-aw/data/doc-index.json"
+      OUT_FILE    = "/tmp/gh-aw/data/validated-doc-index.json"
+      CACHE_FILE  = "/tmp/gh-aw/cache-memory/validated-doc-index.json"
+
+      with open(INDEX_FILE) as f:
+          index = json.load(f)
+
+      valid_pages   = {}
+      invalid_pages = []
+
+      for url, page_data in index.get("pages", {}).items():
+          result = subprocess.run(
+              [
+                  "curl", "-s", "-o", "/dev/null", "-w", "%{http_code}",
+                  "--max-time", "10",
+                  "--retry", "2", "--retry-delay", "1", "--retry-max-time", "15",
+                  "-L", "--max-redirs", "10",
+                  "-I",  # HEAD request — checks reachability without downloading the body
+                  url,
+              ],
+              capture_output=True, text=True,
+          )
+          http_code = result.stdout.strip()
+          if http_code.startswith("2"):
+              valid_pages[url] = page_data
+              print(f"OK   {http_code}  {url}")
+          else:
+              invalid_pages.append({"url": url, "http_code": http_code})
+              print(f"FAIL {http_code}  {url}", file=sys.stderr)
+
+      validated = {
+          "indexed_at":   index.get("indexed_at", 0),
+          "validated_at": int(time.time()),
+          "pages":        valid_pages,
+      }
+
+      with open(OUT_FILE, "w") as f:
+          json.dump(validated, f, indent=2)
+      shutil.copy(OUT_FILE, CACHE_FILE)
+
+      print(f"\nValidation complete: {len(valid_pages)} valid, {len(invalid_pages)} invalid")
+      if invalid_pages:
+          print("Invalid URLs (excluded from validated index):")
+          for entry in invalid_pages:
+              print(f"  {entry['http_code']}  {entry['url']}")
+      PYEOF
+
+      echo "=== Validated doc index ===" && \
+        jq -r '.pages | to_entries[] | "  \(.key): \(.value.anchors | length) sections"' \
+        /tmp/gh-aw/data/validated-doc-index.json
 ---
 
 # Docs Linker
@@ -190,9 +278,8 @@ steps:
 You are a documentation curator for the **"Learning GitHub Agentic Workflows"** workshop.
 
 Your job is to keep at least 10 workshop files per run well-connected to the official
-gh-aw documentation, by adding precise **inline hyperlinks** and a **"📚 See
-Also"** section at the bottom. You never remove content — you only enrich it
-with links.
+gh-aw documentation, by adding precise **inline hyperlinks** at the first bare occurrence
+of each matched concept. You never remove content — you only enrich it with inline links.
 
 ---
 
@@ -231,12 +318,15 @@ authoritative source of rendered doc page URLs and section anchors.
    }
    ```
 
-3. Read the prebuilt doc index from `/tmp/gh-aw/data/doc-index.json`. This index maps
-   each doc page URL to its title and a list of extracted section anchors:
+3. Read the pre-validated doc index from `/tmp/gh-aw/data/validated-doc-index.json`.
+   This index was built from the docs source files. Every page-level URL was
+   confirmed reachable by a deterministic HTTP check in the bash prevalidation step.
+   It maps each doc page URL to its title and a list of extracted section anchors:
 
    ```json
    {
      "indexed_at": 1234567890,
+     "validated_at": 1234567890,
      "pages": {
        "https://github.github.com/gh-aw/reference/safe-outputs/": {
          "title": "Safe Outputs reference",
@@ -251,7 +341,7 @@ authoritative source of rendered doc page URLs and section anchors.
    }
    ```
 
-   All page-level URLs in this index have already been validated as reachable.
+   Every page-level URL present in this index is confirmed reachable (HTTP 2xx).
    Use the anchor URLs to produce precise `URL#anchor` links when a concept
    matches a specific section heading.
 
@@ -331,32 +421,9 @@ anchor text or page title actually covers the concept by checking the doc index:
 This replaces any live API call to `github/gh-aw` during the agent phase —
 the source files were already fetched and parsed by the bash preindex step.
 
----
-
-## Phase 4b — Validate Rendered URLs (Live HTTP Check)
-
-URLs for pages that appear in the doc index are already confirmed reachable —
-skip the HTTP check for those entries.
-
-For any mapping entry whose `doc_url` is **not** covered by the doc index
-(e.g., a newly discovered page or an anchor URL not seen before), run:
-
-```bash
-http_code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 \
-  --retry 2 --retry-delay 1 --retry-max-time 15 -L \
-  --max-redirs 10 "<doc_url>")
-```
-
-Evaluate the HTTP status code:
-
-- If `http_code` is **2xx** (e.g. `200`, `201`) → keep the mapping entry.
-- If `http_code` is **000** (connection failure, timeout, redirect loop, or max redirects exceeded) → **discard** the mapping entry.
-- If `http_code` is **4xx** or **5xx** → **discard** the mapping entry.
-
-For any discarded entry, log with the actual values substituted:
-`Skipping https://github.github.com/gh-aw/reference/cli-commands/ — HTTP 404; removing from link candidates.`
-
-Do **not** add any link whose URL fails this check.
+All page-level URLs in the validated doc index have been confirmed reachable
+by the bash prevalidation step — no live HTTP checks are needed during the
+agent phase. Discard any `doc_url` that does not appear in the validated index.
 
 ---
 
@@ -383,39 +450,14 @@ Rules:
 
 ---
 
-## Add or Update "See Also" Section
-
-For each file in `target_files`, locate any existing `## 📚 See Also` (or
-`## See Also`) section at the bottom of the current file. If it exists, update
-it. If not, append one.
-
-The section must list **every** doc page referenced by the inline links added in
-Phase 5, **plus** any additional highly relevant docs for the file's topic that
-were not linked inline (e.g., overview pages that provide broader context).
-Format:
-
-```markdown
-## 📚 See Also
-
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-```
-
-Place the section at the very end of the file, after `**Next:**` or `**Return to:**`
-navigation links (if they exist), so it does not interrupt the learning flow.
-
----
-
 ## Decide and Act
 
 ### Nothing to change
 
 Call `noop` with a concise explanation when **all** of the following are true:
 - No new concept matches were found for all selected files (or all matching terms are already hyperlinked)
-- All selected files already have a complete and up-to-date `## 📚 See Also` section covering all relevant doc pages
 
-If there are inline links to add **or** the "See Also" section needs updating, proceed with changes.
+If there are inline links to add, proceed with changes.
 
 ### Changes to make
 
@@ -424,7 +466,7 @@ Write updated content back to each changed file in `target_files` using the
 create a pull request with:
 
 - **Title**: `workshop docs: add gh-aw doc links` (the `[docs-linker]` prefix is added automatically)
-- **Body**: group by file, listing each term linked, the doc URL it points to, and the updated "See Also" entries.
+- **Body**: group by file, listing each term linked and the doc URL it points to.
 
 ---
 

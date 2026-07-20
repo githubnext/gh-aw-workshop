@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 7d: Confirm Model Access
 
 ## 📋 Before You Start
@@ -17,7 +21,9 @@ Claude and Codex are optional [engines](https://github.github.com/gh-aw/referenc
 
 ## Choose one Copilot billing path
 
-Choose exactly one method.
+Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
+
+![Decision flow for choosing Copilot billing path: organization centralized billing or personal billing](images/07d-billing-path-decision.svg)
 
 ### Organization with centralized Copilot billing
 
@@ -68,11 +74,9 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] Both workflow files are committed to `main`
 - [ ] I am ready for [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
+<!-- journey: all -->
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [AI Engines reference](https://github.github.com/gh-aw/reference/engines/), [Authentication reference](https://github.github.com/gh-aw/reference/auth/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write), and [Billing reference](https://github.github.com/gh-aw/reference/billing/).
 
-- [AI Engines reference](https://github.github.com/gh-aw/reference/engines/)
-- [Authentication reference](https://github.github.com/gh-aw/reference/auth/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write)
-- [Billing reference](https://github.github.com/gh-aw/reference/billing/)

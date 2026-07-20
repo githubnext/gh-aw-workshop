@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Method 1 — Copilot Requests Permission
 
 > _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method 2](side-quest-06-03b-copilot-github-token.md)._
@@ -61,7 +65,9 @@ That single line is the only workflow authentication change required for reposit
 - [ ] I recompiled and committed the matching lock file
 - [ ] You did not need to create any repository secret
 
+<!-- journey: all -->
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
+<!-- /journey -->
 
 ## Troubleshooting
 

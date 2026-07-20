@@ -1,3 +1,7 @@
+---
+journey: ui
+adventure: side-quest
+---
 # Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
 > _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-billing setup without terminal commands._
@@ -67,6 +71,10 @@ When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_
 - [ ] You set a reminder to rotate the PAT before the expiry date
 - [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
 
+<!-- journey: ui -->
 Need a refresher on when to choose Method 2 or how this fits your auth setup? Go back to [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
+<!-- /journey -->
 
+<!-- journey: ui -->
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md)
+<!-- /journey -->

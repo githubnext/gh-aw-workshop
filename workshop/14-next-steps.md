@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: advanced
+---
 # What's Next? Keep Exploring
 
 > _You've built a real, scheduled AI workflow — here's how to keep growing from here._
@@ -21,6 +25,14 @@ You've gone from zero to a fully automated, AI-powered workflow that:
 - Posts a daily summary without any manual intervention
 
 That is a real, production-capable workflow. Nicely done.
+
+### Reflect and Plan
+
+Answer each question (in your notes or a new GitHub issue in your practice repository), then check the box:
+
+- [ ] What was the hardest part of this workshop, and why?
+- [ ] How would you change your daily-status workflow prompt to get better output?
+- [ ] What is the next workflow you want to build, and what data source would it need?
 
 ### Review what you've learned
 
@@ -73,12 +85,22 @@ Practice by reusing proven workflows before designing your own from scratch:
 
 1. Browse the [available workflow catalog in `githubnext/agentics`](https://github.com/githubnext/agentics#-available-workflows), then pick a workflow ID (for example, `ci-doctor`).
 2. Run `gh aw add githubnext/agentics/ci-doctor` in your repository (replace `ci-doctor` with the workflow ID you picked).
-3. Open the added workflow file, read the frontmatter and task brief, then run it.
-4. Adapt one part (trigger, permissions, or prompt) and re-run to compare behavior.
+3. Open the added workflow file, read the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task brief, then run it.
+4. Adapt one part (trigger, [permissions](https://github.github.com/gh-aw/reference/permissions/), or prompt) and re-run to compare behavior.
 
 #### Contribute to the workshop
 
 Found a gap? Have a better explanation? Open an issue or pull request in this repository. The workshop itself is a living document.
+
+### Quick Experiment
+
+Before moving on, make one small change to your workflow:
+
+1. Open your `daily-status.md` file.
+2. Change the first sentence of the opening paragraph in the Markdown task brief (below the frontmatter `---` fence) to be more specific — add a repo name, team name, or time constraint.
+3. Run the workflow manually and compare the output to your previous run.
+
+- [ ] I changed the prompt and re-ran the workflow.
 
 ### ✏️ Exercise: Draft Your Next Workflow
 
@@ -103,6 +125,7 @@ This takes 5 minutes and gives you a concrete starting point the next time you o
 > [!NOTE]
 > gh-aw is evolving quickly. Check the release notes regularly — new syntax and capabilities land frequently.
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] Your scheduled workflow has completed at least one successful automated run
@@ -126,8 +149,9 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) — add defensive briefs, timeouts, and fallback outputs so unattended runs stay reliable.
 - ➡️ [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) — compare prompt variants across runs and let data decide which one to keep.
 - ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
+- ➡️ [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
+- ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Permissions reference](https://github.github.com/gh-aw/reference/permissions/), [Inline Sub-Agents reference](https://github.github.com/gh-aw/reference/inline-sub-agents/), and [Cost Management reference](https://github.github.com/gh-aw/reference/cost-management/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: core
+---
 # Step 3a: Create Your Practice Repository — Terminal Path
 
 > _When you're done with this step, you'll have a public `my-agentic-workflows` repository cloned locally or in your Codespace, with GitHub Actions enabled and ready for the rest of the workshop._
@@ -114,9 +118,9 @@ You should see your username as `owner`, `my-agentic-workflows` as `name`, and a
 - [ ] The **Actions** tab is visible and enabled on GitHub
 - [ ] You can confirm your username is the repository owner
 
+<!-- journey: terminal -->
 **Next:** [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [CLI Commands reference](https://github.github.com/gh-aw/reference/cli-commands/)

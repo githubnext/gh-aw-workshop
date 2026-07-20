@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Token and Secret Exfiltration in Agentic Workflows
 
 > _Optional: work through this security primer to understand how crafted repository content can try to trick your agent into leaking tokens or API keys — and why gh-aw's design makes that very difficult._
@@ -148,11 +152,9 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 
 ---
 
+<!-- journey: all -->
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), and [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/).
 
-- [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/)

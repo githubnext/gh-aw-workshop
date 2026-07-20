@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Configure an Anthropic API Key
 
 > _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the AI engine for your agentic workflow, then return to your main path._
@@ -79,26 +83,12 @@ permissions:
 engine: claude          # switch from the default Copilot engine to Claude
 network:
   allowed:
-    - defaults          # keep the standard allow-list entries
+    - defaults
     - api.anthropic.com # required so the workflow can reach Anthropic
 ---
 ```
 
 If you previously added `copilot-requests: write` for the Copilot engine, you can remove it when switching to `claude`.
-
----
-
-## Optional: choose a specific Claude model
-
-You can pin a specific Claude model version using the extended engine syntax:
-
-```yaml
-engine:
-  id: claude
-  model: claude-opus-4-5
-```
-
-Leave the `model` field out to use the engine's current default model, which is kept up to date by the `gh-aw` team.
 
 ---
 
@@ -126,10 +116,9 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
+<!-- journey: all -->
 **Return to:** [Build — Daily Repo Status Workflow](11a-build-daily-status.md) or [Adventure A: Build Daily Status with the Add Wizard](11a-build-daily-status-wizard.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [About Workflows](https://github.github.com/gh-aw/introduction/overview/), [Authentication reference](https://github.github.com/gh-aw/reference/auth/#claude), [Network Permissions](https://github.github.com/gh-aw/reference/network/), and [Anthropic Claude models](https://docs.anthropic.com/en/docs/about-claude/models/).
 
-- [About Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Authentication reference](https://github.github.com/gh-aw/reference/auth/#claude)
-- [Network Permissions](https://github.github.com/gh-aw/reference/network/)

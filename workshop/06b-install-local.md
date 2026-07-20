@@ -1,3 +1,7 @@
+---
+journey: local
+adventure: setup
+---
 # Step 6b: Install gh-aw — Local Terminal
 
 > [!NOTE]
@@ -11,7 +15,7 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 
 - You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You've completed [Adventure B: Set Up Your Local Terminal](02b-setup-local.md)
-- The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-cli))
+- The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
 
 Run this to confirm `gh` is authenticated before continuing:
 
@@ -19,7 +23,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-cli).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Step 1: Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
 
 ## Install from terminal
 
@@ -104,11 +108,9 @@ Which one sub-command do you expect to use in Step 7 when you create and run you
 Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
+<!-- journey: local -->
 **Next:** [Step 7a: Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Agentic Authoring guide](https://github.github.com/gh-aw/guides/agentic-authoring/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Editing Workflows guide](https://github.github.com/gh-aw/guides/editing-workflows/)

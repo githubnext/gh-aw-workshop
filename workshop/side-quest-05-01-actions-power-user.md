@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Agentic Workflows for GitHub Actions Power Users
 
 > _Optional: read this quick-reference guide if you already know GitHub Actions and want a fast comparison before continuing with [Step 5](05-agentic-workflows-intro.md)._
@@ -109,6 +113,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 - Full auditability, change history, and approval gates stay intact
 - Compatible with existing runner fleet investments and compliance requirements
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain the mental model shift from scripted steps to goal-oriented execution
@@ -122,7 +127,6 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 
 Return to the main adventure: [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

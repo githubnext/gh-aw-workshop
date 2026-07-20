@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 4: GitHub Actions in 5 Minutes
 
 > [!TIP]
@@ -145,9 +149,9 @@ Mark each statement as true or false, then reveal the answers:
 - [ ] I answered the check-your-understanding questions
 - [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
 
+<!-- journey: all -->
 **Next:** [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

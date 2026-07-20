@@ -1,10 +1,14 @@
+---
+journey: all
+adventure: advanced
+---
 # Run Your Agentic Workflow on a Self-Hosted Runner
 
 > _Enterprise teams often need workflows to run on their own infrastructure — this step shows you exactly how._
 
 ## 🎯 What You'll Do
 
-You will update your workflow's frontmatter to target a self-hosted runner using a runner label.
+You will update your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to target a self-hosted runner using a runner label.
 By the end of this step, your agentic workflow will queue on a runner your organisation manages
 rather than a GitHub-hosted machine.
 
@@ -171,11 +175,9 @@ Commit the updated lock file before triggering your next workflow run.
 - [ ] You know where to find proxy and ephemeral runner guidance if your environment needs it
 - [ ] No workflow steps failed due to runner availability or label mismatch
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Self-Hosted Runners reference](https://github.github.com/gh-aw/reference/self-hosted-runners/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners), [Runner labels reference](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/using-labels-with-self-hosted-runners), [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md), and [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 
-- [Self-hosted runners documentation](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
-- [Runner labels reference](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/using-labels-with-self-hosted-runners)
-- [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md)
-- [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)

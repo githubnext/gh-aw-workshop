@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Permission Errors
 
 > _Optional: read this if you see a `permission denied` error and need help resolving it._
@@ -66,6 +70,7 @@ Then open an administrator PowerShell and run the same command — it should suc
 
 ---
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] You ran the practice command and saw `permission denied` (or an equivalent access-denied message) in your terminal output
@@ -76,3 +81,4 @@ Then open an administrator PowerShell and run the same command — it should suc
 ---
 
 When you're done here, return to [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md).
+<!-- /journey -->

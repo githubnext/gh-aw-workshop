@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: scenario-a
+---
 # Step 11a: Build — Daily Repo Status Workflow
 
 _You've designed the workflow on paper — now choose how you want to create it._
@@ -51,11 +55,9 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 - [ ] A commit containing the new workflow file appears in your repository's commit history.
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+<!-- journey: all -->
 **Next:** Continue with your chosen path above.
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest: Environment Reference
 
 > _Optional: use this quick glossary and visual reference to understand the environments and AI tools used throughout the workshop._
@@ -96,6 +100,7 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] You ran `gh --version` in your terminal and it returned a version number
@@ -107,3 +112,4 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 - [ ] You're ready to continue with setup or return to your current workshop step
 
 When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md).
+<!-- /journey -->

@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: core
+---
 # Schedule It to Run Every Day — Terminal Path
 
 > _Automating the trigger is what turns a one-off script into a true workflow — after this step your report will arrive without you lifting a finger._
@@ -37,7 +41,7 @@ on:
 
 ### Choose your schedule
 
-gh-aw accepts natural-language [schedule expressions](https://github.github.com/gh-aw/reference/triggers/) — no cron syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
+gh-aw accepts natural-language [schedule expressions](https://github.github.com/gh-aw/reference/triggers/) — no [cron](https://github.github.com/gh-aw/reference/schedule-syntax/) syntax needed. Common choices are `daily`, `daily on weekdays`, `weekly`, `hourly`, and `every 6 hours`, and `gh aw compile` expands them into the correct cron expression automatically.
 
 > [!TIP]
 > Want the full reference table, example compiled cron values, and help choosing the right cadence? See [Side Quest: Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md).
@@ -103,9 +107,9 @@ You can wait for the next scheduled time, or click **Run workflow** → **Run wo
 - [ ] You have pushed the change and can see the schedule badge in the Actions UI
 - [ ] At least one scheduled (or manual) run has completed successfully after the change
 
+<!-- journey: terminal -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Schedule Syntax reference](https://github.github.com/gh-aw/reference/schedule-syntax/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)

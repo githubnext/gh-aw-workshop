@@ -1,3 +1,7 @@
+---
+journey: terminal
+adventure: scenario-a
+---
 # Step 11a2: Compile and Run the Daily Status Workflow — Terminal Path
 
 > _The workflow file is written — now let's validate it and see it run._
@@ -82,11 +86,9 @@ Want to use a different AI engine? These side quests walk you through switching 
 - ➡️ [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — use `engine: codex`
 
 **Previous:** [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)
+<!-- journey: terminal -->
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Tools reference](https://github.github.com/gh-aw/reference/tools/)

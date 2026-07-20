@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 8b: Interpret Your First Run
 
 _Your first run is more useful when you can explain what the agent did and why._
@@ -14,6 +18,8 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 ## Read the live log
 
 Open the completed **Daily Report Status** run from the **Actions** tab and click the job name. The log usually moves through a simple pattern: the agent thinks, calls a tool, receives a result, and finishes.
+
+![Agent execution loop: Planning leads to a Tool Call, which returns a Result; the agent loops back or ends with Done](images/08b-agent-loop.svg)
 
 ```text
 🤔 Planning...  Searching for open issues with 👍 reactions
@@ -52,11 +58,9 @@ For a deeper troubleshooting guide, see [Step 9: Reading Workflow Output](09-und
 - [ ] I verified the real GitHub output that the workflow created
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
 
+<!-- journey: all -->
 **Next:** [Step 9: Reading Workflow Output](09-understand-output.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
-- [Auditing Workflows](https://github.github.com/gh-aw/reference/audit/)

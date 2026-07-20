@@ -1,10 +1,14 @@
+---
+journey: all
+adventure: advanced
+---
 # Give Your Agent More Tools with MCP
 
 > _MCP servers turn your agent from a text generator into an active participant that can read, fetch, and act._
 
 ## 🎯 What You'll Do
 
-You'll add an MCP (Model Context Protocol) server to your workflow's frontmatter, giving the AI agent access to a new set of [tools](https://github.github.com/gh-aw/reference/tools/) it can call at runtime. By the end, your daily-status workflow will be able to do more than just generate text — it can interact with live data sources using structured tool calls.
+You'll add an MCP (Model Context Protocol) server to your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), giving the AI agent access to a new set of [tools](https://github.github.com/gh-aw/reference/tools/) it can call at runtime. By the end, your daily-status workflow will be able to do more than just generate text — it can interact with live data sources using structured tool calls.
 
 ## 📋 Before You Start
 
@@ -28,6 +32,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 > - Want to see how an over-powered workflow can give a misdirected agent more authority than the task really needs? Work through [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).  
 > - Want to understand how a compromised MCP server could feed poisoned data to your agent — and how `network.allowed-domains` and minimal permissions defend against it? Work through [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md).  
 > - Want to see how crafted issue or PR content can embed misleading text into agent output — and how `safe-outputs` label scoping keeps reviewers from being fooled? Work through [Side Quest: Output Injection via Safe Outputs](side-quest-17-06-output-injection.md).  
+> - Want to understand how a misdirected agent with write access could commit backdoors or overwrite sensitive files — and how `contents: read`, `protected-files`, and `safe-outputs: create-pull-request` prevent it? Work through [Side Quest: Repository Poisoning via Agentic Write Access](side-quest-17-07-repo-poisoning.md).  
 > Then come back here.
 >
 > </details>
@@ -54,6 +59,20 @@ tools:
 > [!NOTE]
 > The `github` tool entry tells gh-aw to start the GitHub MCP server in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
 
+<!-- -->
+
+> [!NOTE]
+> <details>
+> <summary><b>Enterprise users (GHEC, GHES, EMU): confirm MCP proxy availability before continuing.</b></summary>
+>
+> `mode: gh-proxy` routes all GitHub tool calls through the `GITHUB_TOKEN` that Actions provides automatically — no extra credentials or setup needed on github.com or GHEC.
+>
+> On GHES, the GitHub MCP server is supported from GHES 3.16+. If your instance is older, the `tools:` block will compile without errors but the agent's tool calls will fail at runtime. Verify your GHES version and confirm with your admin that the Copilot MCP proxy feature is enabled for your organization.
+>
+> If MCP is unavailable in your environment, the [Connect a Live Data Source](16-connect-data-source.md) step covers an alternative approach using deterministic shell steps that only require `GITHUB_TOKEN` and the `gh` CLI — no MCP server needed.
+>
+> </details>
+
 ### Reference the tools in your task brief
 
 Below the frontmatter, update the task brief to tell the agent it can use the MCP tools:
@@ -73,7 +92,7 @@ The agent will read this brief, decide which MCP tool calls to make, and weave t
 If you're working locally, compile before pushing:
 
 ```bash
-gh aw compile --validate
+gh aw compile
 ```
 
 <details>
@@ -98,9 +117,9 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 - [ ] A manual run completes and the log shows at least one MCP tool call
 - [ ] The workflow output reflects live data retrieved via MCP, not just static text
 
+<!-- journey: all -->
 **Next:** [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Using MCPs guide](https://github.github.com/gh-aw/guides/mcps/), [MCP Scripts reference](https://github.github.com/gh-aw/reference/mcp-scripts/), and [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Tools, Imports, and Permissions reference](https://github.github.com/gh-aw/reference/tools/)

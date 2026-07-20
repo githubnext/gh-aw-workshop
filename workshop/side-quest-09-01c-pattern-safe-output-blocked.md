@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01c: Pattern — `safe-output: BLOCKED`
 
 ## 🎯 What You'll Do
@@ -37,6 +41,7 @@ Pattern: **`safe-output: BLOCKED (limit reached)`**. Decide whether the second w
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain what `BLOCKED` means in safe-output logs
@@ -44,8 +49,6 @@ Pattern: **`safe-output: BLOCKED (limit reached)`**. Decide whether the second w
 - [ ] I can add a guideline that prevents duplicate writes
 - [ ] I can keep safe-output limits intentionally small for safety
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/), and [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/).
 
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
-- [Common Issues](https://github.github.com/gh-aw/troubleshooting/common-issues/)

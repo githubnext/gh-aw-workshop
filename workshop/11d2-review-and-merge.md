@@ -1,3 +1,7 @@
+---
+journey: copilot
+adventure: scenario-d
+---
 # Adventure D (Part 2): Monitor, Review, and Merge
 
 > _Once the agent session ends, you'll review its pull request, ask for any revisions, and merge your workflow._
@@ -55,7 +59,7 @@ Once you are satisfied with the workflow, merge the pull request. Both the task 
 gh pr merge <pr-number> --merge --delete-branch
 ```
 
-After merging, open your repository on the default branch and confirm both files appear under `.github/workflows/`. Then open the **Actions** tab and verify that your workflow appears by name — it is now live and GitHub Actions will pick it up on the next scheduled trigger or when you click **Run workflow**.
+After merging, open your repository on the default branch and confirm both files appear under `.github/workflows/`. Then open the **Actions** tab and verify that your workflow appears by name — it is now live and GitHub Actions will pick it up on the next [scheduled](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) trigger or when you click **Run workflow**.
 
 ---
 
@@ -70,13 +74,9 @@ After merging, open your repository on the default branch and confirm both files
 - [ ] The workflow appears in the GitHub Actions tab of your practice repository
 
 **Previous:** [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
+<!-- journey: copilot -->
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md), [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [About the GitHub Copilot app](https://docs.github.com/en/copilot/concepts/agents/github-copilot-app), [Managing issues and pull requests with the GitHub Copilot app](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).
 
-- [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md)
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [About the GitHub Copilot app](https://docs.github.com/en/copilot/concepts/agents/github-copilot-app)
-- [Managing issues and pull requests with the GitHub Copilot app](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests)
-- [Triggers reference](https://github.github.com/gh-aw/reference/triggers/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: core
+---
 # Step 9: Reading Workflow Output
 
 > _An agentic workflow is only as useful as what you can learn from its output — knowing how to read the results is the skill that lets you improve fast._
@@ -162,9 +166,9 @@ Open the live log from your completed Step 8 **Daily Report Status** run.
 - [ ] I verified one safe output by checking the real issue comment and timestamp
 - [ ] I can name the first three checks to run when output looks wrong
 
+<!-- journey: all -->
 **Next:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+<!-- /journey -->
 
-## 📚 See Also
+For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).
 
-- [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

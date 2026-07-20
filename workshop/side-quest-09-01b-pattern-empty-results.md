@@ -1,3 +1,7 @@
+---
+journey: all
+adventure: side-quest
+---
 # Side Quest 09-01b: Pattern — Empty `[result]` Data
 
 ## 🎯 What You'll Do
@@ -36,6 +40,7 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can distinguish an empty result from a failed tool call
@@ -43,9 +48,6 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 - [ ] I can test a broader query to isolate filter problems
 - [ ] I can validate whether matching repository data actually exists
 
-## 📚 See Also
+<!-- /journey -->
+For more details, see [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/).
 
-- [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
-- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
-- [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)
-- [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)
