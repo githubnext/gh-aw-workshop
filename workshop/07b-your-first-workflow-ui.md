@@ -2,7 +2,7 @@
 journey: ui
 adventure: core
 ---
-# Step 7b: Write Your First Agentic Workflow — GitHub UI Path
+# Write Your First Agentic Workflow — GitHub UI Path
 
 > [!NOTE]
 > Want compiler feedback while you work? Switch to the [Terminal path](07a-your-first-workflow-terminal.md).

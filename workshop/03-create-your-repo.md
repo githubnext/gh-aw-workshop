@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-# Step 3: Create and Verify Your Practice Repository
+# Create and Verify Your Practice Repository
 
 _Now that setup is complete, create the repository where you'll build and test your workflows._
 

@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-# Step 9: Reading Workflow Output
+# Reading Workflow Output
 
 > _An agentic workflow is only as useful as what you can learn from its output — knowing how to read the results is the skill that lets you improve fast._
 

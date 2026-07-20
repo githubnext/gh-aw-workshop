@@ -2,7 +2,7 @@
 journey: ui
 adventure: scenario-a
 ---
-# Step 11a: Build the Daily Repo Status Workflow — GitHub UI Path
+# Build the Daily Repo Status Workflow — GitHub UI Path
 
 > [!NOTE]
 > Want incremental compiler feedback? Switch to the [Terminal path](11a-build-daily-status-terminal.md).

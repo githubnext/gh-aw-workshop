@@ -2,7 +2,7 @@
 journey: terminal
 adventure: scenario-c
 ---
-# Step 11c: Build the PR Code Reviewer — Terminal Path
+# Build the PR Code Reviewer — Terminal Path
 
 > _You've designed the workflow on paper — now let's turn it into real, running YAML._
 

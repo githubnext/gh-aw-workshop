@@ -2,7 +2,7 @@
 journey: all
 adventure: core
 ---
-# Step 8b: Interpret Your First Run
+# Interpret Your First Run
 
 _Your first run is more useful when you can explain what the agent did and why._
 
