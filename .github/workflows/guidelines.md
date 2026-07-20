@@ -301,27 +301,30 @@ Rules for assigning `journey`:
 
 ### Experience comment markers for deployment-context sections
 
-Use XML comments with an `experience` marker when only part of a page should be shown for a specific workshop deployment context (for example, a standalone/everything-preconfigured Codespace versus the standard workshop where learners set up tools themselves).
+Use XML comments with an `experience` marker when only part of a page should be shown for a specific workshop deployment context. Both experiences are workshops, but they differ in how they are provisioned:
+
+- **`workshop`** — the standard self-setup experience: learners follow the setup steps (prerequisites, environment, tool installation) on their own before building workflows.
+- **`standalone`** — an org-provisioned event experience: a GitHub organization is pre-configured with Copilot and agents enabled, each registered participant gets their own repository, and a Codespace paid by the org is ready to open. Learners skip environment and tooling setup steps and start working immediately.
 
 ```xml
 <!-- experience: standalone -->
-...content shown only in the standalone/preconfigured setup...
+...content shown only in the standalone org-provisioned experience...
 <!-- /experience -->
 ```
 
 Rules:
 
 - `experience:` accepts exactly one value: either `workshop` or `standalone`.
-- Use `workshop` for content that is only relevant when learners are building and configuring their environment from scratch (for example, tool installation steps, repository creation, or Codespace setup instructions that are already handled in the standalone experience).
-- Use `standalone` for content that is only relevant in a pre-configured Codespace where prerequisites are already installed and the environment is ready to use (for example, orientation notes about what has been pre-configured).
+- Use `workshop` for content that only applies when learners set up their own environment (for example, tool installation steps, repository creation, Codespace configuration, Copilot access verification).
+- Use `standalone` for content that only applies in the org-provisioned event experience (for example, notes about what the org has already configured, instructions for opening the pre-provisioned Codespace, or references to the shared org URL).
 - Do not wrap content that is relevant to both experiences — leave it unwrapped.
 - Do not nest `experience` markers. Keep each block self-contained and placed at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
 - `experience` markers are independent of `journey` markers and may appear inside or alongside them. Maintain the same no-nesting rule for each marker type separately — you may interleave an `experience` block with a `journey` block as siblings, but do not place one inside the other.
 
 | Value | Meaning |
 |-------|---------|
-| `workshop` | Standard workshop — learner sets up tools and environment from scratch |
-| `standalone` | Standalone/preconfigured Codespace — prerequisites and environment are already set up |
+| `workshop` | Standard self-setup workshop — learner provisions their own environment, tools, repo, and Copilot access |
+| `standalone` | Org-provisioned event workshop — GitHub org pre-configured with Copilot and agents enabled; each participant gets a dedicated repo and a Codespace paid by the org |
 
 Example pattern:
 
@@ -333,7 +336,7 @@ Example pattern:
 
 <!-- experience: standalone -->
 > [!NOTE]
-> Your Codespace is already configured — the `gh-aw` CLI extension is pre-installed and ready to use.
+> Your Codespace is already open and the `gh-aw` extension is pre-installed — skip ahead to [Step 7](07-your-first-workflow.md).
 <!-- /experience -->
 ```
 
