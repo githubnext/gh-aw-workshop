@@ -4,10 +4,34 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
-const { gfmHeadingId } = require('marked-gfm-heading-id');
+const { default: GithubSlugger } = require('github-slugger');
+const markedAlert = require('marked-alert');
 
-// Enable GFM heading ID plugin
-marked.use(gfmHeadingId());
+// Plugin: clickable heading anchors with GitHub-compatible IDs
+const slugger = new GithubSlugger();
+marked.use({
+  // Reset the slugger before each marked() call to avoid duplicate-ID drift
+  hooks: {
+    preprocess(src) { slugger.reset(); return src; },
+  },
+  useNewRenderer: true,
+  renderer: {
+    heading({ tokens, depth }) {
+      const text = this.parser.parseInline(tokens);
+      // Extract plain text from tokens (avoids regex-based HTML stripping)
+      const raw = tokens.map(function flattenTokenText(t) {
+        return t.tokens ? t.tokens.map(flattenTokenText).join('') : (t.text || t.raw || '');
+      }).join('').trim();
+      // slugger.slug() always returns a URL-safe [a-z0-9-] string, safe for attribute interpolation
+      const id = slugger.slug(raw);
+      // text is the HTML output of parseInline(), which escapes user content
+      return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-label="Link to this heading">#</a> ${text}</h${depth}>\n`;
+    },
+  },
+});
+
+// Plugin: render GitHub GFM alert callouts (> [!NOTE], > [!TIP], etc.)
+marked.use(markedAlert());
 
 const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
