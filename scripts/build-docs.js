@@ -59,12 +59,15 @@ const files = fs.readdirSync(workshopDir)
   .filter(f => f.endsWith('.md'))
   .sort();
 
-// Concatenate all markdown with horizontal rule separators
-const combinedMarkdown = files
-  .map(f => fs.readFileSync(path.join(workshopDir, f), 'utf8').trim())
-  .join('\n\n---\n\n');
-
-const htmlContent = marked(combinedMarkdown);
+// Render each file as a closed <details> section with the first heading as <summary>
+const htmlContent = files.map(f => {
+  const markdown = fs.readFileSync(path.join(workshopDir, f), 'utf8').trim();
+  // Extract plain text of the first heading (strip leading # characters)
+  const headingMatch = markdown.match(/^#{1,6}\s+(.+)$/m);
+  const title = headingMatch ? headingMatch[1].trim() : path.basename(f, '.md');
+  const content = marked(markdown);
+  return `<details>\n<summary>${title}</summary>\n${content}\n</details>`;
+}).join('\n\n');
 
 // Set up output directory
 fs.mkdirSync(distDir, { recursive: true });
