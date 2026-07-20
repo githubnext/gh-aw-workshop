@@ -52,6 +52,14 @@ def is_non_learning_page(raw: str) -> bool:
 
     Pages marked with ``<!-- <learning:false> -->`` are excluded from learning
     KPIs, engagement metrics, and Bloom's Taxonomy analysis.
+
+    Matching is case-insensitive and tolerates minor whitespace variations and
+    self-closing syntax.  Accepted formats include::
+
+        <!-- <learning:false> -->
+        <!-- <learning:false/> -->
+        <!-- <Learning:False> -->
+        <!--   <learning : false >   -->
     """
     return bool(LEARNING_FALSE_RE.search(raw))
 
@@ -67,7 +75,10 @@ def sorted_workshop_files(
         workshop_dir: Path to the workshop directory.
         include_readme: When True, include README.md in the results.
         learning_only: When True, exclude pages marked with
-            ``<!-- <learning:false> -->``.
+            ``<!-- <learning:false> -->``.  Note that enabling this option reads
+            each file once during filtering; callers that subsequently call
+            :func:`score_workshop_file` on the returned paths will read each
+            file a second time.
     """
     root = pathlib.Path(workshop_dir)
     paths = sorted(
