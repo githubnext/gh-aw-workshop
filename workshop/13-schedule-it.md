@@ -38,6 +38,23 @@ on:
 
 Both paths update the same fuzzy schedule expression and finish by confirming it in GitHub Actions.
 
+> [!IMPORTANT]
+> <details>
+> <summary><b>Did you recompile? This step fails silently without it.</b></summary>
+>
+> After editing the schedule expression in `daily-status.md`, you **must** run `gh aw compile` and commit the updated lock file before the schedule takes effect. GitHub Actions schedules the compiled cron value in `.lock.yml` — editing the source file alone does nothing.
+>
+> ```bash
+> gh aw compile
+> git add .github/workflows/daily-status.lock.yml
+> git commit -m "chore: recompile schedule"
+> git push
+> ```
+>
+> **Mobile users:** this step requires the terminal path. If you are on a mobile device or in the Copilot app, you must switch to a Codespace environment to complete this step. See [Adventure A: Set Up a Codespace](02a-setup-codespace.md) for instructions.
+>
+> </details>
+
 ## ✅ Checkpoint
 
 After completing your chosen path, verify:
