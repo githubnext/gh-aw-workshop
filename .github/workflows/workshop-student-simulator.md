@@ -35,8 +35,28 @@ steps:
 
   - name: Initialize student profiles if missing
     run: |
-      if [ ! -f /tmp/gh-aw/cache-memory/profiles.json ]; then
-        cat > /tmp/gh-aw/cache-memory/profiles.json <<'EOF'
+      PROFILES=/tmp/gh-aw/cache-memory/profiles.json
+      NEEDS_INIT=true
+      if [ -f "$PROFILES" ]; then
+        if python3 << 'PYEOF'
+      import json, sys
+      try:
+          with open('/tmp/gh-aw/cache-memory/profiles.json') as f:
+              d = json.load(f)
+          students = d.get('students', [])
+          assert isinstance(students, list) and students and isinstance(students[0], dict) and 'runs' in students[0]
+          sys.exit(0)
+      except Exception:
+          sys.exit(1)
+      PYEOF
+        then
+          NEEDS_INIT=false
+        else
+          echo "Cached profiles are in an incompatible format. Reinitializing..."
+        fi
+      fi
+      if [ "$NEEDS_INIT" = "true" ]; then
+        cat > "$PROFILES" <<'EOF'
       {
         "version": 2,
         "students": [
@@ -92,7 +112,7 @@ steps:
         echo "Initialized fresh student profiles (46 students)"
       else
         echo "Loaded existing student profiles from cache"
-        cat /tmp/gh-aw/cache-memory/profiles.json | python3 -c "
+        cat "$PROFILES" | python3 -c "
       import json,sys
       d=json.load(sys.stdin)
       runs=sum(s['runs'] for s in d['students'])
