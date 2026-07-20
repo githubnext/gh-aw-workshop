@@ -112,7 +112,9 @@ The parser reads `required-labels` in [`pkg/workflow/safe_outputs_parser.go`](ht
 - [ ] I captured a workflow log line that shows a mock output injection attempt being rejected
 - [ ] I linked to the gh-aw source line that validates or sanitizes a safe output
 
+<!-- journey: all -->
 Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

@@ -74,7 +74,9 @@ After merging, open your repository on the default branch and confirm both files
 - [ ] The workflow appears in the GitHub Actions tab of your practice repository
 
 **Previous:** [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
+<!-- journey: copilot -->
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+<!-- /journey -->
 
 ## 📚 See Also
 - [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md)

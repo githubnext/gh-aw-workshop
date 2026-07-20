@@ -41,6 +41,7 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can recognize a planning loop from log lines alone
@@ -48,6 +49,7 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 - [ ] I can add a concrete first tool call to my workflow brief
 - [ ] I can define a clear ranking rule the agent can execute
 
+<!-- /journey -->
 ## 📚 See Also
 
 - [Debugging Workflows](https://github.github.com/gh-aw/troubleshooting/debugging/)

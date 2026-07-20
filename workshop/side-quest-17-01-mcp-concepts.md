@@ -156,7 +156,9 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

@@ -81,7 +81,9 @@ Further reading:
 - [ ] I identified the suspicious `.mcp.json` entry and explained why it is risky
 - [ ] I applied at least one of the three hardening habits to my own workflow
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

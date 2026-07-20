@@ -105,7 +105,9 @@ You'll paste a complete pull request reviewer workflow into the GitHub web edito
 - [ ] You understand the workflow's [permissions](https://github.github.com/gh-aw/reference/permissions/) and five-comment limit
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+<!-- journey: ui -->
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+<!-- /journey -->
 
 ## 📚 See Also
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

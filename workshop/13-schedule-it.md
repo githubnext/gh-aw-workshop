@@ -51,7 +51,9 @@ After completing your chosen path, verify:
 - [ ] The **Actions** tab shows the schedule badge for your **daily-status** workflow.
 - [ ] At least one run has completed successfully after the schedule change.
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
 ## 📚 See Also
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

@@ -55,7 +55,9 @@ All paths produce `.github/workflows/daily-status.md` and converge at Step 12.
 - [ ] A commit containing the new workflow file appears in your repository's commit history.
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+<!-- journey: all -->
 **Next:** Continue with your chosen path above.
+<!-- /journey -->
 
 ## 📚 See Also
 

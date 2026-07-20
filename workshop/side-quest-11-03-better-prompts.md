@@ -158,7 +158,9 @@ posted to the Actions run summary.
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md) or continue to [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

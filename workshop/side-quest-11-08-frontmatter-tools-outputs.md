@@ -121,7 +121,9 @@ Three conventions keep a task brief reliable:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11: Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

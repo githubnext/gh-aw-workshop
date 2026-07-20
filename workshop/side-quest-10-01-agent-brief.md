@@ -197,7 +197,9 @@ Guardrails:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 10: Design Your Daily Repo Status Report](10a-design-daily-status.md) or continue to [Step 11: Build Your Daily Repo Status Workflow](11a-build-daily-status.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

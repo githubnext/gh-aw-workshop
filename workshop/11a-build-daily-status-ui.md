@@ -106,7 +106,9 @@ You'll paste a complete daily repository status workflow into the GitHub web edi
 - [ ] You understand the workflow's permissions and output guardrail
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
+<!-- journey: ui -->
 **Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

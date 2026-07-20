@@ -59,7 +59,9 @@ Use this quick self-check before you move on:
 - [ ] You know both paths produce the same workflow file
 
 **Previous:** [Step 10c: Design — PR Code Reviewer](10c-design-pr-reviewer.md)
+<!-- journey: all -->
 **Next:** Continue with your chosen path above.
+<!-- /journey -->
 
 ## 📚 See Also
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

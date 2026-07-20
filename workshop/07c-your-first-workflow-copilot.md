@@ -62,7 +62,9 @@ Before you approve the merge, the agent presents the file changes in its session
 - [ ] You merged the pull request into `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
+<!-- journey: copilot -->
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

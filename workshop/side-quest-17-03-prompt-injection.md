@@ -130,7 +130,9 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

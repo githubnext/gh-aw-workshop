@@ -81,7 +81,9 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

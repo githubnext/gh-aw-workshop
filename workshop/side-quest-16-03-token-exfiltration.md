@@ -152,7 +152,9 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 
 ---
 
+<!-- journey: all -->
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

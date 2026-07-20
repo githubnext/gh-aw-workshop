@@ -40,6 +40,7 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can distinguish an empty result from a failed tool call
@@ -47,6 +48,7 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 - [ ] I can test a broader query to isolate filter problems
 - [ ] I can validate whether matching repository data actually exists
 
+<!-- /journey -->
 ## 📚 See Also
 
 - [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)

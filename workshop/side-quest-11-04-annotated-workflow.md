@@ -103,7 +103,9 @@ safe-outputs:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 11: Build: Daily Repo Status Workflow](11a-build-daily-status.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

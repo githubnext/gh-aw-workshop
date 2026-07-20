@@ -234,7 +234,9 @@ Does your answer include:
 - [ ] I understand that `gh aw compile` generates the lock file and it must not be edited by hand
 - [ ] I can explain, in my own words, how agentic workflows relate to tool-calling or LLM APIs if I already use them
 
+<!-- journey: all -->
 **Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

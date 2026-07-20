@@ -100,7 +100,9 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 - [ ] You can browse artifacts in the GitHub Actions UI
 - [ ] You know your organisation's artifact retention policy (or know who to ask)
 
+<!-- journey: all -->
 **Next:** [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

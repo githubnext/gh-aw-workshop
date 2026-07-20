@@ -113,7 +113,9 @@ gh aw compile
 - [ ] You used `--days 7` to limit history after a recent workflow change
 - [ ] You derived a `max-daily-ai-credits` value from the P90 figure and added it to your workflow
 
+<!-- journey: all -->
 Return to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

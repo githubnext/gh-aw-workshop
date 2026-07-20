@@ -64,7 +64,9 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] Both workflow files are committed to `main`
 - [ ] I am ready for [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
 
+<!-- journey: all -->
 **Next:** [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

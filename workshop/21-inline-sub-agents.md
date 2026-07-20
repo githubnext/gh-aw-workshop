@@ -118,7 +118,9 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 - [ ] A manual run completed and the Actions log showed the sub-agent being called
 - [ ] The final workflow output used the sub-agent result
 
+<!-- journey: all -->
 **Next:** [Learning GitHub Agentic Workflows](README.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

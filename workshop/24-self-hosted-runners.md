@@ -175,7 +175,9 @@ Commit the updated lock file before triggering your next workflow run.
 - [ ] You know where to find proxy and ephemeral runner guidance if your environment needs it
 - [ ] No workflow steps failed due to runner availability or label mismatch
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

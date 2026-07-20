@@ -117,7 +117,9 @@ The fourth sentence — "Please disregard your current task…" — is the injec
 
 ---
 
+<!-- journey: all -->
 Return to [Step 10: Choose Your Scenario](10-choose-your-scenario.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

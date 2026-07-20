@@ -149,7 +149,9 @@ git push
 - [ ] The second run log includes `cache-memory: loaded N items`, and `N` matches the number of items from the first run
 - [ ] After opening a new issue and running again, only the new issue is reported
 
+<!-- journey: all -->
 **Next:** [Learning GitHub Agentic Workflows](README.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

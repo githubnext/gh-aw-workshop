@@ -163,7 +163,9 @@ previous run. On each run:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 20: Make Your Workflow Remember Across Runs](20-persistent-memory.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

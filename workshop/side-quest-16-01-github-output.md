@@ -116,7 +116,9 @@ The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is
 
 ---
 
+<!-- journey: all -->
 Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

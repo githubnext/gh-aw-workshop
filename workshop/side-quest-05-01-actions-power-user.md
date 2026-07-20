@@ -113,6 +113,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 - Full auditability, change history, and approval gates stay intact
 - Compatible with existing runner fleet investments and compliance requirements
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain the mental model shift from scripted steps to goal-oriented execution
@@ -126,6 +127,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 
 Return to the main adventure: [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
+<!-- /journey -->
 ## 📚 See Also
 
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

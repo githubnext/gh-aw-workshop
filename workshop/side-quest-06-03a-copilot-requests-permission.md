@@ -65,7 +65,9 @@ That single line is the only workflow authentication change required for reposit
 - [ ] I recompiled and committed the matching lock file
 - [ ] You did not need to create any repository secret
 
+<!-- journey: all -->
 **Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
+<!-- /journey -->
 
 ## Troubleshooting
 

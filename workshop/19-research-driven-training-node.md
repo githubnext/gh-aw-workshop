@@ -83,7 +83,9 @@ gh aw compile --validate
 - [ ] You captured supporting rationale in XML comments
 - [ ] You ran lint and compile validation before preparing a PR
 
+<!-- journey: all -->
 **Next:** [Learning GitHub Agentic Workflows](README.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

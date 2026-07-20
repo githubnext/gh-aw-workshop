@@ -64,7 +64,9 @@ Share the allowed-domains list from a successful run with your enterprise securi
 - [ ] You can use `firewall.md` to identify blocked domains and add them to `network.allow`
 - [ ] You know what the threat detection verdict checks for
 
+<!-- journey: all -->
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

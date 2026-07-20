@@ -81,7 +81,9 @@ Guardrails:
 - [ ] I've sketched the comment format (even a rough draft counts)
 - [ ] I've written at least two guardrail rules
 
+<!-- journey: all -->
 **Next:** [Step 11a: Build — Daily Repo Status Workflow](11a-build-daily-status.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

@@ -120,7 +120,9 @@ After pushing:
 - [ ] A manual run completes successfully and the safe output step is visible in the log
 - [ ] You can name at least two common agentic workflow failure modes and how to mitigate them
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

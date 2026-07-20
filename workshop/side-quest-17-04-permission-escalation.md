@@ -146,7 +146,9 @@ Write your prediction here, then save and run the workflow to check it:
 
 ---
 
+<!-- journey: all -->
 Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

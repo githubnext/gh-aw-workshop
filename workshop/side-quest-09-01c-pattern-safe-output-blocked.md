@@ -41,6 +41,7 @@ Pattern: **`safe-output: BLOCKED (limit reached)`**. Decide whether the second w
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain what `BLOCKED` means in safe-output logs
@@ -48,6 +49,7 @@ Pattern: **`safe-output: BLOCKED (limit reached)`**. Decide whether the second w
 - [ ] I can add a guideline that prevents duplicate writes
 - [ ] I can keep safe-output limits intentionally small for safety
 
+<!-- /journey -->
 ## 📚 See Also
 
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

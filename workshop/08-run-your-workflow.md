@@ -68,7 +68,9 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 > [!TIP]
 > If your run failed, see [Step 8b](08b-interpret-your-run.md) for a log walk-through and common failure patterns.
 
+<!-- journey: all -->
 **Next:** [Step 8b: Interpret Your First Run](08b-interpret-your-run.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

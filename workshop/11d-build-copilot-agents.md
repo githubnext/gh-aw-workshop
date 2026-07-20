@@ -149,7 +149,9 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 - [ ] You submitted the scenario prompt (A, B, or C) to the agent
 
 **Previous:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+<!-- journey: copilot -->
 **Next:** [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)
+<!-- /journey -->
 
 ## 📚 See Also
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

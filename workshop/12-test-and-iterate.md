@@ -119,7 +119,9 @@ For troubleshooting run failures, see [Side Quest: Evaluating and Iterating on A
 - [ ] You have made at least one improvement to the prompt targeting a specific rubric row
 - [ ] Your improved workflow has run at least once and produced output that matches your formatting expectations
 
+<!-- journey: all -->
 **Next:** [Step 13: Schedule It to Run Every Day](13-schedule-it.md)
+<!-- /journey -->
 
 ## 📚 See Also
 - [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)

@@ -77,6 +77,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 >   workflow_dispatch: {}
 > ```
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain what a cron expression is at a high level
@@ -89,6 +90,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 
 Return to the main adventure: [Step 13: Schedule It to Run Every Day](13-schedule-it.md).
 
+<!-- /journey -->
 ## 📚 See Also
 
 - [GitHub Actions Triggers](https://github.github.com/gh-aw/reference/triggers/)

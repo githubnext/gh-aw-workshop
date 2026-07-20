@@ -172,7 +172,9 @@ If this combined check stops early, run each command on its own to find the fail
 - [ ] `gh auth login` completed without errors
 - [ ] `gh auth status` confirms you're signed in
 
+<!-- journey: local -->
 **Next:** [Step 3: Create and Verify Your Practice Repository](03-create-your-repo.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

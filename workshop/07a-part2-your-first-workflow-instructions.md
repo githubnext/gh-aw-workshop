@@ -97,4 +97,6 @@ For follow-up edits, prefer asking an agent to update workflows with the `agenti
 - [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/)
 - [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/)
 
+<!-- journey: terminal -->
 **Next:** [Step 7d: Confirm Model Access](07d-confirm-model-access.md)
+<!-- /journey -->

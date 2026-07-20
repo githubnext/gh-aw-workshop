@@ -43,6 +43,7 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 
 </details>
 
+<!-- journey: all -->
 ## ✅ Checkpoint
 
 - [ ] I can explain why a successful run might skip writing
@@ -50,6 +51,7 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 - [ ] I can check that `safe-outputs:` includes the needed write action
 - [ ] I can add a fallback output rule for no-action scenarios
 
+<!-- /journey -->
 ## 📚 See Also
 
 - [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/)

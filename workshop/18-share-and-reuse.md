@@ -93,7 +93,9 @@ This hint saves teammates guesswork when they first open the file.
 - [ ] You've added a brief template comment explaining what to customise
 - [ ] A teammate (or you in a second repo) has successfully imported the template with `gh aw add`
 
+<!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

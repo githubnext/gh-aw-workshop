@@ -69,7 +69,9 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 
 ---
 
+<!-- journey: all -->
 Return to [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

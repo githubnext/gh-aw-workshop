@@ -166,7 +166,9 @@ Open the live log from your completed Step 8 **Daily Report Status** run.
 - [ ] I verified one safe output by checking the real issue comment and timestamp
 - [ ] I can name the first three checks to run when output looks wrong
 
+<!-- journey: all -->
 **Next:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

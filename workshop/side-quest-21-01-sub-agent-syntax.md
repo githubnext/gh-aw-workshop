@@ -163,7 +163,9 @@ When the compile finishes, check that you do **not** see warnings about stripped
 
 ---
 
+<!-- journey: all -->
 Return to [Step 21: Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md).
+<!-- /journey -->
 
 ## 📚 See Also
 

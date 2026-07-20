@@ -142,7 +142,9 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 - [ ] You understand when to use `GITHUB_TOKEN` vs. a manually created PAT
 - [ ] You can explain why hard-coding credentials in workflow files is risky
 
+<!-- journey: all -->
 **Return to:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) or [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

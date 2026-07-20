@@ -126,7 +126,9 @@ At **Step 11**, you can build manually (Step 11a), use the guided wizard (Advent
 - [ ] You know the next file you'll open
 - [ ] You're excited — let's go! 🚀
 
+<!-- journey: all -->
 **Next:** [Step 1: What You Need Before We Start](01-prerequisites.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

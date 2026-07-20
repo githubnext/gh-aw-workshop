@@ -150,7 +150,9 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 - [ ] You can predict and verify third-variant assignment order from lowest-count selection with first-in-array tie breaks
 - [ ] You can explain what you would do once a winning variant is identified
 
+<!-- journey: all -->
 **Next:** [Learning GitHub Agentic Workflows](README.md)
+<!-- /journey -->
 
 ## 📚 See Also
 

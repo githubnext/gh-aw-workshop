@@ -49,7 +49,9 @@ The default token inside a Codespace usually has enough access to work with your
 
 ## Fix A (recommended): use the GitHub Actions UI
 
+<!-- journey: codespace -->
 Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md#trigger-the-workflow-via-github-actions-ui) and trigger the workflow from the **Actions** tab instead.
+<!-- /journey -->
 
 This is the best path for the workshop because it works even when your Codespace terminal token is limited.
 
@@ -103,7 +105,9 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 ---
 
+<!-- journey: codespace -->
 Return to [Step 8: Run and Watch Your Workflow](08-run-your-workflow.md).
+<!-- /journey -->
 
 ## 📚 See Also
 
