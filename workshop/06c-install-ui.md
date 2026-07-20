@@ -11,7 +11,7 @@ You'll confirm that the GitHub UI path does not require a local `gh-aw` installa
 
 ## 📋 Before You Start
 
-- You've completed [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md)
+- You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You are signed in to [github.com](https://github.com)
 - You have your practice repository ready (from [Step 3b: GitHub UI Path](03b-create-your-repo-ui.md))
 

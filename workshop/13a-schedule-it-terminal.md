@@ -10,7 +10,7 @@ You'll update the `schedule` trigger in your workflow using gh-aw's fuzzy schedu
 
 ## 📋 Before You Start
 
-- You have installed the `gh-aw` extension in [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
+- You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working, manually tested workflow from [Test and Improve Your Workflow](12-test-and-iterate.md).
 - Your workflow file lives at `.github/workflows/daily-status.md`.
 

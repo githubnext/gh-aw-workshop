@@ -109,5 +109,5 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 - [ ] You know where to find official docs for each item
 - [ ] You're ready to continue with setup or return to your current workshop step
 
-When you're done here, return to [Step 1: What You Need Before We Start](01-prerequisites.md).
+When you're done here, return to [What You Need Before We Start](01-prerequisites.md).
 <!-- /journey -->

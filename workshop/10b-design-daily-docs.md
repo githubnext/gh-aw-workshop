@@ -10,7 +10,7 @@ You'll design a **Daily Documentation Updater** workflow. Instead of jumping str
 
 ## 📋 Before You Start
 
-- You've completed [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+- You've completed [Choose Your Scenario](10-choose-your-scenario.md)
 - You have a practice repository created in [Step 3](03-create-your-repo.md)
 
 ---

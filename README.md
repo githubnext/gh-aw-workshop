@@ -35,7 +35,7 @@ You'll build a scheduled, AI-powered repository status report that runs in GitHu
 
 ## Start here
 
-1. Open [Step 0: Welcome](workshop/00-welcome.md).
+1. Open [Welcome](workshop/00-welcome.md).
 2. Follow the workshop in order.
 3. Use the checkpoint at the end of each step before moving on.
 4. Refer to [workshop/README.md](workshop/README.md) any time you want the full curriculum view.

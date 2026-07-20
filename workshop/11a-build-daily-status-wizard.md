@@ -125,7 +125,7 @@ If you want to see what is inside `daily-status.md`, open it in your editor and 
 
 **Previous:** [Step 10a: Design — Daily Repo Status Report](10a-design-daily-status.md)
 <!-- journey: all -->
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).

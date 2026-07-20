@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You have completed [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+- You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You have a workflow YAML file open in your editor.
 
 By default, a gh-aw agent reads your task brief and produces text. **MCP (Model Context Protocol)** breaks that boundary — it lets the agent call structured tools at runtime and incorporate real data into its output.
@@ -155,7 +155,7 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 ---
 
 <!-- journey: all -->
-Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 <!-- /journey -->
 
 For more details, see [Tools reference](https://github.github.com/gh-aw/reference/tools/), [GitHub Tools read permissions](https://github.github.com/gh-aw/reference/permissions/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), and [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/).

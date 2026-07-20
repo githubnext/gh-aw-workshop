@@ -7,8 +7,8 @@
 ## 📋 Before You Start
 
 - You have a basic agentic workflow from [Step 11a: Build Your Daily Status Workflow](11a-build-daily-status.md) or equivalent.
-- You understand `safe-outputs` and `permissions` frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
-- You have started [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+- You understand `safe-outputs` and `permissions` frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 
 When your agent reads live repository content — issue bodies, PR descriptions, commit messages, file contents — it reads text written by other people. Some of that text might try to act like an instruction aimed at your secrets.
 
@@ -151,7 +151,7 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 ---
 
 <!-- journey: all -->
-Return to [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
+Return to [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 <!-- /journey -->
 
 For more details, see [Safe Outputs](https://github.github.com/gh-aw/reference/safe-outputs/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), and [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/).

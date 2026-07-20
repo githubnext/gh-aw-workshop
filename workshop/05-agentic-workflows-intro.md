@@ -13,8 +13,8 @@ If both apply, [Skip to Step 6: Install gh-aw](06-install-gh-aw.md).
 
 ## 📋 Before You Start
 
-- You've completed [Step 3: Create Your Practice Repository](03-create-your-repo.md)
-- You've read [Step 4: What Are GitHub Actions?](04-github-actions-intro.md)
+- You've completed [Create Your Practice Repository](03-create-your-repo.md)
+- You've read [What Are GitHub Actions?](04-github-actions-intro.md)
 
 > [!TIP]
 > If you already work with LLM APIs or orchestration frameworks: an agentic workflow is similar to a tool-calling agent loop, but the "tools" are GitHub Actions steps and the "runtime" is GitHub Actions — not a local process.
@@ -252,7 +252,7 @@ Does your answer include:
 - [ ] I can explain, in my own words, how agentic workflows relate to tool-calling or LLM APIs if I already use them
 
 <!-- journey: all -->
-**Next:** [Step 6: Install the gh-aw CLI Extension](06-install-gh-aw.md)
+**Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [How Agentic Workflows Work](https://github.github.com/gh-aw/introduction/how-they-work/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Compilation Process](https://github.github.com/gh-aw/reference/compilation-process/), and [Schedule Syntax](https://github.github.com/gh-aw/reference/schedule-syntax/).

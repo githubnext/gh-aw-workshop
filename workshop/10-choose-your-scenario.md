@@ -11,7 +11,7 @@ Choose one of three real-world [agentic workflow](https://github.github.com/gh-a
 
 ## 📋 Before You Start
 
-- You've completed [Step 9: Reading Workflow Output](09-understand-output.md)
+- You've completed [Reading Workflow Output](09-understand-output.md)
 - You have a practice repository created in [Step 3](03-create-your-repo.md)
 
 ---
@@ -133,7 +133,7 @@ The purpose of the workflow is a daily status report on recent repository activi
 
 The agent creates the workflow, compiles it, and opens a pull request. Review the diff and merge it into `main`.
 
-➡️ [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+➡️ [Test and Improve Your Workflow](12-test-and-iterate.md)
 
 ---
 

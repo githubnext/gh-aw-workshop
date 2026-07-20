@@ -73,7 +73,7 @@ After merging, open your repository on the default branch and confirm both files
 
 **Previous:** [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md)
 <!-- journey: copilot -->
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->
 
 For more details, see [Side Quest: Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md), [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [About the GitHub Copilot app](https://docs.github.com/en/copilot/concepts/agents/github-copilot-app), [Managing issues and pull requests with the GitHub Copilot app](https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), and [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/).

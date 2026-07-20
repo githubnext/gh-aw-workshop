@@ -21,7 +21,7 @@ You'll choose the GitHub Copilot desktop app or the Agents tab, paste a ready-ma
 
 ## 📋 What You Need
 
-- A GitHub repository (see [Step 3: Open and Verify Your Practice Repository](03-create-your-repo.md) if you haven't created one yet)
+- A GitHub repository (see [Open and Verify Your Practice Repository](03-create-your-repo.md) if you haven't created one yet)
 - A GitHub Copilot plan
 - Either the [GitHub Copilot app](https://github.com/features/ai/github-app) installed or the Copilot coding agent (Agents tab) enabled
 
@@ -155,7 +155,7 @@ Commit the `.md` file and the generated `.lock.yml`, then open a pull request fo
 - [ ] You confirmed the agent can reach the reference guide (probe returned Frontmatter schema, Triggers, [Permissions](https://github.github.com/gh-aw/reference/permissions/), and Safe outputs)
 - [ ] You submitted the scenario prompt (A, B, or C) to the agent
 
-**Previous:** [Step 10: Choose Your Scenario](10-choose-your-scenario.md)
+**Previous:** [Choose Your Scenario](10-choose-your-scenario.md)
 <!-- journey: copilot -->
 **Next:** [Adventure D (Part 2): Monitor, Review, and Merge](11d2-review-and-merge.md)
 <!-- /journey -->

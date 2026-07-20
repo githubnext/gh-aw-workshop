@@ -8,7 +8,7 @@
 
 - You have a GitHub account and know whether your environment is `github.com`, GitHub Enterprise Cloud (GHEC), or GitHub Enterprise Server (GHES).
 - You can reach your GitHub Enterprise administrator to confirm GHES version and policy settings.
-- You have started [Step 1: Prerequisites](01-prerequisites.md) or an early setup step that directed you here.
+- You have started [Prerequisites](01-prerequisites.md) or an early setup step that directed you here.
 
 Use this side quest if your environment differs from standard `github.com` defaults.
 
@@ -84,7 +84,7 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Step 1: Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+Common return points are [Prerequisites](01-prerequisites.md), [Adventure A: Set Up a Codespace](02a-setup-codespace.md), [Adventure B: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 <!-- /journey -->
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) and [Network Permissions reference](https://github.github.com/gh-aw/reference/network/).

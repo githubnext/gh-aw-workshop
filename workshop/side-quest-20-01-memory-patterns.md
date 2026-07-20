@@ -7,8 +7,8 @@
 ## 📋 Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
-- You have completed or are about to start [Step 20: Make Your Workflow Remember Across Runs](20-persistent-memory.md).
-- You understand YAML frontmatter from [Step 7: Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have completed or are about to start [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
+- You understand YAML frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 
 `gh-aw` gives you two primitives for persisting state between workflow runs. They behave differently, store data in different places, and suit different use cases. This side quest walks through both in detail so you can pick the right one for your workflow — and know how to switch if your needs change.
 
@@ -162,7 +162,7 @@ previous run. On each run:
 ---
 
 <!-- journey: all -->
-Return to [Step 20: Make Your Workflow Remember Across Runs](20-persistent-memory.md).
+Return to [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 <!-- /journey -->
 
 For more details, see [Cache Memory reference](https://github.github.com/gh-aw/reference/cache-memory/), [Repo Memory reference](https://github.github.com/gh-aw/reference/repo-memory/), [MemoryOps pattern](https://github.github.com/gh-aw/patterns/memory-ops/), and [Triggers reference](https://github.github.com/gh-aw/reference/triggers/).

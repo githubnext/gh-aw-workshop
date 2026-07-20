@@ -12,7 +12,7 @@ rather than a GitHub-hosted machine.
 
 ## 📋 Before You Start
 
-- Your agentic workflow runs successfully (see [Step 12: Test and Iterate](12-test-and-iterate.md)).
+- Your agentic workflow runs successfully (see [Test and Iterate](12-test-and-iterate.md)).
 - A self-hosted runner is registered and **online** for your repository or organisation.
   If you need to set one up first, see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 - You know the label assigned to your runner (for example, `self-hosted`, `ubuntu-self-hosted`, or a custom label your admin configured).

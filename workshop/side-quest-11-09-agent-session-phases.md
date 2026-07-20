@@ -8,7 +8,7 @@
 
 - You've started [Adventure D: Build Any Workflow with GitHub Copilot](11d-build-copilot-agents.md) (or another Step 11 path) and have an active or recently completed agent session.
 - You have [`gh aw` installed and authenticated](06-install-gh-aw.md) — completed in Step 6.
-- You understand the purpose of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from [Step 5: What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+- You understand the purpose of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 ## 🎯 What You'll Learn
 

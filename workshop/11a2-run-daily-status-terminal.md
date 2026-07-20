@@ -59,7 +59,7 @@ After the run completes (usually under a minute), find the comment on your issue
 Repository looks healthy. The open PR from 3 days ago may need a review.
 ```
 
-If the run failed or the output looks wrong, see [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md) for debugging guidance.
+If the run failed or the output looks wrong, see [Test and Improve Your Workflow](12-test-and-iterate.md) for debugging guidance.
 
 ## Troubleshooting
 
@@ -85,7 +85,7 @@ Want to use a different AI engine? These side quests walk you through switching 
 
 **Previous:** [Step 11a: Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)
 <!-- journey: terminal -->
-**Next:** [Step 12: Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
 <!-- /journey -->
 
 For more details, see [Overview of GitHub Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/), [Triggers reference](https://github.github.com/gh-aw/reference/triggers/), [Safe Outputs reference](https://github.github.com/gh-aw/reference/safe-outputs/), and [Tools reference](https://github.github.com/gh-aw/reference/tools/).

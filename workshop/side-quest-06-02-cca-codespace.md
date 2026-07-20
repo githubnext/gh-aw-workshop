@@ -45,7 +45,7 @@ If you hit an HTTP 403 install error in an org-owned Codespace, use
 ## Return to the main workshop
 
 <!-- journey: copilot -->
-Go back to [Step 6: Install the `gh-aw` CLI Extension](06-install-gh-aw.md), then continue to [Step 7](07-your-first-workflow.md).
+Go back to [Install the `gh-aw` CLI Extension](06-install-gh-aw.md), then continue to [Step 7](07-your-first-workflow.md).
 <!-- /journey -->
 
 ## ✅ Checkpoint

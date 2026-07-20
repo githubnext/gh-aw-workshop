@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You have completed [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file.
+- You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file.
 - You are familiar with the `permissions:` and `safe-outputs:` blocks from earlier steps.
 
 ---
@@ -193,7 +193,7 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 ---
 
 <!-- journey: all -->
-Return to [Step 17: Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 <!-- /journey -->
 
 For more details, see [Security Architecture](https://github.github.com/gh-aw/introduction/architecture/), [Safe Outputs (Pull Requests)](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/), [GitHub Tools Read Permissions](https://github.github.com/gh-aw/reference/permissions/), [Network Permissions](https://github.github.com/gh-aw/reference/network/), and [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).

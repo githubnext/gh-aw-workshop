@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- Familiarity with [Step 16: Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
+- Familiarity with [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
 - You understand what GitHub Actions workflow YAML looks like.
 
 ---
