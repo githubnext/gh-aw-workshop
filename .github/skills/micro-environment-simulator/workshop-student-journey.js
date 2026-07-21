@@ -287,7 +287,7 @@ function ensureCompiledWorkflow(state, category, remediation) {
   );
 }
 
-function computeSuccessProbabilityTerms(state, context, emphasis = {}) {
+function computeSuccessProbabilityWithGreeks(state, context, emphasis = {}) {
   const learner = learnerProfile(state);
   const background = BACKGROUND_FACTORS[learner.background] || {};
   const terminalDemand = contentSignal(context, "terminalDemand");
@@ -404,10 +404,10 @@ function computeSuccessProbabilityTerms(state, context, emphasis = {}) {
 }
 
 function computeSuccessProbability(state, context, emphasis = {}) {
-  return clamp(computeSuccessProbabilityTerms(state, context, emphasis).probability, 0.12, 0.985);
+  return clamp(computeSuccessProbabilityWithGreeks(state, context, emphasis).probability, 0.12, 0.985);
 }
 
-function evaluateStepProbabilityGreeks(state, context, options = {}) {
+function evaluateStepProbabilityWithGreeks(state, context, options = {}) {
   const insight = agentInsight(context);
   const signalAdjustments = ensurePlainObject(insight.signalAdjustments);
   const pathAdjustments = ensurePlainObject(insight.pathAdjustments);
@@ -417,7 +417,7 @@ function evaluateStepProbabilityGreeks(state, context, options = {}) {
     ...(options.emphasis || {}),
     bias: (options.emphasis?.bias || 0) + Number(insight.bias || 0)
   };
-  const base = computeSuccessProbabilityTerms(state, context, emphasis);
+  const base = computeSuccessProbabilityWithGreeks(state, context, emphasis);
   let probability = clamp(base.probability, 0.12, 0.985);
   let greeks = shouldComputeGreeksForProbability(base.probability)
     ? { ...base.greeks }
@@ -473,7 +473,7 @@ function evaluateStepProbabilityGreeks(state, context, options = {}) {
 function evaluateStepProbability(state, context, options = {}) {
   const insight = agentInsight(context);
   return {
-    probability: evaluateStepProbabilityGreeks(state, context, options).probability,
+    probability: evaluateStepProbabilityWithGreeks(state, context, options).probability,
     summary: typeof insight.summary === "string" ? insight.summary : "",
     riskTags: Array.isArray(insight.riskTags) ? insight.riskTags : []
   };
@@ -1072,7 +1072,7 @@ module.exports = {
   STEP_IDS,
   steps: STEP_IDS,
   stepFilesById: STEP_FILE_ALIASES,
-  stepGreekEstimator: evaluateStepProbabilityGreeks,
+  stepGreekEstimator: evaluateStepProbabilityWithGreeks,
   transitions: buildTransitions(),
   buildTransitions
 };

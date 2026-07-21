@@ -879,6 +879,10 @@ function aggregateFailureCategories(monteCarlo) {
   return failureCategoriesByStep;
 }
 
+// Mutable collector for Monte Carlo Greek estimates.
+// - signalKeys/signalKeySet track the discovered signal dimensions in stable order
+// - sumsByStep accumulates raw Greek totals per step and signal
+// - attemptsByStep counts how many runs reached each step
 function createStepGreekAccumulator() {
   return {
     signalKeys: [],
@@ -888,6 +892,8 @@ function createStepGreekAccumulator() {
   };
 }
 
+// Add one step-level Greek estimate into the mutable accumulator.
+// `greeks` must be an object whose keys are signal names and whose values are finite numbers.
 function recordStepGreekEstimate(accumulator, stepId, greeks) {
   if (!accumulator) {
     return;
