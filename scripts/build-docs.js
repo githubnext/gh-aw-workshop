@@ -714,7 +714,8 @@ ${htmlContent}</main>
         const isPage = target.matches('.markdown-body > details');
         history.pushState(null, '', link.getAttribute('href'));
         showWorkshopPage(target, isPage);
-        if (!isPage) target.scrollIntoView({ block: 'start' });
+        if (isPage) window.scrollTo({ top: 0, left: 0 });
+        else target.scrollIntoView({ block: 'start' });
       }
     });
 
