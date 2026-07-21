@@ -254,8 +254,8 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 .reveal .slides .slide-content {
   --slide-top-gap: 1.25rem;
   --slide-bottom-gap: 4.75rem;
-  font-size: 0.72em;
   padding: var(--slide-top-gap) 1.5em var(--slide-bottom-gap);
+  /* Progressive enhancement: vh fallback first, then dvh in supporting browsers. */
   height: calc(100vh - var(--slide-top-gap) - var(--slide-bottom-gap));
   max-height: calc(100vh - var(--slide-top-gap) - var(--slide-bottom-gap));
   height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
@@ -338,7 +338,7 @@ function enableImageLightbox() {
   });
 }
 
-const parallaxBackgroundImage = 'data:image/svg+xml,${parallaxBackgroundSvgEncoded}';
+const parallaxBackgroundImage = ${JSON.stringify(`data:image/svg+xml,${parallaxBackgroundSvgEncoded}`)};
 
 Reveal.initialize({
   // URL hash reflects current slide by section id
