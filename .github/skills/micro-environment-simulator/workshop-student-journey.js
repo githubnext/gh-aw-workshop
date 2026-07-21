@@ -338,12 +338,26 @@ function evaluateStepProbability(state, context, options = {}) {
   const insight = agentInsight(context);
   const signalAdjustments = ensurePlainObject(insight.signalAdjustments);
   const pathAdjustments = ensurePlainObject(insight.pathAdjustments);
+  const semanticScores = ensurePlainObject(insight.semanticScores);
   const usingBrowserPath = prefersBrowserPath(state, context);
   const emphasis = {
     ...(options.emphasis || {}),
     bias: (options.emphasis?.bias || 0) + Number(insight.bias || 0)
   };
   let probability = computeSuccessProbability(state, context, emphasis);
+
+  const scoredDimensions = [
+    ["stateReadiness", 0.5],
+    ["pathClarity", 0.3],
+    ["recoverySupport", 0.2]
+  ].filter(([dimension]) => Number.isFinite(Number(semanticScores[dimension])));
+  if (scoredDimensions.length === 3) {
+    const contentSupportScore = scoredDimensions.reduce(
+      (total, [dimension, weight]) => total + Number(semanticScores[dimension]) * weight,
+      0
+    );
+    probability += (contentSupportScore - 50) * 0.002;
+  }
 
   for (const signal of [
     "complexity",

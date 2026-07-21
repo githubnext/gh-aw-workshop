@@ -26,6 +26,8 @@ const COMMAND_LINE_TERMINAL_WEIGHT = 0.03;
 const TERMINAL_DEMAND_CAP = 0.95;
 const UI_ALTERNATIVE_TERMINAL_DISCOUNT = 0.1;
 const UI_ALTERNATIVE_TERMINAL_DISCOUNT_CAP = 0.3;
+const AGENT_ADJUSTMENT_LIMIT = 0.15;
+const SEMANTIC_SCORE_FIELDS = ["stateReadiness", "pathClarity", "recoverySupport"];
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -322,6 +324,46 @@ function normalizeNumericObject(container, fieldName, stepId) {
   }
 }
 
+function normalizeBoundedAdjustments(container, fieldName, stepId, allowedKeys) {
+  normalizeNumericObject(container, fieldName, stepId);
+  if (!isPlainObject(container[fieldName])) {
+    return;
+  }
+  for (const key of Object.keys(container[fieldName])) {
+    if (!allowedKeys.includes(key)) {
+      console.warn(`[simulator] Ignoring unknown adjustment '${stepId}.${fieldName}.${key}'.`);
+      delete container[fieldName][key];
+      continue;
+    }
+    container[fieldName][key] = clamp(
+      container[fieldName][key],
+      -AGENT_ADJUSTMENT_LIMIT,
+      AGENT_ADJUSTMENT_LIMIT
+    );
+  }
+}
+
+function normalizeSemanticScores(container, stepId) {
+  if (container.semanticScores == null) {
+    return;
+  }
+  if (!isPlainObject(container.semanticScores)) {
+    console.warn(`[simulator] Agent insight '${stepId}.semanticScores' should be an object.`);
+    delete container.semanticScores;
+    return;
+  }
+  const scores = {};
+  for (const field of SEMANTIC_SCORE_FIELDS) {
+    const value = Number(container.semanticScores[field]);
+    if (!Number.isFinite(value)) {
+      console.warn(`[simulator] Agent insight '${stepId}.semanticScores.${field}' should be numeric.`);
+      continue;
+    }
+    scores[field] = clamp(value, 0, 100);
+  }
+  container.semanticScores = scores;
+}
+
 function normalizeAgentInsightsByStep(input) {
   if (!isPlainObject(input)) {
     return {};
@@ -341,9 +383,30 @@ function normalizeAgentInsightsByStep(input) {
       console.warn(`[simulator] Agent insight '${stepId}.summary' should be a string.`);
       delete nextInsight.summary;
     }
+    normalizeNumericField(nextInsight, "rank", stepId);
     normalizeNumericField(nextInsight, "bias", stepId);
-    normalizeNumericObject(nextInsight, "signalAdjustments", stepId);
-    normalizeNumericObject(nextInsight, "pathAdjustments", stepId);
+    if (nextInsight.bias != null) {
+      nextInsight.bias = clamp(nextInsight.bias, -AGENT_ADJUSTMENT_LIMIT, AGENT_ADJUSTMENT_LIMIT);
+    }
+    normalizeSemanticScores(nextInsight, stepId);
+    normalizeBoundedAdjustments(nextInsight, "signalAdjustments", stepId, [
+      "complexity",
+      "terminalDemand",
+      "browserSupport",
+      "authDemand",
+      "troubleshootingSupport",
+      "conceptDemand",
+      "enterpriseDemand"
+    ]);
+    normalizeBoundedAdjustments(nextInsight, "pathAdjustments", stepId, [
+      "browser",
+      "cli",
+      "codespaces",
+      "local",
+      "mobile",
+      "uiPreferred",
+      "enterprise"
+    ]);
     normalizeNumericField(nextInsight, "evaluatedContentHash", stepId);
     if (nextInsight.evaluations !== null && nextInsight.evaluations !== undefined) {
       if (!isPlainObject(nextInsight.evaluations)) {
@@ -418,15 +481,15 @@ function buildStepContentById({
       markdown,
       fileContents.map(({ file, title }) => ({ file, title }))
     );
-    const agentInsight = agentInsightsByStep[stepId] ? { ...agentInsightsByStep[stepId] } : null;
+    let agentInsight = agentInsightsByStep[stepId] ? { ...agentInsightsByStep[stepId] } : null;
     if (
-      agentInsight?.evaluations &&
+      agentInsight &&
       Number(agentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
     ) {
       console.warn(
-        `[simulator] Ignoring stale agent evaluations for step '${stepId}': content hash does not match.`
+        `[simulator] Ignoring stale agent insight for step '${stepId}': content hash does not match.`
       );
-      delete agentInsight.evaluations;
+      agentInsight = null;
     }
     stepContentById[stepId] = deepFreeze({
       ...contentAnalysis,

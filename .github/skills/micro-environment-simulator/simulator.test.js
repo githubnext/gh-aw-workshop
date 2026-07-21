@@ -143,7 +143,64 @@ test("agent assumption evaluations are normalized and stale evaluations are igno
     repoRoot,
     agentInsightsByStep: normalized
   });
-  assert.equal(updated.step.agentInsight.evaluations, undefined);
+  assert.equal(updated.step.agentInsight, null);
+});
+
+test("agent adjustments are bounded and unknown adjustment keys are ignored", () => {
+  const normalized = simulator.normalizeAgentInsightsByStep({
+    stepInsightsById: {
+      step: {
+        evaluatedContentHash: 1,
+        bias: -4,
+        semanticScores: {
+          stateReadiness: -10,
+          pathClarity: 60,
+          recoverySupport: 120
+        },
+        signalAdjustments: { complexity: 3, invented: 1 },
+        pathAdjustments: { browser: -3, invented: -1 }
+      }
+    }
+  });
+
+  assert.equal(normalized.step.bias, -0.15);
+  assert.deepEqual(normalized.step.semanticScores, {
+    stateReadiness: 0,
+    pathClarity: 60,
+    recoverySupport: 100
+  });
+  assert.deepEqual(normalized.step.signalAdjustments, { complexity: 0.15 });
+  assert.deepEqual(normalized.step.pathAdjustments, { browser: -0.15 });
+});
+
+test("semantic page scores change the statistical readiness outcome", () => {
+  const student = {
+    id: 9,
+    level: "beginner",
+    personality: "curious",
+    background: "no-coding",
+    goal: "personal-learning",
+    tool: "cli",
+    ui_preferred: false
+  };
+  const state = simulator.defaultEnvironmentForStudent(student, 120, 0);
+  const transition = journey.transitions["04-actions-intro"];
+  const context = {
+    stepId: "04-actions-intro",
+    random: () => 0.65,
+    stepContent: {
+      agentInsight: {
+        semanticScores: {
+          stateReadiness: 0,
+          pathClarity: 0,
+          recoverySupport: 0
+        }
+      }
+    }
+  };
+
+  assert.equal(transition(state, { ...context, stepContent: {} }).ok, true);
+  assert.equal(transition(state, context).ok, false);
 });
 
 function firstWorkflowState(centralizedCopilotBilling) {
