@@ -93,26 +93,29 @@ marked.use({
 // Horizontal axis  = numbered workshop steps (00, 01, 02, …)
 // Vertical axis    = sub-steps (NNa, NNb, …) and side-quests for each step
 //
-// Grouping rules:
-//   README.md                    → group 'readme'  (appears first)
-//   NN-slug.md / NNx-slug.md    → group 'NN'
-//   side-quest-NN-…             → group 'NN'  (vertical under same step)
-//   side-quest-<word>-…         → group 'side-quest-<word>'  (own column)
+// Grouping rules (evaluated in priority order):
+//   README.md              → group 'readme'  (appears first)
+//   side-quest-NN-…        → group 'NN'  (vertical under the matching numbered step)
+//   NN-slug.md / NNx-*.md  → group 'NN'  (leading digit run)
+//   other (e.g. side-quest-enterprise-setup.md) → own group keyed by basename
 // ---------------------------------------------------------------------------
 
 function getGroupKey(filename) {
   if (filename === 'README.md') return 'readme';
-  // side-quest-NN-* → same horizontal group as step NN
+  // Check for numbered side-quest files first (side-quest-NN-…) so they are
+  // grouped under their parent step rather than treated as a numbered step.
   const sideQuestNumMatch = filename.match(/^side-quest-(\d+)-/);
   if (sideQuestNumMatch) return sideQuestNumMatch[1];
-  // NN-slug.md or NNx-slug.md → group by leading digit run
+  // Numbered step files: NN-slug.md or NNx-slug.md → group by leading digits.
   const stepMatch = filename.match(/^(\d+)/);
   if (stepMatch) return stepMatch[1];
-  // Non-numeric files (e.g. side-quest-enterprise-setup.md) → own group
+  // Non-numeric files (e.g. side-quest-enterprise-setup.md) → own group.
   return path.basename(filename, '.md');
 }
 
-function groupSortOrder(key) {
+// Returns a numeric sort key so groups appear in step order.
+// 'readme' sorts before all numeric steps; non-numeric keys sort last.
+function groupSortKey(key) {
   if (key === 'readme') return -Infinity;
   const n = parseInt(key, 10);
   return isNaN(n) ? Infinity : n;
@@ -126,7 +129,7 @@ for (const f of files) {
   groups.get(key).push(f);
 }
 const sortedGroupKeys = [...groups.keys()].sort(
-  (a, b) => groupSortOrder(a) - groupSortOrder(b)
+  (a, b) => groupSortKey(a) - groupSortKey(b)
 );
 
 // Render a single workshop file as a reveal.js <section>
@@ -234,15 +237,15 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
  * Reveal.js overrides
  * ---------------------------------------------------------------- */
 
-/* Align text left and start slides from the top (not vertically centered) */
+/* Align text left; with center:false slides already start at top,
+ * so no top override is needed. */
 .reveal .slides section {
   text-align: left;
-  top: 0 !important;
-  /* Make slide content scrollable so nothing is clipped */
-  overflow-y: auto;
 }
 
-/* Constrain and scroll the content wrapper inside each slide */
+/* Constrain and scroll the content wrapper inside each slide so that
+ * long content does not get clipped. A single scroll container per
+ * slide avoids nested-scrollbar confusion. */
 .reveal .slides .slide-content {
   font-size: 0.8em;
   padding: 0 1.5em;
