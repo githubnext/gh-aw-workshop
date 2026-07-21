@@ -688,13 +688,14 @@ body,
 }
 .workshop-nav-btn-primary {
   color: #ffffff;
-  background-color: var(--fgColor-accent, #0969da);
+  background-color: var(--bgColor-accent-emphasis, #0969da);
   border: 1px solid transparent;
 }
 .workshop-nav-btn-primary:hover,
 .workshop-nav-btn-primary:focus-visible {
   color: #ffffff;
-  background-color: var(--borderColor-accent-emphasis, #0550ae);
+  background-color: var(--bgColor-accent-emphasis, #0550ae);
+  filter: brightness(0.9);
 }
 .workshop-nav-btn-secondary {
   color: var(--fgColor-default, #1f2328);
@@ -709,13 +710,14 @@ body,
 
 @media (prefers-color-scheme: dark) {
   .workshop-nav-btn-primary {
-    background-color: var(--fgColor-accent, #58a6ff);
-    color: #0d1117;
+    background-color: var(--bgColor-accent-emphasis, #1f6feb);
+    color: #ffffff;
   }
   .workshop-nav-btn-primary:hover,
   .workshop-nav-btn-primary:focus-visible {
-    background-color: var(--borderColor-accent-emphasis, #79c0ff);
-    color: #0d1117;
+    background-color: var(--bgColor-accent-emphasis, #388bfd);
+    color: #ffffff;
+    filter: brightness(1.1);
   }
   .workshop-nav-btn-secondary {
     color: var(--fgColor-default, #e6edf3);
