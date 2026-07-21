@@ -44,7 +44,7 @@ gh extension install github/gh-aw
 Your org token may not allow public extension installs. Use the fallback installer:
 
 ```bash
-curl -fsSL https://github.com/github/gh-aw/releases/latest/download/install.sh | sh
+curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 ```
 
 Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
