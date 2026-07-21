@@ -77,7 +77,10 @@ on:
 ```yaml
 # Your turn: configure schedule, push to main, and manual triggers
 on:
-  ???
+  ???: ???          # daily run
+  push:
+    branches: [???] # target branch
+  ???: {}           # manual trigger
 ```
 
 **✅ Check:** Run `gh aw compile` — the compiled output should list all three triggers.
@@ -129,9 +132,7 @@ permissions:
 Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
 
 ```yaml
-# Complete the on: block
-on:
-  ???
+# From memory: write the complete on: block (schedule + push + manual)
 ```
 
 <details><summary>Solution</summary>
@@ -155,9 +156,16 @@ Now combine all three sections into one complete frontmatter block and compile i
 emoji: ???
 description: ???
 on:
-  ???
+  ???: ???          # daily run
+  push:
+    branches: [???] # target branch
+  ???: {}           # manual trigger
 permissions:
-  ???
+  contents: ???
+  copilot-requests: ???
+  issues: ???
+  pull-requests: ???
+  actions: ???
 ---
 ```
 
