@@ -31,8 +31,8 @@ Open the completed **Daily Report Status** run from the **Actions** tab and clic
 The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and fill in the template below:
 
 ```text
-First Tool call I saw:         _______________
-What it was trying to do:      _______________
+First Tool call I saw:         [tool name, e.g. github.list_issues]
+What it was trying to do:      [one sentence description]
 ```
 
 ## Check the output
@@ -51,7 +51,7 @@ If your run does not look right, start with these quick checks before changing t
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 
-A failed run log looks different from a successful one. Compare this to the success pattern above:
+Knowing what a failed run looks like helps you spot permission issues at a glance, before you spend time re-reading the brief:
 
 ```text
 🤔 Planning...  Searching for open issues
