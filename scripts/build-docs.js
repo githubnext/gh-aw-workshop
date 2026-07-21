@@ -53,25 +53,57 @@ const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
 const workshopImagesDir = path.join(workshopDir, 'images');
 const distImagesDir = path.join(distDir, 'images');
+const headingRegex = /^#{1,6}\s+(.+)$/m;
 
 // Collect and sort workshop markdown files (excludes non-md files; keeps README)
 const files = fs.readdirSync(workshopDir)
   .filter(f => f.endsWith('.md'))
   .sort();
 
+const sectionIdsByFile = new Map(
+  files.map(f => [f, path.basename(f, '.md')])
+);
+
+marked.use({
+  useNewRenderer: true,
+  renderer: {
+    link({ href, title, tokens }) {
+      const text = this.parser.parseInline(tokens);
+      const titleAttr = title ? ` title="${title}"` : '';
+      if (href) {
+        const markdownPageLink = href.match(/^(?<file>[^/?#]+\.md)(?<hash>#[^?]+)?$/);
+        if (markdownPageLink) {
+          const targetFile = markdownPageLink.groups?.file;
+          const targetHash = markdownPageLink.groups?.hash;
+          const targetSectionId = sectionIdsByFile.get(targetFile);
+          if (targetSectionId) {
+            const rewrittenHref = targetHash ?? `#${targetSectionId}`;
+            return `<a href="${rewrittenHref}"${titleAttr}>${text}</a>`;
+          }
+        }
+      }
+      return false;
+    },
+  },
+});
+
 // Render each file as a closed <details> section with the first heading as <summary>
-const htmlContent = files.map(f => {
+const htmlContent = files.map((f, index) => {
   const markdown = fs.readFileSync(path.join(workshopDir, f), 'utf8').trim();
   // Extract plain text of the first heading (strip leading # characters).
   // Workshop files use HTML comments (not YAML frontmatter), so the multiline
   // regex safely finds the first heading regardless of leading comment lines.
-  const headingMatch = markdown.match(/^#{1,6}\s+(.+)$/m);
+  const headingMatch = markdown.match(headingRegex);
   const slug = path.basename(f, '.md').replace(/^\d+-?/, '').replace(/-/g, ' ');
   const title = headingMatch
     ? headingMatch[1].trim()
     : slug.charAt(0).toUpperCase() + slug.slice(1);
-  const content = marked(markdown);
-  return `<details>\n<summary><h2>${title}</h2></summary>\n${content}\n</details>`;
+  const sectionId = sectionIdsByFile.get(f);
+  // Intentionally remove only the first heading because it is promoted to <summary>.
+  const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
+  const content = marked(markdownWithoutTitle);
+  const detailsOpenAttr = index === 0 ? ' open' : '';
+  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary><h4>${title}</h4></summary>\n${content}\n</details>`;
 }).join('\n\n');
 
 // Set up output directory
