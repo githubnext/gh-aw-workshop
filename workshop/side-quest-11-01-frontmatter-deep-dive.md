@@ -132,7 +132,8 @@ permissions:
 Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
 
 ```yaml
-# From memory: write the complete on: block (schedule + push + manual)
+# Write the on: block below from memory
+on:
 ```
 
 <details><summary>Solution</summary>
