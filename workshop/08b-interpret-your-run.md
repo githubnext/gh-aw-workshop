@@ -28,7 +28,12 @@ Open the completed **Daily Report Status** run from the **Actions** tab and clic
 ✅ Done
 ```
 
-The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and write one short note about what it was trying to do.
+The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and fill in the template below:
+
+```text
+First Tool call I saw:         _______________
+What it was trying to do:      _______________
+```
 
 ## Check the output
 
@@ -46,6 +51,15 @@ If your run does not look right, start with these quick checks before changing t
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 
+A failed run log looks different from a successful one. Compare this to the success pattern above:
+
+```text
+🤔 Planning...  Searching for open issues
+🔧 Tool call:   github.list_issues
+📥 Error:       403 Forbidden — insufficient permissions
+❌ Failed
+```
+
 For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
 ## ✅ Checkpoint
@@ -53,6 +67,7 @@ For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Out
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
+- [ ] I can identify whether a run failed due to a permission error, a vague brief, or a missing output
 
 <!-- journey: all -->
 **Next:** [Refine Your Workflow with Agentic Editing](09-agentic-editing.md)
