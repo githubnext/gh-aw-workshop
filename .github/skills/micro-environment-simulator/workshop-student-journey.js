@@ -126,8 +126,8 @@ function agentInsight(context) {
 function evaluatedAssumption(context, evaluationId) {
   const evaluation = agentInsight(context).evaluations?.[evaluationId];
   if (!evaluation) return undefined;
-  if (evaluation?.answer === "YES") return true;
-  if (evaluation?.answer === "NO") return false;
+  if (evaluation.answer === "YES") return true;
+  if (evaluation.answer === "NO") return false;
   return null;
 }
 
@@ -212,7 +212,7 @@ function updateWorkflowCompileState(state, context, options = {}) {
     hasCompiledWorkflowLock &&
     (publishedEvaluation === undefined
       ? stepMetric(state, context, "workflowLockPublishCueCount") > 0 ||
-        state.flags.hasPushedCompiledWorkflowLock)
+        state.flags.hasPushedCompiledWorkflowLock
       : publishedEvaluation === true);
   next.flags.hasCompiledWorkflowLock = hasCompiledWorkflowLock;
   next.flags.hasPushedCompiledWorkflowLock = hasPushedCompiledWorkflowLock;

@@ -345,7 +345,7 @@ function normalizeAgentInsightsByStep(input) {
     normalizeNumericObject(nextInsight, "signalAdjustments", stepId);
     normalizeNumericObject(nextInsight, "pathAdjustments", stepId);
     normalizeNumericField(nextInsight, "evaluatedContentHash", stepId);
-    if (nextInsight.evaluations != null) {
+    if (nextInsight.evaluations !== null && nextInsight.evaluations !== undefined) {
       if (!isPlainObject(nextInsight.evaluations)) {
         console.warn(`[simulator] Agent insight '${stepId}.evaluations' should be an object.`);
         delete nextInsight.evaluations;
