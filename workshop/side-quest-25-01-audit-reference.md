@@ -33,9 +33,9 @@ The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh
 | `sandbox/firewall/audit/` | Domain-level network access log (raw data) |
 | `agent_usage.json` | Token usage for the agent turn |
 
-### Parsed log files (--parse)
+### Readable log files
 
-When you run `gh aw audit <run-id> --parse`, two readable files are written alongside the raw artifacts:
+The audit report is accompanied by readable files written alongside the raw artifacts:
 
 - `log.md` — the full agent conversation formatted as Markdown
 - `firewall.md` — a formatted summary of outbound network access (allowed and blocked domains)
@@ -93,37 +93,37 @@ Sample output:
 - [ ] The ⌖ AIC figure appears separately from Agent AIC
 - [ ] The threat verdict shows `none` (or I noted what was flagged)
 
-### Explore the parsed agent log
+### Explore MCP tool calls
 
-Add `--parse` to write `log.md` and `firewall.md` alongside the raw artifacts:
+Download the artifacts for a run, then open the `mcp-logs/` directory. Each file corresponds to one MCP server and lists every tool call the agent made.
 
 ```bash
-gh aw audit <run-id> --parse
+gh aw logs <your-workflow-id> --artifacts all
 ```
 
-Open `log.md` in your editor. Each section represents one agent turn and lists the tool calls in order.
+Browse the log files in `.github/aw/logs/<run-id>/mcp-logs/`.
 
-- [ ] `log.md` and `firewall.md` were created in `.github/aw/logs/<run-id>/`
-- [ ] I found the first MCP tool call in `log.md`
-- [ ] I wrote one sentence describing what the agent was trying to accomplish in that turn
+- [ ] I found the `mcp-logs/` directory in the downloaded artifacts
+- [ ] I identified at least one tool call and noted the tool name
+- [ ] I wrote one sentence describing what the agent was trying to accomplish
 - [ ] I checked `agent_usage.json` for the total token count
 
-### Inspect the firewall summary
+### Inspect the firewall records
 
-`firewall.md` groups outbound network calls into allowed and blocked lists. Scan it to confirm your workflow only contacted expected domains:
+The raw domain-level network access logs live in `sandbox/firewall/audit/` inside the agent artifact. Scan them to confirm your workflow only contacted expected domains.
 
-- [ ] I opened `firewall.md` and identified at least one domain the workflow accessed
-- [ ] If any domains are blocked, I know to add them to `network.allow` in the workflow frontmatter
-- [ ] I can distinguish the formatted `firewall.md` from the raw records in `sandbox/firewall/audit/`
+- [ ] I opened `sandbox/firewall/audit/` in the downloaded artifacts
+- [ ] I identified at least one domain the workflow accessed
+- [ ] If any domains were blocked, I know to add them to `network.allow` in the workflow frontmatter
 
 ## ✅ Checkpoint
 
 - [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC
-- [ ] You can use `firewall.md` to identify blocked domains and add them to `network.allow`
+- [ ] You can find blocked domains in the firewall audit records and add them to `network.allow`
 - [ ] You know what the threat detection verdict checks for
 - [ ] You ran `gh aw audit` on a real run and reviewed the generated report
-- [ ] You used `--parse` to produce `log.md` and read at least one tool call
+- [ ] You explored `mcp-logs/` to identify tool calls from a completed run
 
 <!-- journey: all -->
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
