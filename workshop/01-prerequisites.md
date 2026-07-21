@@ -33,7 +33,7 @@ Open [github.com/settings/copilot](https://github.com/settings/copilot) and conf
 This workshop uses GitHub Copilot, so you can continue without configuring external provider API keys.
 
 > [!TIP]
-> Agentic Workflows supports multiple agent and model providers, but this workshop uses GitHub Copilot end-to-end so you can focus on workflow concepts.
+> Agentic Workflows supports multiple agent and model providers (for example, Anthropic Claude Code, OpenAI Codex, and Google Gemini), but this workshop uses GitHub Copilot end-to-end so you can focus on workflow concepts.
 
 <!-- journey: codespace -->
 **Next:** Open [Set Up a Codespace](02a-setup-codespace.md).
