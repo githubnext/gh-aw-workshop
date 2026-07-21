@@ -2,6 +2,9 @@
 <!-- page-adventure: setup -->
 # Set Up a Codespace _(recommended for new users)_
 
+> [!NOTE]
+> On a mobile device or working entirely in the browser without a terminal? This path opens a terminal inside your browser. If you cannot use a terminal at all, switch to the [GitHub UI path](06c-install-ui.md) instead.
+
 ## 🎯 What You'll Do
 
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
