@@ -7,7 +7,7 @@
 
 ## 🎯 What You'll Do
 
-You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and run one quick diagnostic to confirm your Codespace terminal is ready for agentic workflow setup.
+You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and run one quick diagnostic to confirm your Codespace terminal is ready for [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) setup.
 
 ## 📋 Before You Start
 
