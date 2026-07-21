@@ -418,8 +418,18 @@ body,
   cursor: default;
   list-style: none;
 }
+.markdown-body > details > summary > h4 {
+  font-size: 32px;
+  line-height: 1.25;
+}
 .markdown-body > details > summary::-webkit-details-marker {
   display: none;
+}
+
+@media (max-width: 543px) {
+  .markdown-body > details > summary > h4 {
+    font-size: 28px;
+  }
 }
 
 .markdown-body a:not(.anchor) {
