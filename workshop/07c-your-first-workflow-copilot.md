@@ -17,10 +17,10 @@ You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-ref
 
 Open your practice repository in the GitHub Copilot app and start a session in **Interactive** mode so you can steer the work, or open the repository's **Copilot** or **Agents** tab and start a new session.
 
-> [!TIP]
-> If you are working in the Agents tab, type `/agentic-workflows` at the start of your message to invoke the skill directly and give the agent immediate context about agentic workflow authoring.
+> [!IMPORTANT]
+> **Agents tab:** You must start your message with `/agentic-workflows` to invoke the skill. Without this prefix the agent does not have agentic workflow authoring context and may not produce a valid workflow. Skip to the **Agents tab** prompt further down on this page — it already includes the prefix.
 
-Paste this prompt:
+**GitHub Copilot app — paste this prompt:**
 
 ```text
 Using the agentic-workflows skill, initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
@@ -36,6 +36,12 @@ The workflow must:
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
 Run `gh aw compile` in the session workspace, fix any errors, commit the source and generated lock file (plus any initialized skill files), and open a pull request. Show me the diff before merging.
+```
+
+**Agents tab — paste this prompt instead:**
+
+```text
+/agentic-workflows Follow the prompt above to initialize this repository and create the Daily Report Status workflow.
 ```
 
 > [!NOTE]

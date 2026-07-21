@@ -13,8 +13,8 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 - [ ] You have a GitHub account with access to GitHub Codespaces
 - [ ] You want a browser-based terminal and do not need to install tools locally
 
-> [!TIP]
-> On a tablet or shared computer? The Codespace path is the easiest option — it runs entirely in your browser with no local installs. On a phone screen the terminal is harder to use; if possible, switch to a tablet or laptop for this workshop.
+> [!IMPORTANT]
+> **On a phone?** Creating a repository works in any browser, but the Codespace terminal requires a tablet or laptop. If you are on a phone, create your repository in the step below and then either switch devices or skip ahead to [Write Your First Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md), which does not need a terminal. On a tablet or shared computer, the Codespace path is the easiest option — it runs entirely in your browser.
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
