@@ -82,6 +82,9 @@ Catching a billing or authentication problem here saves debugging time in Step 8
 3. Confirm you receive a reply. Any response means the model is accessible.
 4. If you see an error, revisit the billing path above before continuing.
 
+> [!IMPORTANT]
+> Do not continue to Step 8 if you received an error instead of a response. Fix the billing or authentication issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run.
+
 ## ✅ Checkpoint
 
 - [ ] I confirmed the first workflow uses GitHub Copilot

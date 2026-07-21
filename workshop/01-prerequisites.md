@@ -20,6 +20,9 @@ If you are familiar with terminals, use your usual setup. We will go over the re
 
 If you choose the GitHub UI path, you can complete the main workshop steps in your browser and still run a real workflow from the Actions tab.
 
+> [!TIP]
+> On a mobile device or using GitHub Copilot (CCA/Agents tab) with no access to a terminal? Choose the **GitHub UI path** — no installation or terminal is required. You will create your repository on github.com and author workflows directly from the Copilot or Agents tab in your browser.
+
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
 ## Verify AI engine access
@@ -40,4 +43,7 @@ Choose your adventure.
 <!-- /journey -->
 <!-- journey: local -->
 **Next:** Open [Set Up Your Local Terminal](02b-setup-local.md).
+<!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** On [github.com/new](https://github.com/new), create a public repository named `my-agentic-workflows`. Check **Add a README file** and click **Create repository**. Then continue to [GitHub UI Path — No Installation Needed](06c-install-ui.md).
 <!-- /journey -->
