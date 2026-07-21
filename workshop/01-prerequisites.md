@@ -38,8 +38,3 @@ Claude, Codex, or Gemini? Confirm your API key.
 <!-- journey: local -->
 **Next:** Open [Set Up Your Local Terminal](02b-setup-local.md).
 <!-- /journey -->
-<!-- journey: ui,copilot -->
-On [github.com/new](https://github.com/new), create a public repository named `my-agentic-workflows`. Check **Add a README file** and click **Create repository**.
-
-**Next:** [GitHub UI Path — No Installation Needed](06c-install-ui.md)
-<!-- /journey -->
