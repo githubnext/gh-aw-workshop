@@ -25,5 +25,3 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 <!-- journey: ui,copilot -->
 **Next:** [GitHub UI Path — No Installation Needed](06c-install-ui.md)
 <!-- /journey -->
-
-All paths converge at [Write Your First Agentic Workflow](07-your-first-workflow.md).
