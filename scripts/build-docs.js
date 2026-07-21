@@ -517,6 +517,92 @@ body,
   margin-inline: auto;
 }
 
+.markdown-body img[data-image-inspector-ready] {
+  cursor: zoom-in;
+}
+
+.markdown-body img[data-image-inspector-ready]:focus-visible {
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: 4px;
+}
+
+.image-inspector {
+  width: min(96vw, 1200px);
+  max-width: none;
+  max-height: 96vh;
+  padding: 0;
+  color: var(--fgColor-default, #1f2328);
+  background: transparent;
+  border: 0;
+}
+
+.image-inspector::backdrop {
+  background: rgba(13, 17, 23, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.image-inspector-panel {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  max-height: 96vh;
+  padding: 16px 16px 20px;
+  background: var(--bgColor-default, #ffffff);
+  border: 1px solid var(--borderColor-muted, #d0d7de);
+  border-radius: 12px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.image-inspector-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: inherit;
+  font-size: 28px;
+  line-height: 1;
+  background: var(--bgColor-muted, #f6f8fa);
+  border: 1px solid var(--borderColor-muted, #d0d7de);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.image-inspector-close:hover {
+  background: var(--control-transparent-bgColor-hover, rgba(175, 184, 193, 0.2));
+}
+
+.image-inspector-close:focus-visible {
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: 2px;
+}
+
+.image-inspector-figure {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.image-inspector-image {
+  display: block;
+  max-width: min(88vw, 1120px);
+  max-height: calc(96vh - 96px);
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.image-inspector-caption {
+  max-width: min(88vw, 1120px);
+  margin: 0;
+  color: var(--fgColor-muted, #59636e);
+  text-align: center;
+}
+
 .markdown-body .anchor {
   display: none;
 }
@@ -739,12 +825,60 @@ ${workshopMenu}
       </nav>
     </div>
   </dialog>
+  <dialog class="image-inspector" id="image-inspector" aria-labelledby="image-inspector-title">
+    <div class="image-inspector-panel">
+      <button class="image-inspector-close" type="button" aria-label="Close image preview" title="Close image preview">&times;</button>
+      <figure class="image-inspector-figure">
+        <img class="image-inspector-image" id="image-inspector-image" alt="">
+        <figcaption class="image-inspector-caption" id="image-inspector-title" hidden></figcaption>
+      </figure>
+    </div>
+  </dialog>
   <main class="container-xl px-3 py-5 markdown-body">
 ${htmlContent}</main>
   <script>
     const workshopPages = Array.from(document.querySelectorAll('.markdown-body > details'));
     const menuDialog = document.getElementById('workshop-menu');
+    const imageInspectorDialog = document.getElementById('image-inspector');
+    const imageInspectorImage = document.getElementById('image-inspector-image');
+    const imageInspectorCaption = document.getElementById('image-inspector-title');
     const menuLinks = Array.from(document.querySelectorAll('[data-workshop-page-link]'));
+    const previewableImages = Array.from(document.querySelectorAll('.markdown-body img'));
+
+    function preparePreviewableImages() {
+      previewableImages.forEach(function (img) {
+        if (img.closest('a[href]')) return;
+        img.setAttribute('data-image-inspector-ready', '');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        const altText = (img.getAttribute('alt') || '').trim();
+        img.setAttribute(
+          'aria-label',
+          altText ? altText + ' (open image preview)' : 'Open image preview'
+        );
+      });
+    }
+
+    function closeImageInspector() {
+      imageInspectorDialog.close();
+    }
+
+    function openImageInspector(img) {
+      if (!img || !img.hasAttribute('data-image-inspector-ready')) return;
+      const src = img.currentSrc || img.getAttribute('src');
+      if (!src) return;
+      const altText = (img.getAttribute('alt') || '').trim();
+      imageInspectorImage.setAttribute('src', src);
+      imageInspectorImage.setAttribute('alt', altText);
+      if (altText) {
+        imageInspectorCaption.textContent = altText;
+        imageInspectorCaption.hidden = false;
+      } else {
+        imageInspectorCaption.textContent = '';
+        imageInspectorCaption.hidden = true;
+      }
+      imageInspectorDialog.showModal();
+    }
 
     function showWorkshopPage(target, focusPage) {
       const page = target?.matches('.markdown-body > details')
@@ -796,9 +930,20 @@ ${htmlContent}</main>
         menuDialog.close();
         return;
       }
+      if (e.target.closest('.image-inspector-close')) {
+        closeImageInspector();
+        return;
+      }
 
       if (e.target.closest('.markdown-body > details > summary')) {
         e.preventDefault();
+        return;
+      }
+
+      const clickedImage = e.target.closest('img[data-image-inspector-ready]');
+      if (clickedImage) {
+        e.preventDefault();
+        openImageInspector(clickedImage);
         return;
       }
 
@@ -821,8 +966,23 @@ ${htmlContent}</main>
     menuDialog.addEventListener('click', function (e) {
       if (e.target === menuDialog) menuDialog.close();
     });
+    imageInspectorDialog.addEventListener('click', function (e) {
+      if (e.target === imageInspectorDialog) closeImageInspector();
+    });
+    imageInspectorDialog.addEventListener('close', function () {
+      imageInspectorImage.removeAttribute('src');
+      imageInspectorImage.setAttribute('alt', '');
+      imageInspectorCaption.textContent = '';
+      imageInspectorCaption.hidden = true;
+    });
 
     document.addEventListener('keydown', function (e) {
+      const previewImage = e.target.closest?.('img[data-image-inspector-ready]');
+      if (previewImage && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        openImageInspector(previewImage);
+        return;
+      }
       if (e.key === 'Escape' && menuDialog.open) {
         e.preventDefault();
         menuDialog.close();
@@ -833,6 +993,7 @@ ${htmlContent}</main>
       showWorkshopPageForHash(true);
     });
 
+    preparePreviewableImages();
     showWorkshopPageForHash(false);
   </script>
 </body>
