@@ -71,13 +71,13 @@ marked.use({
       const text = this.parser.parseInline(tokens);
       const titleAttr = title ? ` title="${title}"` : '';
       if (href) {
-        const markdownPageLink = href.match(/^([^/?#]+\.md)(#[^?]+)?$/);
+        const markdownPageLink = href.match(/^(?<file>[^/?#]+\.md)(?<hash>#[^?]+)?$/);
         if (markdownPageLink) {
-          const targetFile = markdownPageLink[1];
-          const targetHash = markdownPageLink[2];
+          const targetFile = markdownPageLink.groups?.file;
+          const targetHash = markdownPageLink.groups?.hash;
           const targetSectionId = sectionIdsByFile.get(targetFile);
           if (targetSectionId) {
-            const rewrittenHref = targetHash ? targetHash : `#${targetSectionId}`;
+            const rewrittenHref = targetHash ?? `#${targetSectionId}`;
             return `<a href="${rewrittenHref}"${titleAttr}>${text}</a>`;
           }
         }
@@ -99,6 +99,7 @@ const htmlContent = files.map((f, index) => {
     ? headingMatch[1].trim()
     : slug.charAt(0).toUpperCase() + slug.slice(1);
   const sectionId = sectionIdsByFile.get(f);
+  // Intentionally remove only the first heading because it is promoted to <summary>.
   const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
   const content = marked(markdownWithoutTitle);
   const detailsOpenAttr = index === 0 ? ' open' : '';
