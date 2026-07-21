@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-You have a draft frontmatter file open.
+Open the draft workflow file you started in [Step 11](07-your-first-workflow.md).
 
 ---
 
@@ -38,6 +38,7 @@ description: Post a daily repository status summary as a GitHub issue comment.
 ---
 emoji: ???
 description: ???
+---
 ```
 
 ---
@@ -143,7 +144,7 @@ on:
   workflow_dispatch: {}
 ```
 
-Run `gh aw compile` and confirm all three triggers appear in the compiled output.
+Run `gh aw compile` and verify all three triggers appear.
 </details>
 
 Now combine all three sections into one complete frontmatter block and compile it:
