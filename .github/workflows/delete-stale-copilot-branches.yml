@@ -1,0 +1,76 @@
+name: Delete stale copilot branches
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  delete-stale-copilot-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete stale copilot branches older than 24 hours
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { owner, repo } = context.repo
+            const cutoff = Date.now() - 24 * 60 * 60 * 1000
+            const branches = await github.paginate(github.rest.git.listMatchingRefs, {
+              owner,
+              repo,
+              ref: 'heads/copilot/'
+            })
+
+            if (branches.length === 0) {
+              core.info('No copilot/* branches found.')
+              return
+            }
+
+            const staleBranches = []
+
+            for (const branch of branches) {
+              if (!branch.ref.startsWith('refs/heads/copilot/')) {
+                continue
+              }
+
+              const branchName = branch.ref.replace('refs/heads/', '')
+              const commit = await github.rest.repos.getCommit({
+                owner,
+                repo,
+                ref: branchName
+              })
+
+              const commitDate = new Date(
+                commit.data.commit.committer?.date ?? commit.data.commit.author?.date ?? 0
+              ).getTime()
+
+              if (Number.isNaN(commitDate)) {
+                core.warning(`Skipping ${branchName}: unable to determine commit date.`)
+                continue
+              }
+
+              if (commitDate < cutoff) {
+                staleBranches.push(branchName)
+              }
+            }
+
+            if (staleBranches.length === 0) {
+              core.info('No stale copilot/* branches older than 24 hours were found.')
+              return
+            }
+
+            for (const branchName of staleBranches) {
+              try {
+                await github.rest.git.deleteRef({
+                  owner,
+                  repo,
+                  ref: `heads/${branchName}`
+                })
+                core.info(`Deleted stale branch: ${branchName}`)
+              } catch (error) {
+                core.warning(`Failed to delete ${branchName}: ${error.message}`)
+              }
+            }
