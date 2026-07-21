@@ -71,7 +71,7 @@ const htmlContent = files.map(f => {
     ? headingMatch[1].trim()
     : slug.charAt(0).toUpperCase() + slug.slice(1);
   const content = marked(markdown);
-  return `<details>\n<summary>${title}</summary>\n${content}\n</details>`;
+  return `<details>\n<summary><h2>${title}</h2></summary>\n${content}\n</details>`;
 }).join('\n\n');
 
 // Set up output directory
