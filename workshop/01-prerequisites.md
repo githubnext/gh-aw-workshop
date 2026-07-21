@@ -1,5 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
+<!-- learning:false -->
 
 # Before we start
 
