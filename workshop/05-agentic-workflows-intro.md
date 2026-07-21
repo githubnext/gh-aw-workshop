@@ -110,23 +110,24 @@ A scheduled trigger runs automatically — appropriate for a daily report. `work
 
 </details>
 
-Does the workflow need write access, or is read-only enough to compose the report?
+How does the agent post the report if it always operates read-only?
 
-- [ ] I decided what access the report needs
+- [ ] I explained how the agent writes output
 
 <details>
 <summary>Check your answer</summary>
 
-Read-only is enough. The agent reads data; it does not post or modify anything.
+Agents always run read-only. Any writes — including posting the report — go through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) and guardrails.
 
-- [ ] Read-only is sufficient for this report
-- [ ] The agent reads but does not write
+- [ ] The agent itself is always read-only
+- [ ] Writes happen through safe outputs and guardrails
 
 </details>
 
 Write one sentence for the task brief — this becomes your brief in Step 7.
 
 - [ ] I wrote my one-sentence brief
+- [ ] My brief describes a task that needs judgment, not fixed steps
 
 ## The two files
 
