@@ -47,6 +47,8 @@ If you are using a Copilot agent to edit the file, tell it to make the change, r
 
 ## Compile Before You Test
 
+### Terminal path — compile
+
 From your repository root, run:
 
 ```bash
@@ -60,7 +62,19 @@ If the compiler reports an error, fix that first. Do not start a new test run un
 > [!TIP]
 > If you expect to make several small edits in a row, `gh aw compile --watch` can speed up the loop by recompiling after each save.
 
+### GitHub UI path — compile
+
+If you are working in the Copilot **Agents** tab or another browser-based agent session without a terminal, ask your Copilot agent to compile the workflow:
+
+```text
+Run gh aw compile and confirm the lock file was updated.
+```
+
+Check that the agent reports a successful compile and that the `.lock.yml` file beside your source file was regenerated. If the agent reports an error, ask it to fix the problem and recompile before you continue.
+
 ## Commit Both Workflow Files
+
+### Terminal path — commit
 
 After `gh aw compile` succeeds, commit both the source workflow and the regenerated lock file:
 
@@ -71,6 +85,14 @@ git push
 ```
 
 If your workflow uses a different filename, stage that `.md` file and its matching `.lock.yml` file instead.
+
+### GitHub UI path — commit
+
+Ask your Copilot agent to commit both files:
+
+```text
+Commit .github/workflows/daily-report-status.md and its matching .lock.yml file with the message "refine daily-report-status workflow output", then push.
+```
 
 ## Trigger a Fresh Run and Compare
 
@@ -90,8 +112,8 @@ If you want a stricter review loop, score each run for accuracy, completeness, a
 
 - [ ] I identified one specific problem from a real workflow run
 - [ ] I changed only one instruction or configuration detail before testing again
-- [ ] I ran `gh aw compile` after the edit and before triggering the next run
-- [ ] I committed both the workflow `.md` file and the regenerated `.lock.yml` file
+- [ ] I ran `gh aw compile` (or asked my Copilot agent to run it) after the edit and confirmed the lock file was updated
+- [ ] I committed both the workflow `.md` file and the regenerated `.lock.yml` file (via terminal or Copilot agent)
 - [ ] I compared the new run with the previous run and decided what to change next
 
 <!-- journey: all -->
