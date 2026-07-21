@@ -38,12 +38,15 @@ safe-outputs:
     expires: 1d
   add-comment:
     max: 5
+  upload-asset:
+    allowed-exts: [.png]
+    max: 30
 timeout-minutes: 30
 steps:
   - name: Build workshop docs and start static server
     run: |
       set -euo pipefail
-      mkdir -p /tmp/gh-aw/data /tmp/gh-aw/screenshots
+      mkdir -p /tmp/gh-aw/agent/data /tmp/gh-aw/agent/screenshots
 
       # Install dependencies (same set as deploy-pages.yml)
       npm install --no-save marked github-slugger marked-alert \
@@ -54,7 +57,7 @@ steps:
 
       # Start a static HTTP server on port 4000
       npx --yes http-server dist -p 4000 --silent &
-      echo $! > /tmp/gh-aw/data/server.pid
+      echo $! > /tmp/gh-aw/agent/data/server.pid
 
       # Wait until the server responds (up to 20 s)
       timeout 20 bash -c \
@@ -84,13 +87,13 @@ steps:
               {"name": "desktop", "width": 1280, "height": 800},
           ],
       }
-      pathlib.Path("/tmp/gh-aw/data/config.json").write_text(
+      pathlib.Path("/tmp/gh-aw/agent/data/config.json").write_text(
           json.dumps(out, indent=2), encoding="utf-8"
       )
       print(f"Discovered {len(pages)} pages")
       PYEOF
 
-      echo "=== Config ===" && cat /tmp/gh-aw/data/config.json
+      echo "=== Config ===" && cat /tmp/gh-aw/agent/data/config.json
 ---
 
 # Workshop Playwright QA
@@ -105,7 +108,7 @@ screenshots.
 
 ## Load Inputs
 
-1. Read `/tmp/gh-aw/data/config.json`. It contains:
+1. Read `/tmp/gh-aw/agent/data/config.json`. It contains:
    - `base_url` — the local server URL (`http://127.0.0.1:4000/`)
    - `pages` — array of `{id, url}` objects, one per discovered workshop step
      plus a root entry
@@ -176,12 +179,17 @@ For every failed check, record a finding with:
 - `description` — a concise description of what failed and what was
   observed (include element selectors or text snippets where useful)
 - `screenshot_path` — path where a screenshot of the failure was saved
-  (use `/tmp/gh-aw/screenshots/<page_id>-<viewport>-<short-slug>.png`)
+  (use `/tmp/gh-aw/agent/screenshots/<page_id>-<viewport>-<short-slug>.png`)
+- `screenshot_asset_url` — GitHub asset URL returned by `upload_asset`
+  after publishing the screenshot
 
 For each finding, take a targeted screenshot:
 - Use Playwright to capture a screenshot of the offending element when
   possible, or a full-page screenshot if the element is not isolatable.
 - Save the screenshot to the `screenshot_path` recorded in the finding.
+- Immediately call the `upload_asset` safe-output tool with the absolute
+  `screenshot_path`, then store the returned asset URL in
+  `screenshot_asset_url`.
 
 If the same visual defect appears on all three viewports, record one
 finding with `viewport: "all"` and a single representative screenshot
@@ -227,10 +235,8 @@ Group findings by `page_id`. For each page that has findings:
 
    ### Screenshots
 
-   <!-- Attach one screenshot per finding. Use the Markdown image syntax
-        only if the screenshots can be uploaded via the GitHub API; otherwise
-        describe the findings in text and note that screenshots are available
-        in the workflow run artifacts. -->
+   ![Finding 1 — <short label>](<screenshot_asset_url>)
+   ![Finding 2 — <short label>](<screenshot_asset_url>)
    ```
 
 4. Call `create-issue` (or `add-comment` if the issue already exists)
@@ -248,5 +254,7 @@ Group findings by `page_id`. For each page that has findings:
   a description specific enough for a human to reproduce it.
 - Screenshots must be taken before moving to the next finding so the
   browser state is captured at the moment of failure.
-- Never call write tools other than `create-issue`, `add-comment`, and
-  `noop`.
+- Every issue or comment with findings must embed the uploaded screenshot
+  assets in Markdown, not local `/tmp/...` paths.
+- Never call write tools other than `create-issue`, `add-comment`,
+  `upload_asset`, and `noop`.

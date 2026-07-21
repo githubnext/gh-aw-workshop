@@ -7,6 +7,24 @@ const { marked } = require('marked');
 const { default: GithubSlugger } = require('github-slugger');
 const markedAlert = require('marked-alert');
 
+function flattenTokenText(tokenOrTokens) {
+  if (Array.isArray(tokenOrTokens)) {
+    return tokenOrTokens.map(flattenTokenText).join('');
+  }
+  if (!tokenOrTokens) return '';
+  return tokenOrTokens.tokens
+    ? flattenTokenText(tokenOrTokens.tokens)
+    : (tokenOrTokens.text || tokenOrTokens.raw || '');
+}
+
+function escapeHtmlAttribute(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
 // Plugin: clickable heading anchors with GitHub-compatible IDs
 const slugger = new GithubSlugger();
 marked.use({
@@ -19,9 +37,7 @@ marked.use({
     heading({ tokens, depth }) {
       const text = this.parser.parseInline(tokens);
       // Extract plain text from tokens (avoids regex-based HTML stripping)
-      const raw = tokens.map(function flattenTokenText(t) {
-        return t.tokens ? t.tokens.map(flattenTokenText).join('') : (t.text || t.raw || '');
-      }).join('').trim();
+      const raw = flattenTokenText(tokens).trim();
       // slugger.slug() always returns a URL-safe [a-z0-9-] string, safe for attribute interpolation
       const id = slugger.slug(raw);
       // text is the HTML output of parseInline(), which escapes user content
@@ -37,9 +53,13 @@ marked.use({
           ? item.tokens[0].tokens.slice(1)
           : item.tokens.slice(1);
         const text = this.parser.parseInline(inlineTokens);
+        const accessibleName = flattenTokenText(inlineTokens).replace(/\s+/g, ' ').trim();
         const baseAttrs = 'class="task-list-item-checkbox" disabled="" type="checkbox"';
         const attrs = item.checked ? `${baseAttrs} checked=""` : baseAttrs;
-        return `<li class="task-list-item"><input ${attrs}> ${text}</li>\n`;
+        const labelAttr = accessibleName
+          ? ` aria-label="${escapeHtmlAttribute(accessibleName)}"`
+          : '';
+        return `<li class="task-list-item"><input ${attrs}${labelAttr}> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
     },
@@ -150,12 +170,14 @@ const htmlContent = files.map((f, index) => {
   // regex safely finds the first heading regardless of leading comment lines.
   const headingMatch = markdown.match(headingRegex);
   const title = pageTitleByFile.get(f);
+  const titleHtml = marked.parseInline(title);
   const sectionId = sectionIdsByFile.get(f);
+  const sectionTitleId = `${sectionId}-title`;
   // Intentionally remove only the first heading because it is promoted to <summary>.
   const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
   const content = marked(renderWorkshopNavigation(markdownWithoutTitle, f));
   const detailsOpenAttr = index === 0 ? ' open' : '';
-  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary><h4>${title}</h4></summary>\n${content}\n</details>`;
+  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary aria-labelledby="${sectionTitleId}"><h1 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h1></summary>\n${content}\n</details>`;
 }).join('\n\n');
 
 const menuGroups = [
@@ -418,7 +440,8 @@ body,
   cursor: default;
   list-style: none;
 }
-.markdown-body > details > summary > h4 {
+.markdown-body > details > summary > .workshop-page-title {
+  margin: 0;
   font-size: 32px;
   line-height: 1.25;
 }
@@ -427,7 +450,7 @@ body,
 }
 
 @media (max-width: 543px) {
-  .markdown-body > details > summary > h4 {
+  .markdown-body > details > summary > .workshop-page-title {
     font-size: 28px;
   }
 }
