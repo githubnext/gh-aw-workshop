@@ -46,7 +46,7 @@ If your run does not look right, start with these quick checks before changing t
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 
-For a deeper troubleshooting guide, see [Reading Workflow Output](09-understand-output.md) and [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
+For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
 ## ✅ Checkpoint
 
@@ -57,5 +57,4 @@ For a deeper troubleshooting guide, see [Reading Workflow Output](09-understand-
 <!-- journey: all -->
 **Next:** [Refine Your Workflow with Agentic Editing](09-agentic-editing.md)
 <!-- /journey -->
-
 

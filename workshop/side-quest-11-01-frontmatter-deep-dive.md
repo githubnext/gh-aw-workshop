@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-You have read [Step 11](11a-build-daily-status.md) and have a draft frontmatter file open.
+You have read [Step 11](07-your-first-workflow.md) and have a draft frontmatter file open.
 
 ---
 
@@ -102,7 +102,7 @@ The five entries above cover reading repository content, issues, pull requests, 
 ---
 
 <!-- journey: all -->
-Continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md), or return to [Build — Daily Repo Status Workflow](11a-build-daily-status.md).
+Continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md), or return to [Build — Daily Repo Status Workflow](07-your-first-workflow.md).
 <!-- /journey -->
 
 

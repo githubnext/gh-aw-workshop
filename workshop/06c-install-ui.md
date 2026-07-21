@@ -13,7 +13,7 @@ You'll confirm that the GitHub UI path does not require a local `gh-aw` installa
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You are signed in to [github.com](https://github.com)
-- You have your practice repository ready (from [GitHub UI Path](03b-create-your-repo-ui.md))
+- You have your practice repository ready (from [GitHub UI Path](02a-setup-codespace.md))
 
 ## Why no installation is needed
 
@@ -29,7 +29,7 @@ CCA and mobile learners are already authenticated — you signed in to GitHub to
 
 After you merge the workflow pull request from [Step 7c](07c-your-first-workflow-copilot.md) or complete a later browser-first step, navigate to the **Actions** tab in your repository, select the workflow name in the sidebar, and click **Run workflow**. You do not need `gh aw run`.
 
-If you want a browser-only scenario with no terminal, [Adventure E in Step 10](10-choose-your-scenario.md#adventure-e-browser-only-daily-status-workflow-for-cca-and-mobile) walks you through using the Agentic Workflows agent (Copilot app or Agents tab) to create, compile, and commit a daily status workflow — no terminal required at any stage.
+If you want a browser-only scenario with no terminal, [Adventure E in Step 10](07c-your-first-workflow-copilot.md) walks you through using the Agentic Workflows agent (Copilot app or Agents tab) to create, compile, and commit a daily status workflow — no terminal required at any stage.
 
 ## What to do next
 

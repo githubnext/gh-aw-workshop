@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Diagnosing Common Agent Output Patterns
 
-> _Optional: use this side quest when a run behaves unexpectedly, then return to [Reading Workflow Output](09-understand-output.md)._
+> _Optional: use this side quest when a run behaves unexpectedly, then return to [Reading Workflow Output](08b-interpret-your-run.md)._
 
 ## 🎯 What You'll Do
 
@@ -10,7 +10,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 
 ## 📋 Before You Start
 
-- Complete [Reading Workflow Output](09-understand-output.md)
+- Complete [Reading Workflow Output](08b-interpret-your-run.md)
 
 ## Pattern Lab Index
 
@@ -30,7 +30,7 @@ Need a reusable triage flow after the pattern drills? Open the [Debugging Checkl
 - [ ] I can choose the right micro-step from the pattern table
 - [ ] I can use the exercise format to identify each pattern before checking the answer
 - [ ] I can open the checklist page when I need full run triage
-- [ ] I know to return to [Step 9](09-understand-output.md) after this side quest
+- [ ] I know to return to [Step 9](08b-interpret-your-run.md) after this side quest
 
 <!-- /journey -->
 
