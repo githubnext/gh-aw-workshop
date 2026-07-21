@@ -155,10 +155,17 @@ test("agent adjustments are bounded and unknown adjustment keys are ignored", ()
         semanticScores: {
           stateReadiness: -10,
           pathClarity: 60,
-          recoverySupport: 120
+          recoverySupport: 120,
+          ignored: "not-a-score"
         },
         signalAdjustments: { complexity: 3, invented: 1 },
         pathAdjustments: { browser: -3, invented: -1 }
+      },
+      malformed: {
+        semanticScores: {
+          stateReadiness: null,
+          pathClarity: "not-a-score"
+        }
       }
     }
   });
@@ -171,6 +178,7 @@ test("agent adjustments are bounded and unknown adjustment keys are ignored", ()
   });
   assert.deepEqual(normalized.step.signalAdjustments, { complexity: 0.15 });
   assert.deepEqual(normalized.step.pathAdjustments, { browser: -0.15 });
+  assert.deepEqual(normalized.malformed.semanticScores, {});
 });
 
 test("semantic page scores change the statistical readiness outcome", () => {

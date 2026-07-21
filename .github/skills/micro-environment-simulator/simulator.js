@@ -27,7 +27,12 @@ const TERMINAL_DEMAND_CAP = 0.95;
 const UI_ALTERNATIVE_TERMINAL_DISCOUNT = 0.1;
 const UI_ALTERNATIVE_TERMINAL_DISCOUNT_CAP = 0.3;
 const AGENT_ADJUSTMENT_LIMIT = 0.15;
-const SEMANTIC_SCORE_FIELDS = ["stateReadiness", "pathClarity", "recoverySupport"];
+const SEMANTIC_SCORE_WEIGHTS = {
+  stateReadiness: 0.5,
+  pathClarity: 0.3,
+  recoverySupport: 0.2
+};
+const SEMANTIC_SCORE_PROBABILITY_SCALE = 0.002;
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -329,8 +334,9 @@ function normalizeBoundedAdjustments(container, fieldName, stepId, allowedKeys) 
   if (!isPlainObject(container[fieldName])) {
     return;
   }
+  const allowedKeySet = new Set(allowedKeys);
   for (const key of Object.keys(container[fieldName])) {
-    if (!allowedKeys.includes(key)) {
+    if (!allowedKeySet.has(key)) {
       console.warn(`[simulator] Ignoring unknown adjustment '${stepId}.${fieldName}.${key}'.`);
       delete container[fieldName][key];
       continue;
@@ -353,9 +359,10 @@ function normalizeSemanticScores(container, stepId) {
     return;
   }
   const scores = {};
-  for (const field of SEMANTIC_SCORE_FIELDS) {
-    const value = Number(container.semanticScores[field]);
-    if (!Number.isFinite(value)) {
+  for (const field of Object.keys(SEMANTIC_SCORE_WEIGHTS)) {
+    const rawValue = container.semanticScores[field];
+    const value = Number(rawValue);
+    if (rawValue == null || !Number.isFinite(value)) {
       console.warn(`[simulator] Agent insight '${stepId}.semanticScores.${field}' should be numeric.`);
       continue;
     }
@@ -482,6 +489,7 @@ function buildStepContentById({
       fileContents.map(({ file, title }) => ({ file, title }))
     );
     let agentInsight = agentInsightsByStep[stepId] ? { ...agentInsightsByStep[stepId] } : null;
+    // Every model-affecting insight is tied to the exact page revision it evaluated.
     if (
       agentInsight &&
       Number(agentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
@@ -1056,6 +1064,8 @@ const exportedApi = {
   VALID_TERMINALS,
   INFERENCE_PROVIDERS,
   PROVIDER_SECRET_BY_NAME,
+  SEMANTIC_SCORE_WEIGHTS,
+  SEMANTIC_SCORE_PROBABILITY_SCALE,
   ensure,
   clamp,
   stableHash,
