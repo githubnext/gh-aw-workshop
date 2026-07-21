@@ -335,8 +335,9 @@ ${slidesHtml}
       if (target && target.closest('.slides')) {
         const indices = Reveal.getIndices(target);
         if (indices && typeof indices.h === 'number') {
+          const verticalIndex = typeof indices.v === 'number' ? indices.v : 0;
           e.preventDefault();
-          Reveal.slide(indices.h, indices.v);
+          Reveal.slide(indices.h, verticalIndex);
         }
       }
     });
