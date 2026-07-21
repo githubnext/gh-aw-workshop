@@ -315,7 +315,7 @@ Rules:
 - `journey:` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
 - Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `journey: all`.
 - Keep the page-level `<!-- page-journey: X -->` annotation on line 1 of the file. Section-level comment markers (`<!-- journey: X -->` / `<!-- /journey -->`) are for filtering content blocks inside a page, not page-level routing.
-- Prefer journey comment markers for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
+- Prefer journey comment markers for path-specific alerts/callouts and for `Next` navigation link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
 - Do not nest journey markers. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
 
