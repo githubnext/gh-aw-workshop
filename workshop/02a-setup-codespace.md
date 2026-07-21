@@ -13,6 +13,9 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 - [ ] You have a GitHub account with access to GitHub Codespaces
 - [ ] You want a browser-based terminal and do not need to install tools locally
 
+> [!TIP]
+> On a tablet or shared computer? The Codespace path is the easiest option — it runs entirely in your browser with no local installs. On a phone screen the terminal is harder to use; if possible, switch to a tablet or laptop for this workshop.
+
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
 ### New repository
@@ -30,11 +33,22 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
 2. Click the **Codespaces** tab.
    - Leave **main** selected as the branch.
    - Click **Create codespace on main**.
-   - Wait 30–60 seconds for GitHub to prepare the container and open the editor.
+   - Wait 30–60 seconds for GitHub to prepare the container.
+3. The Codespace opens in a new browser tab showing a VS Code-style editor. Leave this tab open for the rest of the workshop.
 
 ![Open Codespace](images/02a-open-codespace.svg)
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
+
+<details>
+<summary>Codespace not appearing or taking too long?</summary>
+
+- **"Create codespace on main" is greyed out** — your account may not have Codespaces enabled. Check [github.com/settings/billing](https://github.com/settings/billing) or ask your organization admin.
+- **Spinner runs more than 3 minutes** — refresh the browser tab. If still stuck, go to [github.com/codespaces](https://github.com/codespaces), find the pending Codespace, click **⋯ → Delete**, and try again.
+- **"Codespace storage limit reached"** — you may have existing Codespaces using your quota. Visit [github.com/codespaces](https://github.com/codespaces), delete any you no longer need, and retry.
+- **VS Code desktop opens instead of the browser** — click **Open in Browser** in the dialog, or close VS Code desktop and return to the browser tab.
+
+</details>
 
 ### Open the Codespace terminal
 

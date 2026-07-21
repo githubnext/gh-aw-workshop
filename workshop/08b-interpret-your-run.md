@@ -48,10 +48,22 @@ If your run does not look right, start with these quick checks before changing t
 
 For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
+## Reflect
+
+Before you mark the checkpoint, take two minutes to apply what you just read to your own run.
+
+**Practice prompt 1 — trace the decision:** Find the first `Tool call` in your run log and answer: what question was the agent trying to answer at that moment, and what information did it get back?
+
+**Practice prompt 2 — judge the outcome:** Compare the run summary to the actual GitHub change (the comment or issue). Did the agent do what you expected? Write one sentence saying what matched and, if anything, what was different.
+
+Put your answers in a scratch file, your editor, or wherever you keep notes. You will refer back to this comparison when you refine the workflow in the next step.
+
 ## ✅ Checkpoint
 
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created
+- [ ] I traced the first tool call and noted what the agent was trying to do
+- [ ] I compared the run summary to the actual GitHub change and noted the result
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
 
 <!-- journey: all -->
