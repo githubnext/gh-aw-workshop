@@ -41,7 +41,7 @@ steps:
       sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
       from curriculum_assessment import score_workshop_file, sorted_workshop_files
 
-      entries = [score_workshop_file(path) for path in sorted_workshop_files('workshop')]
+      entries = [score_workshop_file(path) for path in sorted_workshop_files('workshop', learning_only=True)]
 
       pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').write_text(
           json.dumps({'files': entries, 'total': len(entries)}, indent=2)
