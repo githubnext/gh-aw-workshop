@@ -203,7 +203,7 @@ test("semantic evaluations update compiled workflow and centralized billing stat
   assert.equal(result.state.actions.secrets.COPILOT_GITHUB_TOKEN, false);
 });
 
-test("semantic evaluations update personal billing state and fail closed on NO", () => {
+test("semantic evaluations update personal billing state and fail closed on UNKNOWN", () => {
   const configured = journey.transitions["07-first-workflow"](
     firstWorkflowState(false),
     firstWorkflowContext({
@@ -220,8 +220,8 @@ test("semantic evaluations update personal billing state and fail closed on NO",
       cca_authoring_guidance: { answer: "YES" },
       workflow_source_created_copilot: { answer: "YES" },
       workflow_compiled_copilot: { answer: "YES" },
-      workflow_published_copilot: { answer: "NO" },
-      copilot_personal_billing_configured: { answer: "NO" }
+      workflow_published_copilot: { answer: "UNKNOWN" },
+      copilot_personal_billing_configured: { answer: "UNKNOWN" }
     })
   );
 

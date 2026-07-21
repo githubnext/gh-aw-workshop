@@ -258,12 +258,23 @@ For each student in the generated cohort, simulate their experience step-by-step
 
 First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
 
+Evaluate content assumptions semantically instead of inferring state from keyword counts. Use one focused yes/no question per assumption, answer only `YES`, `NO`, or `UNKNOWN`, and cite `file:line` evidence. Copy each step's `contentHash` from the baseline output into `evaluatedContentHash`. The simulator ignores evaluations when that hash does not match the current mapped page content, so page edits require fresh evaluations.
+
 Use this JSON shape:
 
 ```json
 {
+  "schemaVersion": 1,
   "stepInsightsById": {
     "<step-id>": {
+      "evaluatedContentHash": 123456789,
+      "evaluations": {
+        "<assumption-id>": {
+          "question": "Does the applicable content ensure this state is true before the next step?",
+          "answer": "YES",
+          "evidence": ["<workshop-file>:<line>"]
+        }
+      },
       "summary": "Short explanation of the content-specific risk or support you inferred.",
       "bias": -0.04,
       "signalAdjustments": {
@@ -290,6 +301,21 @@ Use this JSON shape:
 }
 ```
 
+- Always evaluate these Step 7 assumptions because they determine the state required by Step 8:
+  - `workflow_source_created_terminal`
+  - `workflow_compiled_terminal`
+  - `workflow_published_terminal`
+  - `workflow_source_created_copilot`
+  - `workflow_compiled_copilot`
+  - `workflow_published_copilot`
+  - `cca_authoring_guidance`
+  - `copilot_centralized_billing_configured`
+  - `copilot_personal_billing_configured`
+- Evaluate the terminal and Copilot paths independently. A path passes only when its instructions and checkpoint ensure the learner completes the action; a nearby keyword or optional suggestion is not enough.
+- For `workflow_published_*`, confirm that both the source `.md` and generated `.lock.yml` reach the repository's default branch.
+- For each billing assumption, confirm the content selects that billing method, applies its matching permission or secret configuration, recompiles after changes, and commits the resulting source and lock files.
+- Use `UNKNOWN` when the mapped pages do not provide enough evidence. `UNKNOWN` does not update state.
+- You may add focused evaluations for other high-risk steps. Unknown evaluation IDs remain available as report evidence but cannot directly patch arbitrary simulator state.
 - Omit steps where you have no meaningful adjustment.
 - Use positive numbers to increase success probability and negative numbers to decrease it.
 - Base these adjustments on the actual wording, path structure, fallbacks, and recovery guidance in the files you inspect — not only on the numeric signals already present in the simulator.
@@ -325,7 +351,14 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
       "troubleshootingSupport": <0.0–1.0>,
       "agentInsight": {
         "summary": "<optional content-aware rationale>",
-        "riskTags": ["<tag>", "..."]
+        "riskTags": ["<tag>", "..."],
+        "evaluatedContentHash": 123456789,
+        "evaluations": {
+          "<assumption-id>": {
+            "answer": "YES",
+            "evidence": ["<workshop-file>:<line>"]
+          }
+        }
       }
     }
   },
