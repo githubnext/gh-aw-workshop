@@ -17,12 +17,13 @@ function flattenTokenText(tokenOrTokens) {
     : (tokenOrTokens.text || tokenOrTokens.raw || '');
 }
 
-function escapeHtmlAttribute(value) {
+function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('"', '&quot;')
     .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;');
+    .replaceAll('>', '&gt;')
+    .replaceAll('\'', '&#39;');
 }
 
 // Plugin: clickable heading anchors with GitHub-compatible IDs
@@ -57,7 +58,7 @@ marked.use({
         const baseAttrs = 'class="task-list-item-checkbox" disabled="" type="checkbox"';
         const attrs = item.checked ? `${baseAttrs} checked=""` : baseAttrs;
         const labelAttr = accessibleName
-          ? ` aria-label="${escapeHtmlAttribute(accessibleName)}"`
+          ? ` aria-label="${escapeHtml(accessibleName)}"`
           : '';
         return `<li class="task-list-item"><input ${attrs}${labelAttr}> ${text}</li>\n`;
       }
@@ -170,14 +171,14 @@ const htmlContent = files.map((f, index) => {
   // regex safely finds the first heading regardless of leading comment lines.
   const headingMatch = markdown.match(headingRegex);
   const title = pageTitleByFile.get(f);
-  const titleHtml = marked.parseInline(title);
+  const titleHtml = escapeHtml(title);
   const sectionId = sectionIdsByFile.get(f);
   const sectionTitleId = `${sectionId}-title`;
   // Intentionally remove only the first heading because it is promoted to <summary>.
   const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
   const content = marked(renderWorkshopNavigation(markdownWithoutTitle, f));
   const detailsOpenAttr = index === 0 ? ' open' : '';
-  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary aria-labelledby="${sectionTitleId}"><h1 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h1></summary>\n${content}\n</details>`;
+  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary><h1 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h1></summary>\n${content}\n</details>`;
 }).join('\n\n');
 
 const menuGroups = [
