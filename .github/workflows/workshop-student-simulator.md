@@ -216,12 +216,7 @@ steps:
       non_learning_count = sum(1 for m in quality_metrics if not m.get('is_learning_page', True))
       print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests ({non_learning_count} dispatcher pages scored for clarity/simplicity)")
       print(f"Curriculum quality mean score: {quality_mean}")
-      print(
-          "Curriculum parts:"
-          f" part1={len(part1_metrics)}"
-          f", part2={len(part2_metrics)}"
-          f", other={len(other_metrics)}"
-      )
+      print(f"Curriculum parts: part1={len(part1_metrics)}, part2={len(part2_metrics)}, other={len(other_metrics)}")
       if lowest_quality:
           print(f"Lowest quality step: {lowest_quality['file']} ({lowest_quality['overall_score']}/10)")
       for entry in curriculum:

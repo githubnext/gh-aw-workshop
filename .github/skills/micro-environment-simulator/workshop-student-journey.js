@@ -369,6 +369,15 @@ function applyLearning(state, context, gains = {}) {
   return deepFreeze(next);
 }
 
+function markPracticeRepoReady(state) {
+  const next = cloneState(state);
+  next.flags.hasRepo = true;
+  next.flags.repoCreatedViaUi = true;
+  next.flags.repoHasReadme = true;
+  next.flags.repoVerified = true;
+  return next;
+}
+
 function contentReadinessCheck(state, context, options = {}) {
   const assessment = evaluateStepProbability(state, context, options);
   const { probability, ...assessmentMeta } = assessment;
@@ -386,7 +395,7 @@ function contentReadinessCheck(state, context, options = {}) {
   return failure;
 }
 
-function advancedWorkflowStep(state, context, options = {}) {
+function advancedLessonStep(state, context, options = {}) {
   const workflowCheck = ensure(
     state.flags.hasWorkflowFile,
     options.workflowMissingMessage || "Advanced workshop steps assume the learner already has a workflow to extend.",
@@ -459,12 +468,8 @@ function buildTransitions() {
           emphasis: { bias: 0.12, terminalWeight: 0, complexityWeight: 0.1 }
         });
         if (!readiness.ok) return readiness;
-        const next = cloneState(state);
+        const next = markPracticeRepoReady(state);
         next.flags.environmentReady = true;
-        next.flags.hasRepo = true;
-        next.flags.repoCreatedViaUi = true;
-        next.flags.repoHasReadme = true;
-        next.flags.repoVerified = true;
         return { ok: true, state: applyLearning(next, context, { github: 0.04, confidence: 0.01 }) };
       }
       const terminalCheck = ensure(
@@ -482,15 +487,11 @@ function buildTransitions() {
         emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
-      const next = cloneState(state);
+      const next = markPracticeRepoReady(state);
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
       next.flags.environmentReady = true;
-      next.flags.hasRepo = true;
-      next.flags.repoCreatedViaUi = true;
-      next.flags.repoHasReadme = true;
-      next.flags.repoVerified = true;
       return { ok: true, state: applyLearning(next, context, { terminal: 0.08, github: 0.03 }) };
     },
     "04-actions-intro": (state, context) => {
@@ -742,7 +743,7 @@ function buildTransitions() {
     },
     "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) }),
     "15-conditional-logic": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 227,
         category: "conditional-logic-friction",
@@ -752,7 +753,7 @@ function buildTransitions() {
         learningGains: { actions: 0.06, agentic: 0.04, troubleshooting: 0.03 }
       }),
     "16-connect-data-source": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 239,
         category: "data-source-friction",
@@ -766,7 +767,7 @@ function buildTransitions() {
         learningGains: { actions: 0.05, agentic: 0.05, troubleshooting: 0.03 }
       }),
     "17-add-mcp-tools": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 251,
         category: "mcp-tooling-friction",
@@ -780,7 +781,7 @@ function buildTransitions() {
         learningGains: { agentic: 0.06, troubleshooting: 0.04, github: 0.02 }
       }),
     "18-share-and-reuse": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         salt: 263,
         category: "workflow-reuse-friction",
         failedAssumption: "The learner has a working workflow, but cannot yet separate what should stay local from what should become reusable.",
@@ -793,7 +794,7 @@ function buildTransitions() {
         learningGains: { agentic: 0.05, actions: 0.04, confidence: 0.02 }
       }),
     "19-research-driven-training-node": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 277,
         category: "research-node-friction",
@@ -807,7 +808,7 @@ function buildTransitions() {
         learningGains: { agentic: 0.07, troubleshooting: 0.04, confidence: 0.02 }
       }),
     "20-persistent-memory": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         salt: 281,
         category: "memory-pattern-friction",
         failedAssumption: "The learner sees the memory feature, but cannot yet tell when cache memory or repo memory should own the state.",
@@ -820,7 +821,7 @@ function buildTransitions() {
         learningGains: { agentic: 0.06, actions: 0.03, confidence: 0.02 }
       }),
     "21-inline-sub-agents": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         salt: 293,
         category: "sub-agent-friction",
         failedAssumption: "The learner understands one agent, but not yet when splitting work across inline sub-agents actually reduces complexity.",
@@ -833,7 +834,7 @@ function buildTransitions() {
         learningGains: { agentic: 0.07, troubleshooting: 0.03, confidence: 0.02 }
       }),
     "22-error-handling-and-resilience": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 307,
         category: "resilience-friction",
@@ -847,7 +848,7 @@ function buildTransitions() {
         learningGains: { troubleshooting: 0.07, agentic: 0.04, actions: 0.03 }
       }),
     "23-ab-experiments": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 311,
         category: "experiment-design-friction",
@@ -861,7 +862,7 @@ function buildTransitions() {
         learningGains: { agentic: 0.06, troubleshooting: 0.04, confidence: 0.02 }
       }),
     "24-self-hosted-runners": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         salt: 313,
         category: "self-hosted-runner-friction",
         failedAssumption: "The learner can author the workflow, but the jump to runner placement, permissions, and enterprise constraints is still steep.",
@@ -870,7 +871,7 @@ function buildTransitions() {
         learningGains: { actions: 0.05, troubleshooting: 0.04, confidence: 0.02 }
       }),
     "25-audit-and-observability": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 317,
         category: "audit-friction",
@@ -884,7 +885,7 @@ function buildTransitions() {
         learningGains: { troubleshooting: 0.07, actions: 0.03, agentic: 0.03 }
       }),
     "26-manage-costs-and-budgets": (state, context) =>
-      advancedWorkflowStep(state, context, {
+      advancedLessonStep(state, context, {
         requiresRun: true,
         salt: 331,
         category: "cost-guardrail-friction",
