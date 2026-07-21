@@ -178,7 +178,7 @@ const htmlContent = files.map((f, index) => {
   const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
   const content = marked(renderWorkshopNavigation(markdownWithoutTitle, f));
   const detailsOpenAttr = index === 0 ? ' open' : '';
-  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary><h1 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h1></summary>\n${content}\n</details>`;
+  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary>${titleHtml}</summary>\n<h1 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h1>\n${content}\n</details>`;
 }).join('\n\n');
 
 const menuGroups = [
@@ -438,20 +438,16 @@ body,
   scroll-margin-top: 72px;
 }
 .markdown-body > details > summary {
-  cursor: default;
-  list-style: none;
+  display: none;
 }
-.markdown-body > details > summary > .workshop-page-title {
+.markdown-body > details > .workshop-page-title {
   margin: 0;
   font-size: 32px;
   line-height: 1.25;
 }
-.markdown-body > details > summary::-webkit-details-marker {
-  display: none;
-}
 
 @media (max-width: 543px) {
-  .markdown-body > details > summary > .workshop-page-title {
+  .markdown-body > details > .workshop-page-title {
     font-size: 28px;
   }
 }
