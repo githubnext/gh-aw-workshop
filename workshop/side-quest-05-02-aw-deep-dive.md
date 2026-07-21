@@ -38,7 +38,7 @@ You just saw how a standard Actions workflow follows fixed steps. Agentic workfl
 
 ## Reflection
 
-Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea later.
+Before you check the reflection item in the checkpoint below, write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
 
 ## What the agent decided
 
