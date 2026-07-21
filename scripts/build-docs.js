@@ -298,18 +298,46 @@ ${slidesHtml}
     // Navigate to named sections when an in-slide hash link is clicked.
     // Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
     document.addEventListener('click', function (e) {
-      const link = e.target.closest('a[href^="#"]');
+      function getElementTarget(target) {
+        if (!target) return null;
+        if (target.nodeType === Node.ELEMENT_NODE) return target;
+        return target.parentElement || null;
+      }
+
+      function findHashLink(start) {
+        let el = start;
+        while (el && el !== document) {
+          if (
+            el.tagName === 'A' &&
+            typeof el.getAttribute === 'function'
+          ) {
+            const href = el.getAttribute('href');
+            if (href && href.charAt(0) === '#') return el;
+          }
+          el = el.parentElement;
+        }
+        return null;
+      }
+
+      const targetEl = getElementTarget(e.target);
+      const link = findHashLink(targetEl);
       if (!link) return;
-      const raw = link.getAttribute('href').slice(1);
-      const id = decodeURIComponent(raw);
-      if (!id) return;
+      const href = link.getAttribute('href');
+      const raw = href ? href.slice(1) : '';
+      if (!raw) return;
+      let id = raw;
+      try {
+        id = decodeURIComponent(raw);
+      } catch {
+        return;
+      }
       const target = document.getElementById(id);
       if (target && target.closest('.slides')) {
-        e.preventDefault();
-        Reveal.slide(
-          Reveal.getIndices(target).h,
-          Reveal.getIndices(target).v
-        );
+        const indices = Reveal.getIndices(target);
+        if (indices && typeof indices.h === 'number') {
+          e.preventDefault();
+          Reveal.slide(indices.h, indices.v);
+        }
       }
     });
   </script>
