@@ -8,7 +8,7 @@
 
 ## 🎯 What You'll Do
 
-You'll choose the billing and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
+You'll choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
 
 ## Confirm the workflow engine
 
@@ -32,7 +32,7 @@ Choose exactly one method. The diagram below shows both paths and the key config
 Use this path when the organization that owns the repository has centralized Copilot billing enabled for Actions.
 
 1. Ask your organization administrator to confirm centralized billing is enabled.
-2. Keep `copilot-requests: write` in the workflow's `permissions:` block.
+2. Keep `copilot-requests: write` in the workflow's [`permissions:`](https://github.github.com/gh-aw/reference/permissions/) block.
 3. Complete [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md).
 
 The workflow uses the organization subscription. You do not need a personal Copilot token for this path.

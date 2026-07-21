@@ -54,7 +54,7 @@ on:
 ```
 
 - `name` is what you see in the Actions UI.
-- `schedule: daily` means it triggers once a day. The compiler automatically adds the `workflow_dispatch` event as well.
+- `schedule: daily` means it triggers once a day. The compiler automatically adds the [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) event as well.
 
 ![How workflow_dispatch works: author the .md file, compile to a lock.yml, push to GitHub, then click Run workflow in the Actions tab to trigger the agent](images/07a-workflow-dispatch-trigger.svg)
 
