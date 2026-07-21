@@ -27,7 +27,7 @@ If you already know Actions, here's the key shift at a glance:
 |-----------|-----------------|-------------------|
 | **Task description** | You write YAML `steps` | You write a plain-English brief |
 | **Execution model** | Deterministic — same inputs, same path | AI agent reasons and adapts at runtime |
-| **Tool selection** | Fixed — you specify every `uses` and `run` | Agent selects and chains tools from declared toolsets |
+| **Tool selection** | Fixed — you specify every `uses` and `run` | Agent selects and chains [tools](https://github.github.com/gh-aw/reference/tools/) from declared toolsets |
 | **File format** | `.github/workflows/*.yml` | `.github/workflows/*.md` (compiled to `.lock.yml`) |
 
 ## Quick Refresher

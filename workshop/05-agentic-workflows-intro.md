@@ -15,7 +15,7 @@ If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 - You've read [What Are GitHub Actions?](04-github-actions-intro.md)
 
-An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, reasons about the results, and posts the output automatically. The frontmatter is fully Actions-compatible — triggers, permissions, and runners all apply.
+An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls [tools](https://github.github.com/gh-aw/reference/tools/), reasons about the results, and posts the output automatically. The [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) is fully Actions-compatible — [triggers](https://github.github.com/gh-aw/reference/triggers/), [permissions](https://github.github.com/gh-aw/reference/permissions/), and runners all apply.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
 
@@ -139,8 +139,8 @@ Before you reveal the answers below, write a one-sentence definition for each te
 | Term | Plain-language meaning |
 |---|---|
 | Agentic workflow | A GitHub Actions workflow that uses an AI model to reason and act |
-| Lock file | The compiled YAML that GitHub Actions actually runs |
-| Engine | The AI model provider (for example, GitHub Copilot) used by the workflow |
+| [Lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) | The compiled YAML that GitHub Actions actually runs |
+| [Engine](https://github.github.com/gh-aw/reference/engines/) | The AI model provider (for example, GitHub Copilot) used by the workflow |
 | `workflow_dispatch` | A manual trigger — you start the run by clicking a button in the Actions tab |
 
 Confirm each:
