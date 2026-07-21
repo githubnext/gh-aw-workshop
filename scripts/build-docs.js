@@ -432,6 +432,10 @@ body,
   }
 }
 
+.markdown-body .anchor {
+  display: none;
+}
+
 .markdown-body a:not(.anchor) {
   text-decoration: underline;
   text-underline-offset: 0.08em;
