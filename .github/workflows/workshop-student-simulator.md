@@ -125,7 +125,7 @@ steps:
     run: |
       mkdir -p /tmp/gh-aw/agent/sim/data
       python3 <<'PY'
-      import json, pathlib, statistics, sys
+      import json, pathlib, re, statistics, sys
 
       workshop = pathlib.Path('workshop')
       if not workshop.is_dir():
@@ -140,6 +140,26 @@ steps:
       sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
       from curriculum_assessment import extract_title, score_workshop_file, sorted_workshop_files
 
+      def lesson_number(filename):
+          match = re.search(r'(?:^|-)0*(\d{1,2})(?:[a-z])?(?=[-.]|$)', filename)
+          return int(match.group(1)) if match else None
+
+      def part_label(filename):
+          lesson = lesson_number(filename)
+          if lesson is None:
+              return 'other'
+          return 'part1' if lesson <= 14 else 'part2'
+
+      def summarize_scores(rows):
+          if not rows:
+              return {'files': 0, 'mean_score': None, 'stdev_score': None}
+          scores = [row['overall_score'] for row in rows]
+          return {
+              'files': len(rows),
+              'mean_score': round(statistics.mean(scores), 2),
+              'stdev_score': round(statistics.stdev(scores) if len(scores) > 1 else 0, 2),
+          }
+
       all_files = sorted_workshop_files(workshop)
       main_steps = [f for f in all_files if not f.name.startswith('side-quest')]
       side_quests = [f for f in all_files if f.name.startswith('side-quest')]
@@ -148,7 +168,15 @@ steps:
       quality_metrics = []
       for i, f in enumerate(main_steps):
           scored = score_workshop_file(f)
-          curriculum.append({'index': i, 'file': f.name, 'title': scored['title'], 'is_learning_page': scored.get('is_learning_page', True)})
+          part = part_label(f.name)
+          scored['part'] = part
+          curriculum.append({
+              'index': i,
+              'file': f.name,
+              'title': scored['title'],
+              'part': part,
+              'is_learning_page': scored.get('is_learning_page', True),
+          })
           quality_metrics.append(scored)
 
       side_quest_list = []
@@ -158,6 +186,9 @@ steps:
 
       quality_mean = round(statistics.mean([m['overall_score'] for m in quality_metrics]), 2) if quality_metrics else 0.0
       lowest_quality = min(quality_metrics, key=lambda m: m['overall_score']) if quality_metrics else None
+      part1_metrics = [m for m in quality_metrics if m.get('part') == 'part1']
+      part2_metrics = [m for m in quality_metrics if m.get('part') == 'part2']
+      other_metrics = [m for m in quality_metrics if m.get('part') == 'other']
 
       data = {
           'main_steps': curriculum,
@@ -170,6 +201,9 @@ steps:
               'generated_from': 'workshop-student-simulator',
               'total_steps': len(quality_metrics),
               'mean_overall_score': quality_mean,
+              'part1': summarize_scores(part1_metrics),
+              'part2': summarize_scores(part2_metrics),
+              'other': summarize_scores(other_metrics),
               'lowest_quality_step': lowest_quality,
               'steps': quality_metrics,
           }, indent=2)
@@ -182,11 +216,19 @@ steps:
       non_learning_count = sum(1 for m in quality_metrics if not m.get('is_learning_page', True))
       print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests ({non_learning_count} dispatcher pages scored for clarity/simplicity)")
       print(f"Curriculum quality mean score: {quality_mean}")
+      print(
+          "Curriculum parts:"
+          f" part1={len(part1_metrics)}"
+          f", part2={len(part2_metrics)}"
+          f", other={len(other_metrics)}"
+      )
       if lowest_quality:
           print(f"Lowest quality step: {lowest_quality['file']} ({lowest_quality['overall_score']}/10)")
       for entry in curriculum:
-          tag = '' if entry['is_learning_page'] else ' [dispatcher]'
-          print(f"  [{entry['index']}] {entry['file']}: {entry['title']}{tag}")
+          tags = [entry['part']]
+          if not entry['is_learning_page']:
+              tags.append('dispatcher')
+          print(f"  [{entry['index']}] {entry['file']}: {entry['title']} [{' · '.join(tags)}]")
       PY
 
   - name: Run Monte Carlo simulation (${{ env.MONTE_CARLO_RUNS }} runs per student)
@@ -221,13 +263,13 @@ You are an expert UX researcher and instructional designer specialising in devel
 The workshop teaches GitHub beginners how to create and run agentic workflows. The curriculum is determined at runtime from the workshop markdown files.
 
 Read `/tmp/gh-aw/agent/sim/data/curriculum.json`. It contains:
-- `main_steps`: ordered array of `{index, file, title}` for each main workshop step (excludes `README.md` and side-quest files)
+- `main_steps`: ordered array of `{index, file, title, part, is_learning_page}` for each main workshop step (excludes `README.md` and side-quest files)
 - `side_quests`: array of `{file, title}` for optional supplementary steps
 - `step_count`: total number of main steps
 
-Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, and `title` is the heading extracted from that file. Do not rely on any previously known or hardcoded list of steps.
+Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, `title` is the heading extracted from that file, and `part` is one of `part1` (lessons `00–14`), `part2` (lessons `15+`), or `other`. Do not rely on any previously known or hardcoded list of steps.
 
-Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`).
+Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including per-part summary stats in `part1`, `part2`, and `other`, plus each step's `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`).
 These metrics come from the shared rubric in `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py`.
 Treat that rubric as the educational score source of truth when you recommend repairs, and use this data to ground dropout analysis and repair recommendations.
 
@@ -393,6 +435,8 @@ Use the pre-computed values from `monte-carlo-replay.json` as the primary data s
 - **Success rate by technical level** — group `monteCarlo` entries by student level and average `successRate`
 - **Success rate by personality** — group `monteCarlo` entries by student personality and average `successRate`
 - **Success rate by UI preference** — compare average `successRate` for students where `ui_preferred: true` vs `ui_preferred: false`
+- **Part summary** — report `curriculum-quality-metrics.json.part1`, `.part2`, and overall mean so the core path (lessons `00–14`) is separated from the advanced lessons (`15+`)
+- **Part-specific hotspots** — when listing top-dropout steps or curriculum repairs, note whether each step belongs to Part 1 (`00–14`) or Part 2 (`15+`) using `curriculum.json.main_steps[*].part`
 - **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`; use `aggregate.failureCategoriesByStep` for the exact causes)
 - **Curriculum quality hotspots** — correlate top-dropout steps with low `overall_score` and weak rubric dimensions from `curriculum-quality-metrics.json`
 - **Learning KPI index** — compute the cohort-wide mean of the three learning-outcome dimensions from `curriculum-quality-metrics.json` across all main steps: `active_learning`, `checkpoint_quality`, and `scaffolding`. Report each as a standalone mean score (0–10) and their weighted average using the same weights as the shared rubric: `(2.0 × active_learning + 2.0 × checkpoint_quality + 1.5 × scaffolding) / 5.5`. This index measures whether learners who stay in the workshop are actually building skills, independent of whether others drop out.
@@ -437,9 +481,19 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 - Lowest curriculum quality step: `<file>` (overall score X.X/10)
 - Learning KPI index: X.X/10 (active_learning X.X · checkpoint_quality X.X · scaffolding X.X)
 
+### Part Summary
+| Part | Files | Mean Score | Std Dev |
+|---|---|---|---|
+| Part 1 — core path (lessons 00–14) | `N1` | `X.XX / 10.0` | `±S1` |
+| Part 2 — advanced (lessons 15+) | `N2` | `Y.YY / 10.0` | `±S2` |
+| Overall corpus | `N` | `Z.ZZ / 10.0` | `±S` |
+
+If any pages are classified as `other`, add one short bullet noting how many there are and whether they look materially weaker than the numbered lessons.
+
 ### Critical Findings
 1. 2-4 bullets with the most important blockers and who they affect.
 2. Include one bullet on the learning quality health: whether the learning KPI index indicates learners who stay in the workshop are building skills effectively.
+3. At least one bullet should say whether the most important repair belongs to Part 1 (`00–14`) or Part 2 (`15+`).
 
 ### Top Repairs to Prioritize
 Note: some student dropout is expected and acceptable. Repairs must maintain or improve the learning KPI index — do not lower the cognitive bar or remove practice to chase headline completion numbers.
