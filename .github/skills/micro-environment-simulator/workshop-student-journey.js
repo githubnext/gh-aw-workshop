@@ -30,14 +30,13 @@ const BACKGROUND_FACTORS = {
 const STEP_FILE_ALIASES = {
   "00-welcome": ["00-welcome.md"],
   "01-prerequisites": ["01-prerequisites.md"],
-  "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md"],
+  "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md", "02c-setup-browser.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "06-install-gh-aw": [
     "06-install-gh-aw.md",
     "06a-install-terminal.md",
-    "06b-install-local.md",
-    "06c-install-ui.md"
+    "06b-install-local.md"
   ],
   "07-first-workflow": [
     "07-your-first-workflow.md",

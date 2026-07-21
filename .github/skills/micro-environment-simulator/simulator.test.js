@@ -13,6 +13,15 @@ const populationModel = JSON.parse(
   fs.readFileSync(path.join(__dirname, "workshop-student-population.json"), "utf8")
 );
 
+test("journey step file mappings match current workshop page setup", () => {
+  const workshopDir = path.resolve(__dirname, "..", "..", "..", "workshop");
+  const mappedFiles = Object.values(journey.stepFilesById).flat();
+  for (const file of mappedFiles) {
+    assert.equal(fs.existsSync(path.join(workshopDir, file)), true, `Missing mapped workshop file: ${file}`);
+  }
+  assert.ok(journey.stepFilesById["02-setup"].includes("02c-setup-browser.md"));
+});
+
 test("seeded random streams are reproducible and non-cyclic over the simulation batch", () => {
   const first = simulator.createSeededRng(42);
   const second = simulator.createSeededRng(42);
