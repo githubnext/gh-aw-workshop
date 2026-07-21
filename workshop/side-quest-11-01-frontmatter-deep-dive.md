@@ -68,9 +68,9 @@ on:
 
 ```yaml
 on:
+  schedule: daily
   push:
     branches: [main]
-  schedule: daily
   workflow_dispatch: {}
 ```
 
@@ -114,7 +114,7 @@ permissions:
 **✏️ Try it:** Add the `permissions:` block to your draft. Then fill in the correct permission value for each scope:
 
 ```yaml
-# Your turn: fill in the correct value for each scope
+# Your turn: fill in the correct value for each scope (read or write)
 permissions:
   contents: ???
   copilot-requests: ???
