@@ -893,7 +893,13 @@ function createStepGreekAccumulator() {
 }
 
 function recordStepGreekEstimate(accumulator, stepId, greeks) {
-  if (!accumulator || !stepId || !greeks || typeof greeks !== "object") {
+  if (!accumulator) {
+    return;
+  }
+  if (!stepId) {
+    return;
+  }
+  if (!greeks || typeof greeks !== "object") {
     return;
   }
   const entries = Object.entries(greeks).filter(([, value]) => Number.isFinite(Number(value)));
@@ -930,6 +936,8 @@ function finalizeStepGreekAccumulator(accumulator, totalAttempts = 0, steps = []
     }
   }
   return {
+    // Adapted from Vandendorpe-style Greek estimation: reuse the reached path states
+    // instead of rerunning the full cohort for each bumped signal.
     algorithm: "vandendorpe-reached-state",
     interpretation:
       "First-order sensitivities of modeled success rates to step-content signals, reusing the Monte Carlo cohort's reached states instead of bump-and-reprice reruns.",

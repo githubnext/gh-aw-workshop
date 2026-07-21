@@ -137,6 +137,10 @@ function createZeroSignalGreeks() {
   return Object.fromEntries(STEP_SIGNAL_KEYS.map((signal) => [signal, 0]));
 }
 
+function isWithinProbabilityBounds(probability) {
+  return probability > 0.12 && probability < 0.985;
+}
+
 function agentInsight(context) {
   const insight = context.stepContent?.agentInsight;
   return insight && typeof insight === "object" ? insight : {};
@@ -412,7 +416,9 @@ function evaluateStepProbabilityGreeks(state, context, options = {}) {
   };
   const base = computeSuccessProbabilityTerms(state, context, emphasis);
   let probability = clamp(base.probability, 0.12, 0.985);
-  let greeks = base.probability > 0.12 && base.probability < 0.985 ? { ...base.greeks } : createZeroSignalGreeks();
+  let greeks = isWithinProbabilityBounds(base.probability)
+    ? { ...base.greeks }
+    : createZeroSignalGreeks();
 
   const scoredDimensions = Object.entries(SEMANTIC_SCORE_WEIGHTS).filter(([dimension]) =>
     Number.isFinite(Number(semanticScores[dimension]))
@@ -451,7 +457,7 @@ function evaluateStepProbabilityGreeks(state, context, options = {}) {
     probability += Number(pathAdjustments.enterprise || 0);
   }
 
-  if (probability <= 0.12 || probability >= 0.985) {
+  if (!isWithinProbabilityBounds(probability)) {
     greeks = createZeroSignalGreeks();
   }
 
