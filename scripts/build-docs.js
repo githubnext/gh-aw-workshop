@@ -153,18 +153,42 @@ function renderWorkshopNavigation(markdown, currentFile) {
   const previousSectionId = previousFile ? sectionIdsByFile.get(previousFile) : null;
   const previousLabel = previousFile ? marked.parseInline(pageTitleByFile.get(previousFile)) : '';
 
-  return markdown.replace(nextLinkRegex, (_match, nextLabel, nextFile) => {
+  // Collect all valid next links from this page up front so we can render them
+  // together in a single nav block (one previous, one or more next buttons).
+  const nextButtons = [];
+  for (const match of markdown.matchAll(nextLinkRegex)) {
+    const nextFile = match[2];
     const nextSectionId = sectionIdsByFile.get(nextFile);
-    if (!nextSectionId) return _match;
+    if (nextSectionId) {
+      nextButtons.push(
+        `<a href="#${nextSectionId}" class="workshop-nav-btn workshop-nav-btn-primary">${marked.parseInline(match[1])} <span aria-hidden="true">→</span></a>`
+      );
+    }
+  }
 
-    const previousLink = previousSectionId
-      ? `<a href="#${previousSectionId}"><span aria-hidden="true">←</span> ${previousLabel}</a>`
-      : '';
+  if (nextButtons.length === 0) return markdown;
 
-    return `<nav class="workshop-navigation" aria-label="Workshop navigation">
-  <div class="workshop-navigation-previous">${previousLink}</div>
-  <div class="workshop-navigation-next"><a href="#${nextSectionId}">${marked.parseInline(nextLabel)} <span aria-hidden="true">→</span></a></div>
+  const previousDiv = previousSectionId
+    ? `<div class="workshop-navigation-previous"><a href="#${previousSectionId}" class="workshop-nav-btn workshop-nav-btn-secondary"><span aria-hidden="true">←</span> ${previousLabel}</a></div>`
+    : '';
+
+  const navHtml = `<nav class="workshop-navigation" aria-label="Workshop navigation">
+  ${previousDiv}
+  <div class="workshop-navigation-next">
+    ${nextButtons.join('\n    ')}
+  </div>
 </nav>`;
+
+  // Replace the first known next-link match with the full nav; remove the rest.
+  let navInserted = false;
+  return markdown.replace(nextLinkRegex, (_match, _label, nextFile) => {
+    const sectionId = sectionIdsByFile.get(nextFile);
+    if (!sectionId) return _match; // preserve links to unknown pages unchanged
+    if (!navInserted) {
+      navInserted = true;
+      return navHtml;
+    }
+    return ''; // subsequent next-link occurrences are folded into the single nav
   });
 }
 
@@ -522,56 +546,114 @@ body,
 }
 
 .markdown-body a:not(.anchor),
-.workshop-navigation a {
+.workshop-navigation a:not(.workshop-nav-btn) {
   color: var(--workshop-link-color);
   text-decoration: underline;
   text-underline-offset: 0.08em;
 }
 
 .markdown-body a:not(.anchor):visited,
-.workshop-navigation a:visited {
+.workshop-navigation a:not(.workshop-nav-btn):visited {
   color: var(--workshop-link-visited-color);
 }
 
 .markdown-body a:not(.anchor):hover,
 .markdown-body a:not(.anchor):focus-visible,
-.workshop-navigation a:hover,
-.workshop-navigation a:focus-visible {
+.workshop-navigation a:not(.workshop-nav-btn):hover,
+.workshop-navigation a:not(.workshop-nav-btn):focus-visible {
   color: var(--workshop-link-hover-color);
 }
 
 .workshop-navigation {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: flex;
+  align-items: flex-start;
   gap: 16px;
-  align-items: center;
-  width: calc(100vw - 32px);
   margin-top: 32px;
-  margin-left: calc(50% - 50vw + 16px);
   padding-top: 16px;
   border-top: 1px solid var(--borderColor-muted, #d0d7de);
 }
 .workshop-navigation-previous {
-  justify-self: start;
+  flex: 0 0 auto;
 }
 .workshop-navigation-next {
-  justify-self: end;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  flex: 0 0 auto;
+  margin-left: auto;
 }
-.workshop-navigation a {
+.workshop-nav-btn {
   display: inline-flex;
   gap: 0.4em;
   align-items: center;
+  padding: 8px 16px;
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1.4;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.workshop-nav-btn:hover,
+.workshop-nav-btn:focus-visible {
+  text-decoration: none;
+}
+.workshop-nav-btn-primary {
+  color: #ffffff;
+  background-color: var(--fgColor-accent, #0969da);
+  border: 1px solid transparent;
+}
+.workshop-nav-btn-primary:hover,
+.workshop-nav-btn-primary:focus-visible {
+  color: #ffffff;
+  background-color: var(--borderColor-accent-emphasis, #0550ae);
+}
+.workshop-nav-btn-secondary {
+  color: var(--fgColor-default, #1f2328);
+  background-color: var(--bgColor-muted, #f6f8fa);
+  border: 1px solid var(--borderColor-default, #d0d7de);
+}
+.workshop-nav-btn-secondary:hover,
+.workshop-nav-btn-secondary:focus-visible {
+  color: var(--fgColor-default, #1f2328);
+  background-color: var(--bgColor-subtle, #eaeef2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .workshop-nav-btn-primary {
+    background-color: var(--fgColor-accent, #58a6ff);
+    color: #0d1117;
+  }
+  .workshop-nav-btn-primary:hover,
+  .workshop-nav-btn-primary:focus-visible {
+    background-color: var(--borderColor-accent-emphasis, #79c0ff);
+    color: #0d1117;
+  }
+  .workshop-nav-btn-secondary {
+    color: var(--fgColor-default, #e6edf3);
+    background-color: var(--bgColor-muted, #161b22);
+    border-color: var(--borderColor-default, #30363d);
+  }
+  .workshop-nav-btn-secondary:hover,
+  .workshop-nav-btn-secondary:focus-visible {
+    color: var(--fgColor-default, #e6edf3);
+    background-color: var(--bgColor-subtle, #1c2128);
+  }
 }
 
 @media (max-width: 543px) {
   .workshop-navigation {
+    flex-wrap: wrap;
     gap: 8px;
   }
-  .workshop-navigation a {
-    align-items: flex-start;
+  .workshop-navigation-next {
+    align-items: stretch;
+  }
+  .workshop-nav-btn {
     overflow-wrap: anywhere;
+    white-space: normal;
+    align-items: flex-start;
   }
 }
 `;
