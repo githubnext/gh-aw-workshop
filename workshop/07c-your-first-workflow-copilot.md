@@ -41,19 +41,7 @@ Run `gh aw compile` in the session workspace, fix any errors, commit the source 
 **Agents tab — paste this prompt instead:**
 
 ```text
-/agentic-workflows Initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
-and then create a workflow using https://raw.githubusercontent.com/github/gh-aw/main/create.md
-
-The workflow must:
-- Be named "Daily Report Status"
-- Support manual runs with workflow_dispatch
-- Use contents: read, issues: read, and copilot-requests: write
-- Allow at most one comment and at most one new issue through safe outputs
-- Search open issues for the issue with the most 👍 reactions and comment:
-  "This issue has the most community support! We'll prioritise it in our next planning session."
-- Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
-
-Run gh aw compile in the session workspace, fix any errors, commit the source and generated lock file (plus any initialized skill files), and open a pull request. Show me the diff before merging.
+/agentic-workflows Follow the prompt above to initialize this repository and create the Daily Report Status workflow.
 ```
 
 > [!NOTE]
