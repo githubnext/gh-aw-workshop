@@ -343,6 +343,7 @@ fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 // Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
 :root {
+  --workshop-sticky-header-offset: 72px;
   --workshop-link-color: var(--fgColor-accent, #0969da);
   --workshop-link-visited-color: var(--fgColor-done, #8250df);
   --workshop-link-hover-color: var(--fgColor-accent, #0550ae);
@@ -359,6 +360,10 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 body,
 .markdown-body {
   font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-padding-top: var(--workshop-sticky-header-offset);
 }
 
 .site-header {
@@ -508,7 +513,7 @@ body,
   display: none;
 }
 .markdown-body > details {
-  scroll-margin-top: 72px;
+  scroll-margin-top: var(--workshop-sticky-header-offset);
 }
 .markdown-body > details > summary {
   display: none;
@@ -517,6 +522,7 @@ body,
   margin: 0;
   font-size: 32px;
   line-height: 1.25;
+  scroll-margin-top: var(--workshop-sticky-header-offset);
 }
 
 .markdown-body {
