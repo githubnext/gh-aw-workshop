@@ -40,8 +40,34 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
+## Try it: agentic or standard?
+
+For each task below, decide whether it calls for an **agentic workflow** or a **standard Actions workflow**, then reveal the answer.
+
+**Task A:** Run lint and unit tests on every pull request, fail if any check exits non-zero.
+
+- [ ] I've made my decision for Task A
+
+<details>
+<summary>Reveal Task A answer</summary>
+
+**Standard Actions workflow.** Every run follows the same fixed steps: run lint, run tests, report the exit code. No judgment is required.
+
+</details>
+
+**Task B:** Each morning, read all open issues, decide which ones look most urgent, and post a short triage summary.
+
+- [ ] I've made my decision for Task B
+
+<details>
+<summary>Reveal Task B answer</summary>
+
+**Agentic workflow.** The agent reads live issue data, applies judgment to assess urgency, and composes a summary that differs every run based on what it finds.
+
+</details>
+
 > [!TIP]
-> Want to go deeper? [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) covers exercises, example output, the two-file structure, and concept checks.
+> Want to go deeper? [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) covers more exercises, example output, the two-file structure, and concept checks.
 
 ## ✅ Checkpoint
 
