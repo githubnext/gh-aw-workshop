@@ -37,23 +37,29 @@ jobs:
               }
 
               const branchName = branch.ref.replace('refs/heads/', '')
+              const deleteRef = branch.ref.replace('refs/', '')
               const commit = await github.rest.repos.getCommit({
                 owner,
                 repo,
                 ref: branchName
               })
 
-              const commitDate = new Date(
-                commit.data.commit.committer?.date ?? commit.data.commit.author?.date ?? 0
-              ).getTime()
+              const commitDateRaw = commit.data.commit.committer?.date ?? commit.data.commit.author?.date
 
-              if (Number.isNaN(commitDate)) {
+              if (!commitDateRaw) {
                 core.warning(`Skipping ${branchName}: unable to determine commit date.`)
                 continue
               }
 
+              const commitDate = new Date(commitDateRaw).getTime()
+
+              if (Number.isNaN(commitDate)) {
+                core.warning(`Skipping ${branchName}: invalid commit date (${commitDateRaw}).`)
+                continue
+              }
+
               if (commitDate < cutoff) {
-                staleBranches.push(branchName)
+                staleBranches.push({ branchName, deleteRef })
               }
             }
 
@@ -62,12 +68,12 @@ jobs:
               return
             }
 
-            for (const branchName of staleBranches) {
+            for (const { branchName, deleteRef } of staleBranches) {
               try {
                 await github.rest.git.deleteRef({
                   owner,
                   repo,
-                  ref: `heads/${branchName}`
+                  ref: deleteRef
                 })
                 core.info(`Deleted stale branch: ${branchName}`)
               } catch (error) {
