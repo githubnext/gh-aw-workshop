@@ -17,6 +17,9 @@ You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-ref
 
 Open your practice repository in the GitHub Copilot app and start a session in **Interactive** mode so you can steer the work, or open the repository's **Copilot** or **Agents** tab and start a new session.
 
+> [!TIP]
+> If you are working in the Agents tab, type `/agentic-workflows` at the start of your message to invoke the skill directly and give the agent immediate context about agentic workflow authoring.
+
 Paste this prompt:
 
 ```text
