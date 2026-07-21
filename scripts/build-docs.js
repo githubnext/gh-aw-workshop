@@ -856,10 +856,11 @@ ${htmlContent}</main>
     }
 
     function isPreviewableImageCandidate(img) {
-      return !img.closest('a[href]') && !!(img.getAttribute('alt') || '').trim();
+      return !img.closest('a[href]') && (img.getAttribute('alt') || '').trim().length > 0;
     }
 
     function markImagePreviewable(img) {
+      // Only enable previews for images that finished loading successfully.
       if (!img.complete || img.naturalWidth === 0) return;
       if (!isPreviewableImageCandidate(img)) return;
       img.setAttribute('data-image-inspector-ready', '');
