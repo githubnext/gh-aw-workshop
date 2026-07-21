@@ -3,8 +3,8 @@ emoji: 🧠
 name: Workshop Explanatory Diagram Generator
 description: >
   Daily workshop illustrator that finds one concept in the workshop worth
-  explaining visually, generates a polished educational SVG diagram, and opens a
-  PR with the new image and minimal markdown updates.
+  explaining visually, generates or migrates a polished light/dark SVG diagram
+  pair, and opens a PR with theme-aware markdown updates.
 on:
   schedule: daily
   workflow_dispatch:
@@ -64,6 +64,8 @@ steps:
       )
 
       image_re = re.compile(r'!\[[^\]]*\]\(([^)]+)\)')
+      picture_re = re.compile(r'<picture\b.*?</picture>', re.IGNORECASE | re.DOTALL)
+      html_image_re = re.compile(r'\b(?:src|srcset)="([^"]+)"')
       heading_re = re.compile(r'^(##+)\s+(.*)$', re.MULTILINE)
 
       file_summaries = []
@@ -74,11 +76,24 @@ steps:
               (line[2:].strip() for line in lines if line.startswith("# ")),
               path.stem,
           )
-          images = [
+            markdown_images = [
               match.group(1)
               for match in image_re.finditer(text)
               if not match.group(1).startswith(("http://", "https://"))
           ]
+            picture_blocks = picture_re.findall(text)
+            picture_images = [
+              match.group(1)
+              for block in picture_blocks
+              for match in html_image_re.finditer(block)
+              if not match.group(1).startswith(("http://", "https://"))
+            ]
+            images = list(dict.fromkeys(markdown_images + picture_images))
+            theme_aware_picture_count = sum(
+              '(prefers-color-scheme: light)' in block
+              and '(prefers-color-scheme: dark)' in block
+              for block in picture_blocks
+            )
           headings = [
               {
                   "level": len(match.group(1)),
@@ -95,6 +110,8 @@ steps:
                   "word_count": len(re.findall(r"\S+", text)),
                   "image_count": len(images),
                   "images": images,
+                  "single_theme_images": markdown_images,
+                  "theme_aware_picture_count": theme_aware_picture_count,
                   "headings": headings,
               }
           )
@@ -125,9 +142,9 @@ You are an educational illustrator for the **Learning GitHub Agentic Workflows**
 workshop.
 
 Your job is to find exactly one workshop concept that would be easier to learn
-with a visual explanation, turn that concept into a polished SVG diagram, and
-open a draft pull request with the image and the smallest markdown edit needed to
-use it.
+with a visual explanation, or one existing single-theme explanatory diagram,
+turn it into a polished light/dark SVG pair, and open a draft pull request with
+the smallest Markdown edit needed to use it.
 
 Create **at most one** pull request per run.
 
@@ -153,10 +170,22 @@ Create **at most one** pull request per run.
 
 ---
 
-## Pick one concept worth illustrating
+## Pick One Migration or Concept
 
-Choose exactly one concept from the selected file that benefits from a conceptual
-visual sketch.
+Inspect the selected file's `single_theme_images` first:
+
+1. Classify each existing image as an explanatory diagram, GitHub UI screenshot,
+  or theme-neutral photo.
+2. If an explanatory diagram exists, select exactly one for migration and do not
+  create a new concept in this run.
+3. Leave GitHub UI screenshots to `workshop-ui-screenshots`.
+4. A theme-neutral photo may be converted to a `<picture>` block that uses the
+  same file for both theme sources; do not duplicate its binary.
+
+If no existing image in the selected file needs migration, choose exactly one
+new concept worth illustrating.
+
+Choose a concept that benefits from a conceptual visual sketch.
 
 Good candidates:
 

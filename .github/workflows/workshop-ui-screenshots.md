@@ -3,9 +3,9 @@ emoji: 🖼️
 name: Workshop UI Screenshot Generator
 description: >
   Daily scanner that finds image references in workshop markdown files, checks
-  existing images for broken links, and generates conceptual SVG illustrations
-  for missing GitHub UI screenshots. Files a PR with new SVGs and updates
-  markdown references. Reports remaining broken links as issues.
+  existing images for broken links, and generates paired light/dark conceptual
+  SVG illustrations for missing or single-theme GitHub UI screenshots. Files a
+  PR with new SVGs and theme-aware references. Reports remaining broken links.
 on:
   schedule: daily
   workflow_dispatch:
@@ -85,6 +85,70 @@ steps:
         echo "[]" > /tmp/gh-aw/data/image-refs.json
       fi
 
+        # Add local src/srcset references from HTML <picture> blocks. The Markdown
+        # scanner above remains responsible for ![alt](path) references.
+        python3 <<'PY'
+        import json
+        import pathlib
+        from html.parser import HTMLParser
+
+        refs_path = pathlib.Path("/tmp/gh-aw/data/image-refs.json")
+        refs = json.loads(refs_path.read_text())
+        seen = {(record["file"], record["path"]) for record in refs}
+
+        def add_ref(source_file, line, alt, image_path):
+          image_path = image_path.strip()
+          if not image_path or image_path.startswith(("http://", "https://", "data:")):
+            return
+          key = (str(source_file), image_path)
+          if key in seen:
+            return
+          seen.add(key)
+          resolved = (source_file.parent / image_path).resolve()
+          refs.append({
+            "file": str(source_file),
+            "line": line,
+            "alt": alt,
+            "path": image_path,
+            "resolved": str(resolved),
+            "exists": resolved.is_file(),
+          })
+
+        class PictureParser(HTMLParser):
+          def __init__(self, source_file):
+            super().__init__()
+            self.source_file = source_file
+            self.picture_refs = None
+
+          def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            if tag == "picture":
+              self.picture_refs = []
+            elif tag == "source" and self.picture_refs is not None:
+              for candidate in attrs.get("srcset", "").split(","):
+                candidate = candidate.strip().split()[0] if candidate.strip() else ""
+                if candidate:
+                  self.picture_refs.append((self.getpos()[0], "", candidate))
+            elif tag == "img" and self.picture_refs is not None and attrs.get("src"):
+              self.picture_refs.append(
+                (self.getpos()[0], attrs.get("alt", ""), attrs["src"])
+              )
+
+          def handle_endtag(self, tag):
+            if tag != "picture" or self.picture_refs is None:
+              return
+            fallback_alt = next((alt for _, alt, _ in self.picture_refs if alt), "")
+            for line, alt, image_path in self.picture_refs:
+              add_ref(self.source_file, line, alt or fallback_alt, image_path)
+            self.picture_refs = None
+
+        for source_file in sorted(pathlib.Path("workshop").glob("*.md")):
+          parser = PictureParser(source_file)
+          parser.feed(source_file.read_text(encoding="utf-8"))
+
+        refs_path.write_text(json.dumps(refs, indent=2), encoding="utf-8")
+        PY
+
       echo "$existing_images" > /tmp/gh-aw/data/existing-images.json
 
       echo "=== Existing images ===" && cat /tmp/gh-aw/data/existing-images.json
@@ -94,9 +158,9 @@ steps:
 # Workshop UI Screenshot Generator
 
 You are an image-quality automation agent for the **"Learning GitHub Agentic
-Workflows"** workshop. Your job is to find broken image references, generate
-conceptual SVG screenshots for missing GitHub UI images, and report anything
-that still needs attention.
+Workflows"** workshop. Your job is to find broken or single-theme image
+references, generate paired light/dark conceptual SVG screenshots for GitHub UI
+images, and report anything that still needs attention.
 
 ---
 
@@ -114,53 +178,70 @@ that still needs attention.
 2. Read `/tmp/gh-aw/data/existing-images.json` — the list of existing files
    under `workshop/images/`.
 
-3. Partition image references into two groups:
+3. Partition image references into three groups:
    - **broken** — records where `exists` is `false`
-   - **ok** — records where `exists` is `true`
+   - **theme-aware** — valid references already inside a `<picture>` block with
+     both `-light` and `-dark` variants
+   - **single-theme** — valid Markdown image references that do not have a
+     corresponding light/dark `<picture>` pair
 
-4. If **broken** is empty, call `noop` with:
-   `Scanned N markdown files. All M image references are valid — no broken links found.`
+4. From **single-theme**, identify existing GitHub UI screenshots using the same
+   filename/alt-text criteria as broken references. Sort them by workshop
+   adventure priority: core, setup, advanced, then side quests. Select at most
+   three migration candidates per run.
+
+5. If **broken** and the selected migration candidates are both empty, call
+   `noop` with:
+   `Scanned N markdown files. No broken links or pending GitHub UI theme migrations found.`
 
 ---
 
-## Classify Broken References
+## Classify References
 
-For each broken reference, determine whether it depicts a **GitHub UI element**
-that can be illustrated with a conceptual SVG.
+For each broken reference and selected migration candidate, determine whether it
+depicts a **GitHub UI element** that can be illustrated with a conceptual SVG.
 
 A reference is classifiable as a GitHub UI screenshot when:
 - Its filename or alt text mentions common GitHub UI elements such as: Actions
   tab, workflow run, Run workflow button, Codespace, fork, commit, schedule
   badge, skipped step, summary panel, log view, or similar.
 
-Classify each broken reference as:
+Classify each reference as:
 - `generatable` — can be illustrated with a conceptual SVG
 - `not-generatable` — too specific, a real screenshot is needed (e.g. a photo
   of a custom user screen or non-GitHub UI)
 
 ---
 
-## Generate Conceptual SVGs
+## Generate Theme-Aware SVGs
 
-For each `generatable` broken reference, generate a conceptual SVG that
-illustrates the described GitHub UI element.
+For each `generatable` broken reference or migration candidate, generate a
+light/dark SVG pair that illustrates the described GitHub UI element. If either
+member of an existing pair is broken, repair or regenerate both variants as one
+change set.
 
 ### SVG design rules
 
-- **Canvas**: 1200 x 560, `viewBox="0 0 1200 560"`.
-- **Background**: `#f6f8fa` (GitHub light page background).
-- Use a browser chrome header (`#ffffff`, height 44, with rounded top corners,
-  subtle `#d0d7de` border) showing a mocked URL bar containing the workshop
+- **Canvas**: 1200 x 560, `viewBox="0 0 1200 560"` for both variants.
+- Keep geometry, labels, and content identical across the pair; change only
+  theme-dependent colors.
+- Light palette: page `#f6f8fa`, panels `#ffffff`, border `#d0d7de`, primary
+  text `#24292f`, muted text `#57606a`, and accent `#0969da`.
+- Dark palette: page `#0d1117`, panels `#161b22`, border `#30363d`, primary
+  text `#f0f6fc`, muted text `#8b949e`, and accent `#2f81f7`.
+- Use a browser chrome header (height 44, rounded top corners, and the palette's
+  panel and border colors) showing a mocked URL bar containing the workshop
   repo path.
 - Represent GitHub's navigation tabs (Code, Issues, Pull requests, Actions,
-  etc.) as a horizontal tab bar with the relevant tab underlined in `#0969da`.
+  etc.) as a horizontal tab bar with the relevant tab underlined in the palette
+  accent color.
 - For Actions-tab screenshots: show a workflow list panel with a single row
   representing the relevant workflow, a status icon (green ✓ for success,
   yellow (in-progress hourglass) for in-progress), and the workflow name.
 - For Run workflow button: render a blue button labelled "Run workflow" in the
   Actions sidebar.
-- For Codespace/fork/commit dialogs: use a centered modal panel (`#ffffff`
-  background, `#d0d7de` border, rounded corners).
+- For Codespace/fork/commit dialogs: use a centered modal panel with the
+  palette's panel background and border colors.
 - For schedule badge / workflow list badge: render the Actions sidebar list with
   a clock icon and "Scheduled" label.
 - For skipped steps: render the job-step list with a grey `-` icon and
@@ -168,43 +249,61 @@ illustrates the described GitHub UI element.
 - For summary/run log panels: render a dark panel (`#0d1117`) with monospace
   output lines in `#c9d1d9`, showing representative output from the described
   step.
-- Add a short annotation label below the graphic (in `#57606a`, 24 px,
-  `Arial, sans-serif`) echoing the alt text.
+- Add a short annotation label below the graphic (using the palette's muted text
+  color, 24 px, `Arial, sans-serif`) echoing the alt text.
 - Add `role="img"` and `aria-label` matching the alt text.
 
 ### Naming convention
 
 For a broken reference `images/08-run-summary.png`:
-- Generate the SVG as `workshop/images/08-run-summary.svg`.
+- Generate `workshop/images/08-run-summary-light.svg` and
+  `workshop/images/08-run-summary-dark.svg`.
 - Do **not** create a PNG; always produce an SVG.
 
-Write each SVG to the appropriate path using the `edit` tool (or create it
-fresh if the path does not exist).
+For an existing single-theme SVG, preserve its stem when naming the pair. Do not
+overwrite the original until all references have moved to the pair.
+
+Write each SVG pair to the appropriate paths using the `edit` tool (or create
+them fresh if the paths do not exist).
 
 ### Markdown reference update
 
-After writing each new SVG file, update the corresponding line in the source
-markdown file to reference `.svg` instead of the original extension.
+After writing each pair, replace the corresponding Markdown image line with
+GitHub's theme-aware `<picture>` pattern:
 
-Example: Replace `images/08-run-summary.png` with `images/08-run-summary.svg`
-in the exact line where the reference appears.
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08-run-summary-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08-run-summary-light.svg">
+  <img alt="Workflow run summary panel" src="images/08-run-summary-light.svg">
+</picture>
+```
+
+Use the original alt text on the fallback `<img>`. Keep the light variant as the
+fallback `src` and do not put alt text on `<source>` elements. When repairing an
+existing `<picture>` block, update the whole block and preserve its fallback alt
+text.
 
 ---
 
-## Render and QA generated SVGs
+## Render and QA Generated SVGs
 
-If you generated any SVGs in Phase 3:
+If you generated any SVG pairs:
 
 1. Start a local static file server from the repository root so `workshop/images/`
    is reachable on `http://127.0.0.1`.
-2. Use Playwright to open each newly generated SVG in a browser tab at least once.
-3. Inspect the rendered output for text bleeding outside buttons, tabs, chips,
+2. Use Playwright with `colorScheme: "light"` to render the exact `<picture>`
+  block and confirm its `currentSrc` ends with `-light.svg`.
+3. Repeat with `colorScheme: "dark"` and confirm `currentSrc` ends with
+  `-dark.svg`.
+4. Capture and inspect both rendered variants for text bleeding outside buttons,
+  tabs, chips,
    dialogs, panels, annotations, or other bounding shapes.
-4. If any text bleeds out of its box, fix the SVG before continuing by widening
-   the container, wrapping or shortening the label, moving nearby elements, or
-   reducing font size only as much as needed.
-5. Re-render the updated SVG with Playwright and repeat until every generated
-   SVG is visually contained and readable.
+5. If any text bleeds out of its box, fix both SVGs before continuing by
+  widening the container, wrapping or shortening the label, moving nearby
+  elements, or reducing font size only as much as needed.
+6. Re-render both SVGs and repeat until each image is nonblank, visually
+  contained, readable, and selected in the intended theme.
 
 Treat the render check as required final QA, not an optional spot check.
 
@@ -234,27 +333,30 @@ For each `not-generatable` broken reference (real screenshot needed):
 
 ## Open a Pull Request
 
-If any SVG files were generated in Phase 3:
+If any SVG pairs were generated:
 
 Call `create-pull-request` with:
-- **Title**: `Add conceptual SVG screenshots for N missing workshop images`
+- **Title**: `Add theme-aware SVG screenshots for N workshop images`
 - **Body** summarising:
-  - Which images were generated (list by filename)
+  - Which light/dark pairs were generated (list both filenames)
+  - Which changes repair broken links and which migrate existing images
   - Which markdown files were updated
   - A note that these are AI-generated conceptual illustrations; maintainers
     should replace them with real screenshots when available
 
-If no SVGs were generated (only `not-generatable` references exist), skip
+If no SVG pairs were generated (only `not-generatable` references exist), skip
 `create-pull-request`.
 
 ---
 
 ## Output quality requirements
 
-- Every generated SVG must be valid, self-contained SVG markup (start with
+- Both generated SVGs must be valid, self-contained SVG markup (start with
   `<svg xmlns="http://www.w3.org/2000/svg" ...`).
-- Every generated SVG must pass a Playwright render check with no text bleeding
-  outside visual containers.
+- Every generated pair must pass Playwright checks in light and dark color
+  schemes, including the expected `currentSrc`, nonblank pixels, and no text
+  bleeding outside visual containers.
+- Markdown must use the theme-aware `<picture>` block with a light fallback.
 - Markdown updates must be minimal line-precise replacements — do not reformat
   surrounding content.
 - Never call write tools other than `create-pull-request`, `create-issue`, and
