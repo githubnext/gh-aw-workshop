@@ -137,6 +137,9 @@ function createZeroSignalGreeks() {
   return Object.fromEntries(STEP_SIGNAL_KEYS.map((signal) => [signal, 0]));
 }
 
+// The simulator clamps success probabilities to the same open interval used by the
+// core readiness model. Once a step is pinned to either clamp boundary, small signal
+// changes no longer move the modeled probability, so the local Greek is zeroed out.
 function shouldComputeGreeksForProbability(probability) {
   return probability > 0.12 && probability < 0.985;
 }
@@ -369,8 +372,8 @@ function computeSuccessProbabilityTerms(state, context, emphasis = {}) {
     probability += browserSupport * 0.08;
     greeks.browserSupport += 0.08;
     const terminalGap = Math.max(0, terminalDemand - browserSupport);
-    probability -= terminalGap * 0.16;
     if (terminalGap > 0) {
+      probability -= terminalGap * 0.16;
       greeks.terminalDemand -= 0.16;
       greeks.browserSupport += 0.16;
     }

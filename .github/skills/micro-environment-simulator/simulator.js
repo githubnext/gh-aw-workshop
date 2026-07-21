@@ -913,6 +913,13 @@ function recordStepGreekEstimate(accumulator, stepId, greeks) {
   }
 }
 
+// Collapse the raw per-attempt Greek sums into two views:
+// - conditionalGreeksByStep: average local sensitivity across runs that reached the step
+// - overallGreeksByStep: the same Greek mass normalized by all Monte Carlo attempts
+// Parameters:
+//   accumulator: mutable state produced by createStepGreekAccumulator()
+//   totalAttempts: cohort size multiplied by Monte Carlo runs
+//   steps: optional ordered step list for stable output shape
 function finalizeStepGreekAccumulator(accumulator, totalAttempts = 0, steps = []) {
   if (!accumulator || accumulator.signalKeys.length === 0) {
     return null;
