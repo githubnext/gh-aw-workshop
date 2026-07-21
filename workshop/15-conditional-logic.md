@@ -75,14 +75,11 @@ Now that the commit-count condition is in place, extend the workflow to also ski
 if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
 ```
 
-1. Compile the workflow with `gh aw compile`, trigger a manual `workflow_dispatch` run from the Actions tab, and check the run log. On a weekday with commits, the agent job should complete normally; on a weekend or a day with no commits, it should appear as **skipped** with a grey icon.
+1. Compile the workflow with `gh aw compile` to regenerate the lock file with the combined condition.
 
-### Test your condition
+1. Trigger a manual `workflow_dispatch` run from the Actions tab.
 
-Use `workflow_dispatch` to trigger the workflow manually. Check the run log:
-
-- If there were recent commits (and it is a weekday), the summary should run and the agent job will display a green checkmark.
-- If the commit count is zero or the run is on a weekend, the agent job will be marked as **skipped** (a grey icon in the Actions UI).
+1. Inspect the run log: on a weekday with commits the agent job should complete normally; on a weekend or a day with no commits it should appear as **skipped** with a grey icon, as shown below.
 
 ![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
