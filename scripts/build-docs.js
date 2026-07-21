@@ -433,11 +433,9 @@ body,
   .markdown-body pre {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-    word-break: break-word;
   }
   .markdown-body pre > code {
     white-space: inherit;
-    word-break: inherit;
   }
 }
 
