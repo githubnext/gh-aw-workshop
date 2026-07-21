@@ -62,7 +62,7 @@ steps:
       MIN_ANALYZE_STEPS = 2
 
       def lesson_number(filename):
-          match = re.search(r'(?:^|-)0*(\d{1,2})(?:[a-z])?(?=-)', filename)
+          match = re.search(r'(?:^|-)0*(\d{1,2})(?:[a-z])?(?=[-.]|$)', filename)
           return int(match.group(1)) if match else None
 
       def part_label(filename):
