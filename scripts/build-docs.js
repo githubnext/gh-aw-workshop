@@ -233,7 +233,7 @@ const htmlContent = files.map((f, index) => {
   const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
   const content = marked(renderWorkshopNavigation(markdownWithoutTitle, f));
   const detailsOpenAttr = index === 0 ? ' open' : '';
-  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary>${titleHtml}</summary>\n<h1 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h1>\n${content}\n</details>`;
+  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary>${titleHtml}</summary>\n<h2 id="${sectionTitleId}" class="workshop-page-title">${titleHtml}</h2>\n${content}\n</details>`;
 }).join('\n\n');
 
 const menuGroups = [
@@ -380,12 +380,15 @@ html {
   border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
 }
 .site-title {
-  color: inherit;
+  margin: 0;
   font-size: 16px;
   font-weight: 600;
+}
+.site-title a {
+  color: inherit;
   text-decoration: none;
 }
-.site-title:hover {
+.site-title a:hover {
   color: var(--workshop-link-hover-color);
 }
 .menu-toggle,
@@ -919,7 +922,7 @@ const page = `<!DOCTYPE html>
     <button class="menu-toggle" type="button" aria-label="Open workshop pages" aria-controls="workshop-menu" title="Open workshop pages">
       <span class="menu-icon" aria-hidden="true"></span>
     </button>
-    <a class="site-title" href="#00-welcome">GitHub Agentic Workflows Workshop</a>
+    <h1 class="site-title"><a href="#00-welcome">GitHub Agentic Workflows Workshop</a></h1>
   </header>
   <dialog class="workshop-menu" id="workshop-menu" aria-labelledby="workshop-menu-title">
     <div class="workshop-menu-panel">
