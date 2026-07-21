@@ -268,6 +268,10 @@ if (fs.existsSync(workshopImagesDir)) {
   fs.cpSync(workshopImagesDir, distImagesDir, { recursive: true });
 }
 
+// Copy favicon
+const faviconSrc = path.join(__dirname, 'static', 'favicon.svg');
+fs.copyFileSync(faviconSrc, path.join(distDir, 'favicon.svg'));
+
 // Copy Primer CSS
 const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
@@ -892,6 +896,7 @@ const page = `<!DOCTYPE html>
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
   <title>GitHub Agentic Workflows Workshop</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="mona-sans.css">
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
