@@ -27,6 +27,11 @@ safe-outputs:
     draft: false
     if-no-changes: "ignore"
     expires: 1d
+  create-issue:
+    title-prefix: "[q] "
+    labels: [automation, workflow-optimization]
+    max: 5
+    expires: 1d
 
 tools:
   agentic-workflows:
