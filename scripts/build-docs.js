@@ -247,10 +247,11 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
  * long content does not get clipped. A single scroll container per
  * slide avoids nested-scrollbar confusion. */
 .reveal .slides .slide-content {
+  --slide-vertical-gap: 5rem;
   font-size: 0.8em;
   padding: 0 1.5em;
-  height: calc(100vh - 5rem);
-  max-height: calc(100vh - 5rem);
+  height: calc(100vh - var(--slide-vertical-gap));
+  max-height: calc(100vh - var(--slide-vertical-gap));
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -270,6 +271,7 @@ if (legacyHashMatch) {
   try {
     legacySectionId = decodeURIComponent(legacyHashMatch[1]);
   } catch (_) {
+    // Ignore malformed encoded hashes and leave default Reveal routing behavior.
     legacySectionId = null;
   }
 }
