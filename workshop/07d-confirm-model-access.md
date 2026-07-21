@@ -67,6 +67,21 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 | Organization centralized billing | Present | None |
 | Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
 
+## Verify model access with a test prompt
+
+Before proceeding, send a quick test to confirm Copilot is reachable from this repository.
+Catching a billing or authentication problem here saves debugging time in Step 8.
+
+1. Open the **Agents** tab in your repository on GitHub.com.
+2. Send the following prompt:
+
+   ```
+   What is GitHub Actions? Reply in one sentence.
+   ```
+
+3. Confirm you receive a reply. Any response means the model is accessible.
+4. If you see an error, revisit the billing path above before continuing.
+
 ## ✅ Checkpoint
 
 - [ ] I confirmed the first workflow uses GitHub Copilot
@@ -74,6 +89,9 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I completed the matching authentication guide
 - [ ] My source and compiled lock file use the selected method
 - [ ] Both workflow files are committed to `main`
+- [ ] I opened the Agents tab and sent a test prompt
+- [ ] I received a response from the model
+- [ ] I confirmed no billing or authentication errors appeared
 - [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 <!-- journey: all -->
