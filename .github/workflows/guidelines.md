@@ -360,7 +360,7 @@ Some workshop pages are not substantive learning steps — they are **dispatcher
 
 ### Marking a page as a dispatcher
 
-Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the page annotation lines:
+Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the page annotation lines. The parser also accepts `<!-- learning: false -->` (with a space after the colon), but the canonical form without the space is preferred:
 
 ```markdown
 <!-- page-journey: all -->
