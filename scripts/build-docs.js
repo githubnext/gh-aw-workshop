@@ -1000,7 +1000,7 @@ ${htmlContent}</main>
       imageInspectorDialog.showModal();
     }
 
-    function showWorkshopPage(target, focusPage) {
+    function showWorkshopPage(target, scrollPage) {
       const page = target?.matches('.markdown-body > details')
         ? target
         : target?.closest('.markdown-body > details');
@@ -1016,10 +1016,7 @@ ${htmlContent}</main>
         else link.removeAttribute('aria-current');
       });
 
-      if (focusPage) {
-        activePage.setAttribute('tabindex', '-1');
-        activePage.focus();
-      }
+      if (scrollPage) activePage.scrollIntoView({ block: 'start' });
     }
 
     function findHashTarget(id) {
@@ -1032,10 +1029,10 @@ ${htmlContent}</main>
       return localTarget ?? document.getElementById(id);
     }
 
-    function showWorkshopPageForHash(focusPage) {
+    function showWorkshopPageForHash(scrollPage) {
       const id = decodeURIComponent(location.hash.slice(1));
       const target = id ? findHashTarget(id) : null;
-      showWorkshopPage(target, focusPage && target?.matches('.markdown-body > details'));
+      showWorkshopPage(target, scrollPage && target?.matches('.markdown-body > details'));
     }
 
     document.addEventListener('click', function (e) {
@@ -1078,8 +1075,7 @@ ${htmlContent}</main>
         const isPage = target.matches('.markdown-body > details');
         history.pushState(null, '', link.getAttribute('href'));
         showWorkshopPage(target, isPage);
-        if (isPage) window.scrollTo({ top: 0, left: 0 });
-        else target.scrollIntoView({ block: 'start' });
+        if (!isPage) target.scrollIntoView({ block: 'start' });
       }
     });
 
