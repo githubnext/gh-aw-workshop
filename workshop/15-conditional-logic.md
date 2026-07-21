@@ -55,7 +55,7 @@ In the same frontmatter block, add a top-level `if:` key at the same indentation
 if: steps.recent.outputs.commit_count != '0'
 ```
 
-This condition is evaluated during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) and embedded into the generated lock file, causing the agent job to be skipped entirely whenever `commit_count` evaluates to `'0'`. You can also reference the count inside your prompt text to give the model concrete context — for example: `"Summarise the last ${{ steps.recent.outputs.commit_count }} commits"` anchors the analysis to the actual number of changes rather than leaving the model to guess the scope.
+This condition is embedded into the generated lock file during [compilation](https://github.github.com/gh-aw/reference/compilation-process/); at runtime, GitHub Actions evaluates it and skips the agent job entirely whenever `commit_count` evaluates to `'0'`. You can also reference the count inside your prompt text to give the model concrete context — for example: `"Summarise the last ${{ steps.recent.outputs.commit_count }} commits"` anchors the analysis to the actual number of changes rather than leaving the model to guess the scope.
 
 ### Exercise: Add a weekend skip condition
 
