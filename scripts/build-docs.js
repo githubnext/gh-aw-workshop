@@ -237,6 +237,11 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
  * Reveal.js overrides
  * ---------------------------------------------------------------- */
 
+/* Reduce default slide scale for desktop reading */
+.reveal {
+  font-size: 30px;
+}
+
 /* Align text left; with center:false slides already start at top,
  * so no top override is needed. */
 .reveal .slides section {
@@ -247,13 +252,24 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
  * long content does not get clipped. A single scroll container per
  * slide avoids nested-scrollbar confusion. */
 .reveal .slides .slide-content {
-  --slide-vertical-gap: 5rem;
-  font-size: 0.8em;
-  padding: 0 1.5em;
-  height: calc(100vh - var(--slide-vertical-gap));
-  max-height: calc(100vh - var(--slide-vertical-gap));
+  --slide-top-gap: 1.25rem;
+  --slide-bottom-gap: 4.75rem;
+  font-size: 0.72em;
+  padding: var(--slide-top-gap) 1.5em var(--slide-bottom-gap);
+  height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
+  max-height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
+  min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
   box-sizing: border-box;
+}
+
+/* Ensure slide images fit and advertise lightbox affordance */
+.reveal .slides .slide-content img {
+  max-width: 100%;
+  height: auto;
+  cursor: zoom-in;
 }
 
 /* Visually distinguish side-quest slides with a left border */
@@ -281,6 +297,29 @@ if (hasLegacySectionTarget) {
   window.history.replaceState(null, '', '#' + legacySectionId);
 }
 
+function enableImageLightbox() {
+  const images = document.querySelectorAll('.slides section img');
+  images.forEach((img) => {
+    if (img.hasAttribute('data-preview-image') || img.hasAttribute('data-preview-video')) {
+      return;
+    }
+    if (img.closest('a[href]')) {
+      return;
+    }
+    const src = img.currentSrc || img.getAttribute('src');
+    if (src) {
+      img.setAttribute('data-preview-image', src);
+    }
+  });
+}
+
+const parallaxBackgroundSvg = encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d1117"/><stop offset="45%" stop-color="#271449"/><stop offset="100%" stop-color="#8250df"/></linearGradient><radialGradient id="r1" cx="20%" cy="25%" r="40%"><stop offset="0%" stop-color="#a371f7" stop-opacity=".32"/><stop offset="100%" stop-color="#a371f7" stop-opacity="0"/></radialGradient><radialGradient id="r2" cx="82%" cy="78%" r="45%"><stop offset="0%" stop-color="#6f42c1" stop-opacity=".30"/><stop offset="100%" stop-color="#6f42c1" stop-opacity="0"/></radialGradient></defs><rect width="1920" height="1080" fill="url(#g)"/><rect width="1920" height="1080" fill="url(#r1)"/><rect width="1920" height="1080" fill="url(#r2)"/></svg>'
+);
+const parallaxBackgroundImage = 'data:image/svg+xml,' + parallaxBackgroundSvg;
+
+enableImageLightbox();
+
 Reveal.initialize({
   // URL hash reflects current slide by section id
   hash: true,
@@ -290,6 +329,11 @@ Reveal.initialize({
   center: false,
   // Push slide changes into the browser history
   history: true,
+  // GitHub agentic-purple themed parallax background
+  parallaxBackgroundImage: parallaxBackgroundImage,
+  parallaxBackgroundSize: '3200px 1800px',
+  parallaxBackgroundHorizontal: 180,
+  parallaxBackgroundVertical: 70,
 });
 
 if (hasLegacySectionTarget) {
