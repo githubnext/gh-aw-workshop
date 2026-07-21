@@ -92,6 +92,16 @@ const STEP_IDS = [
   "26-manage-costs-and-budgets"
 ];
 
+const STEP_SIGNAL_KEYS = [
+  "complexity",
+  "terminalDemand",
+  "browserSupport",
+  "authDemand",
+  "troubleshootingSupport",
+  "conceptDemand",
+  "enterpriseDemand"
+];
+
 function cloneState(state) {
   return JSON.parse(JSON.stringify(state));
 }
@@ -121,6 +131,10 @@ function learnerProfile(state) {
 
 function contentSignal(context, key) {
   return Number(context.stepContent?.[key] || 0);
+}
+
+function createZeroSignalGreeks() {
+  return Object.fromEntries(STEP_SIGNAL_KEYS.map((signal) => [signal, 0]));
 }
 
 function agentInsight(context) {
@@ -266,7 +280,7 @@ function ensureCompiledWorkflow(state, category, remediation) {
   );
 }
 
-function computeSuccessProbability(state, context, emphasis = {}) {
+function computeSuccessProbabilityTerms(state, context, emphasis = {}) {
   const learner = learnerProfile(state);
   const background = BACKGROUND_FACTORS[learner.background] || {};
   const terminalDemand = contentSignal(context, "terminalDemand");
@@ -277,6 +291,7 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   const conceptDemand = contentSignal(context, "conceptDemand");
   const enterpriseDemand = contentSignal(context, "enterpriseDemand");
   const mastery = learner.mastery || {};
+  const greeks = createZeroSignalGreeks();
 
   let probability = LEVEL_BASELINE[learner.level] ?? 0.52;
   probability += 0.14;
@@ -284,62 +299,108 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   probability += Number(learner.sessionEffect || 0);
 
   probability -= complexity * (emphasis.complexityWeight ?? 0.16);
+  greeks.complexity -= (emphasis.complexityWeight ?? 0.16);
   probability -= terminalDemand * (emphasis.terminalWeight ?? 0.14);
+  greeks.terminalDemand -= (emphasis.terminalWeight ?? 0.14);
   probability -= authDemand * (emphasis.authWeight ?? 0.08);
+  greeks.authDemand -= (emphasis.authWeight ?? 0.08);
   probability -= conceptDemand * (emphasis.conceptWeight ?? 0.1);
+  greeks.conceptDemand -= (emphasis.conceptWeight ?? 0.1);
   probability -= enterpriseDemand * (emphasis.enterpriseWeight ?? 0.06);
+  greeks.enterpriseDemand -= (emphasis.enterpriseWeight ?? 0.06);
 
   probability += (mastery.terminal ?? 0.5) * terminalDemand * 0.18;
+  greeks.terminalDemand += (mastery.terminal ?? 0.5) * 0.18;
   probability += (mastery.github ?? 0.5) * browserSupport * 0.12;
+  greeks.browserSupport += (mastery.github ?? 0.5) * 0.12;
   probability += (mastery.actions ?? 0.5) * authDemand * 0.1;
+  greeks.authDemand += (mastery.actions ?? 0.5) * 0.1;
   probability += (mastery.agentic ?? 0.5) * conceptDemand * 0.12;
+  greeks.conceptDemand += (mastery.agentic ?? 0.5) * 0.12;
   probability += (mastery.troubleshooting ?? 0.5) * troubleshootingSupport * 0.08;
+  greeks.troubleshootingSupport += (mastery.troubleshooting ?? 0.5) * 0.08;
 
   probability += (background.terminal || 0) * terminalDemand;
+  greeks.terminalDemand += background.terminal || 0;
   probability += (background.workflow || 0) * conceptDemand;
+  greeks.conceptDemand += background.workflow || 0;
   probability += (background.concepts || 0) * conceptDemand;
+  greeks.conceptDemand += background.concepts || 0;
   probability += (background.enterprise || 0) * enterpriseDemand;
+  greeks.enterpriseDemand += background.enterprise || 0;
 
   if (learner.personality === "methodical") {
     probability += complexity * 0.08 + troubleshootingSupport * 0.1;
+    greeks.complexity += 0.08;
+    greeks.troubleshootingSupport += 0.1;
   } else if (learner.personality === "curious") {
     probability += conceptDemand * 0.06 + browserSupport * 0.04;
+    greeks.conceptDemand += 0.06;
+    greeks.browserSupport += 0.04;
   } else if (learner.personality === "impatient") {
     probability -= complexity * 0.12 + authDemand * 0.1 + terminalDemand * 0.06;
+    greeks.complexity -= 0.12;
+    greeks.authDemand -= 0.1;
+    greeks.terminalDemand -= 0.06;
   } else if (learner.personality === "confused") {
     probability -= conceptDemand * 0.14 + terminalDemand * 0.1 + authDemand * 0.08;
+    greeks.conceptDemand -= 0.14;
+    greeks.terminalDemand -= 0.1;
+    greeks.authDemand -= 0.08;
   } else if (learner.personality === "skeptical") {
     probability -= conceptDemand * 0.04;
     probability += troubleshootingSupport * 0.06;
+    greeks.conceptDemand -= 0.04;
+    greeks.troubleshootingSupport += 0.06;
   }
 
   if (learner.goal === "teaching-others") {
     probability += 0.05;
   } else if (learner.goal === "team-evaluation") {
     probability -= complexity * 0.05;
+    greeks.complexity -= 0.05;
   }
 
   if (learner.uiPreferred) {
     probability += browserSupport * 0.08;
-    probability -= Math.max(0, terminalDemand - browserSupport) * 0.16;
+    greeks.browserSupport += 0.08;
+    const terminalGap = Math.max(0, terminalDemand - browserSupport);
+    probability -= terminalGap * 0.16;
+    if (terminalGap > 0) {
+      greeks.terminalDemand -= 0.16;
+      greeks.browserSupport += 0.16;
+    }
   }
 
   if (state.tool === "cli") {
     probability += terminalDemand * 0.05;
+    greeks.terminalDemand += 0.05;
   } else if (state.tool === "vscode") {
     probability += browserSupport * 0.03;
+    greeks.browserSupport += 0.03;
   } else if (state.tool === "CCA") {
     probability += browserSupport * 0.12;
     probability -= terminalDemand * 0.02;
+    greeks.browserSupport += 0.12;
+    greeks.terminalDemand -= 0.02;
   }
   if (state.mobile === true) {
     probability -= terminalDemand * 0.34 + complexity * 0.1;
+    greeks.terminalDemand -= 0.34;
+    greeks.complexity -= 0.1;
   }
 
-  return clamp(probability + (emphasis.bias || 0), 0.12, 0.985);
+  return {
+    probability: probability + (emphasis.bias || 0),
+    greeks
+  };
 }
 
-function evaluateStepProbability(state, context, options = {}) {
+function computeSuccessProbability(state, context, emphasis = {}) {
+  return clamp(computeSuccessProbabilityTerms(state, context, emphasis).probability, 0.12, 0.985);
+}
+
+function evaluateStepProbabilityGreeks(state, context, options = {}) {
   const insight = agentInsight(context);
   const signalAdjustments = ensurePlainObject(insight.signalAdjustments);
   const pathAdjustments = ensurePlainObject(insight.pathAdjustments);
@@ -349,7 +410,9 @@ function evaluateStepProbability(state, context, options = {}) {
     ...(options.emphasis || {}),
     bias: (options.emphasis?.bias || 0) + Number(insight.bias || 0)
   };
-  let probability = computeSuccessProbability(state, context, emphasis);
+  const base = computeSuccessProbabilityTerms(state, context, emphasis);
+  let probability = clamp(base.probability, 0.12, 0.985);
+  let greeks = base.probability > 0.12 && base.probability < 0.985 ? { ...base.greeks } : createZeroSignalGreeks();
 
   const scoredDimensions = Object.entries(SEMANTIC_SCORE_WEIGHTS).filter(([dimension]) =>
     Number.isFinite(Number(semanticScores[dimension]))
@@ -362,16 +425,10 @@ function evaluateStepProbability(state, context, options = {}) {
     probability += (contentSupportScore - 50) * SEMANTIC_SCORE_PROBABILITY_SCALE;
   }
 
-  for (const signal of [
-    "complexity",
-    "terminalDemand",
-    "browserSupport",
-    "authDemand",
-    "troubleshootingSupport",
-    "conceptDemand",
-    "enterpriseDemand"
-  ]) {
-    probability += contentSignal(context, signal) * Number(signalAdjustments[signal] || 0);
+  for (const signal of STEP_SIGNAL_KEYS) {
+    const adjustment = Number(signalAdjustments[signal] || 0);
+    probability += contentSignal(context, signal) * adjustment;
+    greeks[signal] += adjustment;
   }
 
   if (usingBrowserPath) {
@@ -394,8 +451,20 @@ function evaluateStepProbability(state, context, options = {}) {
     probability += Number(pathAdjustments.enterprise || 0);
   }
 
+  if (probability <= 0.12 || probability >= 0.985) {
+    greeks = createZeroSignalGreeks();
+  }
+
   return {
     probability: clamp(probability, 0.12, 0.985),
+    greeks
+  };
+}
+
+function evaluateStepProbability(state, context, options = {}) {
+  const insight = agentInsight(context);
+  return {
+    probability: evaluateStepProbabilityGreeks(state, context, options).probability,
     summary: typeof insight.summary === "string" ? insight.summary : "",
     riskTags: Array.isArray(insight.riskTags) ? insight.riskTags : []
   };
@@ -990,9 +1059,11 @@ module.exports = {
     levelBaseline: LEVEL_BASELINE,
     backgroundFactors: BACKGROUND_FACTORS
   },
+  STEP_SIGNAL_KEYS,
   STEP_IDS,
   steps: STEP_IDS,
   stepFilesById: STEP_FILE_ALIASES,
+  stepGreekEstimator: evaluateStepProbabilityGreeks,
   transitions: buildTransitions(),
   buildTransitions
 };

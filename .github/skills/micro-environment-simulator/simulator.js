@@ -720,7 +720,8 @@ function replayJourney({
   transitions = {},
   stepContentById = {},
   runIndex = 0,
-  random
+  random,
+  onStepAttempt
 }) {
   const dayOfYear = toDayOfYear(date);
   let state = deepFreeze(initialState || defaultEnvironmentForStudent(student, dayOfYear));
@@ -741,7 +742,7 @@ function replayJourney({
     }
 
     const stepContent = stepContentById[stepId] || null;
-    const result = transition(state, {
+    const context = {
       student,
       date,
       runIndex,
@@ -754,7 +755,18 @@ function replayJourney({
         typeof random === "function"
           ? random
           : createSeededRng(stableHash(`${date}|${student.id}|${runIndex}|${stepId}`))
-    });
+    };
+    if (typeof onStepAttempt === "function") {
+      onStepAttempt({
+        state,
+        stepId,
+        stepIndex: trace.length,
+        totalSteps: steps.length,
+        stepContent,
+        context
+      });
+    }
+    const result = transition(state, context);
     if (!result.ok) {
       return {
         success: false,
@@ -871,6 +883,63 @@ function aggregateFailureCategories(monteCarlo) {
   return failureCategoriesByStep;
 }
 
+function createStepGreekAccumulator() {
+  return {
+    signalKeys: [],
+    signalKeySet: new Set(),
+    sumsByStep: {},
+    attemptsByStep: {}
+  };
+}
+
+function recordStepGreekEstimate(accumulator, stepId, greeks) {
+  if (!accumulator || !stepId || !greeks || typeof greeks !== "object") {
+    return;
+  }
+  const entries = Object.entries(greeks).filter(([, value]) => Number.isFinite(Number(value)));
+  if (entries.length === 0) {
+    return;
+  }
+  accumulator.attemptsByStep[stepId] = (accumulator.attemptsByStep[stepId] || 0) + 1;
+  accumulator.sumsByStep[stepId] ||= {};
+  for (const [signal, value] of entries) {
+    if (!accumulator.signalKeySet.has(signal)) {
+      accumulator.signalKeySet.add(signal);
+      accumulator.signalKeys.push(signal);
+    }
+    accumulator.sumsByStep[stepId][signal] = (accumulator.sumsByStep[stepId][signal] || 0) + Number(value);
+  }
+}
+
+function finalizeStepGreekAccumulator(accumulator, totalAttempts = 0, steps = []) {
+  if (!accumulator || accumulator.signalKeys.length === 0) {
+    return null;
+  }
+  const stepIds = steps.length > 0 ? steps : Object.keys(accumulator.sumsByStep);
+  const conditionalSuccessRateByStep = {};
+  const overallSuccessRateByStep = {};
+  for (const stepId of stepIds) {
+    const attempts = accumulator.attemptsByStep[stepId] || 0;
+    const sums = accumulator.sumsByStep[stepId] || {};
+    conditionalSuccessRateByStep[stepId] = {};
+    overallSuccessRateByStep[stepId] = {};
+    for (const signal of accumulator.signalKeys) {
+      const sum = Number(sums[signal] || 0);
+      conditionalSuccessRateByStep[stepId][signal] = attempts ? sum / attempts : null;
+      overallSuccessRateByStep[stepId][signal] = totalAttempts ? sum / totalAttempts : null;
+    }
+  }
+  return {
+    algorithm: "vandendorpe-reached-state",
+    interpretation:
+      "First-order sensitivities of modeled success rates to step-content signals, reusing the Monte Carlo cohort's reached states instead of bump-and-reprice reruns.",
+    signals: [...accumulator.signalKeys],
+    atRiskRunsByStep: { ...accumulator.attemptsByStep },
+    conditionalSuccessRateByStep,
+    overallSuccessRateByStep
+  };
+}
+
 function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}) {
   const dayOfYear = toDayOfYear(date);
   return students.map((student) => {
@@ -895,7 +964,18 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
         transitions: config.transitions || {},
         stepContentById: config.stepContentById || {},
         runIndex,
-        random: createSeededRng(stableHash(`${date}|${student.id}|${runIndex}|journey`))
+        random: createSeededRng(stableHash(`${date}|${student.id}|${runIndex}|journey`)),
+        onStepAttempt:
+          typeof config.stepGreekEstimator === "function" && config.stepGreekAccumulator
+            ? ({ state: stepState, stepId, context }) => {
+                const estimate = config.stepGreekEstimator(stepState, context);
+                recordStepGreekEstimate(
+                  config.stepGreekAccumulator,
+                  stepId,
+                  estimate?.greeks || estimate
+                );
+              }
+            : undefined
       });
 
       for (const { stepId } of result.trace) {
@@ -931,6 +1011,19 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
       mostCommonFailureStep: sortedFailures.length > 0 ? sortedFailures[0][0] : null
     };
   });
+}
+
+function simulateStudentsMonteCarloWithGreeks(students, date, runsCount = 100, config = {}) {
+  const stepGreekAccumulator =
+    typeof config.stepGreekEstimator === "function" ? createStepGreekAccumulator() : null;
+  const monteCarlo = simulateStudentsMonteCarlo(students, date, runsCount, {
+    ...config,
+    stepGreekAccumulator
+  });
+  return {
+    monteCarlo,
+    greeks: finalizeStepGreekAccumulator(stepGreekAccumulator, students.length * runsCount, config.steps || [])
+  };
 }
 
 function parseArgs(argv) {
@@ -1012,11 +1105,13 @@ function runCli() {
 
   let results;
   if (runsCount && runsCount > 1) {
-    const monteCarlo = simulateStudentsMonteCarlo(students, today, runsCount, {
+    const monteCarloResults = simulateStudentsMonteCarloWithGreeks(students, today, runsCount, {
       steps,
       transitions,
-      stepContentById
+      stepContentById,
+      stepGreekEstimator: journeyModule.stepGreekEstimator
     });
+    const { monteCarlo, greeks } = monteCarloResults;
     const dropout = aggregateDropoutRates(monteCarlo, steps);
     const totalSuccesses = monteCarlo.reduce((sum, result) => sum + result.successes, 0);
     const totalAttempts = students.length * runsCount;
@@ -1047,7 +1142,8 @@ function runCli() {
         dropoutRateCi95ByStep: dropout.dropoutRateCi95ByStep,
         attemptsByStep: dropout.attemptsByStep,
         dropoutCountByStep: dropout.failuresByStep,
-        failureCategoriesByStep: aggregateFailureCategories(monteCarlo)
+        failureCategoriesByStep: aggregateFailureCategories(monteCarlo),
+        greeks
       }
     };
   } else {
@@ -1090,9 +1186,12 @@ const exportedApi = {
   replayWorkshop,
   simulateStudents,
   simulateStudentsMonteCarlo,
+  simulateStudentsMonteCarloWithGreeks,
   wilsonInterval,
   aggregateDropoutRates,
-  aggregateFailureCategories
+  aggregateFailureCategories,
+  createStepGreekAccumulator,
+  finalizeStepGreekAccumulator
 };
 
 module.exports = exportedApi;
