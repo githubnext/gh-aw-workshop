@@ -33,7 +33,7 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
 2. Click the **Codespaces** tab.
    - Leave **main** selected as the branch.
    - Click **Create codespace on main**.
-   - Wait 30–60 seconds for GitHub to prepare the container and open the editor.
+   - Wait 30–60 seconds for GitHub to prepare the container.
 3. The Codespace opens in a new browser tab showing a VS Code-style editor. Leave this tab open for the rest of the workshop.
 
 ![Open Codespace](images/02a-open-codespace.svg)
@@ -45,7 +45,7 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 
 - **"Create codespace on main" is greyed out** — your account may not have Codespaces enabled. Check [github.com/settings/billing](https://github.com/settings/billing) or ask your organization admin.
 - **Spinner runs more than 3 minutes** — refresh the browser tab. If still stuck, go to [github.com/codespaces](https://github.com/codespaces), find the pending Codespace, click **⋯ → Delete**, and try again.
-- **"Codespace limit reached"** — you may have existing Codespaces using your quota. Visit [github.com/codespaces](https://github.com/codespaces), delete any you no longer need, and retry.
+- **"Codespace storage limit reached"** — you may have existing Codespaces using your quota. Visit [github.com/codespaces](https://github.com/codespaces), delete any you no longer need, and retry.
 - **VS Code desktop opens instead of the browser** — click **Open in Browser** in the dialog, or close VS Code desktop and return to the browser tab.
 
 </details>
