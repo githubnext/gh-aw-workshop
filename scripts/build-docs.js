@@ -855,9 +855,13 @@ ${htmlContent}</main>
       }
     }
 
+    function isPreviewableImageCandidate(img) {
+      return !img.closest('a[href]') && !!(img.getAttribute('alt') || '').trim();
+    }
+
     function markImagePreviewable(img) {
       if (!img.complete || img.naturalWidth === 0) return;
-      if (img.closest('a[href]')) return;
+      if (!isPreviewableImageCandidate(img)) return;
       img.setAttribute('data-image-inspector-ready', '');
       img.setAttribute('tabindex', '0');
       const altText = (img.getAttribute('alt') || '').trim();
@@ -869,7 +873,7 @@ ${htmlContent}</main>
 
     function preparePreviewableImages() {
       previewableImages.forEach(function (img) {
-        if (img.closest('a[href]')) return;
+        if (!isPreviewableImageCandidate(img)) return;
         markImagePreviewable(img);
         if (!img.hasAttribute('data-image-inspector-ready')) {
           img.addEventListener('load', function handleLoad() {
@@ -993,9 +997,7 @@ ${htmlContent}</main>
     });
 
     document.addEventListener('keydown', function (e) {
-      const previewImage = e.target.matches('img[data-image-inspector-ready]')
-        ? e.target
-        : null;
+      const previewImage = e.target.matches('img[data-image-inspector-ready]') && e.target;
       if (previewImage && (e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
         openImageInspector(previewImage);
