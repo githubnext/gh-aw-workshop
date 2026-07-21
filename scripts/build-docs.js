@@ -827,7 +827,7 @@ ${workshopMenu}
   </dialog>
   <dialog class="image-inspector" id="image-inspector" aria-labelledby="image-inspector-title">
     <div class="image-inspector-panel">
-      <button class="image-inspector-close" type="button" aria-label="Close image preview" title="Close image preview">&times;</button>
+      <button class="image-inspector-close" type="button" aria-label="Close image preview" title="Close image preview">×</button>
       <figure class="image-inspector-figure">
         <img class="image-inspector-image" id="image-inspector-image" alt="">
         <figcaption class="image-inspector-caption" id="image-inspector-title" hidden></figcaption>
@@ -850,7 +850,6 @@ ${htmlContent}</main>
         if (img.closest('a[href]')) return;
         img.setAttribute('data-image-inspector-ready', '');
         img.setAttribute('tabindex', '0');
-        img.setAttribute('role', 'button');
         const altText = (img.getAttribute('alt') || '').trim();
         img.setAttribute(
           'aria-label',
@@ -977,7 +976,7 @@ ${htmlContent}</main>
     });
 
     document.addEventListener('keydown', function (e) {
-      const previewImage = e.target.closest?.('img[data-image-inspector-ready]');
+      const previewImage = e.target.closest('img[data-image-inspector-ready]');
       if (previewImage && (e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
         openImageInspector(previewImage);
