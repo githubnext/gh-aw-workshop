@@ -71,6 +71,7 @@ def is_non_learning_page(raw: str) -> bool:
     Accepted formats include::
 
         <!-- learning:false -->
+        <!-- learning: false -->
         <!-- Learning:False -->
         <!--   learning : false   -->
     """

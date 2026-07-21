@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
-<!-- learning: false -->
+<!-- learning:false -->
 
 # Welcome to our Agent Factory Tour
 

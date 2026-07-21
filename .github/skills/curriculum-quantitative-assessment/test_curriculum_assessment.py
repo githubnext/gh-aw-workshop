@@ -77,6 +77,9 @@ class IsNonLearningPageTests(unittest.TestCase):
     def test_returns_true_case_insensitive(self) -> None:
         self.assertTrue(is_non_learning_page("<!-- Learning:False -->"))
 
+    def test_returns_true_with_space_after_colon(self) -> None:
+        self.assertTrue(is_non_learning_page("<!-- learning: false -->"))
+
     def test_returns_true_with_extra_whitespace(self) -> None:
         self.assertTrue(is_non_learning_page("<!--   learning : false   -->"))
 
