@@ -332,6 +332,7 @@ standalone `**Next:**` line that matches the docs-builder parser exactly:
 Rules:
 
 - Keep exactly one internal workshop `.md` link on the `**Next:**` line.
+- A trailing period is optional; use it only when it reads naturally in the surrounding prose.
 - Put setup details or extra explanation in a separate paragraph, not on the same line as the `**Next:**` link.
 - For branching pages, repeat one `**Next:**` line per option rather than switching to `Continue with` or `Continue to`.
 - When the next step depends on learner path, wrap each `**Next:**` line in the appropriate `<!-- journey: ... -->` block.

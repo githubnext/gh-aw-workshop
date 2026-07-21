@@ -22,6 +22,11 @@ NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
 FORWARD_NAV_RE = re.compile(
+    # Canonical build-docs forward navigation:
+    # **Next:** [Title](file.md)
+    # **Next:** Open [Title](file.md).
+    # Anchored to a single line, allows an optional heading fragment, and permits
+    # an optional trailing period after the internal Markdown link.
     r"^\s*(?:>\s*)?\*\*Next:\*\*\s*(?:Open\s+)?\[[^\]]+\]\(([^)#?]+\.md)(?:#[^)]*)?\)\.?\s*$"
 )
 DEPRECATED_FORWARD_NAV_RE = re.compile(r"^\s*(?:>\s*)?Continue (?:to|with) \[")
