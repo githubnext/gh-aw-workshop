@@ -560,11 +560,12 @@ body,
   right: 12px;
   display: inline-grid;
   place-items: center;
-  width: 36px;
+  min-width: 36px;
   height: 36px;
-  padding: 0;
+  padding: 0 12px;
   color: inherit;
-  font-size: 28px;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1;
   background: var(--bgColor-muted, #f6f8fa);
   border: 1px solid var(--borderColor-muted, #d0d7de);
@@ -827,7 +828,7 @@ ${workshopMenu}
   </dialog>
   <dialog class="image-inspector" id="image-inspector" aria-labelledby="image-inspector-title">
     <div class="image-inspector-panel">
-      <button class="image-inspector-close" type="button" aria-label="Close image preview" title="Close image preview">×</button>
+      <button class="image-inspector-close" type="button" aria-label="Close image preview" title="Close image preview">Close</button>
       <figure class="image-inspector-figure">
         <img class="image-inspector-image" id="image-inspector-image" alt="">
         <figcaption class="image-inspector-caption" id="image-inspector-title" hidden></figcaption>
@@ -877,12 +878,9 @@ ${htmlContent}</main>
         if (!isPreviewableImageCandidate(img)) return;
         markImagePreviewable(img);
         if (!img.hasAttribute('data-image-inspector-ready')) {
-          img.addEventListener('load', function handleLoad() {
+          img.addEventListener('load', function () {
             markImagePreviewable(img);
-            if (img.hasAttribute('data-image-inspector-ready')) {
-              img.removeEventListener('load', handleLoad);
-            }
-          });
+          }, { once: true });
         }
       });
     }
@@ -998,7 +996,10 @@ ${htmlContent}</main>
     });
 
     document.addEventListener('keydown', function (e) {
-      const previewImage = e.target.matches('img[data-image-inspector-ready]') && e.target;
+      let previewImage = null;
+      if (e.target.matches('img[data-image-inspector-ready]')) {
+        previewImage = e.target;
+      }
       if (previewImage && (e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
         openImageInspector(previewImage);
