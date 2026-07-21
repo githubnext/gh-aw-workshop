@@ -53,6 +53,11 @@ const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
 const workshopImagesDir = path.join(workshopDir, 'images');
 const distImagesDir = path.join(distDir, 'images');
+const monaSansDir = path.join(
+  __dirname, '..', 'node_modules', '@fontsource-variable', 'mona-sans'
+);
+const distFontsDir = path.join(distDir, 'fonts');
+const headingRegex = /^#{1,6}\s+(.+)$/m;
 
 // Collect and sort workshop markdown files (excludes non-md files; keeps README)
 const files = fs.readdirSync(workshopDir)
@@ -63,7 +68,57 @@ const sectionIdsByFile = new Map(
   files.map(f => [f, path.basename(f, '.md')])
 );
 
-// Plugin: rewrite .md links to reveal.js section hash links
+const markdownByFile = new Map(
+  files.map(f => [f, fs.readFileSync(path.join(workshopDir, f), 'utf8').trim()])
+);
+const pageTitleByFile = new Map(
+  [...markdownByFile].map(([f, markdown]) => {
+    const headingMatch = markdown.match(headingRegex);
+    const slug = path.basename(f, '.md').replace(/^\d+-?/, '').replace(/-/g, ' ');
+    const title = headingMatch
+      ? headingMatch[1].trim()
+      : slug.charAt(0).toUpperCase() + slug.slice(1);
+    return [f, title];
+  })
+);
+const adventureByFile = new Map(
+  [...markdownByFile].map(([f, markdown]) => {
+    const adventureMatch = markdown.match(/^<!-- page-adventure: ([^ ]+) -->/m);
+    return [f, adventureMatch?.[1] ?? 'other'];
+  })
+);
+const nextLinkRegex = /\*\*Next:\*\*\s*(?:Open\s+)?\[([^\]]+)\]\(([^)#?]+\.md)(?:#[^)]*)?\)\.?/g;
+const previousFileByFile = new Map();
+
+for (const [sourceFile, markdown] of markdownByFile) {
+  for (const match of markdown.matchAll(nextLinkRegex)) {
+    const targetFile = match[2];
+    if (sectionIdsByFile.has(targetFile) && !previousFileByFile.has(targetFile)) {
+      previousFileByFile.set(targetFile, sourceFile);
+    }
+  }
+}
+
+function renderWorkshopNavigation(markdown, currentFile) {
+  const previousFile = previousFileByFile.get(currentFile);
+  const previousSectionId = previousFile ? sectionIdsByFile.get(previousFile) : null;
+  const previousLabel = previousFile ? marked.parseInline(pageTitleByFile.get(previousFile)) : '';
+
+  return markdown.replace(nextLinkRegex, (_match, nextLabel, nextFile) => {
+    const nextSectionId = sectionIdsByFile.get(nextFile);
+    if (!nextSectionId) return _match;
+
+    const previousLink = previousSectionId
+      ? `<a href="#${previousSectionId}"><span aria-hidden="true">←</span> ${previousLabel}</a>`
+      : '';
+
+    return `<nav class="workshop-navigation" aria-label="Workshop navigation">
+  <div class="workshop-navigation-previous">${previousLink}</div>
+  <div class="workshop-navigation-next"><a href="#${nextSectionId}">${marked.parseInline(nextLabel)} <span aria-hidden="true">→</span></a></div>
+</nav>`;
+  });
+}
+
 marked.use({
   useNewRenderer: true,
   renderer: {
@@ -87,77 +142,47 @@ marked.use({
   },
 });
 
-// ---------------------------------------------------------------------------
-// Multi-dimensional slide grouping
-//
-// Horizontal axis  = numbered workshop steps (00, 01, 02, …)
-// Vertical axis    = sub-steps (NNa, NNb, …) and side-quests for each step
-//
-// Grouping rules (evaluated in priority order):
-//   README.md              → group 'readme'  (appears first)
-//   side-quest-NN-…        → group 'NN'  (vertical under the matching numbered step)
-//   NN-slug.md / NNx-*.md  → group 'NN'  (leading digit run)
-//   other (e.g. side-quest-enterprise-setup.md) → own group keyed by basename
-// ---------------------------------------------------------------------------
-
-function getGroupKey(filename) {
-  if (filename === 'README.md') return 'readme';
-  // Check for numbered side-quest files first (side-quest-NN-…) so they are
-  // grouped under their parent step rather than treated as a numbered step.
-  const sideQuestNumMatch = filename.match(/^side-quest-(\d+)-/);
-  if (sideQuestNumMatch) return sideQuestNumMatch[1];
-  // Numbered step files: NN-slug.md or NNx-slug.md → group by leading digits.
-  const stepMatch = filename.match(/^(\d+)/);
-  if (stepMatch) return stepMatch[1];
-  // Non-numeric files (e.g. side-quest-enterprise-setup.md) → own group.
-  return path.basename(filename, '.md');
-}
-
-// Returns a numeric sort key so groups appear in step order.
-// 'readme' sorts before all numeric steps; non-numeric keys sort last.
-function groupSortKey(key) {
-  if (key === 'readme') return -Infinity;
-  const n = parseInt(key, 10);
-  return isNaN(n) ? Infinity : n;
-}
-
-// Build ordered group map  (key → [filenames in sorted order])
-const groups = new Map();
-for (const f of files) {
-  const key = getGroupKey(f);
-  if (!groups.has(key)) groups.set(key, []);
-  groups.get(key).push(f);
-}
-const sortedGroupKeys = [...groups.keys()].sort(
-  (a, b) => groupSortKey(a) - groupSortKey(b)
-);
-
-// Render a single workshop file as a reveal.js <section>
-function renderSlide(filename) {
-  const sectionId = sectionIdsByFile.get(filename);
-  const markdown = fs.readFileSync(path.join(workshopDir, filename), 'utf8').trim();
-  const isSideQuest = filename.startsWith('side-quest-');
-  const content = marked(markdown);
-  const slideClass = isSideQuest ? ' class="side-quest-slide"' : '';
-  return `<section id="${sectionId}"${slideClass}>\n<div class="markdown-body slide-content">\n${content}\n</div>\n</section>`;
-}
-
-// Build reveal.js slides HTML
-// - Groups with one file  → bare <section> (horizontal slide)
-// - Groups with multiple  → outer <section id="groupKey"> wrapping vertical <section> elements
-const slidesHtml = sortedGroupKeys.map(key => {
-  const groupFiles = groups.get(key);
-  if (groupFiles.length === 1) {
-    return renderSlide(groupFiles[0]);
-  }
-  const innerSlides = groupFiles.map(renderSlide).join('\n');
-  return `<section id="${key}">\n${innerSlides}\n</section>`;
+// Render each file as a closed <details> section with the first heading as <summary>
+const htmlContent = files.map((f, index) => {
+  const markdown = markdownByFile.get(f);
+  // Extract plain text of the first heading (strip leading # characters).
+  // Workshop files use HTML comments (not YAML frontmatter), so the multiline
+  // regex safely finds the first heading regardless of leading comment lines.
+  const headingMatch = markdown.match(headingRegex);
+  const title = pageTitleByFile.get(f);
+  const sectionId = sectionIdsByFile.get(f);
+  // Intentionally remove only the first heading because it is promoted to <summary>.
+  const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
+  const content = marked(renderWorkshopNavigation(markdownWithoutTitle, f));
+  const detailsOpenAttr = index === 0 ? ' open' : '';
+  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary><h4>${title}</h4></summary>\n${content}\n</details>`;
 }).join('\n\n');
 
-// ---------------------------------------------------------------------------
-// Write output files
-// ---------------------------------------------------------------------------
+const menuGroups = [
+  ['core', 'Main workshop'],
+  ['setup', 'Setup paths'],
+  ['advanced', 'Advanced topics'],
+  ['side-quest', 'Side quests'],
+  ['other', 'Other pages'],
+];
+const workshopMenu = menuGroups.map(([adventure, label]) => {
+  const links = files
+    .filter(f => adventureByFile.get(f) === adventure)
+    .map(f => {
+      const sectionId = sectionIdsByFile.get(f);
+      const title = marked.parseInline(pageTitleByFile.get(f));
+      return `<li><a href="#${sectionId}" data-workshop-page-link>${title}</a></li>`;
+    })
+    .join('\n');
 
+  if (!links) return '';
+  return `<section class="workshop-menu-group">
+  <h3>${label}</h3>
+  <ul>${links}</ul>
+</section>`;
+}).join('\n');
+
+// Set up output directory
 fs.mkdirSync(distDir, { recursive: true });
 
 // Copy workshop images for rendered markdown links
@@ -171,15 +196,22 @@ const primerCssSrc = path.join(
 );
 fs.copyFileSync(primerCssSrc, path.join(distDir, 'primer.css'));
 
-// Copy reveal.js core files locally so the build is self-contained
-const revealJsDir = path.join(__dirname, '..', 'node_modules', 'reveal.js');
-fs.copyFileSync(path.join(revealJsDir, 'dist', 'reveal.js'),  path.join(distDir, 'reveal.js'));
-fs.copyFileSync(path.join(revealJsDir, 'dist', 'reveal.css'), path.join(distDir, 'reveal.css'));
-fs.mkdirSync(path.join(distDir, 'theme'), { recursive: true });
-fs.copyFileSync(
-  path.join(revealJsDir, 'dist', 'theme', 'white.css'),
-  path.join(distDir, 'theme', 'white.css')
-);
+// Copy Mona Sans variable font CSS and the referenced normal/italic assets.
+fs.mkdirSync(distFontsDir, { recursive: true });
+const monaSansCss = [
+  fs.readFileSync(path.join(monaSansDir, 'wght.css'), 'utf8'),
+  fs.readFileSync(path.join(monaSansDir, 'wght-italic.css'), 'utf8'),
+].join('\n').replaceAll('./files/', 'fonts/');
+fs.writeFileSync(path.join(distDir, 'mona-sans.css'), monaSansCss);
+for (const subset of ['vietnamese', 'latin-ext', 'latin']) {
+  for (const style of ['normal', 'italic']) {
+    const fontFile = `mona-sans-${subset}-wght-${style}.woff2`;
+    fs.copyFileSync(
+      path.join(monaSansDir, 'files', fontFile),
+      path.join(distFontsDir, fontFile)
+    );
+  }
+}
 
 // Generate alert callout CSS for marked-alert GFM rendering
 const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / etc. */
@@ -199,90 +231,235 @@ const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / e
 }
 .markdown-alert-title svg { margin-right: 8px; }
 .markdown-alert-note {
-  border-color: #0969da;
-  background-color: #ddf4ff;
+  border-color: var(--borderColor-accent-emphasis, #0969da);
+  background-color: var(--bgColor-accent-muted, #ddf4ff);
 }
-.markdown-alert-note .markdown-alert-title { color: #0969da; }
+.markdown-alert-note .markdown-alert-title { color: var(--fgColor-accent, #0969da); }
 .markdown-alert-tip {
-  border-color: #1a7f37;
-  background-color: #dafbe1;
+  border-color: var(--borderColor-success-emphasis, #1a7f37);
+  background-color: var(--bgColor-success-muted, #dafbe1);
 }
-.markdown-alert-tip .markdown-alert-title { color: #1a7f37; }
+.markdown-alert-tip .markdown-alert-title { color: var(--fgColor-success, #1a7f37); }
 .markdown-alert-important {
-  border-color: #8250df;
-  background-color: #fbefff;
+  border-color: var(--borderColor-done-emphasis, #8250df);
+  background-color: var(--bgColor-done-muted, #fbefff);
 }
-.markdown-alert-important .markdown-alert-title { color: #8250df; }
+.markdown-alert-important .markdown-alert-title { color: var(--fgColor-done, #8250df); }
 .markdown-alert-warning {
-  border-color: #9a6700;
-  background-color: #fff8c5;
+  border-color: var(--borderColor-attention-emphasis, #9a6700);
+  background-color: var(--bgColor-attention-muted, #fff8c5);
 }
-.markdown-alert-warning .markdown-alert-title { color: #9a6700; }
+.markdown-alert-warning .markdown-alert-title { color: var(--fgColor-attention, #9a6700); }
 .markdown-alert-caution {
-  border-color: #d1242f;
-  background-color: #ffebe9;
+  border-color: var(--borderColor-danger-emphasis, #d1242f);
+  background-color: var(--bgColor-danger-muted, #ffebe9);
 }
-.markdown-alert-caution .markdown-alert-title { color: #d1242f; }
+.markdown-alert-caution .markdown-alert-title { color: var(--fgColor-danger, #d1242f); }
 `;
 fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 
 // Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
+body,
+.markdown-body {
+  font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.site-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 16px;
+  color: var(--fgColor-default, #1f2328);
+  background-color: var(--bgColor-default, #ffffff);
+  border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
+}
+.site-title {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.site-title:hover {
+  color: var(--fgColor-accent, #0969da);
+}
+.menu-toggle,
+.menu-close {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--fgColor-default, #1f2328);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.menu-toggle:hover,
+.menu-close:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+}
+.menu-toggle:focus-visible,
+.menu-close:focus-visible {
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: -2px;
+}
+.menu-icon,
+.menu-icon::before,
+.menu-icon::after {
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+}
+.menu-icon {
+  position: relative;
+}
+.menu-icon::before,
+.menu-icon::after {
+  position: absolute;
+  left: 0;
+  content: '';
+}
+.menu-icon::before { top: -6px; }
+.menu-icon::after { top: 6px; }
+
+.workshop-menu {
+  width: min(384px, calc(100vw - 32px));
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  color: var(--fgColor-default, #1f2328);
+  background-color: var(--bgColor-default, #ffffff);
+  border: 0;
+  border-right: 1px solid var(--borderColor-muted, #d0d7de);
+}
+.workshop-menu::backdrop {
+  background: rgba(0, 0, 0, 0.48);
+}
+.workshop-menu-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.workshop-menu-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 0 12px 0 20px;
+  border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
+}
+.workshop-menu-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.menu-close {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1;
+}
+.workshop-menu-nav {
+  flex: 1 1 auto;
+  padding: 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.workshop-menu-group + .workshop-menu-group {
+  margin-top: 20px;
+}
+.workshop-menu-group h3 {
+  margin: 0 8px 6px;
+  color: var(--fgColor-muted, #59636e);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.workshop-menu-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.workshop-menu-group a {
+  display: block;
+  padding: 8px;
+  color: var(--fgColor-default, #1f2328);
+  line-height: 1.35;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.workshop-menu-group a:hover {
+  color: var(--fgColor-accent, #0969da);
+  background-color: var(--bgColor-muted, #f6f8fa);
+}
+.workshop-menu-group a[aria-current="page"] {
+  color: var(--fgColor-accent, #0969da);
+  font-weight: 600;
+  background-color: var(--bgColor-accent-muted, #ddf4ff);
+}
+
+.markdown-body > details:not([open]) {
+  display: none;
+}
+.markdown-body > details {
+  scroll-margin-top: 72px;
+}
+.markdown-body > details > summary {
+  cursor: default;
+  list-style: none;
+}
+.markdown-body > details > summary::-webkit-details-marker {
+  display: none;
+}
+
 .markdown-body a:not(.anchor) {
   text-decoration: underline;
   text-underline-offset: 0.08em;
 }
 
-/* ----------------------------------------------------------------
- * Reveal.js overrides
- * ---------------------------------------------------------------- */
-
-/* Reduce default slide scale for desktop reading */
-.reveal {
-  font-size: 1.875rem;
+.workshop-navigation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  width: calc(100vw - 32px);
+  margin-top: 32px;
+  margin-left: calc(50% - 50vw + 16px);
+  padding-top: 16px;
+  border-top: 1px solid var(--borderColor-muted, #d0d7de);
+}
+.workshop-navigation-previous {
+  justify-self: start;
+}
+.workshop-navigation-next {
+  justify-self: end;
+  text-align: right;
+}
+.workshop-navigation a {
+  display: inline-flex;
+  gap: 0.4em;
+  align-items: center;
+  font-weight: 600;
 }
 
-/* Align text left; with center:false slides already start at top,
- * so no top override is needed. */
-.reveal .slides section {
-  text-align: left;
-}
-
-/* Constrain and scroll the content wrapper inside each slide so that
- * long content does not get clipped. A single scroll container per
- * slide avoids nested-scrollbar confusion. */
-.reveal .slides .slide-content {
-  --slide-top-gap: 1.25rem;
-  /* Extra bottom room keeps content clear of Reveal controls/progress UI. */
-  --slide-bottom-gap: 4.75rem;
-  padding: var(--slide-top-gap) 1.5em var(--slide-bottom-gap);
-  height: calc(100vh - var(--slide-top-gap) - var(--slide-bottom-gap));
-  max-height: calc(100vh - var(--slide-top-gap) - var(--slide-bottom-gap));
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-gutter: stable;
-  box-sizing: border-box;
-}
-
-@supports (height: 100dvh) {
-  .reveal .slides .slide-content {
-    height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
-    max-height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
+@media (max-width: 543px) {
+  .workshop-navigation {
+    gap: 8px;
   }
-}
-
-/* Ensure slide images fit and advertise lightbox affordance */
-.reveal .slides .slide-content img {
-  max-width: 100%;
-  height: auto;
-  cursor: zoom-in;
-}
-
-/* Visually distinguish side-quest slides with a left border */
-.reveal .slides .side-quest-slide {
-  border-left: 4px solid #0969da;
-  padding-left: 1em;
+  .workshop-navigation a {
+    align-items: flex-start;
+    overflow-wrap: anywhere;
+  }
 }
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
@@ -419,25 +596,132 @@ fs.writeFileSync(path.join(distDir, 'docs.js'), docsJs);
 // Generate single-page reveal.js presentation
 const totalGroups = sortedGroupKeys.length;
 const page = `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>gh-aw Workshop</title>
-  <link rel="stylesheet" href="reveal.css">
-  <link rel="stylesheet" href="theme/white.css">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <title>GitHub Agentic Workflows Workshop</title>
+  <link rel="stylesheet" href="mona-sans.css">
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
   <link rel="stylesheet" href="docs.css">
 </head>
 <body>
-  <div class="reveal">
-    <div class="slides">
-${slidesHtml}
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-label="Open workshop pages" aria-controls="workshop-menu" title="Open workshop pages">
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+    <a class="site-title" href="#00-welcome">GitHub Agentic Workflows Workshop</a>
+  </header>
+  <dialog class="workshop-menu" id="workshop-menu" aria-labelledby="workshop-menu-title">
+    <div class="workshop-menu-panel">
+      <header class="workshop-menu-header">
+        <h2 id="workshop-menu-title">Workshop pages</h2>
+        <button class="menu-close" type="button" aria-label="Close workshop pages" title="Close workshop pages">&times;</button>
+      </header>
+      <nav class="workshop-menu-nav" aria-label="All workshop pages">
+${workshopMenu}
+      </nav>
     </div>
-  </div>
-  <script src="reveal.js"></script>
-  <script src="docs.js"></script>
+  </dialog>
+  <main class="container-xl px-3 py-5 markdown-body">
+${htmlContent}</main>
+  <script>
+    const workshopPages = Array.from(document.querySelectorAll('.markdown-body > details'));
+    const menuDialog = document.getElementById('workshop-menu');
+    const menuLinks = Array.from(document.querySelectorAll('[data-workshop-page-link]'));
+
+    function showWorkshopPage(target, focusPage) {
+      const page = target?.matches('.markdown-body > details')
+        ? target
+        : target?.closest('.markdown-body > details');
+      const activePage = page ?? workshopPages[0];
+      if (!activePage) return;
+
+      workshopPages.forEach(candidate => {
+        candidate.open = candidate === activePage;
+      });
+      menuLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + activePage.id;
+        if (isActive) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+
+      if (focusPage) {
+        activePage.setAttribute('tabindex', '-1');
+        activePage.focus();
+      }
+    }
+
+    function findHashTarget(id) {
+      const activePage = workshopPages.find(candidate => candidate.open);
+      if (activePage?.id === id) return activePage;
+
+      const localTarget = activePage
+        ? Array.from(activePage.querySelectorAll('[id]')).find(candidate => candidate.id === id)
+        : null;
+      return localTarget ?? document.getElementById(id);
+    }
+
+    function showWorkshopPageForHash(focusPage) {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id ? findHashTarget(id) : null;
+      showWorkshopPage(target, focusPage && target?.matches('.markdown-body > details'));
+    }
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.menu-toggle')) {
+        menuDialog.showModal();
+        requestAnimationFrame(function () {
+          menuDialog.querySelector('[aria-current="page"]')?.scrollIntoView({ block: 'center' });
+        });
+        return;
+      }
+      if (e.target.closest('.menu-close')) {
+        menuDialog.close();
+        return;
+      }
+
+      if (e.target.closest('.markdown-body > details > summary')) {
+        e.preventDefault();
+        return;
+      }
+
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      e.preventDefault();
+      const id = decodeURIComponent(link.getAttribute('href').slice(1));
+      if (!id) return;
+      const target = findHashTarget(id);
+      if (target) {
+        if (menuDialog.open) menuDialog.close();
+        const isPage = target.matches('.markdown-body > details');
+        history.pushState(null, '', link.getAttribute('href'));
+        showWorkshopPage(target, isPage);
+        if (!isPage) target.scrollIntoView({ block: 'start' });
+      }
+    });
+
+    menuDialog.addEventListener('click', function (e) {
+      if (e.target === menuDialog) menuDialog.close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuDialog.open) {
+        e.preventDefault();
+        menuDialog.close();
+      }
+    });
+
+    window.addEventListener('hashchange', function () {
+      showWorkshopPageForHash(true);
+    });
+
+    showWorkshopPageForHash(false);
+  </script>
 </body>
 </html>
 `;
