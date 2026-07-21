@@ -118,7 +118,7 @@ Open `log.md` in your editor. Each section represents one agent turn and lists t
 
 ## ✅ Checkpoint
 
-- [ ] You can identify the five files inside the agent artifact and what each contains
+- [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC
 - [ ] You can use `firewall.md` to identify blocked domains and add them to `network.allow`
 - [ ] You know what the threat detection verdict checks for
