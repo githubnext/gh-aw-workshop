@@ -53,7 +53,6 @@ const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
 const workshopImagesDir = path.join(workshopDir, 'images');
 const distImagesDir = path.join(distDir, 'images');
-const headingRegex = /^#{1,6}\s+(.+)$/m;
 
 // Collect and sort workshop markdown files (excludes non-md files; keeps README)
 const files = fs.readdirSync(workshopDir)
@@ -64,6 +63,7 @@ const sectionIdsByFile = new Map(
   files.map(f => [f, path.basename(f, '.md')])
 );
 
+// Plugin: rewrite .md links to reveal.js section hash links
 marked.use({
   useNewRenderer: true,
   renderer: {
@@ -87,26 +87,74 @@ marked.use({
   },
 });
 
-// Render each file as a closed <details> section with the first heading as <summary>
-const htmlContent = files.map((f, index) => {
-  const markdown = fs.readFileSync(path.join(workshopDir, f), 'utf8').trim();
-  // Extract plain text of the first heading (strip leading # characters).
-  // Workshop files use HTML comments (not YAML frontmatter), so the multiline
-  // regex safely finds the first heading regardless of leading comment lines.
-  const headingMatch = markdown.match(headingRegex);
-  const slug = path.basename(f, '.md').replace(/^\d+-?/, '').replace(/-/g, ' ');
-  const title = headingMatch
-    ? headingMatch[1].trim()
-    : slug.charAt(0).toUpperCase() + slug.slice(1);
-  const sectionId = sectionIdsByFile.get(f);
-  // Intentionally remove only the first heading because it is promoted to <summary>.
-  const markdownWithoutTitle = headingMatch ? markdown.replace(headingRegex, '').trimStart() : markdown;
-  const content = marked(markdownWithoutTitle);
-  const detailsOpenAttr = index === 0 ? ' open' : '';
-  return `<details id="${sectionId}"${detailsOpenAttr}>\n<summary><h4>${title}</h4></summary>\n${content}\n</details>`;
+// ---------------------------------------------------------------------------
+// Multi-dimensional slide grouping
+//
+// Horizontal axis  = numbered workshop steps (00, 01, 02, …)
+// Vertical axis    = sub-steps (NNa, NNb, …) and side-quests for each step
+//
+// Grouping rules:
+//   README.md                    → group 'readme'  (appears first)
+//   NN-slug.md / NNx-slug.md    → group 'NN'
+//   side-quest-NN-…             → group 'NN'  (vertical under same step)
+//   side-quest-<word>-…         → group 'side-quest-<word>'  (own column)
+// ---------------------------------------------------------------------------
+
+function getGroupKey(filename) {
+  if (filename === 'README.md') return 'readme';
+  // side-quest-NN-* → same horizontal group as step NN
+  const sideQuestNumMatch = filename.match(/^side-quest-(\d+)-/);
+  if (sideQuestNumMatch) return sideQuestNumMatch[1];
+  // NN-slug.md or NNx-slug.md → group by leading digit run
+  const stepMatch = filename.match(/^(\d+)/);
+  if (stepMatch) return stepMatch[1];
+  // Non-numeric files (e.g. side-quest-enterprise-setup.md) → own group
+  return path.basename(filename, '.md');
+}
+
+function groupSortOrder(key) {
+  if (key === 'readme') return -Infinity;
+  const n = parseInt(key, 10);
+  return isNaN(n) ? Infinity : n;
+}
+
+// Build ordered group map  (key → [filenames in sorted order])
+const groups = new Map();
+for (const f of files) {
+  const key = getGroupKey(f);
+  if (!groups.has(key)) groups.set(key, []);
+  groups.get(key).push(f);
+}
+const sortedGroupKeys = [...groups.keys()].sort(
+  (a, b) => groupSortOrder(a) - groupSortOrder(b)
+);
+
+// Render a single workshop file as a reveal.js <section>
+function renderSlide(filename) {
+  const sectionId = sectionIdsByFile.get(filename);
+  const markdown = fs.readFileSync(path.join(workshopDir, filename), 'utf8').trim();
+  const isSideQuest = filename.startsWith('side-quest-');
+  const content = marked(markdown);
+  const slideClass = isSideQuest ? ' class="side-quest-slide"' : '';
+  return `<section id="${sectionId}"${slideClass}>\n<div class="markdown-body slide-content">\n${content}\n</div>\n</section>`;
+}
+
+// Build reveal.js slides HTML
+// - Groups with one file  → bare <section> (horizontal slide)
+// - Groups with multiple  → outer <section id="groupKey"> wrapping vertical <section> elements
+const slidesHtml = sortedGroupKeys.map(key => {
+  const groupFiles = groups.get(key);
+  if (groupFiles.length === 1) {
+    return renderSlide(groupFiles[0]);
+  }
+  const innerSlides = groupFiles.map(renderSlide).join('\n');
+  return `<section id="${key}">\n${innerSlides}\n</section>`;
 }).join('\n\n');
 
-// Set up output directory
+// ---------------------------------------------------------------------------
+// Write output files
+// ---------------------------------------------------------------------------
+
 fs.mkdirSync(distDir, { recursive: true });
 
 // Copy workshop images for rendered markdown links
@@ -119,6 +167,16 @@ const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
 );
 fs.copyFileSync(primerCssSrc, path.join(distDir, 'primer.css'));
+
+// Copy reveal.js core files locally so the build is self-contained
+const revealJsDir = path.join(__dirname, '..', 'node_modules', 'reveal.js');
+fs.copyFileSync(path.join(revealJsDir, 'dist', 'reveal.js'),  path.join(distDir, 'reveal.js'));
+fs.copyFileSync(path.join(revealJsDir, 'dist', 'reveal.css'), path.join(distDir, 'reveal.css'));
+fs.mkdirSync(path.join(distDir, 'theme'), { recursive: true });
+fs.copyFileSync(
+  path.join(revealJsDir, 'dist', 'theme', 'white.css'),
+  path.join(distDir, 'theme', 'white.css')
+);
 
 // Generate alert callout CSS for marked-alert GFM rendering
 const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / etc. */
@@ -165,57 +223,96 @@ const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / e
 `;
 fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 
-// Generate docs CSS overrides for rendered markdown
+// Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
 .markdown-body a:not(.anchor) {
   text-decoration: underline;
   text-underline-offset: 0.08em;
 }
+
+/* ----------------------------------------------------------------
+ * Reveal.js overrides
+ * ---------------------------------------------------------------- */
+
+/* Align text left and start slides from the top (not vertically centered) */
+.reveal .slides section {
+  text-align: left;
+  top: 0 !important;
+  /* Make slide content scrollable so nothing is clipped */
+  overflow-y: auto;
+}
+
+/* Constrain and scroll the content wrapper inside each slide */
+.reveal .slides .slide-content {
+  font-size: 0.8em;
+  padding: 0 1.5em;
+  max-height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Visually distinguish side-quest slides with a left border */
+.reveal .slides .side-quest-slide {
+  border-left: 4px solid #0969da;
+  padding-left: 1em;
+}
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
-// Write single-page HTML
+// Generate single-page reveal.js presentation
+const totalGroups = sortedGroupKeys.length;
 const page = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>gh-aw Workshop</title>
+  <link rel="stylesheet" href="reveal.css">
+  <link rel="stylesheet" href="theme/white.css">
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
   <link rel="stylesheet" href="docs.css">
 </head>
 <body>
-  <div class="container-xl px-3 py-5 markdown-body">
-${htmlContent}</div>
+  <div class="reveal">
+    <div class="slides">
+${slidesHtml}
+    </div>
+  </div>
+  <script src="reveal.js"></script>
   <script>
-    // When a page link is clicked, open the target <details> element so its content is visible.
+    Reveal.initialize({
+      // URL hash reflects current slide by section id
+      hash: true,
+      // Show step/sub-step position as h.v (horizontal.vertical)
+      slideNumber: 'h.v',
+      // Start slides at the top rather than vertically centered
+      center: false,
+      // Push slide changes into the browser history
+      history: true,
+    });
+
+    // Navigate to named sections when an in-slide hash link is clicked.
+    // Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href^="#"]');
       if (!link) return;
-      const id = decodeURIComponent(link.getAttribute('href').slice(1));
+      const raw = link.getAttribute('href').slice(1);
+      const id = decodeURIComponent(raw);
       if (!id) return;
       const target = document.getElementById(id);
-      if (target && target.tagName === 'DETAILS') {
-        target.open = true;
-        target.focus();
+      if (target && target.closest('.slides')) {
+        e.preventDefault();
+        Reveal.slide(
+          Reveal.getIndices(target).h,
+          Reveal.getIndices(target).v
+        );
       }
     });
-
-    // Also open the target <details> if the page is loaded with a hash in the URL.
-    (function openDetailsForHash() {
-      const id = decodeURIComponent(location.hash.slice(1));
-      if (!id) return;
-      const target = document.getElementById(id);
-      if (target && target.tagName === 'DETAILS') {
-        target.open = true;
-        target.focus();
-      }
-    })();
   </script>
 </body>
 </html>
 `;
 
 fs.writeFileSync(path.join(distDir, 'index.html'), page);
-console.log(`Built dist/index.html from ${files.length} files.`);
+console.log(`Built dist/index.html — ${files.length} files across ${totalGroups} slide columns.`);
