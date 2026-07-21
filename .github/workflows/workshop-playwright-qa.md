@@ -38,6 +38,9 @@ safe-outputs:
     expires: 1d
   add-comment:
     max: 5
+  upload-asset:
+    allowed-exts: [.png]
+    max: 30
 timeout-minutes: 30
 steps:
   - name: Build workshop docs and start static server
@@ -177,11 +180,16 @@ For every failed check, record a finding with:
   observed (include element selectors or text snippets where useful)
 - `screenshot_path` — path where a screenshot of the failure was saved
   (use `/tmp/gh-aw/screenshots/<page_id>-<viewport>-<short-slug>.png`)
+- `screenshot_asset_url` — GitHub asset URL returned by `upload_asset`
+  after publishing the screenshot
 
 For each finding, take a targeted screenshot:
 - Use Playwright to capture a screenshot of the offending element when
   possible, or a full-page screenshot if the element is not isolatable.
 - Save the screenshot to the `screenshot_path` recorded in the finding.
+- Immediately call the `upload_asset` safe-output tool with the absolute
+  `screenshot_path`, then store the returned asset URL in
+  `screenshot_asset_url`.
 
 If the same visual defect appears on all three viewports, record one
 finding with `viewport: "all"` and a single representative screenshot
@@ -227,10 +235,8 @@ Group findings by `page_id`. For each page that has findings:
 
    ### Screenshots
 
-   <!-- Attach one screenshot per finding. Use the Markdown image syntax
-        only if the screenshots can be uploaded via the GitHub API; otherwise
-        describe the findings in text and note that screenshots are available
-        in the workflow run artifacts. -->
+   ![Finding 1 — missing H1](https://github.com/.../finding-1.png?raw=1)
+   ![Finding 2 — unnamed checkbox](https://github.com/.../finding-2.png?raw=1)
    ```
 
 4. Call `create-issue` (or `add-comment` if the issue already exists)
@@ -248,5 +254,7 @@ Group findings by `page_id`. For each page that has findings:
   a description specific enough for a human to reproduce it.
 - Screenshots must be taken before moving to the next finding so the
   browser state is captured at the moment of failure.
-- Never call write tools other than `create-issue`, `add-comment`, and
-  `noop`.
+- Every issue or comment with findings must embed the uploaded screenshot
+  assets in Markdown, not local `/tmp/...` paths.
+- Never call write tools other than `create-issue`, `add-comment`,
+  `upload_asset`, and `noop`.
