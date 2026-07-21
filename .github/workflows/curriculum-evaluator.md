@@ -54,17 +54,43 @@ steps:
       set -euo pipefail
 
       python3 -B <<'PY'
-      import json, statistics, pathlib
+      import json, statistics, pathlib, re
 
       data    = json.loads(pathlib.Path('/tmp/gh-aw/data/corpus-metrics.json').read_text())
       scored  = data['files']
       MIN_UNDERSTAND_STEPS = 3
       MIN_ANALYZE_STEPS = 2
 
+      def lesson_number(filename):
+          match = re.search(r'(?:^|-)0*(\d{1,2})(?:[a-z])?(?=-)', filename)
+          return int(match.group(1)) if match else None
+
+      def part_label(filename):
+          lesson = lesson_number(filename)
+          if lesson is None:
+              return 'other'
+          return 'part1' if lesson <= 14 else 'part2'
+
+      def summarize_scores(rows):
+          if not rows:
+              return {'files': 0, 'mean_score': None, 'stdev_score': None}
+          scores = [row['overall_score'] for row in rows]
+          return {
+              'files': len(rows),
+              'mean_score': round(statistics.mean(scores), 2),
+              'stdev_score': round(statistics.stdev(scores) if len(scores) > 1 else 0, 2),
+          }
+
+      for row in scored:
+          row['part'] = part_label(row['file'])
+
       # corpus statistics
       overall_scores = [f['overall_score'] for f in scored]
       corpus_mean  = round(statistics.mean(overall_scores), 2)
       corpus_stdev = round(statistics.stdev(overall_scores) if len(overall_scores) > 1 else 0, 2)
+      part1_scores = [f for f in scored if f['part'] == 'part1']
+      part2_scores = [f for f in scored if f['part'] == 'part2']
+      other_scores = [f for f in scored if f['part'] == 'other']
 
       # flag outliers (score > 1 SD below mean OR specific critical failures)
       threshold = corpus_mean - corpus_stdev
@@ -114,6 +140,9 @@ steps:
               'total_files':   len(scored),
               'mean_score':    corpus_mean,
               'stdev_score':   corpus_stdev,
+              'part1':         summarize_scores(part1_scores),
+              'part2':         summarize_scores(part2_scores),
+              'other':         summarize_scores(other_scores),
               'threshold':     round(threshold, 2),
               'bloom_distribution': {
                   level: sum(1 for f in scored if f['bloom_level'] == level)
@@ -327,7 +356,8 @@ Flag corpus-level imbalances (for example, all steps at "remember/understand" wi
 
 Always create one scorecard issue that reports:
 
-- overall score for every page in the current run, sorted from lowest to highest
+- part summary for lessons 00–14 vs 15+ (`files`, `mean_score`, `stdev_score`) plus overall corpus metrics
+- per-part overall score tables for lessons 00–14 and lessons 15+ (each sorted from lowest to highest)
 - score trend for every page (baseline score, latest score, delta, direction)
 - overall curriculum trend (`baseline_mean_score`, `latest_mean_score`, `delta`, `direction`)
 
@@ -335,11 +365,27 @@ Use this exact section structure in the issue body:
 
 ---
 
-### Current Page Scores
+### Part Summary
+
+| Part | Files | Mean Score | Std Dev |
+|---|---|---|---|
+| Part 1 — core path (lessons 00–14) | `N1` | `X.XX / 10.0` | `±S1` |
+| Part 2 — advanced (lessons 15+) | `N2` | `Y.YY / 10.0` | `±S2` |
+| Overall corpus | `N` | `Z.ZZ / 10.0` | `±S` |
+
+### Part 1 Scores (lessons 00–14)
 
 | File | Overall Score |
 |---|---|
 | `workshop/<filename>` | `X.XX / 10.0` |
+
+### Part 2 Scores (lessons 15+)
+
+| File | Overall Score |
+|---|---|
+| `workshop/<filename>` | `Y.YY / 10.0` |
+
+If any pages are classified as `other`, include a final **Other Scores (no lesson number)** table with the same columns.
 
 ### Score Trends (history window: N commits)
 
