@@ -638,21 +638,21 @@ body,
 }
 
 .markdown-body a:not(.anchor):not(.workshop-nav-btn),
-.workshop-navigation a:not(.workshop-nav-btn) {
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn) {
   color: var(--workshop-link-color);
   text-decoration: underline;
   text-underline-offset: 0.08em;
 }
 
 .markdown-body a:not(.anchor):not(.workshop-nav-btn):visited,
-.workshop-navigation a:not(.workshop-nav-btn):visited {
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn):visited {
   color: var(--workshop-link-visited-color);
 }
 
 .markdown-body a:not(.anchor):not(.workshop-nav-btn):hover,
 .markdown-body a:not(.anchor):not(.workshop-nav-btn):focus-visible,
-.workshop-navigation a:not(.workshop-nav-btn):hover,
-.workshop-navigation a:not(.workshop-nav-btn):focus-visible {
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn):hover,
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn):focus-visible {
   color: var(--workshop-link-hover-color);
 }
 
