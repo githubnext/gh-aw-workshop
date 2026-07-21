@@ -28,7 +28,12 @@ Open the completed **Daily Report Status** run from the **Actions** tab and clic
 ✅ Done
 ```
 
-The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and write one short note about what it was trying to do.
+The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and fill in the template below:
+
+```text
+First Tool call I saw:         [tool name, e.g. github.list_issues]
+What it was trying to do:      [one sentence description]
+```
 
 ## Check the output
 
@@ -45,6 +50,15 @@ If your run does not look right, start with these quick checks before changing t
 - **The workflow never appears in Actions** — confirm the workflow file is committed on `main`, then refresh. If you use the terminal path, run `gh aw compile` to catch compile errors.
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
+
+Knowing what a failed run looks like helps you spot permission issues at a glance, before you spend time re-reading the brief:
+
+```text
+🤔 Planning...  Searching for open issues
+🔧 Tool call:   github.list_issues
+📥 Error:       403 Forbidden — insufficient permissions
+❌ Failed
+```
 
 For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 
@@ -65,6 +79,7 @@ Put your answers in a scratch file, your editor, or wherever you keep notes. You
 - [ ] I traced the first tool call and noted what the agent was trying to do
 - [ ] I compared the run summary to the actual GitHub change and noted the result
 - [ ] I know the first check to make if a run is missing, confused, or finished without writing anything
+- [ ] I can identify whether a run failed due to a permission error, a vague brief, or a missing output
 
 <!-- journey: all -->
 **Next:** [Refine Your Workflow with Agentic Editing](09-agentic-editing.md)
