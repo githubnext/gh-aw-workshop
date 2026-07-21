@@ -26,6 +26,13 @@ const COMMAND_LINE_TERMINAL_WEIGHT = 0.03;
 const TERMINAL_DEMAND_CAP = 0.95;
 const UI_ALTERNATIVE_TERMINAL_DISCOUNT = 0.1;
 const UI_ALTERNATIVE_TERMINAL_DISCOUNT_CAP = 0.3;
+const AGENT_ADJUSTMENT_LIMIT = 0.15;
+const SEMANTIC_SCORE_WEIGHTS = {
+  stateReadiness: 0.5,
+  pathClarity: 0.3,
+  recoverySupport: 0.2
+};
+const SEMANTIC_SCORE_PROBABILITY_SCALE = 0.002;
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -322,6 +329,54 @@ function normalizeNumericObject(container, fieldName, stepId) {
   }
 }
 
+function normalizeBoundedAdjustments(container, fieldName, stepId, allowedKeys) {
+  normalizeNumericObject(container, fieldName, stepId);
+  if (!isPlainObject(container[fieldName])) {
+    return;
+  }
+  const allowedKeySet = new Set(allowedKeys);
+  for (const key of Object.keys(container[fieldName])) {
+    if (!allowedKeySet.has(key)) {
+      console.warn(`[simulator] Ignoring unknown adjustment '${stepId}.${fieldName}.${key}'.`);
+      delete container[fieldName][key];
+      continue;
+    }
+    container[fieldName][key] = clamp(
+      container[fieldName][key],
+      -AGENT_ADJUSTMENT_LIMIT,
+      AGENT_ADJUSTMENT_LIMIT
+    );
+  }
+}
+
+function normalizeSemanticScores(container, stepId) {
+  if (container.semanticScores == null) {
+    return;
+  }
+  if (!isPlainObject(container.semanticScores)) {
+    console.warn(`[simulator] Agent insight '${stepId}.semanticScores' should be an object.`);
+    delete container.semanticScores;
+    return;
+  }
+  const scores = {};
+  let valid = true;
+  for (const field of Object.keys(SEMANTIC_SCORE_WEIGHTS)) {
+    const rawValue = container.semanticScores[field];
+    const value = Number(rawValue);
+    if (rawValue == null || !Number.isFinite(value)) {
+      console.warn(`[simulator] Agent insight '${stepId}.semanticScores.${field}' should be numeric.`);
+      valid = false;
+      continue;
+    }
+    scores[field] = clamp(value, 0, 100);
+  }
+  if (valid) {
+    container.semanticScores = scores;
+  } else {
+    delete container.semanticScores;
+  }
+}
+
 function normalizeAgentInsightsByStep(input) {
   if (!isPlainObject(input)) {
     return {};
@@ -341,9 +396,30 @@ function normalizeAgentInsightsByStep(input) {
       console.warn(`[simulator] Agent insight '${stepId}.summary' should be a string.`);
       delete nextInsight.summary;
     }
+    normalizeNumericField(nextInsight, "rank", stepId);
     normalizeNumericField(nextInsight, "bias", stepId);
-    normalizeNumericObject(nextInsight, "signalAdjustments", stepId);
-    normalizeNumericObject(nextInsight, "pathAdjustments", stepId);
+    if (nextInsight.bias != null) {
+      nextInsight.bias = clamp(nextInsight.bias, -AGENT_ADJUSTMENT_LIMIT, AGENT_ADJUSTMENT_LIMIT);
+    }
+    normalizeSemanticScores(nextInsight, stepId);
+    normalizeBoundedAdjustments(nextInsight, "signalAdjustments", stepId, [
+      "complexity",
+      "terminalDemand",
+      "browserSupport",
+      "authDemand",
+      "troubleshootingSupport",
+      "conceptDemand",
+      "enterpriseDemand"
+    ]);
+    normalizeBoundedAdjustments(nextInsight, "pathAdjustments", stepId, [
+      "browser",
+      "cli",
+      "codespaces",
+      "local",
+      "mobile",
+      "uiPreferred",
+      "enterprise"
+    ]);
     normalizeNumericField(nextInsight, "evaluatedContentHash", stepId);
     if (nextInsight.evaluations !== null && nextInsight.evaluations !== undefined) {
       if (!isPlainObject(nextInsight.evaluations)) {
@@ -418,15 +494,19 @@ function buildStepContentById({
       markdown,
       fileContents.map(({ file, title }) => ({ file, title }))
     );
-    const agentInsight = agentInsightsByStep[stepId] ? { ...agentInsightsByStep[stepId] } : null;
+    const rawAgentInsight = agentInsightsByStep[stepId] || null;
+    let agentInsight = rawAgentInsight;
+    // Every model-affecting insight is tied to the exact page revision it evaluated.
     if (
-      agentInsight?.evaluations &&
-      Number(agentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
+      rawAgentInsight &&
+      Number(rawAgentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
     ) {
       console.warn(
-        `[simulator] Ignoring stale agent evaluations for step '${stepId}': content hash does not match.`
+        `[simulator] Ignoring stale agent insight for step '${stepId}': content hash does not match.`
       );
-      delete agentInsight.evaluations;
+      agentInsight = null;
+    } else if (rawAgentInsight) {
+      agentInsight = { ...rawAgentInsight };
     }
     stepContentById[stepId] = deepFreeze({
       ...contentAnalysis,
@@ -993,6 +1073,8 @@ const exportedApi = {
   VALID_TERMINALS,
   INFERENCE_PROVIDERS,
   PROVIDER_SECRET_BY_NAME,
+  SEMANTIC_SCORE_WEIGHTS,
+  SEMANTIC_SCORE_PROBABILITY_SCALE,
   ensure,
   clamp,
   stableHash,

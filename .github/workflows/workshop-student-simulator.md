@@ -256,7 +256,7 @@ The profiles are generated from `.github/skills/micro-environment-simulator/work
 
 For each student in the generated cohort, simulate their experience step-by-step using the following rules:
 
-First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
+First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json`, then read both `curriculum.json` and `curriculum-quality-metrics.json`. Build a candidate set from the five highest-dropout steps and the five lowest-scoring curriculum steps. Semantically score and rank every candidate using the `stateReadiness`, `pathClarity`, and `recoverySupport` dimensions defined below, then select the three highest-risk steps for detailed analysis. Inspect every workshop page mapped to each selected step, plus the preceding activities that produce its required state, before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. A simulated step may map to several pages; do not treat a file limit as a step limit. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
 
 Evaluate content assumptions semantically instead of inferring state from keyword counts. Use one focused yes/no question per assumption, answer only `YES`, `NO`, or `UNKNOWN`, and cite `file:line` evidence. Copy each step's `contentHash` from the baseline output into `evaluatedContentHash`. The simulator ignores evaluations when that hash does not match the current mapped page content, so page edits require fresh evaluations.
 
@@ -268,6 +268,12 @@ Use this JSON shape:
   "stepInsightsById": {
     "<step-id>": {
       "evaluatedContentHash": 123456789,
+      "rank": 1,
+      "semanticScores": {
+        "stateReadiness": 35,
+        "pathClarity": 45,
+        "recoverySupport": 30
+      },
       "evaluations": {
         "<assumption-id>": {
           "question": "Does the applicable content ensure this state is true before the next step?",
@@ -302,6 +308,9 @@ Use this JSON shape:
 ```
 
 - `schemaVersion: 1` is the initial assumption-evaluation format; increment it when a future change is not backward compatible.
+- `rank` orders the selected steps from highest to lowest content risk.
+- Score `stateReadiness`, `pathClarity`, and `recoverySupport` from 0 (unsupported) to 100 (fully supported) using evidence from the mapped current pages. The simulator combines these scores at weights 50%, 30%, and 20%, then converts the weighted score to a bounded probability adjustment of -0.10 to +0.10. This semantic score is the required agentic contribution to the hybrid model.
+- Include all three semantic scores for each selected step, even when the resulting probability adjustment is neutral. Explain the score in `summary` and cite page evidence in the evaluations.
 - Always evaluate these Step 7 assumptions because they determine the state required by Step 8:
   - `workflow_source_created_terminal`
   - `workflow_compiled_terminal`
@@ -319,6 +328,7 @@ Use this JSON shape:
 - You may add focused evaluations for other high-risk steps. Unknown evaluation IDs remain available as report evidence but cannot directly patch arbitrary simulator state.
 - Omit steps where you have no meaningful adjustment.
 - Use positive numbers to increase success probability and negative numbers to decrease it.
+- Keep `bias`, each signal adjustment, and each path adjustment between `-0.15` and `0.15`; the simulator clamps larger values and ignores unknown adjustment keys.
 - Base these adjustments on the actual wording, path structure, fallbacks, and recovery guidance in the files you inspect — not only on the numeric signals already present in the simulator.
 - For Copilot / Agents-tab paths, verify that the content treats the surface as prompt-driven chat and explicitly calls out `/agentic-workflows` for workflow-authoring tasks. Missing that cue, or presenting shell commands as if they run inside the Agents tab, is an access barrier for `tool: CCA` learners.
 
@@ -334,6 +344,8 @@ node .github/skills/micro-environment-simulator/simulator.js \
   --runs "$MONTE_CARLO_RUNS" \
   --out /tmp/gh-aw/agent/sim/data/monte-carlo-replay.json
 ```
+
+After rerunning, verify in the replay output that all three selected steps have a non-null `stepContentById[step].agentInsight`, a matching `evaluatedContentHash`, and all three `semanticScores`. Stop and repair the insights instead of reporting if any selected insight is missing or stale.
 
 The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` should therefore reflect both the simulator's constraint model and your content-aware adjustments:
 
@@ -442,7 +454,7 @@ Update `/tmp/gh-aw/cache-memory/profiles.json`:
 
 ### Read workshop files (if available)
 
-If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read up to 3 of the workshop step files to ground both your `agent-step-insights.json` adjustments and your improvement suggestions in the actual content. Focus on the highest-dropout or highest-risk steps.
+If `${{ env.WORKSHOP_STEP_COUNT }}` > 0, use the available tools to read every mapped page for the three semantically ranked high-risk steps, plus prerequisite pages that establish their required state. Ground both `agent-step-insights.json` and improvement suggestions in that current content.
 
 ### Create a concise report issue
 

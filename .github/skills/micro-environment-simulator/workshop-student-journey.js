@@ -1,6 +1,11 @@
 "use strict";
 
-const { VALID_TERMINALS, ensure } = require("./simulator");
+const {
+  VALID_TERMINALS,
+  SEMANTIC_SCORE_WEIGHTS,
+  SEMANTIC_SCORE_PROBABILITY_SCALE,
+  ensure
+} = require("./simulator");
 
 const MODEL_VERSION = "2026-07-survival-model-v2";
 
@@ -338,12 +343,24 @@ function evaluateStepProbability(state, context, options = {}) {
   const insight = agentInsight(context);
   const signalAdjustments = ensurePlainObject(insight.signalAdjustments);
   const pathAdjustments = ensurePlainObject(insight.pathAdjustments);
+  const semanticScores = ensurePlainObject(insight.semanticScores);
   const usingBrowserPath = prefersBrowserPath(state, context);
   const emphasis = {
     ...(options.emphasis || {}),
     bias: (options.emphasis?.bias || 0) + Number(insight.bias || 0)
   };
   let probability = computeSuccessProbability(state, context, emphasis);
+
+  const scoredDimensions = Object.entries(SEMANTIC_SCORE_WEIGHTS).filter(([dimension]) =>
+    Number.isFinite(Number(semanticScores[dimension]))
+  );
+  if (scoredDimensions.length === Object.keys(SEMANTIC_SCORE_WEIGHTS).length) {
+    const contentSupportScore = scoredDimensions.reduce(
+      (total, [dimension, weight]) => total + Number(semanticScores[dimension]) * weight,
+      0
+    );
+    probability += (contentSupportScore - 50) * SEMANTIC_SCORE_PROBABILITY_SCALE;
+  }
 
   for (const signal of [
     "complexity",
