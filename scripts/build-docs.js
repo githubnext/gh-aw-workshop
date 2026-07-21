@@ -7,6 +7,7 @@ const { marked } = require('marked');
 const { default: GithubSlugger } = require('github-slugger');
 const markedAlert = require('marked-alert');
 const defaultRenderer = new marked.Renderer();
+const relAttrRegex = /\brel=(["'])(.*?)\1/i;
 
 function flattenTokenText(tokenOrTokens) {
   if (Array.isArray(tokenOrTokens)) {
@@ -32,19 +33,19 @@ function isExternalWebLink(href) {
 }
 
 function addExternalLinkTargetAttrs(anchorHtml) {
-  return anchorHtml.replace(/^<a\b([^>]*)>/i, (match, attrs = '') => {
+  return anchorHtml.replace(/^<a\b([^>]*)>/i, (match, attrs) => {
     let updatedAttrs = attrs;
 
     if (!/\btarget\s*=/.test(updatedAttrs)) {
       updatedAttrs += ' target="_blank"';
     }
 
-    const relMatch = updatedAttrs.match(/\brel=(["'])(.*?)\1/i);
+    const relMatch = updatedAttrs.match(relAttrRegex);
     if (relMatch) {
       const relValues = new Set(relMatch[2].split(/\s+/).filter(Boolean));
       relValues.add('noopener');
       relValues.add('noreferrer');
-      updatedAttrs = updatedAttrs.replace(/\brel=(["']).*?\1/i, `rel="${[...relValues].join(' ')}"`);
+      updatedAttrs = updatedAttrs.replace(relAttrRegex, `rel="${[...relValues].join(' ')}"`);
     } else {
       updatedAttrs += ' rel="noopener noreferrer"';
     }
