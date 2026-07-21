@@ -161,6 +161,17 @@ function canCompileWorkflow(state, context, options = {}) {
   return usesTerminalPath(state, context) || (options.allowCloudAgent && hasAgentCompilerAuth(state));
 }
 
+function needsCcaPromptGuidance(state, context) {
+  return state.tool === "CCA" && prefersBrowserPath(state, context);
+}
+
+function hasCcaPromptGuidance(state, context) {
+  return (
+    stepMetric(state, context, "agentsPromptCueCount") > 0 &&
+    stepMetric(state, context, "agenticWorkflowSkillCueCount") > 0
+  );
+}
+
 function stepMetric(state, context, metric) {
   const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
@@ -564,6 +575,13 @@ function buildTransitions() {
         "Run `gh aw init` in your repository root, commit the generated `.github/skills/agentic-workflows/` files, and push before creating the first workflow."
       );
       if (!initCheck.ok) return initCheck;
+      const ccaGuidanceCheck = ensure(
+        !needsCcaPromptGuidance(state, context) || hasCcaPromptGuidance(state, context),
+        "The Copilot path does not clearly tell CCA learners that the Agents tab expects prompts and that they should invoke `/agentic-workflows`.",
+        "copilot-skill-guidance-missing",
+        "Explicitly tell CCA learners to send a prompt in the Agents tab and start workflow-authoring requests with `/agentic-workflows`."
+      );
+      if (!ccaGuidanceCheck.ok) return ccaGuidanceCheck;
       const readiness = contentReadinessCheck(state, context, {
         salt: 113,
         category: "workflow-authoring-friction",

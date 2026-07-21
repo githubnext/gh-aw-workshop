@@ -95,10 +95,15 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     text,
     /\b(click|open|navigate|Actions tab|browser|GitHub UI|web UI)\b/gi
   );
+  const agentsPromptCueCount = countMatches(
+    text,
+    /\b(prompt|paste this prompt|send this prompt|ask Copilot|ask the agent|type this prompt)\b/gi
+  );
   const authCueCount = countMatches(
     text,
     /\b(auth|login|signed in|token|Copilot|permissions?|403|secret)\b/gi
   );
+  const agenticWorkflowSkillCueCount = countMatches(text, /\/agentic-workflows\b/gi);
   const enterpriseCueCount = countMatches(text, /\b(GHES|GHEC|EMU|enterprise|org admin)\b/gi);
   const troubleshootingCueCount = countMatches(
     text,
@@ -191,11 +196,13 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     commandBlockCount,
     commandLineCount,
     clickCueCount,
+    agentsPromptCueCount,
     uiAlternativeCount,
     workflowCompileCueCount,
     workflowLockPublishCueCount,
     copilotRequestsWriteCueCount,
     copilotGithubTokenCueCount,
+    agenticWorkflowSkillCueCount,
     authDemand,
     browserSupport,
     complexity,
