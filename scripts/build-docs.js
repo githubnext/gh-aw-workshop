@@ -249,7 +249,8 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 .reveal .slides .slide-content {
   font-size: 0.8em;
   padding: 0 1.5em;
-  max-height: 100%;
+  height: calc(100vh - 5rem);
+  max-height: calc(100vh - 5rem);
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -263,7 +264,22 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
 // Generate docs runtime JavaScript
-const docsJs = `Reveal.initialize({
+const docsJs = `const legacyHashMatch = window.location.hash.match(/^#\\/([^/]+)$/);
+let legacySectionId = null;
+if (legacyHashMatch) {
+  try {
+    legacySectionId = decodeURIComponent(legacyHashMatch[1]);
+  } catch (_) {
+    legacySectionId = null;
+  }
+}
+const hasLegacySectionTarget = legacySectionId && !!document.getElementById(legacySectionId);
+
+if (hasLegacySectionTarget) {
+  window.history.replaceState(null, '', '#' + legacySectionId);
+}
+
+Reveal.initialize({
   // URL hash reflects current slide by section id
   hash: true,
   // Show step/sub-step position as h.v (horizontal.vertical)
@@ -273,6 +289,15 @@ const docsJs = `Reveal.initialize({
   // Push slide changes into the browser history
   history: true,
 });
+
+if (hasLegacySectionTarget) {
+  const target = document.getElementById(legacySectionId);
+  const indices = target ? Reveal.getIndices(target) : null;
+  if (indices && typeof indices.h === 'number') {
+    const v = typeof indices.v === 'number' ? indices.v : 0;
+    Reveal.slide(indices.h, v);
+  }
+}
 
 // Navigate to named sections when an in-slide hash link is clicked.
 // Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
