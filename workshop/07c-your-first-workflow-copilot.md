@@ -28,7 +28,7 @@ and then create a workflow using https://raw.githubusercontent.com/github/gh-aw/
 
 The workflow must:
 - Be named "Daily Report Status"
-- Support manual runs with `workflow_dispatch`
+- Support manual runs with [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/)
 - Use `contents: read`, `issues: read`, and `copilot-requests: write`
 - Allow at most one comment and at most one new issue through safe outputs (https://github.github.com/gh-aw/reference/safe-outputs/)
 - Search open issues for the issue with the most 👍 reactions and comment:
@@ -49,7 +49,7 @@ Before you approve the merge, the agent presents the file changes in its session
 
 ## Review and merge
 
-1. Confirm `.github/workflows/daily-report-status.md` contains the requested trigger, permissions, safe outputs, and task.
+1. Confirm `.github/workflows/daily-report-status.md` contains the requested trigger, [permissions](https://github.github.com/gh-aw/reference/permissions/), safe outputs, and task.
 2. Confirm `.github/workflows/daily-report-status.lock.yml` exists.
 3. Ask the agent to correct anything that does not match the prompt.
 4. Merge the pull request into `main`.

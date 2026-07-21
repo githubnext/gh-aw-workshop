@@ -77,7 +77,7 @@ if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturd
 
 1. Compile the workflow with `gh aw compile` to regenerate the lock file with the combined condition.
 
-1. Trigger a manual `workflow_dispatch` run from the Actions tab.
+1. Trigger a manual [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) run from the Actions tab.
 
 1. Inspect the run log: on a weekday with commits the agent job should complete normally; on a weekend or a day with no commits it should appear as **skipped** with a grey icon, as shown below.
 

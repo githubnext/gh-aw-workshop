@@ -31,7 +31,7 @@ Pick only one problem for this round. Small, isolated changes make it much easie
 
 ## Make One Targeted Change
 
-Open your workflow source file, such as `.github/workflows/daily-report-status.md`, and change only one instruction in the Markdown body or the YAML frontmatter at the top of the file.
+Open your workflow source file, such as `.github/workflows/daily-report-status.md`, and change only one instruction in the Markdown body or the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) at the top of the file.
 
 Examples of focused changes:
 
@@ -74,7 +74,7 @@ If your workflow uses a different filename, stage that `.md` file and its matchi
 
 ## Trigger a Fresh Run and Compare
 
-Use **workflow_dispatch** from the **Actions** tab to trigger a new run. Then compare the latest result with the previous one.
+Use [**workflow_dispatch**](https://github.github.com/gh-aw/reference/triggers/) from the **Actions** tab to trigger a new run. Then compare the latest result with the previous one.
 
 Ask yourself:
 
