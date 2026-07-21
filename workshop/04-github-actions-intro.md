@@ -21,7 +21,7 @@ You'll do a fast refresher on the Actions primitives used in this workshop: [tri
 
 ## 📋 Before You Start
 
-- Practice repository set up from a previous step.
+- Practice repository is set up from a previous step.
 - No tools or credentials needed for this step.
 
 ## Classic Actions vs [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
@@ -43,7 +43,7 @@ A GitHub Actions workflow is a YAML file in `.github/workflows/` that tells GitH
 - _what_ to run (`jobs`)
 - _how_ each job executes (`steps`)
 
-```
+```text
 .github/
   workflows/
     hello.yml   ← each workflow file lives here
