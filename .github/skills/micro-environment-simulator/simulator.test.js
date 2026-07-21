@@ -104,8 +104,9 @@ test("synthetic simulation history does not increase learner confidence", () => 
   assert.deepEqual(freshState.learner.mastery, experiencedState.learner.mastery);
 });
 
-test("agent assumption evaluations are normalized and stale evaluations are ignored", () => {
+test("agent assumption evaluations are normalized and stale evaluations are ignored", (t) => {
   const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), "simulator-evals-"));
+  t.after(() => fs.rmSync(repoRoot, { recursive: true, force: true }));
   fs.mkdirSync(path.join(repoRoot, "workshop"));
   fs.writeFileSync(path.join(repoRoot, "workshop", "step.md"), "# Current lesson\n");
   const contentHash = simulator.analyzeStepMarkdown("step", "# Current lesson\n").contentHash;

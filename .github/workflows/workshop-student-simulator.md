@@ -301,6 +301,7 @@ Use this JSON shape:
 }
 ```
 
+- `schemaVersion: 1` is the initial assumption-evaluation format; increment it when a future change is not backward compatible.
 - Always evaluate these Step 7 assumptions because they determine the state required by Step 8:
   - `workflow_source_created_terminal`
   - `workflow_compiled_terminal`
