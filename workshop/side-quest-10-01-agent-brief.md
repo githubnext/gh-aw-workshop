@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Writing a Clear Agent Brief
 
-> _Optional: use this quick exercise to shape your brief before you return to [Step 10](10a-design-daily-status.md) or move on to [Step 11](11a-build-daily-status.md)._
+> _Optional: use this quick exercise to shape your brief before you return to [Step 10](09-agentic-editing.md) or move on to [Step 11](07-your-first-workflow.md)._
 
 ## 🎯 What You'll Do
 
@@ -10,8 +10,8 @@ Build your brief in a scratch file in five steps. By the end, you'll have a dail
 
 ## 📋 Before You Start
 
-- You've completed [Reading Workflow Output](09-understand-output.md)
-- You have a practice repository created in [Step 3](03-create-your-repo.md)
+- You've completed [Reading Workflow Output](08b-interpret-your-run.md)
+- You have a practice repository created during setup: [Adventure Codespace](02a-setup-codespace.md) or [Adventure Local](02b-setup-local.md)
 
 ---
 
@@ -196,7 +196,6 @@ Guardrails:
 ---
 
 <!-- journey: all -->
-Return to [Design Your Daily Repo Status Report](10a-design-daily-status.md) or continue to [Build Your Daily Repo Status Workflow](11a-build-daily-status.md).
+Return to [Design Your Daily Repo Status Report](09-agentic-editing.md) or continue to [Build Your Daily Repo Status Workflow](07-your-first-workflow.md).
 <!-- /journey -->
-
 

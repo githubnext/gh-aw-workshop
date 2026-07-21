@@ -27,6 +27,13 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
+## Copilot / Agents tab guidance
+
+- For `copilot` journey pages and Adventure D content, treat the Agents tab as a **prompt surface**, not a terminal.
+- When a learner is working in the Agents tab or another CCA surface, tell them what prompt to send; do **not** present shell commands as though they run inside that chat.
+- When the task is to create, edit, debug, or upgrade an agentic workflow from a CCA surface, explicitly call out the `/agentic-workflows` skill in the prompt.
+- If a CCA-oriented step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Agents-tab prompt so learners know which surface to use for each action.
+
 ## Event provisioning surfaces
 
 - Some workshop content is intentionally reused in provisioned event environments such as an org profile README and a learner-repository Codespaces launcher.

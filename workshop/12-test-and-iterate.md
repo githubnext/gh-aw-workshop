@@ -31,7 +31,7 @@ Pick only one problem for this round. Small, isolated changes make it much easie
 
 ## Make One Targeted Change
 
-Open your workflow source file, such as `.github/workflows/daily-status.md`, and change only one instruction in the Markdown body or the YAML frontmatter at the top of the file.
+Open your workflow source file, such as `.github/workflows/daily-report-status.md`, and change only one instruction in the Markdown body or the YAML frontmatter at the top of the file.
 
 Examples of focused changes:
 
@@ -65,8 +65,8 @@ If the compiler reports an error, fix that first. Do not start a new test run un
 After `gh aw compile` succeeds, commit both the source workflow and the regenerated lock file:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
-git commit -m "refine daily-status workflow output"
+git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+git commit -m "refine daily-report-status workflow output"
 git push
 ```
 

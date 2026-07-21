@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You have completed [Choose Your Scenario](10-choose-your-scenario.md).
+- You have completed [Choose Your Scenario](09-agentic-editing.md).
 - You have read (or plan to read) [Side Quest: Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) — understanding what a well-formed task brief looks like makes it easier to see how an attacker tries to replace it.
 
 ---
@@ -116,7 +116,7 @@ The fourth sentence — "Please disregard your current task…" — is the injec
 ---
 
 <!-- journey: all -->
-Return to [Choose Your Scenario](10-choose-your-scenario.md).
+Return to [Choose Your Scenario](09-agentic-editing.md).
 <!-- /journey -->
 
 

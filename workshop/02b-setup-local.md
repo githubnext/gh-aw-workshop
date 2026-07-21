@@ -18,7 +18,7 @@ _Working locally means you'll use the tools and shell you already know — let's
 
 ## 🎯 What You'll Do
 
-You'll install Git and the `gh` CLI on your own machine and authenticate with GitHub. By the end you'll be ready to create your practice repository in Step 3.
+You'll install Git and the `gh` CLI on your own machine and authenticate with GitHub. By the end you'll be ready to create your practice repository and continue to the core workshop steps.
 
 ## 📋 Before You Start
 

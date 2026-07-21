@@ -2,6 +2,8 @@
 
 const { VALID_TERMINALS, ensure } = require("./simulator");
 
+const MODEL_VERSION = "2026-07-survival-model-v2";
+
 const LEVEL_BASELINE = {
   beginner: 0.38,
   "github-basic": 0.58,
@@ -24,7 +26,6 @@ const STEP_FILE_ALIASES = {
   "00-welcome": ["00-welcome.md"],
   "01-prerequisites": ["01-prerequisites.md"],
   "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md"],
-  "03-create-your-repo": ["03-create-your-repo.md", "03a-create-your-repo-terminal.md", "03b-create-your-repo-ui.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "06-install-gh-aw": [
@@ -37,48 +38,53 @@ const STEP_FILE_ALIASES = {
     "07-your-first-workflow.md",
     "07a-your-first-workflow-terminal.md",
     "07a-part2-your-first-workflow-instructions.md",
-    "07b-your-first-workflow-ui.md",
     "07c-your-first-workflow-copilot.md",
     "07d-confirm-model-access.md"
   ],
-  "08-run-workflow": ["08-run-your-workflow.md"],
-  "09-understand-output": ["09-understand-output.md"],
-  "10-design": ["10-choose-your-scenario.md", "10a-design-daily-status.md", "10b-design-daily-docs.md", "10c-design-pr-reviewer.md"],
-  "11-build": [
-    "11a-build-daily-status.md",
-    "11a-build-daily-status-terminal.md",
-    "11a-build-daily-status-ui.md",
-    "11a-build-daily-status-wizard.md",
-    "11b-build-daily-docs.md",
-    "11b-build-daily-docs-terminal.md",
-    "11b-build-daily-docs-ui.md",
-    "11c-build-pr-reviewer.md",
-    "11c-build-pr-reviewer-terminal.md",
-    "11c-build-pr-reviewer-ui.md",
-    "11d-build-copilot-agents.md"
-  ],
-  "12-test-iterate": ["12-test-and-iterate.md"],
-  "13-schedule": ["13-schedule-it.md", "13a-schedule-it-terminal.md", "13b-schedule-it-ui.md"],
-  "14-next-steps": ["14-next-steps.md"]
+  "08-run-your-workflow": ["08-run-your-workflow.md"],
+  "08b-interpret-your-run": ["08b-interpret-your-run.md"],
+  "09-agentic-editing": ["09-agentic-editing.md"],
+  "12-test-and-iterate": ["12-test-and-iterate.md"],
+  "14-next-steps": ["14-next-steps.md"],
+  "15-conditional-logic": ["15-conditional-logic.md"],
+  "16-connect-data-source": ["16-connect-data-source.md"],
+  "17-add-mcp-tools": ["17-add-mcp-tools.md"],
+  "18-share-and-reuse": ["18-share-and-reuse.md"],
+  "19-research-driven-training-node": ["19-research-driven-training-node.md"],
+  "20-persistent-memory": ["20-persistent-memory.md"],
+  "21-inline-sub-agents": ["21-inline-sub-agents.md"],
+  "22-error-handling-and-resilience": ["22-error-handling-and-resilience.md"],
+  "23-ab-experiments": ["23-ab-experiments.md"],
+  "24-self-hosted-runners": ["24-self-hosted-runners.md"],
+  "25-audit-and-observability": ["25-audit-and-observability.md"],
+  "26-manage-costs-and-budgets": ["26-manage-costs-and-budgets.md"]
 };
 
 const STEP_IDS = [
   "00-welcome",
   "01-prerequisites",
   "02-setup",
-  // Keep this ID aligned with the Step 3 landing page and its path variants.
-  "03-create-your-repo",
   "04-actions-intro",
   "05-agentic-intro",
   "06-install-gh-aw",
   "07-first-workflow",
-  "08-run-workflow",
-  "09-understand-output",
-  "10-design",
-  "11-build",
-  "12-test-iterate",
-  "13-schedule",
-  "14-next-steps"
+  "08-run-your-workflow",
+  "08b-interpret-your-run",
+  "09-agentic-editing",
+  "12-test-and-iterate",
+  "14-next-steps",
+  "15-conditional-logic",
+  "16-connect-data-source",
+  "17-add-mcp-tools",
+  "18-share-and-reuse",
+  "19-research-driven-training-node",
+  "20-persistent-memory",
+  "21-inline-sub-agents",
+  "22-error-handling-and-resilience",
+  "23-ab-experiments",
+  "24-self-hosted-runners",
+  "25-audit-and-observability",
+  "26-manage-costs-and-budgets"
 ];
 
 function cloneState(state) {
@@ -93,33 +99,15 @@ function deepFreeze(obj) {
   return obj;
 }
 
-function isOrgScopedCodespacesToken(state) {
-  return state.workspace?.context === "codespaces" && state.auth?.tokenScope === "org";
-}
-
-function isCodespacesWorkspace(state) {
-  return state.workspace?.context === "codespaces";
-}
-
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function hashText(value) {
-  const text = String(value || "");
-  let hash = 0;
-  for (let i = 0; i < text.length; i += 1) {
-    hash = (hash * 33 + text.charCodeAt(i)) >>> 0;
+function simulationRoll(context) {
+  if (typeof context.random !== "function") {
+    throw new Error("Simulation context is missing its seeded random stream.");
   }
-  return hash;
-}
-
-function deterministicRoll(context, salt = 0) {
-  const studentId = Number(context.student?.id || context.student?.studentId || 0);
-  const runIndex = Number(context.runIndex || 0);
-  const stepHash = hashText(context.stepId) + hashText(JSON.stringify(context.stepContent || {}));
-  const seed = studentId * 101 + runIndex * 37 + stepHash + salt;
-  return ((seed % 1000) + 1000) % 1000 / 1000;
+  return context.random();
 }
 
 function learnerProfile(state) {
@@ -144,7 +132,7 @@ function prefersBrowserPath(state, context) {
   return (
     learner.uiPreferred === true ||
     state.tool === "CCA" ||
-    state.tool === "mobile" ||
+    state.mobile === true ||
     contentSignal(context, "browserSupport") >= contentSignal(context, "terminalDemand")
   );
 }
@@ -161,12 +149,22 @@ function canCompileWorkflow(state, context, options = {}) {
   return usesTerminalPath(state, context) || (options.allowCloudAgent && hasAgentCompilerAuth(state));
 }
 
+function needsCcaPromptGuidance(state, context) {
+  return state.tool === "CCA" && prefersBrowserPath(state, context);
+}
+
+function hasCcaPromptGuidance(state, context) {
+  return (
+    stepMetric(state, context, "agentsPromptCueCount") > 0 &&
+    stepMetric(state, context, "agenticWorkflowSkillCueCount") > 0
+  );
+}
+
 function stepMetric(state, context, metric) {
   const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
     const relevantFiles = prefersBrowserPath(state, context)
       ? new Set([
-          "07b-your-first-workflow-ui.md",
           "07c-your-first-workflow-copilot.md",
           "07d-confirm-model-access.md"
         ])
@@ -184,11 +182,17 @@ function stepMetric(state, context, metric) {
 
 function updateWorkflowCompileState(state, context, options = {}) {
   const next = cloneState(state);
-  const hasCompiledWorkflowLock =
-    canCompileWorkflow(state, context, options) && stepMetric(state, context, "workflowCompileCueCount") > 0;
-  const hasPushedCompiledWorkflowLock =
-    hasCompiledWorkflowLock && stepMetric(state, context, "workflowLockPublishCueCount") > 0;
   next.flags.hasWorkflowFile = true;
+  // A lesson without compile instructions does not invalidate a lock file completed earlier.
+  if (stepMetric(state, context, "workflowCompileCueCount") <= 0) {
+    return next;
+  }
+  const hasCompiledWorkflowLock =
+    canCompileWorkflow(state, context, options);
+  const hasPushedCompiledWorkflowLock =
+    hasCompiledWorkflowLock &&
+    (stepMetric(state, context, "workflowLockPublishCueCount") > 0 ||
+      state.flags.hasPushedCompiledWorkflowLock);
   next.flags.hasCompiledWorkflowLock = hasCompiledWorkflowLock;
   next.flags.hasPushedCompiledWorkflowLock = hasPushedCompiledWorkflowLock;
   next.flags.workflowReadyToRun = hasPushedCompiledWorkflowLock;
@@ -235,8 +239,7 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   let probability = LEVEL_BASELINE[learner.level] ?? 0.52;
   probability += 0.14;
   probability += (learner.confidence ?? 0.5) * 0.18;
-  probability += (learner.priorSuccessRate ?? 0) * 0.12;
-  probability += Math.min(Number(learner.priorRuns || 0), 1500) / 1500 * 0.05;
+  probability += Number(learner.sessionEffect || 0);
 
   probability -= complexity * (emphasis.complexityWeight ?? 0.16);
   probability -= terminalDemand * (emphasis.terminalWeight ?? 0.14);
@@ -286,7 +289,8 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   } else if (state.tool === "CCA") {
     probability += browserSupport * 0.12;
     probability -= terminalDemand * 0.02;
-  } else if (state.tool === "mobile") {
+  }
+  if (state.mobile === true) {
     probability -= terminalDemand * 0.34 + complexity * 0.1;
   }
 
@@ -326,7 +330,7 @@ function evaluateStepProbability(state, context, options = {}) {
   } else {
     probability += Number(pathAdjustments.local || 0);
   }
-  if (state.tool === "mobile") {
+  if (state.mobile === true) {
     probability += Number(pathAdjustments.mobile || 0);
   }
   if (learnerProfile(state).uiPreferred) {
@@ -353,29 +357,49 @@ function applyLearning(state, context, gains = {}) {
   const authDemand = contentSignal(context, "authDemand");
   const conceptDemand = contentSignal(context, "conceptDemand");
 
-  learner.confidence = clamp(
-    (learner.confidence ?? 0.5) + 0.02 + (gains.confidence || 0) + Math.max(0, 0.04 - complexity * 0.02),
-    0.08,
-    0.99
+  const saturatingGain = (current, gain) => clamp(current + gain * (1 - current), 0, 1);
+  learner.confidence = saturatingGain(
+    learner.confidence ?? 0.5,
+    0.02 + (gains.confidence || 0) + Math.max(0, 0.04 - complexity * 0.02)
   );
-  mastery.terminal = clamp((mastery.terminal ?? 0.5) + terminalDemand * 0.05 + (gains.terminal || 0), 0, 1);
-  mastery.github = clamp((mastery.github ?? 0.5) + browserSupport * 0.04 + (gains.github || 0), 0, 1);
-  mastery.actions = clamp((mastery.actions ?? 0.5) + authDemand * 0.04 + (gains.actions || 0), 0, 1);
-  mastery.agentic = clamp((mastery.agentic ?? 0.5) + conceptDemand * 0.05 + (gains.agentic || 0), 0, 1);
-  mastery.troubleshooting = clamp(
-    (mastery.troubleshooting ?? 0.5) + contentSignal(context, "troubleshootingSupport") * 0.04 + (gains.troubleshooting || 0),
-    0,
-    1
+  mastery.terminal = saturatingGain(
+    mastery.terminal ?? 0.5,
+    terminalDemand * 0.05 + (gains.terminal || 0)
+  );
+  mastery.github = saturatingGain(
+    mastery.github ?? 0.5,
+    browserSupport * 0.04 + (gains.github || 0)
+  );
+  mastery.actions = saturatingGain(
+    mastery.actions ?? 0.5,
+    authDemand * 0.04 + (gains.actions || 0)
+  );
+  mastery.agentic = saturatingGain(
+    mastery.agentic ?? 0.5,
+    conceptDemand * 0.05 + (gains.agentic || 0)
+  );
+  mastery.troubleshooting = saturatingGain(
+    mastery.troubleshooting ?? 0.5,
+    contentSignal(context, "troubleshootingSupport") * 0.04 + (gains.troubleshooting || 0)
   );
   learner.mastery = mastery;
   next.learner = learner;
   return deepFreeze(next);
 }
 
+function markPracticeRepoCreatedAndVerified(state) {
+  const next = cloneState(state);
+  next.flags.hasRepo = true;
+  next.flags.repoCreatedViaUi = true;
+  next.flags.repoHasReadme = true;
+  next.flags.repoVerified = true;
+  return next;
+}
+
 function contentReadinessCheck(state, context, options = {}) {
   const assessment = evaluateStepProbability(state, context, options);
   const { probability, ...assessmentMeta } = assessment;
-  if (deterministicRoll(context, options.salt || 0) <= assessment.probability) {
+  if (simulationRoll(context) <= assessment.probability) {
     return { ok: true, probability, assessment: assessmentMeta };
   }
   const failure = ensure(
@@ -387,6 +411,56 @@ function contentReadinessCheck(state, context, options = {}) {
   failure.probability = probability;
   failure.assessment = assessmentMeta;
   return failure;
+}
+
+function advancedLessonStep(state, context, options = {}) {
+  const workflowCheck = ensure(
+    state.flags.hasWorkflowFile,
+    options.workflowMissingMessage || "Advanced workshop steps assume the learner already has a workflow to extend.",
+    options.workflowMissingCategory || "workflow-missing",
+    options.workflowMissingRemediation ||
+      "Complete the first workflow path before continuing into the advanced lessons."
+  );
+  if (!workflowCheck.ok) return workflowCheck;
+
+  if (options.requiresCompiledWorkflow !== false) {
+    const compiledWorkflowCheck = ensureCompiledWorkflow(
+      state,
+      options.compiledCategory || "workflow-not-compiled",
+      options.compiledRemediation ||
+        "Compile the latest workflow source with `gh aw compile`, then commit and push the matching `.lock.yml` before continuing."
+    );
+    if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
+  }
+
+  if (options.requiresRun === true) {
+    const runCheck = ensure(
+      state.flags.ranWorkflow,
+      options.runMissingMessage || "This step assumes the learner has already run the workflow and seen at least one result.",
+      options.runMissingCategory || "run-prerequisite-missing",
+      options.runMissingRemediation ||
+        "Trigger the workflow once and inspect the output before attempting this advanced change."
+    );
+    if (!runCheck.ok) return runCheck;
+  }
+
+  const readiness = contentReadinessCheck(state, context, {
+    salt: options.salt,
+    category: options.category,
+    failedAssumption: options.failedAssumption,
+    remediation: options.remediation,
+    emphasis: options.emphasis
+  });
+  if (!readiness.ok) return readiness;
+
+  let next = cloneState(state);
+  if (options.recompile !== false) {
+    next = updateWorkflowCompileState(next, context, { allowCloudAgent: true });
+  }
+  if (typeof options.mutateState === "function") {
+    next = options.mutateState(next) || next;
+  }
+  return { ok: true, state: applyLearning(next, context, options.learningGains || {}) };
 }
 
 function buildTransitions() {
@@ -403,7 +477,7 @@ function buildTransitions() {
       return { ok: true, state: applyLearning(state, context, { github: 0.02, confidence: 0.01 }) };
     },
     "02-setup": (state, context) => {
-      if (state.tool === "mobile") {
+      if (state.mobile === true) {
         const readiness = contentReadinessCheck(state, context, {
           salt: 23,
           category: "mobile-setup-friction",
@@ -412,7 +486,7 @@ function buildTransitions() {
           emphasis: { bias: 0.12, terminalWeight: 0, complexityWeight: 0.1 }
         });
         if (!readiness.ok) return readiness;
-        const next = cloneState(state);
+        const next = markPracticeRepoCreatedAndVerified(state);
         next.flags.environmentReady = true;
         return { ok: true, state: applyLearning(next, context, { github: 0.04, confidence: 0.01 }) };
       }
@@ -431,55 +505,12 @@ function buildTransitions() {
         emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
-      const next = cloneState(state);
+      const next = markPracticeRepoCreatedAndVerified(state);
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
       next.flags.environmentReady = true;
-      // Codespace setup opens the ready-to-use environment, but the learner does not
-      // create their practice repository until Step 03. The local path creates that
-      // repository during setup, so those repo flags are available earlier.
-      if (!isCodespacesWorkspace(state)) {
-        next.flags.hasRepo = true;
-        next.flags.repoCreatedViaUi = true;
-        next.flags.repoHasReadme = true;
-      }
       return { ok: true, state: applyLearning(next, context, { terminal: 0.08, github: 0.03 }) };
-    },
-    "03-create-your-repo": (state, context) => {
-      const environmentReadyCheck = ensure(
-        state.flags.environmentReady,
-        "Practice repository setup requires a local terminal or Codespace to be ready",
-        "environment-not-ready",
-        "Complete Adventure Codespace (Codespace) or Adventure Local (local terminal) before creating `my-agentic-workflows`."
-      );
-      if (!environmentReadyCheck.ok) return environmentReadyCheck;
-      const needsRepoCreation = !state.flags.hasRepo;
-      if (!needsRepoCreation) {
-        const readmeCheck = ensure(
-          state.flags.repoHasReadme,
-          "Practice repository is missing the starter README",
-          "repo-readme-missing",
-          "Enable 'Add a README file' when creating the repository in GitHub UI."
-        );
-        if (!readmeCheck.ok) return readmeCheck;
-      }
-      const readiness = contentReadinessCheck(state, context, {
-        salt: 43,
-        category: "repo-creation-friction",
-        failedAssumption: "The learner struggles to connect the browser repo-creation flow with the terminal/browser path they chose.",
-        remediation: "Tighten the path-specific repo-opening instructions and keep the UI-vs-terminal split visible.",
-        emphasis: { bias: 0.18 }
-      });
-      if (!readiness.ok) return readiness;
-      const next = cloneState(state);
-      if (needsRepoCreation) {
-        next.flags.hasRepo = true;
-        next.flags.repoCreatedViaUi = true;
-        next.flags.repoHasReadme = true;
-      }
-      next.flags.repoVerified = true;
-      return { ok: true, state: applyLearning(next, context, { github: 0.06, confidence: 0.02 }) };
     },
     "04-actions-intro": (state, context) => {
       const readiness = contentReadinessCheck(state, context, {
@@ -549,6 +580,13 @@ function buildTransitions() {
       return { ok: true, state: applyLearning(next, context, { terminal: 0.06, agentic: 0.05, troubleshooting: 0.04 }) };
     },
     "07-first-workflow": (state, context) => {
+      const repoCheck = ensure(
+        state.flags.hasRepo && state.flags.repoHasReadme,
+        "The learner has not prepared the practice repository that the workflow files should live in.",
+        "practice-repo-missing",
+        "Create `my-agentic-workflows` with a starter README during the setup step before authoring the workflow."
+      );
+      if (!repoCheck.ok) return repoCheck;
       const terminalPath = usesTerminalPath(state, context);
       const precheck = ensure(
         !terminalPath || Boolean(state.installed.aw),
@@ -564,6 +602,13 @@ function buildTransitions() {
         "Run `gh aw init` in your repository root, commit the generated `.github/skills/agentic-workflows/` files, and push before creating the first workflow."
       );
       if (!initCheck.ok) return initCheck;
+      const ccaGuidanceCheck = ensure(
+        !needsCcaPromptGuidance(state, context) || hasCcaPromptGuidance(state, context),
+        "The Copilot path does not clearly tell CCA learners that the Agents tab expects prompts and that they should invoke `/agentic-workflows`.",
+        "copilot-skill-guidance-missing",
+        "Explicitly tell CCA learners to send a prompt in the Agents tab and start workflow-authoring requests with `/agentic-workflows`."
+      );
+      if (!ccaGuidanceCheck.ok) return ccaGuidanceCheck;
       const readiness = contentReadinessCheck(state, context, {
         salt: 113,
         category: "workflow-authoring-friction",
@@ -583,9 +628,13 @@ function buildTransitions() {
         updateWorkflowCompileState(state, context, { allowCloudAgent: true }),
         context
       );
+      if (!terminalPath && hasAgentCompilerAuth(state)) {
+        next.flags.awSkillInitialized = true;
+        next.flags.awSkillPushed = true;
+      }
       return { ok: true, state: applyLearning(next, context, { agentic: 0.08, terminal: 0.04, github: 0.03 }) };
     },
-    "08-run-workflow": (state, context) => {
+    "08-run-your-workflow": (state, context) => {
       const workflowCheck = ensure(
         state.flags.hasWorkflowFile,
         "No workflow file exists to execute",
@@ -652,7 +701,7 @@ function buildTransitions() {
       next.flags.ranWorkflow = true;
       return { ok: true, state: applyLearning(next, context, { actions: 0.06, github: 0.04, confidence: 0.03 }) };
     },
-    "09-understand-output": (state, context) => {
+    "08b-interpret-your-run": (state, context) => {
       const outputCheck = ensure(
         state.flags.ranWorkflow,
         "No workflow execution output is available",
@@ -670,44 +719,33 @@ function buildTransitions() {
       if (!readiness.ok) return readiness;
       return { ok: true, state: applyLearning(state, context, { agentic: 0.05, actions: 0.03 }) };
     },
-    "10-design": (state, context) => {
-      const prerequisiteCheck = ensure(
-        state.flags.sawAgenticIntro,
-        "Design step reached before agentic concepts were established",
-        "concept-prerequisite-missing",
-        "Ensure agentic-intro step completes before design activities."
+    "09-agentic-editing": (state, context) => {
+      const runCheck = ensure(
+        state.flags.ranWorkflow,
+        "The workflow-editing step makes less sense before the learner has seen at least one real run.",
+        "run-prerequisite-missing",
+        "Run the first workflow and review its output before trying to refine it with the agentic-workflows skill."
       );
-      if (!prerequisiteCheck.ok) return prerequisiteCheck;
+      if (!runCheck.ok) return runCheck;
+      const skillCheck = ensure(
+        state.flags.awSkillInitialized && state.flags.awSkillPushed,
+        "The repository skill used for workflow editing is not available yet.",
+        "workflow-skill-missing",
+        "Complete the first workflow setup path that initializes and commits `.github/skills/agentic-workflows/` before editing."
+      );
+      if (!skillCheck.ok) return skillCheck;
       const readiness = contentReadinessCheck(state, context, {
         salt: 181,
-        category: "design-choice-overload",
-        failedAssumption: "The learner cannot confidently choose a scenario or turn ideas into a scoped workflow plan.",
-        remediation: "Narrow the decision space or provide stronger starter templates for each scenario.",
-        emphasis: { bias: 0.08 }
-      });
-      if (!readiness.ok) return readiness;
-      return { ok: true, state: applyLearning(state, context, { agentic: 0.08, confidence: 0.02 }) };
-    },
-    "11-build": (state, context) => {
-      const workflowCheck = ensure(
-        state.flags.hasWorkflowFile,
-        "Build step reached without an existing workflow draft",
-        "workflow-missing",
-        "Create a starter workflow before build refinement."
-      );
-      if (!workflowCheck.ok) return workflowCheck;
-      const readiness = contentReadinessCheck(state, context, {
-        salt: 193,
-        category: "build-iteration-friction",
-        failedAssumption: "The learner cannot keep the workflow, prompt, and compile/test loop aligned while building.",
-        remediation: "Break the build step into smaller checkpoints and reinforce `gh aw compile --watch` earlier.",
-        emphasis: { bias: 0.08 }
+        category: "workflow-editing-friction",
+        failedAssumption: "The learner can describe the workflow change they want, but struggles to steer the skill or keep the compile loop aligned.",
+        remediation: "Keep the edit, debug, and optimize prompt patterns concise and reinforce recompiling immediately after each change.",
+        emphasis: { bias: 0.1, conceptWeight: 0.08 }
       });
       if (!readiness.ok) return readiness;
       const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      return { ok: true, state: applyLearning(next, context, { agentic: 0.1, terminal: 0.05, troubleshooting: 0.05 }) };
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.09, troubleshooting: 0.04, confidence: 0.02 }) };
     },
-    "12-test-iterate": (state, context) => {
+    "12-test-and-iterate": (state, context) => {
       const compiledWorkflowCheck = ensureCompiledWorkflow(
         state,
         "workflow-not-compiled",
@@ -732,36 +770,172 @@ function buildTransitions() {
       const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
       return { ok: true, state: applyLearning(next, context, { troubleshooting: 0.08, agentic: 0.05 }) };
     },
-    "13-schedule": (state, context) => {
-      const compiledWorkflowCheck = ensureCompiledWorkflow(
-        state,
-        "workflow-not-compiled",
-        "Compile the latest workflow source and push the generated `.lock.yml` before changing or verifying the schedule. GitHub does not compile a pushed `.md` file into `.lock.yml` automatically."
-      );
-      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
-      const accountCheck = ensure(
-        state.auth.accountType === "enterprise-managed" || state.auth.accountType === "personal",
-        "Unknown account type for scheduling assumptions",
-        "account-type-unknown",
-        "Set account type to personal or enterprise-managed before schedule checks."
-      );
-      if (!accountCheck.ok) return accountCheck;
-      const readiness = contentReadinessCheck(state, context, {
+    "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) }),
+    "15-conditional-logic": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
         salt: 227,
-        category: "schedule-friction",
-        failedAssumption: "The learner gets tripped up by schedule syntax or by the compile-and-confirm loop around scheduling.",
-        remediation: "Keep the fuzzy-schedule examples close to the edit step and make the compile checkpoint more explicit.",
-        emphasis: { bias: 0.12 }
-      });
-      if (!readiness.ok) return readiness;
-      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      return { ok: true, state: applyLearning(next, context, { actions: 0.05, agentic: 0.04 }) };
-    },
-    "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) })
+        category: "conditional-logic-friction",
+        failedAssumption: "The learner gets tripped up by `${{ }}` expressions, step outputs, or the compile loop around `if:` conditions.",
+        remediation: "Keep the commit-count example close to the frontmatter edit and make the compile checkpoint explicit before the learner reruns the workflow.",
+        emphasis: { bias: 0.08, conceptWeight: 0.12, terminalWeight: 0.06 },
+        learningGains: { actions: 0.06, agentic: 0.04, troubleshooting: 0.03 }
+      }),
+    "16-connect-data-source": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 239,
+        category: "data-source-friction",
+        failedAssumption: "The learner can edit the workflow, but struggles to connect real repository or API data into the prompt safely.",
+        remediation: "Surface the deterministic data-fetch step, output handoff, and secret handling guidance together so the agentic prompt stays focused on interpretation.",
+        emphasis: { bias: 0.07, conceptWeight: 0.1, authWeight: 0.08 },
+        mutateState: (next) => {
+          next.flags.hasExternalDataSource = true;
+          return next;
+        },
+        learningGains: { actions: 0.05, agentic: 0.05, troubleshooting: 0.03 }
+      }),
+    "17-add-mcp-tools": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 251,
+        category: "mcp-tooling-friction",
+        failedAssumption: "The learner is not yet comfortable deciding when an MCP server is worth the extra setup and trust surface.",
+        remediation: "Keep the MCP concept framing and the security side quests adjacent to the first tool-server configuration example.",
+        emphasis: { bias: 0.05, conceptWeight: 0.12, enterpriseWeight: 0.06 },
+        mutateState: (next) => {
+          next.flags.hasMcpTools = true;
+          return next;
+        },
+        learningGains: { agentic: 0.06, troubleshooting: 0.04, github: 0.02 }
+      }),
+    "18-share-and-reuse": (state, context) =>
+      advancedLessonStep(state, context, {
+        salt: 263,
+        category: "workflow-reuse-friction",
+        failedAssumption: "The learner has a working workflow, but cannot yet separate what should stay local from what should become reusable.",
+        remediation: "Show the boundary between repository-specific brief text and reusable frontmatter patterns more explicitly before asking the learner to extract a shared workflow.",
+        emphasis: { bias: 0.06, conceptWeight: 0.1 },
+        mutateState: (next) => {
+          next.flags.hasReusableWorkflow = true;
+          return next;
+        },
+        learningGains: { agentic: 0.05, actions: 0.04, confidence: 0.02 }
+      }),
+    "19-research-driven-training-node": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 277,
+        category: "research-node-friction",
+        failedAssumption: "The learner can follow the happy path, but struggles to reason about long-running research behavior and output quality guardrails.",
+        remediation: "Break the training-node pattern into smaller checkpoints that separate data collection, analysis, and output review.",
+        emphasis: { bias: 0.04, conceptWeight: 0.14, complexityWeight: 0.12 },
+        mutateState: (next) => {
+          next.flags.hasResearchNode = true;
+          return next;
+        },
+        learningGains: { agentic: 0.07, troubleshooting: 0.04, confidence: 0.02 }
+      }),
+    "20-persistent-memory": (state, context) =>
+      advancedLessonStep(state, context, {
+        salt: 281,
+        category: "memory-pattern-friction",
+        failedAssumption: "The learner sees the memory feature, but cannot yet tell when cache memory or repo memory should own the state.",
+        remediation: "Keep the memory pattern decision guidance close to the first concrete example so the storage choice feels purposeful rather than magical.",
+        emphasis: { bias: 0.05, conceptWeight: 0.11 },
+        mutateState: (next) => {
+          next.flags.usesPersistentMemory = true;
+          return next;
+        },
+        learningGains: { agentic: 0.06, actions: 0.03, confidence: 0.02 }
+      }),
+    "21-inline-sub-agents": (state, context) =>
+      advancedLessonStep(state, context, {
+        salt: 293,
+        category: "sub-agent-friction",
+        failedAssumption: "The learner understands one agent, but not yet when splitting work across inline sub-agents actually reduces complexity.",
+        remediation: "Pair the syntax rules with one clear decomposition example so the learner can see why each sub-agent exists.",
+        emphasis: { bias: 0.03, conceptWeight: 0.14, complexityWeight: 0.1 },
+        mutateState: (next) => {
+          next.flags.usesInlineSubAgents = true;
+          return next;
+        },
+        learningGains: { agentic: 0.07, troubleshooting: 0.03, confidence: 0.02 }
+      }),
+    "22-error-handling-and-resilience": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 307,
+        category: "resilience-friction",
+        failedAssumption: "The learner knows the workflow can fail, but has trouble turning vague failure cases into deliberate retry, fallback, or guardrail behavior.",
+        remediation: "Keep concrete failure examples and the recovery pattern immediately adjacent so the learner can map each tactic to a real failure mode.",
+        emphasis: { bias: 0.04, conceptWeight: 0.1, complexityWeight: 0.08 },
+        mutateState: (next) => {
+          next.flags.hasResiliencePatterns = true;
+          return next;
+        },
+        learningGains: { troubleshooting: 0.07, agentic: 0.04, actions: 0.03 }
+      }),
+    "23-ab-experiments": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 311,
+        category: "experiment-design-friction",
+        failedAssumption: "The learner wants to compare prompt variants, but does not yet have a stable way to isolate one change at a time.",
+        remediation: "Keep the evaluation rubric and the one-variable-at-a-time guidance visible while the learner edits experiment variants.",
+        emphasis: { bias: 0.03, conceptWeight: 0.12, complexityWeight: 0.08 },
+        mutateState: (next) => {
+          next.flags.hasExperimentVariants = true;
+          return next;
+        },
+        learningGains: { agentic: 0.06, troubleshooting: 0.04, confidence: 0.02 }
+      }),
+    "24-self-hosted-runners": (state, context) =>
+      advancedLessonStep(state, context, {
+        salt: 313,
+        category: "self-hosted-runner-friction",
+        failedAssumption: "The learner can author the workflow, but the jump to runner placement, permissions, and enterprise constraints is still steep.",
+        remediation: "Keep the self-hosted runner trade-offs and prerequisite environment checks explicit before the learner edits the workflow.",
+        emphasis: { bias: 0.02, enterpriseWeight: 0.14, conceptWeight: 0.09 },
+        learningGains: { actions: 0.05, troubleshooting: 0.04, confidence: 0.02 }
+      }),
+    "25-audit-and-observability": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 317,
+        category: "audit-friction",
+        failedAssumption: "The learner can run the workflow, but cannot yet connect traces, artifacts, and audit outputs back to cost or debugging decisions.",
+        remediation: "Keep the audit report anatomy and one concrete investigative question together so the learner can see why observability matters.",
+        emphasis: { bias: 0.04, conceptWeight: 0.11, complexityWeight: 0.08 },
+        mutateState: (next) => {
+          next.flags.hasAuditPractice = true;
+          return next;
+        },
+        learningGains: { troubleshooting: 0.07, actions: 0.03, agentic: 0.03 }
+      }),
+    "26-manage-costs-and-budgets": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 331,
+        category: "cost-guardrail-friction",
+        failedAssumption: "The learner can build the workflow, but has trouble translating usage data into practical AI Credit limits and budget guardrails.",
+        remediation: "Keep the forecast output interpretation and the resulting budget edit in the same lesson so the learner can connect cost signals to action.",
+        emphasis: { bias: 0.03, conceptWeight: 0.1, complexityWeight: 0.06 },
+        mutateState: (next) => {
+          next.flags.hasCostGuardrails = true;
+          return next;
+        },
+        learningGains: { actions: 0.04, troubleshooting: 0.03, confidence: 0.03 }
+      })
   };
 }
 
 module.exports = {
+  modelVersion: MODEL_VERSION,
+  modelParameters: {
+    levelBaseline: LEVEL_BASELINE,
+    backgroundFactors: BACKGROUND_FACTORS
+  },
   STEP_IDS,
   steps: STEP_IDS,
   stepFilesById: STEP_FILE_ALIASES,

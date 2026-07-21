@@ -18,6 +18,7 @@ Use the checked-in source directly (do not re-implement from scratch):
 
 - `.github/skills/micro-environment-simulator/simulator.js`
 - `.github/skills/micro-environment-simulator/workshop-student-journey.js` (workshop-specific example journey)
+- `.github/skills/micro-environment-simulator/workshop-student-population.json` (explicit synthetic-population assumptions)
 
 It exports:
 
@@ -37,6 +38,16 @@ node .github/skills/micro-environment-simulator/simulator.js \
 ```
 
 Use `/tmp/gh-aw/agent/sim/data/environment-replay.json` as the source of environment mismatch diagnostics during simulation.
+
+Generate a reproducible synthetic cohort from the maintained population model:
+
+```bash
+node .github/skills/micro-environment-simulator/simulator.js \
+  --generate-population \
+  --population-model .github/skills/micro-environment-simulator/workshop-student-population.json \
+  --seed workshop-student-cohort \
+  --out /tmp/gh-aw/agent/sim/data/profiles.json
+```
 
 The simulator API is workflow-agnostic. Each workflow should provide its own journey `steps` and `transitions`.
 
@@ -88,5 +99,9 @@ Return concise JSON-friendly results that workflows can aggregate:
 - first failing step (if any)
 - failure reason category
 - normalized remediation action
+- per-step at-risk counts and conditional dropout rates
+- 95% intervals for Monte Carlo sampling uncertainty
+
+Treat population distributions and transition coefficients as assumptions rather than observed learner data. Report that the confidence intervals exclude model and population-assumption uncertainty.
 
 If assumptions hold for a full replay, mark the run successful and include the final state summary.

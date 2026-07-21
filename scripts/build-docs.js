@@ -25,7 +25,7 @@ marked.use({
       // slugger.slug() always returns a URL-safe [a-z0-9-] string, safe for attribute interpolation
       const id = slugger.slug(raw);
       // text is the HTML output of parseInline(), which escapes user content
-      return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-label="Link to this heading">#</a> ${text}</h${depth}>\n`;
+      return `<h${depth} id="${id}">${text} <sub><a href="#${id}" class="anchor" aria-label="Link to this heading">#</a></sub></h${depth}>\n`;
     },
     // Plugin: render GFM task list items with GitHub-compatible CSS classes
     listitem(item) {
@@ -258,7 +258,7 @@ const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / e
 `;
 fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 
-// Generate docs CSS overrides for rendered markdown
+// Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
 body,
 .markdown-body {
@@ -464,7 +464,137 @@ body,
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
-// Write single-page HTML
+const parallaxBackgroundSvgEncoded = encodeURIComponent([
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">',
+  '<defs>',
+  '<linearGradient id="primaryGradient" x1="0" y1="0" x2="1" y2="1">',
+  '<stop offset="0%" stop-color="#0d1117" />',
+  '<stop offset="45%" stop-color="#271449" />',
+  '<stop offset="100%" stop-color="#8250df" />',
+  '</linearGradient>',
+  '<radialGradient id="topRadialGlow" cx="20%" cy="25%" r="40%">',
+  '<stop offset="0%" stop-color="#a371f7" stop-opacity=".32" />',
+  '<stop offset="100%" stop-color="#a371f7" stop-opacity="0" />',
+  '</radialGradient>',
+  '<radialGradient id="bottomRadialGlow" cx="82%" cy="78%" r="45%">',
+  '<stop offset="0%" stop-color="#6f42c1" stop-opacity=".30" />',
+  '<stop offset="100%" stop-color="#6f42c1" stop-opacity="0" />',
+  '</radialGradient>',
+  '</defs>',
+  '<rect width="1920" height="1080" fill="url(#primaryGradient)" />',
+  '<rect width="1920" height="1080" fill="url(#topRadialGlow)" />',
+  '<rect width="1920" height="1080" fill="url(#bottomRadialGlow)" />',
+  '</svg>',
+].join(''));
+
+// Generate docs runtime JavaScript
+const docsJs = `const legacyHashMatch = window.location.hash.match(/^#\\/([^/]+)$/);
+let legacySectionId = null;
+if (legacyHashMatch) {
+  try {
+    legacySectionId = decodeURIComponent(legacyHashMatch[1]);
+  } catch (_) {
+    // Ignore malformed encoded hashes and leave default Reveal routing behavior.
+    legacySectionId = null;
+  }
+}
+const hasLegacySectionTarget = legacySectionId && !!document.getElementById(legacySectionId);
+
+if (hasLegacySectionTarget) {
+  window.history.replaceState(null, '', '#' + legacySectionId);
+}
+
+function enableImageLightbox() {
+  const images = document.querySelectorAll('.slides section img');
+  images.forEach((img) => {
+    if (img.hasAttribute('data-preview-image') || img.hasAttribute('data-preview-video')) {
+      return;
+    }
+    if (img.closest('a[href]')) {
+      return;
+    }
+    const src = img.currentSrc || img.getAttribute('src');
+    if (src) {
+      img.setAttribute('data-preview-image', src);
+    }
+  });
+}
+
+const parallaxBackgroundImage = ${JSON.stringify(`data:image/svg+xml,${parallaxBackgroundSvgEncoded}`)};
+
+Reveal.initialize({
+  // URL hash reflects current slide by section id
+  hash: true,
+  // Show step/sub-step position as h.v (horizontal.vertical)
+  slideNumber: 'h.v',
+  // Start slides at the top rather than vertically centered
+  center: false,
+  // Push slide changes into the browser history
+  history: true,
+  // GitHub agentic-purple themed parallax background
+  parallaxBackgroundImage: parallaxBackgroundImage,
+  // Use a larger virtual canvas than the viewport so motion stays subtle.
+  parallaxBackgroundSize: '3200px 1800px',
+  // Horizontal movement is intentionally stronger than vertical to reduce jitter.
+  parallaxBackgroundHorizontal: 180,
+  parallaxBackgroundVertical: 70,
+});
+
+Reveal.on('ready', enableImageLightbox);
+
+if (hasLegacySectionTarget) {
+  const target = document.getElementById(legacySectionId);
+  const indices = target ? Reveal.getIndices(target) : null;
+  if (indices && typeof indices.h === 'number') {
+    const v = typeof indices.v === 'number' ? indices.v : 0;
+    Reveal.slide(indices.h, v);
+  }
+}
+
+// Navigate to named sections when an in-slide hash link is clicked.
+// Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
+document.addEventListener('click', function (e) {
+  function findHashLink(start) {
+    let el = start && start.nodeType === Node.ELEMENT_NODE
+      ? start
+      : (start && start.parentElement) || null;
+    while (el) {
+      if (el.tagName === 'A') {
+        const href = el.getAttribute('href');
+        if (href && href.startsWith('#')) return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  const link = findHashLink(e.target);
+  if (!link) return;
+  const href = link.getAttribute('href');
+  const raw = href ? href.slice(1) : '';
+  if (!raw) return;
+  let id = raw;
+  try {
+    id = decodeURIComponent(raw);
+  } catch (_) {
+    // Ignore malformed hash fragments and keep default browser behavior.
+    return;
+  }
+  const target = document.getElementById(id);
+  if (target && target.closest('.slides')) {
+    const indices = Reveal.getIndices(target);
+    if (indices && typeof indices.h === 'number') {
+      const v = typeof indices.v === 'number' ? indices.v : 0;
+      e.preventDefault();
+      Reveal.slide(indices.h, v);
+    }
+  }
+});
+`;
+fs.writeFileSync(path.join(distDir, 'docs.js'), docsJs);
+
+// Generate single-page reveal.js presentation
+const totalGroups = sortedGroupKeys.length;
 const page = `<!DOCTYPE html>
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 <head>
@@ -597,4 +727,4 @@ ${htmlContent}</main>
 `;
 
 fs.writeFileSync(path.join(distDir, 'index.html'), page);
-console.log(`Built dist/index.html from ${files.length} files.`);
+console.log(`Built dist/index.html — ${files.length} files across ${totalGroups} slide columns.`);

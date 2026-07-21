@@ -1,7 +1,7 @@
 "use strict";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const RUN_INDEX_SEED_FACTOR = 31;
+const PROFILE_SCHEMA_VERSION = 4;
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -40,6 +40,84 @@ function stableHash(value) {
   return hash;
 }
 
+function createSeededRng(seed) {
+  // Mulberry32 provides a small reproducible stream for simulation, not cryptographic randomness.
+  let state = Number(seed) >>> 0;
+  return function nextRandom() {
+    state = (state + 0x6d2b79f5) | 0;
+    let value = Math.imul(state ^ (state >>> 15), 1 | state);
+    value ^= value + Math.imul(value ^ (value >>> 7), 61 | value);
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function randomFor(...parts) {
+  return createSeededRng(stableHash(parts.join("|")))();
+}
+
+function weightedChoice(random, weights, label = "distribution") {
+  const entries = Object.entries(weights || {});
+  if (entries.length === 0) {
+    throw new Error(`Population model '${label}' must contain at least one weighted value.`);
+  }
+  if (entries.some(([, weight]) => !Number.isFinite(Number(weight)) || Number(weight) <= 0)) {
+    throw new Error(`Population model '${label}' weights must be positive finite numbers.`);
+  }
+  const total = entries.reduce((sum, [, weight]) => sum + Number(weight), 0);
+  if (Math.abs(total - 1) > 1e-6) {
+    throw new Error(`Population model '${label}' weights must sum to 1; received ${total}.`);
+  }
+  let cursor = random() * total;
+  for (const [value, weight] of entries) {
+    cursor -= Number(weight);
+    if (cursor < 0) return value;
+  }
+  return entries[entries.length - 1][0];
+}
+
+function generateSyntheticStudents(populationModel, seed = "workshop-students") {
+  const distributions = populationModel?.distributions || {};
+  const cohortSize = Number(populationModel?.cohortSize);
+  if (!Number.isInteger(cohortSize) || cohortSize <= 0) {
+    throw new Error("Population model must define a positive integer 'cohortSize'.");
+  }
+  const random = createSeededRng(stableHash(`${populationModel.modelVersion}|${seed}`));
+  const students = [];
+  for (let index = 0; index < cohortSize; index += 1) {
+    const level = weightedChoice(random, distributions.level, "level");
+    const background = weightedChoice(
+      random,
+      distributions.backgroundByLevel?.[level],
+      `backgroundByLevel.${level}`
+    );
+    const personality = weightedChoice(random, distributions.personality, "personality");
+    const goal = weightedChoice(random, distributions.goalByLevel?.[level], `goalByLevel.${level}`);
+    const tool = weightedChoice(random, distributions.toolByLevel?.[level], `toolByLevel.${level}`);
+    const uiPreferred = random() < Number(distributions.uiPreferredProbabilityByTool?.[tool] || 0);
+    const mobile = random() < Number(distributions.mobileProbabilityByTool?.[tool] || 0);
+    students.push({
+      id: index + 1,
+      name: `Learner ${String(index + 1).padStart(3, "0")}`,
+      level,
+      personality,
+      background,
+      goal,
+      tool,
+      ui_preferred: uiPreferred,
+      ...(mobile ? { mobile: true } : {}),
+      runs: 0,
+      successes: 0
+    });
+  }
+  return {
+    version: PROFILE_SCHEMA_VERSION,
+    population_model_version: populationModel.modelVersion,
+    population_model_hash: stableHash(JSON.stringify(populationModel)),
+    cohort_seed: seed,
+    students
+  };
+}
+
 function toDayOfYear(isoDate) {
   const date = new Date(`${isoDate}T00:00:00Z`);
   const start = new Date(Date.UTC(date.getUTCFullYear(), 0, 0));
@@ -47,7 +125,7 @@ function toDayOfYear(isoDate) {
 }
 
 function deterministicChoice(seed, choices) {
-  const index = Math.abs(seed) % choices.length;
+  const index = Math.floor(randomFor(seed, "choice") * choices.length);
   return choices[index];
 }
 
@@ -95,10 +173,15 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     text,
     /\b(click|open|navigate|Actions tab|browser|GitHub UI|web UI)\b/gi
   );
+  const agentsPromptCueCount = countMatches(
+    text,
+    /\b(prompt|paste this prompt|send this prompt|ask Copilot|ask the agent|type this prompt)\b/gi
+  );
   const authCueCount = countMatches(
     text,
     /\b(auth|login|signed in|token|Copilot|permissions?|403|secret)\b/gi
   );
+  const agenticWorkflowSkillCueCount = countMatches(text, /\/agentic-workflows\b/gi);
   const enterpriseCueCount = countMatches(text, /\b(GHES|GHEC|EMU|enterprise|org admin)\b/gi);
   const troubleshootingCueCount = countMatches(
     text,
@@ -191,11 +274,13 @@ function analyzeStepMarkdown(stepId, markdown, files = []) {
     commandBlockCount,
     commandLineCount,
     clickCueCount,
+    agentsPromptCueCount,
     uiAlternativeCount,
     workflowCompileCueCount,
     workflowLockPublishCueCount,
     copilotRequestsWriteCueCount,
     copilotGithubTokenCueCount,
+    agenticWorkflowSkillCueCount,
     authDemand,
     browserSupport,
     complexity,
@@ -318,10 +403,11 @@ function buildStepContentById({
 
 function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const id = Number(student.id || 0);
-  const seed = id * 97 + dayOfYear * 17 + runIndex * RUN_INDEX_SEED_FACTOR;
+  const random = (dimension) => randomFor(dayOfYear, id, runIndex, dimension);
   const background = String(student.background || "");
   const level = String(student.level || "");
   const tool = String(student.tool || "cli");
+  const onMobile = Boolean(student.mobile);
   const uiPreferred = Boolean(student.ui_preferred);
   const priorRuns = Number(student.runs || 0);
   const priorSuccesses = Number(student.successes || 0);
@@ -329,58 +415,75 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
 
   const isEnterprise = background === "enterprise-dev" || background === "enterprise-devops";
   const deployment = isEnterprise
-    ? deterministicChoice(seed + 1, ["ghec", "ghes"])
+    ? random("deployment") < 0.78
+      ? "ghec"
+      : "ghes"
     : "github.com";
   const accountType = isEnterprise ? "enterprise-managed" : "personal";
-  const repositoryOwnerType = resolveRepositoryOwnerType(student, isEnterprise, seed);
+  const repositoryOwnerType = resolveRepositoryOwnerType(
+    student,
+    isEnterprise,
+    Math.floor(random("repository-owner") * 1000)
+  );
 
-  const os = deterministicChoice(seed + 2, ["macos", "linux", "windows"]);
-  const terminal = deterministicChoice(seed + 3, Array.from(VALID_TERMINALS[os]));
+  const osRoll = random("os");
+  const os = osRoll < 0.5 ? "windows" : osRoll < 0.77 ? "macos" : "linux";
+  const terminal = deterministicChoice(
+    stableHash(`${dayOfYear}|${id}|${runIndex}|terminal`),
+    Array.from(VALID_TERMINALS[os])
+  );
 
   const inCodespaces =
-    tool === "mobile"
+    onMobile
       ? false
       : tool === "CCA"
-      ? seed % 10 < 4
+      ? random("codespaces") < 0.4
       : tool === "vscode"
-      ? seed % 10 < 6
-      : seed % 10 < 2;
-  const hasGh = tool === "mobile" ? false : level !== "beginner" || inCodespaces || seed % 3 !== 0;
+      ? random("codespaces") < 0.6
+      : random("codespaces") < 0.2;
+  const hasGh = onMobile
+    ? false
+    : inCodespaces || random("gh-installed") < ({ beginner: 0.55, "github-basic": 0.82, "actions-user": 0.94, advanced: 0.98 }[level] || 0.75);
   const hasAw = false;
   const tokenScope = inCodespaces && isEnterprise ? "org" : "user";
-  const hasGithubSession = tool === "mobile" || seed % 9 !== 0;
+  const hasGithubSession = onMobile || random("github-session") < 0.89;
   const isLoggedIn =
-    hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
-  const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
-  const hasCopilotRequestToken = isLoggedIn && (tool === "cloud-agent" || tool === "CCA" || seed % 2 === 0);
+    hasGh &&
+    (inCodespaces ||
+      random("gh-login") <
+        ({ beginner: 0.58, "github-basic": 0.76, "actions-user": 0.9, advanced: 0.96 }[level] || 0.75));
+  const hasApiKey = isLoggedIn && random("api-key") < (level === "advanced" ? 0.9 : 0.72);
+  const hasCopilotRequestToken =
+    isLoggedIn && (tool === "CCA" || random("copilot-request-token") < 0.5);
   const hasCopilotAccess =
     deployment !== "ghes" &&
     hasGithubSession &&
     (level === "advanced" ||
       level === "actions-user" ||
-      (isEnterprise ? seed % 6 !== 0 : seed % (uiPreferred ? 4 : 5) !== 0));
+      random("copilot-access") < (isEnterprise ? 0.83 : uiPreferred ? 0.78 : 0.8));
   const inferenceProvider = "github";
   // Model a mixed organization cohort: enterprise organizations have centralized
   // billing, while half of other organizations have enabled it.
   const centralizedCopilotBilling =
-    repositoryOwnerType !== "personal" && (isEnterprise || seed % 2 === 0);
+    repositoryOwnerType !== "personal" && (isEnterprise || random("centralized-billing") < 0.5);
   // The Step 7 transition fills these fields after the required model-access activity.
   const hasCopilotGithubToken = null;
   const hasAnthropicApiKey = null;
   const hasOpenAiApiKey = null;
   const hasCopilotRequestsWrite = null;
-  const baseConfidence = clamp(
-    0.3 +
-      (level === "advanced"
-        ? 0.4
-        : level === "actions-user"
-        ? 0.28
-        : level === "github-basic"
-        ? 0.16
-        : 0.02) +
-      (priorSuccessRate * 0.16 + Math.min(priorRuns, 1500) / 1500 * 0.08),
-    0.18,
-    0.96
+  const personalityConfidence = {
+    curious: 0.04,
+    methodical: 0.03,
+    impatient: 0.02,
+    confused: -0.1,
+    skeptical: -0.03
+  };
+  const baseConfidence = clamp(0.52 + (personalityConfidence[student.personality] || 0), 0.25, 0.8);
+  // Capture good-day/bad-day variation shared across every step in one simulated journey.
+  const sessionEffect = clamp(
+    (random("session-effect-a") + random("session-effect-b") - 1) * 0.18,
+    -0.16,
+    0.16
   );
 
   return deepFreeze({
@@ -388,6 +491,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     os,
     terminal,
     tool,
+    mobile: onMobile,
     installed: {
       gh: hasGh ? "2.58.0" : null,
       aw: hasAw ? "0.0.0" : null
@@ -407,7 +511,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     },
     workspace: {
       context: inCodespaces ? "codespaces" : "local",
-      deviceClass: tool
+      deviceClass: onMobile ? "mobile" : tool
     },
     actions: {
       inferenceProvider,
@@ -431,6 +535,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
       priorSuccesses,
       priorSuccessRate,
       confidence: baseConfidence,
+      sessionEffect,
       mastery: {
         terminal: clamp(baseConfidence + (hasGh ? 0.08 : -0.18), 0, 1),
         github: clamp(baseConfidence + (hasGithubSession ? 0.08 : -0.15), 0, 1),
@@ -491,7 +596,8 @@ function replayJourney({
   steps = [],
   transitions = {},
   stepContentById = {},
-  runIndex = 0
+  runIndex = 0,
+  random
 }) {
   const dayOfYear = toDayOfYear(date);
   let state = deepFreeze(initialState || defaultEnvironmentForStudent(student, dayOfYear));
@@ -520,7 +626,11 @@ function replayJourney({
       stepIndex: trace.length,
       totalSteps: steps.length,
       steps,
-      stepContent
+      stepContent,
+      random:
+        typeof random === "function"
+          ? random
+          : createSeededRng(stableHash(`${date}|${student.id}|${runIndex}|${stepId}`))
     });
     if (!result.ok) {
       return {
@@ -577,18 +687,51 @@ function simulateStudents(students, date, config = {}) {
   }));
 }
 
-function aggregateDropoutRates(monteCarlo, totalStudents, runsCount) {
+// Wilson score interval; z=1.96 produces a 95% interval. Empty samples return null bounds.
+function wilsonInterval(successes, attempts, z = 1.96) {
+  if (
+    !Number.isFinite(successes) ||
+    !Number.isFinite(attempts) ||
+    successes < 0 ||
+    attempts < 0 ||
+    successes > attempts
+  ) {
+    throw new Error("Wilson interval requires 0 <= successes <= attempts.");
+  }
+  if (!attempts) return { low: null, high: null };
+  const proportion = successes / attempts;
+  const denominator = 1 + (z * z) / attempts;
+  const center = (proportion + (z * z) / (2 * attempts)) / denominator;
+  const margin =
+    (z / denominator) *
+    Math.sqrt((proportion * (1 - proportion)) / attempts + (z * z) / (4 * attempts * attempts));
+  return {
+    low: clamp(center - margin, 0, 1),
+    high: clamp(center + margin, 0, 1)
+  };
+}
+
+// Rates are conditional on attempts; steps with no at-risk runs receive a null rate and interval.
+function aggregateDropoutRates(monteCarlo, steps = []) {
   const dropoutRateByStep = {};
+  const attemptsByStep = {};
+  const failuresByStep = {};
+  const dropoutRateCi95ByStep = {};
   for (const sr of monteCarlo) {
     for (const [step, count] of Object.entries(sr.failuresByStep)) {
-      dropoutRateByStep[step] = (dropoutRateByStep[step] || 0) + count;
+      failuresByStep[step] = (failuresByStep[step] || 0) + count;
+    }
+    for (const [step, count] of Object.entries(sr.attemptsByStep || {})) {
+      attemptsByStep[step] = (attemptsByStep[step] || 0) + count;
     }
   }
-  const totalRuns = totalStudents * runsCount;
-  for (const step of Object.keys(dropoutRateByStep)) {
-    dropoutRateByStep[step] = dropoutRateByStep[step] / totalRuns;
+  for (const step of steps) {
+    const attempts = attemptsByStep[step] || 0;
+    const failures = failuresByStep[step] || 0;
+    dropoutRateByStep[step] = attempts ? failures / attempts : null;
+    dropoutRateCi95ByStep[step] = wilsonInterval(failures, attempts);
   }
-  return dropoutRateByStep;
+  return { dropoutRateByStep, dropoutRateCi95ByStep, attemptsByStep, failuresByStep };
 }
 
 function aggregateFailureCategories(monteCarlo) {
@@ -611,6 +754,7 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
     let successes = 0;
     const failuresByStep = {};
     const failureCategoriesByStep = {};
+    const attemptsByStep = {};
 
     for (let runIndex = 0; runIndex < runsCount; runIndex++) {
       const initialState =
@@ -627,8 +771,16 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
         steps: config.steps || [],
         transitions: config.transitions || {},
         stepContentById: config.stepContentById || {},
-        runIndex
+        runIndex,
+        random: createSeededRng(stableHash(`${date}|${student.id}|${runIndex}|journey`))
       });
+
+      for (const { stepId } of result.trace) {
+        attemptsByStep[stepId] = (attemptsByStep[stepId] || 0) + 1;
+      }
+      if (!result.success && result.firstFailingStep) {
+        attemptsByStep[result.firstFailingStep] = (attemptsByStep[result.firstFailingStep] || 0) + 1;
+      }
 
       if (result.success) {
         successes += 1;
@@ -649,7 +801,9 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
       runs: runsCount,
       successes,
       successRate: successes / runsCount,
+      successRateCi95: wilsonInterval(successes, runsCount),
       failuresByStep,
+      attemptsByStep,
       failureCategoriesByStep,
       mostCommonFailureStep: sortedFailures.length > 0 ? sortedFailures[0][0] : null
     };
@@ -667,12 +821,36 @@ function parseArgs(argv) {
     else if (arg === "--curriculum") args.curriculumPath = argv[++i];
     else if (arg === "--agent-insights") args.agentInsightsPath = argv[++i];
     else if (arg === "--runs") args.runsCount = parseInt(argv[++i], 10);
+    else if (arg === "--generate-population") args.generatePopulation = true;
+    else if (arg === "--population-model") args.populationModelPath = argv[++i];
+    else if (arg === "--seed") args.seed = argv[++i];
   }
   return args;
 }
 
 function runCli() {
-  const { studentsPath, date, outPath, journeyPath, curriculumPath, agentInsightsPath, runsCount } = parseArgs(process.argv);
+  const {
+    studentsPath,
+    date,
+    outPath,
+    journeyPath,
+    curriculumPath,
+    agentInsightsPath,
+    runsCount,
+    generatePopulation,
+    populationModelPath,
+    seed
+  } = parseArgs(process.argv);
+  if (generatePopulation) {
+    if (!populationModelPath || !outPath) {
+      throw new Error("--generate-population requires --population-model <path> and --out <path>.");
+    }
+    const populationModel = JSON.parse(fs.readFileSync(path.resolve(populationModelPath), "utf8"));
+    const generated = generateSyntheticStudents(populationModel, seed);
+    fs.mkdirSync(path.dirname(outPath), { recursive: true });
+    fs.writeFileSync(outPath, `${JSON.stringify(generated, null, 2)}\n`);
+    return;
+  }
   if (!studentsPath) {
     throw new Error("Missing required --students <path> argument.");
   }
@@ -716,6 +894,9 @@ function runCli() {
       transitions,
       stepContentById
     });
+    const dropout = aggregateDropoutRates(monteCarlo, steps);
+    const totalSuccesses = monteCarlo.reduce((sum, result) => sum + result.successes, 0);
+    const totalAttempts = students.length * runsCount;
     results = {
       date: today,
       mode: "monte-carlo",
@@ -723,10 +904,26 @@ function runCli() {
       total: students.length,
       stepContentById,
       monteCarlo,
+      model: {
+        journeyModelVersion: journeyModule.modelVersion || "unversioned",
+        populationModelVersion: raw.population_model_version || "legacy-fixed-cohort",
+        populationModelHash: raw.population_model_hash || null,
+        parameterHash: stableHash(
+          JSON.stringify({
+            journeyModelParameters: journeyModule.modelParameters || null,
+            populationModelHash: raw.population_model_hash || null
+          })
+        ),
+        intervalCaveat:
+          "Intervals quantify Monte Carlo sampling error only; they do not quantify uncertainty in model assumptions."
+      },
       aggregate: {
-        overallSuccessRate:
-          monteCarlo.reduce((sum, r) => sum + r.successRate, 0) / monteCarlo.length,
-        dropoutRateByStep: aggregateDropoutRates(monteCarlo, students.length, runsCount),
+        overallSuccessRate: totalSuccesses / totalAttempts,
+        overallSuccessRateCi95: wilsonInterval(totalSuccesses, totalAttempts),
+        dropoutRateByStep: dropout.dropoutRateByStep,
+        dropoutRateCi95ByStep: dropout.dropoutRateCi95ByStep,
+        attemptsByStep: dropout.attemptsByStep,
+        dropoutCountByStep: dropout.failuresByStep,
         failureCategoriesByStep: aggregateFailureCategories(monteCarlo)
       }
     };
@@ -756,6 +953,10 @@ const exportedApi = {
   ensure,
   clamp,
   stableHash,
+  createSeededRng,
+  randomFor,
+  weightedChoice,
+  generateSyntheticStudents,
   analyzeStepMarkdown,
   buildStepContentById,
   normalizeAgentInsightsByStep,
@@ -764,6 +965,7 @@ const exportedApi = {
   replayWorkshop,
   simulateStudents,
   simulateStudentsMonteCarlo,
+  wilsonInterval,
   aggregateDropoutRates,
   aggregateFailureCategories
 };
