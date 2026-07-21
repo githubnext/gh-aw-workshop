@@ -63,6 +63,7 @@ steps:
 
       def lesson_number(filename):
           # Match lesson prefixes like 00, 07a, 15 and side-quest anchors like side-quest-11-...
+          # Leading zeros are intentionally normalized (for example, 00 -> 0) before part bucketing.
           match = re.search(r'(?:^|-)0*(\d{1,2})(?:[a-z])?(?=[-.]|$)', filename)
           return int(match.group(1)) if match else None
 
@@ -386,7 +387,7 @@ Use this exact section structure in the issue body:
 |---|---|
 | `workshop/<filename>` | `Y.YY / 10.0` |
 
-- If any pages are classified as `other`, include a final **Other Scores (no lesson number)** table with the same columns.
+- If any pages are classified as `other`, include a final **Other Scores (no lesson number)** table with columns **File** and **Overall Score**.
 
 ### Score Trends (history window: N commits)
 
