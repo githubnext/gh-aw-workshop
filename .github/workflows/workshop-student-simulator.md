@@ -43,6 +43,7 @@ steps:
       try:
           with open('/tmp/gh-aw/cache-memory/profiles.json') as f:
               d = json.load(f)
+          assert d.get('version') == 3
           students = d.get('students', [])
           assert isinstance(students, list) and students and isinstance(students[0], dict) and 'runs' in students[0]
           sys.exit(0)
@@ -58,7 +59,7 @@ steps:
       if [ "$NEEDS_INIT" = "true" ]; then
         cat > "$PROFILES" <<'EOF'
       {
-        "version": 2,
+        "version": 3,
         "students": [
           {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
@@ -98,9 +99,9 @@ steps:
           {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
           {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
           {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":39, "name":"Sam Torres",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":40, "name":"Hayden Brooks",  "level":"github-basic", "personality":"impatient",   "background":"program-manager", "goal":"team-evaluation",      "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":41, "name":"Rowan Diaz",     "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"work-project",         "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
+          {"id":39, "name":"Sam Torres",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",    "ui_preferred":true,  "mobile":true, "runs":0, "successes":0},
+          {"id":40, "name":"Hayden Brooks",  "level":"github-basic", "personality":"impatient",   "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",    "ui_preferred":true,  "mobile":true, "runs":0, "successes":0},
+          {"id":41, "name":"Rowan Diaz",     "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"work-project",         "tool":"CCA",    "ui_preferred":true,  "mobile":true, "runs":0, "successes":0},
           {"id":42, "name":"Jordan Ellis",   "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"team-evaluation",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
           {"id":43, "name":"Taylor Nguyen",  "level":"actions-user", "personality":"methodical",  "background":"enterprise-devops","goal":"team-evaluation",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
           {"id":44, "name":"Avery Kim",      "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"vscode", "ui_preferred":false, "runs":0, "successes":0},
@@ -244,7 +245,8 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `background` — role background: `no-coding` (no software development background) | `web-dev` (frontend/full-stack web developer) | `backend-dev` (backend/systems developer) | `devops` (DevOps engineer/SRE) | `data-science` (data scientist/ML engineer) | `enterprise-dev` (enterprise developer using GHE/GHES with self-hosted runners) | `enterprise-devops` (senior DevOps/platform engineer managing self-hosted runner fleets) | `program-manager` (program/product manager evaluating agentic workflows)
 - `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/browser chat or cloud coding agent) | `mobile` (uses the GitHub Mobile app on iOS or Android to spawn agent sessions and review pull requests; no coding support)
+- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/browser chat or cloud coding agent)
+- `mobile` — `true` if the student accesses GitHub primarily from the GitHub Mobile app on iOS or Android (spawns agent sessions and reviews pull requests; no coding or terminal support); `false` or absent otherwise. May be combined with any `tool` value; in practice most mobile students use `CCA`.
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
@@ -369,7 +371,7 @@ For students whose `successRate` < 0.50 (the most at-risk half), apply additiona
 
 - **`level`** vs. assumed knowledge
 - **`background`** vs. step domain
-- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA` or `mobile`, note that no UI alternative exists)
+- **`tool`**, **`mobile`**, and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred`, `mobile: true`, or uses `CCA`, note that no UI alternative exists)
 - **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
 - **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
 - **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
@@ -379,7 +381,7 @@ For students whose `successRate` < 0.50 (the most at-risk half), apply additiona
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
-- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
+- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, `mobile`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` or `mobile: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
 
 ### Aggregate and analyse results
 

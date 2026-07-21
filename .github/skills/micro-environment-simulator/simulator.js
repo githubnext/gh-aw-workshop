@@ -322,6 +322,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const background = String(student.background || "");
   const level = String(student.level || "");
   const tool = String(student.tool || "cli");
+  const onMobile = Boolean(student.mobile);
   const uiPreferred = Boolean(student.ui_preferred);
   const priorRuns = Number(student.runs || 0);
   const priorSuccesses = Number(student.successes || 0);
@@ -338,17 +339,17 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const terminal = deterministicChoice(seed + 3, Array.from(VALID_TERMINALS[os]));
 
   const inCodespaces =
-    tool === "mobile"
+    onMobile
       ? false
       : tool === "CCA"
       ? seed % 10 < 4
       : tool === "vscode"
       ? seed % 10 < 6
       : seed % 10 < 2;
-  const hasGh = tool === "mobile" ? false : level !== "beginner" || inCodespaces || seed % 3 !== 0;
+  const hasGh = onMobile ? false : level !== "beginner" || inCodespaces || seed % 3 !== 0;
   const hasAw = false;
   const tokenScope = inCodespaces && isEnterprise ? "org" : "user";
-  const hasGithubSession = tool === "mobile" || seed % 9 !== 0;
+  const hasGithubSession = onMobile || seed % 9 !== 0;
   const isLoggedIn =
     hasGh && (inCodespaces || level === "advanced" || level === "actions-user" || seed % 4 !== 0);
   const hasApiKey = isLoggedIn && (level === "advanced" || seed % 5 !== 0);
@@ -388,6 +389,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     os,
     terminal,
     tool,
+    mobile: onMobile,
     installed: {
       gh: hasGh ? "2.58.0" : null,
       aw: hasAw ? "0.0.0" : null
@@ -407,7 +409,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     },
     workspace: {
       context: inCodespaces ? "codespaces" : "local",
-      deviceClass: tool
+      deviceClass: onMobile ? "mobile" : tool
     },
     actions: {
       inferenceProvider,
