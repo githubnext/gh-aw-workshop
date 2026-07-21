@@ -1,9 +1,6 @@
 <!-- page-journey: codespace -->
 <!-- page-adventure: setup -->
-# Set Up a Codespace _(recommended for new users)_
-
-> [!NOTE]
-> On a mobile device or working entirely in the browser without a terminal? This path opens a terminal inside your browser. If you cannot use a terminal at all, switch to the [GitHub UI path](06c-install-ui.md) instead.
+# Set Up a Codespace
 
 ## 🎯 What You'll Do
 
@@ -15,13 +12,14 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 - [ ] You have a GitHub account with access to GitHub Codespaces
 - [ ] You want a browser-based terminal and do not need to install tools locally
-- [ ] You are ready to open your practice repository in a Codespace
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
 ### New repository
 
 1. Create your own public repository at [github.com/new](https://github.com/new):
+   - Choose yourself as owner.
+   - Visibility **Private**, it's good to learn on our own. We can make it public later if we want to share our work.
    - Name it `my-agentic-workflows`.
    - Check **Add a README file**.
    - Click **Create repository**.
@@ -40,7 +38,7 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 
 ### Open the Codespace terminal
 
-1. When the Codespace editor loads, open the built-in terminal with **Ctrl+`** (or **Cmd+`** on Mac).
+1. When the Codespace editor loads, open the built-in terminal with **Ctrl+\`** (or **Cmd+Option+\`** on Mac).
 2. Wait for the terminal prompt to appear.
 3. Keep this terminal open. It is already inside your practice repository.
 
@@ -65,10 +63,6 @@ The diagram below shows your Codespace connection to GitHub.
    ```bash
    gh --version
    ```
-
-   > [!TIP]
-   > If `gh auth status` shows "not logged in", run `gh auth login` and choose **GitHub.com → HTTPS → browser**. If the terminal shows no `$` prompt after 60 seconds, reload the page and reopen the terminal.
-
 2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
 
 _What success looks like:_
@@ -81,7 +75,7 @@ You should see `gh version 2.40.0` or newer and a line confirming you're logged 
 
 ## ✅ Checkpoint
 
-- [ ] I confirmed my GitHub plan includes Codespaces access (free for public repositories)
+- [ ] You confirmed your GitHub plan includes Codespaces access (free for public repositories)
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
 - [ ] `gh --version` returns version 2.40.0 or newer

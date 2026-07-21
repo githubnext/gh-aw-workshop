@@ -32,10 +32,6 @@ Open [github.com/settings/copilot](https://github.com/settings/copilot) and conf
 
 Claude, Codex, or Gemini? Confirm your API key.
 
-## Let's get started
-
-Choose your adventure.
-
 <!-- journey: codespace -->
 **Next:** Open [Set Up a Codespace](02a-setup-codespace.md).
 <!-- /journey -->
