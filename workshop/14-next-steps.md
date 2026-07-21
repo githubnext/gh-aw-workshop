@@ -44,17 +44,6 @@ Here's a quick recap of the concepts you've touched:
 | Natural-language schedules | `schedule: daily on weekdays` |
 | Iterative debugging | Running, reading output, tweaking, repeating |
 
-<!-- journey: all -->
-## ✅ Checkpoint
-
-- [ ] Your scheduled workflow has completed at least one successful automated run
-- [ ] You can describe, in plain English, what agentic workflows are and why they're useful
-- [ ] You have at least one idea for the next workflow you want to build
-- [ ] You drafted a two-sentence brief for your next agentic workflow
-- [ ] You know where to find the gh-aw docs when you need them
-
-You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
-
 ---
 
 ### Go deeper
@@ -70,6 +59,17 @@ You've reached the end of the main path — but the graph stays open. Come back 
 - ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
 - ➡️ [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
 - ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
+
+<!-- journey: all -->
+## ✅ Checkpoint
+
+- [ ] Your scheduled workflow has completed at least one successful automated run
+- [ ] You can describe, in plain English, what agentic workflows are and why they're useful
+- [ ] You have at least one idea for the next workflow you want to build
+- [ ] You drafted a two-sentence brief for your next agentic workflow
+- [ ] You know where to find the gh-aw docs when you need them
+
+You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
 
 <!-- /journey -->
 
