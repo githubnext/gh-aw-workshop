@@ -1,5 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
+<!-- learning:false -->
 # Write Your First Agentic Workflow
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
