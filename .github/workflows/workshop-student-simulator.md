@@ -392,32 +392,23 @@ Use `monteCarlo[*].successRate` as the **statistical success probability** for e
 
 Use `successRateCi95`, `aggregate.overallSuccessRateCi95`, and `aggregate.dropoutRateCi95ByStep` to show Monte Carlo uncertainty. These intervals do not cover uncertainty in the assumed population weights or probability model; repeat that limitation in the report. Use `aggregate.attemptsByStep` as each step's at-risk denominator. `aggregate.dropoutRateByStep` is the conditional probability of failing among runs that reached the step, not a percentage of all starting runs.
 
-Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`), inspect the matching `stepContentById[mostCommonFailureStep]`, and cross-reference both with the student profile to produce per-student pain points:
-
-- Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} runs
-- The likely environment or profile reason (OS, tool, auth, level, personality)
-- The likely content reason (for example: terminal-heavy instructions, browser-friendly fallback, auth-heavy setup, or high conceptual density)
-- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
-- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
-- For `tool: CCA` learners, treat the Agents tab as a prompt surface. If the step tells the learner to run shell commands there, or fails to call out `/agentic-workflows` for workflow-authoring work, classify that as a content mismatch rather than a generic terminal-skill gap.
-
-#### Qualitative depth for top-failure students
-
-For students whose `successRate` < 0.50 (the most at-risk half), apply additional qualitative reasoning from the student profile to enrich the pain-point description:
-
-- **`level`** vs. assumed knowledge
-- **`background`** vs. step domain
-- **`tool`**, **`mobile`**, and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred`, `mobile: true`, or uses `CCA`, note that no UI alternative exists)
-- **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
-- **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
-- **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
-
 ### Collect pain points per student
 
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
 - Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, `mobile`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` or `mobile: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
+- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
+- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
+- For `tool: CCA` learners, treat the Agents tab as a prompt surface. If the step tells the learner to run shell commands there, or fails to call out `/agentic-workflows` for workflow-authoring work, classify that as a content mismatch rather than a generic terminal-skill gap.
+
+For students whose `successRate` < 0.50, also apply qualitative reasoning from the student profile to enrich the pain-point description:
+- **`level`** vs. assumed knowledge
+- **`background`** vs. step domain
+- **`tool`**, **`mobile`**, and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred`, `mobile: true`, or uses `CCA`, note that no UI alternative exists)
+- **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
+- **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
+- **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
 
 ### Aggregate and analyse results
 
