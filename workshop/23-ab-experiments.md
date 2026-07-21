@@ -10,7 +10,7 @@ You'll add an A/B experiment using `experiments:` and compare outcomes across ru
 
 ## 📋 Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
+- You have a working agentic workflow from the build steps ([Step 11a](07-your-first-workflow.md) or equivalent).
 - You are comfortable editing YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 - Need internals? Jump to [Understand how the round-robin works](#understand-how-the-round-robin-works).

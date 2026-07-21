@@ -11,7 +11,7 @@ You'll add an MCP (Model Context Protocol) server to your workflow's [frontmatte
 ## 📋 Before You Start
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
-- You have a working daily-status workflow from [Build: Daily Repo Status Workflow](11a-build-daily-status.md).
+- You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
 - You're comfortable editing the YAML frontmatter section at the top of your workflow file.
 
 ## Steps

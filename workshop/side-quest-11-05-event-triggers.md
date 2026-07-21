@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Event-Driven Triggers in Agentic Workflows
 
-> _Optional: use this primer if you want help choosing between scheduled and event-driven workflows before you finish [Build — PR Code Reviewer](11c-build-pr-reviewer.md), then return to the main adventure._
+> _Optional: use this primer if you want help choosing between scheduled and event-driven workflows before you finish [Build — PR Code Reviewer](15-conditional-logic.md), then return to the main adventure._
 
 ## 🎯 What You'll Do
 
@@ -118,7 +118,7 @@ Use this rule of thumb:
 
 ## Concrete example: Step 11a vs Step 11c
 
-The Daily Repo Status workflow in [Step 11a](11a-build-daily-status.md) and the PR Code Reviewer in [Step 11c](11c-build-pr-reviewer.md) use the same workflow format, but they solve different timing problems.
+The Daily Repo Status workflow in [Step 11a](07-your-first-workflow.md) and the PR Code Reviewer in [Step 11c](15-conditional-logic.md) use the same workflow format, but they solve different timing problems.
 
 | Step | Trigger | Why it fits | Safe output |
 |------|---------|-------------|-------------|
@@ -138,7 +138,7 @@ That is the core decision: pick the trigger that matches the moment you care abo
 
 ---
 
-Return to the main adventure: [Build — PR Code Reviewer](11c-build-pr-reviewer.md).
+Return to the main adventure: [Build — PR Code Reviewer](15-conditional-logic.md).
 
 <!-- /journey -->
 

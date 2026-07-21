@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Workflow File Structure at a Glance
 
-> _Optional: read this before building Step 11 to understand what you are writing, then return to [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md)._
+> _Optional: read this before building Step 11 to understand what you are writing, then return to [Build the Daily Repo Status Workflow](07a-your-first-workflow-terminal.md)._
 
 ## 📋 Before You Start
 
-- Keep [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md) open so you can map each section here to the workflow you build next.
+- Keep [Build the Daily Repo Status Workflow](07a-your-first-workflow-terminal.md) open so you can map each section here to the workflow you build next.
 
 ---
 
@@ -80,7 +80,7 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 ---
 
 <!-- journey: all -->
-Return to [Build the Daily Repo Status Workflow](11a-build-daily-status-terminal.md).
+Return to [Build the Daily Repo Status Workflow](07a-your-first-workflow-terminal.md).
 <!-- /journey -->
 
 
