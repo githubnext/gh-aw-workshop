@@ -344,6 +344,38 @@ function normalizeAgentInsightsByStep(input) {
     normalizeNumericField(nextInsight, "bias", stepId);
     normalizeNumericObject(nextInsight, "signalAdjustments", stepId);
     normalizeNumericObject(nextInsight, "pathAdjustments", stepId);
+    normalizeNumericField(nextInsight, "evaluatedContentHash", stepId);
+    if (nextInsight.evaluations !== null && nextInsight.evaluations !== undefined) {
+      if (!isPlainObject(nextInsight.evaluations)) {
+        console.warn(`[simulator] Agent insight '${stepId}.evaluations' should be an object.`);
+        delete nextInsight.evaluations;
+      } else {
+        const evaluations = {};
+        for (const [evaluationId, evaluation] of Object.entries(nextInsight.evaluations)) {
+          if (!isPlainObject(evaluation)) {
+            console.warn(
+              `[simulator] Ignoring malformed evaluation '${stepId}.${evaluationId}': expected an object.`
+            );
+            continue;
+          }
+          const answer = String(evaluation.answer ?? "").toUpperCase();
+          if (!["YES", "NO", "UNKNOWN"].includes(answer)) {
+            console.warn(
+              `[simulator] Ignoring malformed evaluation '${stepId}.${evaluationId}': answer must be YES, NO, or UNKNOWN.`
+            );
+            continue;
+          }
+          evaluations[evaluationId] = {
+            answer,
+            ...(typeof evaluation.question === "string" ? { question: evaluation.question } : {}),
+            evidence: Array.isArray(evaluation.evidence)
+              ? evaluation.evidence.filter((item) => typeof item === "string")
+              : []
+          };
+        }
+        nextInsight.evaluations = evaluations;
+      }
+    }
     if (nextInsight.riskTags != null && !Array.isArray(nextInsight.riskTags)) {
       console.warn(`[simulator] Agent insight '${stepId}.riskTags' should be an array.`);
       delete nextInsight.riskTags;
@@ -381,12 +413,23 @@ function buildStepContentById({
       markdown: fs.readFileSync(path.resolve(workshopDir, file), "utf8")
     }));
     const markdown = fileContents.map(({ markdown: fileMarkdown }) => fileMarkdown).join("\n\n");
+    const contentAnalysis = analyzeStepMarkdown(
+      stepId,
+      markdown,
+      fileContents.map(({ file, title }) => ({ file, title }))
+    );
+    const agentInsight = agentInsightsByStep[stepId] ? { ...agentInsightsByStep[stepId] } : null;
+    if (
+      agentInsight?.evaluations &&
+      Number(agentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
+    ) {
+      console.warn(
+        `[simulator] Ignoring stale agent evaluations for step '${stepId}': content hash does not match.`
+      );
+      delete agentInsight.evaluations;
+    }
     stepContentById[stepId] = deepFreeze({
-      ...analyzeStepMarkdown(
-        stepId,
-        markdown,
-        fileContents.map(({ file, title }) => ({ file, title }))
-      ),
+      ...contentAnalysis,
       fileSignals: fileContents.map(({ file, title, markdown: fileMarkdown }) =>
         deepFreeze({
           file,
@@ -394,7 +437,7 @@ function buildStepContentById({
           ...analyzeStepMarkdown(file, fileMarkdown, [{ file, title }])
         })
       ),
-      agentInsight: agentInsightsByStep[stepId] || null
+      agentInsight
     });
   }
 

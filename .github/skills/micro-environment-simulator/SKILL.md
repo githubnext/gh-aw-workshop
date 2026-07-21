@@ -105,3 +105,12 @@ Return concise JSON-friendly results that workflows can aggregate:
 Treat population distributions and transition coefficients as assumptions rather than observed learner data. Report that the confidence intervals exclude model and population-assumption uncertainty.
 
 If assumptions hold for a full replay, mark the run successful and include the final state summary.
+
+## Agent-Evaluated Content Assumptions
+
+When an agent evaluates whether current workshop pages establish simulator state, pass the results with `--agent-insights`. Each step insight may include:
+
+- `evaluatedContentHash`: the step's `contentHash` from a simulator run over the current pages
+- `evaluations`: named, single-claim records with an `answer` of `YES`, `NO`, or `UNKNOWN` and `file:line` evidence
+
+The simulator ignores evaluations whose content hash no longer matches the mapped workshop pages. Journey code must map known evaluation IDs to specific state fields; never apply arbitrary agent-provided state patches. Keep probability adjustments separate from state assumptions so a favorable score cannot bypass a failed prerequisite.

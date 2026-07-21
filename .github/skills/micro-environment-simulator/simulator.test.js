@@ -2,10 +2,12 @@
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const os = require("node:os");
 const path = require("node:path");
 const test = require("node:test");
 
 const simulator = require("./simulator");
+const journey = require("./workshop-student-journey");
 
 const populationModel = JSON.parse(
   fs.readFileSync(path.join(__dirname, "workshop-student-population.json"), "utf8")
@@ -100,4 +102,133 @@ test("synthetic simulation history does not increase learner confidence", () => 
   assert.equal(freshState.learner.confidence, experiencedState.learner.confidence);
   assert.equal(freshState.learner.sessionEffect, experiencedState.learner.sessionEffect);
   assert.deepEqual(freshState.learner.mastery, experiencedState.learner.mastery);
+});
+
+test("agent assumption evaluations are normalized and stale evaluations are ignored", (t) => {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), "simulator-evals-"));
+  t.after(() => fs.rmSync(repoRoot, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(repoRoot, "workshop"));
+  fs.writeFileSync(path.join(repoRoot, "workshop", "step.md"), "# Current lesson\n");
+  const contentHash = simulator.analyzeStepMarkdown("step", "# Current lesson\n").contentHash;
+  const normalized = simulator.normalizeAgentInsightsByStep({
+    stepInsightsById: {
+      step: {
+        evaluatedContentHash: String(contentHash),
+        evaluations: {
+          valid: { answer: "yes", evidence: ["step.md:1", 2] },
+          unknown: { answer: "UNKNOWN" },
+          invalid: { answer: "MAYBE" }
+        }
+      }
+    }
+  });
+
+  assert.equal(normalized.step.evaluations.valid.answer, "YES");
+  assert.deepEqual(normalized.step.evaluations.valid.evidence, ["step.md:1"]);
+  assert.equal(normalized.step.evaluations.unknown.answer, "UNKNOWN");
+  assert.equal(normalized.step.evaluations.invalid, undefined);
+
+  const current = simulator.buildStepContentById({
+    steps: ["step"],
+    stepFilesById: { step: ["step.md"] },
+    repoRoot,
+    agentInsightsByStep: normalized
+  });
+  assert.equal(current.step.agentInsight.evaluations.valid.answer, "YES");
+
+  fs.writeFileSync(path.join(repoRoot, "workshop", "step.md"), "# Updated lesson\n");
+  const updated = simulator.buildStepContentById({
+    steps: ["step"],
+    stepFilesById: { step: ["step.md"] },
+    repoRoot,
+    agentInsightsByStep: normalized
+  });
+  assert.equal(updated.step.agentInsight.evaluations, undefined);
+});
+
+function firstWorkflowState(centralizedCopilotBilling) {
+  const student = {
+    id: 1,
+    level: "actions-user",
+    personality: "methodical",
+    background: "web-dev",
+    goal: "personal-learning",
+    tool: "CCA",
+    ui_preferred: true
+  };
+  const state = JSON.parse(
+    JSON.stringify(simulator.defaultEnvironmentForStudent(student, 120, 0))
+  );
+  state.auth.hasGithubSession = true;
+  state.auth.hasCopilotAccess = true;
+  state.github.deployment = "github.com";
+  state.flags.hasRepo = true;
+  state.flags.repoHasReadme = true;
+  state.actions.centralizedCopilotBilling = centralizedCopilotBilling;
+  return state;
+}
+
+function firstWorkflowContext(evaluations) {
+  return {
+    stepId: "07-first-workflow",
+    random: () => 0,
+    stepContent: {
+      browserSupport: 1,
+      terminalDemand: 0,
+      complexity: 0,
+      authDemand: 0,
+      troubleshootingSupport: 0,
+      conceptDemand: 0,
+      enterpriseDemand: 0,
+      workflowCompileCueCount: 0,
+      agentInsight: { evaluations }
+    }
+  };
+}
+
+test("semantic evaluations update compiled workflow and centralized billing state", () => {
+  const result = journey.transitions["07-first-workflow"](
+    firstWorkflowState(true),
+    firstWorkflowContext({
+      cca_authoring_guidance: { answer: "YES" },
+      workflow_source_created_copilot: { answer: "YES" },
+      workflow_compiled_copilot: { answer: "YES" },
+      workflow_published_copilot: { answer: "YES" },
+      copilot_centralized_billing_configured: { answer: "YES" }
+    })
+  );
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.flags.workflowReadyToRun, true);
+  assert.equal(result.state.actions.permissions.copilotRequestsWrite, true);
+  assert.equal(result.state.actions.secrets.COPILOT_GITHUB_TOKEN, false);
+});
+
+test("semantic evaluations update personal billing state and fail closed on UNKNOWN", () => {
+  const configured = journey.transitions["07-first-workflow"](
+    firstWorkflowState(false),
+    firstWorkflowContext({
+      cca_authoring_guidance: { answer: "YES" },
+      workflow_source_created_copilot: { answer: "YES" },
+      workflow_compiled_copilot: { answer: "YES" },
+      workflow_published_copilot: { answer: "YES" },
+      copilot_personal_billing_configured: { answer: "YES" }
+    })
+  );
+  const notPublished = journey.transitions["07-first-workflow"](
+    firstWorkflowState(false),
+    firstWorkflowContext({
+      cca_authoring_guidance: { answer: "YES" },
+      workflow_source_created_copilot: { answer: "YES" },
+      workflow_compiled_copilot: { answer: "YES" },
+      workflow_published_copilot: { answer: "UNKNOWN" },
+      copilot_personal_billing_configured: { answer: "UNKNOWN" }
+    })
+  );
+
+  assert.equal(configured.ok, true);
+  assert.equal(configured.state.actions.permissions.copilotRequestsWrite, false);
+  assert.equal(configured.state.actions.secrets.COPILOT_GITHUB_TOKEN, true);
+  assert.equal(notPublished.state.flags.workflowReadyToRun, false);
+  assert.equal(notPublished.state.actions.secrets.COPILOT_GITHUB_TOKEN, false);
 });

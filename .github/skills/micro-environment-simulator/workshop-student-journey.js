@@ -123,6 +123,16 @@ function agentInsight(context) {
   return insight && typeof insight === "object" ? insight : {};
 }
 
+// Missing evaluations return undefined so legacy lexical inference remains available.
+// UNKNOWN returns null so evaluated paths can fail closed without treating the answer as NO.
+function evaluatedAssumption(context, evaluationId) {
+  const evaluation = agentInsight(context).evaluations?.[evaluationId];
+  if (!evaluation) return undefined;
+  if (evaluation.answer === "YES") return true;
+  if (evaluation.answer === "NO") return false;
+  return null;
+}
+
 function ensurePlainObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value) ? value : {};
 }
@@ -154,6 +164,8 @@ function needsCcaPromptGuidance(state, context) {
 }
 
 function hasCcaPromptGuidance(state, context) {
+  const evaluated = evaluatedAssumption(context, "cca_authoring_guidance");
+  if (evaluated !== undefined) return evaluated === true;
   return (
     stepMetric(state, context, "agentsPromptCueCount") > 0 &&
     stepMetric(state, context, "agenticWorkflowSkillCueCount") > 0
@@ -182,17 +194,31 @@ function stepMetric(state, context, metric) {
 
 function updateWorkflowCompileState(state, context, options = {}) {
   const next = cloneState(state);
+  const path = prefersBrowserPath(state, context) ? "copilot" : "terminal";
+  const sourceCreated = evaluatedAssumption(context, `workflow_source_created_${path}`);
   next.flags.hasWorkflowFile = true;
+  if (sourceCreated !== undefined) {
+    next.flags.hasWorkflowFile = sourceCreated === true;
+  }
+  const compiledEvaluation = evaluatedAssumption(context, `workflow_compiled_${path}`);
+  const publishedEvaluation = evaluatedAssumption(context, `workflow_published_${path}`);
   // A lesson without compile instructions does not invalidate a lock file completed earlier.
-  if (stepMetric(state, context, "workflowCompileCueCount") <= 0) {
+  if (
+    compiledEvaluation === undefined &&
+    stepMetric(state, context, "workflowCompileCueCount") <= 0
+  ) {
     return next;
   }
   const hasCompiledWorkflowLock =
-    canCompileWorkflow(state, context, options);
+    compiledEvaluation === undefined
+      ? canCompileWorkflow(state, context, options)
+      : compiledEvaluation === true;
   const hasPushedCompiledWorkflowLock =
     hasCompiledWorkflowLock &&
-    (stepMetric(state, context, "workflowLockPublishCueCount") > 0 ||
-      state.flags.hasPushedCompiledWorkflowLock);
+    (publishedEvaluation === undefined
+      ? stepMetric(state, context, "workflowLockPublishCueCount") > 0 ||
+        state.flags.hasPushedCompiledWorkflowLock
+      : publishedEvaluation === true);
   next.flags.hasCompiledWorkflowLock = hasCompiledWorkflowLock;
   next.flags.hasPushedCompiledWorkflowLock = hasPushedCompiledWorkflowLock;
   next.flags.workflowReadyToRun = hasPushedCompiledWorkflowLock;
@@ -205,10 +231,21 @@ function configureFirstWorkflowAuth(state, context) {
     return next;
   }
   const usesCentralizedBilling = next.actions?.centralizedCopilotBilling === true;
+  const centralizedEvaluation = evaluatedAssumption(
+    context,
+    "copilot_centralized_billing_configured"
+  );
+  const personalEvaluation = evaluatedAssumption(context, "copilot_personal_billing_configured");
   next.actions.permissions.copilotRequestsWrite =
-    usesCentralizedBilling && stepMetric(state, context, "copilotRequestsWriteCueCount") > 0;
+    usesCentralizedBilling &&
+    (centralizedEvaluation === undefined
+      ? stepMetric(state, context, "copilotRequestsWriteCueCount") > 0
+      : centralizedEvaluation === true);
   next.actions.secrets.COPILOT_GITHUB_TOKEN =
-    !usesCentralizedBilling && stepMetric(state, context, "copilotGithubTokenCueCount") > 0;
+    !usesCentralizedBilling &&
+    (personalEvaluation === undefined
+      ? stepMetric(state, context, "copilotGithubTokenCueCount") > 0
+      : personalEvaluation === true);
   return next;
 }
 
