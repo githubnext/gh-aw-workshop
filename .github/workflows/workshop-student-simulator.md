@@ -282,7 +282,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `background` — role background: `no-coding` (no software development background) | `web-dev` (frontend/full-stack web developer) | `backend-dev` (backend/systems developer) | `devops` (DevOps engineer/SRE) | `data-science` (data scientist/ML engineer) | `enterprise-dev` (enterprise developer using GHE/GHES with self-hosted runners) | `enterprise-devops` (senior DevOps/platform engineer managing self-hosted runner fleets) | `program-manager` (program/product manager evaluating agentic workflows)
 - `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/browser chat or cloud coding agent)
+- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via the Agents tab or another browser/chat surface, where the learner sends prompts rather than terminal commands and should explicitly invoke `/agentic-workflows` for workflow-authoring tasks)
 - `mobile` — `true` if the student accesses GitHub primarily from the GitHub Mobile app on iOS or Android (spawns agent sessions and reviews pull requests; no coding or terminal support); `false` or absent otherwise. May be combined with any `tool` value; in practice most mobile students use `CCA`.
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
@@ -332,6 +332,7 @@ Use this JSON shape:
 - Omit steps where you have no meaningful adjustment.
 - Use positive numbers to increase success probability and negative numbers to decrease it.
 - Base these adjustments on the actual wording, path structure, fallbacks, and recovery guidance in the files you inspect — not only on the numeric signals already present in the simulator.
+- For Copilot / Agents-tab paths, verify that the content treats the surface as prompt-driven chat and explicitly calls out `/agentic-workflows` for workflow-authoring tasks. Missing that cue, or presenting shell commands as if they run inside the Agents tab, is an access barrier for `tool: CCA` learners.
 
 Then rerun the simulator yourself so those agent-derived insights are incorporated into the probabilities:
 
@@ -401,6 +402,7 @@ Then, for each student, use the environment assumptions modelled by the simulato
 - The likely content reason (for example: terminal-heavy instructions, browser-friendly fallback, auth-heavy setup, or high conceptual density)
 - Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
 - Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
+- For `tool: CCA` learners, treat the Agents tab as a prompt surface. If the step tells the learner to run shell commands there, or fails to call out `/agentic-workflows` for workflow-authoring work, classify that as a content mismatch rather than a generic terminal-skill gap.
 
 #### Qualitative depth for top-failure students
 
