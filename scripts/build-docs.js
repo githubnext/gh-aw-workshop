@@ -239,7 +239,7 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 
 /* Reduce default slide scale for desktop reading */
 .reveal {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 
 /* Align text left; with center:false slides already start at top,
@@ -253,18 +253,23 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
  * slide avoids nested-scrollbar confusion. */
 .reveal .slides .slide-content {
   --slide-top-gap: 1.25rem;
+  /* Extra bottom room keeps content clear of Reveal controls/progress UI. */
   --slide-bottom-gap: 4.75rem;
   padding: var(--slide-top-gap) 1.5em var(--slide-bottom-gap);
-  /* Progressive enhancement: vh fallback first, then dvh in supporting browsers. */
   height: calc(100vh - var(--slide-top-gap) - var(--slide-bottom-gap));
   max-height: calc(100vh - var(--slide-top-gap) - var(--slide-bottom-gap));
-  height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
-  max-height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-gutter: stable;
   box-sizing: border-box;
+}
+
+@supports (height: 100dvh) {
+  .reveal .slides .slide-content {
+    height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
+    max-height: calc(100dvh - var(--slide-top-gap) - var(--slide-bottom-gap));
+  }
 }
 
 /* Ensure slide images fit and advertise lightbox affordance */
