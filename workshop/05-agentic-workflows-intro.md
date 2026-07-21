@@ -92,6 +92,43 @@ A scheduled agentic workflow generates a report like this:
 
 **Your turn:** Answer in your own words — _what did the agent decide on its own?_ Identify at least two lines where the agent made a judgment call rather than just reading a number.
 
+## Check your understanding
+
+Apply what you just saw — answer each question in your notes, then reveal.
+
+Should the daily report run on a schedule or wait for manual dispatch? State which and why.
+
+- [ ] I chose a trigger type and explained my reasoning
+
+<details>
+<summary>Check your answer</summary>
+
+A scheduled trigger runs automatically — appropriate for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
+
+- [ ] Schedule: runs automatically, no button click needed
+- [ ] `workflow_dispatch`: requires a manual click each run
+
+</details>
+
+How does the agent post the report if it always operates read-only?
+
+- [ ] I explained how the agent writes output
+
+<details>
+<summary>Check your answer</summary>
+
+Agents always run read-only. Any writes — including posting the report — go through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) and guardrails.
+
+- [ ] The agent itself is always read-only
+- [ ] Writes happen through safe outputs and guardrails
+
+</details>
+
+Write one sentence for the task brief — this becomes your brief in Step 7.
+
+- [ ] I wrote my one-sentence brief
+- [ ] My brief describes a task that needs judgment, not fixed steps
+
 ## The two files
 
 An agentic workflow has two files. Here is the `.md` source you write:

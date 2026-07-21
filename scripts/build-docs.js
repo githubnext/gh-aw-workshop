@@ -6,6 +6,8 @@ const path = require('path');
 const { marked } = require('marked');
 const { default: GithubSlugger } = require('github-slugger');
 const markedAlert = require('marked-alert');
+const defaultRenderer = new marked.Renderer();
+const relAttrRegex = /\brel=(["'])(.*?)\1/i;
 
 function flattenTokenText(tokenOrTokens) {
   if (Array.isArray(tokenOrTokens)) {
@@ -24,6 +26,32 @@ function escapeHtml(value) {
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('\'', '&#39;');
+}
+
+function isExternalWebLink(href) {
+  return /^https?:\/\//i.test(href);
+}
+
+function addExternalLinkTargetAttrs(anchorHtml) {
+  return anchorHtml.replace(/^<a\b([^>]*)>/i, (match, attrs) => {
+    let updatedAttrs = attrs;
+
+    if (!/\btarget\s*=/.test(updatedAttrs)) {
+      updatedAttrs += ' target="_blank"';
+    }
+
+    const relMatch = updatedAttrs.match(relAttrRegex);
+    if (relMatch) {
+      const relValues = new Set(relMatch[2].split(/\s+/).filter(Boolean));
+      relValues.add('noopener');
+      relValues.add('noreferrer');
+      updatedAttrs = updatedAttrs.replace(relAttrRegex, `rel="${[...relValues].join(' ')}"`);
+    } else {
+      updatedAttrs += ' rel="noopener noreferrer"';
+    }
+
+    return `<a${updatedAttrs}>`;
+  });
 }
 
 // Plugin: clickable heading anchors with GitHub-compatible IDs
@@ -143,9 +171,8 @@ function renderWorkshopNavigation(markdown, currentFile) {
 marked.use({
   useNewRenderer: true,
   renderer: {
-    link({ href, title, tokens }) {
-      const text = this.parser.parseInline(tokens);
-      const titleAttr = title ? ` title="${title}"` : '';
+    link(link) {
+      const { href } = link;
       if (href) {
         const markdownPageLink = href.match(/^(?<file>[^/?#]+\.md)(?<hash>#[^?]+)?$/);
         if (markdownPageLink) {
@@ -154,8 +181,12 @@ marked.use({
           const targetSectionId = sectionIdsByFile.get(targetFile);
           if (targetSectionId) {
             const rewrittenHref = targetHash ?? `#${targetSectionId}`;
-            return `<a href="${rewrittenHref}"${titleAttr}>${text}</a>`;
+            return defaultRenderer.link.call(this, { ...link, href: rewrittenHref });
           }
+        }
+
+        if (isExternalWebLink(href)) {
+          return addExternalLinkTargetAttrs(defaultRenderer.link.call(this, link));
         }
       }
       return false;
@@ -460,6 +491,11 @@ body,
   line-height: 1.25;
 }
 
+.markdown-body {
+  max-width: min(96ch, calc(100vw - 32px));
+  margin-inline: auto;
+}
+
 @media (max-width: 543px) {
   .markdown-body > details > .workshop-page-title {
     font-size: 28px;
@@ -471,6 +507,14 @@ body,
   .markdown-body pre > code {
     white-space: inherit;
   }
+}
+
+/* Responsive images: full-width on mobile, capped on larger screens — no media query needed */
+.markdown-body img {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+  margin-inline: auto;
 }
 
 .markdown-body .anchor {
