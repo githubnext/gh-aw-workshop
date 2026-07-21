@@ -491,6 +491,11 @@ body,
   line-height: 1.25;
 }
 
+.markdown-body {
+  max-width: min(96ch, calc(100vw - 32px));
+  margin-inline: auto;
+}
+
 @media (max-width: 543px) {
   .markdown-body > details > .workshop-page-title {
     font-size: 28px;
@@ -509,6 +514,7 @@ body,
   display: block;
   width: min(100%, 720px);
   height: auto;
+  margin-inline: auto;
 }
 
 .markdown-body .anchor {
