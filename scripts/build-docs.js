@@ -290,23 +290,23 @@ fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 const parallaxBackgroundSvgEncoded = encodeURIComponent([
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">',
   '<defs>',
-  '<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">',
+  '<linearGradient id="primaryGradient" x1="0" y1="0" x2="1" y2="1">',
   '<stop offset="0%" stop-color="#0d1117" />',
   '<stop offset="45%" stop-color="#271449" />',
   '<stop offset="100%" stop-color="#8250df" />',
   '</linearGradient>',
-  '<radialGradient id="r1" cx="20%" cy="25%" r="40%">',
+  '<radialGradient id="topRadialGlow" cx="20%" cy="25%" r="40%">',
   '<stop offset="0%" stop-color="#a371f7" stop-opacity=".32" />',
   '<stop offset="100%" stop-color="#a371f7" stop-opacity="0" />',
   '</radialGradient>',
-  '<radialGradient id="r2" cx="82%" cy="78%" r="45%">',
+  '<radialGradient id="bottomRadialGlow" cx="82%" cy="78%" r="45%">',
   '<stop offset="0%" stop-color="#6f42c1" stop-opacity=".30" />',
   '<stop offset="100%" stop-color="#6f42c1" stop-opacity="0" />',
   '</radialGradient>',
   '</defs>',
-  '<rect width="1920" height="1080" fill="url(#g)" />',
-  '<rect width="1920" height="1080" fill="url(#r1)" />',
-  '<rect width="1920" height="1080" fill="url(#r2)" />',
+  '<rect width="1920" height="1080" fill="url(#primaryGradient)" />',
+  '<rect width="1920" height="1080" fill="url(#topRadialGlow)" />',
+  '<rect width="1920" height="1080" fill="url(#bottomRadialGlow)" />',
   '</svg>',
 ].join(''));
 
@@ -356,7 +356,9 @@ Reveal.initialize({
   history: true,
   // GitHub agentic-purple themed parallax background
   parallaxBackgroundImage: parallaxBackgroundImage,
+  // Use a larger virtual canvas than the viewport so motion stays subtle.
   parallaxBackgroundSize: '3200px 1800px',
+  // Horizontal movement is intentionally stronger than vertical to reduce jitter.
   parallaxBackgroundHorizontal: 180,
   parallaxBackgroundVertical: 70,
 });
