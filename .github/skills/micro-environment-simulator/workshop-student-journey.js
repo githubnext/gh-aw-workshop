@@ -123,6 +123,8 @@ function agentInsight(context) {
   return insight && typeof insight === "object" ? insight : {};
 }
 
+// Missing evaluations return undefined so legacy lexical inference remains available.
+// UNKNOWN returns null so evaluated paths can fail closed without treating the answer as NO.
 function evaluatedAssumption(context, evaluationId) {
   const evaluation = agentInsight(context).evaluations?.[evaluationId];
   if (!evaluation) return undefined;
@@ -194,7 +196,10 @@ function updateWorkflowCompileState(state, context, options = {}) {
   const next = cloneState(state);
   const path = prefersBrowserPath(state, context) ? "copilot" : "terminal";
   const sourceCreated = evaluatedAssumption(context, `workflow_source_created_${path}`);
-  next.flags.hasWorkflowFile = sourceCreated === undefined ? true : sourceCreated === true;
+  next.flags.hasWorkflowFile = true;
+  if (sourceCreated !== undefined) {
+    next.flags.hasWorkflowFile = sourceCreated === true;
+  }
   const compiledEvaluation = evaluatedAssumption(context, `workflow_compiled_${path}`);
   const publishedEvaluation = evaluatedAssumption(context, `workflow_published_${path}`);
   // A lesson without compile instructions does not invalidate a lock file completed earlier.

@@ -358,7 +358,7 @@ function normalizeAgentInsightsByStep(input) {
             );
             continue;
           }
-          const answer = String(evaluation.answer || "").toUpperCase();
+          const answer = String(evaluation.answer ?? "").toUpperCase();
           if (!["YES", "NO", "UNKNOWN"].includes(answer)) {
             console.warn(
               `[simulator] Ignoring malformed evaluation '${stepId}.${evaluationId}': answer must be YES, NO, or UNKNOWN.`
