@@ -359,16 +359,22 @@ function normalizeSemanticScores(container, stepId) {
     return;
   }
   const scores = {};
+  let valid = true;
   for (const field of Object.keys(SEMANTIC_SCORE_WEIGHTS)) {
     const rawValue = container.semanticScores[field];
     const value = Number(rawValue);
     if (rawValue == null || !Number.isFinite(value)) {
       console.warn(`[simulator] Agent insight '${stepId}.semanticScores.${field}' should be numeric.`);
+      valid = false;
       continue;
     }
     scores[field] = clamp(value, 0, 100);
   }
-  container.semanticScores = scores;
+  if (valid) {
+    container.semanticScores = scores;
+  } else {
+    delete container.semanticScores;
+  }
 }
 
 function normalizeAgentInsightsByStep(input) {
@@ -488,16 +494,19 @@ function buildStepContentById({
       markdown,
       fileContents.map(({ file, title }) => ({ file, title }))
     );
-    let agentInsight = agentInsightsByStep[stepId] ? { ...agentInsightsByStep[stepId] } : null;
+    const rawAgentInsight = agentInsightsByStep[stepId] || null;
+    let agentInsight = rawAgentInsight;
     // Every model-affecting insight is tied to the exact page revision it evaluated.
     if (
-      agentInsight &&
-      Number(agentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
+      rawAgentInsight &&
+      Number(rawAgentInsight.evaluatedContentHash) !== contentAnalysis.contentHash
     ) {
       console.warn(
         `[simulator] Ignoring stale agent insight for step '${stepId}': content hash does not match.`
       );
       agentInsight = null;
+    } else if (rawAgentInsight) {
+      agentInsight = { ...rawAgentInsight };
     }
     stepContentById[stepId] = deepFreeze({
       ...contentAnalysis,

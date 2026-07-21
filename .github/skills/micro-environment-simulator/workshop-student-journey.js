@@ -354,7 +354,7 @@ function evaluateStepProbability(state, context, options = {}) {
   const scoredDimensions = Object.entries(SEMANTIC_SCORE_WEIGHTS).filter(([dimension]) =>
     Number.isFinite(Number(semanticScores[dimension]))
   );
-  if (scoredDimensions.length === 3) {
+  if (scoredDimensions.length === Object.keys(SEMANTIC_SCORE_WEIGHTS).length) {
     const contentSupportScore = scoredDimensions.reduce(
       (total, [dimension, weight]) => total + Number(semanticScores[dimension]) * weight,
       0
