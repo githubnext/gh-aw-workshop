@@ -137,7 +137,7 @@ function createZeroSignalGreeks() {
   return Object.fromEntries(STEP_SIGNAL_KEYS.map((signal) => [signal, 0]));
 }
 
-function isWithinProbabilityBounds(probability) {
+function shouldComputeGreeksForProbability(probability) {
   return probability > 0.12 && probability < 0.985;
 }
 
@@ -416,7 +416,7 @@ function evaluateStepProbabilityGreeks(state, context, options = {}) {
   };
   const base = computeSuccessProbabilityTerms(state, context, emphasis);
   let probability = clamp(base.probability, 0.12, 0.985);
-  let greeks = isWithinProbabilityBounds(base.probability)
+  let greeks = shouldComputeGreeksForProbability(base.probability)
     ? { ...base.greeks }
     : createZeroSignalGreeks();
 
@@ -457,7 +457,7 @@ function evaluateStepProbabilityGreeks(state, context, options = {}) {
     probability += Number(pathAdjustments.enterprise || 0);
   }
 
-  if (!isWithinProbabilityBounds(probability)) {
+  if (!shouldComputeGreeksForProbability(probability)) {
     greeks = createZeroSignalGreeks();
   }
 

@@ -369,9 +369,9 @@ test("Monte Carlo Greeks aggregate reached-step sensitivities without bump rerun
   assert.equal(greeks.algorithm, "vandendorpe-reached-state");
   assert.equal(greeks.atRiskRunsByStep.alpha, 2);
   assert.equal(greeks.atRiskRunsByStep.beta, 2);
-  assert.equal(greeks.conditionalSuccessRateByStep.alpha.complexity, -0.5);
-  assert.equal(greeks.conditionalSuccessRateByStep.beta.browserSupport, 0.1);
-  assert.equal(greeks.overallSuccessRateByStep.alpha.complexity, -0.5);
-  assert.equal(greeks.overallSuccessRateByStep.beta.complexity, -0.25);
-  assert.equal(greeks.conditionalSuccessRateByStep.gamma.complexity, null);
+  assert.equal(greeks.conditionalGreeksByStep.alpha.complexity, -0.5);
+  assert.equal(greeks.conditionalGreeksByStep.beta.browserSupport, 0.1);
+  assert.equal(greeks.overallGreeksByStep.alpha.complexity, -0.5);
+  assert.equal(greeks.overallGreeksByStep.beta.complexity, -0.25);
+  assert.equal(greeks.conditionalGreeksByStep.gamma.complexity, null);
 });

@@ -759,10 +759,6 @@ function replayJourney({
     if (typeof onStepAttempt === "function") {
       onStepAttempt({
         state,
-        stepId,
-        stepIndex: trace.length,
-        totalSteps: steps.length,
-        stepContent,
         context
       });
     }
@@ -922,29 +918,30 @@ function finalizeStepGreekAccumulator(accumulator, totalAttempts = 0, steps = []
     return null;
   }
   const stepIds = steps.length > 0 ? steps : Object.keys(accumulator.sumsByStep);
-  const conditionalSuccessRateByStep = {};
-  const overallSuccessRateByStep = {};
+  const conditionalGreeksByStep = {};
+  const overallGreeksByStep = {};
   for (const stepId of stepIds) {
     const attempts = accumulator.attemptsByStep[stepId] || 0;
     const sums = accumulator.sumsByStep[stepId] || {};
-    conditionalSuccessRateByStep[stepId] = {};
-    overallSuccessRateByStep[stepId] = {};
+    conditionalGreeksByStep[stepId] = {};
+    overallGreeksByStep[stepId] = {};
     for (const signal of accumulator.signalKeys) {
       const sum = Number(sums[signal] || 0);
-      conditionalSuccessRateByStep[stepId][signal] = attempts ? sum / attempts : null;
-      overallSuccessRateByStep[stepId][signal] = totalAttempts ? sum / totalAttempts : null;
+      conditionalGreeksByStep[stepId][signal] = attempts ? sum / attempts : null;
+      overallGreeksByStep[stepId][signal] = totalAttempts ? sum / totalAttempts : null;
     }
   }
   return {
-    // Adapted from Vandendorpe-style Greek estimation: reuse the reached path states
-    // instead of rerunning the full cohort for each bumped signal.
+    // Adapted from Vandendorpe-style Greek estimation: reuse each reached step state
+    // from the baseline Monte Carlo cohort so sensitivities can be accumulated without
+    // rerunning a fresh cohort for every bumped content signal.
     algorithm: "vandendorpe-reached-state",
     interpretation:
       "First-order sensitivities of modeled success rates to step-content signals, reusing the Monte Carlo cohort's reached states instead of bump-and-reprice reruns.",
     signals: [...accumulator.signalKeys],
     atRiskRunsByStep: { ...accumulator.attemptsByStep },
-    conditionalSuccessRateByStep,
-    overallSuccessRateByStep
+    conditionalGreeksByStep,
+    overallGreeksByStep
   };
 }
 
@@ -975,11 +972,11 @@ function simulateStudentsMonteCarlo(students, date, runsCount = 100, config = {}
         random: createSeededRng(stableHash(`${date}|${student.id}|${runIndex}|journey`)),
         onStepAttempt:
           typeof config.stepGreekEstimator === "function" && config.stepGreekAccumulator
-            ? ({ state: stepState, stepId, context }) => {
+            ? ({ state: stepState, context }) => {
                 const estimate = config.stepGreekEstimator(stepState, context);
                 recordStepGreekEstimate(
                   config.stepGreekAccumulator,
-                  stepId,
+                  context.stepId,
                   estimate?.greeks || estimate
                 );
               }
