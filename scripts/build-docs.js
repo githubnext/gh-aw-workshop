@@ -464,6 +464,13 @@ body,
   .markdown-body > details > .workshop-page-title {
     font-size: 28px;
   }
+  .markdown-body pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .markdown-body pre > code {
+    white-space: inherit;
+  }
 }
 
 .markdown-body .anchor {
