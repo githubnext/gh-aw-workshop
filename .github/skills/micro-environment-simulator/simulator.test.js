@@ -297,3 +297,81 @@ test("semantic evaluations update personal billing state and fail closed on UNKN
   assert.equal(notPublished.state.flags.workflowReadyToRun, false);
   assert.equal(notPublished.state.actions.secrets.COPILOT_GITHUB_TOKEN, false);
 });
+
+test("step Greek estimator returns bounded local signal sensitivities", () => {
+  const student = {
+    id: 12,
+    level: "github-basic",
+    personality: "methodical",
+    background: "web-dev",
+    goal: "personal-learning",
+    tool: "cli",
+    ui_preferred: true,
+    runs: 0,
+    successes: 0
+  };
+  const state = simulator.defaultEnvironmentForStudent(student, 120, 0);
+  const estimate = journey.stepGreekEstimator(state, {
+    stepId: "08-run-your-workflow",
+    random: () => 0.5,
+    stepContent: {
+      complexity: 0.35,
+      terminalDemand: 0.6,
+      browserSupport: 0.2,
+      authDemand: 0.3,
+      troubleshootingSupport: 0.4,
+      conceptDemand: 0.5,
+      enterpriseDemand: 0.1
+    }
+  });
+
+  assert.ok(estimate.probability > 0.12 && estimate.probability < 0.985);
+  assert.deepEqual(Object.keys(estimate.greeks).sort(), [...journey.STEP_SIGNAL_KEYS].sort());
+  assert.ok(estimate.greeks.complexity < 0);
+  assert.ok(estimate.greeks.terminalDemand < 0);
+  assert.ok(estimate.greeks.troubleshootingSupport > 0);
+});
+
+test("Monte Carlo Greeks aggregate reached-step sensitivities without bump reruns", () => {
+  const students = [
+    {
+      id: 1,
+      name: "Learner 001",
+      level: "beginner",
+      personality: "curious",
+      background: "web-dev",
+      goal: "personal-learning",
+      tool: "cli",
+      ui_preferred: false
+    }
+  ];
+  const steps = ["alpha", "beta", "gamma"];
+  const transitions = {
+    alpha: (state) => ({ ok: true, state }),
+    beta: (state) => ({ ok: true, state })
+  };
+  const { greeks } = simulator.simulateStudentsMonteCarloWithGreeks(students, "2026-07-21", 2, {
+    steps,
+    transitions,
+    stepContentById: {
+      alpha: { complexity: 0.2 },
+      beta: { complexity: 0.3 }
+    },
+    initialStateForStudent: (student) => simulator.defaultEnvironmentForStudent(student, 120, 0),
+    stepGreekEstimator: (_state, context) => ({
+      greeks:
+        context.stepId === "alpha"
+          ? { complexity: -0.5, browserSupport: 0.25 }
+          : { complexity: -0.25, browserSupport: 0.1 }
+    })
+  });
+
+  assert.equal(greeks.algorithm, "vandendorpe-reached-state");
+  assert.equal(greeks.atRiskRunsByStep.alpha, 2);
+  assert.equal(greeks.atRiskRunsByStep.beta, 2);
+  assert.equal(greeks.conditionalGreeksByStep.alpha.complexity, -0.5);
+  assert.equal(greeks.conditionalGreeksByStep.beta.browserSupport, 0.1);
+  assert.equal(greeks.overallGreeksByStep.alpha.complexity, -0.5);
+  assert.equal(greeks.overallGreeksByStep.beta.complexity, -0.25);
+  assert.equal(greeks.conditionalGreeksByStep.gamma.complexity, null);
+});
