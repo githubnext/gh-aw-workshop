@@ -307,10 +307,7 @@ ${slidesHtml}
       function findHashLink(start) {
         let el = start;
         while (el) {
-          if (
-            el.tagName === 'A' &&
-            typeof el.getAttribute === 'function'
-          ) {
+          if (el.tagName === 'A') {
             const href = el.getAttribute('href');
             if (href && href.charAt(0) === '#') return el;
           }
@@ -336,9 +333,9 @@ ${slidesHtml}
       if (target && target.closest('.slides')) {
         const indices = Reveal.getIndices(target);
         if (indices && typeof indices.h === 'number') {
-          const verticalIndex = typeof indices.v === 'number' ? indices.v : 0;
+          const v = typeof indices.v === 'number' ? indices.v : 0;
           e.preventDefault();
-          Reveal.slide(indices.h, verticalIndex);
+          Reveal.slide(indices.h, v);
         }
       }
     });
