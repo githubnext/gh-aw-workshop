@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You have a basic agentic workflow from [Build Your Daily Status Workflow](11a-build-daily-status.md) or equivalent.
+- You have a basic agentic workflow from [Build Your Daily Status Workflow](07-your-first-workflow.md) or equivalent.
 - You understand `safe-outputs` and `permissions` frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 
@@ -49,7 +49,7 @@ This protects values that are declared in `secrets:` — including `GITHUB_TOKEN
 
 ### `safe-outputs` removes unintended write surfaces
 
-gh-aw's `safe-outputs` frontmatter key declares the exact output surfaces the agent is allowed to write to. If `create-issue` or `post-comment` are not in that list, the agent has no tool to write those outputs — and therefore no surface to exfiltrate data through those channels.
+gh-aw's [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) frontmatter key declares the exact output surfaces the agent is allowed to write to. If `create-issue` or `post-comment` are not in that list, the agent has no tool to write those outputs — and therefore no surface to exfiltrate data through those channels.
 
 Example frontmatter that keeps the workflow read-only:
 

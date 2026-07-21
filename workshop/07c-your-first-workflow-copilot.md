@@ -20,21 +20,23 @@ Open your practice repository in the GitHub Copilot app and start a session in *
 Paste this prompt:
 
 ```text
-Initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
-
-Then create a workflow for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/create.md
+Using the agentic-workflows skill, initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
+and then create a workflow using https://raw.githubusercontent.com/github/gh-aw/main/create.md
 
 The workflow must:
 - Be named "Daily Report Status"
 - Support manual runs with `workflow_dispatch`
 - Use `contents: read`, `issues: read`, and `copilot-requests: write`
-- Allow at most one comment and at most one new issue through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
+- Allow at most one comment and at most one new issue through safe outputs (https://github.github.com/gh-aw/reference/safe-outputs/)
 - Search open issues for the issue with the most 👍 reactions and comment:
   "This issue has the most community support! We'll prioritise it in our next planning session."
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
-Run `gh aw compile --validate` in the session workspace, fix any errors, commit the source and generated lock file (plus any initialized skill files), and open a pull request. Show me the diff before merging.
+Run `gh aw compile` in the session workspace, fix any errors, commit the source and generated lock file (plus any initialized skill files), and open a pull request. Show me the diff before merging.
 ```
+
+> [!NOTE]
+> The `agentic-workflows` skill is installed as part of initialization. If the skill is not yet available in your repository, the agent falls back to the install and create URLs above and the skill becomes available for future sessions after the pull request is merged.
 
 The agent runs validation in its isolated session workspace. You do not need a terminal for this path.
 Before you approve the merge, the agent presents the file changes in its session response for you to review.

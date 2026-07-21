@@ -1,12 +1,12 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Choosing Between Cache Memory and Repo Memory
+# Side Quest: Choosing Between [Cache Memory](https://github.github.com/gh-aw/reference/cache-memory/) and [Repo Memory](https://github.github.com/gh-aw/reference/repo-memory/)
 
 > _Optional: work through this reference if you want to understand both `cache-memory` and `repo-memory` in depth before or after completing [Step 20](20-persistent-memory.md), then return to the main path._
 
 ## 📋 Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 11a](11a-build-daily-status.md) or equivalent).
+- You have a working agentic workflow from the build steps ([Step 11a](07-your-first-workflow.md) or equivalent).
 - You have completed or are about to start [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 - You understand YAML frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 

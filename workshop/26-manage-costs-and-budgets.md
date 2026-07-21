@@ -77,8 +77,8 @@ A few techniques keep spend in check:
 Three frontmatter fields enforce hard limits directly in the workflow file:
 
 - **[`timeout-minutes`](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
-- **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume at the model API level. The default when omitted is 1000 AIC. Set to `-1` to disable enforcement.
-- **[`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow)** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. Omit this field to leave the guardrail disabled.
+- **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume, enforced by the AWF firewall. The default when omitted is 1000 AIC. Set to a negative value (e.g. `-1`) to disable enforcement and token steering.
+- **[`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow)** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. A system default threshold applies when this field is omitted; set to `-1` to disable the guardrail, or provide an explicit integer value to override the default.
 
 ```yaml
 ---
@@ -109,5 +109,4 @@ gh aw compile
 <!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
-
 

@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily Monte Carlo simulation of 46 students (1000 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily Monte Carlo simulation of a configurable synthetic learner population attempting the "Learning GitHub Agentic Workflows" workshop. The population assumptions and curriculum are loaded at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -31,85 +31,45 @@ steps:
       mkdir -p /tmp/gh-aw/cache-memory
       TODAY=$(date -u +%Y-%m-%d)
       echo "TODAY=$TODAY" >> "$GITHUB_ENV"
-      echo "MONTE_CARLO_RUNS=1000" >> "$GITHUB_ENV"
+      MONTE_CARLO_RUNS=$(node -p "require('./.github/skills/micro-environment-simulator/workshop-student-population.json').monteCarloRuns")
+      echo "MONTE_CARLO_RUNS=$MONTE_CARLO_RUNS" >> "$GITHUB_ENV"
 
   - name: Initialize student profiles if missing
     run: |
       PROFILES=/tmp/gh-aw/cache-memory/profiles.json
+      MODEL=.github/skills/micro-environment-simulator/workshop-student-population.json
       NEEDS_INIT=true
       if [ -f "$PROFILES" ]; then
-        if python3 << 'PYEOF'
-      import json, sys
-      try:
-          with open('/tmp/gh-aw/cache-memory/profiles.json') as f:
-              d = json.load(f)
-          students = d.get('students', [])
-          assert isinstance(students, list) and students and isinstance(students[0], dict) and 'runs' in students[0]
-          sys.exit(0)
-      except Exception:
-          sys.exit(1)
-      PYEOF
+        if node - "$PROFILES" "$MODEL" <<'NODE'
+      const fs = require("node:fs");
+      try {
+        const profiles = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
+        const model = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
+        const students = profiles.students;
+        const valid =
+          profiles.version === 4 &&
+          profiles.population_model_version === model.modelVersion &&
+          Array.isArray(students) &&
+          students.length === model.cohortSize &&
+          students.every((student) => Number.isFinite(student.runs) && Number.isFinite(student.successes));
+        process.exit(valid ? 0 : 1);
+      } catch {
+        process.exit(1);
+      }
+      NODE
         then
           NEEDS_INIT=false
         else
-          echo "Cached profiles are in an incompatible format. Reinitializing..."
+          echo "Cached profiles do not match the current population model. Reinitializing..."
         fi
       fi
       if [ "$NEEDS_INIT" = "true" ]; then
-        cat > "$PROFILES" <<'EOF'
-      {
-        "version": 2,
-        "students": [
-          {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":3,  "name":"Morgan Kim",      "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":4,  "name":"Riley Park",      "level":"beginner",     "personality":"impatient",   "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":5,  "name":"Skyler Nguyen",   "level":"beginner",     "personality":"skeptical",   "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":6,  "name":"Casey Wong",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"teaching-others",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":7,  "name":"Drew Tanaka",     "level":"github-basic", "personality":"methodical",  "background":"web-dev",         "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":8,  "name":"Avery Singh",     "level":"github-basic", "personality":"curious",     "background":"web-dev",         "goal":"work-project",         "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":9,  "name":"Jordan Martinez", "level":"github-basic", "personality":"impatient",   "background":"web-dev",         "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":10, "name":"Quinn Lopez",     "level":"github-basic", "personality":"confused",    "background":"web-dev",         "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":11, "name":"Reece Thompson",  "level":"github-basic", "personality":"skeptical",   "background":"backend-dev",     "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":12, "name":"Sam Patel",       "level":"github-basic", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":13, "name":"Blake Rivera",    "level":"github-basic", "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":14, "name":"Chris Davis",     "level":"github-basic", "personality":"confused",    "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":15, "name":"Dana Wilson",     "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":16, "name":"Eli Brown",       "level":"actions-user", "personality":"curious",     "background":"devops",          "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":17, "name":"Frankie Moore",   "level":"actions-user", "personality":"impatient",   "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":18, "name":"Gio Jackson",     "level":"actions-user", "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":19, "name":"Harper Lee",      "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":20, "name":"Indigo Taylor",   "level":"actions-user", "personality":"curious",     "background":"backend-dev",     "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":21, "name":"Jesse Anderson",  "level":"actions-user", "personality":"confused",    "background":"web-dev",         "goal":"work-project",         "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":22, "name":"Kai White",       "level":"actions-user", "personality":"methodical",  "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":23, "name":"Lane Harris",     "level":"advanced",     "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":24, "name":"Max Clark",       "level":"advanced",     "personality":"impatient",   "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":25, "name":"Nova Robinson",   "level":"advanced",     "personality":"methodical",  "background":"devops",          "goal":"teaching-others",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":26, "name":"Ocean Lewis",     "level":"advanced",     "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":27, "name":"Piper Walker",    "level":"advanced",     "personality":"skeptical",   "background":"web-dev",         "goal":"team-evaluation",      "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":28, "name":"Quinn Hall",      "level":"github-basic", "personality":"impatient",   "background":"no-coding",       "goal":"work-project",         "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":29, "name":"River Young",     "level":"beginner",     "personality":"methodical",  "background":"data-science",    "goal":"work-project",         "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":30, "name":"Sage King",       "level":"actions-user", "personality":"curious",     "background":"web-dev",         "goal":"teaching-others",      "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":31, "name":"Tatum Wright",    "level":"advanced",     "personality":"confused",    "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":32, "name":"Uma Scott",       "level":"beginner",     "personality":"curious",     "background":"web-dev",         "goal":"team-evaluation",      "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":39, "name":"Sam Torres",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":40, "name":"Hayden Brooks",  "level":"github-basic", "personality":"impatient",   "background":"program-manager", "goal":"team-evaluation",      "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":41, "name":"Rowan Diaz",     "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"work-project",         "tool":"mobile", "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":42, "name":"Jordan Ellis",   "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"team-evaluation",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
-          {"id":43, "name":"Taylor Nguyen",  "level":"actions-user", "personality":"methodical",  "background":"enterprise-devops","goal":"team-evaluation",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
-          {"id":44, "name":"Avery Kim",      "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"vscode", "ui_preferred":false, "runs":0, "successes":0},
-          {"id":45, "name":"Casey Jordan",   "level":"advanced",     "personality":"curious",     "background":"enterprise-devops","goal":"teaching-others",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
-          {"id":46, "name":"Morgan Dale",    "level":"actions-user", "personality":"confused",    "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",    "ui_preferred":true,  "runs":0, "successes":0}
-        ]
-      }
-      EOF
-        echo "Initialized fresh student profiles (46 students)"
+        node .github/skills/micro-environment-simulator/simulator.js \
+          --generate-population \
+          --population-model "$MODEL" \
+          --seed workshop-student-cohort \
+          --out "$PROFILES"
+        echo "Initialized synthetic student profiles from $MODEL"
       else
         echo "Loaded existing student profiles from cache"
         cat "$PROFILES" | python3 -c "
@@ -124,7 +84,7 @@ steps:
     run: |
       mkdir -p /tmp/gh-aw/agent/sim/data
       python3 <<'PY'
-      import json, pathlib, statistics, sys
+      import json, pathlib, re, statistics, sys
 
       workshop = pathlib.Path('workshop')
       if not workshop.is_dir():
@@ -139,6 +99,26 @@ steps:
       sys.path.insert(0, str(pathlib.Path('.github/skills/curriculum-quantitative-assessment').resolve()))
       from curriculum_assessment import extract_title, score_workshop_file, sorted_workshop_files
 
+      def lesson_number(filename):
+          match = re.search(r'(?:^|-)0*(\d{1,2})(?:[a-z])?(?=[-.]|$)', filename)
+          return int(match.group(1)) if match else None
+
+      def part_label(filename):
+          lesson = lesson_number(filename)
+          if lesson is None:
+              return 'other'
+          return 'part1' if lesson <= 14 else 'part2'
+
+      def summarize_scores(rows):
+          if not rows:
+              return {'files': 0, 'mean_score': None, 'stdev_score': None}
+          scores = [row['overall_score'] for row in rows]
+          return {
+              'files': len(rows),
+              'mean_score': round(statistics.mean(scores), 2),
+              'stdev_score': round(statistics.stdev(scores) if len(scores) > 1 else 0, 2),
+          }
+
       all_files = sorted_workshop_files(workshop)
       main_steps = [f for f in all_files if not f.name.startswith('side-quest')]
       side_quests = [f for f in all_files if f.name.startswith('side-quest')]
@@ -147,7 +127,15 @@ steps:
       quality_metrics = []
       for i, f in enumerate(main_steps):
           scored = score_workshop_file(f)
-          curriculum.append({'index': i, 'file': f.name, 'title': scored['title'], 'is_learning_page': scored.get('is_learning_page', True)})
+          part = part_label(f.name)
+          scored['part'] = part
+          curriculum.append({
+              'index': i,
+              'file': f.name,
+              'title': scored['title'],
+              'part': part,
+              'is_learning_page': scored.get('is_learning_page', True),
+          })
           quality_metrics.append(scored)
 
       side_quest_list = []
@@ -157,6 +145,9 @@ steps:
 
       quality_mean = round(statistics.mean([m['overall_score'] for m in quality_metrics]), 2) if quality_metrics else 0.0
       lowest_quality = min(quality_metrics, key=lambda m: m['overall_score']) if quality_metrics else None
+      part1_metrics = [m for m in quality_metrics if m.get('part') == 'part1']
+      part2_metrics = [m for m in quality_metrics if m.get('part') == 'part2']
+      other_metrics = [m for m in quality_metrics if m.get('part') == 'other']
 
       data = {
           'main_steps': curriculum,
@@ -169,6 +160,9 @@ steps:
               'generated_from': 'workshop-student-simulator',
               'total_steps': len(quality_metrics),
               'mean_overall_score': quality_mean,
+              'part1': summarize_scores(part1_metrics),
+              'part2': summarize_scores(part2_metrics),
+              'other': summarize_scores(other_metrics),
               'lowest_quality_step': lowest_quality,
               'steps': quality_metrics,
           }, indent=2)
@@ -181,11 +175,14 @@ steps:
       non_learning_count = sum(1 for m in quality_metrics if not m.get('is_learning_page', True))
       print(f"Workshop curriculum: {len(curriculum)} main steps, {len(side_quests)} side quests ({non_learning_count} dispatcher pages scored for clarity/simplicity)")
       print(f"Curriculum quality mean score: {quality_mean}")
+      print(f"Curriculum parts: part1={len(part1_metrics)}, part2={len(part2_metrics)}, other={len(other_metrics)}")
       if lowest_quality:
           print(f"Lowest quality step: {lowest_quality['file']} ({lowest_quality['overall_score']}/10)")
       for entry in curriculum:
-          tag = '' if entry['is_learning_page'] else ' [dispatcher]'
-          print(f"  [{entry['index']}] {entry['file']}: {entry['title']}{tag}")
+          tags = [entry['part']]
+          if not entry['is_learning_page']:
+              tags.append('dispatcher')
+          print(f"  [{entry['index']}] {entry['file']}: {entry['title']} [{' · '.join(tags)}]")
       PY
 
   - name: Run Monte Carlo simulation (${{ env.MONTE_CARLO_RUNS }} runs per student)
@@ -211,7 +208,7 @@ steps:
 
 ## Role
 
-You are an expert UX researcher and instructional designer specialising in developer education. Your task is to **simulate 46 students with distinct profiles** attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
+You are an expert UX researcher and instructional designer specialising in developer education. Your task is to simulate the synthetic learner cohort in `/tmp/gh-aw/cache-memory/profiles.json` attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
 
 ---
 
@@ -220,13 +217,13 @@ You are an expert UX researcher and instructional designer specialising in devel
 The workshop teaches GitHub beginners how to create and run agentic workflows. The curriculum is determined at runtime from the workshop markdown files.
 
 Read `/tmp/gh-aw/agent/sim/data/curriculum.json`. It contains:
-- `main_steps`: ordered array of `{index, file, title}` for each main workshop step (excludes `README.md` and side-quest files)
+- `main_steps`: ordered array of `{index, file, title, part, is_learning_page}` for each main workshop step (excludes `README.md` and side-quest files)
 - `side_quests`: array of `{file, title}` for optional supplementary steps
 - `step_count`: total number of main steps
 
-Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, and `title` is the heading extracted from that file. Do not rely on any previously known or hardcoded list of steps.
+Use the `main_steps` array as the definitive curriculum for this simulation. Each element's `file` field is the filename in `workshop/`, `title` is the heading extracted from that file, and `part` is one of `part1` (lessons `00–14`), `part2` (lessons `15+`), or `other`. Do not rely on any previously known or hardcoded list of steps.
 
-Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`).
+Read `/tmp/gh-aw/agent/sim/data/curriculum-quality-metrics.json` for step-level curriculum quality metrics, including per-part summary stats in `part1`, `part2`, and `other`, plus each step's `overall_score` and per-dimension rubric scores (`cognitive_load`, `readability`, `active_learning`, `checkpoint_quality`, `scaffolding`, `style_compliance`).
 These metrics come from the shared rubric in `.github/skills/curriculum-quantitative-assessment/curriculum_assessment.py`.
 Treat that rubric as the educational score source of truth when you recommend repairs, and use this data to ground dropout analysis and repair recommendations.
 
@@ -234,19 +231,22 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main step
 
 ---
 
-## Student Profiles (46 students)
+## Synthetic Learner Profiles
 
 Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each student has:
-- `id` — unique identifier (1–46)
+- `id` — unique identifier within the generated cohort
 - `name` — persona name
 - `level` — agentic technical level: `beginner` (no prior GitHub/coding) | `github-basic` (can clone/commit/push; no Actions or AI tools) | `actions-user` (familiar with Actions YAML; new to agentic/AI workflows) | `advanced` (experienced developer/DevOps engineer with LLM tooling experience)
 - `personality` — `curious` | `methodical` | `impatient` | `confused` | `skeptical`
 - `background` — role background: `no-coding` (no software development background) | `web-dev` (frontend/full-stack web developer) | `backend-dev` (backend/systems developer) | `devops` (DevOps engineer/SRE) | `data-science` (data scientist/ML engineer) | `enterprise-dev` (enterprise developer using GHE/GHES with self-hosted runners) | `enterprise-devops` (senior DevOps/platform engineer managing self-hosted runner fleets) | `program-manager` (program/product manager evaluating agentic workflows)
 - `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via web/browser chat or cloud coding agent) | `mobile` (uses the GitHub Mobile app on iOS or Android to spawn agent sessions and review pull requests; no coding support)
+- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via the Agents tab or another browser/chat surface, where the learner sends prompts rather than terminal commands and should explicitly invoke `/agentic-workflows` for workflow-authoring tasks)
+- `mobile` — `true` if the student accesses GitHub primarily from the GitHub Mobile app on iOS or Android (spawns agent sessions and reviews pull requests; no coding or terminal support); `false` or absent otherwise. May be combined with any `tool` value; in practice most mobile students use `CCA`.
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
+
+The profiles are generated from `.github/skills/micro-environment-simulator/workshop-student-population.json`. Treat its distributions as explicit expert assumptions, not measured learner demographics. Do not present simulated rates as observed human outcomes.
 
 ---
 
@@ -254,16 +254,27 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 
 ### Simulate each student through the workshop
 
-For **each of the 46 students**, simulate their experience step-by-step using the following rules:
+For each student in the generated cohort, simulate their experience step-by-step using the following rules:
 
 First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
+
+Evaluate content assumptions semantically instead of inferring state from keyword counts. Use one focused yes/no question per assumption, answer only `YES`, `NO`, or `UNKNOWN`, and cite `file:line` evidence. Copy each step's `contentHash` from the baseline output into `evaluatedContentHash`. The simulator ignores evaluations when that hash does not match the current mapped page content, so page edits require fresh evaluations.
 
 Use this JSON shape:
 
 ```json
 {
+  "schemaVersion": 1,
   "stepInsightsById": {
     "<step-id>": {
+      "evaluatedContentHash": 123456789,
+      "evaluations": {
+        "<assumption-id>": {
+          "question": "Does the applicable content ensure this state is true before the next step?",
+          "answer": "YES",
+          "evidence": ["<workshop-file>:<line>"]
+        }
+      },
       "summary": "Short explanation of the content-specific risk or support you inferred.",
       "bias": -0.04,
       "signalAdjustments": {
@@ -290,9 +301,26 @@ Use this JSON shape:
 }
 ```
 
+- `schemaVersion: 1` is the initial assumption-evaluation format; increment it when a future change is not backward compatible.
+- Always evaluate these Step 7 assumptions because they determine the state required by Step 8:
+  - `workflow_source_created_terminal`
+  - `workflow_compiled_terminal`
+  - `workflow_published_terminal`
+  - `workflow_source_created_copilot`
+  - `workflow_compiled_copilot`
+  - `workflow_published_copilot`
+  - `cca_authoring_guidance`
+  - `copilot_centralized_billing_configured`
+  - `copilot_personal_billing_configured`
+- Evaluate the terminal and Copilot paths independently. A path passes only when its instructions and checkpoint ensure the learner completes the action; a nearby keyword or optional suggestion is not enough.
+- For `workflow_published_*`, confirm that both the source `.md` and generated `.lock.yml` reach the repository's default branch.
+- For each billing assumption, confirm the content selects that billing method, applies its matching permission or secret configuration, recompiles after changes, and commits the resulting source and lock files.
+- Use `UNKNOWN` when the mapped pages do not provide enough evidence. `UNKNOWN` does not update state.
+- You may add focused evaluations for other high-risk steps. Unknown evaluation IDs remain available as report evidence but cannot directly patch arbitrary simulator state.
 - Omit steps where you have no meaningful adjustment.
 - Use positive numbers to increase success probability and negative numbers to decrease it.
 - Base these adjustments on the actual wording, path structure, fallbacks, and recovery guidance in the files you inspect — not only on the numeric signals already present in the simulator.
+- For Copilot / Agents-tab paths, verify that the content treats the surface as prompt-driven chat and explicitly calls out `/agentic-workflows` for workflow-authoring tasks. Missing that cue, or presenting shell commands as if they run inside the Agents tab, is an access barrier for `tool: CCA` learners.
 
 Then rerun the simulator yourself so those agent-derived insights are incorporated into the probabilities:
 
@@ -313,7 +341,7 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
 {
   "mode": "monte-carlo",
   "runs": ${{ env.MONTE_CARLO_RUNS }},
-  "total": 46,
+  "total": <generated cohort size>,
   "stepContentById": {
     "<step-id>": {
       "files": [{"file": "<workshop-file>", "title": "<title>"}],
@@ -324,7 +352,14 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
       "troubleshootingSupport": <0.0–1.0>,
       "agentInsight": {
         "summary": "<optional content-aware rationale>",
-        "riskTags": ["<tag>", "..."]
+        "riskTags": ["<tag>", "..."],
+        "evaluatedContentHash": 123456789,
+        "evaluations": {
+          "<assumption-id>": {
+            "answer": "YES",
+            "evidence": ["<workshop-file>:<line>"]
+          }
+        }
       }
     }
   },
@@ -355,42 +390,38 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
 
 Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort. Use `stepContentById` — including any `agentInsight` you added before rerunning the simulator — to explain how the actual workshop content changes those probabilities from step to step. Do not reuse the same generic explanation for every learner.
 
-Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`), inspect the matching `stepContentById[mostCommonFailureStep]`, and cross-reference both with the student profile to produce per-student pain points:
-
-- Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} runs
-- The likely environment or profile reason (OS, tool, auth, level, personality)
-- The likely content reason (for example: terminal-heavy instructions, browser-friendly fallback, auth-heavy setup, or high conceptual density)
-- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
-- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
-
-#### Qualitative depth for top-failure students
-
-For students whose `successRate` < 0.50 (the most at-risk half), apply additional qualitative reasoning from the student profile to enrich the pain-point description:
-
-- **`level`** vs. assumed knowledge
-- **`background`** vs. step domain
-- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA` or `mobile`, note that no UI alternative exists)
-- **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
-- **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
-- **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
+Use `successRateCi95`, `aggregate.overallSuccessRateCi95`, and `aggregate.dropoutRateCi95ByStep` to show Monte Carlo uncertainty. These intervals do not cover uncertainty in the assumed population weights or probability model; repeat that limitation in the report. Use `aggregate.attemptsByStep` as each step's at-risk denominator. `aggregate.dropoutRateByStep` is the conditional probability of failing among runs that reached the step, not a percentage of all starting runs.
 
 ### Collect pain points per student
 
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
-- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
+- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, `mobile`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` or `mobile: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
+- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
+- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
+- For `tool: CCA` learners, treat the Agents tab as a prompt surface. If the step tells the learner to run shell commands there, or fails to call out `/agentic-workflows` for workflow-authoring work, classify that as a content mismatch rather than a generic terminal-skill gap.
+
+For students whose `successRate` < 0.50, also apply qualitative reasoning from the student profile to enrich the pain-point description:
+- **`level`** vs. assumed knowledge
+- **`background`** vs. step domain
+- **`tool`**, **`mobile`**, and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred`, `mobile: true`, or uses `CCA`, note that no UI alternative exists)
+- **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
+- **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
+- **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
 
 ### Aggregate and analyse results
 
 Use the pre-computed values from `monte-carlo-replay.json` as the primary data source:
 
 - **Overall success rate** — read from `aggregate.overallSuccessRate`
-- **Per-step dropout rate** — read from `aggregate.dropoutRateByStep`; sort descending to find the worst steps
+- **Per-step conditional dropout rate** — read from `aggregate.dropoutRateByStep`; sort descending to find the worst steps, and report each rate with its at-risk count from `aggregate.attemptsByStep` and interval from `aggregate.dropoutRateCi95ByStep`
 - **Top 5 dropout steps** — highest values in `aggregate.dropoutRateByStep`
 - **Success rate by technical level** — group `monteCarlo` entries by student level and average `successRate`
 - **Success rate by personality** — group `monteCarlo` entries by student personality and average `successRate`
 - **Success rate by UI preference** — compare average `successRate` for students where `ui_preferred: true` vs `ui_preferred: false`
+- **Part summary** — report `curriculum-quality-metrics.json.part1`, `.part2`, and overall mean so the core path (lessons `00–14`) is separated from the advanced lessons (`15+`)
+- **Part-specific hotspots** — when listing top-dropout steps or curriculum repairs, note whether each step belongs to Part 1 (`00–14`) or Part 2 (`15+`) using `curriculum.json.main_steps[*].part`
 - **Most common pain points** (top 10, ranked by total failure count across all students from `failuresByStep`; use `aggregate.failureCategoriesByStep` for the exact causes)
 - **Curriculum quality hotspots** — correlate top-dropout steps with low `overall_score` and weak rubric dimensions from `curriculum-quality-metrics.json`
 - **Learning KPI index** — compute the cohort-wide mean of the three learning-outcome dimensions from `curriculum-quality-metrics.json` across all main steps: `active_learning`, `checkpoint_quality`, and `scaffolding`. Report each as a standalone mean score (0–10) and their weighted average using the same weights as the shared rubric: `(2.0 × active_learning + 2.0 × checkpoint_quality + 1.5 × scaffolding) / 5.5`. This index measures whether learners who stay in the workshop are actually building skills, independent of whether others drop out.
@@ -419,7 +450,7 @@ Use `create-issue` safe output with:
 
 - `temporary_id`: `aw_sim_parent` (safe-outputs requires the `aw_` prefix; this parent issue handle is used by child issues in step 8)
 - **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N, ${{ env.MONTE_CARLO_RUNS }}×Monte Carlo)`
-- where N is the total accumulated runs across all students divided by 46 (round to nearest integer).
+- where N is the total accumulated runs across all students divided by the generated cohort size (round to nearest integer).
 
 Keep the report short and to the point. Keep critical findings visible; move verbose content into `<details>` sections for progressive disclosure.
 
@@ -428,16 +459,28 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ```markdown
 ### Overview
 - Date: YYYY-MM-DD
-- Students simulated: 46 × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
+- Students simulated: N × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
 - Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
-- Overall success rate: XX% (from `aggregate.overallSuccessRate`)
-- Highest-dropout step: <step-id> (XX% dropout rate)
+- Overall success rate: XX% (95% Monte Carlo interval: XX%–XX%)
+- Highest-dropout step: <step-id> (XX% conditional dropout among N at-risk runs; 95% Monte Carlo interval: XX%–XX%)
 - Lowest curriculum quality step: `<file>` (overall score X.X/10)
 - Learning KPI index: X.X/10 (active_learning X.X · checkpoint_quality X.X · scaffolding X.X)
+- Model: `<journeyModelVersion>` / `<populationModelVersion>` (parameter hash `<parameterHash>`)
+- Limitation: synthetic results reflect explicit model assumptions; intervals exclude model and population-assumption uncertainty
+
+### Part Summary
+| Part | Files | Mean Score | Std Dev |
+|---|---|---|---|
+| Part 1 — core path (lessons 00–14) | `N1` | `X.XX / 10.0` | `±S1` |
+| Part 2 — advanced (lessons 15+) | `N2` | `Y.YY / 10.0` | `±S2` |
+| Overall corpus | `N` | `Z.ZZ / 10.0` | `±S` |
+
+If any pages are classified as `other`, add one short bullet noting how many there are and whether their `mean_score` is below, equal to, or above the overall corpus mean.
 
 ### Critical Findings
 1. 2-4 bullets with the most important blockers and who they affect.
 2. Include one bullet on the learning quality health: whether the learning KPI index indicates learners who stay in the workshop are building skills effectively.
+3. At least one bullet should say whether the most important repair belongs to Part 1 (`00–14`) or Part 2 (`15+`).
 
 ### Top Repairs to Prioritize
 Note: some student dropout is expected and acceptable. Repairs must maintain or improve the learning KPI index — do not lower the cognitive bar or remove practice to chase headline completion numbers.
@@ -449,7 +492,7 @@ Note: some student dropout is expected and acceptable. Repairs must maintain or 
 <details>
 <summary>Dropout by step</summary>
 
-Table with: step, dropouts, dropout rate, failure mode (access barrier | learning barrier), top reason. The top reason must be the highest-count category in `aggregate.failureCategoriesByStep[step]`, translated into plain language without changing its meaning.
+Table with: step, at-risk runs, dropouts, conditional dropout rate, 95% Monte Carlo interval, failure mode (access barrier | learning barrier), top reason. The top reason must be the highest-count category in `aggregate.failureCategoriesByStep[step]`, translated into plain language without changing its meaning.
 
 </details>
 

@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Explore and Adapt an Annotated Workflow
 
-> _Optional: work through this guide to understand the design choices in `daily-status.md` and adapt them in your own copy — then return to [Build: Daily Repo Status Workflow](11a-build-daily-status.md)._
+> _Optional: work through this guide to understand the design choices in `daily-status.md` and adapt them in your own copy — then return to [Build: Daily Repo Status Workflow](07-your-first-workflow.md)._
 
 ## 📋 Before You Start
 
-- You have completed [Step 11](11a-build-daily-status.md) and `.github/workflows/daily-status.md` exists in your repository.
+- You have completed [Step 11](07-your-first-workflow.md) and `.github/workflows/daily-status.md` exists in your repository.
 - Open `daily-status.md` in your editor — you'll make small edits as you work through this guide.
 
 ## 🎯 What You'll Do
@@ -102,7 +102,7 @@ safe-outputs:
 ---
 
 <!-- journey: all -->
-Return to [Build: Daily Repo Status Workflow](11a-build-daily-status.md).
+Return to [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
 <!-- /journey -->
 
 

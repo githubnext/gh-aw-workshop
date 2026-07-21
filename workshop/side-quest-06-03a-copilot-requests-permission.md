@@ -9,7 +9,7 @@
 - An organization owns your practice repository.
 - An organization administrator confirmed centralized Copilot billing is enabled for GitHub Actions.
 - You completed [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and confirmed Method 1 applies to your repository.
-- Your practice repository was created in [Step 3](03-create-your-repo.md).
+- Your practice repository was created during setup: [Adventure Codespace](02a-setup-codespace.md) or [Adventure Local](02b-setup-local.md).
 
 This is the simplest way to give your agentic workflow Copilot API access when the organization can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) permission.
 

@@ -18,6 +18,7 @@ Use the checked-in source directly (do not re-implement from scratch):
 
 - `.github/skills/micro-environment-simulator/simulator.js`
 - `.github/skills/micro-environment-simulator/workshop-student-journey.js` (workshop-specific example journey)
+- `.github/skills/micro-environment-simulator/workshop-student-population.json` (explicit synthetic-population assumptions)
 
 It exports:
 
@@ -37,6 +38,16 @@ node .github/skills/micro-environment-simulator/simulator.js \
 ```
 
 Use `/tmp/gh-aw/agent/sim/data/environment-replay.json` as the source of environment mismatch diagnostics during simulation.
+
+Generate a reproducible synthetic cohort from the maintained population model:
+
+```bash
+node .github/skills/micro-environment-simulator/simulator.js \
+  --generate-population \
+  --population-model .github/skills/micro-environment-simulator/workshop-student-population.json \
+  --seed workshop-student-cohort \
+  --out /tmp/gh-aw/agent/sim/data/profiles.json
+```
 
 The simulator API is workflow-agnostic. Each workflow should provide its own journey `steps` and `transitions`.
 
@@ -88,5 +99,18 @@ Return concise JSON-friendly results that workflows can aggregate:
 - first failing step (if any)
 - failure reason category
 - normalized remediation action
+- per-step at-risk counts and conditional dropout rates
+- 95% intervals for Monte Carlo sampling uncertainty
+
+Treat population distributions and transition coefficients as assumptions rather than observed learner data. Report that the confidence intervals exclude model and population-assumption uncertainty.
 
 If assumptions hold for a full replay, mark the run successful and include the final state summary.
+
+## Agent-Evaluated Content Assumptions
+
+When an agent evaluates whether current workshop pages establish simulator state, pass the results with `--agent-insights`. Each step insight may include:
+
+- `evaluatedContentHash`: the step's `contentHash` from a simulator run over the current pages
+- `evaluations`: named, single-claim records with an `answer` of `YES`, `NO`, or `UNKNOWN` and `file:line` evidence
+
+The simulator ignores evaluations whose content hash no longer matches the mapped workshop pages. Journey code must map known evaluation IDs to specific state fields; never apply arbitrary agent-provided state patches. Keep probability adjustments separate from state assumptions so a favorable score cannot bypass a failed prerequisite.

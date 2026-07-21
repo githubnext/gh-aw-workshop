@@ -16,6 +16,11 @@ Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `eng
 
 Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
 
+If you are working in Claude Code or OpenAI Codex, keep this first workflow on Copilot and switch later if you want:
+
+- **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
+- **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
+
 ## Choose one Copilot billing path
 
 Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
@@ -62,6 +67,24 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 | Organization centralized billing | Present | None |
 | Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
 
+## Verify model access with a test prompt
+
+Before proceeding, send a quick test to confirm Copilot is reachable from this repository.
+Catching a billing or authentication problem here saves debugging time in Step 8.
+
+1. Open the **Agents** tab in your repository on GitHub.com.
+2. Send the following prompt:
+
+   ```
+   What is GitHub Actions? Reply in one sentence.
+   ```
+
+3. Confirm you receive a reply. Any response means the model is accessible.
+4. If you see an error, revisit the billing path above before continuing.
+
+> [!IMPORTANT]
+> Do not continue to Step 8 if you received an error instead of a response. Fix the billing or authentication issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run.
+
 ## ✅ Checkpoint
 
 - [ ] I confirmed the first workflow uses GitHub Copilot
@@ -69,10 +92,11 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I completed the matching authentication guide
 - [ ] My source and compiled lock file use the selected method
 - [ ] Both workflow files are committed to `main`
+- [ ] I opened the Agents tab and sent a test prompt
+- [ ] I received a response from the model
+- [ ] I confirmed no billing or authentication errors appeared
 - [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 <!-- journey: all -->
 **Next:** [Run and Watch Your Workflow](08-run-your-workflow.md)
 <!-- /journey -->
-
-

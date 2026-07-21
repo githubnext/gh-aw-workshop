@@ -15,7 +15,7 @@ By default, a gh-aw agent reads your task brief and produces text. **MCP (Model 
 
 ## What is MCP?
 
-**Model Context Protocol** is an open standard originally developed by Anthropic that defines a uniform way for AI models to call external tools. Instead of building a custom integration for every API you want the agent to use, MCP gives you a single protocol. A server speaks MCP; the agent calls it. That's the whole contract.
+[**Model Context Protocol**](https://github.github.com/gh-aw/reference/mcp-gateway/) is an open standard originally developed by Anthropic that defines a uniform way for AI models to call external tools. Instead of building a custom integration for every API you want the agent to use, MCP gives you a single protocol. A server speaks MCP; the agent calls it. That's the whole contract.
 
 A tool server is a process that:
 
@@ -89,7 +89,7 @@ gh aw validate
 
 ---
 
-## How toolsets work
+## How [toolsets](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) work
 
 A toolset is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
 

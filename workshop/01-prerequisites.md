@@ -1,5 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
+<!-- learning:false -->
 
 # Before we start
 
@@ -17,6 +18,9 @@ If you are unsure, start with a Codespace. It gives you a ready-to-use environme
 
 If you are **familiar with terminals**, use your usual local setup. We will go over the requirements.
 
+> [!TIP]
+> On a mobile device or using GitHub Copilot (CCA/Agents tab) with no access to a terminal? Choose the **GitHub UI path** — no installation or terminal is required. You will create your repository on github.com and author workflows directly from the Copilot or Agents tab in your browser.
+
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
 ## Verify AI engine access
@@ -28,7 +32,7 @@ Open [github.com/settings/copilot](https://github.com/settings/copilot) and conf
 
 Claude, Codex, or Gemini? Confirm your API key.
 
-## Let's get started!
+## Let's get started
 
 Choose your adventure.
 
@@ -37,4 +41,7 @@ Choose your adventure.
 <!-- /journey -->
 <!-- journey: local -->
 **Next:** Open [Set Up Your Local Terminal](02b-setup-local.md).
+<!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** On [github.com/new](https://github.com/new), create a public repository named `my-agentic-workflows`. Check **Add a README file** and click **Create repository**. Then continue to [GitHub UI Path — No Installation Needed](06c-install-ui.md).
 <!-- /journey -->

@@ -50,7 +50,7 @@ This design reduces long-lived risk because the environment is short-lived and i
 
 ---
 
-## What “safe output” means
+## What "[safe output](https://github.github.com/gh-aw/reference/safe-outputs/)" means
 
 Safe output is useful information that avoids harmful leakage or unsafe actions.
 

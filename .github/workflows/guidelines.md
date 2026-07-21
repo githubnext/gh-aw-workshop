@@ -27,6 +27,20 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
+## Copilot / Agents tab guidance
+
+- For `copilot` journey pages and Adventure D content, treat the Agents tab as a **prompt surface**, not a terminal.
+- When a learner is working in the Agents tab or another CCA surface, tell them what prompt to send; do **not** present shell commands as though they run inside that chat.
+- When the task is to create, edit, debug, or upgrade an agentic workflow from a CCA surface, explicitly call out the `/agentic-workflows` skill in the prompt.
+- If a CCA-oriented step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Agents-tab prompt so learners know which surface to use for each action.
+
+## Event provisioning surfaces
+
+- Some workshop content is intentionally reused in provisioned event environments such as an org profile README and a learner-repository Codespaces launcher.
+- The maintained example assets live in `workshop/examples/event-provisioning/` and represent downstream copies, not primary authored content.
+- When you change workshop onboarding language that should also appear in those provisioned surfaces, update the marked source blocks in `workshop/00-welcome.md` and keep the examples in sync.
+- For provisioned learner repositories, prefer a Codespaces launcher entry point that starts at Step 4 or Step 5 because org invite, repository creation, and Codespace creation are already complete.
+
 ## Positioning agentic workflows as an Actions-compatible superset
 
 - Present agentic workflows as a **smooth transition from classic GitHub Actions**, not a replacement that forces learners to start over.
@@ -38,6 +52,40 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 - Do **not** number Markdown headers inside a file. Use descriptive headings such as `### Open the Codespace`, not `### 2. Open the Codespace`.
 - Keep ordering in ordered lists, tables, filenames, and checkpoint lists instead of in the heading text itself.
+
+## Theme-aware workshop images
+
+When Playwright or another automation creates a workshop screenshot or diagram,
+generate both light and dark variants during the same run. Name them
+`<stem>-light.<ext>` and `<stem>-dark.<ext>`, then use GitHub's
+[theme-aware `<picture>` pattern](https://github.blog/developer-skills/github/how-to-make-your-images-in-markdown-on-github-adjust-for-dark-mode-and-light-mode/#one-snippet-two-themes):
+
+```html
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/<stem>-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/<stem>-light.svg">
+   <img alt="Concise descriptive alt text" src="images/<stem>-light.svg">
+</picture>
+```
+
+- Keep the fallback `<img>` and use the light variant as its `src`.
+- Put alt text on the fallback `<img>`; do not duplicate it on `<source>` elements.
+- Capture or render each variant with Playwright's matching `colorScheme` setting.
+- Verify in both color schemes that `currentSrc` selects the expected variant and
+   that the image is nonblank, readable, and free of clipping or overflow.
+
+Existing single-theme workshop images are migration candidates, not exceptions:
+
+- Inventory Markdown image references and HTML `src`/`srcset` references so
+   existing `<picture>` blocks remain auditable.
+- Migrate at most three existing visuals per automated pull request. Process core
+   workshop pages before setup paths, advanced topics, and side quests.
+- Preserve each visual's stem and alt text while creating `-light` and `-dark`
+   variants and replacing the original reference with the `<picture>` pattern.
+- Create a genuine theme-specific variant for UI screenshots and diagrams. A
+   theme-neutral photo may use the same existing file for both `<source>` entries
+   instead of duplicating the binary.
+- Do not delete an original asset until no Markdown or HTML reference uses it.
 
 ## Alert callouts: use `<details>` only for multi-line content
 
@@ -197,7 +245,7 @@ This rule does not override clearly superior choices for all learners. It is a t
 
 ## Consistency check
 
-Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, and do not reference Node.js as a prerequisite.
+Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, do not reference Node.js as a prerequisite, and keep any event-provisioning examples synchronized with the marked workshop source content.
 
 ## Activity numbering for a sortable adventure graph
 
@@ -346,7 +394,7 @@ Some workshop pages are not substantive learning steps — they are **dispatcher
 
 ### Marking a page as a dispatcher
 
-Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the page annotation lines:
+Add the comment `<!-- learning:false -->` anywhere in the file — conventionally placed immediately after the page annotation lines. The parser also accepts `<!-- learning: false -->` (with a space after the colon), but the canonical form without the space is preferred:
 
 ```markdown
 <!-- page-journey: all -->

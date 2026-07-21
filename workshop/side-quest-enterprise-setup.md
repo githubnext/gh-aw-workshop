@@ -54,7 +54,7 @@ Before continuing:
 
 ## Self-hosted runner prerequisites
 
-If your enterprise requires self-hosted runners for GitHub Actions, confirm these before you continue:
+If your enterprise requires [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) for GitHub Actions, confirm these before you continue:
 
 - A runner is registered and online for your repository or org.
 - The runner allows workflow jobs from your repository.
@@ -84,7 +84,6 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Prerequisites](01-prerequisites.md), [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md), [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md), [Step 3](03-create-your-repo.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+Common return points are [Prerequisites](01-prerequisites.md), [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md), [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 <!-- /journey -->
-

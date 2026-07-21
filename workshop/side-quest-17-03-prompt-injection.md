@@ -68,7 +68,7 @@ Keep your `permissions:` block minimal. Request only what your workflow genuinel
 
 ### `safe-outputs` constraints limit available write operations
 
-gh-aw's `safe-outputs` setting in frontmatter limits which write operations the agent can perform at all. If `create-issue` is not in the allowed output set, the tool call simply does not exist from the agent's perspective. An injected instruction to create an issue has no execution path.
+gh-aw's [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) setting in frontmatter limits which write operations the agent can perform at all. If `create-issue` is not in the allowed output set, the tool call simply does not exist from the agent's perspective. An injected instruction to create an issue has no execution path.
 
 Example frontmatter that restricts the agent to read-only operations plus issue creation:
 

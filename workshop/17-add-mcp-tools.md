@@ -11,7 +11,7 @@ You'll add an MCP (Model Context Protocol) server to your workflow's [frontmatte
 ## 📋 Before You Start
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
-- You have a working daily-status workflow from [Build: Daily Repo Status Workflow](11a-build-daily-status.md).
+- You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
 - You're comfortable editing the YAML frontmatter section at the top of your workflow file.
 
 ## Steps
@@ -28,7 +28,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 > - Want a beginner-friendly security mental model for why sandboxing matters, where the agent runs, and what safe output looks like? Work through [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md).  
 > - Want to understand how malicious content in issues or PRs can try to redirect your agent — and how gh-aw's design limits the damage? Work through [Side Quest: Prompt Injection Attacks in Agentic Workflows](side-quest-17-03-prompt-injection.md).  
 > - Want to see how an over-powered workflow can give a misdirected agent more authority than the task really needs? Work through [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).  
-> - Want to understand how a compromised MCP server could feed poisoned data to your agent — and how `network.allowed-domains` and minimal permissions defend against it? Work through [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md).  
+> - Want to understand how a compromised MCP server could feed poisoned data to your agent — and how `network.allowed` and minimal permissions defend against it? Work through [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md).  
 > - Want to see how crafted issue or PR content can embed misleading text into agent output — and how `safe-outputs` label scoping keeps reviewers from being fooled? Work through [Side Quest: Output Injection via Safe Outputs](side-quest-17-06-output-injection.md).  
 > - Want to understand how a misdirected agent with write access could commit backdoors or overwrite sensitive files — and how `contents: read`, `protected-files`, and `safe-outputs: create-pull-request` prevent it? Work through [Side Quest: Repository Poisoning via Agentic Write Access](side-quest-17-07-repo-poisoning.md).  
 > Then come back here.

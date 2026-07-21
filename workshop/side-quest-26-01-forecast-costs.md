@@ -6,7 +6,7 @@
 
 ## What `gh aw forecast` does
 
-`gh aw forecast` looks at your actual run history and runs a Monte Carlo simulation to project future AIC consumption. It accounts for:
+`gh aw forecast` looks at your actual run history and runs a Monte Carlo simulation to project future [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumption. It accounts for:
 
 - Run frequency (how often the workflow triggers)
 - Per-run usage (how many AIC each run consumed)

@@ -27,7 +27,7 @@ If you already know Actions, here's the key shift at a glance:
 |-----------|-----------------|-------------------|
 | **Task description** | You write YAML `steps` | You write a plain-English brief |
 | **Execution model** | Deterministic — same inputs, same path | AI agent reasons and adapts at runtime |
-| **Tool selection** | Fixed — you specify every `uses` and `run` | Agent selects and chains tools from declared toolsets |
+| **Tool selection** | Fixed — you specify every `uses` and `run` | Agent selects and chains [tools](https://github.github.com/gh-aw/reference/tools/) from declared toolsets |
 | **File format** | `.github/workflows/*.yml` | `.github/workflows/*.md` (compiled to `.lock.yml`) |
 
 ## Quick Refresher
@@ -105,31 +105,6 @@ Open a real workflow file and find the three core building blocks — no termina
    - The `on:` trigger — what event starts this workflow?
    - One `jobs:` entry — what is the job named?
    - One `steps` item — what command does it run?
-
-You don't need to understand every line. The goal is to see that a real workflow follows exactly the structure described above.
-
-- [ ] I found the `on:` trigger in a real workflow
-- [ ] I identified a job name under `jobs:`
-- [ ] I found at least one `steps` command
-
-## Check your understanding
-
-Mark each statement as true or false, then reveal the answers:
-
-- [ ] Workflow files live in `.github/workflows/` as YAML
-- [ ] The `on:` key defines when a workflow runs, not which commands to execute
-- [ ] Each step in a job runs on its own separate virtual machine
-- [ ] Agentic workflows replace scripted steps with a plain-language brief
-
-<details>
-<summary>Reveal answers</summary>
-
-1. True — workflow files live in `.github/workflows/` as YAML.
-2. True — `on:` is the trigger; commands go in `steps` entries.
-3. False — steps within a job share one runner; a new machine is provisioned per job.
-4. True — agentic workflows use a Markdown brief in place of scripted `steps`; the agent decides the how.
-
-</details>
 
 ## ✅ Checkpoint
 
