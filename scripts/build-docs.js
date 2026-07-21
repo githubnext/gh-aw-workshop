@@ -473,6 +473,13 @@ body,
   }
 }
 
+/* Responsive images: full-width on mobile, capped on larger screens — no media query needed */
+.markdown-body img {
+  display: block;
+  width: min(100%, 720px);
+  height: auto;
+}
+
 .markdown-body .anchor {
   display: none;
 }
