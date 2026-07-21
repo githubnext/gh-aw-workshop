@@ -178,6 +178,31 @@ const page = `<!DOCTYPE html>
 <body>
   <div class="container-xl px-3 py-5 markdown-body">
 ${htmlContent}</div>
+  <script>
+    // When a page link is clicked, open the target <details> element so its content is visible.
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      const id = decodeURIComponent(link.getAttribute('href').slice(1));
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (target && target.tagName === 'DETAILS') {
+        target.open = true;
+        target.focus();
+      }
+    });
+
+    // Also open the target <details> if the page is loaded with a hash in the URL.
+    (function openDetailsForHash() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (target && target.tagName === 'DETAILS') {
+        target.open = true;
+        target.focus();
+      }
+    })();
+  </script>
 </body>
 </html>
 `;
