@@ -165,6 +165,15 @@ const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / e
 `;
 fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 
+// Generate docs CSS overrides for rendered markdown
+const docsCss = `/* Improve link discoverability in rendered workshop docs */
+.markdown-body a:not(.anchor) {
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+}
+`;
+fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
+
 // Write single-page HTML
 const page = `<!DOCTYPE html>
 <html lang="en">
@@ -174,6 +183,7 @@ const page = `<!DOCTYPE html>
   <title>gh-aw Workshop</title>
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
+  <link rel="stylesheet" href="docs.css">
 </head>
 <body>
   <div class="container-xl px-3 py-5 markdown-body">
