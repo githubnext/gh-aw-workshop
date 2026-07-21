@@ -161,6 +161,28 @@ permissions:
 ---
 ```
 
+<details><summary>Solution</summary>
+
+```yaml
+---
+emoji: 📊
+description: Post a daily repository status summary as a GitHub issue comment.
+on:
+  schedule: daily
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  copilot-requests: write
+  issues: read
+  pull-requests: read
+  actions: read
+---
+```
+
+</details>
+
 ---
 
 ## ✅ Checkpoint
