@@ -593,8 +593,7 @@ document.addEventListener('click', function (e) {
 `;
 fs.writeFileSync(path.join(distDir, 'docs.js'), docsJs);
 
-// Generate single-page reveal.js presentation
-const totalGroups = sortedGroupKeys.length;
+// Generate the single-page workshop reader.
 const page = `<!DOCTYPE html>
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
 <head>
@@ -727,4 +726,4 @@ ${htmlContent}</main>
 `;
 
 fs.writeFileSync(path.join(distDir, 'index.html'), page);
-console.log(`Built dist/index.html — ${files.length} files across ${totalGroups} slide columns.`);
+console.log(`Built dist/index.html from ${files.length} files.`);
