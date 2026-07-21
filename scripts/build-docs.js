@@ -31,13 +31,27 @@ function isExternalWebLink(href) {
 }
 
 function addExternalLinkTargetAttrs(html) {
-  return html.replace(/<a\b(?<attrs>[^>]*)>/gi, (match, attrs = '') => {
+  return html.replace(/<a\b([^>]*)>/gi, (match, attrs = '') => {
     const hrefMatch = attrs.match(/\bhref="([^"]+)"/i);
     if (!hrefMatch || !isExternalWebLink(hrefMatch[1])) return match;
 
-    const targetAttr = /\btarget\s*=/.test(attrs) ? '' : ' target="_blank"';
-    const relAttr = /\brel\s*=/.test(attrs) ? '' : ' rel="noopener noreferrer"';
-    return `<a${attrs}${targetAttr}${relAttr}>`;
+    let updatedAttrs = attrs;
+
+    if (!/\btarget\s*=/.test(updatedAttrs)) {
+      updatedAttrs += ' target="_blank"';
+    }
+
+    const relMatch = updatedAttrs.match(/\brel="([^"]*)"/i);
+    if (relMatch) {
+      const relValues = new Set(relMatch[1].split(/\s+/).filter(Boolean));
+      relValues.add('noopener');
+      relValues.add('noreferrer');
+      updatedAttrs = updatedAttrs.replace(/\brel="[^"]*"/i, `rel="${[...relValues].join(' ')}"`);
+    } else {
+      updatedAttrs += ' rel="noopener noreferrer"';
+    }
+
+    return `<a${updatedAttrs}>`;
   });
 }
 
