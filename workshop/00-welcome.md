@@ -2,7 +2,7 @@
 <!-- page-adventure: core -->
 <!-- learning: false -->
 
-# Welcome to our Agent Factory Tour!
+# Welcome to our Agent Factory Tour
 
 By the end of this workshop, a real AI agent will create an issue with a summary of the activity in your repository over the latest 24h, every day, without you writing shell-script workflow code.
 
