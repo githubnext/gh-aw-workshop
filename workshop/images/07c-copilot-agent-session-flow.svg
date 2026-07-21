@@ -137,6 +137,6 @@
     fill="#cf222e" text-anchor="start">Agent fixes &amp; re-validates</text>
 
   <!-- Bottom annotation -->
-  <text x="600" y="510" font-family="system-ui, -apple-system, sans-serif" font-size="12"
+  <text x="600" y="505" font-family="system-ui, -apple-system, sans-serif" font-size="12"
     fill="#57606a" text-anchor="middle">The agent handles authoring, compilation, and validation autonomously. You only need to review and merge (or request corrections).</text>
 </svg>

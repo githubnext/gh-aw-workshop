@@ -12,7 +12,7 @@
 <text x="112" y="202" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#7ee787">student@workshop:~/my-agentic-workflows$</text>
 <text x="112" y="244" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#f0f6fc">gh --version</text>
 <text x="112" y="286" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#79c0ff">gh version 2.82.0</text>
-<text x="112" y="340" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#f0f6fc">gh aw compile .github/workflows/daily-status.md --validate</text>
+<text x="112" y="340" text-anchor="start" font-family="monospace" font-size="20" font-weight="400" fill="#f0f6fc">gh aw compile .github/workflows/daily-status.md --validate</text>
 <text x="112" y="382" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#3fb950">✓ Workflow compiled successfully</text>
 <rect x="662" y="170" width="100" height="30" rx="15" fill="#ddf4ff"/>
 <text x="712.0" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0969da">Prompt</text>

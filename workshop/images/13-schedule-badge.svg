@@ -26,8 +26,8 @@
   <rect x="60" y="145" width="280" height="36" fill="#ddf4ff" rx="0"/>
   <text x="85" y="168" font-family="Arial,sans-serif" font-size="13" fill="#0969da">⚡ Daily Repo Status</text>
   <!-- Badge: clock icon + Scheduled -->
-  <rect x="175" y="152" width="90" height="22" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  <text x="220" y="167" font-family="Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">🕐 Scheduled</text>
+  <rect x="225" y="152" width="90" height="22" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="270" y="167" font-family="Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">🕐 Scheduled</text>
   <text x="85" y="215" font-family="Arial,sans-serif" font-size="13" fill="#57606a">All workflows</text>
   <!-- Main panel -->
   <rect x="360" y="105" width="780" height="400" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>

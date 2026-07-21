@@ -63,18 +63,18 @@
   <text x="830" y="372" text-anchor="middle" font-family="system-ui" font-size="11" font-style="italic" fill="#57606a">Auto-generated 🔒</text>
 
   <!-- Arrow 3 -->
-  <line x1="940" y1="265" x2="1050" y2="265" stroke="#d0d7de" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="940" y1="265" x2="980" y2="265" stroke="#d0d7de" stroke-width="2" marker-end="url(#arrow)"/>
 
   <!-- GitHub Actions box -->
-  <rect x="1050" y="195" width="180" height="140" rx="10" ry="10" fill="#fff0f0" stroke="#cf222e" stroke-width="2"/>
-  <rect x="1050" y="195" width="180" height="36" rx="10" ry="10" fill="#cf222e"/>
-  <rect x="1050" y="213" width="180" height="18" fill="#cf222e"/>
-  <text x="1140" y="217" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="700" fill="white">GitHub Actions</text>
-  <text x="1140" y="248" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Reads lock file</text>
-  <text x="1140" y="265" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Launches AI agent</text>
-  <text x="1140" y="282" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Executes task brief</text>
-  <text x="1140" y="299" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Calls safe outputs</text>
-  <text x="1140" y="320" text-anchor="middle" font-family="system-ui" font-size="11" font-style="italic" fill="#57606a">Triggered on demand ▶️</text>
+  <rect x="980" y="195" width="180" height="140" rx="10" ry="10" fill="#fff0f0" stroke="#cf222e" stroke-width="2"/>
+  <rect x="980" y="195" width="180" height="36" rx="10" ry="10" fill="#cf222e"/>
+  <rect x="980" y="213" width="180" height="18" fill="#cf222e"/>
+  <text x="1070" y="217" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="700" fill="white">GitHub Actions</text>
+  <text x="1070" y="248" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Reads lock file</text>
+  <text x="1070" y="265" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Launches AI agent</text>
+  <text x="1070" y="282" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Executes task brief</text>
+  <text x="1070" y="299" text-anchor="middle" font-family="system-ui" font-size="12" fill="#57606a">Calls safe outputs</text>
+  <text x="1070" y="320" text-anchor="middle" font-family="system-ui" font-size="11" font-style="italic" fill="#57606a">Triggered on demand ▶️</text>
 
   <!-- Bottom annotation -->
   <text x="600" y="460" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#57606a">
@@ -88,8 +88,8 @@
   <circle cx="665" cy="245" r="14" fill="#8250df"/>
   <text x="665" y="250" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="white">2</text>
 
-  <circle cx="995" cy="245" r="14" fill="#1a7f37"/>
-  <text x="995" y="250" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="white">3</text>
+  <circle cx="960" cy="245" r="14" fill="#1a7f37"/>
+  <text x="960" y="250" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="white">3</text>
 
   <!-- Defs for arrow marker -->
   <defs>

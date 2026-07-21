@@ -21,6 +21,6 @@
   <text x="155" y="385" fill="#86efac" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">✅ CI status:           passing</text>
   <text x="155" y="435" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">📝 Last commit:         "Fix login timeout" — 6 hours ago</text>
   <text x="155" y="485" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">💬 New discussion:      "RFC: Add dark mode" — 14 replies</text>
-  <text x="155" y="565" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">Everything looks healthy. One PR has been open for 14 days</text>
-  <text x="155" y="610" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">and might need a nudge. 👀</text>
+  <text x="155" y="565" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">Everything looks healthy. One PR has been open</text>
+  <text x="155" y="610" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">for 14 days and might need a nudge. 👀</text>
 </svg>

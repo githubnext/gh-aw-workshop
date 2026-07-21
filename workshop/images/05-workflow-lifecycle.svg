@@ -43,8 +43,8 @@
   <!-- Arrow 1 → 2 -->
   <g transform="translate(278,270)">
     <!-- compile label above arrow -->
-    <rect x="-44" y="-34" width="90" height="22" rx="4" ry="4" fill="#8250df" opacity="0.1"/>
-    <text x="0" y="-18" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#8250df" text-anchor="middle" font-weight="600">gh aw compile</text>
+    <rect x="-16" y="-34" width="90" height="22" rx="4" ry="4" fill="#8250df" opacity="0.1"/>
+    <text x="29" y="-18" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#8250df" text-anchor="middle" font-weight="600">gh aw compile</text>
     <line x1="0" y1="0" x2="58" y2="0" stroke="#8250df" stroke-width="2" stroke-dasharray="none"/>
     <polygon points="58,0 48,-6 48,6" fill="#8250df"/>
   </g>
@@ -73,8 +73,8 @@
 
   <!-- Arrow 2 → 3 trigger -->
   <g transform="translate(538,270)">
-    <rect x="-34" y="-34" width="70" height="22" rx="4" ry="4" fill="#1a7f37" opacity="0.1"/>
-    <text x="0" y="-18" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#1a7f37" text-anchor="middle" font-weight="600">trigger</text>
+    <rect x="-16" y="-34" width="70" height="22" rx="4" ry="4" fill="#1a7f37" opacity="0.1"/>
+    <text x="19" y="-18" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#1a7f37" text-anchor="middle" font-weight="600">trigger</text>
     <line x1="0" y1="0" x2="58" y2="0" stroke="#1a7f37" stroke-width="2"/>
     <polygon points="58,0 48,-6 48,6" fill="#1a7f37"/>
   </g>

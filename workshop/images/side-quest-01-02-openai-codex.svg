@@ -14,13 +14,13 @@
 <text x="130" y="260" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#0f766e">daily-status.md</text>
 <text x="112" y="300" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#24292f">workshop/</text>
 <text x="130" y="328" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#24292f">17-add-mcp-tools.md</text>
-<rect x="390" y="156" width="230" height="290" rx="16" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="380" y="156" width="250" height="290" rx="16" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
 <text x="505" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">Suggested patch</text>
-<rect x="414" y="218" width="182" height="160" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
-<text x="430" y="248" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+ tools:</text>
-<text x="430" y="276" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+   github:</text>
-<text x="430" y="304" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+     mode: gh-proxy</text>
-<text x="430" y="332" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+     toolsets: [default]</text>
+<rect x="404" y="218" width="212" height="160" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<text x="420" y="248" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+ tools:</text>
+<text x="420" y="276" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+   github:</text>
+<text x="420" y="304" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+     mode: gh-proxy</text>
+<text x="420" y="332" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#1a7f37">+     toolsets: [default]</text>
 <rect x="646" y="156" width="230" height="290" rx="16" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
 <text x="761" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0f766e">Why Codex fits</text>
 <rect x="672" y="224" width="168" height="30" rx="15" fill="#ccfbf1"/>

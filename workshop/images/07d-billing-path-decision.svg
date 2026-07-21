@@ -42,8 +42,8 @@
   <circle cx="130" cy="385" r="10" fill="#1a7f37"/>
   <text x="130" y="390" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">2</text>
   <text x="145" y="389" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Keep</text>
-  <rect x="180" y="378" width="116" height="18" rx="4" fill="#0969da"/>
-  <text x="238" y="391" text-anchor="middle" font-family="monospace, monospace" font-size="10" fill="white">copilot-requests: write</text>
+  <rect x="180" y="378" width="120" height="18" rx="4" fill="#0969da"/>
+  <text x="240" y="391" text-anchor="middle" font-family="monospace, monospace" font-size="8.5" fill="white">copilot-requests: write</text>
 
   <circle cx="130" cy="413" r="10" fill="#1a7f37"/>
   <text x="130" y="418" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">3</text>
@@ -56,14 +56,14 @@
   <circle cx="910" cy="348" r="10" fill="#cf222e"/>
   <text x="910" y="353" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">1</text>
   <text x="925" y="352" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Add secret</text>
-  <rect x="985" y="341" width="110" height="18" rx="4" fill="#8250df"/>
-  <text x="1040" y="354" text-anchor="middle" font-family="monospace, monospace" font-size="10" fill="white">COPILOT_GITHUB_TOKEN</text>
+  <rect x="992" y="341" width="110" height="18" rx="4" fill="#8250df"/>
+  <text x="1047" y="354" text-anchor="middle" font-family="monospace, monospace" font-size="8" fill="white">COPILOT_GITHUB_TOKEN</text>
 
   <circle cx="910" cy="375" r="10" fill="#cf222e"/>
   <text x="910" y="380" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">2</text>
   <text x="925" y="379" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#24292f">Remove</text>
-  <rect x="985" y="368" width="116" height="18" rx="4" fill="#6e7781"/>
-  <text x="1043" y="381" text-anchor="middle" font-family="monospace, monospace" font-size="10" fill="white">copilot-requests: write</text>
+  <rect x="992" y="368" width="110" height="18" rx="4" fill="#6e7781"/>
+  <text x="1047" y="381" text-anchor="middle" font-family="monospace, monospace" font-size="7.5" fill="white">copilot-requests: write</text>
 
   <circle cx="910" cy="402" r="10" fill="#cf222e"/>
   <text x="910" y="407" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">3</text>
@@ -97,8 +97,5 @@
   </defs>
 
   <!-- Bottom annotation -->
-  <text x="600" y="536" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#57606a">
-    ⚠ When
-  </text>
-  <text x="600" y="536" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#57606a">    ⚠ When copilot-requests: write is present, the COPILOT_GITHUB_TOKEN secret is ignored for inference.</text>
+  <text x="600" y="536" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#57606a">⚠ When copilot-requests: write is present, the COPILOT_GITHUB_TOKEN secret is ignored for inference.</text>
 </svg>

@@ -30,7 +30,7 @@
   <text x="185" y="394" font-family="Arial, sans-serif" font-size="18" fill="#14532d">• Actionable status notes for collaborators</text>
   <text x="185" y="422" font-family="Arial, sans-serif" font-size="18" fill="#14532d">• No secrets or hidden credentials in logs/comments</text>
 
-  <text x="685" y="352" font-family="Arial, sans-serif" font-size="17" fill="#14532d">Runner is deleted after run</text>
+  <text x="795" y="352" text-anchor="end" font-family="Arial, sans-serif" font-size="16" fill="#14532d">Runner is deleted after run</text>
 
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">

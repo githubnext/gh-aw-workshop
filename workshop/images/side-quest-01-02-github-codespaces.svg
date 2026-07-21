@@ -7,11 +7,11 @@
 <circle cx="92" cy="113" r="6" fill="#ff5f57"/>
 <circle cx="114" cy="113" r="6" fill="#febc2e"/>
 <circle cx="136" cy="113" r="6" fill="#28c840"/>
-<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0969da">my-agentic-workflows — GitHub Codespaces</text>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0969da">my-agentic-workflows</text>
       <rect x="84" y="156" width="170" height="290" rx="10" fill="#0d1117"/>
 <text x="104" y="184" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">Explorer</text>
 <rect x="100" y="202" width="138" height="30" rx="15" fill="#1f6feb"/>
-<text x="169.0" y="222" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#ffffff">my-agentic-workflows</text>
+<text x="169.0" y="222" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#ffffff">my-workflows</text>
 <text x="104" y="246" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#8b949e">.github/</text>
 <text x="120" y="270" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#f0f6fc">workflows/</text>
 <text x="136" y="294" text-anchor="start" font-family="monospace" font-size="13" font-weight="400" fill="#7ee787">daily-status.md</text>

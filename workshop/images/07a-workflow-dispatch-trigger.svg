@@ -15,7 +15,7 @@
   <rect x="80" y="144" width="220" height="12" rx="0" fill="#0969da"/>
   <text x="190" y="144" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">① Author</text>
   <text x="190" y="180" font-family="ui-monospace, SFMono-Regular, monospace" font-size="12" fill="#24292f" text-anchor="middle">daily-report-status.md</text>
-  <rect x="100" y="192" width="180" height="66" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="100" y="192" width="180" height="72" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <text x="190" y="211" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#57606a" text-anchor="middle">---</text>
   <text x="190" y="228" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#24292f" text-anchor="middle">name: Daily Report Status</text>
   <text x="190" y="244" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#24292f" text-anchor="middle">on:</text>
@@ -37,7 +37,7 @@
   <rect x="368" y="144" width="220" height="12" rx="0" fill="#8250df"/>
   <text x="478" y="144" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">② Compile</text>
   <text x="478" y="180" font-family="ui-monospace, SFMono-Regular, monospace" font-size="12" fill="#24292f" text-anchor="middle">daily-report-status.lock.yml</text>
-  <rect x="388" y="192" width="180" height="66" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="388" y="192" width="180" height="72" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <text x="478" y="211" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#57606a" text-anchor="middle">on:</text>
   <text x="478" y="228" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#8250df" text-anchor="middle">  workflow_dispatch:</text>
   <text x="478" y="244" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#57606a" text-anchor="middle">jobs:</text>

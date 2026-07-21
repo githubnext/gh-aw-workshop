@@ -52,8 +52,8 @@
   <!-- ======== Codespace Container Panel ======== -->
   <rect x="330" y="100" width="520" height="380" rx="12" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
   <!-- Container dashed border label -->
-  <rect x="380" y="90" width="190" height="24" rx="4" fill="#0969da"/>
-  <text x="475" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+  <rect x="370" y="90" width="220" height="24" rx="4" fill="#0969da"/>
+  <text x="480" y="106" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
         font-size="12" font-weight="600" fill="#ffffff">☁ GitHub Codespace Container</text>
 
   <text x="590" y="138" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"

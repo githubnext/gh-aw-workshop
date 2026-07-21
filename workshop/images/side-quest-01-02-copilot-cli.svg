@@ -9,7 +9,7 @@
 <circle cx="136" cy="113" r="6" fill="#28c840"/>
 <text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1f883d">GitHub Copilot CLI</text>
       <rect x="84" y="156" width="470" height="290" rx="16" fill="#0d1117"/>
-<text x="108" y="194" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#7ee787">$ gh copilot suggest &quot;how do I trigger this workflow from the UI?&quot;</text>
+<text x="108" y="194" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#7ee787">$ gh copilot suggest &quot;trigger this workflow?&quot;</text>
 <text x="108" y="236" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#79c0ff">Suggestion:</text>
 <text x="108" y="268" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#f0f6fc">1. Open Actions</text>
 <text x="108" y="298" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#f0f6fc">2. Select Daily Status Report</text>

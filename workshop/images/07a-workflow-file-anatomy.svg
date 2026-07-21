@@ -12,7 +12,7 @@
   <rect x="60" y="96" width="340" height="12" fill="#f6f8fa" stroke="none"/>
   <text x="80" y="96" font-family="ui-monospace, monospace" font-size="12" fill="#57606a">daily-report-status.md</text>
 
-  <!-- --- top fence -->
+  <!-- top fence -->
   <text x="80" y="124" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
 
   <!-- name row -->
@@ -38,7 +38,7 @@
   <text x="80" y="299" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">    max: 1</text>
   <text x="80" y="313" font-family="ui-monospace, monospace" font-size="12" fill="#8250df">  create-issue:</text>
 
-  <!-- --- bottom fence -->
+  <!-- bottom fence -->
   <text x="80" y="328" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
 
   <!-- Task block -->
@@ -97,7 +97,7 @@
   <text x="486" y="379" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">caps how many times each can fire.</text>
 
   <!-- task card -->
-  <rect x="470" y="430" width="290" height="64" rx="6" fill="white" stroke="#bc4c00" stroke-width="1.5"/>
+  <rect x="470" y="430" width="290" height="70" rx="6" fill="white" stroke="#bc4c00" stroke-width="1.5"/>
   <text x="486" y="447" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#bc4c00">Task instructions</text>
   <text x="486" y="464" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">Plain-language goals the AI agent</text>
   <text x="486" y="478" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">reads at runtime to decide what to</text>

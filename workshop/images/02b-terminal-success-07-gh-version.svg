@@ -6,9 +6,9 @@
   <text x="160" y="260" fill="#79c0ff" font-family="monospace" font-size="26">gh version 2.80.0</text>
   <text x="160" y="340" fill="#7ee787" font-family="monospace" font-size="26">student@machine:~/gh-aw-workshop$</text>
 
-  <rect x="860" y="236" width="190" height="50" rx="8" fill="#1a7f37"/>
-  <text x="878" y="268" fill="#ffffff" font-family="Arial, sans-serif" font-size="28">Success output</text>
-  <line x1="860" y1="261" x2="710" y2="261" stroke="#1a7f37" stroke-width="4"/>
+  <rect x="840" y="236" width="220" height="50" rx="8" fill="#1a7f37"/>
+  <text x="858" y="268" fill="#ffffff" font-family="Arial, sans-serif" font-size="28">Success output</text>
+  <line x1="840" y1="261" x2="710" y2="261" stroke="#1a7f37" stroke-width="4"/>
 
   <text x="120" y="570" fill="#57606a" font-family="Arial, sans-serif" font-size="28">If output appears and the prompt returns, this command completed.</text>
 </svg>
