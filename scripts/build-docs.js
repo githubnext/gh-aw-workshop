@@ -306,7 +306,7 @@ ${slidesHtml}
 
       function findHashLink(start) {
         let el = start;
-        while (el && el !== document) {
+        while (el) {
           if (
             el.tagName === 'A' &&
             typeof el.getAttribute === 'function'
@@ -329,6 +329,7 @@ ${slidesHtml}
       try {
         id = decodeURIComponent(raw);
       } catch {
+        // Ignore malformed hash fragments and keep default browser behavior.
         return;
       }
       const target = document.getElementById(id);
