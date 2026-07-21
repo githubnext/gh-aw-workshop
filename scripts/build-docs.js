@@ -6,6 +6,7 @@ const path = require('path');
 const { marked } = require('marked');
 const { default: GithubSlugger } = require('github-slugger');
 const markedAlert = require('marked-alert');
+const defaultRenderer = new marked.Renderer();
 
 function flattenTokenText(tokenOrTokens) {
   if (Array.isArray(tokenOrTokens)) {
@@ -30,23 +31,20 @@ function isExternalWebLink(href) {
   return /^https?:\/\//i.test(href);
 }
 
-function addExternalLinkTargetAttrs(html) {
-  return html.replace(/<a\b([^>]*)>/gi, (match, attrs = '') => {
-    const hrefMatch = attrs.match(/\bhref="([^"]+)"/i);
-    if (!hrefMatch || !isExternalWebLink(hrefMatch[1])) return match;
-
+function addExternalLinkTargetAttrs(anchorHtml) {
+  return anchorHtml.replace(/^<a\b([^>]*)>/i, (match, attrs = '') => {
     let updatedAttrs = attrs;
 
     if (!/\btarget\s*=/.test(updatedAttrs)) {
       updatedAttrs += ' target="_blank"';
     }
 
-    const relMatch = updatedAttrs.match(/\brel="([^"]*)"/i);
+    const relMatch = updatedAttrs.match(/\brel=(["'])(.*?)\1/i);
     if (relMatch) {
-      const relValues = new Set(relMatch[1].split(/\s+/).filter(Boolean));
+      const relValues = new Set(relMatch[2].split(/\s+/).filter(Boolean));
       relValues.add('noopener');
       relValues.add('noreferrer');
-      updatedAttrs = updatedAttrs.replace(/\brel="[^"]*"/i, `rel="${[...relValues].join(' ')}"`);
+      updatedAttrs = updatedAttrs.replace(/\brel=(["']).*?\1/i, `rel="${[...relValues].join(' ')}"`);
     } else {
       updatedAttrs += ' rel="noopener noreferrer"';
     }
@@ -170,16 +168,10 @@ function renderWorkshopNavigation(markdown, currentFile) {
 }
 
 marked.use({
-  hooks: {
-    postprocess(html) {
-      return addExternalLinkTargetAttrs(html);
-    },
-  },
   useNewRenderer: true,
   renderer: {
-    link({ href, title, tokens }) {
-      const text = this.parser.parseInline(tokens);
-      const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
+    link(link) {
+      const { href } = link;
       if (href) {
         const markdownPageLink = href.match(/^(?<file>[^/?#]+\.md)(?<hash>#[^?]+)?$/);
         if (markdownPageLink) {
@@ -188,8 +180,12 @@ marked.use({
           const targetSectionId = sectionIdsByFile.get(targetFile);
           if (targetSectionId) {
             const rewrittenHref = targetHash ?? `#${targetSectionId}`;
-            return `<a href="${escapeHtml(rewrittenHref)}"${titleAttr}>${text}</a>`;
+            return defaultRenderer.link.call(this, { ...link, href: rewrittenHref });
           }
+        }
+
+        if (isExternalWebLink(href)) {
+          return addExternalLinkTargetAttrs(defaultRenderer.link.call(this, link));
         }
       }
       return false;
