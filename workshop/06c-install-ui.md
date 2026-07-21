@@ -31,12 +31,6 @@ After you merge the workflow pull request from [Step 7c](07c-your-first-workflow
 
 If you want a browser-only scenario with no terminal, [Adventure E in Step 10](07c-your-first-workflow-copilot.md) walks you through using the Agentic Workflows agent (Copilot app or Agents tab) to create, compile, and commit a daily status workflow — no terminal required at any stage.
 
-## What to do next
-
-<!-- journey: ui -->
-Continue to [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
-<!-- /journey -->
-
 ## ✅ Checkpoint
 
 - [ ] You are signed in to github.com
@@ -48,4 +42,3 @@ Continue to [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your
 <!-- journey: ui -->
 **Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
 <!-- /journey -->
-

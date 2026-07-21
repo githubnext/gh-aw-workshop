@@ -21,6 +21,15 @@ PAGE_ADVENTURE_RE = re.compile(r"^<!--\s*page-adventure:\s*([a-z-]+)\s*-->\s*$")
 NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
+FORWARD_NAV_RE = re.compile(
+    # Canonical build-docs forward navigation:
+    # **Next:** [Title](file.md)
+    # **Next:** Open [Title](file.md).
+    # Anchored to a single line, allows an optional heading fragment, and permits
+    # an optional trailing period after the internal Markdown link.
+    r"^\s*(?:>\s*)?\*\*Next:\*\*\s*(?:Open\s+)?\[[^\]]+\]\(([^)#?]+\.md)(?:#[^)]*)?\)\.?\s*$"
+)
+DEPRECATED_FORWARD_NAV_RE = re.compile(r"^\s*(?:>\s*)?Continue (?:to|with) \[")
 
 
 class JourneyMarkerTests(unittest.TestCase):
@@ -105,7 +114,8 @@ class JourneyMarkerTests(unittest.TestCase):
 
             with self.subTest(file=path.name):
                 depth = 0
-                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                for line_number, line in enumerate(lines, start=1):
                     # Page-level annotations (<!-- page-journey: X --> / <!-- page-adventure: Y -->) on lines 1–2
                     # do not match OPEN_RE, so no special skip is needed here.
                     if OPEN_RE.match(line):
@@ -120,6 +130,35 @@ class JourneyMarkerTests(unittest.TestCase):
 
                     if CLOSE_RE.match(line):
                         depth -= 1
+
+    def test_forward_navigation_lines_match_build_docs_parser(self) -> None:
+        for path in sorted(WORKSHOP_DIR.glob("*.md")):
+            if path.name == "README.md":
+                continue
+
+            with self.subTest(file=path.name):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                for line_number, line in enumerate(lines, start=1):
+                    stripped = line.strip()
+                    if stripped.startswith("**Next:**"):
+                        self.assertRegex(
+                            line,
+                            FORWARD_NAV_RE,
+                            f"Forward navigation line must use the build-docs format in {path.name}:{line_number}",
+                        )
+
+    def test_deprecated_forward_navigation_phrases_are_not_used(self) -> None:
+        for path in sorted(WORKSHOP_DIR.glob("*.md")):
+            if path.name == "README.md":
+                continue
+
+            with self.subTest(file=path.name):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                for line_number, line in enumerate(lines, start=1):
+                    self.assertIsNone(
+                        DEPRECATED_FORWARD_NAV_RE.match(line),
+                        f"Use '**Next:** [Title](file.md)' instead of deprecated forward-navigation phrasing in {path.name}:{line_number}",
+                    )
 
 
 if __name__ == "__main__":

@@ -77,7 +77,7 @@ If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Earl
 - [ ] You ran `gh aw compile` successfully
 
 <!-- journey: terminal -->
-Continue to [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md).
+**Next:** [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md)
 <!-- /journey -->
 
 - [ ] `gh aw compile` succeeds and generates `daily-report-status.lock.yml`

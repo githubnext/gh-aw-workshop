@@ -315,9 +315,27 @@ Rules:
 - `journey:` accepts one or more comma-separated journey values from this schema: `all`, `ui`, `terminal`, `codespace`, `local`, `copilot`.
 - Use `all` only when a downstream processor requires explicit tagging for every block in a normalized output. If no filtering is needed for a block, prefer leaving it unwrapped instead of `journey: all`.
 - Keep the page-level `<!-- page-journey: X -->` annotation on line 1 of the file. Section-level comment markers (`<!-- journey: X -->` / `<!-- /journey -->`) are for filtering content blocks inside a page, not page-level routing.
-- Prefer journey comment markers for path-specific alerts/callouts and for `Next`/`Continue` link blocks.
+- Prefer journey comment markers for path-specific alerts/callouts and for `Next` navigation link blocks.
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
 - Do not nest journey markers. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
+
+### Forward navigation link format
+
+When a workshop page points the learner to the next workshop Markdown file, use a
+standalone `**Next:**` line that matches the docs-builder parser exactly:
+
+```markdown
+**Next:** [Title](filename.md)
+**Next:** Open [Title](filename.md).
+```
+
+Rules:
+
+- Keep exactly one internal workshop `.md` link on the `**Next:**` line.
+- A trailing period is optional; use it only when it reads naturally in the surrounding prose.
+- Put setup details or extra explanation in a separate paragraph, not on the same line as the `**Next:**` link.
+- For branching pages, repeat one `**Next:**` line per option rather than switching to `Continue with` or `Continue to`.
+- When the next step depends on learner path, wrap each `**Next:**` line in the appropriate `<!-- journey: ... -->` block.
 
 Example patterns:
 
