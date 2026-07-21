@@ -10,7 +10,7 @@ Open the draft workflow file you started in [Step 11](07-your-first-workflow.md)
 
 ---
 
-An agentic workflow file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between two YAML fences. This block configures when the workflow runs and what it is allowed to do.
+An agentic workflow file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between `---` separators. This block configures when the workflow runs and what it is allowed to do.
 
 ---
 
@@ -193,7 +193,7 @@ permissions:
 - [ ] You can explain why keeping `workflow_dispatch: {}` alongside a schedule trigger is useful.
 - [ ] You added the `permissions:` block with all five entries.
 - [ ] `copilot-requests: write` is present in your permissions block.
-- [ ] You completed the mini-challenge and all three triggers appear in the compiled output.
+- [ ] You completed the mini-challenge: schedule, push to main, and workflow_dispatch triggers all appear in the compiled output.
 - [ ] You can explain what each permission scope in the block allows.
 - [ ] You wrote a complete combined frontmatter block and it compiled without errors.
 - [ ] The `workflow_dispatch: {}` trigger appears as a manual trigger button in your GitHub Actions UI after pushing.
