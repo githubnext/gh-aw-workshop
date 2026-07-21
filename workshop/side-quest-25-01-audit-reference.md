@@ -4,7 +4,7 @@
 
 > _A detailed companion to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md). Use this side quest when you want to understand the full contents of an audit report or dig into individual artifact files._
 
-## gh aw audit report anatomy
+## [gh aw audit](https://github.github.com/gh-aw/reference/audit/#gh-aw-audit) report anatomy
 
 `gh aw audit` generates a Markdown report that covers:
 
@@ -43,7 +43,7 @@ AIC (AI Credits) is the billing unit for agentic workflow inference and is deriv
 
 The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the threat-detection model separately from the main agent turn. Both contribute to your organisation's total AIC usage.
 
-## Adding a blocked domain to network.allow
+## Adding a blocked domain to [network.allow](https://github.github.com/gh-aw/reference/network/#configuration)
 
 If the firewall blocked a domain your workflow needs, add it to `network.allow` in your workflow frontmatter and recompile:
 

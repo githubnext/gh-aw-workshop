@@ -111,7 +111,7 @@ This does **not** give the agent open-ended write access. It gives the agent one
 
 That is the key defence. A misdirected agent cannot silently turn a docs task into arbitrary repository mutation.
 
-### 🛠️ Try it: add protected-files to your workflow
+### 🛠️ Try it: add [protected-files](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/) to your workflow
 
 1. Open your workflow file and find the `safe-outputs` block.
 2. Add a `protected-files` entry that excludes `.github/workflows/daily-status.md`.
