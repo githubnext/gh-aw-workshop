@@ -535,6 +535,12 @@ body,
   .markdown-body pre > code {
     white-space: inherit;
   }
+  /* Use more horizontal space on mobile: remove outer centering margin and tighten padding */
+  .markdown-body {
+    max-width: 100%;
+    margin-inline: 0;
+    padding-inline: 12px !important;
+  }
 }
 
 /* Responsive images: full-width on mobile, capped on larger screens — no media query needed */
