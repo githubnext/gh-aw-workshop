@@ -63,7 +63,7 @@ Write according to the output_style: ${{ experiments.output_style }}.
   CI status, and a one-paragraph summary at the top.
 {{#endif}}
 
-Always call the safe output tool — even if there is no activity.
+Always call the [safe output](https://github.github.com/gh-aw/reference/safe-outputs/) tool — even if there is no activity.
 ```
 
 Compile and commit:

@@ -17,7 +17,7 @@ You will use `gh aw logs` and `gh aw audit` to review the built-in artifacts tha
 
 ### Review recent runs with gh aw logs
 
-`gh aw logs` downloads artifacts from your workflow's recent runs and prints a summary table showing duration, token usage, and cost in AI Credits (AIC).
+`gh aw logs` downloads artifacts from your workflow's recent runs and prints a summary table showing duration, token usage, and cost in [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic).
 
 Run it from inside your repository:
 
