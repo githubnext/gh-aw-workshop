@@ -715,9 +715,9 @@ body,
   }
   .workshop-nav-btn-primary:hover,
   .workshop-nav-btn-primary:focus-visible {
-    background-color: var(--bgColor-accent-emphasis, #388bfd);
+    background-color: var(--bgColor-accent-emphasis, #1f6feb);
     color: #ffffff;
-    filter: brightness(1.1);
+    filter: brightness(0.9);
   }
   .workshop-nav-btn-secondary {
     color: var(--fgColor-default, #e6edf3);
