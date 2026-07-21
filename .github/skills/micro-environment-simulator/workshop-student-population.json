@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "2026-07-assumption-model-v1",
+  "description": "Synthetic workshop cohort assumptions. These weights are explicit expert assumptions, not observed learner demographics.",
+  "cohortSize": 46,
+  "monteCarloRuns": 1000,
+  "distributions": {
+    "level": {
+      "beginner": 0.24,
+      "github-basic": 0.33,
+      "actions-user": 0.28,
+      "advanced": 0.15
+    },
+    "backgroundByLevel": {
+      "beginner": {
+        "no-coding": 0.48,
+        "program-manager": 0.18,
+        "web-dev": 0.18,
+        "data-science": 0.1,
+        "enterprise-dev": 0.06
+      },
+      "github-basic": {
+        "web-dev": 0.3,
+        "backend-dev": 0.2,
+        "data-science": 0.14,
+        "program-manager": 0.14,
+        "enterprise-dev": 0.12,
+        "devops": 0.1
+      },
+      "actions-user": {
+        "devops": 0.3,
+        "backend-dev": 0.25,
+        "web-dev": 0.15,
+        "enterprise-dev": 0.12,
+        "enterprise-devops": 0.1,
+        "data-science": 0.08
+      },
+      "advanced": {
+        "enterprise-devops": 0.28,
+        "devops": 0.27,
+        "backend-dev": 0.22,
+        "enterprise-dev": 0.13,
+        "web-dev": 0.06,
+        "data-science": 0.04
+      }
+    },
+    "personality": {
+      "curious": 0.3,
+      "methodical": 0.28,
+      "impatient": 0.16,
+      "confused": 0.14,
+      "skeptical": 0.12
+    },
+    "goalByLevel": {
+      "beginner": {
+        "personal-learning": 0.56,
+        "work-project": 0.2,
+        "team-evaluation": 0.16,
+        "teaching-others": 0.08
+      },
+      "github-basic": {
+        "personal-learning": 0.37,
+        "work-project": 0.35,
+        "team-evaluation": 0.2,
+        "teaching-others": 0.08
+      },
+      "actions-user": {
+        "work-project": 0.42,
+        "team-evaluation": 0.3,
+        "personal-learning": 0.18,
+        "teaching-others": 0.1
+      },
+      "advanced": {
+        "team-evaluation": 0.4,
+        "work-project": 0.35,
+        "teaching-others": 0.17,
+        "personal-learning": 0.08
+      }
+    },
+    "toolByLevel": {
+      "beginner": {
+        "CCA": 0.58,
+        "vscode": 0.32,
+        "cli": 0.1
+      },
+      "github-basic": {
+        "vscode": 0.46,
+        "CCA": 0.32,
+        "cli": 0.22
+      },
+      "actions-user": {
+        "cli": 0.48,
+        "vscode": 0.37,
+        "CCA": 0.15
+      },
+      "advanced": {
+        "cli": 0.65,
+        "vscode": 0.28,
+        "CCA": 0.07
+      }
+    },
+    "uiPreferredProbabilityByTool": {
+      "CCA": 0.82,
+      "vscode": 0.42,
+      "cli": 0.08
+    },
+    "mobileProbabilityByTool": {
+      "CCA": 0.12,
+      "vscode": 0.015,
+      "cli": 0.005
+    }
+  }
+}

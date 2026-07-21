@@ -1,6 +1,6 @@
 ---
 emoji: 🔬
-description: Daily Monte Carlo simulation of 46 students (1000 runs each) with various agentic technical levels attempting the "Learning GitHub Agentic Workflows" workshop. The curriculum is inferred from workshop markdown files at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
+description: Daily Monte Carlo simulation of a configurable synthetic learner population attempting the "Learning GitHub Agentic Workflows" workshop. The population assumptions and curriculum are loaded at runtime. Produces a concise report issue with progressive disclosure and actionable sub-issues for improvements.
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -31,86 +31,45 @@ steps:
       mkdir -p /tmp/gh-aw/cache-memory
       TODAY=$(date -u +%Y-%m-%d)
       echo "TODAY=$TODAY" >> "$GITHUB_ENV"
-      echo "MONTE_CARLO_RUNS=1000" >> "$GITHUB_ENV"
+      MONTE_CARLO_RUNS=$(node -p "require('./.github/skills/micro-environment-simulator/workshop-student-population.json').monteCarloRuns")
+      echo "MONTE_CARLO_RUNS=$MONTE_CARLO_RUNS" >> "$GITHUB_ENV"
 
   - name: Initialize student profiles if missing
     run: |
       PROFILES=/tmp/gh-aw/cache-memory/profiles.json
+      MODEL=.github/skills/micro-environment-simulator/workshop-student-population.json
       NEEDS_INIT=true
       if [ -f "$PROFILES" ]; then
-        if python3 << 'PYEOF'
-      import json, sys
-      try:
-          with open('/tmp/gh-aw/cache-memory/profiles.json') as f:
-              d = json.load(f)
-          assert d.get('version') == 3
-          students = d.get('students', [])
-          assert isinstance(students, list) and students and isinstance(students[0], dict) and 'runs' in students[0]
-          sys.exit(0)
-      except Exception:
-          sys.exit(1)
-      PYEOF
+        if node - "$PROFILES" "$MODEL" <<'NODE'
+      const fs = require("node:fs");
+      try {
+        const profiles = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
+        const model = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
+        const students = profiles.students;
+        const valid =
+          profiles.version === 4 &&
+          profiles.population_model_version === model.modelVersion &&
+          Array.isArray(students) &&
+          students.length === model.cohortSize &&
+          students.every((student) => Number.isFinite(student.runs) && Number.isFinite(student.successes));
+        process.exit(valid ? 0 : 1);
+      } catch {
+        process.exit(1);
+      }
+      NODE
         then
           NEEDS_INIT=false
         else
-          echo "Cached profiles are in an incompatible format. Reinitializing..."
+          echo "Cached profiles do not match the current population model. Reinitializing..."
         fi
       fi
       if [ "$NEEDS_INIT" = "true" ]; then
-        cat > "$PROFILES" <<'EOF'
-      {
-        "version": 3,
-        "students": [
-          {"id":1,  "name":"Alex Chen",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":2,  "name":"Jamie Liu",       "level":"beginner",     "personality":"methodical",  "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":3,  "name":"Morgan Kim",      "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":4,  "name":"Riley Park",      "level":"beginner",     "personality":"impatient",   "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":5,  "name":"Skyler Nguyen",   "level":"beginner",     "personality":"skeptical",   "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":6,  "name":"Casey Wong",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"teaching-others",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":7,  "name":"Drew Tanaka",     "level":"github-basic", "personality":"methodical",  "background":"web-dev",         "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":8,  "name":"Avery Singh",     "level":"github-basic", "personality":"curious",     "background":"web-dev",         "goal":"work-project",         "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":9,  "name":"Jordan Martinez", "level":"github-basic", "personality":"impatient",   "background":"web-dev",         "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":10, "name":"Quinn Lopez",     "level":"github-basic", "personality":"confused",    "background":"web-dev",         "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":11, "name":"Reece Thompson",  "level":"github-basic", "personality":"skeptical",   "background":"backend-dev",     "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":12, "name":"Sam Patel",       "level":"github-basic", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":13, "name":"Blake Rivera",    "level":"github-basic", "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":14, "name":"Chris Davis",     "level":"github-basic", "personality":"confused",    "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":15, "name":"Dana Wilson",     "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":16, "name":"Eli Brown",       "level":"actions-user", "personality":"curious",     "background":"devops",          "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":17, "name":"Frankie Moore",   "level":"actions-user", "personality":"impatient",   "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":18, "name":"Gio Jackson",     "level":"actions-user", "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":19, "name":"Harper Lee",      "level":"actions-user", "personality":"methodical",  "background":"backend-dev",     "goal":"work-project",         "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":20, "name":"Indigo Taylor",   "level":"actions-user", "personality":"curious",     "background":"backend-dev",     "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":21, "name":"Jesse Anderson",  "level":"actions-user", "personality":"confused",    "background":"web-dev",         "goal":"work-project",         "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":22, "name":"Kai White",       "level":"actions-user", "personality":"methodical",  "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":23, "name":"Lane Harris",     "level":"advanced",     "personality":"skeptical",   "background":"devops",          "goal":"team-evaluation",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":24, "name":"Max Clark",       "level":"advanced",     "personality":"impatient",   "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":25, "name":"Nova Robinson",   "level":"advanced",     "personality":"methodical",  "background":"devops",          "goal":"teaching-others",      "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":26, "name":"Ocean Lewis",     "level":"advanced",     "personality":"curious",     "background":"data-science",    "goal":"personal-learning",    "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":27, "name":"Piper Walker",    "level":"advanced",     "personality":"skeptical",   "background":"web-dev",         "goal":"team-evaluation",      "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":28, "name":"Quinn Hall",      "level":"github-basic", "personality":"impatient",   "background":"no-coding",       "goal":"work-project",         "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":29, "name":"River Young",     "level":"beginner",     "personality":"methodical",  "background":"data-science",    "goal":"work-project",         "tool":"vscode",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":30, "name":"Sage King",       "level":"actions-user", "personality":"curious",     "background":"web-dev",         "goal":"teaching-others",      "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":31, "name":"Tatum Wright",    "level":"advanced",     "personality":"confused",    "background":"backend-dev",     "goal":"work-project",         "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":32, "name":"Uma Scott",       "level":"beginner",     "personality":"curious",     "background":"web-dev",         "goal":"team-evaluation",      "tool":"vscode",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":33, "name":"Vale Green",      "level":"github-basic", "personality":"methodical",  "background":"devops",          "goal":"personal-learning",    "tool":"cli",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":34, "name":"Alex Morgan",     "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":35, "name":"Blair Chen",      "level":"actions-user", "personality":"methodical",  "background":"enterprise-dev",  "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":36, "name":"Cameron Ross",    "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",   "ui_preferred":false, "runs":0, "successes":0},
-          {"id":37, "name":"Devon Patel",     "level":"github-basic", "personality":"confused",    "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":38, "name":"Ellis Wang",      "level":"beginner",     "personality":"curious",     "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",   "ui_preferred":true,  "runs":0, "successes":0},
-          {"id":39, "name":"Sam Torres",      "level":"beginner",     "personality":"curious",     "background":"no-coding",       "goal":"personal-learning",    "tool":"CCA",    "ui_preferred":true,  "mobile":true, "runs":0, "successes":0},
-          {"id":40, "name":"Hayden Brooks",  "level":"github-basic", "personality":"impatient",   "background":"program-manager", "goal":"team-evaluation",      "tool":"CCA",    "ui_preferred":true,  "mobile":true, "runs":0, "successes":0},
-          {"id":41, "name":"Rowan Diaz",     "level":"beginner",     "personality":"confused",    "background":"no-coding",       "goal":"work-project",         "tool":"CCA",    "ui_preferred":true,  "mobile":true, "runs":0, "successes":0},
-          {"id":42, "name":"Jordan Ellis",   "level":"advanced",     "personality":"skeptical",   "background":"enterprise-devops","goal":"team-evaluation",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
-          {"id":43, "name":"Taylor Nguyen",  "level":"actions-user", "personality":"methodical",  "background":"enterprise-devops","goal":"team-evaluation",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
-          {"id":44, "name":"Avery Kim",      "level":"github-basic", "personality":"impatient",   "background":"enterprise-dev",  "goal":"work-project",         "tool":"vscode", "ui_preferred":false, "runs":0, "successes":0},
-          {"id":45, "name":"Casey Jordan",   "level":"advanced",     "personality":"curious",     "background":"enterprise-devops","goal":"teaching-others",      "tool":"cli",    "ui_preferred":false, "runs":0, "successes":0},
-          {"id":46, "name":"Morgan Dale",    "level":"actions-user", "personality":"confused",    "background":"enterprise-dev",  "goal":"work-project",         "tool":"CCA",    "ui_preferred":true,  "runs":0, "successes":0}
-        ]
-      }
-      EOF
-        echo "Initialized fresh student profiles (46 students)"
+        node .github/skills/micro-environment-simulator/simulator.js \
+          --generate-population \
+          --population-model "$MODEL" \
+          --seed workshop-student-cohort \
+          --out "$PROFILES"
+        echo "Initialized synthetic student profiles from $MODEL"
       else
         echo "Loaded existing student profiles from cache"
         cat "$PROFILES" | python3 -c "
@@ -249,7 +208,7 @@ steps:
 
 ## Role
 
-You are an expert UX researcher and instructional designer specialising in developer education. Your task is to **simulate 46 students with distinct profiles** attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
+You are an expert UX researcher and instructional designer specialising in developer education. Your task is to simulate the synthetic learner cohort in `/tmp/gh-aw/cache-memory/profiles.json` attempting the "Learning GitHub Agentic Workflows" workshop and produce a detailed quality report.
 
 ---
 
@@ -272,10 +231,10 @@ The workshop content available today: **${{ env.WORKSHOP_STEP_COUNT }} main step
 
 ---
 
-## Student Profiles (46 students)
+## Synthetic Learner Profiles
 
 Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each student has:
-- `id` — unique identifier (1–46)
+- `id` — unique identifier within the generated cohort
 - `name` — persona name
 - `level` — agentic technical level: `beginner` (no prior GitHub/coding) | `github-basic` (can clone/commit/push; no Actions or AI tools) | `actions-user` (familiar with Actions YAML; new to agentic/AI workflows) | `advanced` (experienced developer/DevOps engineer with LLM tooling experience)
 - `personality` — `curious` | `methodical` | `impatient` | `confused` | `skeptical`
@@ -287,13 +246,15 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
+The profiles are generated from `.github/skills/micro-environment-simulator/workshop-student-population.json`. Treat its distributions as explicit expert assumptions, not measured learner demographics. Do not present simulated rates as observed human outcomes.
+
 ---
 
 ## Simulation Task
 
 ### Simulate each student through the workshop
 
-For **each of the 46 students**, simulate their experience step-by-step using the following rules:
+For each student in the generated cohort, simulate their experience step-by-step using the following rules:
 
 First read the baseline Monte Carlo output that was already written to `/tmp/gh-aw/agent/sim/data/monte-carlo-replay.json` to identify the highest dropout or highest-risk steps. Then read both `curriculum.json` and `curriculum-quality-metrics.json`. For each high-risk step, inspect that step and the preceding activities that produce its required state before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
 
@@ -353,7 +314,7 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
 {
   "mode": "monte-carlo",
   "runs": ${{ env.MONTE_CARLO_RUNS }},
-  "total": 46,
+  "total": <generated cohort size>,
   "stepContentById": {
     "<step-id>": {
       "files": [{"file": "<workshop-file>", "title": "<title>"}],
@@ -395,6 +356,8 @@ The Monte Carlo simulation written to `/tmp/gh-aw/agent/sim/data/monte-carlo-rep
 
 Use `monteCarlo[*].successRate` as the **statistical success probability** for each student. Use `aggregate.dropoutRateByStep` to identify the highest-dropout steps across the entire cohort. Use `stepContentById` — including any `agentInsight` you added before rerunning the simulator — to explain how the actual workshop content changes those probabilities from step to step. Do not reuse the same generic explanation for every learner.
 
+Use `successRateCi95`, `aggregate.overallSuccessRateCi95`, and `aggregate.dropoutRateCi95ByStep` to show Monte Carlo uncertainty. These intervals do not cover uncertainty in the assumed population weights or probability model; repeat that limitation in the report. Use `aggregate.attemptsByStep` as each step's at-risk denominator. `aggregate.dropoutRateByStep` is the conditional probability of failing among runs that reached the step, not a percentage of all starting runs.
+
 Then, for each student, use the environment assumptions modelled by the simulator to explain **why** their success rate is what it is. Read the student's Monte Carlo entry (`failuresByStep`, `mostCommonFailureStep`), inspect the matching `stepContentById[mostCommonFailureStep]`, and cross-reference both with the student profile to produce per-student pain points:
 
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} runs
@@ -427,7 +390,7 @@ For each student whose `successRate` < 1.0, note:
 Use the pre-computed values from `monte-carlo-replay.json` as the primary data source:
 
 - **Overall success rate** — read from `aggregate.overallSuccessRate`
-- **Per-step dropout rate** — read from `aggregate.dropoutRateByStep`; sort descending to find the worst steps
+- **Per-step conditional dropout rate** — read from `aggregate.dropoutRateByStep`; sort descending to find the worst steps, and report each rate with its at-risk count from `aggregate.attemptsByStep` and interval from `aggregate.dropoutRateCi95ByStep`
 - **Top 5 dropout steps** — highest values in `aggregate.dropoutRateByStep`
 - **Success rate by technical level** — group `monteCarlo` entries by student level and average `successRate`
 - **Success rate by personality** — group `monteCarlo` entries by student personality and average `successRate`
@@ -462,7 +425,7 @@ Use `create-issue` safe output with:
 
 - `temporary_id`: `aw_sim_parent` (safe-outputs requires the `aw_` prefix; this parent issue handle is used by child issues in step 8)
 - **Title**: `Workshop Simulation Report — ${{ env.TODAY }} (Run #N, ${{ env.MONTE_CARLO_RUNS }}×Monte Carlo)`
-- where N is the total accumulated runs across all students divided by 46 (round to nearest integer).
+- where N is the total accumulated runs across all students divided by the generated cohort size (round to nearest integer).
 
 Keep the report short and to the point. Keep critical findings visible; move verbose content into `<details>` sections for progressive disclosure.
 
@@ -471,12 +434,14 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 ```markdown
 ### Overview
 - Date: YYYY-MM-DD
-- Students simulated: 46 × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
+- Students simulated: N × ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs
 - Workshop steps available: N/${{ env.WORKSHOP_STEP_COUNT }}
-- Overall success rate: XX% (from `aggregate.overallSuccessRate`)
-- Highest-dropout step: <step-id> (XX% dropout rate)
+- Overall success rate: XX% (95% Monte Carlo interval: XX%–XX%)
+- Highest-dropout step: <step-id> (XX% conditional dropout among N at-risk runs; 95% Monte Carlo interval: XX%–XX%)
 - Lowest curriculum quality step: `<file>` (overall score X.X/10)
 - Learning KPI index: X.X/10 (active_learning X.X · checkpoint_quality X.X · scaffolding X.X)
+- Model: `<journeyModelVersion>` / `<populationModelVersion>` (parameter hash `<parameterHash>`)
+- Limitation: synthetic results reflect explicit model assumptions; intervals exclude model and population-assumption uncertainty
 
 ### Part Summary
 | Part | Files | Mean Score | Std Dev |
@@ -502,7 +467,7 @@ Note: some student dropout is expected and acceptable. Repairs must maintain or 
 <details>
 <summary>Dropout by step</summary>
 
-Table with: step, dropouts, dropout rate, failure mode (access barrier | learning barrier), top reason. The top reason must be the highest-count category in `aggregate.failureCategoriesByStep[step]`, translated into plain language without changing its meaning.
+Table with: step, at-risk runs, dropouts, conditional dropout rate, 95% Monte Carlo interval, failure mode (access barrier | learning barrier), top reason. The top reason must be the highest-count category in `aggregate.failureCategoriesByStep[step]`, translated into plain language without changing its meaning.
 
 </details>
 

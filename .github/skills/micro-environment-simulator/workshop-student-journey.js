@@ -2,6 +2,8 @@
 
 const { VALID_TERMINALS, ensure } = require("./simulator");
 
+const MODEL_VERSION = "2026-07-survival-model-v2";
+
 const LEVEL_BASELINE = {
   beginner: 0.38,
   "github-basic": 0.58,
@@ -36,7 +38,6 @@ const STEP_FILE_ALIASES = {
     "07-your-first-workflow.md",
     "07a-your-first-workflow-terminal.md",
     "07a-part2-your-first-workflow-instructions.md",
-    "07b-your-first-workflow-ui.md",
     "07c-your-first-workflow-copilot.md",
     "07d-confirm-model-access.md"
   ],
@@ -102,21 +103,11 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function hashText(value) {
-  const text = String(value || "");
-  let hash = 0;
-  for (let i = 0; i < text.length; i += 1) {
-    hash = (hash * 33 + text.charCodeAt(i)) >>> 0;
+function simulationRoll(context) {
+  if (typeof context.random !== "function") {
+    throw new Error("Simulation context is missing its seeded random stream.");
   }
-  return hash;
-}
-
-function deterministicRoll(context, salt = 0) {
-  const studentId = Number(context.student?.id || context.student?.studentId || 0);
-  const runIndex = Number(context.runIndex || 0);
-  const stepHash = hashText(context.stepId) + hashText(JSON.stringify(context.stepContent || {}));
-  const seed = studentId * 101 + runIndex * 37 + stepHash + salt;
-  return ((seed % 1000) + 1000) % 1000 / 1000;
+  return context.random();
 }
 
 function learnerProfile(state) {
@@ -174,7 +165,6 @@ function stepMetric(state, context, metric) {
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
     const relevantFiles = prefersBrowserPath(state, context)
       ? new Set([
-          "07b-your-first-workflow-ui.md",
           "07c-your-first-workflow-copilot.md",
           "07d-confirm-model-access.md"
         ])
@@ -192,11 +182,17 @@ function stepMetric(state, context, metric) {
 
 function updateWorkflowCompileState(state, context, options = {}) {
   const next = cloneState(state);
-  const hasCompiledWorkflowLock =
-    canCompileWorkflow(state, context, options) && stepMetric(state, context, "workflowCompileCueCount") > 0;
-  const hasPushedCompiledWorkflowLock =
-    hasCompiledWorkflowLock && stepMetric(state, context, "workflowLockPublishCueCount") > 0;
   next.flags.hasWorkflowFile = true;
+  // A lesson without compile instructions does not invalidate a lock file completed earlier.
+  if (stepMetric(state, context, "workflowCompileCueCount") <= 0) {
+    return next;
+  }
+  const hasCompiledWorkflowLock =
+    canCompileWorkflow(state, context, options);
+  const hasPushedCompiledWorkflowLock =
+    hasCompiledWorkflowLock &&
+    (stepMetric(state, context, "workflowLockPublishCueCount") > 0 ||
+      state.flags.hasPushedCompiledWorkflowLock);
   next.flags.hasCompiledWorkflowLock = hasCompiledWorkflowLock;
   next.flags.hasPushedCompiledWorkflowLock = hasPushedCompiledWorkflowLock;
   next.flags.workflowReadyToRun = hasPushedCompiledWorkflowLock;
@@ -243,8 +239,7 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   let probability = LEVEL_BASELINE[learner.level] ?? 0.52;
   probability += 0.14;
   probability += (learner.confidence ?? 0.5) * 0.18;
-  probability += (learner.priorSuccessRate ?? 0) * 0.12;
-  probability += Math.min(Number(learner.priorRuns || 0), 1500) / 1500 * 0.05;
+  probability += Number(learner.sessionEffect || 0);
 
   probability -= complexity * (emphasis.complexityWeight ?? 0.16);
   probability -= terminalDemand * (emphasis.terminalWeight ?? 0.14);
@@ -294,7 +289,8 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   } else if (state.tool === "CCA") {
     probability += browserSupport * 0.12;
     probability -= terminalDemand * 0.02;
-  } else if (state.mobile === true) {
+  }
+  if (state.mobile === true) {
     probability -= terminalDemand * 0.34 + complexity * 0.1;
   }
 
@@ -361,19 +357,30 @@ function applyLearning(state, context, gains = {}) {
   const authDemand = contentSignal(context, "authDemand");
   const conceptDemand = contentSignal(context, "conceptDemand");
 
-  learner.confidence = clamp(
-    (learner.confidence ?? 0.5) + 0.02 + (gains.confidence || 0) + Math.max(0, 0.04 - complexity * 0.02),
-    0.08,
-    0.99
+  const saturatingGain = (current, gain) => clamp(current + gain * (1 - current), 0, 1);
+  learner.confidence = saturatingGain(
+    learner.confidence ?? 0.5,
+    0.02 + (gains.confidence || 0) + Math.max(0, 0.04 - complexity * 0.02)
   );
-  mastery.terminal = clamp((mastery.terminal ?? 0.5) + terminalDemand * 0.05 + (gains.terminal || 0), 0, 1);
-  mastery.github = clamp((mastery.github ?? 0.5) + browserSupport * 0.04 + (gains.github || 0), 0, 1);
-  mastery.actions = clamp((mastery.actions ?? 0.5) + authDemand * 0.04 + (gains.actions || 0), 0, 1);
-  mastery.agentic = clamp((mastery.agentic ?? 0.5) + conceptDemand * 0.05 + (gains.agentic || 0), 0, 1);
-  mastery.troubleshooting = clamp(
-    (mastery.troubleshooting ?? 0.5) + contentSignal(context, "troubleshootingSupport") * 0.04 + (gains.troubleshooting || 0),
-    0,
-    1
+  mastery.terminal = saturatingGain(
+    mastery.terminal ?? 0.5,
+    terminalDemand * 0.05 + (gains.terminal || 0)
+  );
+  mastery.github = saturatingGain(
+    mastery.github ?? 0.5,
+    browserSupport * 0.04 + (gains.github || 0)
+  );
+  mastery.actions = saturatingGain(
+    mastery.actions ?? 0.5,
+    authDemand * 0.04 + (gains.actions || 0)
+  );
+  mastery.agentic = saturatingGain(
+    mastery.agentic ?? 0.5,
+    conceptDemand * 0.05 + (gains.agentic || 0)
+  );
+  mastery.troubleshooting = saturatingGain(
+    mastery.troubleshooting ?? 0.5,
+    contentSignal(context, "troubleshootingSupport") * 0.04 + (gains.troubleshooting || 0)
   );
   learner.mastery = mastery;
   next.learner = learner;
@@ -392,7 +399,7 @@ function markPracticeRepoCreatedAndVerified(state) {
 function contentReadinessCheck(state, context, options = {}) {
   const assessment = evaluateStepProbability(state, context, options);
   const { probability, ...assessmentMeta } = assessment;
-  if (deterministicRoll(context, options.salt || 0) <= assessment.probability) {
+  if (simulationRoll(context) <= assessment.probability) {
     return { ok: true, probability, assessment: assessmentMeta };
   }
   const failure = ensure(
@@ -621,6 +628,10 @@ function buildTransitions() {
         updateWorkflowCompileState(state, context, { allowCloudAgent: true }),
         context
       );
+      if (!terminalPath && hasAgentCompilerAuth(state)) {
+        next.flags.awSkillInitialized = true;
+        next.flags.awSkillPushed = true;
+      }
       return { ok: true, state: applyLearning(next, context, { agentic: 0.08, terminal: 0.04, github: 0.03 }) };
     },
     "08-run-your-workflow": (state, context) => {
@@ -920,6 +931,11 @@ function buildTransitions() {
 }
 
 module.exports = {
+  modelVersion: MODEL_VERSION,
+  modelParameters: {
+    levelBaseline: LEVEL_BASELINE,
+    backgroundFactors: BACKGROUND_FACTORS
+  },
   STEP_IDS,
   steps: STEP_IDS,
   stepFilesById: STEP_FILE_ALIASES,
