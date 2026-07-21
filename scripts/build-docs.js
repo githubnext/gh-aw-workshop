@@ -298,26 +298,21 @@ ${slidesHtml}
     // Navigate to named sections when an in-slide hash link is clicked.
     // Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
     document.addEventListener('click', function (e) {
-      function getElementTarget(target) {
-        if (!target) return null;
-        if (target.nodeType === Node.ELEMENT_NODE) return target;
-        return target.parentElement || null;
-      }
-
       function findHashLink(start) {
-        let el = start;
+        let el = start && start.nodeType === Node.ELEMENT_NODE
+          ? start
+          : (start && start.parentElement) || null;
         while (el) {
           if (el.tagName === 'A') {
             const href = el.getAttribute('href');
-            if (href && href.charAt(0) === '#') return el;
+            if (href && href.startsWith('#')) return el;
           }
           el = el.parentElement;
         }
         return null;
       }
 
-      const targetEl = getElementTarget(e.target);
-      const link = findHashLink(targetEl);
+      const link = findHashLink(e.target);
       if (!link) return;
       const href = link.getAttribute('href');
       const raw = href ? href.slice(1) : '';
@@ -325,7 +320,7 @@ ${slidesHtml}
       let id = raw;
       try {
         id = decodeURIComponent(raw);
-      } catch {
+      } catch (_) {
         // Ignore malformed hash fragments and keep default browser behavior.
         return;
       }
