@@ -32,7 +32,7 @@ The skill recognizes three core task types for day-to-day workflow maintenance:
 |-----------|---------------|------------------------|
 | **Edit** | Improve the agent brief or frontmatter | "update the workflow to …" |
 | **Debug** | Investigate unexpected output or a failed run | "debug the workflow — it ran but …" |
-| **Optimize** | Reduce token usage or tighten permissions | "optimize the workflow to reduce AI Credit cost" |
+| **Optimize** | Reduce token usage or tighten permissions | "optimize the workflow to reduce [AI Credit](https://github.github.com/gh-aw/reference/cost-management/) cost" |
 
 If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
@@ -45,7 +45,7 @@ Open the GitHub Copilot **Chat** or **Agents** tab in your practice repository a
 ```text
 Using the agentic-workflows skill, update .github/workflows/daily-report-status.md
 so that the agent adds one sentence explaining why resolving the most-reacted issue
-would benefit the team. Keep the existing safe-output constraint (at most one comment).
+would benefit the team. Keep the existing [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) constraint (at most one comment).
 Run gh aw compile after the edit.
 ```
 

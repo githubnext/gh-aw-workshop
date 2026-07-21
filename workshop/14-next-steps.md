@@ -38,7 +38,7 @@ Here's a quick recap of the concepts you've touched:
 
 | Concept | Where you used it |
 |---|---|
-| GitHub Actions triggers | `on: schedule` and `workflow_dispatch` |
+| [GitHub Actions triggers](https://github.github.com/gh-aw/reference/triggers/) | `on: schedule` and `workflow_dispatch` |
 | [gh-aw workflow syntax](https://github.github.com/gh-aw/introduction/overview/) | Every `.md` workflow file you wrote |
 | AI model calls | The Markdown body (agent instructions) of your daily-status workflow |
 | Natural-language schedules | `schedule: daily on weekdays` |

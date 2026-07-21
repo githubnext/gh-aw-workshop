@@ -268,6 +268,10 @@ if (fs.existsSync(workshopImagesDir)) {
   fs.cpSync(workshopImagesDir, distImagesDir, { recursive: true });
 }
 
+// Copy favicon
+const faviconSrc = path.join(__dirname, 'static', 'favicon.svg');
+fs.copyFileSync(faviconSrc, path.join(distDir, 'favicon.svg'));
+
 // Copy Primer CSS
 const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
@@ -339,6 +343,7 @@ fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 // Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
 :root {
+  --workshop-sticky-header-offset: 72px;
   --workshop-link-color: var(--fgColor-accent, #0969da);
   --workshop-link-visited-color: var(--fgColor-done, #8250df);
   --workshop-link-hover-color: var(--fgColor-accent, #0550ae);
@@ -355,6 +360,10 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 body,
 .markdown-body {
   font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-padding-top: var(--workshop-sticky-header-offset);
 }
 
 .site-header {
@@ -504,7 +513,7 @@ body,
   display: none;
 }
 .markdown-body > details {
-  scroll-margin-top: 72px;
+  scroll-margin-top: var(--workshop-sticky-header-offset);
 }
 .markdown-body > details > summary {
   display: none;
@@ -513,6 +522,7 @@ body,
   margin: 0;
   font-size: 32px;
   line-height: 1.25;
+  scroll-margin-top: var(--workshop-sticky-header-offset);
 }
 
 .markdown-body {
@@ -530,6 +540,12 @@ body,
   }
   .markdown-body pre > code {
     white-space: inherit;
+  }
+  /* Use more horizontal space on mobile: remove outer centering margin and tighten padding */
+  .markdown-body {
+    max-width: 100%;
+    margin-inline: 0;
+    padding-inline: 12px !important;
   }
 }
 
@@ -637,22 +653,22 @@ body,
   display: none;
 }
 
-.markdown-body a:not(.anchor),
-.workshop-navigation a:not(.workshop-nav-btn) {
+.markdown-body a:not(.anchor):not(.workshop-nav-btn),
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn) {
   color: var(--workshop-link-color);
   text-decoration: underline;
   text-underline-offset: 0.08em;
 }
 
-.markdown-body a:not(.anchor):visited,
-.workshop-navigation a:not(.workshop-nav-btn):visited {
+.markdown-body a:not(.anchor):not(.workshop-nav-btn):visited,
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn):visited {
   color: var(--workshop-link-visited-color);
 }
 
-.markdown-body a:not(.anchor):hover,
-.markdown-body a:not(.anchor):focus-visible,
-.workshop-navigation a:not(.workshop-nav-btn):hover,
-.workshop-navigation a:not(.workshop-nav-btn):focus-visible {
+.markdown-body a:not(.anchor):not(.workshop-nav-btn):hover,
+.markdown-body a:not(.anchor):not(.workshop-nav-btn):focus-visible,
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn):hover,
+.workshop-navigation a:not(.anchor):not(.workshop-nav-btn):focus-visible {
   color: var(--workshop-link-hover-color);
 }
 
@@ -892,6 +908,7 @@ const page = `<!DOCTYPE html>
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
   <title>GitHub Agentic Workflows Workshop</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="mona-sans.css">
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
@@ -989,7 +1006,7 @@ ${htmlContent}</main>
       imageInspectorDialog.showModal();
     }
 
-    function showWorkshopPage(target, focusPage) {
+    function showWorkshopPage(target, scrollPage) {
       const page = target?.matches('.markdown-body > details')
         ? target
         : target?.closest('.markdown-body > details');
@@ -1005,10 +1022,7 @@ ${htmlContent}</main>
         else link.removeAttribute('aria-current');
       });
 
-      if (focusPage) {
-        activePage.setAttribute('tabindex', '-1');
-        activePage.focus();
-      }
+      if (scrollPage) activePage.scrollIntoView({ block: 'start' });
     }
 
     function findHashTarget(id) {
@@ -1021,10 +1035,10 @@ ${htmlContent}</main>
       return localTarget ?? document.getElementById(id);
     }
 
-    function showWorkshopPageForHash(focusPage) {
+    function showWorkshopPageForHash(scrollPage) {
       const id = decodeURIComponent(location.hash.slice(1));
       const target = id ? findHashTarget(id) : null;
-      showWorkshopPage(target, focusPage && target?.matches('.markdown-body > details'));
+      showWorkshopPage(target, scrollPage && target?.matches('.markdown-body > details'));
     }
 
     document.addEventListener('click', function (e) {
@@ -1067,8 +1081,7 @@ ${htmlContent}</main>
         const isPage = target.matches('.markdown-body > details');
         history.pushState(null, '', link.getAttribute('href'));
         showWorkshopPage(target, isPage);
-        if (isPage) window.scrollTo({ top: 0, left: 0 });
-        else target.scrollIntoView({ block: 'start' });
+        if (!isPage) target.scrollIntoView({ block: 'start' });
       }
     });
 

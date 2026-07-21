@@ -18,7 +18,7 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
-If you prefer the terminal, you can use `gh aw run daily-report-status` as an advanced option. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+If you prefer the terminal, you can use [`gh aw run daily-report-status`](https://github.github.com/gh-aw/setup/cli/#run) as an advanced option. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ### Before you click Run
 
