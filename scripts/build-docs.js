@@ -30,6 +30,16 @@ function isExternalWebLink(href) {
   return /^(https?:)?\/\//i.test(href);
 }
 
+function addExternalLinkTargetAttrs(html) {
+  return html.replace(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi, (match, beforeHref, href, afterHref) => {
+    if (!isExternalWebLink(href)) return match;
+
+    const targetAttr = /\btarget\s*=/.test(match) ? '' : ' target="_blank"';
+    const relAttr = /\brel\s*=/.test(match) ? '' : ' rel="noopener noreferrer"';
+    return `<a${beforeHref}href="${href}"${afterHref}${targetAttr}${relAttr}>`;
+  });
+}
+
 // Plugin: clickable heading anchors with GitHub-compatible IDs
 const slugger = new GithubSlugger();
 marked.use({
@@ -145,6 +155,11 @@ function renderWorkshopNavigation(markdown, currentFile) {
 }
 
 marked.use({
+  hooks: {
+    postprocess(html) {
+      return addExternalLinkTargetAttrs(html);
+    },
+  },
   useNewRenderer: true,
   renderer: {
     link({ href, title, tokens }) {
@@ -158,16 +173,11 @@ marked.use({
           const targetSectionId = sectionIdsByFile.get(targetFile);
           if (targetSectionId) {
             const rewrittenHref = targetHash ?? `#${targetSectionId}`;
-            return `<a href="${rewrittenHref}"${titleAttr}>${text}</a>`;
+            return `<a href="${escapeHtml(rewrittenHref)}"${titleAttr}>${text}</a>`;
           }
         }
-
-        const targetAttr = isExternalWebLink(href)
-          ? ' target="_blank" rel="noopener noreferrer"'
-          : '';
-        return `<a href="${escapeHtml(href)}"${titleAttr}${targetAttr}>${text}</a>`;
       }
-      return text;
+      return false;
     },
   },
 });
