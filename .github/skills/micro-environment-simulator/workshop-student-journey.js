@@ -180,6 +180,7 @@ function stepMetric(state, context, metric) {
 function updateWorkflowCompileState(state, context, options = {}) {
   const next = cloneState(state);
   next.flags.hasWorkflowFile = true;
+  // A lesson without compile instructions does not invalidate a lock file completed earlier.
   if (stepMetric(state, context, "workflowCompileCueCount") <= 0) {
     return next;
   }

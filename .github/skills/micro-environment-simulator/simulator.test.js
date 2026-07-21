@@ -37,6 +37,17 @@ test("synthetic cohorts are reproducible and follow conditional model support", 
   }
 });
 
+test("population distributions reject invalid weights", () => {
+  assert.throws(
+    () => simulator.weightedChoice(() => 0.5, { valid: 1, invalid: -1 }, "test"),
+    /positive finite numbers/
+  );
+  assert.throws(
+    () => simulator.weightedChoice(() => 0.5, {}, "test"),
+    /at least one weighted value/
+  );
+});
+
 test("dropout rates use runs reaching each step as the denominator", () => {
   const aggregate = simulator.aggregateDropoutRates(
     [

@@ -41,6 +41,7 @@ function stableHash(value) {
 }
 
 function createSeededRng(seed) {
+  // Mulberry32 provides a small reproducible stream for simulation, not cryptographic randomness.
   let state = Number(seed) >>> 0;
   return function nextRandom() {
     state = (state + 0x6d2b79f5) | 0;
@@ -55,11 +56,14 @@ function randomFor(...parts) {
 }
 
 function weightedChoice(random, weights, label = "distribution") {
-  const entries = Object.entries(weights || {}).filter(([, weight]) => Number(weight) > 0);
-  const total = entries.reduce((sum, [, weight]) => sum + Number(weight), 0);
-  if (entries.length === 0 || !Number.isFinite(total) || total <= 0) {
-    throw new Error(`Population model '${label}' must contain positive numeric weights.`);
+  const entries = Object.entries(weights || {});
+  if (entries.length === 0) {
+    throw new Error(`Population model '${label}' must contain at least one weighted value.`);
   }
+  if (entries.some(([, weight]) => !Number.isFinite(Number(weight)) || Number(weight) <= 0)) {
+    throw new Error(`Population model '${label}' weights must be positive finite numbers.`);
+  }
+  const total = entries.reduce((sum, [, weight]) => sum + Number(weight), 0);
   let cursor = random() * total;
   for (const [value, weight] of entries) {
     cursor -= Number(weight);
@@ -679,6 +683,7 @@ function simulateStudents(students, date, config = {}) {
   }));
 }
 
+// Wilson score interval; z=1.96 produces a 95% interval. Empty samples return null bounds.
 function wilsonInterval(successes, attempts, z = 1.96) {
   if (!attempts) return { low: null, high: null };
   const proportion = successes / attempts;
