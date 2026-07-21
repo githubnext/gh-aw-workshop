@@ -369,7 +369,7 @@ function applyLearning(state, context, gains = {}) {
   return deepFreeze(next);
 }
 
-function markPracticeRepoReady(state) {
+function markPracticeRepoCreatedAndVerified(state) {
   const next = cloneState(state);
   next.flags.hasRepo = true;
   next.flags.repoCreatedViaUi = true;
@@ -468,7 +468,7 @@ function buildTransitions() {
           emphasis: { bias: 0.12, terminalWeight: 0, complexityWeight: 0.1 }
         });
         if (!readiness.ok) return readiness;
-        const next = markPracticeRepoReady(state);
+        const next = markPracticeRepoCreatedAndVerified(state);
         next.flags.environmentReady = true;
         return { ok: true, state: applyLearning(next, context, { github: 0.04, confidence: 0.01 }) };
       }
@@ -487,7 +487,7 @@ function buildTransitions() {
         emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
-      const next = markPracticeRepoReady(state);
+      const next = markPracticeRepoCreatedAndVerified(state);
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }

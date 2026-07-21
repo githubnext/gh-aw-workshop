@@ -483,7 +483,7 @@ Keep the report short and to the point. Keep critical findings visible; move ver
 | Part 2 — advanced (lessons 15+) | `N2` | `Y.YY / 10.0` | `±S2` |
 | Overall corpus | `N` | `Z.ZZ / 10.0` | `±S` |
 
-If any pages are classified as `other`, add one short bullet noting how many there are and whether they look materially weaker than the numbered lessons.
+If any pages are classified as `other`, add one short bullet noting how many there are and whether their `mean_score` is below, equal to, or above the overall corpus mean.
 
 ### Critical Findings
 1. 2-4 bullets with the most important blockers and who they affect.
