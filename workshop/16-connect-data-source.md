@@ -22,6 +22,8 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
+![Diagram showing how deterministic shell steps fetch live data, pass outputs to the AI prompt via $GITHUB_OUTPUT, and the agent produces a summary report](images/16-step-agent-flow.svg)
+
 > [!TIP]
 > If step outputs, here-document syntax, or the scripted versus agentic split are new to you, skim [Side Quest: Passing Data Between Steps with $GITHUB_OUTPUT](side-quest-16-01-github-output.md) and [Side Quest: Deterministic vs Agentic Data Ops](side-quest-16-04-deterministic-vs-agentic-data-ops.md).
 
