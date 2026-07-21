@@ -15,9 +15,7 @@ Sign in at [github.com](https://github.com). If you do not have an account yet, 
 
 If you are unsure, start with a Codespace. It gives you a ready-to-use environment hosted in the cloud.
 
-If you are familiar with terminals, use your usual setup. We will go over the requirements.
-
-If you choose the GitHub UI path, you can complete the main workshop steps in your browser and still run a real workflow from the Actions tab.
+If you are **familiar with terminals**, use your usual local setup. We will go over the requirements.
 
 ![Setup path decision diagram: choose between Codespace and Local Terminal based on your environment](images/01-setup-path-decision.svg)
 
@@ -25,8 +23,8 @@ If you choose the GitHub UI path, you can complete the main workshop steps in yo
 
 Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both show:
 
-- **Copilot is enabled**
-- **Models: available**
+- **Copilot CLI is enabled**
+- Some **Models are available**
 
 Claude, Codex, or Gemini? Confirm your API key.
 
