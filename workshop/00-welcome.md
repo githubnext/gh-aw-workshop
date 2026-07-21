@@ -4,7 +4,7 @@
 
 # Welcome to our Agent Factory Tour
 
-![Mona's Agent Factory](images/00-welcome-mona-agent-factory.png)
+![Mona's Agent Factory](images/00-welcome-monas-agent-factory.png)
 
 
 By the end of this workshop, a real AI agent will create an issue with a summary of the activity in your repository over the latest 24h, every day, without you writing shell-script workflow code.
