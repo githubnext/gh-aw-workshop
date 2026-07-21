@@ -119,12 +119,49 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 > [!NOTE]
 > Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.
 
+### Combine multiple conditions
+
+The `&&` (AND) and `||` (OR) operators let you build composite conditions that express more nuanced rules than a single comparison allows. When combining multiple shell-derived outputs, keep in mind that all values written to `$GITHUB_OUTPUT` arrive as strings, so always compare them against quoted literals.
+
+```yaml
+# Run only when there are commits AND the branch is main
+if: steps.recent.outputs.commit_count != '0' && github.ref == 'refs/heads/main'
+
+# Run when triggered manually OR there are recent commits
+if: github.event_name == 'workflow_dispatch' || steps.recent.outputs.commit_count != '0'
+
+# Skip weekends by combining day-of-week outputs from a shell step
+if: steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
+```
+
+### Gather time-based context with shell steps
+
+Some conditions require information that is not available in any context object — for example, the current day of the week or the number of commits since a given timestamp. You can capture this data in a dedicated shell step and then reference it like any other output.
+
+A step that exposes the current day name:
+
+```yaml
+- name: Check day of week
+  id: day
+  run: echo "day=$(date +%A)" >> $GITHUB_OUTPUT
+```
+
+Once this step runs, `steps.day.outputs.day` holds a value like `Monday` or `Saturday`. Combine it with a commit-count check to build a condition that skips the agent job on both quiet days and weekends:
+
+```yaml
+if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
+```
+
+This pattern — deterministic shell step produces a string output, `if:` expression reads that output — applies broadly wherever you need workflow control flow based on data that is not already in a GitHub Actions context object.
+
 ## ✅ Checkpoint
 
 - [ ] You can explain what `${{ }}` does and when GitHub evaluates it
 - [ ] You can name at least three context objects and what they contain
 - [ ] You understand how `id:` connects a step's output to the `steps` context
 - [ ] You can write an `if:` condition that skips a step based on a previous output
+- [ ] You can combine two or more conditions using `&&` and `||`
+- [ ] You can write a shell step that captures time-based data (day of week, date) as a step output
 
 <!-- journey: all -->
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
