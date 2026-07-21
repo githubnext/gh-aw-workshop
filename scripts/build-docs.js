@@ -283,6 +283,20 @@ fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
 
 // Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
+:root {
+  --workshop-link-color: var(--fgColor-accent, #0969da);
+  --workshop-link-visited-color: var(--fgColor-done, #8250df);
+  --workshop-link-hover-color: var(--fgColor-accent, #0550ae);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --workshop-link-color: var(--fgColor-accent, #58a6ff);
+    --workshop-link-visited-color: var(--fgColor-done, #bc8cff);
+    --workshop-link-hover-color: var(--fgColor-accent, #79c0ff);
+  }
+}
+
 body,
 .markdown-body {
   font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -308,7 +322,7 @@ body,
   text-decoration: none;
 }
 .site-title:hover {
-  color: var(--fgColor-accent, #0969da);
+  color: var(--workshop-link-hover-color);
 }
 .menu-toggle,
 .menu-close {
@@ -422,11 +436,11 @@ body,
   border-radius: 6px;
 }
 .workshop-menu-group a:hover {
-  color: var(--fgColor-accent, #0969da);
+  color: var(--workshop-link-hover-color);
   background-color: var(--bgColor-muted, #f6f8fa);
 }
 .workshop-menu-group a[aria-current="page"] {
-  color: var(--fgColor-accent, #0969da);
+  color: var(--workshop-link-color);
   font-weight: 600;
   background-color: var(--bgColor-accent-muted, #ddf4ff);
 }
@@ -456,9 +470,23 @@ body,
   display: none;
 }
 
-.markdown-body a:not(.anchor) {
+.markdown-body a:not(.anchor),
+.workshop-navigation a {
+  color: var(--workshop-link-color);
   text-decoration: underline;
   text-underline-offset: 0.08em;
+}
+
+.markdown-body a:not(.anchor):visited,
+.workshop-navigation a:visited {
+  color: var(--workshop-link-visited-color);
+}
+
+.markdown-body a:not(.anchor):hover,
+.markdown-body a:not(.anchor):focus-visible,
+.workshop-navigation a:hover,
+.workshop-navigation a:focus-visible {
+  color: var(--workshop-link-hover-color);
 }
 
 .workshop-navigation {
