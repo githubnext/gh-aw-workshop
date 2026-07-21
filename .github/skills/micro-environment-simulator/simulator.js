@@ -898,7 +898,7 @@ function recordStepGreekEstimate(accumulator, stepId, greeks) {
   if (!greeks || typeof greeks !== "object") {
     return;
   }
-  const entries = Object.entries(greeks).filter(([, value]) => Number.isFinite(Number(value)));
+  const entries = Object.entries(greeks).filter(([, value]) => typeof value === "number" && Number.isFinite(value));
   if (entries.length === 0) {
     return;
   }
@@ -923,6 +923,9 @@ function recordStepGreekEstimate(accumulator, stepId, greeks) {
 function finalizeStepGreekAccumulator(accumulator, totalAttempts = 0, steps = []) {
   if (!accumulator || accumulator.signalKeys.length === 0) {
     return null;
+  }
+  if (!Number.isFinite(totalAttempts) || totalAttempts <= 0) {
+    throw new Error("Greek aggregation requires a positive total attempt count.");
   }
   const stepIds = steps.length > 0 ? steps : Object.keys(accumulator.sumsByStep);
   const conditionalGreeksByStep = {};
