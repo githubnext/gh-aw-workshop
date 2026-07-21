@@ -19,6 +19,11 @@
 
 You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file.
 
+## 📋 Before You Start
+
+- Practice repository set up from a previous step.
+- No tools or credentials needed for this step.
+
 ## Classic Actions vs [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/)
 
 If you already know Actions, here's the key shift at a glance:
@@ -38,20 +43,39 @@ A GitHub Actions workflow is a YAML file in `.github/workflows/` that tells GitH
 - _what_ to run (`jobs`)
 - _how_ each job executes (`steps`)
 
-Minimal example:
+```
+.github/
+  workflows/
+    hello.yml   ← each workflow file lives here
+```
+
+Annotated example — each comment names the key term (this is a standard Actions workflow, not an agentic workflow):
 
 ```yaml
+# Standard GitHub Actions workflow — not an agentic workflow
 name: Hello Workflow
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch         # trigger: the event that starts this workflow
 
 jobs:
-  hello:
-    runs-on: ubuntu-latest
+  hello:                      # job: a named group of steps on one machine
+    runs-on: ubuntu-latest    # runner: the machine GitHub provisions for this job
     steps:
-      - run: echo "Hello from GitHub Actions"
+      - run: echo "Hello from GitHub Actions"   # step: a shell command on the runner
 ```
+
+<details>
+<summary>What is a runner?</summary>
+
+A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
+
+```yaml
+runs-on: ubuntu-latest   # also: windows-latest, macos-latest
+```
+
+You can also bring a **self-hosted runner** for custom hardware or private networks. Agentic workflows use the same hosted runners.
+
+</details>
 
 ## Why This Matters for Agentic Workflows
 
