@@ -104,7 +104,10 @@ function clamp(value, min, max) {
 }
 
 function simulationRoll(context) {
-  return typeof context.random === "function" ? context.random() : 0.5;
+  if (typeof context.random !== "function") {
+    throw new Error("Simulation context is missing its seeded random stream.");
+  }
+  return context.random();
 }
 
 function learnerProfile(state) {

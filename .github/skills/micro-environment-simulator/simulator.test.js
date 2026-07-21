@@ -46,6 +46,10 @@ test("population distributions reject invalid weights", () => {
     () => simulator.weightedChoice(() => 0.5, {}, "test"),
     /at least one weighted value/
   );
+  assert.throws(
+    () => simulator.weightedChoice(() => 0.5, { first: 0.4, second: 0.4 }, "test"),
+    /must sum to 1/
+  );
 });
 
 test("dropout rates use runs reaching each step as the denominator", () => {
@@ -74,6 +78,7 @@ test("Wilson intervals contain the observed proportion", () => {
   assert.ok(interval.low < 0.5);
   assert.ok(interval.high > 0.5);
   assert.deepEqual(simulator.wilsonInterval(0, 0), { low: null, high: null });
+  assert.throws(() => simulator.wilsonInterval(2, 1), /0 <= successes <= attempts/);
 });
 
 test("synthetic simulation history does not increase learner confidence", () => {
@@ -93,5 +98,6 @@ test("synthetic simulation history does not increase learner confidence", () => 
   const experiencedState = simulator.defaultEnvironmentForStudent(experienced, 120, 3);
 
   assert.equal(freshState.learner.confidence, experiencedState.learner.confidence);
+  assert.equal(freshState.learner.sessionEffect, experiencedState.learner.sessionEffect);
   assert.deepEqual(freshState.learner.mastery, experiencedState.learner.mastery);
 });

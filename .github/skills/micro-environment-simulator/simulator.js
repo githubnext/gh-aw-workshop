@@ -64,6 +64,9 @@ function weightedChoice(random, weights, label = "distribution") {
     throw new Error(`Population model '${label}' weights must be positive finite numbers.`);
   }
   const total = entries.reduce((sum, [, weight]) => sum + Number(weight), 0);
+  if (Math.abs(total - 1) > 1e-6) {
+    throw new Error(`Population model '${label}' weights must sum to 1; received ${total}.`);
+  }
   let cursor = random() * total;
   for (const [value, weight] of entries) {
     cursor -= Number(weight);
@@ -476,6 +479,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     skeptical: -0.03
   };
   const baseConfidence = clamp(0.52 + (personalityConfidence[student.personality] || 0), 0.25, 0.8);
+  // Capture good-day/bad-day variation shared across every step in one simulated journey.
   const sessionEffect = clamp(
     (random("session-effect-a") + random("session-effect-b") - 1) * 0.18,
     -0.16,
@@ -685,6 +689,15 @@ function simulateStudents(students, date, config = {}) {
 
 // Wilson score interval; z=1.96 produces a 95% interval. Empty samples return null bounds.
 function wilsonInterval(successes, attempts, z = 1.96) {
+  if (
+    !Number.isFinite(successes) ||
+    !Number.isFinite(attempts) ||
+    successes < 0 ||
+    attempts < 0 ||
+    successes > attempts
+  ) {
+    throw new Error("Wilson interval requires 0 <= successes <= attempts.");
+  }
   if (!attempts) return { low: null, high: null };
   const proportion = successes / attempts;
   const denominator = 1 + (z * z) / attempts;
@@ -698,6 +711,7 @@ function wilsonInterval(successes, attempts, z = 1.96) {
   };
 }
 
+// Rates are conditional on attempts; steps with no at-risk runs receive a null rate and interval.
 function aggregateDropoutRates(monteCarlo, steps = []) {
   const dropoutRateByStep = {};
   const attemptsByStep = {};
