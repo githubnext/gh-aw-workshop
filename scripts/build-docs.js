@@ -946,6 +946,9 @@ ${workshopMenu}
   </dialog>
   <main class="container-xl px-3 py-5 markdown-body">
 ${htmlContent}</main>
+  <footer class="container-xl px-3 py-3" style="border-top:1px solid var(--color-border-default,#d0d7de);margin-top:2rem;text-align:center">
+    <sub><a href="https://github.com/githubnext/gh-aw-workshop" target="_blank" rel="noopener noreferrer">gh-aw-workshop</a> &mdash; made by github</sub>
+  </footer>
   <script>
     const workshopPages = Array.from(document.querySelectorAll('.markdown-body > details'));
     const menuDialog = document.getElementById('workshop-menu');
