@@ -34,7 +34,7 @@ If you want a browser-only scenario with no terminal, [Adventure E in Step 10](0
 ## What to do next
 
 <!-- journey: ui -->
-Continue to [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
+In the next step, open [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
 <!-- /journey -->
 
 ## ✅ Checkpoint
@@ -48,4 +48,3 @@ Continue to [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your
 <!-- journey: ui -->
 **Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
 <!-- /journey -->
-

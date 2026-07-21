@@ -21,6 +21,9 @@ PAGE_ADVENTURE_RE = re.compile(r"^<!--\s*page-adventure:\s*([a-z-]+)\s*-->\s*$")
 NAV_RE = re.compile(
     r"^\s*(?:>\s*)?(?:\*\*Next(?: \(pick one\))?:\*\*|\*\*Return to:\*\*|Continue to \[|Return to \[|Go back to \[|Need a refresher .*Go back to \[)"
 )
+FORWARD_NAV_RE = re.compile(
+    r"^\s*(?:>\s*)?\*\*Next:\*\*\s*(?:Open\s+)?\[[^\]]+\]\(([^)#?]+\.md)(?:#[^)]*)?\)\.?\s*$"
+)
 
 
 class JourneyMarkerTests(unittest.TestCase):
@@ -120,6 +123,21 @@ class JourneyMarkerTests(unittest.TestCase):
 
                     if CLOSE_RE.match(line):
                         depth -= 1
+
+    def test_forward_navigation_lines_match_build_docs_parser(self) -> None:
+        for path in sorted(WORKSHOP_DIR.glob("*.md")):
+            if path.name == "README.md":
+                continue
+
+            with self.subTest(file=path.name):
+                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                    stripped = line.strip()
+                    if stripped.startswith("**Next:**") or stripped.startswith("Continue to [") or stripped.startswith("Continue with ["):
+                        self.assertRegex(
+                            line,
+                            FORWARD_NAV_RE,
+                            f"Forward navigation line must use the build-docs format in {path.name}:{line_number}",
+                        )
 
 
 if __name__ == "__main__":

@@ -28,8 +28,8 @@ In either path, you'll start with `daily-report-status.md` and end with `daily-r
 The Terminal path gives you early compiler feedback. The GitHub Copilot path delegates `gh aw compile` to the agent's session workspace, so browser-first learners can still complete this step without a local terminal.
 
 <!-- journey: codespace,local,terminal -->
-Continue with [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md).
+**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
 <!-- journey: ui,copilot -->
-Continue with [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md).
+**Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
 <!-- /journey -->

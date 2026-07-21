@@ -43,5 +43,7 @@ Choose your adventure.
 **Next:** Open [Set Up Your Local Terminal](02b-setup-local.md).
 <!-- /journey -->
 <!-- journey: ui,copilot -->
-**Next:** On [github.com/new](https://github.com/new), create a public repository named `my-agentic-workflows`. Check **Add a README file** and click **Create repository**. Then continue to [GitHub UI Path — No Installation Needed](06c-install-ui.md).
+On [github.com/new](https://github.com/new), create a public repository named `my-agentic-workflows`. Check **Add a README file** and click **Create repository**.
+
+**Next:** [GitHub UI Path — No Installation Needed](06c-install-ui.md)
 <!-- /journey -->

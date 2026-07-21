@@ -319,6 +319,23 @@ Rules:
 - Wrap complete block sections (for example, a full callout or a full next-step line), not partial words inside a sentence.
 - Do not nest journey markers. Keep each commented journey block self-contained, and place it at normal block boundaries (paragraphs, list items, callouts, or next-link lines).
 
+### Forward navigation link format
+
+When a workshop page points the learner to the next workshop Markdown file, use a
+standalone `**Next:**` line that matches the docs-builder parser exactly:
+
+```markdown
+**Next:** [Title](filename.md)
+**Next:** Open [Title](filename.md).
+```
+
+Rules:
+
+- Keep exactly one internal workshop `.md` link on the `**Next:**` line.
+- Put setup details or extra explanation in a separate paragraph, not on the same line as the `**Next:**` link.
+- For branching pages, repeat one `**Next:**` line per option rather than switching to `Continue with` or `Continue to`.
+- When the next step depends on learner path, wrap each `**Next:**` line in the appropriate `<!-- journey: ... -->` block.
+
 Example patterns:
 
 ```markdown

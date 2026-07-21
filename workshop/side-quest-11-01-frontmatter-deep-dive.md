@@ -102,7 +102,8 @@ The five entries above cover reading repository content, issues, pull requests, 
 ---
 
 <!-- journey: all -->
-Continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md), or return to [Build — Daily Repo Status Workflow](07-your-first-workflow.md).
-<!-- /journey -->
+**Next:** [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md)
 
+**Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md)
+<!-- /journey -->
 
