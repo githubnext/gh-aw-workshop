@@ -26,6 +26,10 @@ function escapeHtml(value) {
     .replaceAll('\'', '&#39;');
 }
 
+function isExternalWebLink(href) {
+  return /^(https?:)?\/\//i.test(href);
+}
+
 // Plugin: clickable heading anchors with GitHub-compatible IDs
 const slugger = new GithubSlugger();
 marked.use({
@@ -145,7 +149,7 @@ marked.use({
   renderer: {
     link({ href, title, tokens }) {
       const text = this.parser.parseInline(tokens);
-      const titleAttr = title ? ` title="${title}"` : '';
+      const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
       if (href) {
         const markdownPageLink = href.match(/^(?<file>[^/?#]+\.md)(?<hash>#[^?]+)?$/);
         if (markdownPageLink) {
@@ -157,8 +161,13 @@ marked.use({
             return `<a href="${rewrittenHref}"${titleAttr}>${text}</a>`;
           }
         }
+
+        const targetAttr = isExternalWebLink(href)
+          ? ' target="_blank" rel="noopener noreferrer"'
+          : '';
+        return `<a href="${escapeHtml(href)}"${titleAttr}${targetAttr}>${text}</a>`;
       }
-      return false;
+      return text;
     },
   },
 });
