@@ -22,6 +22,7 @@ If you prefer the terminal, you can use `gh aw run daily-report-status` as an ad
 
 ### Before you click Run
 
+- [ ] I completed [Confirm Model Access](07d-confirm-model-access.md) and my chosen billing method (organization centralized billing or `COPILOT_GITHUB_TOKEN`) is active
 - [ ] **Daily Report Status** appears in the **Actions** sidebar
 - [ ] I have at least one open issue in my practice repository
 
