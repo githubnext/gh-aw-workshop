@@ -92,6 +92,42 @@ A scheduled agentic workflow generates a report like this:
 
 **Your turn:** Answer in your own words — _what did the agent decide on its own?_ Identify at least two lines where the agent made a judgment call rather than just reading a number.
 
+## Check your understanding
+
+Apply what you just saw — answer each question in your notes, then reveal.
+
+Should the daily report run on a schedule or wait for manual dispatch? State which and why.
+
+- [ ] I chose a trigger type and noted why
+
+<details>
+<summary>Check your answer</summary>
+
+A scheduled trigger runs automatically — right for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
+
+- [ ] Schedule: runs automatically, no button click needed
+- [ ] `workflow_dispatch`: requires a manual click each run
+
+</details>
+
+Does the workflow need write access, or is read-only enough to compose the report?
+
+- [ ] I decided what access the report needs
+
+<details>
+<summary>Check your answer</summary>
+
+Read-only is enough. The agent reads data; it does not post or modify anything.
+
+- [ ] Read-only is sufficient for this report
+- [ ] The agent reads but does not write
+
+</details>
+
+Write one sentence for the task brief — this becomes your brief in Step 7.
+
+- [ ] I wrote my one-sentence brief
+
 ## The two files
 
 An agentic workflow has two files. Here is the `.md` source you write:
