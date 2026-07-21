@@ -262,6 +262,60 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
+// Generate docs runtime JavaScript
+const docsJs = `Reveal.initialize({
+  // URL hash reflects current slide by section id
+  hash: true,
+  // Show step/sub-step position as h.v (horizontal.vertical)
+  slideNumber: 'h.v',
+  // Start slides at the top rather than vertically centered
+  center: false,
+  // Push slide changes into the browser history
+  history: true,
+});
+
+// Navigate to named sections when an in-slide hash link is clicked.
+// Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
+document.addEventListener('click', function (e) {
+  function findHashLink(start) {
+    let el = start && start.nodeType === Node.ELEMENT_NODE
+      ? start
+      : (start && start.parentElement) || null;
+    while (el) {
+      if (el.tagName === 'A') {
+        const href = el.getAttribute('href');
+        if (href && href.startsWith('#')) return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  const link = findHashLink(e.target);
+  if (!link) return;
+  const href = link.getAttribute('href');
+  const raw = href ? href.slice(1) : '';
+  if (!raw) return;
+  let id = raw;
+  try {
+    id = decodeURIComponent(raw);
+  } catch (_) {
+    // Ignore malformed hash fragments and keep default browser behavior.
+    return;
+  }
+  const target = document.getElementById(id);
+  if (target && target.closest('.slides')) {
+    const indices = Reveal.getIndices(target);
+    if (indices && typeof indices.h === 'number') {
+      const v = typeof indices.v === 'number' ? indices.v : 0;
+      e.preventDefault();
+      Reveal.slide(indices.h, v);
+    }
+  }
+});
+`;
+fs.writeFileSync(path.join(distDir, 'docs.js'), docsJs);
+
 // Generate single-page reveal.js presentation
 const totalGroups = sortedGroupKeys.length;
 const page = `<!DOCTYPE html>
@@ -283,58 +337,7 @@ ${slidesHtml}
     </div>
   </div>
   <script src="reveal.js"></script>
-  <script>
-    Reveal.initialize({
-      // URL hash reflects current slide by section id
-      hash: true,
-      // Show step/sub-step position as h.v (horizontal.vertical)
-      slideNumber: 'h.v',
-      // Start slides at the top rather than vertically centered
-      center: false,
-      // Push slide changes into the browser history
-      history: true,
-    });
-
-    // Navigate to named sections when an in-slide hash link is clicked.
-    // Reveal.js handles #/id hashes natively; this catches bare #id hrefs.
-    document.addEventListener('click', function (e) {
-      function findHashLink(start) {
-        let el = start && start.nodeType === Node.ELEMENT_NODE
-          ? start
-          : (start && start.parentElement) || null;
-        while (el) {
-          if (el.tagName === 'A') {
-            const href = el.getAttribute('href');
-            if (href && href.startsWith('#')) return el;
-          }
-          el = el.parentElement;
-        }
-        return null;
-      }
-
-      const link = findHashLink(e.target);
-      if (!link) return;
-      const href = link.getAttribute('href');
-      const raw = href ? href.slice(1) : '';
-      if (!raw) return;
-      let id = raw;
-      try {
-        id = decodeURIComponent(raw);
-      } catch (_) {
-        // Ignore malformed hash fragments and keep default browser behavior.
-        return;
-      }
-      const target = document.getElementById(id);
-      if (target && target.closest('.slides')) {
-        const indices = Reveal.getIndices(target);
-        if (indices && typeof indices.h === 'number') {
-          const v = typeof indices.v === 'number' ? indices.v : 0;
-          e.preventDefault();
-          Reveal.slide(indices.h, v);
-        }
-      }
-    });
-  </script>
+  <script src="docs.js"></script>
 </body>
 </html>
 `;
