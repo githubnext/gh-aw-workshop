@@ -27,16 +27,17 @@ function escapeHtml(value) {
 }
 
 function isExternalWebLink(href) {
-  return /^(https?:)?\/\//i.test(href);
+  return /^https?:\/\//i.test(href);
 }
 
 function addExternalLinkTargetAttrs(html) {
-  return html.replace(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi, (match, beforeHref, href, afterHref) => {
-    if (!isExternalWebLink(href)) return match;
+  return html.replace(/<a\b(?<attrs>[^>]*)>/gi, (match, attrs = '') => {
+    const hrefMatch = attrs.match(/\bhref="([^"]+)"/i);
+    if (!hrefMatch || !isExternalWebLink(hrefMatch[1])) return match;
 
-    const targetAttr = /\btarget\s*=/.test(match) ? '' : ' target="_blank"';
-    const relAttr = /\brel\s*=/.test(match) ? '' : ' rel="noopener noreferrer"';
-    return `<a${beforeHref}href="${href}"${afterHref}${targetAttr}${relAttr}>`;
+    const targetAttr = /\btarget\s*=/.test(attrs) ? '' : ' target="_blank"';
+    const relAttr = /\brel\s*=/.test(attrs) ? '' : ' rel="noopener noreferrer"';
+    return `<a${attrs}${targetAttr}${relAttr}>`;
   });
 }
 
