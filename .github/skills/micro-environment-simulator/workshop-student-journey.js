@@ -144,7 +144,7 @@ function prefersBrowserPath(state, context) {
   return (
     learner.uiPreferred === true ||
     state.tool === "CCA" ||
-    state.tool === "mobile" ||
+    state.mobile === true ||
     contentSignal(context, "browserSupport") >= contentSignal(context, "terminalDemand")
   );
 }
@@ -286,7 +286,7 @@ function computeSuccessProbability(state, context, emphasis = {}) {
   } else if (state.tool === "CCA") {
     probability += browserSupport * 0.12;
     probability -= terminalDemand * 0.02;
-  } else if (state.tool === "mobile") {
+  } else if (state.mobile === true) {
     probability -= terminalDemand * 0.34 + complexity * 0.1;
   }
 
@@ -326,7 +326,7 @@ function evaluateStepProbability(state, context, options = {}) {
   } else {
     probability += Number(pathAdjustments.local || 0);
   }
-  if (state.tool === "mobile") {
+  if (state.mobile === true) {
     probability += Number(pathAdjustments.mobile || 0);
   }
   if (learnerProfile(state).uiPreferred) {
@@ -403,7 +403,7 @@ function buildTransitions() {
       return { ok: true, state: applyLearning(state, context, { github: 0.02, confidence: 0.01 }) };
     },
     "02-setup": (state, context) => {
-      if (state.tool === "mobile") {
+      if (state.mobile === true) {
         const readiness = contentReadinessCheck(state, context, {
           salt: 23,
           category: "mobile-setup-friction",
