@@ -2,15 +2,15 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Frontmatter Deep Dive — Part A
 
-> _Optional: a section-by-section walkthrough of the opening three frontmatter sections in a `gh-aw` workflow file. Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
+> _Optional: configure each of the opening three frontmatter sections of an agentic workflow file — metadata, triggers, and permissions. Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
 
 ## 📋 Before You Start
 
-You have read [Step 11](07-your-first-workflow.md) and have a draft frontmatter file open.
+You have a draft frontmatter file open.
 
 ---
 
-An agentic workflow file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between `---` fences. This block configures when the workflow runs and what it is allowed to do. This page covers the first three sections: metadata, triggers, and permissions.
+An agentic workflow file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between two YAML fences. This block configures when the workflow runs and what it is allowed to do.
 
 ---
 
@@ -24,17 +24,21 @@ emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
 ```
 
-**What this section does:** Opens the YAML frontmatter and declares human-readable metadata.
+**What this section does:** Declares the workflow's metadata.
 
 | Field | Purpose |
 |-------|---------|
-| `---` | Signals the start of YAML frontmatter. Everything until the next `---` is structured configuration. |
-| `emoji` | A decorative label shown in the `gh aw` dashboard. Pick any emoji that fits. |
-| `description` | A one-sentence summary shown in the GitHub Actions UI and in `gh aw list`. |
+| `emoji` | Decorative label in the `gh aw` dashboard. Pick any emoji that fits. |
+| `description` | Summary shown in the Actions UI and in `gh aw list`. |
 
-**✏️ Try it:** Update `emoji` and `description` in your draft file to match your workflow.
+**✏️ Try it:** Update both fields in your draft, then run `gh aw compile` and confirm no errors appear.
 
-**✅ Check:** Run `gh aw compile` — the output should list your workflow with no errors.
+```yaml
+# Your turn
+---
+emoji: ???
+description: ???
+```
 
 ---
 
@@ -48,20 +52,34 @@ on:
   workflow_dispatch: {}
 ```
 
-**What this section does:** Tells GitHub Actions _when_ to run this workflow.
+**What this section does:** Declares when the workflow runs.
 
 | Field | Purpose |
 |-------|---------|
-| `on:` | Declares all triggers. Every GitHub Actions workflow must have this key. |
-| `schedule: daily` | Runs once per day at a compiler-assigned time (scattered to avoid load spikes). Also available: `hourly`, `weekly`. |
-| `workflow_dispatch: {}` | Adds a **Run workflow** button in the GitHub Actions UI. The `{}` means no custom inputs are required. |
+| `on:` | Declares all triggers. |
+| `schedule: daily` | Daily run at a compiler-assigned time. See the [triggers reference](https://github.github.com/gh-aw/reference/triggers/) for other intervals. |
+| `workflow_dispatch: {}` | Adds a manual trigger button in the Actions UI. |
 
 > [!TIP]
-> Keep `workflow_dispatch` even after going to production — it lets you re-run the report on demand without changing the schedule.
+> Keep `workflow_dispatch: {}` even after going to production — it lets you re-run the report on demand.
 
-**✏️ Try it:** Add both trigger keys to your draft file and save.
+**✏️ Try it:** Add both trigger keys to your draft and run `gh aw compile`. Then extend the block to also fire on pushes to the main branch:
 
-**✅ Check:** Run `gh aw compile` — the compile should succeed, and you should see both `schedule` and `workflow_dispatch` listed under triggers.
+```yaml
+on:
+  push:
+    branches: [main]
+  schedule: daily
+  workflow_dispatch: {}
+```
+
+```yaml
+# Your turn: configure schedule, push to main, and manual triggers
+on:
+  ???
+```
+
+**✅ Check:** Run `gh aw compile` — the compiled output should list all three triggers.
 
 ---
 
@@ -78,26 +96,84 @@ permissions:
   actions: read
 ```
 
-**What this section does:** Declares exactly which GitHub API scopes this workflow is allowed to use. Minimal permissions are a security best practice.
+**What this section does:** Declares the GitHub API scopes this workflow may use — fewer scopes is safer.
 
-The five entries above cover reading repository content, issues, pull requests, and workflow runs, plus the `copilot-requests: write` scope that the Copilot engine requires to authenticate with `${{ github.token }}`. Full definitions for each field are in [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md).
+| Field | Purpose |
+|-------|---------|
+| `permissions:` | Lists every scope the workflow may use; omitted scopes are denied. |
+| `contents: read` | Read access to repository files and commits. |
+| `copilot-requests: write` | Required by the Copilot engine. |
+| `issues: read` | Read access to issue data. |
+| `pull-requests: read` | Read access to pull request data. |
+| `actions: read` | Read access to workflow run results. |
 
-> [!NOTE]
-> There is no `issues: write` here. Write access is handled by `safe-outputs` — covered in [Part B](side-quest-11-08-frontmatter-tools-outputs.md).
+**✏️ Try it:** Add the `permissions:` block to your draft. Then fill in the correct permission value for each scope:
 
-**✏️ Try it:** Add the `permissions:` block to your draft. Verify that `copilot-requests: write` is included.
+```yaml
+# Your turn: fill in the correct value for each scope
+permissions:
+  contents: ???
+  copilot-requests: ???
+  issues: ???
+  pull-requests: ???
+  actions: ???
+```
 
 **✅ Check:** Run `gh aw compile` — the compile should complete with no permission errors.
+
+---
+
+## Mini-challenge
+
+Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
+
+```yaml
+# Complete the on: block
+on:
+  ???
+```
+
+<details><summary>Solution</summary>
+
+```yaml
+on:
+  schedule: daily
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+```
+
+Run `gh aw compile` and confirm all three triggers appear in the compiled output.
+</details>
+
+Now combine all three sections into one complete frontmatter block and compile it:
+
+```yaml
+# Your turn: combine all three sections
+---
+emoji: ???
+description: ???
+on:
+  ???
+permissions:
+  ???
+---
+```
 
 ---
 
 ## ✅ Checkpoint
 
 - [ ] You updated `emoji` and `description` in your draft and `gh aw compile` produced no errors.
-- [ ] You added both `schedule: daily` and `workflow_dispatch` triggers, and `gh aw compile` lists both with no errors.
-- [ ] The `workflow_dispatch` trigger appears in your Actions UI after pushing the file.
-- [ ] You added the `permissions:` block with all five entries and `copilot-requests: write` is present.
-- [ ] You can explain why `copilot-requests: write` is required and where to find full field definitions.
+- [ ] You added `schedule: daily` and `workflow_dispatch: {}` triggers; both appear in the compiled output.
+- [ ] You added a push trigger for the main branch and confirmed it compiles correctly.
+- [ ] You can explain why keeping `workflow_dispatch: {}` alongside a schedule trigger is useful.
+- [ ] You added the `permissions:` block with all five entries.
+- [ ] `copilot-requests: write` is present in your permissions block.
+- [ ] You completed the mini-challenge and all three triggers appear in the compiled output.
+- [ ] You can explain what each permission scope in the block allows.
+- [ ] You wrote a complete combined frontmatter block and it compiled without errors.
+- [ ] The `workflow_dispatch: {}` trigger appears as a manual trigger button in your GitHub Actions UI after pushing.
 
 ---
 
