@@ -53,6 +53,40 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Do **not** number Markdown headers inside a file. Use descriptive headings such as `### Open the Codespace`, not `### 2. Open the Codespace`.
 - Keep ordering in ordered lists, tables, filenames, and checkpoint lists instead of in the heading text itself.
 
+## Theme-aware workshop images
+
+When Playwright or another automation creates a workshop screenshot or diagram,
+generate both light and dark variants during the same run. Name them
+`<stem>-light.<ext>` and `<stem>-dark.<ext>`, then use GitHub's
+[theme-aware `<picture>` pattern](https://github.blog/developer-skills/github/how-to-make-your-images-in-markdown-on-github-adjust-for-dark-mode-and-light-mode/#one-snippet-two-themes):
+
+```html
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/<stem>-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/<stem>-light.svg">
+   <img alt="Concise descriptive alt text" src="images/<stem>-light.svg">
+</picture>
+```
+
+- Keep the fallback `<img>` and use the light variant as its `src`.
+- Put alt text on the fallback `<img>`; do not duplicate it on `<source>` elements.
+- Capture or render each variant with Playwright's matching `colorScheme` setting.
+- Verify in both color schemes that `currentSrc` selects the expected variant and
+   that the image is nonblank, readable, and free of clipping or overflow.
+
+Existing single-theme workshop images are migration candidates, not exceptions:
+
+- Inventory Markdown image references and HTML `src`/`srcset` references so
+   existing `<picture>` blocks remain auditable.
+- Migrate at most three existing visuals per automated pull request. Process core
+   workshop pages before setup paths, advanced topics, and side quests.
+- Preserve each visual's stem and alt text while creating `-light` and `-dark`
+   variants and replacing the original reference with the `<picture>` pattern.
+- Create a genuine theme-specific variant for UI screenshots and diagrams. A
+   theme-neutral photo may use the same existing file for both `<source>` entries
+   instead of duplicating the binary.
+- Do not delete an original asset until no Markdown or HTML reference uses it.
+
 ## Alert callouts: use `<details>` only for multi-line content
 
 ### Alert level ceiling
