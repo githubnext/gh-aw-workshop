@@ -287,29 +287,6 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
-const parallaxBackgroundSvgEncoded = encodeURIComponent([
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">',
-  '<defs>',
-  '<linearGradient id="primaryGradient" x1="0" y1="0" x2="1" y2="1">',
-  '<stop offset="0%" stop-color="#0d1117" />',
-  '<stop offset="45%" stop-color="#271449" />',
-  '<stop offset="100%" stop-color="#8250df" />',
-  '</linearGradient>',
-  '<radialGradient id="topRadialGlow" cx="20%" cy="25%" r="40%">',
-  '<stop offset="0%" stop-color="#a371f7" stop-opacity=".32" />',
-  '<stop offset="100%" stop-color="#a371f7" stop-opacity="0" />',
-  '</radialGradient>',
-  '<radialGradient id="bottomRadialGlow" cx="82%" cy="78%" r="45%">',
-  '<stop offset="0%" stop-color="#6f42c1" stop-opacity=".30" />',
-  '<stop offset="100%" stop-color="#6f42c1" stop-opacity="0" />',
-  '</radialGradient>',
-  '</defs>',
-  '<rect width="1920" height="1080" fill="url(#primaryGradient)" />',
-  '<rect width="1920" height="1080" fill="url(#topRadialGlow)" />',
-  '<rect width="1920" height="1080" fill="url(#bottomRadialGlow)" />',
-  '</svg>',
-].join(''));
-
 // Generate docs runtime JavaScript
 const docsJs = `const legacyHashMatch = window.location.hash.match(/^#\\/([^/]+)$/);
 let legacySectionId = null;
@@ -343,8 +320,6 @@ function enableImageLightbox() {
   });
 }
 
-const parallaxBackgroundImage = ${JSON.stringify(`data:image/svg+xml,${parallaxBackgroundSvgEncoded}`)};
-
 Reveal.initialize({
   // URL hash reflects current slide by section id
   hash: true,
@@ -354,13 +329,6 @@ Reveal.initialize({
   center: false,
   // Push slide changes into the browser history
   history: true,
-  // GitHub agentic-purple themed parallax background
-  parallaxBackgroundImage: parallaxBackgroundImage,
-  // Use a larger virtual canvas than the viewport so motion stays subtle.
-  parallaxBackgroundSize: '3200px 1800px',
-  // Horizontal movement is intentionally stronger than vertical to reduce jitter.
-  parallaxBackgroundHorizontal: 180,
-  parallaxBackgroundVertical: 70,
 });
 
 Reveal.on('ready', enableImageLightbox);
