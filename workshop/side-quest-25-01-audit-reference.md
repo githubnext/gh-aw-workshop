@@ -4,6 +4,11 @@
 
 > _A detailed companion to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md). Use this side quest when you want to understand the full contents of an audit report or dig into individual artifact files._
 
+## 📋 Before You Start
+
+- You completed [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and have at least one workflow run ID to work with.
+- `gh aw` is installed and authenticated (see [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
+
 ## [gh aw audit](https://github.github.com/gh-aw/reference/audit/#gh-aw-audit) report anatomy
 
 `gh aw audit` generates a Markdown report that covers:
@@ -28,9 +33,9 @@ The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh
 | `sandbox/firewall/audit/` | Domain-level network access log (raw data) |
 | `agent_usage.json` | Token usage for the agent turn |
 
-### Parsed log files (--parse)
+### Readable log files
 
-When you run `gh aw audit <run-id> --parse`, two readable files are written alongside the raw artifacts:
+The audit report is accompanied by readable files written alongside the raw artifacts:
 
 - `log.md` — the full agent conversation formatted as Markdown
 - `firewall.md` — a formatted summary of outbound network access (allowed and blocked domains)
@@ -55,12 +60,70 @@ network:
 
 Share the allowed-domains list from a successful run with your enterprise security team as a ready-made firewall allowlist.
 
+## Try it yourself
+
+### Run an audit on a recent run
+
+Open the **Actions** tab in your repository, click a completed workflow run, and copy the run ID from the URL (the number after `/runs/`). Then run:
+
+```bash
+gh aw audit <run-id>
+```
+
+Sample output:
+
+```text
+## Audit Report
+
+**Workflow:** daily-status
+**Trigger:** schedule
+**Engine:** copilot
+**Model:** gpt-4o
+
+| Metric       | Value |
+|---|---|
+| Agent AIC    | 42    |
+| ⌖ AIC        | 3     |
+| MCP calls    | 7     |
+| Threat verdict | none |
+```
+
+- [ ] I found a run ID from the Actions tab
+- [ ] The report shows the workflow name, trigger, and model
+- [ ] The ⌖ AIC figure appears separately from Agent AIC
+- [ ] The threat verdict shows `none` (or I noted what was flagged)
+
+### Explore MCP tool calls
+
+Download the artifacts for a run, then open the `mcp-logs/` directory. Each file corresponds to one MCP server and lists every tool call the agent made.
+
+```bash
+gh aw logs <your-workflow-id> --artifacts all
+```
+
+Browse the log files in `.github/aw/logs/<run-id>/mcp-logs/`.
+
+- [ ] I found the `mcp-logs/` directory in the downloaded artifacts
+- [ ] I identified at least one tool call and noted the tool name
+- [ ] I wrote one sentence describing what the agent was trying to accomplish
+- [ ] I checked `agent_usage.json` for the total token count
+
+### Inspect the firewall records
+
+The raw domain-level network access logs live in `sandbox/firewall/audit/` inside the agent artifact. Scan them to confirm your workflow only contacted expected domains.
+
+- [ ] I opened `sandbox/firewall/audit/` in the downloaded artifacts
+- [ ] I identified at least one domain the workflow accessed
+- [ ] If any domains were blocked, I know to add them to `network.allow` in the workflow frontmatter
+
 ## ✅ Checkpoint
 
-- [ ] You can identify the five files inside the agent artifact and what each contains
+- [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC
-- [ ] You can use `firewall.md` to identify blocked domains and add them to `network.allow`
+- [ ] You can find blocked domains in the firewall audit records and add them to `network.allow`
 - [ ] You know what the threat detection verdict checks for
+- [ ] You ran `gh aw audit` on a real run and reviewed the generated report
+- [ ] You explored `mcp-logs/` to identify tool calls from a completed run
 
 <!-- journey: all -->
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
