@@ -25,7 +25,7 @@ marked.use({
       // slugger.slug() always returns a URL-safe [a-z0-9-] string, safe for attribute interpolation
       const id = slugger.slug(raw);
       // text is the HTML output of parseInline(), which escapes user content
-      return `<h${depth} id="${id}"><a href="#${id}" class="anchor" aria-label="Link to this heading">#</a> ${text}</h${depth}>\n`;
+      return `<h${depth} id="${id}">${text} <a href="#${id}" class="anchor" aria-label="Link to this heading">#</a></h${depth}>\n`;
     },
     // Plugin: render GFM task list items with GitHub-compatible CSS classes
     listitem(item) {
