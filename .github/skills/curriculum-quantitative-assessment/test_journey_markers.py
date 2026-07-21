@@ -24,6 +24,7 @@ NAV_RE = re.compile(
 FORWARD_NAV_RE = re.compile(
     r"^\s*(?:>\s*)?\*\*Next:\*\*\s*(?:Open\s+)?\[[^\]]+\]\(([^)#?]+\.md)(?:#[^)]*)?\)\.?\s*$"
 )
+DEPRECATED_FORWARD_NAV_RE = re.compile(r"^\s*(?:>\s*)?Continue (?:to|with) \[")
 
 
 class JourneyMarkerTests(unittest.TestCase):
@@ -132,12 +133,24 @@ class JourneyMarkerTests(unittest.TestCase):
             with self.subTest(file=path.name):
                 for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
                     stripped = line.strip()
-                    if stripped.startswith("**Next:**") or stripped.startswith("Continue to [") or stripped.startswith("Continue with ["):
+                    if stripped.startswith("**Next:**"):
                         self.assertRegex(
                             line,
                             FORWARD_NAV_RE,
                             f"Forward navigation line must use the build-docs format in {path.name}:{line_number}",
                         )
+
+    def test_deprecated_forward_navigation_phrases_are_not_used(self) -> None:
+        for path in sorted(WORKSHOP_DIR.glob("*.md")):
+            if path.name == "README.md":
+                continue
+
+            with self.subTest(file=path.name):
+                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                    self.assertIsNone(
+                        DEPRECATED_FORWARD_NAV_RE.match(line),
+                        f"Use '**Next:** [Title](file.md)' instead of deprecated forward-navigation phrasing in {path.name}:{line_number}",
+                    )
 
 
 if __name__ == "__main__":
