@@ -87,6 +87,27 @@ For each task below, decide whether it calls for an **agentic workflow** or a **
 > [!TIP]
 > Want to go deeper? [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) covers more exercises, example output, the two-file structure, and concept checks.
 
+## Try it: write a one-sentence task brief
+
+Pick any routine task you do today that involves reading some data and writing a summary — a daily standup note, a weekly inbox digest, or a triage of support tickets. Write a one-sentence task brief for an agent to do it automatically.
+
+Your brief should answer: *what data should the agent read, and what should it post when it's done?*
+
+Example:
+
+```
+Each Monday morning, read all pull requests opened in the past week,
+identify the three with the most review comments, and post a summary
+as an issue with the title "Weekly PR Digest".
+```
+
+- [ ] I've drafted a one-sentence task brief for a real routine task
+- [ ] My brief specifies what data the agent should read
+- [ ] My brief specifies what the agent should post when done
+
+> [!TIP]
+> Struggling to think of a task? Browse the [gh-aw patterns](https://github.github.com/gh-aw/patterns/) for inspiration. You will write a real version of your brief in Step 7.
+
 ## ✅ Checkpoint
 
 - [ ] I can describe what an agentic workflow is in one sentence

@@ -8,7 +8,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 |---|------|-------|--------|
 | 0 | [00-welcome.md](00-welcome.md) | Welcome — What We'll Build | ✅ |
 | 1 | [01-prerequisites.md](01-prerequisites.md) | What You Need Before We Start | ✅ |
-| 2 | Choose one: [02a-setup-codespace.md](02a-setup-codespace.md) **or** [02b-setup-local.md](02b-setup-local.md) | Setup Adventure — A: Codespace or B: Local Terminal | ✅ |
+| 2 | Choose one: [02a-setup-codespace.md](02a-setup-codespace.md), [02b-setup-local.md](02b-setup-local.md), **or** [02c-setup-browser.md](02c-setup-browser.md) | Setup Adventure — A: Codespace, B: Local Terminal, or C: Browser (no terminal) | ✅ |
 | 4 | [04-github-actions-intro.md](04-github-actions-intro.md) | What Are GitHub Actions? | ✅ |
 | 5 | [05-agentic-workflows-intro.md](05-agentic-workflows-intro.md) | What Are Agentic Workflows? | ✅ |
 | 6 | [06-install-gh-aw.md](06-install-gh-aw.md) | Install the gh-aw CLI Extension | ✅ |

@@ -22,3 +22,6 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 <!-- journey: local,terminal -->
 **Next:** [Install gh-aw — Local Terminal](06b-install-local.md)
 <!-- /journey -->
+<!-- journey: ui,copilot -->
+**Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md) — no installation needed on the browser path.
+<!-- /journey -->

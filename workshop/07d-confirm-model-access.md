@@ -8,7 +8,25 @@
 
 ## 🎯 What You'll Do
 
-You'll choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
+You'll verify Copilot model access with a quick test, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
+
+## Verify model access with a test prompt
+
+Before configuring billing, confirm Copilot is reachable from this repository.
+Catching an access problem here saves debugging time in the billing steps and in Step 8.
+
+1. Open the **Agents** tab in your repository on GitHub.com.
+2. Send the following prompt:
+
+   ```
+   What is GitHub Actions? Reply in one sentence.
+   ```
+
+3. Confirm you receive a reply. Any response means the model is accessible.
+4. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+
+> [!IMPORTANT]
+> Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
 
 ## Confirm the workflow engine
 
@@ -67,34 +85,16 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 | Organization centralized billing | Present | None |
 | Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
 
-## Verify model access with a test prompt
-
-Before proceeding, send a quick test to confirm Copilot is reachable from this repository.
-Catching a billing or authentication problem here saves debugging time in Step 8.
-
-1. Open the **Agents** tab in your repository on GitHub.com.
-2. Send the following prompt:
-
-   ```
-   What is GitHub Actions? Reply in one sentence.
-   ```
-
-3. Confirm you receive a reply. Any response means the model is accessible.
-4. If you see an error, revisit the billing path above before continuing.
-
-> [!IMPORTANT]
-> Do not continue to Step 8 if you received an error instead of a response. Fix the billing or authentication issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run.
-
 ## ✅ Checkpoint
 
+- [ ] I opened the Agents tab and sent a test prompt
+- [ ] I received a response from the model
+- [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed the matching authentication guide
 - [ ] My source and compiled lock file use the selected method
 - [ ] Both workflow files are committed to `main`
-- [ ] I opened the Agents tab and sent a test prompt
-- [ ] I received a response from the model
-- [ ] I confirmed no billing or authentication errors appeared
 - [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 <!-- journey: all -->
