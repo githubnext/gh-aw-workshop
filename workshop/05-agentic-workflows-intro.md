@@ -98,12 +98,12 @@ Apply what you just saw — answer each question in your notes, then reveal.
 
 Should the daily report run on a schedule or wait for manual dispatch? State which and why.
 
-- [ ] I chose a trigger type and noted why
+- [ ] I chose a trigger type and explained my reasoning
 
 <details>
 <summary>Check your answer</summary>
 
-A scheduled trigger runs automatically — right for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
+A scheduled trigger runs automatically — appropriate for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
 
 - [ ] Schedule: runs automatically, no button click needed
 - [ ] `workflow_dispatch`: requires a manual click each run
