@@ -109,7 +109,8 @@ class JourneyMarkerTests(unittest.TestCase):
 
             with self.subTest(file=path.name):
                 depth = 0
-                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                for line_number, line in enumerate(lines, start=1):
                     # Page-level annotations (<!-- page-journey: X --> / <!-- page-adventure: Y -->) on lines 1–2
                     # do not match OPEN_RE, so no special skip is needed here.
                     if OPEN_RE.match(line):
@@ -131,7 +132,8 @@ class JourneyMarkerTests(unittest.TestCase):
                 continue
 
             with self.subTest(file=path.name):
-                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                for line_number, line in enumerate(lines, start=1):
                     stripped = line.strip()
                     if stripped.startswith("**Next:**"):
                         self.assertRegex(
@@ -146,7 +148,8 @@ class JourneyMarkerTests(unittest.TestCase):
                 continue
 
             with self.subTest(file=path.name):
-                for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                lines = path.read_text(encoding="utf-8").splitlines()
+                for line_number, line in enumerate(lines, start=1):
                     self.assertIsNone(
                         DEPRECATED_FORWARD_NAV_RE.match(line),
                         f"Use '**Next:** [Title](file.md)' instead of deprecated forward-navigation phrasing in {path.name}:{line_number}",
