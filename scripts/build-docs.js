@@ -762,6 +762,7 @@ html {
   }
   .workshop-navigation-next {
     align-items: stretch;
+    width: 100%;
   }
   .workshop-nav-btn {
     overflow-wrap: anywhere;
