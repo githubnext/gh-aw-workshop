@@ -17,6 +17,8 @@ If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls [tools](https://github.github.com/gh-aw/reference/tools/), reasons about the results, and posts the output automatically. The [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) is fully Actions-compatible — [triggers](https://github.github.com/gh-aw/reference/triggers/), [permissions](https://github.github.com/gh-aw/reference/permissions/), and runners all apply.
 
+Think of it like a **scheduled email digest** you've set up in an app: every morning it reads your inbox, picks out the three most important messages, and sends you a one-paragraph summary — without you touching a keyboard. An agentic workflow does the same thing for your GitHub repository: it runs on a schedule, reads your issues, pull requests, or code, and posts a structured summary exactly where your team will see it. You describe the job in plain English; the agent figures out how to do it.
+
 The part that makes this safe to run unattended: the agent operates **read-only inside a [sandbox](https://github.github.com/gh-aw/reference/sandbox/)** with controlled network access, and it can never write to your repo directly. Anything the agent wants to change flows through a guardrailed **[safe-output](https://github.github.com/gh-aw/reference/safe-outputs/)** system, where a separate, permission-scoped job validates the request before acting.
 
 ![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
@@ -24,7 +26,9 @@ The part that makes this safe to run unattended: the agent operates **read-only 
 <details>
 <summary>Why not just use a standard Actions workflow?</summary>
 
-Three concrete differences a DevOps engineer will notice immediately:
+**Not a DevOps engineer?** Here is the short version: a standard workflow runs the same fixed script every time — like a recipe that always follows exactly the same steps in the same order. An agentic workflow reads the situation first, then decides what to do — like asking a colleague to "check what came in overnight and give me a quick rundown." The output is different every run because it reflects what actually happened.
+
+Three concrete differences a DevOps engineer will also notice:
 
 - **Agent reasoning loop:** Each run, the agent reads live repository context, decides what matters, and composes output that differs every time — no two runs are identical.
 - **Natural-language task brief:** You write what you want in plain English. No `run:` scripts, no fixed shell commands.
