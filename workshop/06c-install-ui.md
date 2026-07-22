@@ -1,5 +1,6 @@
 <!-- page-journey: ui -->
 <!-- page-adventure: setup -->
+<!-- learning:false -->
 # No Installation Needed — GitHub UI Path
 
 ## 🎯 What You'll Do
