@@ -16,10 +16,15 @@ const populationModel = JSON.parse(
 test("journey step file mappings match current workshop page setup", () => {
   const workshopDir = path.resolve(__dirname, "..", "..", "..", "workshop");
   const mappedFiles = Object.values(journey.stepFilesById).flat();
-  for (const file of mappedFiles) {
-    assert.equal(fs.existsSync(path.join(workshopDir, file)), true, `Missing mapped workshop file: ${file}`);
-  }
+  const currentWorkshopFiles = fs
+    .readdirSync(workshopDir)
+    .filter((file) => file.endsWith(".md") && file !== "README.md" && !file.startsWith("side-quest"))
+    .sort();
+
+  assert.equal(new Set(mappedFiles).size, mappedFiles.length, "Workshop pages must not be mapped twice");
+  assert.deepEqual([...mappedFiles].sort(), currentWorkshopFiles);
   assert.ok(journey.stepFilesById["02-setup"].includes("02c-setup-browser.md"));
+  assert.ok(journey.stepFilesById["06-install-gh-aw"].includes("06c-install-ui.md"));
 });
 
 test("seeded random streams are reproducible and non-cyclic over the simulation batch", () => {
