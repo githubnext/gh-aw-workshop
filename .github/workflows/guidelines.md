@@ -34,12 +34,18 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - When the task is to create, edit, debug, or upgrade an agentic workflow from a CCA surface, explicitly call out the `/agentic-workflows` skill in the prompt.
 - If a CCA-oriented step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Agents-tab prompt so learners know which surface to use for each action.
 
-## Event provisioning surfaces
+## Golden-Ticket Workshop Surfaces
 
-- Some workshop content is intentionally reused in provisioned event environments such as an org profile README and a learner-repository Codespaces launcher.
-- The maintained example assets live in `workshop/examples/event-provisioning/` and represent downstream copies, not primary authored content.
-- When you change workshop onboarding language that should also appear in those provisioned surfaces, update the marked source blocks in `workshop/00-welcome.md` and keep the examples in sync.
-- For provisioned learner repositories, prefer a Codespaces launcher entry point that starts at Step 4 or Step 5 because org invite, repository creation, and Codespace creation are already complete.
+- The golden-ticket workshop is the fully preconfigured beginner path: Copilot, repository setup, and Codespaces bootstrapping are prepared ahead of time.
+- Some workshop content is intentionally reused in golden-ticket workshop surfaces such as an org profile README and a learner-repository Codespaces launcher.
+- The maintained golden-ticket workshop assets live on the `golden-ticket-workshop` branch under `.github/participant-template/` plus `.github/workflows/create-participants-repo.yml`. During org provisioning, that branch is copied into the provisioned org's `.github-private` repository.
+- When you change workshop onboarding language that should also appear in those golden-ticket surfaces, update the marked source blocks in `workshop/00-welcome.md` and have the responsible agent check whether the `golden-ticket-workshop` branch also needs a corresponding update.
+- When an agent edits onboarding, setup, Codespaces, or early navigation content on `main`, it should explicitly assess downstream impact on `golden-ticket-workshop` and either update the affected branch assets or state why no branch change is needed.
+- Treat `workshop/00-welcome.md` as the source only for intentionally shared workshop framing and onboarding copy, not for page structure.
+- Treat the golden-ticket participant `README.md` as a separate launcher artifact for the preconfigured beginner experience, not as a structural mirror of `workshop/00-welcome.md`.
+- Keep the ending call-to-action intentionally different: `workshop/00-welcome.md` should continue learners into the next workshop step, while the golden-ticket participant `README.md` should direct them into the precreated repository and Codespaces flow.
+- The participant template's `README.md`, `.devcontainer/devcontainer.json`, `.vscode/tasks.json`, `.vscode/settings.json`, and the provisioning workflow are standalone assets and must be reviewed and tested in the branch and `.github-private` context where they run.
+- For golden-ticket learner repositories, prefer a Codespaces launcher entry point that starts at Step 4 or Step 5 because org invite, repository creation, and Codespace creation are already complete.
 
 ## Positioning agentic workflows as an Actions-compatible superset
 
@@ -245,7 +251,7 @@ This rule does not override clearly superior choices for all learners. It is a t
 
 ## Consistency check
 
-Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, do not reference Node.js as a prerequisite, and keep any event-provisioning examples synchronized with the marked workshop source content.
+Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, do not reference Node.js as a prerequisite, and ensure the responsible agent has checked whether any intended org-provisioned event changes also require updates on the `golden-ticket-workshop` branch.
 
 ## Activity numbering for a sortable adventure graph
 

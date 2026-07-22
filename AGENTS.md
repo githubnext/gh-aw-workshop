@@ -16,7 +16,6 @@ automated tooling (author review, student simulation, order checks) under `.gith
 README.md               # Workshop landing page (GitHub Skills style)
 AGENTS.md               # This file — tips for AI agents
 workshop/               # Step-by-step workshop content (00-welcome.md … 16-connect-data-source.md)
-  examples/event-provisioning/ # Example assets for provisioned org README and learner-repo Codespaces launchers
 .github/
   workflows/            # Agentic workflow definition files (*.md) and compiled lock files (*.lock.yml)
   skills/               # Copilot skill definitions for agentic-workflows and agentic-workflow-designer
@@ -67,7 +66,13 @@ The following rules are **disabled** in `.markdownlint-cli2.yaml` — do not add
 
 **Never configure Codespace badges or `devcontainer.json` to open from this (`gh-aw-workshop`) repository.** The workshop repository itself is not a suitable Codespace base — learners work in their own practice repositories, not a clone of this one. Any Codespace badge or devcontainer setup must point to the learner's own repository.
 
-The checked-in examples under `workshop/examples/event-provisioning/` are exceptions for template authoring only. They exist so event provisioning systems can copy a launcher into each learner's own repository; do not treat them as launchers for this repository itself.
+## Working with the Golden-Ticket Workshop
+
+The golden-ticket workshop assets live on the `golden-ticket-workshop` branch, not on `main`. This is the fully preconfigured beginner workshop path: Copilot, repository setup, and Codespaces bootstrapping are prepared ahead of time.
+
+During org provisioning, that branch is copied into the provisioned org's `.github-private` repository. From there, `.github/workflows/create-participants-repo.yml` and the `.github/participant-template/` files create and update participant repositories.
+
+Do not treat those launchers as suitable for this repository itself.
 
 ## Working with workshop content
 
@@ -77,7 +82,16 @@ The checked-in examples under `workshop/examples/event-provisioning/` are except
 - Run the markdown linter before committing any workshop step edits.
 - When adding a new step, follow the existing file naming pattern and update the curriculum table in both `workshop/README.md` and `workshop/00-welcome.md`.
 - When editing shared intro or onboarding copy that may be reused outside the workshop pages, preserve and update the HTML reuse markers in `workshop/00-welcome.md`.
-- Treat `workshop/examples/event-provisioning/` as maintained examples. Keep the org-profile README and devcontainer launcher aligned with the corresponding marked source content in `workshop/00-welcome.md`.
+
+Golden-ticket workshop maintenance rules:
+
+- When a workshop change should also affect the golden-ticket workshop experience, agents should check whether the `golden-ticket-workshop` branch needs a corresponding update and carry that update through when it is in scope.
+- `workshop/00-welcome.md` owns only shared workshop framing and onboarding copy that is intentionally reused.
+- The golden-ticket branch README is its own launcher artifact for the preconfigured beginner experience. Do not try to keep it structurally identical to `workshop/00-welcome.md`.
+- Keep the ending call-to-action intentionally different: `workshop/00-welcome.md` should continue into the next workshop step, while the golden-ticket README should direct learners into the precreated repository and Codespaces flow.
+- The participant template files, Codespaces bootstrap files, and provisioning workflow are standalone branch assets.
+- When an agent edits onboarding, setup, Codespaces, or early navigation content on `main`, it should explicitly assess downstream impact on `golden-ticket-workshop` and either update the affected branch assets or state why no branch change is needed.
+- Validate golden-ticket changes in the branch and `.github-private` context where they run.
 
 ## Working with agentic workflow files
 
