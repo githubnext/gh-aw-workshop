@@ -28,7 +28,7 @@ You'll create your practice repository on github.com. No terminal, no local inst
 You now have a practice repository. Keep this tab open — you will use it throughout the workshop.
 
 > [!NOTE]
-> The browser path skips the `gh` CLI installation (Steps 6a–6b). When the workshop reaches [Install the gh-aw CLI Extension](06-install-gh-aw.md), your path automatically continues to [Write Your First Agentic Workflow](07-your-first-workflow.md) — no terminal installation is needed.
+> The browser path skips the `gh` CLI installation (Steps 6a–6b). When the workshop reaches [Install the gh-aw CLI Extension](06-install-gh-aw.md), your path automatically continues to [No Installation Needed — GitHub UI Path](06c-install-ui.md).
 
 ## ✅ Checkpoint
 
