@@ -14,6 +14,32 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 - `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
 - Your practice repository has at least one open issue (create one in the **Issues** tab if not)
 
+## Pre-flight check
+
+A stale or missing lock file is the leading cause of `model-access-not-configured` failures at this step. Run these checks before triggering the workflow — each takes less than a minute.
+
+**Lock file is present and current.** Open `.github/workflows/` in your repository on GitHub and confirm both files are there:
+
+- `daily-report-status.md` (source)
+- `daily-report-status.lock.yml` (compiled lock file)
+
+If either file is missing, return to [Step 7](07-your-first-workflow.md) to complete the workflow creation steps. If the lock file is present but you are unsure it is current, recompile and push before continuing:
+
+```bash
+gh aw compile
+git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+git commit -m "chore: sync lock file" && git push
+```
+
+**Billing configuration matches the lock file.** Open `daily-report-status.lock.yml` (or `daily-report-status.md`) and confirm the `permissions:` block matches the billing path you chose in Step 7d:
+
+| Billing path | `copilot-requests: write` present |
+|---|---|
+| Organization centralized billing | Yes |
+| Personal billing | No — and `COPILOT_GITHUB_TOKEN` is set in **Settings → Secrets → Actions** |
+
+Any mismatch means returning to [Confirm Model Access](07d-confirm-model-access.md) to fix the configuration and recompile.
+
 ## Run the workflow
 
 This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
