@@ -117,7 +117,7 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 - [ ] The final workflow output used the sub-agent result
 
 <!-- journey: all -->
-**Next:** [Learning GitHub Agentic Workflows](README.md)
+**Next:** [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md)
 <!-- /journey -->
 
 

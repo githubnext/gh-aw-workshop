@@ -149,7 +149,7 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 - [ ] You can explain what you would do once a winning variant is identified
 
 <!-- journey: all -->
-**Next:** [Learning GitHub Agentic Workflows](README.md)
+**Next:** [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md)
 <!-- /journey -->
 
 

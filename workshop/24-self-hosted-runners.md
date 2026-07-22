@@ -174,7 +174,7 @@ Commit the updated lock file before triggering your next workflow run.
 - [ ] No workflow steps failed due to runner availability or label mismatch
 
 <!-- journey: all -->
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md)
 <!-- /journey -->
 
 

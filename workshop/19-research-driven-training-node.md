@@ -82,7 +82,7 @@ gh aw compile --validate
 - [ ] You ran lint and compile validation before preparing a PR
 
 <!-- journey: all -->
-**Next:** [Learning GitHub Agentic Workflows](README.md)
+**Next:** [Make Your Workflow Remember Across Runs](20-persistent-memory.md)
 <!-- /journey -->
 
 
