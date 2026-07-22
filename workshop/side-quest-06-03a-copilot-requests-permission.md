@@ -37,7 +37,7 @@ permissions:
 ---
 ```
 
-That single line is the only workflow authentication change required for repositories that can use Method 1. Recompile and commit the lock file after changing the source workflow.
+That single line is the only workflow authentication change required for repositories that can use Method 1. Recompile and commit the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) after changing the source workflow.
 
 ## ✅ Checkpoint
 

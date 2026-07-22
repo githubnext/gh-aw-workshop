@@ -18,7 +18,7 @@ Review the key shift from classic Actions to agentic workflows, compare concrete
 
 ## The core mental model shift
 
-You keep the same GitHub Actions foundations — triggers, permissions, runners, repo context, and pull-request review flow — and add an agentic layer on top. In practice, this is a smooth transition: frontmatter stays Actions-compatible, while the Markdown body captures the goal and reasoning instructions for the agent.
+You keep the same GitHub Actions foundations — triggers, [permissions](https://github.github.com/gh-aw/reference/permissions/), runners, repo context, and pull-request review flow — and add an agentic layer on top. In practice, this is a smooth transition: [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) stays Actions-compatible, while the Markdown body captures the goal and reasoning instructions for the agent.
 
 ## Before and After: Classic Actions vs. Agentic Workflows
 
