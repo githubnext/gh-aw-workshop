@@ -16,6 +16,8 @@ You'll create your practice repository on github.com. No terminal, no local inst
 > [!IMPORTANT]
 > Phones and tablets are not supported for this workshop. Switch to a desktop or laptop before continuing.
 
+If you have access to a terminal, consider one of the other setup paths instead.
+
 > [!TIP]
 > The [Codespace path](02a-setup-codespace.md) gives you an in-browser terminal with all tools pre-installed. The [local terminal path](02b-setup-local.md) uses your own machine. Either one works for the full workshop.
 
