@@ -24,21 +24,12 @@ In practice, that means:
 
 Open your practice repository in the GitHub Copilot app and start a session in **Interactive** mode, or open the repository's **Copilot** or **Agents** tab and start a new session.
 
-> [!IMPORTANT]
-> **Agents tab:** You must start your message with `/agentic-workflows` to invoke the skill. Without this prefix the agent does not have agentic workflow authoring context and may not initialize the repository correctly.
-
-**GitHub Copilot app — paste this prompt:**
+**Paste this prompt:**
 
 ```text
-Using the agentic-workflows skill, initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
+Initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
 
 Run the setup in the session workspace, commit the initialized repository files, and open a pull request. Show me the diff before merging.
-```
-
-**Agents tab — paste this prompt instead:**
-
-```text
-/agentic-workflows Follow the prompt above to initialize this repository for GitHub Agentic Workflows.
 ```
 
 Review the pull request and confirm it adds the initialization files you need for the browser path, such as `.github/skills/agentic-workflows/`, `.github/mcp.json`, and `.github/workflows/copilot-setup-steps.yml`. Then merge it into `main`.
