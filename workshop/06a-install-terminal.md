@@ -1,5 +1,6 @@
 <!-- page-journey: codespace -->
 <!-- page-adventure: setup -->
+<!-- learning:false -->
 # Install gh-aw — Codespace Terminal
 
 > [!NOTE]
@@ -98,5 +99,4 @@ Want to understand how Copilot authenticates with your workflow?
 <!-- journey: codespace -->
 **Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
-
 
