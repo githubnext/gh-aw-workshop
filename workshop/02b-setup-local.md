@@ -14,6 +14,9 @@ Check each statement:
 
 If any answer is No, switch to [Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
 
+> [!IMPORTANT]
+> **On a phone or tablet?** Terminal commands are not supported on most mobile browsers. If you are on a phone or tablet, use [Set Up Without a Terminal](02c-setup-browser.md) instead — it needs only a browser and works on any device.
+
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
 ## 🎯 What You'll Do
