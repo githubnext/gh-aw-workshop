@@ -12,6 +12,7 @@ You'll ask an agent in the [GitHub Copilot app](side-quest-01-02-environment-ref
 
 - Your practice repository is connected to the GitHub Copilot app or available in the Agents tab
 - You have an active GitHub Copilot plan
+- You completed [No Installation Needed — GitHub UI Path](06c-install-ui.md) and merged the repository-initialization pull request
 
 ## Start a session
 
@@ -23,8 +24,7 @@ Open your practice repository in the GitHub Copilot app and start a session in *
 **GitHub Copilot app — paste this prompt:**
 
 ```text
-Using the agentic-workflows skill, initialize this repository for GitHub Agentic Workflows using https://raw.githubusercontent.com/github/gh-aw/main/install.md
-and then create a workflow using https://raw.githubusercontent.com/github/gh-aw/main/create.md
+Using the agentic-workflows skill, create a workflow using https://raw.githubusercontent.com/github/gh-aw/main/create.md
 
 The workflow must:
 - Be named "Daily Report Status"
@@ -35,17 +35,17 @@ The workflow must:
   "This issue has the most community support! We'll prioritise it in our next planning session."
 - Create an issue titled "Community Voting Test" and post the same comment if no open issues exist
 
-Run `gh aw compile` in the session workspace, fix any errors, commit the source and generated lock file (plus any initialized skill files), and open a pull request. Show me the diff before merging.
+Run `gh aw compile` in the session workspace, fix any errors, commit the source and generated lock file, and open a pull request. Show me the diff before merging.
 ```
 
 **Agents tab — paste this prompt instead:**
 
 ```text
-/agentic-workflows Follow the prompt above to initialize this repository and create the Daily Report Status workflow.
+/agentic-workflows Follow the prompt above to create the Daily Report Status workflow.
 ```
 
 > [!NOTE]
-> The `agentic-workflows` skill is installed as part of initialization. If the skill is not yet available in your repository, the agent falls back to the install and create URLs above and the skill becomes available for future sessions after the pull request is merged.
+> The `agentic-workflows` skill is installed during [Step 6c](06c-install-ui.md). If it is not yet available in your repository, return to that step and merge the initialization pull request first.
 
 The agent runs validation in its isolated session workspace. You do not need a terminal for this path.
 Before you approve the merge, the agent presents the file changes in its session response for you to review.
@@ -63,7 +63,7 @@ Before you approve the merge, the agent presents the file changes in its session
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-report-status.md` exists in the repository
-- [ ] `.github/skills/agentic-workflows/` exists in the repository from `gh aw init`
+- [ ] `.github/skills/agentic-workflows/` exists in the repository from the initialization step
 - [ ] The agent validated the workflow in its session workspace
 - [ ] You reviewed the source and generated lock file
 - [ ] You merged the pull request into `main`
@@ -72,5 +72,3 @@ Before you approve the merge, the agent presents the file changes in its session
 <!-- journey: copilot -->
 **Next:** [Confirm Model Access](07d-confirm-model-access.md)
 <!-- /journey -->
-
-
