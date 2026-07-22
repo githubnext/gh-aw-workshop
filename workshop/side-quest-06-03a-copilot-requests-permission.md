@@ -24,7 +24,7 @@ If you have not confirmed the billing setting yet, ask your organization adminis
 
 ## Add the permission to your workflow
 
-Open your workflow `.md` file and add `copilot-requests: write` under the `permissions` block in the YAML frontmatter:
+Open your workflow `.md` file and add `copilot-requests: write` under the `permissions` block in the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/):
 
 ```yaml
 ---
@@ -67,6 +67,6 @@ Work through these checks in order if the run still fails:
 1. Confirm the owning organization has centralized Copilot billing. If it does not, switch to [Method 2](side-quest-06-03b-copilot-github-token.md).
 2. Open your workflow `.md` file and confirm `copilot-requests: write` is present under `permissions`.
 3. Verify the Copilot access that backs this repository is active.
-4. If you are in an enterprise-managed organization, confirm the org Copilot policy allows agentic workflows — see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
+4. If you are in an enterprise-managed organization, confirm the org Copilot policy allows [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 
 </details>

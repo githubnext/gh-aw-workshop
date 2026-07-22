@@ -18,7 +18,7 @@ Use this sequence:
 2. Re-run with broader filters (or no optional filters).
 3. Compare with repository reality in the GitHub UI.
 
-If the call still returns empty and data exists, ask the `agentic-workflows` skill to review your tool arguments, or keep `gh aw compile --watch` running while you adjust inputs.
+If the call still returns empty and data exists, ask the `agentic-workflows` skill to review your tool arguments, or keep [`gh aw compile --watch`](https://github.github.com/gh-aw/setup/cli/#compile) running while you adjust inputs.
 
 ## Hands-On Exercise
 

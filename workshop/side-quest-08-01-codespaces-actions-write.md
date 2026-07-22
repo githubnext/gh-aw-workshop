@@ -35,7 +35,7 @@ you may see:
 HTTP 403: Resource not accessible by integration
 ```
 
-Some versions of `gh aw` also show a follow-up message explaining that the default Codespaces token does not have `actions:write` and `workflows:write`.
+Some versions of `gh aw` also show a follow-up message explaining that the default Codespaces token does not have [`actions:write`](https://github.github.com/gh-aw/reference/permissions/) and `workflows:write`.
 
 ---
 
