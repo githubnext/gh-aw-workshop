@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "modelVersion": "2026-07-assumption-model-v1",
+  "modelVersion": "2026-07-assumption-model-v2",
   "description": "Synthetic workshop cohort assumptions. These weights are explicit expert assumptions, not observed learner demographics.",
   "cohortSize": 46,
   "monteCarloRuns": 1000,
@@ -103,11 +103,6 @@
       "CCA": 0.82,
       "vscode": 0.42,
       "cli": 0.08
-    },
-    "mobileProbabilityByTool": {
-      "CCA": 0.12,
-      "vscode": 0.015,
-      "cli": 0.005
     }
   }
 }

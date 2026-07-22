@@ -1,7 +1,7 @@
 "use strict";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const PROFILE_SCHEMA_VERSION = 4;
+const PROFILE_SCHEMA_VERSION = 5;
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -101,7 +101,6 @@ function generateSyntheticStudents(populationModel, seed = "workshop-students") 
     const goal = weightedChoice(random, distributions.goalByLevel?.[level], `goalByLevel.${level}`);
     const tool = weightedChoice(random, distributions.toolByLevel?.[level], `toolByLevel.${level}`);
     const uiPreferred = random() < Number(distributions.uiPreferredProbabilityByTool?.[tool] || 0);
-    const mobile = random() < Number(distributions.mobileProbabilityByTool?.[tool] || 0);
     students.push({
       id: index + 1,
       name: `Learner ${String(index + 1).padStart(3, "0")}`,
@@ -111,7 +110,6 @@ function generateSyntheticStudents(populationModel, seed = "workshop-students") 
       goal,
       tool,
       ui_preferred: uiPreferred,
-      ...(mobile ? { mobile: true } : {}),
       runs: 0,
       successes: 0
     });
@@ -416,7 +414,6 @@ function normalizeAgentInsightsByStep(input) {
       "cli",
       "codespaces",
       "local",
-      "mobile",
       "uiPreferred",
       "enterprise"
     ]);
@@ -530,7 +527,6 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   const background = String(student.background || "");
   const level = String(student.level || "");
   const tool = String(student.tool || "cli");
-  const onMobile = Boolean(student.mobile);
   const uiPreferred = Boolean(student.ui_preferred);
   const priorRuns = Number(student.runs || 0);
   const priorSuccesses = Number(student.successes || 0);
@@ -557,19 +553,20 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
   );
 
   const inCodespaces =
-    onMobile
-      ? false
-      : tool === "CCA"
+    tool === "CCA"
       ? random("codespaces") < 0.4
       : tool === "vscode"
       ? random("codespaces") < 0.6
       : random("codespaces") < 0.2;
-  const hasGh = onMobile
-    ? false
-    : inCodespaces || random("gh-installed") < ({ beginner: 0.55, "github-basic": 0.82, "actions-user": 0.94, advanced: 0.98 }[level] || 0.75);
+  const hasGh =
+    inCodespaces ||
+    random("gh-installed") <
+      ({ beginner: 0.55, "github-basic": 0.82, "actions-user": 0.94, advanced: 0.98 }[
+        level
+      ] || 0.75);
   const hasAw = false;
   const tokenScope = inCodespaces && isEnterprise ? "org" : "user";
-  const hasGithubSession = onMobile || random("github-session") < 0.89;
+  const hasGithubSession = random("github-session") < 0.89;
   const isLoggedIn =
     hasGh &&
     (inCodespaces ||
@@ -614,7 +611,6 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     os,
     terminal,
     tool,
-    mobile: onMobile,
     installed: {
       gh: hasGh ? "2.58.0" : null,
       aw: hasAw ? "0.0.0" : null
@@ -634,7 +630,7 @@ function defaultEnvironmentForStudent(student, dayOfYear, runIndex = 0) {
     },
     workspace: {
       context: inCodespaces ? "codespaces" : "local",
-      deviceClass: onMobile ? "mobile" : tool
+      deviceClass: tool
     },
     actions: {
       inferenceProvider,

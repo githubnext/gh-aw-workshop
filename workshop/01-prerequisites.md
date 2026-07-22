@@ -18,13 +18,16 @@ Sign in at [github.com](https://github.com). If you do not have an account yet, 
 |---|---|---|
 | **Codespace** | Most learners — no local installs needed | A GitHub account with Codespaces access |
 | **Local terminal** | Developers with an existing terminal setup | Git and the `gh` CLI installed locally |
-| **Browser (no terminal)** | Mobile, tablet, or shared-computer learners using GitHub Copilot | A GitHub account and a browser |
+| **Browser (no terminal)** | Desktop or laptop learners using GitHub Copilot without a terminal | A GitHub account and a desktop browser |
 
 If you are unsure, start with a Codespace. It gives you a ready-to-use environment hosted in the cloud.
 
 If you are **familiar with terminals**, use your usual local setup. We will go over the requirements.
 
-If you are **on a mobile device, tablet, or shared computer** — or you plan to use the GitHub Copilot (CCA/Agents tab) with no access to a terminal — choose the **browser path**. No installation or terminal is required. You will create your repository on github.com and author workflows directly from the Agents tab in your browser.
+If you are using a **desktop or laptop without a terminal** — for example, a shared computer — or you plan to use the GitHub Copilot (CCA/Agents tab), choose the **browser path**. No installation or terminal is required. You will create your repository on github.com and author workflows directly from the Agents tab in your browser.
+
+> [!IMPORTANT]
+> Phones and tablets are not supported for this workshop. Switch to a desktop or laptop before continuing.
 
 ![Setup path decision diagram: choose between Codespace, Local Terminal, and Browser based on your environment](images/01-setup-path-decision.svg)
 

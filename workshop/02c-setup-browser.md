@@ -10,11 +10,14 @@ You'll create your practice repository on github.com. No terminal, no local inst
 
 **Verify you are on the right path before continuing:**
 
-- [ ] You are on a phone, tablet, or shared computer without a terminal
+- [ ] You are on a desktop or laptop without a terminal
 - [ ] You plan to author and run workflows from the GitHub Copilot or Agents tab in your browser
 
+> [!IMPORTANT]
+> Phones and tablets are not supported for this workshop. Switch to a desktop or laptop before continuing.
+
 > [!TIP]
-> Not on mobile? The [Codespace path](02a-setup-codespace.md) gives you an in-browser terminal with all tools pre-installed. The [local terminal path](02b-setup-local.md) uses your own machine. Either one works for the full workshop.
+> The [Codespace path](02a-setup-codespace.md) gives you an in-browser terminal with all tools pre-installed. The [local terminal path](02b-setup-local.md) uses your own machine. Either one works for the full workshop.
 
 ### Create your repository
 

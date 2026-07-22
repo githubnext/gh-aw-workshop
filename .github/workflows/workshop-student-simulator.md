@@ -47,7 +47,7 @@ steps:
         const model = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
         const students = profiles.students;
         const valid =
-          profiles.version === 4 &&
+          profiles.version === 5 &&
           profiles.population_model_version === model.modelVersion &&
           Array.isArray(students) &&
           students.length === model.cohortSize &&
@@ -242,7 +242,6 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
 - `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via the Agents tab or another browser/chat surface, where the learner sends prompts rather than terminal commands and should explicitly invoke `/agentic-workflows` for workflow-authoring tasks)
-- `mobile` — `true` if the student accesses GitHub primarily from the GitHub Mobile app on iOS or Android (spawns agent sessions and reviews pull requests; no coding or terminal support); `false` or absent otherwise. May be combined with any `tool` value; in practice most mobile students use `CCA`.
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
@@ -297,7 +296,6 @@ Use this JSON shape:
         "cli": -0.05,
         "codespaces": -0.03,
         "local": 0.02,
-        "mobile": -0.08,
         "uiPreferred": 0.03,
         "enterprise": -0.04
       },
@@ -409,7 +407,7 @@ Use `successRateCi95`, `aggregate.overallSuccessRateCi95`, and `aggregate.dropou
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
-- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, `mobile`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` or `mobile: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
+- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
 - Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
 - Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
 - For `tool: CCA` learners, treat the Agents tab as a prompt surface. If the step tells the learner to run shell commands there, or fails to call out `/agentic-workflows` for workflow-authoring work, classify that as a content mismatch rather than a generic terminal-skill gap.
@@ -417,7 +415,7 @@ For each student whose `successRate` < 1.0, note:
 For students whose `successRate` < 0.50, also apply qualitative reasoning from the student profile to enrich the pain-point description:
 - **`level`** vs. assumed knowledge
 - **`background`** vs. step domain
-- **`tool`**, **`mobile`**, and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred`, `mobile: true`, or uses `CCA`, note that no UI alternative exists)
+- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA`, note that no UI alternative exists)
 - **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
 - **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
 - **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes

@@ -45,6 +45,7 @@ test("synthetic cohorts are reproducible and follow conditional model support", 
   assert.deepEqual(first, second);
   assert.equal(first.students.length, populationModel.cohortSize);
   assert.equal(first.population_model_version, populationModel.modelVersion);
+  assert.ok(first.students.every((student) => !Object.hasOwn(student, "mobile")));
   for (const student of first.students) {
     assert.ok(populationModel.distributions.backgroundByLevel[student.level][student.background] > 0);
     assert.ok(populationModel.distributions.toolByLevel[student.level][student.tool] > 0);
