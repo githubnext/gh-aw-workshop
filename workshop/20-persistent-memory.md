@@ -148,7 +148,7 @@ git push
 - [ ] After opening a new issue and running again, only the new issue is reported
 
 <!-- journey: all -->
-**Next:** [Learning GitHub Agentic Workflows](README.md)
+**Next:** [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md)
 <!-- /journey -->
 
 

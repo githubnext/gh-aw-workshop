@@ -119,7 +119,7 @@ After pushing:
 - [ ] You can name at least two common agentic workflow failure modes and how to mitigate them
 
 <!-- journey: all -->
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md)
 <!-- /journey -->
 
 
