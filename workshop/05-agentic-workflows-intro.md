@@ -106,7 +106,7 @@ as an issue with the title "Weekly PR Digest".
 - [ ] My brief specifies what the agent should post when done
 
 > [!TIP]
-> Struggling to think of a task? Browse the [gh-aw patterns](https://github.github.com/gh-aw/patterns/) for inspiration. You will write a real version of your brief in Step 7.
+> Struggling to think of a task? Browse the [gh-aw issue-ops pattern](https://github.github.com/gh-aw/patterns/issue-ops/) for inspiration. You will write a real version of your brief in Step 7.
 
 ## ✅ Checkpoint
 
@@ -118,4 +118,3 @@ as an issue with the title "Weekly PR Digest".
 <!-- journey: all -->
 **Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 <!-- /journey -->
-

@@ -8,7 +8,7 @@
 ## 📋 Before You Start
 
 - You have completed [Agentic Workflows Intro](05-agentic-workflows-intro.md)
-- Your development environment is ready (Codespace or local terminal)
+- Your development environment is ready (Codespace, local terminal, or browser path)
 
 ## Choose Your Path
 
@@ -23,5 +23,5 @@ The diagram below shows how the three paths diverge and then rejoin at Step 7.
 **Next:** [Install gh-aw — Local Terminal](06b-install-local.md)
 <!-- /journey -->
 <!-- journey: ui,copilot -->
-**Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md) — no installation needed on the browser path.
+**Next:** [No Installation Needed — GitHub UI Path](06c-install-ui.md)
 <!-- /journey -->

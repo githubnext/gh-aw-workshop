@@ -43,7 +43,7 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 <details>
 <summary>Codespace not appearing or taking too long?</summary>
 
-- **"Create codespace on main" is greyed out** — your account may not have Codespaces enabled. Check [github.com/settings/billing](https://github.com/settings/billing) or ask your organization admin.
+- **"Create codespace on main" is greyed out** — your account may not have Codespaces enabled. Check your GitHub plan details or ask your organization admin.
 - **Spinner runs more than 3 minutes** — refresh the browser tab. If still stuck, go to [github.com/codespaces](https://github.com/codespaces), find the pending Codespace, click **⋯ → Delete**, and try again.
 - **"Codespace storage limit reached"** — you may have existing Codespaces using your quota. Visit [github.com/codespaces](https://github.com/codespaces), delete any you no longer need, and retry.
 - **VS Code desktop opens instead of the browser** — click **Open in Browser** in the dialog, or close VS Code desktop and return to the browser tab.
