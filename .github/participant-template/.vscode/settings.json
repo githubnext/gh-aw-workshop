@@ -1,0 +1,13 @@
+{
+  "task.allowAutomaticTasks": "on",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "VsCodeTaskButtons.showCounter": false,
+  "VsCodeTaskButtons.tasks": [
+    {
+      "label": "$(book) Open my Guide",
+      "task": "Open my Guide",
+      "alignment": "left",
+      "tooltip": "Open the workshop guide"
+    }
+  ]
+}

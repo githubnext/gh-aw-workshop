@@ -1,0 +1,17 @@
+{
+  "name": "Workshop Codespace Launcher",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "spencerwmiles.vscode-task-buttons"
+      ]
+    }
+  },
+  "waitFor": "onCreateCommand",
+  "postCreateCommand": "curl -fsSL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash && gh aw version"
+}
