@@ -60,6 +60,23 @@ Use this path when the organization that owns the repository has centralized Cop
 
    This line is already present in the workflow template. Do not remove it.
 3. No repository secret is needed for this path.
+4. Recompile and commit the lock file so it reflects the confirmed configuration:
+
+   **If you are using a terminal:**
+
+   ```bash
+   gh aw compile
+   git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+   git commit -m "chore: confirm lock file is current" && git push
+   ```
+
+   **If you are using the browser only:**
+
+   In the Copilot or Agents tab, ask the agent:
+
+   ```
+   Run gh aw compile and commit the updated .github/workflows/daily-report-status.lock.yml to main.
+   ```
 
 The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
 

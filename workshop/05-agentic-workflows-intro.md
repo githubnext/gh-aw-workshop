@@ -46,6 +46,46 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
+## Try it: match the lifecycle parts
+
+Match each term to what it describes in an agentic workflow. Make your decision before revealing the answers.
+
+**Term 1:** `.md` source file
+
+- [ ] I've made my decision for Term 1
+
+<details>
+<summary>Reveal Term 1 answer</summary>
+
+The **Markdown source file** — it contains the YAML frontmatter (trigger, permissions, runner) and your plain-English task brief. You author and edit this file.
+
+</details>
+
+**Term 2:** `.lock.yml` compiled file
+
+- [ ] I've made my decision for Term 2
+
+<details>
+<summary>Reveal Term 2 answer</summary>
+
+The **compiled lock file** — `gh aw compile` generates it from the `.md` source. GitHub Actions runs this file, not the `.md`. Never edit it by hand.
+
+</details>
+
+**Term 3:** `gh aw compile`
+
+- [ ] I've made my decision for Term 3
+
+<details>
+<summary>Reveal Term 3 answer</summary>
+
+The **compile command** — it reads the `.md` source and writes the `.lock.yml` file that Actions runs. You must recompile any time you change the source.
+
+</details>
+
+> [!TIP]
+> Want more examples of how the two-file structure works? [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) includes a fully annotated workflow pair.
+
 ## Safe by design: sandbox + guardrailed outputs
 
 Letting an AI agent act on your repository on a schedule only works if it can't do damage. Agentic workflows enforce two trust boundaries so you can run agents in automation with confidence:
@@ -59,6 +99,32 @@ The security jobs in the run log above map to these boundaries: **activation** c
 <summary>Why can't the agent just write to the repo directly?</summary>
 
 Direct write access would make every prompt injection a potential supply-chain attack. By keeping the agent read-only and routing all changes through the safe-output system, a malicious instruction the agent picks up from issue text or a fetched page can, at worst, produce a *request* that the guardrails then reject or cap — it can never silently push code, leak secrets, or open unlimited pull requests.
+
+</details>
+
+## Try it: sandbox or safe-output?
+
+For each scenario below, decide whether the **sandbox** or the **safe-output system** is the primary defence. Make your decision before revealing the answer.
+
+**Scenario A:** A prompt injected into an issue comment instructs the agent to push to a protected branch.
+
+- [ ] I've made my decision for Scenario A
+
+<details>
+<summary>Reveal Scenario A answer</summary>
+
+**Safe-output system.** The agent holds no write permissions. Even if the injected instruction causes the agent to produce a write request, the separate permission-scoped job validates it against the guardrails and rejects any operation outside the allowed set.
+
+</details>
+
+**Scenario B:** A page the agent fetches during a run tries to send your repository secrets to an external server.
+
+- [ ] I've made my decision for Scenario B
+
+<details>
+<summary>Reveal Scenario B answer</summary>
+
+**Sandbox / Agent Workflow Firewall.** Outbound network traffic is limited to the domain allowlist. Any request to an unlisted domain is blocked at the firewall before it leaves the runner — the exfiltration attempt never reaches the external server.
 
 </details>
 
