@@ -168,7 +168,6 @@ function prefersBrowserPath(state, context) {
   return (
     learner.uiPreferred === true ||
     state.tool === "CCA" ||
-    state.mobile === true ||
     contentSignal(context, "browserSupport") >= contentSignal(context, "terminalDemand")
   );
 }
@@ -391,12 +390,6 @@ function computeSuccessProbabilityWithGreeks(state, context, emphasis = {}) {
     greeks.browserSupport += 0.12;
     greeks.terminalDemand -= 0.02;
   }
-  if (state.mobile === true) {
-    probability -= terminalDemand * 0.34 + complexity * 0.1;
-    greeks.terminalDemand -= 0.34;
-    greeks.complexity -= 0.1;
-  }
-
   return {
     probability: probability + (emphasis.bias || 0),
     greeks
@@ -449,9 +442,6 @@ function evaluateStepProbabilityWithGreeks(state, context, options = {}) {
     probability += Number(pathAdjustments.codespaces || 0);
   } else {
     probability += Number(pathAdjustments.local || 0);
-  }
-  if (state.mobile === true) {
-    probability += Number(pathAdjustments.mobile || 0);
   }
   if (learnerProfile(state).uiPreferred) {
     probability += Number(pathAdjustments.uiPreferred || 0);
@@ -609,19 +599,6 @@ function buildTransitions() {
       return { ok: true, state: applyLearning(state, context, { github: 0.02, confidence: 0.01 }) };
     },
     "02-setup": (state, context) => {
-      if (state.mobile === true) {
-        const readiness = contentReadinessCheck(state, context, {
-          salt: 23,
-          category: "mobile-setup-friction",
-          failedAssumption: "The learner cannot complete the browser and agent setup path from a mobile device.",
-          remediation: "Keep the mobile browser path explicit and offer a desktop or Codespace handoff when the device cannot complete an activity.",
-          emphasis: { bias: 0.12, terminalWeight: 0, complexityWeight: 0.1 }
-        });
-        if (!readiness.ok) return readiness;
-        const next = markPracticeRepoCreatedAndVerified(state);
-        next.flags.environmentReady = true;
-        return { ok: true, state: applyLearning(next, context, { github: 0.04, confidence: 0.01 }) };
-      }
       const terminalCheck = ensure(
         VALID_TERMINALS[state.os] && VALID_TERMINALS[state.os].has(state.terminal),
         `Terminal '${state.terminal}' is not valid for OS '${state.os}'`,
