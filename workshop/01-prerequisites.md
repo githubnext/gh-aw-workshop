@@ -14,19 +14,31 @@ Sign in at [github.com](https://github.com). If you do not have an account yet, 
 
 ## Choose your development environment
 
+Answer the two questions below to find your path — then follow the matching link.
+
+**Are you on a phone or tablet right now?**
+
+> If yes → use the **Browser path**. No terminal or local install needed.
+> [Set Up Without a Terminal →](02c-setup-browser.md)
+
+**Do you want to use your own local terminal and tools?**
+
+> If yes → use the **Local terminal path**.
+> [Set Up Your Local Terminal →](02b-setup-local.md)
+
+**Otherwise** (browser with cloud terminal, or unsure) → use the **Codespace path**. It runs entirely in your browser with a ready-to-use terminal — no installs required.
+[Set Up a Codespace →](02a-setup-codespace.md)
+
 | Path | Best for | What you need |
 |---|---|---|
 | **Codespace** | Most learners — no local installs needed | A GitHub account with Codespaces access |
 | **Local terminal** | Developers with an existing terminal setup | Git and the `gh` CLI installed locally |
-| **Browser (no terminal)** | Mobile, tablet, or shared-computer learners using GitHub Copilot | A GitHub account and a browser |
-
-If you are unsure, start with a Codespace. It gives you a ready-to-use environment hosted in the cloud.
-
-If you are **familiar with terminals**, use your usual local setup. We will go over the requirements.
-
-If you are **on a mobile device, tablet, or shared computer** — or you plan to use the GitHub Copilot (CCA/Agents tab) with no access to a terminal — choose the **browser path**. No installation or terminal is required. You will create your repository on github.com and author workflows directly from the Agents tab in your browser.
+| **Browser (no terminal)** | Phone, tablet, or shared-computer learners | A GitHub account and a browser |
 
 ![Setup path decision diagram: choose between Codespace, Local Terminal, and Browser based on your environment](images/01-setup-path-decision.svg)
+
+> [!IMPORTANT]
+> Pick exactly one path and follow only those instructions. The three paths diverge from here and rejoin at [Step 4](04-github-actions-intro.md).
 
 ## Verify AI engine access
 

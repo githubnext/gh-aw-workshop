@@ -46,6 +46,82 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
+## Worked examples
+
+The three examples below show what agentic workflows look like in practice — what you write, what the agent does, and what the output looks like.
+
+### Example A — Daily issue triage
+
+You write this task brief:
+
+```
+Each weekday morning, read all issues opened in the last 24 hours.
+For each issue, write one sentence summarising the reported problem.
+Post the list as a new issue titled "Daily Triage — <date>".
+```
+
+The agent runs on a schedule, calls the Issues API, composes a summary, and posts a new issue. Two runs in the same week produce different issues because the repository has changed.
+
+### Example B — Weekly PR digest
+
+You write this task brief:
+
+```
+Every Monday, list all pull requests merged in the past 7 days.
+Group them by label. Post the grouped list as a comment on issue #1.
+```
+
+The agent reads merged PRs, groups them, and posts a structured comment — a report that always reflects what actually happened that week, not a hardcoded template.
+
+### Example C — On-demand code review summary
+
+You write this task brief:
+
+```
+When a pull request is opened, read the diff and the related issue
+description. Post a two-sentence summary of what the PR changes and
+why, as a PR comment.
+```
+
+This uses an event trigger instead of a schedule. The agent reads context that doesn't exist until the PR is opened — something a fixed `run:` script cannot do without complex scripting.
+
+## Try it: spot the agent decision point
+
+For each task below, identify the step that requires the agent to make a **judgment call** — a decision a fixed script cannot make without being told the answer in advance.
+
+**Task A:** Run lint and unit tests on every pull request, fail if any check exits non-zero.
+
+- [ ] I've identified the decision point for Task A
+
+<details>
+<summary>Reveal Task A answer</summary>
+
+There is **no judgment call** — every step is deterministic. This is a good fit for a **standard Actions workflow**. The lint and test results always mean the same thing regardless of context.
+
+</details>
+
+**Task B:** Each morning, read all open issues, decide which ones look most urgent, and post a short triage summary.
+
+- [ ] I've identified the decision point for Task B
+
+<details>
+<summary>Reveal Task B answer</summary>
+
+**Deciding which issues look most urgent** is the judgment call. "Urgent" depends on context — wording, labels, age, author, discussion thread — and changes every day. A fixed script could only apply mechanical rules you define in advance. An agent reads the situation and applies the same kind of judgment a human triager would.
+
+</details>
+
+**Task C:** When a new release is published, summarise the commit messages since the last release into a human-readable changelog entry.
+
+- [ ] I've identified the decision point for Task C
+
+<details>
+<summary>Reveal Task C answer</summary>
+
+**Writing a human-readable summary from raw commit messages** is the judgment call. Commit messages vary wildly in format and quality. An agent infers what changed and why from the messages; a script would produce a mechanical list that still needs a human to make readable.
+
+</details>
+
 ## Safe by design: sandbox + guardrailed outputs
 
 Letting an AI agent act on your repository on a schedule only works if it can't do damage. Agentic workflows enforce two trust boundaries so you can run agents in automation with confidence:
@@ -59,32 +135,6 @@ The security jobs in the run log above map to these boundaries: **activation** c
 <summary>Why can't the agent just write to the repo directly?</summary>
 
 Direct write access would make every prompt injection a potential supply-chain attack. By keeping the agent read-only and routing all changes through the safe-output system, a malicious instruction the agent picks up from issue text or a fetched page can, at worst, produce a *request* that the guardrails then reject or cap — it can never silently push code, leak secrets, or open unlimited pull requests.
-
-</details>
-
-## Try it: agentic or standard?
-
-For each task below, decide whether it calls for an **agentic workflow** or a **standard Actions workflow**, then reveal the answer.
-
-**Task A:** Run lint and unit tests on every pull request, fail if any check exits non-zero.
-
-- [ ] I've made my decision for Task A
-
-<details>
-<summary>Reveal Task A answer</summary>
-
-**Standard Actions workflow.** Every run follows the same fixed steps: run lint, run tests, report the exit code. No judgment is required.
-
-</details>
-
-**Task B:** Each morning, read all open issues, decide which ones look most urgent, and post a short triage summary.
-
-- [ ] I've made my decision for Task B
-
-<details>
-<summary>Reveal Task B answer</summary>
-
-**Agentic workflow.** The agent reads live issue data, applies judgment to assess urgency, and composes a summary that differs every run based on what it finds.
 
 </details>
 

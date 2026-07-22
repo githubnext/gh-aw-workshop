@@ -41,16 +41,21 @@ If you are working in Claude Code or OpenAI Codex, keep this first workflow on C
 
 ## Choose one Copilot billing path
 
-Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
+Work through this decision tree from top to bottom and stop at the first branch that matches you:
+
+**Decision 1: Does the organization that owns your repository have centralized Copilot billing enabled?**
+
+- Ask your org administrator: "Is centralized Copilot billing enabled for Actions in this org?"
+- If **yes** → follow [Org centralized billing](#org-centralized-billing) below.
+- If **no**, or if the repository is personal → follow [Personal billing](#personal-billing) below.
+
+The diagram below shows both paths and the key configuration difference between them.
 
 ![Decision flow for choosing Copilot billing path: organization centralized billing or personal billing](images/07d-billing-path-decision.svg)
 
-### Organization with centralized Copilot billing
+### Org centralized billing
 
-Use this path when the organization that owns the repository has centralized Copilot billing enabled for Actions.
-
-1. Ask your organization administrator to confirm centralized billing is enabled.
-2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
+1. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
 
    ```yaml
    permissions:
@@ -59,18 +64,22 @@ Use this path when the organization that owns the repository has centralized Cop
    ```
 
    This line is already present in the workflow template. Do not remove it.
-3. No repository secret is needed for this path.
+2. No repository secret is needed. The workflow uses the organization subscription.
+3. **Checkpoint:** The `permissions:` block includes `copilot-requests: write` and no secret is set. Skip to [Check the final configuration](#check-the-final-configuration).
 
-The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
+If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
 
 ### Personal billing
 
-Use this path for a personal repository, or when the owning organization does not provide centralized Copilot billing.
-
 > [!IMPORTANT]
-> When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission before you set up the secret, then recompile.
+> When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission line before you set up the secret, then recompile.
 
-**If you are using a terminal:**
+**Decision 2: Are you working in a terminal (Codespace or local), or browser only?**
+
+- If you have a terminal → follow [Personal billing — terminal](#personal-billing--terminal).
+- If you are browser only → follow [Personal billing — browser](#personal-billing--browser).
+
+#### Personal billing — terminal
 
 1. Remove `copilot-requests: write` from `daily-report-status.md`.
 2. Run:
@@ -80,9 +89,18 @@ Use this path for a personal repository, or when the owning organization does no
    ```
 
    This guided flow checks whether `COPILOT_GITHUB_TOKEN` is needed, prompts for it if missing, and stores it as a repository secret.
-3. Recompile and commit `daily-report-status.lock.yml`.
+3. Recompile and commit:
 
-**If you are using the browser only:**
+   ```bash
+   gh aw compile .github/workflows/daily-report-status.md
+   git add .github/workflows/daily-report-status.lock.yml
+   git commit -m "chore: configure personal copilot billing"
+   git push
+   ```
+
+4. **Checkpoint:** `copilot-requests: write` is removed, `COPILOT_GITHUB_TOKEN` is set as a repository secret, and the updated lock file is committed. Continue to [Check the final configuration](#check-the-final-configuration).
+
+#### Personal billing — browser
 
 1. In the Copilot or Agents tab, ask the agent to remove the permission line and commit the change:
 
@@ -108,6 +126,8 @@ Use this path for a personal repository, or when the owning organization does no
    ```
    Run gh aw compile and commit the updated .github/workflows/daily-report-status.lock.yml to main.
    ```
+
+5. **Checkpoint:** `copilot-requests: write` is removed, `COPILOT_GITHUB_TOKEN` is set as a repository secret, and the agent has committed the updated lock file. Continue to [Check the final configuration](#check-the-final-configuration).
 
 For the full manual PAT procedure with detailed troubleshooting, see [Method PAT: `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md).
 
