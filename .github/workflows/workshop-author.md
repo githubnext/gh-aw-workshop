@@ -171,7 +171,9 @@ Create the file at `workshop/<filename>` using the `edit` tool. Follow **all** o
 
 ## Content Rules
 
-### Structure (every file must follow this template)
+### Structure (every learning-step file must follow this template)
+
+- Dispatcher pages marked `<!-- learning:false -->` are pure routing pages. They must omit the `## ✅ Checkpoint` section from this template.
 
 ```markdown
 # <Title>
