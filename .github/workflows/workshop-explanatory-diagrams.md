@@ -270,21 +270,14 @@ After generating the SVG pair:
 
 1. Insert or replace exactly one image reference in the source workshop file
    near the concept it explains.
-2. Use this format exactly:
+2. Use the canonical theme-aware `<picture>` format from
+   `.github/workflows/guidelines.md` (Theme-aware workshop images section).
 
-```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/<stem>-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/<stem>-light.svg">
-  <img alt="Concise descriptive alt text" src="images/<stem>-light.svg">
-</picture>
-```
-
-1. Use the light variant as the fallback `src`; put alt text only on `<img>`.
-2. Keep the edit minimal and line-precise.
-3. If needed, add at most two short sentences to introduce a new diagram.
-4. Do not reformat surrounding sections or migrate more than one image per run.
-5. Do not delete the original until no Markdown or HTML reference uses it.
+3. Use the light variant as the fallback `src`; put alt text only on `<img>`.
+4. Keep the edit minimal and line-precise.
+5. If needed, add at most two short sentences to introduce a new diagram.
+6. Do not reformat surrounding sections or migrate more than one image per run.
+7. Do not delete the original until no Markdown or HTML reference uses it.
 
 ---
 
