@@ -76,24 +76,24 @@ steps:
               (line[2:].strip() for line in lines if line.startswith("# ")),
               path.stem,
           )
-            markdown_images = [
+          markdown_images = [
               match.group(1)
               for match in image_re.finditer(text)
               if not match.group(1).startswith(("http://", "https://"))
           ]
-            picture_blocks = picture_re.findall(text)
-            picture_images = [
+          picture_blocks = picture_re.findall(text)
+          picture_images = [
               match.group(1)
               for block in picture_blocks
               for match in html_image_re.finditer(block)
               if not match.group(1).startswith(("http://", "https://"))
-            ]
-            images = list(dict.fromkeys(markdown_images + picture_images))
-            theme_aware_picture_count = sum(
+          ]
+          images = list(dict.fromkeys(markdown_images + picture_images))
+          theme_aware_picture_count = sum(
               '(prefers-color-scheme: light)' in block
               and '(prefers-color-scheme: dark)' in block
               for block in picture_blocks
-            )
+          )
           headings = [
               {
                   "level": len(match.group(1)),
