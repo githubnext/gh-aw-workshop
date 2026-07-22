@@ -57,7 +57,7 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 3. Keep this terminal open. It is already inside your practice repository.
 
 > [!TIP]
-> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see an error, see [install troubleshooting](side-quest-06-01-install-troubleshooting.md).
+> If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see a permission error when running `gh auth status`, try `gh auth login` to authenticate.
 
 <details>
 <summary>First time in a terminal?</summary>
@@ -76,23 +76,27 @@ The diagram below shows your Codespace connection to GitHub.
 
    ```bash
    gh --version
+   gh auth status
    ```
 2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
+3. Confirm `gh auth status` shows you are logged in to `github.com`.
 
 _What success looks like:_
 
 ```text
 gh version 2.40.0 (2024-01-01)
+...
+github.com
+  ✓ Logged in to github.com as <your-username>
 ```
-
-You should see `gh version 2.40.0` or newer and a line confirming you're logged in to `github.com`.
 
 ## ✅ Checkpoint
 
-- [ ] You confirmed your GitHub plan includes Codespaces access (free for public repositories)
+- [ ] You confirmed your GitHub plan includes Codespaces access (free tier includes 60 hours/month)
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
 - [ ] `gh --version` returns version 2.40.0 or newer
+- [ ] `gh auth status` confirms you are logged in to `github.com`
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
 
 <!-- journey: codespace -->
