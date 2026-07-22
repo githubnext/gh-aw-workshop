@@ -77,7 +77,7 @@ gh extension install github/gh-aw
 
 ---
 
-## GitHub Enterprise Server (GHE/GHES) endpoint
+## [GitHub Enterprise Server](https://github.github.com/gh-aw/setup/cli/#github-enterprise-server-support) (GHE/GHES) endpoint
 
 Authenticate against your GHES hostname and install with `--hostname`:
 

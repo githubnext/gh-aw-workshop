@@ -71,7 +71,7 @@ Should the daily report run on a schedule or wait for manual dispatch? State whi
 <details>
 <summary>Check your answer</summary>
 
-A scheduled trigger runs automatically — appropriate for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
+A [scheduled trigger](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) runs automatically — appropriate for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
 
 - [ ] Schedule: runs automatically, no button click needed
 - [ ] `workflow_dispatch`: requires a manual click each run

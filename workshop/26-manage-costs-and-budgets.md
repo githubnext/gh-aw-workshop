@@ -74,7 +74,7 @@ A few techniques keep spend in check:
 - **Cache results with persistent memory** — skip re-processing unchanged data. See [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 - **Reduce run frequency** — fewer runs means fewer AIC.
 
-Three frontmatter fields enforce hard limits directly in the workflow file:
+Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields enforce hard limits directly in the workflow file:
 
 - **[`timeout-minutes`](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
 - **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume, enforced by the AWF firewall. The default when omitted is 1000 AIC. Set to a negative value (e.g. `-1`) to disable enforcement and token steering.
