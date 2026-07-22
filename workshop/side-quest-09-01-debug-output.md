@@ -19,7 +19,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 | Long `[plan]` chain | How to turn planning loops into concrete tool calls | [09-01a](side-quest-09-01a-pattern-long-plan-chain.md) |
 | Empty tool results | How to separate permission issues from filter issues | [09-01b](side-quest-09-01b-pattern-empty-results.md) |
 | `safe-output: BLOCKED` | How to decide between raising `max` and tightening guidance | [09-01c](side-quest-09-01c-pattern-safe-output-blocked.md) |
-| `permission denied` | How to map failures to `permissions` vs `safe-outputs` | [09-01d](side-quest-09-01d-pattern-permission-denied.md) |
+| `permission denied` | How to map failures to [`permissions`](https://github.github.com/gh-aw/reference/permissions/) vs [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) | [09-01d](side-quest-09-01d-pattern-permission-denied.md) |
 | "Done" with no write | How to clarify write conditions and fallback behavior | [09-01e](side-quest-09-01e-pattern-done-no-write.md) |
 
 Need a reusable triage flow after the pattern drills? Open the [Debugging Checklist](side-quest-09-01f-debugging-checklist.md).

@@ -18,7 +18,7 @@ Use this structure in your brief:
 - Ranking rule: "Sort by reactions and pick the top item."
 - Output rule: "Post one comment that includes the selected issue URL and reason."
 
-If you need help tightening wording, ask the `agentic-workflows` skill to rewrite your brief or run `gh aw compile --watch`.
+If you need help tightening wording, ask the `agentic-workflows` skill to rewrite your brief or run [`gh aw compile --watch`](https://github.github.com/gh-aw/setup/cli/#compile).
 
 ## Hands-On Exercise
 

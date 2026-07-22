@@ -4,7 +4,7 @@
 
 > _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-billing setup without terminal commands._
 
-This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The agentic workflow engine picks it up automatically.
+This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) engine picks it up automatically.
 
 ## 📋 Before You Start
 
@@ -55,7 +55,7 @@ Quick check:
 
 1. Edit the source workflow and remove `copilot-requests: write`.
 2. Commit the source change.
-3. Ask the **Agentic Workflows** agent to run `gh aw compile` and commit the updated lock file.
+3. Ask the **Agentic Workflows** agent to run `gh aw compile` and commit the updated [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml).
 
 When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 

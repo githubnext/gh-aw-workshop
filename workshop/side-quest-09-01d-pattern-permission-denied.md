@@ -12,8 +12,8 @@ You will map permission failures to the correct control: read access in `permiss
 
 When a log shows `permission denied`, the agent tried an operation outside the workflow's allowed boundaries. Resolve this by identifying whether the denied action is read or write:
 
-- **Read actions** (list issues, get PR data) require the matching `permissions:` scope at `read`.
-- **Write actions** (create issue, add comment) require an allowlisted entry in `safe-outputs:` with an appropriate `max`.
+- **Read actions** (list issues, get PR data) require the matching [`permissions:`](https://github.github.com/gh-aw/reference/permissions/) scope at `read`.
+- **Write actions** (create issue, add comment) require an allowlisted entry in [`safe-outputs:`](https://github.github.com/gh-aw/reference/safe-outputs/) with an appropriate `max`.
 
 Do not treat `permissions:` as a write switch. In this framework, write intent is controlled by `safe-outputs:`. Keep both controls minimal: only scopes and outputs your workflow truly needs.
 

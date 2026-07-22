@@ -94,9 +94,9 @@ on:
 
 | If you see this kind of error | Usually means | Check this first |
 |-------------------------------|---------------|------------------|
-| YAML parse error or `did not find expected key` | A key is indented at the wrong level | Make sure nested keys under `on:`, `permissions:`, `tools:`, or `safe-outputs:` are indented two more spaces than their parent |
+| YAML parse error or `did not find expected key` | A key is indented at the wrong level | Make sure nested keys under `on:`, [`permissions:`](https://github.github.com/gh-aw/reference/permissions/), `tools:`, or `safe-outputs:` are indented two more spaces than their parent |
 | `found character that cannot start any token` | You pasted a tab character or stray YAML punctuation | Replace tabs with spaces and check for accidental special characters in unquoted values |
-| `unexpected end of stream` or frontmatter/document errors | The frontmatter fences are incomplete | Confirm the file has both the opening `---` and the closing `---` |
+| `unexpected end of stream` or frontmatter/document errors | The frontmatter fences are incomplete | Confirm the file has both the opening `---` and the closing `---` for the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) |
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
 <!-- journey: terminal -->
