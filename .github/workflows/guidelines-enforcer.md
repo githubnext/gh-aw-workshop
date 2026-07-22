@@ -177,7 +177,7 @@ For each file in `target_files`:
    - **Schedule syntax** (agentic workflow `.md` files only): no raw cron syntax; use fuzzy expressions such as `schedule: daily`.
    - **UI-first design**: prefer GitHub UI paths; terminal commands are secondary unless required.
    - **Prerequisite discipline**: list only prerequisites needed for the current step; avoid future-looking requirements.
-   - **Checkpoint presence** (workshop step files): every step file must end with a `## ✅ Checkpoint` section containing a markdown checklist.
+   - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## ✅ Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
    - **Voice and tone**: second person, present tense, active voice; no dramatic or alarmist language.
    - **File split guideline**: a step file that diverges significantly in Terminal vs. UI paths should note whether the content should be split (do not auto-split, just flag it).
 3. For each violation found, record:
