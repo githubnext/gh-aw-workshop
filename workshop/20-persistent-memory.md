@@ -23,7 +23,7 @@
 
 ## 🎯 What You'll Do
 
-You'll add persistent memory to your agentic workflow so it can carry state between runs. By the end of this step, your workflow will remember what it has already reported on and skip duplicates — so your team never gets the same alert twice.
+You'll add [persistent memory](https://github.github.com/gh-aw/patterns/memory-ops/) to your agentic workflow so it can carry state between runs. By the end of this step, your workflow will remember what it has already reported on and skip duplicates — so your team never gets the same alert twice.
 
 ## 📋 Before You Start
 

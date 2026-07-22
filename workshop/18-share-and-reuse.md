@@ -6,7 +6,7 @@
 
 ## 🎯 What You'll Do
 
-You'll copy your finished workflow file into a shared location so that teammates can add it to their own repositories with a single command. By the end of this step you'll have a reusable workflow template and know how to distribute it.
+You'll copy your finished workflow file into a shared location so that teammates can add it to their own repositories with a single command. By the end of this step you'll have a [reusable workflow template](https://github.github.com/gh-aw/guides/reusing-workflows/) and know how to distribute it.
 
 ## 📋 Before You Start
 
