@@ -63,6 +63,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels automatically based on which files changed in a pull request; branches from [Step 13](13-pr-reviewer-workflow.md).
 - [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured, changelog-ready summary comment when a pull request opens; branches from [Step 13](13-pr-reviewer-workflow.md).
 - [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — evaluate pull requests against a quality checklist and post a pass/fail table; branches from [Step 13](13-pr-reviewer-workflow.md).
+- [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) — hands-on optimization activity for building an AIC baseline, auditing expensive runs, identifying cost drivers, and testing one token-reduction change at a time; branches from [Step 13](13-pr-reviewer-workflow.md).
 - [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 13](12-test-and-iterate.md).
 - [Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md) — structured rubric for judging output quality, a five-row problem-to-fix reference table, and a one-change-at-a-time iteration loop; branches from [Step 12](12-test-and-iterate.md).
 - [GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md) — deep dive into `${{ }}` syntax, available context objects, output references, and `if:` conditions; branches from [Step 15](15-conditional-logic.md).
@@ -90,7 +91,6 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md) — full phase reference table, activity feed tips, steering prompts, and advanced agent merge / `--watch` paths; branches from [Step 11d2](12-test-and-iterate.md).
 - [Audit Reference — Artifacts, Firewall Logs, and Report Contents](side-quest-25-01-audit-reference.md) — detailed breakdown of `gh aw audit` report fields, agent artifact files, ⌖ AIC billing, `firewall.md`, and `network.allow`; branches from [Step 25](25-audit-and-observability.md).
 - [Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) — full walkthrough of `gh aw forecast`: reading P10/P50/P90 output, using `--period week` and `--days 7`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 figure; branches from [Step 26](26-manage-costs-and-budgets.md).
-- [Observe and Reduce Token Costs](side-quest-26-02-token-optimization.md) — hands-on optimization activity for building an AIC baseline, auditing expensive runs, identifying cost drivers, and testing one token-reduction change at a time; branches from [Step 26](26-manage-costs-and-budgets.md).
 
 ## Getting Started
 

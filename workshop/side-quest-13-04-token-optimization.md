@@ -6,9 +6,9 @@
 
 ## 📋 Before You Start
 
-- You completed [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
-- You completed [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
-- You have a workflow with at least 5 completed runs so you can compare before-and-after usage.
+- You completed [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
+- You have a working PR reviewer workflow or another workflow with at least 5 completed runs so you can compare before-and-after usage.
+- If you want extra background on AIC, audit artifacts, or budget guardrails, continue later to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 
 ## Build a cost baseline
 
@@ -115,7 +115,7 @@ After you reduce cost, keep it reduced:
 
 ### Run one optimization cycle
 
-1. Pick one workflow and copy the average AIC from your last five runs.
+1. Pick your PR reviewer workflow (or another workflow) and copy the average AIC from your last five runs.
 2. Choose one technique from this page.
 3. Make exactly one change to your workflow.
 4. Compile your workflow:
@@ -157,5 +157,5 @@ Paste the relevant excerpt from your `gh aw audit --parse` output below the prom
 - [ ] You can name the next optimization you would test if cost is still too high
 
 <!-- journey: all -->
-Return to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
+Return to [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
 <!-- /journey -->

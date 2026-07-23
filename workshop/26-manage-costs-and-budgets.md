@@ -75,7 +75,7 @@ A few techniques keep spend in check:
 - **Reduce run frequency** — fewer runs means fewer AIC.
 
 > [!TIP]
-> Want a deeper activity for observing where tokens go and testing cost reductions one change at a time? Try [Side Quest: Observe and Reduce Token Costs](side-quest-26-02-token-optimization.md).
+> Want a deeper activity for observing where tokens go and testing cost reductions one change at a time? Try [Side Quest: Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md).
 
 Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields enforce hard limits directly in the workflow file:
 
