@@ -10,7 +10,7 @@ Take stock of everything you've learned, then choose a direction for what to bui
 
 ## 📋 Before You Start
 
-- You have a scheduled daily-status workflow running in GitHub Actions from [Schedule It to Run Every Day](12-test-and-iterate.md).
+- You have a scheduled daily-status workflow running in GitHub Actions from [Schedule It to Run Every Day](13-schedule-your-workflow.md).
 
 ## Steps
 
