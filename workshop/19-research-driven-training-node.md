@@ -70,7 +70,7 @@ Run markdown lint and compile checks so your proposal is production-ready:
 
 ```bash
 npx --yes markdownlint-cli2 "workshop/**/*.md"
-gh aw compile --validate
+gh aw compile
 ```
 
 ## ✅ Checkpoint
