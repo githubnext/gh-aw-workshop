@@ -25,7 +25,7 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 
 - [ ] I can run this checklist in order without skipping steps
 - [ ] I know where to find both live logs and safe-output records
-- [ ] I can decide whether the root cause is prompt, data, permissions, or output limits
+- [ ] I can decide whether the root cause is prompt, data, [permissions](https://github.github.com/gh-aw/reference/permissions/), or output limits
 - [ ] I can gather a minimal log snippet to share for deeper diagnosis
 
 <!-- /journey -->

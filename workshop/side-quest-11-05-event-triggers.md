@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Event-Driven Triggers in Agentic Workflows
 
-> _Optional: use this primer if you want help choosing between scheduled and event-driven workflows before you finish [Build — PR Code Reviewer](15-conditional-logic.md), then return to the main adventure._
+> _Optional: use this primer if you want help choosing between [scheduled](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) and event-driven workflows before you finish [Build — PR Code Reviewer](15-conditional-logic.md), then return to the main adventure._
 
 ## 🎯 What You'll Do
 

@@ -40,7 +40,7 @@ gh-aw uses five defence layers. Here is the short version, in three groups:
 
 - **Compiled task brief** — The task brief is baked in before any data arrives. Issue bodies and PR descriptions reach the agent as structured tool call results, competing with an authoritative baseline rather than replacing it.
 - **Minimal `permissions:` + `safe-outputs`** — The `GITHUB_TOKEN` enforces declared permission boundaries; `safe-outputs` removes write tool paths that were never declared, so a jailbreak instruction to push a commit has no execution path.
-- **`network.allowed-domains` + agentic threat detection** — The network layer blocks data exfiltration to unlisted endpoints; a separate detection job reviews agent output in an isolated sandbox before any write lands.
+- **`network.allowed-domains` + [agentic threat detection](https://github.github.com/gh-aw/reference/threat-detection/)** — The network layer blocks data exfiltration to unlisted endpoints; a separate detection job reviews agent output in an isolated sandbox before any write lands.
 
 <details>
 <summary>Detailed breakdown of each layer</summary>

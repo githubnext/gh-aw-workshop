@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Write Better AI Task Briefs
 
-> _Optional: work through this guide if you want to get more useful, consistent output from your agentic workflows — then return to [Step 11](07-your-first-workflow.md) or [Step 12](12-test-and-iterate.md)._
+> _Optional: work through this guide if you want to get more useful, consistent output from your [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — then return to [Step 11](07-your-first-workflow.md) or [Step 12](12-test-and-iterate.md)._
 
 ## 🎯 What You'll Do
 

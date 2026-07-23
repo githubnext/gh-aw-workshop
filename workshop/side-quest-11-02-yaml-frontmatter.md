@@ -4,7 +4,7 @@
 
 > _Optional: work through these common YAML mistakes if you hit a compile error in Step 11, then return to the main path._
 
-YAML is unforgiving. Here are the five errors learners hit most often when building agentic workflow frontmatter, each with a broken ❌ and correct ✅ example.
+YAML is unforgiving. Here are the five errors learners hit most often when building agentic workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), each with a broken ❌ and correct ✅ example.
 
 ---
 
