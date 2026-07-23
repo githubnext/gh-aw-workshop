@@ -123,6 +123,7 @@ name: Review open issues
 on:
   schedule:
     - cron: "0 8 * * *"
+  workflow_dispatch:
 permissions:
   issues: read
 ```
