@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-label="PR auto-reviewer comment posted by the workflow">
+  <rect width="1200" height="600" fill="#f6f8fa"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1200" height="44" rx="8" ry="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="0" y="22" width="1200" height="22" fill="#ffffff"/>
+  <rect x="200" y="10" width="800" height="24" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="600" y="26" font-family="Arial,sans-serif" font-size="12" fill="#57606a" text-anchor="middle">github.com/your-org/your-repo/pull/1</text>
+  <!-- Traffic lights -->
+  <circle cx="20" cy="22" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="22" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="22" r="6" fill="#28c840"/>
+
+  <!-- Nav tabs -->
+  <rect x="0" y="44" width="1200" height="48" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <text x="30" y="74" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Code</text>
+  <text x="90" y="74" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Issues</text>
+  <text x="168" y="74" font-family="Arial,sans-serif" font-size="14" fill="#0969da" font-weight="bold">Pull requests</text>
+  <rect x="168" y="88" width="100" height="3" fill="#0969da" rx="2"/>
+  <text x="309" y="74" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Actions</text>
+
+  <!-- PR header -->
+  <rect x="60" y="105" width="1080" height="60" fill="#ffffff" stroke="#d0d7de" stroke-width="1" rx="4"/>
+  <text x="90" y="130" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1f2328">Add feature: improve error handling</text>
+  <rect x="90" y="140" width="46" height="20" rx="10" fill="#1a7f37"/>
+  <text x="113" y="154" font-family="Arial,sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Open</text>
+  <text x="148" y="154" font-family="Arial,sans-serif" font-size="12" fill="#57606a">you opened this 5 minutes ago · 2 commits · 3 files changed</text>
+
+  <!-- PR sub-tabs -->
+  <rect x="60" y="180" width="1080" height="40" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <text x="90" y="206" font-family="Arial,sans-serif" font-size="14" fill="#0969da" font-weight="bold">Conversation</text>
+  <rect x="90" y="218" width="96" height="3" fill="#0969da" rx="2"/>
+  <text x="210" y="206" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Commits  2</text>
+  <text x="310" y="206" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Files changed  3</text>
+
+  <!-- Timeline: commit event -->
+  <rect x="60" y="236" width="1080" height="40" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <circle cx="120" cy="256" r="10" fill="#eaeef2" stroke="#d0d7de" stroke-width="1"/>
+  <text x="145" y="261" font-family="Arial,sans-serif" font-size="12" fill="#57606a">you pushed 2 commits  ·  just now</text>
+
+  <!-- Bot comment card -->
+  <rect x="60" y="290" width="1080" height="220" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <!-- Comment header -->
+  <rect x="60" y="290" width="1080" height="40" rx="6" fill="#ddf4ff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="60" y="316" width="1080" height="14" fill="#ddf4ff"/>
+  <circle cx="90" cy="310" r="14" fill="#0969da"/>
+  <text x="90" y="316" font-family="Arial,sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">🤖</text>
+  <text x="114" y="315" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1f2328">github-actions[bot]</text>
+  <text x="280" y="315" font-family="Arial,sans-serif" font-size="12" fill="#57606a">commented just now</text>
+  <rect x="1060" y="298" width="60" height="20" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="1090" y="312" font-family="Arial,sans-serif" font-size="11" fill="#57606a" text-anchor="middle">···</text>
+
+  <!-- Comment body -->
+  <text x="90" y="360" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1f2328">PR Auto-Review</text>
+  <text x="90" y="385" font-family="Arial,sans-serif" font-size="13" fill="#1f2328">This PR improves error handling across the codebase. Here's a quick summary:</text>
+  <text x="90" y="412" font-family="Arial,sans-serif" font-size="13" fill="#57606a">• 3 files changed — mostly in the error-handling utilities.</text>
+  <text x="90" y="432" font-family="Arial,sans-serif" font-size="13" fill="#57606a">• The changes look focused and low-risk. No new dependencies introduced.</text>
+  <text x="90" y="452" font-family="Arial,sans-serif" font-size="13" fill="#57606a">• Consider adding a unit test for the new fallback path in <tspan font-family="monospace" fill="#1f2328">src/errors.js</tspan>.</text>
+  <!-- Reaction bar -->
+  <rect x="90" y="470" width="60" height="24" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="120" y="486" font-family="Arial,sans-serif" font-size="12" fill="#57606a" text-anchor="middle">👍 1</text>
+
+  <!-- Caption -->
+  <text x="600" y="580" font-family="Arial,sans-serif" font-size="14" fill="#57606a" text-anchor="middle">Automated review comment posted by the PR Auto-Reviewer workflow</text>
+</svg>
