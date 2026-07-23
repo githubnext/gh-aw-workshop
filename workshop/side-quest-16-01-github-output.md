@@ -19,7 +19,7 @@
   run: echo "$RESULT"   # prints nothing — RESULT is gone
 ```
 
-Each step is a separate child process. Environment variables set with `export` only survive for the duration of that step.
+Each step is a separate child process. [Environment variables](https://github.github.com/gh-aw/reference/environment-variables/) set with `export` only survive for the duration of that step.
 
 ---
 

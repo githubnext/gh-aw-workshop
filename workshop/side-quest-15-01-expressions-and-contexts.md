@@ -32,7 +32,7 @@ A **context** is a named object that GitHub Actions populates automatically. The
 |---------|--------------|
 | `github` | Event metadata — repo name, branch, commit SHA, actor |
 | `steps.<id>.outputs` | Outputs written by a previous step using `$GITHUB_OUTPUT` |
-| `env` | Environment variables set in the workflow or step |
+| `env` | [Environment variables](https://github.github.com/gh-aw/reference/environment-variables/) set in the workflow or step |
 | `secrets` | Repository or organisation secrets |
 | `runner` | Information about the runner OS and temp directory |
 | `job` | Current job status |

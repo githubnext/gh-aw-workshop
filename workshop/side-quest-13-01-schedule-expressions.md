@@ -18,7 +18,7 @@ You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions 
 
 GitHub Actions stores schedules as **[cron expressions](https://github.github.com/gh-aw/reference/schedule-syntax/)** — five fields: `minute hour day-of-month month day-of-week`.
 
-You do **not** need to write cron by hand for common cases. In `gh-aw`, you can write a fuzzy expression like `daily on weekdays`, then let `gh aw compile` convert it for you.
+You do **not** need to write cron by hand for common cases. In `gh-aw`, you can write a [fuzzy expression](https://github.github.com/gh-aw/reference/schedule-syntax/#fuzzy-schedules) like `daily on weekdays`, then let `gh aw compile` convert it for you.
 
 ## Fuzzy schedule reference
 

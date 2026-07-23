@@ -89,7 +89,7 @@ Then:
 
 ## How trigger choice changes `safe-outputs`
 
-The trigger decides **when** the workflow starts. The `safe-outputs` block decides **where it is allowed to write back**.
+The trigger decides **when** the workflow starts. The [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/) block decides **where it is allowed to write back**.
 
 | Trigger | Natural thing to reply to | Common `safe-outputs` choice |
 |---------|----------------------------|------------------------------|

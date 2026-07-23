@@ -4,7 +4,7 @@
 
 > _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the AI engine for your agentic workflow, then return to your main path._
 
-By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the GitHub Copilot engine. If you prefer to use **Claude**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your workflow frontmatter.
+By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). If you prefer to use **Claude**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
 ## 📋 Before You Start
 
