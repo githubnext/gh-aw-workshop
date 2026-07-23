@@ -11,8 +11,8 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 2 | Setup Adventure — Choose one: [A: Codespace](02a-setup-codespace.md), [B: Local Terminal](02b-setup-local.md), **or** [C: Browser (no terminal)](02c-setup-browser.md) |
 | 4 | [What Are GitHub Actions?](04-github-actions-intro.md) |
 | 5 | [What Are Agentic Workflows?](05-agentic-workflows-intro.md) |
-| 5c | [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md) |
 | 5b | [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md) |
+| 5c | [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md) |
 | 6 | [Install the gh-aw CLI Extension](06-install-gh-aw.md) |
 | 6a | [Codespace Terminal Path — Install gh-aw](06a-install-terminal.md) |
 | 6b | [Local Terminal Path — Install gh-aw](06b-install-local.md) |
