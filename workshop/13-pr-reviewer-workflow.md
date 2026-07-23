@@ -134,3 +134,4 @@ Ready to extend this workflow? These side quests each cover a popular PR reviewe
 - [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels based on which files changed.
 - [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured summary that PR authors can use as a release note draft.
 - [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — check PRs against a quality checklist and post results.
+- [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) — measure AIC for your PR reviewer workflow, inspect expensive runs, and test one cost-reduction change at a time.
