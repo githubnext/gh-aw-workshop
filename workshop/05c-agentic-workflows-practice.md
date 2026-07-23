@@ -65,5 +65,5 @@ as an issue with the title "Weekly PR Digest".
 - [ ] I can describe the three parts of an agentic workflow: trigger → agent → safe output
 
 <!-- journey: all -->
-**Next:** [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md)
+**Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 <!-- /journey -->

@@ -58,5 +58,5 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 - [ ] I can explain how the two-layer model makes agentic workflows safe to run on a schedule
 
 <!-- journey: all -->
-**Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)
+**Next:** [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md)
 <!-- /journey -->

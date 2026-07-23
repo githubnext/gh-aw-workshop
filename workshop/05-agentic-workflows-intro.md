@@ -112,5 +112,5 @@ No. Compile converts `.md` to `.lock.yml`. Runtime output comes from your task b
 </details>
 
 <!-- journey: all -->
-**Next:** [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md)
+**Next:** [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md)
 <!-- /journey -->
