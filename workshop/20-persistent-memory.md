@@ -102,7 +102,7 @@ have already reported on. On each run:
 After editing the frontmatter, compile the workflow to confirm the memory block is valid:
 
 ```bash
-gh aw compile --validate
+gh aw compile
 ```
 
 Fix any errors before pushing. Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
@@ -142,7 +142,7 @@ git push
 
 - [ ] Your workflow frontmatter has `cache-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot
-- [ ] `gh aw compile --validate` passes with no errors
+- [ ] `gh aw compile` passes with no errors
 - [ ] The first manual run log includes `cache-memory: loaded 0 items`
 - [ ] The second run log includes `cache-memory: loaded N items`, and `N` matches the number of items from the first run
 - [ ] After opening a new issue and running again, only the new issue is reported
