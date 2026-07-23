@@ -56,7 +56,7 @@
 name: "Workflow Skills Editor"
 on:
   schedule:
-    - cron: "19 7 * * *"  # Friendly format: daily (scattered)
+    - cron: "20 21 * * *"  # Friendly format: daily (scattered)
   # skip-if-match: is:pr is:open label:workflow-editor # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:
