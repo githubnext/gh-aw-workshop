@@ -36,7 +36,7 @@ For this step, you'll use your own practice repository. If you later want to mov
 
 Your workflow lives at `.github/workflows/<name>.md` in your repository. Make sure the latest version is committed and pushed.
 
-#### Terminal path — verify with Git
+### Terminal path — verify with Git
 
 ```bash
 git status
@@ -45,7 +45,7 @@ git log --oneline -3
 
 If you see uncommitted changes, commit them now before sharing.
 
-#### GitHub UI path — verify in the browser
+### GitHub UI path — verify in the browser
 
 1. Navigate to your repository on GitHub.
 2. Browse to `.github/workflows/`.
