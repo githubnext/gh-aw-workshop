@@ -87,67 +87,65 @@ steps:
 
       # Add local src/srcset references from HTML <picture> blocks. The Markdown
       # scanner above remains responsible for ![alt](path) references.
-      python3 <<'PY'
-      import json
-      import pathlib
-      from html.parser import HTMLParser
-
-      refs_path = pathlib.Path("/tmp/gh-aw/data/image-refs.json")
-      refs = json.loads(refs_path.read_text())
-      seen = {(record["file"], record["path"]) for record in refs}
-
-      def add_ref(source_file, line, alt, image_path):
-        image_path = image_path.strip()
-        if not image_path or image_path.startswith(("http://", "https://", "data:")):
-          return
-        key = (str(source_file), image_path)
-        if key in seen:
-          return
-        seen.add(key)
-        resolved = (source_file.parent / image_path).resolve()
-        refs.append({
-          "file": str(source_file),
-          "line": line,
-          "alt": alt,
-          "path": image_path,
-          "resolved": str(resolved),
-          "exists": resolved.is_file(),
-        })
-
-      class PictureParser(HTMLParser):
-        def __init__(self, source_file):
-          super().__init__()
-          self.source_file = source_file
-          self.picture_refs = None
-
-        def handle_starttag(self, tag, attrs):
-          attrs = dict(attrs)
-          if tag == "picture":
-            self.picture_refs = []
-          elif tag == "source" and self.picture_refs is not None:
-            for candidate in attrs.get("srcset", "").split(","):
-              candidate = candidate.strip().split()[0] if candidate.strip() else ""
-              if candidate:
-                self.picture_refs.append((self.getpos()[0], "", candidate))
-          elif tag == "img" and self.picture_refs is not None and attrs.get("src"):
-            self.picture_refs.append(
-              (self.getpos()[0], attrs.get("alt", ""), attrs["src"])
-            )
-
-        def handle_endtag(self, tag):
-          if tag != "picture" or self.picture_refs is None:
-            return
-          fallback_alt = next((alt for _, alt, _ in self.picture_refs if alt), "")
-          for line, alt, image_path in self.picture_refs:
-            add_ref(self.source_file, line, alt or fallback_alt, image_path)
-          self.picture_refs = None
-
-      for source_file in sorted(pathlib.Path("workshop").glob("*.md")):
-        parser = PictureParser(source_file)
-        parser.feed(source_file.read_text(encoding="utf-8"))
-
-      refs_path.write_text(json.dumps(refs, indent=2), encoding="utf-8")
-      PY
+      python3 -c "$(printf '%s\n' \
+      'import json' \
+      'import pathlib' \
+      'from html.parser import HTMLParser' \
+      '' \
+      'refs_path = pathlib.Path("/tmp/gh-aw/data/image-refs.json")' \
+      'refs = json.loads(refs_path.read_text())' \
+      'seen = {(record["file"], record["path"]) for record in refs}' \
+      '' \
+      'def add_ref(source_file, line, alt, image_path):' \
+      '  image_path = image_path.strip()' \
+      '  if not image_path or image_path.startswith(("http://", "https://", "data:")):' \
+      '    return' \
+      '  key = (str(source_file), image_path)' \
+      '  if key in seen:' \
+      '    return' \
+      '  seen.add(key)' \
+      '  resolved = (source_file.parent / image_path).resolve()' \
+      '  refs.append({' \
+      '    "file": str(source_file),' \
+      '    "line": line,' \
+      '    "alt": alt,' \
+      '    "path": image_path,' \
+      '    "resolved": str(resolved),' \
+      '    "exists": resolved.is_file(),' \
+      '  })' \
+      '' \
+      'class PictureParser(HTMLParser):' \
+      '  def __init__(self, source_file):' \
+      '    super().__init__()' \
+      '    self.source_file = source_file' \
+      '    self.picture_refs = None' \
+      '' \
+      '  def handle_starttag(self, tag, attrs):' \
+      '    attrs = dict(attrs)' \
+      '    if tag == "picture":' \
+      '      self.picture_refs = []' \
+      '    elif tag == "source" and self.picture_refs is not None:' \
+      '      for candidate in attrs.get("srcset", "").split(","):' \
+      '        candidate = candidate.strip().split()[0] if candidate.strip() else ""' \
+      '        if candidate:' \
+      '          self.picture_refs.append((self.getpos()[0], "", candidate))' \
+      '    elif tag == "img" and self.picture_refs is not None and attrs.get("src"):' \
+      '      self.picture_refs.append((self.getpos()[0], attrs.get("alt", ""), attrs["src"]))' \
+      '' \
+      '  def handle_endtag(self, tag):' \
+      '    if tag != "picture" or self.picture_refs is None:' \
+      '      return' \
+      '    fallback_alt = next((alt for _, alt, _ in self.picture_refs if alt), "")' \
+      '    for line, alt, image_path in self.picture_refs:' \
+      '      add_ref(self.source_file, line, alt or fallback_alt, image_path)' \
+      '    self.picture_refs = None' \
+      '' \
+      'for source_file in sorted(pathlib.Path("workshop").glob("*.md")):' \
+      '  parser = PictureParser(source_file)' \
+      '  parser.feed(source_file.read_text(encoding="utf-8"))' \
+      '' \
+      'refs_path.write_text(json.dumps(refs, indent=2), encoding="utf-8")'
+      )"
 
       echo "$existing_images" > /tmp/gh-aw/data/existing-images.json
 
