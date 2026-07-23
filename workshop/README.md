@@ -26,8 +26,8 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 8b | [Interpret Your First Run](08b-interpret-your-run.md) |
 | 9 | [Refine Your Workflow with Agentic Editing](09-agentic-editing.md) |
 | 12 | [Test and Improve Your Workflow](12-test-and-iterate.md) |
-| 13 | [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md) |
 | 14 | [What's Next? Keep Exploring](14-next-steps.md) |
+| 14b | [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md) |
 
 ## Curriculum — Part 2: Go Deeper
 
@@ -53,18 +53,18 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Terminal Basics](side-quest-01-01-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
 - [Environment Reference](side-quest-01-02-environment-reference.md) — glossary of workshop environments and tool terms with official docs links; branches from [Step 1](01-prerequisites.md).
 - [Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
-- [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) — quick reference for `gh aw compile`, `--validate`, `--watch`, and common compile errors; branches from [Step 7](07-your-first-workflow.md), [Step 11a](07-your-first-workflow.md), or [Step 13](12-test-and-iterate.md).
+- [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) — quick reference for `gh aw compile`, `--validate`, `--watch`, and common compile errors; branches from [Step 7](07-your-first-workflow.md), [Step 11a](07-your-first-workflow.md), or [Step 12](12-test-and-iterate.md).
 - [Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) — troubleshooting guide for Codespaces workflow-trigger permission errors with a UI-first path and advanced recovery path; branches from [Step 8](08-run-your-workflow.md).
 - [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](08b-interpret-your-run.md).
 - [Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) — five-step framework for designing any agentic workflow brief; branches from [Step 10](09-agentic-editing.md).
 - [Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md) — explains how adversarial instructions embedded in repository content attempt to override the agent's task brief, and how the compiled brief, minimal `permissions:`, `safe-outputs`, and `network.allowed-domains` contain any partial success; branches from [Step 10](09-agentic-editing.md).
 - [Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) — walkthrough of the opening, trigger, and permissions sections of `gh-aw` frontmatter, with predict-and-try activities; branches from [Step 11a](07-your-first-workflow.md).
 - [Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) — walkthrough of the tools, safe-outputs, closing fence, and agent body sections, with predict-and-try activities; continues from Part A.
-- [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels automatically based on which files changed in a pull request; branches from [Step 13](13-pr-reviewer-workflow.md).
-- [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured, changelog-ready summary comment when a pull request opens; branches from [Step 13](13-pr-reviewer-workflow.md).
-- [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — evaluate pull requests against a quality checklist and post a pass/fail table; branches from [Step 13](13-pr-reviewer-workflow.md).
-- [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) — hands-on optimization activity for building an AIC baseline, auditing expensive runs, identifying cost drivers, and testing one token-reduction change at a time; branches from [Step 13](13-pr-reviewer-workflow.md).
-- [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 13](12-test-and-iterate.md).
+- [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels automatically based on which files changed in a pull request; branches from [Step 14b](14b-pr-reviewer-workflow.md).
+- [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured, changelog-ready summary comment when a pull request opens; branches from [Step 14b](14b-pr-reviewer-workflow.md).
+- [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — evaluate pull requests against a quality checklist and post a pass/fail table; branches from [Step 14b](14b-pr-reviewer-workflow.md).
+- [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) — hands-on optimization activity for building an AIC baseline, auditing expensive runs, identifying cost drivers, and testing one token-reduction change at a time; branches from [Step 14b](14b-pr-reviewer-workflow.md).
+- [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 12](12-test-and-iterate.md).
 - [Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md) — structured rubric for judging output quality, a five-row problem-to-fix reference table, and a one-change-at-a-time iteration loop; branches from [Step 12](12-test-and-iterate.md).
 - [GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md) — deep dive into `${{ }}` syntax, available context objects, output references, and `if:` conditions; branches from [Step 15](15-conditional-logic.md).
 - [YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11a](07-your-first-workflow.md).

@@ -8,7 +8,7 @@ Extend your PR reviewer workflow to automatically apply GitHub labels based on t
 
 ## Before You Start
 
-- Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
+- Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 - Your practice repository has at least one label already created. If not, go to **Issues → Labels** in your repository and create labels like `documentation`, `tests`, and `bug-fix`.
 
 ## Why Auto-Labelling?

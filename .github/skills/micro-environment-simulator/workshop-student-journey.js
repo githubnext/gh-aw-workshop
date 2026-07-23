@@ -52,8 +52,8 @@ const STEP_FILE_ALIASES = {
   "08b-interpret-your-run": ["08b-interpret-your-run.md"],
   "09-agentic-editing": ["09-agentic-editing.md"],
   "12-test-and-iterate": ["12-test-and-iterate.md"],
-  "13-pr-reviewer-workflow": ["13-pr-reviewer-workflow.md"],
   "14-next-steps": ["14-next-steps.md"],
+  "14b-pr-reviewer-workflow": ["14b-pr-reviewer-workflow.md"],
   "15-conditional-logic": ["15-conditional-logic.md"],
   "16-connect-data-source": ["16-connect-data-source.md"],
   "17-add-mcp-tools": ["17-add-mcp-tools.md"],
@@ -82,8 +82,8 @@ const STEP_IDS = [
   "08b-interpret-your-run",
   "09-agentic-editing",
   "12-test-and-iterate",
-  "13-pr-reviewer-workflow",
   "14-next-steps",
+  "14b-pr-reviewer-workflow",
   "15-conditional-logic",
   "16-connect-data-source",
   "17-add-mcp-tools",
@@ -911,6 +911,31 @@ function buildTransitions() {
       return { ok: true, state: applyLearning(next, context, { troubleshooting: 0.08, agentic: 0.05 }) };
     },
     "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) }),
+    "14b-pr-reviewer-workflow": (state, context) => {
+      const compiledWorkflowCheck = ensureCompiledWorkflow(
+        state,
+        "workflow-not-compiled",
+        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying the PR reviewer step."
+      );
+      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
+      const ccaGuidanceCheck = ensure(
+        !needsCcaPromptGuidance(state, context) || hasCcaPromptGuidance(state, context),
+        "The PR reviewer step does not clearly tell CCA learners to invoke `/agentic-workflows` or show the browser-only compile path.",
+        "copilot-skill-guidance-missing",
+        "Add `/agentic-workflows` skill invocation guidance and a UI-only compile path to the PR reviewer workflow step."
+      );
+      if (!ccaGuidanceCheck.ok) return ccaGuidanceCheck;
+      const readiness = contentReadinessCheck(state, context, {
+        salt: 223,
+        category: "event-trigger-friction",
+        failedAssumption: "The learner understands scheduled triggers but struggles to adapt to an event-driven `pull_request` trigger and the required `safe-outputs` limit.",
+        remediation: "Keep the event trigger contrast with scheduled workflows prominent and add a worked example of `safe-outputs: create-issue-comment: limit: 1`.",
+        emphasis: { bias: 0.1, conceptWeight: 0.1, complexityWeight: 0.08 }
+      });
+      if (!readiness.ok) return readiness;
+      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.08, actions: 0.04, troubleshooting: 0.03 }) };
+    },
     "15-conditional-logic": (state, context) =>
       advancedLessonStep(state, context, {
         requiresRun: true,
