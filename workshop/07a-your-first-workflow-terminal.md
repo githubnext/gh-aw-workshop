@@ -74,11 +74,8 @@ If you hit an error, use [Side Quest: Using `gh aw compile` to Catch Errors Earl
 ## ✅ Checkpoint
 
 - [ ] `.github/workflows/daily-report-status.md` exists
-- [ ] You ran `gh aw compile` successfully
+- [ ] You ran `gh aw compile` successfully and it generated `daily-report-status.lock.yml`
 
 <!-- journey: terminal -->
 **Next:** [Part 2: Add instructions, safe outputs, and finish](07a-part2-your-first-workflow-instructions.md)
 <!-- /journey -->
-
-- [ ] `gh aw compile` succeeds and generates `daily-report-status.lock.yml`
-- [ ] `gh extension list` shows `github/gh-aw` is installed

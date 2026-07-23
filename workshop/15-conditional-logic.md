@@ -96,9 +96,7 @@ You should see `✅ Compiled successfully`. This regenerates your `.lock.yml` fi
 > [!NOTE]
 > The `if:` condition is applied during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) and will not take effect until you compile and push both the `.md` source and the updated `.lock.yml` file.
 
-### Commit and push your conditional logic
-
-#### Terminal path
+### Terminal path — Commit and push your conditional logic
 
 ```bash
 git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
@@ -106,8 +104,7 @@ git commit -m "feat: skip summary on days with no commits"
 git push
 ```
 
-<details>
-<summary>🖥️ GitHub UI path</summary>
+### GitHub UI path — Commit and push your conditional logic
 
 1. Navigate to `.github/workflows/daily-status.md` in your repository on GitHub.
 2. Click the **pencil icon (✏️)** to open the editor.
@@ -116,8 +113,6 @@ git push
 
 > [!IMPORTANT]
 > Committing the `.md` file via the web editor does **not** automatically recompile the lock file. After committing, open your Codespace or local terminal and run `gh aw compile`, then push the updated `.lock.yml`. The `if:` condition will not take effect until the compiled lock file is pushed.
-
-</details>
 
 ## ✅ Checkpoint
 

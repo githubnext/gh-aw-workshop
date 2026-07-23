@@ -22,7 +22,7 @@ After you submit the scenario prompt, the session shows a live activity feed. Th
 |---|---|---|
 | **Reading** | The agent fetches the `create.md` reference and reads existing files in your repository | Confirm the agent fetched the reference guide and found your repository files |
 | **Planning** | The agent decides what frontmatter keys, permissions, and task brief to use | The planning output should reflect your intended scenario |
-| **Writing** | The agent creates the workflow `.md` file in `.github/workflows/` | The file should contain a YAML frontmatter block between `---` fences and a Markdown task brief |
+| **Writing** | The agent creates the workflow `.md` file in `.github/workflows/` | The file should contain a [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) block between `---` fences and a Markdown task brief |
 | **Compiling** | The agent runs `gh aw compile --validate` and fixes any errors it finds | A green success message indicates the `.lock.yml` was generated without errors |
 | **Opening PR** | The agent commits both files and opens a pull request | The pull request should list two changed files: the `.md` source and the `.lock.yml` |
 
