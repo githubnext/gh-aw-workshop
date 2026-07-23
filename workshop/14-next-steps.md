@@ -59,6 +59,7 @@ Here's a quick recap of the concepts you've touched:
 - ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
 - ➡️ [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
 - ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
+- ➡️ [Run Agentic Workflows Across Multiple Repositories](27-cross-repository-workflows.md) — query and act on many repositories from a single workflow (useful for teams and enterprise fleets).
 
 <!-- journey: all -->
 ## ✅ Checkpoint
