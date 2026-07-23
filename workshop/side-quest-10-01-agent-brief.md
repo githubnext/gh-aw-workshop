@@ -73,7 +73,7 @@ Quick check:
 <details>
 <summary>Why this works</summary>
 
-Inputs turn "summarize the repo" into a concrete data request. They also make it easier to spot missing permissions or tools when you build the workflow.
+Inputs turn "summarize the repo" into a concrete data request. They also make it easier to spot missing [permissions](https://github.github.com/gh-aw/reference/permissions/) or tools when you build the workflow.
 
 </details>
 

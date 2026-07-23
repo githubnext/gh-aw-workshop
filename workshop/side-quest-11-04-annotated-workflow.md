@@ -20,7 +20,7 @@ Understand the four design decisions that make `daily-status.md` safe and predic
 | Decision | What it controls |
 |---------|-----------------|
 | Narrow `permissions` | Only the scopes the workflow actually needs — limits blast radius |
-| `gh-proxy` in `tools` | Enforces permissions at the [network](https://github.github.com/gh-aw/reference/network/) level |
+| `gh-proxy` in `tools` | Enforces [permissions](https://github.github.com/gh-aw/reference/permissions/) at the [network](https://github.github.com/gh-aw/reference/network/) level |
 | `max: 1` in `safe-outputs` | Caps writes to exactly one comment per run |
 | Fixed output template | Same format every run — easy to scan and audit |
 
