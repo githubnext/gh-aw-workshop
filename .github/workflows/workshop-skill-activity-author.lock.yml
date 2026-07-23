@@ -57,7 +57,7 @@
 name: "Workshop Skill Activity Author"
 on:
   schedule:
-    - cron: "37 4 * * *"  # Friendly format: daily (scattered)
+    - cron: "20 2 * * *"  # Friendly format: daily (scattered)
   # skip-if-match: is:pr is:open label:skill-activity # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:

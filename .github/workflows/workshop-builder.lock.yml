@@ -57,7 +57,7 @@
 name: "Workshop Builder"
 on:
   schedule:
-    - cron: "51 */1 * * *"  # Friendly format: hourly (scattered)
+    - cron: "19 */1 * * *"  # Friendly format: hourly (scattered)
   workflow_dispatch:
     inputs:
       aw_context:

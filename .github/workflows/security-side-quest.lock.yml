@@ -57,7 +57,7 @@
 name: "Security Side Quest"
 on:
   schedule:
-    - cron: "10 2 * * *"  # Friendly format: daily (scattered)
+    - cron: "52 16 * * *"  # Friendly format: daily (scattered)
   # skip-if-match: is:pr is:open label:security-side-quest # Skip-if-match processed as search check in pre-activation job
   workflow_dispatch:
     inputs:

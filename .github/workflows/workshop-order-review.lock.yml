@@ -53,7 +53,7 @@
 name: "Workshop Order Review"
 on:
   schedule:
-    - cron: "36 22 * * *"  # Friendly format: daily (scattered)
+    - cron: "7 6 * * *"  # Friendly format: daily (scattered)
   workflow_dispatch:
     inputs:
       aw_context:
