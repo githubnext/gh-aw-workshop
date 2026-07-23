@@ -29,10 +29,28 @@ Every agentic workflow run uses an AI model to process your task brief and produ
 
 ### Check current usage in the billing dashboard
 
-1. Open **github.com** and click your profile picture → **Settings**.
+Where you find AIC usage depends on your GitHub environment:
+
+#### github.com (personal account)
+
+1. Click your profile picture → **Settings**.
 2. In the left sidebar, click **Billing and plans**.
 3. Scroll to the **Copilot** section and click **Usage**.
-4. Look for the **Agentic Workflows** row. It shows AIC consumed this billing cycle.
+4. Look for the **Agentic Workflows** row.
+
+#### GitHub Enterprise Cloud (GHEC) — organisation billing
+
+1. Go to your organisation's main page on GitHub.
+2. Click the **Settings** tab.
+3. In the left sidebar, click **Billing and plans** → **Plans and usage**.
+4. Scroll to **Copilot** and look for the **Agentic Workflows** row.
+
+> [!NOTE]
+> On GHEC, Copilot usage is reported at the organisation level, not the personal account level. If you do not see a Copilot section, ask your GitHub administrator to confirm that Copilot Enterprise is enabled and that your account is licensed.
+
+#### GitHub Enterprise Server (GHES)
+
+Usage reporting for agentic workflows on GHES is managed through the GitHub Enterprise billing console. Ask your GitHub Enterprise administrator to pull the Copilot usage report for your organisation.
 
 ![Copilot billing usage dashboard showing AI Credit consumption by feature](images/26-billing-dashboard.svg)
 
