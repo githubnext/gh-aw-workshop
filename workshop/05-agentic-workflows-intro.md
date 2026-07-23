@@ -89,6 +89,27 @@ The **compile command** — it reads the `.md` source and writes the `.lock.yml`
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
 - [ ] I can identify the three parts: trigger → agent → safe output
+- [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
+
+<details>
+<summary>Still uncertain? Try this before moving on</summary>
+
+A standup bot reads overnight PRs and posts a digest — different every day. That is an agentic workflow.
+
+Does `gh aw compile` change what the agent does at runtime? Decide first.
+
+- [ ] I've decided
+
+<details>
+<summary>Reveal</summary>
+
+No. Compile converts `.md` to `.lock.yml`. Runtime output comes from your task brief and live repo state.
+
+</details>
+
+[Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) has annotated examples.
+
+</details>
 
 <!-- journey: all -->
 **Next:** [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md)
