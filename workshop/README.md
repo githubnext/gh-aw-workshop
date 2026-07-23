@@ -26,6 +26,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 8b | [Interpret Your First Run](08b-interpret-your-run.md) |
 | 9 | [Refine Your Workflow with Agentic Editing](09-agentic-editing.md) |
 | 12 | [Test and Improve Your Workflow](12-test-and-iterate.md) |
+| 13 | [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md) |
 | 14 | [What's Next? Keep Exploring](14-next-steps.md) |
 
 ## Curriculum — Part 2: Go Deeper
@@ -59,6 +60,9 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md) — explains how adversarial instructions embedded in repository content attempt to override the agent's task brief, and how the compiled brief, minimal `permissions:`, `safe-outputs`, and `network.allowed-domains` contain any partial success; branches from [Step 10](09-agentic-editing.md).
 - [Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) — walkthrough of the opening, trigger, and permissions sections of `gh-aw` frontmatter, with predict-and-try activities; branches from [Step 11a](07-your-first-workflow.md).
 - [Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) — walkthrough of the tools, safe-outputs, closing fence, and agent body sections, with predict-and-try activities; continues from Part A.
+- [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels automatically based on which files changed in a pull request; branches from [Step 13](13-pr-reviewer-workflow.md).
+- [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured, changelog-ready summary comment when a pull request opens; branches from [Step 13](13-pr-reviewer-workflow.md).
+- [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — evaluate pull requests against a quality checklist and post a pass/fail table; branches from [Step 13](13-pr-reviewer-workflow.md).
 - [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 13](12-test-and-iterate.md).
 - [Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md) — structured rubric for judging output quality, a five-row problem-to-fix reference table, and a one-change-at-a-time iteration loop; branches from [Step 12](12-test-and-iterate.md).
 - [GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md) — deep dive into `${{ }}` syntax, available context objects, output references, and `if:` conditions; branches from [Step 15](15-conditional-logic.md).
