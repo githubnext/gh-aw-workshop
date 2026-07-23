@@ -95,5 +95,5 @@ If you want a stricter review loop, score each run for accuracy, completeness, a
 - [ ] I compared the new run with the previous run and decided what to change next
 
 <!-- journey: all -->
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+**Next:** [Schedule It to Run Every Day](13-schedule-your-workflow.md)
 <!-- /journey -->

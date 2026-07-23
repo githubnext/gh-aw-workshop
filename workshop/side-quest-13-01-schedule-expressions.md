@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Fuzzy Schedule Expressions
 
-> _Optional: use this quick reference if you want help choosing a schedule expression for [Schedule It to Run Every Day](12-test-and-iterate.md), then return to the main adventure._
+> _Optional: use this quick reference if you want help choosing a schedule expression for [Schedule It to Run Every Day](13-schedule-your-workflow.md), then return to the main adventure._
 
 ## 📋 Before You Start
 
-- You have completed [Schedule It to Run Every Day](12-test-and-iterate.md) or are working through it now.
+- You have completed [Schedule It to Run Every Day](13-schedule-your-workflow.md) or are working through it now.
 - You understand that [GitHub Actions](https://github.github.com/gh-aw/reference/triggers/) schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
 - You know how to run `gh aw compile` to regenerate a workflow's lock file.
 
@@ -86,7 +86,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 
 ---
 
-Return to the main adventure: [Schedule It to Run Every Day](12-test-and-iterate.md).
+Return to the main adventure: [Schedule It to Run Every Day](13-schedule-your-workflow.md).
 
 <!-- /journey -->
 
