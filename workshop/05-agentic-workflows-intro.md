@@ -44,13 +44,11 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
-## Try it: match the lifecycle parts
+## Before you continue: match the lifecycle parts
 
-Match each term to what it describes in an agentic workflow. Make your decision before revealing the answers.
+**Required.** Match each term to what it describes. Write your answer — or say it aloud — before you open the reveal. You will need this understanding in every step that follows.
 
-**Term 1:** `.md` source file
-
-- [ ] I've made my decision for Term 1
+**Term 1:** `.md` source file — what is it?
 
 <details>
 <summary>Reveal Term 1 answer</summary>
@@ -59,9 +57,7 @@ The **Markdown source file** — it contains the YAML frontmatter (trigger, perm
 
 </details>
 
-**Term 2:** `.lock.yml` compiled file
-
-- [ ] I've made my decision for Term 2
+**Term 2:** `.lock.yml` compiled file — what is it?
 
 <details>
 <summary>Reveal Term 2 answer</summary>
@@ -70,9 +66,7 @@ The **compiled lock file** — `gh aw compile` generates it from the `.md` sourc
 
 </details>
 
-**Term 3:** `gh aw compile`
-
-- [ ] I've made my decision for Term 3
+**Term 3:** `gh aw compile` — what does it do?
 
 <details>
 <summary>Reveal Term 3 answer</summary>
@@ -88,6 +82,7 @@ The **compile command** — it reads the `.md` source and writes the `.lock.yml`
 
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
+- [ ] I matched all three lifecycle terms (`.md` source, `.lock.yml`, `gh aw compile`) to their roles
 - [ ] I can identify the three parts: trigger → agent → safe output
 - [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
 

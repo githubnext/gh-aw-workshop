@@ -18,6 +18,9 @@ In either path, you'll start with `daily-report-status.md` and end with `daily-r
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - You can use `gh aw` in a terminal or open GitHub Copilot for a browser-based session
 
+> [!IMPORTANT]
+> **Verify Copilot access before you create your workflow.** Open the **Agents** tab in your repository and send: `What is GitHub Actions? Reply in one sentence.` If you receive a reply, you are ready. If you see an error, go to [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled, then see [Confirm Model Access](07d-confirm-model-access.md) for detailed troubleshooting. A model-access problem will cause your first run in Step 8 to fail — fix it now.
+
 ## Choose Your Path
 
 | Path | What you'll do | Continue |

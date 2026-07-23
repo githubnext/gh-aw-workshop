@@ -65,7 +65,11 @@ A few things to notice in this frontmatter:
 - `safe-outputs: create-issue-comment: limit: 1` caps the workflow at one comment per run, preventing spam if the workflow is triggered repeatedly.
 - The agent brief uses only information available in the trigger context (changed file paths, PR title, PR description) — it does not need to read raw file contents to produce a useful first-pass review.
 
-## Compile and Push
+## Author and Compile
+
+Choose the path that matches how you are working.
+
+### Terminal path
 
 From your repository root, compile the workflow:
 
@@ -83,6 +87,63 @@ git push
 
 > [!TIP]
 > If you want to watch the compiler update the lock file every time you save, run `gh aw compile --watch` instead and keep it running in a background terminal while you edit.
+
+### Browser-only path (Agents tab or GitHub Copilot app)
+
+You do not need a local terminal. Open the **Copilot** or **Agents** tab in your repository and use the prompt below.
+
+> [!IMPORTANT]
+> **Agents tab:** Your message must start with `/agentic-workflows` so the agent has agentic workflow authoring context. Without this prefix the agent may not produce a valid workflow. The prompt below already includes it.
+
+**Agents tab — paste this prompt:**
+
+```text
+/agentic-workflows Create a PR auto-reviewer workflow in this repository.
+
+The workflow file must be `.github/workflows/pr-reviewer.md` with this exact content:
+
+---
+name: PR Auto-Reviewer
+on:
+  pull_request:
+    types: [opened, synchronize]
+permissions:
+  pull-requests: write
+  contents: read
+safe-outputs:
+  create-issue-comment:
+    limit: 1
+---
+
+You are a helpful PR reviewer. When a pull request is opened or updated:
+
+1. Read the list of changed files and the PR title and description.
+2. Write a short summary (3–5 sentences) of what the PR does.
+3. List up to three things a reviewer should pay close attention to, based on the file names and PR description alone.
+4. Post the summary and checklist as a single comment on the pull request.
+
+Keep the tone constructive and specific. Do not speculate about code you have not seen.
+
+After creating the file, run `gh aw compile` in the session workspace, commit both `.github/workflows/pr-reviewer.md` and `.github/workflows/pr-reviewer.lock.yml` to the repository, and confirm the files are committed.
+```
+
+**GitHub Copilot app — paste this prompt instead:**
+
+```text
+Using the agentic-workflows skill, create a PR auto-reviewer workflow in this repository following https://raw.githubusercontent.com/github/gh-aw/main/create.md
+
+The workflow must:
+- Be named "PR Auto-Reviewer"
+- Be saved as `.github/workflows/pr-reviewer.md`
+- Trigger on `pull_request` events (`opened` and `synchronize`)
+- Use `permissions: pull-requests: write` and `contents: read`
+- Allow at most one `create-issue-comment` through safe outputs
+- Read changed files, PR title, and PR description, then post a 3–5 sentence summary and up to three review focus areas as a single PR comment
+
+Run `gh aw compile` in the session workspace, commit both the source and generated lock file, and confirm they are committed.
+```
+
+The agent runs `gh aw compile` in its isolated session workspace and commits both files for you. You do not need a terminal for this path.
 
 ## Test It by Opening a PR
 
@@ -116,7 +177,8 @@ Then recompile, push, and update the PR branch to trigger another run.
 ## ✅ Checkpoint
 
 - [ ] I created `.github/workflows/pr-reviewer.md` with a `pull_request` trigger
-- [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
+- [ ] `gh aw compile` completed without errors (terminal path) **or** the agent compiled and committed the workflow for me (browser-only path)
+- [ ] Both `.github/workflows/pr-reviewer.md` and `.github/workflows/pr-reviewer.lock.yml` are committed
 - [ ] I opened a test pull request and the workflow triggered automatically
 - [ ] The workflow posted exactly one comment on my pull request
 - [ ] I can explain why `safe-outputs: create-issue-comment: limit: 1` matters for an event-driven workflow
