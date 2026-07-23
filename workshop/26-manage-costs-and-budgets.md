@@ -41,7 +41,7 @@ Every agentic workflow run uses an AI model to process your task brief and produ
 Use the per-run cost from `gh aw logs` to project monthly spend.
 
 ```bash
-gh aw logs --workflow daily-status --count 5
+gh aw logs daily-status --count 5
 ```
 
 Look at the **AIC** column. Average the last five runs, then multiply:
@@ -109,4 +109,3 @@ gh aw compile
 <!-- journey: all -->
 **Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->
-
