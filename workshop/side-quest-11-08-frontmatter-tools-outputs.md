@@ -67,7 +67,7 @@ safe-outputs:
 ---
 ```
 
-**What this section does:** Closes the YAML frontmatter block. Everything below this line is the Markdown body — the agent's plain-English task brief.
+**What this section does:** Closes the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) block. Everything below this line is the Markdown body — the agent's plain-English task brief.
 
 **✏️ Try it:** Add the closing `---` to your draft. Confirm the file now has exactly two `---` fences.
 

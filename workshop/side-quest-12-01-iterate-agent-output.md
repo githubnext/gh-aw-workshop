@@ -101,7 +101,7 @@ Quick problem-to-fix guide:
 Quick run-log check:
 
 - **Compile error** — run `gh aw compile` locally, or ask your Copilot agent to run it and fix the reported line.
-- **Missing permissions** — re-check the workflow frontmatter and confirm the safe output surface is declared correctly.
+- **Missing permissions** — re-check the [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and confirm the safe output surface is declared correctly.
 - **Rate limits or transient failures** — wait a few minutes and re-run.
 
 </details>
