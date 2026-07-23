@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img" aria-label="Diagram showing how deterministic shell steps fetch live data, pass outputs to the AI prompt via $GITHUB_OUTPUT, and the agent produces a summary report">
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Main card -->
+  <rect x="30" y="30" width="1140" height="500" rx="12" ry="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="600" y="68" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#f0f6fc">Data-Flow Handoff Pattern</text>
+  <text x="600" y="90" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" fill="#8b949e">Deterministic steps gather facts → step outputs feed the AI prompt → agent writes the report</text>
+
+  <!-- Phase labels row -->
+  <!-- Phase 1: Deterministic Steps -->
+  <rect x="60" y="108" width="320" height="28" rx="6" ry="6" fill="#1c2a3e" stroke="#2f81f7" stroke-width="1"/>
+  <text x="220" y="127" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#2f81f7">① Deterministic Steps  (shell)</text>
+
+  <!-- Phase 2: $GITHUB_OUTPUT -->
+  <rect x="446" y="108" width="308" height="28" rx="6" ry="6" fill="#2d2208" stroke="#d29922" stroke-width="1"/>
+  <text x="600" y="127" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e3b341">② Step Outputs  ($GITHUB_OUTPUT)</text>
+
+  <!-- Phase 3: Agentic Step -->
+  <rect x="820" y="108" width="320" height="28" rx="6" ry="6" fill="#0f2a18" stroke="#3fb950" stroke-width="1"/>
+  <text x="980" y="127" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#3fb950">③ Agentic Step  (AI model)</text>
+
+  <!-- Step box: Fetch recent commits -->
+  <rect x="60" y="160" width="320" height="90" rx="8" ry="8" fill="#161b22" stroke="#2f81f7" stroke-width="1.5"/>
+  <rect x="60" y="160" width="320" height="28" rx="8" ry="8" fill="#1158c7"/>
+  <rect x="60" y="178" width="320" height="10" fill="#1158c7"/>
+  <text x="220" y="180" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc">Fetch recent commits</text>
+  <text x="80" y="205" font-family="ui-monospace,monospace" font-size="11" fill="#8b949e">git log --oneline --since="24h"</text>
+  <text x="80" y="222" font-family="ui-monospace,monospace" font-size="11" fill="#8b949e">id: recent</text>
+  <text x="80" y="239" font-family="ui-monospace,monospace" font-size="11" fill="#8b949e">echo "commit_log&lt;&lt;EOF" &gt;&gt; $GITHUB_OUTPUT</text>
+
+  <!-- Step box: Fetch open issues -->
+  <rect x="60" y="275" width="320" height="90" rx="8" ry="8" fill="#161b22" stroke="#2f81f7" stroke-width="1.5"/>
+  <rect x="60" y="275" width="320" height="28" rx="8" ry="8" fill="#1158c7"/>
+  <rect x="60" y="293" width="320" height="10" fill="#1158c7"/>
+  <text x="220" y="293" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc">Fetch open issues</text>
+  <text x="80" y="320" font-family="ui-monospace,monospace" font-size="11" fill="#8b949e">gh issue list --state open</text>
+  <text x="80" y="337" font-family="ui-monospace,monospace" font-size="11" fill="#8b949e">id: issues</text>
+  <text x="80" y="354" font-family="ui-monospace,monospace" font-size="11" fill="#8b949e">echo "open_issues&lt;&lt;EOF" &gt;&gt; $GITHUB_OUTPUT</text>
+
+  <!-- $GITHUB_OUTPUT center box -->
+  <rect x="446" y="190" width="308" height="176" rx="8" ry="8" fill="#1e1a0d" stroke="#d29922" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="600" y="215" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="700" fill="#e3b341">$GITHUB_OUTPUT</text>
+  <text x="600" y="234" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#8b949e">key=value store</text>
+
+  <rect x="460" y="248" width="280" height="28" rx="5" ry="5" fill="#161b22" stroke="#d29922" stroke-width="1"/>
+  <text x="600" y="266" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#f0f6fc">steps.recent.outputs.commit_log</text>
+
+  <rect x="460" y="285" width="280" height="28" rx="5" ry="5" fill="#161b22" stroke="#d29922" stroke-width="1"/>
+  <text x="600" y="303" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#f0f6fc">steps.issues.outputs.open_issues</text>
+
+  <rect x="460" y="322" width="280" height="28" rx="5" ry="5" fill="#161b22" stroke="#d29922" stroke-width="1"/>
+  <text x="600" y="340" text-anchor="middle" font-family="ui-monospace,monospace" font-size="11" fill="#f0f6fc">steps.issues.outputs.open_issues_count</text>
+
+  <!-- Agentic step box -->
+  <rect x="820" y="160" width="320" height="206" rx="8" ry="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <rect x="820" y="160" width="320" height="28" rx="8" ry="8" fill="#196c2e"/>
+  <rect x="820" y="178" width="320" height="10" fill="#196c2e"/>
+  <text x="980" y="180" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc">AI Prompt (Markdown body)</text>
+  <text x="840" y="207" font-family="ui-monospace,monospace" font-size="10" fill="#8b949e">Summarise recent activity.</text>
+  <text x="840" y="223" font-family="ui-monospace,monospace" font-size="10" fill="#8b949e">Recent commits:</text>
+  <text x="840" y="239" font-family="ui-monospace,monospace" font-size="10" fill="#2f81f7">$&#123;&#123; steps.recent.outputs.commit_log &#125;&#125;</text>
+  <text x="840" y="255" font-family="ui-monospace,monospace" font-size="10" fill="#8b949e">Open issues ($&#123;&#123; …count &#125;&#125; total):</text>
+  <text x="840" y="271" font-family="ui-monospace,monospace" font-size="10" fill="#2f81f7">$&#123;&#123; steps.issues.outputs.open_issues &#125;&#125;</text>
+  <text x="840" y="287" font-family="ui-monospace,monospace" font-size="10" fill="#8b949e">Write a concise, friendly update.</text>
+
+  <!-- Model badge -->
+  <rect x="840" y="303" width="280" height="46" rx="6" ry="6" fill="#0f2a18" stroke="#3fb950" stroke-width="1"/>
+  <text x="980" y="321" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="600" fill="#3fb950">AI Model receives plain text</text>
+  <text x="980" y="340" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8b949e">(expressions resolved before prompt is sent)</text>
+
+  <!-- Output: Report -->
+  <rect x="860" y="395" width="240" height="60" rx="8" ry="8" fill="#161b22" stroke="#a371f7" stroke-width="1.5"/>
+  <text x="980" y="418" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="600" fill="#a371f7">📝 Summary Report</text>
+  <text x="980" y="437" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#8b949e">Written by the model</text>
+  <text x="980" y="453" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" fill="#8b949e">posted as issue comment / artifact</text>
+
+  <!-- Arrows: step → $GITHUB_OUTPUT -->
+  <!-- from commit step -->
+  <line x1="380" y1="205" x2="446" y2="270" stroke="#2f81f7" stroke-width="1.5" marker-end="url(#arrow-blue-dark)"/>
+  <!-- from issues step -->
+  <line x1="380" y1="320" x2="446" y2="320" stroke="#2f81f7" stroke-width="1.5" marker-end="url(#arrow-blue-dark)"/>
+
+  <!-- Arrows: $GITHUB_OUTPUT → AI prompt -->
+  <line x1="754" y1="270" x2="820" y2="245" stroke="#d29922" stroke-width="1.5" marker-end="url(#arrow-gold-dark)"/>
+  <line x1="754" y1="320" x2="820" y2="265" stroke="#d29922" stroke-width="1.5" marker-end="url(#arrow-gold-dark)"/>
+
+  <!-- Arrow: AI prompt → report -->
+  <line x1="980" y1="366" x2="980" y2="395" stroke="#3fb950" stroke-width="1.5" marker-end="url(#arrow-green-dark)"/>
+
+  <!-- Numbered badges for phase order -->
+  <circle cx="220" cy="480" r="14" fill="#1158c7"/>
+  <text x="220" y="485" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">1</text>
+  <text x="220" y="504" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#8b949e">Fetch data (deterministic)</text>
+
+  <circle cx="600" cy="480" r="14" fill="#9e6a03"/>
+  <text x="600" y="485" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">2</text>
+  <text x="600" y="504" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#8b949e">Pass via $GITHUB_OUTPUT</text>
+
+  <circle cx="980" cy="480" r="14" fill="#196c2e"/>
+  <text x="980" y="485" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">3</text>
+  <text x="980" y="504" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#8b949e">AI writes the summary</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow-blue-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2f81f7"/>
+    </marker>
+    <marker id="arrow-gold-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#d29922"/>
+    </marker>
+    <marker id="arrow-green-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3fb950"/>
+    </marker>
+  </defs>
+</svg>
