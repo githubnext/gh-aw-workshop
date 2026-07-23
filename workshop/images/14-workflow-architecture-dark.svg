@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Agentic workflow architecture: schedule trigger flows through GitHub Actions and gh-aw to an AI model, which produces a safe output">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="600" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f0f6fc">Agentic Workflow Architecture</text>
+  <text x="600" y="64" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#8b949e">What you built: how a gh-aw workflow runs end to end</text>
+
+  <!-- ──────────────── Node 1: Trigger ──────────────── -->
+  <rect x="60" y="190" width="170" height="180" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="60" y="190" width="170" height="38" rx="10" fill="#121d2f" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="60" y="210" width="170" height="18" fill="#121d2f"/>
+  <text x="145" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#79c0ff">Trigger</text>
+  <text x="145" y="249" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">on: schedule</text>
+  <text x="145" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">workflow_dispatch</text>
+  <rect x="89" y="284" width="112" height="26" rx="13" fill="#121d2f" stroke="#2f81f7" stroke-width="1"/>
+  <text x="145" y="301" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#79c0ff">⏰ Daily schedule</text>
+  <rect x="89" y="318" width="112" height="26" rx="13" fill="#121d2f" stroke="#2f81f7" stroke-width="1"/>
+  <text x="145" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#79c0ff">▶ Manual run</text>
+
+  <!-- Arrow 1 -->
+  <line x1="230" y1="280" x2="295" y2="280" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ──────────────── Node 2: GitHub Actions ──────────────── -->
+  <rect x="295" y="190" width="190" height="180" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="295" y="190" width="190" height="38" rx="10" fill="#272115" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="295" y="210" width="190" height="18" fill="#272115"/>
+  <text x="390" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#e3b341">GitHub Actions</text>
+  <text x="390" y="249" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">Runs the job</text>
+  <text x="390" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">on a hosted runner</text>
+  <rect x="319" y="284" width="142" height="26" rx="13" fill="#272115" stroke="#e3b341" stroke-width="1"/>
+  <text x="390" y="301" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e3b341">checkout &amp; setup</text>
+  <rect x="319" y="318" width="142" height="26" rx="13" fill="#272115" stroke="#e3b341" stroke-width="1"/>
+  <text x="390" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e3b341">gh aw run …</text>
+
+  <!-- Arrow 2 -->
+  <line x1="485" y1="280" x2="550" y2="280" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ──────────────── Node 3: gh-aw ──────────────── -->
+  <rect x="550" y="160" width="200" height="240" rx="10" fill="#161b22" stroke="#2f81f7" stroke-width="2.5"/>
+  <rect x="550" y="160" width="200" height="38" rx="10" fill="#1c2d4a"/>
+  <rect x="550" y="180" width="200" height="18" fill="#1c2d4a"/>
+  <text x="650" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#79c0ff">gh-aw</text>
+  <text x="650" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">Reads your .md workflow</text>
+  <text x="650" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">Calls the AI model</text>
+  <text x="650" y="256" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">Handles safe outputs</text>
+  <circle cx="650" cy="284" r="18" fill="#2f81f7"/>
+  <text x="650" y="289" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">core</text>
+  <text x="650" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">YAML frontmatter</text>
+  <text x="650" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">+ Markdown brief</text>
+  <rect x="572" y="354" width="156" height="26" rx="13" fill="#1a2e22" stroke="#3fb950" stroke-width="1"/>
+  <text x="650" y="371" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#3fb950">compiled .lock.yml</text>
+
+  <!-- Arrow 3 -->
+  <line x1="750" y1="280" x2="820" y2="280" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ──────────────── Node 4: AI Model ──────────────── -->
+  <rect x="820" y="190" width="180" height="180" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="820" y="190" width="180" height="38" rx="10" fill="#201833" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="820" y="210" width="180" height="18" fill="#201833"/>
+  <text x="910" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#d2a8ff">AI Model</text>
+  <text x="910" y="249" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">Reads context</text>
+  <text x="910" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">Follows the brief</text>
+  <rect x="844" y="284" width="132" height="26" rx="13" fill="#201833" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="910" y="301" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#d2a8ff">natural language</text>
+  <rect x="844" y="318" width="132" height="26" rx="13" fill="#201833" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="910" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#d2a8ff">generates output</text>
+
+  <!-- Arrow 4 -->
+  <line x1="1000" y1="280" x2="1060" y2="280" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ──────────────── Node 5: Output ──────────────── -->
+  <rect x="1060" y="190" width="110" height="180" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="1060" y="190" width="110" height="38" rx="10" fill="#1a2e22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="1060" y="210" width="110" height="18" fill="#1a2e22"/>
+  <text x="1115" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#3fb950">Output</text>
+  <text x="1115" y="249" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Issue / PR</text>
+  <text x="1115" y="268" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">comment</text>
+  <text x="1115" y="287" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Artifact</text>
+  <text x="1115" y="306" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Commit</text>
+  <rect x="1073" y="320" width="84" height="26" rx="13" fill="#1a2e22" stroke="#3fb950" stroke-width="1"/>
+  <text x="1115" y="337" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#3fb950">✓ safe</text>
+
+  <!-- Step numbers -->
+  <circle cx="262" cy="268" r="11" fill="#2f81f7"/>
+  <text x="262" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">1</text>
+  <circle cx="517" cy="268" r="11" fill="#2f81f7"/>
+  <text x="517" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">2</text>
+  <circle cx="786" cy="268" r="11" fill="#2f81f7"/>
+  <text x="786" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">3</text>
+  <circle cx="1036" cy="268" r="11" fill="#2f81f7"/>
+  <text x="1036" y="272" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">4</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="468" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#8b949e">gh-aw is the bridge: it compiles your Markdown workflow and orchestrates AI model calls within standard GitHub Actions.</text>
+
+  <!-- Dashed bracket around label -->
+  <rect x="43" y="174" width="1114" height="30" rx="6" fill="none" stroke="#30363d" stroke-width="1" stroke-dasharray="6 3"/>
+  <text x="600" y="165" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">your practice repository workflow run</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+</svg>
