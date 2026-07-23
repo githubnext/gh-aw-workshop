@@ -45,6 +45,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 24 | [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) |
 | 25 | [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) |
 | 26 | [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) |
+| 27 | [Enforce Workflow Governance with Reusable Policies](27-workflow-governance.md) |
 
 ## Optional Side Quests
 
