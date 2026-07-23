@@ -54,7 +54,7 @@
 name: "Workshop Link Checker"
 on:
   schedule:
-    - cron: "37 5 * * *"  # Friendly format: daily (scattered)
+    - cron: "5 21 * * *"  # Friendly format: daily (scattered)
   workflow_dispatch:
     inputs:
       aw_context:
