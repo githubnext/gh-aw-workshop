@@ -34,7 +34,13 @@ Answer each question (in your notes or a new GitHub issue in your practice repos
 
 ### Review what you've learned
 
-Here's a quick recap of the concepts you've touched:
+Here's a quick recap of the concepts you've touched. The diagram below shows how all the pieces connect in the workflow you just built.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/14-workflow-architecture-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/14-workflow-architecture-light.svg">
+   <img alt="Agentic workflow architecture: schedule trigger flows through GitHub Actions and gh-aw to an AI model, which produces a safe output" src="images/14-workflow-architecture-light.svg">
+</picture>
 
 | Concept | Where you used it |
 |---|---|
