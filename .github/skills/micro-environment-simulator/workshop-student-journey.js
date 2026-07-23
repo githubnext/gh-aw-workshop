@@ -33,6 +33,7 @@ const STEP_FILE_ALIASES = {
   "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md", "02c-setup-browser.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
+  "05c-agentic-practice": ["05c-agentic-workflows-practice.md"],
   "05b-agentic-security": ["05b-agentic-workflows-security.md"],
   "06-install-gh-aw": [
     "06-install-gh-aw.md",
@@ -72,6 +73,7 @@ const STEP_IDS = [
   "02-setup",
   "04-actions-intro",
   "05-agentic-intro",
+  "05c-agentic-practice",
   "05b-agentic-security",
   "06-install-gh-aw",
   "07-first-workflow",
@@ -656,6 +658,18 @@ function buildTransitions() {
       const next = cloneState(state);
       next.flags.sawAgenticIntro = true;
       return { ok: true, state: applyLearning(next, context, { agentic: 0.1, actions: 0.03 }) };
+    },
+    "05c-agentic-practice": (state, context) => {
+      const readiness = contentReadinessCheck(state, context, {
+        salt: 74,
+        category: "agentic-classification-gap",
+        failedAssumption: "The learner cannot reliably distinguish tasks that need agentic judgment from those suited to deterministic CI/CD steps.",
+        remediation: "Add more contrasting examples with explicit before/after explanations to make the classification pattern more memorable.",
+        emphasis: { conceptWeight: 0.14, bias: 0.06 }
+      });
+      if (!readiness.ok) return readiness;
+      const next = cloneState(state);
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.06, concepts: 0.04 }) };
     },
     "05b-agentic-security": (state, context) => {
       const readiness = contentReadinessCheck(state, context, {
