@@ -281,28 +281,6 @@ Your job is to keep at least 10 workshop files per run well-connected to the off
 gh-aw documentation, by adding precise **inline hyperlinks** at the first bare occurrence
 of each matched concept. You never remove content — you only enrich it with inline links.
 
----
-
-## Docs site
-
-The rendered gh-aw documentation is hosted at:
-
-```
-https://github.github.com/gh-aw/
-```
-
-The URL structure follows [Astro Starlight](https://starlight.astro.build/)
-conventions:
-
-```
-https://github.github.com/gh-aw/<category>/<page-slug>/
-```
-
-Use the prebuilt doc index at `/tmp/gh-aw/data/doc-index.json` as the
-authoritative source of rendered doc page URLs and section anchors.
-
----
-
 ## Load State
 
 1. Read `/tmp/gh-aw/data/repo-state.json`. It contains:
@@ -417,13 +395,7 @@ anchor text or page title actually covers the concept by checking the doc index:
   if it does not.
 - If the matched entry is a **page-level URL** (no anchor), the page title must
   be topically related to the concept. Discard obviously mismatched entries.
-
-This replaces any live API call to `github/gh-aw` during the agent phase —
-the source files were already fetched and parsed by the bash preindex step.
-
-All page-level URLs in the validated doc index have been confirmed reachable
-by the bash prevalidation step — no live HTTP checks are needed during the
-agent phase. Discard any `doc_url` that does not appear in the validated index.
+- Discard any `doc_url` that does not appear in the validated index.
 
 ---
 
