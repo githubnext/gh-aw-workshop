@@ -8,7 +8,7 @@ Build a PR summary workflow that posts a structured, human-readable summary comm
 
 ## Before You Start
 
-- Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
+- Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 
 ## Why a Structured Summary?
 

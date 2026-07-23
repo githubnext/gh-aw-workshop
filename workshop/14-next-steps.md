@@ -75,7 +75,11 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 - [ ] You drafted a two-sentence brief for your next agentic workflow
 - [ ] You know where to find the gh-aw docs when you need them
 
-You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
+You've reached the end of the scheduled-workflow path — but there is one more step on the main track before you head into advanced territory. Come back to explore any of the deeper topics when you're ready.
 
+<!-- /journey -->
+
+<!-- journey: all -->
+**Next:** [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md)
 <!-- /journey -->
 

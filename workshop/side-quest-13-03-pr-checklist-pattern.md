@@ -8,7 +8,7 @@ Build a workflow that evaluates every new pull request against a short review ch
 
 ## Before You Start
 
-- Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
+- Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 
 ## Why a Checklist Workflow?
 

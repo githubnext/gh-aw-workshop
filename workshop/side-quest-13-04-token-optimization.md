@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You completed [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
+- You completed [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 - You have a working PR reviewer workflow or another workflow with at least 5 completed runs so you can compare before-and-after usage.
 - If you want extra background on AIC, audit artifacts, or budget guardrails, continue later to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 
@@ -157,5 +157,5 @@ Paste the relevant excerpt from your `gh aw audit --parse` output below the prom
 - [ ] You can name the next optimization you would test if cost is still too high
 
 <!-- journey: all -->
-Return to [Build Your First Event-Driven Workflow: PR Auto-Reviewer](13-pr-reviewer-workflow.md).
+Return to [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 <!-- /journey -->
