@@ -33,6 +33,7 @@ const STEP_FILE_ALIASES = {
   "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md", "02c-setup-browser.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
+  "05b-agentic-security": ["05b-agentic-workflows-security.md"],
   "06-install-gh-aw": [
     "06-install-gh-aw.md",
     "06a-install-terminal.md",
@@ -71,6 +72,7 @@ const STEP_IDS = [
   "02-setup",
   "04-actions-intro",
   "05-agentic-intro",
+  "05b-agentic-security",
   "06-install-gh-aw",
   "07-first-workflow",
   "08-run-your-workflow",
@@ -654,6 +656,19 @@ function buildTransitions() {
       const next = cloneState(state);
       next.flags.sawAgenticIntro = true;
       return { ok: true, state: applyLearning(next, context, { agentic: 0.1, actions: 0.03 }) };
+    },
+    "05b-agentic-security": (state, context) => {
+      const readiness = contentReadinessCheck(state, context, {
+        salt: 79,
+        category: "agentic-security-gap",
+        failedAssumption: "The learner does not grasp how the sandbox and safe-output system together prevent agents from causing damage when run unattended.",
+        remediation: "Reinforce the two-layer security model with a concrete scenario that distinguishes the sandbox from the safe-output guardrails.",
+        emphasis: { conceptWeight: 0.14, bias: 0.06 }
+      });
+      if (!readiness.ok) return readiness;
+      const next = cloneState(state);
+      next.flags.sawAgenticSecurity = true;
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.06, concepts: 0.04 }) };
     },
     "06-install-gh-aw": (state, context) => {
       const envCheck = ensure(
