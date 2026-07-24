@@ -8,7 +8,7 @@
 
 - You completed [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 - You have a working PR reviewer workflow or another workflow with at least 5 completed runs so you can compare before-and-after usage.
-- If you want extra background on AIC, audit artifacts, or budget guardrails, continue later to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
+- If you want extra background on [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic), audit artifacts, or budget guardrails, continue later to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 
 ## Build a cost baseline
 
@@ -31,6 +31,8 @@ If one run is much higher than the others, audit it:
 ```bash
 gh aw audit <run-id> --parse
 ```
+
+> See the [gh aw audit reference](https://github.github.com/gh-aw/reference/audit/#gh-aw-audit) for full options.
 
 Then inspect:
 
@@ -110,6 +112,8 @@ After you reduce cost, keep it reduced:
 - Use `max-daily-ai-credits` to cap 24-hour usage.
 - Use `timeout-minutes` to stop unusually long runs.
 - Use [gh aw forecast](side-quest-26-01-forecast-costs.md) to size the guardrails from real history instead of guessing.
+
+> See [Cost Management](https://github.github.com/gh-aw/reference/cost-management/) for the full list of monitoring commands and guardrail options.
 
 ## Try it yourself
 
