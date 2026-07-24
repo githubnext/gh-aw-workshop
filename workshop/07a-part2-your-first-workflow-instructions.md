@@ -21,31 +21,20 @@ You'll finish `.github/workflows/daily-report-status.md` by adding:
 
 Each section of your workflow file serves a distinct purpose at runtime — the diagram below shows what each part controls.
 
-### Add `permissions` and `safe-outputs`
+### Update workflow content with Copilot
 
-In `.github/workflows/daily-report-status.md`, update frontmatter so it looks like this:
+In Copilot Chat (Agent mode), run this prompt:
 
-```yaml
----
-name: Daily Report Status
-on:
-  workflow_dispatch:
-permissions:
-  contents: read
-  issues: read
-  copilot-requests: write
-safe-outputs:
-  create-issue:
----
+```text
+/agentic-workflows update `.github/workflows/daily-report-status.md` so it includes:
+- frontmatter name: Daily Report Status
+- on.workflow_dispatch
+- permissions: contents read, issues read, copilot-requests write
+- safe-outputs with key `create-issue`
+- markdown body text: "Generate an activity report in a new issue."
 ```
 
-### Add your task instructions
-
-Below the closing `---`, add:
-
-```markdown
-Generate an activity report in a new issue.
-```
+Review the agent's edit, then continue. Prefer this path over hand-editing each line.
 
 ### Validate, then commit and push
 
@@ -65,7 +54,7 @@ git commit -m "Add daily-report-status agentic workflow"
 git push
 ```
 
-For follow-up edits, prefer asking an agent to update workflows with the `agentic-workflows` skill instead of hand-editing every line.
+For follow-up edits, keep using an agent with the `agentic-workflows` skill and avoid manual workflow editing unless you are debugging a specific line-level issue.
 
 ## ✅ Checkpoint
 
