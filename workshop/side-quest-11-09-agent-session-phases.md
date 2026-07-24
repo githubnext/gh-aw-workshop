@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-- You've started [Adventure D: Build Any Workflow with GitHub Copilot](07c-your-first-workflow-copilot.md) (or another Step 11 path) and have an active or recently completed agent session.
+- You have an active or recently completed GitHub Copilot agent session.
 - You have [`gh aw` installed and authenticated](06-install-gh-aw.md) — completed in Step 6.
 - You understand the purpose of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
@@ -70,5 +70,4 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 <!-- journey: all -->
 Return to [Adventure D (Part 2): Monitor, Review, and Merge](12-test-and-iterate.md).
 <!-- /journey -->
-
 

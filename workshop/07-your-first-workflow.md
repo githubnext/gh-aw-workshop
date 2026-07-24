@@ -23,5 +23,5 @@ You'll start with `daily-report-status.md` and end with `daily-report-status.loc
 Build the workflow incrementally in two short parts. You compile after each meaningful change, then commit and push from your Codespace.
 
 <!-- journey: codespace,local,terminal -->
-**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow in Your Codespace](07a-your-first-workflow-terminal.md)
 <!-- /journey -->

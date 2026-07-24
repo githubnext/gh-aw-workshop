@@ -30,22 +30,16 @@ const BACKGROUND_FACTORS = {
 const STEP_FILE_ALIASES = {
   "00-welcome": ["00-welcome.md"],
   "01-prerequisites": ["01-prerequisites.md"],
-  "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md", "02c-setup-browser.md"],
+  "02-setup": ["02a-setup-codespace.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "05c-agentic-practice": ["05c-agentic-workflows-practice.md"],
   "05b-agentic-security": ["05b-agentic-workflows-security.md"],
-  "06-install-gh-aw": [
-    "06-install-gh-aw.md",
-    "06a-install-terminal.md",
-    "06b-install-local.md",
-    "06c-install-ui.md"
-  ],
+  "06-install-gh-aw": ["06-install-gh-aw.md", "06a-install-terminal.md"],
   "07-first-workflow": [
     "07-your-first-workflow.md",
     "07a-your-first-workflow-terminal.md",
     "07a-part2-your-first-workflow-instructions.md",
-    "07c-your-first-workflow-copilot.md",
     "07d-confirm-model-access.md"
   ],
   "08-run-your-workflow": ["08-run-your-workflow.md"],
@@ -107,6 +101,11 @@ const STEP_SIGNAL_KEYS = [
   "conceptDemand",
   "enterpriseDemand"
 ];
+
+const CODESPACE_ONLY_CORE_STEPS = new Set([
+  "06-install-gh-aw",
+  "07-first-workflow"
+]);
 
 function cloneState(state) {
   return JSON.parse(JSON.stringify(state));
@@ -170,6 +169,7 @@ function ensurePlainObject(value) {
 }
 
 function prefersBrowserPath(state, context) {
+  if (CODESPACE_ONLY_CORE_STEPS.has(context.stepId)) return false;
   const learner = learnerProfile(state);
   return (
     learner.uiPreferred === true ||
@@ -206,16 +206,11 @@ function hasCcaPromptGuidance(state, context) {
 function stepMetric(state, context, metric) {
   const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
-    const relevantFiles = prefersBrowserPath(state, context)
-      ? new Set([
-          "07c-your-first-workflow-copilot.md",
-          "07d-confirm-model-access.md"
-        ])
-      : new Set([
-          "07a-your-first-workflow-terminal.md",
-          "07a-part2-your-first-workflow-instructions.md",
-          "07d-confirm-model-access.md"
-        ]);
+    const relevantFiles = new Set([
+      "07a-your-first-workflow-terminal.md",
+      "07a-part2-your-first-workflow-instructions.md",
+      "07d-confirm-model-access.md"
+    ]);
     return fileSignals
       .filter(({ file }) => relevantFiles.has(file))
       .reduce((sum, fileSignal) => sum + Number(fileSignal?.[metric] || 0), 0);

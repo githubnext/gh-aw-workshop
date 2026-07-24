@@ -167,7 +167,7 @@ Multi-line callout (summary + body):
 
 ## Step ordering: environment before tools, credentials before running
 
-- Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
+- Do not instruct learners to install `gh` or `gh-aw` before the recommended Codespace is open. Local installation belongs in a side quest and must still come after local environment setup.
 - Always guide learners to trigger manual workflow runs from the GitHub Actions web UI.
 - If a step includes `gh aw run`, present it as an optional advanced path only and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
@@ -355,7 +355,7 @@ Example patterns:
 <!-- /journey -->
 
 <!-- journey: local -->
-**Next:** [Set Up Your Local Terminal](02b-setup-local.md)
+**Next:** [Set Up Your Local Terminal](side-quest-02-01-local-terminal.md)
 <!-- /journey -->
 ```
 
@@ -403,13 +403,12 @@ Describes the role the page plays in the overall workshop structure.
 | `10c-*`, `11c-*` | `all` or split by sub-path | `scenario-c` |
 | `11d-*` | `copilot` | `scenario-d` |
 | `02a-*`, `06a-*` | `codespace` | `setup` |
-| `02b-*`, `06b-*` | `local` | `setup` |
-| `06c-*` | `ui` | `setup` |
 | `side-quest-NN-MM-<slug>.md` | varies (see below) | `side-quest` |
 
 Side quest `journey` assignment:
 
 - `terminal` — content is exclusively about terminal commands or `gh aw compile` (e.g., `side-quest-07-01-compile-workflow.md`).
+- `local` — content is specific to the optional local terminal route (e.g., `side-quest-02-01-local-terminal.md`).
 - `codespace` — content addresses a Codespaces-specific error or configuration (e.g., `side-quest-08-01-codespaces-actions-write.md`).
 - `ui` — content is only applicable to GitHub UI path learners (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
 - `copilot` — content is specific to the Copilot CCA or Agents tab environment (e.g., `side-quest-06-02-cca-codespace.md`).

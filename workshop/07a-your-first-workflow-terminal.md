@@ -1,6 +1,6 @@
 <!-- page-journey: terminal -->
 <!-- page-adventure: core -->
-# Write Your First Agentic Workflow — Terminal Path
+# Write Your First Agentic Workflow in Your Codespace
 
 _Writing your first workflow is the moment theory becomes practice — let's make something real._
 

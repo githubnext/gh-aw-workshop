@@ -1,7 +1,7 @@
 <!-- page-journey: codespace -->
 <!-- page-adventure: setup -->
 <!-- learning:false -->
-# Install gh-aw — Codespace Terminal
+# Install `gh-aw` in Your Codespace
 
 > [!NOTE]
 > Using your own machine instead? Take the optional [Install `gh-aw` in a Local Terminal side quest](side-quest-06-04-install-local.md).
