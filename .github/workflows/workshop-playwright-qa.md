@@ -5,7 +5,7 @@ description: >
   Daily visual and accessibility QA of the rendered workshop pages. Builds the
   static site locally, launches a dev server, and uses Playwright to test page
   navigation, readability, and accessibility across three viewport sizes
-  (mobile 375 × 667, tablet 768 × 1024, desktop 1280 × 800). Creates a GitHub
+  (small 375 × 667, medium 768 × 1024, desktop 1280 × 800). Creates a GitHub
   issue with embedded screenshots when problems are detected.
 on:
   schedule: daily
@@ -82,8 +82,8 @@ steps:
           "base_url": base,
           "pages": pages,
           "viewports": [
-              {"name": "mobile",  "width": 375,  "height": 667},
-              {"name": "tablet",  "width": 768,  "height": 1024},
+              {"name": "small",   "width": 375,  "height": 667},
+              {"name": "medium",  "width": 768,  "height": 1024},
               {"name": "desktop", "width": 1280, "height": 800},
           ],
       }
@@ -100,7 +100,7 @@ steps:
 
 You are a visual and accessibility QA agent for the **"Learning GitHub Agentic
 Workflows"** workshop. Your job is to test the rendered workshop pages across
-mobile, tablet, and desktop viewports, check navigation, readability, and
+small, medium, and desktop viewports, check navigation, readability, and
 accessibility, and report any problems as focused GitHub issues with
 screenshots.
 
@@ -149,7 +149,7 @@ For each page at each viewport:
    container horizontally (no horizontal scroll bar appears on the page).
 3. Verify the page title (`<title>`) is non-empty.
 4. Verify code blocks (`<pre>` or `<code>`) do not overflow their
-   containing column at the mobile viewport.
+   containing column at the small viewport.
 
 ### Accessibility checks
 
@@ -174,7 +174,7 @@ For each page at each viewport:
 For every failed check, record a finding with:
 
 - `page_id` — the page identifier from `config.json` (or `__root__`)
-- `viewport` — the viewport name (`mobile`, `tablet`, or `desktop`)
+- `viewport` — the viewport name (`small`, `medium`, or `desktop`)
 - `category` — one of `navigation`, `readability`, or `accessibility`
 - `description` — a concise description of what failed and what was
   observed (include element selectors or text snippets where useful)
@@ -225,11 +225,11 @@ Group findings by `page_id`. For each page that has findings:
    ## QA findings for `<page_id>`
 
    Tested at: <ISO 8601 UTC timestamp>
-   Viewports: mobile (375×667), tablet (768×1024), desktop (1280×800)
+   Viewports: small (375×667), medium (768×1024), desktop (1280×800)
 
    | # | Viewport | Category | Description |
    |---|----------|----------|-------------|
-   | 1 | mobile | accessibility | `<img>` at line 42 missing alt text |
+   | 1 | small | accessibility | `<img>` at line 42 missing alt text |
    | 2 | desktop | readability | Font size 12 px — below 14 px threshold |
    ...
 

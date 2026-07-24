@@ -15,9 +15,6 @@ Codespaces is the recommended environment for this workshop and the path used th
 - [ ] You have a GitHub account with access to GitHub Codespaces
 - [ ] You want a browser-based terminal and do not need to install tools locally
 
-> [!IMPORTANT]
-> Phones and tablets are not supported for this workshop. Open the Codespace from a desktop or laptop before continuing.
-
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
 ### New repository

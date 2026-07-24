@@ -22,9 +22,6 @@ This workshop uses a Codespace as its only recommended environment. It gives you
 
 Already comfortable managing Git and the GitHub CLI on your machine? You can take the optional [Local Terminal Setup side quest](side-quest-02-01-local-terminal.md), then rejoin the main workshop.
 
-> [!IMPORTANT]
-> Phones and tablets are not supported for this workshop. Switch to a desktop or laptop before continuing.
-
 ## Verify AI engine access
 
 Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both show:
