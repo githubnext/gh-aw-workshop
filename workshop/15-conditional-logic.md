@@ -32,7 +32,35 @@ The approach breaks into three parts:
 
 ### Add a commit-count step
 
+In the GitHub Copilot **Chat** or **Agents** tab, paste:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to add a shell step
+that counts commits from the last 24 hours and writes the result to $GITHUB_OUTPUT
+as `commit_count`, with step id `recent`.
+```
+
+The skill adds this step to the frontmatter `steps:` block and recompiles the lock file.
+
+<details>
+<summary>🖥️ Terminal path</summary>
+
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add the following block inside the YAML frontmatter under `steps:`:
+
+```yaml
+steps:
+  - name: Count recent commits
+    id: recent
+    run: |
+      COUNT=$(git log --oneline --since="24 hours ago" | wc -l | tr -d ' ')
+      echo "commit_count=$COUNT" >> $GITHUB_OUTPUT
+```
+
+After adding it, run `gh aw compile` to regenerate the lock file.
+
+</details>
+
+Here is the step structure the skill will add:
 
 ```yaml
 steps:
@@ -67,6 +95,16 @@ This condition is embedded into the generated lock file during [compilation](htt
 
 Now that the commit-count condition is in place, extend the workflow to also skip execution on weekends. This exercise reinforces how to chain multiple conditions in a single `if:` expression.
 
+Use the `/agentic-workflows` skill to describe what you want:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to also add a day-of-week step
+and extend the if condition to skip the agent job on Saturdays and Sundays.
+```
+
+<details>
+<summary>🖥️ Terminal path</summary>
+
 1. Add a step that writes the current day name as an output:
 
 ```yaml
@@ -81,26 +119,16 @@ Now that the commit-count condition is in place, extend the workflow to also ski
 if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
 ```
 
-1. Compile the workflow with `gh aw compile` to regenerate the lock file with the combined condition.
+1. Run `gh aw compile` to regenerate the lock file with the combined condition.
 
-1. Trigger a manual [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) run from the Actions tab.
+</details>
 
-1. Inspect the run log: on a weekday with commits the agent job should complete normally; on a weekend or a day with no commits it should appear as **skipped** with a grey icon, as shown below.
+After confirming the diff, trigger a manual [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) run from the Actions tab. On a weekday with commits the agent job should complete normally; on a weekend or a day with no commits it should appear as **skipped** with a grey icon, as shown below.
 
 ![Skipped step in GitHub Actions](images/15-skipped-step.svg)
 
-### Compile your changes
-
-After editing the frontmatter, compile the workflow to confirm everything is valid:
-
-```bash
-gh aw compile
-```
-
-You should see `✅ Compiled successfully`. This regenerates your `.lock.yml` file with the updated conditional logic embedded in the job definition.
-
 > [!NOTE]
-> The `if:` condition is applied during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) and will not take effect until you compile and push both the `.md` source and the updated `.lock.yml` file.
+> The `if:` condition is applied during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) and will not take effect until you compile and push both the `.md` source and the updated `.lock.yml` file. The `/agentic-workflows` skill handles compilation automatically.
 
 ### Commit and push your conditional logic
 
@@ -114,8 +142,7 @@ git push
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
 - [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`
-- [ ] `gh aw compile` completed without errors and the updated `.lock.yml` is committed and pushed
-- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are committed and pushed
+- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are compiled, committed, and pushed
 - [ ] You triggered the workflow manually and confirmed the conditional behaviour in the run log
 - [ ] The workflow still posts a summary on days with commits
 

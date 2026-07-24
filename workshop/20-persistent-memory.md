@@ -49,7 +49,24 @@ For this deduplication use case, `cache-memory` is the right choice.
 
 ### Add `cache-memory` to your frontmatter
 
-Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter:
+In the GitHub Copilot **Chat** or **Agents** tab, paste:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to add `cache-memory`
+under the `tools:` key in the frontmatter, with key `daily-status-seen-issues` and
+ttl `7d`, and update the task brief to read and write that memory slot for deduplication.
+```
+
+The skill adds the frontmatter block and updates the brief. Review the diff before committing.
+
+<details>
+<summary>🖥️ Terminal path</summary>
+
+Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter with the content shown below, then run `gh aw compile`.
+
+</details>
+
+Here is the frontmatter structure the skill will use:
 
 ```yaml
 ---
@@ -97,20 +114,11 @@ have already reported on. On each run:
 > [!TIP]
 > Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
 
-### Compile and validate
+### Compile, validate, and push
 
-After editing the frontmatter, compile the workflow to confirm the memory block is valid:
+The `/agentic-workflows` skill recompiles the lock file automatically. If you edited manually, run `gh aw compile` first to confirm the memory block is valid.
 
-```bash
-gh aw compile
-```
-
-Fix any errors before pushing. Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
-
-> [!TIP]
-> Use `--watch` to recompile automatically as you edit: `gh aw compile --watch`
-
-### Push your change and initialize the cache
+Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
 
 Push your workflow update:
 
@@ -142,7 +150,7 @@ git push
 
 - [ ] Your workflow frontmatter has `cache-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot
-- [ ] `gh aw compile` passes with no errors
+- [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] The first manual run log includes `cache-memory: loaded 0 items`
 - [ ] The second run log includes `cache-memory: loaded N items`, and `N` matches the number of items from the first run
 - [ ] After opening a new issue and running again, only the new issue is reported

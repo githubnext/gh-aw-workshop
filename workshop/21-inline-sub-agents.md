@@ -52,7 +52,18 @@ Open your workflow file and choose one bounded task that repeats for each item, 
 
 ### Add one sub-agent block
 
-After your parent workflow brief, at the bottom of the file, add a sub-agent block like this:
+In the GitHub Copilot **Chat** or **Agents** tab, paste:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to add an inline
+sub-agent named `issue-summarizer` that reads one GitHub issue and returns a
+one-sentence summary. Use model: small. Also update the parent brief to call
+this sub-agent once per open issue and compile the summaries into a numbered list.
+```
+
+The skill appends the sub-agent block at the bottom of the file and updates the parent brief. Review the diff before committing.
+
+Here is the sub-agent syntax the skill will add:
 
 ```markdown
 ## agent: `issue-summarizer`
@@ -67,39 +78,28 @@ that explains what the issue is asking for and its current status.
 
 Keep the sub-agent brief narrow. If it processes one item at a time and returns a single result, it belongs here.
 
-### Update the parent workflow brief to call the sub-agent
+<details>
+<summary>🖥️ Terminal path</summary>
 
-In the parent workflow brief, tell the parent agent when to use the sub-agent:
+After your parent workflow brief, at the bottom of the file, add the sub-agent block shown above. Then update the parent brief to call it by name. For example:
 
 ```markdown
-You produce a daily repository health digest.
-
-1. Fetch all open issues (title, body, number).
-2. For each issue, use the `issue-summarizer` agent to produce a
-   one-sentence summary.
-3. Compile the summaries into a numbered list, ordered by issue number.
-4. Post the list as a comment on the repository's main tracking issue.
+For each issue, use the `issue-summarizer` agent to produce a one-sentence summary.
 ```
 
-**Action:** Change one broad instruction in the parent workflow brief into a direct sub-agent call by name. For example:
+After editing both, run `gh aw compile` to regenerate the lock file.
 
-- Before: "Summarize all issues."
-- After: "For each issue, use the `issue-summarizer` agent."
+</details>
 
-That pattern tells the parent agent to loop over the items, collect one result from the sub-agent for each item, and then combine those results in the next step.
+### Verify the diff and commit
 
-### Compile and check the result
-
-From the repository root, run:
+The skill edits both the sub-agent block and the parent brief in one step. Review the diff, then commit:
 
 ```bash
-gh aw compile
+git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git commit -m "feat: add issue-summarizer sub-agent to daily-status"
+git push
 ```
-
-> [!TIP]
-> If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.
-
-The compile should finish without errors and regenerate your workflow's `.lock.yml` file.
 
 ### Run and verify
 
@@ -111,8 +111,7 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 - [ ] You wrote a sub-agent name and one-sentence job before editing the file
 - [ ] Your workflow file now includes at least one `## agent: \`name\`` block
 - [ ] You updated the main brief to call the sub-agent by name
-- [ ] `gh aw compile` completed without errors
-- [ ] Your workflow's `.lock.yml` file was regenerated after the compile
+- [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] A manual run completed and the Actions log showed the sub-agent being called
 - [ ] The final workflow output used the sub-agent result
 
