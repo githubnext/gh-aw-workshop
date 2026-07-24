@@ -108,5 +108,5 @@ Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 <!-- journey: local -->
-Return to [Write Your First Agentic Workflow](07-your-first-workflow.md).
+**Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->

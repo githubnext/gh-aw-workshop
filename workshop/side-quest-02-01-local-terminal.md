@@ -142,5 +142,5 @@ cd my-agentic-workflows
 - [ ] `gh --version` returns version 2.40.0 or newer
 
 <!-- journey: local -->
-Return to [GitHub Actions Intro](04-github-actions-intro.md).
+**Next:** [GitHub Actions Intro](04-github-actions-intro.md)
 <!-- /journey -->

@@ -208,9 +208,13 @@ steps:
 
           provides = []
           lower_name = path.name.lower()
-          if 'setup-codespace' in lower_name or 'setup-local' in lower_name:
+          if 'setup-codespace' in lower_name or 'side-quest-02-01-local-terminal' in lower_name:
               provides.append('environment_ready')
-          if any(cmd.startswith('gh --version') for cmd in commands) and ('setup-' in lower_name or 'install-gh-aw' in lower_name):
+          if any(cmd.startswith('gh --version') for cmd in commands) and (
+              'setup-' in lower_name
+              or 'install-gh-aw' in lower_name
+              or 'side-quest-02-01-local-terminal' in lower_name
+          ):
               provides.append('gh_installed')
           if any('gh auth login' in cmd for cmd in commands):
               provides.append('gh_authenticated')
