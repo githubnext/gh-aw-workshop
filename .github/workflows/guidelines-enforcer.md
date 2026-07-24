@@ -179,7 +179,7 @@ For each file in `target_files`:
    - **Prerequisite discipline**: list only prerequisites needed for the current step; avoid future-looking requirements.
    - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## ✅ Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
    - **Voice and tone**: second person, present tense, active voice; no dramatic or alarmist language.
-   - **File split guideline**: a step file that diverges significantly in Terminal vs. UI paths should note whether the content should be split (do not auto-split, just flag it).
+   - **Environment alternatives**: flag local-terminal or browser-only instructions in the core route and recommend moving them to a side quest with a clear return point.
 3. For each violation found, record:
    - The violated rule (section name from guidelines)
    - The exact offending line or passage (quoted)

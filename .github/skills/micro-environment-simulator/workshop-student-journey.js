@@ -610,8 +610,8 @@ function buildTransitions() {
       const readiness = contentReadinessCheck(state, context, {
         salt: 29,
         category: "setup-friction",
-        failedAssumption: "The learner cannot translate the chosen setup path into a ready-to-use terminal environment.",
-        remediation: "Shorten the setup path, surface the terminal expectation earlier, and keep browser-first recovery steps nearby.",
+        failedAssumption: "The learner cannot launch the Codespace and reach a ready-to-use terminal environment.",
+        remediation: "Clarify the Codespace launch, readiness checks, and Codespaces-specific recovery steps.",
         emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;

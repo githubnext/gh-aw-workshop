@@ -154,12 +154,12 @@ Read the content of existing workshop files to map the current graph: identify t
 
 Determine the next most valuable node to add by considering:
 - **Extend an open leaf**: pick the open leaf that is on the most-travelled or most important path.
-- **Add a new branch**: if a step would benefit from offering learners a choice (e.g. by environment, skill level, or goal), split it.
-- **Add a convergence**: if two or more previously diverged paths are ready to rejoin, write the convergence node.
-- **Introduce a new root branch**: if the current graph serves one learner persona well but ignores another (e.g. no path for advanced users), start a new branch from an existing node.
+- **Add an optional side quest**: if a step would benefit from extra environment, skill-level, or goal-specific guidance, keep that detour outside the core route.
+- **Add a convergence**: when an optional side quest is ready to rejoin, point it back to an environment-neutral core node.
+- **Serve another persona**: add an optional side quest from an existing node; never create an alternate environment or persona root alongside the Codespaces core route.
 - **Enterprise tie-break rule**: when two candidate nodes are of equal value by the criteria above, **prefer the one that better serves enterprise learners** (GHES, GHEC, self-hosted runners). Enterprise-relevant content — such as enterprise authentication, proxy configuration, self-hosted runner setup, or GHEC-specific workflow permissions — takes priority over non-enterprise content of comparable scope and impact. See `.github/workflows/guidelines.md` under "Enterprise user preference in design decisions" for the full policy.
 
-If `focus` is provided and non-empty (and not "status"), treat it as a hint that may suggest a specific branch, persona, or topic — but keep the graph coherent and connected.
+If `focus` is provided and non-empty (and not "status"), treat it as a hint that may suggest a specific side quest, persona, or topic — but keep the graph coherent and connected.
 
 If the graph already provides complete paths covering all essential topics (introduction, prerequisites, setup, first workflow, running and debugging, design, building, iteration, and scheduling) for all supported learner personas, call `noop` with "Workshop complete — the graph covers all key paths."
 
