@@ -62,7 +62,7 @@ For any operation that touches only the current repository, use `${{ secrets.GIT
 
 ### Keep `permissions:` minimal
 
-Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the permissions your task actually needs. Compare the two blocks below:
+Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the [permissions](https://github.github.com/gh-aw/reference/permissions/) your task actually needs. Compare the two blocks below:
 
 ```yaml
 # ❌ Risky: broad write scopes for a read-only task
