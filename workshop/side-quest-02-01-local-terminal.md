@@ -16,9 +16,6 @@ Check each statement:
 
 If any answer is No, switch to [Set Up a Codespace](02a-setup-codespace.md) for a faster setup with no local installs.
 
-> [!IMPORTANT]
-> Phones and tablets are not supported for this workshop. Switch to a desktop or laptop before continuing.
-
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
 ## 🎯 What You'll Do
