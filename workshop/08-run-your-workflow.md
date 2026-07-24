@@ -42,7 +42,7 @@ Any mismatch means returning to [Confirm Model Access](07d-confirm-model-access.
 
 ## Run the workflow
 
-This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
+Start from the Actions tab because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
 If you prefer the terminal, you can use [`gh aw run daily-report-status`](https://github.github.com/gh-aw/setup/cli/#run) as an advanced option. If that command fails in Codespaces, use the Actions tab instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 

@@ -311,7 +311,7 @@ Return to [<parent step title>](<parent-step-file>.md).
   (e.g. showing minimal permissions, a `protected-files` block, or a
   `safe-outputs` constraint).
 - Follow `.github/workflows/guidelines.md` — no numbered headers, no Node.js
-  prerequisites, UI-first where possible.
+  prerequisites, and no environment alternatives in the Codespaces core route.
 
 ## Routing rules
 

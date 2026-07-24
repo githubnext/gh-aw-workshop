@@ -60,7 +60,7 @@ Use this path when the organization that owns the repository has centralized Cop
 
    This line is already present in the workflow template. Do not remove it.
 3. No repository secret is needed for this path.
-4. Recompile and commit the lock file from your Codespace so it reflects the confirmed configuration:
+4. Recompile and commit the lock file from your terminal so it reflects the confirmed configuration:
 
    ```bash
    gh aw compile

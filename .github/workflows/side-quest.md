@@ -170,7 +170,7 @@ Use **proper routing** so the optional detour feels intentional:
 
 Match the workshop voice: practical, friendly, and beginner-safe.
 
-Also follow shared guidance to delay and minimize `gh` usage in early steps, keeping UI-first paths prominent wherever possible.
+Also follow shared guidance to keep Codespaces as the sole recommended core route and place local-terminal or browser-only alternatives in side quests.
 
 Use this structure:
 

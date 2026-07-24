@@ -16,12 +16,12 @@ You'll start with `daily-report-status.md` and end with `daily-report-status.loc
 ## 📋 Before You Start
 
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
-- You can use `gh aw` in your Codespace terminal
+- The `gh aw` command works in the terminal you prepared
 
-## Continue in your Codespace
+## Continue from your terminal
 
-Build the workflow incrementally in two short parts. You compile after each meaningful change, then commit and push from your Codespace.
+The core workshop uses your Codespace terminal. If you completed the local terminal side quests, the same instructions apply on your machine. Build the workflow incrementally in two short parts, compile after each meaningful change, then commit and push.
 
 <!-- journey: codespace,local,terminal -->
-**Next:** [Write Your First Agentic Workflow in Your Codespace](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow from a Terminal](07a-your-first-workflow-terminal.md)
 <!-- /journey -->

@@ -175,7 +175,7 @@ For each file in `target_files`:
    - **Tooling progression**: `gh` setup must not appear before the dedicated install step; no Node.js prerequisites anywhere.
    - **Step ordering**: environment setup must precede tool install; credential setup must precede CLI usage.
    - **Schedule syntax** (agentic workflow `.md` files only): no raw cron syntax; use fuzzy expressions such as `schedule: daily`.
-   - **UI-first design**: prefer GitHub UI paths; terminal commands are secondary unless required.
+   - **Codespaces-first design**: keep Codespaces as the sole recommended core route; local-terminal and browser-only alternatives belong in side quests.
    - **Prerequisite discipline**: list only prerequisites needed for the current step; avoid future-looking requirements.
    - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## ✅ Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
    - **Voice and tone**: second person, present tense, active voice; no dramatic or alarmist language.

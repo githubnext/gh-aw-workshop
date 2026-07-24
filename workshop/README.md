@@ -16,7 +16,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 6 | [Install the gh-aw CLI Extension](06-install-gh-aw.md) |
 | 6a | [Install gh-aw in Your Codespace](06a-install-terminal.md) |
 | 7 | [Write Your First Agentic Workflow](07-your-first-workflow.md) |
-| 7a | [Write Your First Agentic Workflow in Your Codespace](07a-your-first-workflow-terminal.md) |
+| 7a | [Write Your First Agentic Workflow from a Terminal](07a-your-first-workflow-terminal.md) |
 | 7a-part2 | [Add Instructions and Finish Your First Workflow](07a-part2-your-first-workflow-instructions.md) |
 | 7d | [Confirm Model Access](07d-confirm-model-access.md) |
 | 8 | [Run and Watch Your Workflow](08-run-your-workflow.md) |
@@ -56,7 +56,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Use `gh-aw` with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md) — how to open a terminal inside the Copilot Cloud Agent Codespace so `gh-aw` CLI commands work; branches from [Step 6](06-install-gh-aw.md).
 - [Install `gh-aw` in a Local Terminal](side-quest-06-04-install-local.md) — optional alternative for learners who completed the local terminal setup side quest and want to continue on their own machine.
 - [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) — quick reference for `gh aw compile`, `--validate`, `--watch`, and common compile errors; branches from [Step 7](07-your-first-workflow.md), [Step 11a](07-your-first-workflow.md), or [Step 12](12-test-and-iterate.md).
-- [Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) — troubleshooting guide for Codespaces workflow-trigger permission errors with a UI-first path and advanced recovery path; branches from [Step 8](08-run-your-workflow.md).
+- [Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) — troubleshooting guide for Codespaces workflow-trigger permission errors with an Actions-tab option and advanced recovery steps; branches from [Step 8](08-run-your-workflow.md).
 - [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](08b-interpret-your-run.md).
 - [Pattern: Long `[plan]` Chains](side-quest-09-01a-pattern-long-plan-chain.md) — how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call; branches from [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 - [Pattern: Empty `[result]` Data](side-quest-09-01b-pattern-empty-results.md) — how to diagnose empty tool responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data; branches from [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).

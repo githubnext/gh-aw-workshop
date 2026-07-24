@@ -108,7 +108,7 @@ Then:
 3. Make a single focused change set (for example: add one missing step file, improve one existing step, or update workshop navigation).
 4. Keep tone aligned with GitHub Skills: short, direct, supportive, and action-oriented.
 5. Keep content practical and learner-first, with clear outcomes and checkpoints.
-6. **Check for missing UI path alternatives and early `gh` overuse**: look for steps that are CLI-heavy, require `gh` too early, or present `gh repo create` as the default without a corresponding GitHub UI path. Prefer improvements that delay/minimize `gh` setup and add clear UI-first alternatives.
+6. **Protect the Codespaces-first route**: look for environment choice hubs, local-terminal or browser-only instructions leaking into the core route, and `gh` requirements introduced before the dedicated install step. Move environment alternatives into side quests.
 
 If `focus` input is provided, prioritize that area while keeping the workshop coherent.
 

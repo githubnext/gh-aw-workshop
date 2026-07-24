@@ -87,22 +87,11 @@ The agent will read this brief, decide which MCP tool calls to make, and weave t
 
 ### Validate and push
 
-If you're working locally, compile before pushing:
+Compile before pushing:
 
 ```bash
 gh aw compile
 ```
-
-<details>
-<summary>🖥️ GitHub UI path (no local compile needed)</summary>
-
-1. Navigate to your workflow file on GitHub.
-2. Click the **pencil icon (✏️)** to edit it.
-3. Paste the updated frontmatter.
-4. Click **Commit changes**.
-5. Trigger the workflow manually under **Actions → Daily Status Report → Run workflow** and check the run log for MCP tool calls.
-
-</details>
 
 ### Watch the agent reason
 
@@ -118,5 +107,4 @@ Open the run log in **Actions**. You'll see the agent interleaving tool calls wi
 <!-- journey: all -->
 **Next:** [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md)
 <!-- /journey -->
-
 

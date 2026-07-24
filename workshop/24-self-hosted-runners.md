@@ -42,26 +42,11 @@ Update your workflow's `runs-on:` field to point at your self-hosted runner.
 
 Open `.github/workflows/daily-status.md` (or whichever workflow you want to move).
 
-<details>
-<summary>🖥️ GitHub UI path</summary>
-
-1. In your repository on GitHub, navigate to `.github/workflows/daily-status.md`.
-2. Click the **pencil icon (✏️)** to open the editor.
-3. Edit the `runs-on:` line as described below.
-4. Click **Commit changes**.
-
-</details>
-
-<details>
-<summary>💻 Terminal path</summary>
-
 Open the file in your editor of choice:
 
 ```bash
 code .github/workflows/daily-status.md
 ```
-
-</details>
 
 ### Change the `runs-on:` value
 
@@ -145,10 +130,6 @@ git commit -m "chore: target self-hosted runner for daily-status workflow"
 git push
 ```
 
-UI-first learners: after committing the `.md` file via the web editor, open a Codespace or
-the GitHub web terminal and run `gh aw compile daily-status` to regenerate the `.lock.yml`.
-Commit the updated lock file before triggering your next workflow run.
-
 > [!TIP]
 > You can also use the `/agentic-workflows` Copilot skill to edit the workflow — it compiles and commits both files together, so you never end up with a stale lock file.
 
@@ -176,5 +157,4 @@ Commit the updated lock file before triggering your next workflow run.
 <!-- journey: all -->
 **Next:** [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md)
 <!-- /journey -->
-
 
