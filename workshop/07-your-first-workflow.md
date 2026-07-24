@@ -9,27 +9,19 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 You'll create `.github/workflows/daily-report-status.md`, a small workflow that reads repository issues and posts one controlled response.
 
-In either path, you'll start with `daily-report-status.md` and end with `daily-report-status.lock.yml`, the compiled workflow that GitHub Actions runs.
+You'll start with `daily-report-status.md` and end with `daily-report-status.lock.yml`, the compiled workflow that GitHub Actions runs.
 
 ![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
 
 ## 📋 Before You Start
 
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
-- You can use `gh aw` in a terminal or open GitHub Copilot for a browser-based session
+- The `gh aw` command works in the terminal you prepared
 
-## Choose Your Path
+## Continue from your terminal
 
-| Path | What you'll do | Continue |
-|---|---|---|
-| **Terminal path** | Build the workflow incrementally in two short parts, compile after each meaningful change, then commit and push | [Write the workflow with the Terminal path](07a-your-first-workflow-terminal.md) |
-| **GitHub Copilot path** | Ask an agent in GitHub Copilot or the repository's **Agents** tab to create and validate the workflow, then review and merge its pull request | [Write the workflow with GitHub Copilot](07c-your-first-workflow-copilot.md) |
-
-The Terminal path gives you early compiler feedback. The GitHub Copilot path delegates `gh aw compile` to the agent's session workspace, so browser-first learners can still complete this step without a local terminal.
+The core workshop uses your Codespace terminal. If you completed the local terminal side quests, the same instructions apply on your machine. Build the workflow incrementally in two short parts, compile after each meaningful change, then commit and push.
 
 <!-- journey: codespace,local,terminal -->
-**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
-<!-- /journey -->
-<!-- journey: ui,copilot -->
-**Next:** [Write Your First Agentic Workflow — GitHub Copilot Path](07c-your-first-workflow-copilot.md)
+**Next:** [Write Your First Agentic Workflow from a Terminal](07a-your-first-workflow-terminal.md)
 <!-- /journey -->

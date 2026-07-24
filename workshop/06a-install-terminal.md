@@ -1,10 +1,10 @@
 <!-- page-journey: codespace -->
 <!-- page-adventure: setup -->
 <!-- learning:false -->
-# Install gh-aw — Codespace Terminal
+# Install `gh-aw` in Your Codespace
 
 > [!NOTE]
-> Using a local terminal instead? Switch to [Install gh-aw — Local Terminal](06b-install-local.md).
+> Using your own machine instead? Take the optional [Install `gh-aw` in a Local Terminal side quest](side-quest-06-04-install-local.md).
 
 ## 🎯 What You'll Do
 
@@ -97,6 +97,5 @@ Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 <!-- journey: codespace -->
-**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-

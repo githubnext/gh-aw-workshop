@@ -241,7 +241,7 @@ Read `/tmp/gh-aw/cache-memory/profiles.json` to load the student profiles. Each 
 - `background` — role background: `no-coding` (no software development background) | `web-dev` (frontend/full-stack web developer) | `backend-dev` (backend/systems developer) | `devops` (DevOps engineer/SRE) | `data-science` (data scientist/ML engineer) | `enterprise-dev` (enterprise developer using GHE/GHES with self-hosted runners) | `enterprise-devops` (senior DevOps/platform engineer managing self-hosted runner fleets) | `program-manager` (program/product manager evaluating agentic workflows)
 - `goal` — `personal-learning` | `work-project` | `team-evaluation` | `teaching-others`
 - `ui_preferred` — `true` if the student prefers using the GitHub web UI over the terminal; `false` if they prefer the CLI
-- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (uses GitHub Copilot Cloud Agent via the Agents tab or another browser/chat surface, where the learner sends prompts rather than terminal commands and should explicitly invoke `/agentic-workflows` for workflow-authoring tasks)
+- `tool` — preferred agentic tool entry point: `cli` (uses the `gh aw` CLI extension in a terminal) | `vscode` (uses VS Code with the GitHub Copilot extension) | `CCA` (prefers GitHub Copilot Cloud Agent, but follows the workshop's required Codespace route for core activities)
 - `runs` — number of prior simulation runs (accumulated across days)
 - `successes` — number of prior successful completions
 
@@ -259,7 +259,7 @@ For each student in the generated cohort, simulate their experience step-by-step
 2. Build a candidate set from the five highest-dropout steps and the five lowest-scoring curriculum steps.
 3. Semantically score and rank every candidate using the `stateReadiness`, `pathClarity`, and `recoverySupport` dimensions defined below, then select the three highest-risk steps for detailed analysis.
 4. Inspect every workshop page mapped to each selected step, plus the preceding activities that produce its required state, before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`.
-5. A simulated step may map to several pages; do not treat a file limit as a step limit. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
+5. A simulated step may map to several pages; do not treat a file limit as a step limit. For example, inspect the learner's Step 7 Codespace authoring pages and the shared Step 7d model-access activity before adjusting Step 8.
 
 Evaluate content assumptions semantically instead of inferring state from keyword counts. Use one focused yes/no question per assumption, answer only `YES`, `NO`, or `UNKNOWN`, and cite `file:line` evidence. Copy each step's `contentHash` from the baseline output into `evaluatedContentHash`. The simulator ignores evaluations when that hash does not match the current mapped page content, so page edits require fresh evaluations.
 
@@ -317,13 +317,9 @@ Use this JSON shape:
   - `workflow_source_created_terminal`
   - `workflow_compiled_terminal`
   - `workflow_published_terminal`
-  - `workflow_source_created_copilot`
-  - `workflow_compiled_copilot`
-  - `workflow_published_copilot`
-  - `cca_authoring_guidance`
   - `copilot_centralized_billing_configured`
   - `copilot_personal_billing_configured`
-- Evaluate the terminal and Copilot paths independently. A path passes only when its instructions and checkpoint ensure the learner completes the action; a nearby keyword or optional suggestion is not enough.
+- Evaluate the Codespace terminal path using its instructions and checkpoint. A nearby keyword or optional suggestion is not enough.
 - For `workflow_published_*`, confirm that both the source `.md` and generated `.lock.yml` reach the repository's default branch.
 - For each billing assumption, confirm the content selects that billing method, applies its matching permission or secret configuration, recompiles after changes, and commits the resulting source and lock files.
 - Use `UNKNOWN` when the mapped pages do not provide enough evidence. `UNKNOWN` does not update state.
@@ -332,7 +328,7 @@ Use this JSON shape:
 - Use positive numbers to increase success probability and negative numbers to decrease it.
 - Keep `bias`, each signal adjustment, and each path adjustment between `-0.15` and `0.15`; the simulator clamps larger values and ignores unknown adjustment keys.
 - Base these adjustments on the actual wording, path structure, fallbacks, and recovery guidance in the files you inspect — not only on the numeric signals already present in the simulator.
-- For Copilot / Agents-tab paths, verify that the content treats the surface as prompt-driven chat and explicitly calls out `/agentic-workflows` for workflow-authoring tasks. Missing that cue, or presenting shell commands as if they run inside the Agents tab, is an access barrier for `tool: CCA` learners.
+- When evaluating an optional Copilot or Agents-tab side quest, verify that it treats the surface as prompt-driven chat and explicitly calls out `/agentic-workflows` for workflow-authoring tasks.
 
 Then rerun the simulator yourself so those agent-derived insights are incorporated into the probabilities:
 
@@ -411,15 +407,15 @@ Use `successRateCi95`, `aggregate.overallSuccessRateCi95`, and `aggregate.dropou
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
-- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students hitting terminal-only steps (no UI alternative exists); Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps.
+- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students adapting to the required Codespace terminal; Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps. Do not recommend restoring a parallel browser-only core route.
 - Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
 - Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
-- For `tool: CCA` learners, treat the Agents tab as a prompt surface. If the step tells the learner to run shell commands there, or fails to call out `/agentic-workflows` for workflow-authoring work, classify that as a content mismatch rather than a generic terminal-skill gap.
+- For `tool: CCA` learners, evaluate how clearly the core step directs them into the Codespace terminal. Apply Agents-tab prompt-surface checks only to optional Copilot side quests.
 
 For students whose `successRate` < 0.50, also apply qualitative reasoning from the student profile to enrich the pain-point description:
 - **`level`** vs. assumed knowledge
 - **`background`** vs. step domain
-- **`tool`** and **`ui_preferred`** vs. step tooling (if a step requires running `gh aw` in a terminal and the student is `ui_preferred` or uses `CCA`, note that no UI alternative exists)
+- **`tool`** and **`ui_preferred`** vs. step tooling (if the learner prefers UI or CCA, assess whether the required transition into the Codespace terminal is clear)
 - **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
 - **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
 - **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes

@@ -60,22 +60,12 @@ Use this path when the organization that owns the repository has centralized Cop
 
    This line is already present in the workflow template. Do not remove it.
 3. No repository secret is needed for this path.
-4. Recompile and commit the lock file so it reflects the confirmed configuration:
-
-   **If you are using a terminal:**
+4. Recompile and commit the lock file from your terminal so it reflects the confirmed configuration:
 
    ```bash
    gh aw compile
    git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
    git commit -m "chore: confirm lock file is current" && git push
-   ```
-
-   **If you are using the browser only:**
-
-   In the Copilot or Agents tab, ask the agent:
-
-   ```
-   Run gh aw compile and commit the updated .github/workflows/daily-report-status.lock.yml to main.
    ```
 
 The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
@@ -87,8 +77,6 @@ Use this path for a personal repository, or when the owning organization does no
 > [!IMPORTANT]
 > When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission before you set up the secret, then recompile.
 
-**If you are using a terminal:**
-
 1. Remove `copilot-requests: write` from `daily-report-status.md`.
 2. Run:
 
@@ -98,33 +86,6 @@ Use this path for a personal repository, or when the owning organization does no
 
    This guided flow checks whether `COPILOT_GITHUB_TOKEN` is needed, prompts for it if missing, and stores it as a repository secret.
 3. Recompile and commit `daily-report-status.lock.yml`.
-
-**If you are using the browser only:**
-
-1. In the Copilot or Agents tab, ask the agent to remove the permission line and commit the change:
-
-   ```
-   Remove the copilot-requests: write line from .github/workflows/daily-report-status.md and commit the change to main.
-   ```
-
-2. Generate a fine-grained Personal Access Token (PAT):
-   - Go to [github.com/settings/tokens](https://github.com/settings/tokens) → **Generate new token (fine-grained)**.
-   - Name it `gh-aw-copilot`, set an expiry (90 days is a common choice), and note the date for rotation.
-   - Under **Permissions → Account permissions**, set **Copilot requests** to **Read-only**.
-   - Click **Generate token** and **copy the value immediately** — GitHub shows it only once.
-
-3. Store the PAT as a repository secret:
-   - In your repository, go to **Settings → Secrets and variables → Actions**.
-   - Click **New repository secret**.
-   - Name: `COPILOT_GITHUB_TOKEN` (uppercase, underscores — no spaces).
-   - Paste the token value and click **Add secret**.
-   - Confirm the secret appears in the list before closing the token tab.
-
-4. Ask the agent to recompile and commit the lock file:
-
-   ```
-   Run gh aw compile and commit the updated .github/workflows/daily-report-status.lock.yml to main.
-   ```
 
 For the full manual PAT procedure with detailed troubleshooting, see [Method PAT: `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md).
 

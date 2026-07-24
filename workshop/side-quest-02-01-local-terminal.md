@@ -1,6 +1,8 @@
 <!-- page-journey: local -->
-<!-- page-adventure: setup -->
-# Adventure Local: Set Up Your Local Terminal
+<!-- page-adventure: side-quest -->
+# Side Quest: Set Up Your Local Terminal
+
+> _Optional: use your own machine instead of the recommended Codespace, then rejoin the core workshop._
 
 ## 🧪 5-question terminal self-assessment
 

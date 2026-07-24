@@ -1,20 +1,20 @@
 # Shared Workshop Authoring Guidelines
 
-Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly, UI-centric, and avoid over-indexing on the GitHub CLI.
+Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly and centered on one consistent Codespaces journey.
 
-## Tooling progression: delay and minimize `gh`
+## Codespaces-first tooling progression
 
-- Prefer GitHub UI and Codespaces paths early in the workshop.
+- Use Codespaces as the sole recommended environment in the core workshop.
 - Do not require `gh` installation/authentication in early shared steps unless a command in that same step truly requires it.
 - Delay `gh` setup and `gh-aw` install requirements until the latest practical point (typically the dedicated install step or later).
-- Minimize `gh` command volume throughout; never present CLI as the default or preferred path.
-- If you include a CLI path, label it as an advanced alternative and keep the primary learner journey in the GitHub UI.
+- Keep `gh` command volume focused, then run required CLI commands in the Codespace terminal.
+- Put local-terminal and browser-only alternatives in clearly labeled side quests instead of branching the core journey.
 
-## UI-first instruction design
+## Codespaces-first instruction design
 
-- For repo/file/edit/commit actions, prefer a UI-first path and provide terminal commands as optional alternatives.
-- Keep any required terminal path concise and explicit.
-- If terminal-only actions are required (for example, local `gh aw compile`), clearly state why and how UI-first learners can continue safely.
+- Keep the core route in Codespaces, even when an individual action opens the repository, settings, or Actions page on GitHub.com.
+- Do not describe a GitHub.com action as a separate browser-only student route.
+- Keep required terminal instructions concise and explicit.
 - For workflow dispatch, always teach GitHub Actions UI dispatch first; mention CLI dispatch only as an advanced option.
 
 ## Prerequisite discipline
@@ -167,7 +167,7 @@ Multi-line callout (summary + body):
 
 ## Step ordering: environment before tools, credentials before running
 
-- Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
+- Do not instruct learners to install `gh` or `gh-aw` before the recommended Codespace is open. Local installation belongs in a side quest and must still come after local environment setup.
 - Always guide learners to trigger manual workflow runs from the GitHub Actions web UI.
 - If a step includes `gh aw run`, present it as an optional advanced path only and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
@@ -184,43 +184,14 @@ Multi-line callout (summary + body):
 - Node.js is incidentally present in Codespaces but learners must never be told they need to install or verify it.
 - If a step currently references Node.js, remove that reference and update any associated checkpoint items.
 
-## UI/CLI split path
+## Core route and environment side quests
 
-When a step diverges significantly between a terminal-based workflow and a browser-only workflow, **split it into separate files** rather than mixing both paths in a single file. Segmenting users into path-specific files keeps each file focused, reduces cognitive load, and avoids long blocks of instructions that do not apply to the reader.
-
-### Prefer file split over inline sections
-
-Use a file split when the Terminal path and the GitHub UI path differ in more than one or two instructions. Inline `### Terminal path —` / `### GitHub UI path —` sections are only appropriate for short, mostly-converging steps where the divergence is a single action (for example, one commit step at the end).
-
-For new file-split steps, follow the existing **choose-your-path branch ID** naming convention (`NNx` where `x` is a lowercase letter):
-
-- `NNa-<slug>-terminal.md` — Terminal path file
-- `NNb-<slug>-ui.md` — GitHub UI path file
-
-Link between the two files at the top of each so learners can switch if they chose the wrong one.
-
-### Named paths
-
-- **Terminal path** — the learner has a terminal open (Codespace or local). They create files with shell commands, compile with `gh aw compile`, and push with `git`.
-- **GitHub UI path** — the learner works entirely in the browser. They use Copilot prompts (with `/agentic-workflows` for workflow authoring changes) and complete workflow updates without manual file editing instructions.
-
-### Heading convention (for inline sections)
-
-When inline sections are appropriate, use `###` headings that state both the path name and the action, separated by an em dash:
-
-```
-### Terminal path — <action>
-### GitHub UI path — <action>
-```
-
-Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do not use lowercase (`terminal path`) or alternate labels (`CLI path`, `browser path`).
-
-### Structure rules
-
-- Place the **GitHub UI path** section before the **Terminal path** section for the same action.
-- For the GitHub UI path, provide prompt-first instructions that use Copilot (and `/agentic-workflows` when editing workflows), not manual copy/paste workflow editing blocks.
-- For the Terminal path, guide learners to build incrementally and compile after each section with `gh aw compile` (recompiles all workflows). Recommend the `--watch` flag as an alternative: `gh aw compile --watch` keeps a second terminal compiling on save for continuous feedback.
-- After the split sections, add a short bridging paragraph that calls out what each path skips (for example, the UI path skips `gh aw compile` checkpoints).
+- Keep one uninterrupted Codespaces route through the core curriculum; do not add environment choice hubs.
+- Put local-terminal or browser-only alternatives in `side-quest-NN-MM-<slug>.md` files and label them optional.
+- Give each environment side quest a clear return point to the core workshop.
+- Keep shared terminal steps environment-neutral when local side-quest learners rejoin them.
+- Treat GitHub.com pages as action surfaces within the Codespaces journey, not as separate student paths.
+- Guide learners to compile after each meaningful workflow change with `gh aw compile`. Recommend `gh aw compile --watch` as an optional continuous-feedback mode.
 
 ### Compile defaults
 
@@ -229,8 +200,8 @@ Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do 
 
 ### Compile checkpoints
 
-- Skip `gh aw compile` checkpoints for UI-path learners — compilation happens implicitly when GitHub Actions runs the workflow.
-- For Terminal-path learners, place a compile checkpoint after each meaningful addition to the workflow file.
+- In the core Codespaces route, place a compile checkpoint after each meaningful addition to the workflow file.
+- A browser-only side quest may delegate compilation to an agent, but must say who compiles and commits the lock file.
 
 ## Enterprise user preference in design decisions
 
@@ -239,7 +210,7 @@ When two workshop design choices are of equal or comparable value, **favor the o
 - **Path prioritization**: when two candidate nodes or improvements are comparable in scope and impact, choose the one that closes a gap for enterprise learners first.
 - **Default examples**: when selecting a code example, URL, or configuration snippet and multiple options are valid, prefer one that works in both github.com and enterprise environments (for example, avoid hardcoded `github.com` URLs where an enterprise base URL would be needed).
 - **Credential and network guidance**: when documenting authentication, token, or network steps, include enterprise-specific notes (SSO, SAML, proxy configuration) alongside the standard path — even when they are not the primary path.
-- **Tie-breaking in UI vs. CLI decisions**: when it is genuinely unclear whether a step should be UI-first or CLI-first, prefer the approach that works reliably in enterprise environments (some enterprises restrict browser-based agent sessions; CLI paths may be more reliable in those contexts).
+- **Tie-breaking for individual actions**: when both GitHub.com and Codespace terminal instructions work within the core route, prefer the approach that is reliable in enterprise environments.
 - **Side-quest and branch selection**: when choosing which optional content to add next, enterprise-relevant topics (self-hosted runners, GHES configuration, enterprise authentication) take precedence over non-enterprise topics of equal priority.
 
 This rule does not override clearly superior choices for all learners. It is a tie-breaker, not an absolute reorder of priorities.
@@ -254,7 +225,7 @@ This rule does not override clearly superior choices for all learners. It is a t
 
 ## Consistency check
 
-Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, do not reference Node.js as a prerequisite, and ensure the responsible agent has checked whether any intended org-provisioned event changes also require updates on the `golden-ticket-workshop` branch.
+Before finalizing workshop edits, quickly confirm that the core route remains Codespaces-only, alternatives remain side quests, early steps do not require `gh` before it is truly needed, Node.js is not a prerequisite, and the responsible agent has checked whether any intended org-provisioned event changes also require updates on the `golden-ticket-workshop` branch.
 
 ## Activity numbering for a sortable adventure graph
 
@@ -355,7 +326,7 @@ Example patterns:
 <!-- /journey -->
 
 <!-- journey: local -->
-**Next:** [Set Up Your Local Terminal](02b-setup-local.md)
+**Next:** [Set Up Your Local Terminal](side-quest-02-01-local-terminal.md)
 <!-- /journey -->
 ```
 
@@ -403,15 +374,14 @@ Describes the role the page plays in the overall workshop structure.
 | `10c-*`, `11c-*` | `all` or split by sub-path | `scenario-c` |
 | `11d-*` | `copilot` | `scenario-d` |
 | `02a-*`, `06a-*` | `codespace` | `setup` |
-| `02b-*`, `06b-*` | `local` | `setup` |
-| `06c-*` | `ui` | `setup` |
 | `side-quest-NN-MM-<slug>.md` | varies (see below) | `side-quest` |
 
 Side quest `journey` assignment:
 
 - `terminal` — content is exclusively about terminal commands or `gh aw compile` (e.g., `side-quest-07-01-compile-workflow.md`).
+- `local` — content is specific to the optional local terminal route (e.g., `side-quest-02-01-local-terminal.md`).
 - `codespace` — content addresses a Codespaces-specific error or configuration (e.g., `side-quest-08-01-codespaces-actions-write.md`).
-- `ui` — content is only applicable to GitHub UI path learners (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
+- `ui` — content is only applicable to a browser-only side quest (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
 - `copilot` — content is specific to the Copilot CCA or Agents tab environment (e.g., `side-quest-06-02-cca-codespace.md`).
 - `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).
 

@@ -115,7 +115,6 @@ You should see:
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](07c-your-first-workflow-copilot.md)
+**Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-
 

@@ -42,9 +42,9 @@ Any mismatch means returning to [Confirm Model Access](07d-confirm-model-access.
 
 ## Run the workflow
 
-This step is UI-first because it works for every learner, even if your terminal token does not have permission to trigger workflows.
+Start from the Actions tab because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
-If you prefer the terminal, you can use [`gh aw run daily-report-status`](https://github.github.com/gh-aw/setup/cli/#run) as an advanced option. If that command fails in Codespaces, use the GitHub UI path instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
+If you prefer the terminal, you can use [`gh aw run daily-report-status`](https://github.github.com/gh-aw/setup/cli/#run) as an advanced option. If that command fails in Codespaces, use the Actions tab instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
 
 ### Before you click Run
 
@@ -62,7 +62,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
   <img alt="Actions tab showing where to find Daily Report Status in the workflow list" src="images/08-actions-tab-light.svg">
 </picture>
 
-Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page and confirm both workflow files are on `main`. If you used the GitHub Copilot path, return to [Step 7c](07c-your-first-workflow-copilot.md) and confirm the workflow pull request was merged. If you used the Terminal path, run `gh aw compile` to check for compile errors.
+Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page, confirm both workflow files are on `main`, and run `gh aw compile` in your prepared terminal to check for compile errors.
 
 If the run fails immediately with a model-access or authentication error, return to [Step 7d](07d-confirm-model-access.md) and confirm the selected billing method matches the workflow.
 
@@ -98,4 +98,3 @@ Wait for the run to turn green with a ✅. Then open the **Issues** tab in your 
 <!-- journey: all -->
 **Next:** [Interpret Your First Run](08b-interpret-your-run.md)
 <!-- /journey -->
-

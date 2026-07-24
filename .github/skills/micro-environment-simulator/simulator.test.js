@@ -23,8 +23,41 @@ test("journey step file mappings match current workshop page setup", () => {
 
   assert.equal(new Set(mappedFiles).size, mappedFiles.length, "Workshop pages must not be mapped twice");
   assert.deepEqual([...mappedFiles].sort(), currentWorkshopFiles);
-  assert.ok(journey.stepFilesById["02-setup"].includes("02c-setup-browser.md"));
-  assert.ok(journey.stepFilesById["06-install-gh-aw"].includes("06c-install-ui.md"));
+  assert.deepEqual(journey.stepFilesById["02-setup"], ["02a-setup-codespace.md"]);
+  assert.deepEqual(journey.stepFilesById["06-install-gh-aw"], [
+    "06-install-gh-aw.md",
+    "06a-install-terminal.md"
+  ]);
+});
+
+test("Codespaces setup normalizes the learner workspace", () => {
+  const student = {
+    id: 2,
+    level: "github-basic",
+    personality: "methodical",
+    background: "web-dev",
+    goal: "personal-learning",
+    tool: "cli",
+    ui_preferred: false
+  };
+  const state = JSON.parse(
+    JSON.stringify(simulator.defaultEnvironmentForStudent(student, 120, 0))
+  );
+  state.workspace.context = "local";
+  state.auth.isLoggedIn = false;
+  state.auth.hasGithubSession = false;
+
+  const result = journey.transitions["02-setup"](state, {
+    stepId: "02-setup",
+    random: () => 0,
+    stepContent: {}
+  });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.workspace.context, "codespaces");
+  assert.equal(result.state.auth.isLoggedIn, true);
+  assert.equal(result.state.auth.hasGithubSession, true);
+  assert.ok(result.state.installed.gh);
 });
 
 test("seeded random streams are reproducible and non-cyclic over the simulation batch", () => {
@@ -244,6 +277,9 @@ function firstWorkflowState(centralizedCopilotBilling) {
   state.github.deployment = "github.com";
   state.flags.hasRepo = true;
   state.flags.repoHasReadme = true;
+  state.installed.aw = "latest";
+  state.flags.awSkillInitialized = true;
+  state.flags.awSkillPushed = true;
   state.actions.centralizedCopilotBilling = centralizedCopilotBilling;
   return state;
 }
@@ -271,9 +307,9 @@ test("semantic evaluations update compiled workflow and centralized billing stat
     firstWorkflowState(true),
     firstWorkflowContext({
       cca_authoring_guidance: { answer: "YES" },
-      workflow_source_created_copilot: { answer: "YES" },
-      workflow_compiled_copilot: { answer: "YES" },
-      workflow_published_copilot: { answer: "YES" },
+      workflow_source_created_terminal: { answer: "YES" },
+      workflow_compiled_terminal: { answer: "YES" },
+      workflow_published_terminal: { answer: "YES" },
       copilot_centralized_billing_configured: { answer: "YES" }
     })
   );
@@ -289,9 +325,9 @@ test("semantic evaluations update personal billing state and fail closed on UNKN
     firstWorkflowState(false),
     firstWorkflowContext({
       cca_authoring_guidance: { answer: "YES" },
-      workflow_source_created_copilot: { answer: "YES" },
-      workflow_compiled_copilot: { answer: "YES" },
-      workflow_published_copilot: { answer: "YES" },
+      workflow_source_created_terminal: { answer: "YES" },
+      workflow_compiled_terminal: { answer: "YES" },
+      workflow_published_terminal: { answer: "YES" },
       copilot_personal_billing_configured: { answer: "YES" }
     })
   );
@@ -299,9 +335,9 @@ test("semantic evaluations update personal billing state and fail closed on UNKN
     firstWorkflowState(false),
     firstWorkflowContext({
       cca_authoring_guidance: { answer: "YES" },
-      workflow_source_created_copilot: { answer: "YES" },
-      workflow_compiled_copilot: { answer: "YES" },
-      workflow_published_copilot: { answer: "UNKNOWN" },
+      workflow_source_created_terminal: { answer: "YES" },
+      workflow_compiled_terminal: { answer: "YES" },
+      workflow_published_terminal: { answer: "UNKNOWN" },
       copilot_personal_billing_configured: { answer: "UNKNOWN" }
     })
   );

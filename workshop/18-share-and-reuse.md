@@ -45,7 +45,7 @@ git log --oneline -3
 
 If you see uncommitted changes, commit them now before sharing.
 
-### GitHub UI path — verify in the browser
+### Verify on GitHub
 
 1. Navigate to your repository on GitHub.
 2. Browse to `.github/workflows/`.
@@ -94,5 +94,4 @@ This hint saves teammates guesswork when they first open the file.
 <!-- journey: all -->
 **Next:** [Build a Research-Driven Next Training Node](19-research-driven-training-node.md)
 <!-- /journey -->
-
 

@@ -11,7 +11,7 @@ Build your brief in a scratch file in five steps. By the end, you'll have a dail
 ## 📋 Before You Start
 
 - You've completed [Reading Workflow Output](08b-interpret-your-run.md)
-- You have a practice repository created during setup: [Adventure Codespace](02a-setup-codespace.md) or [Adventure Local](02b-setup-local.md)
+- You have a practice repository created during [Codespace setup](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md)
 
 ---
 
@@ -198,4 +198,3 @@ Guardrails:
 <!-- journey: all -->
 Return to [Design Your Daily Repo Status Report](09-agentic-editing.md) or continue to [Build Your Daily Repo Status Workflow](07-your-first-workflow.md).
 <!-- /journey -->
-

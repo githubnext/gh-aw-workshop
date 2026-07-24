@@ -30,22 +30,16 @@ const BACKGROUND_FACTORS = {
 const STEP_FILE_ALIASES = {
   "00-welcome": ["00-welcome.md"],
   "01-prerequisites": ["01-prerequisites.md"],
-  "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md", "02c-setup-browser.md"],
+  "02-setup": ["02a-setup-codespace.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "05c-agentic-practice": ["05c-agentic-workflows-practice.md"],
   "05b-agentic-security": ["05b-agentic-workflows-security.md"],
-  "06-install-gh-aw": [
-    "06-install-gh-aw.md",
-    "06a-install-terminal.md",
-    "06b-install-local.md",
-    "06c-install-ui.md"
-  ],
+  "06-install-gh-aw": ["06-install-gh-aw.md", "06a-install-terminal.md"],
   "07-first-workflow": [
     "07-your-first-workflow.md",
     "07a-your-first-workflow-terminal.md",
     "07a-part2-your-first-workflow-instructions.md",
-    "07c-your-first-workflow-copilot.md",
     "07d-confirm-model-access.md"
   ],
   "08-run-your-workflow": ["08-run-your-workflow.md"],
@@ -107,6 +101,11 @@ const STEP_SIGNAL_KEYS = [
   "conceptDemand",
   "enterpriseDemand"
 ];
+
+const CODESPACE_ONLY_CORE_STEPS = new Set([
+  "06-install-gh-aw",
+  "07-first-workflow"
+]);
 
 function cloneState(state) {
   return JSON.parse(JSON.stringify(state));
@@ -170,6 +169,7 @@ function ensurePlainObject(value) {
 }
 
 function prefersBrowserPath(state, context) {
+  if (CODESPACE_ONLY_CORE_STEPS.has(context.stepId)) return false;
   const learner = learnerProfile(state);
   return (
     learner.uiPreferred === true ||
@@ -206,16 +206,11 @@ function hasCcaPromptGuidance(state, context) {
 function stepMetric(state, context, metric) {
   const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
-    const relevantFiles = prefersBrowserPath(state, context)
-      ? new Set([
-          "07c-your-first-workflow-copilot.md",
-          "07d-confirm-model-access.md"
-        ])
-      : new Set([
-          "07a-your-first-workflow-terminal.md",
-          "07a-part2-your-first-workflow-instructions.md",
-          "07d-confirm-model-access.md"
-        ]);
+    const relevantFiles = new Set([
+      "07a-your-first-workflow-terminal.md",
+      "07a-part2-your-first-workflow-instructions.md",
+      "07d-confirm-model-access.md"
+    ]);
     return fileSignals
       .filter(({ file }) => relevantFiles.has(file))
       .reduce((sum, fileSignal) => sum + Number(fileSignal?.[metric] || 0), 0);
@@ -615,15 +610,20 @@ function buildTransitions() {
       const readiness = contentReadinessCheck(state, context, {
         salt: 29,
         category: "setup-friction",
-        failedAssumption: "The learner cannot translate the chosen setup path into a ready-to-use terminal environment.",
-        remediation: "Shorten the setup path, surface the terminal expectation earlier, and keep browser-first recovery steps nearby.",
+        failedAssumption: "The learner cannot launch the Codespace and reach a ready-to-use terminal environment.",
+        remediation: "Clarify the Codespace launch, readiness checks, and Codespaces-specific recovery steps.",
         emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
       const next = markPracticeRepoCreatedAndVerified(state);
+      next.workspace.context = "codespaces";
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
+      next.auth.isLoggedIn = true;
+      next.auth.hasGithubSession = true;
+      next.auth.tokenScope =
+        next.auth.accountType === "enterprise-managed" ? "org" : "user";
       next.flags.environmentReady = true;
       return { ok: true, state: applyLearning(next, context, { terminal: 0.08, github: 0.03 }) };
     },
@@ -689,7 +689,7 @@ function buildTransitions() {
     "06-install-gh-aw": (state, context) => {
       const envCheck = ensure(
         state.flags.environmentReady,
-        "gh-aw cannot be installed before setup opens a Codespace or local terminal",
+        "gh-aw cannot be installed before the Codespace setup is complete",
         "environment-not-ready",
         "Complete the setup step (02-setup) before installing the gh-aw extension."
       );
@@ -753,7 +753,7 @@ function buildTransitions() {
         salt: 113,
         category: "workflow-authoring-friction",
         failedAssumption: "The learner struggles to translate the tutorial into a valid first workflow file.",
-        remediation: "Reduce frontmatter editing load and make the UI-only and terminal authoring paths easier to compare.",
+        remediation: "Reduce frontmatter editing load and make the Codespace authoring and compile steps easier to follow.",
         emphasis: { bias: 0.14, terminalWeight: 0.16, conceptWeight: 0.12, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;

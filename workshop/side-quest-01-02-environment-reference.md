@@ -6,7 +6,7 @@
 
 ## 📋 Before You Start
 
-You have a terminal open inside your practice repository (see [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md)).
+You have a terminal open inside your practice repository (see [Set Up a Codespace](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md)).
 
 ## Environment and tool glossary
 

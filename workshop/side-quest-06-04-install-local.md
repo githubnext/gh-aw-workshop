@@ -1,10 +1,10 @@
 <!-- page-journey: local -->
-<!-- page-adventure: setup -->
-<!-- learning:false -->
-# Install gh-aw — Local Terminal
+<!-- page-adventure: side-quest -->
+# Side Quest: Install `gh-aw` in a Local Terminal
 
-> [!NOTE]
-> Using a Codespace instead? Switch to [Install gh-aw — Codespace Terminal](06a-install-terminal.md).
+> _Optional: install `gh-aw` on your own machine instead of in the recommended Codespace._
+
+Using a Codespace instead? Return to [Install `gh-aw` in Your Codespace](06a-install-terminal.md).
 
 ## 🎯 What You'll Do
 
@@ -13,8 +13,8 @@ You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and 
 ## 📋 Before You Start
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
-- You've completed [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md)
-- The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli))
+- You've completed [Side Quest: Set Up Your Local Terminal](side-quest-02-01-local-terminal.md)
+- The `gh` CLI is installed and authenticated (completed in [Authenticate the `gh` CLI](side-quest-02-01-local-terminal.md#authenticate-the-gh-cli))
 
 Run this to confirm `gh` is authenticated before continuing:
 
@@ -22,7 +22,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](02b-setup-local.md#authenticate-the-gh-cli).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](side-quest-02-01-local-terminal.md#authenticate-the-gh-cli).
 
 ## Install from terminal
 
@@ -108,6 +108,5 @@ Want to understand how Copilot authenticates with your workflow?
 ➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 <!-- journey: local -->
-**Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
+**Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-

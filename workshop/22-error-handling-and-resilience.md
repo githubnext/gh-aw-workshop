@@ -90,17 +90,6 @@ git push
 > [!IMPORTANT]
 > Frontmatter changes — including `timeout-minutes` — only take effect after `gh aw compile` regenerates the `.lock.yml` file. GitHub Actions runs the compiled lock file, not the `.md` source.
 
-<details>
-<summary>🖥️ GitHub UI path</summary>
-
-1. Navigate to your workflow file in `.github/workflows/` on GitHub.
-2. Click the **pencil icon (✏️)** to open the editor.
-3. Make your changes to the frontmatter and task brief.
-4. Click **Commit changes**.
-5. Open your Codespace or local terminal and run `gh aw compile`, then push the updated `.lock.yml`. The `timeout-minutes` limit will not take effect until the compiled lock file is committed and pushed.
-
-</details>
-
 ### Verify your changes
 
 After pushing:
@@ -121,5 +110,4 @@ After pushing:
 <!-- journey: all -->
 **Next:** [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md)
 <!-- /journey -->
-
 

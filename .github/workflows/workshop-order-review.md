@@ -41,7 +41,7 @@ steps:
       files = sorted(p for p in workshop_dir.glob('*.md') if p.name != 'README.md')
 
       command_fence = re.compile(r'```(?:bash|sh|shell|yaml)?\n(.*?)```', re.DOTALL)
-      navigation_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+\[[^\]]+\]\(([^)]+)\)')
+      navigation_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+(?:Open\s+)?\[[^\]]+\]\(([^)]+)\)')
       table_link_re = re.compile(r'\|[^\n]*?\[[^\]]+\]\(([^)]+)\)')
       link_re = re.compile(r'\[[^\]]+\]\(([^)]+\.md(?:#[^)]+)?)\)')
       inline_command_re = re.compile(r'`([^`\n]+)`')
@@ -208,9 +208,13 @@ steps:
 
           provides = []
           lower_name = path.name.lower()
-          if 'setup-codespace' in lower_name or 'setup-local' in lower_name:
+          if 'setup-codespace' in lower_name or 'side-quest-02-01-local-terminal' in lower_name:
               provides.append('environment_ready')
-          if any(cmd.startswith('gh --version') for cmd in commands) and ('setup-' in lower_name or 'install-gh-aw' in lower_name):
+          if any(cmd.startswith('gh --version') for cmd in commands) and (
+              'setup-' in lower_name
+              or 'install-gh-aw' in lower_name
+              or 'side-quest-02-01-local-terminal' in lower_name
+          ):
               provides.append('gh_installed')
           if any('gh auth login' in cmd for cmd in commands):
               provides.append('gh_authenticated')

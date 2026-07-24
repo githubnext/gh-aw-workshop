@@ -8,19 +8,16 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 |---|------|
 | 0 | [Welcome — What We'll Build](00-welcome.md) |
 | 1 | [What You Need Before We Start](01-prerequisites.md) |
-| 2 | Setup Adventure — Choose one: [A: Codespace](02a-setup-codespace.md), [B: Local Terminal](02b-setup-local.md), **or** [C: Browser (no terminal)](02c-setup-browser.md) |
+| 2 | [Set Up a Codespace](02a-setup-codespace.md) |
 | 4 | [What Are GitHub Actions?](04-github-actions-intro.md) |
 | 5 | [What Are Agentic Workflows?](05-agentic-workflows-intro.md) |
 | 5b | [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md) |
 | 5c | [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md) |
 | 6 | [Install the gh-aw CLI Extension](06-install-gh-aw.md) |
-| 6a | [Codespace Terminal Path — Install gh-aw](06a-install-terminal.md) |
-| 6b | [Local Terminal Path — Install gh-aw](06b-install-local.md) |
-| 6c | [GitHub UI Path — No Installation Needed](06c-install-ui.md) |
+| 6a | [Install gh-aw in Your Codespace](06a-install-terminal.md) |
 | 7 | [Write Your First Agentic Workflow](07-your-first-workflow.md) |
-| 7a | [Terminal Path — Write Your First Agentic Workflow](07a-your-first-workflow-terminal.md) |
-| 7a-part2 | [Terminal Path (Part 2) — Add Instructions and Finish Your First Workflow](07a-part2-your-first-workflow-instructions.md) |
-| 7c | [GitHub Copilot Path — Write Your First Agentic Workflow](07c-your-first-workflow-copilot.md) |
+| 7a | [Write Your First Agentic Workflow from a Terminal](07a-your-first-workflow-terminal.md) |
+| 7a-part2 | [Add Instructions and Finish Your First Workflow](07a-part2-your-first-workflow-instructions.md) |
 | 7d | [Confirm Model Access](07d-confirm-model-access.md) |
 | 8 | [Run and Watch Your Workflow](08-run-your-workflow.md) |
 | 8b | [Interpret Your First Run](08b-interpret-your-run.md) |
@@ -51,13 +48,15 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md) — one-page cheat sheet for what changes vs what stays the same in agentic workflows; branches from [Step 5](05-agentic-workflows-intro.md).
 - [Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) — classification exercises, example agent output, the two-file structure, and concept checks; branches from [Step 5](05-agentic-workflows-intro.md).
 - [Terminal Basics](side-quest-01-01-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
-- [Enterprise Setup Considerations](side-quest-enterprise-setup.md) — required reading for GHES users and useful for any managed enterprise environment; common return points include [Step 1](01-prerequisites.md), [Step 2a](02a-setup-codespace.md), [Step 2b](02b-setup-local.md), and [Step 5](05-agentic-workflows-intro.md).
+- [Set Up Your Local Terminal](side-quest-02-01-local-terminal.md) — optional alternative for experienced terminal users who want to work on their own machine instead of in the recommended Codespace.
+- [Enterprise Setup Considerations](side-quest-enterprise-setup.md) — required reading for GHES users and useful for any managed enterprise environment; common return points include [Step 1](01-prerequisites.md), [Step 2](02a-setup-codespace.md), the [Local Terminal side quest](side-quest-02-01-local-terminal.md), and [Step 5](05-agentic-workflows-intro.md).
 - [Environment Reference](side-quest-01-02-environment-reference.md) — glossary of workshop environments and tool terms with official docs links; branches from [Step 1](01-prerequisites.md).
 - [Permission Errors](side-quest-01-03-permission-errors.md) — troubleshooting guide for `permission denied` errors encountered during terminal-based steps; branches from [Step 1](01-prerequisites.md).
 - [Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
 - [Use `gh-aw` with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md) — how to open a terminal inside the Copilot Cloud Agent Codespace so `gh-aw` CLI commands work; branches from [Step 6](06-install-gh-aw.md).
+- [Install `gh-aw` in a Local Terminal](side-quest-06-04-install-local.md) — optional alternative for learners who completed the local terminal setup side quest and want to continue on their own machine.
 - [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) — quick reference for `gh aw compile`, `--validate`, `--watch`, and common compile errors; branches from [Step 7](07-your-first-workflow.md), [Step 11a](07-your-first-workflow.md), or [Step 12](12-test-and-iterate.md).
-- [Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) — troubleshooting guide for Codespaces workflow-trigger permission errors with a UI-first path and advanced recovery path; branches from [Step 8](08-run-your-workflow.md).
+- [Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) — troubleshooting guide for Codespaces workflow-trigger permission errors with an Actions-tab option and advanced recovery steps; branches from [Step 8](08-run-your-workflow.md).
 - [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](08b-interpret-your-run.md).
 - [Pattern: Long `[plan]` Chains](side-quest-09-01a-pattern-long-plan-chain.md) — how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call; branches from [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
 - [Pattern: Empty `[result]` Data](side-quest-09-01b-pattern-empty-results.md) — how to diagnose empty tool responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data; branches from [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).

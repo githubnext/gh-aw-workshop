@@ -128,7 +128,6 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](07c-your-first-workflow-copilot.md)
+**Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-
 

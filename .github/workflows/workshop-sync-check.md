@@ -419,7 +419,7 @@ Example issue body:
 
 ```
 ## Workshop file reviewed
-`workshop/02b-setup-local.md`
+`workshop/side-quest-02-01-local-terminal.md`
 
 ## Problem
 The install command on line 23 uses the deprecated `--pin` flag:
