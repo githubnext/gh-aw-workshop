@@ -24,6 +24,12 @@ The approach breaks into three parts:
 2. Reference that output using the `steps` context expression `${{ steps.recent.outputs.commit_count }}`.
 3. Add a top-level `if:` key in the workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) that skips the agent job when the count evaluates to zero.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/15-conditional-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/15-conditional-flow-light.svg">
+   <img alt="Conditional logic flow: shell step writes commit count to GITHUB_OUTPUT, the if condition evaluates it, then either skips or runs the agent job" src="images/15-conditional-flow-light.svg">
+</picture>
+
 ### Add a commit-count step
 
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add the following block inside the YAML frontmatter under `steps:`:
