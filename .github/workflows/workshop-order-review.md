@@ -41,7 +41,7 @@ steps:
       files = sorted(p for p in workshop_dir.glob('*.md') if p.name != 'README.md')
 
       command_fence = re.compile(r'```(?:bash|sh|shell|yaml)?\n(.*?)```', re.DOTALL)
-      navigation_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+\[[^\]]+\]\(([^)]+)\)')
+      navigation_link_re = re.compile(r'\*\*(?:Next|Continue):\*\*\s+(?:Open\s+)?\[[^\]]+\]\(([^)]+)\)')
       table_link_re = re.compile(r'\|[^\n]*?\[[^\]]+\]\(([^)]+)\)')
       link_re = re.compile(r'\[[^\]]+\]\(([^)]+\.md(?:#[^)]+)?)\)')
       inline_command_re = re.compile(r'`([^`\n]+)`')
