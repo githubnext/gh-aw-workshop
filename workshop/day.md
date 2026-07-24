@@ -1,3 +1,4 @@
+<!-- is_learning_page: false -->
 # One-Day Workshop Program
 
 A full-day hands-on experience with GitHub Agentic Workflows — from your first workflow to a live hackathon project.
