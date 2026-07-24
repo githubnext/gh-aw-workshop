@@ -4,7 +4,7 @@
 # Install gh-aw — Codespace Terminal
 
 > [!NOTE]
-> Using a local terminal instead? Switch to [Install gh-aw — Local Terminal](06b-install-local.md).
+> Using your own machine instead? Take the optional [Install `gh-aw` in a Local Terminal side quest](side-quest-06-04-install-local.md).
 
 ## 🎯 What You'll Do
 
@@ -99,4 +99,3 @@ Want to understand how Copilot authenticates with your workflow?
 <!-- journey: codespace -->
 **Next:** [Write Your First Agentic Workflow — Terminal Path](07a-your-first-workflow-terminal.md)
 <!-- /journey -->
-

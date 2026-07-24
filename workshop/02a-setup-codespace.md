@@ -6,6 +6,8 @@
 
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
+Codespaces is the recommended environment for this workshop and the path used throughout the core steps.
+
 ## Steps
 
 **Verify you are on the right path before continuing:**

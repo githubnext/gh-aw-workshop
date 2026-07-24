@@ -1,6 +1,8 @@
 <!-- page-journey: local -->
-<!-- page-adventure: setup -->
-# Adventure Local: Set Up Your Local Terminal
+<!-- page-adventure: side-quest -->
+# Side Quest: Set Up Your Local Terminal
+
+> _Optional: use your own machine instead of the recommended Codespace, then rejoin the core workshop._
 
 ## 🧪 5-question terminal self-assessment
 
@@ -140,5 +142,5 @@ cd my-agentic-workflows
 - [ ] `gh --version` returns version 2.40.0 or newer
 
 <!-- journey: local -->
-**Next:** [GitHub Actions Intro](04-github-actions-intro.md)
+Return to [GitHub Actions Intro](04-github-actions-intro.md).
 <!-- /journey -->
