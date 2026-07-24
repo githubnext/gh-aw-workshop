@@ -684,7 +684,7 @@ function buildTransitions() {
     "06-install-gh-aw": (state, context) => {
       const envCheck = ensure(
         state.flags.environmentReady,
-        "gh-aw cannot be installed before setup opens a Codespace or local terminal",
+        "gh-aw cannot be installed before the Codespace setup is complete",
         "environment-not-ready",
         "Complete the setup step (02-setup) before installing the gh-aw extension."
       );
@@ -748,7 +748,7 @@ function buildTransitions() {
         salt: 113,
         category: "workflow-authoring-friction",
         failedAssumption: "The learner struggles to translate the tutorial into a valid first workflow file.",
-        remediation: "Reduce frontmatter editing load and make the UI-only and terminal authoring paths easier to compare.",
+        remediation: "Reduce frontmatter editing load and make the Codespace authoring and compile steps easier to follow.",
         emphasis: { bias: 0.14, terminalWeight: 0.16, conceptWeight: 0.12, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
