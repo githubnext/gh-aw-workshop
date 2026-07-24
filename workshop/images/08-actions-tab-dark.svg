@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Actions tab showing where to find Daily Report Status in the workflow list">
+  <rect width="1200" height="560" fill="#0d1117"/>
+  <rect x="70" y="46" width="1060" height="468" rx="18" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <path d="M70 64c0-9.941 8.059-18 18-18h1024c9.941 0 18 8.059 18 18v26H70V64z" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <circle cx="102" cy="68" r="6" fill="#30363d"/>
+  <circle cx="126" cy="68" r="6" fill="#30363d"/>
+  <circle cx="150" cy="68" r="6" fill="#30363d"/>
+  <rect x="210" y="56" width="540" height="24" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <text x="232" y="72" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">github.com/your-org/your-repo</text>
+
+  <line x1="70" y1="108" x2="1130" y2="108" stroke="#30363d" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="20" fill="#8b949e">
+    <text x="120" y="140">Code</text>
+    <text x="215" y="140">Issues</text>
+    <text x="315" y="140">Pull requests</text>
+    <text x="500" y="140" fill="#f0f6fc">Actions</text>
+  </g>
+  <rect x="495" y="148" width="84" height="4" rx="2" fill="#2f81f7"/>
+
+  <rect x="108" y="176" width="984" height="274" rx="14" fill="#161b22" stroke="#30363d"/>
+  <text x="146" y="218" font-family="Arial, sans-serif" font-size="18" fill="#8b949e">Workflow</text>
+  <text x="632" y="218" font-family="Arial, sans-serif" font-size="18" fill="#8b949e">Status</text>
+  <text x="840" y="218" font-family="Arial, sans-serif" font-size="18" fill="#8b949e">Last run</text>
+  <line x1="132" y1="236" x2="1068" y2="236" stroke="#30363d"/>
+
+  <rect x="132" y="254" width="936" height="72" rx="10" fill="#0d1117"/>
+  <circle cx="170" cy="290" r="16" fill="#238636"/>
+  <text x="162" y="297" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">✓</text>
+  <text x="204" y="296" font-family="Arial, sans-serif" font-size="24" fill="#8b949e">Daily Report Status</text>
+  <text x="632" y="296" font-family="Arial, sans-serif" font-size="20" fill="#f0f6fc">Completed</text>
+  <text x="840" y="296" font-family="Arial, sans-serif" font-size="20" fill="#8b949e">2 minutes ago</text>
+
+  <rect x="132" y="338" width="936" height="72" rx="10" fill="#161b22"/>
+  <text x="170" y="380" font-family="Arial, sans-serif" font-size="22" fill="#8b949e">repository-status-check</text>
+  <text x="632" y="380" font-family="Arial, sans-serif" font-size="20" fill="#8b949e">Queued</text>
+  <text x="840" y="380" font-family="Arial, sans-serif" font-size="20" fill="#8b949e">Yesterday</text>
+
+  <text x="600" y="532" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#8b949e">Actions tab showing where to find Daily Report Status in the workflow list</text>
+</svg>
