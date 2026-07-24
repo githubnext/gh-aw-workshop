@@ -79,7 +79,7 @@ You can use any unique string as the delimiter — `EOF` is just a convention.
 
 Once your data is in `$GITHUB_OUTPUT`, you reference it directly inside the workflow Markdown body — which **is** the AI prompt in gh-aw. There is no separate step to invoke the AI; the body text is sent to the model after all step outputs have been resolved.
 
-**Frontmatter** (data-preparation step):
+**[Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** (data-preparation step):
 
 ```yaml
 steps:
