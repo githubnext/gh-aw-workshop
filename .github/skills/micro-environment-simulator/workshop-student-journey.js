@@ -616,9 +616,14 @@ function buildTransitions() {
       });
       if (!readiness.ok) return readiness;
       const next = markPracticeRepoCreatedAndVerified(state);
+      next.workspace.context = "codespaces";
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
+      next.auth.isLoggedIn = true;
+      next.auth.hasGithubSession = true;
+      next.auth.tokenScope =
+        next.auth.accountType === "enterprise-managed" ? "org" : "user";
       next.flags.environmentReady = true;
       return { ok: true, state: applyLearning(next, context, { terminal: 0.08, github: 0.03 }) };
     },

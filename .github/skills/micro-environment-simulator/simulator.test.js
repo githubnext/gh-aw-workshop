@@ -30,6 +30,36 @@ test("journey step file mappings match current workshop page setup", () => {
   ]);
 });
 
+test("Codespaces setup normalizes the learner workspace", () => {
+  const student = {
+    id: 2,
+    level: "github-basic",
+    personality: "methodical",
+    background: "web-dev",
+    goal: "personal-learning",
+    tool: "cli",
+    ui_preferred: false
+  };
+  const state = JSON.parse(
+    JSON.stringify(simulator.defaultEnvironmentForStudent(student, 120, 0))
+  );
+  state.workspace.context = "local";
+  state.auth.isLoggedIn = false;
+  state.auth.hasGithubSession = false;
+
+  const result = journey.transitions["02-setup"](state, {
+    stepId: "02-setup",
+    random: () => 0,
+    stepContent: {}
+  });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.state.workspace.context, "codespaces");
+  assert.equal(result.state.auth.isLoggedIn, true);
+  assert.equal(result.state.auth.hasGithubSession, true);
+  assert.ok(result.state.installed.gh);
+});
+
 test("seeded random streams are reproducible and non-cyclic over the simulation batch", () => {
   const first = simulator.createSeededRng(42);
   const second = simulator.createSeededRng(42);
