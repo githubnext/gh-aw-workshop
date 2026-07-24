@@ -1,19 +1,21 @@
 # Shared Workshop Authoring Guidelines
 
-Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly and avoid over-indexing on the GitHub CLI.
+Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly, UI-centric, and avoid over-indexing on the GitHub CLI.
 
 ## Tooling progression: delay and minimize `gh`
 
 - Prefer GitHub UI and Codespaces paths early in the workshop.
 - Do not require `gh` installation/authentication in early shared steps unless a command in that same step truly requires it.
 - Delay `gh` setup and `gh-aw` install requirements until the latest practical point (typically the dedicated install step or later).
-- Minimize `gh` command volume throughout; use it only when it provides clear value or when no equivalent UI path exists.
+- Minimize `gh` command volume throughout; never present CLI as the default or preferred path.
+- If you include a CLI path, label it as an advanced alternative and keep the primary learner journey in the GitHub UI.
 
 ## UI-first instruction design
 
 - For repo/file/edit/commit actions, prefer a UI-first path and provide terminal commands as optional alternatives.
 - Keep any required terminal path concise and explicit.
 - If terminal-only actions are required (for example, local `gh aw compile`), clearly state why and how UI-first learners can continue safely.
+- For workflow dispatch, always teach GitHub Actions UI dispatch first; mention CLI dispatch only as an advanced option.
 
 ## Prerequisite discipline
 
@@ -31,7 +33,8 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 - For `copilot` journey pages and Adventure D content, treat the Agents tab as a **prompt surface**, not a terminal.
 - When a learner is working in the Agents tab or another CCA surface, tell them what prompt to send; do **not** present shell commands as though they run inside that chat.
-- When the task is to create, edit, debug, or upgrade an agentic workflow from a CCA surface, explicitly call out the `/agentic-workflows` skill in the prompt.
+- When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through Copilot with the `/agentic-workflows` skill.
+- Do **not** recommend manual workflow editing as the primary instruction path; use Copilot + `/agentic-workflows` prompts instead.
 - If a CCA-oriented step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Agents-tab prompt so learners know which surface to use for each action.
 
 ## Golden-Ticket Workshop Surfaces
@@ -165,8 +168,8 @@ Multi-line callout (summary + body):
 ## Step ordering: environment before tools, credentials before running
 
 - Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
-- Prefer guiding learners to trigger manual workflow runs from the GitHub Actions web UI.
-- If a step includes `gh aw run`, present it as an optional advanced path and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
+- Always guide learners to trigger manual workflow runs from the GitHub Actions web UI.
+- If a step includes `gh aw run`, present it as an optional advanced path only and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
 ## Schedule triggers: always use fuzzy syntax in agentic workflow files
 
@@ -199,7 +202,7 @@ Link between the two files at the top of each so learners can switch if they cho
 ### Named paths
 
 - **Terminal path** — the learner has a terminal open (Codespace or local). They create files with shell commands, compile with `gh aw compile`, and push with `git`.
-- **GitHub UI path** — the learner works entirely in the browser. They create and edit files using the GitHub web editor, paste complete file content, and commit directly from the browser.
+- **GitHub UI path** — the learner works entirely in the browser. They use Copilot prompts (with `/agentic-workflows` for workflow authoring changes) and complete workflow updates without manual file editing instructions.
 
 ### Heading convention (for inline sections)
 
@@ -214,8 +217,8 @@ Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do 
 
 ### Structure rules
 
-- Place the **Terminal path** section before the **GitHub UI path** section for the same action.
-- For the GitHub UI path, always provide the complete file content in a copy-paste block so learners can paste once and commit.
+- Place the **GitHub UI path** section before the **Terminal path** section for the same action.
+- For the GitHub UI path, provide prompt-first instructions that use Copilot (and `/agentic-workflows` when editing workflows), not manual copy/paste workflow editing blocks.
 - For the Terminal path, guide learners to build incrementally and compile after each section with `gh aw compile` (recompiles all workflows). Recommend the `--watch` flag as an alternative: `gh aw compile --watch` keeps a second terminal compiling on save for continuous feedback.
 - After the split sections, add a short bridging paragraph that calls out what each path skips (for example, the UI path skips `gh aw compile` checkpoints).
 
