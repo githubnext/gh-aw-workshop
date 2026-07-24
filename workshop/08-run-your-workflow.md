@@ -56,13 +56,21 @@ If you prefer the terminal, you can use [`gh aw run daily-report-status`](https:
 
 Open your practice repository in GitHub and click **Actions** in the top navigation. In the left sidebar, select **Daily Report Status**.
 
-![Actions tab showing where to find Daily Report Status in the workflow list](images/08-actions-tab.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08-actions-tab-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08-actions-tab-light.svg">
+  <img alt="Actions tab showing where to find Daily Report Status in the workflow list" src="images/08-actions-tab-light.svg">
+</picture>
 
 Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page and confirm both workflow files are on `main`. If you used the GitHub Copilot path, return to [Step 7c](07c-your-first-workflow-copilot.md) and confirm the workflow pull request was merged. If you used the Terminal path, run `gh aw compile` to check for compile errors.
 
 If the run fails immediately with a model-access or authentication error, return to [Step 7d](07d-confirm-model-access.md) and confirm the selected billing method matches the workflow.
 
-![Workflow sidebar with the Run workflow button highlighted](images/08-run-workflow-button.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08-run-workflow-button-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08-run-workflow-button-light.svg">
+  <img alt="Workflow sidebar with the Run workflow button highlighted" src="images/08-run-workflow-button-light.svg">
+</picture>
 
 ![Run workflow confirmation dropdown showing branch selection and final Run workflow button](images/08-run-workflow-confirm-dropdown.svg)
 

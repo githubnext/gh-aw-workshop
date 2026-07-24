@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Workflow sidebar with the Run workflow button highlighted">
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+  <rect x="70" y="46" width="1060" height="468" rx="18" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+  <path d="M70 64c0-9.941 8.059-18 18-18h1024c9.941 0 18 8.059 18 18v26H70V64z" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+  <circle cx="102" cy="68" r="6" fill="#d0d7de"/>
+  <circle cx="126" cy="68" r="6" fill="#d0d7de"/>
+  <circle cx="150" cy="68" r="6" fill="#d0d7de"/>
+  <rect x="210" y="56" width="540" height="24" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="232" y="72" font-family="Arial, sans-serif" font-size="14" fill="#57606a">github.com/your-org/your-repo</text>
+
+  <line x1="70" y1="108" x2="1130" y2="108" stroke="#d0d7de" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" font-size="20" fill="#57606a">
+    <text x="120" y="140">Code</text>
+    <text x="215" y="140">Issues</text>
+    <text x="315" y="140">Pull requests</text>
+    <text x="500" y="140" fill="#24292f">Actions</text>
+  </g>
+  <rect x="495" y="148" width="84" height="4" rx="2" fill="#0969da"/>
+
+  <rect x="108" y="176" width="250" height="274" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="136" y="214" font-family="Arial, sans-serif" font-size="20" fill="#24292f">Workflows</text>
+  <rect x="126" y="232" width="214" height="58" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="146" y="268" font-family="Arial, sans-serif" font-size="20" fill="#24292f">Daily Report Status</text>
+  <text x="146" y="320" font-family="Arial, sans-serif" font-size="18" fill="#57606a">repository-status-check</text>
+  <text x="146" y="360" font-family="Arial, sans-serif" font-size="18" fill="#57606a">release-summary</text>
+
+  <rect x="386" y="176" width="706" height="274" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="426" y="220" font-family="Arial, sans-serif" font-size="26" fill="#24292f">Daily Report Status</text>
+  <text x="426" y="256" font-family="Arial, sans-serif" font-size="18" fill="#57606a">This workflow gathers repository status and posts a summary.</text>
+  <rect x="426" y="292" width="190" height="52" rx="10" fill="#0969da"/>
+  <text x="521" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Run workflow</text>
+  <rect x="650" y="286" width="398" height="64" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-dasharray="8 6"/>
+  <text x="849" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#57606a">Highlighted manual run control</text>
+
+  <text x="600" y="532" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#57606a">Workflow sidebar with the Run workflow button highlighted</text>
+</svg>
