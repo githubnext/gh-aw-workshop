@@ -62,7 +62,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
   <img alt="Actions tab showing where to find Daily Report Status in the workflow list" src="images/08-actions-tab-light.svg">
 </picture>
 
-Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page, confirm both workflow files are on `main`, and run `gh aw compile` in your Codespace to check for compile errors.
+Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page, confirm both workflow files are on `main`, and run `gh aw compile` in your prepared terminal to check for compile errors.
 
 If the run fails immediately with a model-access or authentication error, return to [Step 7d](07d-confirm-model-access.md) and confirm the selected billing method matches the workflow.
 
