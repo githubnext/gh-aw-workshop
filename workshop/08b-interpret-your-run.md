@@ -41,7 +41,11 @@ After the run finishes, scroll to the **Summary** section on the run page. This 
 
 Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) record.
 
-![Workflow run summary panel](images/08-run-summary.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08-run-summary-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08-run-summary-light.svg">
+  <img alt="Workflow run summary panel" src="images/08-run-summary-light.svg">
+</picture>
 
 ## Check common error patterns first
 
