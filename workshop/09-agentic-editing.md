@@ -23,7 +23,7 @@ The `agentic-workflows` skill is a Copilot skill installed in your practice repo
 You invoke it in the GitHub Copilot **Chat** or **Agents** tab:
 
 ```text
-Using the agentic-workflows skill, [your request here]
+/agentic-workflows [your request here]
 ```
 
 The skill recognizes three core task types for day-to-day workflow maintenance:
@@ -43,10 +43,9 @@ After running your workflow in Step 8, you may have noticed the agent's comment 
 Open the GitHub Copilot **Chat** or **Agents** tab in your practice repository and paste:
 
 ```text
-Using the agentic-workflows skill, update .github/workflows/daily-report-status.md
+/agentic-workflows update .github/workflows/daily-report-status.md
 so that the agent adds one sentence explaining why resolving the most-reacted issue
 would benefit the team. Keep the existing [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) constraint (at most one comment).
-Run gh aw compile after the edit.
 ```
 
 The skill loads the update prompt, makes the targeted change to the Markdown body, recompiles the workflow, and shows you the diff. Review the updated Markdown body and confirm the new instruction is clear and specific before committing.
@@ -80,7 +79,7 @@ If your run from Step 8 finished but the output was empty, vague, or missing ent
 Paste this prompt in the GitHub Copilot **Chat** or **Agents** tab, replacing the bracketed text with what you actually observed:
 
 ```text
-Using the agentic-workflows skill, debug .github/workflows/daily-report-status.md.
+/agentic-workflows debug .github/workflows/daily-report-status.md.
 The last run [describe the problem — for example: "posted a comment but left the
 summary blank" or "finished without posting anything"].
 Suggest the most likely cause and propose one change to the workflow brief to fix it.
@@ -109,9 +108,8 @@ Once the workflow produces correct output, you can reduce how much AI Credit it 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
 ```text
-Using the agentic-workflows skill, optimize .github/workflows/daily-report-status.md
+/agentic-workflows optimize .github/workflows/daily-report-status.md
 to reduce token usage. Apply only changes that do not change the workflow's outcome.
-Run gh aw compile after the edit.
 ```
 
 The skill applies techniques such as removing redundant instructions, consolidating repeated constraints, and trimming unused safe-output declarations.
@@ -125,8 +123,8 @@ Review the Markdown body of your workflow and remove any sentences that repeat t
 
 ## ✅ Checkpoint
 
-- [ ] I used the `agentic-workflows` skill or edited the file directly to improve the workflow brief
-- [ ] `gh aw compile` completed without errors after the edit
+- [ ] I used the `/agentic-workflows` skill to improve the workflow brief
+- [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed
 - [ ] I re-ran the workflow from **Actions** and confirmed the updated output matches my intent
 

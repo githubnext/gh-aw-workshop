@@ -37,7 +37,18 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 
 ### Add an MCP server to your workflow
 
-Open your daily-status workflow file (`.github/workflows/daily-status.md`) and find the YAML frontmatter at the top. Add a `tools` block:
+In the GitHub Copilot **Chat** or **Agents** tab, paste:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to add a `tools:` block
+with `github: mode: gh-proxy, toolsets: [default]` to the frontmatter, and update
+the task brief to tell the agent to use GitHub tools to fetch the last 5 commits and
+all open issues labelled `bug`, then write a daily summary and post it as a new issue.
+```
+
+The skill adds the `tools:` block and updates the brief. Review the diff before committing.
+
+Here is the `tools:` block the skill will add:
 
 ```yaml
 ---
@@ -53,6 +64,13 @@ tools:
     toolsets: [default]
 ---
 ```
+
+<details>
+<summary>🖥️ Terminal path</summary>
+
+Open your daily-status workflow file (`.github/workflows/daily-status.md`) and find the YAML frontmatter at the top. Add a `tools` block with the content shown above, then run `gh aw compile`.
+
+</details>
 
 > [!NOTE]
 > The `github` tool entry tells gh-aw to start the GitHub MCP server in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
@@ -85,12 +103,11 @@ Post the summary as a new issue titled "Daily Status — {today's date}".
 
 The agent will read this brief, decide which MCP tool calls to make, and weave the results into its final output — all without you scripting each API call manually.
 
-### Validate and push
+### Push and trigger a run
 
-Compile before pushing:
+The `/agentic-workflows` skill recompiles the lock file automatically. Commit both files and push:
 
 ```bash
-gh aw compile
 git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
 git commit -m "feat: add MCP tools to daily status workflow"
 git push

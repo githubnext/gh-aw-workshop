@@ -28,6 +28,33 @@ Agentic workflows can fail for several reasons:
 
 Recognising these patterns helps you write instructions that stay on track.
 
+### Apply all three changes with the skill
+
+In the GitHub Copilot **Chat** or **Agents** tab, paste:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to:
+1. Add an explicit fallback instruction to the task brief for when there are no issues or pull requests.
+2. Add `timeout-minutes: 10` to the frontmatter.
+3. Add a fallback message to the safe-output call for quiet runs.
+```
+
+The skill applies all three changes and recompiles the lock file. Review the diff before committing.
+
+<details>
+<summary>🖥️ Terminal path</summary>
+
+Make the three edits manually (see the reference content below), then run:
+
+```bash
+gh aw compile
+git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git commit -m "feat: add timeout and defensive fallback to daily-status"
+git push
+```
+
+</details>
+
 ### Write a defensive task brief
 
 A defensive task brief tells the agent what to do when data is missing or sparse. Add an explicit fallback instruction in your task description:
@@ -76,19 +103,18 @@ If no meaningful changes were found, call noop with the message:
 
 This makes it easy to distinguish a healthy "quiet" run from a silent failure in the Actions run log.
 
-### Compile and push your changes
+### Commit and push your changes
 
-After editing the frontmatter and task brief, regenerate the lock file so `timeout-minutes` and your defensive brief take effect:
+The `/agentic-workflows` skill recompiles the lock file automatically. Commit both files and push:
 
 ```bash
-gh aw compile
 git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
 git commit -m "feat: add timeout and defensive fallback to daily-status"
 git push
 ```
 
 > [!IMPORTANT]
-> Frontmatter changes — including `timeout-minutes` — only take effect after `gh aw compile` regenerates the `.lock.yml` file. GitHub Actions runs the compiled lock file, not the `.md` source.
+> Frontmatter changes — including `timeout-minutes` — only take effect after the lock file is recompiled. The `/agentic-workflows` skill handles this automatically. If you edited manually in a terminal, run `gh aw compile` before pushing.
 
 ### Verify your changes
 
@@ -103,7 +129,7 @@ After pushing:
 - [ ] Your task brief includes an explicit fallback instruction for empty or missing data
 - [ ] Your workflow frontmatter sets `timeout-minutes`
 - [ ] Your safe-output call includes a fallback message for quiet runs
-- [ ] You ran `gh aw compile` and pushed the updated `.lock.yml` alongside the `.md` file
+- [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] A manual run completes successfully and the safe output step is visible in the log
 - [ ] You can name at least two common agentic workflow failure modes and how to mitigate them
 

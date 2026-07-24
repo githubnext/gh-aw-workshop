@@ -2,11 +2,11 @@
 <!-- page-adventure: core -->
 # Test and Improve Your Workflow
 
-_The fastest path to a better workflow is a tight loop: change one thing, compile, test, and compare the result._
+_The fastest path to a better workflow is a tight loop: describe what you want, review the diff, test, and compare the result._
 
 ## 🎯 What You'll Do
 
-You'll make one small improvement to your workflow, recompile it before testing, trigger a fresh run, and compare the new output against the previous one.
+You'll make one small improvement to your workflow, trigger a fresh run, and compare the new output against the previous one.
 
 By the end of this step, you'll have a repeatable iteration loop you can use any time the workflow output is vague, incorrect, or missing something important.
 
@@ -31,38 +31,43 @@ Pick only one problem for this round. Small, isolated changes make it much easie
 
 ## Make One Targeted Change
 
-Open your workflow source file, such as `.github/workflows/daily-report-status.md`, and change only one instruction in the Markdown body or the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) at the top of the file.
+In the GitHub Copilot **Chat** or **Agents** tab, describe the one change you want to make:
 
-Examples of focused changes:
+```text
+/agentic-workflows update .github/workflows/daily-report-status.md to [your targeted change]
+```
+
+Examples of focused changes to describe:
 
 - ask for a shorter or more structured output format
 - name one missing field the agent should include
 - add a fallback instruction for empty results
 - tighten one permission or safe-output rule
 
-If you are using a Copilot agent to edit the file, tell it to make the change, review the diff, and then run `gh aw compile` before testing.
+The skill makes the change, recompiles the lock file, and shows you the diff. Review it before committing.
 
-> [!IMPORTANT]
-> Compile after every workflow edit before you test it. GitHub Actions runs the compiled `.lock.yml` file, not the source `.md` file, so skipping `gh aw compile` means you are testing stale workflow logic.
+<details>
+<summary>🖥️ Terminal path</summary>
 
-## Compile Before You Test
-
-From your repository root, run:
+Open your workflow source file, such as `.github/workflows/daily-report-status.md`, and change only one instruction in the Markdown body or the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) at the top of the file. After editing, run:
 
 ```bash
 gh aw compile
 ```
 
-This updates the compiled lock file that GitHub Actions actually executes.
+> [!IMPORTANT]
+> Always run `gh aw compile` after manual edits before testing. GitHub Actions runs the compiled `.lock.yml` file, not the source `.md` file.
 
-If the compiler reports an error, fix that first. Do not start a new test run until compilation succeeds.
+<!-- -->
 
 > [!TIP]
-> If you expect to make several small edits in a row, `gh aw compile --watch` can speed up the loop by recompiling after each save.
+> If you expect to make several small edits in a row, `gh aw compile --watch` recompiles after each save.
+
+</details>
 
 ## Commit Both Workflow Files
 
-After `gh aw compile` succeeds, commit both the source workflow and the regenerated lock file:
+Commit both the source workflow and the recompiled lock file:
 
 ```bash
 git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
@@ -90,8 +95,7 @@ If you want a stricter review loop, score each run for accuracy, completeness, a
 
 - [ ] I identified one specific problem from a real workflow run
 - [ ] I changed only one instruction or configuration detail before testing again
-- [ ] I ran `gh aw compile` after the edit and before triggering the next run
-- [ ] I committed both the workflow `.md` file and the regenerated `.lock.yml` file
+- [ ] Both the workflow `.md` file and the recompiled `.lock.yml` are committed and pushed
 - [ ] I compared the new run with the previous run and decided what to change next
 
 <!-- journey: all -->

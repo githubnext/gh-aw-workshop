@@ -33,7 +33,27 @@ Think of it as a handoff. First, the workflow gathers facts in a predictable way
 
 ### Fetch commit history
 
+In the GitHub Copilot **Chat** or **Agents** tab, paste:
+
+```text
+/agentic-workflows update .github/workflows/daily-status.md to add two shell steps
+that fetch (1) the recent commit log from the last 24 hours with step id `recent`
+and (2) all open issues with step id `issues`, and update the AI prompt to inject
+those step outputs into the summary.
+```
+
+The skill adds both steps and updates the task brief. Review the diff before committing.
+
+<details>
+<summary>🖥️ Terminal path</summary>
+
 Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
+
+First, fetch the recent commit log, then fetch open issues (see the YAML reference blocks below). After adding both steps, run `gh aw compile` and push.
+
+</details>
+
+Here is what the first step looks like — the skill will add this for you:
 
 First, fetch the recent commit log:
 
@@ -104,13 +124,9 @@ GitHub resolves the step-output expressions before the AI sees the prompt, so th
 
 ✏️ Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
 
-### Compile and test
+### Compile, push, and test
 
-```bash
-gh aw compile
-```
-
-Fix any errors, then push and trigger a manual run:
+The `/agentic-workflows` skill recompiles the lock file automatically. If you edited the workflow manually, run `gh aw compile` first, then push:
 
 ```bash
 git add .github/workflows/daily-status.md
@@ -141,7 +157,7 @@ Once you're comfortable with this pattern, the same technique works for:
 - [ ] Your workflow has a recent-commits step with `id: recent`
 - [ ] Your workflow has an open-issues step with `id: issues`
 - [ ] Your AI prompt uses both saved outputs
-- [ ] `gh aw compile` reports no errors
+- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are compiled, committed, and pushed
 - [ ] A manual run completes and the summary mentions both commits and open issues
 - [ ] You can explain how the workflow passes fetched data into the prompt
 - [ ] You can describe what happens if the recent commit output is empty and how your prompt handles it
