@@ -259,7 +259,7 @@ For each student in the generated cohort, simulate their experience step-by-step
 2. Build a candidate set from the five highest-dropout steps and the five lowest-scoring curriculum steps.
 3. Semantically score and rank every candidate using the `stateReadiness`, `pathClarity`, and `recoverySupport` dimensions defined below, then select the three highest-risk steps for detailed analysis.
 4. Inspect every workshop page mapped to each selected step, plus the preceding activities that produce its required state, before writing `/tmp/gh-aw/agent/sim/data/agent-step-insights.json`.
-5. A simulated step may map to several pages; do not treat a file limit as a step limit. For example, inspect the learner's Step 7 authoring path (Terminal, GitHub UI, or GitHub Copilot) and the shared Step 7d model-access activity before adjusting Step 8.
+5. A simulated step may map to several pages; do not treat a file limit as a step limit. For example, inspect the learner's Step 7 Codespace authoring pages and the shared Step 7d model-access activity before adjusting Step 8.
 
 Evaluate content assumptions semantically instead of inferring state from keyword counts. Use one focused yes/no question per assumption, answer only `YES`, `NO`, or `UNKNOWN`, and cite `file:line` evidence. Copy each step's `contentHash` from the baseline output into `evaluatedContentHash`. The simulator ignores evaluations when that hash does not match the current mapped page content, so page edits require fresh evaluations.
 
@@ -317,13 +317,9 @@ Use this JSON shape:
   - `workflow_source_created_terminal`
   - `workflow_compiled_terminal`
   - `workflow_published_terminal`
-  - `workflow_source_created_copilot`
-  - `workflow_compiled_copilot`
-  - `workflow_published_copilot`
-  - `cca_authoring_guidance`
   - `copilot_centralized_billing_configured`
   - `copilot_personal_billing_configured`
-- Evaluate the terminal and Copilot paths independently. A path passes only when its instructions and checkpoint ensure the learner completes the action; a nearby keyword or optional suggestion is not enough.
+- Evaluate the Codespace terminal path using its instructions and checkpoint. A nearby keyword or optional suggestion is not enough.
 - For `workflow_published_*`, confirm that both the source `.md` and generated `.lock.yml` reach the repository's default branch.
 - For each billing assumption, confirm the content selects that billing method, applies its matching permission or secret configuration, recompiles after changes, and commits the resulting source and lock files.
 - Use `UNKNOWN` when the mapped pages do not provide enough evidence. `UNKNOWN` does not update state.
