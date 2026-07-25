@@ -272,6 +272,10 @@ if (fs.existsSync(workshopImagesDir)) {
 const faviconSrc = path.join(__dirname, 'static', 'favicon.svg');
 fs.copyFileSync(faviconSrc, path.join(distDir, 'favicon.svg'));
 
+// Copy theme chooser script
+const docsThemeSrc = path.join(__dirname, 'static', 'docs-theme.js');
+fs.copyFileSync(docsThemeSrc, path.join(distDir, 'docs-theme.js'));
+
 // Copy Primer CSS
 const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
@@ -350,11 +354,17 @@ const docsCss = `/* Improve link discoverability in rendered workshop docs */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  html[data-color-mode="auto"] {
     --workshop-link-color: var(--fgColor-accent, #58a6ff);
     --workshop-link-visited-color: var(--fgColor-done, #bc8cff);
     --workshop-link-hover-color: var(--fgColor-accent, #79c0ff);
   }
+}
+
+html[data-color-mode="dark"] {
+  --workshop-link-color: var(--fgColor-accent, #58a6ff);
+  --workshop-link-visited-color: var(--fgColor-done, #bc8cff);
+  --workshop-link-hover-color: var(--fgColor-accent, #79c0ff);
 }
 
 body,
@@ -733,26 +743,47 @@ html {
 }
 
 @media (prefers-color-scheme: dark) {
-  .workshop-nav-btn-primary {
+  html[data-color-mode="auto"] .workshop-nav-btn-primary {
     background-color: var(--bgColor-accent-emphasis, #1f6feb);
     color: #ffffff;
   }
-  .workshop-nav-btn-primary:hover,
-  .workshop-nav-btn-primary:focus-visible {
+  html[data-color-mode="auto"] .workshop-nav-btn-primary:hover,
+  html[data-color-mode="auto"] .workshop-nav-btn-primary:focus-visible {
     background-color: var(--bgColor-accent-emphasis, #1f6feb);
     color: #ffffff;
     filter: brightness(0.9);
   }
-  .workshop-nav-btn-secondary {
+  html[data-color-mode="auto"] .workshop-nav-btn-secondary {
     color: var(--fgColor-default, #e6edf3);
     background-color: var(--bgColor-muted, #161b22);
     border-color: var(--borderColor-default, #30363d);
   }
-  .workshop-nav-btn-secondary:hover,
-  .workshop-nav-btn-secondary:focus-visible {
+  html[data-color-mode="auto"] .workshop-nav-btn-secondary:hover,
+  html[data-color-mode="auto"] .workshop-nav-btn-secondary:focus-visible {
     color: var(--fgColor-default, #e6edf3);
     background-color: var(--bgColor-subtle, #1c2128);
   }
+}
+
+html[data-color-mode="dark"] .workshop-nav-btn-primary {
+  background-color: var(--bgColor-accent-emphasis, #1f6feb);
+  color: #ffffff;
+}
+html[data-color-mode="dark"] .workshop-nav-btn-primary:hover,
+html[data-color-mode="dark"] .workshop-nav-btn-primary:focus-visible {
+  background-color: var(--bgColor-accent-emphasis, #1f6feb);
+  color: #ffffff;
+  filter: brightness(0.9);
+}
+html[data-color-mode="dark"] .workshop-nav-btn-secondary {
+  color: var(--fgColor-default, #e6edf3);
+  background-color: var(--bgColor-muted, #161b22);
+  border-color: var(--borderColor-default, #30363d);
+}
+html[data-color-mode="dark"] .workshop-nav-btn-secondary:hover,
+html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
+  color: var(--fgColor-default, #e6edf3);
+  background-color: var(--bgColor-subtle, #1c2128);
 }
 
 @media (max-width: 543px) {
@@ -769,6 +800,46 @@ html {
     white-space: normal;
     align-items: flex-start;
   }
+}
+
+.workshop-menu-footer {
+  flex: 0 0 auto;
+  padding: 12px 20px;
+  border-top: 1px solid var(--borderColor-muted, #d0d7de);
+}
+.workshop-theme-chooser {
+  display: flex;
+  border: 1px solid var(--borderColor-default, #d0d7de);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.workshop-theme-btn {
+  flex: 1;
+  padding: 6px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--fgColor-muted, #59636e);
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--borderColor-default, #d0d7de);
+  cursor: pointer;
+}
+.workshop-theme-btn:last-child {
+  border-right: 0;
+}
+.workshop-theme-btn:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+  color: var(--fgColor-default, #1f2328);
+}
+.workshop-theme-btn:focus-visible {
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: -2px;
+}
+.workshop-theme-btn[aria-pressed="true"] {
+  background-color: var(--bgColor-accent-muted, #ddf4ff);
+  color: var(--fgColor-accent, #0969da);
+  font-weight: 600;
 }
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
@@ -917,6 +988,7 @@ const page = `<!DOCTYPE html>
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
   <link rel="stylesheet" href="docs.css">
+  <script src="docs-theme.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -934,6 +1006,13 @@ const page = `<!DOCTYPE html>
       <nav class="workshop-menu-nav" aria-label="All workshop pages">
 ${workshopMenu}
       </nav>
+      <footer class="workshop-menu-footer">
+        <div class="workshop-theme-chooser" role="group" aria-label="Color theme">
+          <button type="button" class="workshop-theme-btn" data-theme="light">Light</button>
+          <button type="button" class="workshop-theme-btn" data-theme="auto">System</button>
+          <button type="button" class="workshop-theme-btn" data-theme="dark">Dark</button>
+        </div>
+      </footer>
     </div>
   </dialog>
   <dialog class="image-inspector" id="image-inspector" aria-labelledby="image-inspector-title">
