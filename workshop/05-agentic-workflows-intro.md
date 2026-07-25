@@ -38,7 +38,11 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 
 ## Three things to know
 
-![Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub](images/05-workflow-lifecycle.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/05-workflow-lifecycle-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/05-workflow-lifecycle-light.svg">
+  <img alt="Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub" src="images/05-workflow-lifecycle-light.svg">
+</picture>
 
 - **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.

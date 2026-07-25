@@ -73,7 +73,11 @@ Type your command after the `$` prompt and press Enter. Output appears below; a 
 
 The diagram below shows your Codespace connection to GitHub.
 
-![Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub](images/02a-codespace-architecture.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02a-codespace-architecture-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02a-codespace-architecture-light.svg">
+  <img alt="Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub" src="images/02a-codespace-architecture-light.svg">
+</picture>
 
 1. Run these commands in the Codespace terminal:
 
