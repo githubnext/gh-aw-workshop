@@ -50,3 +50,10 @@ test("shell code blocks are wrapped in a terminal-block UI", () => {
   assert.ok(css.includes(".terminal-dot"), "expected .terminal-dot in CSS");
   assert.ok(css.includes(".terminal-pre"), "expected .terminal-pre in CSS");
 });
+
+test("rendered workshop images use GitHub-like rounded corners", () => {
+  const { css } = buildDocs();
+
+  assert.ok(css.includes(".markdown-body img {\n  display: block;\n  width: min(100%, 720px);\n  height: auto;\n  margin-inline: auto;\n  border-radius: 6px;\n}"));
+  assert.ok(css.includes(".image-inspector-image {\n  display: block;\n  max-width: min(88vw, 1120px);\n  max-height: calc(96vh - 96px);\n  width: auto;\n  height: auto;\n  margin: 0 auto;\n  border-radius: 6px;\n}"));
+});
