@@ -8,6 +8,17 @@
 
 These exercises help you apply what you just learned — deciding when to use an agentic workflow and drafting your first task brief.
 
+## The classification rule in brief
+
+Use this table to decide before you look at each answer:
+
+| If the task… | Use |
+|---|---|
+| Runs the same fixed steps every time — no reading, no judgment, deterministic output | **Standard Actions workflow** |
+| Reads live data, applies judgment to decide what matters, and produces output that varies each run | **Agentic workflow** |
+
+The two signals to check first: **Does the task require judgment?** and **Can you predict the exact output before the run starts?** If judgment is required or output cannot be predetermined, it is agentic.
+
 ## Try it: agentic or standard?
 
 For each task below, decide whether it calls for an **agentic workflow** or a **standard Actions workflow**, then reveal the answer.
@@ -21,6 +32,8 @@ For each task below, decide whether it calls for an **agentic workflow** or a **
 
 **Standard Actions workflow.** Every run follows the same fixed steps: run lint, run tests, report the exit code. No judgment is required.
 
+**If you chose agentic:** re-read the table above — can you predict the exact output (pass or fail) before the run? Yes, because the output depends only on fixed commands and exit codes, not on reading and reasoning about live data. Use the table's "judgment required" row as your primary signal.
+
 </details>
 
 **Task B:** Each morning, read all open issues, decide which ones look most urgent, and post a short triage summary.
@@ -31,6 +44,8 @@ For each task below, decide whether it calls for an **agentic workflow** or a **
 <summary>Reveal Task B answer</summary>
 
 **Agentic workflow.** The agent reads live issue data, applies judgment to assess urgency, and composes a summary that differs every run based on what it finds.
+
+**If you chose standard:** the phrase "decide which ones look most urgent" is the signal — deciding requires reading real data and applying judgment, which cannot be encoded as a deterministic script.
 
 </details>
 

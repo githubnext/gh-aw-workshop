@@ -54,6 +54,47 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 
 </details>
 
+## When to use an agentic workflow
+
+Before you look at the diagram, apply the classification rule. Use this table to decide whether a task calls for an agentic or a standard Actions workflow:
+
+| Signal | Agentic workflow | Standard Actions workflow |
+|---|---|---|
+| **Task output** | Varies every run — depends on what the agent finds | Same every run — a fixed script produces deterministic output |
+| **Instructions** | Plain-English brief — no shell commands needed | YAML `run:` steps with fixed commands and logic |
+| **Judgment required** | Agent must read context and decide what matters | No judgment — the same steps run regardless of content |
+| **Typical trigger** | Schedule, issue comment, PR event, or manual dispatch | Push, pull request, or tag |
+
+**Try it: classify before you read on.**
+
+Pick the label — agentic or standard — for each task below, then reveal the answer.
+
+**Task 1:** Run unit tests on every pull request and fail the check if any test exits non-zero.
+
+- [ ] I've made my decision for Task 1
+
+<details>
+<summary>Reveal Task 1 answer</summary>
+
+**Standard Actions workflow.** The steps are identical on every run — no judgment needed. Output (pass/fail) is determined by fixed commands, not by reading and reasoning about live data.
+
+**If you chose agentic:** check the "judgment required" row. This task only needs to execute the same commands and report an exit code — there is nothing to read and reason about. Revise your mental model before Task 2.
+
+</details>
+
+**Task 2:** Each morning, read open issues, decide which look most urgent, and post a short triage digest.
+
+- [ ] I've made my decision for Task 2
+
+<details>
+<summary>Reveal Task 2 answer</summary>
+
+**Agentic workflow.** The agent reads live issue data, applies judgment to assess urgency, and composes a summary that differs every run based on what it finds.
+
+**If you chose standard:** notice that the output cannot be predetermined — it depends entirely on what issues exist today, and "decide which look most urgent" requires reasoning, not a fixed comparison.
+
+</details>
+
 ## Three things to know
 
 Before you study the diagram, write your prediction: what two files are involved in an agentic workflow, and which one does GitHub Actions run?
@@ -169,6 +210,7 @@ If any blank was blank, re-read the relevant section and try again before the ch
 
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
+- [ ] I correctly classified both tasks in "When to use an agentic workflow" before revealing the answers
 - [ ] I can identify the three parts: trigger → agent → safe output
 - [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
 - [ ] I wrote my own description for each lifecycle term before revealing the answer
