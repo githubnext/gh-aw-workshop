@@ -100,16 +100,12 @@ Use this path for a personal repository, or when the owning organization does no
 > When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission before you set up the secret, then recompile.
 
 1. Remove `copilot-requests: write` from `daily-report-status.md`.
-2. Run:
+2. Generate a fine-grained PAT with **Copilot requests: Read-only** in [github.com/settings/tokens](https://github.com/settings/tokens).
+3. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
+4. Add a new repository secret named `COPILOT_GITHUB_TOKEN` and paste the PAT value.
+5. Recompile and commit `daily-report-status.lock.yml`.
 
-   ```bash
-   gh aw secrets bootstrap --engine copilot
-   ```
-
-   This guided flow checks whether `COPILOT_GITHUB_TOKEN` is needed, prompts for it if missing, and stores it as a repository secret.
-3. Recompile and commit `daily-report-status.lock.yml`.
-
-For the full manual PAT procedure with detailed troubleshooting, see [Method PAT: `COPILOT_GITHUB_TOKEN`](side-quest-06-03b-copilot-github-token.md).
+For the full browser walkthrough, see [Method 2 (UI-only): `COPILOT_GITHUB_TOKEN`](side-quest-06-03c-copilot-github-token-ui-only.md). If you prefer terminal setup, use [Method 2: `COPILOT_GITHUB_TOKEN` secret](side-quest-06-03b-copilot-github-token.md).
 
 ## Check the final configuration
 
