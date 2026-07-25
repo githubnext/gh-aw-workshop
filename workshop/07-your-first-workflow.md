@@ -39,6 +39,28 @@ Compile it after creating it.
 
 Review the agent's edit, then continue. Prefer this path over hand-editing each line.
 
+**What the agent created** — the generated file should look roughly like this:
+
+```yaml
+---
+name: Daily Report Status
+on:
+  schedule:
+    - cron: "0 9 * * *"      # runs every day at 09:00 UTC
+  workflow_dispatch: {}       # also allows manual runs
+permissions:
+  contents: read
+  issues: read
+  copilot-requests: write     # required to call the AI model
+safe-outputs:
+  - key: create-issue         # the only write action the agent may perform
+---
+
+Generate an activity report for this repository and post it as a new issue.
+```
+
+The **frontmatter** tells GitHub Actions when to run, what permissions the agent has, and which write action it may use (`create-issue`). The **task brief** below the second `---` is what the AI agent reads and acts on.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07a-workflow-dispatch-trigger-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="images/07a-workflow-dispatch-trigger-light.svg">
@@ -69,9 +91,11 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 
 ## ✅ Checkpoint
 
-- [ ] `.github/workflows/daily-report-status.md` includes `permissions` with `copilot-requests: write`
-- [ ] `gh aw compile` reports valid
+- [ ] `.github/workflows/daily-report-status.md` exists and contains an `on: schedule:` trigger in the frontmatter
+- [ ] The file includes `permissions` with `copilot-requests: write`
+- [ ] `gh aw compile` exits with no errors and produces `daily-report-status.lock.yml`
 - [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed to `main`
+- [ ] The workflow appears in the **Actions** tab of your repository under "Daily Report Status"
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 <!-- journey: all -->
