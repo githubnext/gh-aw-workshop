@@ -117,6 +117,19 @@ When the PR only touches test files, note that explicitly and skip the "things t
 
 Then recompile, push, and update the PR branch to trigger another run.
 
+## Improve the workflow with `/agentic-workflows`
+
+When you want to modify the PR reviewer behavior, use Copilot Chat with the `/agentic-workflows` skill instead of editing from scratch. For example:
+
+```text
+/agentic-workflows improve my PR reviewer brief so it highlights risky file types and keeps comments under 120 words
+```
+
+Review the suggested changes, apply what you agree with, then run `gh aw compile` and commit both workflow files.
+
+> [!NOTE]
+> If the workflow does not trigger after you open or update a PR, first confirm the pull request targets your default branch and that your workflow still includes `on: pull_request` with `types: [opened, synchronize]`.
+
 ## ✅ Checkpoint
 
 - [ ] I created `.github/workflows/pr-reviewer.md` with a `pull_request` trigger
@@ -124,6 +137,7 @@ Then recompile, push, and update the PR branch to trigger another run.
 - [ ] I opened a test pull request and the workflow triggered automatically
 - [ ] The workflow posted exactly one comment on my pull request
 - [ ] I can explain why `safe-outputs: create-issue-comment: limit: 1` matters for an event-driven workflow
+- [ ] I used `/agentic-workflows` to iterate on the PR reviewer brief
 
 <!-- journey: all -->
 **Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
