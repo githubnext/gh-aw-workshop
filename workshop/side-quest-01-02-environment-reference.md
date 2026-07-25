@@ -70,7 +70,11 @@ You use `gh` for GitHub-specific terminal tasks like authentication checks, repo
 
 #### `gh-aw` CLI extension
 
-![Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow](images/side-quest-01-02-gh-aw.svg)
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-aw-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-aw-light.svg">
+   <img alt="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow" src="images/side-quest-01-02-gh-aw-light.svg">
+</picture>
 
 You use `gh aw` to compile agentic workflow files.
 
