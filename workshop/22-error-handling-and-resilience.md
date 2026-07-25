@@ -100,7 +100,7 @@ timeout-minutes: 10
 >
 > </details>
 
-### Add a fallback message to safe outputs
+### Add a fallback message to [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 
 When your workflow uses a `noop` or comment safe output, always include a meaningful fallback body. If the agent reaches the output step but has nothing to report, this ensures the run still records a visible result:
 
