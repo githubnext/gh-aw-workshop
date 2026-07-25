@@ -4,7 +4,7 @@
 
 > _Optional: install `gh-aw` on your own machine instead of in the recommended Codespace._
 
-Using a Codespace instead? Return to [Install `gh-aw` in Your Codespace](06a-install-terminal.md).
+Using a Codespace instead? Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
 
 ## 🎯 What You'll Do
 
