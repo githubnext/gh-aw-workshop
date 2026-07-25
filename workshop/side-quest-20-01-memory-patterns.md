@@ -83,22 +83,7 @@ tools:
 
 ### `cache-memory` task brief example
 
-```markdown
-You monitor this repository for newly opened issues and post a daily digest.
-
-Use your `daily-status-seen-issues` memory to track which issue numbers you
-have already reported on. On each run:
-
-1. Fetch all currently open issues.
-2. Filter out any issue numbers that appear in your memory.
-3. If there are new issues, post a comment on the tracking issue listing only
-   the new ones.
-4. Add the new issue numbers to your memory so you skip them next time.
-5. If there are no new issues, post nothing.
-```
-
-> [!TIP]
-> Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
+See the task brief example in [Make Your Workflow Remember Across Runs](20-persistent-memory.md) for a complete illustration of this pattern.
 
 ---
 
