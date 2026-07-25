@@ -996,7 +996,7 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   color: #e6edf3;
 }
 
-/* Agent prompt blocks (`prompt`) */
+/* Agent prompt blocks */
 .agent-prompt-block {
   border-radius: 8px;
   overflow: hidden;
