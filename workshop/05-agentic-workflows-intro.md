@@ -84,12 +84,36 @@ The **compile command** — it reads the `.md` source and writes the `.lock.yml`
 > [!TIP]
 > Want more examples of how the two-file structure works? [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) includes a fully annotated workflow pair.
 
+## Try it: predict and observe a task brief
+
+Before you reveal the example, write a one- or two-sentence task brief for this goal:
+
+> Post a daily issue digest that summarizes newly opened issues and flags anything that looks urgent.
+
+- [ ] I wrote my own brief before revealing the example
+
+<details>
+<summary>Reveal one possible brief</summary>
+
+You are a repository triage assistant. Each day, review issues opened in the last 24 hours, summarize each in one sentence, flag potential blockers or incidents, and post one concise digest comment for maintainers.
+
+</details>
+
+Now compare your draft to the revealed version:
+
+- Did you include a **time window** (for example, "last 24 hours")?
+- Did you specify the **output format** (single digest comment)?
+- Did you define at least one **priority signal** (for example, blockers or incidents)?
+
+If one part is missing, revise your brief once. This is the same predict-and-observe loop you will use later when you tune real workflows.
+
 ## ✅ Checkpoint
 
 - [ ] I can describe what an agentic workflow is in one sentence
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
 - [ ] I can identify the three parts: trigger → agent → safe output
 - [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
+- [ ] I practiced writing and revising a short workflow task brief
 
 <details>
 <summary>Still uncertain? Try this before moving on</summary>

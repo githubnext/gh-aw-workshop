@@ -28,6 +28,19 @@ Catching an access problem here saves debugging time in the billing steps and in
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
 
+## Pre-flight troubleshooting decision tree
+
+Use this quick check before you choose a billing path:
+
+- **You receive a normal reply in the Agents tab**
+  - Continue to **Choose one Copilot billing path**.
+- **You receive an access or entitlement error**
+  - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
+  - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
+  - Retry the same one-sentence prompt in the Agents tab.
+- **You still cannot get a reply after account checks**
+  - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
+
 ## Confirm the workflow engine
 
 Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
@@ -44,6 +57,15 @@ If you are working in Claude Code or OpenAI Codex, keep this first workflow on C
 Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
 
 ![Decision flow for choosing Copilot billing path: organization centralized billing or personal billing](images/07d-billing-path-decision.svg)
+
+### Billing quick-reference
+
+Use this table first, then follow the detailed steps for your selected path below.
+
+| If this is true | Choose this path | Key setting |
+|---|---|---|
+| Your organization provides centralized Copilot billing for Actions | **Organization with centralized Copilot billing** | Keep `copilot-requests: write`; no `COPILOT_GITHUB_TOKEN` secret |
+| You are in a personal repo, or your org does not provide centralized billing | **Personal billing** | Remove `copilot-requests: write`; configure `COPILOT_GITHUB_TOKEN` |
 
 ### Organization with centralized Copilot billing
 
