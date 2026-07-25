@@ -91,44 +91,12 @@ if: steps.recent.outputs.commit_count != '0'
 
 This condition is embedded into the generated lock file during [compilation](https://github.github.com/gh-aw/reference/compilation-process/); at runtime, GitHub Actions evaluates it and skips the agent job entirely whenever `commit_count` evaluates to `'0'`. You can also reference the count inside your prompt text to give the model concrete context — for example: `"Summarise the last ${{ steps.recent.outputs.commit_count }} commits"` anchors the analysis to the actual number of changes rather than leaving the model to guess the scope.
 
-### Exercise: Add a weekend skip condition
+### Go further: chain conditions for a weekend skip
 
-Now that the commit-count condition is in place, extend the workflow to also skip execution on weekends. This exercise reinforces how to chain multiple conditions in a single `if:` expression.
+Now that the commit-count condition is in place, you can extend the workflow to also skip on weekends. This exercise reinforces how to combine multiple conditions in a single `if:` expression.
 
-Use the `/agentic-workflows` skill to describe what you want:
-
-```text
-/agentic-workflows update .github/workflows/daily-status.md to also add a day-of-week step
-and extend the if condition to skip the agent job on Saturdays and Sundays.
-```
-
-<details>
-<summary>🖥️ Terminal path</summary>
-
-1. Add a step that writes the current day name as an output:
-
-```yaml
-- name: Check day of week
-  id: day
-  run: echo "day=$(date +%A)" >> $GITHUB_OUTPUT
-```
-
-1. Update the top-level `if:` to combine both conditions using `&&`:
-
-```yaml
-if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
-```
-
-1. Run `gh aw compile` to regenerate the lock file with the combined condition.
-
-</details>
-
-After confirming the diff, trigger a manual [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) run from the Actions tab. On a weekday with commits the agent job should complete normally; on a weekend or a day with no commits it should appear as **skipped** with a grey icon, as shown below.
-
-![Skipped step in GitHub Actions](images/15-skipped-step.svg)
-
-> [!NOTE]
-> The `if:` condition is applied during [compilation](https://github.github.com/gh-aw/reference/compilation-process/) and will not take effect until you compile and push both the `.md` source and the updated `.lock.yml` file. The `/agentic-workflows` skill handles compilation automatically.
+> [!TIP]
+> See [Side Quest: Chaining Conditions — Run an Agent Only When Security Findings Exist](side-quest-15-02-chaining-conditions.md) for a hands-on walkthrough: add a Dependabot alert-count step and chain it with a branch check so the agent only runs when there are real findings to act on.
 
 ### Commit and push your conditional logic
 
