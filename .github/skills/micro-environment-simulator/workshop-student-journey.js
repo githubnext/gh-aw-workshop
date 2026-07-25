@@ -38,7 +38,6 @@ const STEP_FILE_ALIASES = {
   "06-install-gh-aw": ["06-install-gh-aw.md"],
   "07-first-workflow": [
     "07-your-first-workflow.md",
-    "07a-part2-your-first-workflow-instructions.md",
     "07d-confirm-model-access.md"
   ],
   "08-run-your-workflow": ["08-run-your-workflow.md"],
@@ -205,7 +204,6 @@ function stepMetric(state, context, metric) {
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
     const relevantFiles = new Set([
       "07a-your-first-workflow-terminal.md",
-      "07a-part2-your-first-workflow-instructions.md",
       "07d-confirm-model-access.md"
     ]);
     return fileSignals
