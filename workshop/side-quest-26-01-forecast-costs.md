@@ -72,7 +72,7 @@ The output shows one row per workflow so you can spot which workflows drive the 
 
 ## Translate the P90 into `max-daily-ai-credits`
 
-The `max-daily-ai-credits` field caps how many AIC a workflow can consume across the last 24 hours for the triggering user. To pick a value that allows normal operation but blocks runaway spend:
+The `max-daily-ai-credits` field caps how many [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) a workflow can consume across the last 24 hours for the triggering user. To pick a value that allows normal operation but blocks runaway spend:
 
 1. Note the **P90 monthly** figure from `gh aw forecast`.
 2. Divide by 30 to get the P90 daily figure.

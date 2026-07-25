@@ -44,7 +44,7 @@ Use `firewall.md` to quickly identify blocked domains. For raw domain-level reco
 
 ## AIC billing details
 
-AIC (AI Credits) is the billing unit for agentic workflow inference and is derived from token consumption. Exact billing figures appear in your GitHub billing dashboard.
+[AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) (AI Credits) is the billing unit for agentic workflow inference and is derived from token consumption. Exact billing figures appear in your GitHub billing dashboard.
 
 The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the threat-detection model separately from the main agent turn. Both contribute to your organisation's total AIC usage.
 

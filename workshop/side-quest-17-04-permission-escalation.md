@@ -30,7 +30,7 @@ That is the problem. The workflow author requested one level of authority. The c
 
 A classic CI/CD pipeline runs a fixed script. If the script says "run tests," it runs tests. It does not invent extra steps.
 
-An agentic workflow is different. You set boundaries up front. But the agent decides at runtime which tools to call and whether to use a write surface. Every extra permission is extra risk. If the task only needs read access, any open write path increases the blast radius of a misdirected agent.
+An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) is different. You set boundaries up front. But the agent decides at runtime which tools to call and whether to use a write surface. Every extra permission is extra risk. If the task only needs read access, any open write path increases the blast radius of a misdirected agent.
 
 ---
 
