@@ -21,6 +21,10 @@ Think of it like a **scheduled email digest** you've set up in an app: every mor
 
 The agent always runs within a sandbox and posts results through a guardrailed output system — you will explore how this works in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
 
+Before opening the details below, write one concrete difference between an agentic workflow and a standard Actions workflow:
+
+- [ ] I've written one concrete difference in my own words
+
 <details>
 <summary>Why not just use a standard Actions workflow?</summary>
 
@@ -38,6 +42,10 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 
 ## Three things to know
 
+Before you study the diagram, write your prediction: what two files are involved in an agentic workflow, and which one does GitHub Actions run?
+
+- [ ] I've written my prediction
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/05-workflow-lifecycle-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="images/05-workflow-lifecycle-light.svg">
@@ -47,6 +55,10 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it is:** A Markdown file (`.md`) with YAML frontmatter and a plain-language brief. `gh aw compile` converts it into a standard Actions workflow (`.lock.yml`) that runs the agent.
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
+
+Now check your prediction: did you name both files (`.md` and `.lock.yml`) and identify which one Actions runs (`.lock.yml`)? If not, re-read the first bullet above before continuing.
+
+- [ ] My prediction matched — I got both files and which one Actions runs
 
 ## Try it: describe the lifecycle parts
 
@@ -111,11 +123,33 @@ You are a repository triage assistant. Each day, review issues opened in the las
 
 Now compare your draft to the revealed version:
 
-- Did you include a **time window** (for example, "last 24 hours")?
-- Did you specify the **output format** (single digest comment)?
-- Did you define at least one **priority signal** (for example, blockers or incidents)?
+- [ ] My brief included a **time window** (for example, "last 24 hours")
+- [ ] My brief specified the **output format** (single digest comment)
+- [ ] My brief defined at least one **priority signal** (for example, blockers or incidents)
 
-If one part is missing, revise your brief once. This is the same predict-and-observe loop you will use later when you tune real workflows.
+If any box is unchecked, revise your brief to add that element before continuing.
+
+## Self-check: three parts without looking
+
+Without scrolling back, fill each blank in your head, then reveal:
+
+- [ ] An agentic workflow always starts with a \_\_\_ (what triggers it?)
+- [ ] The agent gets its instructions from the \_\_\_ (which part of the file?)
+- [ ] After the agent finishes, output passes through \_\_\_ before it reaches GitHub (what system?)
+
+<details>
+<summary>Reveal answers</summary>
+
+- A **trigger** in the frontmatter (schedule, push, workflow_dispatch, etc.) tells Actions when to run the agent.
+- The agent reads the **task brief** — the plain-English text below the second `---` in the `.md` file.
+- Output passes through **safe-outputs** guardrails, which limit what actions the agent can take (for example, only `create-issue`).
+
+</details>
+
+If any blank was blank, re-read the relevant section and try again before the checkpoint.
+
+- [ ] I can fill all three blanks without looking
+- [ ] I understand how the three parts connect: trigger starts the run, the brief tells the agent what to do, safe-outputs controls what it can post
 
 ## ✅ Checkpoint
 
@@ -124,7 +158,8 @@ If one part is missing, revise your brief once. This is the same predict-and-obs
 - [ ] I can identify the three parts: trigger → agent → safe output
 - [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
 - [ ] I wrote my own description for each lifecycle term before revealing the answer
-- [ ] I practiced writing and revising a short workflow task brief
+- [ ] I practiced writing and revising a short workflow task brief — all three criteria checked (time window, output format, priority signal)
+- [ ] I completed the self-check and can fill the three-parts blanks without looking
 
 <details>
 <summary>Still uncertain? Try this before moving on</summary>
