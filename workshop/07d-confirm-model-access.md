@@ -15,15 +15,16 @@ You'll verify Copilot model access with a quick test that uses the `agentic-work
 Before configuring billing, confirm Copilot is reachable from this repository.
 Catching an access problem here saves debugging time in the billing steps and in Step 8.
 
-1. Open the **Agents** tab in your repository on GitHub.com.
-2. Send the following prompt:
+1. Open your practice repository on GitHub.com.
+2. Click **Launch Copilot**.
+3. Send the following prompt:
 
    ```prompt
    /agentic-workflows suggest one improvement to `.github/workflows/daily-report-status.md` and explain why in one sentence.
    ```
 
-3. Confirm you receive a reply. Any response means the model and skill are accessible.
-4. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+4. Confirm you receive a reply. Any response means the model and skill are accessible.
+5. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
 
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
@@ -32,12 +33,12 @@ Catching an access problem here saves debugging time in the billing steps and in
 
 Use this quick check before you choose a billing path:
 
-- **You receive a normal reply in the Agents tab**
+- **You receive a normal reply in Copilot**
   - Continue to **Choose one Copilot billing path**.
 - **You receive an access or entitlement error**
   - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
   - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
-  - Retry the same one-sentence prompt in the Agents tab.
+  - Retry the same one-sentence prompt in Copilot.
 - **You still cannot get a reply after account checks**
   - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
 
@@ -118,7 +119,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 
 ## ✅ Checkpoint
 
-- [ ] I opened the Agents tab and sent a test prompt
+- [ ] I clicked **Launch Copilot** from my repository and sent a test prompt
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
