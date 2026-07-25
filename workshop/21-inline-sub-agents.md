@@ -58,7 +58,7 @@ Open your workflow file and choose one bounded task that repeats for each item, 
 
 ### Add one sub-agent block
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In your AI agent, run this prompt:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add an inline
