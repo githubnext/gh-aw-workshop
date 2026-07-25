@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Where the agent runs in GitHub Actions">
+  <!-- Page background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Browser chrome header -->
+  <rect x="0" y="0" width="1200" height="44" fill="#ffffff" rx="6" ry="6"/>
+  <rect x="0" y="22" width="1200" height="22" fill="#ffffff"/>
+  <rect x="0" y="0" width="1200" height="44" fill="none" stroke="#d0d7de" stroke-width="1"/>
+  <!-- URL bar -->
+  <rect x="300" y="10" width="600" height="24" rx="4" ry="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="600" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#57606a">github.com / your-username / gh-aw-workshop / actions / runs / 12345</text>
+
+  <!-- Tab bar -->
+  <rect x="0" y="44" width="1200" height="40" fill="#ffffff"/>
+  <line x1="0" y1="84" x2="1200" y2="84" stroke="#d0d7de" stroke-width="1"/>
+  <!-- Tabs -->
+  <text x="40" y="68" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Code</text>
+  <text x="100" y="68" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Issues</text>
+  <text x="165" y="68" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Pull requests</text>
+  <text x="270" y="68" font-family="Arial, sans-serif" font-size="13" fill="#24292f" font-weight="600">Actions</text>
+  <line x1="265" y1="84" x2="310" y2="84" stroke="#0969da" stroke-width="2"/>
+  <text x="340" y="68" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Projects</text>
+  <text x="408" y="68" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Settings</text>
+
+  <!-- Title -->
+  <text x="600" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#24292f">Where the Agent Runs</text>
+
+  <!-- Node: Repository -->
+  <rect x="60" y="150" width="240" height="100" rx="12" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
+  <text x="180" y="193" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#24292f">Your repository</text>
+  <text x="180" y="217" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Code + workflow file</text>
+
+  <!-- Arrow 1 -->
+  <line x1="300" y1="200" x2="380" y2="200" stroke="#0969da" stroke-width="2" marker-end="url(#arrowL)"/>
+
+  <!-- Node: GitHub Actions -->
+  <rect x="380" y="150" width="240" height="100" rx="12" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
+  <text x="500" y="193" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#24292f">GitHub Actions</text>
+  <text x="500" y="217" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Starts a temporary runner</text>
+
+  <!-- Arrow 2 -->
+  <line x1="620" y1="200" x2="700" y2="200" stroke="#0969da" stroke-width="2" marker-end="url(#arrowL)"/>
+
+  <!-- Node: Temporary runner -->
+  <rect x="700" y="130" width="280" height="220" rx="12" fill="#eef4ff" stroke="#0969da" stroke-width="2.5"/>
+  <text x="840" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#24292f">Temporary runner</text>
+  <!-- Agent process sub-box -->
+  <rect x="718" y="176" width="244" height="58" rx="8" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="840" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#24292f">Agent process</text>
+  <!-- Allowed tools sub-box -->
+  <rect x="718" y="244" width="244" height="58" rx="8" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="840" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#24292f">Allowed tools</text>
+  <text x="840" y="296" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#57606a">GitHub API, gh CLI</text>
+  <text x="840" y="338" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#57606a">Runner deleted after run</text>
+
+  <!-- Arrow 3: runner down -->
+  <line x1="840" y1="350" x2="840" y2="390" stroke="#1f883d" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Safe outputs box -->
+  <rect x="180" y="390" width="760" height="110" rx="12" fill="#dcffe4" stroke="#1f883d" stroke-width="2"/>
+  <text x="560" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#24292f">Safe outputs</text>
+  <text x="560" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#24292f">Daily status report posted as a GitHub issue comment</text>
+  <text x="560" y="466" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#24292f">No secrets or credentials leaked into logs</text>
+  <text x="560" y="487" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#24292f">Structured output declared via safeoutputs</text>
+
+  <!-- Annotation -->
+  <text x="600" y="536" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#57606a">Where the agent runs in GitHub Actions</text>
+
+  <defs>
+    <marker id="arrowL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0969da"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f883d"/>
+    </marker>
+  </defs>
+</svg>

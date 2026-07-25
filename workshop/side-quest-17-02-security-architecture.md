@@ -44,7 +44,11 @@ That means:
 - The agent reads your workflow brief and repository context there.
 - When the run ends, that runtime is discarded.
 
-![Where the agent runs in GitHub Actions](images/side-quest-17-02-runtime.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-17-02-runtime-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-17-02-runtime-light.svg">
+  <img alt="Where the agent runs in GitHub Actions" src="images/side-quest-17-02-runtime-light.svg">
+</picture>
 
 This design reduces long-lived risk because the environment is short-lived and isolated.
 

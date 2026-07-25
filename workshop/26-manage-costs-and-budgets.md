@@ -34,7 +34,11 @@ Every agentic workflow run uses an AI model to process your task brief and produ
 3. Scroll to the **Copilot** section and click **Usage**.
 4. Look for the **Agentic Workflows** row. It shows AIC consumed this billing cycle.
 
-![Copilot billing usage dashboard showing AI Credit consumption by feature](images/26-billing-dashboard.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/26-billing-dashboard-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/26-billing-dashboard-light.svg">
+  <img alt="Copilot billing usage dashboard showing AI Credit consumption by feature" src="images/26-billing-dashboard-light.svg">
+</picture>
 
 ### Estimate monthly cost for a scheduled workflow
 
