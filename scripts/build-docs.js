@@ -118,21 +118,23 @@ marked.use(markedHighlight({
     return hljs.highlight(code, { language }).value;
   },
 }));
-// Plugin: render shell and agent prompt code blocks with distinct UI wrappers
+// Plugin: render shell, terminal output, and agent prompt code blocks with distinct UI wrappers
 const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
+const terminalOutputLangs = new Set(['console', 'output', 'plaintext', 'text']);
 marked.use({
   useNewRenderer: true,
   renderer: {
     code({ text, lang, escaped }) {
       const langKey = (lang || '').match(/^\S*/)?.[0]?.toLowerCase() ?? '';
-      const escapedLang = escapeHtml(langKey);
       const codeText = text.replace(/\n$/, '') + '\n';
       const codeHtml = escaped ? codeText : escapeHtml(codeText);
       if (langKey === 'prompt') {
         return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
       }
-      if (!shellLangs.has(langKey)) return false;
-      return `<div class="terminal-block">\n<div class="terminal-bar" aria-hidden="true"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-label">${escapedLang}</span></div>\n<pre class="terminal-pre"><code class="language-${escapedLang}">${codeHtml}</code></pre>\n</div>\n`;
+      const terminalLabel = shellLangs.has(langKey) ? langKey : terminalOutputLangs.has(langKey) ? 'output' : '';
+      if (!terminalLabel) return false;
+      const escapedLang = escapeHtml(langKey);
+      return `<div class="terminal-block">\n<div class="terminal-bar" aria-hidden="true"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-label">${terminalLabel}</span></div>\n<pre class="terminal-pre"><code class="language-${escapedLang}">${codeHtml}</code></pre>\n</div>\n`;
     },
   },
 });

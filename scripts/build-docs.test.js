@@ -54,6 +54,15 @@ test("shell code blocks are wrapped in a terminal-block UI", () => {
   assert.ok(highlightCss.includes(".terminal-block .hljs-string"), "expected dark syntax colors in terminal blocks");
 });
 
+test("terminal output code blocks are wrapped in a terminal-block UI", () => {
+  const { html } = buildDocs();
+
+  assert.match(
+    html,
+    /<div class="terminal-block">\s*<div class="terminal-bar" aria-hidden="true"><span class="terminal-dot"><\/span><span class="terminal-dot"><\/span><span class="terminal-dot"><\/span><span class="terminal-label">output<\/span><\/div>\s*<pre class="terminal-pre"><code class="language-text">/
+  );
+});
+
 test("prompt code blocks are wrapped in a distinct agent UI", () => {
   const { html, css } = buildDocs();
 
