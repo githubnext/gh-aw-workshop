@@ -8,7 +8,11 @@
 
 Letting an AI agent act on your repository on a schedule only works if it can't do damage. Agentic workflows enforce two trust boundaries so you can run agents in automation with confidence.
 
-![Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails](images/05-agent-run-log.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/05-agent-run-log-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/05-agent-run-log-light.svg">
+  <img alt="Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails" src="images/05-agent-run-log-light.svg">
+</picture>
 
 ## Safe by design: sandbox + guardrailed outputs
 

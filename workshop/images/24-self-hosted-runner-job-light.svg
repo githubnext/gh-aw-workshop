@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Runner name shown in the Actions job summary">
+  <!-- Page background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1200" height="44" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="0" y="22" width="1200" height="22" fill="#ffffff"/>
+  <rect x="200" y="10" width="800" height="24" rx="12" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="600" y="27" font-family="Arial,sans-serif" font-size="12" fill="#57606a" text-anchor="middle">github.com/your-org/daily-status/actions/runs/1234567890</text>
+  <circle cx="20" cy="22" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="22" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="22" r="6" fill="#28c840"/>
+
+  <!-- Nav tabs -->
+  <rect x="0" y="44" width="1200" height="44" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <text x="30" y="72" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Code</text>
+  <text x="85" y="72" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Issues</text>
+  <text x="145" y="72" font-family="Arial,sans-serif" font-size="14" fill="#57606a">Pull requests</text>
+  <text x="280" y="72" font-family="Arial,sans-serif" font-size="14" fill="#0969da" font-weight="600">Actions</text>
+  <rect x="280" y="84" width="52" height="3" fill="#0969da" rx="1"/>
+
+  <!-- Content area -->
+  <rect x="20" y="105" width="1160" height="380" fill="#ffffff" rx="6" stroke="#d0d7de" stroke-width="1"/>
+
+  <!-- Workflow header -->
+  <rect x="20" y="105" width="1160" height="48" fill="#f6f8fa" rx="6" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="20" y="125" width="1160" height="28" fill="#f6f8fa"/>
+  <circle cx="52" cy="129" r="12" fill="#1a7f37"/>
+  <text x="52" y="134" font-family="Arial,sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">&#x2713;</text>
+  <text x="76" y="124" font-family="Arial,sans-serif" font-size="15" fill="#24292f" font-weight="600">daily-repo-status</text>
+  <text x="76" y="143" font-family="Arial,sans-serif" font-size="12" fill="#57606a">Triggered manually &#x00B7; 2 minutes ago &#x00B7; 1m 23s</text>
+
+  <!-- Jobs sidebar -->
+  <rect x="40" y="170" width="260" height="280" fill="#ffffff" rx="4" stroke="#d0d7de" stroke-width="1"/>
+  <text x="60" y="194" font-family="Arial,sans-serif" font-size="13" fill="#24292f" font-weight="600">Jobs</text>
+  <rect x="40" y="200" width="260" height="38" fill="#f6f8fa" rx="3"/>
+  <circle cx="60" cy="219" r="8" fill="#1a7f37"/>
+  <text x="60" y="223" font-family="Arial,sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">&#x2713;</text>
+  <text x="78" y="223" font-family="Arial,sans-serif" font-size="13" fill="#0969da">generate-report</text>
+
+  <!-- Summary panel -->
+  <rect x="320" y="170" width="840" height="280" fill="#ffffff" rx="4" stroke="#d0d7de" stroke-width="1"/>
+  <text x="340" y="194" font-family="Arial,sans-serif" font-size="13" fill="#24292f" font-weight="600">Job summary</text>
+
+  <!-- Table rows -->
+  <rect x="320" y="200" width="840" height="1" fill="#d0d7de"/>
+  <text x="345" y="223" font-family="Arial,sans-serif" font-size="13" fill="#57606a" font-weight="600">OS</text>
+  <text x="540" y="223" font-family="Arial,sans-serif" font-size="13" fill="#24292f">Ubuntu 22.04</text>
+  <rect x="320" y="232" width="840" height="1" fill="#d0d7de"/>
+
+  <!-- Highlighted runner row -->
+  <rect x="320" y="233" width="840" height="42" fill="#fff8c5"/>
+  <text x="345" y="260" font-family="Arial,sans-serif" font-size="13" fill="#57606a" font-weight="600">Runner</text>
+  <text x="540" y="260" font-family="monospace" font-size="13" fill="#24292f">my-self-hosted-runner</text>
+  <rect x="320" y="275" width="840" height="1" fill="#d0d7de"/>
+
+  <!-- Callout -->
+  <line x1="800" y1="254" x2="870" y2="254" stroke="#0969da" stroke-width="2"/>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0969da"/>
+    </marker>
+  </defs>
+  <line x1="800" y1="254" x2="870" y2="254" stroke="#0969da" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="874" y="237" width="230" height="32" rx="6" fill="#0969da"/>
+  <text x="989" y="258" font-family="Arial,sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Your self-hosted runner name</text>
+
+  <!-- More table rows -->
+  <text x="345" y="298" font-family="Arial,sans-serif" font-size="13" fill="#57606a" font-weight="600">Duration</text>
+  <text x="540" y="298" font-family="Arial,sans-serif" font-size="13" fill="#24292f">1m 23s</text>
+  <rect x="320" y="308" width="840" height="1" fill="#d0d7de"/>
+  <text x="345" y="332" font-family="Arial,sans-serif" font-size="13" fill="#57606a" font-weight="600">Triggered by</text>
+  <text x="540" y="332" font-family="Arial,sans-serif" font-size="13" fill="#24292f">your-username (manual)</text>
+
+  <!-- Annotation -->
+  <text x="600" y="530" font-family="Arial,sans-serif" font-size="22" fill="#57606a" text-anchor="middle">Runner name shown in the Actions job summary</text>
+</svg>
