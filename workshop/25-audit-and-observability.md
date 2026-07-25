@@ -6,7 +6,7 @@
 
 ## 🎯 What You'll Do
 
-You will use `gh aw logs` and `gh aw audit` to review the built-in artifacts that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you will know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
+You will use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://github.github.com/gh-aw/reference/artifacts/) that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you will know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
 
 ## 📋 Before You Start
 
@@ -15,7 +15,7 @@ You will use `gh aw logs` and `gh aw audit` to review the built-in artifacts tha
 
 ## Steps
 
-### Review recent runs with gh aw logs
+### Review recent runs with [gh aw logs](https://github.github.com/gh-aw/reference/audit/#gh-aw-logs---format)
 
 `gh aw logs` downloads artifacts from your workflow's recent runs and prints a summary table showing duration, token usage, and cost in [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic).
 
@@ -43,7 +43,7 @@ gh aw logs <your-workflow-id> --artifacts all
 
 Downloaded files land in `.github/aw/logs/<run-id>/` by default.
 
-### Audit a specific run with gh aw audit
+### Audit a specific run with [gh aw audit](https://github.github.com/gh-aw/reference/audit/#gh-aw-audit)
 
 When you need a deeper look at one run — for debugging or compliance evidence — use `gh aw audit` with the run ID or URL from the Actions tab (both numeric IDs and full GitHub Actions URLs are accepted):
 
