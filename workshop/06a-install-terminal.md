@@ -8,7 +8,7 @@
 
 ## 🎯 What You'll Do
 
-You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and run one quick diagnostic to confirm your Codespace terminal is ready for [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) setup.
+You'll verify the `gh` CLI is authenticated, install or update `gh-aw` with the install script, and run one quick diagnostic to confirm your Codespace terminal is ready for [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) setup.
 
 ## 📋 Before You Start
 
@@ -25,28 +25,22 @@ Expected output: `Logged in to github.com as <your-username>`. If you see an err
 
 ## Install from terminal
 
-Check whether `gh-aw` is already installed, then install or update accordingly:
+In Codespaces, install `gh-aw` with the script. This avoids common extension-install failures with org-scoped tokens:
 
 ```bash
-gh aw --version
-```
-
-- **Version shown?** Update the extension: `gh extension upgrade github/gh-aw`
-- **Command not found?** Install the extension:
-
-```bash
-gh extension install github/gh-aw
+curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 gh aw --version
 ```
 
 You should see output like `gh-aw version 0.81.6`.
 
-### Troubleshooting: 403 Forbidden on install
+### If the script install fails
 
-Your org token may not allow public extension installs. Use the fallback installer:
+Try a direct extension install:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
+gh extension install github/gh-aw
+gh aw --version
 ```
 
 Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
