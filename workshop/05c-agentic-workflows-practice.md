@@ -62,7 +62,7 @@ as an issue with the title "Weekly PR Digest".
 
 - [ ] I can decide whether a task calls for an agentic or a standard Actions workflow
 - [ ] I have drafted a one-sentence task brief that specifies what data to read and what to post
-- [ ] I can describe the three parts of an agentic workflow: trigger → agent → safe output
+- [ ] I can describe the three parts of an agentic workflow: [trigger](https://github.github.com/gh-aw/reference/triggers/) → agent → safe output
 
 <!-- journey: all -->
 **Next:** [Install the gh-aw CLI Extension](06-install-gh-aw.md)

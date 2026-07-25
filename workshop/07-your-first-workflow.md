@@ -8,7 +8,7 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 You'll use Copilot to create `.github/workflows/daily-report-status.md` — a scheduled workflow that triggers once a day.
 
-You'll start with `daily-report-status.md` and end with `daily-report-status.lock.yml`, the compiled workflow that GitHub Actions runs.
+You'll start with `daily-report-status.md` and end with `daily-report-status.lock.yml`, the compiled workflow that [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/) runs.
 
 ![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
 
@@ -29,7 +29,7 @@ In your AI agent, run this prompt:
 /agentic-workflows Create a daily-report-status workflow that runs on a daily schedule. Compile it after creating it.
 ```
 
-The agent creates the file and compiles it for you. If you hit a compile error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
+The agent creates the file and [compiles](https://github.github.com/gh-aw/reference/compilation-process/) it for you. If you hit a compile error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07a-workflow-dispatch-trigger-dark.svg">
