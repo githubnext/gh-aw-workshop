@@ -14,7 +14,6 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 5b | [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md) |
 | 5c | [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md) |
 | 6 | [Install the gh-aw CLI Extension](06-install-gh-aw.md) |
-| 6a | [Install gh-aw in Your Codespace](06a-install-terminal.md) |
 | 7 | [Write Your First Agentic Workflow](07-your-first-workflow.md) |
 | 7a | [Write Your First Agentic Workflow from a Terminal](07a-your-first-workflow-terminal.md) |
 | 7a-part2 | [Add Instructions and Finish Your First Workflow](07a-part2-your-first-workflow-instructions.md) |

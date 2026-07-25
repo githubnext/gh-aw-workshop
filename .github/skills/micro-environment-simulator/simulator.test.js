@@ -24,10 +24,7 @@ test("journey step file mappings match current workshop page setup", () => {
   assert.equal(new Set(mappedFiles).size, mappedFiles.length, "Workshop pages must not be mapped twice");
   assert.deepEqual([...mappedFiles].sort(), currentWorkshopFiles);
   assert.deepEqual(journey.stepFilesById["02-setup"], ["02a-setup-codespace.md"]);
-  assert.deepEqual(journey.stepFilesById["06-install-gh-aw"], [
-    "06-install-gh-aw.md",
-    "06a-install-terminal.md"
-  ]);
+  assert.deepEqual(journey.stepFilesById["06-install-gh-aw"], ["06-install-gh-aw.md"]);
 });
 
 test("Codespaces setup normalizes the learner workspace", () => {

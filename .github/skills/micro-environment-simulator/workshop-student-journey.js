@@ -35,7 +35,7 @@ const STEP_FILE_ALIASES = {
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "05c-agentic-practice": ["05c-agentic-workflows-practice.md"],
   "05b-agentic-security": ["05b-agentic-workflows-security.md"],
-  "06-install-gh-aw": ["06-install-gh-aw.md", "06a-install-terminal.md"],
+  "06-install-gh-aw": ["06-install-gh-aw.md"],
   "07-first-workflow": [
     "07-your-first-workflow.md",
     "07a-your-first-workflow-terminal.md",
