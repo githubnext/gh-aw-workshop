@@ -49,7 +49,7 @@ Optional while editing: `gh aw compile --watch`.
 Then commit and push:
 
 ```bash
-git add .github/workflows/daily-report-status.md
+git add .
 git commit -m "Add daily-report-status agentic workflow"
 git push
 ```
@@ -60,7 +60,7 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 
 - [ ] `.github/workflows/daily-report-status.md` includes `permissions` with `copilot-requests: write`
 - [ ] `gh aw compile` reports valid
-- [ ] The file is committed and pushed to `main`
+- [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed to `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 <!-- journey: terminal -->
