@@ -19,6 +19,14 @@ When you see `permission denied`, your user account does not have the rights to 
 
 ## How to fix it
 
+The fix depends on your operating system — use `sudo` on macOS and Linux, or open an elevated terminal on Windows.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-03-permission-fix-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-03-permission-fix-light.svg">
+   <img alt="Permission denied error resolution flow: use sudo on macOS and Linux, or Run as administrator on Windows" src="images/side-quest-01-03-permission-fix-light.svg">
+</picture>
+
 ### macOS and Linux
 
 Re-run the command with `sudo` in front:

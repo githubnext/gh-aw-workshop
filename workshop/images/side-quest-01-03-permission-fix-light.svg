@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Permission denied error resolution flow: use sudo on macOS and Linux, or Run as administrator on Windows">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#d0d7de"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+  <rect x="32" y="32" width="1136" height="496" rx="18" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+
+  <text x="600" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#24292f">Fixing Permission Errors</text>
+
+  <g transform="translate(70 195)">
+    <rect x="0" y="0" width="160" height="104" rx="18" fill="#fff1f0" stroke="#cf222e" stroke-width="2"/>
+    <circle cx="32" cy="28" r="14" fill="#cf222e"/>
+    <text x="32" y="33" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#ffffff">✕</text>
+    <text x="80" y="48" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">
+      <tspan x="80" dy="0">permission</tspan>
+      <tspan x="80" dy="24">denied</tspan>
+    </text>
+  </g>
+
+  <line x1="230" y1="247" x2="330" y2="247" stroke="#d0d7de" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(330 190)">
+    <path d="M22 0 H202 L244 57 L202 114 H22 L0 57 Z" fill="#fff8c5" stroke="#9a6700" stroke-width="2"/>
+    <text x="122" y="62" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">Which OS?</text>
+  </g>
+
+  <line x1="574" y1="230" x2="662" y2="188" stroke="#d0d7de" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="620" y="182" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#57606a">macOS / Linux</text>
+
+  <line x1="574" y1="264" x2="662" y2="336" stroke="#d0d7de" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="620" y="320" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#57606a">Windows</text>
+
+  <g transform="translate(662 132)">
+    <rect x="0" y="0" width="210" height="112" rx="18" fill="#ddf4ff" stroke="#0969da" stroke-width="2"/>
+    <text x="105" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">
+      <tspan x="105" dy="0">prefix command</tspan>
+      <tspan x="105" dy="24">with sudo</tspan>
+    </text>
+  </g>
+
+  <line x1="872" y1="188" x2="952" y2="188" stroke="#d0d7de" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(952 132)">
+    <rect x="0" y="0" width="178" height="112" rx="18" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+    <text x="89" y="63" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#1a7f37">✓ Command succeeds</text>
+  </g>
+
+  <g transform="translate(662 280)">
+    <rect x="0" y="0" width="210" height="112" rx="18" fill="#ddf4ff" stroke="#0969da" stroke-width="2"/>
+    <text x="105" y="40" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#24292f">
+      <tspan x="105" dy="0">Right-click terminal</tspan>
+      <tspan x="105" dy="22">→ Run as</tspan>
+      <tspan x="105" dy="22">administrator</tspan>
+    </text>
+  </g>
+
+  <line x1="872" y1="336" x2="952" y2="336" stroke="#d0d7de" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(952 280)">
+    <rect x="0" y="0" width="178" height="112" rx="18" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+    <text x="89" y="63" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#1a7f37">✓ Command succeeds</text>
+  </g>
+
+  <text x="600" y="472" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">Use elevated access only when workshop instructions require it</text>
+</svg>
