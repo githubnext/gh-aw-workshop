@@ -34,22 +34,18 @@ gh aw --version
 ```
 
 - **Version shown?** Update the extension: `gh extension upgrade github/gh-aw`
-- **Command not found?** Install the extension:
+- **Command not found?** Install using the install script:
 
 ```bash
-gh extension install github/gh-aw
+curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 gh aw --version
 ```
 
 You should see output like `gh-aw version 0.81.6`.
 
-### Troubleshooting: 403 Forbidden on install
-
-Your org token may not allow public extension installs. Use the fallback installer:
-
-```bash
-curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
-```
+> [!NOTE]
+> Outside of Codespaces, you can also install with `gh extension install github/gh-aw`.
+> In org-owned Codespaces the GitHub token is scoped to the org and cannot access the extension marketplace, so the curl script is the reliable path.
 
 Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
