@@ -86,7 +86,7 @@ Use this path when the organization that owns the repository has centralized Cop
 
    ```bash
    gh aw compile
-   git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+   git add .
    git commit -m "chore: confirm lock file is current" && git push
    ```
 

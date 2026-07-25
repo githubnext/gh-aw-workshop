@@ -70,7 +70,7 @@ gh aw compile
 Commit both the source workflow and the recompiled lock file:
 
 ```bash
-git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+git add .
 git commit -m "refine daily-report-status workflow output"
 git push
 ```

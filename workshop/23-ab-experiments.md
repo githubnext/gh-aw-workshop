@@ -70,7 +70,7 @@ Compile and commit:
 
 ```bash
 gh aw compile daily-status
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add output_style A/B experiment to daily-status"
 ```
 

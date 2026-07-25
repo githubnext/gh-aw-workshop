@@ -27,7 +27,7 @@ If either file is missing, return to [Step 7](07-your-first-workflow.md) to comp
 
 ```bash
 gh aw compile
-git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+git add .
 git commit -m "chore: sync lock file" && git push
 ```
 

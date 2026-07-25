@@ -102,7 +102,7 @@ After editing both, run `gh aw compile` to regenerate the lock file.
 The skill edits both the sub-agent block and the parent brief in one step. Review the diff, then commit:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add issue-summarizer sub-agent to daily-status"
 git push
 ```

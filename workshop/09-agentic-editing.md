@@ -64,8 +64,7 @@ Recompile and push:
 
 ```bash
 gh aw compile
-git add .github/workflows/daily-report-status.md \
-        .github/workflows/daily-report-status.lock.yml
+git add .
 git commit -m "feat: add team-benefit sentence to daily-report-status brief"
 git push
 ```

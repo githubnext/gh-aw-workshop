@@ -125,7 +125,7 @@ gh aw compile daily-status
 Commit both the `.md` source and the regenerated `.lock.yml`:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "chore: target self-hosted runner for daily-status workflow"
 git push
 ```

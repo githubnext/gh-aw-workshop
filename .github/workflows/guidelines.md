@@ -203,6 +203,11 @@ Multi-line callout (summary + body):
 - In the core Codespaces route, place a compile checkpoint after each meaningful addition to the workflow file.
 - A browser-only side quest may delegate compilation to an agent, but must say who compiles and commits the lock file.
 
+## Git staging: always use `git add .`
+
+- In all workshop terminal examples, use `git add .` to stage changes — never list individual filenames or paths (e.g., do **not** write `git add .github/workflows/foo.md .github/workflows/foo.lock.yml`).
+- Using `git add .` keeps snippets short, avoids filename drift when workflows are renamed, and mirrors how most learners naturally stage their work.
+
 ## Enterprise user preference in design decisions
 
 When two workshop design choices are of equal or comparable value, **favor the option that better serves enterprise users** — learners using GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or self-hosted runners. Apply this rule at every decision point:

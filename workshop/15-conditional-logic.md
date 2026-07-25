@@ -101,7 +101,7 @@ Now that the commit-count condition is in place, you can extend the workflow to 
 ### Commit and push your conditional logic
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: skip summary on days with no commits"
 git push
 ```

@@ -108,7 +108,7 @@ The agent will read this brief, decide which MCP tool calls to make, and weave t
 The `/agentic-workflows` skill recompiles the lock file automatically. Commit both files and push:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add MCP tools to daily status workflow"
 git push
 ```
