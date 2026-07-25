@@ -1,8 +1,8 @@
-<!-- page-journey: terminal -->
+<!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
 # Side Quest: Using `gh aw compile` to Catch Errors Early
 
-> _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](07a-your-first-workflow-terminal.md), or [Step 13](12-test-and-iterate.md)._
+> _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to [Step 7](07-your-first-workflow.md) or [Step 13](12-test-and-iterate.md)._
 
 ## 🎯 What You'll Do
 
@@ -110,7 +110,7 @@ on:
 
 ---
 
-Return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](07a-your-first-workflow-terminal.md), or [Step 13](12-test-and-iterate.md).
+Return to [Step 7](07-your-first-workflow.md) or [Step 13](12-test-and-iterate.md).
 
 <!-- /journey -->
 
