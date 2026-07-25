@@ -276,6 +276,10 @@ fs.copyFileSync(faviconSrc, path.join(distDir, 'favicon.svg'));
 const docsThemeSrc = path.join(__dirname, 'static', 'docs-theme.js');
 fs.copyFileSync(docsThemeSrc, path.join(distDir, 'docs-theme.js'));
 
+// Copy code copy button script
+const docsCopyCodeSrc = path.join(__dirname, 'static', 'docs-copy-code.js');
+fs.copyFileSync(docsCopyCodeSrc, path.join(distDir, 'docs-copy-code.js'));
+
 // Copy Primer CSS
 const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
@@ -841,6 +845,60 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
   color: var(--fgColor-accent, #0969da);
   font-weight: 600;
 }
+
+/* Code block copy button */
+.markdown-body pre {
+  position: relative;
+}
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.4;
+  color: var(--fgColor-muted, #59636e);
+  background-color: var(--bgColor-default, #ffffff);
+  border: 1px solid var(--borderColor-muted, #d0d7de);
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background-color 0.1s, color 0.1s, border-color 0.1s;
+}
+.markdown-body pre:hover .code-copy-btn,
+.code-copy-btn:focus-visible {
+  opacity: 1;
+}
+.code-copy-btn:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+  color: var(--fgColor-default, #1f2328);
+}
+.code-copy-btn--copied {
+  color: var(--fgColor-success, #1a7f37);
+  background-color: var(--bgColor-success-muted, #dafbe1);
+  border-color: var(--borderColor-success-emphasis, #1a7f37);
+  opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .code-copy-btn {
+    background-color: var(--bgColor-default, #0d1117);
+  }
+  html[data-color-mode="auto"] .code-copy-btn:hover {
+    background-color: var(--bgColor-muted, #161b22);
+    color: var(--fgColor-default, #e6edf3);
+  }
+}
+
+html[data-color-mode="dark"] .code-copy-btn {
+  background-color: var(--bgColor-default, #0d1117);
+}
+html[data-color-mode="dark"] .code-copy-btn:hover {
+  background-color: var(--bgColor-muted, #161b22);
+  color: var(--fgColor-default, #e6edf3);
+}
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
@@ -989,6 +1047,7 @@ const page = `<!DOCTYPE html>
   <link rel="stylesheet" href="alerts.css">
   <link rel="stylesheet" href="docs.css">
   <script src="docs-theme.js"></script>
+  <script src="docs-copy-code.js" defer></script>
 </head>
 <body>
   <header class="site-header">
