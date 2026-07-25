@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run">
+  <title>A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run</title>
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <text x="600" y="72" text-anchor="middle" font-size="20" font-weight="600" fill="#24292f">A/B Experiment Round-Robin Cycle</text>
+
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0969da"/>
+      </marker>
+    </defs>
+
+    <g>
+      <line x1="220" y1="240" x2="272" y2="240" stroke="#0969da" stroke-width="4" marker-end="url(#arrowhead)"/>
+      <line x1="432" y1="240" x2="484" y2="240" stroke="#0969da" stroke-width="4" marker-end="url(#arrowhead)"/>
+      <line x1="644" y1="240" x2="696" y2="240" stroke="#0969da" stroke-width="4" marker-end="url(#arrowhead)"/>
+      <line x1="856" y1="240" x2="908" y2="240" stroke="#0969da" stroke-width="4" marker-end="url(#arrowhead)"/>
+    </g>
+
+    <g>
+      <g transform="translate(60 200)">
+        <rect width="160" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+        <circle cx="18" cy="18" r="13" fill="#0969da"/>
+        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#24292f">
+          <tspan x="80" dy="0">Load State</tspan>
+          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#57606a">artifact counts</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(272 200)">
+        <rect width="160" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+        <circle cx="18" cy="18" r="13" fill="#0969da"/>
+        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2</text>
+        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#24292f">
+          <tspan x="80" dy="0">Pick Variant</tspan>
+          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#57606a">lowest count wins</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(484 200)">
+        <rect width="160" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+        <circle cx="18" cy="18" r="13" fill="#0969da"/>
+        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#24292f">
+          <tspan x="80" dy="0">Save Counts</tspan>
+          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#57606a">increment winner</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(696 200)">
+        <rect width="160" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+        <circle cx="18" cy="18" r="13" fill="#0969da"/>
+        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#24292f">
+          <tspan x="80" dy="0">Upload Artifact</tspan>
+          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#57606a">publish experiment</tspan>
+        </text>
+        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4</text>
+      </g>
+
+      <g transform="translate(908 200)">
+        <rect width="160" height="80" rx="6" fill="#ffffff" stroke="#d0d7de"/>
+        <circle cx="18" cy="18" r="13" fill="#0969da"/>
+        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">5</text>
+        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#24292f">
+          <tspan x="80" dy="0">Inject Variant</tspan>
+          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#57606a">template conditionals</tspan>
+        </text>
+      </g>
+    </g>
+
+    <g transform="translate(315 332)">
+      <rect width="570" height="62" rx="8" fill="#ddf4ff" stroke="#54aeff" stroke-width="1.5"/>
+      <text x="24" y="29" font-size="15" font-weight="600" fill="#0550ae">Example: concise ×1 · detailed ×0 → picks detailed</text>
+      <text x="24" y="48" font-size="13" fill="#0550ae">Lowest invocation count wins, so the next run uses the less-tested variant.</text>
+    </g>
+
+    <text x="600" y="490" text-anchor="middle" font-size="13" fill="#57606a">gh-aw picks the variant with the lowest run count; ties go to the first variant listed</text>
+  </g>
+</svg>
