@@ -6,8 +6,20 @@ const path = require('path');
 const { marked } = require('marked');
 const { default: GithubSlugger } = require('github-slugger');
 const markedAlert = require('marked-alert');
+const { markedHighlight } = require('marked-highlight');
+const hljs = require('highlight.js');
 const defaultRenderer = new marked.Renderer();
 const relAttrRegex = /\brel=(["'])(.*?)\1/i;
+
+// Prefix every selector in a flat (non-nested) CSS string with the given string.
+// Used to scope highlight.js dark-theme rules under dark-mode selectors.
+function prefixCssSelectors(css, prefix) {
+  const stripped = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  return stripped.replace(/([^{}]+)\{([^{}]*)\}/g, (_, selectors, props) => {
+    const prefixed = selectors.trim().split(',').map(s => `${prefix} ${s.trim()}`).join(', ');
+    return `${prefixed} { ${props.trim()} }\n`;
+  });
+}
 
 function flattenTokenText(tokenOrTokens) {
   if (Array.isArray(tokenOrTokens)) {
@@ -98,6 +110,16 @@ marked.use({
 // Plugin: render GitHub GFM alert callouts (> [!NOTE], > [!TIP], etc.)
 marked.use(markedAlert());
 
+<<<<<<< HEAD
+// Plugin: syntax-highlight fenced code blocks at build time using highlight.js
+marked.use(markedHighlight({
+  langPrefix: 'hljs language-',
+  highlight(code, lang) {
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+    return hljs.highlight(code, { language }).value;
+  },
+}));
+=======
 // Plugin: render shell code blocks with a terminal UI wrapper
 const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
 marked.use({
@@ -113,6 +135,7 @@ marked.use({
     },
   },
 });
+>>>>>>> origin/main
 
 const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
@@ -363,6 +386,26 @@ const alertsCss = `/* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / e
 .markdown-alert-caution .markdown-alert-title { color: var(--fgColor-danger, #d1242f); }
 `;
 fs.writeFileSync(path.join(distDir, 'alerts.css'), alertsCss);
+
+// Generate highlight.js syntax highlighting CSS (GitHub light + dark themes)
+// The dark theme rules are scoped to the data-color-mode="dark" attribute and
+// to the prefers-color-scheme: dark media query for data-color-mode="auto".
+const hljsStylesDir = path.join(__dirname, '..', 'node_modules', 'highlight.js', 'styles');
+const hljsLightCss = fs.readFileSync(path.join(hljsStylesDir, 'github.min.css'), 'utf8');
+const hljsDarkCss = fs.readFileSync(path.join(hljsStylesDir, 'github-dark.min.css'), 'utf8');
+const hljsCss = [
+  '/* highlight.js – GitHub light theme (default) */',
+  hljsLightCss,
+  '',
+  '/* highlight.js – GitHub Dark theme (explicit dark mode) */',
+  prefixCssSelectors(hljsDarkCss, 'html[data-color-mode="dark"]'),
+  '',
+  '/* highlight.js – GitHub Dark theme (system dark preference) */',
+  '@media (prefers-color-scheme: dark) {',
+  prefixCssSelectors(hljsDarkCss, 'html[data-color-mode="auto"]'),
+  '}',
+].join('\n');
+fs.writeFileSync(path.join(distDir, 'hljs.css'), hljsCss);
 
 // Generate docs CSS – link discoverability + reveal.js scrollable slides
 const docsCss = `/* Improve link discoverability in rendered workshop docs */
@@ -1138,6 +1181,7 @@ const page = `<!DOCTYPE html>
   <link rel="stylesheet" href="mona-sans.css">
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
+  <link rel="stylesheet" href="hljs.css">
   <link rel="stylesheet" href="docs.css">
   <script src="docs-theme.js"></script>
   <script src="docs-copy-code.js" defer></script>
