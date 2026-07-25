@@ -8,7 +8,7 @@
 
 ## 🎯 What You'll Do
 
-You'll verify Copilot model access with a quick test, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
+You'll verify Copilot model access with a quick test that uses the `agentic-workflows` skill, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
 
 ## Verify model access with a test prompt
 
@@ -19,10 +19,10 @@ Catching an access problem here saves debugging time in the billing steps and in
 2. Send the following prompt:
 
    ```
-   What is GitHub Actions? Reply in one sentence.
+   /agentic-workflows suggest one improvement to `.github/workflows/daily-report-status.md` and explain why in one sentence.
    ```
 
-3. Confirm you receive a reply. Any response means the model is accessible.
+3. Confirm you receive a reply. Any response means the model and skill are accessible.
 4. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
 
 > [!IMPORTANT]
@@ -123,9 +123,10 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 ## ✅ Checkpoint
 
 - [ ] I opened the Agents tab and sent a test prompt
-- [ ] I received a response from the model
+- [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
+- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
 - [ ] My source and compiled lock file use the selected method
