@@ -32,6 +32,12 @@ You'll add a sub-agent to your daily-status workflow so the parent agent can sta
 
 When your workflow repeats the same small job for many items, keep the parent agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/21-inline-sub-agents-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/21-inline-sub-agents-light.svg">
+   <img alt="Inline sub-agent pattern: parent agent plans and delegates repeated tasks to sub-agents, then assembles the final output" src="images/21-inline-sub-agents-light.svg">
+</picture>
+
 A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading. If you want, add a short frontmatter block with fields such as `description` or `model`. Then call that helper by name from the parent workflow brief.
 
 > 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
