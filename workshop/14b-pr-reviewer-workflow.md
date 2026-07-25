@@ -1,143 +1,180 @@
 <!-- page-journey: all -->
 <!-- page-adventure: advanced -->
-# Build Your First Event-Driven Workflow: PR Auto-Reviewer
+# Build a PR Reviewer with an Agent and Skill
 
-_You've built a scheduled workflow. Now build one that fires when something happens — and posts a useful review the moment a pull request opens._
+_Turn pull request review into a small team: an orchestrator, a focused reviewer, and reusable review guidance._
 
 ## 🎯 What You'll Do
 
-Create a new agentic workflow triggered by the `pull_request` event. When a contributor opens or updates a PR, your workflow will read the changed files and the PR description, then post an automated review comment summarising what changed and flagging anything worth a second look.
+You'll use your AI agent and the `/agentic-workflows` skill to create an event-driven PR reviewer. The workflow will define:
 
-By the end you will have a working PR reviewer workflow and understand how event-driven triggers differ from scheduled ones.
+- an inline `pr-reviewer` agent that inspects one pull request
+- an inline `pr-review-standards` skill that keeps findings evidence-based
+- a parent brief that turns the reviewer's findings into one safe pull request review
+
+By the end, you'll have a reviewer that runs when a draft becomes ready, can be rerun with `/review`, and keeps its review method separate from its orchestration.
 
 ## 📋 Before You Start
 
-- You have a working `daily-report-status` workflow from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
-- You understand the two-file structure (`.md` source + `.lock.yml`) from earlier steps.
+- You have a working workflow from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
+- You have pushed the files created by `gh aw init`, including `.github/skills/agentic-workflows/`.
+- The `gh aw` command works in your Codespace terminal.
 
-## Why Event-Driven Triggers?
+## Understand the Agent and Skill Split
 
-Your daily-status workflow runs on a schedule — it wakes up on its own, checks what happened, and reports. A PR reviewer workflow is different: it runs the moment a developer opens or updates a pull request, with the full PR context handed to it automatically.
+The parent workflow should coordinate the run, not contain every review rule. It delegates the diff analysis to a focused inline agent. That agent applies an inline skill containing the review method.
 
-This is the `pull_request` trigger:
+| Part | Responsibility |
+|---|---|
+| Parent brief | Identify the pull request, call the reviewer, and submit the result |
+| `pr-reviewer` agent | Read the diff and return prioritized, evidence-backed findings |
+| `pr-review-standards` skill | Define what counts as a useful finding and how to format it |
+
+The agent can change how it investigates a pull request without changing the stable standards in the skill. You can also improve the skill without making the parent brief longer.
+
+> 🤔 **Predict:** Which instruction belongs in the skill: “review pull request 42” or “cite a changed file and line for every finding”? The first is run-specific orchestration; the second is reusable review guidance.
+
+## Ask Your Agent to Create the Workflow
+
+Open your AI agent in the practice repository and pass this prompt:
+
+```text
+/agentic-workflows Create .github/workflows/pr-reviewer.md as a PR reviewer.
+
+Use the PR reviewer guidance from the agentic-workflows skill:
+- run when a pull request becomes ready for review
+- support a centralized /review slash command from PR and review comments
+- keep the agent job read-only with contents and pull-requests read permissions
+- use GitHub pull request and repository read tools
+- submit at most one review through the submit-pull-request-review safe output
+- allow only COMMENT and REQUEST_CHANGES review events
+
+Use an inline agent named `pr-reviewer` with model: small. It should inspect the
+diff and return only prioritized, evidence-backed findings. Add an inline skill
+named `pr-review-standards` that requires every finding to cite a changed file
+and line, explain its impact, and omit style-only or speculative feedback.
+Tell the reviewer agent to discover and apply that skill.
+
+The parent brief should call the reviewer, submit COMMENT when there are no
+blocking findings, use REQUEST_CHANGES only for actionable blocking findings,
+call report-incomplete if the diff cannot be read, and call noop if the same
+commit was already reviewed.
+Compile the workflow after creating it.
+```
+
+Review the agent's diff before accepting it. The source should contain one parent brief plus both inline blocks near the bottom of the file.
+
+## Inspect the Generated Structure
+
+The workflow frontmatter should follow this shape:
 
 ```yaml
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [ready_for_review]
+  slash_command:
+    strategy: centralized
+    name: review
+    events: [pull_request_comment, pull_request_review_comment]
+permissions:
+  contents: read
+  pull-requests: read
+  copilot-requests: write
+tools:
+  github:
+    mode: gh-proxy
+    toolsets: [pull_requests, repos]
+safe-outputs:
+  submit-pull-request-review:
+    max: 1
+    allowed-events: [COMMENT, REQUEST_CHANGES]
 ```
 
-`opened` fires when a PR is first created. `synchronize` fires every time a new commit is pushed to the PR branch. Together they cover the full PR lifecycle without any manual intervention.
+Notice that the agent job has no repository or pull request write permission. `copilot-requests: write` only authenticates Copilot. The `submit-pull-request-review` safe output performs the controlled repository write after the agent finishes. `APPROVE` is intentionally absent because the default GitHub Actions token cannot approve pull requests.
 
-Event-driven workflows are the foundation of most real-world agentic review automation. The same pattern powers auto-labellers, summary generators, and quality checklists — three of which you can explore in the side quests at the end of this step.
-
-## Create the Workflow File
-
-In your practice repository, create `.github/workflows/pr-reviewer.md`:
+Near the bottom, look for the two reusable blocks:
 
 ```markdown
+## agent: `pr-reviewer`
 ---
-name: PR Auto-Reviewer
-on:
-  pull_request:
-    types: [opened, synchronize]
-permissions:
-  pull-requests: write
-  contents: read
-safe-outputs:
-  create-issue-comment:
-    limit: 1
+description: Reviews one pull request for actionable problems
+model: small
 ---
 
-You are a helpful PR reviewer. When a pull request is opened or updated:
+Inspect the pull request diff. Discover the relevant skill under the available
+skills directories and apply its review guidance. Return prioritized findings
+with evidence for the parent agent.
 
-1. Read the list of changed files and the PR title and description.
-2. Write a short summary (3–5 sentences) of what the PR does.
-3. List up to three things a reviewer should pay close attention to, based on the file names and PR description alone.
-4. Post the summary and checklist as a single comment on the pull request.
+## skill: `pr-review-standards`
+---
+description: Produces evidence-based pull request review findings
+---
 
-Keep the tone constructive and specific. Do not speculate about code you have not seen.
+Report only actionable problems introduced by the changed lines. For every
+finding, cite the changed file and line, explain the impact, and suggest a
+specific next step. Omit style-only and speculative feedback.
 ```
 
-A few things to notice in this frontmatter:
+The exact wording may differ. Confirm that the responsibilities stay separated: the parent coordinates, the agent investigates, and the skill defines review quality.
 
-- `permissions: pull-requests: write` lets the agent post a comment on the PR.
-- `safe-outputs: create-issue-comment: limit: 1` caps the workflow at one comment per run, preventing spam if the workflow is triggered repeatedly.
-- The agent brief uses only information available in the trigger context (changed file paths, PR title, PR description) — it does not need to read raw file contents to produce a useful first-pass review.
+## Compile and Push
 
-## [Compile](https://github.github.com/gh-aw/reference/compilation-process/) and Push
-
-From your repository root, compile the workflow:
+In your Codespace terminal, run:
 
 ```bash
 gh aw compile
-```
-
-Then commit both files:
-
-```bash
 git add .
-git commit -m "feat: add PR auto-reviewer workflow"
+git commit -m "feat: add agent and skill PR reviewer"
 git push
 ```
 
-> [!TIP]
-> If you want to watch the compiler update the lock file every time you save, run `gh aw compile --watch` instead and keep it running in a background terminal while you edit.
+Optional while your agent edits: run `gh aw compile --watch` in a separate terminal for immediate compiler feedback.
 
-## Test It by Opening a PR
+## Test the Ready-for-Review Trigger
 
-Create a small branch with a trivial change — for example, add a comment to any file — and open a pull request against your default branch.
+1. Create a branch with a small code change that has an obvious, non-security bug.
+2. Open a **draft** pull request against your default branch.
+3. Select **Ready for review**.
+4. Open the **Actions** tab and inspect the **PR Reviewer** run.
+5. Return to the pull request and inspect the submitted review.
 
-The workflow fires automatically within a few seconds of the PR being created. To watch it:
+In the run log, confirm that the parent calls `pr-reviewer` and that the reviewer loads the review skill before returning findings.
 
-1. Go to the **Actions** tab of your repository.
-2. Find the **PR Auto-Reviewer** run next to your pull request.
-3. Open the run and watch the agent step process the PR context.
-4. Navigate back to the pull request and check the **Conversation** tab — your automated review comment should appear there.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/13-pr-reviewer-comment-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/13-pr-reviewer-comment-light.svg">
-  <img alt="PR auto-reviewer comment posted by the workflow" src="images/13-pr-reviewer-comment-light.svg">
-</picture>
-
-## Inspect the Agent's Reasoning
-
-Open the run log and look for the agent's `[plan]` and `[tool]` lines. You should see the agent:
-
-1. Reading the PR metadata (title, description, file list).
-2. Planning its summary based on available context.
-3. Calling the `create-issue-comment` tool to post the result.
-
-If the agent posted a comment but it feels generic, the brief is working but may need tightening. Try adding a sentence like:
-
-```text
-When the PR only touches test files, note that explicitly and skip the "things to watch" list.
-```
-
-Then recompile, push, and update the PR branch to trigger another run.
-
-## Improve the workflow with `/agentic-workflows`
-
-When you want to modify the PR reviewer behavior, use your AI agent with the `/agentic-workflows` skill instead of editing from scratch. For example:
-
-```text
-/agentic-workflows improve my PR reviewer brief so it highlights risky file types and keeps comments under 120 words
-```
-
-Review the suggested changes, apply what you agree with, then run `gh aw compile` and commit both workflow files.
+To test the manual path, add a `/review` comment to the pull request. After pushing another commit, use `/review` again instead of moving the pull request back to draft.
 
 > [!NOTE]
-> If the workflow does not trigger after you open or update a PR, first confirm the pull request targets your default branch and that your workflow still includes `on: pull_request` with `types: [opened, synchronize]`.
+> If no run starts, confirm that the workflow is on your default branch and that you changed the pull request from draft to ready. Opening a pull request as ready does not emit the `ready_for_review` event.
+
+## Improve One Layer
+
+Choose one change and send it through `/agentic-workflows`:
+
+- Update the **skill** if the review standard needs to change across every review.
+- Update the **agent** if its investigation or returned evidence needs to change.
+- Update the **parent brief** if review submission or orchestration needs to change.
+
+For example:
+
+```text
+/agentic-workflows update .github/workflows/pr-reviewer.md so the
+`pr-review-standards` skill asks reviewers to distinguish blocking findings
+from non-blocking observations. Keep the trigger, permissions, agent, and safe
+output unchanged. Compile the workflow after the edit.
+```
+
+Run `/review` again and compare the new result with the first review.
 
 ## ✅ Checkpoint
 
-- [ ] I created `.github/workflows/pr-reviewer.md` with a `pull_request` trigger
-- [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
-- [ ] I opened a test pull request and the workflow triggered automatically
-- [ ] The workflow posted exactly one comment on my pull request
-- [ ] I can explain why `safe-outputs: create-issue-comment: limit: 1` matters for an event-driven workflow
-- [ ] I used `/agentic-workflows` to iterate on the PR reviewer brief
+- [ ] You created `.github/workflows/pr-reviewer.md` through your AI agent and `/agentic-workflows`
+- [ ] The workflow contains a `pr-reviewer` inline agent and a `pr-review-standards` inline skill
+- [ ] The parent brief calls the reviewer, and the reviewer applies the skill
+- [ ] The agent job has read-only repository and pull request permissions
+- [ ] The safe output allows one `COMMENT` or `REQUEST_CHANGES` review, but not `APPROVE`
+- [ ] `gh aw compile` completed and both workflow files are committed and pushed
+- [ ] Marking a draft ready or commenting `/review` triggered the workflow
+- [ ] The submitted review cites evidence from the changed lines
+- [ ] You changed one layer and compared the rerun with the first review
 
 <!-- journey: all -->
 **Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
