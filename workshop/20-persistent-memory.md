@@ -49,7 +49,7 @@ For this deduplication use case, `cache-memory` is the right choice.
 
 ### Add `cache-memory` to your frontmatter
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In your Codespace terminal, run `gh copilot` and send this prompt:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add `cache-memory`
@@ -60,7 +60,7 @@ ttl `7d`, and update the task brief to read and write that memory slot for dedup
 The skill adds the frontmatter block and updates the brief. Review the diff before committing.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>✏️ Manual editing path</summary>
 
 Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter with the content shown below, then run `gh aw compile`.
 
