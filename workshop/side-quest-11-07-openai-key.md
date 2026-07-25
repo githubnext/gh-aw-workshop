@@ -113,7 +113,7 @@ gh aw compile --validate
 
 You should see:
 
-```
+```text
 ✔ <your-workflow>.md — valid
 ```
 

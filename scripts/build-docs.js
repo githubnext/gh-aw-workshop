@@ -118,7 +118,6 @@ marked.use(markedHighlight({
     return hljs.highlight(code, { language }).value;
   },
 }));
-
 // Plugin: render shell and agent prompt code blocks with distinct UI wrappers
 const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
 marked.use({
@@ -635,6 +634,7 @@ html {
   width: min(100%, 720px);
   height: auto;
   margin-inline: auto;
+  border-radius: 6px;
 }
 
 .markdown-body img[data-image-inspector-ready] {
@@ -720,6 +720,7 @@ html {
   width: auto;
   height: auto;
   margin: 0 auto;
+  border-radius: 6px;
 }
 
 .image-inspector-caption {
