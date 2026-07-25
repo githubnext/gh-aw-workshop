@@ -30,8 +30,16 @@ Run these commands in your terminal to confirm the required tools are installed 
 
 ```bash
 gh --version
-gh aw --version
 git --version
+```
+
+> [!NOTE]
+> `gh aw --version` only works after you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md). Skip that check until you reach Step 6.
+
+If you've already completed Step 6, you can also run:
+
+```bash
+gh aw --version
 ```
 
 ## Conceptual screenshots
@@ -106,7 +114,7 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 ## ✅ Checkpoint
 
 - [ ] You ran `gh --version` in your terminal and it returned a version number
-- [ ] You ran `gh aw --version` in your terminal and it returned a version number
+- [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md), you ran `gh aw --version` in your terminal and it returned a version number
 - [ ] You ran `git --version` in your terminal and it returned a version number
 - [ ] You can identify each environment and tool name used in the tutorial
 - [ ] You can match each item to its conceptual screenshot
