@@ -110,7 +110,6 @@ marked.use({
 // Plugin: render GitHub GFM alert callouts (> [!NOTE], > [!TIP], etc.)
 marked.use(markedAlert());
 
-<<<<<<< HEAD
 // Plugin: syntax-highlight fenced code blocks at build time using highlight.js
 marked.use(markedHighlight({
   langPrefix: 'hljs language-',
@@ -119,7 +118,6 @@ marked.use(markedHighlight({
     return hljs.highlight(code, { language }).value;
   },
 }));
-=======
 // Plugin: render shell code blocks with a terminal UI wrapper
 const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
 marked.use({
@@ -135,7 +133,6 @@ marked.use({
     },
   },
 });
->>>>>>> origin/main
 
 const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
@@ -631,6 +628,7 @@ html {
   width: min(100%, 720px);
   height: auto;
   margin-inline: auto;
+  border-radius: 6px;
 }
 
 .markdown-body img[data-image-inspector-ready] {
@@ -716,6 +714,7 @@ html {
   width: auto;
   height: auto;
   margin: 0 auto;
+  border-radius: 6px;
 }
 
 .image-inspector-caption {
