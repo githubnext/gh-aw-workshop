@@ -272,6 +272,10 @@ if (fs.existsSync(workshopImagesDir)) {
 const faviconSrc = path.join(__dirname, 'static', 'favicon.svg');
 fs.copyFileSync(faviconSrc, path.join(distDir, 'favicon.svg'));
 
+// Copy theme chooser script
+const docsThemeSrc = path.join(__dirname, 'static', 'docs-theme.js');
+fs.copyFileSync(docsThemeSrc, path.join(distDir, 'docs-theme.js'));
+
 // Copy Primer CSS
 const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
@@ -984,7 +988,7 @@ const page = `<!DOCTYPE html>
   <link rel="stylesheet" href="primer.css">
   <link rel="stylesheet" href="alerts.css">
   <link rel="stylesheet" href="docs.css">
-  <script>(function(){var t=localStorage.getItem('workshop-color-mode');if(t==='light'||t==='dark'||t==='auto')document.documentElement.setAttribute('data-color-mode',t);}());</script>
+  <script src="docs-theme.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -1033,20 +1037,6 @@ ${htmlContent}</main>
     const imageInspectorCaption = document.getElementById('image-inspector-title');
     const menuLinks = Array.from(document.querySelectorAll('[data-workshop-page-link]'));
     const previewableImages = Array.from(document.querySelectorAll('.markdown-body img'));
-    const themeButtons = Array.from(document.querySelectorAll('[data-theme]'));
-    const THEME_KEY = 'workshop-color-mode';
-
-    function applyTheme(theme) {
-      document.documentElement.setAttribute('data-color-mode', theme);
-      themeButtons.forEach(function (btn) {
-        btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false');
-      });
-    }
-
-    (function initTheme() {
-      const stored = localStorage.getItem(THEME_KEY);
-      applyTheme(stored === 'light' || stored === 'dark' ? stored : 'auto');
-    }());
 
     function updateImageInspectorCaption(text) {
       if (text) {
@@ -1151,14 +1141,6 @@ ${htmlContent}</main>
       }
       if (e.target.closest('.image-inspector-close')) {
         closeImageInspector();
-        return;
-      }
-
-      const themeBtn = e.target.closest('[data-theme]');
-      if (themeBtn) {
-        const theme = themeBtn.dataset.theme;
-        localStorage.setItem(THEME_KEY, theme);
-        applyTheme(theme);
         return;
       }
 
