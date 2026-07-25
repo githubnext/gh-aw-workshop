@@ -140,7 +140,11 @@ git push
 3. Open the run and look at the job summary.
 4. Confirm the Runner field shows your self-hosted runner name (not `GitHub Actions`).
 
-![Runner name shown in the Actions job summary](images/24-self-hosted-runner-job.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/24-self-hosted-runner-job-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/24-self-hosted-runner-job-light.svg">
+  <img alt="Runner name shown in the Actions job summary" src="images/24-self-hosted-runner-job-light.svg">
+</picture>
 
 ## ✅ Checkpoint
 

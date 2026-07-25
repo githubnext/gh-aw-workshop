@@ -35,7 +35,11 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
    - Wait 30–60 seconds for GitHub to prepare the container.
 3. The Codespace opens in a new browser tab showing a VS Code-style editor. Leave this tab open for the rest of the workshop.
 
-![Open Codespace](images/02a-open-codespace.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02a-open-codespace-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02a-open-codespace-light.svg">
+  <img alt="Open Codespace" src="images/02a-open-codespace-light.svg">
+</picture>
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
