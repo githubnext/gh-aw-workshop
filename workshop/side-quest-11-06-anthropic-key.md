@@ -90,12 +90,12 @@ If you previously added `copilot-requests: write` for the Copilot engine, you ca
 
 ---
 
-## Compile and validate
+## Validate your workflow
 
-After updating your frontmatter, recompile the workflow to check for errors:
+After updating your frontmatter, validate the workflow to check for errors:
 
 ```bash
-gh aw compile --validate
+gh aw validate
 ```
 
 You should see:
@@ -111,10 +111,9 @@ You should see:
 - [ ] You have an Anthropic account and have generated an API key
 - [ ] `ANTHROPIC_API_KEY` is stored as a repository secret
 - [ ] Your workflow frontmatter has `engine: claude`
-- [ ] `gh aw compile --validate` reports no errors
+- [ ] `gh aw validate` reports no errors
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 <!-- journey: all -->
 **Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-
