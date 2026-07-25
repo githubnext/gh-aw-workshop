@@ -50,7 +50,7 @@ steps:
 
       # Install dependencies (same set as deploy-pages.yml)
       npm install --no-save marked github-slugger marked-alert \
-        @primer/css "@fontsource-variable/mona-sans"
+        @primer/css "@fontsource-variable/mona-sans" highlight.js marked-highlight
 
       # Build the static workshop site to dist/
       node scripts/build-docs.js
