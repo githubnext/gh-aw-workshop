@@ -57,7 +57,8 @@ Tell the reviewer agent to discover and apply that skill.
 
 The parent brief should call the reviewer, submit COMMENT when there are no
 blocking findings, use REQUEST_CHANGES only for actionable blocking findings,
-and call noop if the diff cannot be read or the same commit was already reviewed.
+call report-incomplete if the diff cannot be read, and call noop if the same
+commit was already reviewed.
 Compile the workflow after creating it.
 ```
 
@@ -89,7 +90,7 @@ safe-outputs:
     allowed-events: [COMMENT, REQUEST_CHANGES]
 ```
 
-Notice that the agent job has no write permission. The `submit-pull-request-review` safe output performs the controlled write after the agent finishes. `APPROVE` is intentionally absent because the default GitHub Actions token cannot approve pull requests.
+Notice that the agent job has no repository or pull request write permission. `copilot-requests: write` only authenticates Copilot. The `submit-pull-request-review` safe output performs the controlled repository write after the agent finishes. `APPROVE` is intentionally absent because the default GitHub Actions token cannot approve pull requests.
 
 Near the bottom, look for the two reusable blocks:
 
