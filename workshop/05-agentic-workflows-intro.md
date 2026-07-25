@@ -21,6 +21,20 @@ Think of it like a **scheduled email digest** you've set up in an app: every mor
 
 The agent always runs within a sandbox and posts results through a guardrailed output system — you will explore how this works in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
 
+## Quick glossary before you continue
+
+If any term below feels new, skim this table now. You do not need to memorize it — come back to it whenever a word feels fuzzy in the exercises below.
+
+| Term | Plain-language meaning | Everyday analogy |
+|---|---|---|
+| Trigger | The event or schedule that starts the workflow | An alarm clock that decides when the job begins |
+| Frontmatter | The settings block at the top of the file | A settings card attached to the instructions |
+| Task brief | The plain-English job description for the agent | The note you hand to a teammate |
+| `gh aw compile` | The command that turns the source file into something GitHub Actions can run | Printing your draft into the final form the system accepts |
+| `.lock.yml` | The compiled workflow file that GitHub Actions actually runs | The finished form handed to the automation system |
+| Safe outputs | The guardrails that control how the workflow can write back to GitHub | An outbox with only approved send buttons |
+| Sandbox | The isolated workspace where the agent runs | A workshop bench with walls around it |
+
 Before opening the details below, write one concrete difference between an agentic workflow and a standard Actions workflow:
 
 - [ ] I've written one concrete difference in my own words

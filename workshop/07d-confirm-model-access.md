@@ -61,6 +61,16 @@ If you are working in Claude Code or OpenAI Codex, keep this first workflow on C
 
 Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
 
+> [!NOTE]
+> <details>
+> <summary><b>Plain-language billing summary</b></summary>
+>
+> - **Choose organization centralized billing** when the repository's organization already pays for Copilot in GitHub Actions. Keep `copilot-requests: write`. Do not add a `COPILOT_GITHUB_TOKEN` secret.
+> - **Choose personal billing** when this is your personal repository, or when the organization does not pay for Copilot in GitHub Actions. Remove `copilot-requests: write`, then add a `COPILOT_GITHUB_TOKEN` secret in the repository's **Settings** → **Secrets and variables** → **Actions** page.
+> - **If you are not sure which path applies, ask one question:** "Is centralized Copilot billing for GitHub Actions enabled for this repository?" If the answer is "no" or "I don't know," follow the personal billing path until an admin confirms otherwise.
+>
+> </details>
+
 ![Decision flow for choosing Copilot billing path: organization centralized billing or personal billing](images/07d-billing-path-decision.svg)
 
 ### Billing quick-reference
