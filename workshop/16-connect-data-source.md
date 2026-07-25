@@ -124,7 +124,7 @@ GitHub resolves the step-output expressions before the AI sees the prompt, so th
 
 ✏️ Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
 
-### Compile, push, and test
+### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), push, and test
 
 The `/agentic-workflows` skill recompiles the lock file automatically. If you edited the workflow manually, run `gh aw compile` first, then push:
 

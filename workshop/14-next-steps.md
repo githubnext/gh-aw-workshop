@@ -18,7 +18,7 @@ Take stock of everything you've learned, then choose a direction for what to bui
 
 You've gone from zero to a fully automated, AI-powered workflow that:
 
-- Runs on a schedule in GitHub Actions
+- Runs on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) in GitHub Actions
 - Uses gh-aw to call an AI model from a simple YAML file
 - Posts a daily summary without any manual intervention
 

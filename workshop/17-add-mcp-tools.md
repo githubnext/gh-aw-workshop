@@ -83,7 +83,7 @@ Open your daily-status workflow file (`.github/workflows/daily-status.md`) and f
 >
 > `mode: gh-proxy` routes all GitHub tool calls through the `GITHUB_TOKEN` that Actions provides automatically — no extra credentials or setup needed on github.com or GHEC.
 >
-> On GHES, the GitHub MCP server is supported from GHES 3.16+. If your instance is older, the `tools:` block will compile without errors but the agent's tool calls will fail at runtime. Verify your GHES version and confirm with your admin that the Copilot MCP proxy feature is enabled for your organization.
+> On GHES, the GitHub MCP server is supported from GHES 3.16+. If your instance is older, the `tools:` block will [compile](https://github.github.com/gh-aw/reference/compilation-process/) without errors but the agent's tool calls will fail at runtime. Verify your GHES version and confirm with your admin that the Copilot MCP proxy feature is enabled for your organization.
 >
 > If MCP is unavailable in your environment, the [Connect a Live Data Source](16-connect-data-source.md) step covers an alternative approach using deterministic shell steps that only require `GITHUB_TOKEN` and the `gh` CLI — no MCP server needed.
 >

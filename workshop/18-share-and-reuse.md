@@ -65,7 +65,7 @@ For example, if your username is `jsmith`, your repo is `my-workshop`, and your 
 gh aw add jsmith/my-workshop/daily-status
 ```
 
-Your teammate runs this inside their repository. `gh aw add` copies the Markdown file into their `.github/workflows/` folder and they can then edit and compile it for their own context.
+Your teammate runs this inside their repository. `gh aw add` copies the Markdown file into their `.github/workflows/` folder and they can then edit and [compile](https://github.github.com/gh-aw/reference/compilation-process/) it for their own context.
 
 > [!TIP]
 > You can also pin to a specific version using a tag or commit SHA: `gh aw add jsmith/my-workshop/daily-status@v1.0`. This is useful when you want to guarantee stability for a team-wide rollout.
