@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest 09-01c: Pattern — Safe-output `limit reached`
+# Side Quest 09-01c: Pattern — [Safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) `limit reached`
 
 ## 🎯 What You'll Do
 

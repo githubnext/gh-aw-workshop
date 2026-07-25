@@ -36,11 +36,11 @@ This mimics the format of a high-priority system instruction, betting that the a
 
 ## Why gh-aw reduces the risk
 
-gh-aw can combine five defence layers. Four are core, and `threat-detection` is an optional fifth layer you enable under `safe-outputs:`. Here is the short version, in three groups:
+gh-aw can combine five [defence layers](https://github.github.com/gh-aw/introduction/architecture/#security-model). Four are core, and `threat-detection` is an optional fifth layer you enable under `safe-outputs:`. Here is the short version, in three groups:
 
-- **Compiled task brief** — The task brief is baked in before any data arrives. Issue bodies and PR descriptions reach the agent as structured tool call results, competing with an authoritative baseline rather than replacing it.
+- **[Compiled task brief](https://github.github.com/gh-aw/reference/compilation-process/#overview)** — The task brief is baked in before any data arrives. Issue bodies and PR descriptions reach the agent as structured tool call results, competing with an authoritative baseline rather than replacing it.
 - **Minimal `permissions:` + `safe-outputs`** — The `GITHUB_TOKEN` enforces declared permission boundaries; `safe-outputs` removes write tool paths that were never declared, so a jailbreak instruction to push a commit has no execution path.
-- **`network.allowed` + optional [agentic threat detection](https://github.github.com/gh-aw/reference/threat-detection/)** — The network layer blocks data exfiltration to unlisted endpoints; if you enable `threat-detection` under `safe-outputs:`, a separate detection job reviews agent output in an isolated sandbox before any declared write lands.
+- **`network.allowed` + optional [agentic threat detection](https://github.github.com/gh-aw/reference/threat-detection/)** — The [network layer](https://github.github.com/gh-aw/reference/network/#configuration) blocks data exfiltration to unlisted endpoints; if you enable `threat-detection` under `safe-outputs:`, a separate detection job reviews agent output in an isolated sandbox before any declared write lands.
 
 <details>
 <summary>Detailed breakdown of each layer</summary>
