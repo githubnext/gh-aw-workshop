@@ -58,7 +58,11 @@ Use this quick comparison when your workflow needs GitHub access:
 4. Enter a name (e.g. `SLACK_WEBHOOK_URL`) and the secret value.
 5. Click **Add secret**.
 
-![Repository secrets page](images/side-quest-secrets-settings.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-secrets-settings-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-secrets-settings-light.svg">
+  <img alt="Repository secrets page" src="images/side-quest-secrets-settings-light.svg">
+</picture>
 
 > [!TIP]
 > Secret names must use only uppercase letters, digits, and underscores. By convention, use `SCREAMING_SNAKE_CASE`.
