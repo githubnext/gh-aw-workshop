@@ -1,6 +1,5 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
-<!-- learning:false -->
 # Install the gh-aw CLI Extension
 
 `gh-aw` is the CLI extension that compiles your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) Markdown files and triggers runs from your terminal.
