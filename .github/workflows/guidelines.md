@@ -31,8 +31,9 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 ## AI agent guidance
 
-- Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
+- Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. In the core workshop, "Copilot" should usually mean **Copilot CLI in the terminal already open in Codespaces**, not a GitHub.com prompt surface. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
 - When a learner is using their AI agent, tell them what prompt to pass; do **not** present shell commands as though they run inside the agent chat.
+- If a learner needs to start Copilot from the terminal, explicitly separate the launch command (for example `gh copilot`) from the prompt they should paste next.
 - Use `prompt` as the fenced code block language for prompts passed to an AI agent so the rendered workshop clearly distinguishes agent input from terminal commands and other code.
 - When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through their AI agent with the `/agentic-workflows` skill.
 - Do **not** recommend manual workflow editing as the primary instruction path; use the AI agent + `/agentic-workflows` prompts instead.
@@ -350,14 +351,14 @@ Example patterns:
 | `terminal` | Any terminal user — Codespace or local |
 | `codespace` | Codespace-specific instructions (subset of `terminal`) |
 | `local` | Local terminal-specific instructions (subset of `terminal`) |
-| `copilot` | GitHub Copilot app or Agents tab users |
+| `copilot` | Copilot-specific instructions, usually Copilot CLI users |
 
 Rules for assigning `journey`:
 
 - Use `all` for shared hub pages and conceptual introductions that every learner reads.
 - Use `terminal` for pages where the primary instructions require a shell (Codespace or local). Use `codespace` or `local` only when the content is specific to one of those environments and would not apply to the other.
 - Use `ui` for pages written exclusively for learners who stay in the GitHub browser UI.
-- Use `copilot` for pages that target the Copilot desktop app or the browser-based Agents tab (Adventure D).
+- Use `copilot` for pages that target a Copilot-specific surface, usually Copilot CLI and only exceptionally the Copilot app, CCA, or another dedicated Copilot environment.
 
 ### `adventure` — content category
 
@@ -370,7 +371,7 @@ Describes the role the page plays in the overall workshop structure.
 | `scenario-a` | Adventure Codespace — Daily Repo Status Report |
 | `scenario-b` | Adventure Local — Daily Documentation Updater |
 | `scenario-c` | Adventure C — PR Code Reviewer |
-| `scenario-d` | Adventure D — Build with GitHub Copilot (Agents tab / CCA) |
+| `scenario-d` | Adventure D — Build with GitHub Copilot (CLI / CCA) |
 | `advanced` | Optional post-core topics (steps 14 and above) |
 | `side-quest` | Optional deep-dive supplementary content branching off a main step |
 
@@ -395,7 +396,7 @@ Side quest `journey` assignment:
 - `local` — content is specific to the optional local terminal route (e.g., `side-quest-02-01-local-terminal.md`).
 - `codespace` — content addresses a Codespaces-specific error or configuration (e.g., `side-quest-08-01-codespaces-actions-write.md`).
 - `ui` — content is only applicable to a browser-only side quest (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
-- `copilot` — content is specific to the Copilot CCA or Agents tab environment (e.g., `side-quest-06-02-cca-codespace.md`).
+- `copilot` — content is specific to a Copilot-focused environment such as Copilot CLI or Copilot CCA (e.g., `side-quest-06-02-cca-codespace.md`).
 - `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).
 
 ## Dispatcher and choice-hub pages: `<!-- learning:false -->`

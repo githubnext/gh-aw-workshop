@@ -15,8 +15,13 @@ You'll verify Copilot model access with a quick test that uses the `agentic-work
 Before configuring billing, confirm Copilot is reachable from this repository.
 Catching an access problem here saves debugging time in the billing steps and in Step 8.
 
-1. Open the **Agents** tab in your repository on GitHub.com.
-2. Send the following prompt:
+1. In the terminal that is already open in your Codespace, run:
+
+   ```bash
+   gh copilot
+   ```
+
+2. Send the following prompt in Copilot CLI:
 
    ```prompt
    /agentic-workflows suggest one improvement to `.github/workflows/daily-report-status.md` and explain why in one sentence.
@@ -32,12 +37,12 @@ Catching an access problem here saves debugging time in the billing steps and in
 
 Use this quick check before you choose a billing path:
 
-- **You receive a normal reply in the Agents tab**
+- **You receive a normal reply in Copilot CLI**
   - Continue to **Choose one Copilot billing path**.
 - **You receive an access or entitlement error**
   - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
   - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
-  - Retry the same one-sentence prompt in the Agents tab.
+  - Retry the same one-sentence prompt in Copilot CLI.
 - **You still cannot get a reply after account checks**
   - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
 
@@ -118,7 +123,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 
 ## ✅ Checkpoint
 
-- [ ] I opened the Agents tab and sent a test prompt
+- [ ] I opened Copilot CLI in the terminal and sent a test prompt
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
