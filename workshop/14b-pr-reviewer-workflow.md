@@ -12,7 +12,7 @@ By the end you will have a working PR reviewer workflow and understand how event
 
 ## 📋 Before You Start
 
-- You have a working `daily-report-status` workflow from [Test and Improve Your Workflow](12-test-and-iterate.md).
+- You have a working `daily-report-status` workflow from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 - You understand the two-file structure (`.md` source + `.lock.yml`) from earlier steps.
 
 ## Why Event-Driven Triggers?

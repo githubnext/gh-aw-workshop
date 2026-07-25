@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Using `gh aw compile` to Catch Errors Early
 
-> _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to [Step 7](07-your-first-workflow.md) or [Step 13](12-test-and-iterate.md)._
+> _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to [Step 7](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md)._
 
 ## 🎯 What You'll Do
 
@@ -110,7 +110,7 @@ on:
 
 ---
 
-Return to [Step 7](07-your-first-workflow.md) or [Step 13](12-test-and-iterate.md).
+Return to [Step 7](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md).
 
 <!-- /journey -->
 

@@ -86,6 +86,6 @@ Put your answers in a scratch file, your editor, or wherever you keep notes. You
 - [ ] I can identify whether a run failed due to a permission error, a vague brief, or a missing output
 
 <!-- journey: all -->
-**Next:** [Refine Your Workflow with Agentic Editing](09-agentic-editing.md)
+**Next:** [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)
 <!-- /journey -->
 

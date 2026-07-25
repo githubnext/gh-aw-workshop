@@ -10,7 +10,7 @@ Learn the most common ways agentic workflows fail in production and apply three 
 
 ## 📋 Before You Start
 
-- You have a working scheduled workflow (see [Schedule It to Run Every Day](12-test-and-iterate.md)).
+- You have a working scheduled workflow (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - You're comfortable editing workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
 
 ## Steps

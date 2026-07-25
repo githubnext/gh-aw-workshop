@@ -10,7 +10,7 @@ You will use `gh aw logs` and `gh aw audit` to review the built-in artifacts tha
 
 ## 📋 Before You Start
 
-- Your workflow runs successfully (see [Test and Iterate on Your Workflow](12-test-and-iterate.md)).
+- Your workflow runs successfully (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - `gh aw` is installed and authenticated (see [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
 
 ## Steps

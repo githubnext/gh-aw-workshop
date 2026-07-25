@@ -12,7 +12,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
-- You're comfortable running and iterating on workflows from [Test and Improve Your Workflow](12-test-and-iterate.md).
+- You're comfortable running and iterating on workflows from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 
 ## Steps
 

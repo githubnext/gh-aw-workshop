@@ -1,14 +1,14 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
-# Refine Your Workflow with Agentic Editing
+# Refine, Test, and Improve Your Workflow
 
-_The fastest way to improve a workflow is to describe what you want in plain English and let the skill do the editing._
+_The fastest path to a better workflow is a tight loop: describe what you want, review the diff, test, and compare the result._
 
 ## 🎯 What You'll Do
 
-You'll use the `agentic-workflows` Copilot skill — installed in your practice repository during Step 7 — to edit, debug, and optimize `daily-report-status.md` without manually hunting through the frontmatter or Markdown body.
+You'll use the `agentic-workflows` Copilot skill — installed in your practice repository during Step 7 — to edit, debug, and optimize `daily-report-status.md`, then trigger a fresh run and compare the output against the previous one.
 
-By the end of this step, your workflow will produce more useful output, and you'll know the three prompting patterns that cover most day-to-day workflow maintenance.
+By the end of this step, your workflow will produce more useful output, and you'll have a repeatable iteration loop you can use any time the workflow output is vague, incorrect, or missing something important.
 
 ## 📋 Before You Start
 
@@ -36,9 +36,22 @@ The skill recognizes three core task types for day-to-day workflow maintenance:
 
 If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
+## Start With One Concrete Observation
+
+Open the latest run in the **Actions** tab and look for one thing you want to improve.
+
+Good examples:
+
+- The summary is too generic.
+- An important detail is missing.
+- The tone feels too stiff.
+- The formatting is inconsistent.
+
+Pick only one problem for this round. Small, isolated changes make it much easier to tell what actually improved the result.
+
 ## Edit: improve the workflow brief
 
-After running your workflow in Step 8, you may have noticed the agent's comment was generic. You'll now make the brief more specific so the agent explains _why_ the most-reacted issue matters, not just which one it is.
+After reviewing the run output, you may have noticed the agent's comment was generic. You'll now make the brief more specific so the agent explains _why_ the most-reacted issue matters, not just which one it is.
 
 Open the GitHub Copilot **Chat** or **Agents** tab in your practice repository and paste:
 
@@ -120,13 +133,40 @@ Review the Markdown body of your workflow and remove any sentences that repeat t
 
 </details>
 
+## Commit Both Workflow Files
+
+Commit both the source workflow and the recompiled lock file:
+
+```bash
+git add .
+git commit -m "refine daily-report-status workflow output"
+git push
+```
+
+If your workflow uses a different filename, stage that `.md` file and its matching `.lock.yml` file instead.
+
+## Trigger a Fresh Run and Compare
+
+Use [**workflow_dispatch**](https://github.github.com/gh-aw/reference/triggers/) from the **Actions** tab to trigger a new run. Then compare the latest result with the previous one.
+
+Ask yourself:
+
+- Did the new run reflect the change you made?
+- Is the output more useful than before?
+- Did you improve the original problem without creating a new one?
+
+If yes, keep the change. If not, revert the change and try a different adjustment.
+
+If you want a stricter review loop, score each run for accuracy, completeness, and tone before you decide what to change next.
+
 ## ✅ Checkpoint
 
-- [ ] I used the `/agentic-workflows` skill to improve the workflow brief
+- [ ] I identified one specific problem from a real workflow run
+- [ ] I used the `/agentic-workflows` skill (or made a manual edit) to address it
 - [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed
-- [ ] I re-ran the workflow from **Actions** and confirmed the updated output matches my intent
+- [ ] I compared the new run with the previous run and decided what to change next
 
 <!-- journey: all -->
-**Next:** [Test and Improve Your Workflow](12-test-and-iterate.md)
+**Next:** [What's Next? Keep Exploring](14-next-steps.md)
 <!-- /journey -->

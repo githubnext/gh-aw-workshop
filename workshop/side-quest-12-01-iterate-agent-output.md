@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Evaluating and Iterating on Agent Output
 
-> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Test and Improve Your Workflow](12-test-and-iterate.md)._
+> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
 
 ## 🎯 What You'll Do
 
@@ -10,7 +10,7 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 ## 📋 Before You Start
 
-- You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
+- You have completed [Step 9](09-agentic-editing.md) and already have a workflow run to inspect.
 - Your workflow posts to a [safe output surface](https://github.github.com/gh-aw/reference/safe-outputs/) such as the **Daily Status Reports** issue.
 
 ## Baseline run
@@ -115,7 +115,7 @@ Quick run-log check:
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
 <!-- journey: all -->
-Return to [Test and Improve Your Workflow](12-test-and-iterate.md).
+Return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
 
 
