@@ -11,7 +11,7 @@
 
 ## Why [authentication](https://github.github.com/gh-aw/reference/auth/) matters
 
-Agentic workflows call the GitHub Copilot API at runtime to run AI reasoning steps. Without a valid credential, every call returns `401 Unauthorized` and the workflow fails immediately. Configuring authentication once, before you run a workflow, ensures your agent can reach Copilot reliably on every future run.
+[Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) call the GitHub Copilot API at runtime to run AI reasoning steps. Without a valid credential, every call returns `401 Unauthorized` and the workflow fails immediately. Configuring authentication once, before you run a workflow, ensures your agent can reach Copilot reliably on every future run.
 
 If you are using a terminal, prefer the guided `gh-aw` setup flows where possible:
 
