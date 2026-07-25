@@ -23,7 +23,7 @@ Each section of your workflow file serves a distinct purpose at runtime — the 
 
 ### Update workflow content with Copilot
 
-In Copilot Chat (Agent mode), run this prompt:
+In your AI agent, run this prompt:
 
 ```text
 /agentic-workflows update `.github/workflows/daily-report-status.md` so it includes:

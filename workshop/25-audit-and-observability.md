@@ -63,7 +63,7 @@ For a full breakdown of report contents and artifact files, see [Side Quest: Aud
 
 ### Debug with an agent
 
-Once you have an audit report, bring it to GitHub Copilot Chat with the **`/agentic-workflows` skill** and describe what puzzled you:
+Once you have an audit report, bring it to your AI agent with the **`/agentic-workflows` skill** and describe what puzzled you:
 
 ```text
 /agentic-workflows Here is my audit report. The agent called github.list_issues
@@ -94,7 +94,7 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 
 - [ ] You ran `gh aw logs <your-workflow-id>` and read the AIC summary for your workflow
 - [ ] You ran `gh aw audit <run-id>` and reviewed the generated report
-- [ ] You brought an audit report to Copilot Chat with the `/agentic-workflows` skill and got actionable feedback
+- [ ] You brought an audit report to your AI agent with the `/agentic-workflows` skill and got actionable feedback
 - [ ] You can browse artifacts in the GitHub Actions UI
 - [ ] You know your organisation's artifact retention policy (or know who to ask)
 

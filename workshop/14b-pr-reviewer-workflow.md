@@ -119,7 +119,7 @@ Then recompile, push, and update the PR branch to trigger another run.
 
 ## Improve the workflow with `/agentic-workflows`
 
-When you want to modify the PR reviewer behavior, use Copilot Chat with the `/agentic-workflows` skill instead of editing from scratch. For example:
+When you want to modify the PR reviewer behavior, use your AI agent with the `/agentic-workflows` skill instead of editing from scratch. For example:
 
 ```text
 /agentic-workflows improve my PR reviewer brief so it highlights risky file types and keeps comments under 120 words

@@ -20,7 +20,10 @@ You'll start with `daily-report-status.md` and end with `daily-report-status.loc
 
 ## Create your first workflow
 
-In Copilot Chat (Agent mode), run this prompt:
+> [!NOTE]
+> Use the **AI agent that runs your agentic workflows** (Copilot, Claude, Codex, or whichever you configured) for all agentic workflow tasks in this workshop. Using the same agent locally gives you behavior that matches production — Copilot Chat (Agent Mode) runs in a different harness and may produce different results.
+
+In your AI agent, run this prompt:
 
 ```text
 /agentic-workflows Create a daily-report-status workflow that runs on a daily schedule. Compile it after creating it.
