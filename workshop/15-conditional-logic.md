@@ -96,7 +96,7 @@ This condition is embedded into the generated lock file during [compilation](htt
 Now that the commit-count condition is in place, you can extend the workflow to also skip on weekends. This exercise reinforces how to combine multiple conditions in a single `if:` expression.
 
 > [!TIP]
-> See [Side Quest: Chaining Conditions — Weekend Skip](side-quest-15-02-chaining-conditions.md) for a step-by-step walkthrough of adding the day-of-week step and updating the `if:` expression.
+> See [Side Quest: Chaining Conditions — Run an Agent Only When Security Findings Exist](side-quest-15-02-chaining-conditions.md) for a hands-on walkthrough: add a Dependabot alert-count step and chain it with a branch check so the agent only runs when there are real findings to act on.
 
 ### Commit and push your conditional logic
 
