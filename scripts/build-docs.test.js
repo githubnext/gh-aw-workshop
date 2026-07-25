@@ -34,3 +34,19 @@ test("workshop navigation constrains long buttons on small screens", () => {
   assert.ok(css.includes(".workshop-navigation-previous,\n  .workshop-navigation-next {\n    align-items: stretch;\n    width: 100%;\n  }"));
   assert.ok(css.includes(".workshop-nav-btn {\n    box-sizing: border-box;\n    max-width: 100%;\n    width: 100%;"));
 });
+
+test("shell code blocks are wrapped in a terminal-block UI", () => {
+  const { html, css } = buildDocs();
+
+  // HTML: at least one terminal-block with the macOS-style dot bar
+  assert.ok(html.includes('<div class="terminal-block">'), "expected terminal-block wrapper in HTML");
+  assert.ok(html.includes('<div class="terminal-bar" aria-hidden="true">'), "expected terminal-bar in HTML");
+  assert.ok(html.includes('<span class="terminal-dot"></span>'), "expected terminal-dot spans");
+  assert.ok(html.includes('<pre class="terminal-pre">'), "expected terminal-pre element");
+
+  // CSS: terminal styles are emitted
+  assert.ok(css.includes(".terminal-block"), "expected .terminal-block in CSS");
+  assert.ok(css.includes(".terminal-bar"), "expected .terminal-bar in CSS");
+  assert.ok(css.includes(".terminal-dot"), "expected .terminal-dot in CSS");
+  assert.ok(css.includes(".terminal-pre"), "expected .terminal-pre in CSS");
+});
