@@ -33,7 +33,7 @@ Think of it as a handoff. First, the workflow gathers facts in a predictable way
 
 ### Fetch commit history
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In your Copilot CLI session in the terminal, paste:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add two shell steps
@@ -45,7 +45,7 @@ those step outputs into the summary.
 The skill adds both steps and updates the task brief. Review the diff before committing.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>✏️ Manual edit path</summary>
 
 Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
