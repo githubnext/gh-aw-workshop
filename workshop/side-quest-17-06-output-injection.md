@@ -30,7 +30,7 @@ Classic CI pipelines emit predictable script output. Agentic workflows read free
 
 ## How AW Defends Against It
 
-gh-aw keeps the agent read-only and limits which follow-up writes `safe-outputs` may apply.
+gh-aw keeps the agent read-only and limits which follow-up writes [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) may apply.
 
 - **Explicit output surfaces via `safe-outputs`**
   The `safe-outputs` block declares every write action the workflow may apply. If a surface is not declared, the safe-output job cannot post to it.
