@@ -136,7 +136,11 @@ git push
 
 Open the **Actions** tab and verify the new steps appear and the AI summary mentions both commits and issues.
 
-![Actions run showing the fetch-issues step and updated summary](images/16-data-source-run.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/16-data-source-run-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/16-data-source-run-light.svg">
+  <img alt="Actions run showing the fetch-issues step and updated summary" src="images/16-data-source-run-light.svg">
+</picture>
 
 > [!TIP]
 > If your repository has no open issues, the AI will say so — that's expected. Create a test issue to see the integration in action.

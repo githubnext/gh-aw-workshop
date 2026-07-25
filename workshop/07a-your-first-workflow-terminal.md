@@ -45,7 +45,11 @@ Let the agent create or update the file for you instead of hand-editing workflow
 - `name` is what you see in the Actions UI.
 - `schedule: daily` means it triggers once a day. The compiler automatically adds the [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) event as well.
 
-![How workflow_dispatch works: author the .md file, compile to a lock.yml, push to GitHub, then click Run workflow in the Actions tab to trigger the agent](images/07a-workflow-dispatch-trigger.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/07a-workflow-dispatch-trigger-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/07a-workflow-dispatch-trigger-light.svg">
+  <img alt="How workflow_dispatch works: author the .md file, compile to a lock.yml, push to GitHub, then click Run workflow in the Actions tab to trigger the agent" src="images/07a-workflow-dispatch-trigger-light.svg">
+</picture>
 
 ### Run your first compile check
 
