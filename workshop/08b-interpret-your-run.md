@@ -51,7 +51,7 @@ Then verify the real output in your repository. For **Daily Report Status**, tha
 
 If your run does not look right, start with these quick checks before changing the workflow:
 
-- **The workflow never appears in Actions** — confirm the workflow file is committed on `main`, then refresh. If you use the terminal path, run `gh aw compile` to catch compile errors.
+- **The workflow never appears in Actions** — confirm the workflow file is committed on `main`, then refresh. If you use the terminal path, run `gh aw compile` to catch [compile](https://github.github.com/gh-aw/reference/compilation-process/) errors.
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 

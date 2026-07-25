@@ -114,7 +114,7 @@ have already reported on. On each run:
 > [!TIP]
 > Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
 
-### Compile, validate, and push
+### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), validate, and push
 
 The `/agentic-workflows` skill recompiles the lock file automatically. If you edited manually, run `gh aw compile` first to confirm the memory block is valid.
 

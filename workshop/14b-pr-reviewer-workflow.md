@@ -65,7 +65,7 @@ A few things to notice in this frontmatter:
 - `safe-outputs: create-issue-comment: limit: 1` caps the workflow at one comment per run, preventing spam if the workflow is triggered repeatedly.
 - The agent brief uses only information available in the trigger context (changed file paths, PR title, PR description) — it does not need to read raw file contents to produce a useful first-pass review.
 
-## Compile and Push
+## [Compile](https://github.github.com/gh-aw/reference/compilation-process/) and Push
 
 From your repository root, compile the workflow:
 

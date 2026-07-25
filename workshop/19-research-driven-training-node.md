@@ -66,7 +66,7 @@ Keep the comment concise and traceable to real sources you used.
 
 ### Validate before opening a pull request
 
-Run markdown lint and compile checks so your proposal is production-ready:
+Run markdown lint and [compile](https://github.github.com/gh-aw/reference/compilation-process/) checks so your proposal is production-ready:
 
 ```bash
 npx --yes markdownlint-cli2 "workshop/**/*.md"
