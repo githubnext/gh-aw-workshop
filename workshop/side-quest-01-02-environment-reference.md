@@ -52,7 +52,11 @@ These visuals are simplified mental models, not literal product screenshots. Use
 
 #### GitHub Codespaces
 
-![Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal](images/side-quest-01-02-github-codespaces.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-github-codespaces-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-github-codespaces-light.svg">
+  <img alt="Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal" src="images/side-quest-01-02-github-codespaces-light.svg">
+</picture>
 
 You use Codespaces when you want a ready-to-go development environment in your browser.
 
@@ -94,7 +98,11 @@ You use GitHub Copilot CLI when you want AI help inside the terminal.
 
 #### GitHub Copilot app
 
-![Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view](images/side-quest-01-02-copilot-app.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-app-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-app-light.svg">
+  <img alt="Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view" src="images/side-quest-01-02-copilot-app-light.svg">
+</picture>
 
 You use the GitHub Copilot app when you want to start and steer repository sessions, manage coding tasks, and review pull requests from a Copilot workspace.
 

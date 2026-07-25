@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal">
+  <rect width="1200" height="560" fill="#0d1117"/>
+  <rect x="80" y="60" width="1040" height="44" rx="8" ry="8" fill="#161b22" stroke="#30363d"/>
+  <circle cx="108" cy="82" r="6" fill="#30363d"/>
+  <circle cx="128" cy="82" r="6" fill="#30363d"/>
+  <circle cx="148" cy="82" r="6" fill="#30363d"/>
+  <rect x="330" y="70" width="540" height="24" rx="12" ry="12" fill="#0d1117" stroke="#30363d"/>
+  <text x="600" y="86" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">https://github.com/codespaces</text>
+
+  <rect x="80" y="104" width="1040" height="400" fill="#161b22" stroke="#30363d"/>
+
+  <rect x="80" y="104" width="220" height="400" fill="#161b22" stroke="#30363d"/>
+  <text x="100" y="132" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1" fill="#8b949e">EXPLORER</text>
+  <line x1="80" y1="144" x2="300" y2="144" stroke="#30363d"/>
+  <text x="100" y="176" font-family="Courier New, monospace" font-size="13" fill="#f0f6fc">.github/workflows/</text>
+  <text x="100" y="206" font-family="Courier New, monospace" font-size="13" fill="#f0f6fc">daily-status.md</text>
+  <text x="100" y="236" font-family="Courier New, monospace" font-size="13" fill="#f0f6fc">README.md</text>
+
+  <rect x="320" y="104" width="600" height="280" fill="#161b22" stroke="#30363d"/>
+  <rect x="320" y="104" width="600" height="36" fill="#0d1117" stroke="#30363d"/>
+  <rect x="344" y="112" width="168" height="20" rx="10" ry="10" fill="#21262d"/>
+  <text x="428" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2f81f7">daily-status.md</text>
+  <text x="350" y="168" font-family="Courier New, monospace" font-size="16" fill="#f0f6fc">name: Daily Status Report</text>
+  <text x="350" y="198" font-family="Courier New, monospace" font-size="15" fill="#8b949e">on:</text>
+  <text x="350" y="226" font-family="Courier New, monospace" font-size="15" fill="#8b949e">  schedule:</text>
+  <text x="350" y="254" font-family="Courier New, monospace" font-size="15" fill="#8b949e">    - cron: '0 9 * * *'</text>
+  <text x="350" y="282" font-family="Courier New, monospace" font-size="15" fill="#8b949e">jobs:</text>
+  <text x="350" y="310" font-family="Courier New, monospace" font-size="15" fill="#8b949e">  report:</text>
+  <text x="350" y="338" font-family="Courier New, monospace" font-size="15" fill="#8b949e">    runs-on: ubuntu-latest</text>
+
+  <rect x="80" y="384" width="840" height="120" fill="#0d1117" stroke="#30363d"/>
+  <text x="108" y="428" font-family="Courier New, monospace" font-size="18" fill="#3fb950">$ gh aw compile</text>
+  <text x="108" y="458" font-family="Courier New, monospace" font-size="18" fill="#7ee787">✓ Compiled successfully</text>
+
+  <text x="600" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal</text>
+</svg>
