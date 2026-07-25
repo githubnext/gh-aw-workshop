@@ -11,7 +11,7 @@ You'll use Copilot to create `.github/workflows/daily-report-status.md` — a sc
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07-compile-flow-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="images/07-compile-flow-light.svg">
-  <img alt="Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes" src="images/07-compile-flow-light.svg">
+  <img alt="Diagram showing how you prompt an agent with the agentic-workflows skill to create daily-report-status.md, which is compiled by gh aw compile into daily-report-status.lock.yml, which GitHub Actions then executes" src="images/07-compile-flow-light.svg">
 </picture>
 
 ## 📋 Before You Start
