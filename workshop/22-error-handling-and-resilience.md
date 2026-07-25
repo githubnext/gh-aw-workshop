@@ -38,7 +38,7 @@ The diagram below shows how these failure modes map to the three mitigations cov
 
 ### Apply all three changes with the skill
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In your Copilot CLI session in the terminal, paste:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-status.md to:
@@ -50,7 +50,7 @@ In the GitHub Copilot **Chat** or **Agents** tab, paste:
 The skill applies all three changes and recompiles the lock file. Review the diff before committing.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>✏️ Manual edit path</summary>
 
 Make the three edits manually (see the reference content below), then run:
 
