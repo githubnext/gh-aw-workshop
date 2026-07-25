@@ -6,7 +6,7 @@
 
 - You've read [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 
-Letting an AI agent act on your repository on a schedule only works if it can't do damage. Agentic workflows enforce two trust boundaries so you can run agents in automation with confidence.
+Letting an AI agent act on your repository on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) only works if it can't do damage. Agentic workflows enforce two trust boundaries so you can run agents in automation with confidence.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/05-agent-run-log-dark.svg">

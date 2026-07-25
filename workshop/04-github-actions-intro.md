@@ -68,7 +68,7 @@ You can also bring a **self-hosted runner** for custom hardware or private netwo
 
 ## Why This Matters for Agentic Workflows
 
-Traditional workflows execute a fixed script path. Agentic workflows still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
+Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
 
 ## Label a sample workflow
 

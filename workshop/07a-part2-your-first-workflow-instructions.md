@@ -8,7 +8,7 @@ _You now have a valid starter file. In this part, you complete it and push it._
 
 You'll finish `.github/workflows/daily-report-status.md` by adding:
 
-- `permissions` and `safe-outputs` in frontmatter
+- [`permissions`](https://github.github.com/gh-aw/reference/permissions/), [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/), and [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) in [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/#frontmatter-elements)
 - a `## Task` instructions block below frontmatter
 - a [compile](https://github.github.com/gh-aw/reference/compilation-process/) check, commit, and push
 
