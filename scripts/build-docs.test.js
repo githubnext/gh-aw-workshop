@@ -50,3 +50,18 @@ test("shell code blocks are wrapped in a terminal-block UI", () => {
   assert.ok(css.includes(".terminal-dot"), "expected .terminal-dot in CSS");
   assert.ok(css.includes(".terminal-pre"), "expected .terminal-pre in CSS");
 });
+
+test("prompt code blocks are wrapped in a distinct agent UI", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<div class="agent-prompt-block" role="region" aria-label="Agent prompt">'));
+  assert.ok(html.includes('<div class="agent-prompt-bar">'));
+  assert.ok(html.includes('<span class="agent-prompt-icon" aria-hidden="true">✦</span>'));
+  assert.ok(html.includes('<span class="agent-prompt-label">Agent prompt</span>'));
+  assert.ok(html.includes('<pre class="agent-prompt-pre"><code class="language-prompt">'));
+
+  assert.ok(css.includes(".agent-prompt-block"));
+  assert.ok(css.includes(".agent-prompt-bar"));
+  assert.ok(css.includes(".agent-prompt-icon"));
+  assert.ok(css.includes(".agent-prompt-pre"));
+});
