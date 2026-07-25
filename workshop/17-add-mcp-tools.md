@@ -37,7 +37,13 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 
 ### Add an MCP server to your workflow
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In the terminal that is already open in your Codespace, run:
+
+```bash
+gh copilot
+```
+
+In Copilot CLI, send this prompt:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add a `tools:` block
