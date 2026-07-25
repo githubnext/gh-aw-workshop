@@ -34,6 +34,10 @@ Answer each question (in your notes or a new GitHub issue in your practice repos
 
 ### Review what you've learned
 
+Before you look at the diagram, predict: from memory, describe how a schedule trigger, the gh-aw agent, and the safe-output system connect in the workflow you built — write one sentence for each component's role.
+
+- [ ] I've described all three components from memory
+
 Here's a quick recap of the concepts you've touched. The diagram below shows how all the pieces connect in the workflow you just built.
 
 <picture>
@@ -42,6 +46,8 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
    <img alt="Agentic workflow architecture: schedule trigger flows through GitHub Actions and gh-aw to an AI model, which produces a safe output" src="images/14-workflow-architecture-light.svg">
 </picture>
 
+- [ ] I checked my prediction against the diagram — I can trace the full path from trigger to output
+
 | Concept | Where you used it |
 |---|---|
 | [GitHub Actions triggers](https://github.github.com/gh-aw/reference/triggers/) | `on: schedule` and `workflow_dispatch` |
@@ -49,6 +55,8 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 | AI model calls | The Markdown body (agent instructions) of your daily-status workflow |
 | Natural-language schedules | `schedule: daily on weekdays` |
 | Iterative debugging | Running, reading output, tweaking, repeating |
+
+- [ ] I can name each concept in the table from memory and point to where I used it
 
 ---
 

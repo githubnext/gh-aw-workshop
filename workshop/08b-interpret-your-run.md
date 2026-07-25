@@ -15,6 +15,10 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 
 ## Read the live log
 
+Before you open the completed run, predict: write the three types of log entries you expect to see and the order they appear in.
+
+- [ ] I've written my prediction
+
 Open the completed **Daily Report Status** run from the **Actions** tab and click the job name. The log usually moves through a simple pattern: the agent thinks, calls a [tool](https://github.github.com/gh-aw/reference/tools/), receives a result, and finishes.
 
 <picture>
@@ -32,6 +36,8 @@ Open the completed **Daily Report Status** run from the **Actions** tab and clic
 ✅ Done
 ```
 
+> Check your prediction: the three entry types are **Planning / Thinking**, **Tool call**, and **Result** (or **Done** / **Error**). They always appear in that sequence — the agent reasons, then acts, then receives a result.
+
 The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and fill in the template below:
 
 ```text
@@ -39,11 +45,19 @@ First Tool call I saw:         [tool name, e.g. github.list_issues]
 What it was trying to do:      [one sentence description]
 ```
 
+- [ ] I filled in the First Tool call template from my own run log
+
 ## Check the output
+
+Before you look at the Summary section, predict: will the run summary say the agent read issues, posted a comment, or both?
+
+- [ ] I've written my prediction for what the Summary will say
 
 After the run finishes, scroll to the **Summary** section on the run page. This gives you the short version of what the agent believes it did, including the safe-output action it used.
 
 Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) record.
+
+- [ ] I checked my prediction — the Summary matched (or differed from) what I expected
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/08-run-summary-dark.svg">

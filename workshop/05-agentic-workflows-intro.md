@@ -21,19 +21,34 @@ Think of it like a **scheduled email digest** you've set up in an app: every mor
 
 The agent always runs within a sandbox and posts results through a guardrailed output system — you will explore how this works in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
 
-## Quick glossary before you continue
+## Quick glossary: part 1 — workflow structure
 
-If any term below feels new, skim this table now. You do not need to memorize it — come back to it whenever a word feels fuzzy in the exercises below.
+Before you look at the definitions, predict: which of these three terms names the plain-English job description you hand to the agent — **Trigger**, **Frontmatter**, or **Task brief**?
+
+- [ ] I've written my prediction
 
 | Term | Plain-language meaning | Everyday analogy |
 |---|---|---|
 | Trigger | The event or schedule that starts the workflow | An alarm clock that decides when the job begins |
 | Frontmatter | The settings block at the top of the file | A settings card attached to the instructions |
 | Task brief | The plain-English job description for the agent | The note you hand to a teammate |
+
+> Check your prediction: the **Task brief** is the plain-English job description. The **Trigger** decides *when* the job runs; the **Frontmatter** holds the settings (triggers, permissions, runner).
+
+- [ ] I checked my prediction — I can name which term is the plain-English job description for the agent
+
+## Quick glossary: part 2 — the two-file structure and safety system
+
+You will use these terms in the exercises below. Read them once, then continue — you do not need to memorize them now.
+
+| Term | Plain-language meaning | Everyday analogy |
+|---|---|---|
 | `gh aw compile` | The command that turns the source file into something GitHub Actions can run | Printing your draft into the final form the system accepts |
 | `.lock.yml` | The compiled workflow file that GitHub Actions actually runs | The finished form handed to the automation system |
 | Safe outputs | The guardrails that control how the workflow can write back to GitHub | An outbox with only approved send buttons |
 | Sandbox | The isolated workspace where the agent runs | A workshop bench with walls around it |
+
+- [ ] I can state from memory what each of the two files (`.md` and `.lock.yml`) is used for
 
 Before opening the details below, write one concrete difference between an agentic workflow and a standard Actions workflow:
 

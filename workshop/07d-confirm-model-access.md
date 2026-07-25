@@ -38,13 +38,29 @@ Catching an access problem here saves debugging time in the billing steps and in
 Use this quick check before you choose a billing path:
 
 - **You receive a normal reply in Copilot CLI**
-  - Continue to **Choose one Copilot billing path**.
+  - Continue to **Confirm Copilot access in your browser** below.
 - **You receive an access or entitlement error**
   - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
   - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
   - Retry the same one-sentence prompt in Copilot CLI.
 - **You still cannot get a reply after account checks**
   - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
+
+## Confirm Copilot access in your browser
+
+Before you choose a billing path, confirm your account-level Copilot access from the browser. This step catches the most common access problems without needing the terminal, and is required before the billing fork regardless of how you ran the CLI check above.
+
+1. Open [github.com/settings/copilot](https://github.com/settings/copilot) in a new browser tab.
+2. Find your access status and match it to the table below:
+
+| What you see | What to do next |
+|---|---|
+| **"Copilot is active"** or model options are visible | Account access confirmed — continue to **Choose one Copilot billing path** |
+| **"Copilot is not enabled"** or no subscription shown | Enable Copilot on your account first, then return here |
+| **"Your organization manages your Copilot access"** | Ask your org admin to confirm your seat is active before choosing a billing path |
+
+> [!IMPORTANT]
+> Fix any access problem here before choosing a billing path. All billing paths require an active Copilot subscription. Skipping this check and proceeding to the billing steps will not resolve an access problem — it will just move the error to Step 8 where it is harder to diagnose.
 
 ## Confirm the workflow engine
 
@@ -56,6 +72,8 @@ If you are working in Claude Code or OpenAI Codex, keep this first workflow on C
 
 - **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
 - **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
+
+- [ ] I confirmed the workflow file has no `engine:` line — it uses GitHub Copilot by default
 
 ## Choose one Copilot billing path
 
@@ -75,12 +93,18 @@ Choose exactly one method. The diagram below shows both paths and the key config
 
 ### Billing quick-reference
 
+Before you read the table, predict: what is the one workflow permission setting that changes between the two billing paths?
+
+- [ ] I've written my prediction
+
 Use this table first, then follow the detailed steps for your selected path below.
 
 | If this is true | Choose this path | Key setting |
 |---|---|---|
 | Your organization provides centralized Copilot billing for Actions | **Organization with centralized Copilot billing** | Keep `copilot-requests: write`; no `COPILOT_GITHUB_TOKEN` secret |
 | You are in a personal repo, or your org does not provide centralized billing | **Personal billing** | Remove `copilot-requests: write`; configure `COPILOT_GITHUB_TOKEN` |
+
+> Check your prediction: the key difference is `copilot-requests: write` — present for organization billing, removed for personal billing. The `COPILOT_GITHUB_TOKEN` secret is only required on the personal path.
 
 ### Organization with centralized Copilot billing
 
@@ -107,6 +131,8 @@ Use this path when the organization that owns the repository has centralized Cop
 
 The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
 
+- [ ] I confirmed `copilot-requests: write` is present in the permissions block and the lock file is recompiled
+
 ### Personal billing
 
 Use this path for a personal repository, or when the owning organization does not provide centralized Copilot billing.
@@ -122,6 +148,8 @@ Use this path for a personal repository, or when the owning organization does no
 
 For the full browser walkthrough, see [Method 2 (UI-only): `COPILOT_GITHUB_TOKEN`](side-quest-06-03c-copilot-github-token-ui-only.md). If you prefer terminal setup, use [Method 2: `COPILOT_GITHUB_TOKEN` secret](side-quest-06-03b-copilot-github-token.md).
 
+- [ ] I confirmed `copilot-requests: write` is removed and `COPILOT_GITHUB_TOKEN` is added as a repository secret
+
 ## Check the final configuration
 
 Open `daily-report-status.md` and confirm it matches the method you selected:
@@ -136,6 +164,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I opened Copilot CLI in the terminal and sent a test prompt
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
+- [ ] I confirmed Copilot is active at [github.com/settings/copilot](https://github.com/settings/copilot) in my browser
 - [ ] I confirmed the first workflow uses GitHub Copilot
 - [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
 - [ ] I chose organization centralized billing or personal billing

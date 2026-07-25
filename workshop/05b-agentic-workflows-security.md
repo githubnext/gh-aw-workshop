@@ -16,10 +16,18 @@ Letting an AI agent act on your repository on a [schedule](https://github.github
 
 ## Safe by design: sandbox + guardrailed outputs
 
+Before you read the two-boundary description below, predict: if a prompt injected into an issue comment told the agent to push code to a protected branch, which protection would stop it — the sandbox, the safe-output system, or both?
+
+- [ ] I've written my prediction
+
 - **A [sandbox](https://github.github.com/gh-aw/reference/sandbox/) around the agent.** The agent runs isolated inside the [Agent Workflow Firewall](https://github.github.com/gh-aw/reference/sandbox/), with **read-only** access to your repo and network egress limited to the domains you allow. Even if a prompt injection or a compromised tool tries to reach out or exfiltrate data, the firewall blocks anything outside the allowlist.
 - **A guardrailed [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) system for writes.** The agent never holds write permissions. Instead, it emits a *structured request* — "create this issue," "post this comment" — and a separate, permission-scoped job validates and executes it, applying per-operation limits (max counts, label and title constraints, allowed repos). That separation gives you least privilege, defense against prompt injection, and a full audit trail of every action.
 
 The security jobs in the run log above map to these boundaries: **activation** checks the agent is authorized to run, the **agent** runs sandboxed behind the firewall, **detection** scans for malicious behavior, and **safe-outputs** applies changes within the guardrails.
+
+> Check your prediction: the **safe-output system** stops the write attempt — the agent holds no write permissions, so the injected instruction can produce only a *request* that the guardrails reject. The **sandbox** would additionally block any network exfiltration attempt.
+
+- [ ] I checked my prediction — I can state which layer stops a write attempt vs. which stops a data leak
 
 <details>
 <summary>Why can't the agent just write to the repo directly?</summary>
@@ -27,6 +35,8 @@ The security jobs in the run log above map to these boundaries: **activation** c
 Direct write access would make every prompt injection a potential supply-chain attack. By keeping the agent read-only and routing all changes through the safe-output system, a malicious instruction the agent picks up from issue text or a fetched page can, at worst, produce a *request* that the guardrails then reject or cap — it can never silently push code, leak secrets, or open unlimited pull requests.
 
 </details>
+
+- [ ] I can explain in one sentence why agent read-only access + structured output requests prevents prompt injection from silently pushing code
 
 ## Try it: sandbox or safe-output?
 
@@ -43,6 +53,8 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 
 </details>
 
+- [ ] I checked my Scenario A decision — I understand why safe-output is the primary defence for unauthorized writes
+
 **Scenario B:** A page the agent fetches during a run tries to send your repository secrets to an external server.
 
 - [ ] I've made my decision for Scenario B
@@ -53,6 +65,8 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 **Sandbox / Agent Workflow Firewall.** Outbound network traffic is limited to the domain allowlist. Any request to an unlisted domain is blocked at the firewall before it leaves the runner — the exfiltration attempt never reaches the external server.
 
 </details>
+
+- [ ] I checked my Scenario B decision — I understand why the sandbox/firewall is the primary defence for network exfiltration
 
 ## ✅ Checkpoint
 

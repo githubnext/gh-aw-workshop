@@ -42,6 +42,12 @@ Any mismatch means returning to [Confirm Model Access](07d-confirm-model-access.
 
 ## Run the workflow
 
+Before you click **Run workflow**, predict: what will the agent do first — post an update to a GitHub issue, or read repository data?
+
+- [ ] I've written my prediction
+
+> After the run: check your prediction by looking at the first `Tool call` in the run log. The agent reads and gathers data before it writes anything.
+
 Start from the Actions tab because it works for every learner, even if your terminal token does not have permission to trigger workflows.
 
 If you prefer the terminal, you can use [`gh aw run daily-report-status`](https://github.github.com/gh-aw/setup/cli/#run) as an advanced option. If that command fails in Codespaces, use the Actions tab instead or follow [Side Quest: Fix Codespaces `actions:write` Errors](side-quest-08-01-codespaces-actions-write.md).
@@ -80,6 +86,10 @@ If the run fails immediately with a model-access or authentication error, return
 
 ### Watch the run start
 
+Before you open the run log, predict: what state will the workflow be in when it first appears — queued, running, or immediately finished?
+
+- [ ] I've written my prediction for what state appears first
+
 The diagram below shows the full lifecycle of a workflow run, from the moment you click **Run workflow** through to the agent updating your repository.
 
 <picture>
@@ -92,9 +102,14 @@ After a few seconds, a new run appears with a yellow spinning icon. Click the ru
 
 You do not need to decode every line yet. For now, just confirm that the workflow is active and the log is updating as the agent plans and uses tools.
 
+- [ ] I opened the live log and saw it updating as the agent worked
+
 ### Confirm the run finished
 
 Wait for the run to turn green with a ✅. Then open the **Issues** tab in your repository and confirm that the agent updated an issue or created a new one.
+
+- [ ] I found the output (issue or comment) the agent created in the Issues tab
+- [ ] I checked my first prediction: I confirmed the agent read repository data before it posted anything
 
 ## ✅ Checkpoint
 
