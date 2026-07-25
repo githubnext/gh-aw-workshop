@@ -11,7 +11,7 @@ You'll use Copilot to create `.github/workflows/daily-report-status.md` — a sc
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07-compile-flow-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="images/07-compile-flow-light.svg">
-  <img alt="Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes" src="images/07-compile-flow-light.svg">
+  <img alt="Diagram showing how you prompt an agent with the agentic-workflows skill to create daily-report-status.md, which is compiled by gh aw compile into daily-report-status.lock.yml, which GitHub Actions then executes" src="images/07-compile-flow-light.svg">
 </picture>
 
 ## 📋 Before You Start
@@ -19,6 +19,19 @@ You'll use Copilot to create `.github/workflows/daily-report-status.md` — a sc
 - Completed [Install the gh-aw CLI Extension](06-install-gh-aw.md)
 - The `gh aw` command works in your terminal
 - You already ran `gh aw init` and pushed `.github/skills/agentic-workflows/`
+
+**Verify Copilot access before you begin.** Open the **Agents** tab in your repository on GitHub.com and send this prompt:
+
+```
+/agentic-workflows what trigger does a scheduled workflow use?
+```
+
+Confirm you receive a reply. Any response means Copilot and the `agentic-workflows` skill are accessible.
+
+> [!IMPORTANT]
+> If you see an error instead of a reply, do not continue. Fix the access issue first — model-access errors will cause Step 8 to fail. Check [github.com/settings/copilot](https://github.com/settings/copilot), then see [Confirm Model Access](07d-confirm-model-access.md) for detailed troubleshooting.
+
+- [ ] I sent the test prompt and received a reply from the Agents tab
 
 ## Create your first workflow
 
@@ -69,19 +82,6 @@ The **frontmatter** tells GitHub Actions when to run, what permissions the agent
 
 If you hit a compile error, use [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
-## Verify Copilot access
-
-Before compiling, confirm Copilot can reach this repository. Open the **Agents** tab in your repository on GitHub.com and send this prompt:
-
-```
-/agentic-workflows what trigger does daily-report-status.md use?
-```
-
-Confirm you receive a reply. Any response means the model and the `agentic-workflows` skill are accessible.
-
-> [!IMPORTANT]
-> If you see an error instead of a reply, do not continue. Fix the access issue before compiling — model-access errors will cause Step 8 to fail. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Confirm Model Access](07d-confirm-model-access.md) for detailed troubleshooting.
-
 ## Validate, then commit and push
 
 Run:
@@ -104,9 +104,9 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 
 ## ✅ Checkpoint
 
+- [ ] Copilot access was confirmed in the **Agents** tab before starting (test prompt received a reply)
 - [ ] `.github/workflows/daily-report-status.md` exists and contains an `on: schedule:` trigger in the frontmatter
 - [ ] The file includes `permissions` with `copilot-requests: write`
-- [ ] You opened the **Agents** tab, sent a test prompt, and received a reply
 - [ ] `gh aw compile` exits with no errors and produces `daily-report-status.lock.yml`
 - [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed to `main`
 - [ ] The workflow appears in the **Actions** tab of your repository under "Daily Report Status"

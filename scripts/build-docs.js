@@ -110,6 +110,7 @@ marked.use({
 // Plugin: render GitHub GFM alert callouts (> [!NOTE], > [!TIP], etc.)
 marked.use(markedAlert());
 
+<<<<<<< HEAD
 // Plugin: syntax-highlight fenced code blocks at build time using highlight.js
 marked.use(markedHighlight({
   langPrefix: 'hljs language-',
@@ -118,6 +119,23 @@ marked.use(markedHighlight({
     return hljs.highlight(code, { language }).value;
   },
 }));
+=======
+// Plugin: render shell code blocks with a terminal UI wrapper
+const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
+marked.use({
+  useNewRenderer: true,
+  renderer: {
+    code({ text, lang, escaped }) {
+      const langKey = (lang || '').match(/^\S*/)?.[0]?.toLowerCase() ?? '';
+      if (!shellLangs.has(langKey)) return false;
+      const escapedLang = escapeHtml(langKey);
+      const codeText = text.replace(/\n$/, '') + '\n';
+      const codeHtml = escaped ? codeText : escapeHtml(codeText);
+      return `<div class="terminal-block">\n<div class="terminal-bar" aria-hidden="true"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-label">${escapedLang}</span></div>\n<pre class="terminal-pre"><code class="language-${escapedLang}">${codeHtml}</code></pre>\n</div>\n`;
+    },
+  },
+});
+>>>>>>> origin/main
 
 const workshopDir = path.join(__dirname, '..', 'workshop');
 const distDir = path.join(__dirname, '..', 'dist');
@@ -952,6 +970,70 @@ html[data-color-mode="dark"] .code-copy-btn {
 html[data-color-mode="dark"] .code-copy-btn:hover {
   background-color: var(--bgColor-muted, #161b22);
   color: var(--fgColor-default, #e6edf3);
+}
+
+/* Terminal-style shell code blocks (bash / sh / shell / zsh) */
+.terminal-block {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  margin-bottom: 16px;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background-color: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.terminal-dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-dot:nth-child(1) { background-color: #f78166; }
+.terminal-dot:nth-child(2) { background-color: #e3b341; }
+.terminal-dot:nth-child(3) { background-color: #3fb950; }
+
+.terminal-label {
+  margin-left: 8px;
+  font-size: 11px;
+  color: #8b949e;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.markdown-body .terminal-pre {
+  margin: 0;
+  padding: 16px;
+  background-color: #0d1117;
+  border-radius: 0;
+  border: none;
+  overflow-x: auto;
+}
+
+.markdown-body .terminal-pre > code {
+  color: #e6edf3;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875em;
+}
+
+/* Copy button inside terminal blocks — always use dark-theme colours */
+.terminal-block .code-copy-btn {
+  background-color: #161b22;
+  border-color: #30363d;
+  color: #8b949e;
+}
+
+.terminal-block .code-copy-btn:hover {
+  background-color: #1c2128;
+  color: #e6edf3;
 }
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
