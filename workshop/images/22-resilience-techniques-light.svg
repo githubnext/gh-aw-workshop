@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="Four failure modes — prompt drift, timeout, tool error, and empty data — each mapped to one of three mitigations: defensive brief, timeout-minutes, and fallback safe-output, which together produce a reliably running workflow">
+
+  <defs>
+    <marker id="arrow-warn" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9a6700"/>
+    </marker>
+    <marker id="arrow-success" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2da44e"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0969da"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa" rx="0"/>
+
+  <!-- Title -->
+  <text x="600" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="21" font-weight="600" fill="#24292f" text-anchor="middle">
+    Resilience Techniques for Agentic Workflows
+  </text>
+
+  <!-- Section headers -->
+  <text x="170" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="13" font-weight="600" fill="#57606a" text-anchor="middle" letter-spacing="0.5">
+    FAILURE MODES
+  </text>
+  <text x="605" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="13" font-weight="600" fill="#57606a" text-anchor="middle" letter-spacing="0.5">
+    MITIGATIONS
+  </text>
+  <text x="1035" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="13" font-weight="600" fill="#57606a" text-anchor="middle" letter-spacing="0.5">
+    OUTCOME
+  </text>
+
+  <!-- ── FAILURE MODE BOXES ─────────────────────────────────────── -->
+
+  <!-- F1: Prompt drift -->
+  <rect x="40" y="100" width="262" height="68" rx="8" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+  <text x="171" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#633c01" text-anchor="middle">Prompt drift</text>
+  <text x="171" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#9a6700" text-anchor="middle">Ambiguous brief → unexpected path</text>
+  <text x="43" y="122" font-size="16">⚠</text>
+
+  <!-- F2: Timeout -->
+  <rect x="40" y="200" width="262" height="68" rx="8" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+  <text x="171" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#633c01" text-anchor="middle">Timeout</text>
+  <text x="171" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#9a6700" text-anchor="middle">Agent reasoning exceeds time limit</text>
+  <text x="43" y="222" font-size="16">⚠</text>
+
+  <!-- F3: Tool error -->
+  <rect x="40" y="300" width="262" height="68" rx="8" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+  <text x="171" y="323" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#633c01" text-anchor="middle">Tool error</text>
+  <text x="171" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#9a6700" text-anchor="middle">API rate-limit or network failure</text>
+  <text x="43" y="322" font-size="16">⚠</text>
+
+  <!-- F4: Empty data -->
+  <rect x="40" y="400" width="262" height="68" rx="8" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.5"/>
+  <text x="171" y="423" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#633c01" text-anchor="middle">Empty data</text>
+  <text x="171" y="442" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#9a6700" text-anchor="middle">No issues or PRs to summarise</text>
+  <text x="43" y="422" font-size="16">⚠</text>
+
+  <!-- ── CONNECTING ARROWS (failure → mitigation) ───────────────── -->
+  <!-- F1 Prompt drift (right=302, y=134) → M1 Defensive brief (left=430, y=157) -->
+  <line x1="302" y1="134" x2="428" y2="155" stroke="#9a6700" stroke-width="1.5"
+        stroke-dasharray="5,3" marker-end="url(#arrow-warn)"/>
+
+  <!-- F2 Timeout (right=302, y=234) → M2 timeout-minutes (left=430, y=297) -->
+  <line x1="302" y1="234" x2="428" y2="293" stroke="#9a6700" stroke-width="1.5"
+        stroke-dasharray="5,3" marker-end="url(#arrow-warn)"/>
+
+  <!-- F3 Tool error (right=302, y=334) → M2 timeout-minutes (left=430, y=297) -->
+  <line x1="302" y1="334" x2="428" y2="301" stroke="#9a6700" stroke-width="1.5"
+        stroke-dasharray="5,3" marker-end="url(#arrow-warn)"/>
+
+  <!-- F4 Empty data (right=302, y=434) → M3 Fallback output (left=430, y=437) -->
+  <line x1="302" y1="434" x2="428" y2="437" stroke="#9a6700" stroke-width="1.5"
+        stroke-dasharray="5,3" marker-end="url(#arrow-warn)"/>
+
+  <!-- ── MITIGATION BOXES ───────────────────────────────────────── -->
+
+  <!-- M1: Defensive task brief (y=120, height=75) center y=157 -->
+  <rect x="430" y="118" width="348" height="78" rx="8" fill="#dafbe1" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="604" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#1a7f37" text-anchor="middle">Defensive task brief</text>
+  <text x="604" y="163" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#2da44e" text-anchor="middle">Explicit fallback instruction when data is missing</text>
+  <text x="434" y="143" font-size="16">🛡</text>
+
+  <!-- M2: timeout-minutes (y=260, height=75) center y=297 -->
+  <rect x="430" y="258" width="348" height="78" rx="8" fill="#dafbe1" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="604" y="283" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#1a7f37" text-anchor="middle" font-style="italic">timeout-minutes</text>
+  <text x="604" y="303" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#2da44e" text-anchor="middle">Cap run duration in workflow frontmatter</text>
+  <text x="434" y="283" font-size="16">⏱</text>
+
+  <!-- M3: Fallback safe-output (y=400, height=75) center y=437 -->
+  <rect x="430" y="398" width="348" height="78" rx="8" fill="#dafbe1" stroke="#2da44e" stroke-width="1.5"/>
+  <text x="604" y="423" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#1a7f37" text-anchor="middle">Fallback safe-output</text>
+  <text x="604" y="443" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#2da44e" text-anchor="middle">Always call output — even for quiet runs</text>
+  <text x="434" y="423" font-size="16">📤</text>
+
+  <!-- ── CONNECTING ARROWS (mitigation → outcome) ──────────────── -->
+  <!-- M1 (right=778, y=157) → R (left=898, y=262) -->
+  <line x1="778" y1="157" x2="896" y2="255" stroke="#0969da" stroke-width="1.5"
+        marker-end="url(#arrow-accent)"/>
+
+  <!-- M2 (right=778, y=297) → R (left=898, y=278) -->
+  <line x1="778" y1="297" x2="896" y2="278" stroke="#0969da" stroke-width="1.5"
+        marker-end="url(#arrow-accent)"/>
+
+  <!-- M3 (right=778, y=437) → R (left=898, y=300) -->
+  <line x1="778" y1="437" x2="896" y2="305" stroke="#0969da" stroke-width="1.5"
+        marker-end="url(#arrow-accent)"/>
+
+  <!-- ── OUTCOME BOX ────────────────────────────────────────────── -->
+  <rect x="898" y="213" width="266" height="130" rx="10" fill="#ddf4ff" stroke="#0969da" stroke-width="2"/>
+  <text x="1031" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="26" text-anchor="middle">✅</text>
+  <text x="1031" y="284" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="15" font-weight="600" fill="#0550ae" text-anchor="middle">Workflow runs</text>
+  <text x="1031" y="304" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="15" font-weight="600" fill="#0550ae" text-anchor="middle">reliably</text>
+  <text x="1031" y="326" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="11" fill="#57606a" text-anchor="middle">unattended, week after week</text>
+
+  <!-- ── BOTTOM ANNOTATION ──────────────────────────────────────── -->
+  <text x="600" y="530" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#57606a" text-anchor="middle">
+    Apply a defensive brief, a timeout, and a fallback safe-output to keep your workflow useful even when things go wrong.
+  </text>
+</svg>
