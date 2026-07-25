@@ -25,7 +25,7 @@ The same skeleton applies to any tool that can write a count or boolean to `$GIT
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add a shell step
 that counts open Dependabot alerts using the GitHub API and writes the result to
 $GITHUB_OUTPUT as `alert_count` with step id `alerts`. Add `security-events: read`

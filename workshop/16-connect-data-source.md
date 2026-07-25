@@ -35,7 +35,7 @@ Think of it as a handoff. First, the workflow gathers facts in a predictable way
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add two shell steps
 that fetch (1) the recent commit log from the last 24 hours with step id `recent`
 and (2) all open issues with step id `issues`, and update the AI prompt to inject

@@ -142,7 +142,7 @@ Use this quick notes table:
 
 Open your AI agent in your practice repository and send:
 
-```text
+```prompt
 /agentic-workflows Review my workflow brief and this audit summary.
 Identify the single change most likely to reduce AIC without hurting output quality.
 Explain why that change is the best next step, then apply it and run gh aw compile.

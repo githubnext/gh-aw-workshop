@@ -33,6 +33,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 - Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
 - When a learner is using their AI agent, tell them what prompt to pass; do **not** present shell commands as though they run inside the agent chat.
+- Use `prompt` as the fenced code block language for prompts passed to an AI agent so the rendered workshop clearly distinguishes agent input from terminal commands and other code.
 - When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through their AI agent with the `/agentic-workflows` skill.
 - Do **not** recommend manual workflow editing as the primary instruction path; use the AI agent + `/agentic-workflows` prompts instead.
 - If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the agent prompt so learners know which surface to use for each action.

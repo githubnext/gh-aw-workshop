@@ -18,7 +18,7 @@ Catching an access problem here saves debugging time in the billing steps and in
 1. Open the **Agents** tab in your repository on GitHub.com.
 2. Send the following prompt:
 
-   ```
+   ```prompt
    /agentic-workflows suggest one improvement to `.github/workflows/daily-report-status.md` and explain why in one sentence.
    ```
 

@@ -34,7 +34,7 @@ The approach breaks into three parts:
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add a shell step
 that counts commits from the last 24 hours and writes the result to $GITHUB_OUTPUT
 as `commit_count`, with step id `recent`.
@@ -117,4 +117,3 @@ git push
 <!-- journey: all -->
 **Next:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md)
 <!-- /journey -->
-

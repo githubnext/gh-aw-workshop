@@ -65,7 +65,7 @@ For a full breakdown of report contents and artifact files, see [Side Quest: Aud
 
 Once you have an audit report, bring it to your AI agent with the **`/agentic-workflows` skill** and describe what puzzled you:
 
-```text
+```prompt
 /agentic-workflows Here is my audit report. The agent called github.list_issues
 three times and AIC was higher than expected. Help me understand why and
 suggest how to reduce it.
@@ -101,5 +101,4 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 <!-- journey: all -->
 **Next:** [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)
 <!-- /journey -->
-
 

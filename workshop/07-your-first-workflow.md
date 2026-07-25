@@ -22,7 +22,7 @@ You'll use Copilot to create `.github/workflows/daily-report-status.md` — a sc
 
 **Verify Copilot access before you begin.** Open the **Agents** tab in your repository on GitHub.com and send this prompt:
 
-```
+```prompt
 /agentic-workflows what trigger does a scheduled workflow use?
 ```
 
@@ -40,7 +40,7 @@ Confirm you receive a reply. Any response means Copilot and the `agentic-workflo
 
 In your AI agent, run this prompt:
 
-```text
+```prompt
 /agentic-workflows Create a daily-report-status workflow with:
 - name: Daily Report Status
 - triggers: daily schedule and workflow_dispatch

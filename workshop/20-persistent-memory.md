@@ -51,7 +51,7 @@ For this deduplication use case, `cache-memory` is the right choice.
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add `cache-memory`
 under the `tools:` key in the frontmatter, with key `daily-status-seen-issues` and
 ttl `7d`, and update the task brief to read and write that memory slot for deduplication.
@@ -158,5 +158,4 @@ git push
 <!-- journey: all -->
 **Next:** [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md)
 <!-- /journey -->
-
 

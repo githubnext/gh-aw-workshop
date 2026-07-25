@@ -33,7 +33,7 @@ Start with one change to isolate its effect: output length (`concise` vs `detail
 
 Open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab and paste this prompt:
 
-```text
+```prompt
 Add an A/B experiment to `.github/workflows/daily-status.md`.
 Use the `/agentic-workflows` skill.
 Set `experiments: { output_style: [concise, detailed] }`.
@@ -157,5 +157,4 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 <!-- journey: all -->
 **Next:** [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md)
 <!-- /journey -->
-
 

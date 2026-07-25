@@ -22,7 +22,7 @@ The `agentic-workflows` skill is a Copilot skill installed in your practice repo
 
 You invoke it in the GitHub Copilot **Chat** or **Agents** tab:
 
-```text
+```prompt
 /agentic-workflows [your request here]
 ```
 
@@ -55,7 +55,7 @@ After reviewing the run output, you may have noticed the agent's comment was gen
 
 Open the GitHub Copilot **Chat** or **Agents** tab in your practice repository and paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-report-status.md
 so that the agent adds one sentence explaining why resolving the most-reacted issue
 would benefit the team. Keep the existing [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) constraint (at most one comment).
@@ -90,7 +90,7 @@ If your run from Step 8 finished but the output was empty, vague, or missing ent
 
 Paste this prompt in the GitHub Copilot **Chat** or **Agents** tab, replacing the bracketed text with what you actually observed:
 
-```text
+```prompt
 /agentic-workflows debug .github/workflows/daily-report-status.md.
 The last run [describe the problem — for example: "posted a comment but left the
 summary blank" or "finished without posting anything"].
@@ -119,7 +119,7 @@ Once the workflow produces correct output, you can reduce how much AI Credit it 
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows optimize .github/workflows/daily-report-status.md
 to reduce token usage. Apply only changes that do not change the workflow's outcome.
 ```

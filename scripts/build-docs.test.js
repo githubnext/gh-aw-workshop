@@ -10,12 +10,14 @@ const repoDir = path.resolve(__dirname, "..");
 const buildScript = path.join(repoDir, "scripts", "build-docs.js");
 const distIndex = path.join(repoDir, "dist", "index.html");
 const distCss = path.join(repoDir, "dist", "docs.css");
+const distHighlightCss = path.join(repoDir, "dist", "hljs.css");
 
 function buildDocs() {
   execFileSync(process.execPath, [buildScript], { cwd: repoDir, stdio: "pipe" });
   return {
     html: fs.readFileSync(distIndex, "utf8"),
     css: fs.readFileSync(distCss, "utf8"),
+    highlightCss: fs.readFileSync(distHighlightCss, "utf8"),
   };
 }
 
@@ -36,7 +38,7 @@ test("workshop navigation constrains long buttons on small screens", () => {
 });
 
 test("shell code blocks are wrapped in a terminal-block UI", () => {
-  const { html, css } = buildDocs();
+  const { html, css, highlightCss } = buildDocs();
 
   // HTML: at least one terminal-block with the macOS-style dot bar
   assert.ok(html.includes('<div class="terminal-block">'), "expected terminal-block wrapper in HTML");
@@ -49,6 +51,22 @@ test("shell code blocks are wrapped in a terminal-block UI", () => {
   assert.ok(css.includes(".terminal-bar"), "expected .terminal-bar in CSS");
   assert.ok(css.includes(".terminal-dot"), "expected .terminal-dot in CSS");
   assert.ok(css.includes(".terminal-pre"), "expected .terminal-pre in CSS");
+  assert.ok(highlightCss.includes(".terminal-block .hljs-string"), "expected dark syntax colors in terminal blocks");
+});
+
+test("prompt code blocks are wrapped in a distinct agent UI", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<div class="agent-prompt-block" role="region" aria-label="Agent prompt">'));
+  assert.ok(html.includes('<div class="agent-prompt-bar">'));
+  assert.ok(html.includes('<span class="agent-prompt-icon" aria-hidden="true">✦</span>'));
+  assert.ok(html.includes('<span class="agent-prompt-label">Agent prompt</span>'));
+  assert.ok(html.includes('<pre class="agent-prompt-pre"><code class="language-prompt">'));
+
+  assert.ok(css.includes(".agent-prompt-block"));
+  assert.ok(css.includes(".agent-prompt-bar"));
+  assert.ok(css.includes(".agent-prompt-icon"));
+  assert.ok(css.includes(".agent-prompt-pre"));
 });
 
 test("rendered workshop images use GitHub-like rounded corners", () => {

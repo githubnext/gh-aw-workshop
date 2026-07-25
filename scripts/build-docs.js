@@ -118,17 +118,20 @@ marked.use(markedHighlight({
     return hljs.highlight(code, { language }).value;
   },
 }));
-// Plugin: render shell code blocks with a terminal UI wrapper
+// Plugin: render shell and agent prompt code blocks with distinct UI wrappers
 const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
 marked.use({
   useNewRenderer: true,
   renderer: {
     code({ text, lang, escaped }) {
       const langKey = (lang || '').match(/^\S*/)?.[0]?.toLowerCase() ?? '';
-      if (!shellLangs.has(langKey)) return false;
       const escapedLang = escapeHtml(langKey);
       const codeText = text.replace(/\n$/, '') + '\n';
       const codeHtml = escaped ? codeText : escapeHtml(codeText);
+      if (langKey === 'prompt') {
+        return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
+      }
+      if (!shellLangs.has(langKey)) return false;
       return `<div class="terminal-block">\n<div class="terminal-bar" aria-hidden="true"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-label">${escapedLang}</span></div>\n<pre class="terminal-pre"><code class="language-${escapedLang}">${codeHtml}</code></pre>\n</div>\n`;
     },
   },
@@ -393,6 +396,9 @@ const hljsDarkCss = fs.readFileSync(path.join(hljsStylesDir, 'github-dark.min.cs
 const hljsCss = [
   '/* highlight.js – GitHub light theme (default) */',
   hljsLightCss,
+  '',
+  '/* highlight.js – GitHub Dark theme (terminal blocks) */',
+  prefixCssSelectors(hljsDarkCss, '.terminal-block'),
   '',
   '/* highlight.js – GitHub Dark theme (explicit dark mode) */',
   prefixCssSelectors(hljsDarkCss, 'html[data-color-mode="dark"]'),
@@ -1033,6 +1039,73 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
 .terminal-block .code-copy-btn:hover {
   background-color: #1c2128;
   color: #e6edf3;
+}
+
+/* Agent prompt blocks */
+.agent-prompt-block {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #8957e5;
+  margin-bottom: 16px;
+  box-shadow: 0 0 0 1px rgb(163 113 247 / 10%), 0 8px 24px rgb(27 12 54 / 18%);
+}
+
+.agent-prompt-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: linear-gradient(90deg, #271052, #3b1b6f);
+  border-bottom: 1px solid #8957e5;
+}
+
+.agent-prompt-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: #f0e7ff;
+  background-color: #6e40c9;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.agent-prompt-label {
+  color: #f0e7ff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.markdown-body .agent-prompt-pre {
+  margin: 0;
+  padding: 16px 16px 16px 20px;
+  background-color: #120b1f;
+  border: none;
+  border-radius: 0;
+  box-shadow: inset 3px 0 #a371f7;
+  overflow-x: auto;
+}
+
+.markdown-body .agent-prompt-pre > code {
+  color: #f0e7ff;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875em;
+}
+
+.agent-prompt-block .code-copy-btn {
+  color: #c6a7ff;
+  background-color: #271052;
+  border-color: #6e40c9;
+}
+
+.agent-prompt-block .code-copy-btn:hover {
+  color: #ffffff;
+  background-color: #3b1b6f;
 }
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
