@@ -117,6 +117,12 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 ## Understand how the round-robin works
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/23-ab-roundrobin-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/23-ab-roundrobin-light.svg">
+   <img alt="A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run" src="images/23-ab-roundrobin-light.svg">
+</picture>
+
 <details>
 <summary>Open for the mechanism details</summary>
 
