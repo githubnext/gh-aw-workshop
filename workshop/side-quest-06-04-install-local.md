@@ -22,7 +22,7 @@ Run this to confirm `gh` is authenticated before continuing:
 gh auth status
 ```
 
-Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Prerequisites](01-prerequisites.md). For authentication errors, return to [Authenticate the `gh` CLI](side-quest-02-01-local-terminal.md#authenticate-the-gh-cli).
+Expected output: `Logged in to github.com as <your-username>`. If you see an error about `gh` not being installed, return to [Prerequisites](01-prerequisites.md). For [authentication](https://github.github.com/gh-aw/reference/auth/) errors, return to [Authenticate the `gh` CLI](side-quest-02-01-local-terminal.md#authenticate-the-gh-cli).
 
 ## Install from terminal
 

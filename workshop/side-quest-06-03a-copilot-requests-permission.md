@@ -11,7 +11,7 @@
 - You completed [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and confirmed Method 1 applies to your repository.
 - Your practice repository was created during [Codespace setup](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md).
 
-This is the simplest way to give your agentic workflow Copilot API access when the organization can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) permission.
+This is the simplest way to give your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) Copilot API access when the organization can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) permission.
 
 It does **not** cover personal repositories or organizations without centralized billing. In those cases, use `COPILOT_GITHUB_TOKEN` with [Method 2](side-quest-06-03b-copilot-github-token.md).
 
