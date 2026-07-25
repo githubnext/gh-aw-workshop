@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Agent Session Phases Explained
 
-> _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Adventure D (Part 2): Monitor, Review, and Merge](12-test-and-iterate.md)._
+> _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
 
 ## 📋 Before You Start
 
@@ -68,6 +68,6 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 ---
 
 <!-- journey: all -->
-Return to [Adventure D (Part 2): Monitor, Review, and Merge](12-test-and-iterate.md).
+Return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
 

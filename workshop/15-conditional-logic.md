@@ -11,7 +11,7 @@ Add a conditional check to your daily-status workflow so it only posts a summary
 ## 📋 Before You Start
 
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
-- You understand how to edit and re-run a workflow from [Test and Improve Your Workflow](12-test-and-iterate.md).
+- You understand how to edit and re-run a workflow from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 
 ## Steps
 

@@ -44,7 +44,6 @@ const STEP_FILE_ALIASES = {
   "08-run-your-workflow": ["08-run-your-workflow.md"],
   "08b-interpret-your-run": ["08b-interpret-your-run.md"],
   "09-agentic-editing": ["09-agentic-editing.md"],
-  "12-test-and-iterate": ["12-test-and-iterate.md"],
   "14-next-steps": ["14-next-steps.md"],
   "14b-pr-reviewer-workflow": ["14b-pr-reviewer-workflow.md"],
   "15-conditional-logic": ["15-conditional-logic.md"],
@@ -74,7 +73,6 @@ const STEP_IDS = [
   "08-run-your-workflow",
   "08b-interpret-your-run",
   "09-agentic-editing",
-  "12-test-and-iterate",
   "14-next-steps",
   "14b-pr-reviewer-workflow",
   "15-conditional-logic",
@@ -873,41 +871,22 @@ function buildTransitions() {
         "Complete the first workflow setup path that initializes and commits `.github/skills/agentic-workflows/` before editing."
       );
       if (!skillCheck.ok) return skillCheck;
+      const compiledWorkflowCheck = ensureCompiledWorkflow(
+        state,
+        "workflow-not-compiled",
+        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying to run it."
+      );
+      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
       const readiness = contentReadinessCheck(state, context, {
         salt: 181,
         category: "workflow-editing-friction",
         failedAssumption: "The learner can describe the workflow change they want, but struggles to steer the skill or keep the compile loop aligned.",
-        remediation: "Keep the edit, debug, and optimize prompt patterns concise and reinforce recompiling immediately after each change.",
+        remediation: "Keep the edit, debug, and optimize prompt patterns concise and reinforce recompiling immediately after each change. Add a tighter observe-refine loop with one concrete example of a change prompted by run output.",
         emphasis: { bias: 0.1, conceptWeight: 0.08 }
       });
       if (!readiness.ok) return readiness;
       const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      return { ok: true, state: applyLearning(next, context, { agentic: 0.09, troubleshooting: 0.04, confidence: 0.02 }) };
-    },
-    "12-test-and-iterate": (state, context) => {
-      const compiledWorkflowCheck = ensureCompiledWorkflow(
-        state,
-        "workflow-not-compiled",
-        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying to run it from Step 12."
-      );
-      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
-      const runCheck = ensure(
-        state.flags.ranWorkflow,
-        "Cannot iterate without an executed workflow run",
-        "test-prerequisite-missing",
-        "Execute at least one workflow run before test-and-iterate."
-      );
-      if (!runCheck.ok) return runCheck;
-      const readiness = contentReadinessCheck(state, context, {
-        salt: 211,
-        category: "test-iterate-friction",
-        failedAssumption: "The learner does not know how to turn runtime feedback into the next workflow revision.",
-        remediation: "Add a tighter observe-refine loop with one concrete example of a change prompted by run output.",
-        emphasis: { bias: 0.1 }
-      });
-      if (!readiness.ok) return readiness;
-      const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      return { ok: true, state: applyLearning(next, context, { troubleshooting: 0.08, agentic: 0.05 }) };
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.09, troubleshooting: 0.08, confidence: 0.02 }) };
     },
     "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) }),
     "14b-pr-reviewer-workflow": (state, context) => {

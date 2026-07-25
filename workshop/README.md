@@ -19,8 +19,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 7d | [Confirm Model Access](07d-confirm-model-access.md) |
 | 8 | [Run and Watch Your Workflow](08-run-your-workflow.md) |
 | 8b | [Interpret Your First Run](08b-interpret-your-run.md) |
-| 9 | [Refine Your Workflow with Agentic Editing](09-agentic-editing.md) |
-| 12 | [Test and Improve Your Workflow](12-test-and-iterate.md) |
+| 9 | [Refine, Test, and Improve Your Workflow](09-agentic-editing.md) |
 | 14 | [What's Next? Keep Exploring](14-next-steps.md) |
 | 14b | [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md) |
 
@@ -53,7 +52,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) — optional install troubleshooting reference that branches from [Step 6](06-install-gh-aw.md).
 - [Use `gh-aw` with the GitHub Copilot Cloud Agent](side-quest-06-02-cca-codespace.md) — how to open a terminal inside the Copilot Cloud Agent Codespace so `gh-aw` CLI commands work; branches from [Step 6](06-install-gh-aw.md).
 - [Install `gh-aw` in a Local Terminal](side-quest-06-04-install-local.md) — optional alternative for learners who completed the local terminal setup side quest and want to continue on their own machine.
-- [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) — quick reference for `gh aw compile`, `--validate`, `--watch`, and common compile errors; branches from [Step 7](07-your-first-workflow.md), [Step 11a](07-your-first-workflow.md), or [Step 12](12-test-and-iterate.md).
+- [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) — quick reference for `gh aw compile`, `--validate`, `--watch`, and common compile errors; branches from [Step 7](07-your-first-workflow.md), [Step 11a](07-your-first-workflow.md), or [Step 9](09-agentic-editing.md).
 - [Fix Codespaces `actions:write` Errors When Running `gh aw run`](side-quest-08-01-codespaces-actions-write.md) — troubleshooting guide for Codespaces workflow-trigger permission errors with an Actions-tab option and advanced recovery steps; branches from [Step 8](08-run-your-workflow.md).
 - [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) — expanded troubleshooting guide for the five most common log patterns; branches from [Step 9](08b-interpret-your-run.md).
 - [Pattern: Long `[plan]` Chains](side-quest-09-01a-pattern-long-plan-chain.md) — how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call; branches from [Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
@@ -71,8 +70,8 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured, changelog-ready summary comment when a pull request opens; branches from [Step 14b](14b-pr-reviewer-workflow.md).
 - [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — evaluate pull requests against a quality checklist and post a pass/fail table; branches from [Step 14b](14b-pr-reviewer-workflow.md).
 - [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) — hands-on optimization activity for building an AIC baseline, auditing expensive runs, identifying cost drivers, and testing one token-reduction change at a time; branches from [Step 14b](14b-pr-reviewer-workflow.md).
-- [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 12](12-test-and-iterate.md).
-- [Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md) — structured rubric for judging output quality, a five-row problem-to-fix reference table, and a one-change-at-a-time iteration loop; branches from [Step 12](12-test-and-iterate.md).
+- [Fuzzy Schedule Expressions](side-quest-13-01-schedule-expressions.md) — quick reference for choosing between `daily`, `hourly`, `weekly`, and other fuzzy schedule expressions; branches from [Step 9](09-agentic-editing.md).
+- [Evaluating and Iterating on Agent Output](side-quest-12-01-iterate-agent-output.md) — structured rubric for judging output quality, a five-row problem-to-fix reference table, and a one-change-at-a-time iteration loop; branches from [Step 9](09-agentic-editing.md).
 - [GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md) — deep dive into `${{ }}` syntax, available context objects, output references, and `if:` conditions; branches from [Step 15](15-conditional-logic.md).
 - [Chaining Conditions — Run an Agent Only When Security Findings Exist](side-quest-15-02-chaining-conditions.md) — hands-on exercise for adding a Dependabot alert-count step and chaining it with a branch check so the agent only runs when there are real security findings; branches from [Step 15](15-conditional-logic.md).
 - [YAML Frontmatter Pitfalls](side-quest-11-02-yaml-frontmatter.md) — reference guide for the five most common YAML mistakes; branches from [Step 11a](07-your-first-workflow.md).
@@ -99,7 +98,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Configure an OpenAI API Key](side-quest-11-07-openai-key.md) — step-by-step guide to generating an OpenAI key, storing it as a repository secret, and switching your workflow to `engine: codex`; branches from [Step 11a](07-your-first-workflow.md).
 - [Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) — decision guide, full field references, and example task briefs for both `cache-memory` and `repo-memory`; branches from [Step 20](20-persistent-memory.md).
 - [Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md) — name rules, block boundary rules, supported frontmatter fields, and model alias table for inline sub-agents; branches from [Step 21](21-inline-sub-agents.md).
-- [Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md) — full phase reference table, activity feed tips, steering prompts, and advanced agent merge / `--watch` paths; branches from [Step 11d2](12-test-and-iterate.md).
+- [Agent Session Phases Explained](side-quest-11-09-agent-session-phases.md) — full phase reference table, activity feed tips, steering prompts, and advanced agent merge / `--watch` paths; branches from [Step 9](09-agentic-editing.md).
 - [Audit Reference — Artifacts, Firewall Logs, and Report Contents](side-quest-25-01-audit-reference.md) — detailed breakdown of `gh aw audit` report fields, agent artifact files, ⌖ AIC billing, `firewall.md`, and `network.allow`; branches from [Step 25](25-audit-and-observability.md).
 - [Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) — full walkthrough of `gh aw forecast`: reading P10/P50/P90 output, using `--period week` and `--days 7`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 figure; branches from [Step 26](26-manage-costs-and-budgets.md).
 
