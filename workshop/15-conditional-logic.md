@@ -32,7 +32,7 @@ The approach breaks into three parts:
 
 ### Add a commit-count step
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In your Copilot CLI session in the terminal, paste:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add a shell step
@@ -43,7 +43,7 @@ as `commit_count`, with step id `recent`.
 The skill adds this step to the frontmatter `steps:` block and recompiles the lock file.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>✏️ Manual edit path</summary>
 
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add the following block inside the YAML frontmatter under `steps:`:
 
