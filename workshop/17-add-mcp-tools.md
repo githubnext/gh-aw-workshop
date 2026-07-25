@@ -39,7 +39,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add a `tools:` block
 with `github: mode: gh-proxy, toolsets: [default]` to the frontmatter, and update
 the task brief to tell the agent to use GitHub tools to fetch the last 5 commits and

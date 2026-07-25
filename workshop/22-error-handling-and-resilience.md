@@ -40,7 +40,7 @@ The diagram below shows how these failure modes map to the three mitigations cov
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to:
 1. Add an explicit fallback instruction to the task brief for when there are no issues or pull requests.
 2. Add `timeout-minutes: 10` to the frontmatter.
@@ -144,4 +144,3 @@ After pushing:
 <!-- journey: all -->
 **Next:** [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md)
 <!-- /journey -->
-

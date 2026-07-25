@@ -60,7 +60,7 @@ Open your workflow file and choose one bounded task that repeats for each item, 
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/daily-status.md to add an inline
 sub-agent named `issue-summarizer` that reads one GitHub issue and returns a
 one-sentence summary. Use model: small. Also update the parent brief to call
@@ -124,5 +124,4 @@ Trigger a manual run. In the Actions log, confirm the parent agent calls your su
 <!-- journey: all -->
 **Next:** [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md)
 <!-- /journey -->
-
 

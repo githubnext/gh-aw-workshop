@@ -38,7 +38,7 @@ The agent can change how it investigates a pull request without changing the sta
 
 Open your AI agent in the practice repository and pass this prompt:
 
-```text
+```prompt
 /agentic-workflows Create .github/workflows/pr-reviewer.md as a PR reviewer.
 
 Use the PR reviewer guidance from the agentic-workflows skill:
@@ -150,7 +150,7 @@ If the run completes but the review does not mention the `pr-review-standards` s
 1. Confirm `.github/skills/agentic-workflows/` exists and was pushed. Run `ls .github/skills/` in your terminal. If the directory is missing, run `gh aw init`, commit the generated files, and push.
 2. If the directory exists but the skill was still not applied, ask the agent to reinforce the instruction:
 
-   ```text
+   ```prompt
    /agentic-workflows update .github/workflows/pr-reviewer.md so the
    `pr-reviewer` agent explicitly searches for and applies the
    `pr-review-standards` skill before returning findings. Keep all
@@ -170,7 +170,7 @@ Choose one change and send it through `/agentic-workflows`:
 
 For example:
 
-```text
+```prompt
 /agentic-workflows update .github/workflows/pr-reviewer.md so the
 `pr-review-standards` skill asks reviewers to distinguish blocking findings
 from non-blocking observations. Keep the trigger, permissions, agent, and safe

@@ -55,7 +55,7 @@ Pick the lowest-scoring row and modify or add only **one sentence** in your work
 
 If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), ask for one focused update:
 
-```text
+```prompt
 Using the agentic-workflows skill, update .github/workflows/daily-status.md
 by changing one sentence in the Markdown body to improve Tone.
 Run gh aw compile after the edit.
@@ -117,5 +117,4 @@ Quick run-log check:
 <!-- journey: all -->
 Return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
-
 
