@@ -22,6 +22,12 @@ _Working locally means you'll use the tools and shell you already know — let's
 
 You'll install Git and the `gh` CLI on your own machine and authenticate with GitHub. By the end you'll be ready to create your practice repository and continue to the core workshop steps.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/02-local-setup-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/02-local-setup-flow-light.svg">
+   <img alt="Local setup flow: four sequential steps — Verify Git, Install gh CLI, Authenticate, Clone Repo" src="images/02-local-setup-flow-light.svg">
+</picture>
+
 ## 📋 Before You Start
 
 - You've completed [What You Need Before We Start](01-prerequisites.md)
