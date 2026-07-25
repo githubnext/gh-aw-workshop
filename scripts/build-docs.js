@@ -706,6 +706,7 @@ html {
 }
 .workshop-navigation-previous {
   flex: 0 0 auto;
+  min-width: 0;
 }
 .workshop-navigation-next {
   display: flex;
@@ -713,6 +714,7 @@ html {
   gap: 8px;
   align-items: flex-end;
   flex: 0 0 auto;
+  min-width: 0;
   margin-left: auto;
 }
 .workshop-nav-btn {
@@ -802,11 +804,15 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
     flex-wrap: wrap;
     gap: 8px;
   }
+  .workshop-navigation-previous,
   .workshop-navigation-next {
     align-items: stretch;
     width: 100%;
   }
   .workshop-nav-btn {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
     overflow-wrap: anywhere;
     white-space: normal;
     align-items: flex-start;
