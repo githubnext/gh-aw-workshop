@@ -54,6 +54,27 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 
 </details>
 
+## Try it: write a safe-outputs stanza
+
+You need a workflow that creates issues, but no more than two per run. Write the `safe-outputs` YAML frontmatter stanza that enforces that limit.
+
+- [ ] I've written my stanza before revealing the answer
+
+<details>
+<summary>Reveal one possible stanza</summary>
+
+```yaml
+safe-outputs:
+  create-issue:
+    limit: 2
+```
+
+The `limit: 2` cap means the safe-output job will create at most two issues per run, even if the agent requests more.
+
+</details>
+
+Does your stanza match? If you used a different key name, that is fine as long as the key matches the permission declared in the workflow frontmatter.
+
 ## ✅ Checkpoint
 
 - [ ] I can describe what the sandbox does and why it matters for automation safety

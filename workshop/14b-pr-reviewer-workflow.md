@@ -86,7 +86,7 @@ git push
 
 ## Test It by Opening a PR
 
-Create a small branch with a trivial change — for example, add a comment to any file — and open a pull request against your default branch.
+Create a small branch with a trivial change — for example, add a comment to any file — and open a pull request against your default branch. Opening it as a **draft PR** keeps the review queue clean until you are ready to merge.
 
 The workflow fires automatically within a few seconds of the PR being created. To watch it:
 
@@ -100,6 +100,16 @@ The workflow fires automatically within a few seconds of the PR being created. T
   <source media="(prefers-color-scheme: light)" srcset="images/13-pr-reviewer-comment-light.svg">
   <img alt="PR auto-reviewer comment posted by the workflow" src="images/13-pr-reviewer-comment-light.svg">
 </picture>
+
+### If the workflow does not trigger
+
+Work through this checklist before reopening the PR:
+
+- [ ] The pull request targets your **default branch** (usually `main`)
+- [ ] The workflow frontmatter still contains `on: pull_request` with `types: [opened, synchronize]`
+- [ ] Both `pr-reviewer.md` and `pr-reviewer.lock.yml` are committed and pushed to the **default branch** — the trigger will not fire if the lock file is missing
+- [ ] The Actions tab shows no permission or billing errors for the workflow run
+- [ ] You opened or updated the PR **after** pushing the lock file (GitHub Actions does not retroactively trigger on events that occurred before a workflow was pushed)
 
 ## Inspect the Agent's Reasoning
 
@@ -126,9 +136,6 @@ When you want to modify the PR reviewer behavior, use your AI agent with the `/a
 ```
 
 Review the suggested changes, apply what you agree with, then run `gh aw compile` and commit both workflow files.
-
-> [!NOTE]
-> If the workflow does not trigger after you open or update a PR, first confirm the pull request targets your default branch and that your workflow still includes `on: pull_request` with `types: [opened, synchronize]`.
 
 ## ✅ Checkpoint
 

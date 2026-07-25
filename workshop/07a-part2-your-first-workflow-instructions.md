@@ -36,7 +36,7 @@ In your AI agent, run this prompt:
 
 Review the agent's edit, then continue. Prefer this path over hand-editing each line.
 
-### Validate, then commit and push
+### Compile the workflow
 
 Run:
 
@@ -45,6 +45,20 @@ gh aw compile
 ```
 
 Optional while editing: `gh aw compile --watch`.
+
+### Confirm the lock file was created
+
+After compile completes without errors, verify the lock file is present before continuing:
+
+```bash
+ls .github/workflows/daily-report-status.lock.yml
+```
+
+If the file is missing, or if `gh aw compile` reported an error, see [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) before moving on. The next step (billing configuration) requires a valid compiled workflow.
+
+- [ ] `.github/workflows/daily-report-status.lock.yml` is present on disk
+
+### Commit and push
 
 Then commit and push:
 
@@ -60,7 +74,8 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 
 - [ ] `.github/workflows/daily-report-status.md` includes `permissions` with `copilot-requests: write`
 - [ ] `gh aw compile` reports valid
-- [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed to `main`
+- [ ] `.github/workflows/daily-report-status.lock.yml` is present on disk and committed
+- [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are pushed to `main`
 - [ ] You are ready to choose the workflow's billing and authentication method
 
 <!-- journey: terminal -->

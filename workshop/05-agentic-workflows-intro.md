@@ -84,6 +84,25 @@ The **compile command** — it reads the `.md` source and writes the `.lock.yml`
 > [!TIP]
 > Want more examples of how the two-file structure works? [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) includes a fully annotated workflow pair.
 
+## Try it: draft a trigger line
+
+The "scheduled email digest" analogy runs every morning. Write the `on: schedule` YAML frontmatter line for a 9 AM UTC daily trigger.
+
+- [ ] I've written my trigger before revealing the answer
+
+<details>
+<summary>Reveal one possible trigger</summary>
+
+```yaml
+on:
+  schedule:
+    - cron: "0 9 * * *"
+```
+
+`0 9 * * *` means minute 0, hour 9, every day. You will use this exact pattern when you author your first real workflow in Step 7.
+
+</details>
+
 ## Try it: predict and observe a task brief
 
 Before you reveal the example, write a one- or two-sentence task brief for this goal:
