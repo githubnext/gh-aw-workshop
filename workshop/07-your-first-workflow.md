@@ -8,7 +8,11 @@ _Writing your first workflow is the moment theory becomes practice — let's mak
 
 You'll use Copilot to create `.github/workflows/daily-report-status.md` — a scheduled workflow that also supports manual dispatch. You'll configure it with [`permissions`](https://github.github.com/gh-aw/reference/permissions/), [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/), and a task brief, then compile it to produce `daily-report-status.lock.yml`, the file [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/) runs.
 
-![Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes](images/07-compile-flow.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/07-compile-flow-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/07-compile-flow-light.svg">
+  <img alt="Diagram showing how daily-report-status.md is compiled by gh aw compile into daily-report-status.lock.yml which GitHub Actions then executes" src="images/07-compile-flow-light.svg">
+</picture>
 
 ## 📋 Before You Start
 

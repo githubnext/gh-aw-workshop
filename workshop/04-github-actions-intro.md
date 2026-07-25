@@ -74,7 +74,11 @@ Traditional workflows execute a fixed script path. [Agentic workflows](https://g
 
 The diagram below shows how the five key parts fit together in every workflow file.
 
-![GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers](images/04-actions-anatomy.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/04-actions-anatomy-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/04-actions-anatomy-light.svg">
+  <img alt="GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers" src="images/04-actions-anatomy-light.svg">
+</picture>
 
 Before reading on, label each highlighted part of the workflow below with its type:
 `trigger`, `job`, `runner`, `step`, or `action`.
