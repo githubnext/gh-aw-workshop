@@ -16,7 +16,11 @@ You'll build a **[GitHub Agentic Workflow](https://github.github.com/gh-aw/intro
 
 Along the way, you'll learn how to compile the workflow, trigger test runs, and iterate on the prompt until the output matches your intent.
 
-![Preview of a completed workflow run in the Actions tab](images/00-workflow-run-complete.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/00-workflow-run-complete-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/00-workflow-run-complete-light.svg">
+  <img alt="Preview of a completed workflow run in the Actions tab" src="images/00-workflow-run-complete-light.svg">
+</picture>
 
 Excited to get started? Let's gooo! 🚀
 
