@@ -27,28 +27,20 @@ Then you'll run your first compile check.
 mkdir -p .github/workflows
 ```
 
-### Create your first workflow file
-
-```bash
-touch .github/workflows/daily-report-status.md
-```
-
-Open `.github/workflows/daily-report-status.md` in your editor.
+### Create your first workflow file with Copilot
 
 > [!IMPORTANT]
 > This `.md` file is **not** the workflow GitHub Actions executes. You write the goal in Markdown; `gh aw compile` generates the `.lock.yml` file that Actions actually runs.
 
-### Add the starter frontmatter
+In Copilot Chat (Agent mode), run this prompt:
 
-Paste this at the top of the file:
-
-```yaml
----
-name: Daily Report Status
-on:
-  schedule: daily
----
+```text
+/agentic-workflows create `.github/workflows/daily-report-status.md` with:
+- name: Daily Report Status
+- on.schedule: daily
 ```
+
+Let the agent create or update the file for you instead of hand-editing workflow YAML/Markdown.
 
 - `name` is what you see in the Actions UI.
 - `schedule: daily` means it triggers once a day. The compiler automatically adds the [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/) event as well.
