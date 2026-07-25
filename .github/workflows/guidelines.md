@@ -29,13 +29,13 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
-## Copilot / Agents tab guidance
+## Copilot CLI guidance
 
-- For `copilot` journey pages and Adventure D content, treat the Agents tab as a **prompt surface**, not a terminal.
-- When a learner is working in the Agents tab or another CCA surface, tell them what prompt to send; do **not** present shell commands as though they run inside that chat.
-- When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through Copilot with the `/agentic-workflows` skill.
-- Do **not** recommend manual workflow editing as the primary instruction path; use Copilot + `/agentic-workflows` prompts instead.
-- If a CCA-oriented step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Agents-tab prompt so learners know which surface to use for each action.
+- Prefer **Copilot CLI** (`gh copilot suggest`) as the recommended prompt surface for all agentic workflow tasks. Copilot CLI is the same harness that agentic workflows use at runtime, so using it during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
+- When a learner is using Copilot CLI, tell them what prompt to pass; do **not** present shell commands as though they run inside the CLI chat.
+- When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through Copilot CLI with the `/agentic-workflows` skill.
+- Do **not** recommend manual workflow editing as the primary instruction path; use Copilot CLI + `/agentic-workflows` prompts instead.
+- If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Copilot CLI prompt so learners know which surface to use for each action.
 
 ## Golden-Ticket Workshop Surfaces
 

@@ -20,7 +20,10 @@ You'll start with `daily-report-status.md` and end with `daily-report-status.loc
 
 ## Create your first workflow
 
-In Copilot Chat (Agent mode), run this prompt:
+> [!NOTE]
+> Use **Copilot CLI** (`gh copilot suggest`) for all agentic workflow tasks in this workshop. Copilot CLI is the same harness that agentic workflows use at runtime, so your prompts behave the same way locally as they do in automation — Copilot Chat (Agent Mode) runs in a different harness and may produce different results.
+
+In Copilot CLI, run this prompt:
 
 ```text
 /agentic-workflows Create a daily-report-status workflow that runs on a daily schedule. Compile it after creating it.

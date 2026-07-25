@@ -140,7 +140,7 @@ Use this quick notes table:
 
 ### Ask an agent to suggest the next optimization
 
-Open Copilot Chat or the Agents tab in your practice repository and send:
+Open Copilot CLI in your practice repository and send:
 
 ```text
 /agentic-workflows Review my workflow brief and this audit summary.
