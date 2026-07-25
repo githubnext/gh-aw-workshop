@@ -31,7 +31,7 @@ permissions:
   pull-requests: write
   contents: read
 safe-outputs:
-  add-labels-to-pull-request:
+  add-labels:
     limit: 5
 ---
 
@@ -83,7 +83,7 @@ Compile, push, and test with a PR that changes a workflow file.
 - [ ] I created `.github/workflows/pr-labeler.md` with a `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
 - [ ] I opened a test PR and the workflow applied the correct label automatically
-- [ ] I can explain why `safe-outputs: add-labels-to-pull-request` is the right surface for this pattern
+- [ ] I can explain why `safe-outputs: add-labels` is the right surface for this pattern
 - [ ] I extended the labeller to handle at least one additional file-path rule
 
 <!-- journey: all -->
