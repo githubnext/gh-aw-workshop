@@ -65,7 +65,7 @@ Compile and push:
 
 ```bash
 gh aw compile
-git add .github/workflows/pr-checklist.md .github/workflows/pr-checklist.lock.yml
+git add .
 git commit -m "feat: add PR review checklist workflow"
 git push
 ```

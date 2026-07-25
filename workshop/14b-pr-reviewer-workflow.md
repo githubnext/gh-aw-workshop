@@ -76,7 +76,7 @@ gh aw compile
 Then commit both files:
 
 ```bash
-git add .github/workflows/pr-reviewer.md .github/workflows/pr-reviewer.lock.yml
+git add .
 git commit -m "feat: add PR auto-reviewer workflow"
 git push
 ```

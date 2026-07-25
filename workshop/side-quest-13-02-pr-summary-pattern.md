@@ -56,7 +56,7 @@ Compile and push:
 
 ```bash
 gh aw compile
-git add .github/workflows/pr-summary.md .github/workflows/pr-summary.lock.yml
+git add .
 git commit -m "feat: add PR summary generator workflow"
 git push
 ```

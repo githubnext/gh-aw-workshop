@@ -56,7 +56,7 @@ Make the three edits manually (see the reference content below), then run:
 
 ```bash
 gh aw compile
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add timeout and defensive fallback to daily-status"
 git push
 ```
@@ -116,7 +116,7 @@ This makes it easy to distinguish a healthy "quiet" run from a silent failure in
 The `/agentic-workflows` skill recompiles the lock file automatically. Commit both files and push:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add timeout and defensive fallback to daily-status"
 git push
 ```

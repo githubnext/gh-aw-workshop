@@ -123,7 +123,7 @@ Common mistakes include putting `cache-memory:` at the top level instead of nest
 Push your workflow update:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add cache-memory deduplication to daily-status"
 git push
 ```

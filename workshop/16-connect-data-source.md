@@ -129,7 +129,7 @@ GitHub resolves the step-output expressions before the AI sees the prompt, so th
 The `/agentic-workflows` skill recompiles the lock file automatically. If you edited the workflow manually, run `gh aw compile` first, then push:
 
 ```bash
-git add .github/workflows/daily-status.md
+git add .
 git commit -m "feat: inject open issues into daily summary prompt"
 git push
 ```

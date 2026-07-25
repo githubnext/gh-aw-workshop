@@ -76,7 +76,7 @@ If you have not already done so, remove `copilot-requests: write` from the sourc
 
 ```bash
 gh aw compile
-git add .github/workflows/
+git add .
 git commit -m "Use personal Copilot billing"
 git push
 ```

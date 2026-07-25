@@ -50,7 +50,7 @@ Compile and push:
 
 ```bash
 gh aw compile
-git add .github/workflows/pr-labeler.md .github/workflows/pr-labeler.lock.yml
+git add .
 git commit -m "feat: add PR labeller workflow"
 git push
 ```

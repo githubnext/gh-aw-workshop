@@ -96,7 +96,7 @@ After compiling and pushing, trigger a manual `workflow_dispatch` run from the A
 ### Commit and push your changes
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: gate agent on open security alerts"
 git push
 ```
