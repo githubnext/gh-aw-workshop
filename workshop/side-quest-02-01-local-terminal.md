@@ -120,7 +120,7 @@ _What success looks like:_ interactive prompts complete and login succeeds.
 
 Choose GitHub.com and then Login with a web browser. A one-time code will appear in your terminal — copy it, open the URL shown, and paste the code when prompted.
 
-> [!WARNING]
+> [!IMPORTANT]
 > Never share the one-time code or your authentication token with anyone. If you accidentally commit a token, revoke it immediately in **Settings → Developer settings → Personal access tokens**.
 
 ### New repository
