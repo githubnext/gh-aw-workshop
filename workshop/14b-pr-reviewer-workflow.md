@@ -145,6 +145,21 @@ To test the manual path, add a `/review` comment to the pull request. After push
 > [!NOTE]
 > If no run starts, confirm that the workflow is on your default branch and that you changed the pull request from draft to ready. Opening a pull request as ready does not emit the `ready_for_review` event.
 
+If the run completes but the review does not mention the `pr-review-standards` skill or does not cite changed files and lines, the reviewer likely could not find the skills directory. Use this checklist to recover:
+
+1. Confirm `.github/skills/agentic-workflows/` exists and was pushed. Run `ls .github/skills/` in your terminal. If the directory is missing, run `gh aw init`, commit the generated files, and push.
+2. If the directory exists but the skill was still not applied, ask the agent to reinforce the instruction:
+
+   ```text
+   /agentic-workflows update .github/workflows/pr-reviewer.md so the
+   `pr-reviewer` agent explicitly searches for and applies the
+   `pr-review-standards` skill before returning findings. Keep all
+   other settings, triggers, and permissions unchanged. Compile the
+   workflow after the edit.
+   ```
+
+3. Compile, commit, and re-trigger `/review` to confirm the skill is now applied.
+
 ## Improve One Layer
 
 Choose one change and send it through `/agentic-workflows`:

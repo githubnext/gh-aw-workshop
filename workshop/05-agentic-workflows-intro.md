@@ -48,13 +48,15 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 - **What it produces:** A synthesized report or action the agent composes from live repository data — different every run based on what it finds.
 - **Why it exists:** Classic Actions handles deterministic CI/CD. Agentic workflows fill the gap for tasks that need judgment — or you can mix both in a single hybrid workflow.
 
-## Try it: match the lifecycle parts
+## Try it: describe the lifecycle parts
 
-Match each term to what it describes in an agentic workflow. Make your decision before revealing the answers.
+Write a one-sentence description for each term **before** you reveal the answer. Use your own words — do not copy text from the diagram above.
 
 **Term 1:** `.md` source file
 
-- [ ] I've made my decision for Term 1
+Write your description:
+
+- [ ] I've written my own description for Term 1
 
 <details>
 <summary>Reveal Term 1 answer</summary>
@@ -65,7 +67,9 @@ The **Markdown source file** — it contains the YAML frontmatter (trigger, perm
 
 **Term 2:** `.lock.yml` compiled file
 
-- [ ] I've made my decision for Term 2
+Write your description:
+
+- [ ] I've written my own description for Term 2
 
 <details>
 <summary>Reveal Term 2 answer</summary>
@@ -76,7 +80,9 @@ The **compiled lock file** — [`gh aw compile`](https://github.github.com/gh-aw
 
 **Term 3:** `gh aw compile`
 
-- [ ] I've made my decision for Term 3
+Write your description:
+
+- [ ] I've written my own description for Term 3
 
 <details>
 <summary>Reveal Term 3 answer</summary>
@@ -117,6 +123,7 @@ If one part is missing, revise your brief once. This is the same predict-and-obs
 - [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
 - [ ] I can identify the three parts: trigger → agent → safe output
 - [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
+- [ ] I wrote my own description for each lifecycle term before revealing the answer
 - [ ] I practiced writing and revising a short workflow task brief
 
 <details>
