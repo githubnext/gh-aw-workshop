@@ -29,13 +29,13 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
-## Copilot CLI guidance
+## AI agent guidance
 
-- Prefer **Copilot CLI** (`copilot`) as the recommended prompt surface for all agentic workflow tasks. Copilot CLI is the same harness that agentic workflows use at runtime, so using it during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
-- When a learner is using Copilot CLI, tell them what prompt to pass; do **not** present shell commands as though they run inside the CLI chat.
-- When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through Copilot CLI with the `/agentic-workflows` skill.
-- Do **not** recommend manual workflow editing as the primary instruction path; use Copilot CLI + `/agentic-workflows` prompts instead.
-- If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Copilot CLI prompt so learners know which surface to use for each action.
+- Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
+- When a learner is using their AI agent, tell them what prompt to pass; do **not** present shell commands as though they run inside the agent chat.
+- When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through their AI agent with the `/agentic-workflows` skill.
+- Do **not** recommend manual workflow editing as the primary instruction path; use the AI agent + `/agentic-workflows` prompts instead.
+- If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the agent prompt so learners know which surface to use for each action.
 
 ## Golden-Ticket Workshop Surfaces
 
