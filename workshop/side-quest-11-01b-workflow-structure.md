@@ -21,7 +21,7 @@ The file ends in `.md` instead of `.yml` because the frontmatter is only the ope
 
 ## Frontmatter sections at a glance
 
-The five frontmatter sections you'll build in Step 11a:
+The five frontmatter sections you'll build in Step 7:
 
 | Section | Key(s) | What it does |
 |---------|--------|--------------|
