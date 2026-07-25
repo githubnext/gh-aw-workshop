@@ -670,6 +670,13 @@ html {
   display: none;
 }
 
+.markdown-body .anchor:focus-visible {
+  display: inline;
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .markdown-body a:not(.anchor):not(.workshop-nav-btn),
 .workshop-navigation a:not(.anchor):not(.workshop-nav-btn) {
   color: var(--workshop-link-color);
@@ -1078,7 +1085,7 @@ ${workshopMenu}
     <div class="image-inspector-panel">
       <button class="image-inspector-close" type="button" aria-label="Close image preview" title="Close image preview">Close</button>
       <figure class="image-inspector-figure">
-        <img class="image-inspector-image" id="image-inspector-image" alt="">
+        <img class="image-inspector-image" id="image-inspector-image" alt="Image preview">
         <figcaption class="image-inspector-caption" id="image-inspector-title" hidden></figcaption>
       </figure>
     </div>
@@ -1238,7 +1245,7 @@ ${htmlContent}</main>
     });
     imageInspectorDialog.addEventListener('close', function () {
       imageInspectorImage.removeAttribute('src');
-      imageInspectorImage.setAttribute('alt', '');
+      imageInspectorImage.setAttribute('alt', 'Image preview');
       updateImageInspectorCaption('');
     });
 
