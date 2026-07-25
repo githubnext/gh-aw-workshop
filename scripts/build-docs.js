@@ -802,14 +802,20 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
     flex-wrap: wrap;
     gap: 8px;
   }
+  .workshop-navigation-previous,
   .workshop-navigation-next {
-    align-items: stretch;
+    min-width: 0;
     width: 100%;
   }
+  .workshop-navigation-next {
+    align-items: stretch;
+  }
   .workshop-nav-btn {
+    box-sizing: border-box;
     overflow-wrap: anywhere;
     white-space: normal;
     align-items: flex-start;
+    width: 100%;
   }
 }
 

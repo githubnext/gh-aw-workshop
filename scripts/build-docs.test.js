@@ -9,6 +9,7 @@ const test = require("node:test");
 const repoDir = path.resolve(__dirname, "..");
 const buildScript = path.join(repoDir, "scripts", "build-docs.js");
 const distIndex = path.join(repoDir, "dist", "index.html");
+const distCss = path.join(repoDir, "dist", "docs.css");
 
 test("workshop SPA renders a single document h1", () => {
   execFileSync(process.execPath, [buildScript], { cwd: repoDir, stdio: "pipe" });
@@ -19,4 +20,15 @@ test("workshop SPA renders a single document h1", () => {
   assert.ok(html.includes('<h1 class="site-title"><a href="#00-welcome">GitHub Agentic Workflows Workshop</a></h1>'));
   assert.equal((html.match(/<h1 id="[^"]+" class="workshop-page-title">/g) ?? []).length, 0);
   assert.ok((html.match(/<h2 id="[^"]+" class="workshop-page-title">/g) ?? []).length > 0);
+});
+
+test("workshop SPA mobile navigation styles prevent horizontal overflow", () => {
+  execFileSync(process.execPath, [buildScript], { cwd: repoDir, stdio: "pipe" });
+
+  const css = fs.readFileSync(distCss, "utf8");
+
+  assert.match(
+    css,
+    /@media \(max-width: 799px\) \{[\s\S]*\.workshop-navigation-previous,\s*\.workshop-navigation-next \{[\s\S]*min-width: 0;[\s\S]*width: 100%;[\s\S]*\}[\s\S]*\.workshop-nav-btn \{[\s\S]*box-sizing: border-box;[\s\S]*width: 100%;[\s\S]*\}/
+  );
 });
