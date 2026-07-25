@@ -31,7 +31,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 ## Copilot CLI guidance
 
-- Prefer **Copilot CLI** (`gh copilot suggest`) as the recommended prompt surface for all agentic workflow tasks. Copilot CLI is the same harness that agentic workflows use at runtime, so using it during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
+- Prefer **Copilot CLI** (`copilot`) as the recommended prompt surface for all agentic workflow tasks. Copilot CLI is the same harness that agentic workflows use at runtime, so using it during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
 - When a learner is using Copilot CLI, tell them what prompt to pass; do **not** present shell commands as though they run inside the CLI chat.
 - When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through Copilot CLI with the `/agentic-workflows` skill.
 - Do **not** recommend manual workflow editing as the primary instruction path; use Copilot CLI + `/agentic-workflows` prompts instead.
