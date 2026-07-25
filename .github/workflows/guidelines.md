@@ -208,6 +208,13 @@ Multi-line callout (summary + body):
 - In all workshop terminal examples, use `git add .` to stage changes — never list individual filenames or paths (e.g., do **not** write `git add .github/workflows/foo.md .github/workflows/foo.lock.yml`).
 - Using `git add .` keeps snippets short, avoids filename drift when workflows are renamed, and mirrors how most learners naturally stage their work.
 
+## Code blocks: always specify `bash` for shell commands
+
+- Use ` ```bash ` as the language identifier for every fenced code block containing shell or terminal commands.
+- Do **not** leave shell command blocks unlabeled; bare ` ``` ` fences without a language specifier are reserved for content that has no matching language identifier (for example, pseudocode or AI task brief excerpts).
+- Use ` ```text ` for terminal output that learners read but do not type (for example, expected command output or error messages).
+- Use ` ```yaml ` for YAML configuration or frontmatter examples, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
+
 ## Enterprise user preference in design decisions
 
 When two workshop design choices are of equal or comparable value, **favor the option that better serves enterprise users** — learners using GitHub Enterprise Server (GHES), GitHub Enterprise Cloud (GHEC), or self-hosted runners. Apply this rule at every decision point:
