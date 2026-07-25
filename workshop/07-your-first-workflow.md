@@ -22,22 +22,24 @@ You'll use Copilot to create `.github/workflows/daily-report-status.md` — a sc
 
 **Verify Copilot access before you begin.**
 
-1. Open your practice repository on GitHub.com.
-2. Click **Launch Copilot**.
-3. In Copilot, send this prompt:
+1. In the terminal that is already open in your Codespace, run:
 
-![Screenshot of the Launch Copilot prompt box in a repository before you send the access-check prompt](https://github.com/user-attachments/assets/6f9b8182-c99d-4990-8972-0bf73b88fd7c)
+   ```bash
+   gh copilot
+   ```
 
-```prompt
-/agentic-workflows what trigger does a scheduled workflow use?
-```
+2. In Copilot CLI, send this prompt:
 
-Confirm you receive a reply. Any response means Copilot and the `agentic-workflows` skill are accessible.
+   ```prompt
+   /agentic-workflows what trigger does a scheduled workflow use?
+   ```
+
+Confirm you receive a reply. Any response means Copilot CLI and the `agentic-workflows` skill are accessible.
 
 > [!IMPORTANT]
 > If you see an error instead of a reply, do not continue. Fix the access issue first — model-access errors will cause Step 8 to fail. Check [github.com/settings/copilot](https://github.com/settings/copilot), then see [Confirm Model Access](07d-confirm-model-access.md) for detailed troubleshooting.
 
-- [ ] I launched Copilot from my repository and received a reply to the test prompt
+- [ ] I opened Copilot CLI in the terminal and received a reply to the test prompt
 
 ## Create your first workflow
 
@@ -110,7 +112,7 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 
 ## ✅ Checkpoint
 
-- [ ] Copilot access was confirmed after I clicked **Launch Copilot** and received a test reply
+- [ ] Copilot access was confirmed in Copilot CLI before starting (test prompt received a reply)
 - [ ] `.github/workflows/daily-report-status.md` exists and contains an `on: schedule:` trigger in the frontmatter
 - [ ] The file includes `permissions` with `copilot-requests: write`
 - [ ] `gh aw compile` exits with no errors and produces `daily-report-status.lock.yml`
