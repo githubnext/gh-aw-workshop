@@ -31,7 +31,7 @@ Start with one change to isolate its effect: output length (`concise` vs `detail
 
 ### Use an agent to add the experiment (recommended)
 
-Open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab and paste this prompt:
+In your AI agent, run this prompt:
 
 ```prompt
 Add an A/B experiment to `.github/workflows/daily-status.md`.
