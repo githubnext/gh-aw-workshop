@@ -95,7 +95,11 @@ The workflow fires automatically within a few seconds of the PR being created. T
 3. Open the run and watch the agent step process the PR context.
 4. Navigate back to the pull request and check the **Conversation** tab — your automated review comment should appear there.
 
-![PR auto-reviewer comment posted by the workflow](images/13-pr-reviewer-comment.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/13-pr-reviewer-comment-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/13-pr-reviewer-comment-light.svg">
+  <img alt="PR auto-reviewer comment posted by the workflow" src="images/13-pr-reviewer-comment-light.svg">
+</picture>
 
 ## Inspect the Agent's Reasoning
 
