@@ -17,7 +17,11 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 
 Open the completed **Daily Report Status** run from the **Actions** tab and click the job name. The log usually moves through a simple pattern: the agent thinks, calls a [tool](https://github.github.com/gh-aw/reference/tools/), receives a result, and finishes.
 
-![Agent execution loop: Planning leads to a Tool Call, which returns a Result; the agent loops back or ends with Done](images/08b-agent-loop.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08b-agent-loop-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08b-agent-loop-light.svg">
+  <img alt="Agent execution loop: Planning leads to a Tool Call, which returns a Result; the agent loops back or ends with Done" src="images/08b-agent-loop-light.svg">
+</picture>
 
 ```text
 🤔 Planning...  Searching for open issues with 👍 reactions
