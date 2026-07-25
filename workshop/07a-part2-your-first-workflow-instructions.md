@@ -14,7 +14,7 @@ You'll finish `.github/workflows/daily-report-status.md` by adding:
 
 ## 📋 Before You Start
 
-- Completed [Part 1](07a-your-first-workflow-terminal.md)
+- Completed [Write Your First Agentic Workflow](07-your-first-workflow.md)
 - `gh aw compile` already passes once
 
 ## Steps

@@ -15,7 +15,6 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 5c | [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md) |
 | 6 | [Install the gh-aw CLI Extension](06-install-gh-aw.md) |
 | 7 | [Write Your First Agentic Workflow](07-your-first-workflow.md) |
-| 7a | [Write Your First Agentic Workflow from a Terminal](07a-your-first-workflow-terminal.md) |
 | 7a-part2 | [Add Instructions and Finish Your First Workflow](07a-part2-your-first-workflow-instructions.md) |
 | 7d | [Confirm Model Access](07d-confirm-model-access.md) |
 | 8 | [Run and Watch Your Workflow](08-run-your-workflow.md) |
@@ -66,7 +65,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) — five-step framework for designing any agentic workflow brief; branches from [Step 10](09-agentic-editing.md).
 - [Jailbreaking the Agent Brief](side-quest-10-02-jailbreak-brief.md) — explains how adversarial instructions embedded in repository content attempt to override the agent's task brief, and how the compiled brief, minimal `permissions:`, `safe-outputs`, and `network.allowed-domains` contain any partial success; branches from [Step 10](09-agentic-editing.md).
 - [Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) — walkthrough of the opening, trigger, and permissions sections of `gh-aw` frontmatter, with predict-and-try activities; branches from [Step 11a](07-your-first-workflow.md).
-- [Workflow File Structure at a Glance](side-quest-11-01b-workflow-structure.md) — visual map of the two-file structure (`.md` + `.lock.yml`), the frontmatter sections, and the Markdown body; branches from [Step 7a](07a-your-first-workflow-terminal.md).
+- [Workflow File Structure at a Glance](side-quest-11-01b-workflow-structure.md) — visual map of the two-file structure (`.md` + `.lock.yml`), the frontmatter sections, and the Markdown body; branches from [Step 7](07-your-first-workflow.md).
 - [Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) — walkthrough of the tools, safe-outputs, closing fence, and agent body sections, with predict-and-try activities; continues from Part A.
 - [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels automatically based on which files changed in a pull request; branches from [Step 14b](14b-pr-reviewer-workflow.md).
 - [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured, changelog-ready summary comment when a pull request opens; branches from [Step 14b](14b-pr-reviewer-workflow.md).
