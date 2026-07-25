@@ -1,5 +1,5 @@
 (function () {
-  var THEME_KEY = 'workshop-color-mode';
+  var THEME_KEY = 'gh-aw-workshop-color-mode';
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-color-mode', theme);
