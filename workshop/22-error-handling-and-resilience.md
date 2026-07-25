@@ -28,6 +28,14 @@ Agentic workflows can fail for several reasons:
 
 Recognising these patterns helps you write instructions that stay on track.
 
+The diagram below shows how these failure modes map to the three mitigations covered in this step.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/22-resilience-techniques-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/22-resilience-techniques-light.svg">
+  <img alt="Four failure modes — prompt drift, timeout, tool error, and empty data — each mapped to one of three mitigations: defensive brief, timeout-minutes, and fallback safe-output, which together produce a reliably running workflow" src="images/22-resilience-techniques-light.svg">
+</picture>
+
 ### Apply all three changes with the skill
 
 In the GitHub Copilot **Chat** or **Agents** tab, paste:
