@@ -790,7 +790,7 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
   background-color: var(--bgColor-subtle, #1c2128);
 }
 
-@media (max-width: 543px) {
+@media (max-width: 799px) {
   .workshop-navigation {
     flex-wrap: wrap;
     gap: 8px;
