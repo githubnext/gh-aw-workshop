@@ -8,12 +8,15 @@ You'll launch a GitHub Codespace for this workshop, open the built-in terminal, 
 
 Codespaces is the recommended environment for this workshop and the path used throughout the core steps.
 
+## 📋 Before You Start
+
+Before launching your Codespace, confirm the following:
+
+- **GitHub account** — you need a free GitHub account. Create one at [github.com/signup](https://github.com/signup) if needed.
+- **Codespaces access** — your account must have GitHub Codespaces available. Check [github.com/codespaces](https://github.com/codespaces); if you can see the page, you have access (free tier includes 60 hours/month).
+- **Browser-based environment** — this path requires no local tool installs. If you prefer to work in your own terminal, see [Side Quest: Local Terminal Setup](side-quest-02-01-local-terminal.md) instead.
+
 ## Steps
-
-**Verify you are on the right path before continuing:**
-
-- [ ] You have a GitHub account with access to GitHub Codespaces
-- [ ] You want a browser-based terminal and do not need to install tools locally
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
@@ -57,7 +60,14 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 
 1. When the Codespace editor loads, open the built-in terminal with **Ctrl+\`** (or **Cmd+Option+\`** on Mac).
 2. Wait for the terminal prompt to appear.
-3. Keep this terminal open. It is already inside your practice repository.
+3. Run the following command to confirm you are inside your practice repository:
+
+   ```bash
+   echo "Repo: $(basename $PWD)"
+   ```
+
+   You should see `Repo: my-agentic-workflows`.
+4. Keep this terminal open. It is already inside your practice repository.
 
 > [!TIP]
 > If the terminal in your Codespace shows a `$` prompt, the container is ready. If you see a permission error when running `gh auth status`, try `gh auth login` to authenticate.
@@ -99,9 +109,10 @@ github.com
 
 ## ✅ Checkpoint
 
-- [ ] You confirmed your GitHub plan includes Codespaces access (free tier includes 60 hours/month)
+- [ ] You verified your GitHub account has Codespaces access
 - [ ] The Codespace editor is open in your browser
 - [ ] The built-in terminal is open in your Codespace
+- [ ] `echo "Repo: $(basename $PWD)"` returns `Repo: my-agentic-workflows`
 - [ ] `gh --version` returns version 2.40.0 or newer
 - [ ] `gh auth status` confirms you are logged in to `github.com`
 - [ ] The Codespace is attached to your `my-agentic-workflows` practice repository
