@@ -95,12 +95,10 @@ marked.use({
           : item.tokens.slice(1);
         const text = this.parser.parseInline(inlineTokens);
         const accessibleName = flattenTokenText(inlineTokens).replace(/\s+/g, ' ').trim();
-        const baseAttrs = 'class="task-list-item-checkbox" disabled="" type="checkbox"';
-        const attrs = item.checked ? `${baseAttrs} checked=""` : baseAttrs;
         const labelAttr = accessibleName
-          ? ` aria-label="${escapeHtml(accessibleName)}"`
-          : '';
-        return `<li class="task-list-item"><input ${attrs}${labelAttr}> ${text}</li>\n`;
+          ? ` aria-label="Complete: ${escapeHtml(accessibleName)}"`
+          : ' aria-label="Complete"';
+        return `<li class="task-list-item"><span class="task-list-item-marker" role="img"${labelAttr}>✓</span> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
     },
@@ -609,6 +607,15 @@ html {
 .markdown-body {
   max-width: min(96ch, calc(100vw - 32px));
   margin-inline: auto;
+}
+.markdown-body li.task-list-item {
+  list-style: none;
+}
+.markdown-body li.task-list-item > .task-list-item-marker {
+  display: inline-block;
+  width: 1.2em;
+  font-weight: 700;
+  color: var(--fgColor-success, #1a7f37);
 }
 
 @media (max-width: 543px) {
