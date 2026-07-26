@@ -133,6 +133,9 @@ marked.use({
       if (langKey === 'prompt') {
         return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
       }
+      if (langKey === 'markdown') {
+        return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span><span class="markdown-editor-label">markdown</span></div>\n<pre class="markdown-editor-pre"><code class="language-markdown">${codeHtml}</code></pre>\n</div>\n`;
+      }
       const terminalLabel = shellLangs.has(langKey) ? langKey : terminalOutputLangs.has(langKey) ? 'output' : '';
       if (!terminalLabel) return false;
       const escapedLang = escapeHtml(langKey);
@@ -613,8 +616,7 @@ html {
 }
 
 .markdown-body {
-  max-width: min(96ch, calc(100vw - 32px));
-  margin-inline: auto;
+  max-width: 100%;
 }
 .markdown-body li.task-list-item {
   list-style: none;
@@ -640,10 +642,7 @@ html {
   .markdown-body pre > code {
     white-space: inherit;
   }
-  /* Use more horizontal space on mobile: remove outer centering margin and tighten padding */
   .markdown-body {
-    max-width: 100%;
-    margin-inline: 0;
     padding-inline: 12px !important;
   }
 }
@@ -1128,6 +1127,7 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   background-color: #3b1b6f;
 }
 
+<<<<<<< HEAD
 /* Interactive task-list checkboxes */
 .markdown-body li.task-list-item {
   cursor: pointer;
@@ -1190,6 +1190,125 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   content: '\\a0✓';
   color: var(--fgColor-success, #1a7f37);
   font-weight: 700;
+=======
+/* Markdown text-editor style blocks */
+.markdown-editor-block {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--borderColor-muted, #d0d7de);
+  margin-bottom: 16px;
+}
+
+.markdown-editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: var(--bgColor-muted, #f6f8fa);
+  border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
+}
+
+.markdown-editor-icon {
+  flex-shrink: 0;
+  color: var(--fgColor-muted, #59636e);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.markdown-editor-label {
+  color: var(--fgColor-muted, #59636e);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0.02em;
+}
+
+.markdown-body .markdown-editor-pre {
+  margin: 0;
+  padding: 16px 16px 16px 20px;
+  background-color: var(--bgColor-default, #ffffff);
+  border: none;
+  border-radius: 0;
+  box-shadow: inset 3px 0 var(--borderColor-muted, #d0d7de);
+  overflow-x: auto;
+}
+
+.markdown-body .markdown-editor-pre > code {
+  color: var(--fgColor-default, #1f2328);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875em;
+}
+
+.markdown-editor-block .code-copy-btn {
+  background-color: var(--bgColor-default, #ffffff);
+  border-color: var(--borderColor-muted, #d0d7de);
+  color: var(--fgColor-muted, #59636e);
+}
+
+.markdown-editor-block .code-copy-btn:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+  color: var(--fgColor-default, #1f2328);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .markdown-editor-block {
+    border-color: #30363d;
+  }
+  html[data-color-mode="auto"] .markdown-editor-bar {
+    background-color: #161b22;
+    border-bottom-color: #30363d;
+  }
+  html[data-color-mode="auto"] .markdown-editor-icon,
+  html[data-color-mode="auto"] .markdown-editor-label {
+    color: #8b949e;
+  }
+  html[data-color-mode="auto"] .markdown-body .markdown-editor-pre {
+    background-color: #0d1117;
+    box-shadow: inset 3px 0 #30363d;
+  }
+  html[data-color-mode="auto"] .markdown-body .markdown-editor-pre > code {
+    color: #e6edf3;
+  }
+  html[data-color-mode="auto"] .markdown-editor-block .code-copy-btn {
+    background-color: #0d1117;
+    border-color: #30363d;
+    color: #8b949e;
+  }
+  html[data-color-mode="auto"] .markdown-editor-block .code-copy-btn:hover {
+    background-color: #161b22;
+    color: #e6edf3;
+  }
+}
+
+html[data-color-mode="dark"] .markdown-editor-block {
+  border-color: #30363d;
+}
+html[data-color-mode="dark"] .markdown-editor-bar {
+  background-color: #161b22;
+  border-bottom-color: #30363d;
+}
+html[data-color-mode="dark"] .markdown-editor-icon,
+html[data-color-mode="dark"] .markdown-editor-label {
+  color: #8b949e;
+}
+html[data-color-mode="dark"] .markdown-body .markdown-editor-pre {
+  background-color: #0d1117;
+  box-shadow: inset 3px 0 #30363d;
+}
+html[data-color-mode="dark"] .markdown-body .markdown-editor-pre > code {
+  color: #e6edf3;
+}
+html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn {
+  background-color: #0d1117;
+  border-color: #30363d;
+  color: #8b949e;
+}
+html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
+  background-color: #161b22;
+  color: #e6edf3;
+>>>>>>> origin/main
 }
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
