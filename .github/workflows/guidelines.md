@@ -82,6 +82,7 @@ generate both light and dark variants during the same run. Name them
 - Keep the fallback `<img>` and use the light variant as its `src`.
 - Put alt text on the fallback `<img>`; do not duplicate it on `<source>` elements.
 - Capture or render each variant with Playwright's matching `colorScheme` setting.
+- If an image includes text, size that text to match normal rendered documentation body text so it remains legible after Markdown scaling.
 - Verify in both color schemes that `currentSrc` selects the expected variant and
    that the image is nonblank, readable, and free of clipping or overflow.
 
