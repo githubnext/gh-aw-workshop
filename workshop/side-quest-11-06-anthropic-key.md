@@ -30,9 +30,13 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 3. Copy the key value — it starts with `sk-ant-`.
 
 > [!IMPORTANT]
+> <details><summary>Key is shown only once — save it before closing this tab</summary>
+>
 > Anthropic shows the full key value **only once**. Copy it to your clipboard before you close the dialog or navigate away. If you miss this window, you must delete the key and generate a new one.
 >
 > Paste the key into GitHub Secrets (the next section) **before** closing the Anthropic console tab.
+>
+> </details>
 
 <!-- -->
 
@@ -95,7 +99,7 @@ If you previously added `copilot-requests: write` for the Copilot engine, you ca
 After updating your frontmatter, validate the workflow to check for errors:
 
 ```bash
-gh aw validate
+gh aw compile --validate
 ```
 
 You should see:
@@ -111,7 +115,7 @@ You should see:
 - [ ] You have an Anthropic account and have generated an API key
 - [ ] `ANTHROPIC_API_KEY` is stored as a repository secret
 - [ ] Your workflow frontmatter has `engine: claude`
-- [ ] `gh aw validate` reports no errors
+- [ ] `gh aw compile --validate` reports no errors
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 <!-- journey: all -->
