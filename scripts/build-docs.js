@@ -94,11 +94,7 @@ marked.use({
           ? item.tokens[0].tokens.slice(1)
           : item.tokens.slice(1);
         const text = this.parser.parseInline(inlineTokens);
-        const accessibleName = flattenTokenText(inlineTokens).replace(/\s+/g, ' ').trim();
-        const labelAttr = accessibleName
-          ? ` aria-label="Complete: ${escapeHtml(accessibleName)}"`
-          : ' aria-label="Complete"';
-        return `<li class="task-list-item"><span class="task-list-item-marker" role="img"${labelAttr}>✓</span> ${text}</li>\n`;
+        return `<li class="task-list-item"><span class="task-list-item-marker" aria-hidden="true">✓</span> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
     },
