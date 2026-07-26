@@ -5,6 +5,8 @@
 
 ![Mona's Agent Factory](workshop/images/00-welcome-monas-agent-factory.png)
 
+- https://githubnext.github.io/gh-aw-workshop/
+
 ## What you will learn to build
 
 Build a real AI-powered GitHub workflow from scratch and leave with a **safe** production-style agentic automation you can adapt to your own repositories.
