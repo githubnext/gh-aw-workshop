@@ -46,10 +46,28 @@
       return li.querySelector('.task-list-item-marker.is-complete') !== null;
     });
 
-    // Progress element inserted immediately after the page title heading
+    // Progress element inserted immediately after the page title heading.
+    // Child elements are created once and updated on each render call.
     var progressEl = document.createElement('div');
     progressEl.className = 'task-progress';
     progressEl.setAttribute('aria-live', 'polite');
+
+    var barEl = document.createElement('div');
+    barEl.className = 'task-progress-bar';
+    barEl.setAttribute('role', 'progressbar');
+    barEl.setAttribute('aria-valuemin', '0');
+    barEl.setAttribute('aria-label', 'Page checkpoint progress');
+
+    var fillEl = document.createElement('div');
+    fillEl.className = 'task-progress-bar-fill';
+    barEl.appendChild(fillEl);
+
+    var labelEl = document.createElement('span');
+    labelEl.className = 'task-progress-label';
+
+    progressEl.appendChild(barEl);
+    progressEl.appendChild(labelEl);
+
     var pageTitle = page.querySelector('.workshop-page-title');
     if (pageTitle) {
       pageTitle.insertAdjacentElement('afterend', progressEl);
@@ -61,18 +79,15 @@
       var allDone = total > 0 && done === total;
       var pct = total > 0 ? Math.round((done / total) * 100) : 0;
 
-      progressEl.className = 'task-progress' + (allDone ? ' task-progress--done' : '');
-      progressEl.innerHTML =
-        '<div class="task-progress-bar" role="progressbar"' +
-        ' aria-valuenow="' + done + '" aria-valuemin="0" aria-valuemax="' + total + '"' +
-        ' aria-label="Page checkpoint progress">' +
-        '<div class="task-progress-bar-fill" style="width:' + pct + '%;"></div>' +
-        '</div>' +
-        '<span class="task-progress-label">' +
-        (allDone
-          ? 'All\u00a0' + total + ' checkpoints complete'
-          : done + '\u202f/\u202f' + total + ' complete') +
-        '</span>';
+      progressEl.classList.toggle('task-progress--done', allDone);
+
+      barEl.setAttribute('aria-valuenow', String(done));
+      barEl.setAttribute('aria-valuemax', String(total));
+      fillEl.style.width = pct + '%';
+
+      labelEl.textContent = allDone
+        ? 'All\u00a0' + total + ' checkpoints complete'
+        : done + '\u202f/\u202f' + total + ' complete';
 
       // Mark the menu link for this page as complete
       var menuLink = document.querySelector('a[href="#' + pageId + '"][data-workshop-page-link]');
