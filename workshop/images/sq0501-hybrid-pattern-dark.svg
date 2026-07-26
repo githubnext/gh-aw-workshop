@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Hybrid pattern diagram showing three stages: deterministic jobs fetch and transform data, structured outputs pass to the workflow body, and the agent handles interpretation and communication">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="600" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f0f6fc">Hybrid Pattern: Deterministic Steps + Agent Reasoning</text>
+  <text x="600" y="66" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#8b949e">Keep deterministic guardrails where you need them — let the agent handle context-heavy decisions</text>
+
+  <!-- Stage 1: Deterministic Jobs -->
+  <rect x="60" y="120" width="300" height="330" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="80" y="108" width="22" height="22" rx="11" fill="#2f81f7"/>
+  <text x="91" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">1</text>
+  <text x="210" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#f0f6fc">Deterministic Steps</text>
+  <text x="210" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">fetch · transform · validate</text>
+  <line x1="80" y1="190" x2="340" y2="190" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="90" y="206" width="240" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="210" y="229" text-anchor="middle" font-family="monospace, sans-serif" font-size="13" fill="#f0f6fc">gh api /repos/.../issues</text>
+
+  <rect x="90" y="254" width="240" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="210" y="277" text-anchor="middle" font-family="monospace, sans-serif" font-size="13" fill="#f0f6fc">jq &#39;.[] | {title, labels}&#39;</text>
+
+  <rect x="90" y="302" width="240" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="210" y="325" text-anchor="middle" font-family="monospace, sans-serif" font-size="13" fill="#f0f6fc">echo &quot;issues=$DATA&quot;</text>
+  <text x="210" y="342" text-anchor="middle" font-family="monospace, sans-serif" font-size="11" fill="#8b949e">&gt;&gt; $GITHUB_OUTPUT</text>
+
+  <rect x="110" y="366" width="200" height="28" rx="14" fill="#1c2d3e" stroke="#1f6feb" stroke-width="1"/>
+  <text x="210" y="385" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#58a6ff">✓ Reproducible · Fast · Cheap</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="360" y1="285" x2="440" y2="285" stroke="#2f81f7" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <polygon points="440,279 455,285 440,291" fill="#2f81f7"/>
+  <rect x="370" y="255" width="70" height="22" rx="4" fill="#1c2d3e"/>
+  <text x="405" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#58a6ff">structured</text>
+  <text x="405" y="305" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#58a6ff">output</text>
+
+  <!-- Stage 2: Structured Outputs -->
+  <rect x="455" y="120" width="290" height="330" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="475" y="108" width="22" height="22" rx="11" fill="#2f81f7"/>
+  <text x="486" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">2</text>
+  <text x="600" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#f0f6fc">Structured Outputs</text>
+  <text x="600" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">bridging deterministic → agentic</text>
+  <line x1="475" y1="190" x2="725" y2="190" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="475" y="206" width="250" height="130" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="600" y="228" text-anchor="middle" font-family="monospace, sans-serif" font-size="12" fill="#8b949e">GITHUB_OUTPUT</text>
+  <text x="600" y="252" text-anchor="middle" font-family="monospace, sans-serif" font-size="13" fill="#2f81f7">issues=[</text>
+  <text x="600" y="270" text-anchor="middle" font-family="monospace, sans-serif" font-size="12" fill="#f0f6fc">  {title: &quot;Auth bug&quot;,</text>
+  <text x="600" y="287" text-anchor="middle" font-family="monospace, sans-serif" font-size="12" fill="#f0f6fc">   labels: [&quot;bug&quot;]},</text>
+  <text x="600" y="304" text-anchor="middle" font-family="monospace, sans-serif" font-size="12" fill="#f0f6fc">  ...</text>
+  <text x="600" y="326" text-anchor="middle" font-family="monospace, sans-serif" font-size="12" fill="#2f81f7">]</text>
+
+  <rect x="500" y="360" width="200" height="56" rx="6" fill="#272115" stroke="#9e6a03" stroke-width="1"/>
+  <text x="600" y="380" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#d29922">Workflow body reads this</text>
+  <text x="600" y="397" text-anchor="middle" font-family="monospace, sans-serif" font-size="11" fill="#d29922">$&#123;&#123; steps.fetch.outputs.issues &#125;&#125;</text>
+  <text x="600" y="412" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#d29922">via templating</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="745" y1="285" x2="825" y2="285" stroke="#2f81f7" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <polygon points="825,279 840,285 825,291" fill="#2f81f7"/>
+  <rect x="754" y="255" width="63" height="22" rx="4" fill="#1c2d3e"/>
+  <text x="785" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#58a6ff">agent</text>
+  <text x="785" y="305" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#58a6ff">reasoning</text>
+
+  <!-- Stage 3: Agent -->
+  <rect x="840" y="120" width="300" height="330" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="860" y="108" width="22" height="22" rx="11" fill="#2f81f7"/>
+  <text x="871" y="124" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f0f6fc">3</text>
+  <text x="990" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#f0f6fc">Agent Reasoning</text>
+  <text x="990" y="176" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b949e">interpret · prioritize · communicate</text>
+  <line x1="860" y1="190" x2="1120" y2="190" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="865" y="206" width="250" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="990" y="229" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#f0f6fc">📋 Triage and prioritize issues</text>
+
+  <rect x="865" y="254" width="250" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="990" y="277" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#f0f6fc">🏷️ Apply labels with reasoning</text>
+
+  <rect x="865" y="302" width="250" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="990" y="325" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#f0f6fc">💬 Draft summaries &amp; comments</text>
+
+  <rect x="890" y="366" width="200" height="28" rx="14" fill="#12261e" stroke="#2ea043" stroke-width="1"/>
+  <text x="990" y="385" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#3fb950">✓ Flexible · Handles ambiguity</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="506" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#8b949e">Platform teams preserve deterministic guardrails for stable data ops while the agent handles context-heavy decisions — reducing fragile shell branching.</text>
+
+  <!-- Dashed grouping -->
+  <rect x="40" y="100" width="1120" height="370" rx="12" fill="none" stroke="#30363d" stroke-width="1" stroke-dasharray="8,4"/>
+</svg>
