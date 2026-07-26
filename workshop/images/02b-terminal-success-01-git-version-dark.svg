@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Example success output after running `git --version`">
+  <!-- Dark theme: page #0d1117, panel #161b22, border #30363d -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+  <!-- Browser chrome -->
+  <rect x="60" y="20" width="1080" height="44" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="600" y="47" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">github.com/your-org/gh-aw-workshop/actions</text>
+  <!-- Terminal window -->
+  <rect x="60" y="80" width="1080" height="380" rx="12" fill="#010409" stroke="#30363d" stroke-width="1.5"/>
+  <!-- Terminal title bar -->
+  <rect x="60" y="80" width="1080" height="36" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="60" y="98" width="1080" height="18" fill="#161b22"/>
+  <circle cx="92" cy="98" r="6" fill="#ff5f57"/>
+  <circle cx="112" cy="98" r="6" fill="#febc2e"/>
+  <circle cx="132" cy="98" r="6" fill="#28c840"/>
+  <text x="600" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Terminal</text>
+  <!-- Terminal content -->
+  <text x="100" y="158" font-family="monospace" font-size="16" fill="#7ee787">student@machine:~/gh-aw-workshop$</text>
+  <text x="100" y="158" font-family="monospace" font-size="16" fill="#c9d1d9" dx="320"> git --version</text>
+  <text x="100" y="188" font-family="monospace" font-size="16" fill="#79c0ff">git version 2.47.0</text>
+  <text x="100" y="228" font-family="monospace" font-size="16" fill="#7ee787">student@machine:~/gh-aw-workshop$</text>
+  <!-- Success annotation badge -->
+  <rect x="820" y="168" width="160" height="32" rx="6" fill="#1a7f37"/>
+  <text x="900" y="188" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">✓ Success output</text>
+  <line x1="820" y1="184" x2="730" y2="184" stroke="#1a7f37" stroke-width="2"/>
+  <!-- Bottom annotation -->
+  <text x="600" y="508" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8b949e">Example success output after running `git --version`</text>
+</svg>
