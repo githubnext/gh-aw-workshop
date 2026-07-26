@@ -133,7 +133,7 @@ marked.use({
       if (langKey === 'prompt') {
         return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
       }
-      if (langKey === 'markdown') {
+      if (langKey === 'markdown' || langKey === 'md') {
         return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span><span class="markdown-editor-label">markdown</span></div>\n<pre class="markdown-editor-pre"><code class="language-markdown">${codeHtml}</code></pre>\n</div>\n`;
       }
       const terminalLabel = shellLangs.has(langKey) ? langKey : terminalOutputLangs.has(langKey) ? 'output' : '';
