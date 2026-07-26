@@ -407,18 +407,19 @@ Use `successRateCi95`, `aggregate.overallSuccessRateCi95`, and `aggregate.dropou
 For each student whose `successRate` < 1.0, note:
 - Which step failed most often across the ${{ env.MONTE_CARLO_RUNS }} Monte Carlo runs (`mostCommonFailureStep`)
 - The failure count per step from `failuresByStep`
-- Likely reason (based on profile **and** content): reason from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]` and the step's actual content and demands. Do **not** match against a fixed template. Key edge cases to flag explicitly: `ui_preferred: true` students adapting to the required Codespace terminal; Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction; enterprise/proxy environments adding friction to setup steps. Do not recommend restoring a parallel browser-only core route.
-- Treat browser-driven workflow execution steps differently from local CLI steps: triggering a workflow from the **Actions** tab should not require local Copilot credentials. Only flag secret-related problems at that stage when `aggregate.failureCategoriesByStep` reports that exact runtime failure after the learner completed the preceding model-access activity.
-- Do not infer a failure reason from lexical signals such as `authDemand`. The baseline first workflow uses GitHub Copilot; do not introduce optional engines or credentials from later side quests into its failure analysis. Use `failureCategoriesByStep` as the source of truth for the top reason.
-- For `tool: CCA` learners, evaluate how clearly the core step directs them into the Codespace terminal. Apply Agents-tab prompt-surface checks only to optional Copilot side quests.
+- Likely reason (based on profile **and** content): derive from the student's `level`, `background`, `personality`, `tool`, and `ui_preferred` in relation to `stepContentById[step]`. Use `failureCategoriesByStep` as the source of truth for the top reason; do **not** infer failure reasons from lexical signals such as `authDemand` or introduce side-quest credentials into the baseline analysis.
 
-For students whose `successRate` < 0.50, also apply qualitative reasoning from the student profile to enrich the pain-point description:
-- **`level`** vs. assumed knowledge
-- **`background`** vs. step domain
-- **`tool`** and **`ui_preferred`** vs. step tooling (if the learner prefers UI or CCA, assess whether the required transition into the Codespace terminal is clear)
-- **`personality`**: `methodical` reads carefully; `confused` needs more guidance; `impatient` skips steps
-- **`goal`**: `team-evaluation` abandons sooner; `teaching-others` is thorough
-- **Prior runs** (`runs`, `successes`): higher prior completions correlate with better outcomes
+**Edge cases to flag:**
+- `ui_preferred: true` students adapting to the required Codespace terminal
+- Codespaces learners choosing the optional CLI trigger path and hitting `actions:write` friction
+- Enterprise/proxy environments adding friction to setup steps; do not recommend restoring a parallel browser-only core route
+- Browser-driven steps (Actions tab) require no local Copilot credentials; only flag auth problems when `failureCategoriesByStep` confirms that runtime failure after the model-access activity
+- `tool: CCA` learners: evaluate clarity of core-step terminal direction; apply Agents-tab checks only to optional Copilot side quests
+
+For students whose `successRate` < 0.50, also enrich the pain-point description from the student profile:
+- **`level` / `background` / `goal`**: match assumed knowledge, domain fit, and motivation; `team-evaluation` exits early, `teaching-others` persists
+- **`tool` / `ui_preferred`**: assess whether the step clearly signals the required Codespace terminal transition
+- **`personality` / prior runs**: `methodical` reads carefully, `confused` needs guidance, `impatient` skips; higher prior `successes` predicts better outcomes
 
 ### Aggregate and analyse results
 
