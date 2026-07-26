@@ -156,17 +156,17 @@ Create **at most one** pull request per run.
 2. Read `/tmp/gh-aw/cache-memory/diagram-generator-state.json` if it exists.
    Create it with defaults when absent:
 
-   ```json
-   {
-     "round_robin_index": 0
-   }
-   ```
+```json
+{
+  "round_robin_index": 0
+}
+```
 
-3. If the `focus` input is non-empty, use it as a strong hint for file or concept
+1. If the `focus` input is non-empty, use it as a strong hint for file or concept
    selection. Otherwise select the next workshop file with round-robin ordering:
    `workshop_files[round_robin_index % len(workshop_files)]`, then increment the
    index.
-4. If there are no workshop files, call `noop` with a short explanation.
+2. If there are no workshop files, call `noop` with a short explanation.
 
 ---
 

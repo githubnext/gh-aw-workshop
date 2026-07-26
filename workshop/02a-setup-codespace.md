@@ -81,12 +81,12 @@ The diagram below shows your Codespace connection to GitHub.
 
 1. Run these commands in the Codespace terminal:
 
-   ```bash
-   gh --version
-   gh auth status
-   ```
-2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
-3. Confirm `gh auth status` shows you are logged in to `github.com`.
+```bash
+gh --version
+gh auth status
+```
+1. Confirm `gh --version` shows `gh version 2.40.0` or newer.
+2. Confirm `gh auth status` shows you are logged in to `github.com`.
 
 _What success looks like:_
 

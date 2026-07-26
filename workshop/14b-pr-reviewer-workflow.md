@@ -150,15 +150,15 @@ If the run completes but the review does not mention the `pr-review-standards` s
 1. Confirm `.github/skills/agentic-workflows/` exists and was pushed. Run `ls .github/skills/` in your terminal. If the directory is missing, run `gh aw init`, commit the generated files, and push.
 2. If the directory exists but the skill was still not applied, ask the agent to reinforce the instruction:
 
-   ```prompt
-   /agentic-workflows update .github/workflows/pr-reviewer.md so the
-   `pr-reviewer` agent explicitly searches for and applies the
-   `pr-review-standards` skill before returning findings. Keep all
-   other settings, triggers, and permissions unchanged. Compile the
-   workflow after the edit.
-   ```
+```prompt
+/agentic-workflows update .github/workflows/pr-reviewer.md so the
+`pr-reviewer` agent explicitly searches for and applies the
+`pr-review-standards` skill before returning findings. Keep all
+other settings, triggers, and permissions unchanged. Compile the
+workflow after the edit.
+```
 
-3. Compile, commit, and re-trigger `/review` to confirm the skill is now applied.
+1. Compile, commit, and re-trigger `/review` to confirm the skill is now applied.
 
 ## Improve One Layer
 
