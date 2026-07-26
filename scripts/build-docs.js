@@ -94,7 +94,12 @@ marked.use({
           ? item.tokens[0].tokens.slice(1)
           : item.tokens.slice(1);
         const text = this.parser.parseInline(inlineTokens);
-        return `<li class="task-list-item"><span class="task-list-item-marker" aria-hidden="true">✓</span> ${text}</li>\n`;
+        const accessibleName = flattenTokenText(inlineTokens).replace(/\s+/g, ' ').trim();
+        const status = item.checked ? 'completed' : 'pending';
+        const labelAttr = accessibleName
+          ? ` aria-label="Checkpoint item (${status}): ${escapeHtml(accessibleName)}"`
+          : ` aria-label="Checkpoint item (${status})"`;
+        return `<li class="task-list-item"${labelAttr}><span class="task-list-item-marker" aria-hidden="true">✓</span> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
     },
