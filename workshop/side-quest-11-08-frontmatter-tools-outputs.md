@@ -10,7 +10,7 @@ You have completed [Part A](side-quest-11-01-frontmatter-deep-dive.md) and your 
 
 ---
 
-## Section 4 — `tools:`
+## `tools:`
 
 **🔍 Predict:** To let the agent call GitHub APIs securely and stay within the permissions you declared, what configuration would you add? Write your answer before reading on.
 
@@ -34,7 +34,7 @@ tools:
 
 ---
 
-## Section 5 — `safe-outputs:`
+## `safe-outputs:`
 
 **🔍 Predict:** You want the agent to post exactly one comment per run and nothing else. What would you write under `safe-outputs`?
 
@@ -59,7 +59,7 @@ safe-outputs:
 
 ---
 
-## Section 6 — Closing fence
+## Closing fence
 
 **🔍 Predict:** How does the file parser know where the YAML configuration ends and the agent's instructions begin?
 
@@ -73,7 +73,7 @@ safe-outputs:
 
 ---
 
-## Section 7 — The Markdown body
+## The Markdown body
 
 **🔍 Predict:** The agent must collect four data points from the repository. What four things would you list?
 
