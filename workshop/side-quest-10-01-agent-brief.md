@@ -29,7 +29,7 @@ For each step: **write first, check your draft, then expand "Why this works" for
 
 ---
 
-## Step 1: State the Goal in One Sentence
+## State the Goal in One Sentence
 
 Replace the bracketed example below with your own one-sentence goal.
 
@@ -52,7 +52,7 @@ A one-sentence goal forces scope. If you need multiple outcomes, you probably ne
 
 ---
 
-## Step 2: List the Inputs
+## List the Inputs
 
 List the data the agent must collect before it can write the report. Mark uncertain items with a `?` so you can verify them later.
 
@@ -79,7 +79,7 @@ Inputs turn "summarize the repo" into a concrete data request. They also make it
 
 ---
 
-## Step 3: Sketch the Output
+## Sketch the Output
 
 Show the agent the format you want instead of describing it loosely. Start with a simple skeleton and customize the fields you want to track.
 
@@ -106,7 +106,7 @@ A literal skeleton gives the agent fewer format decisions to make. Consistent ou
 
 ---
 
-## Step 4: Write the Guardrails
+## Write the Guardrails
 
 Add short rules that limit write operations, such as posting comments, and tell the agent what to do when data is missing.
 
@@ -134,7 +134,7 @@ Guardrails prevent duplicate posts, made-up numbers, and unclear fallback behavi
 
 ---
 
-## Step 5: Review the Brief
+## Review the Brief
 
 Read the draft once. Replace vague words like "recent" with "within the last 7 days" or "important" with "labeled priority-1".
 
