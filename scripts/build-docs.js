@@ -326,6 +326,10 @@ fs.copyFileSync(docsThemeSrc, path.join(distDir, 'docs-theme.js'));
 const docsCopyCodeSrc = path.join(__dirname, 'static', 'docs-copy-code.js');
 fs.copyFileSync(docsCopyCodeSrc, path.join(distDir, 'docs-copy-code.js'));
 
+// Copy checkbox interactivity script
+const docsCheckboxesSrc = path.join(__dirname, 'static', 'docs-checkboxes.js');
+fs.copyFileSync(docsCheckboxesSrc, path.join(distDir, 'docs-checkboxes.js'));
+
 // Copy Primer CSS
 const primerCssSrc = path.join(
   __dirname, '..', 'node_modules', '@primer', 'css', 'dist', 'primer.css'
@@ -1123,6 +1127,70 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   background-color: #3b1b6f;
 }
 
+/* Interactive task-list checkboxes */
+.markdown-body li.task-list-item {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+  padding-inline: 4px;
+  transition: background-color 0.1s;
+}
+.markdown-body li.task-list-item:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+}
+.markdown-body li.task-list-item:focus-visible {
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .markdown-body li.task-list-item:hover {
+    background-color: var(--bgColor-muted, #161b22);
+  }
+}
+html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
+  background-color: var(--bgColor-muted, #161b22);
+}
+
+/* Task progress bar */
+.task-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 18px;
+  font-size: 13px;
+  color: var(--fgColor-muted, #59636e);
+}
+.task-progress-bar {
+  flex: 0 0 auto;
+  width: min(160px, 30vw);
+  height: 6px;
+  background-color: var(--borderColor-muted, #d0d7de);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.task-progress-bar-fill {
+  height: 100%;
+  background-color: var(--fgColor-success, #1a7f37);
+  border-radius: 3px;
+  transition: width 0.2s ease;
+}
+.task-progress-label {
+  white-space: nowrap;
+}
+.task-progress--done {
+  color: var(--fgColor-success, #1a7f37);
+  font-weight: 600;
+}
+
+/* Completed page indicator in the sidebar menu */
+.workshop-menu-group a[data-page-complete]::after {
+  content: '\\a0✓';
+  color: var(--fgColor-success, #1a7f37);
+  font-weight: 700;
+}
+
 /* Markdown text-editor style blocks */
 .markdown-editor-block {
   border-radius: 8px;
@@ -1391,6 +1459,7 @@ const page = `<!DOCTYPE html>
   <link rel="stylesheet" href="docs.css">
   <script src="docs-theme.js"></script>
   <script src="docs-copy-code.js" defer></script>
+  <script src="docs-checkboxes.js" defer></script>
 </head>
 <body>
   <header class="site-header">
