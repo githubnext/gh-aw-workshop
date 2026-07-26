@@ -78,6 +78,20 @@ test("prompt code blocks are wrapped in a distinct agent UI", () => {
   assert.ok(css.includes(".agent-prompt-pre"));
 });
 
+test("markdown and md code blocks are wrapped in a markdown-editor-block UI", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<div class="markdown-editor-block" role="region" aria-label="Markdown">'), "expected markdown-editor-block wrapper in HTML");
+  assert.ok(html.includes('<div class="markdown-editor-bar">'), "expected markdown-editor-bar in HTML");
+  assert.ok(html.includes('<span class="markdown-editor-icon" aria-hidden="true">◇</span>'), "expected markdown-editor-icon in HTML");
+  assert.ok(html.includes('<span class="markdown-editor-label">markdown</span>'), "expected markdown-editor-label in HTML");
+  assert.ok(html.includes('<pre class="markdown-editor-pre">'), "expected markdown-editor-pre element");
+
+  assert.ok(css.includes(".markdown-editor-block"), "expected .markdown-editor-block in CSS");
+  assert.ok(css.includes(".markdown-editor-bar"), "expected .markdown-editor-bar in CSS");
+  assert.ok(css.includes(".markdown-editor-pre"), "expected .markdown-editor-pre in CSS");
+});
+
 test("rendered workshop images use GitHub-like rounded corners", () => {
   const { css } = buildDocs();
 
