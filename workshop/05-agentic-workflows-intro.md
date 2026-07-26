@@ -37,7 +37,7 @@ If any term below feels new, skim this table now. You do not need to memorize it
 
 Before opening the details below, write one concrete difference between an agentic workflow and a standard Actions workflow:
 
-- [ ] I've written one concrete difference in my own words
+Write your answer in your own words before you continue.
 
 <details>
 <summary>Why not just use a standard Actions workflow?</summary>
@@ -58,7 +58,7 @@ If you already write Actions YAML, the frontmatter stays the same (triggers, per
 
 Before you study the diagram, write your prediction: what two files are involved in an agentic workflow, and which one does GitHub Actions run?
 
-- [ ] I've written my prediction
+Record your prediction before you continue.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/05-workflow-lifecycle-dark.svg">
@@ -72,8 +72,6 @@ Before you study the diagram, write your prediction: what two files are involved
 
 Now check your prediction: did you name both files (`.md` and `.lock.yml`) and identify which one Actions runs (`.lock.yml`)? If not, re-read the first bullet above before continuing.
 
-- [ ] My prediction matched — I got both files and which one Actions runs
-
 ## Try it: describe the lifecycle parts
 
 Write a one-sentence description for each term **before** you reveal the answer. Use your own words — do not copy text from the diagram above.
@@ -82,7 +80,7 @@ Write a one-sentence description for each term **before** you reveal the answer.
 
 Write your description:
 
-- [ ] I've written my own description for Term 1
+Record your description before revealing the answer.
 
 <details>
 <summary>Reveal Term 1 answer</summary>
@@ -95,7 +93,7 @@ The **Markdown source file** — it contains the YAML frontmatter (trigger, perm
 
 Write your description:
 
-- [ ] I've written my own description for Term 2
+Record your description before revealing the answer.
 
 <details>
 <summary>Reveal Term 2 answer</summary>
@@ -108,7 +106,7 @@ The **compiled lock file** — [`gh aw compile`](https://github.github.com/gh-aw
 
 Write your description:
 
-- [ ] I've written my own description for Term 3
+Record your description before revealing the answer.
 
 <details>
 <summary>Reveal Term 3 answer</summary>
@@ -126,7 +124,7 @@ Before you reveal the example, write a one- or two-sentence task brief for this 
 
 > Post a daily issue digest that summarizes newly opened issues and flags anything that looks urgent.
 
-- [ ] I wrote my own brief before revealing the example
+Write your own brief before revealing the example.
 
 <details>
 <summary>Reveal one possible brief</summary>
@@ -137,19 +135,19 @@ You are a repository triage assistant. Each day, review issues opened in the las
 
 Now compare your draft to the revealed version:
 
-- [ ] My brief included a **time window** (for example, "last 24 hours")
-- [ ] My brief specified the **output format** (single digest comment)
-- [ ] My brief defined at least one **priority signal** (for example, blockers or incidents)
+- Does your brief include a **time window** (for example, "last 24 hours")?
+- Does your brief specify the **output format** (single digest comment)?
+- Does your brief define at least one **priority signal** (for example, blockers or incidents)?
 
-If any box is unchecked, revise your brief to add that element before continuing.
+If any answer is no, revise your brief to add that element before continuing.
 
 ## Self-check: three parts without looking
 
 Without scrolling back, fill each blank in your head, then reveal:
 
-- [ ] An agentic workflow always starts with a \_\_\_ (what triggers it?)
-- [ ] The agent gets its instructions from the \_\_\_ (which part of the file?)
-- [ ] After the agent finishes, output passes through \_\_\_ before it reaches GitHub (what system?)
+1. An agentic workflow always starts with a \_\_\_ (what triggers it?)
+2. The agent gets its instructions from the \_\_\_ (which part of the file?)
+3. After the agent finishes, output passes through \_\_\_ before it reaches GitHub (what system?)
 
 <details>
 <summary>Reveal answers</summary>
@@ -162,18 +160,15 @@ Without scrolling back, fill each blank in your head, then reveal:
 
 If any blank was blank, re-read the relevant section and try again before the checkpoint.
 
-- [ ] I can fill all three blanks without looking
-- [ ] I understand how the three parts connect: trigger starts the run, the brief tells the agent what to do, safe-outputs controls what it can post
-
 ## ✅ Checkpoint
 
-- [ ] I can describe what an agentic workflow is in one sentence
-- [ ] I can explain one way an agentic workflow differs from a standard Actions workflow
-- [ ] I can identify the three parts: trigger → agent → safe output
-- [ ] I know that `gh aw compile` generates `.lock.yml` from the `.md` source
-- [ ] I wrote my own description for each lifecycle term before revealing the answer
-- [ ] I practiced writing and revising a short workflow task brief — all three criteria checked (time window, output format, priority signal)
-- [ ] I completed the self-check and can fill the three-parts blanks without looking
+- [ ] You can describe what an agentic workflow is in one sentence
+- [ ] You can explain one way an agentic workflow differs from a standard Actions workflow
+- [ ] You can identify the three parts: trigger → agent → safe output
+- [ ] You know that `gh aw compile` generates `.lock.yml` from the `.md` source
+- [ ] You described each lifecycle term in your own words before revealing the answer
+- [ ] Your short workflow task brief includes a time window, output format, and priority signal
+- [ ] You can fill the three-parts blanks without looking
 
 <details>
 <summary>Still uncertain? Try this before moving on</summary>
@@ -181,8 +176,6 @@ If any blank was blank, re-read the relevant section and try again before the ch
 A standup bot reads overnight PRs and posts a digest — different every day. That is an agentic workflow.
 
 Does `gh aw compile` change what the agent does at runtime? Decide first.
-
-- [ ] I've decided
 
 <details>
 <summary>Reveal</summary>
