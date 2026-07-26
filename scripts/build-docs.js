@@ -137,6 +137,9 @@ marked.use({
       if (langKey === 'markdown' || langKey === 'md') {
         return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span><span class="markdown-editor-label">markdown</span></div>\n<pre class="markdown-editor-pre"><code class="language-markdown">${codeHtml}</code></pre>\n</div>\n`;
       }
+      if (langKey === 'yaml' || langKey === 'yml') {
+        return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span><span class="yaml-editor-label">yaml</span></div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
+      }
       const terminalLabel = shellLangs.has(langKey) ? langKey : terminalOutputLangs.has(langKey) ? 'output' : '';
       if (!terminalLabel) return false;
       const escapedLang = escapeHtml(langKey);
@@ -1309,6 +1312,122 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn {
   color: #8b949e;
 }
 html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
+  background-color: #161b22;
+  color: #e6edf3;
+}
+
+/* YAML editor-style code blocks */
+.yaml-editor-block {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--borderColor-muted, #d0d7de);
+  margin-bottom: 16px;
+}
+
+.yaml-editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: var(--bgColor-muted, #f6f8fa);
+  border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
+}
+
+.yaml-editor-icon {
+  flex-shrink: 0;
+  color: var(--fgColor-muted, #59636e);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.yaml-editor-label {
+  color: var(--fgColor-muted, #59636e);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0.02em;
+}
+
+.markdown-body .yaml-editor-pre {
+  margin: 0;
+  padding: 16px;
+  background-color: var(--bgColor-default, #ffffff);
+  border: none;
+  border-radius: 0;
+  overflow-x: auto;
+}
+
+.markdown-body .yaml-editor-pre > code {
+  color: var(--fgColor-default, #1f2328);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875em;
+}
+
+.yaml-editor-block .code-copy-btn {
+  background-color: var(--bgColor-default, #ffffff);
+  border-color: var(--borderColor-muted, #d0d7de);
+  color: var(--fgColor-muted, #59636e);
+}
+
+.yaml-editor-block .code-copy-btn:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+  color: var(--fgColor-default, #1f2328);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .yaml-editor-block {
+    border-color: #30363d;
+  }
+  html[data-color-mode="auto"] .yaml-editor-bar {
+    background-color: #161b22;
+    border-bottom-color: #30363d;
+  }
+  html[data-color-mode="auto"] .yaml-editor-icon,
+  html[data-color-mode="auto"] .yaml-editor-label {
+    color: #8b949e;
+  }
+  html[data-color-mode="auto"] .markdown-body .yaml-editor-pre {
+    background-color: #0d1117;
+  }
+  html[data-color-mode="auto"] .markdown-body .yaml-editor-pre > code {
+    color: #e6edf3;
+  }
+  html[data-color-mode="auto"] .yaml-editor-block .code-copy-btn {
+    background-color: #0d1117;
+    border-color: #30363d;
+    color: #8b949e;
+  }
+  html[data-color-mode="auto"] .yaml-editor-block .code-copy-btn:hover {
+    background-color: #161b22;
+    color: #e6edf3;
+  }
+}
+
+html[data-color-mode="dark"] .yaml-editor-block {
+  border-color: #30363d;
+}
+html[data-color-mode="dark"] .yaml-editor-bar {
+  background-color: #161b22;
+  border-bottom-color: #30363d;
+}
+html[data-color-mode="dark"] .yaml-editor-icon,
+html[data-color-mode="dark"] .yaml-editor-label {
+  color: #8b949e;
+}
+html[data-color-mode="dark"] .markdown-body .yaml-editor-pre {
+  background-color: #0d1117;
+}
+html[data-color-mode="dark"] .markdown-body .yaml-editor-pre > code {
+  color: #e6edf3;
+}
+html[data-color-mode="dark"] .yaml-editor-block .code-copy-btn {
+  background-color: #0d1117;
+  border-color: #30363d;
+  color: #8b949e;
+}
+html[data-color-mode="dark"] .yaml-editor-block .code-copy-btn:hover {
   background-color: #161b22;
   color: #e6edf3;
 }
