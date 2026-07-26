@@ -42,7 +42,11 @@ You'll install Git and the `gh` CLI on your own machine and authenticate with Gi
 git --version
 ```
 
-![Example success output after running `git --version`](images/02b-terminal-success-01-git-version.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02b-terminal-success-01-git-version-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02b-terminal-success-01-git-version-light.svg">
+  <img alt="Example success output after running `git --version`" src="images/02b-terminal-success-01-git-version-light.svg">
+</picture>
 
 _What success looks like:_ a line like `git version 2.x.x`.
 
@@ -56,7 +60,11 @@ GitHub CLI is GitHub's official command-line tool, and you run it with the `gh` 
 gh --version
 ```
 
-![Example success output after running `gh --version`](images/02b-terminal-success-07-gh-version.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02b-terminal-success-07-gh-version-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02b-terminal-success-07-gh-version-light.svg">
+  <img alt="Example success output after running `gh --version`" src="images/02b-terminal-success-07-gh-version-light.svg">
+</picture>
 
 _What success looks like:_ version details for `gh` are printed.
 
@@ -114,7 +122,11 @@ If you're on GHES, GHEC, behind SSO, or behind a proxy, complete [Side Quest: En
 gh auth login
 ```
 
-![Example prompt flow after running `gh auth login`](images/02b-terminal-success-11-gh-auth-login.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02b-terminal-success-11-gh-auth-login-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02b-terminal-success-11-gh-auth-login-light.svg">
+  <img alt="Example prompt flow after running `gh auth login`" src="images/02b-terminal-success-11-gh-auth-login-light.svg">
+</picture>
 
 _What success looks like:_ interactive prompts complete and login succeeds.
 
