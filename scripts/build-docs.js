@@ -95,12 +95,14 @@ marked.use({
           : item.tokens.slice(1);
         const text = this.parser.parseInline(inlineTokens);
         const accessibleName = flattenTokenText(inlineTokens).replace(/\s+/g, ' ').trim();
-        const baseAttrs = 'class="task-list-item-checkbox" disabled="" type="checkbox"';
-        const attrs = item.checked ? `${baseAttrs} checked=""` : baseAttrs;
+        const status = item.checked ? 'completed' : 'pending';
+        const markerClass = item.checked
+          ? 'task-list-item-marker is-complete'
+          : 'task-list-item-marker is-pending';
         const labelAttr = accessibleName
-          ? ` aria-label="${escapeHtml(accessibleName)}"`
-          : '';
-        return `<li class="task-list-item"><input ${attrs}${labelAttr}> ${text}</li>\n`;
+          ? ` aria-label="Checkpoint item (${status}): ${escapeHtml(accessibleName)}"`
+          : ` aria-label="Checkpoint item (${status})"`;
+        return `<li class="task-list-item"${labelAttr}><span class="${markerClass}" aria-hidden="true">✓</span> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
     },
@@ -609,6 +611,18 @@ html {
 .markdown-body {
   max-width: min(96ch, calc(100vw - 32px));
   margin-inline: auto;
+}
+.markdown-body li.task-list-item {
+  list-style: none;
+}
+.markdown-body li.task-list-item > .task-list-item-marker {
+  display: inline-block;
+  width: 1.2em;
+  font-weight: 700;
+  color: var(--fgColor-success, #1a7f37);
+}
+.markdown-body li.task-list-item > .task-list-item-marker.is-pending {
+  opacity: 0.45;
 }
 
 @media (max-width: 543px) {
