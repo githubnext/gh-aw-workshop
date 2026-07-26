@@ -99,11 +99,12 @@ test("rendered workshop images use GitHub-like rounded corners", () => {
   assert.ok(css.includes(".image-inspector-image {\n  display: block;\n  max-width: min(88vw, 1120px);\n  max-height: calc(96vh - 96px);\n  width: auto;\n  height: auto;\n  margin: 0 auto;\n  border-radius: 6px;\n}"));
 });
 
-test("checkpoint task lists render ✓ markers instead of checkbox inputs", () => {
+test("checkpoint task lists render distinct markers for pending and complete states", () => {
   const { html, css } = buildDocs();
 
-  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true">✓</span>'), "expected checkmark marker spans");
+  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true">○</span>'), "expected empty-circle marker for pending items");
   assert.ok(!html.includes('<input class="task-list-item-checkbox"'), "expected checkbox inputs to be removed");
   assert.ok(css.includes(".markdown-body li.task-list-item {\n  list-style: none;\n}"), "expected task-list bullet removal styles");
-  assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {\n  opacity: 0.45;\n}"), "expected pending marker visual differentiation");
+  assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {"), "expected pending marker style rule");
+  assert.ok(!css.includes("opacity: 0.45"), "expected pending marker to use color instead of opacity");
 });
