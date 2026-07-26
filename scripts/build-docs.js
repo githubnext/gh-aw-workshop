@@ -1127,7 +1127,6 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   background-color: #3b1b6f;
 }
 
-<<<<<<< HEAD
 /* Interactive task-list checkboxes */
 .markdown-body li.task-list-item {
   cursor: pointer;
@@ -1190,7 +1189,8 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   content: '\\a0✓';
   color: var(--fgColor-success, #1a7f37);
   font-weight: 700;
-=======
+}
+
 /* Markdown text-editor style blocks */
 .markdown-editor-block {
   border-radius: 8px;
@@ -1308,7 +1308,6 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn {
 html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
   background-color: #161b22;
   color: #e6edf3;
->>>>>>> origin/main
 }
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
