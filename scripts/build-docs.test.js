@@ -88,7 +88,8 @@ test("rendered workshop images use GitHub-like rounded corners", () => {
 test("checkpoint task lists render ✓ markers instead of checkbox inputs", () => {
   const { html, css } = buildDocs();
 
-  assert.ok(html.includes('<span class="task-list-item-marker" aria-hidden="true">✓</span>'), "expected checkmark marker spans");
+  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true">✓</span>'), "expected checkmark marker spans");
   assert.ok(!html.includes('<input class="task-list-item-checkbox"'), "expected checkbox inputs to be removed");
   assert.ok(css.includes(".markdown-body li.task-list-item {\n  list-style: none;\n}"), "expected task-list bullet removal styles");
+  assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {\n  opacity: 0.45;\n}"), "expected pending marker visual differentiation");
 });
