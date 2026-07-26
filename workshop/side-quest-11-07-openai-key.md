@@ -108,7 +108,7 @@ Leave `model` out to use the engine's current default, which the `gh-aw` team ke
 After updating your frontmatter, validate the workflow to check for errors:
 
 ```bash
-gh aw validate
+gh aw compile --validate
 ```
 
 You should see:
@@ -125,7 +125,7 @@ You should see:
 - [ ] My new key is listed at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 - [ ] `OPENAI_API_KEY` is stored as a repository secret (`gh secret list` confirms it)
 - [ ] My workflow frontmatter has `engine: codex` and `api.openai.com` in `network.allowed`
-- [ ] `gh aw validate` reports no errors
+- [ ] `gh aw compile --validate` reports no errors
 
 <!-- journey: all -->
 **Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
