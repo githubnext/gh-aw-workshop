@@ -71,6 +71,14 @@ Think of agentic workflows as a superset of Actions:
 
 ## Hybrid pattern for real teams
 
+The diagram below shows the three-stage data flow: deterministic steps fetch and transform data, structured outputs bridge the two worlds, and the agent handles interpretation and communication.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/sq0501-hybrid-pattern-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/sq0501-hybrid-pattern-light.svg">
+   <img alt="Hybrid pattern diagram showing three stages: deterministic jobs fetch and transform data, structured outputs pass to the workflow body, and the agent handles interpretation and communication" src="images/sq0501-hybrid-pattern-light.svg">
+</picture>
+
 A practical migration path is hybrid:
 
 1. Keep deterministic jobs or steps for stable data operations (fetch, transform, validate).
