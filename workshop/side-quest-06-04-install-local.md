@@ -91,9 +91,7 @@ This creates several files needed for agentic workflow authoring:
 
 ## 🏃 Try It
 
-Run `gh aw --help` and scan the list of sub-commands.
-
-Which one sub-command do you expect to use in Step 7 when you create and run your first workflow?
+See the [Try It exercise in Step 6](06-install-gh-aw.md#-try-it) — the same verification applies here.
 
 ## ✅ Checkpoint
 
