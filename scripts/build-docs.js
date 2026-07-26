@@ -617,7 +617,8 @@ html {
 }
 
 .markdown-body {
-  max-width: 100%;
+  max-width: 650px;
+  margin-inline: auto;
 }
 .markdown-body li.task-list-item {
   list-style: none;
