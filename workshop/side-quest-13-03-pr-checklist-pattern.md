@@ -30,7 +30,7 @@ permissions:
   pull-requests: write
   contents: read
 safe-outputs:
-  create-issue-comment:
+  add-comment:
     limit: 1
 ---
 
