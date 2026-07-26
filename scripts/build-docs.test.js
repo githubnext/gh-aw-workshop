@@ -84,3 +84,11 @@ test("rendered workshop images use GitHub-like rounded corners", () => {
   assert.ok(css.includes(".markdown-body img {\n  display: block;\n  width: min(100%, 720px);\n  height: auto;\n  margin-inline: auto;\n  border-radius: 6px;\n}"));
   assert.ok(css.includes(".image-inspector-image {\n  display: block;\n  max-width: min(88vw, 1120px);\n  max-height: calc(96vh - 96px);\n  width: auto;\n  height: auto;\n  margin: 0 auto;\n  border-radius: 6px;\n}"));
 });
+
+test("checkpoint task lists render ✓ markers instead of checkbox inputs", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<span class="task-list-item-marker" role="img"'), "expected checkmark marker spans");
+  assert.ok(!html.includes('task-list-item-checkbox'), "expected checkbox inputs to be removed");
+  assert.ok(css.includes(".markdown-body li.task-list-item {\n  list-style: none;\n}"), "expected task-list bullet removal styles");
+});
