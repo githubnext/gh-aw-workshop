@@ -135,10 +135,10 @@ marked.use({
         return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
       }
       if (langKey === 'markdown' || langKey === 'md') {
-        return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span><span class="markdown-editor-label">markdown</span></div>\n<pre class="markdown-editor-pre"><code class="language-markdown">${codeHtml}</code></pre>\n</div>\n`;
+        return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span></div>\n<pre class="markdown-editor-pre"><code class="language-markdown">${codeHtml}</code></pre>\n</div>\n`;
       }
       if (langKey === 'yaml' || langKey === 'yml') {
-        return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span><span class="yaml-editor-label">yaml</span></div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
+        return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span></div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
       }
       const terminalLabel = shellLangs.has(langKey) ? langKey : terminalOutputLangs.has(langKey) ? 'output' : '';
       if (!terminalLabel) return false;
@@ -1221,17 +1221,9 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   line-height: 1;
 }
 
-.markdown-editor-label {
-  color: var(--fgColor-muted, #59636e);
-  font-size: 12px;
-  font-weight: 600;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  letter-spacing: 0.02em;
-}
-
 .markdown-body .markdown-editor-pre {
   margin: 0;
-  padding: 16px 16px 16px 20px;
+  padding: 12px 12px 12px 16px;
   background-color: var(--bgColor-default, #ffffff);
   border: none;
   border-radius: 0;
@@ -1266,8 +1258,7 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
     background-color: #161b22;
     border-bottom-color: #30363d;
   }
-  html[data-color-mode="auto"] .markdown-editor-icon,
-  html[data-color-mode="auto"] .markdown-editor-label {
+  html[data-color-mode="auto"] .markdown-editor-icon {
     color: #8b949e;
   }
   html[data-color-mode="auto"] .markdown-body .markdown-editor-pre {
@@ -1295,8 +1286,7 @@ html[data-color-mode="dark"] .markdown-editor-bar {
   background-color: #161b22;
   border-bottom-color: #30363d;
 }
-html[data-color-mode="dark"] .markdown-editor-icon,
-html[data-color-mode="dark"] .markdown-editor-label {
+html[data-color-mode="dark"] .markdown-editor-icon {
   color: #8b949e;
 }
 html[data-color-mode="dark"] .markdown-body .markdown-editor-pre {
@@ -1340,17 +1330,9 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
   line-height: 1;
 }
 
-.yaml-editor-label {
-  color: var(--fgColor-muted, #59636e);
-  font-size: 12px;
-  font-weight: 600;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  letter-spacing: 0.02em;
-}
-
 .markdown-body .yaml-editor-pre {
   margin: 0;
-  padding: 16px;
+  padding: 12px;
   background-color: var(--bgColor-default, #ffffff);
   border: none;
   border-radius: 0;
@@ -1384,8 +1366,7 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
     background-color: #161b22;
     border-bottom-color: #30363d;
   }
-  html[data-color-mode="auto"] .yaml-editor-icon,
-  html[data-color-mode="auto"] .yaml-editor-label {
+  html[data-color-mode="auto"] .yaml-editor-icon {
     color: #8b949e;
   }
   html[data-color-mode="auto"] .markdown-body .yaml-editor-pre {
@@ -1412,8 +1393,7 @@ html[data-color-mode="dark"] .yaml-editor-bar {
   background-color: #161b22;
   border-bottom-color: #30363d;
 }
-html[data-color-mode="dark"] .yaml-editor-icon,
-html[data-color-mode="dark"] .yaml-editor-label {
+html[data-color-mode="dark"] .yaml-editor-icon {
   color: #8b949e;
 }
 html[data-color-mode="dark"] .markdown-body .yaml-editor-pre {
