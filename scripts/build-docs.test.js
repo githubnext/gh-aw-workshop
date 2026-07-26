@@ -78,18 +78,28 @@ test("prompt code blocks are wrapped in a distinct agent UI", () => {
   assert.ok(css.includes(".agent-prompt-pre"));
 });
 
-test("markdown and md code blocks are wrapped in a markdown-editor-block UI", () => {
+test("markdown, md, yaml, and yml code blocks use compact icon-only editor chrome", () => {
   const { html, css } = buildDocs();
 
   assert.ok(html.includes('<div class="markdown-editor-block" role="region" aria-label="Markdown">'), "expected markdown-editor-block wrapper in HTML");
   assert.ok(html.includes('<div class="markdown-editor-bar">'), "expected markdown-editor-bar in HTML");
   assert.ok(html.includes('<span class="markdown-editor-icon" aria-hidden="true">◇</span>'), "expected markdown-editor-icon in HTML");
-  assert.ok(html.includes('<span class="markdown-editor-label">markdown</span>'), "expected markdown-editor-label in HTML");
+  assert.ok(!html.includes('class="markdown-editor-label"'), "expected markdown language label to be hidden");
   assert.ok(html.includes('<pre class="markdown-editor-pre">'), "expected markdown-editor-pre element");
+  assert.ok(html.includes('<div class="yaml-editor-block" role="region" aria-label="YAML">'), "expected yaml-editor-block wrapper in HTML");
+  assert.ok(html.includes('<div class="yaml-editor-bar">'), "expected yaml-editor-bar in HTML");
+  assert.ok(html.includes('<span class="yaml-editor-icon" aria-hidden="true">≡</span>'), "expected yaml-editor-icon in HTML");
+  assert.ok(!html.includes('class="yaml-editor-label"'), "expected YAML language label to be hidden");
+  assert.ok(html.includes('<pre class="yaml-editor-pre">'), "expected yaml-editor-pre element");
 
   assert.ok(css.includes(".markdown-editor-block"), "expected .markdown-editor-block in CSS");
   assert.ok(css.includes(".markdown-editor-bar"), "expected .markdown-editor-bar in CSS");
   assert.ok(css.includes(".markdown-editor-pre"), "expected .markdown-editor-pre in CSS");
+  assert.ok(css.includes("padding: 12px 12px 12px 16px;"), "expected compact Markdown code padding");
+  assert.ok(css.includes(".yaml-editor-block"), "expected .yaml-editor-block in CSS");
+  assert.ok(css.includes(".yaml-editor-bar"), "expected .yaml-editor-bar in CSS");
+  assert.ok(css.includes(".yaml-editor-pre"), "expected .yaml-editor-pre in CSS");
+  assert.ok(css.includes("padding: 12px;"), "expected compact YAML code padding");
 });
 
 test("rendered workshop images use GitHub-like rounded corners", () => {
