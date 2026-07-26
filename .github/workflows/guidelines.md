@@ -400,6 +400,15 @@ Side quest `journey` assignment:
 - `copilot` — content is specific to a Copilot-focused environment such as Copilot CLI or Copilot CCA (e.g., `side-quest-06-02-cca-codespace.md`).
 - `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).
 
+## Checkpoint checklist size limit
+
+Every workshop step ends with a `## ✅ Checkpoint` section that contains a markdown checklist. Keep that checklist — and every other checklist on the page — concise:
+
+- **Maximum 10 checkboxes per page** (across all checklists on the page combined).
+- If a natural checkpoint requires more items, split the step into two shorter steps rather than adding more boxes.
+- Prefer outcome-oriented items ("Your workflow runs without errors") over procedural ones ("Click the green button") so each box carries meaningful weight.
+- Do not duplicate items that already appear in an earlier step's checkpoint.
+
 ## Dispatcher and choice-hub pages: `<!-- learning:false -->`
 
 Some workshop pages are not substantive learning steps — they are **dispatcher pages** (also called choice hubs) that exist purely to route learners to the right branch or to present a brief navigation decision. Examples: "Create and Verify Your Practice Repository" (step 3, which forks to 3a/3b) and "Choose Your Scenario" (step 10, which routes to scenarios A–E).
