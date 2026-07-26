@@ -41,7 +41,7 @@ Run:
 gh aw compile
 ```
 
-Then open the generated [lock file](https://github.github.com/gh-aw/reference/compilation-process/) and look for the `cron:` line under `on.schedule`:
+Then open the generated lock file and look for the `cron:` line under `on.schedule`:
 
 ```yaml
 on:
