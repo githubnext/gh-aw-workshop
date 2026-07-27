@@ -1217,6 +1217,81 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   font-weight: 600;
 }
 
+/* Victory banner — shown when all checkboxes on a page are checked */
+@keyframes victory-in {
+  from { opacity: 0; transform: translate(-50%, 20px) scale(0.88); }
+  to   { opacity: 1; transform: translate(-50%, 0)    scale(1); }
+}
+@keyframes victory-out {
+  from { opacity: 1; transform: translate(-50%, 0)    scale(1); }
+  to   { opacity: 0; transform: translate(-50%, -16px) scale(0.94); }
+}
+@keyframes victory-sparkle {
+  0%, 100% { opacity: 1;   transform: scale(1)   rotate(0deg); }
+  40%       { opacity: 0.7; transform: scale(1.35) rotate(18deg); }
+}
+@keyframes victory-star-float {
+  0%   { opacity: 0;   transform: translateY(0)    scale(0.5); }
+  30%  { opacity: 1; }
+  100% { opacity: 0;   transform: translateY(-40px) scale(1.1); }
+}
+.page-victory {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  color: #ffffff;
+  font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #1a7f37 0%, #2da44e 60%, #3fb950 100%);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(26, 127, 55, 0.45), 0 2px 8px rgba(0, 0, 0, 0.18);
+  animation: victory-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  pointer-events: none;
+}
+.page-victory--leaving {
+  animation: victory-out 0.45s ease-in forwards;
+}
+.page-victory-icon {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  animation: victory-sparkle 1.1s ease-in-out infinite;
+}
+.page-victory-stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.page-victory-stars::before,
+.page-victory-stars::after {
+  content: '✦';
+  position: absolute;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  animation: victory-star-float 1.6s ease-out infinite;
+}
+.page-victory-stars::before {
+  top: 6px;
+  left: 18px;
+  animation-delay: 0.2s;
+}
+.page-victory-stars::after {
+  top: 8px;
+  right: 22px;
+  animation-delay: 0.75s;
+}
+
 /* Completed page indicator in the sidebar menu */
 .workshop-menu-group a[data-page-complete]::after {
   content: '\\a0✓';
