@@ -110,7 +110,7 @@ After you reduce cost, keep it reduced:
 
 - Use `max-ai-credits` to cap a single run.
 - Use `max-daily-ai-credits` to cap 24-hour usage.
-- Use `timeout-minutes` to stop unusually long runs.
+- Use [`timeout-minutes`](https://github.github.com/gh-aw/reference/frontmatter/) to stop unusually long runs.
 - Use [gh aw forecast](side-quest-26-01-forecast-costs.md) to size the guardrails from real history instead of guessing.
 
 > See [Cost Management](https://github.github.com/gh-aw/reference/cost-management/) for the full list of monitoring commands and guardrail options.

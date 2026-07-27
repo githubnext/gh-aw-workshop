@@ -4,7 +4,7 @@
 
 > _Optional: work through this deep-dive if you want to understand how data flows between steps, then return to [Step 16](16-connect-data-source.md)._
 
-[GitHub Actions](https://github.github.com/gh-aw/introduction/overview/) runs each step in its own shell process. That means a plain `export MY_VAR=value` in one step **is invisible** to the next step — the environment is thrown away when the step exits. `$GITHUB_OUTPUT` is the official mechanism for persisting data across steps.
+[GitHub Actions](https://github.github.com/gh-aw/introduction/overview/) runs each step in its own shell process. That means a plain `export MY_VAR=value` in one step **is invisible** to the next step — the environment is thrown away when the step exits. `$GITHUB_OUTPUT` is the official mechanism for persisting data across [steps](https://github.github.com/gh-aw/reference/steps-jobs/#custom-steps-steps).
 
 ---
 
