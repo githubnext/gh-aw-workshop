@@ -199,14 +199,21 @@ html {
   list-style: none;
 }
 .markdown-body li.task-list-item > .task-list-item-marker {
-  display: inline-block;
-  width: 1.2em;
+  display: inline-grid;
+  place-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 0.45em;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  font-size: 0.85em;
+  line-height: 1;
   font-weight: 700;
   color: var(--fgColor-success, #1a7f37);
 }
 .markdown-body li.task-list-item > .task-list-item-marker.is-pending {
-  color: var(--fgColor-default, #1f2328);
-  font-weight: 400;
+  color: var(--fgColor-attention, #9a6700);
+  font-weight: 700;
 }
 
 @media (max-width: 543px) {
@@ -735,26 +742,61 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
 .markdown-body li.task-list-item {
   cursor: pointer;
   user-select: none;
-  border-radius: 4px;
-  padding-inline: 4px;
-  transition: background-color 0.1s;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  margin-block: 6px;
+  padding: 6px 10px;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.markdown-body li.task-list-item.is-pending {
+  background-color: var(--bgColor-attention-muted, #fff8c5);
+  border-color: var(--borderColor-attention-muted, #d4a72c);
+}
+.markdown-body li.task-list-item.is-complete {
+  background-color: var(--bgColor-success-muted, #dafbe1);
+  border-color: var(--borderColor-success-muted, #1a7f37);
 }
 .markdown-body li.task-list-item:hover {
   background-color: var(--bgColor-muted, #f6f8fa);
 }
+.markdown-body li.task-list-item.is-pending:hover {
+  background-color: var(--bgColor-attention-emphasis, #fbe090);
+}
 .markdown-body li.task-list-item:focus-visible {
   outline: 2px solid var(--fgColor-accent, #0969da);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .markdown-body li.task-list-item.is-pending {
+    background-color: var(--bgColor-attention-muted, #271f13);
+    border-color: var(--borderColor-attention-muted, #9e6a03);
+  }
+  html[data-color-mode="auto"] .markdown-body li.task-list-item.is-complete {
+    background-color: var(--bgColor-success-muted, #0f2419);
+    border-color: var(--borderColor-success-muted, #3fb950);
+  }
   html[data-color-mode="auto"] .markdown-body li.task-list-item:hover {
     background-color: var(--bgColor-muted, #161b22);
   }
+  html[data-color-mode="auto"] .markdown-body li.task-list-item.is-pending:hover {
+    background-color: var(--bgColor-attention-muted, #3c2d11);
+  }
+}
+html[data-color-mode="dark"] .markdown-body li.task-list-item.is-pending {
+  background-color: var(--bgColor-attention-muted, #271f13);
+  border-color: var(--borderColor-attention-muted, #9e6a03);
+}
+html[data-color-mode="dark"] .markdown-body li.task-list-item.is-complete {
+  background-color: var(--bgColor-success-muted, #0f2419);
+  border-color: var(--borderColor-success-muted, #3fb950);
 }
 html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   background-color: var(--bgColor-muted, #161b22);
+}
+html[data-color-mode="dark"] .markdown-body li.task-list-item.is-pending:hover {
+  background-color: var(--bgColor-attention-muted, #3c2d11);
 }
 
 /* Task progress bar */
