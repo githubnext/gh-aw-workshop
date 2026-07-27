@@ -6,7 +6,7 @@
 
 ## 🎯 What You'll Do
 
-You will use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://github.github.com/gh-aw/reference/artifacts/) that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you will know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
+Use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://github.github.com/gh-aw/reference/artifacts/) that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
 
 ## 📋 Before You Start
 
