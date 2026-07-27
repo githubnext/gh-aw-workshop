@@ -102,7 +102,7 @@ marked.use({
         const labelAttr = accessibleName
           ? ` aria-label="Checkpoint item (${status}): ${escapeHtml(accessibleName)}"`
           : ` aria-label="Checkpoint item (${status})"`;
-        const markerSymbol = item.checked ? '✓' : '○';
+        const markerSymbol = item.checked ? '✓' : '☐';
         return `<li class="task-list-item"${labelAttr}><span class="${markerClass}" aria-hidden="true">${markerSymbol}</span> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
@@ -633,8 +633,9 @@ html {
   color: var(--fgColor-success, #1a7f37);
 }
 .markdown-body li.task-list-item > .task-list-item-marker.is-pending {
-  color: var(--fgColor-muted, #59636e);
+  color: var(--fgColor-default, #1f2328);
   font-weight: 400;
+  font-size: 1.1em;
 }
 
 @media (max-width: 543px) {
