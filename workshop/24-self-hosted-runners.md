@@ -6,8 +6,8 @@
 
 ## 🎯 What You'll Do
 
-You will update your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to target a self-hosted runner using a runner label.
-By the end of this step, your agentic workflow will queue on a runner your organisation manages
+Update your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to target a self-hosted runner using a runner label.
+By the end of this step, your agentic workflow queues on a runner your organisation manages
 rather than a GitHub-hosted machine.
 
 ## 📋 Before You Start
@@ -161,4 +161,3 @@ git push
 <!-- journey: all -->
 **Next:** [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md)
 <!-- /journey -->
-
