@@ -89,11 +89,20 @@
     );
   }
 
+  function getHeadingText(heading) {
+    var clone = heading.cloneNode(true);
+    var anchors = clone.querySelectorAll('a.anchor');
+    Array.prototype.forEach.call(anchors, function (a) {
+      if (a.parentNode) a.parentNode.removeChild(a);
+    });
+    return clone.textContent.trim();
+  }
+
   function findCheckpointHeading(page) {
     var headings = page.querySelectorAll('h1, h2, h3, h4, h5, h6');
     var found = null;
     Array.prototype.some.call(headings, function (heading) {
-      if (/^✅?\s*checkpoint$/i.test(heading.textContent.trim())) {
+      if (/^✅?\s*checkpoint$/i.test(getHeadingText(heading))) {
         found = heading;
         return true;
       }
