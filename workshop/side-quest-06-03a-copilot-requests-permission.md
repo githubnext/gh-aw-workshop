@@ -39,17 +39,6 @@ permissions:
 
 That single line is the only workflow authentication change required for repositories that can use Method 1. Recompile and commit the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) after changing the source workflow.
 
-## ✅ Checkpoint
-
-- [ ] I confirmed the owning organization has centralized Copilot billing enabled
-- [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
-- [ ] I recompiled and committed the matching lock file
-- [ ] You did not need to create any repository secret
-
-<!-- journey: all -->
-**Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
-<!-- /journey -->
-
 ## Troubleshooting
 
 <details>
@@ -70,3 +59,14 @@ Work through these checks in order if the run still fails:
 4. If you are in an enterprise-managed organization, confirm the org Copilot policy allows [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 
 </details>
+
+## ✅ Checkpoint
+
+- [ ] I confirmed the owning organization has centralized Copilot billing enabled
+- [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
+- [ ] I recompiled and committed the matching lock file
+- [ ] You did not need to create any repository secret
+
+<!-- journey: all -->
+**Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
+<!-- /journey -->
