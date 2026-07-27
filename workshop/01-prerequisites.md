@@ -28,12 +28,6 @@ This workshop uses GitHub Copilot end-to-end, so you do not need to configure an
 > [!TIP]
 > [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) supports multiple agent and model providers (for example, Anthropic Claude Code, OpenAI Codex, and Google Gemini), but this workshop uses GitHub Copilot so you can stay focused on workflow concepts.
 
-## ✅ Checkpoint
-
-- [ ] You are signed in to GitHub
-- [ ] GitHub Copilot CLI is enabled in your settings
-- [ ] At least one model is available in Copilot
-
 <!-- journey: all -->
 **Next:** Open [Set Up a Codespace](02a-setup-codespace.md).
 <!-- /journey -->
