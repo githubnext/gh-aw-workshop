@@ -221,25 +221,25 @@ Group findings by `page_id`. For each page that has findings:
 
 3. Build the issue or comment body:
 
-   ```markdown
-   ## QA findings for `<page_id>`
+```markdown
+## QA findings for `<page_id>`
 
-   Tested at: <ISO 8601 UTC timestamp>
-   Viewports: small (375×667), medium (768×1024), desktop (1280×800)
+Tested at: <ISO 8601 UTC timestamp>
+Viewports: small (375×667), medium (768×1024), desktop (1280×800)
 
-   | # | Viewport | Category | Description |
-   |---|----------|----------|-------------|
-   | 1 | small | accessibility | `<img>` at line 42 missing alt text |
-   | 2 | desktop | readability | Font size 12 px — below 14 px threshold |
-   ...
+| # | Viewport | Category | Description |
+|---|----------|----------|-------------|
+| 1 | small | accessibility | `<img>` at line 42 missing alt text |
+| 2 | desktop | readability | Font size 12 px — below 14 px threshold |
+...
 
-   ### Screenshots
+### Screenshots
 
-   ![Finding 1 — missing H1](https://github.com/.../finding-1.png?raw=1)
-   ![Finding 2 — unnamed checkbox](https://github.com/.../finding-2.png?raw=1)
-   ```
+![Finding 1 — missing H1](https://github.com/.../finding-1.png?raw=1)
+![Finding 2 — unnamed checkbox](https://github.com/.../finding-2.png?raw=1)
+```
 
-4. Call `create-issue` (or `add-comment` if the issue already exists)
+1. Call `create-issue` (or `add-comment` if the issue already exists)
    with the body above.
 
    - Use one issue per page (not one issue per finding).

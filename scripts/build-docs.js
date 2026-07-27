@@ -102,7 +102,7 @@ marked.use({
         const labelAttr = accessibleName
           ? ` aria-label="Checkpoint item (${status}): ${escapeHtml(accessibleName)}"`
           : ` aria-label="Checkpoint item (${status})"`;
-        const markerSymbol = item.checked ? '✓' : '○';
+        const markerSymbol = item.checked ? '✓' : '☐';
         return `<li class="task-list-item"${labelAttr}><span class="${markerClass}" aria-hidden="true">${markerSymbol}</span> ${text}</li>\n`;
       }
       return false; // use default rendering for non-task items
@@ -299,7 +299,7 @@ const workshopMenu = menuGroups.map(([adventure, label]) => {
     .map(f => {
       const sectionId = sectionIdsByFile.get(f);
       const title = marked.parseInline(pageTitleByFile.get(f));
-      return `<li><a href="#${sectionId}" data-workshop-page-link>${title}</a></li>`;
+      return `<li><a href="#${sectionId}" data-workshop-page-link>${title}</a><div class="menu-item-progress" data-menu-progress="${sectionId}"><div class="menu-item-progress-fill"></div></div></li>`;
     })
     .join('\n');
 
@@ -633,8 +633,9 @@ html {
   color: var(--fgColor-success, #1a7f37);
 }
 .markdown-body li.task-list-item > .task-list-item-marker.is-pending {
-  color: var(--fgColor-muted, #59636e);
+  color: var(--fgColor-default, #1f2328);
   font-weight: 400;
+  font-size: 1.1em;
 }
 
 @media (max-width: 543px) {
@@ -913,6 +914,11 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
   padding: 12px 20px;
   border-top: 1px solid var(--borderColor-muted, #d0d7de);
 }
+.workshop-menu-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .workshop-theme-chooser {
   display: flex;
   border: 1px solid var(--borderColor-default, #d0d7de);
@@ -946,6 +952,27 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
   background-color: var(--bgColor-accent-muted, #ddf4ff);
   color: var(--fgColor-accent, #0969da);
   font-weight: 600;
+}
+.workshop-progress-reset-btn {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.4;
+  color: var(--fgColor-muted, #59636e);
+  background-color: transparent;
+  border: 1px solid var(--borderColor-default, #d0d7de);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.workshop-progress-reset-btn:hover {
+  background-color: var(--bgColor-muted, #f6f8fa);
+  color: var(--fgColor-default, #1f2328);
+}
+.workshop-progress-reset-btn:focus-visible {
+  outline: 2px solid var(--fgColor-accent, #0969da);
+  outline-offset: 2px;
 }
 
 /* Code block copy button */
@@ -1195,6 +1222,29 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   content: '\\a0✓';
   color: var(--fgColor-success, #1a7f37);
   font-weight: 700;
+}
+
+/* Micro progress bar under each menu item */
+.menu-item-progress {
+  display: none;
+  height: 3px;
+  margin: 0 8px 4px;
+  background-color: var(--borderColor-muted, #d0d7de);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.menu-item-progress[data-has-checkpoints] {
+  display: block;
+}
+.menu-item-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--fgColor-success, #1a7f37);
+  border-radius: 2px;
+  transition: width 0.2s ease;
+}
+.workshop-menu-group a[data-page-complete] + .menu-item-progress .menu-item-progress-fill {
+  opacity: 0.6;
 }
 
 /* Markdown text-editor style blocks */
@@ -1580,10 +1630,13 @@ const page = `<!DOCTYPE html>
 ${workshopMenu}
       </nav>
       <footer class="workshop-menu-footer">
-        <div class="workshop-theme-chooser" role="group" aria-label="Color theme">
-          <button type="button" class="workshop-theme-btn" data-theme="light">Light</button>
-          <button type="button" class="workshop-theme-btn" data-theme="auto">System</button>
-          <button type="button" class="workshop-theme-btn" data-theme="dark">Dark</button>
+        <div class="workshop-menu-controls">
+          <div class="workshop-theme-chooser" role="group" aria-label="Color theme">
+            <button type="button" class="workshop-theme-btn" data-theme="light">Light</button>
+            <button type="button" class="workshop-theme-btn" data-theme="auto">System</button>
+            <button type="button" class="workshop-theme-btn" data-theme="dark">Dark</button>
+          </div>
+          <button type="button" class="workshop-progress-reset-btn" data-clear-workshop-progress>Clear checkmark progress</button>
         </div>
       </footer>
     </div>

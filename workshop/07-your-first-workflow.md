@@ -24,15 +24,15 @@ You'll use Copilot to create `.github/workflows/daily-report-status.md` — a sc
 
 1. In the terminal that is already open in your Codespace, run:
 
-   ```bash
-   gh copilot
-   ```
+```bash
+gh copilot
+```
 
-2. In Copilot CLI, send this prompt:
+1. In Copilot CLI, send this prompt:
 
-   ```prompt
-   /agentic-workflows what trigger does a scheduled workflow use?
-   ```
+```prompt
+/agentic-workflows what trigger does a scheduled workflow use?
+```
 
 Confirm you receive a reply. Any response means Copilot CLI and the `agentic-workflows` skill are accessible.
 

@@ -289,35 +289,35 @@ of each matched concept. You never remove content — you only enrich it with in
 2. Load the cache-memory file `/tmp/gh-aw/cache-memory/docs-linker-state.json` if it exists.
    Initialize with defaults when absent:
 
-   ```json
-   {
-     "round_robin_index": 0,
-     "files_processed": []
-   }
-   ```
+```json
+{
+  "round_robin_index": 0,
+  "files_processed": []
+}
+```
 
-3. Read the pre-validated doc index from `/tmp/gh-aw/data/validated-doc-index.json`.
+1. Read the pre-validated doc index from `/tmp/gh-aw/data/validated-doc-index.json`.
    This index was built from the docs source files. Every page-level URL was
    confirmed reachable by a deterministic HTTP check in the bash prevalidation step.
    It maps each doc page URL to its title and a list of extracted section anchors:
 
-   ```json
-   {
-     "indexed_at": 1234567890,
-     "validated_at": 1234567890,
-     "pages": {
-       "https://github.github.com/gh-aw/reference/safe-outputs/": {
-         "title": "Safe Outputs reference",
-         "anchors": [
-           { "id": "create-pull-request", "text": "Create Pull Request",
-             "url": "https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request" },
-           ...
-         ]
-       },
-       ...
-     }
-   }
-   ```
+```json
+{
+  "indexed_at": 1234567890,
+  "validated_at": 1234567890,
+  "pages": {
+    "https://github.github.com/gh-aw/reference/safe-outputs/": {
+      "title": "Safe Outputs reference",
+      "anchors": [
+        { "id": "create-pull-request", "text": "Create Pull Request",
+          "url": "https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request" },
+        ...
+      ]
+    },
+    ...
+  }
+}
+```
 
    Every page-level URL present in this index is confirmed reachable (HTTP 2xx).
    Use the anchor URLs to produce precise `URL#anchor` links when a concept

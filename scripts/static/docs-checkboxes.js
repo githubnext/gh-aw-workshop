@@ -16,6 +16,12 @@
     } catch (_) {}
   }
 
+  function clearAllState() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (_) {}
+  }
+
   function applyItemState(li, checked) {
     var marker = li.querySelector('.task-list-item-marker');
     if (marker) {
@@ -32,7 +38,7 @@
     );
   }
 
-  function initPage(page) {
+  function initPage(page, controllers) {
     var pageId = page.id;
     var items = Array.from(page.querySelectorAll('li.task-list-item'));
     if (items.length === 0) return;
@@ -74,6 +80,13 @@
       pageTitle.insertAdjacentElement('afterend', progressEl);
     }
 
+    // Menu micro-progress bar for this page
+    var menuProgress = document.querySelector('[data-menu-progress="' + pageId + '"]');
+    var menuFill = menuProgress ? menuProgress.querySelector('.menu-item-progress-fill') : null;
+    if (menuProgress) {
+      menuProgress.setAttribute('data-has-checkpoints', '');
+    }
+
     function renderProgress() {
       var done = state.filter(Boolean).length;
       var total = state.length;
@@ -95,6 +108,19 @@
       if (menuLink) {
         menuLink.toggleAttribute('data-page-complete', allDone);
       }
+
+      // Update the menu micro progress bar
+      if (menuFill) {
+        menuFill.style.width = pct + '%';
+      }
+    }
+
+    function resetPage() {
+      state = state.map(function () { return false; });
+      items.forEach(function (li) {
+        applyItemState(li, false);
+      });
+      renderProgress();
     }
 
     // Wire up each item
@@ -126,11 +152,25 @@
     });
 
     renderProgress();
+    controllers.push({ resetPage: resetPage });
   }
 
   function init() {
+    var controllers = [];
     var pages = document.querySelectorAll('.markdown-body > details[id]');
-    Array.prototype.forEach.call(pages, initPage);
+    Array.prototype.forEach.call(pages, function (page) {
+      initPage(page, controllers);
+    });
+
+    var clearButton = document.querySelector('[data-clear-workshop-progress]');
+    if (clearButton) {
+      clearButton.addEventListener('click', function () {
+        clearAllState();
+        controllers.forEach(function (controller) {
+          controller.resetPage();
+        });
+      });
+    }
   }
 
   if (document.readyState === 'loading') {

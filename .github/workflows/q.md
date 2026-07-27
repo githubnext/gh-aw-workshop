@@ -113,21 +113,21 @@ This workflow was triggered from a comment on discussion #${{ github.event.discu
 Use the agentic-workflows tool to gather real data:
 
 1. **Download Recent Logs**:
-   ```
-   Use the `logs` tool from agentic-workflows:
-   - Workflow name: (specific workflow or empty for all)
-   - Count: 10-20 recent runs
-   - Start date: "-7d" (last week)
-   - Parse: true (to get structured output)
-   ```
+```
+Use the `logs` tool from agentic-workflows:
+- Workflow name: (specific workflow or empty for all)
+- Count: 10-20 recent runs
+- Start date: "-7d" (last week)
+- Parse: true (to get structured output)
+```
 
-2. **Review Audit Information**:
-   ```
-   Use the `audit` tool for specific problematic runs:
-   - Run ID: (from logs analysis)
-   ```
+1. **Review Audit Information**:
+```
+Use the `audit` tool for specific problematic runs:
+- Run ID: (from logs analysis)
+```
 
-3. **Analyze Log Data**: Review the downloaded logs to identify:
+1. **Analyze Log Data**: Review the downloaded logs to identify:
    - **Missing Tools**: Tools requested but not available
    - **Permission Errors**: Failed operations due to insufficient permissions
    - **Repetitive Patterns**: Same tool calls made multiple times
@@ -208,14 +208,14 @@ General optimizations:
 **CRITICAL**: Use the agentic-workflows tool to validate all changes:
 
 1. **Compile Modified Workflows**:
-   ```
-   Use the `compile` tool from agentic-workflows:
-   - Workflow: (name of modified workflow)
-   ```
+```
+Use the `compile` tool from agentic-workflows:
+- Workflow: (name of modified workflow)
+```
 
-2. **Check Compilation Output**: Ensure no errors or warnings
-3. **Validate Syntax**: Confirm the workflow is syntactically correct
-4. **Test locally if possible**: Try running the workflow in a test environment
+1. **Check Compilation Output**: Ensure no errors or warnings
+2. **Validate Syntax**: Confirm the workflow is syntactically correct
+3. **Test locally if possible**: Try running the workflow in a test environment
 
 ### Phase 5: Create Pull Request (Only if Changes Exist)
 

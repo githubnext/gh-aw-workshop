@@ -76,14 +76,14 @@ Add a placeholder secret named `WORKSHOP_TOKEN` with any throwaway value, then p
 1. Create `WORKSHOP_TOKEN` in **Settings** → **Secrets and variables** → **Actions**.
 2. Add this temporary step to a workflow you can run manually:
 
-   ```markdown
-   - name: Confirm secret masking
-     run: echo "token=${{ secrets.WORKSHOP_TOKEN }}"
-   ```
+```markdown
+- name: Confirm secret masking
+  run: echo "token=${{ secrets.WORKSHOP_TOKEN }}"
+```
 
-3. Trigger a manual run from the **Actions** tab.
-4. Open the run logs and confirm the output shows `token=***`, not the value you entered.
-5. Remove the temporary step after you verify masking.
+1. Trigger a manual run from the **Actions** tab.
+2. Open the run logs and confirm the output shows `token=***`, not the value you entered.
+3. Remove the temporary step after you verify masking.
 
 ---
 

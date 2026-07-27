@@ -95,25 +95,25 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 1. Update the frontmatter variants to include a third option:
 
-   ```markdown
-   experiments:
-     output_style: [concise, detailed, executive]
-   ```
+```markdown
+experiments:
+  output_style: [concise, detailed, executive]
+```
 
-2. Update the task brief so each variant has explicit instructions:
+1. Update the task brief so each variant has explicit instructions:
 
-   ```markdown
-   {{#if experiments.output_style }}
-   Write a report according to the output_style: ${{ experiments.output_style }}.
-   - concise: Write a maximum of 5 bullet points. Each bullet is one sentence.
-   - detailed: Write a structured report with sections: open issues, merged pull requests,
-     and CI status. Include a one-paragraph summary at the top.
-   - executive: Write an executive summary with exactly 3 bullets and one "Watch next" line.
-   {{#endif}}
-   ```
+```markdown
+{{#if experiments.output_style }}
+Write a report according to the output_style: ${{ experiments.output_style }}.
+- concise: Write a maximum of 5 bullet points. Each bullet is one sentence.
+- detailed: Write a structured report with sections: open issues, merged pull requests,
+  and CI status. Include a one-paragraph summary at the top.
+- executive: Write an executive summary with exactly 3 bullets and one "Watch next" line.
+{{#endif}}
+```
 
-3. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
-4. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
+1. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
+2. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
 
 ## Understand how the round-robin works
 
