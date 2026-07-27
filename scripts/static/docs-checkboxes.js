@@ -14,14 +14,26 @@
       victoryEl.parentNode.removeChild(victoryEl);
     }
 
+    var starsEl = document.createElement('span');
+    starsEl.className = 'page-victory-stars';
+    starsEl.setAttribute('aria-hidden', 'true');
+
+    var iconEl = document.createElement('span');
+    iconEl.className = 'page-victory-icon';
+    iconEl.setAttribute('aria-hidden', 'true');
+    iconEl.textContent = '\u2726';
+
+    var textEl = document.createElement('span');
+    textEl.className = 'page-victory-text';
+    textEl.textContent = 'All checkpoints complete!';
+
     victoryEl = document.createElement('div');
     victoryEl.className = 'page-victory';
     victoryEl.setAttribute('role', 'status');
     victoryEl.setAttribute('aria-live', 'polite');
-    victoryEl.innerHTML =
-      '<span class="page-victory-stars" aria-hidden="true"></span>' +
-      '<span class="page-victory-icon" aria-hidden="true">✦</span>' +
-      '<span class="page-victory-text">All checkpoints complete!</span>';
+    victoryEl.appendChild(starsEl);
+    victoryEl.appendChild(iconEl);
+    victoryEl.appendChild(textEl);
     document.body.appendChild(victoryEl);
 
     victoryTimer = setTimeout(function () {
