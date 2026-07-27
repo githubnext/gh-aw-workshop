@@ -75,7 +75,11 @@ Choose exactly one method. The diagram below shows both paths and the key config
 >
 > </details>
 
-![Decision flow for choosing Copilot billing path: organization centralized billing or personal billing](images/07d-billing-path-decision.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/07d-billing-path-decision-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/07d-billing-path-decision-light.svg">
+  <img alt="Decision flow for choosing Copilot billing path: organization centralized billing or personal billing" src="images/07d-billing-path-decision-light.svg">
+</picture>
 
 ### Billing quick-reference
 
