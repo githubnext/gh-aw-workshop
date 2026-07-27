@@ -1461,6 +1461,46 @@ html[data-color-mode="dark"] .yaml-editor-block .code-copy-btn:hover {
   background-color: #161b22;
   color: #e6edf3;
 }
+
+/* ========================
+   CSS View Transitions
+   ======================== */
+@media (prefers-reduced-motion: no-preference) {
+  .markdown-body > details[open] {
+    view-transition-name: workshop-page;
+  }
+
+  @keyframes vt-slide-in-right {
+    from { opacity: 0; transform: translateX(48px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes vt-slide-out-left {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(-48px); }
+  }
+  @keyframes vt-slide-in-left {
+    from { opacity: 0; transform: translateX(-48px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes vt-slide-out-right {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(48px); }
+  }
+
+  ::view-transition-old(workshop-page) {
+    animation: 300ms cubic-bezier(0.4, 0, 1, 1) both vt-slide-out-left;
+  }
+  ::view-transition-new(workshop-page) {
+    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both vt-slide-in-right;
+  }
+
+  html[data-nav-backward] ::view-transition-old(workshop-page) {
+    animation: 300ms cubic-bezier(0.4, 0, 1, 1) both vt-slide-out-right;
+  }
+  html[data-nav-backward] ::view-transition-new(workshop-page) {
+    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both vt-slide-in-left;
+  }
+}
 `;
 fs.writeFileSync(path.join(distDir, 'docs.css'), docsCss);
 
@@ -1725,16 +1765,29 @@ ${htmlContent}</main>
       const activePage = page ?? workshopPages[0];
       if (!activePage) return;
 
-      workshopPages.forEach(candidate => {
-        candidate.open = candidate === activePage;
-      });
-      menuLinks.forEach(link => {
-        const isActive = link.getAttribute('href') === '#' + activePage.id;
-        if (isActive) link.setAttribute('aria-current', 'page');
-        else link.removeAttribute('aria-current');
-      });
+      const currentPage = workshopPages.find(p => p.open);
+      const currentIndex = currentPage ? workshopPages.indexOf(currentPage) : -1;
+      const nextIndex = workshopPages.indexOf(activePage);
+      const isBackward = currentIndex >= 0 && nextIndex >= 0 && currentIndex > nextIndex;
+      document.documentElement.toggleAttribute('data-nav-backward', isBackward);
 
-      if (scrollPage) activePage.scrollIntoView({ block: 'start' });
+      function applyPageChange() {
+        workshopPages.forEach(candidate => {
+          candidate.open = candidate === activePage;
+        });
+        menuLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === '#' + activePage.id;
+          if (isActive) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+        if (scrollPage) activePage.scrollIntoView({ block: 'start' });
+      }
+
+      if (document.startViewTransition && currentPage && currentPage !== activePage) {
+        document.startViewTransition(applyPageChange);
+      } else {
+        applyPageChange();
+      }
     }
 
     function findHashTarget(id) {
