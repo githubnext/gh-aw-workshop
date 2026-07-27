@@ -144,9 +144,9 @@ tools:
 ---
 ```
 
-- [ ] Which `permissions:` line enables direct file commits?
-- [ ] Which `toolsets:` value expands the attack surface beyond what the task needs?
-- [ ] What `safe-outputs:` configuration is missing?
+- Which `permissions:` line enables direct file commits?
+- Which `toolsets:` value expands the attack surface beyond what the task needs?
+- What `safe-outputs:` configuration is missing?
 
 <details>
 <summary>Review your answers</summary>
@@ -173,12 +173,12 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 
 ## What You Can Do as a Workflow Author
 
-- [ ] Keep `contents: read` unless the task requires proposing changes.
-- [ ] Use `safe-outputs: create-pull-request` instead of direct commits whenever a write is needed.
-- [ ] Declare `allowed-files` to restrict the PR to only the paths the task should touch.
-- [ ] Add `protected-files.exclude` entries for `.github/workflows/**`, `README.md`, and any other sensitive paths.
-- [ ] Set `network.allowed-domains` to block exfiltration to attacker-controlled destinations.
-- [ ] Treat all issue bodies, PR descriptions, and file content as untrusted input.
+- Keep `contents: read` unless the task requires proposing changes.
+- Use `safe-outputs: create-pull-request` instead of direct commits whenever a write is needed.
+- Declare `allowed-files` to restrict the PR to only the paths the task should touch.
+- Add `protected-files.exclude` entries for `.github/workflows/**`, `README.md`, and any other sensitive paths.
+- Set `network.allowed-domains` to block exfiltration to attacker-controlled destinations.
+- Treat all issue bodies, PR descriptions, and file content as untrusted input.
 
 ---
 

@@ -27,10 +27,10 @@ on:
   pull_request:
     types: [opened, synchronize]
 permissions:
-  pull-requests: write
+  pull-requests: read
   contents: read
 safe-outputs:
-  create-issue-comment:
+  add-comment:
     limit: 1
 ---
 

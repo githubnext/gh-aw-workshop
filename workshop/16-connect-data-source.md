@@ -18,7 +18,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 ### Understand the data-flow pattern
 
-[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, you will use shell steps to collect data and a later prompt section to turn that data into a summary.
+[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, use shell steps to collect data and a later prompt section to turn that data into a summary.
 
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 

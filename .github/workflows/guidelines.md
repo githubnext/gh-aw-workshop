@@ -38,6 +38,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through their AI agent with the `/agentic-workflows` skill.
 - Do **not** recommend manual workflow editing as the primary instruction path; use the AI agent + `/agentic-workflows` prompts instead.
 - If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the agent prompt so learners know which surface to use for each action.
+- Keep every prompt shown in a workshop page **simple: a single clear sentence** that a human would write in one shot. Avoid multi-part instructions, bullet-formatted prompts, or over-engineered phrasing inside the prompt block itself. If the task is complex, let the `/agentic-workflows` skill handle decomposition — the learner's input stays short and natural.
 
 ## Golden-Ticket Workshop Surfaces
 
@@ -216,7 +217,8 @@ Multi-line callout (summary + body):
 - Use ` ```bash ` as the language identifier for every fenced code block containing shell or terminal commands.
 - Do **not** leave shell command blocks unlabeled; bare ` ``` ` fences without a language specifier are reserved for content that has no matching language identifier (for example, pseudocode or AI task brief excerpts).
 - Use ` ```text ` for terminal output that learners read but do not type (for example, expected command output or error messages).
-- Use ` ```yaml ` for YAML configuration or frontmatter examples, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
+- Use ` ```yaml ` for standalone YAML configuration fragments, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
+- When showing an agentic workflow example that includes both frontmatter and prompt body, prefer a ` ```markdown ` block that shows the full Markdown+frontmatter file shape instead of isolating the frontmatter in a standalone ` ```yaml ` region.
 
 ## Enterprise user preference in design decisions
 
@@ -399,6 +401,15 @@ Side quest `journey` assignment:
 - `ui` — content is only applicable to a browser-only side quest (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
 - `copilot` — content is specific to a Copilot-focused environment such as Copilot CLI or Copilot CCA (e.g., `side-quest-06-02-cca-codespace.md`).
 - `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).
+
+## Checkpoint checklist size limit
+
+Every workshop step ends with a `## ✅ Checkpoint` section that contains a markdown checklist. Keep that checklist — and every other checklist on the page — concise:
+
+- **Maximum 10 checkboxes per page** (across all checklists on the page combined).
+- If a natural checkpoint requires more items, split the step into two shorter steps rather than adding more boxes.
+- Prefer outcome-oriented items ("Your workflow runs without errors") over procedural ones ("Click the green button") so each box carries meaningful weight.
+- Do not duplicate items that already appear in an earlier step's checkpoint.
 
 ## Dispatcher and choice-hub pages: `<!-- learning:false -->`
 

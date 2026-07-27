@@ -88,10 +88,10 @@ Sample output:
 | Threat verdict | none |
 ```
 
-- [ ] I found a run ID from the Actions tab
-- [ ] The report shows the workflow name, trigger, and model
-- [ ] The ⌖ AIC figure appears separately from Agent AIC
-- [ ] The threat verdict shows `none` (or I noted what was flagged)
+1. Find a run ID from the Actions tab.
+2. Confirm the report shows the workflow name, trigger, and model.
+3. Check that the ⌖ AIC figure appears separately from Agent AIC.
+4. Note the threat verdict (typically `none`).
 
 ### Explore MCP tool calls
 
@@ -103,18 +103,18 @@ gh aw logs <your-workflow-id> --artifacts all
 
 Browse the log files in `.github/aw/logs/<run-id>/mcp-logs/`.
 
-- [ ] I found the `mcp-logs/` directory in the downloaded artifacts
-- [ ] I identified at least one tool call and noted the tool name
-- [ ] I wrote one sentence describing what the agent was trying to accomplish
-- [ ] I checked `agent_usage.json` for the total token count
+1. Find the `mcp-logs/` directory in the downloaded artifacts.
+2. Identify at least one tool call and note the tool name.
+3. Write one sentence describing what the agent was trying to accomplish.
+4. Check `agent_usage.json` for the total token count.
 
 ### Inspect the firewall records
 
 The raw domain-level network access logs live in `sandbox/firewall/audit/` inside the agent artifact. Scan them to confirm your workflow only contacted expected domains.
 
-- [ ] I opened `sandbox/firewall/audit/` in the downloaded artifacts
-- [ ] I identified at least one domain the workflow accessed
-- [ ] If any domains were blocked, I know to add them to `network.allow` in the workflow frontmatter
+1. Open `sandbox/firewall/audit/` in the downloaded artifacts.
+2. Identify at least one domain the workflow accessed.
+3. If any domains were blocked, add them to `network.allow` in the workflow frontmatter.
 
 ## ✅ Checkpoint
 

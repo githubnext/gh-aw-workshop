@@ -4,7 +4,10 @@
 
 ## 📋 Before You Start
 
-- `daily-report-status.md` and `daily-report-status.lock.yml` are committed to your practice repository.
+This step has two entry points:
+
+- **Arriving from the step 07 access check (error recovery):** You have completed [Install the gh-aw CLI Extension](06-install-gh-aw.md) and pushed `.github/skills/agentic-workflows/`. Workflow files do not need to exist yet — fix model access first, then return to [Write Your First Agentic Workflow](07-your-first-workflow.md) to continue.
+- **Arriving as the next step after step 07 (normal flow):** `daily-report-status.md` and `daily-report-status.lock.yml` are committed to your practice repository.
 
 ## 🎯 What You'll Do
 
@@ -24,7 +27,7 @@ gh copilot
 1. Send the following prompt in Copilot CLI:
 
 ```prompt
-/agentic-workflows suggest one improvement to `.github/workflows/daily-report-status.md` and explain why in one sentence.
+/agentic-workflows what trigger does a scheduled workflow use?
 ```
 
 1. Confirm you receive a reply. Any response means the model and skill are accessible.
@@ -38,7 +41,8 @@ gh copilot
 Use this quick check before you choose a billing path:
 
 - **You receive a normal reply in Copilot CLI**
-  - Continue to **Choose one Copilot billing path**.
+  - If you arrived here from the step 07 access check (before creating workflow files), return to [Write Your First Agentic Workflow](07-your-first-workflow.md) and continue from where you left off.
+  - Otherwise, continue to **Choose one Copilot billing path**.
 - **You receive an access or entitlement error**
   - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
   - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.

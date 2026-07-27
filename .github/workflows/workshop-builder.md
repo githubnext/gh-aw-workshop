@@ -200,14 +200,10 @@ Note: which workflows are failing, skipping, or have not run recently.
 
 ### 2b. Open PRs and issues
 
-Use `gh` to query open workshop-related work:
+Use the GitHub MCP tools to query open workshop-related work:
 
-```bash
-gh search prs --repo "$GITHUB_REPOSITORY" --state open \
-  --label workshop --json number,title,labels --limit 10
-gh search issues --repo "$GITHUB_REPOSITORY" --state open \
-  --label workshop --json number,title,labels --limit 20
-```
+- Call `search_pull_requests` with query `repo:$GITHUB_REPOSITORY is:pr is:open label:workshop` (limit 10)
+- Call `search_issues` with query `repo:$GITHUB_REPOSITORY is:issue is:open label:workshop` (limit 20)
 
 Record:
 
@@ -350,12 +346,9 @@ Conditions:
 - You identify a genuine automation capability gap not covered by any existing
   workflow
 
-Before filing, search open issues to avoid duplicates:
-
-```bash
-gh search issues --repo "$GITHUB_REPOSITORY" --state open \
-  --label automation --json number,title --limit 50
-```
+Before filing, use the `search_issues` GitHub MCP tool with query
+`repo:$GITHUB_REPOSITORY is:issue is:open label:automation` (limit 50) to avoid
+duplicates.
 
 Example capability gaps to consider:
 

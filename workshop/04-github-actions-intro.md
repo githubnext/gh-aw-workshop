@@ -4,11 +4,11 @@
 
 > [!TIP]
 > <details>
-> <summary><b>Already know GitHub Actions?</b> Check the three boxes below and skip ahead:</summary>
+> <summary><b>Already know GitHub Actions?</b> Confirm these three statements and skip ahead:</summary>
 >
-> - [ ] I know workflows live in `.github/workflows/` as YAML files
-> - [ ] I can read `on`, `jobs`, and `steps` keys in a workflow file
-> - [ ] I know each step runs on a GitHub-hosted runner
+> - You know workflows live in `.github/workflows/` as YAML files
+> - You can read `on`, `jobs`, and `steps` keys in a workflow file
+> - You know each step runs on a GitHub-hosted runner
 >
 > **→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
 > (or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
@@ -93,11 +93,13 @@ jobs:
       - run: echo "All checks passed"
 ```
 
-- [ ] I labeled `on: [push]`
-- [ ] I labeled `test:` (the job name under `jobs:`)
-- [ ] I labeled `runs-on: ubuntu-latest`
-- [ ] I labeled `uses: actions/checkout@v4`
-- [ ] I labeled `run: echo "All checks passed"`
+Write a label beside each line:
+
+1. `on: [push]`
+2. `test:` (the job name under `jobs:`)
+3. `runs-on: ubuntu-latest`
+4. `uses: actions/checkout@v4`
+5. `run: echo "All checks passed"`
 
 <details>
 <summary>Reveal the labels</summary>
@@ -125,12 +127,11 @@ Open a real workflow file and find the three core building blocks — no termina
 
 ## ✅ Checkpoint
 
-- [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
-- [ ] I labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
-- [ ] I know workflows live in `.github/workflows/`
-- [ ] I explored a real workflow and found its trigger, a job name, and a step command
-- [ ] I answered the check-your-understanding questions
-- [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
+- [ ] You can identify `on`, `jobs`, and `steps` in a workflow file
+- [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
+- [ ] You know workflows live in `.github/workflows/`
+- [ ] You explored a real workflow and found its trigger, a job name, and a step command
+- [ ] You are ready to continue to Step 5, or skip ahead to Step 6 if you already know this material
 
 > [!TIP]
 > This step covers several new terms quickly. If anything feels unclear — runner, trigger, action — the [gh-aw glossary](https://github.github.com/gh-aw/reference/glossary/) defines each one in a sentence. Bookmark it and return whenever you hit an unfamiliar term later in the workshop.
@@ -138,5 +139,4 @@ Open a real workflow file and find the three core building blocks — no termina
 <!-- journey: all -->
 **Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 <!-- /journey -->
-
 

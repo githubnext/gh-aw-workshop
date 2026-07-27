@@ -66,8 +66,7 @@ Review the agent's edit, then continue. Prefer this path over hand-editing each 
 ---
 name: Daily Report Status
 on:
-  schedule:
-    - cron: "0 9 * * *"      # runs every day at 09:00 UTC
+  schedule: daily             # compiled to a daily GitHub Actions cron schedule
   workflow_dispatch: {}       # also allows manual runs
 permissions:
   contents: read

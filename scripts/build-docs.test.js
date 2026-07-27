@@ -78,6 +78,30 @@ test("prompt code blocks are wrapped in a distinct agent UI", () => {
   assert.ok(css.includes(".agent-prompt-pre"));
 });
 
+test("markdown, md, yaml, and yml code blocks use compact icon-only editor chrome", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<div class="markdown-editor-block" role="region" aria-label="Markdown">'), "expected markdown-editor-block wrapper in HTML");
+  assert.ok(html.includes('<div class="markdown-editor-bar">'), "expected markdown-editor-bar in HTML");
+  assert.ok(html.includes('<span class="markdown-editor-icon" aria-hidden="true">◇</span>'), "expected markdown-editor-icon in HTML");
+  assert.ok(!html.includes('class="markdown-editor-label"'), "expected markdown language label to be hidden");
+  assert.ok(html.includes('<pre class="markdown-editor-pre">'), "expected markdown-editor-pre element");
+  assert.ok(html.includes('<div class="yaml-editor-block" role="region" aria-label="YAML">'), "expected yaml-editor-block wrapper in HTML");
+  assert.ok(html.includes('<div class="yaml-editor-bar">'), "expected yaml-editor-bar in HTML");
+  assert.ok(html.includes('<span class="yaml-editor-icon" aria-hidden="true">≡</span>'), "expected yaml-editor-icon in HTML");
+  assert.ok(!html.includes('class="yaml-editor-label"'), "expected YAML language label to be hidden");
+  assert.ok(html.includes('<pre class="yaml-editor-pre">'), "expected yaml-editor-pre element");
+
+  assert.ok(css.includes(".markdown-editor-block"), "expected .markdown-editor-block in CSS");
+  assert.ok(css.includes(".markdown-editor-bar"), "expected .markdown-editor-bar in CSS");
+  assert.ok(css.includes(".markdown-editor-pre"), "expected .markdown-editor-pre in CSS");
+  assert.ok(css.includes("padding: 12px 12px 12px 16px;"), "expected compact Markdown code padding");
+  assert.ok(css.includes(".yaml-editor-block"), "expected .yaml-editor-block in CSS");
+  assert.ok(css.includes(".yaml-editor-bar"), "expected .yaml-editor-bar in CSS");
+  assert.ok(css.includes(".yaml-editor-pre"), "expected .yaml-editor-pre in CSS");
+  assert.ok(css.includes("padding: 12px;"), "expected compact YAML code padding");
+});
+
 test("rendered workshop images use GitHub-like rounded corners", () => {
   const { css } = buildDocs();
 
@@ -85,11 +109,12 @@ test("rendered workshop images use GitHub-like rounded corners", () => {
   assert.ok(css.includes(".image-inspector-image {\n  display: block;\n  max-width: min(88vw, 1120px);\n  max-height: calc(96vh - 96px);\n  width: auto;\n  height: auto;\n  margin: 0 auto;\n  border-radius: 6px;\n}"));
 });
 
-test("checkpoint task lists render ✓ markers instead of checkbox inputs", () => {
+test("checkpoint task lists render distinct markers for pending and complete states", () => {
   const { html, css } = buildDocs();
 
-  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true">✓</span>'), "expected checkmark marker spans");
+  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true">○</span>'), "expected empty-circle marker for pending items");
   assert.ok(!html.includes('<input class="task-list-item-checkbox"'), "expected checkbox inputs to be removed");
   assert.ok(css.includes(".markdown-body li.task-list-item {\n  list-style: none;\n}"), "expected task-list bullet removal styles");
-  assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {\n  opacity: 0.45;\n}"), "expected pending marker visual differentiation");
+  assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {"), "expected pending marker style rule");
+  assert.ok(!css.includes("opacity: 0.45"), "expected pending marker to use color instead of opacity");
 });

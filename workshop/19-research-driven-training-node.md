@@ -6,7 +6,7 @@
 
 ## 🎯 What You'll Do
 
-In this step, you will turn `github/gh-aw` research into a concrete training plan update. You will review current gh-aw documentation signals, identify one meaningful learner gap, and draft a new workshop node proposal that is ready to implement. By the end, you will have a repeatable method for deciding what to teach next with confidence.
+In this step, turn `github/gh-aw` research into a concrete training plan update: review current gh-aw documentation signals, identify one meaningful learner gap, and draft a workshop node proposal ready to implement. By the end, you have a repeatable method for deciding what to teach next with confidence.
 
 ## 📋 Before You Start
 
