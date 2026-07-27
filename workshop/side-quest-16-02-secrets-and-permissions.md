@@ -11,7 +11,7 @@
 
 ---
 
-GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **GitHub Secrets** gives you a secure vault for sensitive values that workflows can read without exposing.
+GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **[GitHub Secrets](https://github.github.com/gh-aw/reference/environment-variables/#safe-outputs-with-custom-pat)** gives you a secure vault for sensitive values that workflows can read without exposing.
 
 ---
 

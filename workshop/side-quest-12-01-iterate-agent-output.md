@@ -45,7 +45,7 @@ Lowest score: Tone
 
 ## Make one targeted change
 
-Pick the lowest-scoring row and modify or add only **one sentence** in your workflow brief to address it.
+Pick the lowest-scoring row and modify or add only **one sentence** in your [workflow brief](https://github.github.com/gh-aw/reference/markdown/) to address it.
 
 | Lowest score | One sentence to modify or add |
 |--------------|-------------------------------|

@@ -4,7 +4,7 @@
 
 ## 🎯 What You'll Do
 
-Build a PR summary workflow that posts a structured, human-readable summary comment when a pull request is opened. The summary is written in a format that can be copied directly into a changelog or release note.
+Build a PR summary workflow that posts a structured, human-readable [summary comment](https://github.github.com/gh-aw/reference/safe-outputs/#comment-creation-add-comment) when a pull request is opened. The summary is written in a format that can be copied directly into a changelog or release note.
 
 ## Before You Start
 
@@ -14,7 +14,7 @@ Build a PR summary workflow that posts a structured, human-readable summary comm
 
 A free-form review comment is useful, but a structured summary is re-usable. When every PR gets a summary in the same format, teams can scrape those comments to generate changelogs automatically, hand them to release managers as draft notes, or include them in sprint retrospectives.
 
-The key design choice here is the output template: you define the structure in the workflow brief, and the agent fills in the blanks.
+The key design choice here is the output template: you define the structure in the [workflow brief](https://github.github.com/gh-aw/reference/markdown/), and the agent fills in the blanks.
 
 ## The Summary Workflow
 

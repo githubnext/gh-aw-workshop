@@ -12,7 +12,7 @@
 
 ## 🎯 What You'll Do
 
-You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions cron schedules. By the end, you'll know which fuzzy expression fits your workflow, how to verify the compiled cron value, and how agentic workflows differ from classic Actions YAML when it comes to scheduling.
+You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions cron schedules. By the end, you'll know which [fuzzy expression](https://github.github.com/gh-aw/reference/schedule-syntax/#fuzzy-schedules) fits your workflow, how to verify the compiled cron value, and how agentic workflows differ from classic Actions YAML when it comes to scheduling.
 
 ## Cron in one minute
 
