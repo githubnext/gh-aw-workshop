@@ -27,7 +27,7 @@
     if (marker) {
       marker.classList.toggle('is-complete', checked);
       marker.classList.toggle('is-pending', !checked);
-      marker.textContent = checked ? '✓' : '○';
+      marker.textContent = checked ? '●' : '○';
     }
     li.setAttribute('aria-checked', checked ? 'true' : 'false');
     // Keep the accessible label in sync with the current state
