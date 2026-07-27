@@ -12,9 +12,12 @@ Build a workflow that evaluates every new pull request against a short review ch
 
 ## Why a Checklist Workflow?
 
-Review checklists enforce team standards consistently. Instead of relying on every reviewer to remember to check the same things, you automate the inspection and surface the results as a comment. Reviewers can then focus their time on the things that require human judgment.
+Review checklists enforce team standards consistently. Instead of relying on every reviewer to remember to check the same things, you automate the inspection and surface the results as a [comment](https://github.github.com/gh-aw/reference/safe-outputs/#comment-creation-add-comment). Reviewers can then focus their time on the things that require human judgment.
 
 The pattern is a structured evaluation loop: for each item on the checklist, the agent decides whether the PR satisfies the criterion, explains its reasoning in one sentence, and marks it with ✅ (pass) or ⚠️ (needs attention).
+
+> [!TIP]
+> See the [pull request trigger](https://github.github.com/gh-aw/reference/triggers/#pull-request-triggers-pullrequest) reference for all available event types.
 
 ## The Checklist Workflow
 

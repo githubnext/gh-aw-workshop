@@ -17,7 +17,7 @@ Add a security scanning step to your workflow that counts open Dependabot vulner
 
 ### Understand why this pattern matters
 
-Running an agent every time a schedule fires is expensive, even when there is nothing to report. This side quest solves that by front-loading a fast, deterministic check: a shell step calls the GitHub API to count open Dependabot alerts, then the `if:` expression evaluates the count before the agent job starts. If no alerts are open, the job is skipped entirely — zero AI credits spent.
+Running an agent every time a schedule fires is expensive, even when there is nothing to report. This side quest solves that by front-loading a fast, [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) check: a shell step calls the GitHub API to count open Dependabot alerts, then the `if:` expression evaluates the count before the agent job starts. If no alerts are open, the job is skipped entirely — zero AI credits spent.
 
 The same skeleton applies to any tool that can write a count or boolean to `$GITHUB_OUTPUT`: code scanning alerts, secret scan findings, lint error totals, or failing test counts.
 
@@ -38,7 +38,7 @@ The skill adds the step, updates the permissions block and the `if:` condition, 
 <details>
 <summary>🖥️ Terminal path</summary>
 
-1. Add `security-events: read` to the `permissions:` block in your workflow frontmatter.
+1. Add `security-events: read` to the `permissions:` block in your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
 1. Add the following step inside the `steps:` block:
 
