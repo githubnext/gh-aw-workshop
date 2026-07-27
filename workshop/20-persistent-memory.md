@@ -39,7 +39,7 @@ Every workflow run you have built so far starts with a blank slate. That is fine
 - **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
 - **Scan incrementally** — skip pull requests you have already reviewed.
 
-You will use `cache-memory` in this step; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison.
+This step uses `cache-memory`; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison.
 
 ## Steps
 
@@ -144,7 +144,7 @@ git push
 3. Confirm the run reports only the new issue.
 
 > [!TIP]
-> Open the run log for the second run and look for a line where the agent reads its memory. You will see the stored issue numbers that it filters against — that's your workflow remembering across runs.
+> Open the run log for the second run and look for a line where the agent reads its memory. The stored issue numbers it filters against appear there — that's your workflow remembering across runs.
 
 ## ✅ Checkpoint
 
