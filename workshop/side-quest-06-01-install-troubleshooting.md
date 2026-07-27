@@ -109,6 +109,10 @@ gh extension list
 
 ---
 
+<!-- journey: all -->
+Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
+<!-- /journey -->
+
 ## ✅ Checkpoint
 
 Use this checklist to confirm the install issue is fully resolved before returning to the main path:
@@ -118,9 +122,3 @@ Use this checklist to confirm the install issue is fully resolved before returni
 - [ ] `gh aw --version` prints a version number (for example, `gh-aw 1.x.x`)
 - [ ] `gh extension list` shows `github/gh-aw` in the output
 - [ ] I am ready to return to [Install the gh-aw CLI Extension](06-install-gh-aw.md) and continue
-
----
-
-<!-- journey: all -->
-Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
-<!-- /journey -->
