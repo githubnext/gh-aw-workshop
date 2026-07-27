@@ -11,7 +11,7 @@
 
 ---
 
-GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **[GitHub Secrets](https://github.github.com/gh-aw/reference/environment-variables/#safe-outputs-with-custom-pat)** gives you a secure vault for sensitive values that workflows can read without exposing.
+GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **[GitHub Secrets](https://github.github.com/gh-aw/reference/safe-outputs/)** gives you a secure vault for sensitive values that workflows can read without exposing.
 
 ---
 
@@ -147,5 +147,4 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 <!-- journey: all -->
 **Return to:** [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) or [Give Your Agent More Tools with MCP](17-add-mcp-tools.md)
 <!-- /journey -->
-
 
