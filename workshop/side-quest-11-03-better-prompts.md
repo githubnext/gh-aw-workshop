@@ -23,7 +23,7 @@ Unlike a chat message, the task brief runs unattended. The AI can't ask clarifyi
 
 ---
 
-## Technique 1: State the Goal, Not Just the Action
+## State the Goal, Not Just the Action
 
 ❌ Vague:
 
@@ -42,7 +42,7 @@ Framing the _purpose_ helps the AI decide what to include and what to skip.
 
 ---
 
-## Technique 2: Give the Output a Shape
+## Give the Output a Shape
 
 Tell the AI exactly what format you want. Include section headings, list styles, or even a skeleton example.
 
@@ -65,7 +65,7 @@ When the format is explicit, the output is predictable and easier to skim.
 
 ---
 
-## Technique 3: Set Scope and Constraints
+## Set Scope and Constraints
 
 If you don't constrain the AI, it may go broad. Be specific:
 
@@ -78,7 +78,7 @@ Short constraints pay dividends over hundreds of automated runs.
 
 ---
 
-## Technique 4: Reference Step Outputs Explicitly
+## Reference Step Outputs Explicitly
 
 When your workflow fetches data in earlier steps (see [Step 16](16-connect-data-source.md)), point the AI at that data by name:
 
@@ -92,7 +92,7 @@ The last line — "do not invent data" — is especially important. Without it, 
 
 ---
 
-## Technique 5: Add a "Done Means" Statement
+## Add a "Done Means" Statement
 
 Close every task brief with a single sentence that defines success:
 
@@ -159,5 +159,4 @@ posted to the Actions run summary.
 <!-- journey: all -->
 Return to [Build Your Daily Repo Status Workflow](07-your-first-workflow.md) or continue to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
-
 
