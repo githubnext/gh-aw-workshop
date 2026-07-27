@@ -1,6 +1,55 @@
 (function () {
   var STORAGE_KEY = 'gh-aw-workshop-checkboxes';
 
+  // Victory banner — shown once when a page's checkboxes all become complete.
+  var victoryTimer = null;
+  var victoryEl = null;
+
+  function showVictory() {
+    if (victoryTimer) {
+      clearTimeout(victoryTimer);
+      victoryTimer = null;
+    }
+    if (victoryEl && victoryEl.parentNode) {
+      victoryEl.parentNode.removeChild(victoryEl);
+    }
+
+    var starsEl = document.createElement('span');
+    starsEl.className = 'page-victory-stars';
+    starsEl.setAttribute('aria-hidden', 'true');
+
+    var iconEl = document.createElement('span');
+    iconEl.className = 'page-victory-icon';
+    iconEl.setAttribute('aria-hidden', 'true');
+    iconEl.textContent = '\u2726';
+
+    var textEl = document.createElement('span');
+    textEl.className = 'page-victory-text';
+    textEl.textContent = 'All checkpoints complete!';
+
+    victoryEl = document.createElement('div');
+    victoryEl.className = 'page-victory';
+    victoryEl.setAttribute('role', 'status');
+    victoryEl.setAttribute('aria-live', 'polite');
+    victoryEl.appendChild(starsEl);
+    victoryEl.appendChild(iconEl);
+    victoryEl.appendChild(textEl);
+    document.body.appendChild(victoryEl);
+
+    victoryTimer = setTimeout(function () {
+      if (victoryEl) {
+        victoryEl.classList.add('page-victory--leaving');
+        setTimeout(function () {
+          if (victoryEl && victoryEl.parentNode) {
+            victoryEl.parentNode.removeChild(victoryEl);
+            victoryEl = null;
+          }
+        }, 500);
+      }
+      victoryTimer = null;
+    }, 3500);
+  }
+
   function loadAllState() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
@@ -87,11 +136,19 @@
       menuProgress.setAttribute('data-has-checkpoints', '');
     }
 
+    var prevAllDone = null; // null = initial render not yet complete
+
     function renderProgress() {
       var done = state.filter(Boolean).length;
       var total = state.length;
       var allDone = total > 0 && done === total;
       var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+      // Show victory banner only when transitioning to all-done after initial load
+      if (allDone && prevAllDone === false) {
+        showVictory();
+      }
+      prevAllDone = allDone;
 
       progressEl.classList.toggle('task-progress--done', allDone);
 
