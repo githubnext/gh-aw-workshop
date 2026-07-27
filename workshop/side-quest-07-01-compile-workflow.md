@@ -6,7 +6,7 @@
 
 ## 🎯 What You'll Do
 
-You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for deeper validation, when to keep `--watch` running, and how to fix the most common compile errors.
+You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for targeted troubleshooting, when to keep `--watch` running, and how to fix the most common compile errors.
 
 ## What `gh aw compile` does
 
@@ -33,15 +33,15 @@ gh aw compile --no-emit
 
 This is useful after each small edit because it confirms the file structure without writing or overwriting the generated lock file every time.
 
-## Use `--validate` for deeper validation
+## Troubleshoot with `--validate`
 
-When you want stricter checks on top of normal compilation, add `--validate`:
+Use plain `gh aw compile` for normal workflow edits. If you need targeted troubleshooting or an explicit schema/deprecation audit, add `--validate`:
 
 ```bash
 gh aw compile --validate
 ```
 
-This enables GitHub Actions workflow schema validation, container image validation, and action SHA validation. It is more thorough than a plain compile but also slower, so it is best reserved for a pre-commit or CI check rather than every small edit.
+This enables GitHub Actions workflow schema validation, container image validation, and action SHA validation. It is more thorough than a plain compile but also slower, so reserve it for those focused checks instead of routine compile loops.
 
 ## Use `--watch` while you iterate
 
@@ -118,7 +118,6 @@ on:
 
 ---
 
-Return to [Step 7](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md).
+**Return to:** [Step 7 — Your First Workflow](07-your-first-workflow.md) | [Step 9 — Agentic Editing](09-agentic-editing.md)
 
 <!-- /journey -->
-
