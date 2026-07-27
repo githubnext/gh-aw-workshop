@@ -135,9 +135,6 @@ Open a real workflow file and find the three core building blocks — no termina
 - [ ] You explored a real workflow and found its trigger, a job name, and a step command
 - [ ] You are ready to continue to Step 5, or skip ahead to Step 6 if you already know this material
 
-> [!TIP]
-> This step covers several new terms quickly. If anything feels unclear — runner, trigger, action — the [gh-aw glossary](https://github.github.com/gh-aw/reference/glossary/) defines each one in a sentence. Bookmark it and return whenever you hit an unfamiliar term later in the workshop.
-
 <!-- journey: all -->
 **Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 <!-- /journey -->
