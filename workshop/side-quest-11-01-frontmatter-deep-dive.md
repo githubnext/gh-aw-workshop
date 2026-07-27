@@ -14,7 +14,7 @@ An agentic workflow file opens with a YAML **[frontmatter](https://github.github
 
 ---
 
-## Section 1 — Opening fence and `description`
+## Opening fence and `description`
 
 **🔍 Predict:** What two things would you write at the top of a workflow file to identify it at a glance — before reading the explanation below?
 
@@ -43,7 +43,7 @@ description: ???
 
 ---
 
-## Section 2 — `on:` triggers
+## Triggers (`on:`)
 
 **🔍 Predict:** How would you tell GitHub Actions to run the workflow every day _and_ allow manual triggering? Write the two keys before reading on.
 
@@ -93,7 +93,7 @@ on:
 
 ---
 
-## Section 3 — `permissions:`
+## Permissions
 
 **🔍 Predict:** The agent needs to read issues and post a comment. Which permissions would you list? Write them down before reading the explanation.
 
@@ -228,4 +228,3 @@ permissions:
 
 **Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-
