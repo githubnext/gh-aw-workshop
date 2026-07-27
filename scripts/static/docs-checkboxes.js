@@ -87,9 +87,26 @@
     );
   }
 
+  function getCheckpointItems(page) {
+    var checkpointTitle = null;
+    var headings = page.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    Array.prototype.some.call(headings, function (heading) {
+      if (/^✅?\s*checkpoint$/i.test(heading.textContent.trim())) {
+        checkpointTitle = heading;
+        return true;
+      }
+      return false;
+    });
+    if (!checkpointTitle) return [];
+
+    return Array.from(page.querySelectorAll('li.task-list-item')).filter(function (li) {
+      return checkpointTitle.compareDocumentPosition(li) & Node.DOCUMENT_POSITION_FOLLOWING;
+    });
+  }
+
   function initPage(page, controllers) {
     var pageId = page.id;
-    var items = Array.from(page.querySelectorAll('li.task-list-item'));
+    var items = getCheckpointItems(page);
     if (items.length === 0) return;
 
     var allState = loadAllState();
