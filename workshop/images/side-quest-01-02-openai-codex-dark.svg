@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Conceptual screenshot of an OpenAI Codex-style coding workspace">
+      <rect width="960" height="560" fill="#0d1117"/>
+      <text x="480.0" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#f0f6fc">OpenAI Codex</text>
+      <text x="480.0" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#8b949e">A coding-focused AI model option that can inspect files, suggest edits, and produce patches</text>
+      <rect x="60" y="90" width="840" height="380" rx="18" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<rect x="60" y="90" width="840" height="46" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="92" cy="113" r="6" fill="#ff5f57"/>
+<circle cx="114" cy="113" r="6" fill="#febc2e"/>
+<circle cx="136" cy="113" r="6" fill="#28c840"/>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#14b8a6">OpenAI Codex workspace</text>
+      <rect x="84" y="156" width="280" height="290" rx="16" fill="#0f2520" stroke="#0d7b6e" stroke-width="1.5"/>
+<text x="224" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#14b8a6">Repository files</text>
+<text x="112" y="232" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#f0f6fc">.github/workflows/</text>
+<text x="130" y="260" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#14b8a6">daily-status.md</text>
+<text x="112" y="300" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#f0f6fc">workshop/</text>
+<text x="130" y="328" text-anchor="start" font-family="monospace" font-size="14" font-weight="400" fill="#f0f6fc">17-add-mcp-tools.md</text>
+<rect x="380" y="156" width="250" height="290" rx="16" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<text x="505" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#f0f6fc">Suggested patch</text>
+<rect x="404" y="218" width="212" height="160" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+<text x="420" y="248" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#3fb950">+ tools:</text>
+<text x="420" y="276" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#3fb950">+   github:</text>
+<text x="420" y="304" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#3fb950">+     mode: gh-proxy</text>
+<text x="420" y="332" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#3fb950">+     toolsets: [default]</text>
+<rect x="646" y="156" width="230" height="290" rx="16" fill="#0f2520" stroke="#0d7b6e" stroke-width="1.5"/>
+<text x="761" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#14b8a6">Why Codex fits</text>
+<rect x="672" y="224" width="168" height="30" rx="15" fill="#0d2e28"/>
+<text x="756.0" y="244" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#14b8a6">Reads code structure</text>
+<rect x="672" y="268" width="132" height="30" rx="15" fill="#0d2e28"/>
+<text x="738.0" y="288" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#14b8a6">Suggests edits</text>
+<rect x="672" y="312" width="152" height="30" rx="15" fill="#0d2e28"/>
+<text x="748.0" y="332" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#14b8a6">Generates patches</text>
+      <rect x="60" y="490" width="840" height="34" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+      <text x="480" y="512" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#8b949e">Use this visual as a quick mental model, not a literal product screenshot.</text>
+    </svg>

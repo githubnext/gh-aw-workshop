@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Conceptual screenshot of a terminal">
+      <rect width="960" height="560" fill="#0d1117"/>
+      <text x="480.0" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#f0f6fc">Terminal (command line)</text>
+      <text x="480.0" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#8b949e">The shell where you run workshop commands and read text output</text>
+      <rect x="60" y="90" width="840" height="380" rx="18" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<rect x="60" y="90" width="840" height="46" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="92" cy="113" r="6" fill="#ff5f57"/>
+<circle cx="114" cy="113" r="6" fill="#febc2e"/>
+<circle cx="136" cy="113" r="6" fill="#28c840"/>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#3fb950">Terminal</text>
+      <rect x="84" y="156" width="792" height="290" rx="16" fill="#0d1117"/>
+<text x="112" y="202" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#7ee787">student@workshop:~/my-agentic-workflows$</text>
+<text x="112" y="244" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#f0f6fc">gh --version</text>
+<text x="112" y="286" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#79c0ff">gh version 2.82.0</text>
+<text x="112" y="340" text-anchor="start" font-family="monospace" font-size="20" font-weight="400" fill="#f0f6fc">gh aw compile .github/workflows/daily-status.md --validate</text>
+<text x="112" y="382" text-anchor="start" font-family="monospace" font-size="22" font-weight="400" fill="#3fb950">✓ Workflow compiled successfully</text>
+<rect x="662" y="170" width="100" height="30" rx="15" fill="#1f6feb33"/>
+<text x="712.0" y="190" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#2f81f7">Prompt</text>
+<rect x="662" y="220" width="114" height="30" rx="15" fill="#272115"/>
+<text x="719.0" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#d4a017">Command</text>
+<rect x="662" y="270" width="92" height="30" rx="15" fill="#1a4228"/>
+<text x="708.0" y="290" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3fb950">Output</text>
+      <rect x="60" y="490" width="840" height="34" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+      <text x="480" y="512" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#8b949e">Use this visual as a quick mental model, not a literal product screenshot.</text>
+    </svg>
