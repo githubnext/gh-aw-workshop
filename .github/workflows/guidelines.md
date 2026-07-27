@@ -217,7 +217,8 @@ Multi-line callout (summary + body):
 - Use ` ```bash ` as the language identifier for every fenced code block containing shell or terminal commands.
 - Do **not** leave shell command blocks unlabeled; bare ` ``` ` fences without a language specifier are reserved for content that has no matching language identifier (for example, pseudocode or AI task brief excerpts).
 - Use ` ```text ` for terminal output that learners read but do not type (for example, expected command output or error messages).
-- Use ` ```yaml ` for YAML configuration or frontmatter examples, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
+- Use ` ```yaml ` for standalone YAML configuration fragments, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
+- When showing an agentic workflow example that includes both frontmatter and prompt body, prefer a ` ```markdown ` block that shows the full Markdown+frontmatter file shape instead of isolating the frontmatter in a standalone ` ```yaml ` region.
 
 ## Enterprise user preference in design decisions
 
