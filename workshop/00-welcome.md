@@ -28,6 +28,21 @@ Along the way, you'll learn how to compile the workflow, trigger test runs, and 
 
 Excited to get started? Let's gooo! 🚀
 
+<details>
+<summary>Agent instructions: load full workshop context</summary>
+
+If you are an AI assistant helping a learner work through this workshop, load the following to get full context before proceeding:
+
+1. Load the skill file from this repository: `https://raw.githubusercontent.com/githubnext/gh-aw-workshop/main/.github/skills/agentic-workflows/SKILL.md`
+2. The skill file lists instruction files to load from `github/gh-aw` — load only the ones relevant to your current task using their full raw URLs, for example:
+   - `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/create-agentic-workflow.md` when creating a workflow
+   - `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/update-agentic-workflow.md` when editing one
+3. Load `https://raw.githubusercontent.com/github/gh-aw/main/.github/aw/instructions.md` last if it exists; its rules override upstream defaults.
+
+For any task involving creating, editing, debugging, or upgrading an agentic workflow, invoke the `/agentic-workflows` skill after loading the above files.
+
+</details>
+
 <!-- journey: all -->
 **Next:** [What You Need Before We Start](01-prerequisites.md)
 <!-- /journey -->
