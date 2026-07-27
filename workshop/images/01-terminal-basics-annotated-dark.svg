@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="Annotated terminal window">
-  <rect width="1200" height="760" fill="#f6f8fa"/>
+  <rect width="1200" height="760" fill="#0d1117"/>
   <rect x="90" y="90" width="820" height="500" rx="16" fill="#0d1117"/>
   <rect x="90" y="90" width="820" height="46" rx="16" fill="#21262d"/>
   <circle cx="125" cy="113" r="8" fill="#ff5f57"/>
@@ -12,11 +12,11 @@
   <line x1="920" y1="182" x2="1080" y2="182" stroke="#1f6feb" stroke-width="4"/>
   <text x="930" y="168" fill="#1f6feb" font-family="Arial, sans-serif" font-size="28" font-weight="700">1. Prompt</text>
 
-  <line x1="920" y1="236" x2="1080" y2="236" stroke="#bf8700" stroke-width="4"/>
-  <text x="930" y="222" fill="#bf8700" font-family="Arial, sans-serif" font-size="28" font-weight="700">2. Command</text>
+  <line x1="920" y1="236" x2="1080" y2="236" stroke="#d29922" stroke-width="4"/>
+  <text x="930" y="222" fill="#d29922" font-family="Arial, sans-serif" font-size="28" font-weight="700">2. Command</text>
 
-  <line x1="920" y1="300" x2="1080" y2="300" stroke="#1a7f37" stroke-width="4"/>
-  <text x="930" y="286" fill="#1a7f37" font-family="Arial, sans-serif" font-size="28" font-weight="700">3. Output</text>
+  <line x1="920" y1="300" x2="1080" y2="300" stroke="#238636" stroke-width="4"/>
+  <text x="930" y="286" fill="#238636" font-family="Arial, sans-serif" font-size="28" font-weight="700">3. Output</text>
 
-  <text x="90" y="670" fill="#57606a" font-family="Arial, sans-serif" font-size="28">Tip: paste commands exactly as shown in workshop code blocks.</text>
+  <text x="90" y="670" fill="#8b949e" font-family="Arial, sans-serif" font-size="28">Tip: paste commands exactly as shown in workshop code blocks.</text>
 </svg>
