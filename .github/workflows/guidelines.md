@@ -38,6 +38,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through their AI agent with the `/agentic-workflows` skill.
 - Do **not** recommend manual workflow editing as the primary instruction path; use the AI agent + `/agentic-workflows` prompts instead.
 - If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the agent prompt so learners know which surface to use for each action.
+- Keep every prompt shown in a workshop page **simple: a single clear sentence** that a human would write in one shot. Avoid multi-part instructions, bullet-formatted prompts, or over-engineered phrasing inside the prompt block itself. If the task is complex, let the `/agentic-workflows` skill handle decomposition — the learner's input stays short and natural.
 
 ## Golden-Ticket Workshop Surfaces
 
