@@ -43,7 +43,7 @@ jobs:
 
 **Agentic workflow** — a plain-language goal replaces the shell logic:
 
-```yaml
+```markdown
 ---
 on: [issues]
 ---
@@ -93,7 +93,7 @@ Open the workflow file you created in Step 4, or find a `run:` step in any `.git
 
 Add a comment above that step with a one-sentence plain-language goal. The step body below is just a stand-in — your real step keeps its existing logic unchanged:
 
-```yaml
+```markdown
 # Goal: suggest up to three relevant labels from the repo label list
 - name: Check labels
   run: |

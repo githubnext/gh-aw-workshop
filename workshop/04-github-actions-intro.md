@@ -58,7 +58,7 @@ jobs:
 
 A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
 
-```yaml
+```markdown
 runs-on: ubuntu-latest   # also: windows-latest, macos-latest
 ```
 

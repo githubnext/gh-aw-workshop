@@ -53,7 +53,7 @@ In gh-aw, the task brief is compiled into the agent's context before any tool ca
 
 The `GITHUB_TOKEN` caps what the agent can authorize. A workflow with the configuration below cannot write commits even if a jailbreak partially succeeds.
 
-```yaml
+```markdown
 permissions:
   contents: read
   issues: read
@@ -63,7 +63,7 @@ permissions:
 
 The `safe-outputs` key declares which write operations exist. If `push-commit` is not listed, the tool call does not exist — a jailbreak has no execution path.
 
-```yaml
+```markdown
 safe-outputs:
   add-comment:
     max: 1

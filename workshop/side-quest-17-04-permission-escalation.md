@@ -52,7 +52,7 @@ For the full mental model behind these layers, read [Side Quest: Agentic Workflo
 
 If your workflow only needs to observe repository state, keep it read-only:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -84,7 +84,7 @@ If you answered "yes" to the second or third question, remove or downgrade that 
 
 When the agent needs to propose changes, keep the write surface narrow and protect sensitive files:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read

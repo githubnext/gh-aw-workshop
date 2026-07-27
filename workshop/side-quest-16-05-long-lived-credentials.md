@@ -50,7 +50,7 @@ gh-aw gives you three design features that reduce long-lived credential risk:
 
 For any operation that touches only the current repository, use `${{ secrets.GITHUB_TOKEN }}` instead of a PAT. You do not need to create it, rotate it, or revoke it. The risk window is the duration of a single run.
 
-```yaml
+```markdown
 - name: Fetch open issues
   id: issues
   run: |
@@ -64,7 +64,7 @@ For any operation that touches only the current repository, use `${{ secrets.GIT
 
 Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the [permissions](https://github.github.com/gh-aw/reference/permissions/) your task actually needs. Compare the two blocks below:
 
-```yaml
+```markdown
 # ❌ Risky: broad write scopes for a read-only task
 ---
 permissions:
@@ -74,7 +74,7 @@ permissions:
 ---
 ```
 
-```yaml
+```markdown
 # ✅ Safe: minimal scopes matching actual needs
 ---
 permissions:
@@ -92,7 +92,7 @@ With read-only permissions, a compromised or misdirected token cannot push code,
 
 If a PAT is present in the workflow environment, the main concern is that it could be sent to an attacker-controlled endpoint. A `network` allowlist stops that at the [network layer](https://github.github.com/gh-aw/reference/network/):
 
-```yaml
+```markdown
 ---
 network:
   allowed:

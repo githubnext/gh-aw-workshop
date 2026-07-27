@@ -26,7 +26,7 @@ If you have not confirmed the billing setting yet, ask your organization adminis
 
 Open your workflow `.md` file and add `copilot-requests: write` under the `permissions` block in the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/):
 
-```yaml
+```markdown
 ---
 name: my-workflow
 on:

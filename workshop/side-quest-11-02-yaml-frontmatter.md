@@ -12,7 +12,7 @@ YAML is unforgiving. Here are the five errors learners hit most often when build
 
 YAML does not allow tab characters for indentation. Every level of nesting must use **two spaces**.
 
-```yaml
+```markdown
 # ❌ Wrong — the line below "on:" is indented with a tab character,
 #    not spaces. The tab is invisible in most editors, which makes
 #    this bug hard to spot. YAML will reject it with a parse error.
@@ -32,7 +32,7 @@ Most editors insert tabs by default for `.md` files. Check your editor's setting
 
 YAML treats certain characters (`:`, `#`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `?`, `|`, `>`, `!`, `'`, `"`) as syntax when they appear unquoted in values.
 
-```yaml
+```markdown
 # ❌ Wrong — the colon in the description breaks YAML parsing
 description: Post a report: daily
 
@@ -46,7 +46,7 @@ description: "Post a report: daily"
 
 YAML nesting is strictly positional. A key one level deeper must be indented exactly two more spaces than its parent.
 
-```yaml
+```markdown
 # ❌ Wrong — "mode" is at the same level as "github"
 tools:
   github:
@@ -97,7 +97,7 @@ You are an AI assistant...
 
 This is the single most common reason a workflow compiles but produces no output. The agent can't make AI calls without this permission.
 
-```yaml
+```markdown
 # ❌ Wrong — missing copilot-requests
 permissions:
   contents: read

@@ -42,7 +42,7 @@ The skill adds the step, updates the permissions block and the `if:` condition, 
 
 1. Add the following step inside the `steps:` block:
 
-```yaml
+```markdown
 - name: Count open security alerts
   id: alerts
   env:
@@ -55,7 +55,7 @@ The skill adds the step, updates the permissions block and the `if:` condition, 
 
 1. Update the top-level `if:` to combine both conditions:
 
-```yaml
+```markdown
 if: steps.alerts.outputs.alert_count != '0' && github.ref == 'refs/heads/main'
 ```
 

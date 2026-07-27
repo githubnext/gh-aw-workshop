@@ -18,7 +18,7 @@ An agentic workflow file opens with a YAML **[frontmatter](https://github.github
 
 **🔍 Predict:** What two things would you write at the top of a workflow file to identify it at a glance — before reading the explanation below?
 
-```yaml
+```markdown
 ---
 emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.
@@ -33,7 +33,7 @@ description: Post a daily repository status summary as a GitHub issue comment.
 
 **✏️ Try it:** Update both fields in your draft, then run `gh aw compile` and confirm no errors appear.
 
-```yaml
+```markdown
 # Your turn
 ---
 emoji: ???
@@ -47,7 +47,7 @@ description: ???
 
 **🔍 Predict:** How would you tell GitHub Actions to run the workflow every day _and_ allow manual triggering? Write the two keys before reading on.
 
-```yaml
+```markdown
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -66,7 +66,7 @@ on:
 
 **✏️ Try it:** Add both trigger keys to your draft and run `gh aw compile`. Then extend the block to also fire on pushes to the main branch:
 
-```yaml
+```markdown
 on:
   schedule: daily
   push:
@@ -74,7 +74,7 @@ on:
   workflow_dispatch: {}
 ```
 
-```yaml
+```markdown
 # Your turn: configure schedule, push to main, and manual triggers
 on:
   ???: ???          # daily run
@@ -91,7 +91,7 @@ on:
 
 **🔍 Predict:** The agent needs to read issues and post a comment. Which permissions would you list? Write them down before reading the explanation.
 
-```yaml
+```markdown
 permissions:
   contents: read
   copilot-requests: write
@@ -113,7 +113,7 @@ permissions:
 
 **✏️ Try it:** Add the `permissions:` block to your draft. Then fill in the correct permission value for each scope:
 
-```yaml
+```markdown
 # Your turn: fill in the correct value for each scope (read or write)
 permissions:
   contents: ???
@@ -131,14 +131,14 @@ permissions:
 
 Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
 
-```yaml
+```markdown
 # Write the on: block below from memory
 on:
 ```
 
 <details><summary>Solution</summary>
 
-```yaml
+```markdown
 on:
   schedule: daily
   push:
@@ -151,7 +151,7 @@ Run `gh aw compile` and verify all three triggers appear.
 
 Now combine all three sections into one complete frontmatter block and compile it:
 
-```yaml
+```markdown
 # Your turn: combine all three sections
 ---
 emoji: ???
@@ -172,7 +172,7 @@ permissions:
 
 <details><summary>Solution</summary>
 
-```yaml
+```markdown
 ---
 emoji: 📊
 description: Post a daily repository status summary as a GitHub issue comment.

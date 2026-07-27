@@ -68,7 +68,7 @@ Review the agent's diff before accepting it. The source should contain one paren
 
 The workflow frontmatter should follow this shape:
 
-```yaml
+```markdown
 on:
   pull_request:
     types: [ready_for_review]

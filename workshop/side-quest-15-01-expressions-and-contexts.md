@@ -18,7 +18,7 @@ Explore the expression and context system that powers GitHub Actions conditions,
 
 Anywhere in a [GitHub Actions](https://github.github.com/gh-aw/introduction/how-they-work/) YAML file, you can embed a dynamic value using double curly braces:
 
-```yaml
+```markdown
 ${{ <expression> }}
 ```
 
@@ -39,11 +39,11 @@ A **context** is a named object that GitHub Actions populates automatically. The
 
 You can read a context value anywhere an expression is allowed:
 
-```yaml
+```markdown
 run: echo "Running on ${{ runner.os }}"
 ```
 
-```yaml
+```markdown
 if: github.event_name == 'workflow_dispatch'
 ```
 
@@ -51,7 +51,7 @@ if: github.event_name == 'workflow_dispatch'
 > <details>
 > <summary>You can see the full contents of every context by adding a debug step:</summary>
 >
-> ```yaml
+> ```markdown
 > - name: Dump contexts
 >   run: echo '${{ toJSON(github) }}'
 > ```
@@ -62,7 +62,7 @@ if: github.event_name == 'workflow_dispatch'
 
 When a step writes a value to `$GITHUB_OUTPUT`, later steps can read it via the `steps` context:
 
-```yaml
+```markdown
 steps:
   - name: Produce a value
     id: my-step
@@ -80,7 +80,7 @@ The `if:` key accepts any expression. It evaluates to a boolean — if false, th
 
 Common patterns:
 
-```yaml
+```markdown
 # Run only on push to main
 if: github.ref == 'refs/heads/main'
 
@@ -112,7 +112,7 @@ GitHub Actions provides a small set of helper functions inside expressions:
 
 Example — check whether a commit message contains a keyword:
 
-```yaml
+```markdown
 if: contains(github.event.head_commit.message, '[skip ci]')
 ```
 
@@ -123,7 +123,7 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 
 The `&&` (AND) and `||` (OR) operators let you build composite conditions that express more nuanced rules than a single comparison allows. When combining multiple shell-derived outputs, keep in mind that all values written to `$GITHUB_OUTPUT` arrive as strings, so always compare them against quoted literals.
 
-```yaml
+```markdown
 # Run only when there are commits AND the branch is main
 if: steps.recent.outputs.commit_count != '0' && github.ref == 'refs/heads/main'
 
@@ -140,7 +140,7 @@ Some conditions require information that is not available in any context object 
 
 A step that exposes the current day name:
 
-```yaml
+```markdown
 - name: Check day of week
   id: day
   run: echo "day=$(date +%A)" >> $GITHUB_OUTPUT
@@ -148,7 +148,7 @@ A step that exposes the current day name:
 
 Once this step runs, `steps.day.outputs.day` holds a value like `Monday` or `Saturday`. Combine it with a commit-count check to build a condition that skips the agent job on both quiet days and weekends:
 
-```yaml
+```markdown
 if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
 ```
 

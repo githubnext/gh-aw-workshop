@@ -89,7 +89,7 @@ The `max-daily-ai-credits` field caps how many [AIC](https://github.github.com/g
 
 Add that value to your workflow frontmatter:
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:

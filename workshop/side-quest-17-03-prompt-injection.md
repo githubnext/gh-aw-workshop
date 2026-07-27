@@ -45,7 +45,7 @@ The agent's core goal comes from your task brief. Injected text in data surfaces
 
 Suppose an injection convinces the agent to attempt an out-of-scope action. The declared [permissions](https://github.github.com/gh-aw/reference/permissions/) determine what the `GITHUB_TOKEN` can actually do. A workflow with:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -72,7 +72,7 @@ gh-aw's [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/
 
 Example frontmatter that restricts the agent to read-only operations plus issue creation:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read

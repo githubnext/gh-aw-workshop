@@ -43,7 +43,7 @@ gh aw compile
 
 Then open the generated lock file and look for the `cron:` line under `on.schedule`:
 
-```yaml
+```markdown
 on:
   schedule:
     - cron: "50 11 * * 1-5"
@@ -60,7 +60,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 
 > In a classic Actions workflow you would write cron directly:
 >
-> ```yaml
+> ```markdown
 > # classic-actions.yml (NOT an agentic workflow)
 > on:
 >   schedule:
@@ -69,7 +69,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 >
 > In an agentic workflow `.md`, always use fuzzy syntax instead:
 >
-> ```yaml
+> ```markdown
 > on:
 >   schedule: daily on weekdays
 >   workflow_dispatch: {}

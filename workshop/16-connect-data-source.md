@@ -57,7 +57,7 @@ Here is what the first step looks like — the skill will add this for you:
 
 First, fetch the recent commit log:
 
-```yaml
+```markdown
 - name: Fetch recent commits
   id: recent          # step ID — referenced as steps.recent.outputs.…
   run: |
@@ -75,7 +75,7 @@ First, fetch the recent commit log:
 
 Next, add a step to fetch open issues:
 
-```yaml
+```markdown
 - name: Fetch open issues
   id: issues          # step ID — referenced as steps.issues.outputs.…
   run: |

@@ -46,7 +46,7 @@ Commit both workflow files.
 
 If you prefer to edit directly, add this to the frontmatter in `.github/workflows/daily-status.md`:
 
-```yaml
+```markdown
 experiments:
   output_style: [concise, detailed]
 ```
@@ -95,7 +95,7 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 1. Update the frontmatter variants to include a third option:
 
-   ```yaml
+   ```markdown
    experiments:
      output_style: [concise, detailed, executive]
    ```

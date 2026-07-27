@@ -87,7 +87,7 @@ Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fiel
 - **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume, enforced by the AWF firewall. The default when omitted is 1000 AIC. Set to a negative value (e.g. `-1`) to disable enforcement and token steering.
 - **[`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow)** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. A system default threshold applies when this field is omitted; set to `-1` to disable the guardrail, or provide an explicit integer value to override the default.
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:

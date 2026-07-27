@@ -79,7 +79,7 @@ This prevents the most common failure: the agent silently completes without writ
 
 Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` to your workflow frontmatter to cap the run:
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:

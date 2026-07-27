@@ -75,7 +75,7 @@ Open your repository in a **new tab** so you keep the Anthropic console tab open
 
 Open your workflow `.md` file and update the frontmatter:
 
-```yaml
+```markdown
 ---
 name: My Workflow
 on:

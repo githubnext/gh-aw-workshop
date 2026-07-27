@@ -30,7 +30,7 @@ If you want the workflow to react to a specific repository action, use an event 
 
 Use this when the workflow should react to pull request activity.
 
-```yaml
+```markdown
 on:
   pull_request: {}
   workflow_dispatch: {}
@@ -42,7 +42,7 @@ This is a good fit when you want feedback tied to the current PR, like the PR Co
 
 Use this when the workflow should react as soon as commits land on a branch.
 
-```yaml
+```markdown
 on:
   push:
     branches: [main]
@@ -55,7 +55,7 @@ This is a good fit when you want to check or summarize changes after code is pus
 
 Use this when the workflow should react to issue activity.
 
-```yaml
+```markdown
 on:
   issues:
     types: [opened, reopened]
@@ -68,7 +68,7 @@ This is a good fit when you want an assistant to triage, label, or reply when so
 
 Use this when the workflow should run on a clock, whether or not anyone touched the repository.
 
-```yaml
+```markdown
 on:
   schedule: daily
   workflow_dispatch: {}

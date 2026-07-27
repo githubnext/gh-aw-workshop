@@ -68,7 +68,7 @@ Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memor
 
 Here is the frontmatter structure the skill will use:
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:

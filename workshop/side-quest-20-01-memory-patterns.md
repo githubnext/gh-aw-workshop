@@ -56,7 +56,7 @@ For most deduplication use cases, `cache-memory` is the right starting point. Sw
 
 ### `cache-memory` frontmatter
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:
@@ -93,7 +93,7 @@ See the task brief example in [Make Your Workflow Remember Across Runs](20-persi
 
 ### `repo-memory` frontmatter
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:

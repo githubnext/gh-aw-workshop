@@ -52,7 +52,7 @@ gh-aw gives you three layers to prevent repository poisoning.
 
 The simplest defence is removing write capability before the agent runs:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -72,7 +72,7 @@ With `contents: read`, the [GitHub MCP server](https://github.github.com/gh-aw/g
 
 When the workflow genuinely needs to propose changes, `safe-outputs: create-pull-request` keeps every write behind a human gate:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -112,7 +112,7 @@ Even if an injected prompt convinces the agent to propose a change to a workflow
 
 Combine file restrictions with [`network.allowed-domains`](https://github.github.com/gh-aw/reference/network/#configuration) to close the exfiltration channel:
 
-```yaml
+```markdown
 ---
 network:
   allowed-domains:
@@ -128,7 +128,7 @@ Even if an attacker crafts a payload that reaches a file write, their exfiltrati
 
 Read this workflow frontmatter and identify every configuration that makes repository poisoning possible:
 
-```yaml
+```markdown
 ---
 name: Issue Responder
 on:
