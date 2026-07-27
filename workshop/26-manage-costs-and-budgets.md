@@ -50,7 +50,7 @@ gh aw logs daily-status --count 5
 
 Look at the **AIC** column. Average the last five runs, then multiply:
 
-```
+```text
 monthly cost = average AIC per run × runs per day × 30
 ```
 
@@ -67,7 +67,7 @@ gh aw forecast daily-status
 Use the **P90** figure as a conservative upper bound when requesting a spending limit from your administrator or setting `max-daily-ai-credits`.
 
 > [!TIP]
-> For the full walkthrough — weekly projections, limiting history with `--days`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 — see [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md).
+> Try [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) for weekly projections, limited-history forecasting with `--days`, multi-workflow forecasting, and deriving a `max-daily-ai-credits` value from P90.
 
 ### Reduce token consumption and set guardrails
 
