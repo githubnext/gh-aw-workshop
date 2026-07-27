@@ -58,8 +58,10 @@ jobs:
 
 A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
 
-```yaml
+```markdown
+---
 runs-on: ubuntu-latest   # also: windows-latest, macos-latest
+---
 ```
 
 You can also bring a **self-hosted runner** for custom hardware or private networks. Agentic workflows use the same hosted runners.

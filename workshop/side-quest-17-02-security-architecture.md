@@ -76,7 +76,7 @@ You declare **[permissions](https://github.github.com/gh-aw/reference/permission
 
 Here is what a well-scoped workflow frontmatter looks like in practice:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read

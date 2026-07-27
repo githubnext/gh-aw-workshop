@@ -40,7 +40,7 @@ To read it back in a later step, reference `${{ steps.<id>.outputs.status }}` â€
 
 A step `id` is how you refer to its outputs elsewhere in the workflow. Add `id:` at the same level as `name:` and `run:`:
 
-```yaml
+```markdown
 - name: Check health
   id: health_check
   run: |
@@ -81,7 +81,8 @@ Once your data is in `$GITHUB_OUTPUT`, you reference it directly inside the work
 
 **[Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** (data-preparation step):
 
-```yaml
+```markdown
+---
 steps:
   - name: Fetch recent commits
     id: recent
@@ -89,6 +90,7 @@ steps:
       echo "commit_log<<EOF" >> $GITHUB_OUTPUT
       git log --oneline -10 >> $GITHUB_OUTPUT
       echo "EOF" >> $GITHUB_OUTPUT
+---
 ```
 
 **Workflow body (the prompt)**:

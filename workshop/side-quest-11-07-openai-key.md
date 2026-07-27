@@ -64,7 +64,7 @@ gh secret list
 
 Add `engine: codex` and the `network.allowed` entry to your workflow's frontmatter. You can omit `copilot-requests: write` — it is specific to the Copilot engine.
 
-```yaml
+```markdown
 ---
 name: My Workflow
 on:
@@ -81,10 +81,12 @@ network:
 
 **✏️ Verify:** Confirm your frontmatter includes `engine: codex` and the secret reference:
 
-```yaml
+```markdown
+---
 engine: codex
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+---
 ```
 
 ---
@@ -93,10 +95,12 @@ env:
 
 To pin a model version, use the extended engine syntax:
 
-```yaml
+```markdown
+---
 engine:
   id: codex
   model: gpt-4o-mini
+---
 ```
 
 Leave `model` out to use the engine's current default, which the `gh-aw` team keeps up to date.

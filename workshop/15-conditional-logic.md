@@ -47,13 +47,15 @@ The skill adds this step to the frontmatter `steps:` block and recompiles the lo
 
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add the following block inside the YAML frontmatter under `steps:`:
 
-```yaml
+```markdown
+---
 steps:
   - name: Count recent commits
     id: recent
     run: |
       COUNT=$(git log --oneline --since="24 hours ago" | wc -l | tr -d ' ')
       echo "commit_count=$COUNT" >> $GITHUB_OUTPUT
+---
 ```
 
 After adding it, run `gh aw compile` to regenerate the lock file.
@@ -62,13 +64,15 @@ After adding it, run `gh aw compile` to regenerate the lock file.
 
 Here is the step structure the skill will add:
 
-```yaml
+```markdown
+---
 steps:
   - name: Count recent commits
     id: recent
     run: |
       COUNT=$(git log --oneline --since="24 hours ago" | wc -l | tr -d ' ')
       echo "commit_count=$COUNT" >> $GITHUB_OUTPUT
+---
 ```
 
 This shell command uses `git log` with a `--since` time filter to list only commits from the last 24 hours, pipes the output through `wc -l` to count the lines, strips surrounding whitespace with `tr -d ' '`, and writes the final integer to `$GITHUB_OUTPUT` — a special GitHub Actions file that shares values between steps using `key=value` notation. The `id: recent` field is essential: it creates a named slot in the `steps` context so the value can be referenced as `steps.recent.outputs.commit_count` in later steps or in the top-level `if:` condition.
@@ -85,8 +89,10 @@ This shell command uses `git log` with a `--since` time filter to list only comm
 
 In the same frontmatter block, add a top-level `if:` key at the same indentation level as `on:` and `steps:`:
 
-```yaml
+```markdown
+---
 if: steps.recent.outputs.commit_count != '0'
+---
 ```
 
 This condition is embedded into the generated lock file during [compilation](https://github.github.com/gh-aw/reference/compilation-process/); at runtime, GitHub Actions evaluates it and skips the agent job entirely whenever `commit_count` evaluates to `'0'`. You can also reference the count inside your prompt text to give the model concrete context — for example: `"Summarise the last ${{ steps.recent.outputs.commit_count }} commits"` anchors the analysis to the actual number of changes rather than leaving the model to guess the scope.

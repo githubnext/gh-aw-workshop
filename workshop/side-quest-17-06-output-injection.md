@@ -35,11 +35,13 @@ gh-aw keeps the agent read-only and limits which follow-up writes [`safe-outputs
 - **Explicit output surfaces via `safe-outputs`**
   The `safe-outputs` block declares every write action the workflow may apply. If a surface is not declared, the safe-output job cannot post to it.
 
-```yaml
+```markdown
+---
 safe-outputs:
   add-comment:
     max: 1
     required-labels: [daily-status]
+---
 ```
 
   This allows one comment, and only on an issue or pull request that already carries the `daily-status` label.
@@ -50,11 +52,13 @@ safe-outputs:
 - **Minimal read-only `permissions:`**
   Keep `permissions:` read-only. Grant only the read scopes the workflow needs, and leave write approval in `safe-outputs`.
 
-```yaml
+```markdown
+---
 permissions:
   contents: read
   issues: read         # only add this if the workflow reads issues
   pull-requests: read  # only add this if the workflow reads PRs
+---
 ```
 
 - **Prefer no write surface when you do not need one**

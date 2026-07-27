@@ -76,7 +76,7 @@ Add a placeholder secret named `WORKSHOP_TOKEN` with any throwaway value, then p
 1. Create `WORKSHOP_TOKEN` in **Settings** → **Secrets and variables** → **Actions**.
 2. Add this temporary step to a workflow you can run manually:
 
-```yaml
+```markdown
 - name: Confirm secret masking
   run: echo "token=${{ secrets.WORKSHOP_TOKEN }}"
 ```
@@ -91,7 +91,7 @@ Add a placeholder secret named `WORKSHOP_TOKEN` with any throwaway value, then p
 
 Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
 
-```yaml
+```markdown
 - name: Notify Slack
   run: |
     curl -s -X POST "${{ secrets.SLACK_WEBHOOK_URL }}" \
@@ -106,7 +106,7 @@ Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
 
 Most GitHub API calls in this workshop work with the automatically provided `GITHUB_TOKEN`:
 
-```yaml
+```markdown
 - name: List open pull requests
   env:
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -122,7 +122,7 @@ The `gh` CLI reads `GH_TOKEN` automatically when it is set as an environment var
 
 gh-aw workflows declare required [permissions](https://github.github.com/gh-aw/reference/permissions/) in [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/). Only request what you need:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read

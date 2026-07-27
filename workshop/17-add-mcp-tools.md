@@ -56,7 +56,7 @@ The skill adds the `tools:` block and updates the brief. Review the diff before 
 
 Here is the `tools:` block the skill will add:
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:

@@ -14,11 +14,13 @@ You have completed [Part A](side-quest-11-01-frontmatter-deep-dive.md) and your 
 
 **🔍 Predict:** To let the agent call GitHub APIs securely and stay within the permissions you declared, what configuration would you add? Write your answer before reading on.
 
-```yaml
+```markdown
+---
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+---
 ```
 
 **What this section does:** Declares which external tool servers the agent may call during its run.
@@ -38,10 +40,12 @@ tools:
 
 **🔍 Predict:** You want the agent to post exactly one comment per run and nothing else. What would you write under `safe-outputs`?
 
-```yaml
+```markdown
+---
 safe-outputs:
   add-comment:
     max: 1
+---
 ```
 
 **What this section does:** Lists every write action the agent is allowed to perform. Any write operation not listed here is blocked at runtime, regardless of what the agent body requests.
@@ -63,7 +67,7 @@ safe-outputs:
 
 **🔍 Predict:** How does the file parser know where the YAML configuration ends and the agent's instructions begin?
 
-```yaml
+```markdown
 ---
 ```
 

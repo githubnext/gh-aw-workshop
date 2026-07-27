@@ -46,9 +46,11 @@ Commit both workflow files.
 
 If you prefer to edit directly, add this to the frontmatter in `.github/workflows/daily-status.md`:
 
-```yaml
+```markdown
+---
 experiments:
   output_style: [concise, detailed]
+---
 ```
 
 Below the frontmatter, add conditional blocks that swap the prompt instructions based on the active variant:
@@ -95,9 +97,11 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 1. Update the frontmatter variants to include a third option:
 
-```yaml
+```markdown
+---
 experiments:
   output_style: [concise, detailed, executive]
+---
 ```
 
 1. Update the task brief so each variant has explicit instructions:

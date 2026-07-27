@@ -68,7 +68,8 @@ Review the agent's diff before accepting it. The source should contain one paren
 
 The workflow frontmatter should follow this shape:
 
-```yaml
+```markdown
+---
 on:
   pull_request:
     types: [ready_for_review]
@@ -88,6 +89,7 @@ safe-outputs:
   submit-pull-request-review:
     max: 1
     allowed-events: [COMMENT, REQUEST_CHANGES]
+---
 ```
 
 Notice that the agent job has no repository or pull request write permission. `copilot-requests: write` only authenticates Copilot. The `submit-pull-request-review` safe output performs the controlled repository write after the agent finishes. `APPROVE` is intentionally absent because the default GitHub Actions token cannot approve pull requests.

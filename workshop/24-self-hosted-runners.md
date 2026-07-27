@@ -28,8 +28,10 @@ agentic workflows and classic jobs.
 
 Your current workflow likely targets a GitHub-hosted runner. Look for the `runs-on:` field in your frontmatter:
 
-```yaml
+```markdown
+---
 runs-on: ubuntu-latest
+---
 ```
 
 The only change needed is the value of `runs-on:`.
@@ -55,14 +57,18 @@ Use a list if your runner has multiple required labels:
 
 Single label:
 
-```yaml
+```markdown
+---
 runs-on: self-hosted
+---
 ```
 
 Multiple labels (all must match):
 
-```yaml
+```markdown
+---
 runs-on: [self-hosted, linux, x64]
+---
 ```
 
 The labels must exactly match what your admin registered on the runner.

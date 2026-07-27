@@ -97,10 +97,12 @@ Use this path when the organization that owns the repository has centralized Cop
 1. Ask your organization administrator to confirm centralized billing is enabled.
 2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
 
-```yaml
+```markdown
+---
 permissions:
   contents: read
   copilot-requests: write
+---
 ```
 
    This line is already present in the workflow template. Do not remove it.
