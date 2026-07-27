@@ -299,7 +299,7 @@ const workshopMenu = menuGroups.map(([adventure, label]) => {
     .map(f => {
       const sectionId = sectionIdsByFile.get(f);
       const title = marked.parseInline(pageTitleByFile.get(f));
-      return `<li><a href="#${sectionId}" data-workshop-page-link>${title}</a></li>`;
+      return `<li><a href="#${sectionId}" data-workshop-page-link>${title}</a><div class="menu-item-progress" data-menu-progress="${sectionId}"><div class="menu-item-progress-fill"></div></div></li>`;
     })
     .join('\n');
 
@@ -1195,6 +1195,29 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
   content: '\\a0✓';
   color: var(--fgColor-success, #1a7f37);
   font-weight: 700;
+}
+
+/* Micro progress bar under each menu item */
+.menu-item-progress {
+  display: none;
+  height: 3px;
+  margin: 0 8px 4px;
+  background-color: var(--borderColor-muted, #d0d7de);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.menu-item-progress[data-has-checkpoints] {
+  display: block;
+}
+.menu-item-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--fgColor-success, #1a7f37);
+  border-radius: 2px;
+  transition: width 0.2s ease;
+}
+.workshop-menu-group a[data-page-complete] + .menu-item-progress .menu-item-progress-fill {
+  opacity: 0.6;
 }
 
 /* Markdown text-editor style blocks */
