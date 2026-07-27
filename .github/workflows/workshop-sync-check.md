@@ -270,14 +270,14 @@ Each daily run reviews **three workshop files** (round-robin) and checks for out
 3. Load the cache-memory file `/tmp/gh-aw/cache-memory/sync-state.json` if it exists.
    It has this shape (create it with defaults when absent):
 
-   ```json
-   {
-     "round_robin_index": 0,
-     "files_reviewed": [],
-     "last_gh_aw_release": "",
-     "last_gh_aw_release_date": ""
-   }
-   ```
+```json
+{
+  "round_robin_index": 0,
+  "files_reviewed": [],
+  "last_gh_aw_release": "",
+  "last_gh_aw_release_date": ""
+}
+```
 
 ---
 
@@ -285,18 +285,18 @@ Each daily run reviews **three workshop files** (round-robin) and checks for out
 
 1. Fetch the latest gh-aw release:
 
-   ```
-   gh api repos/github/gh-aw/releases/latest
-   ```
+```
+gh api repos/github/gh-aw/releases/latest
+```
 
-2. Compare `tag_name` against `last_gh_aw_release` in the cached state.
+1. Compare `tag_name` against `last_gh_aw_release` in the cached state.
 
-3. If a **new release** was published since the last check:
+2. If a **new release** was published since the last check:
    - Extract the release body (changelog / release notes).
    - Identify any breaking changes, renamed commands, new syntax, or deprecations that could affect workshop content.
    - Flag these for consideration during the content review below.
 
-4. Record the new release tag and `published_at` date in the updated cache state.
+3. Record the new release tag and `published_at` date in the updated cache state.
 
 ---
 
@@ -305,12 +305,12 @@ Each daily run reviews **three workshop files** (round-robin) and checks for out
 1. Using `workshop_files` from the repo state and `round_robin_index` from the cache,
    select up to 3 files starting at the current index (pseudocode for illustration):
 
-   ```
-   n = min(3, total number of workshop files)
-   target_files = [workshop_files[(round_robin_index + i) % total] for each i in 0..n-1]
-   ```
+```
+n = min(3, total number of workshop files)
+target_files = [workshop_files[(round_robin_index + i) % total] for each i in 0..n-1]
+```
 
-2. Record `n` for use in Phase 8.
+1. Record `n` for use in Phase 8.
 
 ---
 

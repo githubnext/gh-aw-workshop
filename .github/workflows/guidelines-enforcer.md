@@ -191,21 +191,21 @@ For each file that has at least one confirmed violation, create one issue:
 
 - **Title**: `<filename>: <short description of the most critical violation>` (the `[guidelines]` prefix is added automatically)
 - **Body**:
-  ```
-  ## File reviewed
-  `<file path>`
+```
+## File reviewed
+`<file path>`
 
-  ## Violations
+## Violations
 
-  ### <Rule name>
-  **Offending text:**
-  > <exact quote>
+### <Rule name>
+**Offending text:**
+> <exact quote>
 
-  **Suggested fix:**
-  <actionable one- or two-sentence fix>
+**Suggested fix:**
+<actionable one- or two-sentence fix>
 
-  [Repeat for each additional violation in this file]
-  ```
+[Repeat for each additional violation in this file]
+```
 
 If no violations are found across all reviewed files, call `noop` with:
 

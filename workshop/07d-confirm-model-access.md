@@ -20,18 +20,18 @@ Catching an access problem here saves debugging time in the billing steps and in
 
 1. In the terminal that is already open in your Codespace, run:
 
-   ```bash
-   gh copilot
-   ```
+```bash
+gh copilot
+```
 
-2. Send the following prompt in Copilot CLI:
+1. Send the following prompt in Copilot CLI:
 
-   ```prompt
-   /agentic-workflows what trigger does a scheduled workflow use?
-   ```
+```prompt
+/agentic-workflows what trigger does a scheduled workflow use?
+```
 
-3. Confirm you receive a reply. Any response means the model and skill are accessible.
-4. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+1. Confirm you receive a reply. Any response means the model and skill are accessible.
+2. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
 
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
@@ -97,21 +97,21 @@ Use this path when the organization that owns the repository has centralized Cop
 1. Ask your organization administrator to confirm centralized billing is enabled.
 2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
 
-   ```yaml
-   permissions:
-     contents: read
-     copilot-requests: write
-   ```
+```yaml
+permissions:
+  contents: read
+  copilot-requests: write
+```
 
    This line is already present in the workflow template. Do not remove it.
 3. No repository secret is needed for this path.
 4. Recompile and commit the lock file from your terminal so it reflects the confirmed configuration:
 
-   ```bash
-   gh aw compile
-   git add .
-   git commit -m "chore: confirm lock file is current" && git push
-   ```
+```bash
+gh aw compile
+git add .
+git commit -m "chore: confirm lock file is current" && git push
+```
 
 The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
 

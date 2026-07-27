@@ -124,13 +124,13 @@ After you reduce cost, keep it reduced:
 3. Make exactly one change to your workflow.
 4. Compile your workflow:
 
-   ```bash
-   gh aw compile
-   ```
+```bash
+gh aw compile
+```
 
-5. Run the workflow at least two more times.
-6. Compare the new average AIC with your baseline.
-7. Keep the change only if quality still meets your bar.
+1. Run the workflow at least two more times.
+2. Compare the new average AIC with your baseline.
+3. Keep the change only if quality still meets your bar.
 
 Use this quick notes table:
 
