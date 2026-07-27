@@ -92,6 +92,14 @@ Write one sentence for the task brief — this becomes your brief in Step 7. Foc
 
 ## The two files
 
+The diagram below shows how the two files relate: you write the `.md` source, then `gh aw compile` generates the `.lock.yml` that GitHub Actions runs.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/05b-two-file-structure-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/05b-two-file-structure-light.svg">
+   <img alt="Diagram showing how an agentic workflow .md source file is compiled by gh aw compile into a .lock.yml file that GitHub Actions runs" src="images/05b-two-file-structure-light.svg">
+</picture>
+
 An agentic workflow has two files. Here is the `.md` source you write:
 
 ```markdown
