@@ -411,6 +411,13 @@ Every workshop step ends with a `## ✅ Checkpoint` section that contains a mark
 - Prefer outcome-oriented items ("Your workflow runs without errors") over procedural ones ("Click the green button") so each box carries meaningful weight.
 - Do not duplicate items that already appear in an earlier step's checkpoint.
 
+### Checkbox interactivity by position
+
+The rendered workshop site treats task-list checkboxes differently depending on where they appear relative to the `## ✅ Checkpoint` heading:
+
+- **Before the Checkpoint heading** — rendered as static, non-interactive indicators. These are used for in-exercise prompts such as "I've made my decision". They carry no toggle state and do not contribute to the progress bar.
+- **After the Checkpoint heading** — rendered as toggleable checkboxes. Learners can click them to mark progress; state is persisted in `localStorage` and shown in the per-page progress bar.
+
 ## Dispatcher and choice-hub pages: `<!-- learning:false -->`
 
 Some workshop pages are not substantive learning steps — they are **dispatcher pages** (also called choice hubs) that exist purely to route learners to the right branch or to present a brief navigation decision. Examples: "Create and Verify Your Practice Repository" (step 3, which forks to 3a/3b) and "Choose Your Scenario" (step 10, which routes to scenarios A–E).

@@ -738,8 +738,16 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   background-color: #3b1b6f;
 }
 
-/* Interactive task-list checkboxes */
-.markdown-body li.task-list-item {
+/* Static (non-interactive) task-list items — before the Checkpoint heading */
+.markdown-body li.task-list-item.is-static {
+  cursor: default;
+}
+.markdown-body li.task-list-item.is-static > .task-list-item-marker {
+  opacity: 0.5;
+}
+
+/* Interactive task-list checkboxes — after the Checkpoint heading */
+.markdown-body li.task-list-item:not(.is-static) {
   cursor: pointer;
   user-select: none;
   border: 1px solid transparent;
@@ -748,54 +756,54 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   padding: 6px 10px;
   transition: background-color 0.12s ease, border-color 0.12s ease;
 }
-.markdown-body li.task-list-item.is-pending {
+.markdown-body li.task-list-item:not(.is-static).is-pending {
   background-color: var(--bgColor-attention-muted, #fff8c5);
   border-color: var(--borderColor-attention-muted, #d4a72c);
 }
-.markdown-body li.task-list-item.is-complete {
+.markdown-body li.task-list-item:not(.is-static).is-complete {
   background-color: var(--bgColor-success-muted, #dafbe1);
   border-color: var(--borderColor-success-muted, #1a7f37);
 }
-.markdown-body li.task-list-item:hover {
+.markdown-body li.task-list-item:not(.is-static):hover {
   background-color: var(--bgColor-muted, #f6f8fa);
 }
-.markdown-body li.task-list-item.is-pending:hover {
+.markdown-body li.task-list-item:not(.is-static).is-pending:hover {
   background-color: var(--bgColor-attention-emphasis, #fbe090);
 }
-.markdown-body li.task-list-item:focus-visible {
+.markdown-body li.task-list-item:not(.is-static):focus-visible {
   outline: 2px solid var(--fgColor-accent, #0969da);
   outline-offset: 2px;
   border-radius: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
-  html[data-color-mode="auto"] .markdown-body li.task-list-item.is-pending {
+  html[data-color-mode="auto"] .markdown-body li.task-list-item:not(.is-static).is-pending {
     background-color: var(--bgColor-attention-muted, #271f13);
     border-color: var(--borderColor-attention-muted, #9e6a03);
   }
-  html[data-color-mode="auto"] .markdown-body li.task-list-item.is-complete {
+  html[data-color-mode="auto"] .markdown-body li.task-list-item:not(.is-static).is-complete {
     background-color: var(--bgColor-success-muted, #0f2419);
     border-color: var(--borderColor-success-muted, #3fb950);
   }
-  html[data-color-mode="auto"] .markdown-body li.task-list-item:hover {
+  html[data-color-mode="auto"] .markdown-body li.task-list-item:not(.is-static):hover {
     background-color: var(--bgColor-muted, #161b22);
   }
-  html[data-color-mode="auto"] .markdown-body li.task-list-item.is-pending:hover {
+  html[data-color-mode="auto"] .markdown-body li.task-list-item:not(.is-static).is-pending:hover {
     background-color: var(--bgColor-attention-muted, #3c2d11);
   }
 }
-html[data-color-mode="dark"] .markdown-body li.task-list-item.is-pending {
+html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is-pending {
   background-color: var(--bgColor-attention-muted, #271f13);
   border-color: var(--borderColor-attention-muted, #9e6a03);
 }
-html[data-color-mode="dark"] .markdown-body li.task-list-item.is-complete {
+html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is-complete {
   background-color: var(--bgColor-success-muted, #0f2419);
   border-color: var(--borderColor-success-muted, #3fb950);
 }
-html[data-color-mode="dark"] .markdown-body li.task-list-item:hover {
+html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static):hover {
   background-color: var(--bgColor-muted, #161b22);
 }
-html[data-color-mode="dark"] .markdown-body li.task-list-item.is-pending:hover {
+html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is-pending:hover {
   background-color: var(--bgColor-attention-muted, #3c2d11);
 }
 

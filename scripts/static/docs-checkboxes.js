@@ -89,16 +89,21 @@
     );
   }
 
-  function getCheckpointItems(page) {
-    var checkpointTitle = null;
+  function findCheckpointHeading(page) {
     var headings = page.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    var found = null;
     Array.prototype.some.call(headings, function (heading) {
       if (/^✅?\s*checkpoint$/i.test(heading.textContent.trim())) {
-        checkpointTitle = heading;
+        found = heading;
         return true;
       }
       return false;
     });
+    return found;
+  }
+
+  function getCheckpointItems(page) {
+    var checkpointTitle = findCheckpointHeading(page);
     if (!checkpointTitle) return [];
 
     return Array.from(page.querySelectorAll('li.task-list-item')).filter(function (li) {
@@ -108,7 +113,21 @@
 
   function initPage(page, controllers) {
     var pageId = page.id;
-    var items = getCheckpointItems(page);
+    var checkpointHeading = findCheckpointHeading(page);
+
+    // Mark task-list items before the checkpoint heading as static (non-interactive).
+    Array.from(page.querySelectorAll('li.task-list-item')).forEach(function (li) {
+      if (!checkpointHeading ||
+          !(checkpointHeading.compareDocumentPosition(li) & Node.DOCUMENT_POSITION_FOLLOWING)) {
+        li.classList.add('is-static');
+      }
+    });
+
+    var items = checkpointHeading
+      ? Array.from(page.querySelectorAll('li.task-list-item')).filter(function (li) {
+          return checkpointHeading.compareDocumentPosition(li) & Node.DOCUMENT_POSITION_FOLLOWING;
+        })
+      : [];
     if (items.length === 0) return;
 
     var allState = loadAllState();
