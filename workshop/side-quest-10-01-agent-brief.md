@@ -37,11 +37,7 @@ Replace the bracketed example below with your own one-sentence goal.
 Every day, I want the agent to [summarize open pull requests and post a health report as an issue comment].
 ```
 
-Quick check:
-
-- [ ] My goal is one sentence.
-- [ ] My goal describes one main action.
-- [ ] My goal says where the result should appear.
+Before moving on, confirm your goal is one sentence that describes one action and says where the result will appear.
 
 <details>
 <summary>Why this works</summary>
@@ -64,11 +60,7 @@ List the data the agent must collect before it can write the report. Mark uncert
 
 Add a `?` only on the lines you are not sure about yet.
 
-Quick check:
-
-- [ ] I listed at least three inputs.
-- [ ] Each input connects to a line in my report.
-- [ ] I marked any uncertain data with a `?`.
+Before moving on, confirm you have at least three inputs, each linked to a field in your report, and that you've marked uncertain items with `?`.
 
 <details>
 <summary>Why this works</summary>
@@ -91,11 +83,7 @@ CI: {status}
 Health check: {one sentence}
 ```
 
-Quick check:
-
-- [ ] My output has a title or heading.
-- [ ] Every placeholder maps to one input.
-- [ ] I could scan this report in a few seconds.
+Before moving on, confirm your skeleton has a title or heading, every placeholder maps to one of your inputs, and you can scan the whole report in a few seconds.
 
 <details>
 <summary>Why this works</summary>
@@ -116,14 +104,10 @@ Add short rules that limit write operations, such as posting comments, and tell 
 - If [data is missing or a prerequisite is absent], then [fallback].
 ```
 
-> [!IMPORTANT]
+> [!TIP]
 > Skipping guardrails can lead to duplicate comments or guessed data.
 
-Quick check:
-
-- [ ] I included something the agent must not do.
-- [ ] I set a maximum number of writes.
-- [ ] I told the agent what to do when data is missing.
+Before moving on, confirm your guardrails include something the agent must not do, a maximum number of writes, and a fallback for missing data.
 
 <details>
 <summary>Why this works</summary>
@@ -138,13 +122,7 @@ Guardrails prevent duplicate posts, made-up numbers, and unclear fallback behavi
 
 Read the draft once. Replace vague words like "recent" with "within the last 7 days" or "important" with "labeled priority-1".
 
-Quick check:
-
-- [ ] My goal says exactly what happens every day.
-- [ ] My inputs cover every field in the output.
-- [ ] My output format matches what I want to read.
-- [ ] My guardrails limit writes and guessing.
-- [ ] I replaced at least one vague phrase.
+Before moving on, confirm that your goal, inputs, output format, and guardrails all use concrete, observable language and that you've replaced at least one vague phrase.
 
 <details>
 <summary>Why this works</summary>
