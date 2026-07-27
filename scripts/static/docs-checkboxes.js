@@ -80,6 +80,13 @@
       pageTitle.insertAdjacentElement('afterend', progressEl);
     }
 
+    // Menu micro-progress bar for this page
+    var menuProgress = document.querySelector('[data-menu-progress="' + pageId + '"]');
+    var menuFill = menuProgress ? menuProgress.querySelector('.menu-item-progress-fill') : null;
+    if (menuProgress) {
+      menuProgress.setAttribute('data-has-checkpoints', '');
+    }
+
     function renderProgress() {
       var done = state.filter(Boolean).length;
       var total = state.length;
@@ -100,6 +107,11 @@
       var menuLink = document.querySelector('a[href="#' + pageId + '"][data-workshop-page-link]');
       if (menuLink) {
         menuLink.toggleAttribute('data-page-complete', allDone);
+      }
+
+      // Update the menu micro progress bar
+      if (menuFill) {
+        menuFill.style.width = pct + '%';
       }
     }
 
