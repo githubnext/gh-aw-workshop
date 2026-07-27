@@ -70,9 +70,11 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 > In an agentic workflow `.md`, always use fuzzy syntax instead:
 >
 > ```markdown
+> ---
 > on:
 >   schedule: daily on weekdays
 >   workflow_dispatch: {}
+> ---
 > ```
 
 <!-- journey: all -->

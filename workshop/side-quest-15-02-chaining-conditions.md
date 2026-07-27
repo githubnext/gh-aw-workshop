@@ -56,7 +56,9 @@ The skill adds the step, updates the permissions block and the `if:` condition, 
 1. Update the top-level `if:` to combine both conditions:
 
 ```markdown
+---
 if: steps.alerts.outputs.alert_count != '0' && github.ref == 'refs/heads/main'
+---
 ```
 
 1. Run `gh aw compile` to regenerate the lock file.

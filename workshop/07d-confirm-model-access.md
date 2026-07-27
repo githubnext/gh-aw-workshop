@@ -98,9 +98,11 @@ Use this path when the organization that owns the repository has centralized Cop
 2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
 
 ```markdown
+---
 permissions:
   contents: read
   copilot-requests: write
+---
 ```
 
    This line is already present in the workflow template. Do not remove it.

@@ -44,7 +44,9 @@ run: echo "Running on ${{ runner.os }}"
 ```
 
 ```markdown
+---
 if: github.event_name == 'workflow_dispatch'
+---
 ```
 
 > [!TIP]
@@ -63,6 +65,7 @@ if: github.event_name == 'workflow_dispatch'
 When a step writes a value to `$GITHUB_OUTPUT`, later steps can read it via the `steps` context:
 
 ```markdown
+---
 steps:
   - name: Produce a value
     id: my-step
@@ -70,6 +73,7 @@ steps:
 
   - name: Use that value
     run: echo "Got ${{ steps.my-step.outputs.result }}"
+---
 ```
 
 The `id:` field is the key. Without it, the `steps` context has no name to look up.
@@ -81,6 +85,7 @@ The `if:` key accepts any expression. It evaluates to a boolean — if false, th
 Common patterns:
 
 ```markdown
+---
 # Run only on push to main
 if: github.ref == 'refs/heads/main'
 
@@ -92,6 +97,7 @@ if: github.event.pull_request.head.repo.full_name == github.repository
 
 # Combine with AND / OR
 if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+---
 ```
 
 > [!NOTE]
@@ -113,7 +119,9 @@ GitHub Actions provides a small set of helper functions inside expressions:
 Example — check whether a commit message contains a keyword:
 
 ```markdown
+---
 if: contains(github.event.head_commit.message, '[skip ci]')
+---
 ```
 
 > [!NOTE]
@@ -124,6 +132,7 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 The `&&` (AND) and `||` (OR) operators let you build composite conditions that express more nuanced rules than a single comparison allows. When combining multiple shell-derived outputs, keep in mind that all values written to `$GITHUB_OUTPUT` arrive as strings, so always compare them against quoted literals.
 
 ```markdown
+---
 # Run only when there are commits AND the branch is main
 if: steps.recent.outputs.commit_count != '0' && github.ref == 'refs/heads/main'
 
@@ -132,6 +141,7 @@ if: github.event_name == 'workflow_dispatch' || steps.recent.outputs.commit_coun
 
 # Skip weekends by combining day-of-week outputs from a shell step
 if: steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
+---
 ```
 
 ### Gather time-based context with shell steps
@@ -149,7 +159,9 @@ A step that exposes the current day name:
 Once this step runs, `steps.day.outputs.day` holds a value like `Monday` or `Saturday`. Combine it with a commit-count check to build a condition that skips the agent job on both quiet days and weekends:
 
 ```markdown
+---
 if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturday' && steps.day.outputs.day != 'Sunday'
+---
 ```
 
 This pattern — deterministic shell step produces a string output, `if:` expression reads that output — applies broadly wherever you need workflow control flow based on data that is not already in a GitHub Actions context object.

@@ -53,9 +53,11 @@ The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the thre
 If the firewall blocked a domain your workflow needs, add it to `network.allow` in your workflow frontmatter and recompile:
 
 ```markdown
+---
 network:
   allow:
     - api.example.com
+---
 ```
 
 Share the allowed-domains list from a successful run with your enterprise security team as a ready-made firewall allowlist.

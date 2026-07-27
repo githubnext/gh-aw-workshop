@@ -48,9 +48,11 @@ description: ???
 **🔍 Predict:** How would you tell GitHub Actions to run the workflow every day _and_ allow manual triggering? Write the two keys before reading on.
 
 ```markdown
+---
 on:
   schedule: daily
   workflow_dispatch: {}
+---
 ```
 
 **What this section does:** Declares when the workflow runs.
@@ -67,20 +69,24 @@ on:
 **✏️ Try it:** Add both trigger keys to your draft and run `gh aw compile`. Then extend the block to also fire on pushes to the main branch:
 
 ```markdown
+---
 on:
   schedule: daily
   push:
     branches: [main]
   workflow_dispatch: {}
+---
 ```
 
 ```markdown
+---
 # Your turn: configure schedule, push to main, and manual triggers
 on:
   ???: ???          # daily run
   push:
     branches: [???] # target branch
   ???: {}           # manual trigger
+---
 ```
 
 **✅ Check:** Run `gh aw compile` — the compiled output should list all three triggers.
@@ -92,12 +98,14 @@ on:
 **🔍 Predict:** The agent needs to read issues and post a comment. Which permissions would you list? Write them down before reading the explanation.
 
 ```markdown
+---
 permissions:
   contents: read
   copilot-requests: write
   issues: read
   pull-requests: read
   actions: read
+---
 ```
 
 **What this section does:** Declares the GitHub API scopes this workflow may use — fewer scopes is safer.
@@ -114,6 +122,7 @@ permissions:
 **✏️ Try it:** Add the `permissions:` block to your draft. Then fill in the correct permission value for each scope:
 
 ```markdown
+---
 # Your turn: fill in the correct value for each scope (read or write)
 permissions:
   contents: ???
@@ -121,6 +130,7 @@ permissions:
   issues: ???
   pull-requests: ???
   actions: ???
+---
 ```
 
 **✅ Check:** Run `gh aw compile` — the compile should complete with no permission errors.
@@ -132,18 +142,22 @@ permissions:
 Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
 
 ```markdown
+---
 # Write the on: block below from memory
 on:
+---
 ```
 
 <details><summary>Solution</summary>
 
 ```markdown
+---
 on:
   schedule: daily
   push:
     branches: [main]
   workflow_dispatch: {}
+---
 ```
 
 Run `gh aw compile` and verify all three triggers appear.

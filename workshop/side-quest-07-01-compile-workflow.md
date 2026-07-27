@@ -63,31 +63,39 @@ When `gh aw compile` fails, start with the first line number it reports. YAML er
 The examples below show `gh-aw` source files before compilation, so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the schedule value itself.
 
 ```markdown
+---
 # ❌ Broken — "workflow_dispatch" is not nested under "on:"
 on:
   schedule: daily
 workflow_dispatch: {}
+---
 ```
 
 ```markdown
+---
 # ✅ Fixed
 on:
   schedule: daily
   workflow_dispatch: {}
+---
 ```
 
 ```markdown
+---
 # ❌ Broken — "schedule" is not indented under "on:"
 on:
 schedule: daily on weekdays
   workflow_dispatch: {}
+---
 ```
 
 ```markdown
+---
 # ✅ Fixed
 on:
   schedule: daily on weekdays
   workflow_dispatch: {}
+---
 ```
 
 ## Quick fixes for common compile errors

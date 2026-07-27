@@ -65,10 +65,12 @@ Configured MCP server:
 The `tools:` block in your workflow's YAML frontmatter tells gh-aw which MCP servers to start before the agent runs:
 
 ```markdown
+---
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+---
 ```
 
 | Field | What it controls |
@@ -104,10 +106,12 @@ The GitHub MCP server ships with these toolsets:
 To enable multiple toolsets, pass a list:
 
 ```markdown
+---
 tools:
   github:
     mode: gh-proxy
     toolsets: [default, discussions]
+---
 ```
 
 ---

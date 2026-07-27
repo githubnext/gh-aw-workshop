@@ -82,6 +82,7 @@ Once your data is in `$GITHUB_OUTPUT`, you reference it directly inside the work
 **[Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** (data-preparation step):
 
 ```markdown
+---
 steps:
   - name: Fetch recent commits
     id: recent
@@ -89,6 +90,7 @@ steps:
       echo "commit_log<<EOF" >> $GITHUB_OUTPUT
       git log --oneline -10 >> $GITHUB_OUTPUT
       echo "EOF" >> $GITHUB_OUTPUT
+---
 ```
 
 **Workflow body (the prompt)**:
