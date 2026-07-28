@@ -119,3 +119,13 @@ test("checkpoint task lists render distinct markers for pending and complete sta
   assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {"), "expected pending marker style rule");
   assert.ok(!css.includes("opacity: 0.45"), "expected pending marker to use color instead of opacity");
 });
+
+test("hash navigation opens details ancestors for targeted anchors", () => {
+  const { html } = buildDocs();
+
+  assert.match(
+    html,
+    /function openDetailsAncestors\(target\) \{[\s\S]*detail\.open = true;[\s\S]*\}/
+  );
+  assert.equal((html.match(/openDetailsAncestors\(target\);/g) ?? []).length, 2);
+});
