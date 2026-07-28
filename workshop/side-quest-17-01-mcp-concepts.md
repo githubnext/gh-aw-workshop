@@ -91,9 +91,9 @@ gh aw validate
 
 ---
 
-## How [toolsets](https://github.github.com/gh-aw/reference/github-tools/#github-[toolsets](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets)) work
+## How toolsets work
 
-A toolset is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
+A [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
 
 The GitHub MCP server ships with these toolsets:
 
