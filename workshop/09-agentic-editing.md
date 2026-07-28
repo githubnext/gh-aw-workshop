@@ -20,7 +20,13 @@ By the end of this step, your workflow will produce more useful output, and you'
 
 The `agentic-workflows` skill is a Copilot skill installed in your practice repository. It acts as a dispatcher: when you describe a workflow task in plain English and mention the skill by name, it routes your request to the right editing, debugging, or optimizing prompt and makes changes directly in your repository.
 
-You invoke it in the GitHub Copilot **Chat** or **Agents** tab:
+You invoke it in Copilot CLI in your Codespace terminal:
+
+```bash
+gh copilot
+```
+
+Then send:
 
 ```prompt
 /agentic-workflows [your request here]
@@ -53,7 +59,7 @@ Pick only one problem for this round. Small, isolated changes make it much easie
 
 After reviewing the run output, you may have noticed the agent's comment was generic. You'll now make the brief more specific so the agent explains _why_ the most-reacted issue matters, not just which one it is.
 
-Open the GitHub Copilot **Chat** or **Agents** tab in your practice repository and paste:
+In your Codespace terminal, run `gh copilot` and paste:
 
 ```prompt
 /agentic-workflows update .github/workflows/daily-report-status.md
@@ -88,7 +94,7 @@ git push
 
 If your run from Step 8 finished but the output was empty, vague, or missing entirely, use the skill to diagnose the most likely cause and propose a fix.
 
-Paste this prompt in the GitHub Copilot **Chat** or **Agents** tab, replacing the bracketed text with what you actually observed:
+In your Codespace terminal, run `gh copilot`, then paste this prompt, replacing the bracketed text with what you actually observed:
 
 ```prompt
 /agentic-workflows debug .github/workflows/daily-report-status.md.
@@ -117,7 +123,7 @@ Recompile and push the change.
 
 Once the workflow produces correct output, you can reduce how much AI Credit it uses per run. This matters especially for workflows that run on a schedule.
 
-In the GitHub Copilot **Chat** or **Agents** tab, paste:
+In your Codespace terminal, run `gh copilot`, then paste:
 
 ```prompt
 /agentic-workflows optimize .github/workflows/daily-report-status.md
