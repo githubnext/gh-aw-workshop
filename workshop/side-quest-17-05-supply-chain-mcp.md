@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Supply Chain Attacks via MCP Tool Servers
+# Side Quest: [Supply Chain](https://github.github.com/gh-aw/introduction/architecture/#threat-model) Attacks via MCP Tool Servers
 
 > _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the [trust boundary](side-quest-17-02-security-architecture.md) early and keep the workflow's write surface narrow._
 
@@ -15,13 +15,13 @@ A supply chain attack through [MCP](https://github.github.com/gh-aw/guides/mcps/
 
 ## Attack surface at a glance
 
-Use this table as a quick threat model when you add or review an MCP server.
+Use this table as a quick [threat model](https://github.github.com/gh-aw/introduction/architecture/#threat-model) when you add or review an MCP server.
 
 | Attack type | How it works | Detection signal |
 | --- | --- | --- |
 | Typosquatted package | A package name looks familiar, but the publisher or package is not the one you meant to install. | The name is close to a trusted tool, but the publisher is unfamiliar. |
 | Compromised server or image | A real server or container starts returning altered results after the publisher account or registry is compromised. | The config uses a mutable tag such as `latest`, or a remote endpoint with no version pin. |
-| Tool poisoning | The server exposes more tools than your task needs, so a bad response has more ways to steer the agent. | The tool list is broad, vague, or includes an "everything" style toolset. |
+| Tool poisoning | The server exposes more tools than your task needs, so a bad response has more ways to steer the agent. | The tool list is broad, vague, or includes an "everything" style [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets). |
 | [Output injection](side-quest-17-06-output-injection.md) | The server returns normal-looking data with hidden instructions mixed into the result. | Tool output suddenly contains directives such as "ignore previous instructions" or asks for extra actions. |
 
 ## ✏️ Exercise: Inspect This `.mcp.json`
@@ -65,7 +65,7 @@ Adopt these habits when you work with MCP servers:
 2. **Restrict permissions and outputs.** Keep `permissions:` minimal and declare only the write surfaces you actually need in `safe-outputs`.
 3. **Audit tool names before you add them.** Confirm the publisher, verify the expected server name, and keep the tool list narrow.
 
-gh-aw helps by making you declare `tools:` explicitly, limit network destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.
+gh-aw helps by making you declare `tools:` explicitly, limit [network](https://github.github.com/gh-aw/reference/network/) destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.
 
 ## ✅ Checkpoint
 

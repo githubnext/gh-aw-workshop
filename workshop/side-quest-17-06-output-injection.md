@@ -7,7 +7,7 @@
 ## 📋 Before You Start
 
 - You have completed [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md) or you are already familiar with `safe-outputs` guardrails.
-- You have a practice repository with at least one agentic workflow so you can inspect its `safe-outputs:` and `permissions:` blocks.
+- You have a practice repository with at least one [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) so you can inspect its `safe-outputs:` and `permissions:` blocks.
 
 ## The Attack
 

@@ -38,7 +38,7 @@ If the workflow has `contents: write` and no file restrictions, the agent may fa
 
 ## Why This Matters for Agentic Workflows
 
-Classic CI/CD runs deterministic scripts. An agentic workflow reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
+Classic CI/CD runs [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) scripts. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
 
 Write access magnifies every read. If the agent can commit directly, a successful content injection skips human review entirely. The poisoned file lands on the default branch before anyone notices.
 
@@ -124,7 +124,7 @@ Even if an attacker crafts a payload that reaches a file write, their exfiltrati
 
 ---
 
-## ✏️ Exercise: Spot the Dangerous Frontmatter
+## ✏️ Exercise: Spot the Dangerous [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
 
 Read this workflow frontmatter and identify every configuration that makes repository poisoning possible:
 
