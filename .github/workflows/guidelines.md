@@ -245,10 +245,10 @@ This rule does not override clearly superior choices for all learners. It is a t
 The workshop docs are rendered with GFM emoji support: `:emoji_name:` shortcodes are converted to `<g-emoji>` elements styled by Primer CSS. Use GitHub emoji shortcodes instead of raw Unicode emoji characters or custom icon fonts so the rendered docs stay on-brand and consistent with GitHub's own design language.
 
 - **Prefer** `:white_check_mark:`, `:rocket:`, `:bulb:`, `:warning:`, and other GitHub-supported shortcodes when you need an icon or decorative symbol in prose, checkpoint headings, or callout text.
-- **Do not** paste raw Unicode emoji characters (e.g., :white_check_mark:, :rocket:) directly into Markdown source — use the `:shortcode:` form so the build renders a properly sized and styled `<g-emoji>` element.
+- **Do not** paste raw Unicode emoji characters directly into Markdown source — use the `:shortcode:` form so the build renders a properly sized and styled `<g-emoji>` element.
 - **Do not** use raw Unicode emoji in error messages, terminal output examples, or code blocks — those surfaces should remain plain text.
 - Verify the shortcode exists in the [GitHub emoji list](https://github.com/ikatyang/emoji-cheat-sheet) before using it; unknown shortcodes are passed through as literal text.
-- The `## :white_check_mark: Checkpoint` heading at the end of each step is the one approved exception: that heading uses a literal Unicode checkmark for historical compatibility and should not be changed.
+- Write checkpoint headings as `## :white_check_mark: Checkpoint` so they use the same browser-independent rendering as other icons.
 
 ## Consistency check
 
