@@ -158,6 +158,20 @@ ${htmlContent}</main>
       }
     }
 
+    function openDetailsAncestors(target) {
+      const detailsInPath = [];
+      let current = target;
+      while (current) {
+        if (current.matches && current.matches('details')) {
+          detailsInPath.push(current);
+        }
+        current = current.parentElement;
+      }
+      detailsInPath.reverse().forEach(detail => {
+        detail.open = true;
+      });
+    }
+
     function findHashTarget(id) {
       const activePage = workshopPages.find(candidate => candidate.open);
       if (activePage?.id === id) return activePage;
@@ -171,7 +185,17 @@ ${htmlContent}</main>
     function showWorkshopPageForHash(scrollPage) {
       const id = decodeURIComponent(location.hash.slice(1));
       const target = id ? findHashTarget(id) : null;
-      showWorkshopPage(target, scrollPage && target?.matches('.markdown-body > details'));
+      if (!target) {
+        showWorkshopPage(target, false);
+        return;
+      }
+
+      openDetailsAncestors(target);
+      const isPageTarget = target.matches('.markdown-body > details');
+      showWorkshopPage(target, scrollPage && isPageTarget);
+      if (scrollPage && !isPageTarget) {
+        target.scrollIntoView({ block: 'start' });
+      }
     }
 
     document.addEventListener('click', function (e) {
@@ -213,6 +237,7 @@ ${htmlContent}</main>
         if (menuDialog.open) menuDialog.close();
         const isPage = target.matches('.markdown-body > details');
         history.pushState(null, '', link.getAttribute('href'));
+        openDetailsAncestors(target);
         showWorkshopPage(target, isPage);
         if (!isPage) target.scrollIntoView({ block: 'start' });
       }
