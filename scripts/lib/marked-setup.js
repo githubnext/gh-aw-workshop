@@ -11,6 +11,7 @@ const {
   isExternalWebLink,
   addExternalLinkTargetAttrs,
 } = require('./utils');
+const { markedEmojiExtension } = require('./marked-emoji');
 
 const defaultRenderer = new marked.Renderer();
 const slugger = new GithubSlugger();
@@ -63,6 +64,9 @@ function setupBasePlugins() {
       },
     },
   });
+
+  // Plugin: render GitHub GFM emoji shortcodes (:rocket:, :white_check_mark:, etc.)
+  marked.use({ extensions: [markedEmojiExtension()] });
 
   // Plugin: render GitHub GFM alert callouts (> [!NOTE], > [!TIP], etc.)
   marked.use(markedAlert());
