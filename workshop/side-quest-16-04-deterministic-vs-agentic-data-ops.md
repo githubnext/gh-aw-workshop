@@ -4,7 +4,7 @@
 
 > _Optional: use this guide when you are unsure which parts of a data workflow should stay deterministic and which parts should be agentic, then return to [Step 16](16-connect-data-source.md)._
 
-Data workflows work best when you split jobs on purpose. Keep repeatable operations [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/). Use the agent when you need judgment.
+Data workflows work best when you split jobs on purpose. Keep repeatable operations deterministic. Use the agent when you need judgment.
 
 ## 📋 Before You Start
 
