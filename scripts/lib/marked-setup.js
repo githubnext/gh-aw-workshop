@@ -57,8 +57,11 @@ function setupBasePlugins() {
           const labelAttr = accessibleName
             ? ` aria-label="Checkpoint item (${status}): ${escapeHtml(accessibleName)}"`
             : ` aria-label="Checkpoint item (${status})"`;
-          const markerSymbol = item.checked ? '●' : '○';
-          return `<li class="task-list-item"${labelAttr}><span class="${markerClass}" aria-hidden="true">${markerSymbol}</span> ${text}</li>\n`;
+          // Primer octicons: check-circle-fill (complete) and circle (pending), 16px
+          const markerIcon = item.checked
+            ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"></path></svg>'
+            : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Z"></path></svg>';
+          return `<li class="task-list-item"${labelAttr}><span class="${markerClass}" aria-hidden="true">${markerIcon}</span> ${text}</li>\n`;
         }
         return false; // use default rendering for non-task items
       },

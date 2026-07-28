@@ -112,7 +112,8 @@ test("rendered workshop images use GitHub-like rounded corners", () => {
 test("checkpoint task lists render distinct markers for pending and complete states", () => {
   const { html, css } = buildDocs();
 
-  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true">○</span>'), "expected empty-circle marker for pending items");
+  // Pending items: Primer octicon circle (16px SVG)
+  assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"'), "expected Primer octicon SVG marker for pending items");
   assert.ok(!html.includes('<input class="task-list-item-checkbox"'), "expected checkbox inputs to be removed");
   assert.ok(css.includes(".markdown-body li.task-list-item {\n  list-style: none;\n}"), "expected task-list bullet removal styles");
   assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {"), "expected pending marker style rule");
