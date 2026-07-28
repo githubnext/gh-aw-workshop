@@ -39,27 +39,7 @@ The agent can change how it investigates a pull request without changing the sta
 Open your AI agent in the practice repository and pass this prompt:
 
 ```prompt
-/agentic-workflows Create .github/workflows/pr-reviewer.md as a PR reviewer.
-
-Use the PR reviewer guidance from the agentic-workflows skill:
-- run when a pull request becomes ready for review
-- support a centralized /review slash command from PR and review comments
-- keep the agent job read-only with contents and pull-requests read permissions
-- use GitHub pull request and repository read tools
-- submit at most one review through the submit-pull-request-review safe output
-- allow only COMMENT and REQUEST_CHANGES review events
-
-Use an inline agent named `pr-reviewer` with model: small. It should inspect the
-diff and return only prioritized, evidence-backed findings. Add an inline skill
-named `pr-review-standards` that requires every finding to cite a changed file
-and line, explain its impact, and omit style-only or speculative feedback.
-Tell the reviewer agent to discover and apply that skill.
-
-The parent brief should call the reviewer, submit COMMENT when there are no
-blocking findings, use REQUEST_CHANGES only for actionable blocking findings,
-call report-incomplete if the diff cannot be read, and call noop if the same
-commit was already reviewed.
-Compile the workflow after creating it.
+/agentic-workflows Create a PR reviewer workflow at .github/workflows/pr-reviewer.md with an inline pr-reviewer agent and pr-review-standards skill, triggering on pull_request ready_for_review and the /review slash command.
 ```
 
 Review the agent's diff before accepting it. The source should contain one parent brief plus both inline blocks near the bottom of the file.
@@ -153,11 +133,7 @@ If the run completes but the review does not mention the `pr-review-standards` s
 2. If the directory exists but the skill was still not applied, ask the agent to reinforce the instruction:
 
 ```prompt
-/agentic-workflows update .github/workflows/pr-reviewer.md so the
-`pr-reviewer` agent explicitly searches for and applies the
-`pr-review-standards` skill before returning findings. Keep all
-other settings, triggers, and permissions unchanged. Compile the
-workflow after the edit.
+/agentic-workflows Update .github/workflows/pr-reviewer.md so the pr-reviewer agent explicitly searches for and applies the pr-review-standards skill before returning findings.
 ```
 
 1. Compile, commit, and re-trigger `/review` to confirm the skill is now applied.
@@ -173,10 +149,7 @@ Choose one change and send it through `/agentic-workflows`:
 For example:
 
 ```prompt
-/agentic-workflows update .github/workflows/pr-reviewer.md so the
-`pr-review-standards` skill asks reviewers to distinguish blocking findings
-from non-blocking observations. Keep the trigger, permissions, agent, and safe
-output unchanged. Compile the workflow after the edit.
+/agentic-workflows Update the pr-review-standards skill in .github/workflows/pr-reviewer.md to distinguish blocking findings from non-blocking observations.
 ```
 
 Run `/review` again and compare the new result with the first review.
