@@ -4,11 +4,11 @@
 
 > _A workflow that always runs is useful — a workflow that only runs when it matters is elegant._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Add a conditional check to your daily-status workflow so it only posts a summary when there have been recent commits. You'll learn how to use shell commands to gather context, expose that context as step outputs, and wire it into an `if:` condition that short-circuits the agent job entirely on quiet days.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
 - You understand how to edit and re-run a workflow from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
@@ -43,7 +43,7 @@ as `commit_count`, with step id `recent`.
 The skill adds this step to the frontmatter `steps:` block and recompiles the lock file.
 
 <details>
-<summary>✏️ Manual edit path</summary>
+<summary>:pencil2: Manual edit path</summary>
 
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add the following block inside the YAML frontmatter under `steps:`:
 
@@ -112,7 +112,7 @@ git commit -m "feat: skip summary on days with no commits"
 git push
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
 - [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`

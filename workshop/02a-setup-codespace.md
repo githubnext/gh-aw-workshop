@@ -2,7 +2,7 @@
 <!-- page-adventure: setup -->
 # Set Up a Codespace
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - [ ] You have a GitHub account with access to GitHub Codespaces
 - [ ] Your account can create public repositories (free tier works)
@@ -11,7 +11,7 @@
 > [!TIP]
 > Not sure if your plan includes Codespaces? Free GitHub accounts include 60 hours/month. Check your [billing settings](https://github.com/settings/billing) or ask your organization admin.
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
@@ -101,7 +101,7 @@ github.com
   ✓ Logged in to github.com as <your-username>
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You confirmed your GitHub plan includes Codespaces access (free tier includes 60 hours/month)
 - [ ] The Codespace editor is open in your browser

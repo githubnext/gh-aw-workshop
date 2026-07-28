@@ -2,7 +2,7 @@
 <!-- page-adventure: core -->
 # How Agentic Workflows Stay Safe
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've read [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 
@@ -54,7 +54,7 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe what the sandbox does and why it matters for automation safety
 - [ ] I can explain how the safe-output system prevents the agent from writing to the repo directly

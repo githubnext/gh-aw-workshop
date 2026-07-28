@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 13-02: Pattern — Generate a PR Summary Comment
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Build a PR summary workflow that posts a structured, human-readable [summary comment](https://github.github.com/gh-aw/reference/safe-outputs/#comment-creation-add-comment) when a pull request is opened. The summary is written in a format that can be copied directly into a changelog or release note.
 
@@ -76,7 +76,7 @@ Ideas:
 
 After making your change, recompile and open a fresh PR to see the updated output.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I created `.github/workflows/pr-summary.md` with an `opened`-only `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed

@@ -4,11 +4,11 @@
 
 > _Optional: use this side quest when a run behaves unexpectedly, then return to [Reading Workflow Output](08b-interpret-your-run.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will diagnose five common output patterns one at a time. Each micro-step includes a short explanation, a realistic log snippet, and an identify-before-reveal exercise.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Complete [Reading Workflow Output](08b-interpret-your-run.md)
 
@@ -25,7 +25,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 Need a reusable triage flow after the pattern drills? Open the [Debugging Checklist](side-quest-09-01f-debugging-checklist.md).
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can choose the right micro-step from the pattern table
 - [ ] I can use the exercise format to identify each pattern before checking the answer

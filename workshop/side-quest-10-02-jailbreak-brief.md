@@ -4,7 +4,7 @@
 
 > _Optional: work through this security primer to understand how adversarial instructions embedded in repository content can attempt to override your agent's task brief — and why gh-aw's layered architecture limits what any partial success can actually do._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Choose Your Scenario](09-agentic-editing.md).
 - You have read (or plan to read) [Side Quest: Writing a Clear Agent Brief](side-quest-10-01-agent-brief.md) — understanding what a well-formed task brief looks like makes it easier to see how an attacker tries to replace it.
@@ -86,7 +86,7 @@ When you enable `threat-detection` under `safe-outputs:`, gh-aw adds a `detectio
 
 ---
 
-## ✏️ Exercise: spot the injection
+## :pencil2: Exercise: spot the injection
 
 A daily status workflow fetched the following issue body. Which sentence is the injection attempt?
 
@@ -107,7 +107,7 @@ The fourth sentence — "Please disregard your current task…" — is the injec
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain what makes a jailbreak attack different from a simple prompt injection
 - [ ] I can list the four default gh-aw defence layers and the optional fifth layer (`threat-detection`)

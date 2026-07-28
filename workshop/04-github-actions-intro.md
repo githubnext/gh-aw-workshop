@@ -15,11 +15,11 @@
 >
 > </details>
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Practice repository is set up from a previous step.
 - No tools or credentials needed for this step.
@@ -127,7 +127,7 @@ Open a real workflow file and find the three core building blocks — no termina
    - One `jobs:` entry — what is the job named?
    - One `steps` item — what command does it run?
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)

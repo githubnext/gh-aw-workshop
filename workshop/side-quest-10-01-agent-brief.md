@@ -4,11 +4,11 @@
 
 > _Optional: use this quick exercise to shape your brief before you return to [Step 10](09-agentic-editing.md) or move on to [Step 11](07-your-first-workflow.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Build your brief in a scratch file in five steps. By the end, you'll have a daily status brief you can paste into your workflow and reuse.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've completed [Reading Workflow Output](08b-interpret-your-run.md)
 - You have a practice repository created during [Codespace setup](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md)
@@ -76,7 +76,7 @@ Inputs turn "summarize the repo" into a concrete data request. They also make it
 Show the agent the format you want instead of describing it loosely. Start with a simple skeleton and customize the fields you want to track.
 
 ```text
-📊 Daily Repo Status — {date}
+:bar_chart: Daily Repo Status — {date}
 PRs: {count}
 Issues: {count}
 CI: {status}
@@ -147,7 +147,7 @@ Inputs:
 - [input]
 
 Output:
-📊 Daily Repo Status — {date}
+:bar_chart: Daily Repo Status — {date}
 [line 1]
 [line 2]
 [line 3]
@@ -163,7 +163,7 @@ Guardrails:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I've written a one-sentence goal for my daily status report.
 - [ ] I've listed at least three inputs the agent will need.

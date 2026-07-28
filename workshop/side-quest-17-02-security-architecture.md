@@ -4,7 +4,7 @@
 
 > _Optional: work through this visual primer if you want an intuitive mental model for why gh-aw uses a [sandbox](https://github.github.com/gh-aw/reference/sandbox/), where the agent runs, and what outputs are considered safe._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You understand the basics of agentic workflows from [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 - You have a workflow with `permissions` and `tools` [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
@@ -93,11 +93,11 @@ network:
 ---
 ```
 
-> 🤔 **Predict:** What would happen if you removed `network.allowed` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
+> :thinking: **Predict:** What would happen if you removed `network.allowed` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain why sandbox boundaries reduce risk in agentic workflows
 - [ ] You can describe where the agent runs during a workshop workflow execution

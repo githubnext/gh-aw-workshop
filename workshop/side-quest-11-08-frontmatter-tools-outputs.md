@@ -4,7 +4,7 @@
 
 > _Optional continuation of [Part A](side-quest-11-01-frontmatter-deep-dive.md): covers tools, safe-outputs, the closing fence, and the agent body. Return to the main path when done._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 You have completed [Part A](side-quest-11-01-frontmatter-deep-dive.md) and your draft file already includes `emoji`, `on:`, and `permissions:`.
 
@@ -12,7 +12,7 @@ You have completed [Part A](side-quest-11-01-frontmatter-deep-dive.md) and your 
 
 ## `tools:`
 
-**🔍 Predict:** To let the agent call GitHub APIs securely and stay within the permissions you declared, what configuration would you add? Write your answer before reading on.
+**:mag: Predict:** To let the agent call GitHub APIs securely and stay within the permissions you declared, what configuration would you add? Write your answer before reading on.
 
 ```markdown
 ---
@@ -32,13 +32,13 @@ tools:
 | `mode: gh-proxy` | Routes every GitHub API call through a proxy that enforces the `permissions:` you declared, blocking any call you have not pre-approved. |
 | `toolsets: [default]` | Activates the standard GitHub toolset covering issues, pull requests, commits, and Actions runs. |
 
-**✏️ Try it:** Add the `tools:` block to your draft file. Double-check that `mode` and `toolsets` are indented under `github:`.
+**:pencil2: Try it:** Add the `tools:` block to your draft file. Double-check that `mode` and `toolsets` are indented under `github:`.
 
 ---
 
 ## `safe-outputs:`
 
-**🔍 Predict:** You want the agent to post exactly one comment per run and nothing else. What would you write under `safe-outputs`?
+**:mag: Predict:** You want the agent to post exactly one comment per run and nothing else. What would you write under `safe-outputs`?
 
 ```markdown
 ---
@@ -59,13 +59,13 @@ safe-outputs:
 > [!IMPORTANT]
 > Without `safe-outputs`, the agent cannot write anything — even if you ask it to in the body. The YAML frontmatter is the source of truth for write access, not the prose instructions.
 
-**✏️ Try it:** Add `safe-outputs` to your draft. Verify that `max: 1` is indented under `add-comment:`.
+**:pencil2: Try it:** Add `safe-outputs` to your draft. Verify that `max: 1` is indented under `add-comment:`.
 
 ---
 
 ## Closing fence
 
-**🔍 Predict:** How does the file parser know where the YAML configuration ends and the agent's instructions begin?
+**:mag: Predict:** How does the file parser know where the YAML configuration ends and the agent's instructions begin?
 
 ```markdown
 ---
@@ -73,13 +73,13 @@ safe-outputs:
 
 **What this section does:** Closes the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) block. Everything below this line is the Markdown body — the agent's plain-English task brief.
 
-**✏️ Try it:** Add the closing `---` to your draft. Confirm the file now has exactly two `---` fences.
+**:pencil2: Try it:** Add the closing `---` to your draft. Confirm the file now has exactly two `---` fences.
 
 ---
 
 ## The Markdown body
 
-**🔍 Predict:** The agent must collect four data points from the repository. What four things would you list?
+**:mag: Predict:** The agent must collect four data points from the repository. What four things would you list?
 
 ```markdown
 # Daily Repo Status Report
@@ -109,11 +109,11 @@ Three conventions keep a task brief reliable:
 - **A numbered task list** helps the agent work through each data point in a predictable order.
 - **A guidelines block** handles edge cases — such as "already posted today" — so the agent does not have to guess.
 
-**✏️ Try it:** Add the body below the closing `---` in your draft file, then run `gh aw compile` to check for errors.
+**:pencil2: Try it:** Add the body below the closing `---` in your draft file, then run `gh aw compile` to check for errors.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain what `mode: gh-proxy` does and why it matters for security
 - [ ] You understand that `safe-outputs` is the only source of write access — not the body text

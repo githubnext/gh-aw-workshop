@@ -4,13 +4,13 @@
 
 > _Enterprise teams often need workflows to run on their own infrastructure — this step shows you exactly how._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Update your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to target a self-hosted runner using a runner label.
 By the end of this step, your agentic workflow queues on a runner your organisation manages
 rather than a GitHub-hosted machine.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Your agentic workflow runs successfully (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - A [self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/) is registered and **online** for your repository or organisation.
@@ -36,7 +36,7 @@ runs-on: ubuntu-latest
 
 The only change needed is the value of `runs-on:`.
 
-## ✏️ Exercise: Update your frontmatter
+## :pencil2: Exercise: Update your frontmatter
 
 Update your workflow's `runs-on:` field to point at your self-hosted runner.
 
@@ -120,7 +120,7 @@ Work with your network admin to allowlist these endpoints before running agentic
 
 </details>
 
-## ✏️ Exercise: Compile and commit
+## :pencil2: Exercise: Compile and commit
 
 Recompile after editing the frontmatter, then commit both files:
 
@@ -139,7 +139,7 @@ git push
 > [!TIP]
 > You can also use the `/agentic-workflows` Copilot skill to edit the workflow — it compiles and commits both files together, so you never end up with a stale lock file.
 
-## ✏️ Exercise: Verify the run lands on your runner
+## :pencil2: Exercise: Verify the run lands on your runner
 
 1. Go to the **Actions** tab in your repository.
 2. Click Run workflow.
@@ -152,7 +152,7 @@ git push
   <img alt="Runner name shown in the Actions job summary" src="images/24-self-hosted-runner-job-light.svg">
 </picture>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow's `runs-on:` value matches the label of your self-hosted runner
 - [ ] `gh aw compile` (if used) completed without errors

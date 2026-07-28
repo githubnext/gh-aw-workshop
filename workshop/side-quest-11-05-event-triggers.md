@@ -4,11 +4,11 @@
 
 > _Optional: use this primer if you want help choosing between [scheduled](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) and event-driven workflows before you finish [Build — PR Code Reviewer](15-conditional-logic.md), then return to the main adventure._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll compare scheduled and event-driven [triggers](https://github.github.com/gh-aw/reference/triggers/), copy four starter trigger blocks, and learn how trigger choice affects `safe-outputs`. By the end you'll know when to reach for `pull_request`, `push`, `issues`, or `schedule`.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have an existing workflow file from Step 7 or Step 15, such as `.github/workflows/daily-status.md`.
 - You know how to commit and push changes in your chosen path.
@@ -136,7 +136,7 @@ The Daily Repo Status workflow in [Step 7](07-your-first-workflow.md) and the PR
 That is the core decision: pick the trigger that matches the moment you care about, then pick the write target that matches the object you want the workflow to answer.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain the difference between a scheduled workflow and an event-driven workflow
 - [ ] I know starter trigger blocks for `pull_request`, `push`, `issues`, and `schedule`

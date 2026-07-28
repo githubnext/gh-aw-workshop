@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01a: Pattern — Long `[plan]` Chains
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will learn how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call.
 
@@ -25,11 +25,11 @@ If you need help tightening wording, ask the `agentic-workflows` skill to rewrit
 Read this snippet and identify the pattern before you open the answer.
 
 ```text
-🤔 [plan] Need the highest-impact issue
-🤔 [plan] I should define impact first
-🤔 [plan] Reactions might help
-🤔 [plan] I need to compare issue engagement
-🤔 [plan] I should list open issues eventually
+:thinking: [plan] Need the highest-impact issue
+:thinking: [plan] I should define impact first
+:thinking: [plan] Reactions might help
+:thinking: [plan] I need to compare issue engagement
+:thinking: [plan] I should list open issues eventually
 ```
 
 <details>
@@ -40,7 +40,7 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can recognize a planning loop from log lines alone
 - [ ] I can explain why ambiguous goals create delayed tool use

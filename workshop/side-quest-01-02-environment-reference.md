@@ -4,7 +4,7 @@
 
 > _Optional: use this quick glossary and visual reference to understand the environments and AI tools used throughout the workshop._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 You have a terminal open inside your practice repository (see [Set Up a Codespace](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md)).
 
@@ -24,7 +24,7 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex](https://openai.com/codex/) |
 
-### ✅ Verify your tools are ready
+### :white_check_mark: Verify your tools are ready
 
 Run these commands in your terminal to confirm the required tools are installed and accessible:
 
@@ -143,7 +143,7 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You ran `gh --version` in your terminal and it returned a version number
 - [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md), you ran `gh aw --version` in your terminal and it returned a version number

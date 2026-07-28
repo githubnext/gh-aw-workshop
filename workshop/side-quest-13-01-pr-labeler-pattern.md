@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 13-01: Pattern — Auto-Label PRs by Content
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Extend your PR reviewer workflow to automatically apply [GitHub labels](https://github.github.com/gh-aw/reference/safe-outputs/#add-labels-add-labels) based on the files that changed in a pull request.
 
@@ -78,7 +78,7 @@ Compile, push, and test with a PR that changes a workflow file.
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I created `.github/workflows/pr-labeler.md` with a `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed

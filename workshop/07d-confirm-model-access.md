@@ -2,14 +2,14 @@
 <!-- page-adventure: core -->
 # Confirm Model Access
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 This step has two entry points:
 
 - **Arriving from the step 07 access check (error recovery):** You have completed [Install the gh-aw CLI Extension](06-install-gh-aw.md) and pushed `.github/skills/agentic-workflows/`. Workflow files do not need to exist yet — fix model access first, then return to [Write Your First Agentic Workflow](07-your-first-workflow.md) to continue.
 - **Arriving as the next step after step 07 (normal flow):** `daily-report-status.md` and `daily-report-status.lock.yml` are committed to your practice repository.
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll verify Copilot model access with a quick test that uses the `agentic-workflows` skill, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
 
@@ -141,7 +141,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 | Organization centralized billing | Present | None |
 | Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I opened Copilot CLI in the terminal and sent a test prompt
 - [ ] I received a response from the model and the `agentic-workflows` skill

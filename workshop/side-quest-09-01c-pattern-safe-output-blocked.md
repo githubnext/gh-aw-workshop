@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01c: Pattern — [Safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) `limit reached`
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will learn how to interpret blocked writes and choose between increasing allowed outputs or constraining agent behavior.
 
@@ -26,10 +26,10 @@ If you need help with wording, ask the `agentic-workflows` skill or iterate quic
 Identify the pattern before opening the answer.
 
 ```text
-🔧 [tool] github.add_comment → {issue_number: 4, body: "..."}
-❌ [error] E002: add-comment limit reached — 1 of 1 already used this run
-🤔 [plan] Additional comments were prepared but blocked
-✅ [done] Task complete (1 output blocked)
+:wrench: [tool] github.add_comment → {issue_number: 4, body: "..."}
+:x: [error] E002: add-comment limit reached — 1 of 1 already used this run
+:thinking: [plan] Additional comments were prepared but blocked
+:white_check_mark: [done] Task complete (1 output blocked)
 ```
 
 <details>
@@ -40,7 +40,7 @@ Pattern: **safe-output `limit reached`**. Decide whether the second write is val
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain what `BLOCKED` means in safe-output logs
 - [ ] I can decide when increasing `max` is appropriate

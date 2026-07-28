@@ -4,11 +4,11 @@
 
 > _Agentic workflows consume [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll review your workflow's AI Credit consumption in the GitHub billing dashboard, estimate monthly costs for a scheduled workflow, and apply at least one technique to keep spending within budget.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 - You have run your workflow at least once and seen token usage data in `gh aw logs` output.
@@ -104,7 +104,7 @@ In this example, each run is capped at 1000 AIC and the 24-hour total is capped 
 gh aw compile
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
 - [ ] You calculated an estimated monthly AIC cost for your scheduled workflow

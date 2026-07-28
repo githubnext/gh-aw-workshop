@@ -11,6 +11,7 @@ const buildScript = path.join(repoDir, "scripts", "build-docs.js");
 const distIndex = path.join(repoDir, "dist", "index.html");
 const distCss = path.join(repoDir, "dist", "docs.css");
 const distHighlightCss = path.join(repoDir, "dist", "hljs.css");
+const workshopDir = path.join(repoDir, "workshop");
 
 function buildDocs() {
   execFileSync(process.execPath, [buildScript], { cwd: repoDir, stdio: "pipe" });
@@ -112,12 +113,29 @@ test("rendered workshop images use GitHub-like rounded corners", () => {
 test("checkpoint task lists render distinct markers for pending and complete states", () => {
   const { html, css } = buildDocs();
 
+  assert.ok(html.includes('<g-emoji class="g-emoji" alias="white_check_mark"'), "expected checkpoint emoji shortcode to render as g-emoji");
   // Pending items: Primer octicon circle (16px SVG)
   assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"'), "expected Primer octicon SVG marker for pending items");
   assert.ok(!html.includes('<input class="task-list-item-checkbox"'), "expected checkbox inputs to be removed");
   assert.ok(css.includes(".markdown-body li.task-list-item {\n  list-style: none;\n}"), "expected task-list bullet removal styles");
   assert.ok(css.includes(".markdown-body li.task-list-item > .task-list-item-marker.is-pending {"), "expected pending marker style rule");
   assert.ok(!css.includes("opacity: 0.45"), "expected pending marker to use color instead of opacity");
+});
+
+test("workshop Markdown uses GitHub emoji shortcodes", () => {
+  const markdownFiles = [
+    path.join(repoDir, "README.md"),
+    path.join(repoDir, "AGENTS.md"),
+    path.join(repoDir, ".github", "workflows", "guidelines.md"),
+    ...fs.readdirSync(workshopDir)
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => path.join(workshopDir, file)),
+  ];
+  const nativeEmoji = /(?:\p{Extended_Pictographic}|\p{Emoji_Presentation})/u;
+
+  for (const file of markdownFiles) {
+    assert.doesNotMatch(fs.readFileSync(file, "utf8"), nativeEmoji, `expected GitHub emoji shortcodes in ${path.relative(repoDir, file)}`);
+  }
 });
 
 test("hash navigation opens details ancestors for targeted anchors", () => {

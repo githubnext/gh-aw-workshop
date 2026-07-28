@@ -4,11 +4,11 @@
 
 _Your first run is more useful when you can explain what the agent did and why._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll read the live log from Step 8, find the workflow's output, and learn three quick checks for common run problems.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Completed [Run and Watch Your Workflow](08-run-your-workflow.md)
 - Your **Daily Report Status** workflow has at least one completed run
@@ -24,12 +24,12 @@ Open the completed **Daily Report Status** run from the **Actions** tab and clic
 </picture>
 
 ```text
-🤔 Planning...  Searching for open issues with 👍 reactions
-🔧 Tool call:   github.list_issues
-📥 Result:      3 issues found
-🤔 Thinking...  Issue #4 has the most 👍 reactions
-🔧 Tool call:   github.add_comment
-✅ Done
+:thinking: Planning...  Searching for open issues with :+1: reactions
+:wrench: Tool call:   github.list_issues
+:inbox_tray: Result:      3 issues found
+:thinking: Thinking...  Issue #4 has the most :+1: reactions
+:wrench: Tool call:   github.add_comment
+:white_check_mark: Done
 ```
 
 The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and fill in the template below:
@@ -62,10 +62,10 @@ If your run does not look right, start with these quick checks before changing t
 Knowing what a failed run looks like helps you spot permission issues at a glance, before you spend time re-reading the brief:
 
 ```text
-🤔 Planning...  Searching for open issues
-🔧 Tool call:   github.list_issues
-📥 Error:       403 Forbidden — insufficient permissions
-❌ Failed
+:thinking: Planning...  Searching for open issues
+:wrench: Tool call:   github.list_issues
+:inbox_tray: Error:       403 Forbidden — insufficient permissions
+:x: Failed
 ```
 
 For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
@@ -80,7 +80,7 @@ Before you mark the checkpoint, take two minutes to apply what you just read to 
 
 Put your answers in a scratch file, your editor, or wherever you keep notes. You will refer back to this comparison when you refine the workflow in the next step.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created

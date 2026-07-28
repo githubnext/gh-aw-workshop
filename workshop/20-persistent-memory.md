@@ -21,11 +21,11 @@
 
 > _A workflow that forgets everything after each run will repeat itself. Give it memory and it can act only on what's new._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add [persistent memory](https://github.github.com/gh-aw/patterns/memory-ops/) to your agentic workflow so it can carry state between runs. By the end of this step, your workflow will remember what it has already reported on and skip duplicates — so your team never gets the same alert twice.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You are comfortable editing YAML frontmatter from [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
@@ -60,7 +60,7 @@ ttl `7d`, and update the task brief to read and write that memory slot for dedup
 The skill adds the frontmatter block and updates the brief. Review the diff before committing.
 
 <details>
-<summary>✏️ Manual editing path</summary>
+<summary>:pencil2: Manual editing path</summary>
 
 Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter with the content shown below, then run `gh aw compile`.
 
@@ -146,7 +146,7 @@ git push
 > [!TIP]
 > Open the run log for the second run and look for a line where the agent reads its memory. The stored issue numbers it filters against appear there — that's your workflow remembering across runs.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow frontmatter has `cache-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot

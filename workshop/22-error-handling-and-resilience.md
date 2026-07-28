@@ -4,11 +4,11 @@
 
 > _A workflow that handles errors gracefully is one you can trust to run unattended, week after week._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Learn the most common ways agentic workflows fail in production and apply three practical techniques — defensive task briefs, timeout settings, and [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) fallbacks — to keep your workflow useful even when things go wrong.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working scheduled workflow (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - You're comfortable editing workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
@@ -50,7 +50,7 @@ In your Copilot CLI session in the terminal, paste:
 The skill applies all three changes and recompiles the lock file. Review the diff before committing.
 
 <details>
-<summary>✏️ Manual edit path</summary>
+<summary>:pencil2: Manual edit path</summary>
 
 Make the three edits manually (see the reference content below), then run:
 
@@ -132,7 +132,7 @@ After pushing:
 2. Open the run log and confirm the safe output step runs even when the data set is small or empty.
 3. Check the run duration — it should complete well within your `timeout-minutes` limit.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your task brief includes an explicit fallback instruction for empty or missing data
 - [ ] Your workflow frontmatter sets `timeout-minutes`

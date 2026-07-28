@@ -4,7 +4,7 @@
 
 > _An agent granted `contents: write` can be tricked into committing backdoors or overwriting sensitive files — keeping the workflow read-only, and routing any genuine writes through a pull request, closes that door entirely._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file.
 - You are familiar with the `permissions:` and `safe-outputs:` blocks from earlier steps.
@@ -124,7 +124,7 @@ Even if an attacker crafts a payload that reaches a file write, their exfiltrati
 
 ---
 
-## ✏️ Exercise: Spot the Dangerous [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
+## :pencil2: Exercise: Spot the Dangerous [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
 
 Read this workflow frontmatter and identify every configuration that makes repository poisoning possible:
 
@@ -159,7 +159,7 @@ tools:
 
 ---
 
-## ✏️ Exercise: Harden Your Workflow
+## :pencil2: Exercise: Harden Your Workflow
 
 1. Open your own workflow file.
 2. Check whether `contents: write` appears in `permissions:`.
@@ -182,7 +182,7 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the repository poisoning attack in one sentence
 - [ ] I can name the two gh-aw features (`contents: read` and `safe-outputs: create-pull-request`) that remove the direct-commit path

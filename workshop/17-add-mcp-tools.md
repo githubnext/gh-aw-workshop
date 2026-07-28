@@ -4,11 +4,11 @@
 
 > _MCP servers turn your agent from a text generator into an active participant that can read, fetch, and act._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add an [MCP (Model Context Protocol)](https://github.github.com/gh-aw/guides/mcps/) server to your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), giving the AI agent access to a new set of [tools](https://github.github.com/gh-aw/reference/tools/) it can call at runtime. By the end, your daily-status workflow will be able to do more than just generate text — it can interact with live data sources using structured tool calls.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
@@ -72,7 +72,7 @@ tools:
 ```
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>:desktop_computer: Terminal path</summary>
 
 Open your daily-status workflow file (`.github/workflows/daily-status.md`) and find the YAML frontmatter at the top. Add a `tools` block with the content shown above, then run `gh aw compile`.
 
@@ -123,7 +123,7 @@ git push
 
 Open the run log in **Actions**. You'll see the agent interleaving tool calls with its reasoning — it fetches data, processes it, then produces the summary. That's the agentic loop in action.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your frontmatter has a `tools:` block with `github: mode: gh-proxy`
 - [ ] Your task brief mentions what the agent should do with the tools

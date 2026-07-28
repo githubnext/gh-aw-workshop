@@ -4,7 +4,7 @@
 
 > _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to [Step 7](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for targeted troubleshooting, when to keep `--watch` running, and how to fix the most common compile errors.
 
@@ -64,7 +64,7 @@ The examples below show `gh-aw` source files before compilation, so values like 
 
 ```markdown
 ---
-# ❌ Broken — "workflow_dispatch" is not nested under "on:"
+# :x: Broken — "workflow_dispatch" is not nested under "on:"
 on:
   schedule: daily
 workflow_dispatch: {}
@@ -73,7 +73,7 @@ workflow_dispatch: {}
 
 ```markdown
 ---
-# ✅ Fixed
+# :white_check_mark: Fixed
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -82,7 +82,7 @@ on:
 
 ```markdown
 ---
-# ❌ Broken — "schedule" is not indented under "on:"
+# :x: Broken — "schedule" is not indented under "on:"
 on:
 schedule: daily on weekdays
   workflow_dispatch: {}
@@ -91,7 +91,7 @@ schedule: daily on weekdays
 
 ```markdown
 ---
-# ✅ Fixed
+# :white_check_mark: Fixed
 on:
   schedule: daily on weekdays
   workflow_dispatch: {}
@@ -108,7 +108,7 @@ on:
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
 <!-- journey: terminal -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I know what `gh aw compile` checks before a workflow runs
 - [ ] I can use `--no-emit` for quick structure checks without generating a lock file

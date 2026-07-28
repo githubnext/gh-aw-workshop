@@ -4,11 +4,11 @@
 
 _Watching an agent work in real time makes the workflow feel concrete._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll trigger the `daily-report-status` workflow from Step 7, watch it start in the **Actions** tab, and confirm it finishes successfully.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Completed [Confirm Model Access](07d-confirm-model-access.md)
 - `daily-report-status.md` and `daily-report-status.lock.yml` are committed to `.github/workflows/` on `main`
@@ -94,14 +94,14 @@ You do not need to decode every line yet. For now, just confirm that the workflo
 
 ### Confirm the run finished
 
-Wait for the run to turn green with a ✅. Then open the **Issues** tab in your repository and confirm that the agent updated an issue or created a new one.
+Wait for the run to turn green with a :white_check_mark:. Then open the **Issues** tab in your repository and confirm that the agent updated an issue or created a new one.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] The **Daily Report Status** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI
 - [ ] I opened the live log while the run was active
-- [ ] The run completed with a green ✅
+- [ ] The run completed with a green :white_check_mark:
 
 <!-- journey: all -->
 **Next:** [Interpret Your First Run](08b-interpret-your-run.md)

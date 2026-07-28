@@ -4,11 +4,11 @@
 
 > _Knowing what your agent did — and proving it — is what turns a useful automation into a trustworthy one._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://github.github.com/gh-aw/reference/artifacts/) that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Your workflow runs successfully (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - `gh aw` is installed and authenticated (see [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
@@ -90,7 +90,7 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 > [!NOTE]
 > Retention defaults may differ on GitHub Enterprise Server. Check with your admin before relying on the default 90-day window.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You ran `gh aw logs <your-workflow-id>` and read the AIC summary for your workflow
 - [ ] You ran `gh aw audit <run-id>` and reviewed the generated report

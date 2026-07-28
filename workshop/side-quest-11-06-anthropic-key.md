@@ -6,7 +6,7 @@
 
 By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). If you prefer to use **[Claude](https://github.github.com/gh-aw/reference/auth/#claude)**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have an Anthropic account at [console.anthropic.com](https://console.anthropic.com/).
 - You have a practice repository with at least one agentic workflow `.md` file.
@@ -105,12 +105,12 @@ gh aw compile --validate
 You should see:
 
 ```text
-✔ <your-workflow>.md — valid
+:heavy_check_mark: <your-workflow>.md — valid
 ```
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You have an Anthropic account and have generated an API key
 - [ ] `ANTHROPIC_API_KEY` is stored as a repository secret

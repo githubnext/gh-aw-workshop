@@ -4,7 +4,7 @@
 
 > _Optional: read this before building Step 11 to understand what you are writing, then return to [Build the Daily Repo Status Workflow](07-your-first-workflow.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Keep [Build the Daily Repo Status Workflow](07-your-first-workflow.md) open so you can map each section here to the workflow you build next.
 
@@ -31,13 +31,13 @@ The five frontmatter sections you'll build in Step 7:
 | [Tools](https://github.github.com/gh-aw/reference/tools/) | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
 | Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
 
-## ✏️ Try It: Label the Structure
+## :pencil2: Try It: Label the Structure
 
 Before you look at the answer, copy this snippet into your editor and add your own labels above each part.
 
 ```md
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: Daily repository status report
 on:
   schedule: daily
@@ -69,7 +69,7 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You labeled the example snippet and matched all five frontmatter sections.
 - [ ] You can point to the `on:` block and explain that it controls when the workflow runs.

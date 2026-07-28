@@ -6,11 +6,11 @@
 
 Using a Codespace instead? Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll verify the `gh` CLI is authenticated, install the `gh-aw` extension, and run one quick diagnostic to confirm your local terminal is ready for [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) setup.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've completed [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 - You've completed [Side Quest: Set Up Your Local Terminal](side-quest-02-01-local-terminal.md)
@@ -89,13 +89,13 @@ This creates several files needed for agentic workflow authoring:
 `.github/agents/agentic-workflows.md`, `.github/mcp.json`,
 `.github/workflows/copilot-setup-steps.yml`, and `.vscode/settings.json`.
 
-## 🏃 Try It
+## :running_man: Try It
 
 Run `gh aw --help` and scan the list of sub-commands.
 
 Which one sub-command do you expect to use in Step 7 when you create and run your first workflow?
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] `gh auth status` shows you are logged in to github.com
 - [ ] `gh aw --version` returns a version number
@@ -105,7 +105,7 @@ Which one sub-command do you expect to use in Step 7 when you create and run you
 - [ ] You can name one `gh aw` sub-command from `gh aw --help`
 
 Want to understand how Copilot authenticates with your workflow?
-➡️ **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
+:arrow_right: **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
 <!-- journey: local -->
 **Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md)

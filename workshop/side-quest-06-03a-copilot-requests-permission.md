@@ -4,7 +4,7 @@
 
 > _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method PAT](side-quest-06-03b-copilot-github-token.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - An organization owns your practice repository.
 - An organization administrator confirmed centralized Copilot billing is enabled for GitHub Actions.
@@ -60,7 +60,7 @@ Work through these checks in order if the run still fails:
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I confirmed the owning organization has centralized Copilot billing enabled
 - [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter

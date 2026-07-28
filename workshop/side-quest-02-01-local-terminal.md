@@ -4,7 +4,7 @@
 
 > _Optional: use your own machine instead of the recommended Codespace, then rejoin the core workshop._
 
-## 🧪 5-question terminal self-assessment
+## :test_tube: 5-question terminal self-assessment
 
 Check each statement:
 
@@ -18,7 +18,7 @@ If any answer is No, switch to [Set Up a Codespace](02a-setup-codespace.md) for 
 
 _Working locally means you'll use the tools and shell you already know — let's get them ready in a few quick steps._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll install Git and the `gh` CLI on your own machine and authenticate with GitHub. By the end you'll be ready to create your practice repository and continue to the core workshop steps.
 
@@ -28,7 +28,7 @@ You'll install Git and the `gh` CLI on your own machine and authenticate with Gi
    <img alt="Local setup flow: four sequential steps — Verify Git, Install gh CLI, Authenticate, Clone Repo" src="images/02-local-setup-flow-light.svg">
 </picture>
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've completed [What You Need Before We Start](01-prerequisites.md)
 - You have a free GitHub account and are signed in
@@ -150,7 +150,7 @@ gh repo clone my-agentic-workflows
 cd my-agentic-workflows
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I have cloned the `my-agentic-workflows` repository to my local machine
 - [ ] I have navigated into the `my-agentic-workflows` directory in my terminal

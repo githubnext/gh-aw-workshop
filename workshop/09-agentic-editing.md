@@ -4,13 +4,13 @@
 
 _The fastest path to a better workflow is a tight loop: describe what you want, review the diff, test, and compare the result._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll use the `agentic-workflows` Copilot skill — installed in your practice repository during Step 7 — to edit, debug, and optimize `daily-report-status.md`, then trigger a fresh run and compare the output against the previous one.
 
 By the end of this step, your workflow will produce more useful output, and you'll have a repeatable iteration loop you can use any time the workflow output is vague, incorrect, or missing something important.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Completed [Interpret Your First Run](08b-interpret-your-run.md)
 - Your `daily-report-status` workflow has at least one completed run
@@ -64,7 +64,7 @@ would benefit the team. Keep the existing [safe-output](https://github.github.co
 The skill loads the update prompt, makes the targeted change to the Markdown body, recompiles the workflow, and shows you the diff. Review the updated Markdown body and confirm the new instruction is clear and specific before committing.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>:desktop_computer: Terminal path</summary>
 
 Open `.github/workflows/daily-report-status.md` and add one sentence to the Markdown body, such as:
 
@@ -100,12 +100,12 @@ Suggest the most likely cause and propose one change to the workflow brief to fi
 The skill reads the workflow file, identifies likely causes — such as a vague brief, a missing fallback instruction, or an over-broad safe-output surface — and proposes a targeted, minimal fix.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>:desktop_computer: Terminal path</summary>
 
 Open the run log from the **Actions** tab and find the first `Tool call` the agent made. Then open `.github/workflows/daily-report-status.md` and add one fallback instruction to the Markdown body, such as:
 
 ```text
-If no open issues have 👍 reactions, post a comment on the most recently updated
+If no open issues have :+1: reactions, post a comment on the most recently updated
 open issue instead.
 ```
 
@@ -127,7 +127,7 @@ to reduce token usage. Apply only changes that do not change the workflow's outc
 The skill applies techniques such as removing redundant instructions, consolidating repeated constraints, and trimming unused safe-output declarations.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>:desktop_computer: Terminal path</summary>
 
 Review the Markdown body of your workflow and remove any sentences that repeat the same constraint or restate something already enforced by frontmatter (for example, "post only one comment" if `safe-outputs` already limits you to one comment). Recompile after each removal so you can verify nothing breaks.
 
@@ -159,7 +159,7 @@ If yes, keep the change. If not, revert the change and try a different adjustmen
 
 If you want a stricter review loop, score each run for accuracy, completeness, and tone before you decide what to change next.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I identified one specific problem from a real workflow run
 - [ ] I used the `/agentic-workflows` skill (or made a manual edit) to address it

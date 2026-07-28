@@ -4,7 +4,7 @@
 
 > _Optional: work through this security primer to understand how crafted repository content can try to trick your agent into leaking tokens or API keys — and why gh-aw's design makes that very difficult._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a basic [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) from [Build Your Daily Status Workflow](07-your-first-workflow.md) or equivalent.
 - You understand `safe-outputs` and `permissions` [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
@@ -115,7 +115,7 @@ cannot write, delete, or push even if an attacker crafts an instruction to do so
 
 ## Layered defences at a glance
 
-> 🤔 **Predict:** Before reading the table below, list from memory as many gh-aw defences against token exfiltration as you can. Then check your list against the table.
+> :thinking: **Predict:** Before reading the table below, list from memory as many gh-aw defences against token exfiltration as you can. Then check your list against the table.
 
 | Layer | What it does |
 |---|---|
@@ -141,7 +141,7 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can describe how an attacker might try to exfiltrate a token through crafted issue or PR content
 - [ ] You can list three gh-aw features that prevent token exfiltration

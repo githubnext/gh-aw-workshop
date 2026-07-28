@@ -18,11 +18,11 @@
 
 > _One workflow file, multiple specialised agents — each doing exactly one thing, at the right cost._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add a sub-agent to your daily-status workflow so the parent agent can stay focused on planning and final writing while a focused sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You understand YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
@@ -40,7 +40,7 @@ When your workflow repeats the same small job for many items, keep the parent ag
 
 A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading. If you want, add a short frontmatter block with fields such as `description` or `model`. Then call that helper by name from the parent workflow brief.
 
-> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
+> :thinking: **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >
 > [!TIP]
 > Want the full rules for names, frontmatter, model aliases, and block placement? See the existing [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
@@ -85,7 +85,7 @@ that explains what the issue is asking for and its current status.
 Keep the sub-agent brief narrow. If it processes one item at a time and returns a single result, it belongs here.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>:desktop_computer: Terminal path</summary>
 
 After your parent workflow brief, at the bottom of the file, add the sub-agent block shown above. Then update the parent brief to call it by name. For example:
 
@@ -111,7 +111,7 @@ git push
 
 Trigger a manual run. In the Actions log, confirm the parent agent calls your sub-agent and then uses the sub-agent result in the final summary.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You identified one repeated task in your workflow that fits a sub-agent
 - [ ] You wrote a sub-agent name and one-sentence job before editing the file

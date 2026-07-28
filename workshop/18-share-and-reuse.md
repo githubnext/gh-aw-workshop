@@ -4,11 +4,11 @@
 
 > _Your workflow is worth more than one repository — learn how to turn it into a reusable template your whole team can adopt._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll copy your finished workflow file into a shared location so that teammates can add it to their own repositories with a single command. By the end of this step you'll have a [reusable workflow template](https://github.github.com/gh-aw/guides/reusing-workflows/) and know how to distribute it.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working agentic workflow (completed [Refine, Test, and Improve Your Workflow](09-agentic-editing.md) or any of the build steps).
 - You have push access to at least one repository where you want to share the workflow (this can be the same practice repo).
@@ -84,7 +84,7 @@ This hint saves teammates guesswork when they first open the file.
 > [!NOTE]
 > The recipient still needs to compile the workflow (`gh aw compile`) and push it before GitHub Actions will run it. Remind your team of that step.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow `.md` file is committed and pushed to a GitHub repository
 - [ ] You can construct the `gh aw add` command for your workflow

@@ -6,7 +6,7 @@
 
 By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) use the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). To use **OpenAI models**, store an OpenAI API key as a repository secret and add one frontmatter line.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Install `gh-aw`](06-install-gh-aw.md) and have a working agentic workflow.
 - You are familiar with [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) `env:` blocks. If frontmatter is new, skim [Side Quest: Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) before continuing.
@@ -36,7 +36,7 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 > [!IMPORTANT]
 > Paste the key into GitHub Secrets (the next section) **before** closing the OpenAI platform tab. If you close it first, you must delete the key and generate a new one.
 
-**✏️ Verify:** Confirm your new key appears in the list at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) before continuing.
+**:pencil2: Verify:** Confirm your new key appears in the list at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) before continuing.
 
 ---
 
@@ -52,7 +52,7 @@ Open your repository in a **new tab** so you keep the OpenAI platform tab open.
 > [!IMPORTANT]
 > The name must be exactly `OPENAI_API_KEY`. Any variation (`openai_api_key`, `OPENAI-API-KEY`) causes a silent authentication failure.
 
-**✏️ Verify:** Run this command and confirm `OPENAI_API_KEY` appears in the output:
+**:pencil2: Verify:** Run this command and confirm `OPENAI_API_KEY` appears in the output:
 
 ```bash
 gh secret list
@@ -79,7 +79,7 @@ network:
 ---
 ```
 
-**✏️ Verify:** Confirm your frontmatter includes `engine: codex` and the secret reference:
+**:pencil2: Verify:** Confirm your frontmatter includes `engine: codex` and the secret reference:
 
 ```markdown
 ---
@@ -118,12 +118,12 @@ gh aw compile --validate
 You should see:
 
 ```text
-✔ <your-workflow>.md — valid
+:heavy_check_mark: <your-workflow>.md — valid
 ```
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You have an OpenAI account and have generated an API key
 - [ ] My new key is listed at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)

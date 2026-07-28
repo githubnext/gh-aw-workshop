@@ -4,7 +4,7 @@
 
 > _Optional: work through this security primer to see how an over-scoped workflow can give a misdirected agent more authority than your task needs._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file that uses `safe-outputs`.
 
@@ -68,7 +68,7 @@ tools:
 
 With this setup, the agent can read data and generate output. It has no path to create a PR, post a comment, or modify any file.
 
-### 🛠️ Try it: audit your own workflow
+### :hammer_and_wrench: Try it: audit your own workflow
 
 Open your workflow file. Check the `permissions:` block and answer these three questions:
 
@@ -111,7 +111,7 @@ This does **not** give the agent open-ended write access. It gives the agent one
 
 That is the key defence. A misdirected agent cannot silently turn a docs task into arbitrary repository mutation.
 
-### 🛠️ Try it: add [protected-files](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/) to your workflow
+### :hammer_and_wrench: Try it: add [protected-files](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/) to your workflow
 
 1. Open your workflow file and find the `safe-outputs` block.
 2. Add a `protected-files` entry that excludes `.github/workflows/daily-status.md`.
@@ -135,7 +135,7 @@ Write your prediction here, then save and run the workflow to check it:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain permission escalation in plain English
 - [ ] You audited your own `permissions:` block against the principle of least privilege
