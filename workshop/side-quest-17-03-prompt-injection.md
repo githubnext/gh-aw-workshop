@@ -57,12 +57,12 @@ cannot write to issues, open pull requests, or push commits — regardless of wh
 
 Keep your `permissions:` block minimal. Request only what your workflow genuinely needs.
 
-> **🏃 Try it:** Open your `daily-status.md` workflow file and look at the `permissions:` block in the frontmatter. Which key would you need to change — and to what value — if your workflow needed to create issues?
+> **🏃 Try it:** Open your `daily-status.md` workflow file and look at the frontmatter. Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
 >
 > <details>
 > <summary>Hint</summary>
 >
-> Change `issues: read` to `issues: write`.
+> `safe-outputs: create-issue:` enables issue creation. Keep `issues: read` in the `permissions:` block; no permission change is needed.
 >
 > </details>
 
@@ -76,7 +76,7 @@ Example frontmatter that restricts the agent to read-only operations plus issue 
 ---
 permissions:
   contents: read
-  issues: write
+  issues: read
 safe-outputs:
   create-issue:
 ---
@@ -123,7 +123,7 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 - [ ] You can explain why the task brief is the primary instruction source in gh-aw
 - [ ] You can list three gh-aw design features that limit the impact of a prompt injection
 - [ ] You know how to use `permissions:` and `safe-outputs` to reduce your workflow's attack surface
-- [ ] You can identify which `permissions:` key controls write access for a given resource type
+- [ ] You know that resource write access is not declared in the `permissions:` block
 - [ ] You can explain how the `safe-outputs:` key determines what write operations are available to the agent
 
 ---
