@@ -85,15 +85,15 @@ tools:
   github:
     mode: gh-proxy
 safe-outputs:
-  write-summary: # presence flag — declares this output surface is allowed
+  add-comment: # presence flag — declares this output surface is allowed
 network:
-  allowed-domains:
+  allowed:
     - api.github.com
     - copilot-proxy.githubusercontent.com
 ---
 ```
 
-> 🤔 **Predict:** What would happen if you removed `network.allowed-domains` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
+> 🤔 **Predict:** What would happen if you removed `network.allowed` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
 
 ---
 
