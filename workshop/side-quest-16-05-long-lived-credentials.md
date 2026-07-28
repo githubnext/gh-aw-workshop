@@ -88,7 +88,7 @@ With read-only permissions, a compromised or misdirected token cannot push code,
 > [!TIP]
 > If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is listed. Adding the minimum permission that makes the call succeed is safer than widening to `write` by default.
 
-### Use `network.allowed-domains` to block exfiltration
+### Use `network.allowed` to block exfiltration
 
 If a PAT is present in the workflow environment, the main concern is that it could be sent to an attacker-controlled endpoint. A `network` allowlist stops that at the [network layer](https://github.github.com/gh-aw/reference/network/):
 
@@ -117,7 +117,7 @@ When you must use a PAT:
 | Set the shortest practical expiry | Reduces the window during which a leaked token remains valid |
 | Rotate the PAT on a schedule | A rotated PAT invalidates any copy an attacker already has |
 | Inject the PAT at the step level, not globally | Keeps it out of other steps' environments, including the AI prompt step |
-| Add `network.allowed-domains` | Prevents the token from being sent to attacker-controlled endpoints |
+| Add `network.allowed` | Prevents the token from being sent to attacker-controlled endpoints |
 
 ---
 
@@ -137,7 +137,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 - [ ] Uses `GITHUB_TOKEN` (ephemeral) rather than a PAT where possible
 - [ ] PAT scopes are fine-grained and limited to the minimum required
 - [ ] `permissions:` block is present and restricts to read-only where applicable
-- [ ] `network.allowed-domains` is set to prevent outbound credential exfiltration
+- [ ] `network.allowed` is set to prevent outbound credential exfiltration
 - [ ] Documented credential type used (PAT or `GITHUB_TOKEN`) and the reason for the choice
 ```
 
@@ -164,7 +164,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 |---|---|
 | Use `GITHUB_TOKEN` whenever the task stays within the current repository | Eliminates long-lived credential entirely |
 | Declare a minimal `permissions:` block | Caps what any token can authorize |
-| Add `network.allowed-domains` | Blocks outbound exfiltration of any credential |
+| Add `network.allowed` | Blocks outbound exfiltration of any credential |
 | Inject PATs at the step level with `env:` | Keeps the credential out of the AI prompt step |
 | Use fine-grained PATs with short expiry when a PAT is necessary | Limits blast radius and persistence |
 
@@ -175,7 +175,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 - [ ] You can explain in one sentence why a PAT is riskier than `GITHUB_TOKEN` in an unattended workflow
 - [ ] You can describe the risk window difference between the two credential types
 - [ ] You know how to keep `permissions:` minimal and can explain why it matters
-- [ ] You know how to add `network.allowed-domains` to block credential exfiltration
+- [ ] You know how to add `network.allowed` to block credential exfiltration
 - [ ] You can list two practices that reduce risk when a PAT is unavoidable
 - [ ] You identified whether your workflow uses a PAT or the ephemeral `GITHUB_TOKEN` and noted the difference in your log or issue
 
