@@ -15,10 +15,7 @@ Extend your PR reviewer workflow to automatically apply [GitHub labels](https://
 
 Labels help teams filter and prioritise pull requests at a glance. Applying them manually is easy to forget, especially on busy repositories. An agentic labeller reads the list of changed files and applies the right labels before a human reviewer opens the PR.
 
-The pattern is simple: map file path patterns to label names in your workflow brief, then instruct the agent to pick and apply the matching labels.
-
-> [!TIP]
-> See the [LabelOps pattern](https://github.github.com/gh-aw/patterns/label-ops/) for more advanced label-driven workflow examples.
+The [LabelOps pattern](https://github.github.com/gh-aw/patterns/label-ops/) keeps the approach simple: map file path patterns to label names in your workflow brief, then instruct the agent to pick and apply the matching labels.
 
 ## The Labeller Workflow
 
