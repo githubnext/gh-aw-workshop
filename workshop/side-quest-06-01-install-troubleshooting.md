@@ -6,6 +6,14 @@
 
 If `gh extension install github/gh-aw` fails, use the matching fix below and retry.
 
+The diagram below shows how to identify your error type and apply the right fix:
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/sq-06-01-install-troubleshooting-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/sq-06-01-install-troubleshooting-light.svg">
+   <img alt="Install troubleshooting decision flow: gh extension install fails, then branch by error type — HTTP 401 unauthenticated, HTTP 403 org Codespace token, proxy or network error, or GHES endpoint — each leading to its specific fix, all converging on a successful gh aw --version check." src="images/sq-06-01-install-troubleshooting-light.svg">
+</picture>
+
 ---
 
 ## Local terminal setup quick fixes (Adventure Local)
