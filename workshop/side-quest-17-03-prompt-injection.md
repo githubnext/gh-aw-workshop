@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Prompt Injection Attacks in Agentic Workflows
+# Side Quest: [Prompt Injection](https://github.github.com/gh-aw/introduction/architecture/#threat-model) Attacks in Agentic Workflows
 
 > _Optional: work through this security primer to understand how malicious content in repository data can try to redirect your agent — and why gh-aw's design limits the damage._
 
@@ -32,7 +32,7 @@ A poorly designed agent might treat that title as a new instruction and attempt 
 
 gh-aw has three layers that limit the impact of a prompt injection attempt.
 
-### The task brief is the primary instruction source
+### The [task brief](https://github.github.com/gh-aw/reference/markdown/) is the primary instruction source
 
 In gh-aw, the workflow's Markdown task brief is compiled into the agent's instruction context before any repository data is fetched. Repository data (issue bodies, commit messages, file contents) arrives as **tool call results** — structured context, not system-level instructions.
 
@@ -113,7 +113,7 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 
 - Data from issues, PRs, and commits can contain adversarial content.
 - The agent's task brief is your control surface — keep it precise.
-- Defence in depth (minimal permissions, narrow safe-outputs, human review) limits the blast radius of a successful injection.
+- Defence in depth (minimal permissions, narrow safe-outputs, human review) limits the [blast radius](https://github.github.com/gh-aw/introduction/architecture/#threat-model) of a successful injection.
 
 ---
 

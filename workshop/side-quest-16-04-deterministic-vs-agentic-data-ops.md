@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Deterministic vs Agentic Data Ops
+# Side Quest: [Deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) vs [Agentic](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) Data Ops
 
 > _Optional: use this guide when you are unsure which parts of a data workflow should stay deterministic and which parts should be agentic, then return to [Step 16](16-connect-data-source.md)._
 

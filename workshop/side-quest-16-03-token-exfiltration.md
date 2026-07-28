@@ -6,8 +6,8 @@
 
 ## 📋 Before You Start
 
-- You have a basic agentic workflow from [Build Your Daily Status Workflow](07-your-first-workflow.md) or equivalent.
-- You understand `safe-outputs` and `permissions` frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have a basic [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) from [Build Your Daily Status Workflow](07-your-first-workflow.md) or equivalent.
+- You understand `safe-outputs` and `permissions` [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 
 When your agent reads live repository content — issue bodies, PR descriptions, commit messages, file contents — it reads text written by other people. Some of that text might try to act like an instruction aimed at your secrets.

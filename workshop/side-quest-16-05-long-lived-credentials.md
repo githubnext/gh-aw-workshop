@@ -28,9 +28,9 @@ For a scheduled, unattended agentic workflow that runs every day, this distincti
 
 ## Why unattended workflows amplify the risk
 
-Classic CI/CD scripts are narrow and deterministic: they run a fixed set of commands. If a PAT leaks from a classic pipeline, the attacker gains whatever those specific commands needed.
+Classic CI/CD scripts are narrow and [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/): they run a fixed set of commands. If a PAT leaks from a classic pipeline, the attacker gains whatever those specific commands needed.
 
-An agentic workflow is broader. The agent decides at runtime which tools to call. If a wide-scoped PAT leaks, it can happen through:
+An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) is broader. The agent decides at runtime which tools to call. If a wide-scoped PAT leaks, it can happen through:
 
 - A compromised dependency
 - A crafted issue or PR body that tricks the agent into printing it
@@ -42,7 +42,7 @@ Unattended workflows run without a human watching every log. The window between 
 
 ---
 
-## How gh-aw limits the blast radius
+## How gh-aw limits the [blast radius](https://github.github.com/gh-aw/introduction/architecture/#threat-model)
 
 gh-aw gives you three design features that reduce long-lived credential risk:
 

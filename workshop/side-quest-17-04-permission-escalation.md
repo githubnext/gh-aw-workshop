@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Permission Escalation in Agentic Workflows
+# Side Quest: Permission Escalation in [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows)
 
 > _Optional: work through this security primer to see how an over-scoped workflow can give a misdirected agent more authority than your task needs._
 
@@ -20,7 +20,7 @@ Permission escalation means the agent ends up with **more authority than the tas
 
 Picture a workflow with one job: read open issues, read recent commits, and write a daily summary.
 
-Now picture that same workflow allowing the agent to open a pull request touching any file. A malicious issue body or a prompt injection could push the agent to edit `README.md` or change workflow files. You never asked for that.
+Now picture that same workflow allowing the agent to open a pull request touching any file. A malicious issue body or a [prompt injection](https://github.github.com/gh-aw/introduction/architecture/#threat-model) could push the agent to edit `README.md` or change workflow files. You never asked for that.
 
 That is the problem. The workflow author requested one level of authority. The configuration exposed a wider one.
 
@@ -131,7 +131,7 @@ Write your prediction here, then save and run the workflow to check it:
 | Add `safe-outputs` only when the task needs a write action | Prevents accidental write paths in read-only workflows |
 | Use `allowed-files` to scope writes to one part of the repo | Stops a narrow task from spilling into unrelated files |
 | Add `protected-files` for high-risk paths | Forces human review before sensitive files change |
-| Treat task brief and capability scoping as one design problem | A clear brief helps, but boundaries must hold when the brief is ignored |
+| Treat [task brief](https://github.github.com/gh-aw/reference/markdown/) and capability scoping as one design problem | A clear brief helps, but boundaries must hold when the brief is ignored |
 
 ---
 
