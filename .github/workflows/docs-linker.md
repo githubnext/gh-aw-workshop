@@ -296,9 +296,10 @@ of each matched concept. You never remove content — you only enrich it with in
 }
 ```
 
-1. Read the pre-validated doc index from `/tmp/gh-aw/data/validated-doc-index.json`.
-   This index was built from the docs source files. Every page-level URL was
-   confirmed reachable by a deterministic HTTP check in the bash prevalidation step.
+<!-- markdownlint-disable-next-line MD029 -->
+3. Read the pre-validated doc index from `/tmp/gh-aw/data/validated-doc-index.json`.
+   This index was built from the docs source files; each page-level URL was
+   confirmed reachable (HTTP 2xx) by the prevalidation step.
    It maps each doc page URL to its title and a list of extracted section anchors:
 
 ```json
@@ -319,7 +320,6 @@ of each matched concept. You never remove content — you only enrich it with in
 }
 ```
 
-   Every page-level URL present in this index is confirmed reachable (HTTP 2xx).
    Use the anchor URLs to produce precise `URL#anchor` links when a concept
    matches a specific section heading.
 
