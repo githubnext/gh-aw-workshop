@@ -16,11 +16,11 @@
 
 > _Add automated YES/NO checks so every run tells you whether your workflow actually met its goal._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add an `evals:` block to your workflow, define binary quality questions, run the workflow, and verify that results are recorded in the `evals` artifact and persisted for historical comparison.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You completed [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md).
 - You completed [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
@@ -81,7 +81,7 @@ When you update your prompt or tools, rerun the workflow and compare answers acr
 > [!TIP]
 > Prefer using an agent with `/agentic-workflows` to add or refine `evals:` questions, then run `gh aw compile --watch` while iterating.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow frontmatter includes an `evals:` block with at least three binary questions
 - [ ] `gh aw compile daily-status` succeeds after your eval changes

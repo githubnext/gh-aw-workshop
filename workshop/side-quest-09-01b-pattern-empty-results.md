@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01b: Pattern — Empty `[result]` Data
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will diagnose empty tool responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data.
 
@@ -25,10 +25,10 @@ If the call still returns empty and data exists, ask the `agentic-workflows` ski
 Identify the pattern before opening the answer.
 
 ```text
-🔧 [tool] github.list_issues → {state: open, labels: "bug"}
-📥 [result] 0 issues returned
-🤔 [plan] No matching records; nothing to post
-✅ [done] Task complete
+:wrench: [tool] github.list_issues → {state: open, labels: "bug"}
+:inbox_tray: [result] 0 issues returned
+:thinking: [plan] No matching records; nothing to post
+:white_check_mark: [done] Task complete
 ```
 
 <details>
@@ -39,7 +39,7 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can distinguish an empty result from a failed tool call
 - [ ] I can verify required read scopes in `permissions:`

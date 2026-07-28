@@ -234,21 +234,21 @@ This rule does not override clearly superior choices for all learners. It is a t
 
 ## No "See Also" sections or "For more details" footers — documentation links belong inline
 
-- Do **not** add `## See Also`, `## 📚 See Also`, or any equivalent dedicated "See Also" section to workshop files.
+- Do **not** add `## See Also`, `## :books: See Also`, or any equivalent dedicated "See Also" section to workshop files.
 - Do **not** add a `For more details, see …` sentence at the end of a step or section. These trailing footers add noise without improving comprehension.
 - When a concept or term has a matching reference page in the gh-aw docs, link it **inline** at its first bare occurrence in the prose (e.g., `[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)`).
 - If you want to surface a relevant doc URL without anchoring it to specific prose, place the bare URL on its own line in the text — do **not** wrap it in a `[title](url)` list under a "See Also" heading.
-- Any existing `## See Also` / `## 📚 See Also` sections and any `For more details, see …` lines are violations of this rule and must be removed.
+- Any existing `## See Also` / `## :books: See Also` sections and any `For more details, see …` lines are violations of this rule and must be removed.
 
 ## GitHub emoji shortcodes for icons and visual elements
 
 The workshop docs are rendered with GFM emoji support: `:emoji_name:` shortcodes are converted to `<g-emoji>` elements styled by Primer CSS. Use GitHub emoji shortcodes instead of raw Unicode emoji characters or custom icon fonts so the rendered docs stay on-brand and consistent with GitHub's own design language.
 
 - **Prefer** `:white_check_mark:`, `:rocket:`, `:bulb:`, `:warning:`, and other GitHub-supported shortcodes when you need an icon or decorative symbol in prose, checkpoint headings, or callout text.
-- **Do not** paste raw Unicode emoji characters (e.g., ✅, 🚀) directly into Markdown source — use the `:shortcode:` form so the build renders a properly sized and styled `<g-emoji>` element.
+- **Do not** paste raw Unicode emoji characters (e.g., :white_check_mark:, :rocket:) directly into Markdown source — use the `:shortcode:` form so the build renders a properly sized and styled `<g-emoji>` element.
 - **Do not** use raw Unicode emoji in error messages, terminal output examples, or code blocks — those surfaces should remain plain text.
 - Verify the shortcode exists in the [GitHub emoji list](https://github.com/ikatyang/emoji-cheat-sheet) before using it; unknown shortcodes are passed through as literal text.
-- The `## ✅ Checkpoint` heading at the end of each step is the one approved exception: that heading uses a literal Unicode checkmark for historical compatibility and should not be changed.
+- The `## :white_check_mark: Checkpoint` heading at the end of each step is the one approved exception: that heading uses a literal Unicode checkmark for historical compatibility and should not be changed.
 
 ## Consistency check
 
@@ -414,7 +414,7 @@ Side quest `journey` assignment:
 
 ## Checkpoint checklist size limit
 
-Every workshop step ends with a `## ✅ Checkpoint` section that contains a markdown checklist. Keep that checklist — and every other checklist on the page — concise:
+Every workshop step ends with a `## :white_check_mark: Checkpoint` section that contains a markdown checklist. Keep that checklist — and every other checklist on the page — concise:
 
 - **Maximum 10 checkboxes per page** (across all checklists on the page combined).
 - If a natural checkpoint requires more items, split the step into two shorter steps rather than adding more boxes.
@@ -423,7 +423,7 @@ Every workshop step ends with a `## ✅ Checkpoint` section that contains a mark
 
 ### Checkbox interactivity by position
 
-The rendered workshop site treats task-list checkboxes differently depending on where they appear relative to the `## ✅ Checkpoint` heading:
+The rendered workshop site treats task-list checkboxes differently depending on where they appear relative to the `## :white_check_mark: Checkpoint` heading:
 
 - **Before the Checkpoint heading** — rendered as static, non-interactive indicators. These are used for in-exercise prompts such as "I've made my decision". They carry no toggle state and do not contribute to the progress bar.
 - **After the Checkpoint heading** — rendered as toggleable checkboxes. Learners can click them to mark progress; state is persisted in `localStorage` and shown in the per-page progress bar.

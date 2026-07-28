@@ -4,7 +4,7 @@
 
 > _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the [trust boundary](side-quest-17-02-security-architecture.md) early and keep the workflow's write surface narrow._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Completed Side Quest: [How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md)
 - You have a workflow with a `tools:` block already configured.
@@ -24,7 +24,7 @@ Use this table as a quick [threat model](https://github.github.com/gh-aw/introdu
 | Tool poisoning | The server exposes more tools than your task needs, so a bad response has more ways to steer the agent. | The tool list is broad, vague, or includes an "everything" style [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets). |
 | [Output injection](side-quest-17-06-output-injection.md) | The server returns normal-looking data with hidden instructions mixed into the result. | Tool output suddenly contains directives such as "ignore previous instructions" or asks for extra actions. |
 
-## ✏️ Exercise: Inspect This `.mcp.json`
+## :pencil2: Exercise: Inspect This `.mcp.json`
 
 Read this fictional config and look for the warning signs from the attack-surface table above.
 
@@ -67,7 +67,7 @@ Adopt these habits when you work with MCP servers:
 
 gh-aw helps by making you declare `tools:` explicitly, limit [network](https://github.github.com/gh-aw/reference/network/) destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the MCP supply chain risk in one sentence
 - [ ] I can use the attack-surface table to spot at least one detection signal

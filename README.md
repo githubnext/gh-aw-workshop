@@ -60,11 +60,11 @@ That means you focus on:
 
 ## Ready to begin?
 
-➡️ Start with [workshop/00-welcome.md](workshop/00-welcome.md)
+:arrow_right: Start with [workshop/00-welcome.md](workshop/00-welcome.md)
 
 > [!NOTE]
 > **Microsoft and GitHub facilitators:** Request a demo environment at [aka.ms/GetMSDemo](https://aka.ms/GetMSDemo).
 
 ---
 
-© GitHub • [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) • [MIT License](https://gh.io/mit)
+:copyright: GitHub • [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) • [MIT License](https://gh.io/mit)

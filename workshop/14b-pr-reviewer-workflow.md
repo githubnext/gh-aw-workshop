@@ -4,7 +4,7 @@
 
 _Turn pull request review into a small team: an orchestrator, a focused reviewer, and reusable review guidance._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll use your AI agent and the `/agentic-workflows` skill to create an event-driven PR reviewer. The workflow will define:
 
@@ -14,7 +14,7 @@ You'll use your AI agent and the `/agentic-workflows` skill to create an event-d
 
 By the end, you'll have a reviewer that runs when a draft becomes ready, can be rerun with `/review`, and keeps its review method separate from its orchestration.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working workflow from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 - You have pushed the files created by `gh aw init`, including `.github/skills/agentic-workflows/`.
@@ -32,7 +32,7 @@ The parent workflow should coordinate the run, not contain every review rule. It
 
 The agent can change how it investigates a pull request without changing the stable standards in the skill. You can also improve the skill without making the parent brief longer.
 
-> 🤔 **Predict:** Which instruction belongs in the skill: “review pull request 42” or “cite a changed file and line for every finding”? The first is run-specific orchestration; the second is reusable review guidance.
+> :thinking: **Predict:** Which instruction belongs in the skill: “review pull request 42” or “cite a changed file and line for every finding”? The first is run-specific orchestration; the second is reusable review guidance.
 
 ## Ask Your Agent to Create the Workflow
 
@@ -181,7 +181,7 @@ output unchanged. Compile the workflow after the edit.
 
 Run `/review` again and compare the new result with the first review.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You created `.github/workflows/pr-reviewer.md` through your AI agent and `/agentic-workflows`
 - [ ] The workflow contains a `pr-reviewer` inline agent and a `pr-review-standards` inline skill

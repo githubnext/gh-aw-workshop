@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 13-03: Pattern — PR Review Checklist
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Build a workflow that evaluates every new pull request against a short review checklist and posts a pass/fail summary. Reviewers can see at a glance which criteria are already met before they open the diff.
 
@@ -14,7 +14,7 @@ Build a workflow that evaluates every new pull request against a short review ch
 
 Review checklists enforce team standards consistently. Instead of relying on every reviewer to remember to check the same things, you automate the inspection and surface the results as a [comment](https://github.github.com/gh-aw/reference/safe-outputs/#comment-creation-add-comment). Reviewers can then focus their time on the things that require human judgment.
 
-The pattern is a structured evaluation loop: for each item on the checklist, the agent decides whether the PR satisfies the criterion, explains its reasoning in one sentence, and marks it with ✅ (pass) or ⚠️ (needs attention).
+The pattern is a structured evaluation loop: for each item on the checklist, the agent decides whether the PR satisfies the criterion, explains its reasoning in one sentence, and marks it with :white_check_mark: (pass) or :warning: (needs attention).
 
 > [!TIP]
 > See the [pull request trigger](https://github.github.com/gh-aw/reference/triggers/#pull-request-triggers-pullrequest) reference for all available event types.
@@ -39,7 +39,7 @@ safe-outputs:
 
 You are a code review assistant. When a pull request is opened or updated, evaluate it
 against the checklist below. For each item, write one sentence of evidence and mark it
-✅ (criterion clearly met) or ⚠️ (cannot confirm from available context).
+:white_check_mark: (criterion clearly met) or :warning: (cannot confirm from available context).
 
 Checklist:
 
@@ -55,11 +55,11 @@ Post the results as a comment on the pull request using this format:
 
 | Criterion | Result | Evidence |
 |-----------|--------|----------|
-| Description | ✅ / ⚠️ | _one sentence_ |
-| Scope | ✅ / ⚠️ | _one sentence_ |
-| Tests | ✅ / ⚠️ | _one sentence_ |
-| Documentation | ✅ / ⚠️ | _one sentence_ |
-| Size | ✅ / ⚠️ | _one sentence_ |
+| Description | :white_check_mark: / :warning: | _one sentence_ |
+| Scope | :white_check_mark: / :warning: | _one sentence_ |
+| Tests | :white_check_mark: / :warning: | _one sentence_ |
+| Documentation | :white_check_mark: / :warning: | _one sentence_ |
+| Size | :white_check_mark: / :warning: | _one sentence_ |
 
 Do not add any text outside the table and heading.
 ```
@@ -75,7 +75,7 @@ git push
 
 ## Test It
 
-Open a test pull request with no description and no test files. The workflow should post a checklist with **Description** and **Tests** marked ⚠️. Then update the PR description and push a new commit — the workflow fires again (on `synchronize`) and the checklist should re-evaluate.
+Open a test pull request with no description and no test files. The workflow should post a checklist with **Description** and **Tests** marked :warning:. Then update the PR description and push a new commit — the workflow fires again (on `synchronize`) and the checklist should re-evaluate.
 
 ## Hands-On Exercise: Add a Team-Specific Criterion
 
@@ -88,14 +88,14 @@ Ideas:
 
 Update the checklist in the workflow brief, recompile, and open a fresh PR to verify the new criterion appears in the table.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I created `.github/workflows/pr-checklist.md` with a `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
-- [ ] I opened a test PR without a description and confirmed **Description** was marked ⚠️
+- [ ] I opened a test PR without a description and confirmed **Description** was marked :warning:
 - [ ] I updated the PR description and confirmed the checklist refreshed on the next push
 - [ ] I added at least one team-specific criterion to the checklist
-- [ ] I can explain why using ✅ / ⚠️ instead of pass/fail makes the output more constructive
+- [ ] I can explain why using :white_check_mark: / :warning: instead of pass/fail makes the output more constructive
 
 <!-- journey: all -->
 <!-- /journey -->

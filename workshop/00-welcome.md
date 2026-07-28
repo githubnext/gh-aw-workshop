@@ -26,7 +26,7 @@ Along the way, you'll learn how to compile the workflow, trigger test runs, and 
   <img alt="Preview of a completed workflow run in the Actions tab" src="images/00-workflow-run-complete-light.svg">
 </picture>
 
-Excited to get started? Let's gooo! 🚀
+Excited to get started? Let's gooo! :rocket:
 
 <details>
 <summary>Agent instructions: load full workshop context</summary>

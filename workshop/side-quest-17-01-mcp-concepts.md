@@ -4,7 +4,7 @@
 
 > _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You have a workflow YAML file open in your editor.
@@ -147,7 +147,7 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain what an MCP tool server is and what it provides to the agent
 - [ ] You understand how enabling MCP changes the agentic reasoning loop

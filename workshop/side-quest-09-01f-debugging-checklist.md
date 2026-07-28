@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01f: Debugging Checklist
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will apply a repeatable seven-step triage flow whenever a run produces unexpected output.
 
@@ -21,7 +21,7 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 7. If behavior is still unclear, ask the `agentic-workflows` skill to diagnose your workflow with a pasted snippet.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can run this checklist in order without skipping steps
 - [ ] I know where to find both live logs and safe-output records

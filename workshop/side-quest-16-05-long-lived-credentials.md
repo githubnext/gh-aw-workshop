@@ -4,7 +4,7 @@
 
 > _Optional: work through this security primer to understand why personal access tokens create a larger attack surface than the ephemeral `GITHUB_TOKEN` — especially in unattended agentic workflows._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 - You understand that `${{ secrets.GITHUB_TOKEN }}` is the built-in GitHub token provided automatically for each workflow run.
@@ -65,7 +65,7 @@ For any operation that touches only the current repository, use `${{ secrets.GIT
 Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the [permissions](https://github.github.com/gh-aw/reference/permissions/) your task actually needs. Compare the two blocks below:
 
 ```markdown
-# ❌ Risky: broad write scopes for a read-only task
+# :x: Risky: broad write scopes for a read-only task
 ---
 permissions:
   contents: write
@@ -75,7 +75,7 @@ permissions:
 ```
 
 ```markdown
-# ✅ Safe: minimal scopes matching actual needs
+# :white_check_mark: Safe: minimal scopes matching actual needs
 ---
 permissions:
   contents: read
@@ -121,7 +121,7 @@ When you must use a PAT:
 
 ---
 
-## ✏️ Exercise: Audit your current workflow
+## :pencil2: Exercise: Audit your current workflow
 
 Open your workflow file (e.g., `.github/workflows/daily-report.md`) and answer the following questions:
 
@@ -145,7 +145,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 
 ## Comparison at a glance
 
-> 🤔 **Predict:** Before reading the table below, list from memory which properties of a PAT make it riskier than `GITHUB_TOKEN` in an unattended workflow. Then check your list against the table.
+> :thinking: **Predict:** Before reading the table below, list from memory which properties of a PAT make it riskier than `GITHUB_TOKEN` in an unattended workflow. Then check your list against the table.
 
 | Property | `GITHUB_TOKEN` | PAT |
 |---|---|---|
@@ -170,7 +170,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain in one sentence why a PAT is riskier than `GITHUB_TOKEN` in an unattended workflow
 - [ ] You can describe the risk window difference between the two credential types

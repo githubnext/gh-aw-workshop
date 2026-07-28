@@ -4,7 +4,7 @@
 
 > _Use this activity when you want to move from “my workflow costs something” to “I know why it costs that much, and I can lower it on purpose.”_
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You completed [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 - You have a working PR reviewer workflow or another workflow with at least 5 completed runs so you can compare before-and-after usage.
@@ -150,7 +150,7 @@ Explain why that change is the best next step, then apply it and run gh aw compi
 
 Paste the relevant excerpt from your `gh aw audit --parse` output below the prompt.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You collected a five-run AIC baseline for one workflow
 - [ ] You audited at least one unusually expensive run

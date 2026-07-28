@@ -4,7 +4,7 @@
 
 > _Optional: work through this guide when your workflow needs a token or API key that shouldn't appear in plain text, then return to your main path._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Familiarity with [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
 - You understand what GitHub Actions workflow YAML looks like.
@@ -69,7 +69,7 @@ Use this quick comparison when your workflow needs GitHub access:
 
 ---
 
-## ✏️ Try it: Verify masking
+## :pencil2: Try it: Verify masking
 
 Add a placeholder secret named `WORKSHOP_TOKEN` with any throwaway value, then prove GitHub masks it in logs.
 
@@ -137,7 +137,7 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can add a secret to your repository via the GitHub UI
 - [ ] You know how to reference a secret with `${{ secrets.SECRET_NAME }}`

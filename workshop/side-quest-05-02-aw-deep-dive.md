@@ -4,7 +4,7 @@
 
 > _Optional: work through this side quest after [What Are Agentic Workflows?](05-agentic-workflows-intro.md) to practise classification, explore the two-file structure, and check your vocabulary._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've read [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 
@@ -47,10 +47,10 @@ A scheduled agentic workflow generates a report like this:
 ```markdown
 ## Daily Repository Status — July 12
 
-- ✅ CI health: 18 workflows succeeded, 1 failed (`docs-link-check`)
-- 🔄 Pull requests: 7 open (2 need review, 1 stale > 14 days)
-- 🐛 Issues: 4 new, 3 closed, 2 high-priority still open
-- 🚀 Releases: No new tags in the last 24 hours
+- :white_check_mark: CI health: 18 workflows succeeded, 1 failed (`docs-link-check`)
+- :arrows_counterclockwise: Pull requests: 7 open (2 need review, 1 stale > 14 days)
+- :bug: Issues: 4 new, 3 closed, 2 high-priority still open
+- :rocket: Releases: No new tags in the last 24 hours
 
 ### Recommended next actions
 1. Re-run `docs-link-check` and update broken external URLs.
@@ -206,7 +206,7 @@ Does your answer include:
 
 Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can classify tasks as agentic or standard Actions workflows
 - [ ] You can point to the task brief and the trigger in the sample `.md` file

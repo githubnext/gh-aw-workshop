@@ -4,11 +4,11 @@
 
 > _Optional: work through this guide if you want to get more useful, consistent output from your [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — then return to [Step 11](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Learn five practical techniques for writing AI task briefs that produce clearer, more actionable workflow output. By the end you'll have an improved task brief for your daily status workflow — one that gives the AI better context, tighter constraints, and a predictable output format.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've written your first workflow task brief in [Step 11](07-your-first-workflow.md).
 - You've run the workflow at least once in [Step 9](09-agentic-editing.md) and seen its output.
@@ -25,13 +25,13 @@ Unlike a chat message, the task brief runs unattended. The AI can't ask clarifyi
 
 ## State the Goal, Not Just the Action
 
-❌ Vague:
+:x: Vague:
 
 ```
 Summarise the repository activity.
 ```
 
-✅ Goal-oriented:
+:white_check_mark: Goal-oriented:
 
 ```
 Produce a concise daily summary that helps a developer answer: "What changed
@@ -51,13 +51,13 @@ Format your summary as follows:
 
 ## Daily Status — {date}
 
-### 🔀 Recent Commits
+### :twisted_rightwards_arrows: Recent Commits
 - One bullet per commit with author and short message.
 
-### 🐛 Open Issues
+### :bug: Open Issues
 - List open issues by title. If there are none, say "No open issues."
 
-### 📌 Action Items
+### :pushpin: Action Items
 - Highlight anything that looks urgent or blocked.
 ```
 
@@ -129,13 +129,13 @@ Format:
 
 ## Daily Status — {date}
 
-### 🔀 Recent Commits
+### :twisted_rightwards_arrows: Recent Commits
 - Up to five bullets: author, short message.
 
-### 🐛 Open Issues
+### :bug: Open Issues
 - Up to five bullets: issue number and title.
 
-### 📌 Action Items
+### :pushpin: Action Items
 - Flag anything urgent or blocked. If nothing stands out, write "Nothing urgent."
 
 Keep the whole summary under 300 words. You are done when the summary is
@@ -147,7 +147,7 @@ posted to the Actions run summary.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can name three techniques for improving a task brief
 - [ ] You have updated your daily status workflow with at least one improvement from this guide

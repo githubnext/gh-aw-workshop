@@ -4,7 +4,7 @@
 
 > _Optional: work through these common YAML mistakes if you hit a [compile error](https://github.github.com/gh-aw/reference/compilation-process/) in Step 11, then return to the main path._
 
-YAML is unforgiving. Here are the five errors learners hit most often when building agentic workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), each with a broken ❌ and correct ✅ example.
+YAML is unforgiving. Here are the five errors learners hit most often when building agentic workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), each with a broken :x: and correct :white_check_mark: example.
 
 ---
 
@@ -14,13 +14,13 @@ YAML does not allow tab characters for indentation. Every level of nesting must 
 
 ```markdown
 ---
-# ❌ Wrong — the line below "on:" is indented with a tab character,
+# :x: Wrong — the line below "on:" is indented with a tab character,
 #    not spaces. The tab is invisible in most editors, which makes
 #    this bug hard to spot. YAML will reject it with a parse error.
 on:
   schedule: daily  # <-- replace leading whitespace with 2 spaces, not a tab
 
-# ✅ Correct — uses exactly two spaces
+# :white_check_mark: Correct — uses exactly two spaces
 on:
   schedule: daily
 ---
@@ -36,10 +36,10 @@ YAML treats certain characters (`:`, `#`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `?`
 
 ```markdown
 ---
-# ❌ Wrong — the colon in the description breaks YAML parsing
+# :x: Wrong — the colon in the description breaks YAML parsing
 description: Post a report: daily
 
-# ✅ Correct — wrap the value in double quotes
+# :white_check_mark: Correct — wrap the value in double quotes
 description: "Post a report: daily"
 ---
 ```
@@ -52,13 +52,13 @@ YAML nesting is strictly positional. A key one level deeper must be indented exa
 
 ```markdown
 ---
-# ❌ Wrong — "mode" is at the same level as "github"
+# :x: Wrong — "mode" is at the same level as "github"
 tools:
   github:
   mode: gh-proxy
   toolsets: [default]
 
-# ✅ Correct — "mode" is indented under "github"
+# :white_check_mark: Correct — "mode" is indented under "github"
 tools:
   github:
     mode: gh-proxy
@@ -73,9 +73,9 @@ tools:
 The frontmatter must have both an opening and a closing `---` fence. If you omit the closing fence, the entire file is treated as YAML and the agent body is lost.
 
 ```
-# ❌ Wrong — no closing fence
+# :x: Wrong — no closing fence
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: ...
 on:
   schedule: daily
@@ -85,9 +85,9 @@ You are an AI assistant...
 ```
 
 ```
-# ✅ Correct — closing fence separates frontmatter from body
+# :white_check_mark: Correct — closing fence separates frontmatter from body
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: ...
 on:
   schedule: daily
@@ -105,12 +105,12 @@ This is the single most common reason a workflow compiles but produces no output
 
 ```markdown
 ---
-# ❌ Wrong — missing copilot-requests
+# :x: Wrong — missing copilot-requests
 permissions:
   contents: read
   issues: read
 
-# ✅ Correct
+# :white_check_mark: Correct
 permissions:
   contents: read
   copilot-requests: write
@@ -120,7 +120,7 @@ permissions:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can identify all five YAML pitfall patterns
 - [ ] Your `daily-status.md` compiles without errors after checking each section

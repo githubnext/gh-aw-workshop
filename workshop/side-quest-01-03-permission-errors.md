@@ -4,7 +4,7 @@
 
 > _Optional: read this if you see a `permission denied` error and need help resolving it._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have opened a terminal (see [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) if needed)
 - You encountered a `permission denied` error during setup, or want to know what to do when you do
@@ -69,7 +69,7 @@ Then open an administrator PowerShell and run the same command — it should suc
 ---
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You ran the practice command and saw `permission denied` (or an equivalent access-denied message) in your terminal output
 - [ ] You identified the exact file path shown in the error message

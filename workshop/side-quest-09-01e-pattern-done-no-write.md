@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01e: Pattern — "Done" but Nothing Written
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will diagnose successful runs that produce no write output and tighten instructions so expected writes happen reliably.
 
@@ -10,7 +10,7 @@ You will diagnose successful runs that produce no write output and tighten instr
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 
-A run can finish with `✅ [done]` and still create no comment or issue. That outcome is often correct: your condition may not have been met. The challenge is determining whether the skip was intentional or caused by ambiguous logic.
+A run can finish with `:white_check_mark: [done]` and still create no comment or issue. That outcome is often correct: your condition may not have been met. The challenge is determining whether the skip was intentional or caused by ambiguous logic.
 
 Start with three checks:
 
@@ -27,8 +27,8 @@ If you are unsure how to phrase conditions, ask the `agentic-workflows` skill to
 Identify the pattern before opening the answer.
 
 ```text
-🤔 [plan] Repository checks passed; no escalation criteria met
-✅ [done] Task complete
+:thinking: [plan] Repository checks passed; no escalation criteria met
+:white_check_mark: [done] Task complete
 
 ### Summary
 Reviewed signals and took no action.
@@ -42,7 +42,7 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain why a successful run might skip writing
 - [ ] I can verify whether write conditions were truly met

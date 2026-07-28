@@ -4,11 +4,11 @@
 
 > _Workflows become truly powerful when they act on real, up-to-the-minute data — not just canned prompts._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll extend your daily-status workflow to fetch open issues from your repository using the [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh), then inject that data into your AI prompt. By the end, your summary will include an overview of outstanding issues alongside the commit activity.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
@@ -45,7 +45,7 @@ those step outputs into the summary.
 The skill adds both steps and updates the task brief. Review the diff before committing.
 
 <details>
-<summary>✏️ Manual edit path</summary>
+<summary>:pencil2: Manual edit path</summary>
 
 Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
@@ -69,7 +69,7 @@ First, fetch the recent commit log:
     echo "EOF" >> $GITHUB_OUTPUT
 ```
 
-🤔 Pause and predict: What will the `commit_log` output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
+:thinking: Pause and predict: What will the `commit_log` output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
 
 ### Fetch open issues
 
@@ -93,9 +93,9 @@ Next, add a step to fetch open issues:
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided automatically — no setup needed
 ```
 
-✏️ Try it: Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you trigger a workflow run, check whether the workflow reports the same total.
+:pencil2: Try it: Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you trigger a workflow run, check whether the workflow reports the same total.
 
-🤔 Pause and predict: What will the AI receive if the issue list is empty? Will the prompt still produce a useful output?
+:thinking: Pause and predict: What will the AI receive if the issue list is empty? Will the prompt still produce a useful output?
 
 ### Inject data into your AI prompt
 
@@ -120,9 +120,9 @@ Highlight anything that looks urgent in the issue list.
 
 GitHub resolves the step-output expressions before the AI sees the prompt, so the model receives plain text instead of workflow syntax.
 
-🤔 Pause and predict: If the `commit_log` output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
+:thinking: Pause and predict: If the `commit_log` output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
 
-✏️ Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
+:pencil2: Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
 
 ### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), push, and test
 
@@ -156,7 +156,7 @@ Once you're comfortable with this pattern, the same technique works for:
 | Failed workflow runs | `gh run list --status failure --limit 5` |
 | Repository stats | `gh api repos/:owner/:repo` |
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow has a recent-commits step with `id: recent`
 - [ ] Your workflow has an open-issues step with `id: issues`

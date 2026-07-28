@@ -4,11 +4,11 @@
 
 > _The cheapest agent invocation is the one you skip. Use a deterministic step to decide whether your repository state is worth an agent's attention._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Add a security scanning step to your workflow that counts open Dependabot vulnerability alerts, then wire the result into an `if:` condition so the agent only runs when there are actual findings. You will chain that check with a branch condition using `&&` and update the agent brief to reference the alert count directly.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md).
 - Your workflow already has a top-level `if:` condition gating the agent job.
@@ -36,7 +36,7 @@ alert_count is not zero and the ref is the default branch.
 The skill adds the step, updates the permissions block and the `if:` condition, then recompiles the lock file.
 
 <details>
-<summary>🖥️ Terminal path</summary>
+<summary>:desktop_computer: Terminal path</summary>
 
 1. Add `security-events: read` to the `permissions:` block in your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
@@ -103,7 +103,7 @@ git commit -m "feat: gate agent on open security alerts"
 git push
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow has a `count open security alerts` step with `id: alerts`
 - [ ] The `permissions:` block includes `security-events: read`

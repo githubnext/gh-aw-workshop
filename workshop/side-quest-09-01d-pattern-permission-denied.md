@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01d: Pattern — `permission denied`
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will map permission failures to the correct control: read access in `permissions:` and write allowlisting in `safe-outputs:`.
 
@@ -28,8 +28,8 @@ A quick check:
 Identify the pattern before opening the answer.
 
 ```text
-🔧 [tool] github.create_issue → {title: "Daily Status", body: "..."}
-❌ [error] permission denied: safe-output create-issue not allowed
+:wrench: [tool] github.create_issue → {title: "Daily Status", body: "..."}
+:x: [error] permission denied: safe-output create-issue not allowed
 ```
 
 <details>
@@ -40,7 +40,7 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can classify denied calls as read or write operations
 - [ ] I can fix missing read access in `permissions:`

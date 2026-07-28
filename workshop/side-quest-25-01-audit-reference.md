@@ -4,7 +4,7 @@
 
 > _A detailed companion to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md). Use this side quest when you want to understand the full contents of an audit report or dig into individual artifact files._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You completed [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and have at least one workflow run ID to work with.
 - `gh aw` is installed and authenticated (see [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
@@ -118,7 +118,7 @@ The raw domain-level network access logs live in `sandbox/firewall/audit/` insid
 2. Identify at least one domain the workflow accessed.
 3. If any domains were blocked, add them to `network.allow` in the workflow frontmatter.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC

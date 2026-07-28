@@ -4,11 +4,11 @@
 
 > _Strong workshop content comes from real product signals, not guesses._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 In this step, turn `github/gh-aw` research into a concrete training plan update: review current gh-aw documentation signals, identify one meaningful learner gap, and draft a workshop node proposal ready to implement. By the end, you have a repeatable method for deciding what to teach next with confidence.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You completed [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md).
 - You can open `workshop/README.md` and identify where new nodes belong in the curriculum table.
@@ -73,7 +73,7 @@ npx --yes markdownlint-cli2 "workshop/**/*.md"
 gh aw compile
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You reviewed current gh-aw direction signals from `LLMs.txt`
 - [ ] You identified one concrete learner gap for a new training node

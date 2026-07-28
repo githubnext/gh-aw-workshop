@@ -4,11 +4,11 @@
 
 > _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Run your workflow once, score the output with a short rubric, change one sentence in the brief, and run it again. By the end, you will have a before/after comparison instead of a vague feeling that the prompt is "better."
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Step 9](09-agentic-editing.md) and already have a workflow run to inspect.
 - Your workflow posts to a [safe output surface](https://github.github.com/gh-aw/reference/safe-outputs/) such as the **Daily Status Reports** issue.
@@ -104,7 +104,7 @@ Quick run-log check:
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You triggered a fresh workflow run and captured one real output to review
 - [ ] You recorded a baseline score for accuracy, completeness, and tone

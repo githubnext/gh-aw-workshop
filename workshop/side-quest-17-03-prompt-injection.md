@@ -4,7 +4,7 @@
 
 > _Optional: work through this security primer to understand how malicious content in repository data can try to redirect your agent — and why gh-aw's design limits the damage._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed Step 9 (Reading Workflow Output) and understand what tool calls look like in the run log.
 
@@ -57,7 +57,7 @@ cannot write to issues, open pull requests, or push commits — regardless of wh
 
 Keep your `permissions:` block minimal. Request only what your workflow genuinely needs.
 
-> **🏃 Try it:** Open your `daily-status.md` workflow file and look at the frontmatter. Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
+> **:running_man: Try it:** Open your `daily-status.md` workflow file and look at the frontmatter. Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
 >
 > <details>
 > <summary>Hint</summary>
@@ -84,7 +84,7 @@ safe-outputs:
 
 Suppose an injection asks the agent to push a commit or delete a file. Those operations are not listed under `safe-outputs:`, so the attempt fails immediately.
 
-> **🏃 Try it:** Look at the `safe-outputs:` key in your `daily-status.md` frontmatter. List two write operations your workflow **cannot** perform given the current configuration. Verify your answer by checking which operations are _not_ listed there.
+> **:running_man: Try it:** Look at the `safe-outputs:` key in your `daily-status.md` frontmatter. List two write operations your workflow **cannot** perform given the current configuration. Verify your answer by checking which operations are _not_ listed there.
 >
 > <details>
 > <summary>Hint</summary>
@@ -117,7 +117,7 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can describe what a prompt injection attack looks like in the context of an agentic workflow
 - [ ] You can explain why the task brief is the primary instruction source in gh-aw

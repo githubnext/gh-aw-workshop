@@ -4,7 +4,7 @@
 
 > _Optional: work through this reference if you want to understand both `cache-memory` and `repo-memory` in depth before or after completing [Step 20](20-persistent-memory.md), then return to the main path._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You have completed or are about to start [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
@@ -35,7 +35,7 @@ Both primitives solve this without you managing a database:
 
 Ask yourself: _what happens if the memory is lost?_
 
-> 🤔 **Predict:** For each scenario below, decide which primitive you'd use before reading the "Recommended" column. Cover the right column, make your choices, then reveal it to check.
+> :thinking: **Predict:** For each scenario below, decide which primitive you'd use before reading the "Recommended" column. Cover the right column, make your choices, then reveal it to check.
 
 | Scenario | Recommended primitive |
 |----------|-----------------------|
@@ -137,7 +137,7 @@ previous run. On each run:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain the difference between `cache-memory` and `repo-memory`
 - [ ] You know when to choose each primitive based on your use case

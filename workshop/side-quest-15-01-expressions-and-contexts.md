@@ -4,11 +4,11 @@
 
 > _The `${{ }}` syntax unlocks a whole language inside your workflow — learn to read it and you can make workflows that adapt to anything._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Explore the expression and context system that powers GitHub Actions conditions, output references, and dynamic values. By the end, the `${{ steps.recent.outputs.commit_count }}` style syntax in your conditional workflow will feel natural.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md).
 
@@ -166,7 +166,7 @@ if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturd
 
 This pattern — deterministic shell step produces a string output, `if:` expression reads that output — applies broadly wherever you need workflow control flow based on data that is not already in a GitHub Actions context object.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain what `${{ }}` does and when GitHub evaluates it
 - [ ] You can name at least three context objects and what they contain
