@@ -6,7 +6,7 @@
 
 Build a workflow that evaluates every new pull request against a short review checklist and posts a pass/fail summary. Reviewers can see at a glance which criteria are already met before they open the diff.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 

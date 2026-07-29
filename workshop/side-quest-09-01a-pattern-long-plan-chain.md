@@ -6,7 +6,7 @@
 
 You will learn how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 

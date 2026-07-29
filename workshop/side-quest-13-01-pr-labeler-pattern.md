@@ -6,7 +6,7 @@
 
 Extend your PR reviewer workflow to automatically apply [GitHub labels](https://github.github.com/gh-aw/reference/safe-outputs/#add-labels-add-labels) based on the files that changed in a pull request.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 - Your practice repository has at least one label already created. If not, go to **Issues → Labels** in your repository and create labels like `documentation`, `tests`, and `bug-fix`.

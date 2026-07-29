@@ -6,7 +6,7 @@
 
 You will learn how to interpret blocked writes and choose between increasing allowed outputs or constraining agent behavior.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 

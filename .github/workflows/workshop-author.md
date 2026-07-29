@@ -173,18 +173,18 @@ Create the file at `workshop/<filename>` using the `edit` tool. Follow **all** o
 
 ### Structure (every learning-step file must follow this template)
 
-- Dispatcher pages marked `<!-- learning:false -->` are pure routing pages. They must omit the `## ✅ Checkpoint` section from this template.
+- Dispatcher pages marked `<!-- learning:false -->` are pure routing pages. They must omit the `## :white_check_mark: Checkpoint` section from this template.
 
 ```markdown
 # <Title>
 
 > _One-sentence hook that answers "why does this step matter?"_
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 One short paragraph (2-3 sentences) previewing the concrete outcome.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 Bullet list of prereqs (link to the prerequisite node). Omit section if there are none.
 
@@ -192,14 +192,14 @@ Bullet list of prereqs (link to the prerequisite node). Omit section if there ar
 
 Numbered action sequence. Each action gets its own number. Commands go in fenced code blocks.
 
-## 🔀 Choose Your Path  ← include whenever this node branches into multiple routes
+## :twisted_rightwards_arrows: Choose Your Path  ← include whenever this node branches into multiple routes
 
 | If you… | Go to… |
 |---------|--------|
 | <condition A> | ➡️ [Title A](filename-a.md) |
 | <condition B> | ➡️ [Title B](filename-b.md) |
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Checklist of verifiable outcomes the learner should tick off
 - [ ] ...

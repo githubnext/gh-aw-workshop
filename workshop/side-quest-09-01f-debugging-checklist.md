@@ -6,7 +6,7 @@
 
 You will apply a repeatable seven-step triage flow whenever a run produces unexpected output.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 

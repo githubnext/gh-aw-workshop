@@ -6,7 +6,7 @@
 
 Build a PR summary workflow that posts a structured, human-readable [summary comment](https://github.github.com/gh-aw/reference/safe-outputs/#comment-creation-add-comment) when a pull request is opened. The summary is written in a format that can be copied directly into a changelog or release note.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 

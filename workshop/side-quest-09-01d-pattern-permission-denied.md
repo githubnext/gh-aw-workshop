@@ -6,7 +6,7 @@
 
 You will map permission failures to the correct control: read access in `permissions:` and write allowlisting in `safe-outputs:`.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 

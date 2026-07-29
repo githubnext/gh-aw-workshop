@@ -292,7 +292,7 @@ Link back to the broader model with:
 A short checklist of concrete actions the learner can take right now to harden
 their workflow against this attack.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the <attack name> attack in one sentence
 - [ ] I can name the gh-aw feature that limits this attack
