@@ -53,6 +53,14 @@ Now check your prediction: did you name both files and identify which one Action
 
 ## Activity 2 — agentic or standard?
 
+The diagram below shows how the same schedule trigger leads to two very different outcomes — one driven by static YAML, the other by an AI agent with built-in safety guardrails.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/00-actions-vs-agentic-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/00-actions-vs-agentic-light.svg">
+  <img alt="Side-by-side comparison of Classic GitHub Actions YAML versus an Agentic Workflow with safety highlights. Classic: schedule trigger flows through static YAML steps and shell scripts to produce output. Agentic: same trigger flows through a plain-English task brief with safety config (permissions, tools, safe-outputs) into a sandbox-isolated AI agent that applies integrity filtering and zero-secrets constraints, producing output only through declared safe-output surfaces." src="images/00-actions-vs-agentic-light.svg">
+</picture>
+
 Read each task and decide before revealing the answer.
 
 **Task A:** Run lint and unit tests on every pull request, fail if any check exits non-zero.
