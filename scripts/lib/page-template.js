@@ -1,6 +1,12 @@
 'use strict';
 
 // Generate the single-page workshop reader HTML.
+const SITE_URL = 'https://githubnext.github.io/gh-aw-workshop';
+const SITE_TITLE = 'GitHub Agentic Workflows Workshop';
+const SITE_DESCRIPTION =
+  'A hands-on workshop that teaches you how to build GitHub Agentic Workflows with the gh-aw CLI. Go from zero to a working AI-powered automation in GitHub Actions.';
+const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
+
 function generatePage(htmlContent, workshopMenu) {
   return `<!DOCTYPE html>
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
@@ -10,7 +16,24 @@ function generatePage(htmlContent, workshopMenu) {
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
-  <title>GitHub Agentic Workflows Workshop</title>
+  <title>${SITE_TITLE}</title>
+  <meta name="description" content="${SITE_DESCRIPTION}">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${SITE_URL}/">
+  <meta property="og:title" content="${SITE_TITLE}">
+  <meta property="og:description" content="${SITE_DESCRIPTION}">
+  <meta property="og:image" content="${OG_IMAGE_URL}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mona's Agent Factory — GitHub Agentic Workflows Workshop">
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${SITE_TITLE}">
+  <meta name="twitter:description" content="${SITE_DESCRIPTION}">
+  <meta name="twitter:image" content="${OG_IMAGE_URL}">
+  <meta name="twitter:image:alt" content="Mona's Agent Factory — GitHub Agentic Workflows Workshop">
+  <link rel="canonical" href="${SITE_URL}/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="mona-sans.css">
   <link rel="stylesheet" href="primer.css">
