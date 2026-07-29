@@ -26,7 +26,7 @@ Open [github.com/settings/copilot](https://github.com/settings/copilot) and conf
 This workshop uses GitHub Copilot end-to-end, so you do not need to configure any external provider API keys.
 
 > [!TIP]
-> [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) supports multiple agent and model providers (for example, Anthropic Claude Code, OpenAI Codex, and Google Gemini), but this workshop uses GitHub Copilot so you can stay focused on workflow concepts.
+> [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/) supports multiple agent and model providers (for example, [Anthropic](https://github.github.com/gh-aw/reference/engines/#available-coding-agents) Claude Code, OpenAI Codex, and Google Gemini), but this workshop uses GitHub Copilot so you can stay focused on workflow concepts.
 
 <!-- journey: all -->
 **Next:** Open [Set Up a Codespace](02a-setup-codespace.md).

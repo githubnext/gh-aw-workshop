@@ -16,7 +16,7 @@
 - **Run metadata** — workflow name, trigger, engine, and model
 - **Agent AIC** — total AI Credits consumed by the agent turn
 - **Threat-detection AIC (⌖ AIC)** — credits consumed by the firewall's threat-detection model, reported separately from agent inference
-- **MCP tool calls** — each tool the agent invoked, with any errors
+- **[MCP tool calls](https://github.github.com/gh-aw/guides/mcps/)** — each tool the agent invoked, with any errors
 - **Threat detection verdict** — whether prompt injection, secret leak, or malicious patch was detected
 - **Safe outputs** — every safe-output declaration the agent emitted
 

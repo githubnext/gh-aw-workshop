@@ -26,7 +26,7 @@ Both primitives solve this without you managing a database:
 
 | Tool | Where state is stored | Lifetime | Best for |
 |------|----------------------|----------|----------|
-| [`cache-memory`](https://github.github.com/gh-aw/reference/cache-memory/) | GitHub Actions cache | Until cache eviction (typically 7 days of inactivity) | Short-lived deduplication; data that is fine to lose |
+| [`cache-memory`](https://github.github.com/gh-aw/reference/cache-memory/) | [GitHub Actions cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) | Until cache eviction (typically 7 days of inactivity) | Short-lived deduplication; data that is fine to lose |
 | [`repo-memory`](https://github.github.com/gh-aw/reference/repo-memory/) | A file committed to your repository | As long as the file exists | Durable baselines; data that must survive cache eviction |
 
 ---
