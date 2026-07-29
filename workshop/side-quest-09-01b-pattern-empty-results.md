@@ -6,7 +6,7 @@
 
 You will diagnose empty tool responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 

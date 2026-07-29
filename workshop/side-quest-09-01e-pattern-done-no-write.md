@@ -6,7 +6,7 @@
 
 You will diagnose successful runs that produce no write output and tighten instructions so expected writes happen reliably.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 
