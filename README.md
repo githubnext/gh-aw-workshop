@@ -63,7 +63,7 @@ That means you focus on:
 :arrow_right: Start with [workshop/00-welcome.md](workshop/00-welcome.md)
 
 > [!NOTE]
-> **Microsoft and GitHub facilitators:** Request a demo environment at [aka.ms/GetMSDemo](https://aka.ms/GetMSDemo).
+> **Microsoft and GitHub facilitators:** Request a demo environment at [aka.ms/golden-ticket](https://aka.ms/golden-ticket).
 
 ---
 
