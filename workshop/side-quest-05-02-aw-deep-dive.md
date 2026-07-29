@@ -1,190 +1,100 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Agentic Workflows Deep Dive
+# Side Quest: Classify Agentic vs. Standard Workflows
 
-> _Optional: work through this side quest after [What Are Agentic Workflows?](05-agentic-workflows-intro.md) to practise classification, explore the two-file structure, and check your vocabulary._
+> _Optional: work through this side quest after [What Are Agentic Workflows?](05-agentic-workflows-intro.md) to sharpen the distinction through hands-on classification practice._
 
 ## :clipboard: Before You Start
 
 - You've read [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 
-## Classify these tasks
+## The core distinction
 
-For each task below: classify it as **agentic workflow** or **standard Actions workflow**, then reveal the answer before moving to the next task:
+A standard Actions workflow runs the same fixed steps every time — no judgment required. An agentic workflow replaces those fixed steps with a plain-English task brief, and the AI agent decides how to carry it out.
 
-You just saw how a standard Actions workflow follows fixed steps. Agentic workflows replace those fixed steps with a plain-English task brief — use that contrast to classify the tasks below.
+**Key signal:** if the output could be different each run because the agent is reading context and making decisions, it's agentic.
 
-**Task A:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
+## Classify Task A
 
-Classify Task A, then reveal the answer.
+**Task:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.
+
+Write your classification (agentic or standard) in your notes, then reveal.
 
 <details>
 <summary>Check Task A answer</summary>
 
-**Task A — Standard Actions workflow:** every run follows the same fixed steps: start the test job, fail on a non-zero exit code, and upload the coverage artifact. No judgment required.
+**Standard Actions workflow.** Every run follows identical fixed steps: start the test job, fail on a non-zero exit code, upload the coverage artifact. No judgment required — the result is the same regardless of what changed in the PR.
+
+```yaml
+# Example: standard deterministic step
+- run: npm test
+```
 
 </details>
 
-**Task B:** Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
+## Classify Task B
 
-Classify Task B, then reveal the answer.
+**Task:** Review newly opened issues each morning, group them by theme, flag the urgent ones, and post a short triage summary.
+
+Write your classification, then reveal.
 
 <details>
 <summary>Check Task B answer</summary>
 
-**Task B — Agentic workflow:** the agent has to inspect live repo context, group similar issues, and decide what looks urgent before it writes the summary.
-
-</details>
-
-## Reflection
-
-Write one sentence describing what you would want _your_ agentic workflow to do. Put it wherever you keep workshop notes: your editor, a scratch file, or a notes app. Example: summarize new issues and flag urgent ones. Focus on a task that needs judgment, not a test or deploy script. You'll use this idea in Step 7.
-
-## What the agent decided
-
-A scheduled agentic workflow generates a report like this:
+**Agentic workflow.** The agent has to inspect live repo context, decide how to group similar issues, and judge what looks urgent — none of that is a fixed rule. The summary will differ every morning based on what issues exist.
 
 ```markdown
-## Daily Repository Status — July 12
-
-- :white_check_mark: CI health: 18 workflows succeeded, 1 failed (`docs-link-check`)
-- :arrows_counterclockwise: Pull requests: 7 open (2 need review, 1 stale > 14 days)
-- :bug: Issues: 4 new, 3 closed, 2 high-priority still open
-- :rocket: Releases: No new tags in the last 24 hours
-
-### Recommended next actions
-1. Re-run `docs-link-check` and update broken external URLs.
-2. Review PR #412 and PR #415 before noon.
-3. Triage high-priority issue #398 with the platform team.
+<!-- Example task brief for Task B -->
+Review all issues opened in the last 24 hours. Group them by theme,
+flag any that look urgent, and post a triage digest as a new issue comment.
 ```
-
-**Your turn:** Answer in your own words — _what did the agent decide on its own?_ Identify at least two lines where the agent made a judgment call rather than just reading a number.
-
-## Check your understanding
-
-Apply what you just saw — answer each question in your notes, then reveal.
-
-Should the daily report run on a schedule or wait for manual dispatch? State which and why, then reveal.
-
-<details>
-<summary>Check your answer</summary>
-
-A [scheduled trigger](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) runs automatically — appropriate for a daily report. `workflow_dispatch` requires a button click in the Actions tab.
-
-- **Schedule:** runs automatically, no button click needed
-- **`workflow_dispatch`:** requires a manual click each run
 
 </details>
 
-How does the agent post the report if it always operates read-only? Write your answer, then reveal.
+## Classify Task C
 
-<details>
-<summary>Check your answer</summary>
+**Task:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
 
-Agents always run read-only. Any writes — including posting the report — go through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) and guardrails.
-
-- **The agent itself is always read-only**
-- **Writes happen through** safe outputs and guardrails
-
-</details>
-
-Write one sentence for the task brief — this becomes your brief in Step 7. Focus on a task that needs judgment, not fixed steps.
-
-## The two files
-
-The diagram below shows how the two files relate: you write the `.md` source, then `gh aw compile` generates the `.lock.yml` that GitHub Actions runs.
-
-<picture>
-   <source media="(prefers-color-scheme: dark)" srcset="images/05b-two-file-structure-dark.svg">
-   <source media="(prefers-color-scheme: light)" srcset="images/05b-two-file-structure-light.svg">
-   <img alt="Diagram showing how an agentic workflow .md source file is compiled by gh aw compile into a .lock.yml file that GitHub Actions runs" src="images/05b-two-file-structure-light.svg">
-</picture>
-
-An agentic workflow has two files. Here is the `.md` source you write:
-
-```markdown
----
-on:
-  schedule: daily
-permissions:
-  issues: read
----
-
-Review all open issues, summarize the key themes, and post a short digest as a new issue.
-```
-
-> [!NOTE]
-> `schedule: daily` is fuzzy shorthand that `gh aw compile` converts into a standard Actions cron expression. You never write raw cron syntax in an agentic workflow `.md` file.
-
-And here is the `.lock.yml` `gh aw compile` generates — what GitHub Actions actually runs:
-
-```markdown
-# Auto-generated by gh aw compile. Do not edit by hand.
-name: Review open issues
-on:
-  schedule:
-    - cron: "<generated by gh aw compile>"
-  workflow_dispatch:
-permissions:
-  issues: read
-```
-
-Both files live in `.github/workflows/`. Look at them and answer: which part of the `.md` is the **task brief**, and which part tells GitHub Actions when to run?
-
-## Concept check — before you continue
-
-Before you reveal the answers below, write a one-sentence definition for each term:
-
-- Agentic workflow
-- Lock file
-- Engine
-- `workflow_dispatch`
-
-<details>
-<summary>Check your answers</summary>
-
-| Term | Plain-language meaning |
-|---|---|
-| Agentic workflow | A GitHub Actions workflow that uses an AI model to reason and act |
-| [Lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) | The compiled YAML that GitHub Actions actually runs |
-| [Engine](https://github.github.com/gh-aw/reference/engines/) | The AI model provider (for example, GitHub Copilot) used by the workflow |
-| `workflow_dispatch` | A manual trigger — you start the run by clicking a button in the Actions tab |
-
-</details>
-
-If you had to look up more than one term, take a moment to review that section before continuing.
-
-## Classify more tasks
-
-**Task C:** Each Friday, scan all open issues and pull requests, summarize recent activity by contributor, and post a weekly team progress digest.
-
-Classify Task C, then reveal the answer.
+Write your classification, then reveal.
 
 <details>
 <summary>Check Task C answer</summary>
 
-**Task C — Agentic workflow:** the agent has to read contributor activity across issues and pull requests, decide what counts as meaningful progress, and compose a digest that differs every week.
+**Agentic workflow.** The agent reads contributor activity, decides what counts as meaningful progress, and composes a digest that differs every week. The output requires interpretation, not just counting.
 
 </details>
 
-**Task D:** On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
+## Classify Task D — hybrid
 
-Classify Task D, then reveal the answer.
+**Task:** On every pull request, run ESLint (fail on errors), then have an AI read the diff and post a summary comment.
+
+Write your classification, then reveal.
 
 <details>
 <summary>Check Task D answer</summary>
 
-**Task D — Agentic (hybrid) workflow:** ESLint is deterministic — same result every run. The AI summary requires judgment: reading the diff and deciding how to describe the change. Combining fixed and AI steps makes a workflow agentic.
+**Agentic (hybrid) workflow.** ESLint is deterministic — same pass/fail result every run. The AI summary requires judgment: reading the diff and deciding how to describe the change.
 
-- The ESLint step produces the same pass-or-fail result every run
-- The AI step produces different output based on what it reads in the diff
-- A workflow mixing deterministic and AI steps is still agentic overall
+- The ESLint step: deterministic, same result for the same code
+- The AI summary step: different output each run, based on what changed
+
+A workflow that mixes deterministic and AI steps is still agentic overall.
+
+```markdown
+<!-- Hybrid example: deterministic + agentic -->
+Run ESLint on the changed files, then read the diff and post a plain-English
+summary of what changed and why it matters.
+```
 
 </details>
 
+## Your turn
+
+Write one sentence describing what _your_ agentic workflow should do. Save it in your notes — you'll use this idea in Step 7. Focus on a task that needs judgment, not a test or deploy script.
+
 ## Self-check
 
-What makes a workflow agentic rather than standard? Write your answer in your notes, then reveal.
+What makes a workflow agentic rather than standard? Write your answer, then reveal.
 
 <details>
 <summary>Show model answer</summary>
@@ -200,7 +110,7 @@ Does your answer include:
 </details>
 
 > [!TIP]
-> If this still feels fuzzy, Step 7 makes the distinction concrete. Return here after Step 7.
+> Ready to go deeper? [Side Quest: The Two-File Structure](side-quest-05-03-two-file-structure.md) shows how `.md` and `.lock.yml` relate, and walks through key vocabulary.
 
 ---
 
@@ -208,7 +118,6 @@ Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows
 
 ## :white_check_mark: Checkpoint
 
-- [ ] You can classify tasks as agentic or standard Actions workflows
-- [ ] You can point to the task brief and the trigger in the sample `.md` file
-- [ ] You can describe the difference between the `.md` source file and the compiled `.lock.yml`
-- [ ] You can define: lock file, engine, and `workflow_dispatch`
+- [ ] You can classify Tasks A–D as agentic, standard, or hybrid
+- [ ] You can explain what makes a workflow agentic in one sentence
+- [ ] You've written down your own agentic workflow idea for Step 7
