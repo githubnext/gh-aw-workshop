@@ -168,13 +168,13 @@ Title: Side Quest: <Title>
 
 > _One-sentence reason this optional detour is worth taking._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 ## Steps
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 **Return to the main adventure:** [<Step title>](<source-file>.md)
 ```

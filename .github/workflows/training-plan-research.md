@@ -108,7 +108,7 @@ Create exactly one new workshop node file that fills the identified gap.
 
 Requirements:
 
-- Keep second-person voice, concise instructional style, and a `## ✅ Checkpoint` checklist.
+- Keep second-person voice, concise instructional style, and a `## :white_check_mark: Checkpoint` checklist.
 - Do not number headers.
 - Include one short "why this matters" framing paragraph.
 - Include at least one actionable step that references a real gh-aw concept discovered during research.

@@ -177,7 +177,7 @@ For each file in `target_files`:
    - **Schedule syntax** (agentic workflow `.md` files only): no raw cron syntax; use fuzzy expressions such as `schedule: daily`.
    - **Codespaces-first design**: keep Codespaces as the sole recommended core route; local-terminal and browser-only alternatives belong in side quests.
    - **Prerequisite discipline**: list only prerequisites needed for the current step; avoid future-looking requirements.
-   - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## ✅ Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
+   - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## :white_check_mark: Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
    - **Voice and tone**: second person, present tense, active voice; no dramatic or alarmist language.
    - **Environment alternatives**: flag local-terminal or browser-only instructions in the core route and recommend moving them to a side quest with a clear return point.
 3. For each violation found, record:

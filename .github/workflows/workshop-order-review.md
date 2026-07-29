@@ -197,8 +197,8 @@ steps:
           metadata = activity_metadata(path)
           frontmatter = parse_page_annotations(text)
           title = next((line[2:].strip() for line in text.splitlines() if line.startswith('# ')), path.stem)
-          before_section = extract_section(text, '📋 Before You Start')
-          choice_section = extract_section(text, '🔀 Choose Your Path')
+          before_section = extract_section(text, ':clipboard: Before You Start')
+          choice_section = extract_section(text, ':twisted_rightwards_arrows: Choose Your Path')
           commands = gather_commands(text)
           evidence = command_evidence(text)
 

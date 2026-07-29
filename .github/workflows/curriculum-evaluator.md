@@ -342,7 +342,7 @@ Read all generated files before writing any issues:
 | Readability | 1.5 | Flesch–Kincaid Grade Level 8–12 | 10 in range; scaled penalty outside |
 | Active Learning | 2.0 | activity density ≥ 3 (code blocks + checklist items per 100 words) | density × 3.3, capped at 10 |
 | Checkpoint Quality | 2.0 | checkpoint present, ≥ 4 specific checklist items | 0 if absent; items × 2.5, capped at 10 |
-| Scaffolding | 1.5 | "📋 Before You Start" or "Prerequisites" section present | 10 if present, 5 if absent |
+| Scaffolding | 1.5 | ":clipboard: Before You Start" or "Prerequisites" section present | 10 if present, 5 if absent |
 | Style Compliance | 1.0 | 0 numbered headings, ≤ 3 callout blocks | −2 per numbered heading; −1.5 per excess callout |
 
 ### Bloom's Taxonomy lens
