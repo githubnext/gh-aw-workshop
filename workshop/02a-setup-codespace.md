@@ -9,7 +9,7 @@
 - [ ] You want a browser-based terminal and do not need to install tools locally
 
 > [!TIP]
-> Not sure if your plan includes Codespaces? Free GitHub accounts include 60 hours/month. Check your [billing settings](https://github.com/settings/billing) or ask your organization admin.
+> Not sure if your plan includes Codespaces? Free GitHub accounts include 60 hours/month. Check your [billing settings](https://github.com/settings/billing/summary) or ask your organization admin.
 
 ## :dart: What You'll Do
 
