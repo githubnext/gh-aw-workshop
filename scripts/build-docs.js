@@ -31,6 +31,10 @@ if (fs.existsSync(workshopImagesDir)) {
 const faviconSrc = path.join(__dirname, 'static', 'favicon.svg');
 fs.copyFileSync(faviconSrc, path.join(distDir, 'favicon.svg'));
 
+// Copy social preview image
+const ogImageSrc = path.join(__dirname, 'static', 'og-image.png');
+fs.copyFileSync(ogImageSrc, path.join(distDir, 'og-image.png'));
+
 // Copy theme chooser script
 const docsThemeSrc = path.join(__dirname, 'static', 'docs-theme.js');
 fs.copyFileSync(docsThemeSrc, path.join(distDir, 'docs-theme.js'));
