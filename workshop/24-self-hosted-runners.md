@@ -78,47 +78,7 @@ registration settings (Settings → Actions → Runners).
 > [!TIP]
 > Labels act as filters. A workflow job is dispatched to the first idle runner that satisfies all labels in the list. Adding `linux` alongside `self-hosted` ensures the job only lands on Linux runners when your fleet is mixed.
 
-
-<details>
-<summary>Advanced: ephemeral and isolated runners</summary>
-
-### Ephemeral and JIT runners
-
-Ephemeral runners are destroyed after a single job — each run starts on a fresh machine,
-preventing state from leaking between executions. Register one using the ephemeral flag
-and target it with the same label strategy described above.
-
-Just-in-time (JIT) runners are provisioned on demand and deregistered immediately after use.
-They require a registration token scoped to your organisation or repository and are typically
-managed by a runner controller such as actions-runner-controller.
-
-### Proxy and network requirements
-
-Self-hosted runners in enterprise environments often sit behind an outbound proxy.
-The [agentic engine](https://github.github.com/gh-aw/reference/engines/) needs to reach model endpoints and GitHub APIs.
-
-If your runner uses a proxy, set these environment variables in the runner's system
-configuration **before** registering it, or ask your admin to confirm they are already set:
-
-```bash
-HTTPS_PROXY=https://proxy.example.com:3128
-HTTP_PROXY=http://proxy.example.com:3128
-NO_PROXY=localhost,127.0.0.1,github.example.com
-```
-
-You do **not** need to add these to the workflow file itself — the runner process
-inherits them from the system environment automatically.
-
-> [!NOTE]
-> The exact proxy hostname and port come from your network team or enterprise admin. The values above are examples only.
-
-### Network isolation
-
-If your runner operates in an air-gapped or restricted environment, ensure it can reach
-the GitHub API, your model endpoint, and any MCP tool servers your workflow calls.
-Work with your network admin to allowlist these endpoints before running agentic workflows.
-
-</details>
+Running in an enterprise environment? See [Side Quest: Self-Hosted Runner Infrastructure Deep Dive](side-quest-24-01-runner-infrastructure.md) for guidance on ephemeral and JIT runners, proxy configuration, and network isolation for air-gapped environments.
 
 ## :pencil2: Exercise: Compile and commit
 
