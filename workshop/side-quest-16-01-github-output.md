@@ -11,7 +11,7 @@
 ## Why `export` doesn't work across steps
 
 ```bash
-# :x: This looks reasonable but DOES NOT WORK
+# ❌ This looks reasonable but DOES NOT WORK
 - name: Set a value
   run: export RESULT="hello"
 
@@ -28,7 +28,7 @@ Each step is a separate child process. [Environment variables](https://github.gi
 Append a `key=value` pair to the file path stored in the `$GITHUB_OUTPUT` environment variable:
 
 ```bash
-# :white_check_mark: Write a single-line value
+# ✅ Write a single-line value
 echo "status=healthy" >> $GITHUB_OUTPUT
 ```
 
@@ -60,7 +60,7 @@ ${{ steps.health_check.outputs.status }}
 A single `echo "key=value"` won't work for multi-line content because the newlines would break the `key=value` format. Use a heredoc delimiter instead:
 
 ```bash
-# :white_check_mark: Write a multi-line value
+# ✅ Write a multi-line value
 echo "commit_log<<EOF" >> $GITHUB_OUTPUT
 echo "$COMMIT_LOG" >> $GITHUB_OUTPUT
 echo "EOF" >> $GITHUB_OUTPUT

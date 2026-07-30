@@ -24,12 +24,12 @@ Open the completed **Daily Report Status** run from the **Actions** tab and clic
 </picture>
 
 ```text
-:thinking: Planning...  Searching for open issues with :+1: reactions
-:wrench: Tool call:   github.list_issues
-:inbox_tray: Result:      3 issues found
-:thinking: Thinking...  Issue #4 has the most :+1: reactions
-:wrench: Tool call:   github.add_comment
-:white_check_mark: Done
+🤔 Planning...  Searching for open issues with 👍 reactions
+🔧 Tool call:   github.list_issues
+📥 Result:      3 issues found
+🤔 Thinking...  Issue #4 has the most 👍 reactions
+🔧 Tool call:   github.add_comment
+✅ Done
 ```
 
 The important question is not "Can I read every line?" It is "Can I tell where the agent decided, where it acted, and whether it finished?" Find the first `Tool call` in your own run and fill in the template below:
@@ -62,10 +62,10 @@ If your run does not look right, start with these quick checks before changing t
 Knowing what a failed run looks like helps you spot permission issues at a glance, before you spend time re-reading the brief:
 
 ```text
-:thinking: Planning...  Searching for open issues
-:wrench: Tool call:   github.list_issues
-:inbox_tray: Error:       403 Forbidden — insufficient permissions
-:x: Failed
+🤔 Planning...  Searching for open issues
+🔧 Tool call:   github.list_issues
+📥 Error:       403 Forbidden — insufficient permissions
+❌ Failed
 ```
 
 If these checks do not resolve the issue, the [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) covers additional cases.

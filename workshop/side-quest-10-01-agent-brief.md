@@ -76,7 +76,7 @@ Inputs turn "summarize the repo" into a concrete data request. They also make it
 Show the agent the format you want instead of describing it loosely. Start with a simple skeleton and customize the fields you want to track.
 
 ```text
-:bar_chart: Daily Repo Status — {date}
+📊 Daily Repo Status — {date}
 PRs: {count}
 Issues: {count}
 CI: {status}
@@ -147,7 +147,7 @@ Inputs:
 - [input]
 
 Output:
-:bar_chart: Daily Repo Status — {date}
+📊 Daily Repo Status — {date}
 [line 1]
 [line 2]
 [line 3]
