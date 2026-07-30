@@ -64,7 +64,7 @@ git push
 
 A defensive task brief tells the agent what to do when data is missing or sparse. Add an explicit fallback instruction in your task description:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 If there are no open pull requests or issues to summarise,
 write a brief "No activity" report instead of skipping the output step.
 Always call the safe output tool — even for empty results.
@@ -76,7 +76,7 @@ This prevents the most common failure: the agent silently completes without writ
 
 Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` to your workflow frontmatter to cap the run:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 name: Daily Status Report
 on:
@@ -103,7 +103,7 @@ On GitHub Enterprise Server (GHES) and GitHub Enterprise Cloud (GHEC), administr
 
 When your workflow uses a `noop` or comment safe output, always include a meaningful fallback body. If the agent reaches the output step but has nothing to report, this ensures the run still records a visible result:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 If no meaningful changes were found, call noop with the message:
 "No changes found in the past 24 hours — workflow ran successfully."
 ```

@@ -48,7 +48,7 @@ Review the agent's diff before accepting it. The source should contain one paren
 
 The workflow frontmatter should follow this shape:
 
-```markdown
+```markdown .github/workflows/pr-reviewer.md
 ---
 on:
   pull_request:
@@ -76,7 +76,7 @@ Notice that the agent job has no repository or pull request write permission. `c
 
 Near the bottom, look for the two reusable blocks:
 
-```markdown
+```markdown .github/workflows/pr-reviewer.md
 ## agent: `pr-reviewer`
 ---
 description: Reviews one pull request for actionable problems

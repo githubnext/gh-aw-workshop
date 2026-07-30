@@ -49,7 +49,7 @@ Write a one-paragraph node scope and list the exact [artifacts](https://github.g
 
 Add XML comments to preserve reasoning without interrupting learner flow:
 
-```markdown
+```markdown workshop/28-safe-outputs-selection.md
 <!--
 <research-metadata>
   <focus>safe outputs selection</focus>

@@ -47,7 +47,7 @@ The skill adds this step to the frontmatter `steps:` block and recompiles the lo
 
 Open your daily-status workflow file (e.g., `.github/workflows/daily-status.md`) and add the following block inside the YAML frontmatter under `steps:`:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 steps:
   - name: Count recent commits
@@ -64,7 +64,7 @@ After adding it, run `gh aw compile` to regenerate the lock file.
 
 Here is the step structure the skill will add:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 steps:
   - name: Count recent commits
@@ -89,7 +89,7 @@ This shell command uses `git log` with a `--since` time filter to list only comm
 
 In the same frontmatter block, add a top-level `if:` key at the same indentation level as `on:` and `steps:`:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 if: steps.recent.outputs.commit_count != '0'
 ---

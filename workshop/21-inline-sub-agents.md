@@ -71,7 +71,7 @@ The skill appends the sub-agent block at the bottom of the file and updates the 
 
 Here is the sub-agent syntax the skill will add:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ## agent: `issue-summarizer`
 ---
 description: Summarizes a single open issue in one sentence
@@ -89,7 +89,7 @@ Keep the sub-agent brief narrow. If it processes one item at a time and returns 
 
 After your parent workflow brief, at the bottom of the file, add the sub-agent block shown above. Then update the parent brief to call it by name. For example:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 For each issue, use the `issue-summarizer` agent to produce a one-sentence summary.
 ```
 

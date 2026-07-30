@@ -57,7 +57,7 @@ Here is what the first step looks like — the skill will add this for you:
 
 First, fetch the recent commit log:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 - name: Fetch recent commits
   id: recent          # step ID — referenced as steps.recent.outputs.…
   run: |
@@ -75,7 +75,7 @@ First, fetch the recent commit log:
 
 Next, add a step to fetch open issues:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 - name: Fetch open issues
   id: issues          # step ID — referenced as steps.issues.outputs.…
   run: |
@@ -101,7 +101,7 @@ Next, add a step to fetch open issues:
 
 The AI prompt lives in the Markdown body after the frontmatter. Update that section so it uses the step outputs:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 # … your existing frontmatter with the two new steps …
 ---

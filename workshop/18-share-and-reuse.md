@@ -74,7 +74,7 @@ Your teammate runs this inside their repository. `gh aw add` copies the Markdown
 
 Add a short comment at the top of your workflow's Markdown task brief so users know what to customise:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 <!-- TEMPLATE: Replace "my-repo" with your repository name.
      Adjust the schedule and permissions to match your needs. -->
 ```
