@@ -395,7 +395,6 @@ anchor text or page title actually covers the concept by checking the doc index:
   if it does not.
 - If the matched entry is a **page-level URL** (no anchor), the page title must
   be topically related to the concept. Discard obviously mismatched entries.
-- Discard any `doc_url` that does not appear in the validated index.
 
 ---
 
@@ -418,7 +417,6 @@ Rules:
 - Do not link occurrences wrapped in inline code (single backticks, e.g. `` `safe-outputs` ``).
 - Do not link occurrences inside YAML frontmatter (`---` … `---`).
 - Preserve the exact surrounding text; change only the target word/phrase.
-- If a term already has an inline link in the file (any URL), skip it.
 
 ---
 
@@ -426,10 +424,7 @@ Rules:
 
 ### Nothing to change
 
-Call `noop` with a concise explanation when **all** of the following are true:
-- No new concept matches were found for all selected files (or all matching terms are already hyperlinked)
-
-If there are inline links to add, proceed with changes.
+Call `noop` with a concise explanation when no new concept matches were found for all selected files (or all matching terms are already hyperlinked).
 
 ### Changes to make
 
