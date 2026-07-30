@@ -97,6 +97,14 @@ html {
   color: var(--fgColor-success, #1a7f37);
   font-weight: 600;
 }
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .site-header-progress-bar {
+    background-color: #6e7681;
+  }
+}
+html[data-color-mode="dark"] .site-header-progress-bar {
+  background-color: #6e7681;
+}
 .menu-toggle,
 .menu-close {
   display: inline-grid;
@@ -985,6 +993,14 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
 }
 .workshop-menu-group a[data-page-complete] + .menu-item-progress .menu-item-progress-fill {
   opacity: 0.6;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .menu-item-progress {
+    background-color: #6e7681;
+  }
+}
+html[data-color-mode="dark"] .menu-item-progress {
+  background-color: #6e7681;
 }
 
 /* Markdown text-editor style blocks */
