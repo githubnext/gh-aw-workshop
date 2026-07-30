@@ -233,17 +233,27 @@ change set.
 - Represent GitHub's navigation tabs (Code, Issues, Pull requests, Actions,
   etc.) as a horizontal tab bar with the relevant tab underlined in the palette
   accent color.
+- **Use GitHub visual language icons** (Octicon-inspired inline SVG shapes) for
+  any GitHub entity that appears in the illustration. Follow the shape guide and
+  Primer semantic state color table in the GitHub visual language system section
+  of `.github/workflows/guidelines.md`. Do not substitute plain rectangles or
+  generic symbols for recognisable GitHub concepts.
+- For Issues and Pull requests tabs/rows: include the Octicon-inspired icon
+  (circle-with-dot for issues; branch-merge path for PRs) in the matching state
+  color (open/green, closed/red, merged/purple, draft/grey) alongside each row.
+- For Discussions: use a rounded speech-bubble outline in accent blue.
 - For Actions-tab screenshots: show a workflow list panel with a single row
-  representing the relevant workflow, a status icon (green ✓ for success,
-  yellow (in-progress hourglass) for in-progress), and the workflow name.
+  representing the relevant workflow, a status icon (filled play-triangle in
+  `#1a7f37` for success, hourglass or spinner in `#9a6700` for in-progress) and
+  the workflow name. Apply Primer semantic state colors from the guidelines.
 - For Run workflow button: render a blue button labelled "Run workflow" in the
   Actions sidebar.
 - For Codespace/fork/commit dialogs: use a centered modal panel with the
   palette's panel background and border colors.
 - For schedule badge / workflow list badge: render the Actions sidebar list with
-  a clock icon and "Scheduled" label.
-- For skipped steps: render the job-step list with a grey `-` icon and
-  "Skipped" label next to the step name.
+  a clock-face icon (Octicon clock shape) and "Scheduled" label.
+- For skipped steps: render the job-step list with a grey dash icon in the
+  skipped/muted color and "Skipped" label next to the step name.
 - For summary/run log panels: render a dark panel (`#0d1117`) with monospace
   output lines in `#c9d1d9`, showing representative output from the described
   step.
