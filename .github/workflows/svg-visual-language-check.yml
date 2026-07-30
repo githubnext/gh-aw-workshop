@@ -4,12 +4,18 @@ on:
   push:
     paths:
       - "**/*.svg"
+      - ".github/skills/github-brand/**"
+      - ".github/workflows/guidelines.md"
       - "scripts/check-svg-visual-language.js"
+      - "scripts/check-svg-visual-language.test.js"
       - ".github/workflows/svg-visual-language-check.yml"
   pull_request:
     paths:
       - "**/*.svg"
+      - ".github/skills/github-brand/**"
+      - ".github/workflows/guidelines.md"
       - "scripts/check-svg-visual-language.js"
+      - "scripts/check-svg-visual-language.test.js"
       - ".github/workflows/svg-visual-language-check.yml"
 
 permissions:
@@ -28,6 +34,9 @@ jobs:
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "20"
+
+      - name: Test visual language checker
+        run: node --test scripts/check-svg-visual-language.test.js
 
       - name: Find changed SVG files
         id: changed
@@ -73,17 +82,20 @@ jobs:
               '',
               `Workflow run: ${runUrl}`,
               '',
-              'One or more workshop SVG files do not follow the GitHub visual language system',
-              'defined in `.github/workflows/guidelines.md`.',
+              'One or more workshop SVG files do not follow the GitHub brand and product',
+              'visual-language rules defined in `.github/skills/github-brand/SKILL.md`',
+              'and `.github/workflows/guidelines.md`.',
               '',
               'Common violations:',
               '- Unicode status/icon characters (✓ ✗ ⚡ 🕐 ▶) used instead of Octicon-inspired SVG paths',
               '- Missing `role="img"` or accessible label on root `<svg>` element',
+              '- Incomplete complex-visual metadata or gradients in technical visuals',
               '- State-labeled shapes (Open, Closed, Merged, Draft) using off-palette fill colors',
               '- Non-standard canvas width for themed (-light/-dark) variants',
               '',
               'See the workflow run for the full list of violations and which files to fix.',
-              'Refer to `.github/workflows/guidelines.md` § "GitHub visual language system" for the spec.',
+              'Refer to `.github/skills/github-brand/SKILL.md` and the GitHub visual language',
+              'section of `.github/workflows/guidelines.md` for the specs.',
             ].join('\n')
             const { owner, repo } = context.repo
             const { data: search } = await github.rest.search.issuesAndPullRequests({
@@ -108,5 +120,5 @@ jobs:
           github.event_name == 'pull_request'
         run: |
           echo "SVG visual language violations found. See the check output above for details."
-          echo "Refer to .github/workflows/guidelines.md § 'GitHub visual language system' for the spec."
+          echo "Refer to .github/skills/github-brand/SKILL.md and .github/workflows/guidelines.md."
           exit 1

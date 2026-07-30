@@ -4,19 +4,24 @@
 /**
  * SVG Visual Language Check
  *
- * Validates that workshop SVG files follow the GitHub visual language system
- * defined in .github/workflows/guidelines.md.
+ * Validates the static, markup-level subset of the GitHub brand skill in
+ * .github/skills/github-brand/SKILL.md, plus the repository-specific GitHub
+ * product visual language in .github/workflows/guidelines.md.
  *
  * Checks:
- *   1. Accessibility  — root <svg> must have role="img" and aria-label.
+ *   1. Accessibility — root <svg> must have role="img" and a non-empty,
+ *      resolvable accessible name.
  *   2. Icon characters — Unicode status/icon characters (✓ ✗ ✕ ⚡ 🕐 ▶ ►)
  *      must not appear in SVG <text> nodes used as visual indicators.
  *      Use Octicon-inspired inline SVG paths instead (see guidelines).
  *   3. Canvas dimensions — light/dark variant files (*-light.svg, *-dark.svg)
- *      must use viewBox="0 0 1200 560".
+ *      must use an approved 960px or 1200px canvas width.
  *   4. State-color parity — labeled state badges/pills ("Open", "Closed",
- *      "Merged", "Draft", "In progress") must use the correct Primer semantic
- *      fill color from the guidelines palette.
+ *      "Merged", "Draft", "In progress", and aliases) must use the correct
+ *      Primer semantic fill color from the guidelines palette.
+ *   5. Brand metadata — visuals that declare data-visual-kind must also expose
+ *      a stable ID and the kind-specific semantic child attributes.
+ *   6. Technical effects — declared charts and diagrams must not use gradients.
  *
  * Run directly (checks all SVGs in workshop/images/):
  *   node scripts/check-svg-visual-language.js
@@ -94,6 +99,19 @@ const LABEL_TO_STATE = {
   draft: 'draft',
   'in progress': 'in progress',
   'in-progress': 'in progress',
+  done: 'open',
+  success: 'open',
+  successful: 'open',
+  passed: 'open',
+  passing: 'open',
+  complete: 'open',
+  completed: 'open',
+  skipped: 'draft',
+  pending: 'draft',
+  danger: 'closed',
+  error: 'closed',
+  failed: 'closed',
+  failure: 'closed',
 };
 
 /**
@@ -196,6 +214,25 @@ function stripTags(str) {
 }
 
 /**
+ * Resolve the non-empty text content of an element by ID.
+ * @param {string} svg
+ * @param {string} id
+ * @returns {string | null}
+ */
+function textContentById(svg, id) {
+  const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(
+    `<([\\w:-]+)\\b[^>]*\\bid\\s*=\\s*(?:"${escapedId}"|'${escapedId}')[^>]*>` +
+      `([\\s\\S]*?)<\\/\\1\\s*>`,
+    'i'
+  );
+  const match = re.exec(svg);
+  if (!match) return null;
+  const text = stripTags(match[2]).trim();
+  return text || null;
+}
+
+/**
  * Extract all text content from SVG <text> and <tspan> elements.
  * Returns each non-empty trimmed text string found.
  * @param {string} svg
@@ -240,28 +277,30 @@ function extractTextNodes(svg) {
  * attribute values, along with any adjacent or nearby sibling text that might
  * label them.
  *
- * This is a heuristic. It returns {fill, labelHint} where labelHint is the
- * content of a <text> element that appears right after the shape inside the
- * same group, if present.
+ * This is a heuristic. It returns {fill, labelHint, dataState} where labelHint
+ * is the content of a <text> element that appears right after the shape inside
+ * the same group, if present. New SVGs should prefer data-state because it is
+ * deterministic; labelHint remains a compatibility fallback for older files.
  *
  * @param {string} svg
- * @returns {Array<{fill: string, labelHint: string}>}
+ * @returns {Array<{fill: string, labelHint: string, dataState: string}>}
  */
 function extractShapeFills(svg) {
   const results = [];
   // Match shapes + their trailing text siblings within the same group.
   const shapeRe =
-    /<(?:rect|circle|ellipse|path|polygon)\b([^/]*?)(?:\/>|>[\s\S]*?<\/(?:rect|circle|ellipse|path|polygon)>)/gi;
+    /<(rect|circle|ellipse|path|polygon)\b([^>]*?)(?:\/>|>[\s\S]*?<\/\1\s*>)/gi;
   let m;
   while ((m = shapeRe.exec(svg)) !== null) {
-    const attrs = m[1];
+    const attrs = m[2];
     const fill = (attrValue(attrs, 'fill') || '').toLowerCase();
     if (!fill || fill === 'none' || fill === 'transparent') continue;
+    const dataState = (attrValue(attrs, 'data-state') || '').toLowerCase().trim();
     // Look for a text element within the next 800 characters (same group heuristic).
     const nearby = svg.slice(m.index + m[0].length, m.index + m[0].length + 800);
     const textM = /<text\b[^>]*>([\s\S]*?)<\/text>/i.exec(nearby);
     const labelHint = textM ? stripTags(textM[1]).trim() : '';
-    results.push({ fill, labelHint });
+    results.push({ fill, labelHint, dataState });
   }
   return results;
 }
@@ -283,14 +322,31 @@ function checkAccessibility(svgContent, relPath) {
     return violations;
   }
   const rootAttrs = openM[1];
-  if (!/\brole\s*=\s*"img"/i.test(rootAttrs)) {
+  const role = attrValue(rootAttrs, 'role');
+  if (!role || role.trim().toLowerCase() !== 'img') {
     violations.push('Missing role="img" on root <svg> element.');
   }
-  // Accept either aria-label (inline) or aria-labelledby (reference to <title>/<desc>).
-  if (!/\baria-label(?:ledby)?\s*=/i.test(rootAttrs)) {
+
+  const ariaLabel = attrValue(rootAttrs, 'aria-label');
+  const labelledBy = attrValue(rootAttrs, 'aria-labelledby');
+  if (ariaLabel && ariaLabel.trim()) {
+    return violations;
+  }
+
+  if (labelledBy && labelledBy.trim()) {
+    const referencedIds = labelledBy.trim().split(/\s+/);
+    const unresolvedIds = referencedIds.filter(
+      (id) => textContentById(svgContent, id) === null
+    );
+    if (unresolvedIds.length > 0) {
+      violations.push(
+        `aria-labelledby references missing or empty element(s): ${unresolvedIds.join(', ')}.`
+      );
+    }
+  } else {
     violations.push(
-      'Missing accessible label on root <svg> element. ' +
-        'Add aria-label="..." or aria-labelledby="..." (paired with a <title> element).'
+      'Missing non-empty accessible label on root <svg> element. ' +
+        'Add aria-label="..." or aria-labelledby="..." referencing non-empty text.'
     );
   }
   return violations;
@@ -323,6 +379,63 @@ function checkIconCharacters(svgContent, relPath) {
 }
 
 /**
+ * Validate the semantic metadata contract for SVGs that opt into complex-visual
+ * inspection. Existing SVGs without data-visual-kind retain compatibility while
+ * newly generated charts, diagrams, and infographics receive stricter checks.
+ *
+ * @param {string} svgContent
+ * @param {string} relPath
+ * @returns {string[]} violation messages
+ */
+function checkBrandMetadata(svgContent, relPath) {
+  const violations = [];
+  const openM = SVG_OPEN_TAG_RE.exec(svgContent);
+  if (!openM) return violations;
+
+  const rootAttrs = openM[1];
+  const visualKind = (attrValue(rootAttrs, 'data-visual-kind') || '')
+    .toLowerCase()
+    .trim();
+  const visualId = (attrValue(rootAttrs, 'data-visual-id') || '').trim();
+  if (!visualKind && !visualId) return violations;
+
+  const requiredChildAttributes = {
+    chart: 'data-series',
+    diagram: 'data-node',
+    infographic: 'data-claim',
+  };
+  if (!Object.hasOwn(requiredChildAttributes, visualKind)) {
+    violations.push(
+      'data-visual-kind must be "chart", "diagram", or "infographic".'
+    );
+    return violations;
+  }
+  if (!visualId) {
+    violations.push('Missing non-empty data-visual-id on declared complex visual.');
+  }
+
+  const childAttribute = requiredChildAttributes[visualKind];
+  const childAttributeRe = new RegExp(`\\b${childAttribute}\\s*=`, 'i');
+  if (!childAttributeRe.test(svgContent)) {
+    violations.push(
+      `Declared ${visualKind} has no ${childAttribute} attributes for its semantic elements.`
+    );
+  }
+
+  if (
+    (visualKind === 'chart' || visualKind === 'diagram') &&
+    (/<(?:linearGradient|radialGradient)\b/i.test(svgContent) ||
+      /(?:linear|radial)-gradient\s*\(/i.test(svgContent))
+  ) {
+    violations.push(
+      `Declared ${visualKind} uses a gradient. Technical charts and diagrams must use flat colors.`
+    );
+  }
+
+  return violations;
+}
+
+/**
  * @param {string} svgContent
  * @param {string} relPath
  * @returns {string[]} violation messages
@@ -335,19 +448,33 @@ function checkCanvasDimensions(svgContent, relPath) {
   const openM = SVG_OPEN_TAG_RE.exec(svgContent);
   if (!openM) return violations;
   const rootAttrs = openM[1];
-  const viewBox = attrValue(rootAttrs, 'viewBox') || '';
-  // Extract the width from viewBox="0 0 W H".
-  const vbM = viewBox.match(/^0\s+0\s+(\d+)/);
-  if (vbM) {
-    const w = parseInt(vbM[1], 10);
-    if (!APPROVED_WIDTHS.has(w)) {
-      violations.push(
-        `Themed variant uses a non-standard canvas width of ${w}px ` +
-          `(viewBox="${viewBox}"). ` +
-          `Standard widths are: ${[...APPROVED_WIDTHS].join(', ')}. ` +
-          'Use viewBox="0 0 1200 <height>" for full-width diagrams.'
-      );
-    }
+  const viewBox = (attrValue(rootAttrs, 'viewBox') || '').trim();
+  if (!viewBox) {
+    violations.push('Themed variant is missing a root viewBox.');
+    return violations;
+  }
+
+  // Extract dimensions from viewBox="0 0 W H".
+  const vbM = viewBox.match(/^0(?:\.0+)?\s+0(?:\.0+)?\s+(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)$/);
+  if (!vbM) {
+    violations.push(
+      `Themed variant uses malformed viewBox="${viewBox}". Expected "0 0 <width> <height>".`
+    );
+    return violations;
+  }
+
+  const width = Number(vbM[1]);
+  const height = Number(vbM[2]);
+  if (height <= 0) {
+    violations.push(`Themed variant uses a non-positive canvas height of ${height}px.`);
+  }
+  if (!APPROVED_WIDTHS.has(width)) {
+    violations.push(
+      `Themed variant uses a non-standard canvas width of ${width}px ` +
+        `(viewBox="${viewBox}"). ` +
+        `Standard widths are: ${[...APPROVED_WIDTHS].join(', ')}. ` +
+        'Use viewBox="0 0 1200 <height>" for full-width diagrams.'
+    );
   }
   return violations;
 }
@@ -355,9 +482,8 @@ function checkCanvasDimensions(svgContent, relPath) {
 /**
  * Check that state-labeled shape nodes use the correct Primer semantic color.
  *
- * Heuristic: find shapes whose nearest text sibling contains a known state
- * label as a standalone word and verify the shape fill matches the Primer
- * state color for the file's theme (light/dark).
+ * Prefer explicit data-state metadata. For legacy SVGs, find shapes whose
+ * nearest text sibling contains a known state label as a standalone word.
  *
  * @param {string} svgContent
  * @param {string} relPath
@@ -372,29 +498,38 @@ function checkStateColors(svgContent, relPath) {
   const theme = isDark ? 'dark' : 'light';
   const shapes = extractShapeFills(svgContent);
 
-  for (const { fill, labelHint } of shapes) {
+  for (const { fill, labelHint, dataState } of shapes) {
+    let stateKey = LABEL_TO_STATE[dataState] || null;
+    let stateDescription = dataState
+      ? `data-state=${JSON.stringify(dataState)}`
+      : '';
+
     // Use the raw label for comparison (no HTML entity decoding needed since
     // state keywords like "open", "closed", "merged" contain no entities).
     const lowerLabel = labelHint.toLowerCase().trim();
-    // Skip long labels — these are content strings, not state tags.
-    if (lowerLabel.length > STATE_LABEL_MAX_LEN) continue;
-    for (const [keyword, stateKey] of Object.entries(LABEL_TO_STATE)) {
-      // Match only when the label IS the state keyword (possibly with a
-      // numeric count like "Open (3)" or "Closed 2"), not when the keyword
-      // modifies a noun like "Draft result".
-      // Pattern: optional leading space, keyword, then only digits/parens/spaces.
-      const exactRe = new RegExp(`^${keyword}(?:\\s*\\(\\d+\\)|\\s+\\d+)?\\s*$`);
-      if (!exactRe.test(lowerLabel)) continue;
-      const expectedColors = STATE_COLORS[stateKey][theme];
-      if (expectedColors.length === 0) continue;
-      if (!expectedColors.includes(fill)) {
-        violations.push(
-          `Shape with label ${JSON.stringify(labelHint.substring(0, 40))} ` +
-            `suggests state "${stateKey}" but uses fill="${fill}". ` +
-            `Expected Primer ${theme}-mode color: ${expectedColors.join(' or ')}.`
+    if (!stateKey && lowerLabel.length <= STATE_LABEL_MAX_LEN) {
+      for (const [keyword, candidateStateKey] of Object.entries(LABEL_TO_STATE)) {
+        // Match only when the label IS the state keyword (possibly with a
+        // numeric count like "Open (3)" or "Closed 2"), not when the keyword
+        // modifies a noun like "Draft result".
+        const exactRe = new RegExp(
+          `^${keyword}(?:\\s*\\(\\d+\\)|\\s+\\d+)?\\s*$`
         );
+        if (!exactRe.test(lowerLabel)) continue;
+        stateKey = candidateStateKey;
+        stateDescription = `label ${JSON.stringify(labelHint.substring(0, 40))}`;
+        break;
       }
-      break; // matched one keyword — no need to keep checking others
+    }
+    if (!stateKey) continue;
+
+    const expectedColors = STATE_COLORS[stateKey][theme];
+    if (!expectedColors.includes(fill)) {
+      violations.push(
+        `Shape with ${stateDescription} suggests state "${stateKey}" but uses ` +
+          `fill="${fill}". Expected Primer ${theme}-mode color: ` +
+          `${expectedColors.join(' or ')}.`
+      );
     }
   }
   return violations;
@@ -414,6 +549,7 @@ for (const svgPath of svgFiles) {
   const violations = [
     ...checkAccessibility(svgContent, relPath),
     ...checkIconCharacters(svgContent, relPath),
+    ...checkBrandMetadata(svgContent, relPath),
     ...checkCanvasDimensions(svgContent, relPath),
     ...checkStateColors(svgContent, relPath),
   ];
@@ -433,7 +569,8 @@ if (totalViolations > 0) {
     `\n${totalViolations} visual language violation(s) found in ${errorFiles.length} file(s).\n`
   );
   process.stderr.write(
-    'See .github/workflows/guidelines.md § "GitHub visual language system" for the full spec.\n'
+    'See .github/skills/github-brand/SKILL.md and ' +
+      '.github/workflows/guidelines.md § "GitHub visual language system".\n'
   );
   process.exit(1);
 } else {

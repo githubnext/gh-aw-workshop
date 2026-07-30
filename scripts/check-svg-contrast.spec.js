@@ -53,17 +53,6 @@ const svgFiles = envFiles
   : findSvgFiles(path.join(repoRoot, 'workshop', 'images'));
 
 // ---------------------------------------------------------------------------
-// WCAG contrast helpers (duplicated inside page.evaluate below as well)
-// ---------------------------------------------------------------------------
-
-/**
- * WCAG AA minimum contrast ratio.
- * 4.5:1 for normal text; 3:1 for large text (≥18 pt or ≥14 pt bold).
- * Workshop SVG diagrams use large labels, so 3.0 is the applied floor.
- */
-const CONTRAST_THRESHOLD = 3.0;
-
-// ---------------------------------------------------------------------------
 // Dynamic test generation — one test per SVG file
 // ---------------------------------------------------------------------------
 
@@ -98,7 +87,7 @@ for (const svgPath of svgFiles) {
     // ---------------------------------------------------------------------------
     // In-browser analysis: extract text elements and their effective colors
     // ---------------------------------------------------------------------------
-    const violations = await page.evaluate((threshold) => {
+    const violations = await page.evaluate(() => {
       // --- Color helpers (must be self-contained inside evaluate) ---
 
       function parseColorStr(s) {
@@ -142,19 +131,11 @@ for (const svgPath of svgFiles) {
 
       // --- SVG attribute helpers ---
 
-      /**
-       * Walk up the DOM to resolve the effective `fill` of a text element.
-       * Returns the raw attribute string (e.g. "#24292f" or "rgb(0,0,0)").
-       */
-      function effectiveFill(el) {
-        let node = el;
-        while (node && node.tagName.toLowerCase() !== 'svg') {
-          const fill = node.getAttribute('fill');
-          if (fill && fill !== 'inherit') return fill;
-          node = node.parentElement;
-        }
-        // SVG spec default: text renders in black when no fill is specified.
-        return '#000000';
+      function numericFontWeight(value) {
+        if (value === 'bold' || value === 'bolder') return 700;
+        if (value === 'normal' || value === 'lighter') return 400;
+        const parsed = Number.parseInt(value, 10);
+        return Number.isFinite(parsed) ? parsed : 400;
       }
 
       // --- Main analysis ---
@@ -174,9 +155,15 @@ for (const svgPath of svgFiles) {
         // Skip invisible / zero-size elements.
         if (bbox.width === 0 || bbox.height === 0) continue;
 
-        const fillStr = effectiveFill(textEl);
+        const computedStyle = window.getComputedStyle(textEl);
+        const fillStr = computedStyle.fill || '#000000';
         const textColor = parseColorStr(fillStr);
         if (!textColor) continue;
+        const fontSize = Number.parseFloat(computedStyle.fontSize);
+        const fontWeight = numericFontWeight(computedStyle.fontWeight);
+        const isLargeText =
+          fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
+        const threshold = isLargeText ? 3.0 : 4.5;
 
         const textIdx = allEls.indexOf(textEl);
 
@@ -249,18 +236,20 @@ for (const svgPath of svgFiles) {
             background: bgSource,
             ratio: Math.round(ratio * 100) / 100,
             threshold,
+            fontSize: Math.round(fontSize * 100) / 100,
+            fontWeight,
           });
         }
       }
 
       return violations;
-    }, CONTRAST_THRESHOLD);
+    });
 
     if (violations.length > 0) {
       const report = violations
         .map(
           (v) =>
-            `  text: "${v.text}"\n  fill: ${v.fill}  background: ${v.background}\n  contrast: ${v.ratio}:1  (minimum: ${v.threshold}:1)`
+            `  text: "${v.text}"\n  fill: ${v.fill}  background: ${v.background}\n  contrast: ${v.ratio}:1  (minimum: ${v.threshold}:1; font: ${v.fontSize}px/${v.fontWeight})`
         )
         .join('\n\n');
       expect(
