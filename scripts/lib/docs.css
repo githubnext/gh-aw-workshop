@@ -934,7 +934,7 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
 }
 @keyframes victory-out {
   from { opacity: 1; transform: translate(-50%, 0)    scale(1); }
-  to   { opacity: 0; transform: translate(-50%, -16px) scale(0.94); }
+  to   { opacity: 0; transform: translate(-50%, 16px) scale(0.94); }
 }
 @keyframes victory-sparkle {
   0%, 100% { opacity: 1;   transform: scale(1)   rotate(0deg); }
