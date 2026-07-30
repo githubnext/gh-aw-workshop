@@ -4,6 +4,11 @@
   // Victory banner — shown once when a page's checkboxes all become complete.
   var victoryTimer = null;
   var victoryEl = null;
+  var pageProgressState = {};
+  var currentPageProgressEl = null;
+  var currentPageProgressBarEl = null;
+  var currentPageProgressFillEl = null;
+  var currentPageProgressLabelEl = null;
 
   function showVictory() {
     if (victoryTimer) {
@@ -115,6 +120,40 @@
     return found;
   }
 
+  function getCurrentPageId() {
+    var currentPage = document.querySelector('.markdown-body > details[open]');
+    return currentPage ? currentPage.id : null;
+  }
+
+  function renderCurrentPageProgress(pageId) {
+    if (!currentPageProgressEl || !currentPageProgressBarEl || !currentPageProgressFillEl || !currentPageProgressLabelEl) {
+      return;
+    }
+
+    var progress = pageId ? pageProgressState[pageId] : null;
+    if (!progress || progress.total === 0) {
+      currentPageProgressEl.hidden = true;
+      currentPageProgressBarEl.removeAttribute('aria-valuenow');
+      currentPageProgressBarEl.removeAttribute('aria-valuemax');
+      currentPageProgressFillEl.style.width = '0%';
+      currentPageProgressLabelEl.textContent = '';
+      return;
+    }
+
+    currentPageProgressEl.hidden = false;
+    currentPageProgressEl.classList.toggle('site-header-progress--done', progress.allDone);
+    currentPageProgressBarEl.setAttribute('aria-valuenow', String(progress.done));
+    currentPageProgressBarEl.setAttribute('aria-valuemax', String(progress.total));
+    currentPageProgressFillEl.style.width = progress.pct + '%';
+    currentPageProgressLabelEl.textContent = progress.allDone
+      ? 'All ' + progress.total + ' complete'
+      : progress.done + '/' + progress.total + ' complete';
+    currentPageProgressLabelEl.setAttribute(
+      'data-compact-label',
+      progress.allDone ? 'Done' : progress.done + '/' + progress.total
+    );
+  }
+
   function getCheckpointItems(page) {
     var checkpointTitle = findCheckpointHeading(page);
     if (!checkpointTitle) return [];
@@ -153,33 +192,6 @@
       return li.querySelector('.task-list-item-marker.is-complete') !== null;
     });
 
-    // Progress element inserted immediately after the page title heading.
-    // Child elements are created once and updated on each render call.
-    var progressEl = document.createElement('div');
-    progressEl.className = 'task-progress';
-    progressEl.setAttribute('aria-live', 'polite');
-
-    var barEl = document.createElement('div');
-    barEl.className = 'task-progress-bar';
-    barEl.setAttribute('role', 'progressbar');
-    barEl.setAttribute('aria-valuemin', '0');
-    barEl.setAttribute('aria-label', 'Page checkpoint progress');
-
-    var fillEl = document.createElement('div');
-    fillEl.className = 'task-progress-bar-fill';
-    barEl.appendChild(fillEl);
-
-    var labelEl = document.createElement('span');
-    labelEl.className = 'task-progress-label';
-
-    progressEl.appendChild(barEl);
-    progressEl.appendChild(labelEl);
-
-    var pageTitle = page.querySelector('.workshop-page-title');
-    if (pageTitle) {
-      pageTitle.insertAdjacentElement('afterend', progressEl);
-    }
-
     // Menu micro-progress bar for this page
     var menuProgress = document.querySelector('[data-menu-progress="' + pageId + '"]');
     var menuFill = menuProgress ? menuProgress.querySelector('.menu-item-progress-fill') : null;
@@ -201,15 +213,15 @@
       }
       prevAllDone = allDone;
 
-      progressEl.classList.toggle('task-progress--done', allDone);
-
-      barEl.setAttribute('aria-valuenow', String(done));
-      barEl.setAttribute('aria-valuemax', String(total));
-      fillEl.style.width = pct + '%';
-
-      labelEl.textContent = allDone
-        ? 'All\u00a0' + total + ' checkpoints complete'
-        : done + '\u202f/\u202f' + total + ' complete';
+      pageProgressState[pageId] = {
+        done: done,
+        total: total,
+        allDone: allDone,
+        pct: pct,
+      };
+      if (getCurrentPageId() === pageId) {
+        renderCurrentPageProgress(pageId);
+      }
 
       // Mark the menu link for this page as complete
       var menuLink = document.querySelector('a[href="#' + pageId + '"][data-workshop-page-link]');
@@ -265,10 +277,17 @@
 
   function init() {
     var controllers = [];
+    currentPageProgressEl = document.querySelector('[data-current-page-progress]');
+    currentPageProgressBarEl = currentPageProgressEl
+      ? currentPageProgressEl.querySelector('.site-header-progress-bar')
+      : null;
+    currentPageProgressFillEl = document.querySelector('[data-current-page-progress-fill]');
+    currentPageProgressLabelEl = document.querySelector('[data-current-page-progress-label]');
     var pages = document.querySelectorAll('.markdown-body > details[id]');
     Array.prototype.forEach.call(pages, function (page) {
       initPage(page, controllers);
     });
+    renderCurrentPageProgress(getCurrentPageId());
 
     var clearButton = document.querySelector('[data-clear-workshop-progress]');
     if (clearButton) {
@@ -279,6 +298,10 @@
         });
       });
     }
+
+    document.addEventListener('workshoppagechange', function (event) {
+      renderCurrentPageProgress(event.detail && event.detail.pageId);
+    });
   }
 
   if (document.readyState === 'loading') {

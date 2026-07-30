@@ -38,6 +38,16 @@ test("workshop navigation constrains long buttons on small screens", () => {
   assert.ok(css.includes(".workshop-nav-btn {\n    box-sizing: border-box;\n    max-width: 100%;\n    width: 100%;"));
 });
 
+test("current page checkpoint progress renders in the sticky header", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<div class="site-header-progress" data-current-page-progress hidden>'));
+  assert.ok(html.includes("document.dispatchEvent(new CustomEvent('workshoppagechange'"));
+  assert.ok(html.includes("renderCurrentPageProgress(event.detail && event.detail.pageId);"));
+  assert.ok(css.includes(".site-header-progress-bar {\n  flex: 0 0 auto;\n  width: min(132px, 22vw);"));
+  assert.ok(css.includes(".site-header-progress-label::before {\n    content: attr(data-compact-label);"));
+});
+
 test("shell code blocks are wrapped in a terminal-block UI", () => {
   const { html, css, highlightCss } = buildDocs();
 
