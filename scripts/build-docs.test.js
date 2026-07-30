@@ -10,6 +10,7 @@ const repoDir = path.resolve(__dirname, "..");
 const buildScript = path.join(repoDir, "scripts", "build-docs.js");
 const distIndex = path.join(repoDir, "dist", "index.html");
 const distCss = path.join(repoDir, "dist", "docs.css");
+const distCheckboxesJs = path.join(repoDir, "dist", "docs-checkboxes.js");
 const distHighlightCss = path.join(repoDir, "dist", "hljs.css");
 const workshopDir = path.join(repoDir, "workshop");
 
@@ -18,6 +19,7 @@ function buildDocs() {
   return {
     html: fs.readFileSync(distIndex, "utf8"),
     css: fs.readFileSync(distCss, "utf8"),
+    checkboxesJs: fs.readFileSync(distCheckboxesJs, "utf8"),
     highlightCss: fs.readFileSync(distHighlightCss, "utf8"),
   };
 }
@@ -39,13 +41,14 @@ test("workshop navigation constrains long buttons on small screens", () => {
 });
 
 test("current page checkpoint progress renders in the sticky header", () => {
-  const { html, css } = buildDocs();
+  const { html, css, checkboxesJs } = buildDocs();
 
   assert.ok(html.includes('<div class="site-header-progress" data-current-page-progress hidden>'));
   assert.ok(html.includes("document.dispatchEvent(new CustomEvent('workshoppagechange'"));
-  assert.ok(html.includes("renderCurrentPageProgress(event.detail && event.detail.pageId);"));
+  assert.ok(checkboxesJs.includes("renderCurrentPageProgress(event.detail && event.detail.pageId);"));
+  assert.ok(checkboxesJs.includes("window.matchMedia('(max-width: 543px)').matches"));
   assert.ok(css.includes(".site-header-progress-bar {\n  flex: 0 0 auto;\n  width: min(132px, 22vw);"));
-  assert.ok(css.includes(".site-header-progress-label::before {\n    content: attr(data-compact-label);"));
+  assert.ok(css.includes(".site-header-progress-bar {\n    width: min(84px, 24vw);"));
 });
 
 test("shell code blocks are wrapped in a terminal-block UI", () => {

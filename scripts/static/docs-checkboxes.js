@@ -145,13 +145,13 @@
     currentPageProgressBarEl.setAttribute('aria-valuenow', String(progress.done));
     currentPageProgressBarEl.setAttribute('aria-valuemax', String(progress.total));
     currentPageProgressFillEl.style.width = progress.pct + '%';
-    currentPageProgressLabelEl.textContent = progress.allDone
-      ? 'All ' + progress.total + ' complete'
-      : progress.done + '/' + progress.total + ' complete';
-    currentPageProgressLabelEl.setAttribute(
-      'data-compact-label',
-      progress.allDone ? 'Done' : progress.done + '/' + progress.total
-    );
+    currentPageProgressLabelEl.textContent = (
+      window.matchMedia && window.matchMedia('(max-width: 543px)').matches
+    )
+      ? (progress.allDone ? 'Done' : progress.done + '/' + progress.total)
+      : (progress.allDone
+          ? 'All ' + progress.total + ' complete'
+          : progress.done + '/' + progress.total + ' complete');
   }
 
   function getCheckpointItems(page) {
@@ -301,6 +301,9 @@
 
     document.addEventListener('workshoppagechange', function (event) {
       renderCurrentPageProgress(event.detail && event.detail.pageId);
+    });
+    window.addEventListener('resize', function () {
+      renderCurrentPageProgress(getCurrentPageId());
     });
   }
 

@@ -269,13 +269,6 @@ html {
     width: min(84px, 24vw);
     min-width: 48px;
   }
-  .site-header-progress-label {
-    font-size: 0;
-  }
-  .site-header-progress-label::before {
-    content: attr(data-compact-label);
-    font-size: 11px;
-  }
   .markdown-body pre {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
