@@ -9,6 +9,7 @@ const test = require("node:test");
 const repoDir = path.resolve(__dirname, "..");
 const buildScript = path.join(repoDir, "scripts", "build-docs.js");
 const distIndex = path.join(repoDir, "dist", "index.html");
+const distAlertsCss = path.join(repoDir, "dist", "alerts.css");
 const distCss = path.join(repoDir, "dist", "docs.css");
 const distHighlightCss = path.join(repoDir, "dist", "hljs.css");
 const workshopDir = path.join(repoDir, "workshop");
@@ -17,6 +18,7 @@ function buildDocs() {
   execFileSync(process.execPath, [buildScript], { cwd: repoDir, stdio: "pipe" });
   return {
     html: fs.readFileSync(distIndex, "utf8"),
+    alertsCss: fs.readFileSync(distAlertsCss, "utf8"),
     css: fs.readFileSync(distCss, "utf8"),
     highlightCss: fs.readFileSync(distHighlightCss, "utf8"),
   };
@@ -77,6 +79,13 @@ test("prompt code blocks are wrapped in a distinct agent UI", () => {
   assert.ok(css.includes(".agent-prompt-bar"));
   assert.ok(css.includes(".agent-prompt-icon"));
   assert.ok(css.includes(".agent-prompt-pre"));
+});
+
+test("alert titles use a consistent font size", () => {
+  const { alertsCss } = buildDocs();
+
+  assert.ok(alertsCss.includes(".markdown-alert-title {\n  display: flex;\n  align-items: center;\n  font-size: 1em;"));
+  assert.ok(alertsCss.includes("  line-height: 1.5;\n  margin-bottom: 4px;\n}"));
 });
 
 test("markdown, md, yaml, and yml code blocks use compact icon-only editor chrome", () => {
