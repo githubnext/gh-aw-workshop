@@ -11,7 +11,7 @@ This step has two entry points:
 
 ## :dart: What You'll Do
 
-You'll verify Copilot model access with a quick test that uses the `agentic-workflows` skill, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and authentication method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
+You'll verify Copilot model access with a quick test that uses the `agentic-workflows` skill, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and [authentication](https://github.github.com/gh-aw/reference/auth/) method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
 
 ## Verify model access with a test prompt
 

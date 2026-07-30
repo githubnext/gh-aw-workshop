@@ -39,7 +39,7 @@ Before studying the diagram, write your prediction: what two files are involved,
   <img alt="Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub" src="images/05-workflow-lifecycle-light.svg">
 </picture>
 
-- **`.md` source file** — contains YAML frontmatter (trigger, permissions, runner) and your plain-English task brief. You author and edit this file.
+- **`.md` source file** — contains [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (trigger, permissions, runner) and your plain-English task brief. You author and edit this file.
 - **`.lock.yml` compiled file** — [`gh aw compile`](https://github.github.com/gh-aw/reference/compilation-process/) generates it from the `.md`. GitHub Actions runs this file, not the `.md`. Never edit it by hand.
 
 **Activity 1 — identify the parts:** Open any `.lock.yml` file in your repo and find the `on:` key. That is the compiled trigger that came from your frontmatter.
