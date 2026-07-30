@@ -972,6 +972,7 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
   border-radius: 0;
   box-shadow: inset 3px 0 var(--borderColor-muted, #d0d7de);
   overflow-x: auto;
+  white-space: pre-wrap;
 }
 
 .markdown-body .markdown-editor-pre > code {
