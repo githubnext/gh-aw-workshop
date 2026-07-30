@@ -46,9 +46,14 @@ function generatePage(htmlContent, workshopMenu) {
 </head>
 <body>
   <header class="site-header">
-    <button class="menu-toggle" type="button" aria-label="Open workshop pages" aria-controls="workshop-menu" title="Open workshop pages">
-      <span class="menu-icon" aria-hidden="true"></span>
-    </button>
+    <div class="menu-toggle-wrap">
+      <button class="menu-toggle" type="button" aria-label="Open workshop pages" aria-controls="workshop-menu" title="Open workshop pages">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="menu-toggle-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Overall workshop progress" data-menu-toggle-progress>
+        <div class="menu-toggle-progress-fill" data-menu-toggle-progress-fill></div>
+      </div>
+    </div>
     <h1 class="site-title"><a href="#00-welcome">GitHub Agentic Workflows Workshop</a></h1>
     <div class="site-header-progress" data-current-page-progress hidden>
       <div class="site-header-progress-bar" role="progressbar" aria-valuemin="0" aria-label="Current page checkpoint progress">

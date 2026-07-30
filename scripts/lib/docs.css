@@ -148,6 +148,39 @@ html[data-color-mode="dark"] .site-header-progress-bar {
 .menu-icon::before { top: -6px; }
 .menu-icon::after { top: 6px; }
 
+.menu-toggle-wrap {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.menu-toggle-progress {
+  width: 28px;
+  height: 3px;
+  background-color: var(--borderColor-muted, #d0d7de);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.menu-toggle-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--fgColor-success, #1a7f37);
+  border-radius: inherit;
+  transition: width 0.2s ease;
+}
+.menu-toggle-progress--done .menu-toggle-progress-fill {
+  opacity: 0.7;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .menu-toggle-progress {
+    background-color: #6e7681;
+  }
+}
+html[data-color-mode="dark"] .menu-toggle-progress {
+  background-color: #6e7681;
+}
+
 .workshop-menu {
   width: min(384px, calc(100vw - 32px));
   max-width: none;

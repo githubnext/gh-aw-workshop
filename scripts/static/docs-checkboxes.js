@@ -9,6 +9,8 @@
   var currentPageProgressBarEl = null;
   var currentPageProgressFillEl = null;
   var currentPageProgressLabelEl = null;
+  var menuToggleProgressEl = null;
+  var menuToggleProgressFillEl = null;
 
   function showVictory() {
     if (victoryTimer) {
@@ -154,6 +156,19 @@
           : progress.done + '/' + progress.total + ' complete');
   }
 
+  function renderOverallProgress() {
+    if (!menuToggleProgressEl || !menuToggleProgressFillEl) return;
+    var pages = Object.values(pageProgressState);
+    var withCheckpoints = pages.filter(function (p) { return p.total > 0; });
+    if (withCheckpoints.length === 0) return;
+    var donePages = withCheckpoints.filter(function (p) { return p.allDone; }).length;
+    var pct = Math.round((donePages / withCheckpoints.length) * 100);
+    menuToggleProgressEl.setAttribute('aria-valuenow', String(donePages));
+    menuToggleProgressEl.setAttribute('aria-valuemax', String(withCheckpoints.length));
+    menuToggleProgressFillEl.style.width = pct + '%';
+    menuToggleProgressEl.classList.toggle('menu-toggle-progress--done', donePages === withCheckpoints.length);
+  }
+
   function getCheckpointItems(page) {
     var checkpointTitle = findCheckpointHeading(page);
     if (!checkpointTitle) return [];
@@ -233,6 +248,8 @@
       if (menuFill) {
         menuFill.style.width = pct + '%';
       }
+
+      renderOverallProgress();
     }
 
     function resetPage() {
@@ -283,6 +300,8 @@
       : null;
     currentPageProgressFillEl = document.querySelector('[data-current-page-progress-fill]');
     currentPageProgressLabelEl = document.querySelector('[data-current-page-progress-label]');
+    menuToggleProgressEl = document.querySelector('[data-menu-toggle-progress]');
+    menuToggleProgressFillEl = document.querySelector('[data-menu-toggle-progress-fill]');
     var pages = document.querySelectorAll('.markdown-body > details[id]');
     Array.prototype.forEach.call(pages, function (page) {
       initPage(page, controllers);
