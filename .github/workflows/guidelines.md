@@ -159,6 +159,23 @@ When the diagram is theme-aware, apply the matching column's values to each SVG 
 - **Use accent blue (`#0969da` / `#2f81f7`) for non-GitHub-entity highlights** such as data flows, trigger arrows, or focus callouts that do not correspond to a GitHub object.
 - **Do not mix icon vocabularies.** Never combine Octicon-style shapes with Material Design, Font Awesome, or other third-party icon conventions in the same diagram.
 
+### Enforcing the visual language spec
+
+Run the static SVG visual language checker locally before committing new or updated SVG files:
+
+```bash
+node scripts/check-svg-visual-language.js
+```
+
+To check specific files only:
+
+```bash
+SVG_FILES="workshop/images/foo-light.svg workshop/images/foo-dark.svg" \
+  node scripts/check-svg-visual-language.js
+```
+
+The check runs automatically in CI via `.github/workflows/svg-visual-language-check.yml` whenever SVG files change. Pull requests that introduce violations in changed SVG files will fail the check. Push events that introduce violations on `main` will create or update a tracked issue.
+
 ## Alert callouts: use `<details>` only for multi-line content
 
 ### Alert level ceiling
