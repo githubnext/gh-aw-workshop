@@ -129,7 +129,7 @@ function setupBasePlugins() {
           return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span>${filenameHtml}</div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
         }
         if (langKey === 'markdown' || langKey === 'md') {
-          return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span>${filenameHtml}</div>\n<pre class="markdown-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
+          return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M14.85 3c.63 0 1.15.52 1.14 1.15v7.7c0 .63-.51 1.15-1.15 1.15H1.15C.52 13 0 12.48 0 11.84V4.15C0 3.52.52 3 1.15 3ZM9 11V5H7L5.5 7 4 5H2v6h2V8l1.5 1.92L7 8v3Zm2.99.5L14.5 8H13V5h-2v3H9.5Z"></path></svg></span>${filenameHtml}</div>\n<pre class="markdown-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
         }
         if (langKey === 'yaml' || langKey === 'yml') {
           return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span>${filenameHtml}</div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
