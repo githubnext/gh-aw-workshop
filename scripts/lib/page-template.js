@@ -50,6 +50,12 @@ function generatePage(htmlContent, workshopMenu) {
       <span class="menu-icon" aria-hidden="true"></span>
     </button>
     <h1 class="site-title"><a href="#00-welcome">GitHub Agentic Workflows Workshop</a></h1>
+    <div class="site-header-progress" data-current-page-progress hidden>
+      <div class="site-header-progress-bar" role="progressbar" aria-valuemin="0" aria-label="Current page checkpoint progress">
+        <div class="site-header-progress-bar-fill" data-current-page-progress-fill></div>
+      </div>
+      <span class="site-header-progress-label" data-current-page-progress-label></span>
+    </div>
   </header>
   <dialog class="workshop-menu" id="workshop-menu" aria-labelledby="workshop-menu-title">
     <div class="workshop-menu-panel">
@@ -171,6 +177,9 @@ ${htmlContent}</main>
           if (isActive) link.setAttribute('aria-current', 'page');
           else link.removeAttribute('aria-current');
         });
+        document.dispatchEvent(new CustomEvent('workshoppagechange', {
+          detail: { pageId: activePage.id },
+        }));
         if (scrollPage) activePage.scrollIntoView({ block: 'start' });
       }
 
