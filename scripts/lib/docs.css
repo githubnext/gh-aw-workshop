@@ -1028,8 +1028,7 @@ html[data-color-mode="dark"] .menu-item-progress {
 .markdown-editor-icon {
   flex-shrink: 0;
   color: var(--fgColor-muted, #59636e);
-  font-size: 14px;
-  line-height: 1;
+  display: inline-flex;
 }
 
 .markdown-editor-bar .code-block-filename {
