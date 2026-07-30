@@ -191,12 +191,19 @@ test("workshop Markdown uses GitHub emoji shortcodes", () => {
   }
 });
 
-test("hash navigation opens details ancestors for targeted anchors", () => {
+test("hash navigation opens details ancestors after the destination page switches", () => {
   const { html } = buildDocs();
 
   assert.match(
     html,
     /function openDetailsAncestors\(target\) \{[\s\S]*detail\.open = true;[\s\S]*\}/
   );
-  assert.equal((html.match(/openDetailsAncestors\(target\);/g) ?? []).length, 2);
+  assert.match(
+    html,
+    /showWorkshopPage\(target, scrollPage && isPageTarget\);\s*if \(!isPageTarget\) \{\s*openDetailsAncestors\(target\);/
+  );
+  assert.match(
+    html,
+    /showWorkshopPage\(target, isPage\);\s*if \(!isPage\) \{\s*openDetailsAncestors\(target\);/
+  );
 });

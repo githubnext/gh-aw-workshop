@@ -227,9 +227,11 @@ ${htmlContent}</main>
         return;
       }
 
-      openDetailsAncestors(target);
       const isPageTarget = target.matches('.markdown-body > details');
       showWorkshopPage(target, scrollPage && isPageTarget);
+      if (!isPageTarget) {
+        openDetailsAncestors(target);
+      }
       if (scrollPage && !isPageTarget) {
         target.scrollIntoView({ block: 'start' });
       }
@@ -274,9 +276,11 @@ ${htmlContent}</main>
         if (menuDialog.open) menuDialog.close();
         const isPage = target.matches('.markdown-body > details');
         history.pushState(null, '', link.getAttribute('href'));
-        openDetailsAncestors(target);
         showWorkshopPage(target, isPage);
-        if (!isPage) target.scrollIntoView({ block: 'start' });
+        if (!isPage) {
+          openDetailsAncestors(target);
+          target.scrollIntoView({ block: 'start' });
+        }
       }
     });
 
