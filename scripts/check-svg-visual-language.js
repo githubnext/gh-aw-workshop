@@ -172,6 +172,30 @@ function attrValue(tag, name) {
 }
 
 /**
+ * Strip all XML/HTML tags from a string, returning only the plain text
+ * content between tags. Uses a character-level scanner that provably removes
+ * every `<` and `>` character (and everything between them) from the output,
+ * regardless of whether tags are well-formed.
+ * @param {string} str
+ * @returns {string}
+ */
+function stripTags(str) {
+  let result = '';
+  let inTag = false;
+  for (let i = 0; i < str.length; i++) {
+    const c = str[i];
+    if (c === '<') {
+      inTag = true;
+    } else if (c === '>') {
+      inTag = false;
+    } else if (!inTag) {
+      result += c;
+    }
+  }
+  return result;
+}
+
+/**
  * Extract all text content from SVG <text> and <tspan> elements.
  * Returns each non-empty trimmed text string found.
  * @param {string} svg
@@ -182,9 +206,7 @@ function extractTextContent(svg) {
   const textRe = /<(?:text|tspan)\b[^>]*>([\s\S]*?)<\/(?:text|tspan)>/gi;
   let m;
   while ((m = textRe.exec(svg)) !== null) {
-    // Strip inner tags (e.g. <tspan>) then remove any remaining angle-bracket
-    // characters so the result is plain text only.
-    const inner = m[1].replace(/<[^>]+>/g, '').replace(/[<>]/g, '').trim();
+    const inner = stripTags(m[1]).trim();
     if (inner) results.push(inner);
   }
   return results;
@@ -206,9 +228,8 @@ function extractTextNodes(svg) {
     const attrs = m[1];
     const body = m[2];
     const fill = (attrValue(attrs, 'fill') || '').toLowerCase();
-    // Strip inner tags, then remove any remaining angle-bracket characters
-    // so the result is plain text only.
-    const content = body.replace(/<[^>]+>/g, '').replace(/[<>]/g, '').trim();
+    // Strip inner tags and whitespace — use the character-level scanner.
+    const content = stripTags(body).trim();
     if (content) results.push({ fill, content });
   }
   return results;
@@ -239,7 +260,7 @@ function extractShapeFills(svg) {
     // Look for a text element within the next 800 characters (same group heuristic).
     const nearby = svg.slice(m.index + m[0].length, m.index + m[0].length + 800);
     const textM = /<text\b[^>]*>([\s\S]*?)<\/text>/i.exec(nearby);
-    const labelHint = textM ? textM[1].replace(/<[^>]+>/g, '').replace(/[<>]/g, '').trim() : '';
+    const labelHint = textM ? stripTags(textM[1]).trim() : '';
     results.push({ fill, labelHint });
   }
   return results;
