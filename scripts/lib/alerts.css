@@ -10,7 +10,9 @@
 .markdown-alert-title {
   display: flex;
   align-items: center;
+  font-size: 1em;
   font-weight: 600;
+  line-height: 1.5;
   margin-bottom: 4px;
 }
 .markdown-alert-title svg { margin-right: 8px; }

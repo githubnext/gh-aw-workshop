@@ -36,6 +36,7 @@ html {
   display: flex;
   gap: 12px;
   align-items: center;
+  justify-content: space-between;
   min-height: 56px;
   padding: 0 16px;
   color: var(--fgColor-default, #1f2328);
@@ -44,15 +45,57 @@ html {
 }
 .site-title {
   margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 16px;
   font-weight: 600;
 }
 .site-title a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: inherit;
   text-decoration: none;
 }
 .site-title a:hover {
   color: var(--workshop-link-hover-color);
+}
+.site-header-progress {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--fgColor-muted, #59636e);
+  font-size: 12px;
+  line-height: 1.2;
+}
+.site-header-progress[hidden] {
+  display: none;
+}
+.site-header-progress-bar {
+  flex: 0 0 auto;
+  width: min(132px, 22vw);
+  min-width: 72px;
+  height: 5px;
+  background-color: var(--borderColor-muted, #d0d7de);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.site-header-progress-bar-fill {
+  height: 100%;
+  width: 0;
+  background-color: var(--fgColor-success, #1a7f37);
+  border-radius: inherit;
+  transition: width 0.2s ease;
+}
+.site-header-progress-label {
+  white-space: nowrap;
+}
+.site-header-progress--done {
+  color: var(--fgColor-success, #1a7f37);
+  font-weight: 600;
 }
 .menu-toggle,
 .menu-close {
@@ -213,6 +256,18 @@ html {
 @media (max-width: 543px) {
   .markdown-body > details > .workshop-page-title {
     font-size: 28px;
+  }
+  .site-header {
+    gap: 10px;
+    padding: 0 12px;
+  }
+  .site-header-progress {
+    gap: 6px;
+    font-size: 11px;
+  }
+  .site-header-progress-bar {
+    width: min(84px, 24vw);
+    min-width: 48px;
   }
   .markdown-body pre {
     white-space: pre-wrap;
@@ -827,37 +882,6 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
   background-color: var(--bgColor-attention-muted, #3c2d11);
 }
 
-/* Task progress bar */
-.task-progress {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0 18px;
-  font-size: 13px;
-  color: var(--fgColor-muted, #59636e);
-}
-.task-progress-bar {
-  flex: 0 0 auto;
-  width: min(160px, 30vw);
-  height: 6px;
-  background-color: var(--borderColor-muted, #d0d7de);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.task-progress-bar-fill {
-  height: 100%;
-  background-color: var(--fgColor-success, #1a7f37);
-  border-radius: 3px;
-  transition: width 0.2s ease;
-}
-.task-progress-label {
-  white-space: nowrap;
-}
-.task-progress--done {
-  color: var(--fgColor-success, #1a7f37);
-  font-weight: 600;
-}
-
 /* Victory banner — shown when all checkboxes on a page are checked */
 @keyframes victory-in {
   from { opacity: 0; transform: translate(-50%, 20px) scale(0.88); }
@@ -1000,6 +1024,7 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
   border-radius: 0;
   box-shadow: inset 3px 0 var(--borderColor-muted, #d0d7de);
   overflow-x: auto;
+  white-space: pre-wrap;
 }
 
 .markdown-body .markdown-editor-pre > code {

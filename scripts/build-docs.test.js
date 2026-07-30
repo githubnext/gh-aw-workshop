@@ -9,7 +9,9 @@ const test = require("node:test");
 const repoDir = path.resolve(__dirname, "..");
 const buildScript = path.join(repoDir, "scripts", "build-docs.js");
 const distIndex = path.join(repoDir, "dist", "index.html");
+const distAlertsCss = path.join(repoDir, "dist", "alerts.css");
 const distCss = path.join(repoDir, "dist", "docs.css");
+const distCheckboxesJs = path.join(repoDir, "dist", "docs-checkboxes.js");
 const distHighlightCss = path.join(repoDir, "dist", "hljs.css");
 const workshopDir = path.join(repoDir, "workshop");
 
@@ -17,7 +19,9 @@ function buildDocs() {
   execFileSync(process.execPath, [buildScript], { cwd: repoDir, stdio: "pipe" });
   return {
     html: fs.readFileSync(distIndex, "utf8"),
+    alertsCss: fs.readFileSync(distAlertsCss, "utf8"),
     css: fs.readFileSync(distCss, "utf8"),
+    checkboxesJs: fs.readFileSync(distCheckboxesJs, "utf8"),
     highlightCss: fs.readFileSync(distHighlightCss, "utf8"),
   };
 }
@@ -52,6 +56,17 @@ test("workshop navigation constrains long buttons on small screens", () => {
 
   assert.ok(css.includes(".workshop-navigation-previous,\n  .workshop-navigation-next {\n    align-items: stretch;\n    width: 100%;\n  }"));
   assert.ok(css.includes(".workshop-nav-btn {\n    box-sizing: border-box;\n    max-width: 100%;\n    width: 100%;"));
+});
+
+test("current page checkpoint progress renders in the sticky header", () => {
+  const { html, css, checkboxesJs } = buildDocs();
+
+  assert.ok(html.includes('<div class="site-header-progress" data-current-page-progress hidden>'));
+  assert.ok(html.includes("document.dispatchEvent(new CustomEvent('workshoppagechange'"));
+  assert.ok(checkboxesJs.includes("renderCurrentPageProgress(event.detail && event.detail.pageId);"));
+  assert.ok(checkboxesJs.includes("window.matchMedia('(max-width: 543px)').matches"));
+  assert.ok(css.includes(".site-header-progress-bar {\n  flex: 0 0 auto;\n  width: min(132px, 22vw);"));
+  assert.ok(css.includes(".site-header-progress-bar {\n    width: min(84px, 24vw);"));
 });
 
 test("shell code blocks are wrapped in a terminal-block UI", () => {
@@ -95,6 +110,13 @@ test("prompt code blocks are wrapped in a distinct agent UI", () => {
   assert.ok(css.includes(".agent-prompt-pre"));
 });
 
+test("alert titles use a consistent font size", () => {
+  const { alertsCss } = buildDocs();
+
+  assert.ok(alertsCss.includes(".markdown-alert-title {\n  display: flex;\n  align-items: center;\n  font-size: 1em;"));
+  assert.ok(alertsCss.includes("  line-height: 1.5;\n  margin-bottom: 4px;\n}"));
+});
+
 test("markdown, md, yaml, and yml code blocks use compact icon-only editor chrome", () => {
   const { html, css } = buildDocs();
 
@@ -131,6 +153,7 @@ test("code block headers can render filenames from fence metadata", () => {
 
   assert.ok(html.includes('<span class="code-block-filename">.github/workflows/hello.yml</span>'));
   assert.ok(html.includes('<span class="code-block-filename">README.md</span>'));
+  assert.ok(html.includes('<pre class="markdown-editor-pre"><code class="hljs language-yaml">'));
 });
 
 test("rendered workshop images use GitHub-like rounded corners", () => {
