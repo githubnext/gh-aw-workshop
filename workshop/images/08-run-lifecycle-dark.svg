@@ -16,8 +16,8 @@
   <circle cx="92" cy="168" r="11" fill="#2f81f7"/>
   <text x="92" y="173" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#161b22" text-anchor="middle">1</text>
   <text x="152" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#2f81f7" text-anchor="middle">Trigger</text>
-  <text x="152" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">Click Run workflow</text>
-  <text x="152" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">in the Actions tab</text>
+  <text x="152" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">Click Run workflow</text>
+  <text x="152" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">in the Actions tab</text>
 
   <!-- Arrow 1→2 -->
   <line x1="232" y1="186" x2="286" y2="186" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
@@ -26,9 +26,9 @@
   <rect x="286" y="150" width="160" height="72" rx="8" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
   <circle cx="306" cy="168" r="11" fill="#bf8700"/>
   <text x="306" y="173" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#161b22" text-anchor="middle">2</text>
-  <text x="366" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#bf8700" text-anchor="middle">Queued</text>
-  <text x="366" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">Run appears with</text>
-  <text x="366" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">⏳ pending icon</text>
+  <text x="366" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#9a6700" text-anchor="middle">Queued</text>
+  <text x="366" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">Run appears with</text>
+  <text x="366" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">⏳ pending icon</text>
 
   <!-- Arrow 2→3 -->
   <line x1="446" y1="186" x2="500" y2="186" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
@@ -37,9 +37,9 @@
   <rect x="500" y="150" width="160" height="72" rx="8" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
   <circle cx="520" cy="168" r="11" fill="#bf8700"/>
   <text x="520" y="173" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#161b22" text-anchor="middle">3</text>
-  <text x="580" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#bf8700" text-anchor="middle">Running</text>
-  <text x="580" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">🟡 Spinning icon;</text>
-  <text x="580" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">live log updating</text>
+  <text x="580" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#9a6700" text-anchor="middle">Running</text>
+  <text x="580" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">🟡 Spinning icon;</text>
+  <text x="580" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">live log updating</text>
 
   <!-- Arrow 3→4a (success, up-right) -->
   <line x1="660" y1="172" x2="714" y2="150" stroke="#1a7f37" stroke-width="2" marker-end="url(#arrow-green)"/>
@@ -51,16 +51,16 @@
   <circle cx="734" cy="138" r="11" fill="#1a7f37"/>
   <text x="734" y="143" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#161b22" text-anchor="middle">4</text>
   <text x="794" y="144" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a7f37" text-anchor="middle">Success</text>
-  <text x="794" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">✅ Green badge;</text>
-  <text x="794" y="180" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">run complete</text>
+  <text x="794" y="164" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">✅ Green badge;</text>
+  <text x="794" y="180" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">run complete</text>
 
   <!-- ── Stage 4b: Failure ── -->
   <rect x="714" y="210" width="160" height="72" rx="8" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/>
   <circle cx="734" cy="228" r="11" fill="#cf222e"/>
   <text x="734" y="233" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#161b22" text-anchor="middle">4</text>
   <text x="794" y="234" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#cf222e" text-anchor="middle">Failure</text>
-  <text x="794" y="254" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">❌ Red badge;</text>
-  <text x="794" y="270" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">see Step 8b logs</text>
+  <text x="794" y="254" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">❌ Red badge;</text>
+  <text x="794" y="270" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">see Step 8b logs</text>
 
   <!-- Arrow 4a→5 -->
   <line x1="874" y1="156" x2="940" y2="186" stroke="#1a7f37" stroke-width="2" marker-end="url(#arrow-green)"/>
@@ -70,8 +70,8 @@
   <circle cx="960" cy="168" r="11" fill="#8250df"/>
   <text x="960" y="173" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#161b22" text-anchor="middle">5</text>
   <text x="1030" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#8250df" text-anchor="middle">Agent Output</text>
-  <text x="1030" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">Issue updated or</text>
-  <text x="1030" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">created by agent</text>
+  <text x="1030" y="194" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">Issue updated or</text>
+  <text x="1030" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">created by agent</text>
 
   <!-- ── Dashed group: "In GitHub Actions" ── -->
   <rect x="272" y="132" width="452" height="110" rx="8" fill="none" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="6,4"/>

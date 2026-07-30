@@ -34,18 +34,18 @@
   <rect x="110" y="300" width="200" height="130" rx="8" fill="#1a2c1e" stroke="#3fb950" stroke-width="1.5"/>
   <text x="210" y="322" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#3fb950">Organization Billing</text>
   <!-- Step badges -->
-  <circle cx="130" cy="348" r="10" fill="#3fb950"/>
+  <circle cx="130" cy="348" r="10" fill="#1a7f37"/>
   <text x="130" y="353" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">1</text>
   <text x="145" y="352" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#e6edf3">Confirm org admin enabled</text>
   <text x="145" y="366" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#e6edf3">centralized billing</text>
 
-  <circle cx="130" cy="385" r="10" fill="#3fb950"/>
+  <circle cx="130" cy="385" r="10" fill="#1a7f37"/>
   <text x="130" y="390" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">2</text>
   <text x="145" y="389" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#e6edf3">Keep</text>
   <rect x="180" y="378" width="120" height="18" rx="4" fill="#2f81f7"/>
   <text x="240" y="391" text-anchor="middle" font-family="monospace, monospace" font-size="8.5" fill="white">copilot-requests: write</text>
 
-  <circle cx="130" cy="413" r="10" fill="#3fb950"/>
+  <circle cx="130" cy="413" r="10" fill="#1a7f37"/>
   <text x="130" y="418" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" fill="white">3</text>
   <text x="145" y="418" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#e6edf3">No secret needed</text>
 

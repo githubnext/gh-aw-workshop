@@ -22,7 +22,7 @@
 
   <!-- Job steps panel -->
   <rect x="60" y="105" width="1080" height="400" rx="4" fill="#0d1117"/>
-  <text x="80" y="135" font-family="monospace" font-size="14" fill="#57606a">▼  run-agent  (completed in 28s)</text>
+  <text x="80" y="135" font-family="monospace" font-size="14" fill="#6e7681">▼  run-agent  (completed in 28s)</text>
   <line x1="60" y1="148" x2="1140" y2="148" stroke="#30363d" stroke-width="1"/>
   <!-- Steps -->
   <text x="80" y="180" font-family="monospace" font-size="13" fill="#3fb950">✓  Set up job  (2s)</text>

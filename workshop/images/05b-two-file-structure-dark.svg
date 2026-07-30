@@ -13,7 +13,7 @@
   <rect x="60" y="119" width="420" height="20" fill="#1158c7"/>
   <text x="270" y="123" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="600" fill="#f0f6fc">daily-report.md</text>
   <!-- File type badge -->
-  <rect x="385" y="104" width="82" height="22" rx="11" fill="rgba(255,255,255,0.15)"/>
+  <rect x="385" y="104" width="82" height="22" rx="11" fill="#ffffff" opacity="0.15"/>
   <text x="426" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc">You write this</text>
 
   <!-- Frontmatter section label -->
@@ -57,7 +57,7 @@
   <rect x="720" y="119" width="420" height="20" fill="#5a32a3"/>
   <text x="930" y="123" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="600" fill="#f0f6fc">daily-report.lock.yml</text>
   <!-- File type badge -->
-  <rect x="980" y="104" width="144" height="22" rx="11" fill="rgba(255,255,255,0.15)"/>
+  <rect x="980" y="104" width="144" height="22" rx="11" fill="#ffffff" opacity="0.15"/>
   <text x="1052" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#f0f6fc">GitHub Actions runs this</text>
 
   <!-- YAML content -->

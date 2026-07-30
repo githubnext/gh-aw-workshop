@@ -37,7 +37,7 @@
   <rect x="330" y="200" width="200" height="90" rx="10" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
   <circle cx="360" cy="223" r="13" fill="#bf8700"/>
   <text x="360" y="228" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">2</text>
-  <text x="430" y="237" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#bf8700" text-anchor="middle">🔧 Tool Call</text>
+  <text x="430" y="237" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#9a6700" text-anchor="middle">🔧 Tool Call</text>
   <text x="430" y="258" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">Calls a GitHub tool</text>
   <text x="430" y="274" font-family="system-ui, sans-serif" font-size="11" fill="#24292f" text-anchor="middle">e.g. github.list_issues</text>
 

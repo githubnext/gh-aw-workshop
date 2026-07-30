@@ -8,7 +8,7 @@
     </linearGradient>
   </defs>
   <rect width="1200" height="720" fill="#e5e7eb" />
-  <rect x="110" y="70" width="980" height="580" rx="22" fill="url(#bg)" />
+  <rect x="110" y="70" width="980" height="580" rx="22" fill="#111827" />
   <rect x="110" y="70" width="980" height="52" rx="22" fill="#1f2937" />
   <circle cx="152" cy="96" r="8" fill="#f87171" />
   <circle cx="180" cy="96" r="8" fill="#fbbf24" />
