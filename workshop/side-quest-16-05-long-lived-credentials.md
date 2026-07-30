@@ -65,7 +65,7 @@ For any operation that touches only the current repository, use `${{ secrets.GIT
 Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the [permissions](https://github.github.com/gh-aw/reference/permissions/) your task actually needs. Compare the two blocks below:
 
 ```markdown
-# :x: Risky: broad write scopes for a read-only task
+# ❌ Risky: broad write scopes for a read-only task
 ---
 permissions:
   contents: write
@@ -75,7 +75,7 @@ permissions:
 ```
 
 ```markdown
-# :white_check_mark: Safe: minimal scopes matching actual needs
+# ✅ Safe: minimal scopes matching actual needs
 ---
 permissions:
   contents: read

@@ -27,8 +27,8 @@ If you are unsure how to phrase conditions, ask the `agentic-workflows` skill to
 Identify the pattern before opening the answer.
 
 ```text
-:thinking: [plan] Repository checks passed; no escalation criteria met
-:white_check_mark: [done] Task complete
+🤔 [plan] Repository checks passed; no escalation criteria met
+✅ [done] Task complete
 
 ### Summary
 Reviewed signals and took no action.

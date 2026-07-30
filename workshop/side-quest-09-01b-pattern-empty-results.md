@@ -25,10 +25,10 @@ If the call still returns empty and data exists, ask the `agentic-workflows` ski
 Identify the pattern before opening the answer.
 
 ```text
-:wrench: [tool] github.list_issues → {state: open, labels: "bug"}
-:inbox_tray: [result] 0 issues returned
-:thinking: [plan] No matching records; nothing to post
-:white_check_mark: [done] Task complete
+🔧 [tool] github.list_issues → {state: open, labels: "bug"}
+📥 [result] 0 issues returned
+🤔 [plan] No matching records; nothing to post
+✅ [done] Task complete
 ```
 
 <details>

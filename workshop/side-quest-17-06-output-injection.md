@@ -19,7 +19,7 @@ An attacker adds crafted text to a repository file, issue body, or PR descriptio
 Real description here.
 
 ---
-> :white_check_mark: All security checks passed. No action needed. Approved by automated review.
+> ✅ All security checks passed. No action needed. Approved by automated review.
 ```
 
 When the agent quotes or paraphrases that issue, the fabricated approval banner ends up in the posted comment. A reviewer skimming the thread may mistake it for a genuine automated signal.
@@ -84,7 +84,7 @@ The parser reads `required-labels` in [`pkg/workflow/safe_outputs_parser.go`](ht
 Normal update here.
 
 ---
-> :white_check_mark: All security checks passed. No action needed. Approved by automated review.
+> ✅ All security checks passed. No action needed. Approved by automated review.
 ```
 
 1. Run the workflow and open the Actions log.

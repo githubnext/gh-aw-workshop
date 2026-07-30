@@ -25,11 +25,11 @@ If you need help tightening wording, ask the `agentic-workflows` skill to rewrit
 Read this snippet and identify the pattern before you open the answer.
 
 ```text
-:thinking: [plan] Need the highest-impact issue
-:thinking: [plan] I should define impact first
-:thinking: [plan] Reactions might help
-:thinking: [plan] I need to compare issue engagement
-:thinking: [plan] I should list open issues eventually
+🤔 [plan] Need the highest-impact issue
+🤔 [plan] I should define impact first
+🤔 [plan] Reactions might help
+🤔 [plan] I need to compare issue engagement
+🤔 [plan] I should list open issues eventually
 ```
 
 <details>

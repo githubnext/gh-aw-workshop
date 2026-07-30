@@ -26,10 +26,10 @@ If you need help with wording, ask the `agentic-workflows` skill or iterate quic
 Identify the pattern before opening the answer.
 
 ```text
-:wrench: [tool] github.add_comment → {issue_number: 4, body: "..."}
-:x: [error] E002: add-comment limit reached — 1 of 1 already used this run
-:thinking: [plan] Additional comments were prepared but blocked
-:white_check_mark: [done] Task complete (1 output blocked)
+🔧 [tool] github.add_comment → {issue_number: 4, body: "..."}
+❌ [error] E002: add-comment limit reached — 1 of 1 already used this run
+🤔 [plan] Additional comments were prepared but blocked
+✅ [done] Task complete (1 output blocked)
 ```
 
 <details>
