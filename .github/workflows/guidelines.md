@@ -229,6 +229,9 @@ Multi-line callout (summary + body):
 - Use ` ```text ` for terminal output that learners read but do not type (for example, expected command output or error messages).
 - Use ` ```yaml ` for standalone YAML configuration fragments, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
 - When showing an agentic workflow example that includes both frontmatter and prompt body, prefer a ` ```markdown ` block that shows the full Markdown+frontmatter file shape instead of isolating the frontmatter in a standalone ` ```yaml ` region.
+- When a fenced snippet represents the contents of a file, add the filename after the language token so the rendered snippet chrome can surface it (for example, ` ```markdown .github/workflows/daily-status.md ` or ` ```yaml .github/workflows/daily-status.lock.yml `).
+- Prefer the bare relative path form for filename metadata in workshop content. The renderer also supports keyed metadata such as `title=` or `file=`, but workshop pages should use the bare path consistently unless a page needs a more complex title.
+- Match the filename extension to the snippet language (`.md` for `markdown`, `.yml`/`.yaml` for `yaml`, and so on), and keep the same filename across a page while the learner is still editing that same file.
 
 ## Enterprise user preference in design decisions
 

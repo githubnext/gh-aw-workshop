@@ -56,7 +56,7 @@ The skill adds the `tools:` block and updates the brief. Review the diff before 
 
 Here is the `tools:` block the skill will add:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 name: Daily Status Report
 on:
@@ -99,7 +99,7 @@ Open your daily-status workflow file (`.github/workflows/daily-status.md`) and f
 
 Below the frontmatter, update the task brief to tell the agent it can use the MCP tools:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 You have access to GitHub tools via MCP. Use them to:
 1. Fetch the last 5 commits on the default branch.
 2. List all open issues labelled `bug`.

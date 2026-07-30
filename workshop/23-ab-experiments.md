@@ -46,7 +46,7 @@ Commit both workflow files.
 
 If you prefer to edit directly, add this to the frontmatter in `.github/workflows/daily-status.md`:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 experiments:
   output_style: [concise, detailed]
@@ -55,7 +55,7 @@ experiments:
 
 Below the frontmatter, add conditional blocks that swap the prompt instructions based on the active variant:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 Summarise the activity in ${{ github.repository }} since yesterday.
 
 {{#if experiments.output_style }}
@@ -97,7 +97,7 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 1. Update the frontmatter variants to include a third option:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 experiments:
   output_style: [concise, detailed, executive]
@@ -106,7 +106,7 @@ experiments:
 
 1. Update the task brief so each variant has explicit instructions:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 {{#if experiments.output_style }}
 Write a report according to the output_style: ${{ experiments.output_style }}.
 - concise: Write a maximum of 5 bullet points. Each bullet is one sentence.

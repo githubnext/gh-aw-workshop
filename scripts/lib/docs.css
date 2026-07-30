@@ -605,9 +605,12 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
 /* Code block copy button */
 .markdown-body pre {
   position: relative;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .markdown-body pre > code {
   font-size: 1em;
+  white-space: inherit;
 }
 .code-copy-btn {
   position: absolute;
@@ -671,6 +674,7 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
   padding: 8px 14px;
   background-color: #161b22;
   border-bottom: 1px solid #30363d;
@@ -690,6 +694,20 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
 .terminal-label {
   margin-left: 8px;
   font-size: 11px;
+  color: #8b949e;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.code-block-filename {
+  min-width: 0;
+  margin-left: auto;
+  overflow: hidden;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-bar .code-block-filename {
   color: #8b949e;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
@@ -736,6 +754,7 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   padding: 8px 14px;
   background: linear-gradient(90deg, #271052, #3b1b6f);
   border-bottom: 1px solid #8957e5;
@@ -759,6 +778,10 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.agent-prompt-bar .code-block-filename {
+  color: #c6a7ff;
 }
 
 .markdown-body .agent-prompt-pre {
@@ -976,6 +999,7 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   padding: 8px 14px;
   background-color: var(--bgColor-muted, #f6f8fa);
   border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
@@ -986,6 +1010,10 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
   color: var(--fgColor-muted, #59636e);
   font-size: 14px;
   line-height: 1;
+}
+
+.markdown-editor-bar .code-block-filename {
+  color: var(--fgColor-muted, #59636e);
 }
 
 .markdown-body .markdown-editor-pre {
@@ -1029,6 +1057,9 @@ html[data-color-mode="dark"] .markdown-body li.task-list-item:not(.is-static).is
   html[data-color-mode="auto"] .markdown-editor-icon {
     color: #8b949e;
   }
+  html[data-color-mode="auto"] .markdown-editor-bar .code-block-filename {
+    color: #8b949e;
+  }
   html[data-color-mode="auto"] .markdown-body .markdown-editor-pre {
     background-color: #0d1117;
     box-shadow: inset 3px 0 #30363d;
@@ -1055,6 +1086,9 @@ html[data-color-mode="dark"] .markdown-editor-bar {
   border-bottom-color: #30363d;
 }
 html[data-color-mode="dark"] .markdown-editor-icon {
+  color: #8b949e;
+}
+html[data-color-mode="dark"] .markdown-editor-bar .code-block-filename {
   color: #8b949e;
 }
 html[data-color-mode="dark"] .markdown-body .markdown-editor-pre {
@@ -1086,6 +1120,7 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   padding: 8px 14px;
   background-color: var(--bgColor-muted, #f6f8fa);
   border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
@@ -1096,6 +1131,10 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
   color: var(--fgColor-muted, #59636e);
   font-size: 14px;
   line-height: 1;
+}
+
+.yaml-editor-bar .code-block-filename {
+  color: var(--fgColor-muted, #59636e);
 }
 
 .markdown-body .yaml-editor-pre {
@@ -1137,6 +1176,9 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
   html[data-color-mode="auto"] .yaml-editor-icon {
     color: #8b949e;
   }
+  html[data-color-mode="auto"] .yaml-editor-bar .code-block-filename {
+    color: #8b949e;
+  }
   html[data-color-mode="auto"] .markdown-body .yaml-editor-pre {
     background-color: #0d1117;
   }
@@ -1162,6 +1204,9 @@ html[data-color-mode="dark"] .yaml-editor-bar {
   border-bottom-color: #30363d;
 }
 html[data-color-mode="dark"] .yaml-editor-icon {
+  color: #8b949e;
+}
+html[data-color-mode="dark"] .yaml-editor-bar .code-block-filename {
   color: #8b949e;
 }
 html[data-color-mode="dark"] .markdown-body .yaml-editor-pre {

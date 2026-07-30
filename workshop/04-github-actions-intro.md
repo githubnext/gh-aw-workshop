@@ -39,7 +39,7 @@ A GitHub Actions workflow is a YAML file in `.github/workflows/` that tells GitH
 
 Annotated example — each comment names the key term (this is a standard Actions workflow, not an agentic workflow):
 
-```yaml
+```yaml .github/workflows/hello-workflow.yml
 # Standard GitHub Actions workflow — not an agentic workflow
 name: Hello Workflow
 
@@ -57,7 +57,7 @@ jobs:
 
 A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
 
-```markdown
+```markdown .github/workflows/hello-workflow.md
 ---
 runs-on: ubuntu-latest   # also: windows-latest, macos-latest
 ---
@@ -84,7 +84,7 @@ The diagram below shows how the five key parts fit together in every workflow fi
 Before reading on, label each highlighted part of the workflow below with its type:
 `trigger`, `job`, `runner`, `step`, or `action`.
 
-```yaml
+```yaml .github/workflows/hello-workflow.yml
 on: [push]
 jobs:
   test:
@@ -137,4 +137,3 @@ Open a real workflow file and find the three core building blocks — no termina
 <!-- journey: all -->
 **Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 <!-- /journey -->
-

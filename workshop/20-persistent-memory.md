@@ -68,7 +68,7 @@ Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memor
 
 Here is the frontmatter structure the skill will use:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 name: Daily Status Report
 on:
@@ -97,7 +97,7 @@ What each field does:
 
 Below the frontmatter, tell the agent how to use its memory. The agent reads and writes the memory slot by name:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 You monitor this repository for newly opened issues and post a daily digest.
 
 Use your `daily-status-seen-issues` memory to track which issue numbers you

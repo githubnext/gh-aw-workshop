@@ -62,7 +62,7 @@ Review the agent's edit, then continue. Prefer this path over hand-editing each 
 
 **What the agent created** — the generated file should look roughly like this:
 
-```markdown
+```markdown .github/workflows/daily-report-status.md
 ---
 name: Daily Report Status
 on:

@@ -19,6 +19,34 @@ const slugger = new GithubSlugger();
 const shellLangs = new Set(['bash', 'sh', 'shell', 'zsh']);
 const terminalOutputLangs = new Set(['console', 'output', 'plaintext', 'text']);
 
+function extractCodeBlockFilename(meta = '') {
+  let normalizedMeta = meta.trim();
+  if (!normalizedMeta) return '';
+
+  if (normalizedMeta.startsWith('{') && normalizedMeta.endsWith('}')) {
+    normalizedMeta = normalizedMeta.slice(1, -1).trim();
+  }
+
+  const keyedFilenameMatch = normalizedMeta.match(
+    /(?:^|\s)(?:file|filename|path|title)=(?:"([^"]+)"|'([^']+)'|(\S+))/
+  );
+  if (keyedFilenameMatch) {
+    return keyedFilenameMatch[1] || keyedFilenameMatch[2] || keyedFilenameMatch[3] || '';
+  }
+
+  return /\s|=/.test(normalizedMeta) ? '' : normalizedMeta;
+}
+
+function parseCodeBlockInfo(lang = '') {
+  const info = lang.trim();
+  const firstTokenMatch = info.match(/^\S*/);
+  const langKey = (firstTokenMatch?.[0] || '').toLowerCase();
+  const meta = info.slice(firstTokenMatch?.[0]?.length || 0).trim();
+  const filename = extractCodeBlockFilename(meta);
+
+  return { langKey, filename };
+}
+
 // Register the heading anchor, task-list item, alert, syntax-highlight, and
 // code-block renderer plugins.  Call this once before processing any markdown.
 function setupBasePlugins() {
@@ -91,22 +119,26 @@ function setupBasePlugins() {
     useNewRenderer: true,
     renderer: {
       code({ text, lang, escaped }) {
-        const langKey = (lang || '').match(/^\S*/)?.[0]?.toLowerCase() ?? '';
+        const { langKey, filename } = parseCodeBlockInfo(lang || '');
         const codeText = text.replace(/\n$/, '') + '\n';
         const codeHtml = escaped ? codeText : escapeHtml(codeText);
+        const filenameHtml = filename
+          ? `<span class="code-block-filename">${escapeHtml(filename)}</span>`
+          : '';
         if (langKey === 'prompt') {
-          return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
+          return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span>${filenameHtml}</div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
         }
         if (langKey === 'markdown' || langKey === 'md') {
-          return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span></div>\n<pre class="markdown-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
+          return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span>${filenameHtml}</div>\n<pre class="markdown-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
         }
         if (langKey === 'yaml' || langKey === 'yml') {
-          return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span></div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
+          return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span>${filenameHtml}</div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
         }
         const terminalLabel = shellLangs.has(langKey) ? langKey : terminalOutputLangs.has(langKey) ? 'output' : '';
         if (!terminalLabel) return false;
         const escapedLang = escapeHtml(langKey);
-        return `<div class="terminal-block">\n<div class="terminal-bar" aria-hidden="true"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-label">${terminalLabel}</span></div>\n<pre class="terminal-pre"><code class="language-${escapedLang}">${codeHtml}</code></pre>\n</div>\n`;
+        const terminalBarAria = filename ? '' : ' aria-hidden="true"';
+        return `<div class="terminal-block">\n<div class="terminal-bar"${terminalBarAria}><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-label">${terminalLabel}</span>${filenameHtml}</div>\n<pre class="terminal-pre"><code class="language-${escapedLang}">${codeHtml}</code></pre>\n</div>\n`;
       },
     },
   });

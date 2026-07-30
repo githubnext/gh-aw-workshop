@@ -28,7 +28,7 @@ agentic workflows and classic jobs.
 
 Your current workflow likely targets a GitHub-hosted runner. Look for the `runs-on:` field in your frontmatter:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 runs-on: ubuntu-latest
 ---
@@ -57,7 +57,7 @@ Use a list if your runner has multiple required labels:
 
 Single label:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 runs-on: self-hosted
 ---
@@ -65,7 +65,7 @@ runs-on: self-hosted
 
 Multiple labels (all must match):
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 runs-on: [self-hosted, linux, x64]
 ---

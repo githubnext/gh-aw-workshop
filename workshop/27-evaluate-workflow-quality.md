@@ -32,7 +32,7 @@ You'll add an `evals:` block to your workflow, define binary quality questions, 
 
 Open `.github/workflows/daily-status.md` and add binary questions to frontmatter.
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 safe-outputs:
   create-issue:
