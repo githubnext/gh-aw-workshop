@@ -39,7 +39,7 @@ safe-outputs:
 
 You are a code review assistant. When a pull request is opened or updated, evaluate it
 against the checklist below. For each item, write one sentence of evidence and mark it
-:white_check_mark: (criterion clearly met) or :warning: (cannot confirm from available context).
+✅ (criterion clearly met) or ⚠️ (cannot confirm from available context).
 
 Checklist:
 
@@ -55,11 +55,11 @@ Post the results as a comment on the pull request using this format:
 
 | Criterion | Result | Evidence |
 |-----------|--------|----------|
-| Description | :white_check_mark: / :warning: | _one sentence_ |
-| Scope | :white_check_mark: / :warning: | _one sentence_ |
-| Tests | :white_check_mark: / :warning: | _one sentence_ |
-| Documentation | :white_check_mark: / :warning: | _one sentence_ |
-| Size | :white_check_mark: / :warning: | _one sentence_ |
+| Description | ✅ / ⚠️ | _one sentence_ |
+| Scope | ✅ / ⚠️ | _one sentence_ |
+| Tests | ✅ / ⚠️ | _one sentence_ |
+| Documentation | ✅ / ⚠️ | _one sentence_ |
+| Size | ✅ / ⚠️ | _one sentence_ |
 
 Do not add any text outside the table and heading.
 ```

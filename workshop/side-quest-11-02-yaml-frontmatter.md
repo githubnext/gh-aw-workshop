@@ -14,13 +14,13 @@ YAML does not allow tab characters for indentation. Every level of nesting must 
 
 ```markdown
 ---
-# :x: Wrong — the line below "on:" is indented with a tab character,
+# ❌ Wrong — the line below "on:" is indented with a tab character,
 #    not spaces. The tab is invisible in most editors, which makes
 #    this bug hard to spot. YAML will reject it with a parse error.
 on:
   schedule: daily  # <-- replace leading whitespace with 2 spaces, not a tab
 
-# :white_check_mark: Correct — uses exactly two spaces
+# ✅ Correct — uses exactly two spaces
 on:
   schedule: daily
 ---
@@ -36,10 +36,10 @@ YAML treats certain characters (`:`, `#`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `?`
 
 ```markdown
 ---
-# :x: Wrong — the colon in the description breaks YAML parsing
+# ❌ Wrong — the colon in the description breaks YAML parsing
 description: Post a report: daily
 
-# :white_check_mark: Correct — wrap the value in double quotes
+# ✅ Correct — wrap the value in double quotes
 description: "Post a report: daily"
 ---
 ```
@@ -52,13 +52,13 @@ YAML nesting is strictly positional. A key one level deeper must be indented exa
 
 ```markdown
 ---
-# :x: Wrong — "mode" is at the same level as "github"
+# ❌ Wrong — "mode" is at the same level as "github"
 tools:
   github:
   mode: gh-proxy
   toolsets: [default]
 
-# :white_check_mark: Correct — "mode" is indented under "github"
+# ✅ Correct — "mode" is indented under "github"
 tools:
   github:
     mode: gh-proxy
@@ -73,7 +73,7 @@ tools:
 The frontmatter must have both an opening and a closing `---` fence. If you omit the closing fence, the entire file is treated as YAML and the agent body is lost.
 
 ```
-# :x: Wrong — no closing fence
+# ❌ Wrong — no closing fence
 ---
 emoji: :bar_chart:
 description: ...
@@ -85,7 +85,7 @@ You are an AI assistant...
 ```
 
 ```
-# :white_check_mark: Correct — closing fence separates frontmatter from body
+# ✅ Correct — closing fence separates frontmatter from body
 ---
 emoji: :bar_chart:
 description: ...
@@ -105,12 +105,12 @@ This is the single most common reason a workflow compiles but produces no output
 
 ```markdown
 ---
-# :x: Wrong — missing copilot-requests
+# ❌ Wrong — missing copilot-requests
 permissions:
   contents: read
   issues: read
 
-# :white_check_mark: Correct
+# ✅ Correct
 permissions:
   contents: read
   copilot-requests: write

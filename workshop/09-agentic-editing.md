@@ -111,7 +111,7 @@ The skill reads the workflow file, identifies likely causes — such as a vague 
 Open the run log from the **Actions** tab and find the first `Tool call` the agent made. Then open `.github/workflows/daily-report-status.md` and add one fallback instruction to the Markdown body, such as:
 
 ```text
-If no open issues have :+1: reactions, post a comment on the most recently updated
+If no open issues have 👍 reactions, post a comment on the most recently updated
 open issue instead.
 ```
 

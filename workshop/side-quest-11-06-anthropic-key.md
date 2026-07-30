@@ -105,7 +105,7 @@ gh aw compile --validate
 You should see:
 
 ```text
-:heavy_check_mark: <your-workflow>.md — valid
+✔️ <your-workflow>.md — valid
 ```
 
 ---

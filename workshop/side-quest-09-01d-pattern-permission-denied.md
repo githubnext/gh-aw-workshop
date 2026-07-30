@@ -28,8 +28,8 @@ A quick check:
 Identify the pattern before opening the answer.
 
 ```text
-:wrench: [tool] github.create_issue → {title: "Daily Status", body: "..."}
-:x: [error] permission denied: safe-output create-issue not allowed
+🔧 [tool] github.create_issue → {title: "Daily Status", body: "..."}
+❌ [error] permission denied: safe-output create-issue not allowed
 ```
 
 <details>

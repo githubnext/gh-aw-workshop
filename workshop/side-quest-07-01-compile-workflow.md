@@ -64,7 +64,7 @@ The examples below show `gh-aw` source files before compilation, so values like 
 
 ```markdown
 ---
-# :x: Broken — "workflow_dispatch" is not nested under "on:"
+# ❌ Broken — "workflow_dispatch" is not nested under "on:"
 on:
   schedule: daily
 workflow_dispatch: {}
@@ -73,7 +73,7 @@ workflow_dispatch: {}
 
 ```markdown
 ---
-# :white_check_mark: Fixed
+# ✅ Fixed
 on:
   schedule: daily
   workflow_dispatch: {}
@@ -82,7 +82,7 @@ on:
 
 ```markdown
 ---
-# :x: Broken — "schedule" is not indented under "on:"
+# ❌ Broken — "schedule" is not indented under "on:"
 on:
 schedule: daily on weekdays
   workflow_dispatch: {}
@@ -91,7 +91,7 @@ schedule: daily on weekdays
 
 ```markdown
 ---
-# :white_check_mark: Fixed
+# ✅ Fixed
 on:
   schedule: daily on weekdays
   workflow_dispatch: {}

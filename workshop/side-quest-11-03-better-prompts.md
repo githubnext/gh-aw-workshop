@@ -51,13 +51,13 @@ Format your summary as follows:
 
 ## Daily Status — {date}
 
-### :twisted_rightwards_arrows: Recent Commits
+### 🔀 Recent Commits
 - One bullet per commit with author and short message.
 
-### :bug: Open Issues
+### 🐛 Open Issues
 - List open issues by title. If there are none, say "No open issues."
 
-### :pushpin: Action Items
+### 📌 Action Items
 - Highlight anything that looks urgent or blocked.
 ```
 
@@ -129,13 +129,13 @@ Format:
 
 ## Daily Status — {date}
 
-### :twisted_rightwards_arrows: Recent Commits
+### 🔀 Recent Commits
 - Up to five bullets: author, short message.
 
-### :bug: Open Issues
+### 🐛 Open Issues
 - Up to five bullets: issue number and title.
 
-### :pushpin: Action Items
+### 📌 Action Items
 - Flag anything urgent or blocked. If nothing stands out, write "Nothing urgent."
 
 Keep the whole summary under 300 words. You are done when the summary is
