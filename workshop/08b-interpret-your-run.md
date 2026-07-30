@@ -68,7 +68,7 @@ Knowing what a failed run looks like helps you spot permission issues at a glanc
 :x: Failed
 ```
 
-For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
+If these checks do not resolve the issue, the [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) covers additional cases.
 
 ## Reflect
 
