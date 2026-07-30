@@ -719,6 +719,8 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   border-radius: 0;
   border: none;
   overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .markdown-body .terminal-pre > code {
@@ -792,6 +794,8 @@ html[data-color-mode="dark"] .code-copy-btn:hover {
   border-radius: 0;
   box-shadow: inset 3px 0 #a371f7;
   overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .markdown-body .agent-prompt-pre > code {
@@ -1144,6 +1148,8 @@ html[data-color-mode="dark"] .markdown-editor-block .code-copy-btn:hover {
   border: none;
   border-radius: 0;
   overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .markdown-body .yaml-editor-pre > code {
