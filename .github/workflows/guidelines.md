@@ -2,6 +2,15 @@
 
 Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly and centered on one consistent Codespaces journey.
 
+## Workshop delivery assumptions
+
+These guidelines assume the standard delivery context for GitHub- and Microsoft-organized workshops: learners arrive through the **golden-ticket provisioning system**, which creates a temporary workshop org and handles all billing. Write all core workshop content against these baseline assumptions:
+
+- **Codespace is already open.** Learners start from a pre-launched Codespace inside their provisioned practice repository. Do not add environment-creation steps (local Git setup, SSH key generation, manual Codespace creation) to the core route.
+- **Copilot CLI is the primary AI surface.** Use `gh copilot` (Copilot CLI in the Codespace terminal) as the default agent surface for every AI-assisted task in the core workshop. Side quests may cover Copilot Chat, IDE extensions, or other surfaces as alternatives.
+- **Org and billing are pre-provisioned.** The golden-ticket system creates the workshop org, assigns Copilot seats, and covers billing for the duration. Do not include billing setup, Copilot seat assignment, org creation, or payment steps in any core workshop content.
+- **Practice repository is pre-created.** Each learner's practice repository exists before they begin. Learners never fork, clone, or create it manually during a golden-ticket workshop session.
+
 ## Codespaces-first tooling progression
 
 - Use Codespaces as the sole recommended environment in the core workshop.
@@ -31,7 +40,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 
 ## AI agent guidance
 
-- Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. In the core workshop, "Copilot" should usually mean **Copilot CLI in the terminal already open in Codespaces**, not a GitHub.com prompt surface. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently.
+- Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. In the core workshop, "Copilot" always means **Copilot CLI (`gh copilot`) in the terminal already open in the learner's Codespace**, not a GitHub.com prompt surface and not an IDE extension. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently. Side quests may introduce alternative surfaces, but never the core route.
 - When a learner is using their AI agent, tell them what prompt to pass; do **not** present shell commands as though they run inside the agent chat.
 - If a learner needs to start Copilot from the terminal, explicitly separate the launch command (for example `gh copilot`) from the prompt they should paste next.
 - Use `prompt` as the fenced code block language for prompts passed to an AI agent so the rendered workshop clearly distinguishes agent input from terminal commands and other code.
@@ -43,6 +52,7 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 ## Golden-Ticket Workshop Surfaces
 
 - The golden-ticket workshop is the fully preconfigured beginner path: Copilot, repository setup, and Codespaces bootstrapping are prepared ahead of time.
+- **Org provisioning and billing are handled by the golden-ticket system.** For GitHub- and Microsoft-organized workshops, the provisioning tooling creates a temporary workshop org, assigns Copilot seats to all participants, and covers billing for the duration. Do not add billing setup, payment method configuration, Copilot seat assignment, or org creation instructions to any core workshop step — those are prerequisites the golden-ticket system satisfies before learners open the first page.
 - Some workshop content is intentionally reused in golden-ticket workshop surfaces such as an org profile README and a learner-repository Codespaces launcher.
 - The maintained golden-ticket workshop assets live on the `golden-ticket-workshop` branch under `.github/participant-template/` plus `.github/workflows/create-participants-repo.yml`. During org provisioning, that branch is copied into the provisioned org's `.github-private` repository.
 - When you change workshop onboarding language that should also appear in those golden-ticket surfaces, update the marked source blocks in `workshop/00-welcome.md` and have the responsible agent check whether the `golden-ticket-workshop` branch also needs a corresponding update.
@@ -252,7 +262,14 @@ The workshop docs are rendered with GFM emoji support: `:emoji_name:` shortcodes
 
 ## Consistency check
 
-Before finalizing workshop edits, quickly confirm that the core route remains Codespaces-only, alternatives remain side quests, early steps do not require `gh` before it is truly needed, Node.js is not a prerequisite, and the responsible agent has checked whether any intended org-provisioned event changes also require updates on the `golden-ticket-workshop` branch.
+Before finalizing workshop edits, quickly confirm that:
+
+- The core route remains Codespaces-only; environment alternatives remain side quests.
+- Early steps do not require `gh` before it is truly needed.
+- Node.js is not listed as a prerequisite.
+- All AI-assisted tasks in the core route use Copilot CLI (`gh copilot`) — not Copilot Chat on GitHub.com or IDE extensions.
+- No core step contains billing setup, payment method configuration, Copilot seat assignment, or org creation instructions (those are handled by the golden-ticket provisioning system).
+- The responsible agent has checked whether any onboarding or setup changes also require updates on the `golden-ticket-workshop` branch.
 
 ## Activity numbering for a sortable adventure graph
 
