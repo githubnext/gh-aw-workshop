@@ -30,7 +30,7 @@ The parent workflow should coordinate the run, not contain every review rule. It
 | `pr-reviewer` agent | Read the diff and return prioritized, evidence-backed findings |
 | `pr-review-standards` skill | Define what counts as a useful finding and how to format it |
 
-The agent can change how it investigates a pull request without changing the stable standards in the skill. You can also improve the skill without making the parent brief longer.
+The agent can change how it investigates a pull request without changing the stable standards in the skill. You can also improve the skill without making the parent brief longer. The same split makes it straightforward to extend the reviewer to apply labels based on which files changed (see [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md)) or to post a structured summary that doubles as a release note draft (see [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md)).
 
 > :thinking: **Predict:** Which instruction belongs in the skill: “review pull request 42” or “cite a changed file and line for every finding”? The first is run-specific orchestration; the second is reusable review guidance.
 
@@ -97,7 +97,7 @@ finding, cite the changed file and line, explain the impact, and suggest a
 specific next step. Omit style-only and speculative feedback.
 ```
 
-The exact wording may differ. Confirm that the responsibilities stay separated: the parent coordinates, the agent investigates, and the skill defines review quality.
+The exact wording may differ. Confirm that the responsibilities stay separated: the parent coordinates, the agent investigates, and the skill defines review quality. If your team works from a shared checklist rather than open-ended criteria, [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) shows how to restructure the skill around that format.
 
 ## Compile and Push
 
@@ -152,7 +152,7 @@ For example:
 /agentic-workflows Update the pr-review-standards skill in .github/workflows/pr-reviewer.md to distinguish blocking findings from non-blocking observations.
 ```
 
-Run `/review` again and compare the new result with the first review.
+Run `/review` again and compare the new result with the first review. Once you have run a few variations, use the [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) side quest to measure the AIC impact of each change and identify the highest-value optimizations.
 
 ## :white_check_mark: Checkpoint
 
@@ -169,14 +169,3 @@ Run `/review` again and compare the new result with the first review.
 <!-- journey: all -->
 **Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
 <!-- /journey -->
-
----
-
-## Go Further: PR Reviewer Patterns
-
-Ready to extend this workflow? These side quests each cover a popular PR reviewer pattern:
-
-- [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md) — apply labels based on which files changed.
-- [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md) — post a structured summary that PR authors can use as a release note draft.
-- [Pattern: PR Review Checklist](side-quest-13-03-pr-checklist-pattern.md) — check PRs against a quality checklist and post results.
-- [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) — measure AIC for your PR reviewer workflow, inspect expensive runs, and test one cost-reduction change at a time.
