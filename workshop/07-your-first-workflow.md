@@ -79,7 +79,7 @@ safe-outputs:
 Generate an activity report for this repository and post it as a new issue.
 ```
 
-The **frontmatter** tells GitHub Actions when to run, what permissions the agent has, and which write action it may use (`create-issue`). The **task brief** below the second `---` is what the AI agent reads and acts on.
+The **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** tells GitHub Actions when to run, what permissions the agent has, and which write action it may use (`create-issue`). The **task brief** below the second `---` is what the AI agent reads and acts on.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07a-workflow-dispatch-trigger-dark.svg">
