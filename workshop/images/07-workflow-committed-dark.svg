@@ -34,8 +34,8 @@
   <!-- Code content -->
   <rect x="60" y="185" width="1080" height="300" rx="0" fill="#161b22" stroke="#30363d" stroke-width="1"/>
   <text x="100" y="215" font-family="monospace" font-size="13" fill="#cf222e">---</text>
-  <text x="100" y="235" font-family="monospace" font-size="13" fill="#0550ae">name</text><text x="145" y="235" font-family="monospace" font-size="13" fill="#c9d1d9">: Daily Report Status Workflow</text>
-  <text x="100" y="255" font-family="monospace" font-size="13" fill="#0550ae">on</text><text x="125" y="255" font-family="monospace" font-size="13" fill="#c9d1d9">: [workflow_dispatch]</text>
+  <text x="100" y="235" font-family="monospace" font-size="13" fill="#58a6ff">name</text><text x="145" y="235" font-family="monospace" font-size="13" fill="#c9d1d9">: Daily Report Status Workflow</text>
+  <text x="100" y="255" font-family="monospace" font-size="13" fill="#58a6ff">on</text><text x="125" y="255" font-family="monospace" font-size="13" fill="#c9d1d9">: [workflow_dispatch]</text>
   <text x="100" y="275" font-family="monospace" font-size="13" fill="#cf222e">---</text>
   <text x="100" y="310" font-family="monospace" font-size="13" fill="#8b949e"># Daily Report Status — workshop step 07</text>
   <text x="100" y="335" font-family="monospace" font-size="13" fill="#c9d1d9">Run the Daily Report Status workflow.</text>

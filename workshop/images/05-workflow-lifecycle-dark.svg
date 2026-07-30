@@ -30,12 +30,12 @@
 
   <!-- Task brief sub-box -->
   <rect x="88" y="280" width="158" height="120" rx="5" ry="5" fill="#fff8c5" stroke="#bf8700" stroke-width="1" stroke-dasharray="4 2"/>
-  <text x="167" y="299" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#bf8700" text-anchor="middle" font-weight="600">Task Brief</text>
+  <text x="167" y="299" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#9a6700" text-anchor="middle" font-weight="600">Task Brief</text>
   <text x="100" y="317" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">Summarize open issues</text>
   <text x="100" y="331" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">by theme, flag urgent</text>
   <text x="100" y="345" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">ones, and post a</text>
   <text x="100" y="359" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">short triage summary.</text>
-  <text x="100" y="381" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#8b949e" font-style="italic">(plain English goal)</text>
+  <text x="100" y="381" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#57606a" font-style="italic">(plain English goal)</text>
 
   <!-- Stage caption -->
   <text x="167" y="416" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">You write this</text>
@@ -117,14 +117,14 @@
   <g transform="translate(796,405)">
     <line x1="0" y1="0" x2="58" y2="0" stroke="#bf8700" stroke-width="2"/>
     <polygon points="58,0 48,-6 48,6" fill="#bf8700"/>
-    <text x="20" y="-8" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#bf8700" font-weight="600">posts</text>
+    <text x="20" y="-8" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#9a6700" font-weight="600">posts</text>
   </g>
 
   <!-- ── STAGE 5: Output ── -->
   <rect x="870" y="120" width="252" height="350" rx="8" ry="8" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
   <circle cx="996" cy="120" r="13" fill="#bf8700"/>
   <text x="996" y="125" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13" font-weight="700" fill="white" text-anchor="middle">5</text>
-  <text x="996" y="154" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#bf8700" text-anchor="middle">Structured Output</text>
+  <text x="996" y="154" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#9a6700" text-anchor="middle">Structured Output</text>
   <rect x="886" y="165" width="220" height="270" rx="5" ry="5" fill="white" stroke="#30363d" stroke-width="1"/>
   <!-- markdown output simulation -->
   <text x="898" y="184" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#24292f" font-weight="600">## Daily Status — July 12</text>
@@ -132,7 +132,7 @@
   <text x="898" y="207" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#1a7f37">✅ CI: 18 workflows passed</text>
   <text x="898" y="223" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#cf222e">❌ 1 failed: docs-link-check</text>
   <text x="898" y="243" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#0969da">🔄 PRs: 7 open (2 need review)</text>
-  <text x="898" y="263" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#bf8700">🐛 Issues: 4 new, 3 closed</text>
+  <text x="898" y="263" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#9a6700">🐛 Issues: 4 new, 3 closed</text>
   <line x1="898" y1="275" x2="1094" y2="275" stroke="#30363d" stroke-width="0.8"/>
   <text x="898" y="292" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f" font-weight="600">### Recommended actions</text>
   <text x="898" y="310" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10" fill="#24292f">1. Re-run docs-link-check</text>

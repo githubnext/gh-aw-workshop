@@ -66,8 +66,8 @@
 
   <!-- Box 4: daily-report-status.lock.yml (green) — x=705, w=195 -->
   <rect x="705" y="145" width="195" height="210" rx="10" ry="10" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
-  <rect x="705" y="145" width="195" height="40" rx="10" ry="10" fill="#3fb950"/>
-  <rect x="705" y="165" width="195" height="20" fill="#3fb950"/>
+  <rect x="705" y="145" width="195" height="40" rx="10" ry="10" fill="#1a7f37"/>
+  <rect x="705" y="165" width="195" height="20" fill="#1a7f37"/>
   <text x="803" y="171" text-anchor="middle" font-family="monospace, sans-serif" font-size="11" font-weight="700" fill="#ffffff">daily-report-status.lock.yml</text>
   <text x="803" y="207" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e">Full GitHub Actions YAML</text>
   <rect x="719" y="214" width="167" height="95" rx="5" fill="#1a2c1e" stroke="#3fb950" stroke-width="1"/>
@@ -82,7 +82,7 @@
 
   <!-- Arrow 4 -->
   <line x1="900" y1="250" x2="940" y2="250" stroke="#30363d" stroke-width="2" marker-end="url(#arrowD)"/>
-  <circle cx="920" cy="250" r="13" fill="#3fb950"/>
+  <circle cx="920" cy="250" r="13" fill="#1a7f37"/>
   <text x="920" y="255" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffffff">4</text>
 
   <!-- Box 5: GitHub Actions (red) — x=940, w=185, y=173, h=155 -->

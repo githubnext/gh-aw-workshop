@@ -94,7 +94,7 @@
   <text x="604" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
         font-size="14" font-weight="600" fill="#1a7f37" text-anchor="middle">Defensive task brief</text>
   <text x="604" y="163" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="12" fill="#2da44e" text-anchor="middle">Explicit fallback instruction when data is missing</text>
+        font-size="12" fill="#1a7f37" text-anchor="middle">Explicit fallback instruction when data is missing</text>
   <text x="434" y="143" font-size="16">🛡</text>
 
   <!-- M2: timeout-minutes (y=260, height=75) center y=297 -->
@@ -102,7 +102,7 @@
   <text x="604" y="283" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
         font-size="14" font-weight="600" fill="#1a7f37" text-anchor="middle" font-style="italic">timeout-minutes</text>
   <text x="604" y="303" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="12" fill="#2da44e" text-anchor="middle">Cap run duration in workflow frontmatter</text>
+        font-size="12" fill="#1a7f37" text-anchor="middle">Cap run duration in workflow frontmatter</text>
   <text x="434" y="283" font-size="16">⏱</text>
 
   <!-- M3: Fallback safe-output (y=400, height=75) center y=437 -->
@@ -110,7 +110,7 @@
   <text x="604" y="423" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
         font-size="14" font-weight="600" fill="#1a7f37" text-anchor="middle">Fallback safe-output</text>
   <text x="604" y="443" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="12" fill="#2da44e" text-anchor="middle">Always call output — even for quiet runs</text>
+        font-size="12" fill="#1a7f37" text-anchor="middle">Always call output — even for quiet runs</text>
   <text x="434" y="423" font-size="16">📤</text>
 
   <!-- ── CONNECTING ARROWS (mitigation → outcome) ──────────────── -->

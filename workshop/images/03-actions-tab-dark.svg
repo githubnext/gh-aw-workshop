@@ -24,7 +24,7 @@
   <rect x="100" y="115" width="1000" height="390" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
   <!-- Octocat/rocket illustration placeholder -->
   <circle cx="600" cy="210" r="50" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
-  <text x="600" y="220" font-family="Arial,sans-serif" font-size="36" text-anchor="middle">🚀</text>
+  <text x="600" y="220" font-family="Arial,sans-serif" font-size="36" text-anchor="middle" fill="#c9d1d9">🚀</text>
   <text x="600" y="295" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#c9d1d9" text-anchor="middle">Get started with GitHub Actions</text>
   <text x="600" y="325" font-family="Arial,sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">Build, test, and deploy your code. Make code reviews, branch management,</text>
   <text x="600" y="345" font-family="Arial,sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">and issue triaging work the way you want.</text>
