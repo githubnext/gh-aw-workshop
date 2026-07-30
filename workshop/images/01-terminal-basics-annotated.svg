@@ -13,7 +13,7 @@
   <text x="930" y="168" fill="#1f6feb" font-family="Arial, sans-serif" font-size="28" font-weight="700">1. Prompt</text>
 
   <line x1="920" y1="236" x2="1080" y2="236" stroke="#bf8700" stroke-width="4"/>
-  <text x="930" y="222" fill="#bf8700" font-family="Arial, sans-serif" font-size="28" font-weight="700">2. Command</text>
+  <text x="930" y="222" fill="#9a6700" font-family="Arial, sans-serif" font-size="28" font-weight="700">2. Command</text>
 
   <line x1="920" y1="300" x2="1080" y2="300" stroke="#1a7f37" stroke-width="4"/>
   <text x="930" y="286" fill="#1a7f37" font-family="Arial, sans-serif" font-size="28" font-weight="700">3. Output</text>

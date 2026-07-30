@@ -22,7 +22,7 @@
   <text x="190" y="258" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" fill="#8250df" text-anchor="middle">  workflow_dispatch:</text>
   <!-- No cron badge -->
   <rect x="100" y="278" width="88" height="20" rx="10" fill="#fff8c5" stroke="#bf8700" stroke-width="1"/>
-  <text x="144" y="292" font-family="system-ui, sans-serif" font-size="10" fill="#bf8700" text-anchor="middle">manual only</text>
+  <text x="144" y="292" font-family="system-ui, sans-serif" font-size="10" fill="#9a6700" text-anchor="middle">manual only</text>
   <rect x="196" y="278" width="84" height="20" rx="10" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
   <text x="238" y="292" font-family="system-ui, sans-serif" font-size="10" fill="#1a7f37" text-anchor="middle">no auto-run</text>
 
@@ -98,9 +98,9 @@
 
   <!-- workflow_dispatch highlight -->
   <rect x="313" y="350" width="185" height="76" rx="6" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
-  <text x="405" y="373" font-family="ui-monospace, SFMono-Regular, monospace" font-size="12" font-weight="700" fill="#bf8700" text-anchor="middle">workflow_dispatch</text>
-  <text x="405" y="393" font-family="system-ui, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">You click "Run workflow"</text>
-  <text x="405" y="409" font-family="system-ui, sans-serif" font-size="11" fill="#bf8700" font-weight="600" text-anchor="middle">← used in this step</text>
+  <text x="405" y="373" font-family="ui-monospace, SFMono-Regular, monospace" font-size="12" font-weight="700" fill="#9a6700" text-anchor="middle">workflow_dispatch</text>
+  <text x="405" y="393" font-family="system-ui, sans-serif" font-size="11" fill="#57606a" text-anchor="middle">You click "Run workflow"</text>
+  <text x="405" y="409" font-family="system-ui, sans-serif" font-size="11" fill="#9a6700" font-weight="600" text-anchor="middle">← used in this step</text>
   <!-- Arrow pointing to workflow_dispatch -->
   <line x1="405" y1="340" x2="405" y2="350" stroke="#bf8700" stroke-width="1.5" marker-end="url(#arrowGold)"/>
 

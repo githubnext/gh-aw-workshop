@@ -18,8 +18,8 @@
 
   <!-- Trigger box -->
   <rect x="340" y="108" width="175" height="76" rx="8" ry="8" fill="#fff8c5" stroke="#bf8700" stroke-width="1.5"/>
-  <text x="427" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#bf8700" text-anchor="middle">Trigger</text>
-  <text x="427" y="157" font-family="monospace, monospace" font-size="12" fill="#bf8700" text-anchor="middle">on:</text>
+  <text x="427" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#9a6700" text-anchor="middle">Trigger</text>
+  <text x="427" y="157" font-family="monospace, monospace" font-size="12" fill="#9a6700" text-anchor="middle">on:</text>
   <text x="427" y="176" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#57606a" text-anchor="middle">when to run</text>
 
   <!-- Arrow trigger → job -->
@@ -73,7 +73,7 @@
 
   <!-- Trigger examples below trigger box -->
   <rect x="340" y="210" width="175" height="108" rx="6" ry="6" fill="#fffbdd" stroke="#bf8700" stroke-width="1" stroke-dasharray="4,3"/>
-  <text x="427" y="232" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#bf8700" text-anchor="middle">Common triggers</text>
+  <text x="427" y="232" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#9a6700" text-anchor="middle">Common triggers</text>
   <text x="380" y="252" font-family="monospace, monospace" font-size="11" fill="#57606a">push</text>
   <text x="380" y="270" font-family="monospace, monospace" font-size="11" fill="#57606a">pull_request</text>
   <text x="380" y="288" font-family="monospace, monospace" font-size="11" fill="#57606a">workflow_dispatch</text>

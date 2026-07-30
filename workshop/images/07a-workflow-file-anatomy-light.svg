@@ -21,8 +21,8 @@
 
   <!-- on row -->
   <rect x="72" y="156" width="316" height="34" rx="3" fill="#fff8c5" stroke="none"/>
-  <text x="80" y="170" font-family="ui-monospace, monospace" font-size="12" fill="#bf8700">on:</text>
-  <text x="80" y="184" font-family="ui-monospace, monospace" font-size="12" fill="#bf8700">  workflow_dispatch:</text>
+  <text x="80" y="170" font-family="ui-monospace, monospace" font-size="12" fill="#9a6700">on:</text>
+  <text x="80" y="184" font-family="ui-monospace, monospace" font-size="12" fill="#9a6700">  workflow_dispatch:</text>
 
   <!-- permissions row -->
   <rect x="72" y="194" width="316" height="58" rx="3" fill="#dafbe1" stroke="none"/>
@@ -79,7 +79,7 @@
 
   <!-- on card -->
   <rect x="470" y="184" width="290" height="52" rx="6" fill="white" stroke="#bf8700" stroke-width="1.5"/>
-  <text x="486" y="201" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#bf8700">Trigger</text>
+  <text x="486" y="201" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#9a6700">Trigger</text>
   <text x="486" y="218" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">When the workflow runs — manual,</text>
   <text x="486" y="231" font-family="system-ui, sans-serif" font-size="12" fill="#24292f">scheduled, or event-based.</text>
 
