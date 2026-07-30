@@ -33,7 +33,7 @@
 
   <!-- Green check icon (circle) -->
   <circle cx="54" cy="136" r="14" fill="#1a7f37"/>
-  <text x="54" y="141" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(46 125)"/>
 
   <text x="80" y="131" font-family="Arial, sans-serif" font-size="16" fill="#24292f" font-weight="600">daily-repo-status</text>
   <text x="80" y="150" font-family="Arial, sans-serif" font-size="13" fill="#57606a">Triggered manually · 2 minutes ago · 1m 23s</text>
@@ -45,7 +45,7 @@
   <!-- Job item -->
   <rect x="40" y="215" width="300" height="40" fill="#f6f8fa" rx="4"/>
   <circle cx="62" cy="235" r="8" fill="#1a7f37"/>
-  <text x="62" y="239" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(56 227) scale(.75)"/>
   <text x="80" y="239" font-family="Arial, sans-serif" font-size="14" fill="#0969da">generate-report</text>
 
   <!-- Summary panel on the right -->

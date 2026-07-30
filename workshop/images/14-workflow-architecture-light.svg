@@ -17,7 +17,8 @@
   <rect x="89" y="284" width="112" height="26" rx="13" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
   <text x="145" y="301" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#0550ae">⏰ Daily schedule</text>
   <rect x="89" y="318" width="112" height="26" rx="13" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
-  <text x="145" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#0550ae">▶ Manual run</text>
+  <path d="m99 324 8 7-8 7Z" fill="#0550ae"/>
+  <text x="153" y="335" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#0550ae">Manual run</text>
 
   <!-- Arrow 1 -->
   <line x1="230" y1="280" x2="295" y2="280" stroke="#57606a" stroke-width="2" marker-end="url(#arrow-light)"/>
@@ -81,7 +82,8 @@
   <text x="1115" y="287" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">Artifact</text>
   <text x="1115" y="306" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">Commit</text>
   <rect x="1073" y="320" width="84" height="26" rx="13" fill="#dff7e9" stroke="#1a7f37" stroke-width="1"/>
-  <text x="1115" y="337" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#1a7f37">✓ safe</text>
+  <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z" fill="#1a7f37" transform="translate(1084 325) scale(.75)"/>
+  <text x="1123" y="337" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#1a7f37">safe</text>
 
   <!-- Step numbers -->
   <circle cx="262" cy="268" r="11" fill="#0969da"/>

@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Workflow run log">
+  <defs>
+    <path id="check-circle" d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"/>
+  </defs>
   <rect width="1200" height="560" fill="#0d1117"/>
 
   <!-- Browser chrome -->
@@ -32,9 +35,12 @@
   <text x="100" y="288" font-family="monospace" font-size="12" fill="#c9d1d9">  Found 5 recent commits</text>
   <text x="100" y="310" font-family="monospace" font-size="12" fill="#c9d1d9">  Generating status report...</text>
   <text x="100" y="332" font-family="monospace" font-size="12" fill="#c9d1d9">  Report written to run summary.</text>
-  <text x="80" y="360" font-family="monospace" font-size="13" fill="#3fb950">✓  Run gh aw run daily-report-status.md  (15s)</text>
-  <text x="80" y="390" font-family="monospace" font-size="13" fill="#3fb950">✓  Complete job</text>
-  <text x="80" y="415" font-family="monospace" font-size="13" fill="#3fb950">✓  Post Set up job</text>
+  <use href="#check-circle" fill="#3fb950" transform="translate(80 348) scale(.75)"/>
+  <text x="100" y="360" font-family="monospace" font-size="13" fill="#3fb950">Run gh aw run daily-report-status.md  (15s)</text>
+  <use href="#check-circle" fill="#3fb950" transform="translate(80 378) scale(.75)"/>
+  <text x="100" y="390" font-family="monospace" font-size="13" fill="#3fb950">Complete job</text>
+  <use href="#check-circle" fill="#3fb950" transform="translate(80 403) scale(.75)"/>
+  <text x="100" y="415" font-family="monospace" font-size="13" fill="#3fb950">Post Set up job</text>
   <text x="600" y="540" font-family="Arial,sans-serif" font-size="24" fill="#8b949e" text-anchor="middle">Workflow run log</text>
 
 </svg>

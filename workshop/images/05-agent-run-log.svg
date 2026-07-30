@@ -36,7 +36,9 @@
 
   <!-- activation job -->
   <g class="line line1">
-    <text x="30" y="70" font-family="monospace" font-size="13" fill="#8b949e">▶  activation</text>
+    <rect x="30" y="57" width="14" height="14" rx="3" fill="none" stroke="#8b949e"/>
+    <path d="m35 60 6 4-6 4Z" fill="#8b949e"/>
+    <text x="52" y="70" font-family="monospace" font-size="13" fill="#8b949e">activation</text>
     <rect x="22" y="77" width="816" height="1" fill="#21262d"/>
   </g>
   <g class="line line2">
@@ -45,7 +47,9 @@
 
   <!-- agent job -->
   <g class="line line3">
-    <text x="30" y="128" font-family="monospace" font-size="13" fill="#8b949e">▶  agent</text>
+    <rect x="30" y="115" width="14" height="14" rx="3" fill="none" stroke="#8b949e"/>
+    <path d="m35 118 6 4-6 4Z" fill="#8b949e"/>
+    <text x="52" y="128" font-family="monospace" font-size="13" fill="#8b949e">agent</text>
     <rect x="22" y="135" width="816" height="1" fill="#21262d"/>
   </g>
   <g class="line line4">
@@ -63,7 +67,9 @@
 
   <!-- detection job -->
   <g class="line line8">
-    <text x="30" y="252" font-family="monospace" font-size="13" fill="#8b949e">▶  detection</text>
+    <rect x="30" y="239" width="14" height="14" rx="3" fill="none" stroke="#8b949e"/>
+    <path d="m35 242 6 4-6 4Z" fill="#8b949e"/>
+    <text x="52" y="252" font-family="monospace" font-size="13" fill="#8b949e">detection</text>
     <rect x="22" y="259" width="816" height="1" fill="#21262d"/>
   </g>
   <g class="line line9">
@@ -75,7 +81,9 @@
 
   <!-- safe-outputs job -->
   <g class="line line11">
-    <text x="30" y="332" font-family="monospace" font-size="13" fill="#8b949e">▶  safe-outputs</text>
+    <rect x="30" y="319" width="14" height="14" rx="3" fill="none" stroke="#8b949e"/>
+    <path d="m35 322 6 4-6 4Z" fill="#8b949e"/>
+    <text x="52" y="332" font-family="monospace" font-size="13" fill="#8b949e">safe-outputs</text>
     <rect x="22" y="339" width="816" height="1" fill="#21262d"/>
   </g>
   <g class="line line12">
