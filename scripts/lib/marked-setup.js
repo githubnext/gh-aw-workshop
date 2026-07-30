@@ -78,7 +78,10 @@ function setupBasePlugins() {
   marked.use(markedHighlight({
     langPrefix: 'hljs language-',
     highlight(code, lang) {
-      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      // Markdown workflow files contain YAML frontmatter + a prose brief,
+      // so YAML highlighting renders them more usefully than markdown mode.
+      const effectiveLang = (lang === 'markdown' || lang === 'md') ? 'yaml' : lang;
+      const language = hljs.getLanguage(effectiveLang) ? effectiveLang : 'plaintext';
       return hljs.highlight(code, { language }).value;
     },
   }));
@@ -95,7 +98,7 @@ function setupBasePlugins() {
           return `<div class="agent-prompt-block" role="region" aria-label="Agent prompt">\n<div class="agent-prompt-bar"><span class="agent-prompt-icon" aria-hidden="true">✦</span><span class="agent-prompt-label">Agent prompt</span></div>\n<pre class="agent-prompt-pre"><code class="language-prompt">${codeHtml}</code></pre>\n</div>\n`;
         }
         if (langKey === 'markdown' || langKey === 'md') {
-          return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span></div>\n<pre class="markdown-editor-pre"><code class="language-markdown">${codeHtml}</code></pre>\n</div>\n`;
+          return `<div class="markdown-editor-block" role="region" aria-label="Markdown">\n<div class="markdown-editor-bar"><span class="markdown-editor-icon" aria-hidden="true">◇</span></div>\n<pre class="markdown-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
         }
         if (langKey === 'yaml' || langKey === 'yml') {
           return `<div class="yaml-editor-block" role="region" aria-label="YAML">\n<div class="yaml-editor-bar"><span class="yaml-editor-icon" aria-hidden="true">≡</span></div>\n<pre class="yaml-editor-pre"><code class="hljs language-yaml">${codeHtml}</code></pre>\n</div>\n`;
