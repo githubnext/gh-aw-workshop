@@ -87,7 +87,7 @@ jobs:
               'and `.github/workflows/guidelines.md`.',
               '',
               'Common violations:',
-              '- Unicode status/icon characters (✓ ✗ ⚡ 🕐 ▶) used instead of Octicon-inspired SVG paths',
+              '- Unicode status/icon characters used instead of unmodified Primer Octicon paths',
               '- Missing `role="img"` or accessible label on root `<svg>` element',
               '- Incomplete complex-visual metadata or gradients in technical visuals',
               '- State-labeled shapes (Open, Closed, Merged, Draft) using off-palette fill colors',

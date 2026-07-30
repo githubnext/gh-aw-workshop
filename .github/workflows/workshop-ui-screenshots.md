@@ -239,14 +239,16 @@ change set.
 - Represent GitHub's navigation tabs (Code, Issues, Pull requests, Actions,
   etc.) as a horizontal tab bar with the relevant tab underlined in the palette
   accent color.
-- **Use GitHub visual language icons** (Octicon-inspired inline SVG shapes) for
-  any GitHub entity that appears in the illustration. Follow the shape guide and
-  Primer semantic state color table in the GitHub visual language system section
-  of `.github/workflows/guidelines.md`. Do not substitute plain rectangles or
-  generic symbols for recognisable GitHub concepts.
-- For Issues and Pull requests tabs/rows: include the Octicon-inspired icon
-  (circle-with-dot for issues; branch-merge path for PRs) in the matching state
-  color (open/green, closed/red, merged/purple, draft/grey) alongside each row.
+- **Use GitHub visual language icons** (unmodified MIT-licensed Primer Octicon
+  path geometry) for any GitHub entity that appears in the illustration. Follow
+  the Octicon and Primer semantic state color tables in the GitHub visual
+  language system section of `.github/workflows/guidelines.md`. Do not
+  substitute plain rectangles or generic symbols for recognisable GitHub
+  concepts.
+- For Issues and Pull requests tabs/rows: include the applicable
+  `issue-opened`, `issue-closed`, `git-pull-request`, `git-merge`, or
+  `git-pull-request-draft` Octicon in the matching state color (open/green,
+  closed/red, merged/purple, draft/grey) alongside each row.
 - For Discussions: use a rounded speech-bubble outline in accent blue.
 - For Actions-tab screenshots: show a workflow list panel with a single row
   representing the relevant workflow, a status icon (filled play-triangle in

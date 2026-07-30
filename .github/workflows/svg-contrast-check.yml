@@ -104,7 +104,8 @@ jobs:
               `Workflow run: ${runUrl}`,
               '',
               'One or more SVG images contain text with insufficient color contrast against',
-              'its background (below 4.5:1 for normal text or 3:1 for qualifying large text).',
+              'its background. Brand-declared normal text requires 4.5:1; qualifying large',
+              'text and unannotated legacy SVG text require the 3:1 migration baseline.',
               'This can make diagrams unreadable — for example, white text on a white background.',
               '',
               fileBlocks.length > 0

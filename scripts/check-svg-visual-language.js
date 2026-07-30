@@ -13,7 +13,7 @@
  *      resolvable accessible name.
  *   2. Icon characters — Unicode status/icon characters (✓ ✗ ✕ ⚡ 🕐 ▶ ►)
  *      must not appear in SVG <text> nodes used as visual indicators.
- *      Use Octicon-inspired inline SVG paths instead (see guidelines).
+ *      Use unmodified Primer Octicon paths instead (see guidelines).
  *   3. Canvas dimensions — light/dark variant files (*-light.svg, *-dark.svg)
  *      must use an approved 960px or 1200px canvas width.
  *   4. State-color parity — labeled state badges/pills ("Open", "Closed",
@@ -92,7 +92,7 @@ const STATE_COLORS = {
  * "Draft summaries & comments" where "draft" is a modifier, not a state tag.
  * @type {Record<string, string>}
  */
-const LABEL_TO_STATE = {
+const DATA_STATE_TO_STATE = {
   open: 'open',
   closed: 'closed',
   merged: 'merged',
@@ -114,6 +114,15 @@ const LABEL_TO_STATE = {
   failure: 'closed',
 };
 
+const LABEL_TO_STATE = {
+  open: 'open',
+  closed: 'closed',
+  merged: 'merged',
+  draft: 'draft',
+  'in progress': 'in progress',
+  'in-progress': 'in progress',
+};
+
 /**
  * Maximum length (characters) of a label hint for it to be treated as a
  * state badge/pill. Labels longer than this are assumed to be content, not
@@ -122,7 +131,7 @@ const LABEL_TO_STATE = {
 const STATE_LABEL_MAX_LEN = 15;
 
 /**
- * Unicode characters that should be replaced with Octicon-style inline SVG
+ * Unicode characters that should be replaced with unmodified Primer Octicon
  * paths per the GitHub visual language guidelines.
  *
  * Keys are the Unicode characters; values are human-readable descriptions of
@@ -133,16 +142,16 @@ const STATE_LABEL_MAX_LEN = 15;
  * terminal output strings where the character is part of the content itself.
  */
 const ICON_CHARS = {
-  '✓': 'Octicon check path inside a circle',
-  '✔': 'Octicon check path inside a circle',
-  '✗': 'Octicon X path inside a circle',
-  '✕': 'Octicon X path inside a circle',
-  '✘': 'Octicon X path inside a circle',
-  '⚡': 'Octicon play-triangle (workflow trigger icon)',
-  '🕐': 'Octicon clock-face shape (circle + hand segments)',
-  '🕛': 'Octicon clock-face shape (circle + hand segments)',
-  '▶': 'Octicon play-triangle inside a rounded square',
-  '►': 'Octicon play-triangle inside a rounded square',
+  '✓': 'the unmodified check-circle Octicon path',
+  '✔': 'the unmodified check-circle Octicon path',
+  '✗': 'the unmodified x-circle Octicon path',
+  '✕': 'the unmodified x-circle Octicon path',
+  '✘': 'the unmodified x-circle Octicon path',
+  '⚡': 'the unmodified zap Octicon path',
+  '🕐': 'the unmodified clock Octicon path',
+  '🕛': 'the unmodified clock Octicon path',
+  '▶': 'the unmodified play Octicon path',
+  '►': 'the unmodified play Octicon path',
 };
 
 /**
@@ -367,7 +376,7 @@ function checkIconCharacters(svgContent, relPath) {
     const m = ICON_CHARS_RE.exec(text);
     if (m) {
       const char = m[0];
-      const replacement = ICON_CHARS[char] || 'an Octicon-inspired inline SVG path';
+      const replacement = ICON_CHARS[char] || 'an unmodified Primer Octicon path';
       violations.push(
         `Unicode icon character ${JSON.stringify(char)} found in text node ` +
           `${JSON.stringify(text.substring(0, 60))}. ` +
@@ -499,10 +508,18 @@ function checkStateColors(svgContent, relPath) {
   const shapes = extractShapeFills(svgContent);
 
   for (const { fill, labelHint, dataState } of shapes) {
-    let stateKey = LABEL_TO_STATE[dataState] || null;
+    let stateKey = DATA_STATE_TO_STATE[dataState] || null;
     let stateDescription = dataState
       ? `data-state=${JSON.stringify(dataState)}`
       : '';
+
+    if (dataState && !stateKey) {
+      violations.push(
+        `Shape uses unknown data-state=${JSON.stringify(dataState)}. Expected one of: ` +
+          `${Object.keys(DATA_STATE_TO_STATE).join(', ')}.`
+      );
+      continue;
+    }
 
     // Use the raw label for comparison (no HTML entity decoding needed since
     // state keywords like "open", "closed", "merged" contain no entities).

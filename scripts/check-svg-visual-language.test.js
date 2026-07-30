@@ -112,3 +112,16 @@ test('rejects Unicode indicators and incorrect explicit state colors', () => {
   assert.match(result.stderr, /data-state="error"/);
   assert.match(result.stderr, /Expected Primer dark-mode color: #f85149/);
 });
+
+test('rejects unknown explicit state values', () => {
+  const result = runChecker(
+    'unknown-state-light.svg',
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560"
+      role="img" aria-label="Unknown state">
+      <rect data-state="opened" fill="#1a7f37" />
+    </svg>`
+  );
+
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /unknown data-state="opened"/);
+});

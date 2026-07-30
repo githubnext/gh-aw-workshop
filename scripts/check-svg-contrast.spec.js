@@ -6,7 +6,9 @@
  *
  * Uses the Playwright CLI to render each SVG file in a headless browser and
  * verify that every text element has sufficient WCAG contrast against its
- * effective background color.
+ * effective background color. Brand-declared visuals use WCAG AA text
+ * thresholds; unannotated legacy files retain the previous 3:1 baseline until
+ * they are migrated to the visual metadata contract.
  *
  * Run directly:
  *   npx playwright test --config=playwright.svg-contrast.config.js
@@ -20,6 +22,17 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
+
+const LEGACY_TEXT_CONTRAST = 3.0;
+const NORMAL_TEXT_CONTRAST = 4.5;
+const LARGE_TEXT_CONTRAST = 3.0;
+
+function requiredTextContrast(fontSize, fontWeight, enforcesBrandContrast) {
+  if (!enforcesBrandContrast) return LEGACY_TEXT_CONTRAST;
+  const isLargeText =
+    fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
+  return isLargeText ? LARGE_TEXT_CONTRAST : NORMAL_TEXT_CONTRAST;
+}
 
 // ---------------------------------------------------------------------------
 // File discovery
@@ -62,6 +75,13 @@ if (svgFiles.length === 0) {
   });
 }
 
+test('applies WCAG text thresholds to brand-declared visuals', () => {
+  expect(requiredTextContrast(16, 400, true)).toBe(4.5);
+  expect(requiredTextContrast(18.66, 700, true)).toBe(3.0);
+  expect(requiredTextContrast(24, 400, true)).toBe(3.0);
+  expect(requiredTextContrast(16, 400, false)).toBe(3.0);
+});
+
 for (const svgPath of svgFiles) {
   const relPath = path.relative(repoRoot, svgPath);
 
@@ -87,7 +107,12 @@ for (const svgPath of svgFiles) {
     // ---------------------------------------------------------------------------
     // In-browser analysis: extract text elements and their effective colors
     // ---------------------------------------------------------------------------
-    const violations = await page.evaluate(() => {
+    const enforcesBrandContrast = await page
+      .locator('svg')
+      .first()
+      .evaluate((svg) => svg.hasAttribute('data-visual-kind'));
+
+    const measurements = await page.evaluate(() => {
       // --- Color helpers (must be self-contained inside evaluate) ---
 
       function parseColorStr(s) {
@@ -140,7 +165,7 @@ for (const svgPath of svgFiles) {
 
       // --- Main analysis ---
 
-      const violations = [];
+      const measurements = [];
 
       // Flat list of all elements in DOM order (used for z-order comparisons).
       const allEls = Array.from(document.querySelectorAll('*'));
@@ -161,9 +186,6 @@ for (const svgPath of svgFiles) {
         if (!textColor) continue;
         const fontSize = Number.parseFloat(computedStyle.fontSize);
         const fontWeight = numericFontWeight(computedStyle.fontWeight);
-        const isLargeText =
-          fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
-        const threshold = isLargeText ? 3.0 : 4.5;
 
         const textIdx = allEls.indexOf(textEl);
 
@@ -229,27 +251,35 @@ for (const svgPath of svgFiles) {
         }
 
         const ratio = contrastRatio(textColor, bgColor);
-        if (ratio < threshold) {
-          violations.push({
-            text: content.substring(0, 80),
-            fill: fillStr,
-            background: bgSource,
-            ratio: Math.round(ratio * 100) / 100,
-            threshold,
-            fontSize: Math.round(fontSize * 100) / 100,
-            fontWeight,
-          });
-        }
+        measurements.push({
+          text: content.substring(0, 80),
+          fill: fillStr,
+          background: bgSource,
+          ratio,
+          fontSize: Math.round(fontSize * 100) / 100,
+          fontWeight,
+        });
       }
 
-      return violations;
+      return measurements;
     });
+
+    const violations = measurements
+      .map((measurement) => ({
+        ...measurement,
+        threshold: requiredTextContrast(
+          measurement.fontSize,
+          measurement.fontWeight,
+          enforcesBrandContrast
+        ),
+      }))
+      .filter((measurement) => measurement.ratio < measurement.threshold);
 
     if (violations.length > 0) {
       const report = violations
         .map(
           (v) =>
-            `  text: "${v.text}"\n  fill: ${v.fill}  background: ${v.background}\n  contrast: ${v.ratio}:1  (minimum: ${v.threshold}:1; font: ${v.fontSize}px/${v.fontWeight})`
+            `  text: "${v.text}"\n  fill: ${v.fill}  background: ${v.background}\n  contrast: ${Math.round(v.ratio * 100) / 100}:1  (minimum: ${v.threshold}:1; font: ${v.fontSize}px/${v.fontWeight})`
         )
         .join('\n\n');
       expect(

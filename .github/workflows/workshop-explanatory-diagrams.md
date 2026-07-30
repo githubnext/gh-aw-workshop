@@ -249,20 +249,20 @@ Match the visual family of the UI screenshot workflow while staying conceptual:
 
 ### GitHub icon usage in diagrams
 
-When a diagram node represents a GitHub concept, use an Octicon-inspired inline
-shape as described in the GitHub visual language system section of
-`.github/workflows/guidelines.md`. Embed the shape directly in the SVG — do not
-reference external files or icon fonts.
+When a diagram node represents a GitHub concept, use unmodified path geometry
+from the corresponding MIT-licensed Primer Octicon, as described in the GitHub
+visual language system section of `.github/workflows/guidelines.md`. Embed the
+path directly in the SVG — do not reference external files or icon fonts.
 
-Key shapes:
+Key Octicons:
 
-- **Issue**: circle outline with inner dot (open/green) or solid circle with ✕
-  (closed/red)
-- **Pull request**: two-circle branch-and-merge path (open/green or merged/purple)
-- **Discussion**: rounded speech-bubble outline (accent blue)
-- **Commit**: small solid circle on a horizontal branch line
-- **Workflow run**: right-pointing filled triangle inside a rounded square
-- **Schedule trigger**: clock face (circle + two hand segments)
+- **Issue**: `issue-opened` (open/green) or `issue-closed` (closed/red)
+- **Pull request**: `git-pull-request` (open/green) or `git-merge`
+  (merged/purple)
+- **Discussion**: `comment-discussion` (accent blue)
+- **Commit**: `git-commit`
+- **Workflow run**: `workflow` or `play`
+- **Schedule trigger**: `clock`
 
 Always label every icon node with a short text label. Use the icon to convey
 type and the label to convey content. Apply the matching Primer state color so

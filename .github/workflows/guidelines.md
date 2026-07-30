@@ -114,24 +114,28 @@ Existing single-theme workshop images are migration candidates, not exceptions:
 
 When a generated diagram or illustration depicts a GitHub concept — such as an issue, pull request, discussion, commit, repository, or workflow run — use the GitHub visual language to represent it. This keeps diagrams recognisable to learners who already know the GitHub UI and avoids generic icon fonts or ambiguous shapes.
 
-### Octicon-inspired shapes
+### Licensed Octicons
 
-Embed simplified Octicon-style shapes directly in SVG markup as inline `<path>` or geometric primitives. Do not link to external icon files or import icon fonts — diagrams must be self-contained.
+Use unmodified path geometry from the MIT-licensed
+[Primer Octicons](https://github.com/primer/octicons) set. Embed the path directly
+in the SVG so diagrams remain self-contained, and preserve the applicable
+license attribution. Do not trace, simplify, redraw, or approximate Octicons.
 
-| Concept | Shape guidance |
-|---------|----------------|
-| Issue (open) | Circle outline (`r 8`) with a smaller filled dot inside; stroke and fill use the open/green semantic color |
-| Issue (closed) | Solid circle with an ✕ or checkmark path inside; fill uses the closed semantic color |
-| Pull request (open) | Two small circles connected by a curved branch path (branch left, merge right); stroke uses the open/green color |
-| Pull request (merged) | Same branch shape with a diamond merge point; fill and stroke use the merged/purple color |
-| Pull request (draft) | Dashed circle outline with a pencil stub; stroke and fill use the muted/grey color |
-| Discussion | Rounded speech-bubble outline (rect + pointer triangle); stroke uses the accent color |
-| Commit | Small solid circle (`r 5`) centred on a horizontal branch line |
-| Repository | Open book or folder outline using two rounded rect halves |
-| Workflow / Actions run | Right-pointing filled triangle (play button) inside a rounded square |
-| Schedule trigger | Clock face: circle outline + two short line segments for hands |
+| Concept | Primer Octicon |
+|---------|-----------------|
+| Issue (open) | `issue-opened` |
+| Issue (closed) | `issue-closed` |
+| Pull request (open) | `git-pull-request` |
+| Pull request (merged) | `git-merge` |
+| Pull request (draft) | `git-pull-request-draft` |
+| Discussion | `comment-discussion` |
+| Commit | `git-commit` |
+| Repository | `repo` |
+| Workflow / Actions run | `workflow` or `play` |
+| Schedule trigger | `clock` |
 
-Use these shapes at 16 × 16 or 24 × 24 logical units; scale to fit the diagram's label boxes using a `transform="scale(...)"` or by drawing at the target size directly.
+Use the official 16 × 16 or 24 × 24 viewBox and scale it uniformly to fit the
+diagram's label box.
 
 ### Primer semantic colors for entity states
 
@@ -155,9 +159,10 @@ When the diagram is theme-aware, apply the matching column's values to each SVG 
 - **Always use GitHub icons** when a node represents a GitHub entity (issue, PR, discussion, commit, repository). Do not substitute plain rectangles or generic bullet shapes for recognisable GitHub concepts.
 - **Accompany every icon node with a text label.** The icon conveys type; the label conveys content. Together they must be readable without prior knowledge of the icon.
 - **Match state to color.** An open-issue node must use the open/green semantic color; a merged-PR node must use the merged/purple color. Do not use accent blue for concept nodes that have an explicit state color.
-- **Keep icon shapes minimal.** Octicon-inspired primitives should be legible at diagram scale — omit ornamental detail that disappears below 24 px.
+- **Declare semantic states.** Add `data-state` to state-bearing shapes. Prefer `open`, `closed`, `merged`, `draft`, `in-progress`, `done`, `success`, `skipped`, `danger`, or `error`.
+- **Keep official icon geometry intact.** Scale Octicons uniformly; do not remove details or alter their proportions.
 - **Use accent blue (`#0969da` / `#2f81f7`) for non-GitHub-entity highlights** such as data flows, trigger arrows, or focus callouts that do not correspond to a GitHub object.
-- **Do not mix icon vocabularies.** Never combine Octicon-style shapes with Material Design, Font Awesome, or other third-party icon conventions in the same diagram.
+- **Do not mix icon vocabularies.** Never combine Octicons with Material Design, Font Awesome, or other third-party icon conventions in the same diagram.
 
 ### Enforcing the visual language spec
 
@@ -173,6 +178,12 @@ To check specific files only:
 SVG_FILES="workshop/images/foo-light.svg workshop/images/foo-dark.svg" \
   node scripts/check-svg-visual-language.js
 ```
+
+The rendered contrast check applies the brand skill's WCAG text thresholds to
+SVGs that declare `data-visual-kind`. Unannotated legacy SVGs retain the
+previous `3:1` text baseline until they are migrated. New or regenerated
+complex visuals must declare the metadata, so normal text is checked at
+`4.5:1` and qualifying large or bold text at `3:1`.
 
 The check runs automatically in CI via `.github/workflows/svg-visual-language-check.yml` whenever SVG files change. Pull requests that introduce violations in changed SVG files will fail the check. Push events that introduce violations on `main` will create or update a tracked issue.
 
