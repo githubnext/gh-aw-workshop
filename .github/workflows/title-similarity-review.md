@@ -232,7 +232,7 @@ For each cluster in `title-clusters.json`:
    same learner intent (for example, "Run your workflow" and "Execute the
    workflow"), and reject clusters where overlap comes only from generic tokens
    such as "Step", "Checkpoint", or "Next steps".
-2. Ignore clusters that represent valid parallel structure (for example repeated `## ✅ Checkpoint` headings).
+2. Ignore clusters that represent valid parallel structure (for example repeated `## :white_check_mark: Checkpoint` headings).
 3. Keep only genuine clusters where title wording can be consolidated, clarified, or differentiated.
 
 Prioritize clusters with:

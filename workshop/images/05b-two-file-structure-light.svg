@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Diagram showing how an agentic workflow .md source file is compiled by gh aw compile into a .lock.yml file that GitHub Actions runs">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#24292f">The Two-File Structure</text>
+  <text x="600" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#57606a">You write the .md source — gh aw compile generates the .lock.yml that GitHub Actions runs</text>
+
+  <!-- LEFT BOX: .md source -->
+  <rect x="60" y="95" width="420" height="380" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="60" y="95" width="420" height="44" rx="10" fill="#0969da"/>
+  <rect x="60" y="119" width="420" height="20" fill="#0969da"/>
+  <text x="270" y="123" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="600" fill="#ffffff">daily-report.md</text>
+  <!-- File type badge -->
+  <rect x="385" y="104" width="82" height="22" rx="11" fill="#ffffff" opacity="0.25"/>
+  <text x="426" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#ffffff">You write this</text>
+
+  <!-- Frontmatter section label -->
+  <rect x="80" y="155" width="120" height="22" rx="4" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
+  <text x="140" y="171" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0969da">FRONTMATTER</text>
+
+  <!-- Frontmatter content -->
+  <rect x="80" y="183" width="380" height="108" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="100" y="205" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
+  <text x="100" y="225" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">on:</text>
+  <text x="120" y="245" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">  schedule: <tspan fill="#0969da">daily</tspan></text>
+  <text x="100" y="265" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">permissions:</text>
+  <text x="120" y="283" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">  issues: <tspan fill="#0969da">read</tspan></text>
+  <text x="100" y="303" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">---</text>
+
+  <!-- Task brief section label -->
+  <rect x="80" y="305" width="100" height="22" rx="4" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+  <text x="130" y="321" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#1a7f37">TASK BRIEF</text>
+
+  <!-- Task brief content -->
+  <rect x="80" y="333" width="380" height="80" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="100" y="358" font-family="system-ui, sans-serif" font-size="13" fill="#24292f">Review all open issues, summarize</text>
+  <text x="100" y="378" font-family="system-ui, sans-serif" font-size="13" fill="#24292f">the key themes, and post a short</text>
+  <text x="100" y="398" font-family="system-ui, sans-serif" font-size="13" fill="#24292f">digest as a new issue.</text>
+
+  <!-- Bottom annotation -->
+  <text x="270" y="458" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#57606a">Plain English + fuzzy shorthand</text>
+
+  <!-- MIDDLE: compile arrow -->
+  <g>
+    <!-- Arrow line -->
+    <line x1="490" y1="285" x2="698" y2="285" stroke="#0969da" stroke-width="2.5" stroke-dasharray="6,3"/>
+    <polygon points="698,278 714,285 698,292" fill="#0969da"/>
+
+    <!-- compile badge -->
+    <rect x="540" y="255" width="130" height="36" rx="18" fill="#0969da"/>
+    <text x="605" y="278" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="#ffffff">gh aw compile</text>
+  </g>
+
+  <!-- RIGHT BOX: .lock.yml -->
+  <rect x="720" y="95" width="420" height="380" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="720" y="95" width="420" height="44" rx="10" fill="#6e40c9"/>
+  <rect x="720" y="119" width="420" height="20" fill="#6e40c9"/>
+  <text x="930" y="123" text-anchor="middle" font-family="ui-monospace, monospace" font-size="15" font-weight="600" fill="#ffffff">daily-report.lock.yml</text>
+  <!-- File type badge -->
+  <rect x="980" y="104" width="144" height="22" rx="11" fill="#ffffff" opacity="0.25"/>
+  <text x="1052" y="120" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#ffffff">GitHub Actions runs this</text>
+
+  <!-- YAML content -->
+  <rect x="740" y="155" width="380" height="248" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <!-- Auto-generated comment -->
+  <text x="760" y="178" font-family="ui-monospace, monospace" font-size="12" fill="#57606a"># Auto-generated. Do not edit.</text>
+  <text x="760" y="200" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">name: <tspan fill="#6e40c9">daily-report</tspan></text>
+  <text x="760" y="220" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">on:</text>
+  <text x="780" y="240" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">  schedule:</text>
+  <text x="800" y="260" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">    - cron: <tspan fill="#6e40c9">"0 8 * * *"</tspan></text>
+  <text x="780" y="280" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">  workflow_dispatch:</text>
+  <text x="760" y="300" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">permissions:</text>
+  <text x="780" y="320" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">  issues: <tspan fill="#6e40c9">read</tspan></text>
+  <text x="760" y="340" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">  # … engine, steps, agent config</text>
+  <text x="760" y="360" font-family="ui-monospace, monospace" font-size="13" fill="#57606a">  # … safe-outputs guardrails</text>
+  <text x="760" y="390" font-family="ui-monospace, monospace" font-size="13" fill="#24292f">  # task brief injected here</text>
+
+  <!-- Bottom annotation -->
+  <text x="930" y="458" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#57606a">Standard YAML — never hand-edited</text>
+
+  <!-- BOTTOM: GitHub Actions badge -->
+  <rect x="780" y="468" width="300" height="36" rx="8" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
+  <text x="930" y="491" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#0969da">▶ GitHub Actions executes .lock.yml</text>
+
+  <!-- Both files annotation -->
+  <text x="600" y="530" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#57606a">Both files live in <tspan font-family="ui-monospace, monospace" font-size="13" fill="#24292f">.github/workflows/</tspan> — commit both after every compile</text>
+</svg>

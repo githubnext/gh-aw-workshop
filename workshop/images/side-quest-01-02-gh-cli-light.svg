@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Conceptual screenshot of GitHub CLI">
+      <rect width="960" height="560" fill="#f6f8fa"/>
+      <text x="480.0" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#24292f">GitHub CLI (`gh`)</text>
+      <text x="480.0" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#57606a">A terminal tool for GitHub actions like auth checks, repo inspection, and workflow commands</text>
+      <rect x="60" y="90" width="840" height="380" rx="18" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+<rect x="60" y="90" width="840" height="46" rx="18" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<circle cx="92" cy="113" r="6" fill="#ff5f57"/>
+<circle cx="114" cy="113" r="6" fill="#febc2e"/>
+<circle cx="136" cy="113" r="6" fill="#28c840"/>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#24292f">gh CLI</text>
+      <rect x="84" y="156" width="520" height="290" rx="16" fill="#0d1117"/>
+<text x="108" y="194" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#7ee787">$ gh auth status</text>
+<text x="108" y="226" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#f0f6fc">✓ Logged in to github.com</text>
+<text x="108" y="274" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#7ee787">$ gh repo view --web</text>
+<text x="108" y="306" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#79c0ff">Opening repository in your browser…</text>
+<text x="108" y="354" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#7ee787">$ gh workflow list</text>
+<text x="108" y="386" text-anchor="start" font-family="monospace" font-size="18" font-weight="400" fill="#f0f6fc">Daily Status Report     active</text>
+<rect x="628" y="156" width="248" height="290" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+<text x="752" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">What `gh` helps with</text>
+<rect x="668" y="220" width="168" height="30" rx="15" fill="#ddf4ff"/>
+<text x="752.0" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0969da">Repository shortcuts</text>
+<rect x="668" y="268" width="150" height="30" rx="15" fill="#dafbe1"/>
+<text x="743.0" y="288" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#1a7f37">Auth and identity</text>
+<rect x="668" y="316" width="152" height="30" rx="15" fill="#fff8c5"/>
+<text x="744.0" y="336" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#9a6700">Workflow commands</text>
+<rect x="668" y="364" width="132" height="30" rx="15" fill="#fbefff"/>
+<text x="734.0" y="384" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#8250df">Browser handoff</text>
+      <rect x="60" y="490" width="840" height="34" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
+      <text x="480" y="512" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#57606a">Use this visual as a quick mental model, not a literal product screenshot.</text>
+    </svg>

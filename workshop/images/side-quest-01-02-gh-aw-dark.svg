@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow">
+      <rect width="960" height="560" fill="#0d1117"/>
+      <text x="480.0" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#f0f6fc">`gh-aw` CLI extension</text>
+      <text x="480.0" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#8b949e">The GitHub Agentic Workflows extension that compiles, validates, and runs workflow files</text>
+      <rect x="60" y="90" width="840" height="380" rx="18" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<rect x="60" y="90" width="840" height="46" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="92" cy="113" r="6" fill="#ff5f57"/>
+<circle cx="114" cy="113" r="6" fill="#febc2e"/>
+<circle cx="136" cy="113" r="6" fill="#28c840"/>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#d2a8ff">gh aw</text>
+      <rect x="84" y="156" width="792" height="136" rx="16" fill="#010409"/>
+<text x="108" y="196" text-anchor="start" font-family="monospace" font-size="17" font-weight="400" fill="#7ee787">$ gh aw compile .github/workflows/daily-status.md --validate</text>
+<text x="108" y="228" text-anchor="start" font-family="monospace" font-size="17" font-weight="400" fill="#f0f6fc">✓ Frontmatter valid   ✓ Lock file updated</text>
+<text x="108" y="264" text-anchor="start" font-family="monospace" font-size="17" font-weight="400" fill="#7ee787">$ gh aw run daily-status</text>
+<rect x="84" y="312" width="380" height="134" rx="14" fill="#21153b" stroke="#d2a8ff" stroke-width="1.5"/>
+<text x="106" y="344" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#d2a8ff">Workflow file</text>
+<text x="106" y="374" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#f0f6fc">name: Daily Status Report</text>
+<text x="106" y="402" text-anchor="start" font-family="monospace" font-size="15" font-weight="400" fill="#f0f6fc">tools: github: mode: gh-proxy</text>
+<rect x="496" y="312" width="380" height="134" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<text x="518" y="344" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#f0f6fc">What `gh aw` adds</text>
+<rect x="518" y="366" width="146" height="30" rx="15" fill="#21153b"/>
+<text x="591.0" y="386" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#d2a8ff">Compile + validate</text>
+<rect x="674" y="366" width="124" height="30" rx="15" fill="#0c2d6b"/>
+<text x="736.0" y="386" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#2f81f7">Run workflows</text>
+<rect x="518" y="406" width="128" height="30" rx="15" fill="#0a2d18"/>
+<text x="582.0" y="426" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#3fb950">AI-first syntax</text>
+<rect x="654" y="406" width="118" height="30" rx="15" fill="#2e2000"/>
+<text x="713.0" y="426" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#e3b341">Safe outputs</text>
+      <rect x="60" y="490" width="840" height="34" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+      <text x="480" y="512" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#8b949e">Use this visual as a quick mental model, not a literal product screenshot.</text>
+    </svg>

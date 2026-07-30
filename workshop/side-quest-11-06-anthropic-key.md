@@ -4,9 +4,9 @@
 
 > _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the AI engine for your agentic workflow, then return to your main path._
 
-By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). If you prefer to use **Claude**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
+By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). If you prefer to use **[Claude](https://github.github.com/gh-aw/reference/auth/#claude)**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have an Anthropic account at [console.anthropic.com](https://console.anthropic.com/).
 - You have a practice repository with at least one agentic workflow `.md` file.
@@ -30,9 +30,13 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 3. Copy the key value — it starts with `sk-ant-`.
 
 > [!IMPORTANT]
+> <details><summary>Key is shown only once — save it before closing this tab</summary>
+>
 > Anthropic shows the full key value **only once**. Copy it to your clipboard before you close the dialog or navigate away. If you miss this window, you must delete the key and generate a new one.
 >
 > Paste the key into GitHub Secrets (the next section) **before** closing the Anthropic console tab.
+>
+> </details>
 
 <!-- -->
 
@@ -71,7 +75,7 @@ Open your repository in a **new tab** so you keep the Anthropic console tab open
 
 Open your workflow `.md` file and update the frontmatter:
 
-```yaml
+```markdown
 ---
 name: My Workflow
 on:
@@ -90,9 +94,9 @@ If you previously added `copilot-requests: write` for the Copilot engine, you ca
 
 ---
 
-## Compile and validate
+## Validate your workflow
 
-After updating your frontmatter, recompile the workflow to check for errors:
+After updating your frontmatter, validate the workflow to check for errors:
 
 ```bash
 gh aw compile --validate
@@ -100,13 +104,13 @@ gh aw compile --validate
 
 You should see:
 
-```
-✔ <your-workflow>.md — valid
+```text
+✔️ <your-workflow>.md — valid
 ```
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You have an Anthropic account and have generated an API key
 - [ ] `ANTHROPIC_API_KEY` is stored as a repository secret
@@ -115,7 +119,5 @@ You should see:
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](07c-your-first-workflow-copilot.md)
+**Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-
-

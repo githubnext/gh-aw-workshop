@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers">
+  <rect width="1200" height="560" fill="#0d1117"/>
+  <rect x="40" y="40" width="1120" height="480" rx="12" ry="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="600" y="82" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#f0f6fc" text-anchor="middle">GitHub Actions Workflow Anatomy</text>
+  <rect x="80" y="108" width="200" height="76" rx="8" ry="8" fill="#1c2d41" stroke="#2f81f7" stroke-width="1.5"/>
+  <text x="180" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2f81f7" text-anchor="middle">Workflow File</text>
+  <text x="180" y="158" font-family="monospace, monospace" font-size="12" fill="#2f81f7" text-anchor="middle">.github/workflows/*.yml</text>
+  <text x="180" y="176" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">defines the whole pipeline</text>
+  <line x1="280" y1="146" x2="340" y2="146" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="340" y="108" width="175" height="76" rx="8" ry="8" fill="#2d2a1e" stroke="#d29922" stroke-width="1.5"/>
+  <text x="427" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#d29922" text-anchor="middle">Trigger</text>
+  <text x="427" y="157" font-family="monospace, monospace" font-size="12" fill="#d29922" text-anchor="middle">on:</text>
+  <text x="427" y="176" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">when to run</text>
+  <line x1="515" y1="146" x2="570" y2="146" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="570" y="108" width="175" height="76" rx="8" ry="8" fill="#1a2c1e" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="657" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#3fb950" text-anchor="middle">Job</text>
+  <text x="657" y="157" font-family="monospace, monospace" font-size="12" fill="#3fb950" text-anchor="middle">jobs: &lt;name&gt;:</text>
+  <text x="657" y="176" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">group of steps on one machine</text>
+  <line x1="657" y1="184" x2="657" y2="232" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="570" y="232" width="175" height="76" rx="8" ry="8" fill="#2d1b1e" stroke="#f85149" stroke-width="1.5"/>
+  <text x="657" y="262" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#f85149" text-anchor="middle">Runner</text>
+  <text x="657" y="281" font-family="monospace, monospace" font-size="12" fill="#f85149" text-anchor="middle">runs-on:</text>
+  <text x="657" y="300" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">machine GitHub provisions</text>
+  <line x1="745" y1="270" x2="800" y2="270" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="800" y="108" width="310" height="360" rx="8" ry="8" fill="#1e1a2e" stroke="#8957e5" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="955" y="136" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#8957e5" text-anchor="middle">Steps</text>
+  <text x="955" y="154" font-family="monospace, monospace" font-size="11" fill="#8957e5" text-anchor="middle">steps:</text>
+  <rect x="820" y="168" width="270" height="70" rx="6" ry="6" fill="#161b22" stroke="#8957e5" stroke-width="1.5"/>
+  <rect x="820" y="168" width="270" height="24" rx="6" ry="6" fill="#8957e5"/>
+  <rect x="820" y="180" width="270" height="12" fill="#8957e5"/>
+  <text x="955" y="185" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Step (shell command)</text>
+  <text x="955" y="215" font-family="monospace, monospace" font-size="12" fill="#8957e5" text-anchor="middle">run: npm test</text>
+  <text x="955" y="231" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">executes a shell command directly</text>
+  <rect x="820" y="258" width="270" height="92" rx="6" ry="6" fill="#161b22" stroke="#2f81f7" stroke-width="1.5"/>
+  <rect x="820" y="258" width="270" height="24" rx="6" ry="6" fill="#2f81f7"/>
+  <rect x="820" y="270" width="270" height="12" fill="#2f81f7"/>
+  <text x="955" y="275" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Step (reusable action)</text>
+  <text x="955" y="310" font-family="monospace, monospace" font-size="12" fill="#2f81f7" text-anchor="middle">uses: actions/checkout@v4</text>
+  <text x="955" y="328" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">calls a reusable action from</text>
+  <text x="955" y="342" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">the Actions marketplace</text>
+  <text x="955" y="385" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">Steps run in order, top to bottom</text>
+  <text x="955" y="402" font-family="Arial, sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">on the same runner machine</text>
+  <line x1="955" y1="238" x2="955" y2="256" stroke="#8957e5" stroke-width="1.5" marker-end="url(#arrowPurpleDark)"/>
+  <rect x="340" y="210" width="175" height="108" rx="6" ry="6" fill="#272216" stroke="#d29922" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="427" y="232" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#d29922" text-anchor="middle">Common triggers</text>
+  <text x="380" y="252" font-family="monospace, monospace" font-size="11" fill="#8b949e">push</text>
+  <text x="380" y="270" font-family="monospace, monospace" font-size="11" fill="#8b949e">pull_request</text>
+  <text x="380" y="288" font-family="monospace, monospace" font-size="11" fill="#8b949e">workflow_dispatch</text>
+  <text x="380" y="306" font-family="monospace, monospace" font-size="11" fill="#8b949e">schedule</text>
+  <line x1="427" y1="184" x2="427" y2="210" stroke="#d29922" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="600" y="496" font-family="Arial, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">Every GitHub Actions workflow follows this structure: a trigger starts a job on a runner, which runs steps in sequence.</text>
+  <text x="600" y="514" font-family="Arial, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">Each step is either a shell command (run:) or a reusable action (uses:).</text>
+  <defs>
+    <marker id="arrowDark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowPurpleDark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8957e5"/>
+    </marker>
+  </defs>
+</svg>

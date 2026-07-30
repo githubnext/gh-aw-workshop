@@ -4,11 +4,11 @@
 
 > _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled._
 
-This method stores a Personal Access Token (PAT) as a repository secret named [`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken). The agentic workflow engine picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
+This method stores a Personal Access Token (PAT) as a repository secret named [`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken). The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) engine picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
 
 If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a GitHub account with an active Copilot subscription.
 - You have read [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and chosen Method 2.
@@ -27,7 +27,7 @@ This guided flow checks whether the secret is missing, walks you through creatin
 
 If you prefer to create and store the PAT manually, follow the full procedure below.
 
-## ✏️ Sub-exercise A: Generate the token manually
+## :pencil2: Sub-exercise A: Generate the token manually
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Name the token (for example, `gh-aw-copilot`) and set an expiry (90 days is a common default).
@@ -49,7 +49,7 @@ Replace `YYYY-MM-DD` with your token expiry date.
 - [ ] I copied the token value before leaving the page
 - [ ] I noted the token rotation date
 
-## ✏️ Sub-exercise B: Store the secret manually
+## :pencil2: Sub-exercise B: Store the secret manually
 
 Store the token as a repository secret:
 
@@ -76,14 +76,14 @@ If you have not already done so, remove `copilot-requests: write` from the sourc
 
 ```bash
 gh aw compile
-git add .github/workflows/
+git add .
 git commit -m "Use personal Copilot billing"
 git push
 ```
 
 The compile updates the lock file so it uses the token-based method.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You generated a fine-grained PAT with **Copilot requests: Read-only** under **Account permissions**
 - [ ] `COPILOT_GITHUB_TOKEN` exists in your repository's Actions secrets

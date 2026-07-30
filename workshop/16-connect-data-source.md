@@ -4,21 +4,21 @@
 
 > _Workflows become truly powerful when they act on real, up-to-the-minute data — not just canned prompts._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll extend your daily-status workflow to fetch open issues from your repository using the [GitHub CLI](side-quest-01-02-environment-reference.md#github-cli-gh), then inject that data into your AI prompt. By the end, your summary will include an overview of outstanding issues alongside the commit activity.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
-- You're comfortable running and iterating on workflows from [Test and Improve Your Workflow](12-test-and-iterate.md).
+- You're comfortable running and iterating on workflows from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 
 ## Steps
 
 ### Understand the data-flow pattern
 
-[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, you will use shell steps to collect data and a later prompt section to turn that data into a summary.
+[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, use shell steps to collect data and a later prompt section to turn that data into a summary.
 
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
@@ -33,11 +33,31 @@ Think of it as a handoff. First, the workflow gathers facts in a predictable way
 
 ### Fetch commit history
 
+In your Copilot CLI session in the terminal, paste:
+
+```prompt
+/agentic-workflows update .github/workflows/daily-status.md to add two shell steps
+that fetch (1) the recent commit log from the last 24 hours with step id `recent`
+and (2) all open issues with step id `issues`, and update the AI prompt to inject
+those step outputs into the summary.
+```
+
+The skill adds both steps and updates the task brief. Review the diff before committing.
+
+<details>
+<summary>:pencil2: Manual edit path</summary>
+
 Open `.github/workflows/daily-status.md` and add two steps to the `steps:` block in the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
+
+First, fetch the recent commit log, then fetch open issues (see the YAML reference blocks below). After adding both steps, run `gh aw compile` and push.
+
+</details>
+
+Here is what the first step looks like — the skill will add this for you:
 
 First, fetch the recent commit log:
 
-```yaml
+```markdown .github/workflows/daily-status.md
 - name: Fetch recent commits
   id: recent          # step ID — referenced as steps.recent.outputs.…
   run: |
@@ -49,13 +69,13 @@ First, fetch the recent commit log:
     echo "EOF" >> $GITHUB_OUTPUT
 ```
 
-🤔 Pause and predict: What will the `commit_log` output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
+:thinking: Pause and predict: What will the `commit_log` output contain if no commits were made in the last 24 hours? Form your prediction now and verify it after you trigger a run.
 
 ### Fetch open issues
 
 Next, add a step to fetch open issues:
 
-```yaml
+```markdown .github/workflows/daily-status.md
 - name: Fetch open issues
   id: issues          # step ID — referenced as steps.issues.outputs.…
   run: |
@@ -73,15 +93,15 @@ Next, add a step to fetch open issues:
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # provided automatically — no setup needed
 ```
 
-✏️ Try it: Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you trigger a workflow run, check whether the workflow reports the same total.
+:pencil2: Try it: Run `gh issue list --state open --json number --jq 'length'` in your terminal and note the count. After you trigger a workflow run, check whether the workflow reports the same total.
 
-🤔 Pause and predict: What will the AI receive if the issue list is empty? Will the prompt still produce a useful output?
+:thinking: Pause and predict: What will the AI receive if the issue list is empty? Will the prompt still produce a useful output?
 
 ### Inject data into your AI prompt
 
 The AI prompt lives in the Markdown body after the frontmatter. Update that section so it uses the step outputs:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 ---
 # … your existing frontmatter with the two new steps …
 ---
@@ -100,27 +120,27 @@ Highlight anything that looks urgent in the issue list.
 
 GitHub resolves the step-output expressions before the AI sees the prompt, so the model receives plain text instead of workflow syntax.
 
-🤔 Pause and predict: If the `commit_log` output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
+:thinking: Pause and predict: If the `commit_log` output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
 
-✏️ Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
+:pencil2: Try it: Change `"two short paragraphs"` to `"one bullet list per topic"` and re-run. Notice how the output format shifts.
 
-### Compile and test
+### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), push, and test
 
-```bash
-gh aw compile
-```
-
-Fix any errors, then push and trigger a manual run:
+The `/agentic-workflows` skill recompiles the lock file automatically. If you edited the workflow manually, run `gh aw compile` first, then push:
 
 ```bash
-git add .github/workflows/daily-status.md
+git add .
 git commit -m "feat: inject open issues into daily summary prompt"
 git push
 ```
 
 Open the **Actions** tab and verify the new steps appear and the AI summary mentions both commits and issues.
 
-![Actions run showing the fetch-issues step and updated summary](images/16-data-source-run.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/16-data-source-run-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/16-data-source-run-light.svg">
+  <img alt="Actions run showing the fetch-issues step and updated summary" src="images/16-data-source-run-light.svg">
+</picture>
 
 > [!TIP]
 > If your repository has no open issues, the AI will say so — that's expected. Create a test issue to see the integration in action.
@@ -136,12 +156,12 @@ Once you're comfortable with this pattern, the same technique works for:
 | Failed workflow runs | `gh run list --status failure --limit 5` |
 | Repository stats | `gh api repos/:owner/:repo` |
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow has a recent-commits step with `id: recent`
 - [ ] Your workflow has an open-issues step with `id: issues`
 - [ ] Your AI prompt uses both saved outputs
-- [ ] `gh aw compile` reports no errors
+- [ ] Both `.github/workflows/daily-status.md` and `.github/workflows/daily-status.lock.yml` are compiled, committed, and pushed
 - [ ] A manual run completes and the summary mentions both commits and open issues
 - [ ] You can explain how the workflow passes fetched data into the prompt
 - [ ] You can describe what happens if the recent commit output is empty and how your prompt handles it

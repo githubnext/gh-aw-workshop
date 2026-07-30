@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01b: Pattern — Empty `[result]` Data
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will diagnose empty tool responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 
@@ -39,7 +39,7 @@ Pattern: **`[tool]` call returns empty results**. Check required read permission
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can distinguish an empty result from a failed tool call
 - [ ] I can verify required read scopes in `permissions:`

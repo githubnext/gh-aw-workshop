@@ -4,7 +4,7 @@
 
 > _A deeper companion to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md). Use this side quest when you want a full walkthrough of `gh aw forecast` — what the output means, how to tune projections, and how to translate the P90 figure into a practical `max-daily-ai-credits` value._
 
-## What `gh aw forecast` does
+## What [`gh aw forecast`](https://github.github.com/gh-aw/specs/forecast-specification/) does
 
 `gh aw forecast` looks at your actual run history and runs a Monte Carlo simulation to project future [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumption. It accounts for:
 
@@ -72,7 +72,7 @@ The output shows one row per workflow so you can spot which workflows drive the 
 
 ## Translate the P90 into `max-daily-ai-credits`
 
-The `max-daily-ai-credits` field caps how many AIC a workflow can consume across the last 24 hours for the triggering user. To pick a value that allows normal operation but blocks runaway spend:
+The `max-daily-ai-credits` field caps how many [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) a workflow can consume across the last 24 hours for the triggering user. To pick a value that allows normal operation but blocks runaway spend:
 
 1. Note the **P90 monthly** figure from `gh aw forecast`.
 2. Divide by 30 to get the P90 daily figure.
@@ -89,7 +89,7 @@ The `max-daily-ai-credits` field caps how many AIC a workflow can consume across
 
 Add that value to your workflow frontmatter:
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:
@@ -104,7 +104,7 @@ Recompile after editing:
 gh aw compile
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You ran `gh aw forecast` and read the P10/P50/P90 output
 - [ ] You used `--period week` to get a shorter projection

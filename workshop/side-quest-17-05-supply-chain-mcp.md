@@ -1,30 +1,30 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Supply Chain Attacks via MCP Tool Servers
+# Side Quest: [Supply Chain](https://github.github.com/gh-aw/introduction/architecture/#threat-model) Attacks via MCP Tool Servers
 
-> _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the trust boundary early and keep the workflow's write surface narrow._
+> _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the [trust boundary](side-quest-17-02-security-architecture.md) early and keep the workflow's write surface narrow._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Completed Side Quest: [How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md)
 - You have a workflow with a `tools:` block already configured.
 
 ## The Risk in One Sentence
 
-A supply chain attack through MCP starts when you trust a tool server, package, or image that can change outside your repository, and that server returns data your agent treats as real.
+A supply chain attack through [MCP](https://github.github.com/gh-aw/guides/mcps/) starts when you trust a tool server, package, or image that can change outside your repository, and that server returns data your agent treats as real.
 
 ## Attack surface at a glance
 
-Use this table as a quick threat model when you add or review an MCP server.
+Use this table as a quick [threat model](https://github.github.com/gh-aw/introduction/architecture/#threat-model) when you add or review an MCP server.
 
 | Attack type | How it works | Detection signal |
 | --- | --- | --- |
 | Typosquatted package | A package name looks familiar, but the publisher or package is not the one you meant to install. | The name is close to a trusted tool, but the publisher is unfamiliar. |
 | Compromised server or image | A real server or container starts returning altered results after the publisher account or registry is compromised. | The config uses a mutable tag such as `latest`, or a remote endpoint with no version pin. |
-| Tool poisoning | The server exposes more tools than your task needs, so a bad response has more ways to steer the agent. | The tool list is broad, vague, or includes an "everything" style toolset. |
-| Output injection | The server returns normal-looking data with hidden instructions mixed into the result. | Tool output suddenly contains directives such as "ignore previous instructions" or asks for extra actions. |
+| Tool poisoning | The server exposes more tools than your task needs, so a bad response has more ways to steer the agent. | The tool list is broad, vague, or includes an "everything" style [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets). |
+| [Output injection](side-quest-17-06-output-injection.md) | The server returns normal-looking data with hidden instructions mixed into the result. | Tool output suddenly contains directives such as "ignore previous instructions" or asks for extra actions. |
 
-## ✏️ Exercise: Inspect This `.mcp.json`
+## :pencil2: Exercise: Inspect This `.mcp.json`
 
 Read this fictional config and look for the warning signs from the attack-surface table above.
 
@@ -65,14 +65,9 @@ Adopt these habits when you work with MCP servers:
 2. **Restrict permissions and outputs.** Keep `permissions:` minimal and declare only the write surfaces you actually need in `safe-outputs`.
 3. **Audit tool names before you add them.** Confirm the publisher, verify the expected server name, and keep the tool list narrow.
 
-gh-aw helps by making you declare `tools:` explicitly, limit network destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.
+gh-aw helps by making you declare `tools:` explicitly, limit [network](https://github.github.com/gh-aw/reference/network/) destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.
 
-Further reading:
-
-- [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md)
-- [Side Quest: Output Injection via Safe Outputs](side-quest-17-06-output-injection.md)
-
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the MCP supply chain risk in one sentence
 - [ ] I can use the attack-surface table to spot at least one detection signal

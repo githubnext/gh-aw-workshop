@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01a: Pattern — Long `[plan]` Chains
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will learn how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 
@@ -40,7 +40,7 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can recognize a planning loop from log lines alone
 - [ ] I can explain why ambiguous goals create delayed tool use

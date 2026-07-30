@@ -2,15 +2,15 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Agent Session Phases Explained
 
-> _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Adventure D (Part 2): Monitor, Review, and Merge](12-test-and-iterate.md)._
+> _Optional: take this detour for a full breakdown of what happens inside the agent session, then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You've started [Adventure D: Build Any Workflow with GitHub Copilot](07c-your-first-workflow-copilot.md) (or another Step 11 path) and have an active or recently completed agent session.
+- You have an active or recently completed GitHub Copilot agent session.
 - You have [`gh aw` installed and authenticated](06-install-gh-aw.md) — completed in Step 6.
 - You understand the purpose of [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) from [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
-## 🎯 What You'll Learn
+## :dart: What You'll Learn
 
 You'll learn what each phase of the agent session does, what to look for in the activity feed, and how to steer the session if it takes the wrong direction.
 
@@ -26,7 +26,7 @@ After you submit the scenario prompt, the session shows a live activity feed. Th
 | **Compiling** | The agent runs `gh aw compile --validate` and fixes any errors it finds | A green success message indicates the `.lock.yml` was generated without errors |
 | **Opening PR** | The agent commits both files and opens a pull request | The pull request should list two changed files: the `.md` source and the `.lock.yml` |
 
-> 🤔 **Predict:** Before you open the activity feed on your next run, guess which phase will take the longest. Then expand the individual steps to check — was it the Planning phase (deciding frontmatter), the Writing phase (generating the file), or the Compiling phase (fixing errors)?
+> :thinking: **Predict:** Before you open the activity feed on your next run, guess which phase will take the longest. Then expand the individual steps to check — was it the Planning phase (deciding frontmatter), the Writing phase (generating the file), or the Compiling phase (fixing errors)?
 
 ## Steering the Session
 
@@ -34,7 +34,7 @@ The session typically completes in two to five minutes. If the agent takes the w
 
 - If the agent is building the wrong scenario: _"Stop — I want Scenario A (daily status report), not Scenario B."_
 - If the agent skips compilation: _"Please compile the workflow with `gh aw compile --validate` before opening the pull request."_
-- If the agent opens a PR before the lock file is present: _"The lock file is missing. Please run `gh aw compile --validate` and add the generated `.lock.yml` to the pull request."_
+- If the agent opens a PR before the [lock file](https://github.github.com/gh-aw/reference/workflow-structure/#lock-file-header) is present: _"The lock file is missing. Please run `gh aw compile --validate` and add the generated `.lock.yml` to the pull request."_
 
 ## Expanding Activity Feed Steps
 
@@ -58,7 +58,7 @@ gh aw compile --watch
 
 Each save triggers another compile, so you get immediate feedback instead of discovering YAML mistakes later. See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) for a full walkthrough.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can name the five phases of an agent session in order
 - [ ] I know what a successful Compiling phase looks like (green success message, `.lock.yml` generated)
@@ -68,7 +68,6 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 ---
 
 <!-- journey: all -->
-Return to [Adventure D (Part 2): Monitor, Review, and Merge](12-test-and-iterate.md).
+Return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
-
 

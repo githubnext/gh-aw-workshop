@@ -1,12 +1,12 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Deterministic vs Agentic Data Ops
+# Side Quest: [Deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) vs [Agentic](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) Data Ops
 
 > _Optional: use this guide when you are unsure which parts of a data workflow should stay deterministic and which parts should be agentic, then return to [Step 16](16-connect-data-source.md)._
 
-Data workflows work best when you split jobs on purpose. Keep repeatable operations [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/). Use the agent when you need judgment.
+Data workflows work best when you split jobs on purpose. Keep repeatable operations deterministic. Use the agent when you need judgment.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Complete [Connect a Live Data Source](16-connect-data-source.md) (required)
 - Be familiar with `gh` CLI commands
@@ -49,11 +49,11 @@ Follow this structure for repository status, incident triage, and reporting flow
 
 This keeps your pipeline reliable. It also gives you flexible reasoning where scripts become brittle.
 
-## 🛠️ Try it: Label each step D or A
+## :hammer_and_wrench: Try it: Label each step D or A
 
 Read the workflow snippet. In the comment block, label each step as **D** (deterministic) or **A** (agentic).
 
-```yaml
+```markdown
 # Step A: Fetch open issues from the last 24 hours.
 gh issue list --state open --search "updated:>=2026-07-13" --json number,title,labels,updatedAt
 
@@ -87,7 +87,7 @@ gh issue list --state open --search "updated:>=2026-07-13" --json number,title,l
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain the difference between deterministic and agentic work in one sentence
 - [ ] I can identify one step in my workflow that should stay deterministic

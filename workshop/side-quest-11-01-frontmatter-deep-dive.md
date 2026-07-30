@@ -4,7 +4,7 @@
 
 > _Optional: configure each of the opening three frontmatter sections of an agentic workflow file — metadata, triggers, and permissions. Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 Open the draft workflow file you started in [Step 11](07-your-first-workflow.md).
 
@@ -14,13 +14,13 @@ An agentic workflow file opens with a YAML **[frontmatter](https://github.github
 
 ---
 
-## Section 1 — Opening fence and `description`
+## Opening fence and `description`
 
-**🔍 Predict:** What two things would you write at the top of a workflow file to identify it at a glance — before reading the explanation below?
+**:mag: Predict:** What two things would you write at the top of a workflow file to identify it at a glance — before reading the explanation below?
 
-```yaml
+```markdown
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: Post a daily repository status summary as a GitHub issue comment.
 ```
 
@@ -31,9 +31,9 @@ description: Post a daily repository status summary as a GitHub issue comment.
 | `emoji` | Decorative label in the `gh aw` dashboard. Pick any emoji that fits. |
 | `description` | Summary shown in the Actions UI and in `gh aw list`. |
 
-**✏️ Try it:** Update both fields in your draft, then run `gh aw compile` and confirm no errors appear.
+**:pencil2: Try it:** Update both fields in your draft, then run `gh aw compile` and confirm no errors appear.
 
-```yaml
+```markdown
 # Your turn
 ---
 emoji: ???
@@ -43,14 +43,16 @@ description: ???
 
 ---
 
-## Section 2 — `on:` triggers
+## Triggers (`on:`)
 
-**🔍 Predict:** How would you tell GitHub Actions to run the workflow every day _and_ allow manual triggering? Write the two keys before reading on.
+**:mag: Predict:** How would you tell GitHub Actions to run the workflow every day _and_ allow manual triggering? Write the two keys before reading on.
 
-```yaml
+```markdown
+---
 on:
   schedule: daily
   workflow_dispatch: {}
+---
 ```
 
 **What this section does:** Declares when the workflow runs.
@@ -64,40 +66,46 @@ on:
 > [!TIP]
 > Keep `workflow_dispatch: {}` even after going to production — it lets you re-run the report on demand.
 
-**✏️ Try it:** Add both trigger keys to your draft and run `gh aw compile`. Then extend the block to also fire on pushes to the main branch:
+**:pencil2: Try it:** Add both trigger keys to your draft and run `gh aw compile`. Then extend the block to also fire on pushes to the main branch:
 
-```yaml
+```markdown
+---
 on:
   schedule: daily
   push:
     branches: [main]
   workflow_dispatch: {}
+---
 ```
 
-```yaml
+```markdown
+---
 # Your turn: configure schedule, push to main, and manual triggers
 on:
   ???: ???          # daily run
   push:
     branches: [???] # target branch
   ???: {}           # manual trigger
+---
 ```
 
-**✅ Check:** Run `gh aw compile` — the compiled output should list all three triggers.
+**:white_check_mark: Check:** Run `gh aw compile` — the compiled output should list all three triggers.
 
 ---
 
-## Section 3 — `permissions:`
+## Permissions
 
-**🔍 Predict:** The agent needs to read issues and post a comment. Which permissions would you list? Write them down before reading the explanation.
+**:mag: Predict:** The agent needs to read issues and post a comment. Which permissions would you list? Write them down before reading the explanation.
 
-```yaml
+```markdown
+---
 permissions:
   contents: read
   copilot-requests: write
   issues: read
   pull-requests: read
   actions: read
+---
 ```
 
 **What this section does:** Declares the GitHub API scopes this workflow may use — fewer scopes is safer.
@@ -111,9 +119,10 @@ permissions:
 | `pull-requests: read` | Read access to pull request data. |
 | `actions: read` | Read access to workflow run results. |
 
-**✏️ Try it:** Add the `permissions:` block to your draft. Then fill in the correct permission value for each scope:
+**:pencil2: Try it:** Add the `permissions:` block to your draft. Then fill in the correct permission value for each scope:
 
-```yaml
+```markdown
+---
 # Your turn: fill in the correct value for each scope (read or write)
 permissions:
   contents: ???
@@ -121,9 +130,10 @@ permissions:
   issues: ???
   pull-requests: ???
   actions: ???
+---
 ```
 
-**✅ Check:** Run `gh aw compile` — the compile should complete with no permission errors.
+**:white_check_mark: Check:** Run `gh aw compile` — the compile should complete with no permission errors.
 
 ---
 
@@ -131,19 +141,23 @@ permissions:
 
 Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
 
-```yaml
+```markdown
+---
 # Write the on: block below from memory
 on:
+---
 ```
 
 <details><summary>Solution</summary>
 
-```yaml
+```markdown
+---
 on:
   schedule: daily
   push:
     branches: [main]
   workflow_dispatch: {}
+---
 ```
 
 Run `gh aw compile` and verify all three triggers appear.
@@ -151,7 +165,7 @@ Run `gh aw compile` and verify all three triggers appear.
 
 Now combine all three sections into one complete frontmatter block and compile it:
 
-```yaml
+```markdown
 # Your turn: combine all three sections
 ---
 emoji: ???
@@ -172,9 +186,9 @@ permissions:
 
 <details><summary>Solution</summary>
 
-```yaml
+```markdown
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: Post a daily repository status summary as a GitHub issue comment.
 on:
   schedule: daily
@@ -194,7 +208,7 @@ permissions:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You updated `emoji` and `description` in your draft and `gh aw compile` produced no errors.
 - [ ] You added `schedule: daily` and `workflow_dispatch: {}` triggers; both appear in the compiled output.
@@ -214,4 +228,3 @@ permissions:
 
 **Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-

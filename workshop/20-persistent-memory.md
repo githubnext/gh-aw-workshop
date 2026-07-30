@@ -21,13 +21,13 @@
 
 > _A workflow that forgets everything after each run will repeat itself. Give it memory and it can act only on what's new._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add [persistent memory](https://github.github.com/gh-aw/patterns/memory-ops/) to your agentic workflow so it can carry state between runs. By the end of this step, your workflow will remember what it has already reported on and skip duplicates — so your team never gets the same alert twice.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 11a](07-your-first-workflow.md) or equivalent).
+- You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You are comfortable editing YAML frontmatter from [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You understand how `safe-outputs` controls write access (see [Side Quest: Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) if you need a refresher).
 
@@ -39,7 +39,7 @@ Every workflow run you have built so far starts with a blank slate. That is fine
 - **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
 - **Scan incrementally** — skip pull requests you have already reviewed.
 
-You will use `cache-memory` in this step; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison.
+This step uses `cache-memory`; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison.
 
 ## Steps
 
@@ -49,9 +49,26 @@ For this deduplication use case, `cache-memory` is the right choice.
 
 ### Add `cache-memory` to your frontmatter
 
-Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter:
+In your Codespace terminal, run `gh copilot` and send this prompt:
 
-```yaml
+```prompt
+/agentic-workflows update .github/workflows/daily-status.md to add `cache-memory`
+under the `tools:` key in the frontmatter, with key `daily-status-seen-issues` and
+ttl `7d`, and update the task brief to read and write that memory slot for deduplication.
+```
+
+The skill adds the frontmatter block and updates the brief. Review the diff before committing.
+
+<details>
+<summary>:pencil2: Manual editing path</summary>
+
+Open your workflow file at `.github/workflows/daily-status.md`. Add `cache-memory` inside the `tools:` block in the frontmatter with the content shown below, then run `gh aw compile`.
+
+</details>
+
+Here is the frontmatter structure the skill will use:
+
+```markdown .github/workflows/daily-status.md
 ---
 name: Daily Status Report
 on:
@@ -80,7 +97,7 @@ What each field does:
 
 Below the frontmatter, tell the agent how to use its memory. The agent reads and writes the memory slot by name:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 You monitor this repository for newly opened issues and post a daily digest.
 
 Use your `daily-status-seen-issues` memory to track which issue numbers you
@@ -97,25 +114,16 @@ have already reported on. On each run:
 > [!TIP]
 > Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
 
-### Compile and validate
+### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), validate, and push
 
-After editing the frontmatter, compile the workflow to confirm the memory block is valid:
+The `/agentic-workflows` skill recompiles the lock file automatically. If you edited manually, run `gh aw compile` first to confirm the memory block is valid.
 
-```bash
-gh aw compile --validate
-```
-
-Fix any errors before pushing. Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
-
-> [!TIP]
-> Use `--watch` to recompile automatically as you edit: `gh aw compile --watch`
-
-### Push your change and initialize the cache
+Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
 
 Push your workflow update:
 
 ```bash
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add cache-memory deduplication to daily-status"
 git push
 ```
@@ -136,13 +144,13 @@ git push
 3. Confirm the run reports only the new issue.
 
 > [!TIP]
-> Open the run log for the second run and look for a line where the agent reads its memory. You will see the stored issue numbers that it filters against — that's your workflow remembering across runs.
+> Open the run log for the second run and look for a line where the agent reads its memory. The stored issue numbers it filters against appear there — that's your workflow remembering across runs.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow frontmatter has `cache-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot
-- [ ] `gh aw compile --validate` passes with no errors
+- [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] The first manual run log includes `cache-memory: loaded 0 items`
 - [ ] The second run log includes `cache-memory: loaded N items`, and `N` matches the number of items from the first run
 - [ ] After opening a new issue and running again, only the new issue is reported
@@ -150,5 +158,4 @@ git push
 <!-- journey: all -->
 **Next:** [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md)
 <!-- /journey -->
-
 

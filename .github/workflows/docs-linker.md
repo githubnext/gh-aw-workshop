@@ -289,37 +289,37 @@ of each matched concept. You never remove content — you only enrich it with in
 2. Load the cache-memory file `/tmp/gh-aw/cache-memory/docs-linker-state.json` if it exists.
    Initialize with defaults when absent:
 
-   ```json
-   {
-     "round_robin_index": 0,
-     "files_processed": []
-   }
-   ```
+```json
+{
+  "round_robin_index": 0,
+  "files_processed": []
+}
+```
 
+<!-- markdownlint-disable-next-line MD029 -->
 3. Read the pre-validated doc index from `/tmp/gh-aw/data/validated-doc-index.json`.
-   This index was built from the docs source files. Every page-level URL was
-   confirmed reachable by a deterministic HTTP check in the bash prevalidation step.
+   This index was built from the docs source files; each page-level URL was
+   confirmed reachable (HTTP 2xx) by the prevalidation step.
    It maps each doc page URL to its title and a list of extracted section anchors:
 
-   ```json
-   {
-     "indexed_at": 1234567890,
-     "validated_at": 1234567890,
-     "pages": {
-       "https://github.github.com/gh-aw/reference/safe-outputs/": {
-         "title": "Safe Outputs reference",
-         "anchors": [
-           { "id": "create-pull-request", "text": "Create Pull Request",
-             "url": "https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request" },
-           ...
-         ]
-       },
-       ...
-     }
-   }
-   ```
+```json
+{
+  "indexed_at": 1234567890,
+  "validated_at": 1234567890,
+  "pages": {
+    "https://github.github.com/gh-aw/reference/safe-outputs/": {
+      "title": "Safe Outputs reference",
+      "anchors": [
+        { "id": "create-pull-request", "text": "Create Pull Request",
+          "url": "https://github.github.com/gh-aw/reference/safe-outputs/#create-pull-request" },
+        ...
+      ]
+    },
+    ...
+  }
+}
+```
 
-   Every page-level URL present in this index is confirmed reachable (HTTP 2xx).
    Use the anchor URLs to produce precise `URL#anchor` links when a concept
    matches a specific section heading.
 
@@ -395,7 +395,6 @@ anchor text or page title actually covers the concept by checking the doc index:
   if it does not.
 - If the matched entry is a **page-level URL** (no anchor), the page title must
   be topically related to the concept. Discard obviously mismatched entries.
-- Discard any `doc_url` that does not appear in the validated index.
 
 ---
 
@@ -418,7 +417,6 @@ Rules:
 - Do not link occurrences wrapped in inline code (single backticks, e.g. `` `safe-outputs` ``).
 - Do not link occurrences inside YAML frontmatter (`---` … `---`).
 - Preserve the exact surrounding text; change only the target word/phrase.
-- If a term already has an inline link in the file (any URL), skip it.
 
 ---
 
@@ -426,10 +424,7 @@ Rules:
 
 ### Nothing to change
 
-Call `noop` with a concise explanation when **all** of the following are true:
-- No new concept matches were found for all selected files (or all matching terms are already hyperlinked)
-
-If there are inline links to add, proceed with changes.
+Call `noop` with a concise explanation when no new concept matches were found for all selected files (or all matching terms are already hyperlinked).
 
 ### Changes to make
 

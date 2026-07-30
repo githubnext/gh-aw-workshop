@@ -4,9 +4,9 @@
 
 > _Optional: work through this reference if you want to understand both `cache-memory` and `repo-memory` in depth before or after completing [Step 20](20-persistent-memory.md), then return to the main path._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 11a](07-your-first-workflow.md) or equivalent).
+- You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You have completed or are about to start [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 - You understand YAML frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 
@@ -26,8 +26,8 @@ Both primitives solve this without you managing a database:
 
 | Tool | Where state is stored | Lifetime | Best for |
 |------|----------------------|----------|----------|
-| `cache-memory` | GitHub Actions cache | Until cache eviction (typically 7 days of inactivity) | Short-lived deduplication; data that is fine to lose |
-| `repo-memory` | A file committed to your repository | As long as the file exists | Durable baselines; data that must survive cache eviction |
+| [`cache-memory`](https://github.github.com/gh-aw/reference/cache-memory/) | [GitHub Actions cache](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) | Until cache eviction (typically 7 days of inactivity) | Short-lived deduplication; data that is fine to lose |
+| [`repo-memory`](https://github.github.com/gh-aw/reference/repo-memory/) | A file committed to your repository | As long as the file exists | Durable baselines; data that must survive cache eviction |
 
 ---
 
@@ -35,7 +35,7 @@ Both primitives solve this without you managing a database:
 
 Ask yourself: _what happens if the memory is lost?_
 
-> 🤔 **Predict:** For each scenario below, decide which primitive you'd use before reading the "Recommended" column. Cover the right column, make your choices, then reveal it to check.
+> :thinking: **Predict:** For each scenario below, decide which primitive you'd use before reading the "Recommended" column. Cover the right column, make your choices, then reveal it to check.
 
 | Scenario | Recommended primitive |
 |----------|-----------------------|
@@ -56,7 +56,7 @@ For most deduplication use cases, `cache-memory` is the right starting point. Sw
 
 ### `cache-memory` frontmatter
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:
@@ -83,22 +83,7 @@ tools:
 
 ### `cache-memory` task brief example
 
-```markdown
-You monitor this repository for newly opened issues and post a daily digest.
-
-Use your `daily-status-seen-issues` memory to track which issue numbers you
-have already reported on. On each run:
-
-1. Fetch all currently open issues.
-2. Filter out any issue numbers that appear in your memory.
-3. If there are new issues, post a comment on the tracking issue listing only
-   the new ones.
-4. Add the new issue numbers to your memory so you skip them next time.
-5. If there are no new issues, post nothing.
-```
-
-> [!TIP]
-> Be explicit in the brief about _reading_ and _writing_ the memory. The agent will not automatically persist anything unless you ask it to in the task brief.
+See the task brief example in [Make Your Workflow Remember Across Runs](20-persistent-memory.md) for a complete illustration of this pattern.
 
 ---
 
@@ -108,7 +93,7 @@ have already reported on. On each run:
 
 ### `repo-memory` frontmatter
 
-```yaml
+```markdown
 ---
 name: Daily Status Report
 on:
@@ -152,7 +137,7 @@ previous run. On each run:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain the difference between `cache-memory` and `repo-memory`
 - [ ] You know when to choose each primitive based on your use case

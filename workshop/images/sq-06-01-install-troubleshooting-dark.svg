@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Install troubleshooting decision flow: gh extension install fails, then branch by error type — HTTP 401 unauthenticated, HTTP 403 org Codespace token, proxy or network error, or GHES endpoint — each leading to its specific fix, all converging on a successful gh aw --version check.">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8b949e"/>
+    </marker>
+    <marker id="arrow-ok" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3fb950"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="600" y="38" font-family="'Segoe UI',system-ui,sans-serif" font-size="20" font-weight="700" fill="#f0f6fc" text-anchor="middle">gh-aw Install Troubleshooting Flow</text>
+  <text x="600" y="58" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#8b949e" text-anchor="middle">Identify the error type, apply the matching fix, then verify with gh aw --version</text>
+
+  <!-- Start: install fails -->
+  <rect x="450" y="76" width="300" height="48" rx="24" fill="#8e1519" stroke="#f85149" stroke-width="1.5"/>
+  <text x="600" y="96" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="700" fill="#f0f6fc" text-anchor="middle">gh extension install github/gh-aw</text>
+  <text x="600" y="114" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" fill="#ffa198" text-anchor="middle">❌ Install fails with an error</text>
+
+  <!-- Arrow down to diamond -->
+  <line x1="600" y1="124" x2="600" y2="154" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Decision diamond -->
+  <polygon points="600,154 700,194 600,234 500,194" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="600" y="189" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="middle">What error</text>
+  <text x="600" y="205" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#f0f6fc" text-anchor="middle">do you see?</text>
+
+  <!-- Branch lines from diamond -->
+  <!-- Left branch: HTTP 401 -->
+  <line x1="500" y1="194" x2="150" y2="194" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="150" y1="194" x2="150" y2="270" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="330" y="186" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">HTTP 401</text>
+
+  <!-- Left-center branch: HTTP 403 -->
+  <line x1="560" y1="234" x2="400" y2="270" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="460" y="263" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">HTTP 403</text>
+
+  <!-- Right-center branch: Proxy/Network -->
+  <line x1="640" y1="234" x2="800" y2="270" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="735" y="263" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">Proxy/Network</text>
+
+  <!-- Right branch: GHES -->
+  <line x1="700" y1="194" x2="1050" y2="194" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="1050" y1="194" x2="1050" y2="270" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="875" y="186" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">GHES endpoint</text>
+
+  <!-- Fix box: HTTP 401 -->
+  <rect x="50" y="270" width="200" height="100" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="50" y="270" width="200" height="28" rx="8" fill="#0c2d6b" stroke="#388bfd" stroke-width="1.5"/>
+  <rect x="50" y="284" width="200" height="14" fill="#0c2d6b"/>
+  <text x="150" y="289" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#79c0ff" text-anchor="middle">Not Authenticated</text>
+  <text x="150" y="318" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">gh auth login</text>
+  <text x="150" y="334" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">gh auth status</text>
+  <text x="150" y="350" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">then retry install</text>
+
+  <!-- Fix box: HTTP 403 -->
+  <rect x="300" y="270" width="200" height="100" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="300" y="270" width="200" height="28" rx="8" fill="#3a2d0c" stroke="#d29922" stroke-width="1.5"/>
+  <rect x="300" y="284" width="200" height="14" fill="#3a2d0c"/>
+  <text x="400" y="289" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#e3b341" text-anchor="middle">Org Codespace Token</text>
+  <text x="400" y="318" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">Use curl install script</text>
+  <text x="400" y="334" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">instead of gh extension</text>
+  <text x="400" y="350" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">install</text>
+
+  <!-- Fix box: Proxy -->
+  <rect x="700" y="270" width="200" height="100" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="700" y="270" width="200" height="28" rx="8" fill="#0d2848" stroke="#2f81f7" stroke-width="1.5"/>
+  <rect x="700" y="284" width="200" height="14" fill="#0d2848"/>
+  <text x="800" y="289" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#2f81f7" text-anchor="middle">Corporate Proxy</text>
+  <text x="800" y="318" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">Set HTTPS_PROXY</text>
+  <text x="800" y="334" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">HTTP_PROXY env vars</text>
+  <text x="800" y="350" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">then retry install</text>
+
+  <!-- Fix box: GHES -->
+  <rect x="950" y="270" width="200" height="100" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="950" y="270" width="200" height="28" rx="8" fill="#2a1b4a" stroke="#a371f7" stroke-width="1.5"/>
+  <rect x="950" y="284" width="200" height="14" fill="#2a1b4a"/>
+  <text x="1050" y="289" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="700" fill="#a371f7" text-anchor="middle">GitHub Enterprise</text>
+  <text x="1050" y="318" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">gh auth login</text>
+  <text x="1050" y="334" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">--hostname ghes.example.com</text>
+  <text x="1050" y="350" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#f0f6fc" text-anchor="middle">--scopes repo,workflow</text>
+
+  <!-- Arrows from fix boxes down to verify -->
+  <line x1="150" y1="370" x2="150" y2="430" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="150" y1="430" x2="580" y2="430" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="400" y1="370" x2="400" y2="410" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="400" y1="410" x2="580" y2="410" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="800" y1="370" x2="800" y2="430" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="800" y1="430" x2="620" y2="430" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="1050" y1="370" x2="1050" y2="450" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="1050" y1="450" x2="620" y2="450" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="580" y1="410" x2="600" y2="460" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="620" y1="430" x2="600" y2="460" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="620" y1="450" x2="620" y2="430" stroke="#8b949e" stroke-width="1.5"/>
+
+  <!-- Verify box -->
+  <rect x="450" y="460" width="300" height="52" rx="8" fill="#122d22" stroke="#3fb950" stroke-width="2"/>
+  <text x="600" y="481" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="700" fill="#3fb950" text-anchor="middle">✅ gh aw --version prints a</text>
+  <text x="600" y="499" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" font-weight="700" fill="#3fb950" text-anchor="middle">version number → success!</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="538" font-family="'Segoe UI',system-ui,sans-serif" font-size="11" fill="#8b949e" text-anchor="middle">After each fix, re-run gh extension install github/gh-aw and verify with gh aw --version</text>
+</svg>

@@ -4,11 +4,11 @@
 
 _Your first run is more useful when you can explain what the agent did and why._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll read the live log from Step 8, find the workflow's output, and learn three quick checks for common run problems.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Completed [Run and Watch Your Workflow](08-run-your-workflow.md)
 - Your **Daily Report Status** workflow has at least one completed run
@@ -17,7 +17,11 @@ You'll read the live log from Step 8, find the workflow's output, and learn thre
 
 Open the completed **Daily Report Status** run from the **Actions** tab and click the job name. The log usually moves through a simple pattern: the agent thinks, calls a [tool](https://github.github.com/gh-aw/reference/tools/), receives a result, and finishes.
 
-![Agent execution loop: Planning leads to a Tool Call, which returns a Result; the agent loops back or ends with Done](images/08b-agent-loop.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08b-agent-loop-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08b-agent-loop-light.svg">
+  <img alt="Agent execution loop: Planning leads to a Tool Call, which returns a Result; the agent loops back or ends with Done" src="images/08b-agent-loop-light.svg">
+</picture>
 
 ```text
 🤔 Planning...  Searching for open issues with 👍 reactions
@@ -41,13 +45,17 @@ After the run finishes, scroll to the **Summary** section on the run page. This 
 
 Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) record.
 
-![Workflow run summary panel](images/08-run-summary.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08-run-summary-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08-run-summary-light.svg">
+  <img alt="Workflow run summary panel" src="images/08-run-summary-light.svg">
+</picture>
 
 ## Check common error patterns first
 
 If your run does not look right, start with these quick checks before changing the workflow:
 
-- **The workflow never appears in Actions** — confirm the workflow file is committed on `main`, then refresh. If you use the terminal path, run `gh aw compile` to catch compile errors.
+- **The workflow never appears in Actions** — confirm the workflow file is committed on `main`, then refresh. If you use the terminal path, run `gh aw compile` to catch [compile](https://github.github.com/gh-aw/reference/compilation-process/) errors.
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
 - **The run finishes but nothing changed in GitHub** — make sure your repository has an open issue and that the workflow had permission to write.
 
@@ -60,7 +68,7 @@ Knowing what a failed run looks like helps you spot permission issues at a glanc
 ❌ Failed
 ```
 
-For a deeper troubleshooting guide, see [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md).
+If these checks do not resolve the issue, the [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md) covers additional cases.
 
 ## Reflect
 
@@ -72,7 +80,7 @@ Before you mark the checkpoint, take two minutes to apply what you just read to 
 
 Put your answers in a scratch file, your editor, or wherever you keep notes. You will refer back to this comparison when you refine the workflow in the next step.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created
@@ -82,6 +90,6 @@ Put your answers in a scratch file, your editor, or wherever you keep notes. You
 - [ ] I can identify whether a run failed due to a permission error, a vague brief, or a missing output
 
 <!-- journey: all -->
-**Next:** [Refine Your Workflow with Agentic Editing](09-agentic-editing.md)
+**Next:** [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)
 <!-- /journey -->
 

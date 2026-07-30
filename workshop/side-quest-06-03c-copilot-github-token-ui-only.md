@@ -6,12 +6,12 @@
 
 This method stores a fine-grained Personal Access Token (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) engine picks it up automatically.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a GitHub account with an active Copilot subscription.
 - You have read [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and chosen Method 2.
 
-## ✏️ Sub-exercise A: Generate the token
+## :pencil2: Sub-exercise A: Generate the token
 
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Name the token (for example, gh-aw-copilot) and set an expiry (90 days is a common default). Set a reminder so you rotate the token before it expires.
@@ -32,7 +32,7 @@ Quick check:
 - [ ] I copied the token value before leaving the page
 - [ ] I noted the token expiry date
 
-## ✏️ Sub-exercise B: Store the secret
+## :pencil2: Sub-exercise B: Store the secret
 
 Open your repository in a new tab so you keep the token page open until the secret is saved.
 
@@ -59,7 +59,7 @@ Quick check:
 
 When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You generated a new fine-grained PAT and copied it before leaving the token page
 - [ ] The token has **Copilot requests: Read-only** under **Account permissions**

@@ -1,16 +1,16 @@
-<!-- page-journey: terminal -->
+<!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
 # Side Quest: Using `gh aw compile` to Catch Errors Early
 
-> _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](07a-your-first-workflow-terminal.md), or [Step 13](12-test-and-iterate.md)._
+> _Optional: take this detour if you want a deeper walkthrough of `gh aw compile`, then return to [Step 7](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
-You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for deeper validation, when to keep `--watch` running, and how to fix the most common compile errors.
+You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for targeted troubleshooting, when to keep `--watch` running, and how to fix the most common compile errors.
 
 ## What `gh aw compile` does
 
-`gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled lock file GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
+`gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
 
 Run it any time you edit a workflow file:
 
@@ -33,15 +33,15 @@ gh aw compile --no-emit
 
 This is useful after each small edit because it confirms the file structure without writing or overwriting the generated lock file every time.
 
-## Use `--validate` for deeper validation
+## Troubleshoot with `--validate`
 
-When you want stricter checks on top of normal compilation, add `--validate`:
+Use plain `gh aw compile` for normal workflow edits. If you need targeted troubleshooting or an explicit schema/deprecation audit, add `--validate`:
 
 ```bash
 gh aw compile --validate
 ```
 
-This enables GitHub Actions workflow schema validation, container image validation, and action SHA validation. It is more thorough than a plain compile but also slower, so it is best reserved for a pre-commit or CI check rather than every small edit.
+This enables GitHub Actions workflow schema validation, container image validation, and action SHA validation. It is more thorough than a plain compile but also slower, so reserve it for those focused checks instead of routine compile loops.
 
 ## Use `--watch` while you iterate
 
@@ -62,32 +62,40 @@ When `gh aw compile` fails, start with the first line number it reports. YAML er
 
 The examples below show `gh-aw` source files before compilation, so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the schedule value itself.
 
-```yaml
+```markdown
+---
 # ❌ Broken — "workflow_dispatch" is not nested under "on:"
 on:
   schedule: daily
 workflow_dispatch: {}
+---
 ```
 
-```yaml
+```markdown
+---
 # ✅ Fixed
 on:
   schedule: daily
   workflow_dispatch: {}
+---
 ```
 
-```yaml
+```markdown
+---
 # ❌ Broken — "schedule" is not indented under "on:"
 on:
 schedule: daily on weekdays
   workflow_dispatch: {}
+---
 ```
 
-```yaml
+```markdown
+---
 # ✅ Fixed
 on:
   schedule: daily on weekdays
   workflow_dispatch: {}
+---
 ```
 
 ## Quick fixes for common compile errors
@@ -100,7 +108,7 @@ on:
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
 <!-- journey: terminal -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I know what `gh aw compile` checks before a workflow runs
 - [ ] I can use `--no-emit` for quick structure checks without generating a lock file
@@ -110,7 +118,6 @@ on:
 
 ---
 
-Return to the Terminal path for [Step 7](07a-your-first-workflow-terminal.md), [Step 11a](07a-your-first-workflow-terminal.md), or [Step 13](12-test-and-iterate.md).
+**Return to:** [Step 7 — Your First Workflow](07-your-first-workflow.md) | [Step 9 — Agentic Editing](09-agentic-editing.md)
 
 <!-- /journey -->
-

@@ -4,11 +4,11 @@
 
 > _MCP servers turn your agent from a text generator into an active participant that can read, fetch, and act._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add an [MCP (Model Context Protocol)](https://github.github.com/gh-aw/guides/mcps/) server to your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/), giving the AI agent access to a new set of [tools](https://github.github.com/gh-aw/reference/tools/) it can call at runtime. By the end, your daily-status workflow will be able to do more than just generate text — it can interact with live data sources using structured tool calls.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have installed the `gh-aw` extension in [Install the `gh-aw` CLI Extension](06-install-gh-aw.md).
 - You have a working daily-status workflow from [Build: Daily Repo Status Workflow](07-your-first-workflow.md).
@@ -37,9 +37,26 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 
 ### Add an MCP server to your workflow
 
-Open your daily-status workflow file (`.github/workflows/daily-status.md`) and find the YAML frontmatter at the top. Add a `tools` block:
+In the terminal that is already open in your Codespace, run:
 
-```yaml
+```bash
+gh copilot
+```
+
+In Copilot CLI, send this prompt:
+
+```prompt
+/agentic-workflows update .github/workflows/daily-status.md to add a `tools:` block
+with `github: mode: gh-proxy, toolsets: [default]` to the frontmatter, and update
+the task brief to tell the agent to use GitHub tools to fetch the last 5 commits and
+all open issues labelled `bug`, then write a daily summary and post it as a new issue.
+```
+
+The skill adds the `tools:` block and updates the brief. Review the diff before committing.
+
+Here is the `tools:` block the skill will add:
+
+```markdown .github/workflows/daily-status.md
 ---
 name: Daily Status Report
 on:
@@ -54,6 +71,13 @@ tools:
 ---
 ```
 
+<details>
+<summary>:desktop_computer: Terminal path</summary>
+
+Open your daily-status workflow file (`.github/workflows/daily-status.md`) and find the YAML frontmatter at the top. Add a `tools` block with the content shown above, then run `gh aw compile`.
+
+</details>
+
 > [!NOTE]
 > The `github` tool entry tells gh-aw to start the GitHub MCP server in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
 
@@ -65,7 +89,7 @@ tools:
 >
 > `mode: gh-proxy` routes all GitHub tool calls through the `GITHUB_TOKEN` that Actions provides automatically — no extra credentials or setup needed on github.com or GHEC.
 >
-> On GHES, the GitHub MCP server is supported from GHES 3.16+. If your instance is older, the `tools:` block will compile without errors but the agent's tool calls will fail at runtime. Verify your GHES version and confirm with your admin that the Copilot MCP proxy feature is enabled for your organization.
+> On GHES, the GitHub MCP server is supported from GHES 3.16+. If your instance is older, the `tools:` block will [compile](https://github.github.com/gh-aw/reference/compilation-process/) without errors but the agent's tool calls will fail at runtime. Verify your GHES version and confirm with your admin that the Copilot MCP proxy feature is enabled for your organization.
 >
 > If MCP is unavailable in your environment, the [Connect a Live Data Source](16-connect-data-source.md) step covers an alternative approach using deterministic shell steps that only require `GITHUB_TOKEN` and the `gh` CLI — no MCP server needed.
 >
@@ -75,7 +99,7 @@ tools:
 
 Below the frontmatter, update the task brief to tell the agent it can use the MCP tools:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 You have access to GitHub tools via MCP. Use them to:
 1. Fetch the last 5 commits on the default branch.
 2. List all open issues labelled `bug`.
@@ -85,38 +109,28 @@ Post the summary as a new issue titled "Daily Status — {today's date}".
 
 The agent will read this brief, decide which MCP tool calls to make, and weave the results into its final output — all without you scripting each API call manually.
 
-### Validate and push
+### Push and trigger a run
 
-If you're working locally, compile before pushing:
+The `/agentic-workflows` skill recompiles the lock file automatically. Commit both files and push:
 
 ```bash
-gh aw compile
+git add .
+git commit -m "feat: add MCP tools to daily status workflow"
+git push
 ```
-
-<details>
-<summary>🖥️ GitHub UI path (no local compile needed)</summary>
-
-1. Navigate to your workflow file on GitHub.
-2. Click the **pencil icon (✏️)** to edit it.
-3. Paste the updated frontmatter.
-4. Click **Commit changes**.
-5. Trigger the workflow manually under **Actions → Daily Status Report → Run workflow** and check the run log for MCP tool calls.
-
-</details>
 
 ### Watch the agent reason
 
 Open the run log in **Actions**. You'll see the agent interleaving tool calls with its reasoning — it fetches data, processes it, then produces the summary. That's the agentic loop in action.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your frontmatter has a `tools:` block with `github: mode: gh-proxy`
 - [ ] Your task brief mentions what the agent should do with the tools
+- [ ] The source and compiled workflow files are committed and pushed
 - [ ] A manual run completes and the log shows at least one MCP tool call
 - [ ] The workflow output reflects live data retrieved via MCP, not just static text
 
 <!-- journey: all -->
 **Next:** [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md)
 <!-- /journey -->
-
-

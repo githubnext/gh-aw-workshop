@@ -4,9 +4,9 @@
 
 > _Optional: use this quick glossary and visual reference to understand the environments and AI tools used throughout the workshop._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-You have a terminal open inside your practice repository (see [Step 2a](02a-setup-codespace.md) or [Step 2b](02b-setup-local.md)).
+You have a terminal open inside your practice repository (see [Set Up a Codespace](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md)).
 
 ## Environment and tool glossary
 
@@ -24,14 +24,22 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex](https://openai.com/codex/) |
 
-### ✅ Verify your tools are ready
+### :white_check_mark: Verify your tools are ready
 
 Run these commands in your terminal to confirm the required tools are installed and accessible:
 
 ```bash
 gh --version
-gh aw --version
 git --version
+```
+
+> [!NOTE]
+> `gh aw --version` only works after you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md). Skip that check until you reach Step 6.
+
+If you've already completed Step 6, you can also run:
+
+```bash
+gh aw --version
 ```
 
 ## Conceptual screenshots
@@ -44,19 +52,31 @@ These visuals are simplified mental models, not literal product screenshots. Use
 
 #### GitHub Codespaces
 
-![Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal](images/side-quest-01-02-github-codespaces.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-github-codespaces-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-github-codespaces-light.svg">
+  <img alt="Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal" src="images/side-quest-01-02-github-codespaces-light.svg">
+</picture>
 
 You use Codespaces when you want a ready-to-go development environment in your browser.
 
 #### Visual Studio Code (VS Code)
 
-![Conceptual screenshot of Visual Studio Code showing the Explorer, open editor tabs, and integrated terminal](images/side-quest-01-02-vscode.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-vscode-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-vscode-light.svg">
+  <img alt="Conceptual screenshot of Visual Studio Code showing the Explorer, open editor tabs, and integrated terminal" src="images/side-quest-01-02-vscode-light.svg">
+</picture>
 
 You use VS Code to browse files, edit workflows, and keep a terminal open beside your work.
 
 #### Terminal (command line)
 
-![Conceptual screenshot of a terminal showing a prompt, commands, and command output](images/side-quest-01-02-terminal.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-terminal-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-terminal-light.svg">
+  <img alt="Conceptual screenshot of a terminal showing a prompt, commands, and command output" src="images/side-quest-01-02-terminal-light.svg">
+</picture>
 
 You use the terminal whenever the workshop asks you to run `gh`, `gh aw`, or `git` commands.
 
@@ -64,45 +84,69 @@ You use the terminal whenever the workshop asks you to run `gh`, `gh aw`, or `gi
 
 #### GitHub CLI (`gh`)
 
-![Conceptual screenshot of GitHub CLI showing authentication, repository, and workflow commands in a terminal](images/side-quest-01-02-gh-cli.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-cli-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-cli-light.svg">
+  <img alt="Conceptual screenshot of GitHub CLI showing authentication, repository, and workflow commands in a terminal" src="images/side-quest-01-02-gh-cli-light.svg">
+</picture>
 
 You use `gh` for GitHub-specific terminal tasks like authentication checks, repository shortcuts, and workflow commands.
 
 #### `gh-aw` CLI extension
 
-![Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow](images/side-quest-01-02-gh-aw.svg)
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-aw-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-aw-light.svg">
+   <img alt="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow" src="images/side-quest-01-02-gh-aw-light.svg">
+</picture>
 
 You use `gh aw` to compile agentic workflow files.
 
 #### GitHub Copilot CLI
 
-![Conceptual screenshot of GitHub Copilot CLI showing a terminal prompt alongside AI-assisted command help](images/side-quest-01-02-copilot-cli.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-cli-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-cli-light.svg">
+  <img alt="Conceptual screenshot of GitHub Copilot CLI showing a terminal prompt alongside AI-assisted command help" src="images/side-quest-01-02-copilot-cli-light.svg">
+</picture>
 
 You use GitHub Copilot CLI when you want AI help inside the terminal.
 
 #### GitHub Copilot app
 
-![Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view](images/side-quest-01-02-copilot-app.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-app-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-app-light.svg">
+  <img alt="Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view" src="images/side-quest-01-02-copilot-app-light.svg">
+</picture>
 
 You use the GitHub Copilot app when you want to start and steer repository sessions, manage coding tasks, and review pull requests from a Copilot workspace.
 
 #### Claude
 
-![Conceptual screenshot of a Claude-style workspace showing a prompt, reasoning path, and structured response](images/side-quest-01-02-claude.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-claude-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-claude-light.svg">
+  <img alt="Conceptual screenshot of a Claude-style workspace showing a prompt, reasoning path, and structured response" src="images/side-quest-01-02-claude-light.svg">
+</picture>
 
 You may see Claude as one of the AI model options that can read a brief, reason through a task, and produce an output.
 
 #### OpenAI Codex
 
-![Conceptual screenshot of an OpenAI Codex-style coding workspace showing repository files and a suggested patch](images/side-quest-01-02-openai-codex.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-openai-codex-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-openai-codex-light.svg">
+  <img alt="Conceptual screenshot of an OpenAI Codex-style coding workspace showing repository files and a suggested patch" src="images/side-quest-01-02-openai-codex-light.svg">
+</picture>
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You ran `gh --version` in your terminal and it returned a version number
-- [ ] You ran `gh aw --version` in your terminal and it returned a version number
+- [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md), you ran `gh aw --version` in your terminal and it returned a version number
 - [ ] You ran `git --version` in your terminal and it returned a version number
 - [ ] You can identify each environment and tool name used in the tutorial
 - [ ] You can match each item to its conceptual screenshot

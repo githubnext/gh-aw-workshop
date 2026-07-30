@@ -4,11 +4,11 @@
 
 > _Strong workshop content comes from real product signals, not guesses._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
-In this step, you will turn `github/gh-aw` research into a concrete training plan update. You will review current gh-aw documentation signals, identify one meaningful learner gap, and draft a new workshop node proposal that is ready to implement. By the end, you will have a repeatable method for deciding what to teach next with confidence.
+In this step, turn `github/gh-aw` research into a concrete training plan update: review current gh-aw documentation signals, identify one meaningful learner gap, and draft a workshop node proposal ready to implement. By the end, you have a repeatable method for deciding what to teach next with confidence.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You completed [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md).
 - You can open `workshop/README.md` and identify where new nodes belong in the curriculum table.
@@ -49,7 +49,7 @@ Write a one-paragraph node scope and list the exact [artifacts](https://github.g
 
 Add XML comments to preserve reasoning without interrupting learner flow:
 
-```markdown
+```markdown workshop/28-safe-outputs-selection.md
 <!--
 <research-metadata>
   <focus>safe outputs selection</focus>
@@ -66,14 +66,14 @@ Keep the comment concise and traceable to real sources you used.
 
 ### Validate before opening a pull request
 
-Run markdown lint and compile checks so your proposal is production-ready:
+Run markdown lint and [compile](https://github.github.com/gh-aw/reference/compilation-process/) checks so your proposal is production-ready:
 
 ```bash
 npx --yes markdownlint-cli2 "workshop/**/*.md"
-gh aw compile --validate
+gh aw compile
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You reviewed current gh-aw direction signals from `LLMs.txt`
 - [ ] You identified one concrete learner gap for a new training node

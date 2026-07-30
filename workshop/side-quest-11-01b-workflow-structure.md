@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Workflow File Structure at a Glance
 
-> _Optional: read this before building Step 11 to understand what you are writing, then return to [Build the Daily Repo Status Workflow](07a-your-first-workflow-terminal.md)._
+> _Optional: read this before building Step 11 to understand what you are writing, then return to [Build the Daily Repo Status Workflow](07-your-first-workflow.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- Keep [Build the Daily Repo Status Workflow](07a-your-first-workflow-terminal.md) open so you can map each section here to the workflow you build next.
+- Keep [Build the Daily Repo Status Workflow](07-your-first-workflow.md) open so you can map each section here to the workflow you build next.
 
 ---
 
@@ -21,23 +21,23 @@ The file ends in `.md` instead of `.yml` because the frontmatter is only the ope
 
 ## Frontmatter sections at a glance
 
-The five frontmatter sections you'll build in Step 11a:
+The five frontmatter sections you'll build in Step 7:
 
 | Section | Key(s) | What it does |
 |---------|--------|--------------|
 | Metadata | `emoji`, `description` | Human-readable labels shown in the `gh aw` dashboard and Actions UI. |
-| Triggers | `on:` | Tells GitHub Actions when to run — `schedule: daily` plus a manual `workflow_dispatch` button. |
-| Permissions | `permissions:` | Declares the minimum GitHub API scopes the workflow may use. |
-| Tools | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
+| [Triggers](https://github.github.com/gh-aw/reference/triggers/) | `on:` | Tells GitHub Actions when to run — `schedule: daily` plus a manual `workflow_dispatch` button. |
+| [Permissions](https://github.github.com/gh-aw/reference/permissions/) | `permissions:` | Declares the minimum GitHub API scopes the workflow may use. |
+| [Tools](https://github.github.com/gh-aw/reference/tools/) | `tools:` | Enables the GitHub MCP tool via `gh-proxy`, scoped to the permissions above. |
 | Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
 
-## ✏️ Try It: Label the Structure
+## :pencil2: Try It: Label the Structure
 
 Before you look at the answer, copy this snippet into your editor and add your own labels above each part.
 
 ```md
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: Daily repository status report
 on:
   schedule: daily
@@ -69,7 +69,7 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You labeled the example snippet and matched all five frontmatter sections.
 - [ ] You can point to the `on:` block and explain that it controls when the workflow runs.
@@ -80,7 +80,7 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 ---
 
 <!-- journey: all -->
-Return to [Build the Daily Repo Status Workflow](07a-your-first-workflow-terminal.md).
+Return to [Build the Daily Repo Status Workflow](07-your-first-workflow.md).
 <!-- /journey -->
 
 

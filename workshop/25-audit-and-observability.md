@@ -4,18 +4,18 @@
 
 > _Knowing what your agent did — and proving it — is what turns a useful automation into a trustworthy one._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
-You will use `gh aw logs` and `gh aw audit` to review the built-in artifacts that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you will know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
+Use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://github.github.com/gh-aw/reference/artifacts/) that every agentic workflow run produces, understand token usage, and debug unexpected behavior. By the end you know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- Your workflow runs successfully (see [Test and Iterate on Your Workflow](12-test-and-iterate.md)).
+- Your workflow runs successfully (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - `gh aw` is installed and authenticated (see [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
 
 ## Steps
 
-### Review recent runs with gh aw logs
+### Review recent runs with [gh aw logs](https://github.github.com/gh-aw/reference/audit/#gh-aw-logs---format)
 
 `gh aw logs` downloads artifacts from your workflow's recent runs and prints a summary table showing duration, token usage, and cost in [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic).
 
@@ -43,7 +43,7 @@ gh aw logs <your-workflow-id> --artifacts all
 
 Downloaded files land in `.github/aw/logs/<run-id>/` by default.
 
-### Audit a specific run with gh aw audit
+### Audit a specific run with [gh aw audit](https://github.github.com/gh-aw/reference/audit/#gh-aw-audit)
 
 When you need a deeper look at one run — for debugging or compliance evidence — use `gh aw audit` with the run ID or URL from the Actions tab (both numeric IDs and full GitHub Actions URLs are accepted):
 
@@ -63,9 +63,9 @@ For a full breakdown of report contents and artifact files, see [Side Quest: Aud
 
 ### Debug with an agent
 
-Once you have an audit report, bring it to GitHub Copilot Chat with the **`/agentic-workflows` skill** and describe what puzzled you:
+Once you have an audit report, bring it to your AI agent with the **`/agentic-workflows` skill** and describe what puzzled you:
 
-```text
+```prompt
 /agentic-workflows Here is my audit report. The agent called github.list_issues
 three times and AIC was higher than expected. Help me understand why and
 suggest how to reduce it.
@@ -90,16 +90,15 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 > [!NOTE]
 > Retention defaults may differ on GitHub Enterprise Server. Check with your admin before relying on the default 90-day window.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You ran `gh aw logs <your-workflow-id>` and read the AIC summary for your workflow
 - [ ] You ran `gh aw audit <run-id>` and reviewed the generated report
-- [ ] You brought an audit report to Copilot Chat with the `/agentic-workflows` skill and got actionable feedback
+- [ ] You brought an audit report to your AI agent with the `/agentic-workflows` skill and got actionable feedback
 - [ ] You can browse artifacts in the GitHub Actions UI
 - [ ] You know your organisation's artifact retention policy (or know who to ask)
 
 <!-- journey: all -->
 **Next:** [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md)
 <!-- /journey -->
-
 

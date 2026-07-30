@@ -95,7 +95,7 @@ The workshop lives in the `workshop/` directory as flat markdown files. Each run
 Think of the workshop as a directed graph:
 
 - **Root node**: the entry point (e.g. welcome / orientation). Every learner starts here.
-- **Branch nodes**: steps that offer a "Choose Your Path" fork (e.g. Codespace vs. local terminal, beginner vs. advanced track).
+- **Branch nodes**: steps that offer an optional conceptual or advanced detour without replacing the Codespaces core route.
 - **Leaf nodes**: terminal steps with no successor yet — good candidates for the next addition.
 - **Convergence nodes**: steps where previously forked paths rejoin (e.g. after setup, all paths converge to "Create your first workflow").
 - **Edges**: expressed as "Next" or "Choose Your Path" links at the bottom of each file.
@@ -154,12 +154,12 @@ Read the content of existing workshop files to map the current graph: identify t
 
 Determine the next most valuable node to add by considering:
 - **Extend an open leaf**: pick the open leaf that is on the most-travelled or most important path.
-- **Add a new branch**: if a step would benefit from offering learners a choice (e.g. by environment, skill level, or goal), split it.
-- **Add a convergence**: if two or more previously diverged paths are ready to rejoin, write the convergence node.
-- **Introduce a new root branch**: if the current graph serves one learner persona well but ignores another (e.g. no path for advanced users), start a new branch from an existing node.
+- **Add an optional side quest**: if a step would benefit from extra environment, skill-level, or goal-specific guidance, keep that detour outside the core route.
+- **Add a convergence**: when an optional side quest is ready to rejoin, point it back to an environment-neutral core node.
+- **Serve another persona**: add an optional side quest from an existing node; never create an alternate environment or persona root alongside the Codespaces core route.
 - **Enterprise tie-break rule**: when two candidate nodes are of equal value by the criteria above, **prefer the one that better serves enterprise learners** (GHES, GHEC, self-hosted runners). Enterprise-relevant content — such as enterprise authentication, proxy configuration, self-hosted runner setup, or GHEC-specific workflow permissions — takes priority over non-enterprise content of comparable scope and impact. See `.github/workflows/guidelines.md` under "Enterprise user preference in design decisions" for the full policy.
 
-If `focus` is provided and non-empty (and not "status"), treat it as a hint that may suggest a specific branch, persona, or topic — but keep the graph coherent and connected.
+If `focus` is provided and non-empty (and not "status"), treat it as a hint that may suggest a specific side quest, persona, or topic — but keep the graph coherent and connected.
 
 If the graph already provides complete paths covering all essential topics (introduction, prerequisites, setup, first workflow, running and debugging, design, building, iteration, and scheduling) for all supported learner personas, call `noop` with "Workshop complete — the graph covers all key paths."
 
@@ -173,18 +173,18 @@ Create the file at `workshop/<filename>` using the `edit` tool. Follow **all** o
 
 ### Structure (every learning-step file must follow this template)
 
-- Dispatcher pages marked `<!-- learning:false -->` are pure routing pages. They must omit the `## ✅ Checkpoint` section from this template.
+- Dispatcher pages marked `<!-- learning:false -->` are pure routing pages. They must omit the `## :white_check_mark: Checkpoint` section from this template.
 
 ```markdown
 # <Title>
 
 > _One-sentence hook that answers "why does this step matter?"_
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 One short paragraph (2-3 sentences) previewing the concrete outcome.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 Bullet list of prereqs (link to the prerequisite node). Omit section if there are none.
 
@@ -192,14 +192,14 @@ Bullet list of prereqs (link to the prerequisite node). Omit section if there ar
 
 Numbered action sequence. Each action gets its own number. Commands go in fenced code blocks.
 
-## 🔀 Choose Your Path  ← include whenever this node branches into multiple routes
+## :twisted_rightwards_arrows: Choose Your Path  ← include whenever this node branches into multiple routes
 
 | If you… | Go to… |
 |---------|--------|
 | <condition A> | ➡️ [Title A](filename-a.md) |
 | <condition B> | ➡️ [Title B](filename-b.md) |
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Checklist of verifiable outcomes the learner should tick off
 - [ ] ...
@@ -221,39 +221,16 @@ Numbered action sequence. Each action gets its own number. Commands go in fenced
 - Each file: **350–600 words** (tight, digestible, one concept).
 - One concept per file — do not spill into the next node.
 
-### Tooling progression and CLI/UI paths
+### Codespaces-first environment
 
-Use a **UI-first progression** that delays and minimizes `gh` usage:
+Use Codespaces as the sole recommended environment in the core workshop:
 
-- Prefer a **GitHub UI path** as the default for repository/file/edit/commit actions.
-- Add terminal commands only when they provide clear value or are required.
-- Do not introduce `gh` as a workshop-wide prerequisite until the dedicated install/use point (late in the tutorial path).
-- Keep required `gh` usage narrow and specific; avoid repeated `gh` command blocks when one concise instruction is enough.
-
-Wrap the UI alternative in a `<details>` block so it is accessible without cluttering the primary flow:
-
-```markdown
-<details>
-<summary>🖥️ GitHub UI alternative</summary>
-
-1. In your repository on GitHub, click **Add file** → **Create new file** (for new files)
-   or navigate to the file and click the **pencil icon (✏️)** (for edits).
-2. Make your changes in the editor.
-3. Click **Commit new file** or **Commit changes**.
-
-</details>
-```
-
-When the step involves `gh aw compile` (terminal-only), clearly explain why and note that UI-first learners can skip local compile and rely on GitHub Actions feedback.
-
-Specific patterns to follow:
-
-| Operation | CLI path | UI path |
-|-----------|----------|---------|
-| Create repository | _(optional)_ `gh repo create ...` | Preferred: [github.com/new](https://github.com/new) — fill in the form |
-| Create file | _(optional)_ editor + `git add/commit/push` | Preferred: **Add file → Create new file** → **Commit new file** |
-| Edit file | _(optional)_ editor + `git add/commit/push` | Preferred: pencil icon (✏️) → **Commit changes** |
-| Compile | `gh aw compile` | _(terminal only)_ — explain limitation and provide UI-first continuation guidance; use `--validate` only for targeted troubleshooting/audits |
+- Keep one continuous Codespaces route instead of adding environment choice hubs.
+- Put local-terminal and browser-only alternatives in optional side quests with clear return points.
+- Use GitHub.com for individual repository, settings, and Actions operations without presenting it as a separate student route.
+- Do not introduce `gh` until the dedicated install/use point.
+- Keep required `gh` usage narrow and run it in the Codespace terminal.
+- Require `gh aw compile` after meaningful workflow changes; recommend `gh aw compile --watch` for continuous feedback and reserve `--validate` for targeted troubleshooting.
 
 ### Formatting conventions
 

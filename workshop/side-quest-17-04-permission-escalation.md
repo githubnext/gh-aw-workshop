@@ -1,10 +1,10 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Permission Escalation in Agentic Workflows
+# Side Quest: Permission Escalation in [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows)
 
 > _Optional: work through this security primer to see how an over-scoped workflow can give a misdirected agent more authority than your task needs._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file that uses `safe-outputs`.
 
@@ -20,7 +20,7 @@ Permission escalation means the agent ends up with **more authority than the tas
 
 Picture a workflow with one job: read open issues, read recent commits, and write a daily summary.
 
-Now picture that same workflow allowing the agent to open a pull request touching any file. A malicious issue body or a prompt injection could push the agent to edit `README.md` or change workflow files. You never asked for that.
+Now picture that same workflow allowing the agent to open a pull request touching any file. A malicious issue body or a [prompt injection](https://github.github.com/gh-aw/introduction/architecture/#threat-model) could push the agent to edit `README.md` or change workflow files. You never asked for that.
 
 That is the problem. The workflow author requested one level of authority. The configuration exposed a wider one.
 
@@ -30,7 +30,7 @@ That is the problem. The workflow author requested one level of authority. The c
 
 A classic CI/CD pipeline runs a fixed script. If the script says "run tests," it runs tests. It does not invent extra steps.
 
-An agentic workflow is different. You set boundaries up front. But the agent decides at runtime which tools to call and whether to use a write surface. Every extra permission is extra risk. If the task only needs read access, any open write path increases the blast radius of a misdirected agent.
+An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) is different. You set boundaries up front. But the agent decides at runtime which tools to call and whether to use a write surface. Every extra permission is extra risk. If the task only needs read access, any open write path increases the blast radius of a misdirected agent.
 
 ---
 
@@ -52,7 +52,7 @@ For the full mental model behind these layers, read [Side Quest: Agentic Workflo
 
 If your workflow only needs to observe repository state, keep it read-only:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -68,7 +68,7 @@ tools:
 
 With this setup, the agent can read data and generate output. It has no path to create a PR, post a comment, or modify any file.
 
-### 🛠️ Try it: audit your own workflow
+### :hammer_and_wrench: Try it: audit your own workflow
 
 Open your workflow file. Check the `permissions:` block and answer these three questions:
 
@@ -84,7 +84,7 @@ If you answered "yes" to the second or third question, remove or downgrade that 
 
 When the agent needs to propose changes, keep the write surface narrow and protect sensitive files:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -111,7 +111,7 @@ This does **not** give the agent open-ended write access. It gives the agent one
 
 That is the key defence. A misdirected agent cannot silently turn a docs task into arbitrary repository mutation.
 
-### 🛠️ Try it: add [protected-files](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/) to your workflow
+### :hammer_and_wrench: Try it: add [protected-files](https://github.github.com/gh-aw/reference/safe-outputs-pull-requests/) to your workflow
 
 1. Open your workflow file and find the `safe-outputs` block.
 2. Add a `protected-files` entry that excludes `.github/workflows/daily-status.md`.
@@ -131,11 +131,11 @@ Write your prediction here, then save and run the workflow to check it:
 | Add `safe-outputs` only when the task needs a write action | Prevents accidental write paths in read-only workflows |
 | Use `allowed-files` to scope writes to one part of the repo | Stops a narrow task from spilling into unrelated files |
 | Add `protected-files` for high-risk paths | Forces human review before sensitive files change |
-| Treat task brief and capability scoping as one design problem | A clear brief helps, but boundaries must hold when the brief is ignored |
+| Treat [task brief](https://github.github.com/gh-aw/reference/markdown/) and capability scoping as one design problem | A clear brief helps, but boundaries must hold when the brief is ignored |
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain permission escalation in plain English
 - [ ] You audited your own `permissions:` block against the principle of least privilege

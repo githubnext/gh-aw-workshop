@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="Conceptual screenshot of a Claude-style chat workspace">
+      <rect width="960" height="560" fill="#0d1117"/>
+      <text x="480.0" y="42" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#f0f6fc">Claude</text>
+      <text x="480.0" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#8b949e">An AI model option that can read your brief, reason through steps, and write a structured result</text>
+      <rect x="60" y="90" width="840" height="380" rx="18" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<rect x="60" y="90" width="840" height="46" rx="18" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="92" cy="113" r="6" fill="#ff5f57"/>
+<circle cx="114" cy="113" r="6" fill="#febc2e"/>
+<circle cx="136" cy="113" r="6" fill="#28c840"/>
+<text x="480" y="118" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#e09b6f">Claude workspace</text>
+      <rect x="84" y="156" width="250" height="290" rx="16" fill="#1c1205" stroke="#7a5100" stroke-width="1.5"/>
+<text x="210" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#e09b6f">Prompt</text>
+<rect x="108" y="214" width="202" height="92" rx="12" fill="#161b22" stroke="#7a5100" stroke-width="1.5"/>
+<text x="126" y="242" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f0f6fc">Summarize open PRs,</text>
+<text x="126" y="266" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f0f6fc">issues, and CI status</text>
+<text x="126" y="290" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f0f6fc">for today.</text>
+<rect x="356" y="156" width="220" height="290" rx="16" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+<text x="466" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#f0f6fc">Reasoning path</text>
+<rect x="382" y="220" width="120" height="30" rx="15" fill="#1c1205"/>
+<text x="442.0" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#e09b6f">Read brief</text>
+<rect x="382" y="264" width="120" height="30" rx="15" fill="#1c1205"/>
+<text x="442.0" y="284" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#e09b6f">Plan steps</text>
+<rect x="382" y="308" width="120" height="30" rx="15" fill="#1c1205"/>
+<text x="442.0" y="328" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#e09b6f">Call tools</text>
+<rect x="382" y="352" width="120" height="30" rx="15" fill="#1c1205"/>
+<text x="442.0" y="372" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#e09b6f">Draft result</text>
+<rect x="598" y="156" width="278" height="290" rx="16" fill="#1c1205" stroke="#7a5100" stroke-width="1.5"/>
+<text x="736" y="194" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#e09b6f">Response</text>
+<rect x="620" y="214" width="234" height="146" rx="12" fill="#161b22" stroke="#7a5100" stroke-width="1.5"/>
+<text x="638" y="242" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#f0f6fc">Daily health report</text>
+<text x="638" y="272" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f0f6fc">• 3 open pull requests</text>
+<text x="638" y="296" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f0f6fc">• 7 open issues (2 bugs)</text>
+<text x="638" y="320" text-anchor="start" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#f0f6fc">• Latest CI run passed</text>
+      <rect x="60" y="490" width="840" height="34" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+      <text x="480" y="512" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="400" fill="#8b949e">Use this visual as a quick mental model, not a literal product screenshot.</text>
+    </svg>

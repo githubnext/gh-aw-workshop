@@ -4,14 +4,14 @@
 
 > _Optional: use this quick exercise to shape your brief before you return to [Step 10](09-agentic-editing.md) or move on to [Step 11](07-your-first-workflow.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Build your brief in a scratch file in five steps. By the end, you'll have a daily status brief you can paste into your workflow and reuse.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've completed [Reading Workflow Output](08b-interpret-your-run.md)
-- You have a practice repository created during setup: [Adventure Codespace](02a-setup-codespace.md) or [Adventure Local](02b-setup-local.md)
+- You have a practice repository created during [Codespace setup](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md)
 
 ---
 
@@ -29,7 +29,7 @@ For each step: **write first, check your draft, then expand "Why this works" for
 
 ---
 
-## Step 1: State the Goal in One Sentence
+## State the Goal in One Sentence
 
 Replace the bracketed example below with your own one-sentence goal.
 
@@ -37,11 +37,7 @@ Replace the bracketed example below with your own one-sentence goal.
 Every day, I want the agent to [summarize open pull requests and post a health report as an issue comment].
 ```
 
-Quick check:
-
-- [ ] My goal is one sentence.
-- [ ] My goal describes one main action.
-- [ ] My goal says where the result should appear.
+Before moving on, confirm your goal is one sentence that describes one action and says where the result will appear.
 
 <details>
 <summary>Why this works</summary>
@@ -52,7 +48,7 @@ A one-sentence goal forces scope. If you need multiple outcomes, you probably ne
 
 ---
 
-## Step 2: List the Inputs
+## List the Inputs
 
 List the data the agent must collect before it can write the report. Mark uncertain items with a `?` so you can verify them later.
 
@@ -64,11 +60,7 @@ List the data the agent must collect before it can write the report. Mark uncert
 
 Add a `?` only on the lines you are not sure about yet.
 
-Quick check:
-
-- [ ] I listed at least three inputs.
-- [ ] Each input connects to a line in my report.
-- [ ] I marked any uncertain data with a `?`.
+Before moving on, confirm you have at least three inputs, each linked to a field in your report, and that you've marked uncertain items with `?`.
 
 <details>
 <summary>Why this works</summary>
@@ -79,7 +71,7 @@ Inputs turn "summarize the repo" into a concrete data request. They also make it
 
 ---
 
-## Step 3: Sketch the Output
+## Sketch the Output
 
 Show the agent the format you want instead of describing it loosely. Start with a simple skeleton and customize the fields you want to track.
 
@@ -91,11 +83,7 @@ CI: {status}
 Health check: {one sentence}
 ```
 
-Quick check:
-
-- [ ] My output has a title or heading.
-- [ ] Every placeholder maps to one input.
-- [ ] I could scan this report in a few seconds.
+Before moving on, confirm your skeleton has a title or heading, every placeholder maps to one of your inputs, and you can scan the whole report in a few seconds.
 
 <details>
 <summary>Why this works</summary>
@@ -106,7 +94,7 @@ A literal skeleton gives the agent fewer format decisions to make. Consistent ou
 
 ---
 
-## Step 4: Write the Guardrails
+## Write the Guardrails
 
 Add short rules that limit write operations, such as posting comments, and tell the agent what to do when data is missing.
 
@@ -116,14 +104,10 @@ Add short rules that limit write operations, such as posting comments, and tell 
 - If [data is missing or a prerequisite is absent], then [fallback].
 ```
 
-> [!IMPORTANT]
+> [!TIP]
 > Skipping guardrails can lead to duplicate comments or guessed data.
 
-Quick check:
-
-- [ ] I included something the agent must not do.
-- [ ] I set a maximum number of writes.
-- [ ] I told the agent what to do when data is missing.
+Before moving on, confirm your guardrails include something the agent must not do, a maximum number of writes, and a fallback for missing data.
 
 <details>
 <summary>Why this works</summary>
@@ -134,17 +118,11 @@ Guardrails prevent duplicate posts, made-up numbers, and unclear fallback behavi
 
 ---
 
-## Step 5: Review the Brief
+## Review the Brief
 
 Read the draft once. Replace vague words like "recent" with "within the last 7 days" or "important" with "labeled priority-1".
 
-Quick check:
-
-- [ ] My goal says exactly what happens every day.
-- [ ] My inputs cover every field in the output.
-- [ ] My output format matches what I want to read.
-- [ ] My guardrails limit writes and guessing.
-- [ ] I replaced at least one vague phrase.
+Before moving on, confirm that your goal, inputs, output format, and guardrails all use concrete, observable language and that you've replaced at least one vague phrase.
 
 <details>
 <summary>Why this works</summary>
@@ -185,7 +163,7 @@ Guardrails:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I've written a one-sentence goal for my daily status report.
 - [ ] I've listed at least three inputs the agent will need.
@@ -198,4 +176,3 @@ Guardrails:
 <!-- journey: all -->
 Return to [Design Your Daily Repo Status Report](09-agentic-editing.md) or continue to [Build Your Daily Repo Status Workflow](07-your-first-workflow.md).
 <!-- /journey -->
-

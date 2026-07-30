@@ -18,23 +18,29 @@
 
 > _One workflow file, multiple specialised agents — each doing exactly one thing, at the right cost._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add a sub-agent to your daily-status workflow so the parent agent can stay focused on planning and final writing while a focused sub-agent handles one repeated task. By the end of this step, your workflow will be easier to scale without turning the whole prompt into one long, repetitive brief.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 11a](07-your-first-workflow.md) or equivalent).
-- You understand YAML frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
+- You understand YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ## Understand the parent agent and sub-agent split
 
 When your workflow repeats the same small job for many items, keep the parent agent focused on the overall plan and final output. Move the repeated item-by-item work into a sub-agent.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/21-inline-sub-agents-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/21-inline-sub-agents-light.svg">
+   <img alt="Inline sub-agent pattern: parent agent plans and delegates repeated tasks to sub-agents, then assembles the final output" src="images/21-inline-sub-agents-light.svg">
+</picture>
+
 A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading. If you want, add a short frontmatter block with fields such as `description` or `model`. Then call that helper by name from the parent workflow brief.
 
-> 🤔 **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
+> :thinking: **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >
 > [!TIP]
 > Want the full rules for names, frontmatter, model aliases, and block placement? See the existing [Side Quest: Sub-Agent Syntax Reference](side-quest-21-01-sub-agent-syntax.md). Stay on this page if you only want the main path.
@@ -52,9 +58,20 @@ Open your workflow file and choose one bounded task that repeats for each item, 
 
 ### Add one sub-agent block
 
-After your parent workflow brief, at the bottom of the file, add a sub-agent block like this:
+In your AI agent, run this prompt:
 
-```markdown
+```prompt
+/agentic-workflows update .github/workflows/daily-status.md to add an inline
+sub-agent named `issue-summarizer` that reads one GitHub issue and returns a
+one-sentence summary. Use model: small. Also update the parent brief to call
+this sub-agent once per open issue and compile the summaries into a numbered list.
+```
+
+The skill appends the sub-agent block at the bottom of the file and updates the parent brief. Review the diff before committing.
+
+Here is the sub-agent syntax the skill will add:
+
+```markdown .github/workflows/daily-status.md
 ## agent: `issue-summarizer`
 ---
 description: Summarizes a single open issue in one sentence
@@ -67,57 +84,44 @@ that explains what the issue is asking for and its current status.
 
 Keep the sub-agent brief narrow. If it processes one item at a time and returns a single result, it belongs here.
 
-### Update the parent workflow brief to call the sub-agent
+<details>
+<summary>:desktop_computer: Terminal path</summary>
 
-In the parent workflow brief, tell the parent agent when to use the sub-agent:
+After your parent workflow brief, at the bottom of the file, add the sub-agent block shown above. Then update the parent brief to call it by name. For example:
 
-```markdown
-You produce a daily repository health digest.
-
-1. Fetch all open issues (title, body, number).
-2. For each issue, use the `issue-summarizer` agent to produce a
-   one-sentence summary.
-3. Compile the summaries into a numbered list, ordered by issue number.
-4. Post the list as a comment on the repository's main tracking issue.
+```markdown .github/workflows/daily-status.md
+For each issue, use the `issue-summarizer` agent to produce a one-sentence summary.
 ```
 
-**Action:** Change one broad instruction in the parent workflow brief into a direct sub-agent call by name. For example:
+After editing both, run `gh aw compile` to regenerate the lock file.
 
-- Before: "Summarize all issues."
-- After: "For each issue, use the `issue-summarizer` agent."
+</details>
 
-That pattern tells the parent agent to loop over the items, collect one result from the sub-agent for each item, and then combine those results in the next step.
+### Verify the diff and commit
 
-### Compile and check the result
-
-From the repository root, run:
+The skill edits both the sub-agent block and the parent brief in one step. Review the diff, then commit:
 
 ```bash
-gh aw compile
+git add .
+git commit -m "feat: add issue-summarizer sub-agent to daily-status"
+git push
 ```
-
-> [!TIP]
-> If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.
-
-The compile should finish without errors and regenerate your workflow's `.lock.yml` file.
 
 ### Run and verify
 
 Trigger a manual run. In the Actions log, confirm the parent agent calls your sub-agent and then uses the sub-agent result in the final summary.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You identified one repeated task in your workflow that fits a sub-agent
 - [ ] You wrote a sub-agent name and one-sentence job before editing the file
 - [ ] Your workflow file now includes at least one `## agent: \`name\`` block
 - [ ] You updated the main brief to call the sub-agent by name
-- [ ] `gh aw compile` completed without errors
-- [ ] Your workflow's `.lock.yml` file was regenerated after the compile
+- [ ] The compiled lock file was updated and committed alongside the workflow source
 - [ ] A manual run completed and the Actions log showed the sub-agent being called
 - [ ] The final workflow output used the sub-agent result
 
 <!-- journey: all -->
 **Next:** [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md)
 <!-- /journey -->
-
 

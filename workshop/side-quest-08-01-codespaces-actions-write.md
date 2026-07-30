@@ -4,7 +4,7 @@
 
 > _Optional: use this guide if Step 8 fails in a Codespace, then return to [Run and Watch Your Workflow](08-run-your-workflow.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 This side quest applies to you if **both** of the following are true:
 
@@ -15,7 +15,7 @@ If you are not in a Codespace or you do not see the 403 error, return to [Run an
 
 ---
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll identify the Codespaces token error that blocks `gh aw run` and use the fastest recovery path. Optionally, you can re-create your Codespace with the extra permissions needed for terminal-based workflow triggers.
 
@@ -94,7 +94,7 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can see `HTTP 403: Resource not accessible by integration` in my terminal when running `gh aw run daily-report-status`
 - [ ] A new **Daily Report Status** run appears in the **Actions** tab after I trigger it from the UI

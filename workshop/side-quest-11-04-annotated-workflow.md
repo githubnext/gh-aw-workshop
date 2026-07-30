@@ -4,12 +4,12 @@
 
 > _Optional: work through this guide to understand the design choices in `daily-status.md` and adapt them in your own copy — then return to [Build: Daily Repo Status Workflow](07-your-first-workflow.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Step 11](07-your-first-workflow.md) and `.github/workflows/daily-status.md` exists in your repository.
 - Open `daily-status.md` in your editor — you'll make small edits as you work through this guide.
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Understand the four design decisions that make `daily-status.md` safe and predictable, then modify your own copy to confirm what each decision controls.
 
@@ -32,7 +32,7 @@ Read each `#` comment — it explains _why_ that line exists, not just _what_ it
 
 ````markdown
 ---
-emoji: 📊
+emoji: :bar_chart:
 description: Post a daily repository status summary as a GitHub issue comment.
 
 on:
@@ -65,14 +65,14 @@ safe-outputs:
 
 ---
 
-## ✏️ Your Turn — Metadata
+## :pencil2: Your Turn — Metadata
 
-1. In your `daily-status.md`, note your current `emoji:` value, then change it (e.g. from `📊` to `🔍`).
+1. In your `daily-status.md`, note your current `emoji:` value, then change it (e.g. from `:bar_chart:` to `:mag:`).
 2. Run `gh aw list`. Does the new emoji appear next to the workflow name?
 3. Update `description:` text and run `gh aw list` again to confirm it reflects the change.
 4. Restore the original `emoji:` and `description:` values when you're done.
 
-## ✏️ Your Turn — Safe-Outputs
+## :pencil2: Your Turn — Safe-Outputs
 
 1. In your `daily-status.md`, comment out the entire [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/) block.
 2. Run `gh aw compile --validate`.
@@ -92,7 +92,7 @@ safe-outputs:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I changed `emoji:`, ran `gh aw list`, and saw the update reflected
 - [ ] I removed `safe-outputs:`, observed the compile error, then restored it and confirmed the error was gone

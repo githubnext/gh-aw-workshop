@@ -4,12 +4,12 @@
 
 > _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You have a workflow YAML file open in your editor.
 
-By default, a gh-aw agent reads your task brief and produces text. **MCP (Model Context Protocol)** breaks that boundary — it lets the agent call structured tools at runtime and incorporate real data into its output.
+By default, a gh-aw agent reads your [task brief](https://github.github.com/gh-aw/reference/markdown/) and produces text. **MCP ([Model Context Protocol](https://github.github.com/gh-aw/reference/mcp-gateway/))** breaks that boundary — it lets the agent call structured tools at runtime and incorporate real data into its output.
 
 ---
 
@@ -64,11 +64,13 @@ Configured MCP server:
 
 The `tools:` block in your workflow's YAML frontmatter tells gh-aw which MCP servers to start before the agent runs:
 
-```yaml
+```markdown
+---
 tools:
   github:
     mode: gh-proxy
     toolsets: [default]
+---
 ```
 
 | Field | What it controls |
@@ -89,9 +91,9 @@ gh aw validate
 
 ---
 
-## How [toolsets](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) work
+## How toolsets work
 
-A toolset is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
+A [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
 
 The GitHub MCP server ships with these toolsets:
 
@@ -103,11 +105,13 @@ The GitHub MCP server ships with these toolsets:
 
 To enable multiple toolsets, pass a list:
 
-```yaml
+```markdown
+---
 tools:
   github:
     mode: gh-proxy
     toolsets: [default, discussions]
+---
 ```
 
 ---
@@ -135,15 +139,15 @@ If the agent makes a tool call you didn't expect, revisit your task brief. Addin
 
 Because MCP tool servers receive and return data at runtime, a few security concepts apply specifically to this environment. You will encounter them in the [Supply Chain Attacks via MCP](side-quest-17-05-supply-chain-mcp.md) side quest.
 
-**Supply chain attack through MCP** — occurs when a tool server your agent trusts returns manipulated data instead of the real thing. Rather than compromising your workflow file directly, an attacker targets the tool server, so the same workflow file can produce harmful results.
+**[Supply chain](https://github.github.com/gh-aw/introduction/architecture/#threat-model) attack through MCP** — occurs when a tool server your agent trusts returns manipulated data instead of the real thing. Rather than compromising your workflow file directly, an attacker targets the tool server, so the same workflow file can produce harmful results.
 
 **Poisoned payload** — the manipulated data a compromised tool server returns. It may be fabricated data (such as fake issue lists) or embedded instructions that redirect the agent to take unintended actions.
 
-**Blast radius** — the scope of damage a successful attack can cause. For MCP-based agents, the blast radius is larger than a traditional dependency vulnerability because the payload is interpreted by an AI model that may act on embedded instructions.
+**[Blast radius](https://github.github.com/gh-aw/introduction/architecture/#threat-model)** — the scope of damage a successful attack can cause. For MCP-based agents, the blast radius is larger than a traditional dependency vulnerability because the payload is interpreted by an AI model that may act on embedded instructions.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain what an MCP tool server is and what it provides to the agent
 - [ ] You understand how enabling MCP changes the agentic reasoning loop

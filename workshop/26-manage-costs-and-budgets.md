@@ -4,11 +4,11 @@
 
 > _Agentic workflows consume [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) on every run — learning to measure, predict, and control that spend turns a powerful tool into a sustainable one._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll review your workflow's AI Credit consumption in the GitHub billing dashboard, estimate monthly costs for a scheduled workflow, and apply at least one technique to keep spending within budget.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 - You have run your workflow at least once and seen token usage data in `gh aw logs` output.
@@ -34,7 +34,11 @@ Every agentic workflow run uses an AI model to process your task brief and produ
 3. Scroll to the **Copilot** section and click **Usage**.
 4. Look for the **Agentic Workflows** row. It shows AIC consumed this billing cycle.
 
-![Copilot billing usage dashboard showing AI Credit consumption by feature](images/26-billing-dashboard.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/26-billing-dashboard-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/26-billing-dashboard-light.svg">
+  <img alt="Copilot billing usage dashboard showing AI Credit consumption by feature" src="images/26-billing-dashboard-light.svg">
+</picture>
 
 ### Estimate monthly cost for a scheduled workflow
 
@@ -46,7 +50,7 @@ gh aw logs daily-status --count 5
 
 Look at the **AIC** column. Average the last five runs, then multiply:
 
-```
+```text
 monthly cost = average AIC per run × runs per day × 30
 ```
 
@@ -63,7 +67,7 @@ gh aw forecast daily-status
 Use the **P90** figure as a conservative upper bound when requesting a spending limit from your administrator or setting `max-daily-ai-credits`.
 
 > [!TIP]
-> For the full walkthrough — weekly projections, limiting history with `--days`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 — see [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md).
+> Try [Side Quest: Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) for weekly projections, limited-history forecasting with `--days`, multi-workflow forecasting, and deriving a `max-daily-ai-credits` value from P90.
 
 ### Reduce token consumption and set guardrails
 
@@ -74,13 +78,16 @@ A few techniques keep spend in check:
 - **Cache results with persistent memory** — skip re-processing unchanged data. See [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 - **Reduce run frequency** — fewer runs means fewer AIC.
 
+> [!TIP]
+> Want a deeper activity for observing where tokens go and testing cost reductions one change at a time? Try [Side Quest: Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md).
+
 Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields enforce hard limits directly in the workflow file:
 
 - **[`timeout-minutes`](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
 - **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume, enforced by the AWF firewall. The default when omitted is 1000 AIC. Set to a negative value (e.g. `-1`) to disable enforcement and token steering.
 - **[`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow)** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. A system default threshold applies when this field is omitted; set to `-1` to disable the guardrail, or provide an explicit integer value to override the default.
 
-```yaml
+```markdown .github/workflows/daily-status.md
 ---
 name: Daily Status Report
 on:
@@ -97,7 +104,7 @@ In this example, each run is capped at 1000 AIC and the 24-hour total is capped 
 gh aw compile
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
 - [ ] You calculated an estimated monthly AIC cost for your scheduled workflow
@@ -107,5 +114,5 @@ gh aw compile
 - [ ] You identified at least one technique to reduce token consumption
 
 <!-- journey: all -->
-**Next:** [What's Next? Keep Exploring](14-next-steps.md)
+Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
 <!-- /journey -->

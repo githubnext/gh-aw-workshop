@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Run workflow confirmation dropdown showing branch selection and final Run workflow button">
+  <!-- Page background -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1200" height="44" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <rect x="0" y="22" width="1200" height="22" fill="#161b22"/>
+  <circle cx="24" cy="22" r="6" fill="#30363d"/>
+  <circle cx="48" cy="22" r="6" fill="#30363d"/>
+  <circle cx="72" cy="22" r="6" fill="#30363d"/>
+  <rect x="220" y="8" width="760" height="28" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="600" y="27" font-family="Arial, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">github.com/your-org/your-repo</text>
+
+  <!-- Nav tab bar -->
+  <rect x="0" y="44" width="1200" height="48" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="80" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Code</text>
+  <text x="160" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Issues</text>
+  <text x="260" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Pull requests</text>
+  <text x="420" y="75" font-family="Arial, sans-serif" font-size="15" fill="#f0f6fc" font-weight="bold">Actions</text>
+  <rect x="418" y="88" width="64" height="3" fill="#2f81f7" rx="2"/>
+  <text x="510" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Settings</text>
+
+  <!-- Left sidebar -->
+  <rect x="60" y="108" width="250" height="340" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="84" y="140" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#f0f6fc">Workflows</text>
+  <rect x="60" y="150" width="250" height="38" fill="#1f3158" rx="0"/>
+  <text x="84" y="174" font-family="Arial, sans-serif" font-size="14" fill="#2f81f7">⚡ Daily Report Status</text>
+
+  <!-- Main content panel -->
+  <rect x="330" y="108" width="810" height="340" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="365" y="146" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#f0f6fc">Daily Report Status</text>
+  <text x="365" y="174" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">This workflow runs daily and posts a repository status report.</text>
+
+  <!-- Run workflow button -->
+  <rect x="960" y="118" width="160" height="36" rx="6" fill="#2f81f7"/>
+  <text x="1040" y="141" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Run workflow ▾</text>
+
+  <!-- Dropdown panel -->
+  <rect x="870" y="158" width="270" height="174" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+
+  <text x="892" y="185" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">Use workflow from</text>
+  <rect x="888" y="192" width="234" height="34" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="902" y="213" font-family="Arial, sans-serif" font-size="14" fill="#f0f6fc">Branch: main ▾</text>
+
+  <line x1="872" y1="234" x2="1138" y2="234" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="888" y="244" width="234" height="36" rx="6" fill="#238636"/>
+  <text x="1005" y="267" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Run workflow</text>
+
+  <!-- Annotation -->
+  <text x="600" y="508" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#8b949e">Run workflow confirmation dropdown showing branch selection and final Run workflow button</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view">
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+  <rect x="60" y="40" width="1080" height="44" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="86" cy="62" r="5" fill="#ff5f57"/>
+  <circle cx="104" cy="62" r="5" fill="#febc2e"/>
+  <circle cx="122" cy="62" r="5" fill="#28c840"/>
+  <rect x="300" y="51" width="600" height="22" rx="11" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="600" y="66" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#57606a">https://github.com/copilot</text>
+
+  <rect x="60" y="84" width="1080" height="430" fill="#ffffff" stroke="#d0d7de"/>
+
+  <rect x="80" y="100" width="300" height="400" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="230" y="130" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">Repository session</text>
+  <rect x="104" y="154" width="252" height="92" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="124" y="186" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">Repository</text>
+  <text x="124" y="212" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#24292f">githubnext/gh-aw-workshop</text>
+  <rect x="124" y="224" width="96" height="20" rx="10" fill="#ddf4ff"/>
+  <text x="172" y="238" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#0969da">Session active</text>
+  <rect x="104" y="270" width="252" height="198" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="124" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">Recent activity</text>
+  <text x="124" y="326" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#24292f">• Opened workshop image task</text>
+  <text x="124" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#24292f">• Reviewed SVG requirements</text>
+  <text x="124" y="374" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#24292f">• Prepared light and dark assets</text>
+
+  <rect x="400" y="100" width="380" height="400" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="590" y="130" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">Agent chat</text>
+  <rect x="424" y="156" width="220" height="58" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="440" y="182" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">You</text>
+  <text x="440" y="202" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#24292f">Add theme-aware images</text>
+  <rect x="536" y="236" width="220" height="72" rx="12" fill="#ddf4ff" stroke="#b6e3ff"/>
+  <text x="552" y="262" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#0969da">Copilot</text>
+  <text x="552" y="282" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#24292f">Done — created light.svg</text>
+  <text x="552" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#24292f">and dark.svg</text>
+  <rect x="424" y="336" width="332" height="132" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="444" y="366" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">Summary</text>
+  <text x="444" y="392" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#24292f">• Browser chrome and URL bar included</text>
+  <text x="444" y="416" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#24292f">• Repository, chat, and PR panels shown</text>
+  <text x="444" y="440" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#24292f">• Theme colors matched to GitHub UI</text>
+
+  <rect x="800" y="100" width="320" height="400" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="960" y="130" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#24292f">Pull requests</text>
+  <rect x="824" y="156" width="272" height="74" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="846" cy="192" r="7" fill="#1a7f37"/>
+  <text x="862" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#24292f">#42 Add theme-aware SVGs</text>
+  <text x="862" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#57606a">Ready for review</text>
+
+  <text x="600" y="542" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#57606a">Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view</text>
+</svg>

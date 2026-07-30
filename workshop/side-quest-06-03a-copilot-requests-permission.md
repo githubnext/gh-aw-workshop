@@ -4,14 +4,14 @@
 
 > _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method PAT](side-quest-06-03b-copilot-github-token.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - An organization owns your practice repository.
 - An organization administrator confirmed centralized Copilot billing is enabled for GitHub Actions.
 - You completed [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) and confirmed Method 1 applies to your repository.
-- Your practice repository was created during setup: [Adventure Codespace](02a-setup-codespace.md) or [Adventure Local](02b-setup-local.md).
+- Your practice repository was created during [Codespace setup](02a-setup-codespace.md) or the optional [Local Terminal side quest](side-quest-02-01-local-terminal.md).
 
-This is the simplest way to give your agentic workflow Copilot API access when the organization can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) permission.
+This is the simplest way to give your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) Copilot API access when the organization can bill Copilot requests through the workflow run token. GitHub Actions already issues every run a short-lived token — you just need to grant it the [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) permission.
 
 It does **not** cover personal repositories or organizations without centralized billing. In those cases, use `COPILOT_GITHUB_TOKEN` with [Method 2](side-quest-06-03b-copilot-github-token.md).
 
@@ -26,7 +26,7 @@ If you have not confirmed the billing setting yet, ask your organization adminis
 
 Open your workflow `.md` file and add `copilot-requests: write` under the `permissions` block in the [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/):
 
-```yaml
+```markdown
 ---
 name: my-workflow
 on:
@@ -38,17 +38,6 @@ permissions:
 ```
 
 That single line is the only workflow authentication change required for repositories that can use Method 1. Recompile and commit the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) after changing the source workflow.
-
-## ✅ Checkpoint
-
-- [ ] I confirmed the owning organization has centralized Copilot billing enabled
-- [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
-- [ ] I recompiled and committed the matching lock file
-- [ ] You did not need to create any repository secret
-
-<!-- journey: all -->
-**Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
-<!-- /journey -->
 
 ## Troubleshooting
 
@@ -70,3 +59,14 @@ Work through these checks in order if the run still fails:
 4. If you are in an enterprise-managed organization, confirm the org Copilot policy allows [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — see [Side Quest: Enterprise Setup Considerations](side-quest-enterprise-setup.md).
 
 </details>
+
+## :white_check_mark: Checkpoint
+
+- [ ] I confirmed the owning organization has centralized Copilot billing enabled
+- [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
+- [ ] I recompiled and committed the matching lock file
+- [ ] You did not need to create any repository secret
+
+<!-- journey: all -->
+**Return to:** [Install the gh-aw CLI Extension](06-install-gh-aw.md) | [Write Your First Agentic Workflow](07-your-first-workflow.md) | [Back to auth overview](side-quest-06-03-copilot-token.md)
+<!-- /journey -->

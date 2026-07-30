@@ -4,7 +4,7 @@
 
 > _Optional: complete this quick primer if you're new to the terminal, then return to Step 1._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - A computer running macOS, Windows, or Linux with internet access
 
@@ -30,7 +30,7 @@ Type this command and press **Enter**:
 echo "hello, terminal!"
 ```
 
-You should see `hello, terminal!` printed as output. If you do, your terminal is working. ✅
+You should see `hello, terminal!` printed as output. If you do, your terminal is working. :white_check_mark:
 
 ---
 
@@ -95,7 +95,7 @@ rm -r test-dir
 ---
 
 <!-- journey: terminal -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You opened a terminal and saw a prompt (`$`, `%`, or `>`)
 - [ ] You ran `echo "hello, terminal!"` and saw the message printed

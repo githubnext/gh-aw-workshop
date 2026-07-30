@@ -2,15 +2,15 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Evaluating and Iterating on Agent Output
 
-> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Test and Improve Your Workflow](12-test-and-iterate.md)._
+> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
-Run your workflow once, score the output with a short rubric, change one sentence in the brief, recompile, and run it again. By the end, you will have a before/after comparison instead of a vague feeling that the prompt is "better."
+Run your workflow once, score the output with a short rubric, change one sentence in the brief, and run it again. By the end, you will have a before/after comparison instead of a vague feeling that the prompt is "better."
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have completed [Step 12](12-test-and-iterate.md) and already have a workflow run to inspect.
+- You have completed [Step 9](09-agentic-editing.md) and already have a workflow run to inspect.
 - Your workflow posts to a [safe output surface](https://github.github.com/gh-aw/reference/safe-outputs/) such as the **Daily Status Reports** issue.
 
 ## Baseline run
@@ -45,7 +45,7 @@ Lowest score: Tone
 
 ## Make one targeted change
 
-Pick the lowest-scoring row and modify or add only **one sentence** in your workflow brief to address it.
+Pick the lowest-scoring row and modify or add only **one sentence** in your [workflow brief](https://github.github.com/gh-aw/reference/markdown/) to address it.
 
 | Lowest score | One sentence to modify or add |
 |--------------|-------------------------------|
@@ -55,19 +55,17 @@ Pick the lowest-scoring row and modify or add only **one sentence** in your work
 
 If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), ask for one focused update:
 
-```text
+```prompt
 Using the agentic-workflows skill, update .github/workflows/daily-status.md
 by changing one sentence in the Markdown body to improve Tone.
-Run gh aw compile after the edit.
 ```
 
 If you are working in a browser-based environment without terminal access, use that agent path instead of the terminal path below.
 
-If you have a terminal open, edit the Markdown body of `.github/workflows/daily-status.md`, then recompile:
+If you have a terminal open, open `.github/workflows/daily-status.md` and edit the Markdown body directly — no recompilation needed for body-only changes.
 
-```bash
-gh aw compile
-```
+> [!NOTE]
+> `gh aw compile` is only required when you change the **frontmatter** (triggers, permissions, or other YAML fields). Editing the Markdown task brief takes effect on the next run without recompiling.
 
 ## Before and after comparison
 
@@ -106,16 +104,14 @@ Quick run-log check:
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You triggered a fresh workflow run and captured one real output to review
 - [ ] You recorded a baseline score for accuracy, completeness, and tone
 - [ ] You changed exactly one sentence in the workflow brief to target the lowest score
-- [ ] You recompiled with `gh aw compile` or had a Copilot agent do it for you
 - [ ] You triggered a second run and recorded a before/after comparison such as `Before: Accuracy 2, Completeness 1, Tone 0 → After: Accuracy 2, Completeness 2, Tone 2`
 
 <!-- journey: all -->
-Return to [Test and Improve Your Workflow](12-test-and-iterate.md).
+Return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
-
 

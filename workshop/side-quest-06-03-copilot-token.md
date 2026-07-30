@@ -4,14 +4,14 @@
 
 > _Optional: work through this guide when you need to configure Copilot authentication for an agentic workflow, then return to your main path._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Install the gh-aw CLI Extension](06-install-gh-aw.md).
 - You have access to your repository's settings (needed if you choose Method 2).
 
 ## Why [authentication](https://github.github.com/gh-aw/reference/auth/) matters
 
-Agentic workflows call the GitHub Copilot API at runtime to run AI reasoning steps. Without a valid credential, every call returns `401 Unauthorized` and the workflow fails immediately. Configuring authentication once, before you run a workflow, ensures your agent can reach Copilot reliably on every future run.
+[Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) call the GitHub Copilot API at runtime to run AI reasoning steps. Without a valid credential, every call returns `401 Unauthorized` and the workflow fails immediately. Configuring authentication once, before you run a workflow, ensures your agent can reach Copilot reliably on every future run.
 
 If you are using a terminal, prefer the guided `gh-aw` setup flows where possible:
 
@@ -38,7 +38,7 @@ If you are unsure, check who owns your practice repository first:
 > [!IMPORTANT]
 > Choose one method. When [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) is present, `COPILOT_GITHUB_TOKEN` is ignored for inference. Remove the permission and recompile when switching to personal billing.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I have identified which authentication method fits my situation.
 - [ ] I have completed either Method 1 or Method 2 (followed the linked guide to the end).

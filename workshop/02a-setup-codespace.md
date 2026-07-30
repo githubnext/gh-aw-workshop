@@ -2,19 +2,22 @@
 <!-- page-adventure: setup -->
 # Set Up a Codespace
 
-## 🎯 What You'll Do
+## :clipboard: Before You Start
+
+- [ ] You have a GitHub account with access to GitHub Codespaces
+- [ ] Your account can create public repositories (free tier works)
+- [ ] You want a browser-based terminal and do not need to install tools locally
+
+> [!TIP]
+> Not sure if your plan includes Codespaces? Free GitHub accounts include 60 hours/month. Check your [billing settings](https://github.com/settings/billing/summary) or ask your organization admin.
+
+## :dart: What You'll Do
 
 You'll launch a GitHub Codespace for this workshop, open the built-in terminal, and land in a ready-to-use environment for the next step.
 
+Codespaces is the recommended environment for this workshop and the path used throughout the core steps.
+
 ## Steps
-
-**Verify you are on the right path before continuing:**
-
-- [ ] You have a GitHub account with access to GitHub Codespaces
-- [ ] You want a browser-based terminal and do not need to install tools locally
-
-> [!IMPORTANT]
-> Phones and tablets are not supported for this workshop. Open the Codespace from a desktop or laptop before continuing.
 
 These steps take about 5 minutes. If you get stuck on any command, [Side Quest: Terminal Basics](side-quest-01-01-terminal-basics.md) is a 2-minute read.
 
@@ -36,7 +39,11 @@ These steps take about 5 minutes. If you get stuck on any command, [Side Quest: 
    - Wait 30–60 seconds for GitHub to prepare the container.
 3. The Codespace opens in a new browser tab showing a VS Code-style editor. Leave this tab open for the rest of the workshop.
 
-![Open Codespace](images/02a-open-codespace.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02a-open-codespace-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02a-open-codespace-light.svg">
+  <img alt="Open Codespace" src="images/02a-open-codespace-light.svg">
+</picture>
 
 Codespaces auto-save your work. If you close the tab, open [github.com/codespaces](https://github.com/codespaces) to resume where you left off.
 
@@ -46,7 +53,7 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 - **"Create codespace on main" is greyed out** — your account may not have Codespaces enabled. Check your GitHub plan details or ask your organization admin.
 - **Spinner runs more than 3 minutes** — refresh the browser tab. If still stuck, go to [github.com/codespaces](https://github.com/codespaces), find the pending Codespace, click **⋯ → Delete**, and try again.
 - **"Codespace storage limit reached"** — you may have existing Codespaces using your quota. Visit [github.com/codespaces](https://github.com/codespaces), delete any you no longer need, and retry.
-- **VS Code desktop opens instead of the browser** — click **Open in Browser** in the dialog, or close VS Code desktop and return to the browser tab.
+- **VS Code desktop opens instead of the browser** — see [Side Quest: Install Local](side-quest-06-04-install-local.md) if you prefer that path, or click **Open in Browser** to continue here.
 
 </details>
 
@@ -70,16 +77,20 @@ Type your command after the `$` prompt and press Enter. Output appears below; a 
 
 The diagram below shows your Codespace connection to GitHub.
 
-![Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub](images/02a-codespace-architecture.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/02a-codespace-architecture-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/02a-codespace-architecture-light.svg">
+  <img alt="Codespace environment architecture: your browser connects to a cloud container with pre-installed tools, which communicates with GitHub" src="images/02a-codespace-architecture-light.svg">
+</picture>
 
 1. Run these commands in the Codespace terminal:
 
-   ```bash
-   gh --version
-   gh auth status
-   ```
-2. Confirm `gh --version` shows `gh version 2.40.0` or newer.
-3. Confirm `gh auth status` shows you are logged in to `github.com`.
+```bash
+gh --version
+gh auth status
+```
+1. Confirm `gh --version` shows `gh version 2.40.0` or newer.
+2. Confirm `gh auth status` shows you are logged in to `github.com`.
 
 _What success looks like:_
 
@@ -90,7 +101,7 @@ github.com
   ✓ Logged in to github.com as <your-username>
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You confirmed your GitHub plan includes Codespaces access (free tier includes 60 hours/month)
 - [ ] The Codespace editor is open in your browser

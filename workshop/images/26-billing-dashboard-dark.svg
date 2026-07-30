@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Copilot billing usage dashboard showing AI Credit consumption by feature">
+  <!-- Page background -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1200" height="44" rx="6" ry="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <rect x="0" y="22" width="1200" height="22" fill="#161b22"/>
+  <!-- URL bar -->
+  <rect x="320" y="9" width="560" height="26" rx="13" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="600" y="27" font-family="Arial, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">github.com/settings/billing/usage</text>
+  <!-- Browser dots -->
+  <circle cx="20" cy="22" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="22" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="22" r="6" fill="#28c840"/>
+
+  <!-- Left sidebar -->
+  <rect x="0" y="44" width="220" height="516" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="20" y="80" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#f0f6fc">Settings</text>
+  <text x="20" y="110" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Profile</text>
+  <text x="20" y="132" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Account</text>
+  <text x="20" y="154" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Appearance</text>
+  <!-- Billing selected -->
+  <rect x="0" y="164" width="220" height="26" fill="#1d2d4a"/>
+  <text x="20" y="181" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2f81f7">Billing and plans</text>
+  <text x="20" y="210" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Security</text>
+  <text x="20" y="232" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">SSH and GPG keys</text>
+  <text x="20" y="254" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Notifications</text>
+  <text x="20" y="276" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Copilot</text>
+
+  <!-- Main content -->
+  <rect x="240" y="56" width="940" height="470" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Page title -->
+  <text x="268" y="92" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#f0f6fc">Usage</text>
+
+  <!-- Sub-nav tabs -->
+  <text x="268" y="120" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">Summary</text>
+  <text x="340" y="120" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2f81f7">Usage</text>
+  <line x1="340" y1="124" x2="368" y2="124" stroke="#2f81f7" stroke-width="2"/>
+  <text x="400" y="120" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">Budgets &amp; alerts</text>
+
+  <line x1="240" y1="130" x2="1180" y2="130" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Section heading -->
+  <text x="268" y="158" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f0f6fc">Copilot usage this cycle</text>
+  <text x="268" y="178" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">Billing period: Jun 1 – Jun 30, 2025</text>
+
+  <!-- Table header -->
+  <rect x="260" y="192" width="900" height="32" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="280" y="213" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f0f6fc">Feature</text>
+  <text x="560" y="213" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f0f6fc">AI Credits (AIC) used</text>
+  <text x="780" y="213" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f0f6fc">Requests</text>
+  <text x="980" y="213" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f0f6fc">Last used</text>
+
+  <!-- Table rows -->
+  <!-- Row 1: Agentic Workflows (highlighted) -->
+  <rect x="260" y="224" width="900" height="36" fill="#1d2d4a" stroke="#30363d" stroke-width="0.5"/>
+  <text x="280" y="247" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2f81f7">Agentic Workflows</text>
+  <text x="560" y="247" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">3,420</text>
+  <text x="780" y="247" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">142</text>
+  <text x="980" y="247" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">Today</text>
+
+  <!-- Row 2 -->
+  <rect x="260" y="260" width="900" height="36" fill="#161b22" stroke="#30363d" stroke-width="0.5"/>
+  <text x="280" y="283" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">Copilot Chat (IDE)</text>
+  <text x="560" y="283" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">1,850</text>
+  <text x="780" y="283" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">620</text>
+  <text x="980" y="283" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">Today</text>
+
+  <!-- Row 3 -->
+  <rect x="260" y="296" width="900" height="36" fill="#0d1117" stroke="#30363d" stroke-width="0.5"/>
+  <text x="280" y="319" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">Copilot Chat (GitHub.com)</text>
+  <text x="560" y="319" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">940</text>
+  <text x="780" y="319" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">310</text>
+  <text x="980" y="319" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">2 days ago</text>
+
+  <!-- Row 4 -->
+  <rect x="260" y="332" width="900" height="36" fill="#161b22" stroke="#30363d" stroke-width="0.5"/>
+  <text x="280" y="355" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">Code completion</text>
+  <text x="560" y="355" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">0</text>
+  <text x="780" y="355" font-family="Arial, sans-serif" font-size="13" fill="#f0f6fc">—</text>
+  <text x="980" y="355" font-family="Arial, sans-serif" font-size="13" fill="#8b949e">—</text>
+
+  <!-- Total row -->
+  <rect x="260" y="368" width="900" height="36" rx="0" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="280" y="391" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#f0f6fc">Total</text>
+  <text x="560" y="391" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#f0f6fc">6,210</text>
+
+  <!-- Budget bar -->
+  <text x="268" y="432" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#f0f6fc">Monthly budget</text>
+  <rect x="268" y="444" width="600" height="16" rx="8" fill="#30363d"/>
+  <rect x="268" y="444" width="373" height="16" rx="8" fill="#2f81f7"/>
+  <text x="878" y="458" font-family="Arial, sans-serif" font-size="12" fill="#8b949e">6,210 / 10,000 AIC used (62%)</text>
+
+  <!-- Annotation -->
+  <text x="600" y="536" font-family="Arial, sans-serif" font-size="18" fill="#8b949e" text-anchor="middle">Copilot billing usage dashboard showing AI Credit consumption by feature</text>
+</svg>

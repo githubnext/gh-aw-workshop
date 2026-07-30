@@ -150,27 +150,16 @@ When you find a good candidate, make one focused change set that:
 1. Creates exactly one new file named `workshop/side-quest-<topic>.md`
 2. Moves the chosen primer/tutorial into that new side-quest file
 3. Updates the source workshop file so the extracted section becomes a short
-   summary plus an explicit optional link to the new side quest
+   summary; adds an **Optional Side Quest** callout at the extraction point with
+   clear optional language linking to the new side quest; adds a return link in
+   the new side quest back to the source step or the next main-path step
 4. Preserves the main path in the source file
-5. Updates `workshop/README.md` so the new side quest is discoverable
+5. Updates `workshop/README.md` so the new side quest is discoverable, listed
+   in a dedicated optional section that mentions which main step it branches from
 
-## Routing rules
-
-Use **proper routing** so the optional detour feels intentional:
-
-- In the source file, add an **Optional Side Quest** callout or short section at
-  the place where the primer used to live
-- Link from the source file to the new side quest with clear optional language
-- In the new side quest file, add a clear return link back to the source step or
-  the next main-path step
-- In `workshop/README.md`, list the side quest in a dedicated optional section
-  and mention which main step it branches from
-
-## Writing rules for the new side quest
+## Writing rules
 
 Match the workshop voice: practical, friendly, and beginner-safe.
-
-Also follow shared guidance to delay and minimize `gh` usage in early steps, keeping UI-first paths prominent wherever possible.
 
 Use this structure:
 
@@ -179,26 +168,19 @@ Title: Side Quest: <Title>
 
 > _One-sentence reason this optional detour is worth taking._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 ## Steps
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 **Return to the main adventure:** [<Step title>](<source-file>.md)
 ```
 
 Keep the side quest self-contained and concise. It should cover one concept.
-
-## Extraction rules
-
-- Prefer moving content instead of duplicating it
-- Leave enough context in the source file that the main path still works
-- Do not create more than one new workshop file
-- Do not rename existing workshop files unless absolutely necessary
-- Do not edit files outside `workshop/`
+Prefer moving content over duplicating it, and leave enough context in the source file that the main path still works.
 
 ## Validate workflow snippets
 

@@ -4,7 +4,7 @@
 
 > _Optional: read this quick-reference guide if you already know GitHub Actions and want a fast comparison before continuing with [Step 5](05-agentic-workflows-intro.md)._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 To get the most out of this fast-track guide, you should have already:
 
@@ -12,7 +12,7 @@ To get the most out of this fast-track guide, you should have already:
 - Understood the core Actions concepts: triggers (`on:`), jobs, steps, and runners.
 - Optionally reviewed [What Are Agentic Workflows?](05-agentic-workflows-intro.md) for a beginner-friendly introduction before using this cheat sheet.
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Review the key shift from classic Actions to agentic workflows, compare concrete code examples, and keep a short list of what stays unchanged. By the end, you'll have a practical adoption lens for platform and DevOps use cases.
 
@@ -43,7 +43,7 @@ jobs:
 
 **Agentic workflow** — a plain-language goal replaces the shell logic:
 
-```yaml
+```markdown
 ---
 on: [issues]
 ---
@@ -71,6 +71,14 @@ Think of agentic workflows as a superset of Actions:
 
 ## Hybrid pattern for real teams
 
+The diagram below shows the three-stage data flow: deterministic steps fetch and transform data, structured outputs bridge the two worlds, and the agent handles interpretation and communication.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/sq0501-hybrid-pattern-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/sq0501-hybrid-pattern-light.svg">
+   <img alt="Hybrid pattern diagram showing three stages: deterministic jobs fetch and transform data, structured outputs pass to the workflow body, and the agent handles interpretation and communication" src="images/sq0501-hybrid-pattern-light.svg">
+</picture>
+
 A practical migration path is hybrid:
 
 1. Keep deterministic jobs or steps for stable data operations (fetch, transform, validate).
@@ -79,13 +87,13 @@ A practical migration path is hybrid:
 
 This pattern works well for platform and DevOps teams because you preserve deterministic guardrails while reducing hand-written branching logic for context-heavy decisions.
 
-## 🛠️ Try it
+## :hammer_and_wrench: Try it
 
 Open the workflow file you created in Step 4, or find a `run:` step in any `.github/workflows/*.yml` file. Pick one step that handles a decision — checking a label, parsing a PR title, or filtering by file path.
 
 Add a comment above that step with a one-sentence plain-language goal. The step body below is just a stand-in — your real step keeps its existing logic unchanged:
 
-```yaml
+```markdown
 # Goal: suggest up to three relevant labels from the repo label list
 - name: Check labels
   run: |
@@ -112,7 +120,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 - Compatible with existing runner fleet investments and compliance requirements
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain the mental model shift from scripted steps to goal-oriented execution
 - [ ] I can identify what changes in agentic workflows and what stays the same from classic Actions

@@ -4,13 +4,13 @@
 
 > _You've built a real, scheduled AI workflow — here's how to keep growing from here._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Take stock of everything you've learned, then choose a direction for what to build or explore next. This node is a hub: it links to deeper dives, community resources, and ideas for your own projects.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have a scheduled daily-status workflow running in GitHub Actions from [Schedule It to Run Every Day](12-test-and-iterate.md).
+- You have a scheduled daily-status workflow running in GitHub Actions from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 
 ## Steps
 
@@ -18,7 +18,7 @@ Take stock of everything you've learned, then choose a direction for what to bui
 
 You've gone from zero to a fully automated, AI-powered workflow that:
 
-- Runs on a schedule in GitHub Actions
+- Runs on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) in GitHub Actions
 - Uses gh-aw to call an AI model from a simple YAML file
 - Posts a daily summary without any manual intervention
 
@@ -34,7 +34,13 @@ Answer each question (in your notes or a new GitHub issue in your practice repos
 
 ### Review what you've learned
 
-Here's a quick recap of the concepts you've touched:
+Here's a quick recap of the concepts you've touched. The diagram below shows how all the pieces connect in the workflow you just built.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/14-workflow-architecture-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/14-workflow-architecture-light.svg">
+   <img alt="Agentic workflow architecture: schedule trigger flows through GitHub Actions and gh-aw to an AI model, which produces a safe output" src="images/14-workflow-architecture-light.svg">
+</picture>
 
 | Concept | Where you used it |
 |---|---|
@@ -48,20 +54,20 @@ Here's a quick recap of the concepts you've touched:
 
 ### Go deeper
 
-- ➡️ [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) — add conditions so your workflow only runs when there is meaningful activity to report.
-- ➡️ [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
-- ➡️ [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
-- ➡️ [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md) — publish your workflow to a catalog so others can install it with one command.
-- ➡️ [Make Your Workflow Remember Across Runs](20-persistent-memory.md) — add cache-backed memory so your workflow skips items it has already reported on.
-- ➡️ [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md) — use the planner-worker pattern to keep your main prompt lean and reduce token cost.
-- ➡️ [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) — add defensive briefs, timeouts, and fallback outputs so unattended runs stay reliable.
-- ➡️ [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) — compare prompt variants across runs and let data decide which one to keep.
-- ➡️ [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
-- ➡️ [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
-- ➡️ [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
+- :arrow_right: [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) — add conditions so your workflow only runs when there is meaningful activity to report.
+- :arrow_right: [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
+- :arrow_right: [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
+- :arrow_right: [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md) — publish your workflow to a catalog so others can install it with one command.
+- :arrow_right: [Make Your Workflow Remember Across Runs](20-persistent-memory.md) — add cache-backed memory so your workflow skips items it has already reported on.
+- :arrow_right: [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md) — use the planner-worker pattern to keep your main prompt lean and reduce token cost.
+- :arrow_right: [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) — add defensive briefs, timeouts, and fallback outputs so unattended runs stay reliable.
+- :arrow_right: [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) — compare prompt variants across runs and let data decide which one to keep.
+- :arrow_right: [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
+- :arrow_right: [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
+- :arrow_right: [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your scheduled workflow has completed at least one successful automated run
 - [ ] You can describe, in plain English, what agentic workflows are and why they're useful
@@ -69,7 +75,11 @@ Here's a quick recap of the concepts you've touched:
 - [ ] You drafted a two-sentence brief for your next agentic workflow
 - [ ] You know where to find the gh-aw docs when you need them
 
-You've reached the end of the main path — but the graph stays open. Come back any time, branch off in a new direction, and keep building. 🚀
+You've reached the end of the scheduled-workflow path — but there is one more step on the main track before you head into advanced territory. Come back to explore any of the deeper topics when you're ready.
 
+<!-- /journey -->
+
+<!-- journey: all -->
+**Next:** [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md)
 <!-- /journey -->
 

@@ -2,11 +2,11 @@
 <!-- page-adventure: side-quest -->
 # Side Quest 09-01d: Pattern — `permission denied`
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You will map permission failures to the correct control: read access in `permissions:` and write allowlisting in `safe-outputs:`.
 
-## Before You Start
+## :clipboard: Before You Start
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 
@@ -40,7 +40,7 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can classify denied calls as read or write operations
 - [ ] I can fix missing read access in `permissions:`

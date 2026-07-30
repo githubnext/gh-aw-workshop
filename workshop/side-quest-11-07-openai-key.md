@@ -6,7 +6,7 @@
 
 By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) use the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). To use **OpenAI models**, store an OpenAI API key as a repository secret and add one frontmatter line.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Install `gh-aw`](06-install-gh-aw.md) and have a working agentic workflow.
 - You are familiar with [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) `env:` blocks. If frontmatter is new, skim [Side Quest: Frontmatter Deep Dive — Part A](side-quest-11-01-frontmatter-deep-dive.md) before continuing.
@@ -36,7 +36,7 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 > [!IMPORTANT]
 > Paste the key into GitHub Secrets (the next section) **before** closing the OpenAI platform tab. If you close it first, you must delete the key and generate a new one.
 
-**✏️ Verify:** Confirm your new key appears in the list at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) before continuing.
+**:pencil2: Verify:** Confirm your new key appears in the list at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) before continuing.
 
 ---
 
@@ -52,7 +52,7 @@ Open your repository in a **new tab** so you keep the OpenAI platform tab open.
 > [!IMPORTANT]
 > The name must be exactly `OPENAI_API_KEY`. Any variation (`openai_api_key`, `OPENAI-API-KEY`) causes a silent authentication failure.
 
-**✏️ Verify:** Run this command and confirm `OPENAI_API_KEY` appears in the output:
+**:pencil2: Verify:** Run this command and confirm `OPENAI_API_KEY` appears in the output:
 
 ```bash
 gh secret list
@@ -64,7 +64,7 @@ gh secret list
 
 Add `engine: codex` and the `network.allowed` entry to your workflow's frontmatter. You can omit `copilot-requests: write` — it is specific to the Copilot engine.
 
-```yaml
+```markdown
 ---
 name: My Workflow
 on:
@@ -79,12 +79,14 @@ network:
 ---
 ```
 
-**✏️ Verify:** Confirm your frontmatter includes `engine: codex` and the secret reference:
+**:pencil2: Verify:** Confirm your frontmatter includes `engine: codex` and the secret reference:
 
-```yaml
+```markdown
+---
 engine: codex
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+---
 ```
 
 ---
@@ -93,19 +95,21 @@ env:
 
 To pin a model version, use the extended engine syntax:
 
-```yaml
+```markdown
+---
 engine:
   id: codex
   model: gpt-4o-mini
+---
 ```
 
 Leave `model` out to use the engine's current default, which the `gh-aw` team keeps up to date.
 
 ---
 
-## Compile and validate
+## Validate your workflow
 
-After updating your frontmatter, recompile the workflow to check for errors:
+After updating your frontmatter, validate the workflow to check for errors:
 
 ```bash
 gh aw compile --validate
@@ -113,13 +117,13 @@ gh aw compile --validate
 
 You should see:
 
-```
-✔ <your-workflow>.md — valid
+```text
+✔️ <your-workflow>.md — valid
 ```
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You have an OpenAI account and have generated an API key
 - [ ] My new key is listed at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
@@ -128,7 +132,5 @@ You should see:
 - [ ] `gh aw compile --validate` reports no errors
 
 <!-- journey: all -->
-**Return to:** [Build — Daily Repo Status Workflow](07-your-first-workflow.md) or [Adventure Codespace: Build Daily Status with the Add Wizard](07c-your-first-workflow-copilot.md)
+**Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
 <!-- /journey -->
-
-

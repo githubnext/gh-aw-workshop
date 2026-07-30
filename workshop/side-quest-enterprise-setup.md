@@ -4,7 +4,7 @@
 
 > _Required for GHES users before attempting to create or run [agentic workflows](https://github.github.com/gh-aw/introduction/overview/). Also useful if you are running any setup step in a managed enterprise environment — complete this guide, then return to your current step._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have a GitHub account and know whether your environment is `github.com`, GitHub Enterprise Cloud (GHEC), or GitHub Enterprise Server (GHES).
 - You can reach your GitHub Enterprise administrator to confirm GHES version and policy settings.
@@ -18,10 +18,10 @@ Agentic workflows require **GHES 3.12 or later**. On earlier versions, the Copil
 
 | GitHub deployment | Agentic workflows supported? |
 |---|---|
-| **github.com** | ✅ Fully supported |
-| **GitHub Enterprise Cloud (GHEC)** | ✅ Fully supported |
-| **GitHub Enterprise Server (GHES) 3.12+** | ✅ Supported when Copilot Enterprise and network access are configured by admin |
-| **GitHub Enterprise Server (GHES) < 3.12** | ❌ Not supported — upgrade required |
+| **github.com** | :white_check_mark: Fully supported |
+| **GitHub Enterprise Cloud (GHEC)** | :white_check_mark: Fully supported |
+| **GitHub Enterprise Server (GHES) 3.12+** | :white_check_mark: Supported when Copilot Enterprise and network access are configured by admin |
+| **GitHub Enterprise Server (GHES) < 3.12** | :x: Not supported — upgrade required |
 
 Before continuing:
 
@@ -40,12 +40,12 @@ Codespaces availability varies by platform and policy:
 Before continuing:
 
 1. Ask your enterprise admin whether Codespaces is enabled for your organization and repository.
-2. If Codespaces is available, continue with [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md).
-   If Codespaces is unavailable, switch to [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md).
+2. If Codespaces is available, continue with [Set Up a Codespace](02a-setup-codespace.md).
+   If Codespaces is unavailable, take [Side Quest: Set Up Your Local Terminal](side-quest-02-01-local-terminal.md).
 3. Use your enterprise hostname in all `gh` auth and extension commands when required (for example, `gh auth login --hostname ghes.example.com`).
    See [Side Quest: Install `gh-aw` Troubleshooting](side-quest-06-01-install-troubleshooting.md) for a complete enterprise hostname command sequence.
 
-> 🤔 **Predict:** Look up your enterprise hostname before continuing. After confirming it, run the following command and verify the output shows your GHES instance:
+> :thinking: **Predict:** Look up your enterprise hostname before continuing. After confirming it, run the following command and verify the output shows your GHES instance:
 >
 > ```bash
 > gh auth login --hostname <your-ghes-hostname>
@@ -54,7 +54,7 @@ Before continuing:
 
 ## Self-hosted runner prerequisites
 
-If your enterprise requires [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) for GitHub Actions, confirm these before you continue:
+If your enterprise requires [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) for [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/), confirm these before you continue:
 
 - A runner is registered and online for your repository or org.
 - The runner allows workflow jobs from your repository.
@@ -75,7 +75,7 @@ Agentic workflows require both Actions execution and model access:
 Before installing `gh-aw`, verify with your admin that your account and repository are permitted to run Copilot-powered workflow jobs.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your GHES instance is version 3.12 or later (or you are on `github.com`/GHEC)
 - [ ] You know whether Codespaces is available in your enterprise environment
@@ -84,6 +84,6 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 - [ ] You're ready to continue your current workshop step
 
 Return to the workshop step where you opened this side quest.
-Common return points are [Prerequisites](01-prerequisites.md), [Adventure Codespace: Set Up a Codespace](02a-setup-codespace.md), [Adventure Local: Set Up Your Local Terminal](02b-setup-local.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
+Common return points are [Prerequisites](01-prerequisites.md), [Set Up a Codespace](02a-setup-codespace.md), [Side Quest: Set Up Your Local Terminal](side-quest-02-01-local-terminal.md), and [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
 <!-- /journey -->

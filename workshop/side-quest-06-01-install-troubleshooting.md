@@ -6,6 +6,14 @@
 
 If `gh extension install github/gh-aw` fails, use the matching fix below and retry.
 
+The diagram below shows how to identify your error type and apply the right fix:
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/sq-06-01-install-troubleshooting-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/sq-06-01-install-troubleshooting-light.svg">
+   <img alt="Install troubleshooting decision flow: gh extension install fails, then branch by error type — HTTP 401 unauthenticated, HTTP 403 org Codespace token, proxy or network error, or GHES endpoint — each leading to its specific fix, all converging on a successful gh aw --version check." src="images/sq-06-01-install-troubleshooting-light.svg">
+</picture>
+
 ---
 
 ## Local terminal setup quick fixes (Adventure Local)
@@ -48,17 +56,19 @@ Confirm `gh auth status` shows `Logged in to github.com`.
 
 ## Organization Codespace token limitation (HTTP 403)
 
-In an org-owned Codespace, `gh` can be pre-authenticated with an org-scoped token.
-Installing `github/gh-aw` from the marketplace can fail with HTTP 403 even though auth is valid.
+In an org-owned Codespace, `gh` is pre-authenticated with an org-scoped token that cannot
+access the extension marketplace. `gh extension install github/gh-aw` will fail with HTTP 403
+in this environment. The main step now recommends the curl script as the primary install path
+for this reason.
 
-If that happens, use the install script from the gh-aw installation instructions:
+If you arrived here after a 403, run the install script:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 gh aw --version
 ```
 
-You usually do **not** need to run `gh auth login` for this case.
+You do **not** need to run `gh auth login` for this case.
 
 ---
 
@@ -107,7 +117,11 @@ gh extension list
 
 ---
 
-## ✅ Checkpoint
+<!-- journey: all -->
+Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
+<!-- /journey -->
+
+## :white_check_mark: Checkpoint
 
 Use this checklist to confirm the install issue is fully resolved before returning to the main path:
 
@@ -116,9 +130,3 @@ Use this checklist to confirm the install issue is fully resolved before returni
 - [ ] `gh aw --version` prints a version number (for example, `gh-aw 1.x.x`)
 - [ ] `gh extension list` shows `github/gh-aw` in the output
 - [ ] I am ready to return to [Install the gh-aw CLI Extension](06-install-gh-aw.md) and continue
-
----
-
-<!-- journey: all -->
-Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
-<!-- /journey -->

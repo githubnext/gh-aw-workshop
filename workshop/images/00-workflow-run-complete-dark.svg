@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="Preview of a completed workflow run in the Actions tab">
+  <!-- Page background -->
+  <rect width="1200" height="560" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1200" height="44" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <rect x="0" y="22" width="1200" height="22" fill="#161b22"/>
+  <circle cx="24" cy="22" r="6" fill="#30363d"/>
+  <circle cx="48" cy="22" r="6" fill="#30363d"/>
+  <circle cx="72" cy="22" r="6" fill="#30363d"/>
+  <rect x="220" y="8" width="760" height="28" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="600" y="27" font-family="Arial, sans-serif" font-size="13" fill="#8b949e" text-anchor="middle">github.com/your-org/your-repo/actions</text>
+
+  <!-- Nav tab bar -->
+  <rect x="0" y="44" width="1200" height="48" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="80" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Code</text>
+  <text x="160" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Issues</text>
+  <text x="260" y="75" font-family="Arial, sans-serif" font-size="15" fill="#8b949e">Pull requests</text>
+  <text x="420" y="75" font-family="Arial, sans-serif" font-size="15" fill="#f0f6fc" font-weight="bold">Actions</text>
+  <rect x="418" y="88" width="64" height="3" fill="#2f81f7" rx="2"/>
+
+  <!-- Main content -->
+  <rect x="60" y="110" width="1080" height="380" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Run title row -->
+  <circle cx="104" cy="160" r="18" fill="#238636"/>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(94 150) scale(1.25)"/>
+  <text x="136" y="156" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#f0f6fc">Daily Repo Status</text>
+  <text x="136" y="180" font-family="Arial, sans-serif" font-size="14" fill="#8b949e">Run #42 completed successfully · 52s · triggered manually</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="202" x2="1120" y2="202" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Jobs section header -->
+  <text x="100" y="232" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#f0f6fc">Jobs</text>
+
+  <!-- Job rows -->
+  <rect x="80" y="244" width="1040" height="44" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <circle cx="116" cy="266" r="12" fill="#238636"/>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 258)"/>
+  <text x="142" y="272" font-family="Arial, sans-serif" font-size="16" fill="#f0f6fc">activating</text>
+  <text x="1068" y="272" font-family="Arial, sans-serif" font-size="14" fill="#8b949e" text-anchor="end">6s</text>
+
+  <rect x="80" y="294" width="1040" height="44" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <circle cx="116" cy="316" r="12" fill="#238636"/>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 308)"/>
+  <text x="142" y="322" font-family="Arial, sans-serif" font-size="16" fill="#f0f6fc">agent</text>
+  <text x="1068" y="322" font-family="Arial, sans-serif" font-size="14" fill="#8b949e" text-anchor="end">17s</text>
+
+  <rect x="80" y="344" width="1040" height="44" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <circle cx="116" cy="366" r="12" fill="#238636"/>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 358)"/>
+  <text x="142" y="372" font-family="Arial, sans-serif" font-size="16" fill="#f0f6fc">safe_outputs</text>
+  <text x="1068" y="372" font-family="Arial, sans-serif" font-size="14" fill="#8b949e" text-anchor="end">9s</text>
+
+  <rect x="80" y="394" width="1040" height="44" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <circle cx="116" cy="416" r="12" fill="#238636"/>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 408)"/>
+  <text x="142" y="422" font-family="Arial, sans-serif" font-size="16" fill="#f0f6fc">conclusion</text>
+  <text x="1068" y="422" font-family="Arial, sans-serif" font-size="14" fill="#8b949e" text-anchor="end">12s</text>
+
+  <!-- Annotation -->
+  <text x="600" y="524" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#8b949e">Preview of a completed workflow run in the Actions tab</text>
+</svg>

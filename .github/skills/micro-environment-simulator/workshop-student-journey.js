@@ -30,29 +30,21 @@ const BACKGROUND_FACTORS = {
 const STEP_FILE_ALIASES = {
   "00-welcome": ["00-welcome.md"],
   "01-prerequisites": ["01-prerequisites.md"],
-  "02-setup": ["02a-setup-codespace.md", "02b-setup-local.md", "02c-setup-browser.md"],
+  "02-setup": ["02a-setup-codespace.md"],
   "04-actions-intro": ["04-github-actions-intro.md"],
   "05-agentic-intro": ["05-agentic-workflows-intro.md"],
   "05c-agentic-practice": ["05c-agentic-workflows-practice.md"],
   "05b-agentic-security": ["05b-agentic-workflows-security.md"],
-  "06-install-gh-aw": [
-    "06-install-gh-aw.md",
-    "06a-install-terminal.md",
-    "06b-install-local.md",
-    "06c-install-ui.md"
-  ],
+  "06-install-gh-aw": ["06-install-gh-aw.md"],
   "07-first-workflow": [
     "07-your-first-workflow.md",
-    "07a-your-first-workflow-terminal.md",
-    "07a-part2-your-first-workflow-instructions.md",
-    "07c-your-first-workflow-copilot.md",
     "07d-confirm-model-access.md"
   ],
   "08-run-your-workflow": ["08-run-your-workflow.md"],
   "08b-interpret-your-run": ["08b-interpret-your-run.md"],
   "09-agentic-editing": ["09-agentic-editing.md"],
-  "12-test-and-iterate": ["12-test-and-iterate.md"],
   "14-next-steps": ["14-next-steps.md"],
+  "14b-pr-reviewer-workflow": ["14b-pr-reviewer-workflow.md"],
   "15-conditional-logic": ["15-conditional-logic.md"],
   "16-connect-data-source": ["16-connect-data-source.md"],
   "17-add-mcp-tools": ["17-add-mcp-tools.md"],
@@ -80,8 +72,8 @@ const STEP_IDS = [
   "08-run-your-workflow",
   "08b-interpret-your-run",
   "09-agentic-editing",
-  "12-test-and-iterate",
   "14-next-steps",
+  "14b-pr-reviewer-workflow",
   "15-conditional-logic",
   "16-connect-data-source",
   "17-add-mcp-tools",
@@ -105,6 +97,11 @@ const STEP_SIGNAL_KEYS = [
   "conceptDemand",
   "enterpriseDemand"
 ];
+
+const CODESPACE_ONLY_CORE_STEPS = new Set([
+  "06-install-gh-aw",
+  "07-first-workflow"
+]);
 
 function cloneState(state) {
   return JSON.parse(JSON.stringify(state));
@@ -168,6 +165,7 @@ function ensurePlainObject(value) {
 }
 
 function prefersBrowserPath(state, context) {
+  if (CODESPACE_ONLY_CORE_STEPS.has(context.stepId)) return false;
   const learner = learnerProfile(state);
   return (
     learner.uiPreferred === true ||
@@ -204,16 +202,10 @@ function hasCcaPromptGuidance(state, context) {
 function stepMetric(state, context, metric) {
   const fileSignals = Array.isArray(context.stepContent?.fileSignals) ? context.stepContent.fileSignals : [];
   if (context.stepId === "07-first-workflow" && fileSignals.length > 0) {
-    const relevantFiles = prefersBrowserPath(state, context)
-      ? new Set([
-          "07c-your-first-workflow-copilot.md",
-          "07d-confirm-model-access.md"
-        ])
-      : new Set([
-          "07a-your-first-workflow-terminal.md",
-          "07a-part2-your-first-workflow-instructions.md",
-          "07d-confirm-model-access.md"
-        ]);
+    const relevantFiles = new Set([
+      "07a-your-first-workflow-terminal.md",
+      "07d-confirm-model-access.md"
+    ]);
     return fileSignals
       .filter(({ file }) => relevantFiles.has(file))
       .reduce((sum, fileSignal) => sum + Number(fileSignal?.[metric] || 0), 0);
@@ -613,15 +605,20 @@ function buildTransitions() {
       const readiness = contentReadinessCheck(state, context, {
         salt: 29,
         category: "setup-friction",
-        failedAssumption: "The learner cannot translate the chosen setup path into a ready-to-use terminal environment.",
-        remediation: "Shorten the setup path, surface the terminal expectation earlier, and keep browser-first recovery steps nearby.",
+        failedAssumption: "The learner cannot launch the Codespace and reach a ready-to-use terminal environment.",
+        remediation: "Clarify the Codespace launch, readiness checks, and Codespaces-specific recovery steps.",
         emphasis: { bias: 0.3, terminalWeight: 0.16, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
       const next = markPracticeRepoCreatedAndVerified(state);
+      next.workspace.context = "codespaces";
       if (!next.installed.gh) {
         next.installed.gh = "2.58.0";
       }
+      next.auth.isLoggedIn = true;
+      next.auth.hasGithubSession = true;
+      next.auth.tokenScope =
+        next.auth.accountType === "enterprise-managed" ? "org" : "user";
       next.flags.environmentReady = true;
       return { ok: true, state: applyLearning(next, context, { terminal: 0.08, github: 0.03 }) };
     },
@@ -687,7 +684,7 @@ function buildTransitions() {
     "06-install-gh-aw": (state, context) => {
       const envCheck = ensure(
         state.flags.environmentReady,
-        "gh-aw cannot be installed before setup opens a Codespace or local terminal",
+        "gh-aw cannot be installed before the Codespace setup is complete",
         "environment-not-ready",
         "Complete the setup step (02-setup) before installing the gh-aw extension."
       );
@@ -751,7 +748,7 @@ function buildTransitions() {
         salt: 113,
         category: "workflow-authoring-friction",
         failedAssumption: "The learner struggles to translate the tutorial into a valid first workflow file.",
-        remediation: "Reduce frontmatter editing load and make the UI-only and terminal authoring paths easier to compare.",
+        remediation: "Reduce frontmatter editing load and make the Codespace authoring and compile steps easier to follow.",
         emphasis: { bias: 0.14, terminalWeight: 0.16, conceptWeight: 0.12, complexityWeight: 0.12 }
       });
       if (!readiness.ok) return readiness;
@@ -872,43 +869,49 @@ function buildTransitions() {
         "Complete the first workflow setup path that initializes and commits `.github/skills/agentic-workflows/` before editing."
       );
       if (!skillCheck.ok) return skillCheck;
+      const compiledWorkflowCheck = ensureCompiledWorkflow(
+        state,
+        "workflow-not-compiled",
+        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying to run it."
+      );
+      if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
       const readiness = contentReadinessCheck(state, context, {
         salt: 181,
         category: "workflow-editing-friction",
         failedAssumption: "The learner can describe the workflow change they want, but struggles to steer the skill or keep the compile loop aligned.",
-        remediation: "Keep the edit, debug, and optimize prompt patterns concise and reinforce recompiling immediately after each change.",
+        remediation: "Keep the edit, debug, and optimize prompt patterns concise and reinforce recompiling immediately after each change. Add a tighter observe-refine loop with one concrete example of a change prompted by run output.",
         emphasis: { bias: 0.1, conceptWeight: 0.08 }
       });
       if (!readiness.ok) return readiness;
       const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      return { ok: true, state: applyLearning(next, context, { agentic: 0.09, troubleshooting: 0.04, confidence: 0.02 }) };
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.09, troubleshooting: 0.08, confidence: 0.02 }) };
     },
-    "12-test-and-iterate": (state, context) => {
+    "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) }),
+    "14b-pr-reviewer-workflow": (state, context) => {
       const compiledWorkflowCheck = ensureCompiledWorkflow(
         state,
         "workflow-not-compiled",
-        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying to run it from Step 12."
+        "Compile the scenario workflow with `gh aw compile`, then commit and push the generated `.lock.yml`, or use a CCA session that compiles and commits the edited workflow before trying the PR reviewer step."
       );
       if (!compiledWorkflowCheck.ok) return compiledWorkflowCheck;
-      const runCheck = ensure(
-        state.flags.ranWorkflow,
-        "Cannot iterate without an executed workflow run",
-        "test-prerequisite-missing",
-        "Execute at least one workflow run before test-and-iterate."
+      const ccaGuidanceCheck = ensure(
+        !needsCcaPromptGuidance(state, context) || hasCcaPromptGuidance(state, context),
+        "The PR reviewer step does not clearly tell CCA learners to invoke `/agentic-workflows` or show the browser-only compile path.",
+        "copilot-skill-guidance-missing",
+        "Add `/agentic-workflows` skill invocation guidance and a UI-only compile path to the PR reviewer workflow step."
       );
-      if (!runCheck.ok) return runCheck;
+      if (!ccaGuidanceCheck.ok) return ccaGuidanceCheck;
       const readiness = contentReadinessCheck(state, context, {
-        salt: 211,
-        category: "test-iterate-friction",
-        failedAssumption: "The learner does not know how to turn runtime feedback into the next workflow revision.",
-        remediation: "Add a tighter observe-refine loop with one concrete example of a change prompted by run output.",
-        emphasis: { bias: 0.1 }
+        salt: 223,
+        category: "event-trigger-friction",
+        failedAssumption: "The learner understands scheduled triggers but struggles to adapt to an event-driven `pull_request` trigger and the required `safe-outputs` limit.",
+        remediation: "Keep the event trigger contrast with scheduled workflows prominent and add a worked example of `safe-outputs: create-issue-comment: limit: 1`.",
+        emphasis: { bias: 0.1, conceptWeight: 0.1, complexityWeight: 0.08 }
       });
       if (!readiness.ok) return readiness;
       const next = updateWorkflowCompileState(state, context, { allowCloudAgent: true });
-      return { ok: true, state: applyLearning(next, context, { troubleshooting: 0.08, agentic: 0.05 }) };
+      return { ok: true, state: applyLearning(next, context, { agentic: 0.08, actions: 0.04, troubleshooting: 0.03 }) };
     },
-    "14-next-steps": (state, context) => ({ ok: true, state: applyLearning(state, context, { confidence: 0.01 }) }),
     "15-conditional-logic": (state, context) =>
       advancedLessonStep(state, context, {
         requiresRun: true,

@@ -4,13 +4,13 @@
 
 > _Optional: use this primer if you want help choosing between [scheduled](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) and event-driven workflows before you finish [Build — PR Code Reviewer](15-conditional-logic.md), then return to the main adventure._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll compare scheduled and event-driven [triggers](https://github.github.com/gh-aw/reference/triggers/), copy four starter trigger blocks, and learn how trigger choice affects `safe-outputs`. By the end you'll know when to reach for `pull_request`, `push`, `issues`, or `schedule`.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have an existing workflow file from Step 11a or Step 11c, such as `.github/workflows/daily-status.md`.
+- You have an existing workflow file from Step 7 or Step 15, such as `.github/workflows/daily-status.md`.
 - You know how to commit and push changes in your chosen path.
 
 ## Scheduled vs event-driven triggers
@@ -30,10 +30,12 @@ If you want the workflow to react to a specific repository action, use an event 
 
 Use this when the workflow should react to pull request activity.
 
-```yaml
+```markdown
+---
 on:
   pull_request: {}
   workflow_dispatch: {}
+---
 ```
 
 This is a good fit when you want feedback tied to the current PR, like the PR Code Reviewer in Step 11c.
@@ -42,11 +44,13 @@ This is a good fit when you want feedback tied to the current PR, like the PR Co
 
 Use this when the workflow should react as soon as commits land on a branch.
 
-```yaml
+```markdown
+---
 on:
   push:
     branches: [main]
   workflow_dispatch: {}
+---
 ```
 
 This is a good fit when you want to check or summarize changes after code is pushed.
@@ -55,11 +59,13 @@ This is a good fit when you want to check or summarize changes after code is pus
 
 Use this when the workflow should react to issue activity.
 
-```yaml
+```markdown
+---
 on:
   issues:
     types: [opened, reopened]
   workflow_dispatch: {}
+---
 ```
 
 This is a good fit when you want an assistant to triage, label, or reply when someone opens an issue.
@@ -68,13 +74,15 @@ This is a good fit when you want an assistant to triage, label, or reply when so
 
 Use this when the workflow should run on a clock, whether or not anyone touched the repository.
 
-```yaml
+```markdown
+---
 on:
   schedule: daily
   workflow_dispatch: {}
+---
 ```
 
-This is a good fit for recurring reports like the Daily Repo Status workflow in Step 11a.
+This is a good fit for recurring reports like the Daily Repo Status workflow in Step 7.
 
 ## Try It: Swap Your Trigger
 
@@ -116,25 +124,25 @@ Use this rule of thumb:
 - If the answer is "an issue changed," start with `issues`.
 - If the answer is "nothing happened, but I still want a report," start with `schedule`.
 
-## Concrete example: Step 11a vs Step 11c
+## Concrete example: Step 7 vs Step 15
 
-The Daily Repo Status workflow in [Step 11a](07-your-first-workflow.md) and the PR Code Reviewer in [Step 11c](15-conditional-logic.md) use the same workflow format, but they solve different timing problems.
+The Daily Repo Status workflow in [Step 7](07-your-first-workflow.md) and the PR Code Reviewer in [Step 15](15-conditional-logic.md) use the same workflow format, but they solve different timing problems.
 
 | Step | Trigger | Why it fits | Safe output |
 |------|---------|-------------|-------------|
-| 11a Daily Repo Status | `schedule: daily` | You want a report every day, even on quiet days | `add-comment` |
-| 11c PR Code Reviewer | `pull_request: {}` | You want feedback only when a PR changes | `add-comment` |
+| 7 Daily Repo Status | `schedule: daily` | You want a report every day, even on quiet days | `add-comment` |
+| 15 PR Code Reviewer | `pull_request: {}` | You want feedback only when a PR changes | `add-comment` |
 
 That is the core decision: pick the trigger that matches the moment you care about, then pick the write target that matches the object you want the workflow to answer.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain the difference between a scheduled workflow and an event-driven workflow
 - [ ] I know starter trigger blocks for `pull_request`, `push`, `issues`, and `schedule`
 - [ ] I changed my workflow's trigger and confirmed it still compiles with `gh aw compile`
 - [ ] I understand that `safe-outputs` controls write access separately from the trigger
-- [ ] I can explain why both Step 11a and Step 11c use `add-comment` as their `safe-outputs` choice
+- [ ] I can explain why both Step 7 and Step 15 use `add-comment` as their `safe-outputs` choice
 
 ---
 

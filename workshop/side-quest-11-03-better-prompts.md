@@ -2,16 +2,16 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Write Better AI Task Briefs
 
-> _Optional: work through this guide if you want to get more useful, consistent output from your [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — then return to [Step 11](07-your-first-workflow.md) or [Step 12](12-test-and-iterate.md)._
+> _Optional: work through this guide if you want to get more useful, consistent output from your [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) — then return to [Step 11](07-your-first-workflow.md) or [Step 9](09-agentic-editing.md)._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 Learn five practical techniques for writing AI task briefs that produce clearer, more actionable workflow output. By the end you'll have an improved task brief for your daily status workflow — one that gives the AI better context, tighter constraints, and a predictable output format.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You've written your first workflow task brief in [Step 11](07-your-first-workflow.md).
-- You've run the workflow at least once in [Step 12](12-test-and-iterate.md) and seen its output.
+- You've run the workflow at least once in [Step 9](09-agentic-editing.md) and seen its output.
 
 ---
 
@@ -23,15 +23,15 @@ Unlike a chat message, the task brief runs unattended. The AI can't ask clarifyi
 
 ---
 
-## Technique 1: State the Goal, Not Just the Action
+## State the Goal, Not Just the Action
 
-❌ Vague:
+:x: Vague:
 
 ```
 Summarise the repository activity.
 ```
 
-✅ Goal-oriented:
+:white_check_mark: Goal-oriented:
 
 ```
 Produce a concise daily summary that helps a developer answer: "What changed
@@ -42,7 +42,7 @@ Framing the _purpose_ helps the AI decide what to include and what to skip.
 
 ---
 
-## Technique 2: Give the Output a Shape
+## Give the Output a Shape
 
 Tell the AI exactly what format you want. Include section headings, list styles, or even a skeleton example.
 
@@ -65,7 +65,7 @@ When the format is explicit, the output is predictable and easier to skim.
 
 ---
 
-## Technique 3: Set Scope and Constraints
+## Set Scope and Constraints
 
 If you don't constrain the AI, it may go broad. Be specific:
 
@@ -78,7 +78,7 @@ Short constraints pay dividends over hundreds of automated runs.
 
 ---
 
-## Technique 4: Reference Step Outputs Explicitly
+## Reference Step Outputs Explicitly
 
 When your workflow fetches data in earlier steps (see [Step 16](16-connect-data-source.md)), point the AI at that data by name:
 
@@ -92,7 +92,7 @@ The last line — "do not invent data" — is especially important. Without it, 
 
 ---
 
-## Technique 5: Add a "Done Means" Statement
+## Add a "Done Means" Statement
 
 Close every task brief with a single sentence that defines success:
 
@@ -147,7 +147,7 @@ posted to the Actions run summary.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can name three techniques for improving a task brief
 - [ ] You have updated your daily status workflow with at least one improvement from this guide
@@ -157,7 +157,6 @@ posted to the Actions run summary.
 ---
 
 <!-- journey: all -->
-Return to [Build Your Daily Repo Status Workflow](07-your-first-workflow.md) or continue to [Test and Improve Your Workflow](12-test-and-iterate.md).
+Return to [Build Your Daily Repo Status Workflow](07-your-first-workflow.md) or continue to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 <!-- /journey -->
-
 

@@ -4,7 +4,7 @@
 
 > _An agent granted `contents: write` can be tricked into committing backdoors or overwriting sensitive files — keeping the workflow read-only, and routing any genuine writes through a pull request, closes that door entirely._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file.
 - You are familiar with the `permissions:` and `safe-outputs:` blocks from earlier steps.
@@ -38,7 +38,7 @@ If the workflow has `contents: write` and no file restrictions, the agent may fa
 
 ## Why This Matters for Agentic Workflows
 
-Classic CI/CD runs deterministic scripts. An agentic workflow reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
+Classic CI/CD runs [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) scripts. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
 
 Write access magnifies every read. If the agent can commit directly, a successful content injection skips human review entirely. The poisoned file lands on the default branch before anyone notices.
 
@@ -48,11 +48,11 @@ Write access magnifies every read. If the agent can commit directly, a successfu
 
 gh-aw gives you three layers to prevent repository poisoning.
 
-### Declare read-only permissions
+### Declare [read-only permissions](https://github.github.com/gh-aw/reference/permissions/)
 
 The simplest defence is removing write capability before the agent runs:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -66,13 +66,13 @@ tools:
 ---
 ```
 
-With `contents: read`, the GitHub MCP server cannot call any API that creates or modifies repository content. Even a fully hijacked agent brief cannot commit a file.
+With `contents: read`, the [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/#github-mcp-server) cannot call any API that creates or modifies repository content. Even a fully hijacked agent brief cannot commit a file.
 
 ### Route writes through a pull request
 
 When the workflow genuinely needs to propose changes, `safe-outputs: create-pull-request` keeps every write behind a human gate:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -110,9 +110,9 @@ Even if an injected prompt convinces the agent to propose a change to a workflow
 
 ### Limit network destinations
 
-Combine file restrictions with `network.allowed-domains` to close the exfiltration channel:
+Combine file restrictions with [`network.allowed-domains`](https://github.github.com/gh-aw/reference/network/#configuration) to close the exfiltration channel:
 
-```yaml
+```markdown
 ---
 network:
   allowed-domains:
@@ -124,11 +124,11 @@ Even if an attacker crafts a payload that reaches a file write, their exfiltrati
 
 ---
 
-## ✏️ Exercise: Spot the Dangerous Frontmatter
+## :pencil2: Exercise: Spot the Dangerous [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
 
 Read this workflow frontmatter and identify every configuration that makes repository poisoning possible:
 
-```yaml
+```markdown
 ---
 name: Issue Responder
 on:
@@ -144,9 +144,9 @@ tools:
 ---
 ```
 
-- [ ] Which `permissions:` line enables direct file commits?
-- [ ] Which `toolsets:` value expands the attack surface beyond what the task needs?
-- [ ] What `safe-outputs:` configuration is missing?
+- Which `permissions:` line enables direct file commits?
+- Which `toolsets:` value expands the attack surface beyond what the task needs?
+- What `safe-outputs:` configuration is missing?
 
 <details>
 <summary>Review your answers</summary>
@@ -159,7 +159,7 @@ tools:
 
 ---
 
-## ✏️ Exercise: Harden Your Workflow
+## :pencil2: Exercise: Harden Your Workflow
 
 1. Open your own workflow file.
 2. Check whether `contents: write` appears in `permissions:`.
@@ -173,16 +173,16 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 
 ## What You Can Do as a Workflow Author
 
-- [ ] Keep `contents: read` unless the task requires proposing changes.
-- [ ] Use `safe-outputs: create-pull-request` instead of direct commits whenever a write is needed.
-- [ ] Declare `allowed-files` to restrict the PR to only the paths the task should touch.
-- [ ] Add `protected-files.exclude` entries for `.github/workflows/**`, `README.md`, and any other sensitive paths.
-- [ ] Set `network.allowed-domains` to block exfiltration to attacker-controlled destinations.
-- [ ] Treat all issue bodies, PR descriptions, and file content as untrusted input.
+- Keep `contents: read` unless the task requires proposing changes.
+- Use `safe-outputs: create-pull-request` instead of direct commits whenever a write is needed.
+- Declare `allowed-files` to restrict the PR to only the paths the task should touch.
+- Add `protected-files.exclude` entries for `.github/workflows/**`, `README.md`, and any other sensitive paths.
+- Set `network.allowed-domains` to block exfiltration to attacker-controlled destinations.
+- Treat all issue bodies, PR descriptions, and file content as untrusted input.
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the repository poisoning attack in one sentence
 - [ ] I can name the two gh-aw features (`contents: read` and `safe-outputs: create-pull-request`) that remove the direct-commit path

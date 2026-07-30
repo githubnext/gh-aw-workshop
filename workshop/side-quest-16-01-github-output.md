@@ -4,7 +4,7 @@
 
 > _Optional: work through this deep-dive if you want to understand how data flows between steps, then return to [Step 16](16-connect-data-source.md)._
 
-[GitHub Actions](https://github.github.com/gh-aw/introduction/overview/) runs each step in its own shell process. That means a plain `export MY_VAR=value` in one step **is invisible** to the next step — the environment is thrown away when the step exits. `$GITHUB_OUTPUT` is the official mechanism for persisting data across steps.
+[GitHub Actions](https://github.github.com/gh-aw/introduction/overview/) runs each step in its own shell process. That means a plain `export MY_VAR=value` in one step **is invisible** to the next step — the environment is thrown away when the step exits. `$GITHUB_OUTPUT` is the official mechanism for persisting data across [steps](https://github.github.com/gh-aw/reference/steps-jobs/#custom-steps-steps).
 
 ---
 
@@ -40,7 +40,7 @@ To read it back in a later step, reference `${{ steps.<id>.outputs.status }}` �
 
 A step `id` is how you refer to its outputs elsewhere in the workflow. Add `id:` at the same level as `name:` and `run:`:
 
-```yaml
+```markdown
 - name: Check health
   id: health_check
   run: |
@@ -79,9 +79,10 @@ You can use any unique string as the delimiter — `EOF` is just a convention.
 
 Once your data is in `$GITHUB_OUTPUT`, you reference it directly inside the workflow Markdown body — which **is** the AI prompt in gh-aw. There is no separate step to invoke the AI; the body text is sent to the model after all step outputs have been resolved.
 
-**Frontmatter** (data-preparation step):
+**[Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** (data-preparation step):
 
-```yaml
+```markdown
+---
 steps:
   - name: Fetch recent commits
     id: recent
@@ -89,6 +90,7 @@ steps:
       echo "commit_log<<EOF" >> $GITHUB_OUTPUT
       git log --oneline -10 >> $GITHUB_OUTPUT
       echo "EOF" >> $GITHUB_OUTPUT
+---
 ```
 
 **Workflow body (the prompt)**:
@@ -104,7 +106,7 @@ The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain why `export` does not pass values between steps
 - [ ] You can write a single-line value to `$GITHUB_OUTPUT`

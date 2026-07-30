@@ -2,12 +2,12 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)
 
-> _Optional: work through this visual primer if you want an intuitive mental model for why gh-aw uses a sandbox, where the agent runs, and what outputs are considered safe._
+> _Optional: work through this visual primer if you want an intuitive mental model for why gh-aw uses a [sandbox](https://github.github.com/gh-aw/reference/sandbox/), where the agent runs, and what outputs are considered safe._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You understand the basics of agentic workflows from [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
-- You have a workflow with `permissions` and `tools` frontmatter from [Write Your First Agentic Workflow](07-your-first-workflow.md).
+- You have a workflow with `permissions` and `tools` [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You have started or are about to start [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 
 Think of your workflow like a smart helper in a playroom.
@@ -44,7 +44,11 @@ That means:
 - The agent reads your workflow brief and repository context there.
 - When the run ends, that runtime is discarded.
 
-![Where the agent runs in GitHub Actions](images/side-quest-17-02-runtime.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-17-02-runtime-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-17-02-runtime-light.svg">
+  <img alt="Where the agent runs in GitHub Actions" src="images/side-quest-17-02-runtime-light.svg">
+</picture>
 
 This design reduces long-lived risk because the environment is short-lived and isolated.
 
@@ -72,7 +76,7 @@ You declare **[permissions](https://github.github.com/gh-aw/reference/permission
 
 Here is what a well-scoped workflow frontmatter looks like in practice:
 
-```yaml
+```markdown
 ---
 permissions:
   contents: read
@@ -81,24 +85,24 @@ tools:
   github:
     mode: gh-proxy
 safe-outputs:
-  write-summary: # presence flag — declares this output surface is allowed
+  add-comment: # presence flag — declares this output surface is allowed
 network:
-  allowed-domains:
+  allowed:
     - api.github.com
     - copilot-proxy.githubusercontent.com
 ---
 ```
 
-> 🤔 **Predict:** What would happen if you removed `network.allowed-domains` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
+> :thinking: **Predict:** What would happen if you removed `network.allowed` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain why sandbox boundaries reduce risk in agentic workflows
 - [ ] You can describe where the agent runs during a workshop workflow execution
 - [ ] You can list what makes an output safe vs. unsafe
-- [ ] You can explain how permissions, tools, and task brief work together as a security architecture
+- [ ] You can explain how permissions, tools, and [task brief](https://github.github.com/gh-aw/reference/markdown/) work together as a security architecture
 
 ---
 

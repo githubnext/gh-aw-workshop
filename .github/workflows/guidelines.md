@@ -1,19 +1,30 @@
 # Shared Workshop Authoring Guidelines
 
-Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly and avoid over-indexing on the GitHub CLI.
+Use these rules across workshop authoring/editing workflows to keep the tutorial beginner-friendly and centered on one consistent Codespaces journey.
 
-## Tooling progression: delay and minimize `gh`
+## Workshop delivery assumptions
 
-- Prefer GitHub UI and Codespaces paths early in the workshop.
+These guidelines assume the standard delivery context for GitHub- and Microsoft-organized workshops: learners arrive through the **golden-ticket provisioning system**, which creates a temporary workshop org and handles all billing. Write all core workshop content against these baseline assumptions:
+
+- **Codespace is already open.** Learners start from a pre-launched Codespace inside their provisioned practice repository. Do not add environment-creation steps (local Git setup, SSH key generation, manual Codespace creation) to the core route.
+- **Copilot CLI is the primary AI surface.** Use `gh copilot` (Copilot CLI in the Codespace terminal) as the default agent surface for every AI-assisted task in the core workshop. Side quests may cover Copilot Chat, IDE extensions, or other surfaces as alternatives.
+- **Org and billing are pre-provisioned.** The golden-ticket system creates the workshop org, assigns Copilot seats, and covers billing for the duration. Do not include billing setup, Copilot seat assignment, org creation, or payment steps in any core workshop content.
+- **Practice repository is pre-created.** Each learner's practice repository exists before they begin. Learners never fork, clone, or create it manually during a golden-ticket workshop session.
+
+## Codespaces-first tooling progression
+
+- Use Codespaces as the sole recommended environment in the core workshop.
 - Do not require `gh` installation/authentication in early shared steps unless a command in that same step truly requires it.
 - Delay `gh` setup and `gh-aw` install requirements until the latest practical point (typically the dedicated install step or later).
-- Minimize `gh` command volume throughout; use it only when it provides clear value or when no equivalent UI path exists.
+- Keep `gh` command volume focused, then run required CLI commands in the Codespace terminal.
+- Put local-terminal and browser-only alternatives in clearly labeled side quests instead of branching the core journey.
 
-## UI-first instruction design
+## Codespaces-first instruction design
 
-- For repo/file/edit/commit actions, prefer a UI-first path and provide terminal commands as optional alternatives.
-- Keep any required terminal path concise and explicit.
-- If terminal-only actions are required (for example, local `gh aw compile`), clearly state why and how UI-first learners can continue safely.
+- Keep the core route in Codespaces, even when an individual action opens the repository, settings, or Actions page on GitHub.com.
+- Do not describe a GitHub.com action as a separate browser-only student route.
+- Keep required terminal instructions concise and explicit.
+- For workflow dispatch, always teach GitHub Actions UI dispatch first; mention CLI dispatch only as an advanced option.
 
 ## Prerequisite discipline
 
@@ -27,16 +38,21 @@ Use these rules across workshop authoring/editing workflows to keep the tutorial
 - Keep command-heavy content narrow, purposeful, and optional when possible.
 - When terminal use is unavoidable, point learners to Codespaces as a low-friction bridge.
 
-## Copilot / Agents tab guidance
+## AI agent guidance
 
-- For `copilot` journey pages and Adventure D content, treat the Agents tab as a **prompt surface**, not a terminal.
-- When a learner is working in the Agents tab or another CCA surface, tell them what prompt to send; do **not** present shell commands as though they run inside that chat.
-- When the task is to create, edit, debug, or upgrade an agentic workflow from a CCA surface, explicitly call out the `/agentic-workflows` skill in the prompt.
-- If a CCA-oriented step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the Agents-tab prompt so learners know which surface to use for each action.
+- Prefer the **AI agent that runs your agentic workflows** (such as Copilot, Claude, or Codex) as the recommended prompt surface for all agentic workflow tasks. In the core workshop, "Copilot" always means **Copilot CLI (`gh copilot`) in the terminal already open in the learner's Codespace**, not a GitHub.com prompt surface and not an IDE extension. Using the same agent locally during authoring and testing gives learners behavior that matches production — unlike Copilot Chat (Agent Mode) in an IDE, which runs in a different harness and may behave differently. Side quests may introduce alternative surfaces, but never the core route.
+- When a learner is using their AI agent, tell them what prompt to pass; do **not** present shell commands as though they run inside the agent chat.
+- If a learner needs to start Copilot from the terminal, explicitly separate the launch command (for example `gh copilot`) from the prompt they should paste next.
+- Use `prompt` as the fenced code block language for prompts passed to an AI agent so the rendered workshop clearly distinguishes agent input from terminal commands and other code.
+- When the task is to create, edit, debug, or upgrade an agentic workflow, always route learners through their AI agent with the `/agentic-workflows` skill.
+- Do **not** recommend manual workflow editing as the primary instruction path; use the AI agent + `/agentic-workflows` prompts instead.
+- If a step still requires separate terminal work (for example `gh aw init` or `gh aw compile`), clearly separate the terminal action from the agent prompt so learners know which surface to use for each action.
+- Keep every prompt shown in a workshop page **simple: a single clear sentence** that a human would write in one shot. Avoid multi-part instructions, bullet-formatted prompts, or over-engineered phrasing inside the prompt block itself. If the task is complex, let the `/agentic-workflows` skill handle decomposition — the learner's input stays short and natural.
 
 ## Golden-Ticket Workshop Surfaces
 
 - The golden-ticket workshop is the fully preconfigured beginner path: Copilot, repository setup, and Codespaces bootstrapping are prepared ahead of time.
+- **Org provisioning and billing are handled by the golden-ticket system.** For GitHub- and Microsoft-organized workshops, the provisioning tooling creates a temporary workshop org, assigns Copilot seats to all participants, and covers billing for the duration. Do not add billing setup, payment method configuration, Copilot seat assignment, or org creation instructions to any core workshop step — those are prerequisites the golden-ticket system satisfies before learners open the first page.
 - Some workshop content is intentionally reused in golden-ticket workshop surfaces such as an org profile README and a learner-repository Codespaces launcher.
 - The maintained golden-ticket workshop assets live on the `golden-ticket-workshop` branch under `.github/participant-template/` plus `.github/workflows/create-participants-repo.yml`. During org provisioning, that branch is copied into the provisioned org's `.github-private` repository.
 - When you change workshop onboarding language that should also appear in those golden-ticket surfaces, update the marked source blocks in `workshop/00-welcome.md` and have the responsible agent check whether the `golden-ticket-workshop` branch also needs a corresponding update.
@@ -77,6 +93,7 @@ generate both light and dark variants during the same run. Name them
 - Keep the fallback `<img>` and use the light variant as its `src`.
 - Put alt text on the fallback `<img>`; do not duplicate it on `<source>` elements.
 - Capture or render each variant with Playwright's matching `colorScheme` setting.
+- If an image includes text, size that text to match normal rendered documentation body text so it remains legible after Markdown scaling.
 - Verify in both color schemes that `currentSrc` selects the expected variant and
    that the image is nonblank, readable, and free of clipping or overflow.
 
@@ -92,6 +109,72 @@ Existing single-theme workshop images are migration candidates, not exceptions:
    theme-neutral photo may use the same existing file for both `<source>` entries
    instead of duplicating the binary.
 - Do not delete an original asset until no Markdown or HTML reference uses it.
+
+## GitHub visual language system
+
+When a generated diagram or illustration depicts a GitHub concept — such as an issue, pull request, discussion, commit, repository, or workflow run — use the GitHub visual language to represent it. This keeps diagrams recognisable to learners who already know the GitHub UI and avoids generic icon fonts or ambiguous shapes.
+
+### Octicon-inspired shapes
+
+Embed simplified Octicon-style shapes directly in SVG markup as inline `<path>` or geometric primitives. Do not link to external icon files or import icon fonts — diagrams must be self-contained.
+
+| Concept | Shape guidance |
+|---------|----------------|
+| Issue (open) | Circle outline (`r 8`) with a smaller filled dot inside; stroke and fill use the open/green semantic color |
+| Issue (closed) | Solid circle with an ✕ or checkmark path inside; fill uses the closed semantic color |
+| Pull request (open) | Two small circles connected by a curved branch path (branch left, merge right); stroke uses the open/green color |
+| Pull request (merged) | Same branch shape with a diamond merge point; fill and stroke use the merged/purple color |
+| Pull request (draft) | Dashed circle outline with a pencil stub; stroke and fill use the muted/grey color |
+| Discussion | Rounded speech-bubble outline (rect + pointer triangle); stroke uses the accent color |
+| Commit | Small solid circle (`r 5`) centred on a horizontal branch line |
+| Repository | Open book or folder outline using two rounded rect halves |
+| Workflow / Actions run | Right-pointing filled triangle (play button) inside a rounded square |
+| Schedule trigger | Clock face: circle outline + two short line segments for hands |
+
+Use these shapes at 16 × 16 or 24 × 24 logical units; scale to fit the diagram's label boxes using a `transform="scale(...)"` or by drawing at the target size directly.
+
+### Primer semantic colors for entity states
+
+Apply state-specific colors consistently so learners can interpret diagram nodes at a glance.
+
+| State | Light mode | Dark mode | Applies to |
+|-------|-----------|-----------|------------|
+| Open | `#1a7f37` | `#3fb950` | Open issues, open PRs |
+| Closed | `#cf222e` | `#f85149` | Closed issues, closed PRs |
+| Merged | `#8250df` | `#a371f7` | Merged pull requests |
+| Draft | `#57606a` | `#8b949e` | Draft PRs, pending items |
+| In progress | `#9a6700` | `#e3b341` | Running workflow steps, in-flight items |
+| Done / Success | `#1a7f37` | `#3fb950` | Completed steps, passing checks |
+| Skipped | `#57606a` | `#8b949e` | Skipped steps, inactive paths |
+| Danger / Error | `#cf222e` | `#f85149` | Failed checks, error states |
+
+When the diagram is theme-aware, apply the matching column's values to each SVG variant.
+
+### GitHub visual language usage rules
+
+- **Always use GitHub icons** when a node represents a GitHub entity (issue, PR, discussion, commit, repository). Do not substitute plain rectangles or generic bullet shapes for recognisable GitHub concepts.
+- **Accompany every icon node with a text label.** The icon conveys type; the label conveys content. Together they must be readable without prior knowledge of the icon.
+- **Match state to color.** An open-issue node must use the open/green semantic color; a merged-PR node must use the merged/purple color. Do not use accent blue for concept nodes that have an explicit state color.
+- **Keep icon shapes minimal.** Octicon-inspired primitives should be legible at diagram scale — omit ornamental detail that disappears below 24 px.
+- **Use accent blue (`#0969da` / `#2f81f7`) for non-GitHub-entity highlights** such as data flows, trigger arrows, or focus callouts that do not correspond to a GitHub object.
+- **Do not mix icon vocabularies.** Never combine Octicon-style shapes with Material Design, Font Awesome, or other third-party icon conventions in the same diagram.
+
+### Enforcing the visual language spec
+
+Run the static SVG visual language checker locally before committing new or updated SVG files:
+
+```bash
+node scripts/check-svg-visual-language.js
+```
+
+To check specific files only:
+
+```bash
+SVG_FILES="workshop/images/foo-light.svg workshop/images/foo-dark.svg" \
+  node scripts/check-svg-visual-language.js
+```
+
+The check runs automatically in CI via `.github/workflows/svg-visual-language-check.yml` whenever SVG files change. Pull requests that introduce violations in changed SVG files will fail the check. Push events that introduce violations on `main` will create or update a tracked issue.
 
 ## Alert callouts: use `<details>` only for multi-line content
 
@@ -164,9 +247,9 @@ Multi-line callout (summary + body):
 
 ## Step ordering: environment before tools, credentials before running
 
-- Do not instruct learners to install `gh` or `gh-aw` before a Codespace or local terminal session is open. The install step must always come after the environment setup step (Codespace or local terminal).
-- Prefer guiding learners to trigger manual workflow runs from the GitHub Actions web UI.
-- If a step includes `gh aw run`, present it as an optional advanced path and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
+- Do not instruct learners to install `gh` or `gh-aw` before the recommended Codespace is open. Local installation belongs in a side quest and must still come after local environment setup.
+- Always guide learners to trigger manual workflow runs from the GitHub Actions web UI.
+- If a step includes `gh aw run`, present it as an optional advanced path only and place credential setup (`gh auth login`) before the CLI-trigger instructions. Learners can verify their Copilot access is included in their authentication by running `gh auth status` and confirming the `github.com` token includes the `read:org` scope or that a Copilot subscription is active under their account (covered in [Install the gh-aw CLI Extension](../../workshop/06-install-gh-aw.md)).
 
 ## Schedule triggers: always use fuzzy syntax in agentic workflow files
 
@@ -181,43 +264,14 @@ Multi-line callout (summary + body):
 - Node.js is incidentally present in Codespaces but learners must never be told they need to install or verify it.
 - If a step currently references Node.js, remove that reference and update any associated checkpoint items.
 
-## UI/CLI split path
+## Core route and environment side quests
 
-When a step diverges significantly between a terminal-based workflow and a browser-only workflow, **split it into separate files** rather than mixing both paths in a single file. Segmenting users into path-specific files keeps each file focused, reduces cognitive load, and avoids long blocks of instructions that do not apply to the reader.
-
-### Prefer file split over inline sections
-
-Use a file split when the Terminal path and the GitHub UI path differ in more than one or two instructions. Inline `### Terminal path —` / `### GitHub UI path —` sections are only appropriate for short, mostly-converging steps where the divergence is a single action (for example, one commit step at the end).
-
-For new file-split steps, follow the existing **choose-your-path branch ID** naming convention (`NNx` where `x` is a lowercase letter):
-
-- `NNa-<slug>-terminal.md` — Terminal path file
-- `NNb-<slug>-ui.md` — GitHub UI path file
-
-Link between the two files at the top of each so learners can switch if they chose the wrong one.
-
-### Named paths
-
-- **Terminal path** — the learner has a terminal open (Codespace or local). They create files with shell commands, compile with `gh aw compile`, and push with `git`.
-- **GitHub UI path** — the learner works entirely in the browser. They create and edit files using the GitHub web editor, paste complete file content, and commit directly from the browser.
-
-### Heading convention (for inline sections)
-
-When inline sections are appropriate, use `###` headings that state both the path name and the action, separated by an em dash:
-
-```
-### Terminal path — <action>
-### GitHub UI path — <action>
-```
-
-Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do not use lowercase (`terminal path`) or alternate labels (`CLI path`, `browser path`).
-
-### Structure rules
-
-- Place the **Terminal path** section before the **GitHub UI path** section for the same action.
-- For the GitHub UI path, always provide the complete file content in a copy-paste block so learners can paste once and commit.
-- For the Terminal path, guide learners to build incrementally and compile after each section with `gh aw compile` (recompiles all workflows). Recommend the `--watch` flag as an alternative: `gh aw compile --watch` keeps a second terminal compiling on save for continuous feedback.
-- After the split sections, add a short bridging paragraph that calls out what each path skips (for example, the UI path skips `gh aw compile` checkpoints).
+- Keep one uninterrupted Codespaces route through the core curriculum; do not add environment choice hubs.
+- Put local-terminal or browser-only alternatives in `side-quest-NN-MM-<slug>.md` files and label them optional.
+- Give each environment side quest a clear return point to the core workshop.
+- Keep shared terminal steps environment-neutral when local side-quest learners rejoin them.
+- Treat GitHub.com pages as action surfaces within the Codespaces journey, not as separate student paths.
+- Guide learners to compile after each meaningful workflow change with `gh aw compile`. Recommend `gh aw compile --watch` as an optional continuous-feedback mode.
 
 ### Compile defaults
 
@@ -226,8 +280,24 @@ Always capitalize **Terminal path** and **GitHub UI path** exactly as shown. Do 
 
 ### Compile checkpoints
 
-- Skip `gh aw compile` checkpoints for UI-path learners — compilation happens implicitly when GitHub Actions runs the workflow.
-- For Terminal-path learners, place a compile checkpoint after each meaningful addition to the workflow file.
+- In the core Codespaces route, place a compile checkpoint after each meaningful addition to the workflow file.
+- A browser-only side quest may delegate compilation to an agent, but must say who compiles and commits the lock file.
+
+## Git staging: always use `git add .`
+
+- In all workshop terminal examples, use `git add .` to stage changes — never list individual filenames or paths (e.g., do **not** write `git add .github/workflows/foo.md .github/workflows/foo.lock.yml`).
+- Using `git add .` keeps snippets short, avoids filename drift when workflows are renamed, and mirrors how most learners naturally stage their work.
+
+## Code blocks: always specify `bash` for shell commands
+
+- Use ` ```bash ` as the language identifier for every fenced code block containing shell or terminal commands.
+- Do **not** leave shell command blocks unlabeled; bare ` ``` ` fences without a language specifier are reserved for content that has no matching language identifier (for example, pseudocode or AI task brief excerpts).
+- Use ` ```text ` for terminal output that learners read but do not type (for example, expected command output or error messages).
+- Use ` ```yaml ` for standalone YAML configuration fragments, ` ```markdown ` for Markdown syntax examples, and ` ```html ` or ` ```xml ` for markup.
+- When showing an agentic workflow example that includes both frontmatter and prompt body, prefer a ` ```markdown ` block that shows the full Markdown+frontmatter file shape instead of isolating the frontmatter in a standalone ` ```yaml ` region.
+- When a fenced snippet represents the contents of a file, add the filename after the language token so the rendered snippet chrome can surface it (for example, ` ```markdown .github/workflows/daily-status.md ` or ` ```yaml .github/workflows/daily-status.lock.yml `).
+- Prefer the bare relative path form for filename metadata in workshop content. The renderer also supports keyed metadata such as `title=` or `file=`, but workshop pages should use the bare path consistently unless a page needs a more complex title.
+- Match the filename extension to the snippet language (`.md` for `markdown`, `.yml`/`.yaml` for `yaml`, and so on), and keep the same filename across a page while the learner is still editing that same file.
 
 ## Enterprise user preference in design decisions
 
@@ -236,22 +306,39 @@ When two workshop design choices are of equal or comparable value, **favor the o
 - **Path prioritization**: when two candidate nodes or improvements are comparable in scope and impact, choose the one that closes a gap for enterprise learners first.
 - **Default examples**: when selecting a code example, URL, or configuration snippet and multiple options are valid, prefer one that works in both github.com and enterprise environments (for example, avoid hardcoded `github.com` URLs where an enterprise base URL would be needed).
 - **Credential and network guidance**: when documenting authentication, token, or network steps, include enterprise-specific notes (SSO, SAML, proxy configuration) alongside the standard path — even when they are not the primary path.
-- **Tie-breaking in UI vs. CLI decisions**: when it is genuinely unclear whether a step should be UI-first or CLI-first, prefer the approach that works reliably in enterprise environments (some enterprises restrict browser-based agent sessions; CLI paths may be more reliable in those contexts).
+- **Tie-breaking for individual actions**: when both GitHub.com and Codespace terminal instructions work within the core route, prefer the approach that is reliable in enterprise environments.
 - **Side-quest and branch selection**: when choosing which optional content to add next, enterprise-relevant topics (self-hosted runners, GHES configuration, enterprise authentication) take precedence over non-enterprise topics of equal priority.
 
 This rule does not override clearly superior choices for all learners. It is a tie-breaker, not an absolute reorder of priorities.
 
 ## No "See Also" sections or "For more details" footers — documentation links belong inline
 
-- Do **not** add `## See Also`, `## 📚 See Also`, or any equivalent dedicated "See Also" section to workshop files.
+- Do **not** add `## See Also`, `## :books: See Also`, or any equivalent dedicated "See Also" section to workshop files.
 - Do **not** add a `For more details, see …` sentence at the end of a step or section. These trailing footers add noise without improving comprehension.
 - When a concept or term has a matching reference page in the gh-aw docs, link it **inline** at its first bare occurrence in the prose (e.g., `[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)`).
 - If you want to surface a relevant doc URL without anchoring it to specific prose, place the bare URL on its own line in the text — do **not** wrap it in a `[title](url)` list under a "See Also" heading.
-- Any existing `## See Also` / `## 📚 See Also` sections and any `For more details, see …` lines are violations of this rule and must be removed.
+- Any existing `## See Also` / `## :books: See Also` sections and any `For more details, see …` lines are violations of this rule and must be removed.
+
+## GitHub emoji shortcodes for icons and visual elements
+
+The workshop docs are rendered with GFM emoji support: `:emoji_name:` shortcodes are converted to `<g-emoji>` elements styled by Primer CSS. Use GitHub emoji shortcodes instead of raw Unicode emoji characters or custom icon fonts so the rendered docs stay on-brand and consistent with GitHub's own design language.
+
+- **Prefer** `:white_check_mark:`, `:rocket:`, `:bulb:`, `:warning:`, and other GitHub-supported shortcodes when you need an icon or decorative symbol in prose, checkpoint headings, or callout text.
+- **Do not** paste raw Unicode emoji characters directly into Markdown prose — use the `:shortcode:` form so the build renders a properly sized and styled `<g-emoji>` element.
+- **Exception — fenced code blocks:** Markdown emoji shortcodes are **not** processed inside fenced code blocks, so they appear as raw text (e.g. `:thinking:` instead of 🤔). When an emoji is part of a code block that simulates agent log output, a correct/wrong marker, or any other display content, use the native Unicode character (e.g. `✅`, `❌`, `🤔`, `🔧`, `📥`) instead of the shortcode so the rendered output matches the visual intent. The `emoji:` field in agentic workflow YAML frontmatter is an exception — keep those values as `:shortcode:` strings because they are literal `gh-aw` syntax.
+- Verify the shortcode exists in the [GitHub emoji list](https://github.com/ikatyang/emoji-cheat-sheet) before using it; unknown shortcodes are passed through as literal text.
+- Write checkpoint headings as `## :white_check_mark: Checkpoint` so they use the same browser-independent rendering as other icons.
 
 ## Consistency check
 
-Before finalizing workshop edits, quickly confirm that early steps remain UI-first, do not require `gh` before it is truly needed, do not reference Node.js as a prerequisite, and ensure the responsible agent has checked whether any intended org-provisioned event changes also require updates on the `golden-ticket-workshop` branch.
+Before finalizing workshop edits, quickly confirm that:
+
+- The core route remains Codespaces-only; environment alternatives remain side quests.
+- Early steps do not require `gh` before it is truly needed.
+- Node.js is not listed as a prerequisite.
+- All AI-assisted tasks in the core route use Copilot CLI (`gh copilot`) — not Copilot Chat on GitHub.com or IDE extensions.
+- No core step contains billing setup, payment method configuration, Copilot seat assignment, or org creation instructions (those are handled by the golden-ticket provisioning system).
+- The responsible agent has checked whether any onboarding or setup changes also require updates on the `golden-ticket-workshop` branch.
 
 ## Activity numbering for a sortable adventure graph
 
@@ -352,7 +439,7 @@ Example patterns:
 <!-- /journey -->
 
 <!-- journey: local -->
-**Next:** [Set Up Your Local Terminal](02b-setup-local.md)
+**Next:** [Set Up Your Local Terminal](side-quest-02-01-local-terminal.md)
 <!-- /journey -->
 ```
 
@@ -363,14 +450,14 @@ Example patterns:
 | `terminal` | Any terminal user — Codespace or local |
 | `codespace` | Codespace-specific instructions (subset of `terminal`) |
 | `local` | Local terminal-specific instructions (subset of `terminal`) |
-| `copilot` | GitHub Copilot app or Agents tab users |
+| `copilot` | Copilot-specific instructions, usually Copilot CLI users |
 
 Rules for assigning `journey`:
 
 - Use `all` for shared hub pages and conceptual introductions that every learner reads.
 - Use `terminal` for pages where the primary instructions require a shell (Codespace or local). Use `codespace` or `local` only when the content is specific to one of those environments and would not apply to the other.
 - Use `ui` for pages written exclusively for learners who stay in the GitHub browser UI.
-- Use `copilot` for pages that target the Copilot desktop app or the browser-based Agents tab (Adventure D).
+- Use `copilot` for pages that target a Copilot-specific surface, usually Copilot CLI and only exceptionally the Copilot app, CCA, or another dedicated Copilot environment.
 
 ### `adventure` — content category
 
@@ -383,7 +470,7 @@ Describes the role the page plays in the overall workshop structure.
 | `scenario-a` | Adventure Codespace — Daily Repo Status Report |
 | `scenario-b` | Adventure Local — Daily Documentation Updater |
 | `scenario-c` | Adventure C — PR Code Reviewer |
-| `scenario-d` | Adventure D — Build with GitHub Copilot (Agents tab / CCA) |
+| `scenario-d` | Adventure D — Build with GitHub Copilot (CLI / CCA) |
 | `advanced` | Optional post-core topics (steps 14 and above) |
 | `side-quest` | Optional deep-dive supplementary content branching off a main step |
 
@@ -400,17 +487,32 @@ Describes the role the page plays in the overall workshop structure.
 | `10c-*`, `11c-*` | `all` or split by sub-path | `scenario-c` |
 | `11d-*` | `copilot` | `scenario-d` |
 | `02a-*`, `06a-*` | `codespace` | `setup` |
-| `02b-*`, `06b-*` | `local` | `setup` |
-| `06c-*` | `ui` | `setup` |
 | `side-quest-NN-MM-<slug>.md` | varies (see below) | `side-quest` |
 
 Side quest `journey` assignment:
 
 - `terminal` — content is exclusively about terminal commands or `gh aw compile` (e.g., `side-quest-07-01-compile-workflow.md`).
+- `local` — content is specific to the optional local terminal route (e.g., `side-quest-02-01-local-terminal.md`).
 - `codespace` — content addresses a Codespaces-specific error or configuration (e.g., `side-quest-08-01-codespaces-actions-write.md`).
-- `ui` — content is only applicable to GitHub UI path learners (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
-- `copilot` — content is specific to the Copilot CCA or Agents tab environment (e.g., `side-quest-06-02-cca-codespace.md`).
+- `ui` — content is only applicable to a browser-only side quest (e.g., `side-quest-06-03c-copilot-github-token-ui-only.md`).
+- `copilot` — content is specific to a Copilot-focused environment such as Copilot CLI or Copilot CCA (e.g., `side-quest-06-02-cca-codespace.md`).
 - `all` — conceptual, reference, or debugging content relevant regardless of environment (the majority of side quests).
+
+## Checkpoint checklist size limit
+
+Every workshop step ends with a `## :white_check_mark: Checkpoint` section that contains a markdown checklist. Keep that checklist — and every other checklist on the page — concise:
+
+- **Maximum 10 checkboxes per page** (across all checklists on the page combined).
+- If a natural checkpoint requires more items, split the step into two shorter steps rather than adding more boxes.
+- Prefer outcome-oriented items ("Your workflow runs without errors") over procedural ones ("Click the green button") so each box carries meaningful weight.
+- Do not duplicate items that already appear in an earlier step's checkpoint.
+
+### Checkbox interactivity by position
+
+The rendered workshop site treats task-list checkboxes differently depending on where they appear relative to the `## :white_check_mark: Checkpoint` heading:
+
+- **Before the Checkpoint heading** — rendered as static, non-interactive indicators. These are used for in-exercise prompts such as "I've made my decision". They carry no toggle state and do not contribute to the progress bar.
+- **After the Checkpoint heading** — rendered as toggleable checkboxes. Learners can click them to mark progress; state is persisted in `localStorage` and shown in the per-page progress bar.
 
 ## Dispatcher and choice-hub pages: `<!-- learning:false -->`
 

@@ -4,7 +4,7 @@
 
 > _A detailed companion to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md). Use this side quest when you want to understand the full contents of an audit report or dig into individual artifact files._
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - You completed [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) and have at least one workflow run ID to work with.
 - `gh aw` is installed and authenticated (see [Install the gh-aw CLI Extension](06-install-gh-aw.md)).
@@ -16,7 +16,7 @@
 - **Run metadata** — workflow name, trigger, engine, and model
 - **Agent AIC** — total AI Credits consumed by the agent turn
 - **Threat-detection AIC (⌖ AIC)** — credits consumed by the firewall's threat-detection model, reported separately from agent inference
-- **MCP tool calls** — each tool the agent invoked, with any errors
+- **[MCP tool calls](https://github.github.com/gh-aw/guides/mcps/)** — each tool the agent invoked, with any errors
 - **Threat detection verdict** — whether prompt injection, secret leak, or malicious patch was detected
 - **Safe outputs** — every safe-output declaration the agent emitted
 
@@ -44,7 +44,7 @@ Use `firewall.md` to quickly identify blocked domains. For raw domain-level reco
 
 ## AIC billing details
 
-AIC (AI Credits) is the billing unit for agentic workflow inference and is derived from token consumption. Exact billing figures appear in your GitHub billing dashboard.
+[AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) (AI Credits) is the billing unit for agentic workflow inference and is derived from token consumption. Exact billing figures appear in your GitHub billing dashboard.
 
 The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the threat-detection model separately from the main agent turn. Both contribute to your organisation's total AIC usage.
 
@@ -52,10 +52,12 @@ The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the thre
 
 If the firewall blocked a domain your workflow needs, add it to `network.allow` in your workflow frontmatter and recompile:
 
-```yaml
+```markdown
+---
 network:
   allow:
     - api.example.com
+---
 ```
 
 Share the allowed-domains list from a successful run with your enterprise security team as a ready-made firewall allowlist.
@@ -88,10 +90,10 @@ Sample output:
 | Threat verdict | none |
 ```
 
-- [ ] I found a run ID from the Actions tab
-- [ ] The report shows the workflow name, trigger, and model
-- [ ] The ⌖ AIC figure appears separately from Agent AIC
-- [ ] The threat verdict shows `none` (or I noted what was flagged)
+1. Find a run ID from the Actions tab.
+2. Confirm the report shows the workflow name, trigger, and model.
+3. Check that the ⌖ AIC figure appears separately from Agent AIC.
+4. Note the threat verdict (typically `none`).
 
 ### Explore MCP tool calls
 
@@ -103,20 +105,20 @@ gh aw logs <your-workflow-id> --artifacts all
 
 Browse the log files in `.github/aw/logs/<run-id>/mcp-logs/`.
 
-- [ ] I found the `mcp-logs/` directory in the downloaded artifacts
-- [ ] I identified at least one tool call and noted the tool name
-- [ ] I wrote one sentence describing what the agent was trying to accomplish
-- [ ] I checked `agent_usage.json` for the total token count
+1. Find the `mcp-logs/` directory in the downloaded artifacts.
+2. Identify at least one tool call and note the tool name.
+3. Write one sentence describing what the agent was trying to accomplish.
+4. Check `agent_usage.json` for the total token count.
 
 ### Inspect the firewall records
 
 The raw domain-level network access logs live in `sandbox/firewall/audit/` inside the agent artifact. Scan them to confirm your workflow only contacted expected domains.
 
-- [ ] I opened `sandbox/firewall/audit/` in the downloaded artifacts
-- [ ] I identified at least one domain the workflow accessed
-- [ ] If any domains were blocked, I know to add them to `network.allow` in the workflow frontmatter
+1. Open `sandbox/firewall/audit/` in the downloaded artifacts.
+2. Identify at least one domain the workflow accessed.
+3. If any domains were blocked, add them to `network.allow` in the workflow frontmatter.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC

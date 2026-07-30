@@ -2,24 +2,23 @@
 <!-- page-adventure: core -->
 # GitHub Actions in 5 Minutes
 
-> [!TIP]
-> <details>
-> <summary><b>Already know GitHub Actions?</b> Check the three boxes below and skip ahead:</summary>
->
-> - [ ] I know workflows live in `.github/workflows/` as YAML files
-> - [ ] I can read `on`, `jobs`, and `steps` keys in a workflow file
-> - [ ] I know each step runs on a GitHub-hosted runner
->
-> **→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
-> (or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
->
-> </details>
+<details>
+<summary><b>Already know GitHub Actions?</b> Confirm these three statements and skip ahead:</summary>
 
-## 🎯 What You'll Do
+- You know workflows live in `.github/workflows/` as YAML files
+- You can read `on`, `jobs`, and `steps` keys in a workflow file
+- You know each step runs on a GitHub-hosted runner
+
+**→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
+(or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
+
+</details>
+
+## :dart: What You'll Do
 
 You'll do a fast refresher on the Actions primitives used in this workshop: [triggers](https://github.github.com/gh-aw/reference/triggers/), jobs, steps, and workflow files. After this step, you'll be able to read any classic GitHub Actions workflow file.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
 - Practice repository is set up from a previous step.
 - No tools or credentials needed for this step.
@@ -40,7 +39,7 @@ A GitHub Actions workflow is a YAML file in `.github/workflows/` that tells GitH
 
 Annotated example — each comment names the key term (this is a standard Actions workflow, not an agentic workflow):
 
-```yaml
+```yaml .github/workflows/hello-workflow.yml
 # Standard GitHub Actions workflow — not an agentic workflow
 name: Hello Workflow
 
@@ -58,28 +57,34 @@ jobs:
 
 A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
 
-```yaml
+```markdown .github/workflows/hello-workflow.md
+---
 runs-on: ubuntu-latest   # also: windows-latest, macos-latest
+---
 ```
 
-You can also bring a **self-hosted runner** for custom hardware or private networks. Agentic workflows use the same hosted runners.
+You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same hosted runners.
 
 </details>
 
 ## Why This Matters for Agentic Workflows
 
-Traditional workflows execute a fixed script path. Agentic workflows still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
+Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
 
 ## Label a sample workflow
 
 The diagram below shows how the five key parts fit together in every workflow file.
 
-![GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers](images/04-actions-anatomy.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/04-actions-anatomy-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/04-actions-anatomy-light.svg">
+  <img alt="GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers" src="images/04-actions-anatomy-light.svg">
+</picture>
 
 Before reading on, label each highlighted part of the workflow below with its type:
 `trigger`, `job`, `runner`, `step`, or `action`.
 
-```yaml
+```yaml .github/workflows/hello-workflow.yml
 on: [push]
 jobs:
   test:
@@ -89,11 +94,13 @@ jobs:
       - run: echo "All checks passed"
 ```
 
-- [ ] I labeled `on: [push]`
-- [ ] I labeled `test:` (the job name under `jobs:`)
-- [ ] I labeled `runs-on: ubuntu-latest`
-- [ ] I labeled `uses: actions/checkout@v4`
-- [ ] I labeled `run: echo "All checks passed"`
+Write a label beside each line:
+
+1. `on: [push]`
+2. `test:` (the job name under `jobs:`)
+3. `runs-on: ubuntu-latest`
+4. `uses: actions/checkout@v4`
+5. `run: echo "All checks passed"`
 
 <details>
 <summary>Reveal the labels</summary>
@@ -119,20 +126,14 @@ Open a real workflow file and find the three core building blocks — no termina
    - One `jobs:` entry — what is the job named?
    - One `steps` item — what command does it run?
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
-- [ ] I can identify `on`, `jobs`, and `steps` in a workflow file
-- [ ] I labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
-- [ ] I know workflows live in `.github/workflows/`
-- [ ] I explored a real workflow and found its trigger, a job name, and a step command
-- [ ] I answered the check-your-understanding questions
-- [ ] I can continue to Step 5, or skip ahead to Step 6 if I already know this material
-
-> [!TIP]
-> This step covers several new terms quickly. If anything feels unclear — runner, trigger, action — the [gh-aw glossary](https://github.github.com/gh-aw/reference/glossary/) defines each one in a sentence. Bookmark it and return whenever you hit an unfamiliar term later in the workshop.
+- [ ] You can identify `on`, `jobs`, and `steps` in a workflow file
+- [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
+- [ ] You know workflows live in `.github/workflows/`
+- [ ] You explored a real workflow and found its trigger, a job name, and a step command
+- [ ] You are ready to continue to Step 5, or skip ahead to Step 6 if you already know this material
 
 <!-- journey: all -->
 **Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 <!-- /journey -->
-
-

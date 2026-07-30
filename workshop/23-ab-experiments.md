@@ -4,13 +4,13 @@
 
 > _Stop guessing which prompt works better — let alternating runs tell you._
 
-## 🎯 What You'll Do
+## :dart: What You'll Do
 
 You'll add an A/B experiment using `experiments:` and compare outcomes across runs.
 
-## 📋 Before You Start
+## :clipboard: Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 11a](07-your-first-workflow.md) or equivalent).
+- You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You are comfortable editing YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 - Need internals? Jump to [Understand how the round-robin works](#understand-how-the-round-robin-works).
@@ -31,9 +31,9 @@ Start with one change to isolate its effect: output length (`concise` vs `detail
 
 ### Use an agent to add the experiment (recommended)
 
-Open your practice repository in the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app) or Agents tab and paste this prompt:
+In your AI agent, run this prompt:
 
-```text
+```prompt
 Add an A/B experiment to `.github/workflows/daily-status.md`.
 Use the `/agentic-workflows` skill.
 Set `experiments: { output_style: [concise, detailed] }`.
@@ -46,14 +46,16 @@ Commit both workflow files.
 
 If you prefer to edit directly, add this to the frontmatter in `.github/workflows/daily-status.md`:
 
-```yaml
+```markdown .github/workflows/daily-status.md
+---
 experiments:
   output_style: [concise, detailed]
+---
 ```
 
 Below the frontmatter, add conditional blocks that swap the prompt instructions based on the active variant:
 
-```markdown
+```markdown .github/workflows/daily-status.md
 Summarise the activity in ${{ github.repository }} since yesterday.
 
 {{#if experiments.output_style }}
@@ -70,7 +72,7 @@ Compile and commit:
 
 ```bash
 gh aw compile daily-status
-git add .github/workflows/daily-status.md .github/workflows/daily-status.lock.yml
+git add .
 git commit -m "feat: add output_style A/B experiment to daily-status"
 ```
 
@@ -95,27 +97,35 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 1. Update the frontmatter variants to include a third option:
 
-   ```yaml
-   experiments:
-     output_style: [concise, detailed, executive]
-   ```
+```markdown .github/workflows/daily-status.md
+---
+experiments:
+  output_style: [concise, detailed, executive]
+---
+```
 
-2. Update the task brief so each variant has explicit instructions:
+1. Update the task brief so each variant has explicit instructions:
 
-   ```markdown
-   {{#if experiments.output_style }}
-   Write a report according to the output_style: ${{ experiments.output_style }}.
-   - concise: Write a maximum of 5 bullet points. Each bullet is one sentence.
-   - detailed: Write a structured report with sections: open issues, merged pull requests,
-     and CI status. Include a one-paragraph summary at the top.
-   - executive: Write an executive summary with exactly 3 bullets and one "Watch next" line.
-   {{#endif}}
-   ```
+```markdown .github/workflows/daily-status.md
+{{#if experiments.output_style }}
+Write a report according to the output_style: ${{ experiments.output_style }}.
+- concise: Write a maximum of 5 bullet points. Each bullet is one sentence.
+- detailed: Write a structured report with sections: open issues, merged pull requests,
+  and CI status. Include a one-paragraph summary at the top.
+- executive: Write an executive summary with exactly 3 bullets and one "Watch next" line.
+{{#endif}}
+```
 
-3. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
-4. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
+1. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
+2. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
 
 ## Understand how the round-robin works
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/23-ab-roundrobin-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/23-ab-roundrobin-light.svg">
+   <img alt="A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run" src="images/23-ab-roundrobin-light.svg">
+</picture>
 
 <details>
 <summary>Open for the mechanism details</summary>
@@ -137,7 +147,7 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 > [!TIP]
 > Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow frontmatter has an `experiments:` block with at least two variants
 - [ ] Your task brief uses `{{#if experiments.<name> }}` blocks to swap instructions (the active variant is available as `${{ experiments.<name> }}`)
@@ -151,5 +161,4 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 <!-- journey: all -->
 **Next:** [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md)
 <!-- /journey -->
-
 

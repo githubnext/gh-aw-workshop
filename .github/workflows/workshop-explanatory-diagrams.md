@@ -156,17 +156,17 @@ Create **at most one** pull request per run.
 2. Read `/tmp/gh-aw/cache-memory/diagram-generator-state.json` if it exists.
    Create it with defaults when absent:
 
-   ```json
-   {
-     "round_robin_index": 0
-   }
-   ```
+```json
+{
+  "round_robin_index": 0
+}
+```
 
-3. If the `focus` input is non-empty, use it as a strong hint for file or concept
+1. If the `focus` input is non-empty, use it as a strong hint for file or concept
    selection. Otherwise select the next workshop file with round-robin ordering:
    `workshop_files[round_robin_index % len(workshop_files)]`, then increment the
    index.
-4. If there are no workshop files, call `noop` with a short explanation.
+2. If there are no workshop files, call `noop` with a short explanation.
 
 ---
 
@@ -228,17 +228,40 @@ Match the visual family of the UI screenshot workflow while staying conceptual:
   primary text `#24292f`, muted text `#57606a`, and accent `#0969da`
 - Dark palette: background `#0d1117`, panel `#161b22`, border `#30363d`,
   primary text `#f0f6fc`, muted text `#8b949e`, and accent `#2f81f7`
-- Adapt semantic success, attention, danger, and done colors for sufficient
-  contrast in each theme
+- Apply Primer semantic state colors from `.github/workflows/guidelines.md`
+  (GitHub visual language system section) when nodes represent GitHub entities
+  with a defined state (open, closed, merged, draft, in-progress, done, error)
 - Use simple labeled boxes, arrows, chips, dashed groupings, and numbered badges
 - Keep labels short and learner-friendly
 - Add a short title inside the graphic and a short annotation below it
 - Add `role="img"` and `aria-label` matching the Markdown alt text
 - Output valid, self-contained SVG only
 
+### GitHub icon usage in diagrams
+
+When a diagram node represents a GitHub concept, use an Octicon-inspired inline
+shape as described in the GitHub visual language system section of
+`.github/workflows/guidelines.md`. Embed the shape directly in the SVG — do not
+reference external files or icon fonts.
+
+Key shapes:
+
+- **Issue**: circle outline with inner dot (open/green) or solid circle with ✕
+  (closed/red)
+- **Pull request**: two-circle branch-and-merge path (open/green or merged/purple)
+- **Discussion**: rounded speech-bubble outline (accent blue)
+- **Commit**: small solid circle on a horizontal branch line
+- **Workflow run**: right-pointing filled triangle inside a rounded square
+- **Schedule trigger**: clock face (circle + two hand segments)
+
+Always label every icon node with a short text label. Use the icon to convey
+type and the label to convey content. Apply the matching Primer state color so
+the diagram is self-explanatory to anyone familiar with the GitHub UI.
+
 ### Diagram content rules
 
 - Explain the concept, not a literal product screenshot
+- Use GitHub visual language icons when a node represents a GitHub entity
 - Keep the visual readable at a glance
 - Use a left-to-right or top-to-bottom flow unless another layout is clearly
   better

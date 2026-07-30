@@ -1,0 +1,132 @@
+name: SVG Color Contrast Check
+
+on:
+  push:
+    paths:
+      - "**/*.svg"
+      - "scripts/check-svg-contrast.spec.js"
+      - "playwright.svg-contrast.config.js"
+      - ".github/workflows/svg-contrast-check.yml"
+  pull_request:
+    paths:
+      - "**/*.svg"
+      - "scripts/check-svg-contrast.spec.js"
+      - "playwright.svg-contrast.config.js"
+      - ".github/workflows/svg-contrast-check.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  svg-contrast:
+    name: SVG Color Contrast (WCAG)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "20"
+
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save @playwright/test
+          npx playwright install --with-deps chromium
+
+      - name: Find changed SVG files
+        id: changed
+        if: github.event_name == 'push'
+        run: |
+          if git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
+            files=$(git diff --name-only --diff-filter=ACMR \
+              "${{ github.event.before }}" "${{ github.sha }}" -- '*.svg' || true)
+          else
+            # First push or force-push: check all SVG files
+            files=$(git ls-files '*.svg' || true)
+          fi
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Run contrast check on changed SVG files
+        id: check
+        continue-on-error: true
+        env:
+          SVG_FILES: ${{ steps.changed.outputs.files }}
+        run: |
+          set -o pipefail
+          npx playwright test --config=playwright.svg-contrast.config.js 2>&1 | tee /tmp/contrast-output.txt
+
+      - name: File issue for contrast failures on main
+        if: >
+          steps.check.outcome == 'failure' &&
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const fs = require('fs')
+            const title = 'SVG color contrast violation detected on main'
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+
+            // Parse per-file violation details from saved Playwright output
+            const fileBlocks = []
+            try {
+              const output = fs.readFileSync('/tmp/contrast-output.txt', 'utf8')
+              const errorRe = /Error: (\d+) color contrast violation\(s\) found in ([^:\n]+):\n([\s\S]*?)\n\s+expect\(received\)/g
+              let m
+              while ((m = errorRe.exec(output)) !== null) {
+                const count = parseInt(m[1], 10)
+                const file = m[2].trim()
+                const detail = m[3]
+                const items = []
+                const itemRe = /text: "([^"]+)"\n\s+fill: ([^\s]+)\s+background: ([^\n]+)\n\s+contrast: ([\d.]+):1/g
+                let im
+                while ((im = itemRe.exec(detail)) !== null) {
+                  items.push(`  - \`"${im[1]}"\` — fill \`${im[2]}\` on \`${im[3].trim()}\` — contrast ${im[4]}:1`)
+                }
+                if (items.length > 0) {
+                  fileBlocks.push(`**${file}** (${count} violation${count !== 1 ? 's' : ''}):\n\n${items.join('\n')}`)
+                }
+              }
+            } catch (_) {
+              // Parsing failed; fall back to directing to the workflow run
+            }
+
+            const body = [
+              'The SVG color contrast check failed on `main`.',
+              '',
+              `Workflow run: ${runUrl}`,
+              '',
+              'One or more SVG images contain text with insufficient color contrast against',
+              'its background (below the WCAG AA threshold of 3:1 for large text).',
+              'This can make diagrams unreadable — for example, white text on a white background.',
+              '',
+              fileBlocks.length > 0
+                ? '## Affected files\n\n' + fileBlocks.join('\n\n')
+                : 'See the workflow run for the full list of violations and which files to fix.',
+            ].join('\n')
+
+            const { owner, repo } = context.repo
+            const { data: search } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${owner}/${repo} is:issue is:open in:title "${title}"`,
+              per_page: 5,
+            })
+            const existing = search.items.find((i) => i.title === title)
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: existing.number, body,
+              })
+            } else {
+              await github.rest.issues.create({
+                owner, repo, title, body,
+                labels: ['bug', 'accessibility'],
+              })
+            }
+
+      - name: Fail job when contrast violations found
+        if: steps.check.outcome == 'failure'
+        run: exit 1

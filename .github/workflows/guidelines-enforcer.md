@@ -3,9 +3,11 @@ emoji: 📋
 name: Guidelines Enforcer
 description: >
   Enforces workshop authoring and documentation guidelines across all markdown
-  files. Runs daily via round-robin to review at least 10 files per session,
-  opening issues for violations. Also runs on pull requests to post inline
-  review comments for guideline violations in changed files.
+  files. Runs daily via round-robin to review at least 10 files per session.
+  For obvious mechanical violations (e.g. numbered headers), applies fixes
+  directly and opens a pull request. For complex or subjective violations,
+  opens issues. Also runs on pull requests to post inline review comments for
+  guideline violations in changed files.
 on:
   schedule: daily
   workflow_dispatch:
@@ -42,6 +44,16 @@ safe-outputs:
     deduplicate-by-title: true
     max: 10
     expires: 7d
+  create-pull-request:
+    title-prefix: "[guidelines] "
+    labels: [documentation, guidelines]
+    draft: false
+    allowed-files:
+      - "workshop/*.md"
+      - "workshop/**/*.md"
+      - ".github/workflows/*.md"
+    if-no-changes: ignore
+    expires: 3d
   create-pull-request-review-comment:
     max: 20
 timeout-minutes: 30
@@ -106,7 +118,7 @@ You are a workshop content quality checker for the **"Learning GitHub Agentic Wo
 
 You operate in two modes depending on the trigger context:
 
-- **Schedule mode** (daily or `workflow_dispatch`): Review at least 10 files per run using round-robin rotation and open GitHub issues for guideline violations.
+- **Schedule mode** (daily or `workflow_dispatch`): Review at least 10 files per run using round-robin rotation. For obvious mechanical violations, apply fixes directly and open a pull request. For violations that require human judgment, open GitHub issues.
 - **Pull request mode** (`pull_request`): Review all changed markdown files in the PR and post inline review comments for violations.
 
 ---
@@ -175,37 +187,61 @@ For each file in `target_files`:
    - **Tooling progression**: `gh` setup must not appear before the dedicated install step; no Node.js prerequisites anywhere.
    - **Step ordering**: environment setup must precede tool install; credential setup must precede CLI usage.
    - **Schedule syntax** (agentic workflow `.md` files only): no raw cron syntax; use fuzzy expressions such as `schedule: daily`.
-   - **UI-first design**: prefer GitHub UI paths; terminal commands are secondary unless required.
+   - **Codespaces-first design**: keep Codespaces as the sole recommended core route; local-terminal and browser-only alternatives belong in side quests.
    - **Prerequisite discipline**: list only prerequisites needed for the current step; avoid future-looking requirements.
-   - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## ✅ Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
+   - **Checkpoint presence** (learning-step workshop files): every workshop step file must end with a `## :white_check_mark: Checkpoint` section containing a markdown checklist unless the file is marked `<!-- learning:false -->`; those dispatcher pages must omit the checkpoint section.
    - **Voice and tone**: second person, present tense, active voice; no dramatic or alarmist language.
-   - **File split guideline**: a step file that diverges significantly in Terminal vs. UI paths should note whether the content should be split (do not auto-split, just flag it).
-3. For each violation found, record:
-   - The violated rule (section name from guidelines)
-   - The exact offending line or passage (quoted)
-   - A suggested fix
+   - **Environment alternatives**: flag local-terminal or browser-only instructions in the core route and recommend moving them to a side quest with a clear return point.
+3. For each violation found, classify it as either an **obvious fix** or a **complex violation**:
 
-### Create issues
+#### Obvious fixes (can be applied automatically)
 
-For each file that has at least one confirmed violation, create one issue:
+These violations have a clear, mechanical transformation with no ambiguity:
+
+- **Numbered header**: a heading whose text begins with a digit, period/parenthesis, and a space (e.g. `## 1. Foo`, `### 2) Bar`). Fix: remove the leading number, punctuation, and space from the heading text.
+- **`[!WARNING]` or `[!CAUTION]` used for non-security content**: downgrade the alert level to `[!NOTE]` or `[!TIP]` when the body text contains no mention of credentials, permissions, security, or irreversible destructive actions.
+- **Single-line callout incorrectly wrapped in `<details>`**: when a callout has only one line of real content (excluding the `<summary>` and empty lines), unwrap the `<details>`/`<summary>` and present it as a plain single-line callout.
+
+For each obvious fix:
+- Record the file path, original text, and the corrected replacement.
+- Apply the fix directly to the file using the `edit` tool.
+
+#### Complex violations (require human judgment)
+
+All other violations — structural issues, missing checkpoints, tooling progression errors, prerequisite discipline, voice and tone, etc. — are flagged for human review via an issue.
+
+### Create a pull request for obvious fixes
+
+After processing all target files, if **any** obvious fixes were applied:
+
+- Write the corrected content back to each modified file using the `edit` tool (if not already written per-fix).
+- Create a pull request:
+  - **Title**: `fix obvious guideline violations in <N> file(s)` (the `[guidelines]` prefix is added automatically)
+  - **Body**: list each file changed, and for each file list the fixes applied with a brief before/after excerpt.
+
+If no obvious fixes were found, skip the pull request.
+
+### Create issues for complex violations
+
+For each file that has at least one complex violation (not auto-fixed), create one issue:
 
 - **Title**: `<filename>: <short description of the most critical violation>` (the `[guidelines]` prefix is added automatically)
 - **Body**:
-  ```
-  ## File reviewed
-  `<file path>`
+```
+## File reviewed
+`<file path>`
 
-  ## Violations
+## Violations
 
-  ### <Rule name>
-  **Offending text:**
-  > <exact quote>
+### <Rule name>
+**Offending text:**
+> <exact quote>
 
-  **Suggested fix:**
-  <actionable one- or two-sentence fix>
+**Suggested fix:**
+<actionable one- or two-sentence fix>
 
-  [Repeat for each additional violation in this file]
-  ```
+[Repeat for each additional violation in this file]
+```
 
 If no violations are found across all reviewed files, call `noop` with:
 
@@ -269,7 +305,8 @@ Reviewed <n> changed file(s) — no guideline violations found.
 
 | Situation | Output |
 |---|---|
-| Schedule mode — violations found | `create-issue` (one per file with violations; max 10) |
+| Schedule mode — obvious fixes found | `create-pull-request` with applied changes |
+| Schedule mode — complex violations found | `create-issue` (one per file with violations; max 10) |
 | Schedule mode — no violations | `noop` with summary |
 | PR mode — violations found | `create-pull-request-review-comment` (one per violation; max 20) |
 | PR mode — no violations | `noop` with summary |
