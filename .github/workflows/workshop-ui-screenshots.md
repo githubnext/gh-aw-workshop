@@ -29,7 +29,7 @@ tools:
   playwright:
     mode: cli
 skills:
-  - .github/skills/github-brand
+  - githubnext/gh-aw-workshop/.github/skills/github-brand@56127b6381f0f1d976231bb924dadcbae18858de
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop-ui-screenshots] "
