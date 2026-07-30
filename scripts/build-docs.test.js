@@ -22,6 +22,22 @@ function buildDocs() {
   };
 }
 
+function renderSnippet(markdown) {
+  return execFileSync(
+    process.execPath,
+    [
+      "-e",
+      `
+        const { marked } = require("marked");
+        const { setupBasePlugins } = require("./scripts/lib/marked-setup");
+        setupBasePlugins();
+        process.stdout.write(marked.parse(${JSON.stringify(markdown)}));
+      `,
+    ],
+    { cwd: repoDir, encoding: "utf8" }
+  );
+}
+
 test("workshop SPA renders a single document h1", () => {
   const { html } = buildDocs();
 
@@ -101,6 +117,20 @@ test("markdown, md, yaml, and yml code blocks use compact icon-only editor chrom
   assert.ok(css.includes(".yaml-editor-bar"), "expected .yaml-editor-bar in CSS");
   assert.ok(css.includes(".yaml-editor-pre"), "expected .yaml-editor-pre in CSS");
   assert.ok(css.includes("padding: 12px;"), "expected compact YAML code padding");
+});
+
+test("code blocks wrap long lines without relying on mobile-only styles", () => {
+  const { css } = buildDocs();
+
+  assert.ok(css.includes(".markdown-body pre {\n  position: relative;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}"));
+  assert.ok(css.includes(".markdown-body pre > code {\n  font-size: 1em;\n  white-space: inherit;\n}"));
+});
+
+test("code block headers can render filenames from fence metadata", () => {
+  const html = renderSnippet("```yaml .github/workflows/hello.yml\nname: Hello\n```\n\n```markdown title=\"README.md\"\n# Hello\n```");
+
+  assert.ok(html.includes('<span class="code-block-filename">.github/workflows/hello.yml</span>'));
+  assert.ok(html.includes('<span class="code-block-filename">README.md</span>'));
 });
 
 test("rendered workshop images use GitHub-like rounded corners", () => {
