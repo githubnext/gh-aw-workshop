@@ -22,7 +22,7 @@
   <!-- PR header -->
   <rect x="60" y="105" width="1080" height="60" fill="#161b22" stroke="#30363d" stroke-width="1" rx="4"/>
   <text x="90" y="130" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#f0f6fc">Add feature: improve error handling</text>
-  <rect x="90" y="140" width="46" height="20" rx="10" fill="#1a7f37"/>
+  <rect x="90" y="140" width="46" height="20" rx="10" fill="#3fb950"/>
   <text x="113" y="154" font-family="Arial,sans-serif" font-size="12" fill="#161b22" text-anchor="middle">Open</text>
   <text x="148" y="154" font-family="Arial,sans-serif" font-size="12" fill="#8b949e">you opened this 5 minutes ago · 2 commits · 3 files changed</text>
 

@@ -25,7 +25,7 @@
 
   <rect x="132" y="254" width="936" height="72" rx="10" fill="#f6f8fa"/>
   <circle cx="170" cy="290" r="16" fill="#1a7f37"/>
-  <text x="162" y="297" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(162 282)"/>
   <text x="204" y="296" font-family="Arial, sans-serif" font-size="24" fill="#57606a">Daily Report Status</text>
   <text x="632" y="296" font-family="Arial, sans-serif" font-size="20" fill="#24292f">Completed</text>
   <text x="840" y="296" font-family="Arial, sans-serif" font-size="20" fill="#57606a">2 minutes ago</text>

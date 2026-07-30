@@ -66,8 +66,9 @@
         font-size="11" fill="#1a7f37">v2.40+ pre-installed</text>
   <text x="430" y="214" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
         font-size="11" fill="#1a7f37">auto-authenticated</text>
-  <text x="430" y="228" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
-        font-size="10" fill="#57606a">✓ ready at launch</text>
+  <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z" fill="#1a7f37" transform="translate(379 216) scale(.75)"/>
+  <text x="438" y="228" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif"
+        font-size="10" fill="#57606a">ready at launch</text>
 
   <!-- gh aw extension box -->
   <rect x="516" y="158" width="148" height="80" rx="8" fill="#8250df" opacity="0.1" stroke="#8250df" stroke-width="1.5"/>

@@ -58,7 +58,8 @@
   <text x="766" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#57606a" text-anchor="middle">appears in the sidebar</text>
   <!-- Run workflow button mock -->
   <rect x="696" y="202" width="140" height="30" rx="6" fill="#1a7f37" stroke="#1a7f37" stroke-width="1"/>
-  <text x="766" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">▶ Run workflow</text>
+  <path d="m714 209 10 8-10 8Z" fill="#ffffff"/>
+  <text x="773" y="222" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Run workflow</text>
   <text x="766" y="262" font-family="system-ui, sans-serif" font-size="11" fill="#57606a" text-anchor="middle">Click to trigger manually</text>
 
   <!-- Arrow 3 -->

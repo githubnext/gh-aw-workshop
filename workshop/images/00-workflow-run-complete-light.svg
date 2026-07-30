@@ -24,7 +24,7 @@
 
   <!-- Run title row -->
   <circle cx="104" cy="160" r="18" fill="#1a7f37"/>
-  <text x="96" y="167" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(94 150) scale(1.25)"/>
   <text x="136" y="156" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#24292f">Daily Repo Status</text>
   <text x="136" y="180" font-family="Arial, sans-serif" font-size="14" fill="#57606a">Run #42 completed successfully · 52s · triggered manually</text>
 
@@ -37,25 +37,25 @@
   <!-- Job rows -->
   <rect x="80" y="244" width="1040" height="44" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
   <circle cx="116" cy="266" r="12" fill="#1a7f37"/>
-  <text x="110" y="272" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 258)"/>
   <text x="142" y="272" font-family="Arial, sans-serif" font-size="16" fill="#24292f">activating</text>
   <text x="1068" y="272" font-family="Arial, sans-serif" font-size="14" fill="#57606a" text-anchor="end">6s</text>
 
   <rect x="80" y="294" width="1040" height="44" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
   <circle cx="116" cy="316" r="12" fill="#1a7f37"/>
-  <text x="110" y="322" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 308)"/>
   <text x="142" y="322" font-family="Arial, sans-serif" font-size="16" fill="#24292f">agent</text>
   <text x="1068" y="322" font-family="Arial, sans-serif" font-size="14" fill="#57606a" text-anchor="end">17s</text>
 
   <rect x="80" y="344" width="1040" height="44" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
   <circle cx="116" cy="366" r="12" fill="#1a7f37"/>
-  <text x="110" y="372" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 358)"/>
   <text x="142" y="372" font-family="Arial, sans-serif" font-size="16" fill="#24292f">safe_outputs</text>
   <text x="1068" y="372" font-family="Arial, sans-serif" font-size="14" fill="#57606a" text-anchor="end">9s</text>
 
   <rect x="80" y="394" width="1040" height="44" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
   <circle cx="116" cy="416" r="12" fill="#1a7f37"/>
-  <text x="110" y="422" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(108 408)"/>
   <text x="142" y="422" font-family="Arial, sans-serif" font-size="16" fill="#24292f">conclusion</text>
   <text x="1068" y="422" font-family="Arial, sans-serif" font-size="14" fill="#57606a" text-anchor="end">12s</text>
 

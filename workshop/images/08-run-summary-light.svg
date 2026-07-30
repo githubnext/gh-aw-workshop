@@ -19,7 +19,7 @@
 
   <rect x="148" y="184" width="904" height="236" rx="16" fill="#ffffff" stroke="#d0d7de"/>
   <circle cx="196" cy="232" r="18" fill="#1a7f37"/>
-  <text x="187" y="239" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(186 222) scale(1.25)"/>
   <text x="228" y="238" font-family="Arial, sans-serif" font-size="28" fill="#24292f">Daily Report Status</text>
   <text x="228" y="272" font-family="Arial, sans-serif" font-size="18" fill="#57606a">Run status: success</text>
   <text x="876" y="238" font-family="Arial, sans-serif" font-size="22" fill="#24292f">Duration: 23s</text>
@@ -28,7 +28,7 @@
   <text x="180" y="332" font-family="Arial, sans-serif" font-size="22" fill="#24292f">Jobs</text>
   <rect x="180" y="350" width="840" height="50" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
   <circle cx="214" cy="375" r="13" fill="#1a7f37"/>
-  <text x="207" y="381" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">✓</text>
+  <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" fill="#ffffff" transform="translate(206 363)"/>
   <text x="240" y="382" font-family="Arial, sans-serif" font-size="22" fill="#24292f">run-workflow</text>
   <text x="902" y="382" font-family="Arial, sans-serif" font-size="20" fill="#57606a">Succeeded</text>
 
