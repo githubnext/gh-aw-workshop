@@ -34,6 +34,8 @@ tools:
   bash: true
   playwright:
     mode: cli
+skills:
+  - .github/skills/github-brand
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop-diagrams] "
@@ -146,6 +148,9 @@ with a visual explanation, or one existing single-theme explanatory diagram,
 turn it into a polished light/dark SVG pair, and open a draft pull request with
 the smallest Markdown edit needed to use it.
 
+Before selecting, generating, or reviewing a visual, invoke `/github-brand` and
+apply its complex-visual guidance.
+
 Create **at most one** pull request per run.
 
 ---
@@ -224,17 +229,22 @@ Match the visual family of the UI screenshot workflow while staying conceptual:
 
 - Canvas: `1200 x 560`, `viewBox="0 0 1200 560"` for both variants
 - Keep geometry, labels, and content identical across the pair
-- Light palette: background `#f6f8fa`, panel `#ffffff`, border `#d0d7de`,
-  primary text `#24292f`, muted text `#57606a`, and accent `#0969da`
-- Dark palette: background `#0d1117`, panel `#161b22`, border `#30363d`,
-  primary text `#f0f6fc`, muted text `#8b949e`, and accent `#2f81f7`
+- Light palette: background `#f2f5f3`, panel `#ffffff`, border `#b6bfb8`,
+  primary text `#101411`, muted text `#232925`, and accent `#08872b`
+- Dark palette: background `#101411`, panel `#0a241b`, border `#909692`,
+  primary text `#f2f5f3`, muted text `#b6bfb8`, and accent `#5fed83`
 - Apply Primer semantic state colors from `.github/workflows/guidelines.md`
   (GitHub visual language system section) when nodes represent GitHub entities
   with a defined state (open, closed, merged, draft, in-progress, done, error)
 - Use simple labeled boxes, arrows, chips, dashed groupings, and numbered badges
 - Keep labels short and learner-friendly
 - Add a short title inside the graphic and a short annotation below it
+- Use Mona Sans and Mona Sans Mono when available, with system sans-serif and
+  monospace fallbacks
 - Add `role="img"` and `aria-label` matching the Markdown alt text
+- Add `data-visual-kind="diagram"` and a stable, filename-based
+  `data-visual-id` to the root `<svg>`
+- Add `data-node` to diagram nodes and `data-state` to state-bearing shapes
 - Output valid, self-contained SVG only
 
 ### GitHub icon usage in diagrams
@@ -322,6 +332,8 @@ After generating the SVG pair and updating Markdown:
   slightly reducing font size.
 6. Re-render after each fix until both variants are visually clean, readable,
   and selected in the intended theme.
+7. Run `scripts/check-svg-visual-language.js` with `SVG_FILES` set to the two
+  generated paths and fix every reported violation.
 
 Treat this render pass as required final QA for every generated diagram.
 

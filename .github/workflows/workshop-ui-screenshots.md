@@ -28,6 +28,8 @@ tools:
   bash: true
   playwright:
     mode: cli
+skills:
+  - .github/skills/github-brand
 safe-outputs:
   create-pull-request:
     title-prefix: "[workshop-ui-screenshots] "
@@ -160,6 +162,10 @@ Workflows"** workshop. Your job is to find broken or single-theme image
 references, generate paired light/dark conceptual SVG screenshots for GitHub UI
 images, and report anything that still needs attention.
 
+Before classifying, generating, or reviewing a visual, invoke `/github-brand`.
+Preserve Primer product tokens and state colors when product fidelity conflicts
+with the skill's palette for original workshop compositions.
+
 ---
 
 ## Load Inputs
@@ -258,8 +264,9 @@ change set.
   output lines in `#c9d1d9`, showing representative output from the described
   step.
 - Add a short annotation label below the graphic (using the palette's muted text
-  color, 24 px, `Arial, sans-serif`) echoing the alt text.
+  color, 24 px, `"Mona Sans", system-ui, sans-serif`) echoing the alt text.
 - Add `role="img"` and `aria-label` matching the alt text.
+- Add `data-state` to every shape that carries a semantic GitHub state color.
 
 ### Naming convention
 
@@ -312,6 +319,8 @@ If you generated any SVG pairs:
   elements, or reducing font size only as much as needed.
 6. Re-render both SVGs and repeat until each image is nonblank, visually
   contained, readable, and selected in the intended theme.
+7. Run `scripts/check-svg-visual-language.js` with `SVG_FILES` set to the
+  generated paths and fix every reported violation.
 
 Treat the render check as required final QA, not an optional spot check.
 
