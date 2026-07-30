@@ -51,7 +51,7 @@ Codespaces auto-save your work. If you close the tab, open [github.com/codespace
 <summary>Codespace not appearing or taking too long?</summary>
 
 - **"Create codespace on main" is greyed out** — your account may not have Codespaces enabled. Check your GitHub plan details or ask your organization admin.
-- **Spinner runs more than 3 minutes** — refresh the browser tab. If still stuck, go to [github.com/codespaces](https://github.com/codespaces), find the pending Codespace, click **⋯ → Delete**, and try again.
+- **Spinner runs more than 3 minutes** — refresh the browser tab. If still stuck, go to [github.com/codespaces](https://github.com/codespaces), find the pending Codespace, click **... → Delete**, and try again.
 - **"Codespace storage limit reached"** — you may have existing Codespaces using your quota. Visit [github.com/codespaces](https://github.com/codespaces), delete any you no longer need, and retry.
 - **VS Code desktop opens instead of the browser** — see [Side Quest: Install Local](side-quest-06-04-install-local.md) if you prefer that path, or click **Open in Browser** to continue here.
 
@@ -98,7 +98,7 @@ _What success looks like:_
 gh version 2.40.0 (2024-01-01)
 ...
 github.com
-  ✓ Logged in to github.com as <your-username>
+  Logged in to github.com as <your-username>
 ```
 
 ## :white_check_mark: Checkpoint

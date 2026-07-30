@@ -12,7 +12,7 @@
 
 ## How to open a terminal
 
-**macOS:** Press **Command ⌘ + Space**, type **Terminal**, and press **Enter**. You'll see a prompt like `yourname@MacBook ~ %`.
+**macOS:** Press **Command + Space**, type **Terminal**, and press **Enter**. You'll see a prompt like `yourname@MacBook ~ %`.
 
 **Windows:** Press **Win**, type **Terminal**, and press **Enter**. You'll see a prompt like `C:\Users\yourname>`.
 
@@ -108,4 +108,3 @@ rm -r test-dir
 When you're done here, return to [What You Need Before We Start](01-prerequisites.md).
 
 <!-- /journey -->
-

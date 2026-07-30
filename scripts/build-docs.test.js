@@ -132,9 +132,12 @@ test("workshop Markdown uses GitHub emoji shortcodes", () => {
       .map((file) => path.join(workshopDir, file)),
   ];
   const nativeEmoji = /(?:\p{Extended_Pictographic}|\p{Emoji_Presentation})/u;
+  const nativeIconGlyphs = /[✓⌘⌖⋯]/u;
 
   for (const file of markdownFiles) {
-    assert.doesNotMatch(fs.readFileSync(file, "utf8"), nativeEmoji, `expected GitHub emoji shortcodes in ${path.relative(repoDir, file)}`);
+    const content = fs.readFileSync(file, "utf8");
+    assert.doesNotMatch(content, nativeEmoji, `expected GitHub emoji shortcodes in ${path.relative(repoDir, file)}`);
+    assert.doesNotMatch(content, nativeIconGlyphs, `expected plain text or supported shortcodes instead of raw icon glyphs in ${path.relative(repoDir, file)}`);
   }
 });
 

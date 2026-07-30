@@ -15,7 +15,7 @@
 
 - **Run metadata** — workflow name, trigger, engine, and model
 - **Agent AIC** — total AI Credits consumed by the agent turn
-- **Threat-detection AIC (⌖ AIC)** — credits consumed by the firewall's threat-detection model, reported separately from agent inference
+- **Threat-detection AIC** — credits consumed by the firewall's threat-detection model, reported separately from agent inference
 - **[MCP tool calls](https://github.github.com/gh-aw/guides/mcps/)** — each tool the agent invoked, with any errors
 - **Threat detection verdict** — whether prompt injection, secret leak, or malicious patch was detected
 - **Safe outputs** — every safe-output declaration the agent emitted
@@ -46,7 +46,7 @@ Use `firewall.md` to quickly identify blocked domains. For raw domain-level reco
 
 [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) (AI Credits) is the billing unit for agentic workflow inference and is derived from token consumption. Exact billing figures appear in your GitHub billing dashboard.
 
-The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the threat-detection model separately from the main agent turn. Both contribute to your organisation's total AIC usage.
+The **threat-detection AIC** value in `gh aw logs` output shows credits consumed by the threat-detection model separately from the main agent turn. Both contribute to your organisation's total AIC usage.
 
 ## Adding a blocked domain to [network.allow](https://github.github.com/gh-aw/reference/network/#configuration)
 
@@ -85,14 +85,14 @@ Sample output:
 | Metric       | Value |
 |---|---|
 | Agent AIC    | 42    |
-| ⌖ AIC        | 3     |
+| Threat-detection AIC | 3 |
 | MCP calls    | 7     |
 | Threat verdict | none |
 ```
 
 1. Find a run ID from the Actions tab.
 2. Confirm the report shows the workflow name, trigger, and model.
-3. Check that the ⌖ AIC figure appears separately from Agent AIC.
+3. Check that the threat-detection AIC figure appears separately from Agent AIC.
 4. Note the threat verdict (typically `none`).
 
 ### Explore MCP tool calls
@@ -121,7 +121,7 @@ The raw domain-level network access logs live in `sandbox/firewall/audit/` insid
 ## :white_check_mark: Checkpoint
 
 - [ ] You can identify each file inside the agent artifact and what it contains
-- [ ] You understand what ⌖ AIC represents and how it differs from agent AIC
+- [ ] You understand what threat-detection AIC represents and how it differs from agent AIC
 - [ ] You can find blocked domains in the firewall audit records and add them to `network.allow`
 - [ ] You know what the threat detection verdict checks for
 - [ ] You ran `gh aw audit` on a real run and reviewed the generated report
@@ -130,5 +130,4 @@ The raw domain-level network access logs live in `sandbox/firewall/audit/` insid
 <!-- journey: all -->
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 <!-- /journey -->
-
 
