@@ -110,6 +110,55 @@ Existing single-theme workshop images are migration candidates, not exceptions:
    instead of duplicating the binary.
 - Do not delete an original asset until no Markdown or HTML reference uses it.
 
+## GitHub visual language system
+
+When a generated diagram or illustration depicts a GitHub concept — such as an issue, pull request, discussion, commit, repository, or workflow run — use the GitHub visual language to represent it. This keeps diagrams recognisable to learners who already know the GitHub UI and avoids generic icon fonts or ambiguous shapes.
+
+### Octicon-inspired shapes
+
+Embed simplified Octicon-style shapes directly in SVG markup as inline `<path>` or geometric primitives. Do not link to external icon files or import icon fonts — diagrams must be self-contained.
+
+| Concept | Shape guidance |
+|---------|----------------|
+| Issue (open) | Circle outline (`r 8`) with a smaller filled dot inside; stroke and fill use the open/green semantic color |
+| Issue (closed) | Solid circle with an ✕ or checkmark path inside; fill uses the closed semantic color |
+| Pull request (open) | Two small circles connected by a curved branch path (branch left, merge right); stroke uses the open/green color |
+| Pull request (merged) | Same branch shape with a diamond merge point; fill and stroke use the merged/purple color |
+| Pull request (draft) | Dashed circle outline with a pencil stub; stroke and fill use the muted/grey color |
+| Discussion | Rounded speech-bubble outline (rect + pointer triangle); stroke uses the accent color |
+| Commit | Small solid circle (`r 5`) centred on a horizontal branch line |
+| Repository | Open book or folder outline using two rounded rect halves |
+| Workflow / Actions run | Right-pointing filled triangle (play button) inside a rounded square |
+| Schedule trigger | Clock face: circle outline + two short line segments for hands |
+
+Use these shapes at 16 × 16 or 24 × 24 logical units; scale to fit the diagram's label boxes using a `transform="scale(...)"` or by drawing at the target size directly.
+
+### Primer semantic colors for entity states
+
+Apply state-specific colors consistently so learners can interpret diagram nodes at a glance.
+
+| State | Light mode | Dark mode | Applies to |
+|-------|-----------|-----------|------------|
+| Open | `#1a7f37` | `#3fb950` | Open issues, open PRs |
+| Closed | `#cf222e` | `#f85149` | Closed issues, closed PRs |
+| Merged | `#8250df` | `#a371f7` | Merged pull requests |
+| Draft | `#57606a` | `#8b949e` | Draft PRs, pending items |
+| In progress | `#9a6700` | `#e3b341` | Running workflow steps, in-flight items |
+| Done / Success | `#1a7f37` | `#3fb950` | Completed steps, passing checks |
+| Skipped | `#57606a` | `#8b949e` | Skipped steps, inactive paths |
+| Danger / Error | `#cf222e` | `#f85149` | Failed checks, error states |
+
+When the diagram is theme-aware, apply the matching column's values to each SVG variant.
+
+### GitHub visual language usage rules
+
+- **Always use GitHub icons** when a node represents a GitHub entity (issue, PR, discussion, commit, repository). Do not substitute plain rectangles or generic bullet shapes for recognisable GitHub concepts.
+- **Accompany every icon node with a text label.** The icon conveys type; the label conveys content. Together they must be readable without prior knowledge of the icon.
+- **Match state to color.** An open-issue node must use the open/green semantic color; a merged-PR node must use the merged/purple color. Do not use accent blue for concept nodes that have an explicit state color.
+- **Keep icon shapes minimal.** Octicon-inspired primitives should be legible at diagram scale — omit ornamental detail that disappears below 24 px.
+- **Use accent blue (`#0969da` / `#2f81f7`) for non-GitHub-entity highlights** such as data flows, trigger arrows, or focus callouts that do not correspond to a GitHub object.
+- **Do not mix icon vocabularies.** Never combine Octicon-style shapes with Material Design, Font Awesome, or other third-party icon conventions in the same diagram.
+
 ## Alert callouts: use `<details>` only for multi-line content
 
 ### Alert level ceiling
