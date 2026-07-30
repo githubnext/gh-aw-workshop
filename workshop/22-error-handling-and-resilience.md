@@ -41,10 +41,7 @@ The diagram below shows how these failure modes map to the three mitigations cov
 In your Copilot CLI session in the terminal, paste:
 
 ```prompt
-/agentic-workflows update .github/workflows/daily-status.md to:
-1. Add an explicit fallback instruction to the task brief for when there are no issues or pull requests.
-2. Add `timeout-minutes: 10` to the frontmatter.
-3. Add a fallback message to the safe-output call for quiet runs.
+/agentic-workflows make daily-status.md resilient: add a fallback brief for empty data, set timeout-minutes to 10, and include a fallback message on the safe-output call.
 ```
 
 The skill applies all three changes and recompiles the lock file. Review the diff before committing.
@@ -99,6 +96,8 @@ timeout-minutes: 10
 > Start with a generous limit (10–15 minutes) and tighten it once you know how long typical runs take.
 >
 > </details>
+
+On GitHub Enterprise Server (GHES) and GitHub Enterprise Cloud (GHEC), administrators can set a maximum job timeout at the organisation or enterprise level. When that policy is more restrictive than your `timeout-minutes` value, the enterprise limit takes precedence and the workflow job will be cancelled at the admin-set threshold. Check with your GitHub administrator before relying on a specific `timeout-minutes` value in an enterprise environment.
 
 ### Add a fallback message to [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 
