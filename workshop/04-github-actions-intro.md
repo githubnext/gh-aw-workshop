@@ -2,18 +2,17 @@
 <!-- page-adventure: core -->
 # GitHub Actions in 5 Minutes
 
-> [!TIP]
-> <details>
-> <summary><b>Already know GitHub Actions?</b> Confirm these three statements and skip ahead:</summary>
->
-> - You know workflows live in `.github/workflows/` as YAML files
-> - You can read `on`, `jobs`, and `steps` keys in a workflow file
-> - You know each step runs on a GitHub-hosted runner
->
-> **→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
-> (or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
->
-> </details>
+<details>
+<summary><b>Already know GitHub Actions?</b> Confirm these three statements and skip ahead:</summary>
+
+- You know workflows live in `.github/workflows/` as YAML files
+- You can read `on`, `jobs`, and `steps` keys in a workflow file
+- You know each step runs on a GitHub-hosted runner
+
+**→ [Skip to What Are Agentic Workflows?](05-agentic-workflows-intro.md)**
+(or [jump to Install gh-aw](06-install-gh-aw.md) if you know both)
+
+</details>
 
 ## :dart: What You'll Do
 
