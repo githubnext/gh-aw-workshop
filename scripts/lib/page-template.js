@@ -167,12 +167,6 @@ ${htmlContent}</main>
       const activePage = page ?? workshopPages[0];
       if (!activePage) return;
 
-      const currentPage = workshopPages.find(p => p.open);
-      const currentIndex = currentPage ? workshopPages.indexOf(currentPage) : -1;
-      const nextIndex = workshopPages.indexOf(activePage);
-      const isBackward = currentIndex >= 0 && nextIndex >= 0 && currentIndex > nextIndex;
-      document.documentElement.toggleAttribute('data-nav-backward', isBackward);
-
       function applyPageChange() {
         workshopPages.forEach(candidate => {
           candidate.open = candidate === activePage;
@@ -188,11 +182,7 @@ ${htmlContent}</main>
         if (scrollPage) activePage.scrollIntoView({ block: 'start' });
       }
 
-      if (document.startViewTransition && currentPage && currentPage !== activePage) {
-        document.startViewTransition(applyPageChange);
-      } else {
-        applyPageChange();
-      }
+      applyPageChange();
     }
 
     function openDetailsAncestors(target) {

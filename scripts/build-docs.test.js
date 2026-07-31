@@ -58,6 +58,13 @@ test("workshop navigation constrains long buttons on small screens", () => {
   assert.ok(css.includes(".workshop-nav-btn {\n    box-sizing: border-box;\n    max-width: 100%;\n    width: 100%;"));
 });
 
+test("workshop page navigation does not animate page changes", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(!html.includes("startViewTransition"));
+  assert.ok(!css.includes("view-transition"));
+});
+
 test("current page checkpoint progress renders in the sticky header", () => {
   const { html, css, checkboxesJs } = buildDocs();
 
