@@ -22,7 +22,7 @@ By the end, you'll have a reviewer that runs when a draft becomes ready, can be 
 
 ## Understand the Agent and Skill Split
 
-The parent workflow should coordinate the run, not contain every review rule. It delegates the diff analysis to a focused inline agent. That agent applies an inline skill containing the review method.
+The parent workflow should coordinate the run, not contain every review rule. It delegates the diff analysis to a focused [inline agent](https://github.github.com/gh-aw/reference/inline-sub-agents/). That agent applies an inline skill containing the review method.
 
 | Part | Responsibility |
 |---|---|
@@ -72,7 +72,7 @@ safe-outputs:
 ---
 ```
 
-Notice that the agent job has no repository or pull request write permission. `copilot-requests: write` only authenticates Copilot. The `submit-pull-request-review` safe output performs the controlled repository write after the agent finishes. `APPROVE` is intentionally absent because the default GitHub Actions token cannot approve pull requests.
+Notice that the agent job has no repository or pull request write permission. `copilot-requests: write` only authenticates Copilot. The `submit-pull-request-review` [safe output](https://github.github.com/gh-aw/reference/safe-outputs/) performs the controlled repository write after the agent finishes. `APPROVE` is intentionally absent because the default GitHub Actions token cannot approve pull requests.
 
 Near the bottom, look for the two reusable blocks:
 

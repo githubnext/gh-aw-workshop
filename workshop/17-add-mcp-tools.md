@@ -79,7 +79,7 @@ Open your daily-status workflow file (`.github/workflows/daily-status.md`) and f
 </details>
 
 > [!NOTE]
-> The `github` tool entry tells gh-aw to start the GitHub MCP server in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
+> The `github` tool entry tells gh-aw to start the [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/) in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
 
 <!-- -->
 

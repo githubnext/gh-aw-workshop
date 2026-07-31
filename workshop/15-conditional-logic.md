@@ -17,7 +17,7 @@ Add a conditional check to your daily-status workflow so it only posts a summary
 
 ### Understand the problem
 
-Your daily-status workflow currently runs every weekday regardless of repository activity, which means it can produce empty or near-empty summaries like "No activity to report" on quiet days. Over time these hollow reports erode confidence in the tool because readers learn to ignore them. Conditional logic solves this by inspecting repository state in a deterministic shell step before any AI processing begins, then skipping the agent job entirely when the precondition is not met.
+Your daily-status workflow currently runs every weekday regardless of repository activity, which means it can produce empty or near-empty summaries like "No activity to report" on quiet days. Over time these hollow reports erode confidence in the tool because readers learn to ignore them. Conditional logic solves this by inspecting repository state in a [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) shell step before any AI processing begins, then skipping the agent job entirely when the precondition is not met.
 
 The approach breaks into three parts:
 1. Run a shell command to count commits from the last 24 hours and write the result to `$GITHUB_OUTPUT`.

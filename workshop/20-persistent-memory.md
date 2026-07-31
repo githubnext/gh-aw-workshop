@@ -28,7 +28,7 @@ You'll add [persistent memory](https://github.github.com/gh-aw/patterns/memory-o
 ## :clipboard: Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
-- You are comfortable editing YAML frontmatter from [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
+- You are comfortable editing YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 - You understand how `safe-outputs` controls write access (see [Side Quest: Frontmatter Deep Dive — Part B](side-quest-11-08-frontmatter-tools-outputs.md) if you need a refresher).
 
 ## Why Memory Matters
