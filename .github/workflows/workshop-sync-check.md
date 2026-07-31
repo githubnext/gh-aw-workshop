@@ -283,34 +283,27 @@ Each daily run reviews **three workshop files** (round-robin) and checks for out
 
 ## Check for New gh-aw Releases
 
-1. Fetch the latest gh-aw release:
-
-```
-gh api repos/github/gh-aw/releases/latest
-```
-
-1. Compare `tag_name` against `last_gh_aw_release` in the cached state.
-
-2. If a **new release** was published since the last check:
+1. Fetch the latest gh-aw release using `gh api repos/github/gh-aw/releases/latest`.
+2. Compare `tag_name` against `last_gh_aw_release` in the cached state.
+3. If a **new release** was published since the last check:
    - Extract the release body (changelog / release notes).
    - Identify any breaking changes, renamed commands, new syntax, or deprecations that could affect workshop content.
    - Flag these for consideration during the content review below.
-
-3. Record the new release tag and `published_at` date in the updated cache state.
+4. Record the new release tag and `published_at` date in the updated cache state.
 
 ---
 
 ## Select Files to Review (Round-Robin)
 
-1. Using `workshop_files` from the repo state and `round_robin_index` from the cache,
-   select up to 3 files starting at the current index (pseudocode for illustration):
+Using `workshop_files` from the repo state and `round_robin_index` from the cache,
+select up to `n = min(3, total)` files starting at the current index:
 
 ```
 n = min(3, total number of workshop files)
 target_files = [workshop_files[(round_robin_index + i) % total] for each i in 0..n-1]
 ```
 
-1. Record `n` for use in Phase 8.
+Record `n` for use in Phase 8.
 
 ---
 
@@ -334,32 +327,12 @@ If a new gh-aw release was found in Phase 2, record the release notes body in a 
 
 ## Valid External Documentation URLs
 
-The setup step has already built and HTTP-validated a mapping of gh-aw source
-files to their rendered documentation URLs. Read this mapping from the file:
-
-```bash
-cat /tmp/gh-aw/data/doc-url-map-validated.json
-```
-
-The file contains a `doc_url_map` object mapping source file paths to
-confirmed-reachable rendered URLs:
-
-```json
-{
-  "validated_at": 1234567890,
-  "doc_url_map": {
-    ".github/aw/github-agentic-workflows.md": "https://github.github.com/gh-aw/introduction/overview/",
-    ".github/aw/triggers.md": "https://github.github.com/gh-aw/reference/triggers/",
-    ...
-  }
-}
-```
-
-Every URL present in `doc_url_map` was confirmed reachable (HTTP 2xx) by the
-bash prevalidation step. Pass the `doc_url_map` value to each
-`workshop-sync-reviewer` subagent so it can treat those URLs as verified — and
-flag any `https://github.github.com/gh-aw/...` URL found in workshop files that
-is **not** present in the map as an unverified or potentially broken link.
+Read `/tmp/gh-aw/data/doc-url-map-validated.json`. Every URL in the `doc_url_map`
+object was confirmed reachable (HTTP 2xx) by the bash prevalidation step. Pass
+the `doc_url_map` value to each `workshop-sync-reviewer` subagent so it can
+treat those URLs as verified — and flag any `https://github.github.com/gh-aw/…`
+URL found in workshop files that is **not** present in the map as an unverified
+or potentially broken link.
 
 ---
 
