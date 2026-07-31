@@ -58,7 +58,7 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 - :arrow_right: [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
 - :arrow_right: [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
 - :arrow_right: [Share and Reuse Your Agentic Workflows](18-share-and-reuse.md) — publish your workflow to a catalog so others can install it with one command.
-- :arrow_right: [Make Your Workflow Remember Across Runs](20-persistent-memory.md) — add cache-backed memory so your workflow skips items it has already reported on.
+- :arrow_right: [Make Your Workflow Remember Across Runs](20-persistent-memory.md) — add [cache-backed memory](https://github.github.com/gh-aw/reference/cache-memory/) so your workflow skips items it has already reported on.
 - :arrow_right: [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md) — use the planner-worker pattern to keep your main prompt lean and reduce token cost.
 - :arrow_right: [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) — add defensive briefs, timeouts, and fallback outputs so unattended runs stay reliable.
 - :arrow_right: [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) — compare prompt variants across runs and let data decide which one to keep.
