@@ -4,9 +4,9 @@ name: Workshop Playwright QA
 description: >
   Daily visual and accessibility QA of the rendered workshop pages. Builds the
   static site locally, launches a dev server, and uses Playwright to test page
-  navigation, readability, and accessibility across three viewport sizes
-  (small 375 × 667, medium 768 × 1024, desktop 1280 × 800). Creates a GitHub
-  issue with embedded screenshots when problems are detected.
+  navigation, readability, accessibility, and brand alignment across the five
+  viewport sizes defined by the GitHub brand skill. Creates a GitHub issue with
+  embedded screenshots when problems are detected.
 on:
   schedule: daily
   workflow_dispatch:
@@ -29,6 +29,8 @@ tools:
   bash: true
   playwright:
     mode: cli
+skills:
+  - githubnext/gh-aw-workshop/.github/skills/github-brand@56127b6381f0f1d976231bb924dadcbae18858de
 safe-outputs:
   create-issue:
     title-prefix: "[workshop-playwright-qa] "
@@ -82,9 +84,11 @@ steps:
           "base_url": base,
           "pages": pages,
           "viewports": [
-              {"name": "small",   "width": 375,  "height": 667},
-              {"name": "medium",  "width": 768,  "height": 1024},
-              {"name": "desktop", "width": 1280, "height": 800},
+              {"name": "small",     "width": 360,  "height": 800},
+              {"name": "medium",    "width": 768,  "height": 1024},
+              {"name": "desktop",   "width": 1280, "height": 800},
+              {"name": "wide",      "width": 1440, "height": 900},
+              {"name": "full-hd",   "width": 1920, "height": 1080},
           ],
       }
       pathlib.Path("/tmp/gh-aw/agent/data/config.json").write_text(
@@ -100,9 +104,12 @@ steps:
 
 You are a visual and accessibility QA agent for the **"Learning GitHub Agentic
 Workflows"** workshop. Your job is to test the rendered workshop pages across
-small, medium, and desktop viewports, check navigation, readability, and
-accessibility, and report any problems as focused GitHub issues with
-screenshots.
+all configured viewports, check navigation, readability, accessibility, and
+brand alignment, and report any problems as focused GitHub issues with screenshots.
+
+Before testing, invoke `/github-brand`. Apply its automated acceptance profile
+at every configured viewport, and read its complex-visual reference when a page
+contains a chart, diagram, or infographic.
 
 ---
 
@@ -144,7 +151,7 @@ For each page URL:
 For each page at each viewport:
 
 1. Measure the computed `font-size` of body text inside `.markdown-body`.
-   Flag if it is below 14 px on any viewport.
+   Flag if it is below 16 px on any viewport.
 2. Check that no `.markdown-body` block-level element overflows its
    container horizontally (no horizontal scroll bar appears on the page).
 3. Verify the page title (`<title>`) is non-empty.
@@ -167,6 +174,13 @@ For each page at each viewport:
    verify each receives a visible focus ring (`:focus-visible` outline is
    not hidden by `outline: none` without a replacement).
 
+### Brand checks
+
+For each page at each viewport, apply the hard requirements and warnings from
+the `/github-brand` skill. Use computed styles and rendered geometry rather than
+source markup assumptions. Include the skill's color, type, layout, interaction,
+image, complex-visual, motion, and trademark checks that apply to the page.
+
 ---
 
 ## Collect and Classify Findings
@@ -174,8 +188,8 @@ For each page at each viewport:
 For every failed check, record a finding with:
 
 - `page_id` — the page identifier from `config.json` (or `__root__`)
-- `viewport` — the viewport name (`small`, `medium`, or `desktop`)
-- `category` — one of `navigation`, `readability`, or `accessibility`
+- `viewport` — the configured viewport name
+- `category` — one of `navigation`, `readability`, `accessibility`, or `brand`
 - `description` — a concise description of what failed and what was
   observed (include element selectors or text snippets where useful)
 - `screenshot_path` — path where a screenshot of the failure was saved
@@ -225,7 +239,8 @@ Group findings by `page_id`. For each page that has findings:
 ## QA findings for `<page_id>`
 
 Tested at: <ISO 8601 UTC timestamp>
-Viewports: small (375×667), medium (768×1024), desktop (1280×800)
+Viewports: small (360×800), medium (768×1024), desktop (1280×800),
+wide (1440×900), full-hd (1920×1080)
 
 | # | Viewport | Category | Description |
 |---|----------|----------|-------------|

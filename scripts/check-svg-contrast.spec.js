@@ -6,7 +6,9 @@
  *
  * Uses the Playwright CLI to render each SVG file in a headless browser and
  * verify that every text element has sufficient WCAG contrast against its
- * effective background color.
+ * effective background color. Brand-declared visuals use WCAG AA text
+ * thresholds; unannotated legacy files retain the previous 3:1 baseline until
+ * they are migrated to the visual metadata contract.
  *
  * Run directly:
  *   npx playwright test --config=playwright.svg-contrast.config.js
@@ -20,6 +22,17 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
+
+const LEGACY_TEXT_CONTRAST = 3.0;
+const NORMAL_TEXT_CONTRAST = 4.5;
+const LARGE_TEXT_CONTRAST = 3.0;
+
+function requiredTextContrast(fontSize, fontWeight, enforcesBrandContrast) {
+  if (!enforcesBrandContrast) return LEGACY_TEXT_CONTRAST;
+  const isLargeText =
+    fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700);
+  return isLargeText ? LARGE_TEXT_CONTRAST : NORMAL_TEXT_CONTRAST;
+}
 
 // ---------------------------------------------------------------------------
 // File discovery
@@ -53,17 +66,6 @@ const svgFiles = envFiles
   : findSvgFiles(path.join(repoRoot, 'workshop', 'images'));
 
 // ---------------------------------------------------------------------------
-// WCAG contrast helpers (duplicated inside page.evaluate below as well)
-// ---------------------------------------------------------------------------
-
-/**
- * WCAG AA minimum contrast ratio.
- * 4.5:1 for normal text; 3:1 for large text (≥18 pt or ≥14 pt bold).
- * Workshop SVG diagrams use large labels, so 3.0 is the applied floor.
- */
-const CONTRAST_THRESHOLD = 3.0;
-
-// ---------------------------------------------------------------------------
 // Dynamic test generation — one test per SVG file
 // ---------------------------------------------------------------------------
 
@@ -72,6 +74,13 @@ if (svgFiles.length === 0) {
     // Nothing to check — pass silently.
   });
 }
+
+test('applies WCAG text thresholds to brand-declared visuals', () => {
+  expect(requiredTextContrast(16, 400, true)).toBe(4.5);
+  expect(requiredTextContrast(18.66, 700, true)).toBe(3.0);
+  expect(requiredTextContrast(24, 400, true)).toBe(3.0);
+  expect(requiredTextContrast(16, 400, false)).toBe(3.0);
+});
 
 for (const svgPath of svgFiles) {
   const relPath = path.relative(repoRoot, svgPath);
@@ -98,7 +107,12 @@ for (const svgPath of svgFiles) {
     // ---------------------------------------------------------------------------
     // In-browser analysis: extract text elements and their effective colors
     // ---------------------------------------------------------------------------
-    const violations = await page.evaluate((threshold) => {
+    const enforcesBrandContrast = await page
+      .locator('svg')
+      .first()
+      .evaluate((svg) => svg.hasAttribute('data-visual-kind'));
+
+    const measurements = await page.evaluate(() => {
       // --- Color helpers (must be self-contained inside evaluate) ---
 
       function parseColorStr(s) {
@@ -142,24 +156,16 @@ for (const svgPath of svgFiles) {
 
       // --- SVG attribute helpers ---
 
-      /**
-       * Walk up the DOM to resolve the effective `fill` of a text element.
-       * Returns the raw attribute string (e.g. "#24292f" or "rgb(0,0,0)").
-       */
-      function effectiveFill(el) {
-        let node = el;
-        while (node && node.tagName.toLowerCase() !== 'svg') {
-          const fill = node.getAttribute('fill');
-          if (fill && fill !== 'inherit') return fill;
-          node = node.parentElement;
-        }
-        // SVG spec default: text renders in black when no fill is specified.
-        return '#000000';
+      function numericFontWeight(value) {
+        if (value === 'bold' || value === 'bolder') return 700;
+        if (value === 'normal' || value === 'lighter') return 400;
+        const parsed = Number.parseInt(value, 10);
+        return Number.isFinite(parsed) ? parsed : 400;
       }
 
       // --- Main analysis ---
 
-      const violations = [];
+      const measurements = [];
 
       // Flat list of all elements in DOM order (used for z-order comparisons).
       const allEls = Array.from(document.querySelectorAll('*'));
@@ -174,9 +180,12 @@ for (const svgPath of svgFiles) {
         // Skip invisible / zero-size elements.
         if (bbox.width === 0 || bbox.height === 0) continue;
 
-        const fillStr = effectiveFill(textEl);
+        const computedStyle = window.getComputedStyle(textEl);
+        const fillStr = computedStyle.fill || '#000000';
         const textColor = parseColorStr(fillStr);
         if (!textColor) continue;
+        const fontSize = Number.parseFloat(computedStyle.fontSize);
+        const fontWeight = numericFontWeight(computedStyle.fontWeight);
 
         const textIdx = allEls.indexOf(textEl);
 
@@ -242,25 +251,35 @@ for (const svgPath of svgFiles) {
         }
 
         const ratio = contrastRatio(textColor, bgColor);
-        if (ratio < threshold) {
-          violations.push({
-            text: content.substring(0, 80),
-            fill: fillStr,
-            background: bgSource,
-            ratio: Math.round(ratio * 100) / 100,
-            threshold,
-          });
-        }
+        measurements.push({
+          text: content.substring(0, 80),
+          fill: fillStr,
+          background: bgSource,
+          ratio,
+          fontSize: Math.round(fontSize * 100) / 100,
+          fontWeight,
+        });
       }
 
-      return violations;
-    }, CONTRAST_THRESHOLD);
+      return measurements;
+    });
+
+    const violations = measurements
+      .map((measurement) => ({
+        ...measurement,
+        threshold: requiredTextContrast(
+          measurement.fontSize,
+          measurement.fontWeight,
+          enforcesBrandContrast
+        ),
+      }))
+      .filter((measurement) => measurement.ratio < measurement.threshold);
 
     if (violations.length > 0) {
       const report = violations
         .map(
           (v) =>
-            `  text: "${v.text}"\n  fill: ${v.fill}  background: ${v.background}\n  contrast: ${v.ratio}:1  (minimum: ${v.threshold}:1)`
+            `  text: "${v.text}"\n  fill: ${v.fill}  background: ${v.background}\n  contrast: ${Math.round(v.ratio * 100) / 100}:1  (minimum: ${v.threshold}:1; font: ${v.fontSize}px/${v.fontWeight})`
         )
         .join('\n\n');
       expect(
