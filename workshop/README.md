@@ -39,6 +39,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 25 | [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) |
 | 26 | [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) |
 | 27 | [Verify Your Workflow Quality with Evals](27-evaluate-workflow-quality.md) |
+| 28 | [Govern Agentic Workflows Across Your Enterprise](28-enterprise-governance.md) |
 
 ## Optional Side Quests
 
