@@ -110,8 +110,8 @@ html[data-color-mode="dark"] .site-header-progress-bar {
   display: inline-grid;
   flex: 0 0 auto;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   color: var(--fgColor-default, #1f2328);
   background: transparent;
@@ -318,7 +318,7 @@ html[data-color-mode="dark"] .menu-toggle-progress {
     white-space: inherit;
   }
   .markdown-body {
-    padding-inline: 12px !important;
+    padding-inline: 20px !important;
   }
 }
 

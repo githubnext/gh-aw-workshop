@@ -76,6 +76,13 @@ test("current page checkpoint progress renders in the sticky header", () => {
   assert.ok(css.includes(".site-header-progress-bar {\n    width: min(84px, 24vw);"));
 });
 
+test("mobile docs keep accessible gutters and menu target sizes", () => {
+  const { css } = buildDocs();
+
+  assert.ok(css.includes(".menu-toggle,\n.menu-close {\n  display: inline-grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 44px;\n  height: 44px;"));
+  assert.ok(css.includes(".markdown-body {\n    padding-inline: 20px !important;\n  }"));
+});
+
 test("shell code blocks are wrapped in a terminal-block UI", () => {
   const { html, css, highlightCss } = buildDocs();
 
