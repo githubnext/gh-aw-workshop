@@ -145,7 +145,7 @@ gh aw compile
 ```
 
 > [!TIP]
-> If you want faster feedback while editing, run `gh aw compile --watch` in a second terminal.
+> For faster feedback while editing, run `gh aw compile --watch` in a second terminal; the [CLI reference](https://github.github.com/gh-aw/setup/cli/#compile) lists this option.
 
 When the compile finishes, check that you do **not** see warnings about stripped sub-agent fields such as `engine` or `tools`.
 
@@ -164,5 +164,4 @@ When the compile finishes, check that you do **not** see warnings about stripped
 <!-- journey: all -->
 Return to [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md).
 <!-- /journey -->
-
 
