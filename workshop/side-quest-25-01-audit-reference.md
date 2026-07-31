@@ -35,7 +35,7 @@ The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh
 
 ### Readable log files
 
-The audit report is accompanied by readable files written alongside the raw artifacts:
+Run `gh aw audit <run-id> --parse` to generate readable files alongside the raw artifacts. These files are created only when you use `--parse`:
 
 - `log.md` — the full agent conversation formatted as Markdown
 - `firewall.md` — a formatted summary of outbound network access (allowed and blocked domains)
@@ -48,14 +48,14 @@ Use `firewall.md` to quickly identify blocked domains. For raw domain-level reco
 
 The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the threat-detection model separately from the main agent turn. Both contribute to your organisation's total AIC usage.
 
-## Adding a blocked domain to [network.allow](https://github.github.com/gh-aw/reference/network/#configuration)
+## Adding a blocked domain to [network.allowed](https://github.github.com/gh-aw/reference/network/#configuration)
 
-If the firewall blocked a domain your workflow needs, add it to `network.allow` in your workflow frontmatter and recompile:
+If the firewall blocked a domain your workflow needs, add it to `network.allowed` in your workflow frontmatter and recompile:
 
 ```markdown
 ---
 network:
-  allow:
+  allowed:
     - api.example.com
 ---
 ```
@@ -69,7 +69,7 @@ Share the allowed-domains list from a successful run with your enterprise securi
 Open the **Actions** tab in your repository, click a completed workflow run, and copy the run ID from the URL (the number after `/runs/`). Then run:
 
 ```bash
-gh aw audit <run-id>
+gh aw audit <run-id> --parse
 ```
 
 Sample output:
@@ -116,13 +116,13 @@ The raw domain-level network access logs live in `sandbox/firewall/audit/` insid
 
 1. Open `sandbox/firewall/audit/` in the downloaded artifacts.
 2. Identify at least one domain the workflow accessed.
-3. If any domains were blocked, add them to `network.allow` in the workflow frontmatter.
+3. If any domains were blocked, add them to `network.allowed` in the workflow frontmatter.
 
 ## :white_check_mark: Checkpoint
 
 - [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC
-- [ ] You can find blocked domains in the firewall audit records and add them to `network.allow`
+- [ ] You can find blocked domains in the firewall audit records and add them to `network.allowed`
 - [ ] You know what the threat detection verdict checks for
 - [ ] You ran `gh aw audit` on a real run and reviewed the generated report
 - [ ] You explored `mcp-logs/` to identify tool calls from a completed run
@@ -130,5 +130,3 @@ The raw domain-level network access logs live in `sandbox/firewall/audit/` insid
 <!-- journey: all -->
 Return to [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md).
 <!-- /journey -->
-
-
