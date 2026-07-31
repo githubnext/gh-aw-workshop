@@ -66,10 +66,9 @@ Keep the comment concise and traceable to real sources you used.
 
 ### Validate before opening a pull request
 
-Run markdown lint and [compile](https://github.github.com/gh-aw/reference/compilation-process/) checks so your proposal is production-ready:
+Run the [compile](https://github.github.com/gh-aw/reference/compilation-process/) check locally so your proposal is production-ready. Workshop CI validates Markdown formatting after you open a pull request, so you do not need a separate Node.js-based lint step here:
 
 ```bash
-npx --yes markdownlint-cli2 "workshop/**/*.md"
 gh aw compile
 ```
 
@@ -79,7 +78,7 @@ gh aw compile
 - [ ] You identified one concrete learner gap for a new training node
 - [ ] You drafted a bounded node scope tied to specific repository files
 - [ ] You captured supporting rationale in XML comments
-- [ ] You ran lint and compile validation before preparing a PR
+- [ ] You ran `gh aw compile` and know workshop CI will validate Markdown formatting
 
 <!-- journey: all -->
 **Next:** [Make Your Workflow Remember Across Runs](20-persistent-memory.md)
