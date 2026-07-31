@@ -1,3 +1,5 @@
+<!-- page-journey: all -->
+<!-- page-adventure: advanced -->
 <!--
 <research-metadata>
   <focus>BinEval evaluations (`evals:` frontmatter) for automated workflow quality verification</focus>
@@ -10,8 +12,6 @@
   <rationale>This node closes a curriculum gap between prompt experimentation and cost controls by adding a repeatable quality gate. Learners already know how to run workflows and compare variants, but they still need an automated way to verify whether a run achieved its intended outcome without manual review. Introducing `evals:` gives each run durable YES/NO quality signals through the `evals` artifact (`evals.jsonl`) and persisted eval state, which supports regression detection and evidence-based iteration over time.</rationale>
 </research-metadata>
 -->
-<!-- page-journey: all -->
-<!-- page-adventure: advanced -->
 # Verify Your Workflow Quality with Evals
 
 > _Add automated YES/NO checks so every run tells you whether your workflow actually met its goal._
