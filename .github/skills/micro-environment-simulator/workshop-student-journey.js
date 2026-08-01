@@ -56,7 +56,9 @@ const STEP_FILE_ALIASES = {
   "23-ab-experiments": ["23-ab-experiments.md"],
   "24-self-hosted-runners": ["24-self-hosted-runners.md"],
   "25-audit-and-observability": ["25-audit-and-observability.md"],
-  "26-manage-costs-and-budgets": ["26-manage-costs-and-budgets.md"]
+  "26-manage-costs-and-budgets": ["26-manage-costs-and-budgets.md"],
+  "27-evaluate-workflow-quality": ["27-evaluate-workflow-quality.md"],
+  "28-orchestrate-workflows": ["28-orchestrate-workflows.md"]
 };
 
 const STEP_IDS = [
@@ -85,7 +87,9 @@ const STEP_IDS = [
   "23-ab-experiments",
   "24-self-hosted-runners",
   "25-audit-and-observability",
-  "26-manage-costs-and-budgets"
+  "26-manage-costs-and-budgets",
+  "27-evaluate-workflow-quality",
+  "28-orchestrate-workflows"
 ];
 
 const STEP_SIGNAL_KEYS = [
@@ -1067,6 +1071,34 @@ function buildTransitions() {
           return next;
         },
         learningGains: { actions: 0.04, troubleshooting: 0.03, confidence: 0.03 }
+      }),
+    "27-evaluate-workflow-quality": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 337,
+        category: "eval-quality-friction",
+        failedAssumption: "The learner can run the workflow, but has not yet connected eval questions to observable output claims or used YES/NO answers to detect regressions.",
+        remediation: "Keep the eval question design criteria and the artifact inspection steps together so the learner can immediately verify that each question is answerable from run output alone.",
+        emphasis: { bias: 0.03, conceptWeight: 0.12, complexityWeight: 0.07 },
+        mutateState: (next) => {
+          next.flags.hasEvals = true;
+          return next;
+        },
+        learningGains: { agentic: 0.05, troubleshooting: 0.05, confidence: 0.03 }
+      }),
+    "28-orchestrate-workflows": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: true,
+        salt: 347,
+        category: "orchestration-friction",
+        failedAssumption: "The learner has specialist workflows, but struggles to design a routing condition that is narrow enough to dispatch at most one workflow per run.",
+        remediation: "Keep the decision-table pattern and the dispatch-workflow allowlist visible while the learner writes routing conditions, and reinforce the max: 1 cap as the key correctness signal.",
+        emphasis: { bias: 0.03, conceptWeight: 0.13, complexityWeight: 0.1 },
+        mutateState: (next) => {
+          next.flags.hasOrchestrator = true;
+          return next;
+        },
+        learningGains: { agentic: 0.07, actions: 0.04, confidence: 0.03 }
       })
   };
 }
