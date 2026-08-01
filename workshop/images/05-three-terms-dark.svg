@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img"
+     aria-label="Agentic workflow: three key terms in sequence. A Trigger (schedule or event) starts the workflow. The Task Brief (plain-English instructions) guides the AI agent as it reads repo data and calls tools. Safe Outputs (guardrailed write paths) control how results are posted back to GitHub."
+     data-visual-kind="diagram"
+     data-visual-id="05-three-terms">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Title -->
+  <text x="600" y="44"
+        font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+        font-size="22" font-weight="700" fill="#f2f5f3" text-anchor="middle">
+    The Three Key Terms
+  </text>
+  <text x="600" y="70"
+        font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+        font-size="15" fill="#b6bfb8" text-anchor="middle">
+    How a trigger, task brief, and safe outputs work together at runtime
+  </text>
+
+  <!-- ── STAGE 1: TRIGGER ── -->
+  <g data-node="trigger">
+    <!-- Badge -->
+    <circle cx="184" cy="150" r="18" fill="#5fed83"/>
+    <text x="184" y="156"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411" text-anchor="middle">1</text>
+
+    <!-- Box -->
+    <rect x="72" y="172" width="224" height="260" rx="10"
+          fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+
+    <!-- Label -->
+    <text x="184" y="204"
+          font-family="'Mona Sans','Mona Sans Mono',monospace"
+          font-size="17" font-weight="700" fill="#5fed83" text-anchor="middle">Trigger</text>
+
+    <!-- Clock icon -->
+    <g transform="translate(162,216)">
+      <circle cx="22" cy="22" r="19" fill="none" stroke="#5fed83" stroke-width="2"/>
+      <line x1="22" y1="10" x2="22" y2="22" stroke="#5fed83" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="22" y1="22" x2="30" y2="27" stroke="#5fed83" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+
+    <text x="184" y="276"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="13" fill="#b6bfb8" text-anchor="middle">schedule or event</text>
+
+    <!-- Example chips -->
+    <rect x="100" y="292" width="168" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="184" y="313"
+          font-family="'Mona Sans Mono',monospace"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">on: schedule</text>
+
+    <rect x="100" y="334" width="168" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="184" y="355"
+          font-family="'Mona Sans Mono',monospace"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">on: push</text>
+
+    <rect x="100" y="376" width="168" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="184" y="397"
+          font-family="'Mona Sans Mono',monospace"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">on: issue_comment</text>
+
+    <text x="184" y="422"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#909692" text-anchor="middle">starts the workflow</text>
+  </g>
+
+  <!-- ── ARROW 1 → 2 ── -->
+  <line x1="298" y1="302" x2="358" y2="302"
+        stroke="#5fed83" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="358,302 347,296 347,308" fill="#5fed83"/>
+
+  <!-- ── STAGE 2: TASK BRIEF + AGENT ── -->
+  <g data-node="task-brief">
+    <!-- Badge -->
+    <circle cx="532" cy="150" r="18" fill="#5fed83"/>
+    <text x="532" y="156"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411" text-anchor="middle">2</text>
+
+    <!-- Box -->
+    <rect x="368" y="172" width="328" height="260" rx="10"
+          fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+
+    <text x="532" y="204"
+          font-family="'Mona Sans','Mona Sans Mono',monospace"
+          font-size="17" font-weight="700" fill="#5fed83" text-anchor="middle">Task Brief</text>
+
+    <text x="532" y="226"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="13" fill="#b6bfb8" text-anchor="middle">plain-English instructions</text>
+
+    <!-- Brief example box -->
+    <rect x="390" y="238" width="284" height="80" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1" stroke-dasharray="4 2"/>
+    <text x="406" y="258"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#b6bfb8">"Each day, review issues opened</text>
+    <text x="406" y="274"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#b6bfb8">in the last 24 hours, summarize</text>
+    <text x="406" y="290"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#b6bfb8">each, flag blockers, and post</text>
+    <text x="406" y="306"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#b6bfb8">one concise digest."</text>
+
+    <!-- Agent reads + calls icons row -->
+    <text x="532" y="344"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" font-weight="600" fill="#b6bfb8" text-anchor="middle">AI agent reads &amp; calls tools</text>
+
+    <rect x="390" y="354" width="130" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="455" y="375"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">reads repo data</text>
+
+    <rect x="534" y="354" width="140" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="604" y="375"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">calls GitHub tools</text>
+
+    <text x="532" y="422"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#909692" text-anchor="middle">guides the agent</text>
+  </g>
+
+  <!-- ── ARROW 2 → 3 ── -->
+  <line x1="698" y1="302" x2="758" y2="302"
+        stroke="#5fed83" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="758,302 747,296 747,308" fill="#5fed83"/>
+
+  <!-- ── STAGE 3: SAFE OUTPUTS ── -->
+  <g data-node="safe-outputs" data-state="done">
+    <!-- Badge -->
+    <circle cx="904" cy="150" r="18" fill="#5fed83"/>
+    <text x="904" y="156"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411" text-anchor="middle">3</text>
+
+    <!-- Box -->
+    <rect x="760" y="172" width="276" height="260" rx="10"
+          fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+
+    <text x="904" y="204"
+          font-family="'Mona Sans','Mona Sans Mono',monospace"
+          font-size="17" font-weight="700" fill="#5fed83" text-anchor="middle">Safe Outputs</text>
+
+    <text x="904" y="226"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="13" fill="#b6bfb8" text-anchor="middle">guardrails on writes</text>
+
+    <!-- Output chips -->
+    <rect x="790" y="240" width="228" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="904" y="261"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">post issue comment</text>
+
+    <rect x="790" y="282" width="228" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="904" y="303"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">open or close pull request</text>
+
+    <rect x="790" y="324" width="228" height="32" rx="6"
+          fill="#101411" stroke="#909692" stroke-width="1"/>
+    <text x="904" y="345"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#f2f5f3" text-anchor="middle">create release or label</text>
+
+    <!-- Shield note -->
+    <text x="904" y="382"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" font-weight="600" fill="#5fed83" text-anchor="middle">declared in frontmatter</text>
+    <text x="904" y="398"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#b6bfb8" text-anchor="middle">no arbitrary writes allowed</text>
+
+    <text x="904" y="422"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" fill="#909692" text-anchor="middle">controls how results are posted</text>
+  </g>
+
+  <!-- ── GITHUB destination (right side) ── -->
+  <g data-node="github-destination">
+    <rect x="1080" y="264" width="96" height="76" rx="10"
+          fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <!-- Arrow from stage 3 to destination -->
+    <line x1="1038" y1="302" x2="1076" y2="302"
+          stroke="#909692" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="1076,302 1066,296 1066,308" fill="#909692"/>
+
+    <text x="1128" y="295"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="12" font-weight="600" fill="#f2f5f3" text-anchor="middle">GitHub</text>
+    <text x="1128" y="313"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="11" fill="#909692" text-anchor="middle">issues</text>
+    <text x="1128" y="329"
+          font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+          font-size="11" fill="#909692" text-anchor="middle">PRs · labels</text>
+  </g>
+
+  <!-- ── Bottom annotation ── -->
+  <text x="600" y="510"
+        font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+        font-size="14" fill="#b6bfb8" text-anchor="middle">
+    Each term maps to a line in your workflow file: the
+  </text>
+  <text x="600" y="530"
+        font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+        font-size="14" fill="#b6bfb8" text-anchor="middle">
+    <tspan font-family="'Mona Sans Mono',monospace" font-weight="600" fill="#5fed83">on:</tspan> trigger,
+    the Markdown task brief, and the
+    <tspan font-family="'Mona Sans Mono',monospace" font-weight="600" fill="#5fed83">safe-outputs:</tspan> config.
+  </text>
+</svg>
