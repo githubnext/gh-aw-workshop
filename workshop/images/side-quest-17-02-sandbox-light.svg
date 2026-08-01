@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Sandbox boundary model for agentic workflows" data-visual-kind="diagram" data-visual-id="side-quest-17-02-sandbox-light">
+  <title>Sandbox boundary model for agentic workflows</title>
+  <desc>Diagram showing repository, agent, and allowed tools inside a sandbox boundary, with blocked unsafe areas outside. Light theme.</desc>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f6f8fa"/>
+
+  <!-- Browser chrome header -->
+  <rect x="0" y="0" width="1200" height="44" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="0" y="36" width="1200" height="8" fill="#ffffff"/>
+  <!-- URL bar -->
+  <rect x="300" y="8" width="600" height="28" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="600" y="27" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a" text-anchor="middle">github.com/your-org/your-repo/actions</text>
+  <!-- Nav dots -->
+  <circle cx="20" cy="22" r="5" fill="#d0d7de"/>
+  <circle cx="40" cy="22" r="5" fill="#d0d7de"/>
+  <circle cx="60" cy="22" r="5" fill="#d0d7de"/>
+
+  <!-- GitHub tab bar -->
+  <rect x="0" y="44" width="1200" height="40" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <!-- Tabs -->
+  <text x="80" y="68" font-family='"Mona Sans", system-ui, sans-serif' font-size="14" fill="#57606a">Code</text>
+  <text x="140" y="68" font-family='"Mona Sans", system-ui, sans-serif' font-size="14" fill="#57606a">Issues</text>
+  <text x="210" y="68" font-family='"Mona Sans", system-ui, sans-serif' font-size="14" fill="#57606a">Pull requests</text>
+  <!-- Actions tab underlined -->
+  <text x="320" y="68" font-family='"Mona Sans", system-ui, sans-serif' font-size="14" fill="#0969da" font-weight="600">Actions</text>
+  <rect x="320" y="82" width="56" height="2" fill="#0969da"/>
+  <text x="395" y="68" font-family='"Mona Sans", system-ui, sans-serif' font-size="14" fill="#57606a">Settings</text>
+
+  <!-- Main content area -->
+  <!-- Sandbox boundary dashed box -->
+  <rect x="48" y="104" width="740" height="416" rx="16" fill="#f0f9ff" stroke="#0969da" stroke-width="2" stroke-dasharray="12 8"/>
+  <text x="68" y="134" font-family='"Mona Sans", system-ui, sans-serif' font-size="18" fill="#0969da" font-weight="700">Sandbox boundary</text>
+  <text x="68" y="156" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Enforced by GitHub Actions + gh-aw runtime</text>
+
+  <!-- Agent box -->
+  <rect x="80" y="176" width="280" height="136" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1" data-node="agent"/>
+  <!-- Workflow Octicon (play path) -->
+  <g transform="translate(100, 192)">
+    <svg width="24" height="24" viewBox="0 0 16 16">
+      <path fill="#0969da" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"/>
+    </svg>
+  </g>
+  <text x="134" y="208" font-family='"Mona Sans", system-ui, sans-serif' font-size="16" fill="#24292f" font-weight="600">Agent</text>
+  <text x="100" y="236" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Reads workflow brief</text>
+  <text x="100" y="256" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Decides which tools to call</text>
+  <text x="100" y="276" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Generates safe outputs</text>
+  <text x="100" y="296" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Runs inside Actions runner</text>
+
+  <!-- Arrow agent → tools -->
+  <line x1="360" y1="244" x2="420" y2="244" stroke="#0969da" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+  <!-- Allowed tools box -->
+  <rect x="420" y="176" width="300" height="136" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1" data-node="allowed-tools"/>
+  <text x="452" y="208" font-family='"Mona Sans", system-ui, sans-serif' font-size="16" fill="#24292f" font-weight="600">Allowed tools</text>
+  <!-- Repo Octicon -->
+  <g transform="translate(432, 192)">
+    <svg width="16" height="16" viewBox="0 0 16 16">
+      <path fill="#0969da" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8Z"/>
+    </svg>
+  </g>
+  <text x="440" y="236" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Listed MCP toolsets only</text>
+  <text x="440" y="256" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Repository read / write</text>
+  <text x="440" y="276" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">GitHub API (declared scopes)</text>
+  <text x="440" y="296" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Approved external tools</text>
+
+  <!-- Arrow tools → permissions -->
+  <line x1="570" y1="312" x2="570" y2="352" stroke="#0969da" stroke-width="2" marker-end="url(#arrow-light)"/>
+  <line x1="210" y1="312" x2="210" y2="352" stroke="#0969da" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+  <!-- Permissions gate box -->
+  <rect x="80" y="352" width="640" height="136" rx="12" fill="#ffffff" stroke="#d0d7de" stroke-width="1" data-node="permissions-gate"/>
+  <!-- Shield / lock Octicon -->
+  <g transform="translate(100, 368)">
+    <svg width="20" height="20" viewBox="0 0 16 16">
+      <path fill="#1a7f37" d="M8.533.133a1.75 1.75 0 0 0-1.066 0l-5.25 1.68A1.75 1.75 0 0 0 1 3.48V8c0 3.037 1.879 5.715 4.75 6.888.575.228 1.925.228 2.5 0C11.121 13.715 13 11.037 13 8V3.48a1.75 1.75 0 0 0-1.217-1.667Zm-.55 1.44a.25.25 0 0 1 .153 0l5.25 1.68a.25.25 0 0 1 .174.238V8c0 2.478-1.495 4.705-3.888 5.655a3.499 3.499 0 0 1-1.344 0C5.995 12.705 4.5 10.478 4.5 8V3.49a.25.25 0 0 1 .174-.238Z"/>
+    </svg>
+  </g>
+  <text x="132" y="390" font-family='"Mona Sans", system-ui, sans-serif' font-size="16" fill="#24292f" font-weight="600">Permissions gate</text>
+  <text x="100" y="420" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Actions enforces declared permission scopes from workflow frontmatter</text>
+  <text x="100" y="440" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">gh-aw validates tool calls against allowed toolsets</text>
+  <text x="100" y="460" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Undeclared scopes are automatically denied — no exceptions</text>
+
+  <!-- Done state badge -->
+  <rect x="100" y="470" width="116" height="24" rx="12" fill="#1a7f37" stroke="#1a7f37" stroke-width="1" data-state="done"/>
+  <!-- check-circle Octicon (16×16) scaled to 14px -->
+  <g transform="translate(108, 473)">
+    <svg width="14" height="14" viewBox="0 0 16 16">
+      <path fill="#ffffff" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm10.28-1.72-4.5 4.5a.75.75 0 0 1-1.06 0l-2-2a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l1.47 1.47 3.97-3.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"/>
+    </svg>
+  </g>
+  <text x="128" y="486" font-family='"Mona Sans", system-ui, sans-serif' font-size="12" fill="#ffffff" font-weight="600">allowed</text>
+
+  <!-- Outside sandbox box (danger) -->
+  <rect x="836" y="104" width="316" height="200" rx="12" fill="#fff8f8" stroke="#cf222e" stroke-width="1.5" data-node="outside-sandbox"/>
+  <text x="856" y="136" font-family='"Mona Sans", system-ui, sans-serif' font-size="16" fill="#24292f" font-weight="700">Outside sandbox</text>
+  <text x="856" y="162" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Arbitrary network endpoints</text>
+  <text x="856" y="184" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Undeclared permissions</text>
+  <text x="856" y="206" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Unapproved external actions</text>
+  <text x="856" y="228" font-family='"Mona Sans", system-ui, sans-serif' font-size="13" fill="#57606a">Secrets not in scope</text>
+  <!-- Blocked badge -->
+  <rect x="856" y="244" width="130" height="24" rx="12" fill="#cf222e" stroke="#cf222e" stroke-width="1" data-state="danger"/>
+  <!-- x-circle Octicon -->
+  <g transform="translate(864, 247)">
+    <svg width="14" height="14" viewBox="0 0 16 16">
+      <path fill="#ffffff" d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.99a.751.751 0 0 0 .018 1.042.751.751 0 0 0 1.042.018L8 9.06l1.99 1.99a.751.751 0 0 0 1.042-.018.751.751 0 0 0 .018-1.042L9.06 8l1.97-1.99a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L8 6.94Z"/>
+    </svg>
+  </g>
+  <text x="884" y="260" font-family='"Mona Sans", system-ui, sans-serif' font-size="12" fill="#ffffff" font-weight="600">blocked</text>
+
+  <!-- Boundary arrow from sandbox edge toward outside -->
+  <line x1="790" y1="200" x2="836" y2="200" stroke="#cf222e" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- Annotation label -->
+  <text x="600" y="544" font-family='"Mona Sans", system-ui, sans-serif' font-size="14" fill="#57606a" text-anchor="middle">Sandbox boundary model for agentic workflows</text>
+
+  <defs>
+    <marker id="arrow-light" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0969da"/>
+    </marker>
+  </defs>
+</svg>

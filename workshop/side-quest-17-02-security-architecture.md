@@ -28,7 +28,11 @@ The sandbox gives your helper clear rules:
 - It can only do actions covered by your declared permissions.
 - It cannot reach random places outside the workflow environment.
 
-![Sandbox boundary model for agentic workflows](images/side-quest-17-02-sandbox.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-17-02-sandbox-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-17-02-sandbox-light.svg">
+  <img alt="Sandbox boundary model for agentic workflows" src="images/side-quest-17-02-sandbox-light.svg">
+</picture>
 
 Without a sandbox, one mistake could affect too much. With a sandbox, mistakes stay contained.
 
