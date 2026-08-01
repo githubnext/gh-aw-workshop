@@ -300,14 +300,3 @@ Reviewed <n> changed file(s) — no guideline violations found.
 ```
 
 ---
-
-## Safe Outputs
-
-| Situation | Output |
-|---|---|
-| Schedule mode — obvious fixes found | `create-pull-request` with applied changes |
-| Schedule mode — complex violations found | `create-issue` (one per file with violations; max 10) |
-| Schedule mode — no violations | `noop` with summary |
-| PR mode — violations found | `create-pull-request-review-comment` (one per violation; max 20) |
-| PR mode — no violations | `noop` with summary |
-| `focus = "status"` | `noop` with state summary |
