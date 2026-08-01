@@ -22,7 +22,7 @@
   <!-- ── STAGE 1: TRIGGER ── -->
   <g data-node="trigger">
     <!-- Badge -->
-    <circle cx="184" cy="150" r="18" fill="#08872b"/>
+    <circle cx="184" cy="150" r="18" fill="#046d22"/>
     <text x="184" y="156"
           font-family="'Mona Sans','Mona Sans Mono','Segoe UI',system-ui,sans-serif"
           font-size="14" font-weight="700" fill="#f2f5f3" text-anchor="middle">1</text>
@@ -34,13 +34,13 @@
     <!-- Label row -->
     <text x="184" y="204"
           font-family="'Mona Sans','Mona Sans Mono',monospace"
-          font-size="17" font-weight="700" fill="#08872b" text-anchor="middle">Trigger</text>
+          font-size="17" font-weight="700" fill="#046d22" text-anchor="middle">Trigger</text>
 
     <!-- Clock octicon path (simplified clock icon) -->
     <g transform="translate(162,216)">
-      <circle cx="22" cy="22" r="19" fill="none" stroke="#08872b" stroke-width="2"/>
-      <line x1="22" y1="10" x2="22" y2="22" stroke="#08872b" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="22" y1="22" x2="30" y2="27" stroke="#08872b" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="22" cy="22" r="19" fill="none" stroke="#046d22" stroke-width="2"/>
+      <line x1="22" y1="10" x2="22" y2="22" stroke="#046d22" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="22" y1="22" x2="30" y2="27" stroke="#046d22" stroke-width="2.5" stroke-linecap="round"/>
     </g>
 
     <text x="184" y="276"
@@ -70,18 +70,18 @@
 
     <text x="184" y="422"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
-          font-size="12" fill="#909692" text-anchor="middle">starts the workflow</text>
+          font-size="12" fill="#656d67" text-anchor="middle">starts the workflow</text>
   </g>
 
   <!-- ── ARROW 1 → 2 ── -->
   <line x1="298" y1="302" x2="358" y2="302"
-        stroke="#08872b" stroke-width="3" stroke-linecap="round"/>
-  <polygon points="358,302 347,296 347,308" fill="#08872b"/>
+        stroke="#046d22" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="358,302 347,296 347,308" fill="#046d22"/>
 
   <!-- ── STAGE 2: TASK BRIEF + AGENT ── -->
   <g data-node="task-brief">
     <!-- Badge -->
-    <circle cx="532" cy="150" r="18" fill="#08872b"/>
+    <circle cx="532" cy="150" r="18" fill="#046d22"/>
     <text x="532" y="156"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
           font-size="14" font-weight="700" fill="#f2f5f3" text-anchor="middle">2</text>
@@ -92,7 +92,7 @@
 
     <text x="532" y="204"
           font-family="'Mona Sans','Mona Sans Mono',monospace"
-          font-size="17" font-weight="700" fill="#08872b" text-anchor="middle">Task Brief</text>
+          font-size="17" font-weight="700" fill="#046d22" text-anchor="middle">Task Brief</text>
 
     <text x="532" y="226"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
@@ -133,18 +133,18 @@
 
     <text x="532" y="422"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
-          font-size="12" fill="#909692" text-anchor="middle">guides the agent</text>
+          font-size="12" fill="#656d67" text-anchor="middle">guides the agent</text>
   </g>
 
   <!-- ── ARROW 2 → 3 ── -->
   <line x1="698" y1="302" x2="758" y2="302"
-        stroke="#08872b" stroke-width="3" stroke-linecap="round"/>
-  <polygon points="758,302 747,296 747,308" fill="#08872b"/>
+        stroke="#046d22" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="758,302 747,296 747,308" fill="#046d22"/>
 
   <!-- ── STAGE 3: SAFE OUTPUTS ── -->
   <g data-node="safe-outputs" data-state="done">
     <!-- Badge -->
-    <circle cx="904" cy="150" r="18" fill="#08872b"/>
+    <circle cx="904" cy="150" r="18" fill="#046d22"/>
     <text x="904" y="156"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
           font-size="14" font-weight="700" fill="#f2f5f3" text-anchor="middle">3</text>
@@ -155,7 +155,7 @@
 
     <text x="904" y="204"
           font-family="'Mona Sans','Mona Sans Mono',monospace"
-          font-size="17" font-weight="700" fill="#08872b" text-anchor="middle">Safe Outputs</text>
+          font-size="17" font-weight="700" fill="#046d22" text-anchor="middle">Safe Outputs</text>
 
     <text x="904" y="226"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
@@ -183,14 +183,14 @@
     <!-- Shield note -->
     <text x="904" y="382"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
-          font-size="12" font-weight="600" fill="#08872b" text-anchor="middle">declared in frontmatter</text>
+          font-size="12" font-weight="600" fill="#046d22" text-anchor="middle">declared in frontmatter</text>
     <text x="904" y="398"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
           font-size="12" fill="#232925" text-anchor="middle">no arbitrary writes allowed</text>
 
     <text x="904" y="422"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
-          font-size="12" fill="#909692" text-anchor="middle">controls how results are posted</text>
+          font-size="12" fill="#656d67" text-anchor="middle">controls how results are posted</text>
   </g>
 
   <!-- ── GITHUB destination (right side) ── -->
@@ -207,10 +207,10 @@
           font-size="12" font-weight="600" fill="#232925" text-anchor="middle">GitHub</text>
     <text x="1128" y="313"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
-          font-size="11" fill="#909692" text-anchor="middle">issues</text>
+          font-size="11" fill="#656d67" text-anchor="middle">issues</text>
     <text x="1128" y="329"
           font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
-          font-size="11" fill="#909692" text-anchor="middle">PRs · labels</text>
+          font-size="11" fill="#656d67" text-anchor="middle">PRs · labels</text>
   </g>
 
   <!-- ── Bottom annotation ── -->
@@ -222,8 +222,8 @@
   <text x="600" y="530"
         font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
         font-size="14" fill="#232925" text-anchor="middle">
-    <tspan font-family="'Mona Sans Mono',monospace" font-weight="600" fill="#08872b">on:</tspan> trigger,
+    <tspan font-family="'Mona Sans Mono',monospace" font-weight="600" fill="#046d22">on:</tspan> trigger,
     the Markdown task brief, and the
-    <tspan font-family="'Mona Sans Mono',monospace" font-weight="600" fill="#08872b">safe-outputs:</tspan> config.
+    <tspan font-family="'Mona Sans Mono',monospace" font-weight="600" fill="#046d22">safe-outputs:</tspan> config.
   </text>
 </svg>
