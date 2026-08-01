@@ -27,6 +27,14 @@ Think of it like a scheduled digest: every morning it reads your inbox and sends
 | [Task brief](https://github.github.com/gh-aw/reference/markdown/) | The plain-English instructions you write for the agent |
 | [Safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) | The guardrails that control how the workflow writes back to GitHub |
 
+The diagram below shows how each term plays a role when the workflow runs.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/05-three-terms-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/05-three-terms-light.svg">
+  <img alt="Agentic workflow: three key terms in sequence. A Trigger (schedule or event) starts the workflow. The Task Brief (plain-English instructions) guides the AI agent as it reads repo data and calls tools. Safe Outputs (guardrailed write paths) control how results are posted back to GitHub." src="images/05-three-terms-light.svg">
+</picture>
+
 For a full glossary, see [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md).
 
 ## The two-file structure
