@@ -83,6 +83,13 @@ test("mobile docs keep accessible gutters and menu target sizes", () => {
   assert.ok(css.includes(".markdown-body {\n    padding-inline: 20px !important;\n  }"));
 });
 
+test("shared header and code copy controls meet 44px target sizes", () => {
+  const { css } = buildDocs();
+
+  assert.ok(css.includes(".site-title a {\n  display: block;\n  min-height: 44px;\n  box-sizing: border-box;\n  padding-block: 10px;\n  line-height: 24px;"));
+  assert.ok(css.includes(".code-copy-btn {\n  position: absolute;\n  top: 8px;\n  right: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-width: 44px;\n  min-height: 44px;"));
+});
+
 test("shell code blocks are wrapped in a terminal-block UI", () => {
   const { html, css, highlightCss } = buildDocs();
 
