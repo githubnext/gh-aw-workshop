@@ -31,7 +31,7 @@ gh copilot
 ```
 
 1. Confirm you receive a reply. Any response means the model and skill are accessible.
-2. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+1. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
 
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
@@ -71,6 +71,7 @@ Choose exactly one method. The diagram below shows both paths and the key config
 - **Choose organization centralized billing** when the repository's organization already pays for Copilot in GitHub Actions. Keep `copilot-requests: write`. Do not add a `COPILOT_GITHUB_TOKEN` secret.
 - **Choose personal billing** when this is your personal repository, or when the organization does not pay for Copilot in GitHub Actions. Remove `copilot-requests: write`, then add a `COPILOT_GITHUB_TOKEN` secret in the repository's **Settings** → **Secrets and variables** → **Actions** page.
 - **If you are not sure which path applies, ask one question:** "Is centralized Copilot billing for GitHub Actions enabled for this repository?" If the answer is "no" or "I don't know," follow the personal billing path until an admin confirms otherwise.
+- **GitHub Enterprise Cloud (GHEC) or GitHub Enterprise Server (GHES):** both billing paths work in enterprise environments. If your organization uses SAML SSO, your `COPILOT_GITHUB_TOKEN` PAT must be authorized for SSO before use. Confirm with your enterprise admin that Copilot for GitHub Actions is enabled in your enterprise policy settings.
 
 </details>
 
@@ -146,7 +147,6 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
 - [ ] My source and compiled lock file use the selected method
