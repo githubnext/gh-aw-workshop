@@ -59,8 +59,8 @@ In your AI agent, run:
 ```prompt
 /agentic-workflows create a new workflow named `repo-orchestrator` that reads
 open PR count and checks whether a daily-status issue exists today.
-If stale open PRs are found, use dispatch-workflow to trigger `daily-status`.
-If no status issue exists, use dispatch-workflow to trigger `pr-reviewer`.
+If stale open PRs are found, use dispatch-workflow to trigger `pr-reviewer`.
+If no status issue exists, use dispatch-workflow to trigger `daily-status`.
 Add permissions: contents: read, issues: read, pull-requests: read.
 Set safe-outputs: dispatch-workflow with the list of allowed workflows.
 ```
@@ -92,8 +92,8 @@ Read the current repository state:
 2. Check whether a GitHub issue with the title prefix "Daily Repository Status" was created today.
 
 Based on what you find:
-- If stale open PRs exist, dispatch the `daily-status` workflow.
-- If no status issue exists today, dispatch the `pr-reviewer` workflow.
+- If stale open PRs exist, dispatch the `pr-reviewer` workflow.
+- If no status issue exists today, dispatch the `daily-status` workflow.
 - If neither condition is true, output a one-line summary and stop.
 
 Dispatch at most one workflow per run.
@@ -133,9 +133,6 @@ git add .github/workflows/repo-orchestrator.md .github/workflows/repo-orchestrat
 git commit -m "feat: add repo-orchestrator workflow"
 git push
 ```
-
-> [!TIP]
-> Use `gh aw compile --watch` while you iterate on the brief so the lock file stays in sync without manual recompiles.
 
 ### Run and verify routing
 
