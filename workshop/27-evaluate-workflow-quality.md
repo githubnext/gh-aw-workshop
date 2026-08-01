@@ -18,7 +18,7 @@
 
 ## :dart: What You'll Do
 
-You'll add an `evals:` block to your workflow, define binary quality questions, run the workflow, and verify that results are recorded in the `evals` artifact and persisted for historical comparison.
+You'll add an `evals:` block to your workflow, define binary quality questions, run the workflow, and verify that results are recorded in the [`evals` artifact](https://github.github.com/gh-aw/reference/artifacts/#evals) and persisted for historical comparison.
 
 ## :clipboard: Before You Start
 

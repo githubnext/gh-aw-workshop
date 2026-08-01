@@ -54,7 +54,7 @@ Look at the **AIC** column. Average the last five runs, then multiply:
 monthly cost = average AIC per run × runs per day × 30
 ```
 
-If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC per month`. Share this estimate with your GitHub administrator before enabling a high-frequency schedule.
+If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC per month`. Share this estimate with your GitHub administrator before enabling a high-frequency [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
 ### Project costs with [gh aw forecast](https://github.github.com/gh-aw/setup/cli/#forecast-experimental)
 

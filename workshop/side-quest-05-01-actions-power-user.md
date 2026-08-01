@@ -66,7 +66,7 @@ Key differences at a glance:
 Think of agentic workflows as a superset of Actions:
 
 - Frontmatter remains compatible with the Actions model you already know.
-- The Markdown body becomes the runtime prompt and can include templating and inline agent features.
+- The Markdown body becomes the runtime prompt and can include [templating](https://github.github.com/gh-aw/reference/templating/) and inline agent features.
 - You can still keep deterministic logic when that is the right tool for the job.
 
 ## Hybrid pattern for real teams

@@ -119,7 +119,7 @@ Write a report according to the output_style: ${{ experiments.output_style }}.
 1. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
 2. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
 
-## Understand how the round-robin works
+## Understand how the [round-robin](https://github.github.com/gh-aw/experimental/experiments/#statistical-balancing) works
 
 <picture>
    <source media="(prefers-color-scheme: dark)" srcset="images/23-ab-roundrobin-dark.svg">
@@ -135,7 +135,7 @@ On each run, gh-aw:
 1. Loads state from `experiments/{workflow-id}` (created on first run).
 2. Picks the variant with the lowest invocation count (ties are broken by first-in-array order).
 3. Saves the updated counts.
-4. Uploads the `experiment` artifact.
+4. Uploads the `experiment` [artifact](https://github.github.com/gh-aw/reference/artifacts/).
 5. Injects the selected variant into your template conditionals.
 
 </details>
