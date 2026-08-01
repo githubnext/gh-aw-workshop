@@ -3,8 +3,10 @@
 # Side Quest: Project Future AI Credit Costs with `gh aw forecast`
 
 > _A deeper companion to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md). Use this side quest when you want a full walkthrough of `gh aw forecast` — what the output means, how to tune projections, and how to translate the P90 figure into a practical `max-daily-ai-credits` value._
+> [!NOTE]
+> `gh aw forecast` is currently experimental. Its flags and output format may change in future releases.
 
-## What [`gh aw forecast`](https://github.github.com/gh-aw/specs/forecast-specification/) does
+## What [`gh aw forecast`](https://github.github.com/gh-aw/setup/cli/#forecast) does
 
 `gh aw forecast` looks at your actual run history and runs a Monte Carlo simulation to project future [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumption. It accounts for:
 
@@ -114,5 +116,3 @@ gh aw compile
 <!-- journey: all -->
 Return to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md).
 <!-- /journey -->
-
-
