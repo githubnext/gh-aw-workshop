@@ -90,5 +90,5 @@ When you update your prompt or tools, rerun the workflow and compare answers acr
 - [ ] You can explain how eval answer changes help detect regressions
 
 <!-- journey: all -->
-Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
+**Next:** [Orchestrate Multiple Agentic Workflows](28-orchestrate-workflows.md)
 <!-- /journey -->
