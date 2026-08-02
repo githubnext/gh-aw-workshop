@@ -104,11 +104,13 @@ test('rejects Unicode indicators and incorrect explicit state colors', () => {
       role="img" aria-label="Bad state">
       <rect data-state="error" fill="#3fb950" />
       <text>✓</text>
+      <text>⏰</text>
     </svg>`
   );
 
   assert.equal(result.status, 1);
   assert.match(result.stderr, /Unicode icon character/);
+  assert.match(result.stderr, /"⏰"/);
   assert.match(result.stderr, /data-state="error"/);
   assert.match(result.stderr, /Expected Primer dark-mode color: #f85149/);
 });
