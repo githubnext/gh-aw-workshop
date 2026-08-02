@@ -282,6 +282,31 @@ html[data-color-mode="dark"] .menu-toggle-progress {
 .markdown-body {
   max-width: 650px;
   margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (min-width: 480px) {
+  .markdown-body {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .markdown-body {
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .markdown-body {
+    padding-inline: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .markdown-body {
+    padding-inline: 64px;
+  }
 }
 .markdown-body li.task-list-item {
   list-style: none;
@@ -320,9 +345,6 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   }
   .markdown-body pre > code {
     white-space: inherit;
-  }
-  .markdown-body {
-    padding-inline: 20px !important;
   }
 }
 
