@@ -92,3 +92,7 @@ When you update your prompt or tools, rerun the workflow and compare answers acr
 <!-- journey: all -->
 Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
 <!-- /journey -->
+
+<!-- journey: all -->
+**Next:** [Govern Agentic Workflows at Scale](28-govern-at-scale.md)
+<!-- /journey -->
