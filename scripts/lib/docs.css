@@ -650,6 +650,8 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
 /* Code block copy button */
 .markdown-body pre {
   position: relative;
+  overflow-x: auto;
+  max-width: 100%;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
