@@ -68,7 +68,7 @@
   <line x1="255" y1="312" x2="310" y2="312" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
 
   <!-- Step 1 -->
-  <circle cx="282" cy="300" r="11" fill="#2f81f7"/>
+  <circle cx="282" cy="300" r="11" fill="#0969da"/>
   <text x="282" y="304" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">1</text>
 
   <!-- Node 2: GitHub Actions (executes the compiled .lock.yml directly) -->
@@ -90,7 +90,7 @@
   <line x1="540" y1="312" x2="605" y2="312" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
 
   <!-- Step 2 -->
-  <circle cx="572" cy="300" r="11" fill="#2f81f7"/>
+  <circle cx="572" cy="300" r="11" fill="#0969da"/>
   <text x="572" y="304" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">2</text>
 
   <!-- Node 3: AI Model -->
@@ -111,7 +111,7 @@
   <line x1="810" y1="312" x2="880" y2="312" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow-dark)"/>
 
   <!-- Step 3 -->
-  <circle cx="845" cy="300" r="11" fill="#2f81f7"/>
+  <circle cx="845" cy="300" r="11" fill="#0969da"/>
   <text x="845" y="304" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f0f6fc">3</text>
 
   <!-- Node 4: Output -->
