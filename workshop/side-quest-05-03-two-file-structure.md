@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: The Two-File Structure
 
-> _Optional: work through this side quest after [What Are Agentic Workflows?](05-agentic-workflows-intro.md) to understand how `.md` source files and `.lock.yml` lock files relate, and to check your vocabulary._
+> _Optional: work through this side quest after [What Are Agentic Workflows?](05-agentic-workflows-intro.md) to understand how `.md` source files and `.lock.yml` [lock files](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) relate, and to check your vocabulary._
 
 ## :clipboard: Before You Start
 
@@ -10,11 +10,11 @@
 
 ## The two files
 
-An agentic workflow has two files that live in `.github/workflows/`:
+An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) has two files that live in `.github/workflows/`:
 
 | File | What it is | Who writes it |
 |---|---|---|
-| `.md` source | Your task brief plus frontmatter | You |
+| `.md` source | Your task brief plus [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) | You |
 | `.lock.yml` | Compiled YAML that GitHub Actions runs | `gh aw compile` |
 
 **Never edit `.lock.yml` by hand** — regenerate it with `gh aw compile` after every `.md` change.
@@ -111,4 +111,4 @@ Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows
 - [ ] You can point to the task brief and the trigger in a sample `.md` file
 - [ ] You can describe the difference between the `.md` source and the compiled `.lock.yml`
 - [ ] You can define: lock file, engine, and `workflow_dispatch`
-- [ ] You know that agents are read-only and writes go through safe outputs
+- [ ] You know that agents are read-only and writes go through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)

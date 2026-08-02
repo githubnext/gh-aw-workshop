@@ -10,7 +10,7 @@
 
 ## The core distinction
 
-A standard Actions workflow runs the same fixed steps every time — no judgment required. An agentic workflow replaces those fixed steps with a plain-English task brief, and the AI agent decides how to carry it out.
+A standard Actions workflow runs the same fixed steps every time — no judgment required. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) replaces those fixed steps with a plain-English task brief, and the AI agent decides how to carry it out.
 
 **Key signal:** if the output could be different each run because the agent is reading context and making decisions, it's agentic.
 

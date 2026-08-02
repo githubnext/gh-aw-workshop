@@ -37,7 +37,7 @@ permissions:
 ---
 ```
 
-That single line is the only workflow authentication change required for repositories that can use Method 1. Recompile and commit the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) after changing the source workflow.
+That single line is the only workflow [authentication](https://github.github.com/gh-aw/reference/auth/) change required for repositories that can use Method 1. Recompile and commit the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) after changing the source workflow.
 
 ## Troubleshooting
 
@@ -47,7 +47,7 @@ That single line is the only workflow authentication change required for reposit
 | Failure | What you see | Fix |
 |---|---|---|
 | Organization does not have centralized Copilot billing | `401 Unauthorized` or repeated Copilot auth failures even though `copilot-requests: write` is present | Switch to [Method 2](side-quest-06-03b-copilot-github-token.md) |
-| `copilot-requests: write` missing from frontmatter | `401 Unauthorized` in the run log | Add `copilot-requests: write` under `permissions` in your workflow `.md` file |
+| `copilot-requests: write` missing from [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) | `401 Unauthorized` in the run log | Add `copilot-requests: write` under `permissions` in your workflow `.md` file |
 | No active Copilot subscription | `403 Forbidden` or "Copilot not available" | Visit [github.com/settings/copilot](https://github.com/settings/copilot) and confirm a plan is listed |
 | Org policy blocks Copilot access | `403 Forbidden` | Ask your GitHub org admin to enable Copilot model access for your account |
 
@@ -64,7 +64,7 @@ Work through these checks in order if the run still fails:
 
 - [ ] I confirmed the owning organization has centralized Copilot billing enabled
 - [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter
-- [ ] I recompiled and committed the matching lock file
+- [ ] I recompiled and committed the matching [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml)
 - [ ] You did not need to create any repository secret
 
 <!-- journey: all -->

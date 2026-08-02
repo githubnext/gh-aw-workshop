@@ -25,7 +25,7 @@ If it succeeds, you should see a green success message and an updated `.lock.yml
 
 ## Use `--no-emit` for quick structure checks
 
-When you only want a yes/no answer without generating a lock file, use `--no-emit`:
+When you only want a yes/no answer without generating a [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml), use `--no-emit`:
 
 ```bash
 gh aw compile --no-emit

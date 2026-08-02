@@ -68,7 +68,7 @@ Now run:
 gh aw doctor
 ```
 
-This verifies your GitHub CLI authentication using the same setup checks `gh-aw` expects before later authoring and compile steps.
+This verifies your GitHub CLI [authentication](https://github.github.com/gh-aw/reference/auth/) using the same setup checks `gh-aw` expects before later authoring and compile steps.
 
 Expected result: a success message confirming GitHub CLI authentication. If it fails, use [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md), then rerun `gh aw doctor`.
 
@@ -83,7 +83,7 @@ git commit -m "Initialize agentic workflow skills"
 git push
 ```
 
-This creates several files needed for agentic workflow authoring:
+This creates several files needed for [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) authoring:
 `.github/skills/agentic-workflows/SKILL.md`,
 `.github/skills/agentic-workflow-designer/SKILL.md`,
 `.github/agents/agentic-workflows.md`, `.github/mcp.json`,
