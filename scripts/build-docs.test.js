@@ -76,11 +76,15 @@ test("current page checkpoint progress renders in the sticky header", () => {
   assert.ok(css.includes(".site-header-progress-bar {\n    width: min(84px, 24vw);"));
 });
 
-test("mobile docs keep accessible gutters and menu target sizes", () => {
+test("docs keep accessible responsive gutters and menu target sizes", () => {
   const { css } = buildDocs();
 
   assert.ok(css.includes(".menu-toggle,\n.menu-close {\n  display: inline-grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 44px;\n  height: 44px;"));
-  assert.ok(css.includes(".markdown-body {\n    padding-inline: 20px !important;\n  }"));
+  assert.ok(css.includes(".markdown-body {\n  max-width: 650px;\n  margin-inline: auto;\n  padding-inline: 20px;\n}"));
+  assert.ok(css.includes("@media (min-width: 480px) {\n  .markdown-body {\n    padding-inline: 24px;\n  }\n}"));
+  assert.ok(css.includes("@media (min-width: 768px) {\n  .markdown-body {\n    padding-inline: 32px;\n  }\n}"));
+  assert.ok(css.includes("@media (min-width: 1024px) {\n  .markdown-body {\n    padding-inline: 48px;\n  }\n}"));
+  assert.ok(css.includes("@media (min-width: 1440px) {\n  .markdown-body {\n    padding-inline: 64px;\n  }\n}"));
 });
 
 test("shared header and code copy controls meet 44px target sizes", () => {
