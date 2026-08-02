@@ -49,7 +49,7 @@ The skill applies all three changes and recompiles the lock file. Review the dif
 <details>
 <summary>:pencil2: Manual edit path</summary>
 
-Make the three edits manually (see the reference content below), then run:
+Make the three edits manually, then run:
 
 ```bash
 gh aw compile
@@ -60,55 +60,20 @@ git push
 
 </details>
 
+> [!TIP]
+> Optional side quest: if you want full syntax examples, predict-and-try checks, and enterprise timeout notes before you edit manually, use [Side Quest: Resilience Techniques Reference](side-quest-22-01-resilience-reference.md), then return here to continue.
+
 ### Write a defensive task brief
 
-A defensive task brief tells the agent what to do when data is missing or sparse. Add an explicit fallback instruction in your task description:
-
-```markdown .github/workflows/daily-status.md
-If there are no open pull requests or issues to summarise,
-write a brief "No activity" report instead of skipping the output step.
-Always call the safe output tool — even for empty results.
-```
-
-This prevents the most common failure: the agent silently completes without writing any output.
+A defensive task brief tells the agent exactly what to do when data is missing or sparse. Add an explicit fallback instruction ("if there is no activity, publish a short no-activity report and still write output") so quiet runs are still observable and do not look like silent failures.
 
 ### Set a timeout
 
-Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` to your workflow frontmatter to cap the run:
-
-```markdown .github/workflows/daily-status.md
----
-name: Daily Status Report
-on:
-  schedule: daily
-  workflow_dispatch: {}
-permissions:
-  contents: read
-  issues: write
-timeout-minutes: 10
----
-```
-
-> [!TIP]
-> <details>
-> <summary>`timeout-minutes` belongs at the top level of gh-aw frontmatter. Do not nest it under `jobs:` or `run:`.</summary>
->
-> Start with a generous limit (10–15 minutes) and tighten it once you know how long typical runs take.
->
-> </details>
-
-On GitHub Enterprise Server (GHES) and GitHub Enterprise Cloud (GHEC), administrators can set a maximum job timeout at the organisation or enterprise level. When that policy is more restrictive than your `timeout-minutes` value, the enterprise limit takes precedence and the workflow job will be cancelled at the admin-set threshold. Check with your GitHub administrator before relying on a specific `timeout-minutes` value in an enterprise environment.
+Long-running tasks can stall or be cancelled unpredictably, so set `timeout-minutes` at the top level of your workflow frontmatter. Start with a safe default (for example, 10) and tune based on real run durations so your workflow fails fast instead of hanging indefinitely.
 
 ### Add a fallback message to [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 
-When your workflow uses a `noop` or comment safe output, always include a meaningful fallback body. If the agent reaches the output step but has nothing to report, this ensures the run still records a visible result:
-
-```markdown .github/workflows/daily-status.md
-If no meaningful changes were found, call noop with the message:
-"No changes found in the past 24 hours — workflow ran successfully."
-```
-
-This makes it easy to distinguish a healthy "quiet" run from a silent failure in the Actions run log.
+When your workflow uses a `noop` or comment safe output, include a meaningful fallback message for quiet runs. A clear "no changes found" message gives you a visible success signal in Actions logs and makes healthy no-op runs easy to distinguish from failures.
 
 ### Commit and push your changes
 
