@@ -75,7 +75,7 @@
     <text x="100" y="55"
       text-anchor="middle"
       font-family="'Mona Sans', system-ui, -apple-system, sans-serif"
-      font-size="12" font-weight="600" fill="#08872b">Read-only repo access</text>
+      font-size="12" font-weight="600" fill="#067d32">Read-only repo access</text>
 
     <!-- firewall chip -->
     <rect x="16" y="78" width="168" height="52" rx="8"
@@ -221,7 +221,7 @@
     fill="none" stroke="#08872b" stroke-width="2" stroke-dasharray="10,5"/>
   <text x="955" y="124" text-anchor="middle"
     font-family="'Mona Sans', system-ui, -apple-system, sans-serif"
-    font-size="13" font-weight="600" fill="#08872b">
+    font-size="13" font-weight="600" fill="#067d32">
     GUARDRAILED WRITES
   </text>
 </svg>
