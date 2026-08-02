@@ -24,14 +24,14 @@ Catching an access problem here saves debugging time in the billing steps and in
 gh copilot
 ```
 
-1. Send the following prompt in Copilot CLI:
+1. When Copilot CLI opens, send this test prompt:
 
 ```prompt
 /agentic-workflows what trigger does a scheduled workflow use?
 ```
 
-1. Confirm you receive a reply. Any response means the model and skill are accessible.
-2. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+1. Confirm you receive a reply that mentions `schedule` or cron expressions. Any substantive response means the model and the `agentic-workflows` skill are both accessible.
+1. If you see an error instead, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
 
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
@@ -40,23 +40,22 @@ gh copilot
 
 Use this quick check before you choose a billing path:
 
-- **You receive a normal reply in Copilot CLI**
+- **You received a substantive reply** → continue to **Confirm the workflow engine** below.
   - If you arrived here from the step 07 access check (before creating workflow files), return to [Write Your First Agentic Workflow](07-your-first-workflow.md) and continue from where you left off.
-  - Otherwise, continue to **Choose one Copilot billing path**.
-- **You receive an access or entitlement error**
-  - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
-  - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
-  - Retry the same one-sentence prompt in Copilot CLI.
-- **You still cannot get a reply after account checks**
-  - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
+- **You received an access or entitlement error** → do these steps in order:
+  1. Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm Copilot is enabled on your account.
+  2. If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
+  3. Retry the same prompt in Copilot CLI.
+- **You still cannot get a reply after the account checks above** → pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
 
 ## Confirm the workflow engine
 
-Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
+Open `.github/workflows/daily-report-status.md` in your Codespace editor. The Step 7 workflow has no `engine:` line, which means it defaults to GitHub Copilot — that is exactly what you want for this run.
 
-Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
+> [!TIP]
+> Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
 
-If you are working in Claude Code or OpenAI Codex, keep this first workflow on Copilot and switch later if you want:
+If you are working in Claude Code or OpenAI Codex and want to keep this first workflow on Copilot anyway, you can switch engines later:
 
 - **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
 - **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
@@ -140,16 +139,17 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 | Organization centralized billing | Present | None |
 | Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
 
+If the file does not match, go back and complete the steps for your billing path before continuing.
+
 ## :white_check_mark: Checkpoint
 
-- [ ] I opened Copilot CLI in the terminal and sent a test prompt
-- [ ] I received a response from the model and the `agentic-workflows` skill
-- [ ] I confirmed no access errors appeared
-- [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
+- [ ] I opened Copilot CLI in the terminal and sent the test prompt
+- [ ] I received a substantive response mentioning `schedule` or cron — confirming model and skill access
+- [ ] I confirmed no access errors appeared (or resolved any that did)
+- [ ] I opened `daily-report-status.md` and confirmed the workflow uses GitHub Copilot (no `engine:` line)
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
-- [ ] My source and compiled lock file use the selected method
+- [ ] My source and compiled lock file reflect the selected billing method
 - [ ] Both workflow files are committed to `main`
 - [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
