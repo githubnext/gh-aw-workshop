@@ -54,7 +54,7 @@ Before continuing:
 
 ## Self-hosted runner prerequisites
 
-If your enterprise requires [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) for [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/), confirm these before you continue:
+If your enterprise requires [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) for [GitHub Actions](https://docs.github.com/en/actions), confirm these before you continue:
 
 - A runner is registered and online for your repository or org.
 - The runner allows workflow jobs from your repository.
