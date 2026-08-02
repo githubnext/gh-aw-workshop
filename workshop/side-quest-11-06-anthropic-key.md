@@ -94,19 +94,15 @@ If you previously added `copilot-requests: write` for the Copilot engine, you ca
 
 ---
 
-## Validate your workflow
+## Compile your workflow
 
-After updating your frontmatter, validate the workflow to check for errors:
+After updating your frontmatter, compile the workflow to regenerate the lock file:
 
 ```bash
-gh aw compile --validate
+gh aw compile
 ```
 
-You should see:
-
-```text
-✔️ <your-workflow>.md — valid
-```
+You should see output confirming the file compiled without errors.
 
 ---
 
@@ -115,7 +111,7 @@ You should see:
 - [ ] You have an Anthropic account and have generated an API key
 - [ ] `ANTHROPIC_API_KEY` is stored as a repository secret
 - [ ] Your workflow frontmatter has `engine: claude`
-- [ ] `gh aw compile --validate` reports no errors
+- [ ] `gh aw compile` completes without errors
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
 
 <!-- journey: all -->
