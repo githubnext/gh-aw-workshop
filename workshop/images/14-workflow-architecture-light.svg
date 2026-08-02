@@ -120,13 +120,14 @@
   <rect x="880" y="222" width="150" height="36" rx="10" fill="#dff7e9"/>
   <rect x="880" y="240" width="150" height="18" fill="#dff7e9"/>
   <text x="955" y="245" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1a7f37">Output</text>
+  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="#57606a" transform="translate(906 269) scale(.7)"/>
   <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z" fill="#57606a" transform="translate(906 269) scale(.7)"/>
   <text x="924" y="279" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">Issue</text>
   <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z" fill="#57606a" transform="translate(906 287) scale(.7)"/>
   <text x="924" y="297" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">Pull request</text>
   <path d="m8.878.392 5.25 3.045c.54.314.872.89.872 1.514v6.098a1.75 1.75 0 0 1-.872 1.514l-5.25 3.045a1.75 1.75 0 0 1-1.756 0l-5.25-3.045A1.75 1.75 0 0 1 1 11.049V4.951c0-.624.332-1.201.872-1.514L7.122.392a1.75 1.75 0 0 1 1.756 0ZM7.875 1.69l-4.63 2.685L8 7.133l4.755-2.758-4.63-2.685a.248.248 0 0 0-.25 0ZM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432Zm6.25 8.271 4.625-2.683a.25.25 0 0 0 .125-.216V5.677L8.75 8.432Z" fill="#57606a" transform="translate(906 305) scale(.7)"/>
   <text x="924" y="315" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">Artifact</text>
-  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z" fill="#57606a" transform="translate(906 323) scale(.7)"/>
+  <path d="M11.93 8.5a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 0 1 0-1.5h3.32a4.002 4.002 0 0 1 7.86 0h3.32a.75.75 0 0 1 0 1.5Zm-1.43-.75a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z" fill="#57606a" transform="translate(906 323) scale(.7)"/>
   <text x="924" y="333" font-family="system-ui, sans-serif" font-size="11" fill="#57606a">Commit</text>
   <rect x="893" y="347" width="124" height="26" rx="13" fill="#dff7e9" stroke="#1a7f37" stroke-width="1"/>
   <path data-state="success" d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z" fill="#1a7f37" transform="translate(904 352) scale(.75)"/>
