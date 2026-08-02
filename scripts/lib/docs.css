@@ -52,6 +52,10 @@ html {
 }
 .site-title a {
   display: block;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding-block: 10px;
+  line-height: 24px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -657,11 +661,16 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
   position: absolute;
   top: 8px;
   right: 8px;
-  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 10px;
   font-size: 12px;
   font-weight: 500;
   font-family: inherit;
-  line-height: 1.4;
+  line-height: 1.2;
   color: var(--fgColor-muted, #59636e);
   background-color: var(--bgColor-default, #ffffff);
   border: 1px solid var(--borderColor-muted, #d0d7de);
