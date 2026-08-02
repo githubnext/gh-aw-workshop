@@ -28,6 +28,14 @@ Direct write access would make every prompt injection a potential supply-chain a
 
 </details>
 
+The diagram below shows how the two layers work together in a single workflow run.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/05b-security-layers-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/05b-security-layers-light.svg">
+  <img alt="Two-layer security model: a schedule trigger starts an agentic workflow; the agent runs inside a sandbox with a firewall limiting network egress; it emits a structured output request; a separate permission-scoped safe-outputs job validates and applies changes to the repository" src="images/05b-security-layers-light.svg">
+</picture>
+
 ## Try it: sandbox or safe-output?
 
 For each scenario below, decide whether the **sandbox** or the **safe-output system** is the primary defence. Make your decision before revealing the answer.
