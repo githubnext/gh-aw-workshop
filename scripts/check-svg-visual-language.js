@@ -11,7 +11,7 @@
  * Checks:
  *   1. Accessibility — root <svg> must have role="img" and a non-empty,
  *      resolvable accessible name.
- *   2. Icon characters — Unicode status/icon characters (✓ ✗ ✕ ⚡ 🕐 ▶ ►)
+ *   2. Icon characters — Unicode status/icon characters (✓ ✗ ✕ ⚡ ⏰ 🕐 ▶ ►)
  *      must not appear in SVG <text> nodes used as visual indicators.
  *      Use unmodified Primer Octicon paths instead (see guidelines).
  *   3. Canvas dimensions — light/dark variant files (*-light.svg, *-dark.svg)
@@ -148,6 +148,7 @@ const ICON_CHARS = {
   '✕': 'the unmodified x-circle Octicon path',
   '✘': 'the unmodified x-circle Octicon path',
   '⚡': 'the unmodified zap Octicon path',
+  '⏰': 'the unmodified clock Octicon path',
   '🕐': 'the unmodified clock Octicon path',
   '🕛': 'the unmodified clock Octicon path',
   '▶': 'the unmodified play Octicon path',
