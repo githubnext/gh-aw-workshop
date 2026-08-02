@@ -81,7 +81,7 @@ git commit -m "Use personal Copilot billing"
 git push
 ```
 
-The compile updates the lock file so it uses the token-based method.
+The compile updates the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) so it uses the token-based method.
 
 ## :white_check_mark: Checkpoint
 

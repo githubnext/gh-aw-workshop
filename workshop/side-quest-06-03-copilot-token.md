@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Configure GitHub Copilot Authentication
 
-> _Optional: work through this guide when you need to configure Copilot authentication for an agentic workflow, then return to your main path._
+> _Optional: work through this guide when you need to configure Copilot [authentication](https://github.github.com/gh-aw/reference/auth/) for an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows), then return to your main path._
 
 ## :clipboard: Before You Start
 
@@ -42,7 +42,7 @@ If you are unsure, check who owns your practice repository first:
 
 - [ ] I have identified which authentication method fits my situation.
 - [ ] I have completed either Method 1 or Method 2 (followed the linked guide to the end).
-- [ ] My workflow source and compiled lock file use only the selected method.
+- [ ] My workflow source and compiled [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) use only the selected method.
 - [ ] I have returned to my main workshop path.
 
 <!-- journey: all -->

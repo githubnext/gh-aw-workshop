@@ -65,7 +65,7 @@ When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_
 - [ ] The token has **Copilot requests: Read-only** under **Account permissions**
 - [ ] `COPILOT_GITHUB_TOKEN` exists in **Settings** → **Secrets and variables** → **Actions**
 - [ ] `copilot-requests: write` is not present in the source workflow
-- [ ] The agent recompiled and committed the updated lock file
+- [ ] The agent recompiled and committed the updated [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml)
 - [ ] You set a reminder to rotate the PAT before the expiry date
 - [ ] You understand when to use Method 1 vs Method 2 (use the [auth overview](side-quest-06-03-copilot-token.md) if needed)
 
