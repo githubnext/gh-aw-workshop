@@ -70,6 +70,21 @@ These guidelines assume the standard delivery context for GitHub- and Microsoft-
 - Reinforce that workflow authors can create **hybrid deterministic + agentic designs** by keeping or importing custom jobs and steps for fixed data collection, then delegating reasoning and synthesis to the agent.
 - In data-ops examples, teach a split of responsibilities: deterministic steps fetch/shape data, and the agentic prompt interprets that data and decides how to communicate outcomes.
 
+## gh-aw is a compile-time tool, not a runtime component
+
+`gh-aw` is a developer CLI that compiles `.md` workflow files into standard GitHub Actions YAML (`.lock.yml`). It runs at **author time**, not inside GitHub Actions:
+
+- The developer runs `gh aw compile` locally (or in a Codespace) to produce the `.lock.yml`.
+- The `.lock.yml` is committed to the repository like any other workflow file.
+- When a trigger fires, **GitHub Actions executes the `.lock.yml` directly** — `gh-aw` is not installed on or invoked by the runner.
+
+Do not describe `gh-aw` as a runtime bridge, middleware, or orchestrator that runs inside the workflow job. Correct: "gh-aw compiles your `.md` into a `.lock.yml`." Incorrect: "gh-aw runs inside GitHub Actions and calls the AI model."
+
+When creating or updating architecture diagrams for the workshop:
+- Show `gh aw compile` in a clearly labeled **compile-time** zone, separate from the GitHub Actions workflow run.
+- Show GitHub Actions executing the `.lock.yml` (not invoking `gh-aw`) in the runtime zone.
+- The runtime flow is: Trigger → GitHub Actions (executes `.lock.yml`) → AI Model → Output.
+
 ## Header style
 
 - Do **not** number Markdown headers inside a file. Use descriptive headings such as `### Open the Codespace`, not `### 2. Open the Codespace`.
