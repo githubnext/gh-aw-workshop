@@ -76,6 +76,12 @@ test("current page checkpoint progress renders in the sticky header", () => {
   assert.ok(css.includes(".site-header-progress-bar {\n    width: min(84px, 24vw);"));
 });
 
+test("completed side-menu items render a non-breaking-space checkmark marker", () => {
+  const { css } = buildDocs();
+
+  assert.ok(css.includes(".workshop-menu-group a[data-page-complete]::after {\n  content: '\\00a0✓';"));
+});
+
 test("docs keep accessible responsive gutters and menu target sizes", () => {
   const { css } = buildDocs();
 
