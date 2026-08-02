@@ -85,6 +85,9 @@ git commit -m "feat: harden workflow resilience behavior"
 git push
 ```
 
+> [!TIP]
+> If you are iterating on wording, run `gh aw compile --watch` in another terminal for faster feedback while you edit.
+
 ---
 
 ## :white_check_mark: Checkpoint
