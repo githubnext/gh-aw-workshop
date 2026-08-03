@@ -17,7 +17,7 @@ If you are not in a Codespace or you do not see the 403 error, return to [Run an
 
 ## :dart: What You'll Do
 
-You'll identify the Codespaces token error that blocks `gh aw run` and use the fastest recovery path. Optionally, you can re-create your Codespace with the extra permissions needed for terminal-based workflow triggers.
+You'll identify the Codespaces token error that blocks `gh aw run` and use the fastest recovery path. Optionally, you can re-create your Codespace with the extra [permissions](https://github.github.com/gh-aw/reference/permissions/) needed for terminal-based workflow triggers.
 
 ---
 
