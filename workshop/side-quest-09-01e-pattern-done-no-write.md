@@ -15,7 +15,7 @@ A run can finish with `:white_check_mark: [done]` and still create no comment or
 Start with three checks:
 
 1. Confirm whether your condition was actually true at runtime.
-2. Confirm a matching write action exists in `safe-outputs:`.
+2. Confirm a matching write action exists in [`safe-outputs:`](https://github.github.com/gh-aw/reference/safe-outputs/).
 3. Confirm your instructions define what to do when no condition matches.
 
 To avoid silent no-write outcomes, include explicit fallback behavior such as: "If no incidents are found, post one status comment saying no action is required." This still gives users a visible status indicator and proves the workflow ran.

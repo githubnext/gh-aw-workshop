@@ -34,7 +34,7 @@ Identify the pattern before opening the answer.
 <details>
 <summary>Show answer</summary>
 
-Pattern: **`[tool]` call returns empty results**. Check required read permissions and broaden filters to confirm data availability.
+Pattern: **`[tool]` call returns empty results**. Check required read [permissions](https://github.github.com/gh-aw/reference/permissions/) and broaden filters to confirm data availability.
 
 </details>
 
