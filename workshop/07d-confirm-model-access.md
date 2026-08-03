@@ -31,7 +31,7 @@ gh copilot
 ```
 
 1. Confirm you receive a reply. Any response means the model and skill are accessible.
-2. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+1. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
 
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
@@ -60,6 +60,9 @@ If you are working in Claude Code or OpenAI Codex, keep this first workflow on C
 
 - **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
 - **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
+
+> [!NOTE]
+> **GitHub Enterprise Server (GHES) or GitHub Enterprise Cloud (GHEC) users:** Copilot availability depends on your enterprise policy. If `gh copilot` returns an error about your plan or entitlement, ask your enterprise admin to confirm Copilot is enabled for your account and that your GHES instance is version 3.13 or later. On GHES, `gh copilot` also requires network access from your Codespace to the GHES API endpoint.
 
 ## Choose one Copilot billing path
 
@@ -146,7 +149,6 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
 - [ ] My source and compiled lock file use the selected method
