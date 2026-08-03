@@ -1,0 +1,95 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 560"
+  width="1200"
+  height="560"
+  role="img"
+  aria-label="The three parts of an agentic workflow: Trigger fires the workflow, the Agent reads data and reasons, then Safe Output writes the result"
+  data-visual-kind="diagram"
+  data-visual-id="05c-agentic-flow"
+>
+  <style>
+    text { font-family: "Mona Sans", ui-sans-serif, system-ui, sans-serif; }
+    .mono { font-family: "Mona Sans Mono", ui-monospace, "Cascadia Code", monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#101411">Three Parts of an Agentic Workflow</text>
+
+  <!-- ── Stage boxes ─────────────────────────────────────────────── -->
+
+  <!-- 1: Trigger -->
+  <rect data-node="trigger" x="64" y="100" width="280" height="320" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2"/>
+  <!-- Clock octicon (schedule trigger) — MIT-licensed Primer Octicon geometry -->
+  <g transform="translate(184,136)" fill="#08872b" aria-hidden="true">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v3.5l2.146 2.146a.75.75 0 0 1-1.06 1.061l-2.354-2.354a.75.75 0 0 1-.22-.53V4.75a.75.75 0 0 1 1.5 0Z"/>
+  </g>
+  <text x="204" y="176" text-anchor="middle" font-size="13" font-weight="600" fill="#08872b" letter-spacing="0.06em">TRIGGER</text>
+  <text x="204" y="204" text-anchor="middle" font-size="18" font-weight="700" fill="#101411">Event or</text>
+  <text x="204" y="228" text-anchor="middle" font-size="18" font-weight="700" fill="#101411">Schedule</text>
+  <text x="204" y="264" text-anchor="middle" font-size="15" fill="#232925">Fires when an event</text>
+  <text x="204" y="284" text-anchor="middle" font-size="15" fill="#232925">happens — a push, PR,</text>
+  <text x="204" y="304" text-anchor="middle" font-size="15" fill="#232925">comment, or cron</text>
+  <text x="204" y="324" text-anchor="middle" font-size="15" fill="#232925">schedule — and starts</text>
+  <text x="204" y="344" text-anchor="middle" font-size="15" fill="#232925">the workflow run.</text>
+  <!-- Badge -->
+  <rect x="170" y="390" width="68" height="26" rx="13" fill="#08872b"/>
+  <text x="204" y="407" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">Step 1</text>
+
+  <!-- 2: Agent -->
+  <rect data-node="agent" x="460" y="100" width="280" height="320" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2"/>
+  <!-- Copilot-like "play" / workflow octicon suggestion — use a simple robot head shape -->
+  <!-- Using workflow octicon path from Primer -->
+  <g transform="translate(580,136)" fill="#08872b" aria-hidden="true">
+    <path d="M1 2.5A2.5 2.5 0 0 1 3.5 0h8.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V1.5h-8a1 1 0 0 0-1 1V6c0 .55.45 1 1 1h8.25a.75.75 0 0 1 0 1.5H3.5A2.5 2.5 0 0 1 1 6V2.5ZM15 9.5a.75.75 0 0 1-.75.75H6a1 1 0 0 0-1 1V14a1 1 0 0 0 1 1h8v-2.75a.75.75 0 0 1 1.5 0v3.5a.75.75 0 0 1-.75.75H5.5A2.5 2.5 0 0 1 3 14v-2.5A2.5 2.5 0 0 1 5.5 9h8.75a.75.75 0 0 1 .75.75Z"/>
+  </g>
+  <text x="600" y="176" text-anchor="middle" font-size="13" font-weight="600" fill="#08872b" letter-spacing="0.06em">AGENT</text>
+  <text x="600" y="204" text-anchor="middle" font-size="18" font-weight="700" fill="#101411">AI Reasoning</text>
+  <text x="600" y="228" text-anchor="middle" font-size="18" font-weight="700" fill="#101411">Loop</text>
+  <text x="600" y="264" text-anchor="middle" font-size="15" fill="#232925">Reads live data, uses</text>
+  <text x="600" y="284" text-anchor="middle" font-size="15" fill="#232925">tools, reasons over</text>
+  <text x="600" y="304" text-anchor="middle" font-size="15" fill="#232925">context, and decides</text>
+  <text x="600" y="324" text-anchor="middle" font-size="15" fill="#232925">what to write based</text>
+  <text x="600" y="344" text-anchor="middle" font-size="15" fill="#232925">on the task brief.</text>
+  <!-- Badge -->
+  <rect x="566" y="390" width="68" height="26" rx="13" fill="#08872b"/>
+  <text x="600" y="407" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">Step 2</text>
+
+  <!-- 3: Safe Output -->
+  <rect data-node="safe-output" x="856" y="100" width="280" height="320" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2"/>
+  <!-- issue-opened octicon -->
+  <g transform="translate(976,136)" fill="#08872b" aria-hidden="true">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/>
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"/>
+  </g>
+  <text x="996" y="176" text-anchor="middle" font-size="13" font-weight="600" fill="#08872b" letter-spacing="0.06em">SAFE OUTPUT</text>
+  <text x="996" y="204" text-anchor="middle" font-size="18" font-weight="700" fill="#101411">Write the</text>
+  <text x="996" y="228" text-anchor="middle" font-size="18" font-weight="700" fill="#101411">Result</text>
+  <text x="996" y="264" text-anchor="middle" font-size="15" fill="#232925">Creates or updates</text>
+  <text x="996" y="284" text-anchor="middle" font-size="15" fill="#232925">issues, comments, PRs,</text>
+  <text x="996" y="304" text-anchor="middle" font-size="15" fill="#232925">or files — declared</text>
+  <text x="996" y="324" text-anchor="middle" font-size="15" fill="#232925">outputs only, keeping</text>
+  <text x="996" y="344" text-anchor="middle" font-size="15" fill="#232925">side effects controlled.</text>
+  <!-- Badge -->
+  <rect x="962" y="390" width="68" height="26" rx="13" fill="#08872b"/>
+  <text x="996" y="407" text-anchor="middle" font-size="13" font-weight="600" fill="#ffffff">Step 3</text>
+
+  <!-- ── Arrows ────────────────────────────────────────────────────── -->
+  <defs>
+    <marker id="arrow-light" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#08872b"/>
+    </marker>
+  </defs>
+  <!-- Trigger → Agent -->
+  <line x1="347" y1="260" x2="457" y2="260" stroke="#08872b" stroke-width="3" marker-end="url(#arrow-light)"/>
+  <!-- Agent → Safe Output -->
+  <line x1="743" y1="260" x2="853" y2="260" stroke="#08872b" stroke-width="3" marker-end="url(#arrow-light)"/>
+
+  <!-- ── Footer annotation ─────────────────────────────────────────── -->
+  <text x="600" y="490" text-anchor="middle" font-size="15" fill="#232925">Every agentic workflow has these three parts. The agent provides the reasoning; the trigger and safe output keep it controlled.</text>
+  <!-- Divider -->
+  <line x1="240" y1="508" x2="960" y2="508" stroke="#08872b" stroke-width="2"/>
+</svg>

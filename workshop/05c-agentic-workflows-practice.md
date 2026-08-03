@@ -61,6 +61,14 @@ as an issue with the title "Weekly PR Digest".
 
 ## :white_check_mark: Checkpoint
 
+The diagram below shows how the three parts connect in every agentic workflow.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/05c-agentic-flow-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/05c-agentic-flow-light.svg">
+  <img alt="The three parts of an agentic workflow: Trigger fires the workflow, the Agent reads data and reasons, then Safe Output writes the result" src="images/05c-agentic-flow-light.svg">
+</picture>
+
 - [ ] I can decide whether a task calls for an agentic or a standard Actions workflow
 - [ ] I have drafted a task brief that covers all three criteria: data source, output format, and cadence
 - [ ] I can describe the three parts of an agentic workflow: [trigger](https://github.github.com/gh-aw/reference/triggers/) → agent → safe output
