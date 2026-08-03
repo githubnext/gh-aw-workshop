@@ -503,18 +503,11 @@ Table with: step, at-risk runs, dropouts, conditional dropout rate, 95% Monte Ca
 </details>
 
 <details>
-<summary>Learning quality KPIs</summary>
+<summary>Curriculum quality and learning KPIs</summary>
 
-Table with: step file, overall score, active_learning score, checkpoint_quality score, scaffolding score, learning KPI index, repair priority.
+Table with: step file, overall score, active_learning score, checkpoint_quality score, scaffolding score, learning KPI index, lowest rubric dimension, repair priority.
 
 Include a row for the cohort mean at the bottom.
-
-</details>
-
-<details>
-<summary>Curriculum quality metrics</summary>
-
-Table with: step file, overall score, lowest rubric dimension, recommended repair focus.
 
 </details>
 
