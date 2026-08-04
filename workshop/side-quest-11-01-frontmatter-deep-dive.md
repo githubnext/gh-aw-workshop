@@ -114,7 +114,7 @@ permissions:
 |-------|---------|
 | `permissions:` | Lists every scope the workflow may use; omitted scopes are denied. |
 | `contents: read` | Read access to repository files and commits. |
-| `copilot-requests: write` | Required by the Copilot engine. |
+| `copilot-requests: write` | Required by the [Copilot engine](https://github.github.com/gh-aw/reference/engines/). |
 | `issues: read` | Read access to issue data. |
 | `pull-requests: read` | Read access to pull request data. |
 | `actions: read` | Read access to workflow run results. |
@@ -216,7 +216,7 @@ permissions:
 - [ ] You can explain why keeping `workflow_dispatch: {}` alongside a schedule trigger is useful.
 - [ ] You added the `permissions:` block with all five entries.
 - [ ] `copilot-requests: write` is present in your permissions block.
-- [ ] You completed the mini-challenge: schedule, push to main, and workflow_dispatch triggers all appear in the compiled output.
+- [ ] You completed the mini-challenge: schedule, push to main, and [workflow_dispatch](https://github.github.com/gh-aw/reference/triggers/#dispatch-triggers-workflowdispatch) triggers all appear in the compiled output.
 - [ ] You can explain what each permission scope in the block allows.
 - [ ] You wrote a complete combined frontmatter block and it compiled without errors.
 - [ ] The `workflow_dispatch: {}` trigger appears as a manual trigger button in your GitHub Actions UI after pushing.
