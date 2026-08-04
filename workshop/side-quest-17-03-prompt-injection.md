@@ -57,14 +57,15 @@ cannot write to issues, open pull requests, or push commits — regardless of wh
 
 Keep your `permissions:` block minimal. Request only what your workflow genuinely needs.
 
-> **:running_man: Try it:** Open your `daily-status.md` workflow file and look at the frontmatter. Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
->
-> <details>
-> <summary>Hint</summary>
->
-> `safe-outputs: create-issue:` enables issue creation. Keep `issues: read` in the `permissions:` block; no permission change is needed.
->
-> </details>
+> [!TIP]
+> **Try it:** Open your `daily-status.md` workflow file and look at the frontmatter. Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
+
+<details>
+<summary>Hint</summary>
+
+`safe-outputs: create-issue:` enables issue creation. Keep `issues: read` in the `permissions:` block; no permission change is needed.
+
+</details>
 
 ### `safe-outputs` constraints limit available write operations
 
@@ -84,14 +85,15 @@ safe-outputs:
 
 Suppose an injection asks the agent to push a commit or delete a file. Those operations are not listed under `safe-outputs:`, so the attempt fails immediately.
 
-> **:running_man: Try it:** Look at the `safe-outputs:` key in your `daily-status.md` frontmatter. List two write operations your workflow **cannot** perform given the current configuration. Verify your answer by checking which operations are _not_ listed there.
->
-> <details>
-> <summary>Hint</summary>
->
-> Any write operation not listed under `safe-outputs:` — such as `push-commit` or `delete-file` — is unavailable to the agent.
->
-> </details>
+> [!TIP]
+> **Try it:** Look at the `safe-outputs:` key in your `daily-status.md` frontmatter. List two write operations your workflow **cannot** perform given the current configuration. Verify your answer by checking which operations are _not_ listed there.
+
+<details>
+<summary>Hint</summary>
+
+Any write operation not listed under `safe-outputs:` — such as `push-commit` or `delete-file` — is unavailable to the agent.
+
+</details>
 
 ---
 
