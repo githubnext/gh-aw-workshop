@@ -246,7 +246,10 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   list-style: none;
 }
 .workshop-menu-group a {
-  display: block;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
   padding: 8px;
   color: var(--fgColor-default, #1f2328);
   line-height: 1.35;
@@ -263,11 +266,18 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   background-color: var(--bgColor-accent-muted, #ddf4ff);
 }
 
-.markdown-body > details:not([open]) {
-  display: none;
-}
 .markdown-body > details {
   scroll-margin-top: var(--workshop-sticky-header-offset);
+}
+.markdown-body details > summary {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  cursor: pointer;
+}
+.markdown-body > details:not([open]) {
+  display: none;
 }
 .markdown-body > details > summary {
   display: none;
@@ -282,30 +292,30 @@ html[data-color-mode="dark"] .menu-toggle-progress {
 .markdown-body {
   max-width: 650px;
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: 20px !important;
 }
 
 @media (min-width: 480px) {
   .markdown-body {
-    padding-inline: 24px;
+    padding-inline: 24px !important;
   }
 }
 
 @media (min-width: 768px) {
   .markdown-body {
-    padding-inline: 32px;
+    padding-inline: 32px !important;
   }
 }
 
 @media (min-width: 1024px) {
   .markdown-body {
-    padding-inline: 48px;
+    padding-inline: 48px !important;
   }
 }
 
 @media (min-width: 1440px) {
   .markdown-body {
-    padding-inline: 64px;
+    padding-inline: 64px !important;
   }
 }
 .markdown-body li.task-list-item {
@@ -463,9 +473,19 @@ html[data-color-mode="dark"] .menu-toggle-progress {
 
 .markdown-body a:not(.anchor):not(.workshop-nav-btn),
 .workshop-navigation a:not(.anchor):not(.workshop-nav-btn) {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
   color: var(--workshop-link-color);
   text-decoration: underline;
   text-underline-offset: 0.08em;
+}
+body > footer a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .markdown-body a:not(.anchor):not(.workshop-nav-btn):visited,
@@ -505,6 +525,8 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   display: inline-flex;
   gap: 0.4em;
   align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 600;
