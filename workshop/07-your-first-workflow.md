@@ -53,7 +53,7 @@ In your AI agent, run this prompt:
 - name: Daily Report Status
 - triggers: daily schedule and workflow_dispatch
 - permissions: contents read, issues read, copilot-requests write
-- safe-outputs with key `create-issue`
+- safe-outputs: create-issue
 - task brief: "Generate an activity report in a new issue."
 Compile it after creating it.
 ```
@@ -73,7 +73,7 @@ permissions:
   issues: read
   copilot-requests: write     # required to call the AI model
 safe-outputs:
-  - key: create-issue         # the only write action the agent may perform
+  create-issue:               # the only write action the agent may perform
 ---
 
 Generate an activity report for this repository and post it as a new issue.
