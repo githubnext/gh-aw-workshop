@@ -86,17 +86,22 @@ test("docs keep accessible responsive gutters and menu target sizes", () => {
   const { css } = buildDocs();
 
   assert.ok(css.includes(".menu-toggle,\n.menu-close {\n  display: inline-grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 44px;\n  height: 44px;"));
-  assert.ok(css.includes(".markdown-body {\n  max-width: 650px;\n  margin-inline: auto;\n  padding-inline: 20px;\n}"));
-  assert.ok(css.includes("@media (min-width: 480px) {\n  .markdown-body {\n    padding-inline: 24px;\n  }\n}"));
-  assert.ok(css.includes("@media (min-width: 768px) {\n  .markdown-body {\n    padding-inline: 32px;\n  }\n}"));
-  assert.ok(css.includes("@media (min-width: 1024px) {\n  .markdown-body {\n    padding-inline: 48px;\n  }\n}"));
-  assert.ok(css.includes("@media (min-width: 1440px) {\n  .markdown-body {\n    padding-inline: 64px;\n  }\n}"));
+  assert.ok(css.includes(".workshop-menu-group a {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 44px;"));
+  assert.ok(css.includes(".markdown-body {\n  max-width: 650px;\n  margin-inline: auto;\n  padding-inline: 20px !important;\n}"));
+  assert.ok(css.includes("@media (min-width: 480px) {\n  .markdown-body {\n    padding-inline: 24px !important;\n  }\n}"));
+  assert.ok(css.includes("@media (min-width: 768px) {\n  .markdown-body {\n    padding-inline: 32px !important;\n  }\n}"));
+  assert.ok(css.includes("@media (min-width: 1024px) {\n  .markdown-body {\n    padding-inline: 48px !important;\n  }\n}"));
+  assert.ok(css.includes("@media (min-width: 1440px) {\n  .markdown-body {\n    padding-inline: 64px !important;\n  }\n}"));
 });
 
 test("shared header and code copy controls meet 44px target sizes", () => {
   const { css } = buildDocs();
 
   assert.ok(css.includes(".site-title a {\n  display: block;\n  min-height: 44px;\n  box-sizing: border-box;\n  padding-block: 10px;\n  line-height: 24px;"));
+  assert.ok(css.includes(".markdown-body details > summary {\n  display: inline-flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 44px;\n  cursor: pointer;\n}"));
+  assert.ok(css.includes(".markdown-body a:not(.anchor):not(.workshop-nav-btn),\n.workshop-navigation a:not(.anchor):not(.workshop-nav-btn) {\n  display: inline-flex;\n  align-items: center;\n  min-width: 44px;\n  min-height: 44px;"));
+  assert.ok(css.includes("body > footer a {\n  display: inline-flex;\n  align-items: center;\n  min-width: 44px;\n  min-height: 44px;\n}"));
+  assert.ok(css.includes(".workshop-nav-btn {\n  display: inline-flex;\n  gap: 0.4em;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 44px;"));
   assert.ok(css.includes(".code-copy-btn {\n  position: absolute;\n  top: 8px;\n  right: 8px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-width: 44px;\n  min-height: 44px;"));
 });
 
