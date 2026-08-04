@@ -89,11 +89,11 @@ gh issue list --state open --search "updated:>=2026-07-13" --json number,title,l
 
 ## :white_check_mark: Checkpoint
 
-- [ ] I can explain the difference between deterministic and agentic work in one sentence
-- [ ] I can identify one step in my workflow that should stay deterministic
-- [ ] I can identify one step in my workflow that should become agentic
-- [ ] I can describe a hybrid design for my current data workflow
-- [ ] I know when deterministic validation should remain outside the agent
+- [ ] You can explain the difference between deterministic and agentic work in one sentence
+- [ ] You can identify one step in your workflow that should stay deterministic
+- [ ] You can identify one step in your workflow that should become agentic
+- [ ] You can describe a hybrid design for your current data workflow
+- [ ] You know when deterministic validation should remain outside the agent
 
 ---
 
