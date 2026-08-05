@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="Pre-flight troubleshooting decision tree: start with a test prompt, then branch by result"
+     data-visual-kind="diagram" data-visual-id="07d-preflight-decision">
+  <style>
+    text { font-family: "Mona Sans", ui-sans-serif, system-ui, sans-serif; }
+    .mono { font-family: "Mona Sans Mono", ui-monospace, monospace; }
+    .title { font-size: 18px; font-weight: 700; fill: #f2f5f3; }
+    .caption { font-size: 14px; fill: #b6bfb8; }
+    .label { font-size: 16px; font-weight: 600; fill: #f2f5f3; }
+    .sublabel { font-size: 15px; fill: #b6bfb8; }
+    .mono-label { font-size: 14px; fill: #b6bfb8; font-family: "Mona Sans Mono", ui-monospace, monospace; }
+    .outcome-label { font-size: 16px; font-weight: 600; fill: #ffffff; }
+    .outcome-sub { font-size: 14px; fill: #f2f5f3; }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#909692"/>
+    </marker>
+    <marker id="arrowhead-muted" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#909692"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fed83"/>
+    </marker>
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fa7970"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Title -->
+  <text x="600" y="36" class="title" text-anchor="middle">Pre-flight Troubleshooting Decision Tree</text>
+
+  <!-- ── START NODE ── -->
+  <rect x="434" y="64" width="332" height="64" rx="8" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="start"/>
+  <text x="600" y="89" class="label" text-anchor="middle">Run the test prompt</text>
+  <text x="600" y="112" class="mono-label" text-anchor="middle">gh copilot → /agentic-workflows …</text>
+
+  <!-- Arrow down from START -->
+  <line x1="600" y1="128" x2="600" y2="168" stroke="#909692" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- DECISION DIAMOND -->
+  <polygon points="600,168 740,228 600,288 460,228" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="decision"/>
+  <text x="600" y="220" class="label" text-anchor="middle">Did you receive</text>
+  <text x="600" y="242" class="label" text-anchor="middle">a reply?</text>
+
+  <!-- YES label on left arrow -->
+  <text x="382" y="220" class="sublabel" text-anchor="middle" fill="#5fed83" font-weight="600">Yes</text>
+  <!-- Arrow left from diamond → success -->
+  <line x1="460" y1="228" x2="328" y2="228" stroke="#5fed83" stroke-width="2" fill="none" marker-end="url(#arrowhead-green)"/>
+
+  <!-- NO label on right arrow -->
+  <text x="820" y="220" class="sublabel" text-anchor="middle" fill="#fa7970" font-weight="600">No</text>
+  <!-- Arrow right from diamond → error -->
+  <line x1="740" y1="228" x2="872" y2="228" stroke="#fa7970" stroke-width="2" fill="none" marker-end="url(#arrowhead-red)"/>
+
+  <!-- ── SUCCESS OUTCOME (left) ── -->
+  <rect x="104" y="192" width="224" height="72" rx="8" fill="#3fb950" stroke="none" data-node="success" data-state="done"/>
+  <text x="216" y="220" class="outcome-label" text-anchor="middle">Model access</text>
+  <text x="216" y="242" class="outcome-label" text-anchor="middle">confirmed</text>
+
+  <!-- "arrived from?" sub-branch below success -->
+  <line x1="216" y1="264" x2="216" y2="304" stroke="#909692" stroke-width="2" fill="none" marker-end="url(#arrowhead-muted)"/>
+  <rect x="104" y="304" width="224" height="56" rx="8" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="continue"/>
+  <text x="216" y="327" class="sublabel" text-anchor="middle">Continue to billing</text>
+  <text x="216" y="348" class="sublabel" text-anchor="middle">path selection</text>
+
+  <!-- arrow from success-continue down to end-success -->
+  <line x1="216" y1="360" x2="216" y2="400" stroke="#909692" stroke-width="2" fill="none" marker-end="url(#arrowhead-muted)"/>
+  <rect x="104" y="400" width="224" height="56" rx="8" fill="#0a241b" stroke="#5fed83" stroke-width="1.5" data-node="next-step"/>
+  <text x="216" y="424" class="sublabel" text-anchor="middle">→ Step 8: Run Your</text>
+  <text x="216" y="446" class="sublabel" text-anchor="middle">Workflow</text>
+
+  <!-- ── ERROR OUTCOME (right) ── -->
+  <rect x="872" y="192" width="224" height="72" rx="8" fill="#f85149" stroke="none" data-node="error" data-state="error"/>
+  <text x="984" y="220" class="outcome-label" text-anchor="middle">Access or</text>
+  <text x="984" y="242" class="outcome-label" text-anchor="middle">entitlement error</text>
+
+  <!-- Steps after error -->
+  <line x1="984" y1="264" x2="984" y2="304" stroke="#909692" stroke-width="2" fill="none" marker-end="url(#arrowhead-muted)"/>
+  <rect x="872" y="304" width="224" height="56" rx="8" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="check-settings"/>
+  <text x="984" y="327" class="sublabel" text-anchor="middle">Check Copilot settings</text>
+  <text x="984" y="348" class="sublabel" text-anchor="middle">at github.com/settings</text>
+
+  <line x1="984" y1="360" x2="984" y2="400" stroke="#909692" stroke-width="2" fill="none" marker-end="url(#arrowhead-muted)"/>
+  <rect x="872" y="400" width="224" height="56" rx="8" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="retry"/>
+  <text x="984" y="424" class="sublabel" text-anchor="middle">Retry the test</text>
+  <text x="984" y="446" class="sublabel" text-anchor="middle">prompt</text>
+
+  <!-- Retry → still fail → side quest -->
+  <line x1="984" y1="456" x2="984" y2="488" stroke="#909692" stroke-width="2" fill="none" marker-end="url(#arrowhead-muted)"/>
+  <rect x="872" y="488" width="224" height="48" rx="8" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="side-quest"/>
+  <text x="984" y="510" class="sublabel" text-anchor="middle">Still failing →</text>
+  <text x="984" y="528" class="sublabel" text-anchor="middle">Side Quest: Copilot Token</text>
+
+  <!-- Caption -->
+  <text x="600" y="548" class="caption" text-anchor="middle">Follow the green path when the test prompt succeeds; follow the red path to diagnose and fix access errors before continuing.</text>
+</svg>

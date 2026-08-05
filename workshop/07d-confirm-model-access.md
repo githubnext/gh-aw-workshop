@@ -38,6 +38,14 @@ gh copilot
 
 ## Pre-flight troubleshooting decision tree
 
+The diagram below shows each branch so you can quickly identify whether to continue or resolve an access error first.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/07d-preflight-decision-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/07d-preflight-decision-light.svg">
+  <img alt="Pre-flight troubleshooting decision tree: start with a test prompt, then branch by result" src="images/07d-preflight-decision-light.svg">
+</picture>
+
 Use this quick check before you choose a billing path:
 
 - **You receive a normal reply in Copilot CLI**
