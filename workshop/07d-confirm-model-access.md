@@ -36,6 +36,18 @@ gh copilot
 > [!IMPORTANT]
 > Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
 
+## Ask the agent about your workflow design
+
+With model access confirmed, use the agent to answer a design question about the workflow you created in Step 7.
+
+In Copilot CLI, send this prompt:
+
+```prompt
+/agentic-workflows what permissions does a daily report workflow need, and why?
+```
+
+Read the response. The agent will explain which permissions are required for read-only reporting and what happens if you add unnecessary write permissions. Use this to double-check the `permissions:` block in your `daily-report-status.md` before moving on.
+
 ## Pre-flight troubleshooting decision tree
 
 Use this quick check before you choose a billing path:
@@ -146,7 +158,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
+- [ ] I sent the permissions prompt to the agent and reviewed the response
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
 - [ ] My source and compiled lock file use the selected method
