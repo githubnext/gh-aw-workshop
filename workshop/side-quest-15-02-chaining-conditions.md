@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Chaining Conditions — Run an Agent Only When Security Findings Exist
 
-> _The cheapest agent invocation is the one you skip. Use a deterministic step to decide whether your repository state is worth an agent's attention._
+> _The cheapest agent invocation is the one you skip. Use a [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) step to decide whether your repository state is worth an agent's attention._
 
 ## :dart: What You'll Do
 
@@ -17,7 +17,7 @@ Add a security scanning step to your workflow that counts open Dependabot vulner
 
 ### Understand why this pattern matters
 
-Running an agent every time a schedule fires is expensive, even when there is nothing to report. This side quest solves that by front-loading a fast, [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) check: a shell step calls the GitHub API to count open Dependabot alerts, then the `if:` expression evaluates the count before the agent job starts. If no alerts are open, the job is skipped entirely — zero AI credits spent.
+Running an agent every time a schedule fires is expensive, even when there is nothing to report. This side quest solves that by front-loading a fast, [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) check: a shell step calls the GitHub API to count open Dependabot alerts, then the `if:` expression evaluates the count before the agent job starts. If no alerts are open, the job is skipped entirely — zero [AI credits](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) spent.
 
 The same skeleton applies to any tool that can write a count or boolean to `$GITHUB_OUTPUT`: code scanning alerts, secret scan findings, lint error totals, or failing test counts.
 

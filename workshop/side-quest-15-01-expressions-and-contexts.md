@@ -164,7 +164,7 @@ if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturd
 ---
 ```
 
-This pattern — deterministic shell step produces a string output, `if:` expression reads that output — applies broadly wherever you need workflow control flow based on data that is not already in a GitHub Actions context object.
+This pattern — [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) shell step produces a string output, `if:` expression reads that output — applies broadly wherever you need workflow control flow based on data that is not already in a GitHub Actions context object.
 
 ## :white_check_mark: Checkpoint
 

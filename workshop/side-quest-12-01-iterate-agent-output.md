@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Evaluating and Iterating on Agent Output
 
-> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the workflow brief, and compare the result — then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
+> _Optional: use this side quest when you want a repeatable way to judge one workflow run, improve one sentence in the [workflow brief](https://github.github.com/gh-aw/reference/markdown/), and compare the result — then return to [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)._
 
 ## :dart: What You'll Do
 
