@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: [Supply Chain](https://github.github.com/gh-aw/introduction/architecture/#threat-model) Attacks via MCP Tool Servers
+# Side Quest: [Supply Chain](https://github.github.com/gh-aw/introduction/architecture/#threat-model) Attacks via [MCP](https://github.github.com/gh-aw/reference/mcp-gateway/) Tool Servers
 
 > _A compromised MCP tool server can feed poisoned data back to your agent. Your job is to spot the [trust boundary](side-quest-17-02-security-architecture.md) early and keep the workflow's write surface narrow._
 
@@ -62,7 +62,7 @@ Before you trust a server like this, verify who publishes it, confirm the expect
 Adopt these habits when you work with MCP servers:
 
 1. **Pin the server you run.** Prefer a specific version or image digest over a mutable default like `latest`.
-2. **Restrict permissions and outputs.** Keep `permissions:` minimal and declare only the write surfaces you actually need in `safe-outputs`.
+2. **Restrict [permissions](https://github.github.com/gh-aw/reference/permissions/) and outputs.** Keep `permissions:` minimal and declare only the write surfaces you actually need in `safe-outputs`.
 3. **Audit tool names before you add them.** Confirm the publisher, verify the expected server name, and keep the tool list narrow.
 
 gh-aw helps by making you declare `tools:` explicitly, limit [network](https://github.github.com/gh-aw/reference/network/) destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.

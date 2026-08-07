@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: How MCP Tool Servers Work
+# Side Quest: How [MCP](https://github.github.com/gh-aw/reference/mcp-gateway/) Tool Servers Work
 
 > _Optional: work through this primer after [Step 17](17-add-mcp-tools.md) if you want to understand how MCP changed your workflow's agentic loop, then continue to the next step._
 
@@ -52,7 +52,7 @@ The agent can interleave tool calls with its reasoning as many times as it needs
 
 ## Hands-On Exercise
 
-Open your workflow's YAML frontmatter. Does it have a `tools:` block? If yes, identify which MCP server is configured and write it in the space below or in a scratch comment in the file.
+Open your workflow's YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/). Does it have a `tools:` block? If yes, identify which MCP server is configured and write it in the space below or in a scratch comment in the file.
 
 ```text
 Configured MCP server:

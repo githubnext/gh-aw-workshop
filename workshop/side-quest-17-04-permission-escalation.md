@@ -68,7 +68,7 @@ tools:
 
 With this setup, the agent can read data and generate output. It has no path to create a PR, post a comment, or modify any file.
 
-### :hammer_and_wrench: Try it: audit your own workflow
+### :hammer_and_wrench: Try it: [audit](https://github.github.com/gh-aw/reference/audit/) your own workflow
 
 Open your workflow file. Check the `permissions:` block and answer these three questions:
 

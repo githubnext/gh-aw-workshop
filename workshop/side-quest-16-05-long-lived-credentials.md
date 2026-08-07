@@ -8,7 +8,7 @@
 
 - You have started [Connect a Live Data Source to Your Workflow](16-connect-data-source.md).
 - You understand that `${{ secrets.GITHUB_TOKEN }}` is the built-in GitHub token provided automatically for each workflow run.
-- You are familiar with [Side Quest: Storing Credentials with GitHub Secrets](side-quest-16-02-secrets-and-permissions.md).
+- You are familiar with [Side Quest: Storing Credentials with GitHub Secrets](side-quest-16-02-secrets-and-[permissions](https://github.github.com/gh-aw/reference/permissions/).md).
 
 ---
 
@@ -121,7 +121,7 @@ When you must use a PAT:
 
 ---
 
-## :pencil2: Exercise: Audit your current workflow
+## :pencil2: Exercise: [Audit](https://github.github.com/gh-aw/reference/audit/) your current workflow
 
 Open your workflow file (e.g., `.github/workflows/daily-report.md`) and answer the following questions:
 

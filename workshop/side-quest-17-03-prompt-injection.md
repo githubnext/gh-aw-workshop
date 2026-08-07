@@ -58,7 +58,7 @@ cannot write to issues, open pull requests, or push commits — regardless of wh
 Keep your `permissions:` block minimal. Request only what your workflow genuinely needs.
 
 > [!TIP]
-> **Try it:** Open your `daily-status.md` workflow file and look at the frontmatter. Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
+> **Try it:** Open your `daily-status.md` workflow file and look at the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/). Which setting authorizes the workflow to create issues, and does the `permissions:` block need to change?
 
 <details>
 <summary>Hint</summary>

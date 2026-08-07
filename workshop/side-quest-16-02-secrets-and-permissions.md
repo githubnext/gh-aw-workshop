@@ -7,11 +7,11 @@
 ## :clipboard: Before You Start
 
 - Familiarity with [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) is helpful.
-- You understand what GitHub Actions workflow YAML looks like.
+- You understand what [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/) workflow YAML looks like.
 
 ---
 
-GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **[GitHub Secrets](https://github.github.com/gh-aw/reference/safe-outputs/)** gives you a secure vault for sensitive values that workflows can read without exposing.
+GitHub Actions workflows run in a shared environment where code, logs, and configuration are visible to collaborators. Hard-coding credentials is dangerous — they end up in version history and log output. **[GitHub Secrets](https://github.github.com/gh-aw/reference/[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)/)** gives you a secure vault for sensitive values that workflows can read without exposing.
 
 ---
 
@@ -118,7 +118,7 @@ The `gh` CLI reads `GH_TOKEN` automatically when it is set as an environment var
 </details>
 
 <details>
-<summary>Learn how permissions frontmatter controls the built-in `GITHUB_TOKEN`</summary>
+<summary>Learn how [permissions](https://github.github.com/gh-aw/reference/permissions/) [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) controls the built-in `GITHUB_TOKEN`</summary>
 
 gh-aw workflows declare required [permissions](https://github.github.com/gh-aw/reference/permissions/) in [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/). Only request what you need:
 
