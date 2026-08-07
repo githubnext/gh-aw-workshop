@@ -52,14 +52,12 @@ Use this quick check before you choose a billing path:
 
 ## Confirm the workflow engine
 
-Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
+Open `.github/workflows/daily-report-status.md` in the Codespace editor. Confirm there is no `engine:` line in the frontmatter — the workflow defaults to GitHub Copilot, which is what you want for this first run.
 
-Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
+> [!TIP]
+> If you want to switch to Claude or OpenAI Codex later, see [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md) or [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md). You do not need those keys now.
 
-If you are working in Claude Code or OpenAI Codex, keep this first workflow on Copilot and switch later if you want:
-
-- **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
-- **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
+**Check:** Does the frontmatter in `daily-report-status.md` contain an `engine:` line? If yes, remove it and save — the default Copilot engine is correct for Step 8.
 
 ## Choose one Copilot billing path
 
@@ -106,13 +104,15 @@ permissions:
 
    This line is already present in the workflow template. Do not remove it.
 3. No repository secret is needed for this path.
-4. Recompile and commit the lock file from your terminal so it reflects the confirmed configuration:
+4. Recompile and commit the lock file:
 
 ```bash
 gh aw compile
-git add .
+git add .github/workflows/daily-report-status.lock.yml
 git commit -m "chore: confirm lock file is current" && git push
 ```
+
+**Check:** Run `gh aw compile` and confirm you see no errors. The `.lock.yml` file should be regenerated without warnings.
 
 The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
 
@@ -127,7 +127,15 @@ Use this path for a personal repository, or when the owning organization does no
 2. Generate a fine-grained PAT with **Copilot requests: Read-only** in [github.com/settings/tokens](https://github.com/settings/tokens).
 3. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
 4. Add a new repository secret named `COPILOT_GITHUB_TOKEN` and paste the PAT value.
-5. Recompile and commit `daily-report-status.lock.yml`.
+5. Recompile and commit:
+
+```bash
+gh aw compile
+git add .github/workflows/daily-report-status.md .github/workflows/daily-report-status.lock.yml
+git commit -m "chore: configure personal billing" && git push
+```
+
+**Check:** Open **Settings** → **Secrets and variables** → **Actions** and confirm `COPILOT_GITHUB_TOKEN` appears in the repository secrets list.
 
 For the full browser walkthrough, see [Method 2 (UI-only): `COPILOT_GITHUB_TOKEN`](side-quest-06-03c-copilot-github-token-ui-only.md). If you prefer terminal setup, use [Method 2: `COPILOT_GITHUB_TOKEN` secret](side-quest-06-03b-copilot-github-token.md).
 
@@ -142,16 +150,13 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 
 ## :white_check_mark: Checkpoint
 
-- [ ] I opened Copilot CLI in the terminal and sent a test prompt
-- [ ] I received a response from the model and the `agentic-workflows` skill
-- [ ] I confirmed no access errors appeared
-- [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
-- [ ] I chose organization centralized billing or personal billing
-- [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
-- [ ] My source and compiled lock file use the selected method
-- [ ] Both workflow files are committed to `main`
-- [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
+- [ ] You ran `gh copilot` and sent the `/agentic-workflows` test prompt — you received a reply (no error)
+- [ ] You confirmed `daily-report-status.md` has no `engine:` line (Copilot is the default engine)
+- [ ] You chose one billing path — organization centralized billing or personal billing — and completed all its configuration steps
+- [ ] Your `daily-report-status.md` frontmatter matches your chosen billing path (`copilot-requests: write` present for org billing, removed for personal billing)
+- [ ] You ran `gh aw compile` and the command completed without errors
+- [ ] The updated `.lock.yml` file is committed and pushed to `main`
+- [ ] You are ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 <!-- journey: all -->
 **Next:** [Run and Watch Your Workflow](08-run-your-workflow.md)
