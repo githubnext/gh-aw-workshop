@@ -82,6 +82,12 @@ Generate an activity report for this repository and post it as a new issue.
 The **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** tells GitHub Actions when to run, what permissions the agent has, and which write action it may use (`create-issue`). The **task brief** below the second `---` is what the AI agent reads and acts on.
 
 <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/07a-workflow-file-anatomy-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/07a-workflow-file-anatomy-light.svg">
+  <img alt="Agentic workflow file anatomy: frontmatter sections (name, on, permissions, safe-outputs) and the Task body, each mapped to its runtime purpose" src="images/07a-workflow-file-anatomy-light.svg">
+</picture>
+
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07a-workflow-dispatch-trigger-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="images/07a-workflow-dispatch-trigger-light.svg">
   <img alt="How workflow_dispatch works: author the .md file, compile to a lock.yml, push to GitHub, then click Run workflow in the Actions tab to trigger the agent" src="images/07a-workflow-dispatch-trigger-light.svg">
