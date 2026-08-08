@@ -44,12 +44,7 @@ gh aw --version
 You should see output like `gh-aw version 0.81.6`.
 
 > [!NOTE]
-> <details>
-> <summary>Installing outside Codespaces</summary>
->
 > Outside of Codespaces, you can also install with `gh extension install github/gh-aw`. In org-owned Codespaces the GitHub token is scoped to the org and cannot access the extension marketplace, so the curl script is the reliable path.
->
-> </details>
 
 Need more help? See [Side Quest: Install gh-aw Troubleshooting](side-quest-06-01-install-troubleshooting.md).
 
