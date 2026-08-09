@@ -80,7 +80,7 @@ Before you mark the checkpoint, take two minutes to apply what you just read to 
 
 Put your answers in a scratch file, your editor, or wherever you keep notes. You will refer back to this comparison when you refine the workflow in the next step.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I opened the run summary and found the safe-output note
 - [ ] I verified the real GitHub output that the workflow created

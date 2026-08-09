@@ -147,7 +147,7 @@ posted to the Actions run summary.
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can name three techniques for improving a task brief
 - [ ] You have updated your daily status workflow with at least one improvement from this guide

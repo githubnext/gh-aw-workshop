@@ -106,7 +106,7 @@ You should see output confirming the file compiled without errors.
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You have an Anthropic account and have generated an API key
 - [ ] `ANTHROPIC_API_KEY` is stored as a repository secret

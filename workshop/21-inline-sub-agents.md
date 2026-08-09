@@ -111,7 +111,7 @@ git push
 
 Trigger a manual run. In the Actions log, confirm the parent agent calls your sub-agent and then uses the sub-agent result in the final summary.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You identified one repeated task in your workflow that fits a sub-agent
 - [ ] You wrote a sub-agent name and one-sentence job before editing the file

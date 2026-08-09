@@ -137,7 +137,7 @@ If a `GITHUB_TOKEN` call fails with a 403, check that the required permission is
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can add a secret to your repository via the GitHub UI
 - [ ] You know how to reference a secret with `${{ secrets.SECRET_NAME }}`

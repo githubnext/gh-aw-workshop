@@ -151,7 +151,7 @@ When the compile finishes, check that you do **not** see warnings about stripped
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I fixed one invalid sub-agent name
 - [ ] I kept only supported sub-agent frontmatter fields

@@ -141,7 +141,7 @@ No single layer is sufficient on its own. Together they make a successful exfilt
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can describe how an attacker might try to exfiltrate a token through crafted issue or PR content
 - [ ] You can list three gh-aw features that prevent token exfiltration

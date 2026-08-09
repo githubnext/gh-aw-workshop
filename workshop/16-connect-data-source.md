@@ -156,7 +156,7 @@ Once you're comfortable with this pattern, the same technique works for:
 | Failed workflow runs | `gh run list --status failure --limit 5` |
 | Repository stats | `gh api repos/:owner/:repo` |
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your workflow has a recent-commits step with `id: recent`
 - [ ] Your workflow has an open-issues step with `id: issues`

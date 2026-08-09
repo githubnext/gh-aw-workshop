@@ -69,7 +69,7 @@ Then open an administrator PowerShell and run the same command — it should suc
 ---
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You ran the practice command and saw `permission denied` (or an equivalent access-denied message) in your terminal output
 - [ ] You identified the exact file path shown in the error message

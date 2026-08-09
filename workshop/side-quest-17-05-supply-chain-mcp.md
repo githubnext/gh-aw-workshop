@@ -67,7 +67,7 @@ Adopt these habits when you work with MCP servers:
 
 gh-aw helps by making you declare `tools:` explicitly, limit [network](https://github.github.com/gh-aw/reference/network/) destinations with `network.allowed`, and narrow what the workflow can write with `permissions:` and `safe-outputs`.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can describe the MCP supply chain risk in one sentence
 - [ ] I can use the attack-surface table to spot at least one detection signal

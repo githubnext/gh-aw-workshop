@@ -120,7 +120,7 @@ permissions:
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can identify all five YAML pitfall patterns
 - [ ] Your `daily-status.md` compiles without errors after checking each section

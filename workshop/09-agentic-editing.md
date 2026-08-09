@@ -165,7 +165,7 @@ If yes, keep the change. If not, revert the change and try a different adjustmen
 
 If you want a stricter review loop, score each run for accuracy, completeness, and tone before you decide what to change next.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I identified one specific problem from a real workflow run
 - [ ] I used the `/agentic-workflows` skill (or made a manual edit) to address it

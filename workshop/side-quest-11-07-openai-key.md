@@ -123,7 +123,7 @@ You should see:
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You have an OpenAI account and have generated an API key
 - [ ] My new key is listed at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)

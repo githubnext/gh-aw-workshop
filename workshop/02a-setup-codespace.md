@@ -101,7 +101,7 @@ github.com
   ✓ Logged in to github.com as <your-username>
 ```
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You confirmed your GitHub plan includes Codespaces access (free tier includes 60 hours/month)
 - [ ] The Codespace editor is open in your browser

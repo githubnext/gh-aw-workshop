@@ -116,7 +116,7 @@ Does your answer include:
 
 Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can classify Tasks A–D as agentic, standard, or hybrid
 - [ ] You can explain what makes a workflow agentic in one sentence

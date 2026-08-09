@@ -121,7 +121,7 @@ gh extension list
 Return to [Install the gh-aw CLI Extension](06-install-gh-aw.md).
 <!-- /journey -->
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 Use this checklist to confirm the install issue is fully resolved before returning to the main path:
 

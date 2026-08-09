@@ -126,7 +126,7 @@ Open a real workflow file and find the three core building blocks — no termina
    - One `jobs:` entry — what is the job named?
    - One `steps` item — what command does it run?
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)

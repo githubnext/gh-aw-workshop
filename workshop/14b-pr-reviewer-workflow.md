@@ -154,7 +154,7 @@ For example:
 
 Run `/review` again and compare the new result with the first review. Once you have run a few variations, use the [Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md) side quest to measure the AIC impact of each change and identify the highest-value optimizations.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You created `.github/workflows/pr-reviewer.md` through your AI agent and `/agentic-workflows`
 - [ ] The workflow contains a `pr-reviewer` inline agent and a `pr-review-standards` inline skill

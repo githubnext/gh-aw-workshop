@@ -69,7 +69,7 @@ Summarize the open issues, recent pull requests, and latest workflow runs.
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You labeled the example snippet and matched all five frontmatter sections.
 - [ ] You can point to the `on:` block and explain that it controls when the workflow runs.

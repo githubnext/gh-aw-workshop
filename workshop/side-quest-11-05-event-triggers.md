@@ -136,7 +136,7 @@ The Daily Repo Status workflow in [Step 7](07-your-first-workflow.md) and the PR
 That is the core decision: pick the trigger that matches the moment you care about, then pick the write target that matches the object you want the workflow to answer.
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can explain the difference between a scheduled workflow and an event-driven workflow
 - [ ] I know starter trigger blocks for `pull_request`, `push`, `issues`, and `schedule`

@@ -123,7 +123,7 @@ git push
 
 Open the run log in **Actions**. You'll see the agent interleaving tool calls with its reasoning — it fetches data, processes it, then produces the summary. That's the agentic loop in action.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your frontmatter has a `tools:` block with `github: mode: gh-proxy`
 - [ ] Your task brief mentions what the agent should do with the tools

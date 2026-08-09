@@ -147,7 +147,7 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can explain what an MCP tool server is and what it provides to the agent
 - [ ] You understand how enabling MCP changes the agentic reasoning loop

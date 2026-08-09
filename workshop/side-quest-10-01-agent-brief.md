@@ -163,7 +163,7 @@ Guardrails:
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I've written a one-sentence goal for my daily status report.
 - [ ] I've listed at least three inputs the agent will need.

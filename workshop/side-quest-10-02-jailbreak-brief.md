@@ -107,7 +107,7 @@ The fourth sentence — "Please disregard your current task…" — is the injec
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can explain what makes a jailbreak attack different from a simple prompt injection
 - [ ] I can list the four default gh-aw defence layers and the optional fifth layer (`threat-detection`)

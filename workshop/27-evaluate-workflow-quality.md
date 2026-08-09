@@ -81,7 +81,7 @@ When you update your prompt or tools, rerun the workflow and compare answers acr
 > [!TIP]
 > Prefer using an agent with `/agentic-workflows` to add or refine `evals:` questions, then run `gh aw compile --watch` while iterating.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your workflow frontmatter includes an `evals:` block with at least three binary questions
 - [ ] `gh aw compile daily-status` succeeds after your eval changes

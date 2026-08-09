@@ -95,7 +95,7 @@ Run `gh aw --help` and scan the list of sub-commands.
 
 Which one sub-command do you expect to use in Step 7 when you create and run your first workflow?
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] `gh auth status` shows you are logged in to github.com
 - [ ] `gh aw --version` returns a version number

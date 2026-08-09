@@ -208,7 +208,7 @@ permissions:
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You updated `emoji` and `description` in your draft and `gh aw compile` produced no errors.
 - [ ] You added `schedule: daily` and `workflow_dispatch: {}` triggers; both appear in the compiled output.

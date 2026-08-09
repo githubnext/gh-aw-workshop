@@ -146,7 +146,7 @@ git push
 > [!TIP]
 > Open the run log for the second run and look for a line where the agent reads its memory. The stored issue numbers it filters against appear there — that's your workflow remembering across runs.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your workflow frontmatter has `cache-memory:` nested under `tools:`
 - [ ] Your task brief explicitly tells the agent to read and write the named memory slot
