@@ -18,6 +18,15 @@ network:
   allowed:
     - defaults
     - github
+    # Documentation domains linked from workshop markdown. Without these the
+    # egress proxy turns every request into a DNS failure and the checker
+    # reports healthy links as broken.
+    - "code.visualstudio.com"
+    - "git-scm.com"
+    - "*.anthropic.com"
+    - "openai.com"
+    - "*.openai.com"
+    - "owasp.org"
 tools:
   github:
     mode: gh-proxy
@@ -106,10 +115,26 @@ Validate each extracted link and collect only broken ones.
 2. If `HEAD` is unsupported (405/501), retry with a standard `GET` request and do not analyze response-body content.
 3. Follow redirects (3xx) and validate the final response.
 4. For `HEAD` and fallback `GET`, treat as broken when response is:
-   - network failure / DNS failure / TLS failure
    - any 4xx or 5xx status code
+   - a TLS failure
 
 Record status code or error in `reason`.
+
+#### Unreachable hosts are not broken links
+
+This workflow runs behind an egress proxy that only permits the domains listed
+under `network.allowed`. A request to any other domain fails with a DNS or
+connection error that says nothing about the health of the link.
+
+- Treat a network failure, DNS failure, connection refusal, or timeout as
+  **unverifiable**, not broken.
+- Never list an unverifiable link in the broken-links table.
+- Count unverifiable links in the summary as a single sentence, for example:
+  `12 links were not reachable from the runner sandbox and were skipped.`
+- If a domain is repeatedly unverifiable and its links are genuinely part of the
+  workshop, the fix is to add that domain to `network.allowed` in
+  `.github/workflows/workshop-link-checker.md` — say so in the summary instead of
+  reporting the links as broken.
 
 ### Internal / relative links
 
@@ -161,6 +186,9 @@ Never create one issue per link. Use one issue per run and one comment update at
 If no broken links were found, call `noop` with a concise summary:
 
 `Scanned <N> files and validated <M> links — no broken links found.`
+
+Unverifiable links never justify an issue or a comment. When the only findings
+are unreachable hosts, call `noop` and mention the count and the domains.
 
 ---
 
