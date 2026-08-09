@@ -14,7 +14,7 @@
 `gh aw audit` generates a Markdown report that covers:
 
 - **Run metadata** — workflow name, trigger, engine, and model
-- **Agent AIC** — total AI Credits consumed by the agent turn
+- **Agent AIC** — total [AI Credits](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumed by the agent turn
 - **Threat-detection AIC (⌖ AIC)** — credits consumed by the firewall's threat-detection model, reported separately from agent inference
 - **[MCP tool calls](https://github.github.com/gh-aw/guides/mcps/)** — each tool the agent invoked, with any errors
 - **Threat detection verdict** — whether prompt injection, secret leak, or malicious patch was detected
@@ -22,7 +22,7 @@
 
 ## Artifact files explained
 
-### Agent artifact
+### [Agent artifact](https://github.github.com/gh-aw/reference/artifacts/)
 
 The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh aw audit` — contains the full record of what the agent did.
 

@@ -16,7 +16,7 @@ By the end of this workshop, a real AI agent will create an issue with a summary
 </picture>
 
 You'll build a **[GitHub Agentic Workflow](https://github.github.com/gh-aw/introduction/overview/)**:
-> A GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a schedule — practical enough to adapt for real teams.
+> A GitHub Action that uses AI to inspect your repository, decide what matters, and publish a useful status report on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) — practical enough to adapt for real teams.
 
 Along the way, you'll learn how to [compile](https://github.github.com/gh-aw/reference/compilation-process/) the workflow, trigger test runs, and iterate on the prompt until the output matches your intent.
 

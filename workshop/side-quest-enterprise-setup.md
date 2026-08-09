@@ -14,7 +14,7 @@ Use this side quest if your environment differs from standard `github.com` defau
 
 ## Confirm GHES version and agentic workflow support
 
-Agentic workflows require **GHES 3.12 or later**. On earlier versions, the Copilot cloud agent feature is unavailable regardless of licensing or policy settings.
+[Agentic workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) require **GHES 3.12 or later**. On earlier versions, the Copilot cloud agent feature is unavailable regardless of licensing or policy settings.
 
 | GitHub deployment | Agentic workflows supported? |
 |---|---|
@@ -52,7 +52,7 @@ Before continuing:
 > gh auth status
 > ```
 
-## Self-hosted runner prerequisites
+## [Self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/) prerequisites
 
 If your enterprise requires [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) for [GitHub Actions](https://docs.github.com/en/actions), confirm these before you continue:
 
@@ -79,7 +79,7 @@ Before installing `gh-aw`, verify with your admin that your account and reposito
 
 - [ ] Your GHES instance is version 3.12 or later (or you are on `github.com`/GHEC)
 - [ ] You know whether Codespaces is available in your enterprise environment
-- [ ] You know whether you need a self-hosted runner and that it is ready
+- [ ] You know whether you need a [self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/) and that it is ready
 - [ ] You confirmed Copilot Enterprise and model access are enabled with your admin
 - [ ] You're ready to continue your current workshop step
 

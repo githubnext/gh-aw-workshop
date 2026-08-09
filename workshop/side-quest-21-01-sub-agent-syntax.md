@@ -41,7 +41,7 @@ Run it from GitHub Actions.
 This block has three problems:
 
 - the agent name is invalid
-- the `engine` frontmatter field does not belong in a sub-agent
+- the `engine` [frontmatter field](https://github.github.com/gh-aw/reference/frontmatter/) does not belong in a sub-agent
 - the block is in the wrong place
 
 Your job is to fix those three problems in order.
