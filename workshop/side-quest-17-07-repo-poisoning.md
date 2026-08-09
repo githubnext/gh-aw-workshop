@@ -36,7 +36,7 @@ If the workflow has `contents: write` and no file restrictions, the agent may fa
 
 ---
 
-## Why This Matters for Agentic Workflows
+## Why This Matters for [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows)
 
 Classic CI/CD runs [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) scripts. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
 

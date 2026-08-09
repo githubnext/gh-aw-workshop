@@ -2,14 +2,14 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Self-Hosted Runner Infrastructure Deep Dive
 
-> _A companion to [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md). Use this side quest when your enterprise environment requires ephemeral runners, proxy configuration, or air-gapped network isolation._
+> _A companion to [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md). Use this side quest when your enterprise environment requires [ephemeral runners](https://github.github.com/gh-aw/reference/self-hosted-runners/), proxy configuration, or air-gapped network isolation._
 
 ## :clipboard: Before You Start
 
 - You completed [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) or are actively working through it.
 - You have access to your enterprise runner infrastructure or can consult your admin.
 
-## Ephemeral and JIT runners
+## Ephemeral and [JIT runners](https://github.github.com/gh-aw/reference/self-hosted-runners/)
 
 Ephemeral runners are destroyed after a single job — each run starts on a fresh machine,
 preventing state from leaking between executions. Register one using the ephemeral flag
@@ -20,7 +20,7 @@ They require a registration token scoped to your organisation or repository and 
 managed by a runner controller such as actions-runner-controller.
 
 > [!TIP]
-> Ephemeral and JIT runners are the recommended pattern for agentic workflows in enterprise environments: they eliminate residual state and ensure each run begins in a known-clean environment.
+> Ephemeral and JIT runners are the recommended pattern for [agentic workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) in enterprise environments: they eliminate residual state and ensure each run begins in a known-clean environment.
 
 ## Proxy and network requirements
 
