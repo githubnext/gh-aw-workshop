@@ -104,7 +104,7 @@ In this example, each run is capped at 1000 AIC and the 24-hour total is capped 
 gh aw compile
 ```
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
 - [ ] You calculated an estimated monthly AIC cost for your scheduled workflow

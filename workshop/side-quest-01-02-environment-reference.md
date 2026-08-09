@@ -143,7 +143,7 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You ran `gh --version` in your terminal and it returned a version number
 - [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md), you ran `gh aw --version` in your terminal and it returned a version number

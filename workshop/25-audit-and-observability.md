@@ -90,7 +90,7 @@ GitHub retains artifacts for **90 days** by default. Ask your GitHub administrat
 > [!NOTE]
 > Retention defaults may differ on GitHub Enterprise Server. Check with your admin before relying on the default 90-day window.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You ran `gh aw logs <your-workflow-id>` and read the AIC summary for your workflow
 - [ ] You ran `gh aw audit <run-id>` and reviewed the generated report

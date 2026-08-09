@@ -40,7 +40,7 @@ Pattern: **Long `[plan]` chain with no `[tool]` call**. Fix by adding an explici
 </details>
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can recognize a planning loop from log lines alone
 - [ ] I can explain why ambiguous goals create delayed tool use

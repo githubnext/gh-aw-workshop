@@ -106,7 +106,7 @@ The `${{ ... }}` expression is resolved by GitHub Actions **before** the body is
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can explain why `export` does not pass values between steps
 - [ ] You can write a single-line value to `$GITHUB_OUTPUT`

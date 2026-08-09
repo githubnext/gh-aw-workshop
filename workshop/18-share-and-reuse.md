@@ -84,7 +84,7 @@ This hint saves teammates guesswork when they first open the file.
 > [!NOTE]
 > The recipient still needs to compile the workflow (`gh aw compile`) and push it before GitHub Actions will run it. Remind your team of that step.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your workflow `.md` file is committed and pushed to a GitHub repository
 - [ ] You can construct the `gh aw add` command for your workflow

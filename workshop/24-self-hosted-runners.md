@@ -112,7 +112,7 @@ git push
   <img alt="Runner name shown in the Actions job summary" src="images/24-self-hosted-runner-job-light.svg">
 </picture>
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your workflow's `runs-on:` value matches the label of your self-hosted runner
 - [ ] `gh aw compile` (if used) completed without errors

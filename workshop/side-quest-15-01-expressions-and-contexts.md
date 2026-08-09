@@ -166,7 +166,7 @@ if: steps.recent.outputs.commit_count != '0' && steps.day.outputs.day != 'Saturd
 
 This pattern — deterministic shell step produces a string output, `if:` expression reads that output — applies broadly wherever you need workflow control flow based on data that is not already in a GitHub Actions context object.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You can explain what `${{ }}` does and when GitHub evaluates it
 - [ ] You can name at least three context objects and what they contain

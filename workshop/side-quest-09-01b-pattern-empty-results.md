@@ -39,7 +39,7 @@ Pattern: **`[tool]` call returns empty results**. Check required read [permissio
 </details>
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can distinguish an empty result from a failed tool call
 - [ ] I can verify required read scopes in `permissions:`

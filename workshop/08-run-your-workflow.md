@@ -96,7 +96,7 @@ You do not need to decode every line yet. For now, just confirm that the workflo
 
 Wait for the run to turn green with a :white_check_mark:. Then open the **Issues** tab in your repository and confirm that the agent updated an issue or created a new one.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] The **Daily Report Status** workflow appears in the **Actions** tab
 - [ ] I triggered a manual run from the GitHub UI

@@ -147,7 +147,7 @@ After enough runs (10+ per variant reduces variation), compare usefulness and to
 > [!TIP]
 > Keep the experiment running until your target sample size. Removing `experiments:` early resets counts.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] Your workflow frontmatter has an `experiments:` block with at least two variants
 - [ ] Your task brief uses `{{#if experiments.<name> }}` blocks to swap instructions (the active variant is available as `${{ experiments.<name> }}`)

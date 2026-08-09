@@ -25,7 +25,7 @@ You will diagnose five common output patterns one at a time. Each micro-step inc
 Need a reusable triage flow after the pattern drills? Open the [Debugging Checklist](side-quest-09-01f-debugging-checklist.md).
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can choose the right micro-step from the pattern table
 - [ ] I can use the exercise format to identify each pattern before checking the answer

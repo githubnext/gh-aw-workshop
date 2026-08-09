@@ -88,7 +88,7 @@ Ideas:
 
 Update the checklist in the workflow brief, recompile, and open a fresh PR to verify the new criterion appears in the table.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I created `.github/workflows/pr-checklist.md` with a `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed

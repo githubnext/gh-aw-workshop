@@ -83,7 +83,7 @@ git push
 
 The compile updates the [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) so it uses the token-based method.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You generated a fine-grained PAT with **Copilot requests: Read-only** under **Account permissions**
 - [ ] `COPILOT_GITHUB_TOKEN` exists in your repository's Actions secrets

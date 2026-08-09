@@ -146,7 +146,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 | Organization centralized billing | Present | None |
 | Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I opened Copilot CLI in the terminal and sent a test prompt
 - [ ] I received a response from the model and the `agentic-workflows` skill

@@ -48,7 +48,7 @@ If you hit an HTTP 403 install error in an org-owned Codespace, use
 Go back to [Install the `gh-aw` CLI Extension](06-install-gh-aw.md), then continue to [Step 7](07-your-first-workflow.md).
 <!-- /journey -->
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You opened a Codespace from the browser
 - [ ] `gh auth status` confirms you're logged in

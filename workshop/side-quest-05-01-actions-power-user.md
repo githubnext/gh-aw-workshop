@@ -120,7 +120,7 @@ For platform engineers and DevOps teams evaluating adoption, agentic workflows c
 - Compatible with existing runner fleet investments and compliance requirements
 
 <!-- journey: all -->
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can explain the mental model shift from scripted steps to goal-oriented execution
 - [ ] I can identify what changes in agentic workflows and what stays the same from classic Actions

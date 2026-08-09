@@ -92,7 +92,7 @@ safe-outputs:
 
 ---
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I changed `emoji:`, ran `gh aw list`, and saw the update reflected
 - [ ] I removed `safe-outputs:`, observed the compile error, then restored it and confirmed the error was gone

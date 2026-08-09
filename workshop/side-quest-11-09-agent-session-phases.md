@@ -58,7 +58,7 @@ gh aw compile --watch
 
 Each save triggers another compile, so you get immediate feedback instead of discovering YAML mistakes later. See [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md) for a full walkthrough.
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] I can name the five phases of an agent session in order
 - [ ] I know what a successful Compiling phase looks like (green success message, `.lock.yml` generated)

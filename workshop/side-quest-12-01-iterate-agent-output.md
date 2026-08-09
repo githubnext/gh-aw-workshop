@@ -104,7 +104,7 @@ Quick run-log check:
 
 </details>
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You triggered a fresh workflow run and captured one real output to review
 - [ ] You recorded a baseline score for accuracy, completeness, and tone

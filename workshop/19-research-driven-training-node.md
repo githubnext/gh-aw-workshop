@@ -73,7 +73,7 @@ npx --yes markdownlint-cli2 "workshop/**/*.md"
 gh aw compile
 ```
 
-## :white_check_mark: Checkpoint
+## ✅ Checkpoint
 
 - [ ] You reviewed current gh-aw direction signals from `LLMs.txt`
 - [ ] You identified one concrete learner gap for a new training node
