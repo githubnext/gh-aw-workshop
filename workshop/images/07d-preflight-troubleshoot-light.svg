@@ -55,7 +55,7 @@
   <line x1="474" y1="228" x2="320" y2="228" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
   <text x="397" y="220" text-anchor="middle"
         font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
-        font-size="14" font-weight="700" fill="#08872b">YES</text>
+        font-size="14" font-weight="700" fill="#087f2b">YES</text>
 
   <!-- NO label + arrow RIGHT -->
   <line x1="726" y1="228" x2="880" y2="228" stroke="#909692" stroke-width="2" marker-end="url(#arrow)"/>
@@ -79,7 +79,7 @@
   <line x1="210" y1="350" x2="210" y2="390" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
   <text x="234" y="376" text-anchor="start"
         font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
-        font-size="13" font-weight="700" fill="#08872b">YES</text>
+        font-size="13" font-weight="700" fill="#087f2b">YES</text>
 
   <rect x="88" y="392" width="244" height="64" rx="8"
         fill="#ffffff" stroke="#08872b" stroke-width="2"
@@ -148,7 +148,7 @@
   <line x1="780" y1="228" x2="726" y2="228" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
   <text x="820" y="416" text-anchor="end"
         font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
-        font-size="13" font-weight="700" fill="#08872b">NO → Retry</text>
+        font-size="13" font-weight="700" fill="#087f2b">NO → Retry</text>
 
   <!-- YES → Side Quest box (right) -->
   <line x1="1066" y1="424" x2="1120" y2="424" stroke="#909692" stroke-width="2"/>
@@ -171,5 +171,5 @@
   <!-- Bottom caption -->
   <text x="600" y="548" text-anchor="middle"
         font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
-        font-size="13" fill="#909692">Follow this tree each time you see a model-access error before Step 8</text>
+        font-size="13" fill="#6b706c">Follow this tree each time you see a model-access error before Step 8</text>
 </svg>
