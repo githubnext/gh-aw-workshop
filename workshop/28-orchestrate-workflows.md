@@ -166,5 +166,7 @@ Each iteration follows the same loop: edit the brief, compile, push, run, inspec
 - [ ] You can explain why `max: 1` in the `dispatch-workflow` block keeps orchestrator behavior predictable
 
 <!-- journey: all -->
-Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
+**Next:** [Govern Agentic Workflows Across Your Organization](29-govern-agentic-workflows.md)
+
+Want to explore another area instead? Return to [What's Next? Keep Exploring](14-next-steps.md).
 <!-- /journey -->
