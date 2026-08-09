@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img"
+     aria-label="Pre-flight troubleshooting decision tree: send a test prompt, then follow YES or NO branches to either continue the workshop or fix model access"
+     data-visual-kind="diagram"
+     data-visual-id="07d-preflight-troubleshoot">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#909692"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#08872b"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#b6bfb8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title bar -->
+  <text x="600" y="34" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="18" font-weight="700" fill="#101411">Pre-flight Troubleshooting Decision Tree</text>
+  <text x="600" y="54" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="14" font-weight="400" fill="#232925">Confirm Copilot model access before choosing a billing path</text>
+
+  <!-- ── START NODE ── -->
+  <rect x="430" y="76" width="340" height="56" rx="28"
+        fill="#ffffff" stroke="#b6bfb8" stroke-width="2"
+        data-node="start"/>
+  <text x="600" y="99" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="16" font-weight="600" fill="#101411">Send test prompt in Copilot CLI</text>
+  <text x="600" y="120" text-anchor="middle"
+        font-family="'Mona Sans Mono', ui-monospace, monospace"
+        font-size="13" fill="#232925">gh copilot → /agentic-workflows …</text>
+
+  <!-- Arrow down from start -->
+  <line x1="600" y1="132" x2="600" y2="164" stroke="#909692" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ── DECISION DIAMOND: Got a reply? ── -->
+  <polygon points="600,166 726,228 600,290 474,228"
+           fill="#ffffff" stroke="#b6bfb8" stroke-width="2"
+           data-node="decision-reply"/>
+  <text x="600" y="222" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="16" font-weight="700" fill="#101411">Got a reply?</text>
+  <text x="600" y="242" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">Any response = access OK</text>
+
+  <!-- YES label + arrow LEFT -->
+  <line x1="474" y1="228" x2="320" y2="228" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="397" y="220" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="14" font-weight="700" fill="#08872b">YES</text>
+
+  <!-- NO label + arrow RIGHT -->
+  <line x1="726" y1="228" x2="880" y2="228" stroke="#909692" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="803" y="220" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="14" font-weight="700" fill="#232925">NO</text>
+
+  <!-- ══ YES BRANCH ══════════════════════════════════════════════ -->
+  <!-- Sub-decision: from step 07 error check? -->
+  <polygon points="210,230 322,290 210,350 98,290"
+           fill="#ffffff" stroke="#b6bfb8" stroke-width="2"
+           data-node="decision-entrypoint"/>
+  <text x="210" y="284" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="600" fill="#101411">From step 07</text>
+  <text x="210" y="302" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="600" fill="#101411">error check?</text>
+
+  <!-- YES → Return to Step 7 (down-left) -->
+  <line x1="210" y1="350" x2="210" y2="390" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="234" y="376" text-anchor="start"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="700" fill="#08872b">YES</text>
+
+  <rect x="88" y="392" width="244" height="64" rx="8"
+        fill="#ffffff" stroke="#08872b" stroke-width="2"
+        data-node="return-step7"/>
+  <!-- Green accent bar -->
+  <rect x="88" y="392" width="6" height="64" rx="4" fill="#08872b"/>
+  <text x="216" y="418" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#08872b">Return to Step 7</text>
+  <text x="216" y="440" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">Write Your First Workflow</text>
+
+  <!-- NO → Continue to billing (right from diamond) -->
+  <line x1="322" y1="290" x2="390" y2="290" stroke="#909692" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="356" y="282" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="700" fill="#232925">NO</text>
+  <line x1="430" y1="290" x2="430" y2="392" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <!-- Elbow: line right from 390,290 to 430,290, then down -->
+  <line x1="390" y1="290" x2="430" y2="290" stroke="#909692" stroke-width="2"/>
+
+  <rect x="338" y="392" width="252" height="64" rx="8"
+        fill="#ffffff" stroke="#08872b" stroke-width="2"
+        data-node="continue-billing"/>
+  <rect x="338" y="392" width="6" height="64" rx="4" fill="#08872b"/>
+  <text x="466" y="418" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="700" fill="#08872b">Continue</text>
+  <text x="466" y="440" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">Choose Copilot billing path</text>
+
+  <!-- ══ NO BRANCH ══════════════════════════════════════════════ -->
+  <!-- Check settings box -->
+  <rect x="816" y="260" width="276" height="64" rx="8"
+        fill="#ffffff" stroke="#b6bfb8" stroke-width="2"
+        data-node="check-settings"/>
+  <text x="954" y="286" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="600" fill="#101411">Check account settings</text>
+  <text x="954" y="308" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">github.com/settings/copilot</text>
+
+  <!-- Arrow down from check settings -->
+  <line x1="954" y1="324" x2="954" y2="374" stroke="#909692" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="978" y="356" text-anchor="start"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">Retry prompt</text>
+
+  <!-- Sub-decision: still failing? -->
+  <polygon points="954,376 1066,424 954,472 842,424"
+           fill="#ffffff" stroke="#b6bfb8" stroke-width="2"
+           data-node="decision-still-failing"/>
+  <text x="954" y="420" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="14" font-weight="600" fill="#101411">Still failing?</text>
+  <text x="954" y="440" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">after account check</text>
+
+  <!-- NO (resolved) arrow left/up — loop label only -->
+  <line x1="842" y1="424" x2="780" y2="424" stroke="#08872b" stroke-width="2"/>
+  <line x1="780" y1="424" x2="780" y2="228" stroke="#08872b" stroke-width="2"/>
+  <line x1="780" y1="228" x2="726" y2="228" stroke="#08872b" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="820" y="416" text-anchor="end"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="700" fill="#08872b">NO → Retry</text>
+
+  <!-- YES → Side Quest box (right) -->
+  <line x1="1066" y1="424" x2="1120" y2="424" stroke="#909692" stroke-width="2"/>
+  <line x1="1120" y1="424" x2="1120" y2="480" stroke="#909692" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1093" y="416" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" font-weight="700" fill="#232925">YES</text>
+
+  <rect x="816" y="482" width="276" height="56" rx="8"
+        fill="#ffffff" stroke="#b6bfb8" stroke-width="2"
+        data-node="side-quest"/>
+  <rect x="816" y="482" width="6" height="56" rx="4" fill="#b6bfb8"/>
+  <text x="956" y="508" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="15" font-weight="600" fill="#101411">Visit Side Quest</text>
+  <text x="956" y="528" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#232925">Configure GitHub Copilot</text>
+
+  <!-- Bottom caption -->
+  <text x="600" y="548" text-anchor="middle"
+        font-family="'Mona Sans', ui-sans-serif, system-ui, sans-serif"
+        font-size="13" fill="#909692">Follow this tree each time you see a model-access error before Step 8</text>
+</svg>

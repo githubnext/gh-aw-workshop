@@ -50,6 +50,12 @@ Use this quick check before you choose a billing path:
 - **You still cannot get a reply after account checks**
   - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/07d-preflight-troubleshoot-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/07d-preflight-troubleshoot-light.svg">
+  <img alt="Pre-flight troubleshooting decision tree: send a test prompt, then follow YES or NO branches to either continue the workshop or fix model access" src="images/07d-preflight-troubleshoot-light.svg">
+</picture>
+
 ## Confirm the workflow engine
 
 Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
