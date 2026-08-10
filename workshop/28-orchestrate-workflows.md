@@ -129,7 +129,7 @@ The `workflows` list is an allowlist — your orchestrator can only dispatch wor
 
 ```bash
 gh aw compile repo-orchestrator
-git add .github/workflows/repo-orchestrator.md .github/workflows/repo-orchestrator.lock.yml
+git add .
 git commit -m "feat: add repo-orchestrator workflow"
 git push
 ```
