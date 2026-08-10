@@ -14,17 +14,17 @@ Letting an AI agent act on your repository on a [schedule](https://github.github
   <img alt="Animated GitHub Actions run showing four security jobs: activation validates the agent is authorized to run, agent runs with sandbox, firewall, and integrity filter enabled, detection scans for malicious code, and safe-outputs applies changes within guardrails" src="images/05-agent-run-log-light.svg">
 </picture>
 
-## Safe by design: sandbox + guardrailed outputs
+## Safe by design: [sandbox](https://github.github.com/gh-aw/reference/sandbox/) + guardrailed outputs
 
 - **A [sandbox](https://github.github.com/gh-aw/reference/sandbox/) around the agent.** The agent runs isolated inside the [Agent Workflow Firewall](https://github.github.com/gh-aw/reference/sandbox/), with **read-only** access to your repo and [network egress](https://github.github.com/gh-aw/reference/network/) limited to the domains you allow. Even if a [prompt injection](https://github.github.com/gh-aw/reference/threat-detection/) or a compromised tool tries to reach out or exfiltrate data, the firewall blocks anything outside the allowlist.
-- **A guardrailed [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) system for writes.** The agent never holds write permissions. Instead, it emits a *structured request* — "create this issue," "post this comment" — and a separate, permission-scoped job validates and executes it, applying per-operation limits (max counts, label and title constraints, allowed repos). That separation gives you least privilege, defense against prompt injection, and a full audit trail of every action.
+- **A guardrailed [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) system for writes.** The agent never holds write permissions. Instead, it emits a *structured request* — "create this issue," "post this comment" — and a separate, permission-scoped job validates and executes it, applying per-operation limits (max counts, label and title constraints, allowed repos). That separation gives you least privilege, defense against [prompt injection](https://github.github.com/gh-aw/reference/threat-detection/), and a full audit trail of every action.
 
 The security jobs in the run log above map to these boundaries: **activation** checks the agent is authorized to run, the **agent** runs sandboxed behind the firewall, **detection** scans for malicious behavior, and **safe-outputs** applies changes within the guardrails.
 
 <details>
 <summary>Why can't the agent just write to the repo directly?</summary>
 
-Direct write access would make every prompt injection a potential supply-chain attack. By keeping the agent read-only and routing all changes through the safe-output system, a malicious instruction the agent picks up from issue text or a fetched page can, at worst, produce a *request* that the guardrails then reject or cap — it can never silently push code, leak secrets, or open unlimited pull requests.
+Direct write access would make every prompt injection a potential supply-chain attack. By keeping the agent read-only and routing all changes through the [safe-output system](https://github.github.com/gh-aw/reference/safe-outputs/), a malicious instruction the agent picks up from issue text or a fetched page can, at worst, produce a *request* that the guardrails then reject or cap — it can never silently push code, leak secrets, or open unlimited pull requests.
 
 </details>
 
@@ -67,7 +67,7 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 - [ ] I can describe what the sandbox does and why it matters for automation safety
 - [ ] I can explain how the safe-output system prevents the agent from writing to the repo directly
 - [ ] I can identify whether the sandbox or the safe-output system is the primary defence for a given scenario
-- [ ] I can explain how the two-layer model makes agentic workflows safe to run on a schedule
+- [ ] I can explain how the two-layer model makes agentic workflows safe to run on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule)
 
 <!-- journey: all -->
 **Next:** [Practice: Recognize Agentic Workflows](05c-agentic-workflows-practice.md)

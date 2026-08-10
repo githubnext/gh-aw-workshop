@@ -117,7 +117,7 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 - [ ] `gh aw compile` exits with no errors and produces `daily-report-status.lock.yml`
 - [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed to `main`
 - [ ] The workflow appears in the **Actions** tab of your repository under "Daily Report Status"
-- [ ] You are ready to choose the workflow's billing and authentication method
+- [ ] You are ready to choose the workflow's [billing](https://github.github.com/gh-aw/reference/billing/) and [authentication](https://github.github.com/gh-aw/reference/auth/) method
 
 <!-- journey: all -->
 **Next:** [Confirm Model Access](07d-confirm-model-access.md)

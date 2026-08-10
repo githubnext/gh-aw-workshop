@@ -31,7 +31,7 @@ git add .
 git commit -m "chore: sync lock file" && git push
 ```
 
-**Billing configuration matches the lock file.** Open `daily-report-status.lock.yml` (or `daily-report-status.md`) and confirm the `permissions:` block matches the billing path you chose in Step 7d:
+**[Billing](https://github.github.com/gh-aw/reference/billing/) configuration matches the lock file.** Open `daily-report-status.lock.yml` (or `daily-report-status.md`) and confirm the `permissions:` block matches the billing path you chose in Step 7d:
 
 | Billing path | `copilot-requests: write` present |
 |---|---|
@@ -64,7 +64,7 @@ Open your practice repository in GitHub and click **Actions** in the top navigat
 
 Click **Run workflow**, keep the default branch selected, and click the green **Run workflow** button. If **Daily Report Status** is missing, refresh the page, confirm both workflow files are on `main`, and run `gh aw compile` in your prepared terminal to check for compile errors.
 
-If the run fails immediately with a model-access or authentication error, return to [Step 7d](07d-confirm-model-access.md) and confirm the selected billing method matches the workflow.
+If the run fails immediately with a model-access or [authentication](https://github.github.com/gh-aw/reference/auth/) error, return to [Step 7d](07d-confirm-model-access.md) and confirm the selected billing method matches the workflow.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/08-run-workflow-button-dark.svg">

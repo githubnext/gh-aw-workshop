@@ -15,7 +15,7 @@ You'll verify Copilot model access with a quick test that uses the `agentic-work
 
 ## Verify model access with a test prompt
 
-Before configuring billing, confirm Copilot is reachable from this repository.
+Before configuring [billing](https://github.github.com/gh-aw/reference/billing/), confirm Copilot is reachable from this repository.
 Catching an access problem here saves debugging time in the billing steps and in Step 8.
 
 1. In the terminal that is already open in your Codespace, run:
@@ -56,7 +56,7 @@ Use this quick check before you choose a billing path:
   <img alt="Pre-flight troubleshooting decision tree: send a test prompt, then follow YES or NO branches to either continue the workshop or fix model access" src="images/07d-preflight-troubleshoot-light.svg">
 </picture>
 
-## Confirm the workflow engine
+## Confirm the workflow [engine](https://github.github.com/gh-aw/reference/engines/)
 
 Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
 

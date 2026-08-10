@@ -121,7 +121,7 @@ Recompile and push the change.
 
 ## Optimize: reduce token usage
 
-Once the workflow produces correct output, you can reduce how much [AI Credit](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) it uses per run. This matters especially for workflows that run on a schedule.
+Once the workflow produces correct output, you can reduce how much [AI Credit](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) it uses per run. This matters especially for workflows that run on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
 In your Codespace terminal, run `gh copilot`, then paste:
 
