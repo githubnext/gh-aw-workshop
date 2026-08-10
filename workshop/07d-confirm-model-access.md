@@ -6,157 +6,82 @@
 
 This step has two entry points:
 
-- **Arriving from the step 07 access check (error recovery):** You have completed [Install the gh-aw CLI Extension](06-install-gh-aw.md) and pushed `.github/skills/agentic-workflows/`. Workflow files do not need to exist yet — fix model access first, then return to [Write Your First Agentic Workflow](07-your-first-workflow.md) to continue.
-- **Arriving as the next step after step 07 (normal flow):** `daily-report-status.md` and `daily-report-status.lock.yml` are committed to your practice repository.
+- **Error recovery (from step 07 access check):** You have completed [Install the gh-aw CLI Extension](06-install-gh-aw.md). Fix model access first, then return to [Write Your First Agentic Workflow](07-your-first-workflow.md).
+- **Normal flow (after step 07):** `daily-report-status.md` and `daily-report-status.lock.yml` are committed to your practice repository.
 
 ## :dart: What You'll Do
 
-You'll verify Copilot model access with a quick test that uses the `agentic-workflows` skill, then choose the [billing](https://github.github.com/gh-aw/reference/billing/) and [authentication](https://github.github.com/gh-aw/reference/auth/) method for the first workflow, configure it, and confirm the source and lock files agree before you continue to [Step 8](08-run-your-workflow.md).
+Verify Copilot model access with a quick test, configure billing for your first workflow, then run a dry-run check before continuing to [Step 8](08-run-your-workflow.md).
 
-## Verify model access with a test prompt
+## Verify model access
 
-Before configuring billing, confirm Copilot is reachable from this repository.
-Catching an access problem here saves debugging time in the billing steps and in Step 8.
-
-1. In the terminal that is already open in your Codespace, run:
+1. In the terminal open in your Codespace, run:
 
 ```bash
 gh copilot
 ```
 
-1. Send the following prompt in Copilot CLI:
+1. Send this prompt:
 
 ```prompt
 /agentic-workflows what trigger does a scheduled workflow use?
 ```
 
-1. Confirm you receive a reply. Any response means the model and skill are accessible.
-2. If you see an error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled on your account, then return here.
+1. Any response confirms the model and skill are accessible.
 
 > [!IMPORTANT]
-> Do not continue if you received an error instead of a response. Fix the access issue now — model-access errors will cause Step 8 to fail and are much harder to diagnose mid-run. Check [github.com/settings/copilot](https://github.com/settings/copilot) first, then see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md) if the problem persists.
+> If you see an access error, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled, then see [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md) if the problem persists. Do not continue until you receive a response.
 
-## Pre-flight troubleshooting decision tree
+## Choose a billing path
 
-Use this quick check before you choose a billing path:
+The Step 7 workflow uses GitHub Copilot (no `engine:` line needed). Pick exactly one billing path:
 
-- **You receive a normal reply in Copilot CLI**
-  - If you arrived here from the step 07 access check (before creating workflow files), return to [Write Your First Agentic Workflow](07-your-first-workflow.md) and continue from where you left off.
-  - Otherwise, continue to **Choose one Copilot billing path**.
-- **You receive an access or entitlement error**
-  - Confirm Copilot is enabled for your account at [github.com/settings/copilot](https://github.com/settings/copilot).
-  - If your repository is in an organization, ask your org admin to confirm your Copilot seat and policy access.
-  - Retry the same one-sentence prompt in Copilot CLI.
-- **You still cannot get a reply after account checks**
-  - Pause here and complete [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return to this step.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/07d-preflight-troubleshoot-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/07d-preflight-troubleshoot-light.svg">
-  <img alt="Pre-flight troubleshooting decision tree: send a test prompt, then follow YES or NO branches to either continue the workshop or fix model access" src="images/07d-preflight-troubleshoot-light.svg">
-</picture>
-
-## Confirm the workflow engine
-
-Open `.github/workflows/daily-report-status.md`. The Step 7 workflow has no `engine:` line, so it uses GitHub Copilot.
-
-Claude and Codex are optional [engines](https://github.github.com/gh-aw/reference/engines/) introduced in later side quests. You do not need an Anthropic or OpenAI API key for this first run.
-
-If you are working in Claude Code or OpenAI Codex, keep this first workflow on Copilot and switch later if you want:
-
-- **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
-- **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
-
-## Choose one Copilot billing path
-
-Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
-
-<details>
-<summary><b>Plain-language billing summary</b></summary>
-
-- **Choose organization centralized billing** when the repository's organization already pays for Copilot in GitHub Actions. Keep `copilot-requests: write`. Do not add a `COPILOT_GITHUB_TOKEN` secret.
-- **Choose personal billing** when this is your personal repository, or when the organization does not pay for Copilot in GitHub Actions. Remove `copilot-requests: write`, then add a `COPILOT_GITHUB_TOKEN` secret in the repository's **Settings** → **Secrets and variables** → **Actions** page.
-- **If you are not sure which path applies, ask one question:** "Is centralized Copilot billing for GitHub Actions enabled for this repository?" If the answer is "no" or "I don't know," follow the personal billing path until an admin confirms otherwise.
-
-</details>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/07d-billing-path-decision-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/07d-billing-path-decision-light.svg">
-  <img alt="Decision flow for choosing Copilot billing path: organization centralized billing or personal billing" src="images/07d-billing-path-decision-light.svg">
-</picture>
-
-### Billing quick-reference
-
-Use this table first, then follow the detailed steps for your selected path below.
-
-| If this is true | Choose this path | Key setting |
+| Situation | Path | Key change |
 |---|---|---|
-| Your organization provides centralized Copilot billing for Actions | **Organization with centralized Copilot billing** | Keep `copilot-requests: write`; no `COPILOT_GITHUB_TOKEN` secret |
-| You are in a personal repo, or your org does not provide centralized billing | **Personal billing** | Remove `copilot-requests: write`; configure `COPILOT_GITHUB_TOKEN` |
+| Organization provides centralized Copilot billing for Actions | **Org billing** | Keep `copilot-requests: write`; no secret needed |
+| Personal repo, or org without centralized billing | **Personal billing** | Remove `copilot-requests: write`; add `COPILOT_GITHUB_TOKEN` secret |
 
-### Organization with centralized Copilot billing
+### Org billing
 
-Use this path when the organization that owns the repository has centralized Copilot billing enabled for Actions.
-
-1. Ask your organization administrator to confirm centralized billing is enabled.
-2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
-
-```markdown .github/workflows/daily-report-status.md
----
-permissions:
-  contents: read
-  copilot-requests: write
----
-```
-
-   This line is already present in the workflow template. Do not remove it.
-3. No repository secret is needed for this path.
-4. Recompile and commit the lock file from your terminal so it reflects the confirmed configuration:
+1. Ask your org admin to confirm centralized Copilot billing is enabled for Actions.
+2. Confirm `daily-report-status.md` includes `copilot-requests: write` in the `permissions:` block. It is already present — do not remove it.
+3. Recompile and push:
 
 ```bash
-gh aw compile
-git add .
-git commit -m "chore: confirm lock file is current" && git push
+gh aw compile && git add . && git commit -m "chore: confirm lock file is current" && git push
 ```
 
-The workflow uses the organization subscription. If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md) for troubleshooting.
+If you see `401 Unauthorized` later, see [Method 1: Copilot Requests Permission](side-quest-06-03a-copilot-requests-permission.md).
 
 ### Personal billing
 
-Use this path for a personal repository, or when the owning organization does not provide centralized Copilot billing.
-
-> [!IMPORTANT]
-> When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission before you set up the secret, then recompile.
-
 1. Remove `copilot-requests: write` from `daily-report-status.md`.
-2. Generate a fine-grained PAT with **Copilot requests: Read-only** in [github.com/settings/tokens](https://github.com/settings/tokens).
-3. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
-4. Add a new repository secret named `COPILOT_GITHUB_TOKEN` and paste the PAT value.
-5. Recompile and commit `daily-report-status.lock.yml`.
+2. Generate a fine-grained PAT with **Copilot requests: Read-only** at [github.com/settings/tokens](https://github.com/settings/tokens).
+3. Add a repository secret named `COPILOT_GITHUB_TOKEN` under **Settings → Secrets and variables → Actions**.
+4. Recompile and push:
 
-For the full browser walkthrough, see [Method 2 (UI-only): `COPILOT_GITHUB_TOKEN`](side-quest-06-03c-copilot-github-token-ui-only.md). If you prefer terminal setup, use [Method 2: `COPILOT_GITHUB_TOKEN` secret](side-quest-06-03b-copilot-github-token.md).
+```bash
+gh aw compile && git add . && git commit -m "chore: configure personal billing" && git push
+```
 
-## Check the final configuration
+For a guided walkthrough, see [Side Quest: Configure GitHub Copilot Authentication](side-quest-06-03-copilot-token.md).
 
-Open `daily-report-status.md` and confirm it matches the method you selected:
+## Verify the configuration with a dry run
 
-| Billing path | `copilot-requests: write` | Required secret |
-|---|---|---|
-| Organization centralized billing | Present | None |
-| Personal billing | Removed | `COPILOT_GITHUB_TOKEN` |
+Run a quick dry run to confirm your billing configuration compiles correctly before Step 8:
+
+```bash
+gh aw run --dry-run .github/workflows/daily-report-status.md
+```
+
+Confirm the command completes without errors. If it reports missing permissions or an unrecognized secret reference, recheck the billing path steps above.
 
 ## ✅ Checkpoint
 
-- [ ] I opened Copilot CLI in the terminal and sent a test prompt
-- [ ] I received a response from the model and the `agentic-workflows` skill
-- [ ] I confirmed no access errors appeared
-- [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
-- [ ] I chose organization centralized billing or personal billing
-- [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
-- [ ] My source and compiled lock file use the selected method
-- [ ] Both workflow files are committed to `main`
+- [ ] I sent a test prompt in Copilot CLI and received a response
+- [ ] I chose organization or personal billing and completed its configuration steps
+- [ ] `daily-report-status.md` and its lock file are committed to `main`
+- [ ] `gh aw run --dry-run` completed without errors
 - [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)
 
 <!-- journey: all -->
