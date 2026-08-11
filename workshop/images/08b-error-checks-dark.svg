@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560"
+  role="img"
+  aria-label="Three quick checks for a failed workflow run: check if the workflow appears in Actions, then if the log shows useful action, then if anything changed in GitHub"
+  data-visual-kind="diagram"
+  data-visual-id="08b-error-checks">
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#909692"/>
+    </marker>
+    <marker id="arr-ok" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fed83"/>
+    </marker>
+    <marker id="arr-warn" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d4a72c"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Card -->
+  <rect x="40" y="32" width="1120" height="496" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="600" y="72" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="600" fill="#f2f5f3" text-anchor="middle">Three Quick Checks for a Failing Run</text>
+  <text x="600" y="96" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8" text-anchor="middle">Start here before editing your workflow</text>
+
+  <!-- ── START node ── -->
+  <rect x="498" y="120" width="204" height="52" rx="26" fill="#f2f5f3" stroke="#f2f5f3" stroke-width="1" data-node="start"/>
+  <text x="600" y="151" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#101411" text-anchor="middle">Run doesn't look right</text>
+
+  <!-- arrow start → check1 -->
+  <line x1="600" y1="172" x2="600" y2="208" stroke="#909692" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── Check 1 ── -->
+  <rect x="398" y="208" width="404" height="64" rx="10" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="check1"/>
+  <circle cx="430" cy="240" r="14" fill="#f2f5f3"/>
+  <text x="430" y="245" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411" text-anchor="middle">1</text>
+  <text x="614" y="236" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#f2f5f3" text-anchor="middle">Workflow appears in Actions?</text>
+  <text x="614" y="256" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Check workflow is committed on main</text>
+
+  <!-- check1 YES → check2 -->
+  <line x1="600" y1="272" x2="600" y2="312" stroke="#5fed83" stroke-width="2" marker-end="url(#arr-ok)"/>
+  <text x="613" y="295" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#5fed83">Yes</text>
+
+  <!-- check1 NO → fix1 -->
+  <line x1="398" y1="240" x2="288" y2="240" stroke="#d4a72c" stroke-width="2" marker-end="url(#arr-warn)"/>
+  <text x="326" y="232" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#d4a72c" text-anchor="middle">No</text>
+  <rect x="104" y="208" width="184" height="64" rx="10" fill="#2d2200" stroke="#d4a72c" stroke-width="1.5" data-node="fix1"/>
+  <text x="196" y="234" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#d4a72c" text-anchor="middle">Commit file to main</text>
+  <text x="196" y="254" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Run: gh aw compile</text>
+
+  <!-- ── Check 2 ── -->
+  <rect x="398" y="312" width="404" height="64" rx="10" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="check2"/>
+  <circle cx="430" cy="344" r="14" fill="#f2f5f3"/>
+  <text x="430" y="349" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411" text-anchor="middle">2</text>
+  <text x="614" y="340" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#f2f5f3" text-anchor="middle">Log shows useful tool calls?</text>
+  <text x="614" y="360" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Thinking but no actions = vague brief</text>
+
+  <!-- check2 YES → check3 -->
+  <line x1="600" y1="376" x2="600" y2="416" stroke="#5fed83" stroke-width="2" marker-end="url(#arr-ok)"/>
+  <text x="613" y="399" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#5fed83">Yes</text>
+
+  <!-- check2 NO → fix2 -->
+  <line x1="398" y1="344" x2="288" y2="344" stroke="#d4a72c" stroke-width="2" marker-end="url(#arr-warn)"/>
+  <text x="326" y="336" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#d4a72c" text-anchor="middle">No</text>
+  <rect x="104" y="312" width="184" height="64" rx="10" fill="#2d2200" stroke="#d4a72c" stroke-width="1.5" data-node="fix2"/>
+  <text x="196" y="338" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#d4a72c" text-anchor="middle">Refine the brief</text>
+  <text x="196" y="358" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Be more specific about the task</text>
+
+  <!-- ── Check 3 ── -->
+  <rect x="398" y="416" width="404" height="64" rx="10" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="check3"/>
+  <circle cx="430" cy="448" r="14" fill="#f2f5f3"/>
+  <text x="430" y="453" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411" text-anchor="middle">3</text>
+  <text x="614" y="444" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#f2f5f3" text-anchor="middle">Something changed in GitHub?</text>
+  <text x="614" y="464" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Verify issue, permissions, safe-output</text>
+
+  <!-- check3 YES → resolved -->
+  <line x1="802" y1="448" x2="916" y2="448" stroke="#5fed83" stroke-width="2" marker-end="url(#arr-ok)"/>
+  <text x="847" y="440" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#5fed83">Yes</text>
+  <rect x="916" y="416" width="164" height="64" rx="10" fill="#3fb950" stroke="#3fb950" stroke-width="1.5" data-node="resolved" data-state="done"/>
+  <text x="998" y="442" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#101411" text-anchor="middle">&#x2713; Run looks good</text>
+  <text x="998" y="462" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#101411" text-anchor="middle">Review output in repo</text>
+
+  <!-- check3 NO → fix3 -->
+  <line x1="398" y1="448" x2="288" y2="448" stroke="#d4a72c" stroke-width="2" marker-end="url(#arr-warn)"/>
+  <text x="326" y="440" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#d4a72c" text-anchor="middle">No</text>
+  <rect x="104" y="416" width="184" height="64" rx="10" fill="#2d2200" stroke="#d4a72c" stroke-width="1.5" data-node="fix3"/>
+  <text x="196" y="442" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#d4a72c" text-anchor="middle">Check issue + permissions</text>
+  <text x="196" y="462" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Ensure workflow can write</text>
+
+  <!-- Annotation -->
+  <text x="600" y="512" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">Work top-to-bottom. Stop and fix at the first &#8220;No&#8221;.</text>
+
+</svg>
