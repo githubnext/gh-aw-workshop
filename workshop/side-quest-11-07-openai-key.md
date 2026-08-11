@@ -29,14 +29,14 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 
 ## Get an OpenAI API key
 
-1. Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys) and sign in (or create an account).
+1. Go to the OpenAI API keys dashboard at `platform.openai.com/api-keys` and sign in (or create an account).
 2. Click **Create new secret key**, give it a name (for example `gh-aw-workshop`), and click **Create secret key**.
 3. Copy the key value immediately — it starts with `sk-` and OpenAI shows it **only once**.
 
 > [!IMPORTANT]
 > Paste the key into GitHub Secrets (the next section) **before** closing the OpenAI platform tab. If you close it first, you must delete the key and generate a new one.
 
-**:pencil2: Verify:** Confirm your new key appears in the list at [platform.openai.com/api-keys](https://platform.openai.com/api-keys) before continuing.
+**:pencil2: Verify:** Confirm your new key appears in the list at `platform.openai.com/api-keys` before continuing.
 
 ---
 
@@ -126,7 +126,7 @@ You should see:
 ## ✅ Checkpoint
 
 - [ ] You have an OpenAI account and have generated an API key
-- [ ] My new key is listed at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+- [ ] My new key is listed at `platform.openai.com/api-keys`
 - [ ] `OPENAI_API_KEY` is stored as a repository secret (`gh secret list` confirms it)
 - [ ] My workflow frontmatter has `engine: codex` and `api.openai.com` in `network.allowed`
 - [ ] `gh aw compile --validate` reports no errors

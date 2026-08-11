@@ -22,7 +22,7 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 | **GitHub Copilot CLI** | Copilot in the terminal for AI-assisted command and development help. | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
 | **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | [GitHub Copilot app](https://github.com/features/ai/github-app) |
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
-| **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex](https://openai.com/codex/) |
+| **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex CLI repository](https://github.com/openai/codex#readme) |
 
 ### :white_check_mark: Verify your tools are ready
 
