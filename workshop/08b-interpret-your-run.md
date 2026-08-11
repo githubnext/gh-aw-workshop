@@ -53,7 +53,13 @@ Then verify the real output in your repository. For **Daily Report Status**, tha
 
 ## Check common error patterns first
 
-If your run does not look right, start with these quick checks before changing the workflow:
+If your run does not look right, work through these three checks in order before changing anything in the workflow.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/08b-error-checks-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/08b-error-checks-light.svg">
+  <img alt="Three quick checks for a failed workflow run: check if the workflow appears in Actions, then if the log shows useful action, then if anything changed in GitHub" src="images/08b-error-checks-light.svg">
+</picture>
 
 - **The workflow never appears in Actions** — confirm the workflow file is committed on `main`, then refresh. If you use the terminal path, run `gh aw compile` to catch [compile](https://github.github.com/gh-aw/reference/compilation-process/) errors.
 - **The log shows lots of thinking but no useful action** — your instructions may be too vague. Keep the run open, then refine the workflow body in a later step.
