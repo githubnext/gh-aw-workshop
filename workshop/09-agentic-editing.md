@@ -42,6 +42,13 @@ The skill recognizes three core task types for day-to-day workflow maintenance:
 
 If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
+The four steps below form a tight feedback loop you'll repeat until the output is useful.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/09-iteration-loop-dark.svg">
+  <img src="images/09-iteration-loop-light.svg" alt="Agentic workflow iteration loop: Observe a run, Edit the brief, Compile and push, then Trigger a new run — repeat until the output is useful" width="1200">
+</picture>
+
 ## Start With One Concrete Observation
 
 Open the latest run in the **Actions** tab and look for one thing you want to improve.
