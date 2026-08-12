@@ -79,7 +79,7 @@ Open your daily-status workflow file (`.github/workflows/daily-status.md`) and f
 </details>
 
 > [!NOTE]
-> The `github` tool entry tells gh-aw to start the [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/) in proxy mode. The agent can then call GitHub tools — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
+> The `github` tool entry tells gh-aw to start the [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/) in proxy mode. The agent can then call [GitHub tools](https://github.github.com/gh-aw/reference/github-tools/) — listing issues, fetching commits, reading file contents — scoped to the permissions you've declared above.
 
 <!-- -->
 
@@ -91,7 +91,7 @@ Open your daily-status workflow file (`.github/workflows/daily-status.md`) and f
 >
 > On GHES, the GitHub MCP server is supported from GHES 3.16+. If your instance is older, the `tools:` block will [compile](https://github.github.com/gh-aw/reference/compilation-process/) without errors but the agent's tool calls will fail at runtime. Verify your GHES version and confirm with your admin that the Copilot MCP proxy feature is enabled for your organization.
 >
-> If MCP is unavailable in your environment, the [Connect a Live Data Source](16-connect-data-source.md) step covers an alternative approach using deterministic shell steps that only require `GITHUB_TOKEN` and the `gh` CLI — no MCP server needed.
+> If MCP is unavailable in your environment, the [Connect a Live Data Source](16-connect-data-source.md) step covers an alternative approach using [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) shell steps that only require `GITHUB_TOKEN` and the `gh` CLI — no MCP server needed.
 >
 > </details>
 
