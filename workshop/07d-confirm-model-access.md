@@ -67,6 +67,9 @@ If you are working in Claude Code or OpenAI Codex, keep this first workflow on C
 - **Claude Code:** use [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md).
 - **OpenAI Codex:** use [Side Quest: Configure an OpenAI API Key](side-quest-11-07-openai-key.md).
 
+> [!TIP]
+> **Think about it:** why does omitting `engine:` default to Copilot rather than failing? The answer reveals an important design principle: agentic workflows choose safe, auditable defaults so new workflow files work without requiring every field to be set explicitly.
+
 ## Choose one Copilot billing path
 
 Choose exactly one method. The diagram below shows both paths and the key configuration difference between them.
@@ -99,6 +102,9 @@ Use this table first, then follow the detailed steps for your selected path belo
 
 Use this path when the organization that owns the repository has centralized Copilot billing enabled for Actions.
 
+> [!NOTE]
+> **GitHub Enterprise Server (GHES) / GitHub Enterprise Cloud (GHEC):** centralized billing is configured at the enterprise or organization level by an admin, not the individual repo. If you are unsure whether it is enabled, open your organization's **Settings** → **Copilot** page, or ask your GitHub admin before proceeding.
+
 1. Ask your organization administrator to confirm centralized billing is enabled.
 2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
 
@@ -124,7 +130,7 @@ The workflow uses the organization subscription. If you see `401 Unauthorized` i
 
 ### Personal billing
 
-Use this path for a personal repository, or when the owning organization does not provide centralized Copilot billing.
+Use this path for a personal repository, or when the owning organization does not provide centralized Copilot billing. On **GitHub Enterprise Server (GHES)**, fine-grained PATs may need SSO authorization after creation — open the token's settings at `<your-ghes-host>/settings/tokens` and authorize SSO if required by your organization.
 
 > [!IMPORTANT]
 > When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission before you set up the secret, then recompile.
@@ -152,7 +158,7 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
+- [ ] I used the decision table and diagrams to choose a billing path and understand why it applies to my setup
 - [ ] I chose organization centralized billing or personal billing
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
 - [ ] My source and compiled lock file use the selected method
