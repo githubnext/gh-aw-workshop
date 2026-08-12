@@ -42,7 +42,7 @@ Pattern: **Summary says "done" but nothing was written**. Clarify write conditio
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain why a successful run might skip writing
 - [ ] I can verify whether write conditions were truly met
