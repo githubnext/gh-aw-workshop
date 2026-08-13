@@ -40,6 +40,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 26 | [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) |
 | 27 | [Verify Your Workflow Quality with Evals](27-evaluate-workflow-quality.md) |
 | 28 | [Orchestrate Multiple Agentic Workflows](28-orchestrate-workflows.md) |
+| 29 | [Govern Agentic Workflows at Scale](29-governance-and-policy.md) |
 
 ## Optional Side Quests
 
