@@ -113,7 +113,7 @@ Three conventions keep a task brief reliable:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain what `mode: gh-proxy` does and why it matters for security
 - [ ] You understand that `safe-outputs` is the only source of write access — not the body text

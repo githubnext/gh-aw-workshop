@@ -78,7 +78,7 @@ Compile, push, and test with a PR that changes a workflow file.
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I created `.github/workflows/pr-labeler.md` with a `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
