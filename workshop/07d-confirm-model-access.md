@@ -100,17 +100,17 @@ Use this table first, then follow the detailed steps for your selected path belo
 Use this path when the organization that owns the repository has centralized Copilot billing enabled for Actions.
 
 1. Ask your organization administrator to confirm centralized billing is enabled.
-2. Open `daily-report-status.md` and confirm the `permissions:` block includes `copilot-requests: write`:
+2. Ask Copilot to verify the billing permission is correct for your workflow:
 
-```markdown .github/workflows/daily-report-status.md
----
-permissions:
-  contents: read
-  copilot-requests: write
----
+```bash
+gh copilot
 ```
 
-   This line is already present in the workflow template. Do not remove it.
+```prompt
+/agentic-workflows confirm that my daily-report-status.md uses copilot-requests: write for organization billing
+```
+
+   Copilot will inspect the file and confirm the `permissions:` block is correct. The `copilot-requests: write` line is already present in the workflow template — do not remove it.
 3. No repository secret is needed for this path.
 4. Recompile and commit the lock file from your terminal so it reflects the confirmed configuration:
 
@@ -129,11 +129,31 @@ Use this path for a personal repository, or when the owning organization does no
 > [!IMPORTANT]
 > When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference. Remove the permission before you set up the secret, then recompile.
 
-1. Remove `copilot-requests: write` from `daily-report-status.md`.
-2. Generate a fine-grained PAT with **Copilot requests: Read-only** in [github.com/settings/tokens](https://github.com/settings/tokens).
-3. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
-4. Add a new repository secret named `COPILOT_GITHUB_TOKEN` and paste the PAT value.
-5. Recompile and commit `daily-report-status.lock.yml`.
+1. Ask Copilot to update the workflow to use personal billing:
+
+```bash
+gh copilot
+```
+
+```prompt
+/agentic-workflows update daily-report-status.md to use personal billing by removing copilot-requests: write
+```
+
+   Copilot will remove the permission line. Review the change, then recompile:
+
+```bash
+gh aw compile
+```
+
+1. Generate a fine-grained PAT with **Copilot requests: Read-only** in [github.com/settings/tokens](https://github.com/settings/tokens).
+1. In your repository, open **Settings** → **Secrets and variables** → **Actions**.
+1. Add a new repository secret named `COPILOT_GITHUB_TOKEN` and paste the PAT value.
+1. Commit the updated source and lock files:
+
+```bash
+git add .
+git commit -m "chore: configure personal billing" && git push
+```
 
 For the full browser walkthrough, see [Method 2 (UI-only): `COPILOT_GITHUB_TOKEN`](side-quest-06-03c-copilot-github-token-ui-only.md). If you prefer terminal setup, use [Method 2: `COPILOT_GITHUB_TOKEN` secret](side-quest-06-03b-copilot-github-token.md).
 
@@ -152,8 +172,8 @@ Open `daily-report-status.md` and confirm it matches the method you selected:
 - [ ] I received a response from the model and the `agentic-workflows` skill
 - [ ] I confirmed no access errors appeared
 - [ ] I confirmed the first workflow uses GitHub Copilot
-- [ ] I used the agent + `agentic-workflows` guidance to improve workflow design decisions
 - [ ] I chose organization centralized billing or personal billing
+- [ ] I used the agent + `/agentic-workflows` skill to verify or update the billing configuration in `daily-report-status.md`
 - [ ] I completed all configuration steps for my chosen billing path (inline above — no side-quest visit required)
 - [ ] My source and compiled lock file use the selected method
 - [ ] Both workflow files are committed to `main`
