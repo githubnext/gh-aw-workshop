@@ -30,6 +30,14 @@ The parent workflow should coordinate the run, not contain every review rule. It
 | `pr-reviewer` agent | Read the diff and return prioritized, evidence-backed findings |
 | `pr-review-standards` skill | Define what counts as a useful finding and how to format it |
 
+The diagram below shows how the three parts connect at runtime.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/14b-agent-skill-split-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/14b-agent-skill-split-light.svg">
+   <img alt="PR reviewer agent and skill split: a pull request event triggers the parent brief, which calls the pr-reviewer agent; the agent applies the pr-review-standards skill, returns findings to the parent, and the parent submits a safe-output review" src="images/14b-agent-skill-split-light.svg">
+</picture>
+
 The agent can change how it investigates a pull request without changing the stable standards in the skill. You can also improve the skill without making the parent brief longer. The same split makes it straightforward to extend the reviewer to apply labels based on which files changed (see [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md)) or to post a structured summary that doubles as a release note draft (see [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md)).
 
 > :thinking: **Predict:** Which instruction belongs in the skill: “review pull request 42” or “cite a changed file and line for every finding”? The first is run-specific orchestration; the second is reusable review guidance.
