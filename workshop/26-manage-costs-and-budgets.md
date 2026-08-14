@@ -75,7 +75,7 @@ A few techniques keep spend in check:
 
 - **Shorten the task brief** — fewer input tokens per run.
 - **Filter data before passing it to the agent** — smaller context lowers cost.
-- **Cache results with persistent memory** — skip re-processing unchanged data. See [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
+- **Cache results with [persistent memory](https://github.github.com/gh-aw/reference/repo-memory/)** — skip re-processing unchanged data. See [Make Your Workflow Remember Across Runs](20-persistent-memory.md).
 - **Reduce run frequency** — fewer runs means fewer AIC.
 
 > [!TIP]

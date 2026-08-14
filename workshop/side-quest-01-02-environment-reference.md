@@ -100,7 +100,7 @@ You use `gh` for GitHub-specific terminal tasks like authentication checks, repo
    <img alt="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow" src="images/side-quest-01-02-gh-aw-light.svg">
 </picture>
 
-You use `gh aw` to compile agentic workflow files.
+You use `gh aw` to compile [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-is-an-agentic-workflow) files.
 
 #### GitHub Copilot CLI
 

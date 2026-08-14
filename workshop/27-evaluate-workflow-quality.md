@@ -30,7 +30,7 @@ You'll add an `evals:` block to your workflow, define binary quality questions, 
 
 ### Add an `evals:` block
 
-Open `.github/workflows/daily-status.md` and add binary questions to frontmatter.
+Open `.github/workflows/daily-status.md` and add binary questions to [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
 ```markdown .github/workflows/daily-status.md
 ---

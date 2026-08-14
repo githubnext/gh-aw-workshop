@@ -107,9 +107,9 @@ gh aw compile repo-orchestrator
 
 </details>
 
-### Review the `dispatch-workflow` safe-output
+### Review the `dispatch-workflow` [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/#workflow-dispatch-dispatch-workflow)
 
-After the skill or your manual edit creates the file, confirm the frontmatter contains:
+After the skill or your manual edit creates the file, confirm the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) contains:
 
 ```markdown .github/workflows/repo-orchestrator.md
 safe-outputs:
