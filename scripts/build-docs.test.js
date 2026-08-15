@@ -203,6 +203,8 @@ test("checkpoint task lists render distinct markers for pending and complete sta
   const { html, css } = buildDocs();
 
   assert.ok(html.includes('<g-emoji class="g-emoji" alias="white_check_mark"'), "expected checkpoint emoji shortcode to render as g-emoji");
+  assert.match(html, /<h2 id="[^"]*-checkpoint"/, "expected checkpoint heading anchor id to slugify like other emoji headings, not embed the emoji shortcode name");
+  assert.ok(!html.includes('id="white_check_mark-checkpoint"'), "expected heading slug to use the resolved emoji character, not the raw shortcode text");
   // Pending items: Primer octicon circle (16px SVG)
   assert.ok(html.includes('class="task-list-item-marker is-pending" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"'), "expected Primer octicon SVG marker for pending items");
   assert.ok(!html.includes('<input class="task-list-item-checkbox"'), "expected checkbox inputs to be removed");
