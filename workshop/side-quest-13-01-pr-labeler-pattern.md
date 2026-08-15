@@ -87,4 +87,5 @@ Compile, push, and test with a PR that changes a workflow file.
 - [ ] I extended the labeller to handle at least one additional file-path rule
 
 <!-- journey: all -->
+Return to [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md).
 <!-- /journey -->
