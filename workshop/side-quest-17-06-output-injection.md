@@ -102,7 +102,7 @@ Normal update here.
 - Keep `permissions:` read-only and remove unused scopes.
 - Treat issue bodies, PR descriptions, and file contents as untrusted input.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the output injection attack in one sentence
 - [ ] I can name the gh-aw feature (`safe-outputs` with label scoping) that limits this attack

@@ -135,7 +135,7 @@ Write your prediction here, then save and run the workflow to check it:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain permission escalation in plain English
 - [ ] You audited your own `permissions:` block against the principle of least privilege

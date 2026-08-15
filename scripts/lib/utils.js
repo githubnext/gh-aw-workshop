@@ -17,6 +17,13 @@ function flattenTokenText(tokenOrTokens) {
     return tokenOrTokens.map(flattenTokenText).join('');
   }
   if (!tokenOrTokens) return '';
+  // Emoji shortcode tokens (:white_check_mark:) have no `.text` field, so use
+  // the resolved Unicode character rather than falling back to `.raw` — this
+  // keeps heading slugs and accessible names stable whether the source
+  // markdown used a shortcode or a raw emoji character.
+  if (tokenOrTokens.type === 'emoji' && tokenOrTokens.emojiChar) {
+    return tokenOrTokens.emojiChar;
+  }
   return tokenOrTokens.tokens
     ? flattenTokenText(tokenOrTokens.tokens)
     : (tokenOrTokens.text || tokenOrTokens.raw || '');
