@@ -167,4 +167,6 @@ Each iteration follows the same loop: edit the brief, compile, push, run, inspec
 
 <!-- journey: all -->
 Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
+
+**Next:** [Govern Agentic Workflows Across Your Organisation](29-governance-and-policy.md)
 <!-- /journey -->
