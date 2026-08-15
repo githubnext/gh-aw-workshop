@@ -118,6 +118,9 @@ Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows
 
 ## ✅ Checkpoint
 
-- [ ] You can classify Tasks A–D as agentic, standard, or hybrid
+- [ ] You classified Task A as a standard workflow and explained why it needs no AI judgment
+- [ ] You classified Task B as an agentic workflow and named the decision the agent makes
+- [ ] You classified Task C as an agentic workflow and described how each Friday run would differ
+- [ ] You classified Task D as a hybrid agentic workflow and identified its deterministic step
 - [ ] You can explain what makes a workflow agentic in one sentence
 - [ ] You've written down your own agentic workflow idea for Step 7
