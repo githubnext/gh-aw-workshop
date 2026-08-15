@@ -20,7 +20,7 @@ If your workflow currently includes `copilot-requests: write`, remove that line 
 Then run:
 
 ```bash
-gh aw secrets bootstrap --engine copilot
+gh aw secrets bootstrap
 ```
 
 This guided flow checks whether the secret is missing, walks you through creating or pasting a valid [fine-grained PAT](https://github.github.com/gh-aw/reference/auth/#copilot-default), and stores it as `COPILOT_GITHUB_TOKEN`.
