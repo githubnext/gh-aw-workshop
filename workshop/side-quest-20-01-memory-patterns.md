@@ -137,7 +137,7 @@ previous run. On each run:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain the difference between `cache-memory` and `repo-memory`
 - [ ] You know when to choose each primitive based on your use case

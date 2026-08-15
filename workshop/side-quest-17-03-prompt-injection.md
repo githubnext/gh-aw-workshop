@@ -119,7 +119,7 @@ Prompt injection is a reminder that **repository data is user-controlled input**
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can describe what a prompt injection attack looks like in the context of an agentic workflow
 - [ ] You can explain why the task brief is the primary instruction source in gh-aw

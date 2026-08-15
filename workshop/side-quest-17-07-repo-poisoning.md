@@ -182,7 +182,7 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can describe the repository poisoning attack in one sentence
 - [ ] I can name the two gh-aw features (`contents: read` and `safe-outputs: create-pull-request`) that remove the direct-commit path

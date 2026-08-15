@@ -101,7 +101,7 @@ network:
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain why sandbox boundaries reduce risk in agentic workflows
 - [ ] You can describe where the agent runs during a workshop workflow execution
