@@ -58,7 +58,8 @@ const STEP_FILE_ALIASES = {
   "25-audit-and-observability": ["25-audit-and-observability.md"],
   "26-manage-costs-and-budgets": ["26-manage-costs-and-budgets.md"],
   "27-evaluate-workflow-quality": ["27-evaluate-workflow-quality.md"],
-  "28-orchestrate-workflows": ["28-orchestrate-workflows.md"]
+  "28-orchestrate-workflows": ["28-orchestrate-workflows.md"],
+  "29-skills-and-domain-knowledge": ["29-skills-and-domain-knowledge.md"]
 };
 
 const STEP_IDS = [
@@ -89,7 +90,8 @@ const STEP_IDS = [
   "25-audit-and-observability",
   "26-manage-costs-and-budgets",
   "27-evaluate-workflow-quality",
-  "28-orchestrate-workflows"
+  "28-orchestrate-workflows",
+  "29-skills-and-domain-knowledge"
 ];
 
 const STEP_SIGNAL_KEYS = [
@@ -1099,6 +1101,20 @@ function buildTransitions() {
           return next;
         },
         learningGains: { agentic: 0.07, actions: 0.04, confidence: 0.03 }
+      }),
+    "29-skills-and-domain-knowledge": (state, context) =>
+      advancedLessonStep(state, context, {
+        requiresRun: false,
+        salt: 349,
+        category: "skill-authoring-friction",
+        failedAssumption: "The learner can write a SKILL.md, but struggles to decide between the hint and fusion strategies when wiring it into a workflow prompt.",
+        remediation: "Keep the hint-vs-fusion comparison table next to the SKILL.md authoring exercise so the learner can match the strategy to the task's context budget and stability.",
+        emphasis: { bias: 0.02, conceptWeight: 0.09, complexityWeight: 0.05 },
+        mutateState: (next) => {
+          next.flags.hasSkillAuthored = true;
+          return next;
+        },
+        learningGains: { agentic: 0.05, confidence: 0.03 }
       })
   };
 }
