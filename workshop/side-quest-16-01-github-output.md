@@ -49,7 +49,7 @@ A step `id` is how you refer to its outputs elsewhere in the workflow. Add `id:`
 
 Now any later step (or the AI prompt) can reference:
 
-```
+```text
 ${{ steps.health_check.outputs.status }}
 ```
 
