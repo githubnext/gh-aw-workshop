@@ -30,7 +30,7 @@ Classic CI pipelines emit predictable script output. Agentic workflows read free
 
 ## How AW Defends Against It
 
-gh-aw keeps the agent read-only and limits which follow-up writes [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) may apply.
+gh-aw keeps the agent read-only and limits which follow-up writes [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) may apply (see [Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md) for the full security model).
 
 - **Explicit output surfaces via `safe-outputs`**
   The `safe-outputs` block declares every write action the workflow may apply. If a surface is not declared, the safe-output job cannot post to it.
@@ -70,9 +70,6 @@ permissions:
 The parser reads `required-labels` in [`pkg/workflow/safe_outputs_parser.go`](https://github.com/github/gh-aw/blob/main/pkg/workflow/safe_outputs_parser.go), and the `add_comment` handler enforces target validation and content sanitization in [`actions/setup/js/add_comment.cjs`](https://github.com/github/gh-aw/blob/main/actions/setup/js/add_comment.cjs#L582-L650).
 
 </details>
-
-> See [Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md)
-> for the full security model.
 
 ## :pencil2: Exercise: Block a Mock Injection Payload
 
