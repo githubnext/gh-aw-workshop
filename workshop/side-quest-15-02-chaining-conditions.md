@@ -40,7 +40,7 @@ The skill adds the step, updates the permissions block and the `if:` condition, 
 
 1. Add `security-events: read` to the `permissions:` block in your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
-1. Add the following step inside the `steps:` block:
+2. Add the following step inside the `steps:` block:
 
 ```markdown
 - name: Count open security alerts
@@ -53,7 +53,8 @@ The skill adds the step, updates the permissions block and the `if:` condition, 
     echo "alert_count=$COUNT" >> $GITHUB_OUTPUT
 ```
 
-1. Update the top-level `if:` to combine both conditions:
+   The step publishes the count as `steps.alerts.outputs.alert_count`.
+3. Update the top-level `if:` to combine both conditions:
 
 ```markdown
 ---
@@ -61,7 +62,8 @@ if: steps.alerts.outputs.alert_count != '0' && github.ref == 'refs/heads/main'
 ---
 ```
 
-1. Run `gh aw compile` to regenerate the lock file.
+   Both conditions must be true for the agent to run.
+4. Run `gh aw compile` to regenerate the lock file.
 
 </details>
 
