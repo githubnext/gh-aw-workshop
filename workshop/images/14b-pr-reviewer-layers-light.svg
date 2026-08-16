@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="PR Reviewer three-layer architecture: Parent Brief orchestrates, pr-reviewer Agent investigates the diff, pr-review-standards Skill defines quality, and a Safe Output submits the review"
+  data-visual-kind="diagram"
+  data-visual-id="14b-pr-reviewer-layers">
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="44" font-family="'Mona Sans', system-ui, sans-serif" font-size="20" font-weight="700" fill="#101411" text-anchor="middle">PR Reviewer — Three-Layer Architecture</text>
+
+  <!-- Trigger box -->
+  <g data-node="trigger">
+    <rect x="48" y="96" width="176" height="80" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <!-- Primer Octicon: git-pull-request (simplified path) -->
+    <g transform="translate(92, 118)">
+      <circle cx="3" cy="3" r="3" fill="none" stroke="#08872b" stroke-width="2"/>
+      <circle cx="3" cy="17" r="3" fill="none" stroke="#08872b" stroke-width="2"/>
+      <line x1="3" y1="6" x2="3" y2="14" stroke="#08872b" stroke-width="2"/>
+      <circle cx="19" cy="3" r="3" fill="none" stroke="#08872b" stroke-width="2"/>
+      <line x1="19" y1="6" x2="19" y2="10" stroke="#08872b" stroke-width="2"/>
+      <path d="M6,3 Q13,3 16,6" fill="none" stroke="#08872b" stroke-width="2"/>
+    </g>
+    <text x="136" y="131" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600" fill="#101411" text-anchor="middle">PR Trigger</text>
+    <text x="136" y="151" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">ready_for_review</text>
+    <text x="136" y="167" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">/review command</text>
+  </g>
+
+  <!-- Arrow: trigger → parent -->
+  <line x1="224" y1="136" x2="288" y2="136" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="284,130 296,136 284,142" fill="#b6bfb8"/>
+
+  <!-- Layer 1: Parent Brief -->
+  <g data-node="parent-brief">
+    <rect x="296" y="72" width="192" height="128" rx="10" fill="#ffffff" stroke="#08872b" stroke-width="2"/>
+    <rect x="296" y="72" width="192" height="32" rx="10" fill="#08872b"/>
+    <rect x="296" y="92" width="192" height="12" rx="0" fill="#08872b"/>
+    <text x="392" y="93" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Layer 1</text>
+    <text x="392" y="117" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#101411" text-anchor="middle">Parent Brief</text>
+    <text x="392" y="140" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">Identify the PR</text>
+    <text x="392" y="158" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">Call the reviewer</text>
+    <text x="392" y="176" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">Submit the result</text>
+  </g>
+
+  <!-- Arrow: parent → agent (down) -->
+  <line x1="392" y1="200" x2="392" y2="264" stroke="#b6bfb8" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="386,260 392,272 398,260" fill="#b6bfb8"/>
+  <text x="416" y="238" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692" text-anchor="start">delegates to</text>
+
+  <!-- Layer 2: pr-reviewer Agent -->
+  <g data-node="agent">
+    <rect x="296" y="280" width="192" height="136" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <rect x="296" y="280" width="192" height="32" rx="10" fill="#232925"/>
+    <rect x="296" y="300" width="192" height="12" rx="0" fill="#232925"/>
+    <text x="392" y="301" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#f2f5f3" text-anchor="middle">Layer 2</text>
+    <text x="392" y="326" font-family="'Mona Sans Mono', 'Courier New', monospace" font-size="15" font-weight="700" fill="#101411" text-anchor="middle">pr-reviewer</text>
+    <text x="392" y="344" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">Inline Agent</text>
+    <text x="392" y="366" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Reads the diff</text>
+    <text x="392" y="384" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Returns findings + evidence</text>
+  </g>
+
+  <!-- Arrow: agent → skill (right) -->
+  <line x1="488" y1="348" x2="568" y2="348" stroke="#b6bfb8" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="564,342 576,348 564,354" fill="#b6bfb8"/>
+  <text x="496" y="338" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692" text-anchor="start">applies</text>
+
+  <!-- Layer 3: pr-review-standards Skill -->
+  <g data-node="skill">
+    <rect x="584" y="280" width="216" height="136" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <rect x="584" y="280" width="216" height="32" rx="10" fill="#232925"/>
+    <rect x="584" y="300" width="216" height="12" rx="0" fill="#232925"/>
+    <text x="692" y="301" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#f2f5f3" text-anchor="middle">Layer 3</text>
+    <text x="692" y="326" font-family="'Mona Sans Mono', 'Courier New', monospace" font-size="13" font-weight="700" fill="#101411" text-anchor="middle">pr-review-standards</text>
+    <text x="692" y="344" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925" text-anchor="middle">Inline Skill</text>
+    <text x="692" y="366" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Defines review quality</text>
+    <text x="692" y="384" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Cite file + line per finding</text>
+  </g>
+
+  <!-- Arrow return: agent findings back to parent (curved up) -->
+  <path d="M392,280 Q392,248 392,200" fill="none" stroke="#08872b" stroke-width="2" stroke-dasharray="none"/>
+  <polygon points="386,204 392,192 398,204" fill="#08872b"/>
+  <text x="312" y="244" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#08872b" text-anchor="start">findings</text>
+
+  <!-- Safe Output box -->
+  <g data-node="safe-output" data-state="done">
+    <rect x="856" y="96" width="200" height="104" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <rect x="856" y="96" width="200" height="32" rx="10" fill="#0a241b"/>
+    <rect x="856" y="116" width="200" height="12" rx="0" fill="#0a241b"/>
+    <text x="956" y="117" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#5fed83" text-anchor="middle">Safe Output</text>
+    <text x="956" y="147" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600" fill="#101411" text-anchor="middle">submit-pr-review</text>
+    <text x="956" y="167" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">max: 1 per run</text>
+    <text x="956" y="183" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">COMMENT or REQUEST_CHANGES</text>
+  </g>
+
+  <!-- Arrow: parent → safe output -->
+  <line x1="488" y1="136" x2="848" y2="136" stroke="#08872b" stroke-width="2"/>
+  <polygon points="844,130 856,136 844,142" fill="#08872b"/>
+  <text x="616" y="128" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#08872b" text-anchor="middle">controlled write</text>
+
+  <!-- PR Submitted result -->
+  <g data-node="pr-review-result">
+    <rect x="856" y="248" width="200" height="80" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <!-- pull-request icon area -->
+    <g transform="translate(884, 265)">
+      <circle cx="4" cy="4" r="4" fill="none" stroke="#08872b" stroke-width="2"/>
+      <circle cx="4" cy="20" r="4" fill="none" stroke="#08872b" stroke-width="2"/>
+      <line x1="4" y1="8" x2="4" y2="16" stroke="#08872b" stroke-width="2"/>
+      <circle cx="20" cy="4" r="4" fill="none" stroke="#08872b" stroke-width="2"/>
+      <line x1="20" y1="8" x2="20" y2="12" stroke="#08872b" stroke-width="2"/>
+      <path d="M8,4 Q14,4 17,7" fill="none" stroke="#08872b" stroke-width="2"/>
+    </g>
+    <text x="956" y="277" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600" fill="#101411" text-anchor="middle">PR Review Submitted</text>
+    <text x="956" y="299" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">evidence-backed findings</text>
+    <text x="956" y="315" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">on the pull request</text>
+  </g>
+
+  <!-- Arrow: safe-output → result -->
+  <line x1="956" y1="200" x2="956" y2="240" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="950,236 956,248 962,236" fill="#b6bfb8"/>
+
+  <!-- Permissions note -->
+  <g data-node="permissions-note">
+    <rect x="856" y="376" width="200" height="80" rx="10" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="956" y="401" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#232925" text-anchor="middle">Agent permissions</text>
+    <text x="956" y="421" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">contents: read</text>
+    <text x="956" y="437" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">pull-requests: read only</text>
+    <text x="956" y="453" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">no write access in-agent</text>
+  </g>
+
+  <!-- Arrow: safe-output → permissions note -->
+  <line x1="956" y1="328" x2="956" y2="368" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Separation annotation box around layers 2+3 -->
+  <rect x="280" y="264" width="544" height="168" rx="12" fill="none" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="560" y="258" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692" text-anchor="middle">separation of concerns</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="520" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#232925" text-anchor="middle">The agent investigates without write access. The safe output performs the controlled repository write after the agent finishes.</text>
+</svg>
