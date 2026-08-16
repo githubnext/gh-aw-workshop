@@ -65,6 +65,10 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 - :arrow_right: [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) — target your organisation's runner fleet instead of GitHub-hosted machines (enterprise teams).
 - :arrow_right: [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) — read run artifacts, understand token usage, and build an audit trail for enterprise compliance.
 - :arrow_right: [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
+- :arrow_right: [Verify Your Workflow Quality with Evals](27-evaluate-workflow-quality.md) — add automated YES/NO quality checks so every run tells you whether your workflow met its goal.
+- :arrow_right: [Orchestrate Multiple Agentic Workflows](28-orchestrate-workflows.md) — build a coordinator workflow that dispatches specialist workflows based on repository conditions.
+- :arrow_right: [Teach Your Agent Domain Knowledge with Skills](29-skills-and-domain-knowledge.md) — encode team conventions in reusable SKILL.md files so your agents always follow house rules.
+- :arrow_right: [Govern Your Agentic Workflows with Org-Level Policy Controls](30-governance-and-policy-controls.md) — apply required reviewers, permission scoping, and Actions policies to satisfy enterprise security requirements (enterprise teams).
 
 <!-- journey: all -->
 ## ✅ Checkpoint
