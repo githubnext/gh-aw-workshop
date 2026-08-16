@@ -118,7 +118,7 @@ The raw domain-level network access logs live in `sandbox/firewall/audit/` insid
 2. Identify at least one domain the workflow accessed.
 3. If any domains were blocked, add them to `network.allowed` in the workflow frontmatter.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can identify each file inside the agent artifact and what it contains
 - [ ] You understand what ⌖ AIC represents and how it differs from agent AIC
