@@ -102,7 +102,7 @@ If your administrator requires different scopes, use the minimum required scopes
 
 ---
 
-## Extension download fails on a locked-down network
+## Extension download fails on a locked-down [network](https://github.github.com/gh-aw/reference/network/)
 
 If install fails with a network error:
 

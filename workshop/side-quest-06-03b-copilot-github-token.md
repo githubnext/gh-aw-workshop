@@ -4,7 +4,7 @@
 
 > _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled._
 
-This method stores a Personal Access Token (PAT) as a repository secret named [`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken). The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) engine picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
+This method stores a Personal Access Token (PAT) as a repository secret named [`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken). The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) [engine](https://github.github.com/gh-aw/reference/engines/) picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
 
 If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 

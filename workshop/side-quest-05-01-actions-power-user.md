@@ -104,7 +104,7 @@ Keep this goal statement handy — you will use it when authoring your first age
 
 ## What stays the same
 
-- Workflows still run in GitHub Actions runners
+- Workflows still run in GitHub Actions [runners](https://github.github.com/gh-aw/reference/self-hosted-runners/)
 - [Triggers](https://github.github.com/gh-aw/reference/triggers/), permissions, and repository context still matter
 - You still version workflows in git and review them like code
 

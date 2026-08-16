@@ -68,7 +68,7 @@ gh --version
 
 _What success looks like:_ version details for `gh` are printed.
 
-If the command works, continue to the authentication section. If it does not, run the quick install command for [macOS](#macos-quick-install), [Windows](#windows-quick-install), or [Linux](#linux-quick-install).
+If the command works, continue to the [authentication](https://github.github.com/gh-aw/reference/auth/) section. If it does not, run the quick install command for [macOS](#macos-quick-install), [Windows](#windows-quick-install), or [Linux](#linux-quick-install).
 
 #### macOS quick install
 
