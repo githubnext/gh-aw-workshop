@@ -180,8 +180,9 @@ test("markdown, md, yaml, and yml code blocks use compact icon-only editor chrom
 test("code blocks wrap long lines without relying on mobile-only styles", () => {
   const { css } = buildDocs();
 
-  assert.ok(css.includes(".markdown-body pre {\n  position: relative;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}"));
-  assert.ok(css.includes(".markdown-body pre > code {\n  font-size: 1em;\n  white-space: inherit;\n}"));
+  assert.ok(css.includes(".markdown-body pre {\n  position: relative;\n  overflow-x: auto;\n  max-width: 100%;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}"));
+  assert.ok(css.includes(".markdown-body pre > code {\n  font-size: 1em;\n  white-space: inherit;\n  overflow-wrap: anywhere;\n}"));
+  assert.ok(css.includes("  .markdown-body pre > code {\n    white-space: inherit;\n    overflow-wrap: anywhere;\n  }"));
 });
 
 test("code block headers can render filenames from fence metadata", () => {

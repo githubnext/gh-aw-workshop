@@ -355,6 +355,7 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   }
   .markdown-body pre > code {
     white-space: inherit;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -702,6 +703,7 @@ html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
 .markdown-body pre > code {
   font-size: 1em;
   white-space: inherit;
+  overflow-wrap: anywhere;
 }
 .code-copy-btn {
   position: absolute;
