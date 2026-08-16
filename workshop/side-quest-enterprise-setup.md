@@ -75,7 +75,7 @@ Agentic workflows require both Actions execution and model access:
 Before installing `gh-aw`, verify with your admin that your account and repository are permitted to run Copilot-powered workflow jobs.
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your GHES instance is version 3.12 or later (or you are on `github.com`/GHEC)
 - [ ] You know whether Codespaces is available in your enterprise environment
