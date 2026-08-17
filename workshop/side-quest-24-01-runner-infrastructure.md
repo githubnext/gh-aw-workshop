@@ -48,15 +48,15 @@ If your runner operates in an air-gapped or restricted environment, ensure it ca
 the GitHub API, your model endpoint, and any MCP tool servers your workflow calls.
 Work with your network admin to allowlist these endpoints before running agentic workflows.
 
-You can use the `network.allowed` frontmatter field to explicitly declare the domains your
+You can use the `network.allowed-domains` frontmatter field to explicitly declare the domains your
 workflow needs:
 
 ```markdown
 ---
 network:
-  allowed:
-    - api.github.com
-    - api.example.com
+  allowed-domains:
+    - "api.github.com"
+    - "api.example.com"
 ---
 ```
 
@@ -69,7 +69,7 @@ See [Audit Reference](side-quest-25-01-audit-reference.md) for details on readin
 - [ ] You understand the difference between ephemeral runners and JIT runners
 - [ ] You know where to set proxy environment variables for a self-hosted runner
 - [ ] You can identify which endpoints an agentic workflow needs to reach (GitHub API, model endpoint, MCP servers)
-- [ ] You know how to use `network.allowed` in frontmatter to declare required domains
+- [ ] You know how to use `network.allowed-domains` in frontmatter to declare required domains
 - [ ] You know how to use the `firewall.md` artifact to build an allowlist for your security team
 
 <!-- journey: all -->
