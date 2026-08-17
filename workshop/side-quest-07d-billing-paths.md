@@ -1,6 +1,6 @@
 # Side Quest: Copilot Billing Paths
 
-Choose exactly one billing path for your first workflow, configure it, and commit the updated lock file.
+Choose exactly one [billing](https://github.github.com/gh-aw/reference/billing/) path for your first workflow, configure it, and commit the updated lock file.
 
 ## Quick reference
 
@@ -53,7 +53,7 @@ Use this path for a personal repository, or when the owning organization does no
 > When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN`. Remove that permission line before adding the secret.
 
 1. Open `daily-report-status.md` and remove `copilot-requests: write`.
-2. Generate a fine-grained PAT with **Copilot requests: Read-only** at [github.com/settings/tokens](https://github.com/settings/tokens).
+2. Generate a [fine-grained PAT](https://github.github.com/gh-aw/reference/glossary/#fine-grained-personal-access-token) with **Copilot requests: Read-only** at [github.com/settings/tokens](https://github.com/settings/tokens).
 3. In your repository go to **Settings** → **Secrets and variables** → **Actions**.
 4. Add a repository secret named `COPILOT_GITHUB_TOKEN` and paste the PAT.
 5. Recompile and commit:
@@ -68,7 +68,7 @@ For a browser-only walkthrough, see [Method 2 (UI-only): COPILOT_GITHUB_TOKEN](s
 
 ## Confirm engine
 
-Open `daily-report-status.md` and verify there is no `engine:` line. The workflow defaults to GitHub Copilot — no Anthropic or OpenAI key is needed for this first run.
+Open `daily-report-status.md` and verify there is no `engine:` line. The workflow defaults to GitHub Copilot — no Anthropic or OpenAI key is needed for this first run. To compare available [AI engines](https://github.github.com/gh-aw/reference/engines/), see the engine reference.
 
 To switch engines later, see:
 - [Side Quest: Configure an Anthropic API Key](side-quest-11-06-anthropic-key.md)

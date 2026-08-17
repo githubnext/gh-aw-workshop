@@ -74,7 +74,7 @@ Expected result: a success message confirming GitHub CLI authentication. If it f
 
 ## Initialize [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) skills
 
-Before you author your first workflow, initialize and push the generated skill files:
+Before you author your first workflow, initialize and push the generated [skill files](https://github.github.com/gh-aw/reference/glossary/#skill-files):
 
 ```bash
 gh aw init
