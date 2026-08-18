@@ -45,7 +45,7 @@
   <!-- Arrow: parent → agent (down) -->
   <line x1="392" y1="200" x2="392" y2="264" stroke="#b6bfb8" stroke-width="2" stroke-dasharray="6,4"/>
   <polygon points="386,260 392,272 398,260" fill="#b6bfb8"/>
-  <text x="416" y="238" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692" text-anchor="start">delegates to</text>
+  <text x="416" y="238" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="start">delegates to</text>
 
   <!-- Layer 2: pr-reviewer Agent -->
   <g data-node="agent">
@@ -62,7 +62,7 @@
   <!-- Arrow: agent → skill (right) -->
   <line x1="488" y1="348" x2="568" y2="348" stroke="#b6bfb8" stroke-width="2" stroke-dasharray="6,4"/>
   <polygon points="564,342 576,348 564,354" fill="#b6bfb8"/>
-  <text x="496" y="338" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692" text-anchor="start">applies</text>
+  <text x="496" y="338" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="start">applies</text>
 
   <!-- Layer 3: pr-review-standards Skill -->
   <g data-node="skill">
@@ -79,7 +79,7 @@
   <!-- Arrow return: agent findings back to parent (curved up) -->
   <path d="M392,280 Q392,248 392,200" fill="none" stroke="#08872b" stroke-width="2" stroke-dasharray="none"/>
   <polygon points="386,204 392,192 398,204" fill="#08872b"/>
-  <text x="312" y="244" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#08872b" text-anchor="start">findings</text>
+  <text x="312" y="244" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#0a241b" text-anchor="start">findings</text>
 
   <!-- Safe Output box -->
   <g data-node="safe-output" data-state="done">
@@ -95,7 +95,7 @@
   <!-- Arrow: parent → safe output -->
   <line x1="488" y1="136" x2="848" y2="136" stroke="#08872b" stroke-width="2"/>
   <polygon points="844,130 856,136 844,142" fill="#08872b"/>
-  <text x="616" y="128" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#08872b" text-anchor="middle">controlled write</text>
+  <text x="616" y="128" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#0a241b" text-anchor="middle">controlled write</text>
 
   <!-- PR Submitted result -->
   <g data-node="pr-review-result">
@@ -132,7 +132,7 @@
 
   <!-- Separation annotation box around layers 2+3 -->
   <rect x="280" y="264" width="544" height="168" rx="12" fill="none" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="8,4"/>
-  <text x="560" y="258" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692" text-anchor="middle">separation of concerns</text>
+  <text x="560" y="258" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925" text-anchor="middle">separation of concerns</text>
 
   <!-- Bottom annotation -->
   <text x="600" y="520" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#232925" text-anchor="middle">The agent investigates without write access. The safe output performs the controlled repository write after the agent finishes.</text>
