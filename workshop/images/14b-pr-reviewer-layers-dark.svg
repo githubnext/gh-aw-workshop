@@ -86,7 +86,7 @@
     <rect x="856" y="96" width="200" height="104" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
     <rect x="856" y="96" width="200" height="32" rx="10" fill="#08872b"/>
     <rect x="856" y="116" width="200" height="12" rx="0" fill="#08872b"/>
-    <text x="956" y="117" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#f2f5f3" text-anchor="middle">Safe Output</text>
+    <text x="956" y="117" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Safe Output</text>
     <text x="956" y="147" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600" fill="#f2f5f3" text-anchor="middle">submit-pr-review</text>
     <text x="956" y="167" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">max: 1 per run</text>
     <text x="956" y="183" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8" text-anchor="middle">COMMENT or REQUEST_CHANGES</text>
