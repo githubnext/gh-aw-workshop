@@ -290,7 +290,7 @@ html[data-color-mode="dark"] .menu-toggle-progress {
 }
 
 .markdown-body {
-  max-width: 650px;
+  max-width: 1300px;
   margin-inline: auto;
   padding-inline: 20px !important;
 }
