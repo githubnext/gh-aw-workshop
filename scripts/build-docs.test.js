@@ -87,7 +87,7 @@ test("docs keep accessible responsive gutters and menu target sizes", () => {
 
   assert.ok(css.includes(".menu-toggle,\n.menu-close {\n  display: inline-grid;\n  flex: 0 0 auto;\n  place-items: center;\n  width: 44px;\n  height: 44px;"));
   assert.ok(css.includes(".workshop-menu-group a {\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  min-height: 44px;"));
-  assert.ok(css.includes(".markdown-body {\n  max-width: 650px;\n  margin-inline: auto;\n  padding-inline: 20px !important;\n}"));
+  assert.ok(css.includes(".markdown-body {\n  max-width: 1300px;\n  margin-inline: auto;\n  padding-inline: 20px !important;\n}"));
   assert.ok(css.includes("@media (min-width: 480px) {\n  .markdown-body {\n    padding-inline: 24px !important;\n  }\n}"));
   assert.ok(css.includes("@media (min-width: 768px) {\n  .markdown-body {\n    padding-inline: 32px !important;\n  }\n}"));
   assert.ok(css.includes("@media (min-width: 1024px) {\n  .markdown-body {\n    padding-inline: 48px !important;\n  }\n}"));
