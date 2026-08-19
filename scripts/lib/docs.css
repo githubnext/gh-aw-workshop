@@ -359,13 +359,25 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   }
 }
 
-/* Responsive images: full-width on mobile, capped on larger screens — no media query needed */
+/* Responsive images: full-width on mobile, capped on larger screens */
 .markdown-body img {
   display: block;
   width: min(100%, 720px);
   height: auto;
   margin-inline: auto;
   border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+  .markdown-body img {
+    width: min(100%, 960px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .markdown-body img {
+    width: min(100%, 1200px);
+  }
 }
 
 .markdown-body img[data-image-inspector-ready] {
