@@ -54,6 +54,9 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 
 ### Go deeper
 
+> [!TIP]
+> When you start your next workflow, use the [gh-aw wizard](https://githubnext.github.io/gh-aw-wizard/) to generate the prompt: answer a few questions about the trigger, data, and output, then paste the generated prompt into your AI agent.
+
 - :arrow_right: [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md) — add conditions so your workflow only runs when there is meaningful activity to report.
 - :arrow_right: [Connect a Live Data Source to Your Workflow](16-connect-data-source.md) — fetch live repository data and pass it into your AI prompt as workflow context.
 - :arrow_right: [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) — connect the GitHub MCP server so your agent can read live repository data as it runs.
