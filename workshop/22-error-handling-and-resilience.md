@@ -131,7 +131,7 @@ After pushing:
 2. Open the run log and confirm the safe output step runs even when the data set is small or empty.
 3. Check the run duration — it should complete well within your `timeout-minutes` limit.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your task brief includes an explicit fallback instruction for empty or missing data
 - [ ] Your workflow frontmatter sets `timeout-minutes`
