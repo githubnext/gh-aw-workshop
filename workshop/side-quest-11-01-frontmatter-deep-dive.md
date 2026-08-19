@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Frontmatter Deep Dive — Part A
 
-> _Optional: configure each of the opening three frontmatter sections of an agentic workflow file — metadata, triggers, and permissions. Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
+> _Optional: configure each of the opening three frontmatter sections of an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) file — metadata, triggers, and permissions. Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
 
 ## :clipboard: Before You Start
 
