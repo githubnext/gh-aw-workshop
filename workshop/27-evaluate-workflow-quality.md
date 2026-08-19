@@ -28,9 +28,20 @@ You'll add an `evals:` block to your workflow, define binary quality questions, 
 
 ## Steps
 
-### Add an `evals:` block
+### Add an `evals:` block with the skill
 
-Open `.github/workflows/daily-status.md` and add binary questions to frontmatter.
+In your Copilot CLI session in the terminal, paste:
+
+```prompt
+/agentic-workflows add three binary eval questions to daily-status.md: one checking that a status issue was created, one checking the output includes a summary of repository activity, and one checking that no writes happened outside declared safe outputs.
+```
+
+The skill adds the `evals:` block to your frontmatter, compiles the lock file, and shows you the diff.
+
+<details>
+<summary>:desktop_computer: Terminal path — add the evals block directly</summary>
+
+Open `.github/workflows/daily-status.md` and add binary questions to frontmatter:
 
 ```markdown .github/workflows/daily-status.md
 ---
@@ -48,17 +59,25 @@ evals:
 ---
 ```
 
-Each question should test one observable claim and be answerable from agent output alone.
-
-### Compile and run
-
-Compile after editing:
+Each question should test one observable claim and be answerable from agent output alone. Compile after editing:
 
 ```bash
 gh aw compile daily-status
 ```
 
-Trigger a run from the Actions UI (or use `gh aw run daily-status` if you prefer CLI).
+</details>
+
+### Commit and trigger a run
+
+Commit both the workflow source and the recompiled lock file, then trigger a run from the Actions UI:
+
+```bash
+git add .
+git commit -m "feat: add evals to daily-status workflow"
+git push
+```
+
+Go to **Actions → Daily Status Report → Run workflow** and click **Run workflow**.
 
 ### Inspect evaluation results
 
@@ -78,8 +97,14 @@ Example record:
 
 When you update your prompt or tools, rerun the workflow and compare answers across runs. A question that flips from `YES` to `NO` is a fast signal that quality regressed and needs investigation.
 
+To refine your questions, return to Copilot CLI and describe what you observed:
+
+```prompt
+/agentic-workflows the eval question "includes_summary" is too broad — update it to check that the output includes at least one open issue or pull request from the last 24 hours.
+```
+
 > [!TIP]
-> Prefer using an agent with `/agentic-workflows` to add or refine `evals:` questions, then run `gh aw compile --watch` while iterating.
+> Use `gh aw compile --watch` while iterating on eval questions to get instant feedback on compile errors.
 
 ## ✅ Checkpoint
 
