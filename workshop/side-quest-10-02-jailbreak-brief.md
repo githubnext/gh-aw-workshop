@@ -40,7 +40,7 @@ gh-aw can combine five [defence layers](https://github.github.com/gh-aw/introduc
 
 - **[Compiled task brief](https://github.github.com/gh-aw/reference/compilation-process/#overview)** — The task brief is baked in before any data arrives. Issue bodies and PR descriptions reach the agent as structured tool call results, competing with an authoritative baseline rather than replacing it.
 - **Minimal `permissions:` + `safe-outputs`** — The `GITHUB_TOKEN` enforces declared permission boundaries; `safe-outputs` removes write tool paths that were never declared, so a jailbreak instruction to push a commit has no execution path.
-- **`network.allowed` + optional [agentic threat detection](https://github.github.com/gh-aw/reference/threat-detection/)** — The [network layer](https://github.github.com/gh-aw/reference/network/#configuration) blocks data exfiltration to unlisted endpoints; if you enable `threat-detection` under `safe-outputs:`, a separate detection job reviews agent output in an isolated sandbox before any declared write lands.
+- **`network.allowed` + optional [agentic threat detection](https://github.github.com/gh-aw/reference/threat-detection/)** — The [network layer](https://github.github.com/gh-aw/reference/network/#configuration) blocks data exfiltration to unlisted endpoints; if you enable `threat-detection` under `safe-outputs:`, a separate detection job reviews agent output in an isolated [sandbox](https://github.github.com/gh-aw/reference/sandbox/) before any declared write lands.
 
 <details>
 <summary>Detailed breakdown of each layer</summary>

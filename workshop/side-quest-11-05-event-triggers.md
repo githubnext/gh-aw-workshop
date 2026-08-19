@@ -22,7 +22,7 @@ A **scheduled** workflow runs because the clock says it is time. An **event-driv
 | Scheduled | Time passes | Daily summaries, reminders, audits |
 | Event-driven | A GitHub event happens | PR review, issue triage, post-push follow-up |
 
-If you want the workflow to react to a specific repository action, use an event trigger. If you want it to run even when nobody touched the repo, use a schedule.
+If you want the workflow to react to a specific repository action, use an event trigger. If you want it to run even when nobody touched the repo, use a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
 ## Four common trigger patterns
 
