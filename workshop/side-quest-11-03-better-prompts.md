@@ -21,6 +21,9 @@ The **task brief** is the Markdown body of your workflow file — everything bel
 
 Unlike a chat message, the task brief runs unattended. The AI can't ask clarifying questions, so everything it needs must be in the brief itself.
 
+> [!TIP]
+> Starting from a blank page is the hardest part. The [gh-aw wizard](https://githubnext.github.io/gh-aw-wizard/) generates a first-draft prompt for a new workflow, which you can then refine with the techniques below.
+
 ---
 
 ## State the Goal, Not Just the Action

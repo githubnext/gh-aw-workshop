@@ -60,6 +60,9 @@ Compile it after creating it.
 
 Review the agent's edit, then continue. Prefer this path over hand-editing each line.
 
+> [!TIP]
+> Not sure how to phrase a prompt for a workflow of your own? The [gh-aw wizard](https://githubnext.github.io/gh-aw-wizard/) asks a few questions and generates a ready-to-paste prompt you can send to your agent.
+
 **What the agent created** — the generated file should look roughly like this:
 
 ```markdown .github/workflows/daily-report-status.md

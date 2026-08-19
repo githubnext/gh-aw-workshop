@@ -51,6 +51,9 @@ Open your AI agent in the practice repository and pass this prompt:
 
 Review the agent's diff before accepting it. The source should contain one parent brief plus both inline blocks near the bottom of the file.
 
+> [!TIP]
+> For workflows beyond this workshop, the [gh-aw wizard](https://githubnext.github.io/gh-aw-wizard/) can generate a similar prompt for you from a short questionnaire.
+
 ## Inspect the Generated Structure
 
 The workflow frontmatter should follow this shape:
