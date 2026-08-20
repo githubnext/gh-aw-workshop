@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="MCP agent loop: task brief enters the agent, which reasons and makes tool calls to GitHub via MCP, receives results, and produces final output"
+  data-visual-kind="diagram"
+  data-visual-id="17-mcp-agent-loop">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#f2f5f3">MCP Agent Loop</text>
+  <text x="600" y="68" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#b6bfb8">How the agent uses MCP tool calls to fetch live data and produce output</text>
+
+  <!-- === Node 1: Task Brief === -->
+  <rect x="40" y="206" width="176" height="100" rx="10" fill="#0a241b" stroke="#909692" stroke-width="2" data-node="task-brief"/>
+  <circle cx="40" cy="206" r="14" fill="#5fed83"/>
+  <text x="40" y="211" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">1</text>
+  <g transform="translate(110,226)" aria-hidden="true">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#5fed83" stroke-width="2"/>
+    <line x1="0" y1="-7" x2="0" y2="0" stroke="#5fed83" stroke-width="2"/>
+    <line x1="0" y1="0" x2="5" y2="3" stroke="#5fed83" stroke-width="2"/>
+  </g>
+  <text x="128" y="262" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">Task Brief</text>
+  <text x="128" y="280" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Scheduled trigger</text>
+  <text x="128" y="296" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">+ workflow brief</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="216" y1="256" x2="275" y2="256" stroke="#b6bfb8" stroke-width="2.5" marker-end="url(#arrow-light)"/>
+
+  <!-- === Node 2: Agent Reasoning === -->
+  <rect x="276" y="190" width="196" height="132" rx="10" fill="#0a241b" stroke="#909692" stroke-width="2" data-node="agent-reasoning"/>
+  <circle cx="276" cy="190" r="14" fill="#5fed83"/>
+  <text x="276" y="195" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">2</text>
+  <g transform="translate(374,215)" aria-hidden="true">
+    <rect x="-14" y="-10" width="28" height="22" rx="4" fill="none" stroke="#5fed83" stroke-width="2"/>
+    <circle cx="-5" cy="-2" r="3" fill="#5fed83"/>
+    <circle cx="5" cy="-2" r="3" fill="#5fed83"/>
+    <line x1="-5" y1="6" x2="5" y2="6" stroke="#5fed83" stroke-width="2"/>
+    <line x1="0" y1="-10" x2="0" y2="-15" stroke="#5fed83" stroke-width="2"/>
+  </g>
+  <text x="374" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">Agent Reasoning</text>
+  <text x="374" y="272" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Reads brief, decides</text>
+  <text x="374" y="290" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">which tools to call</text>
+  <text x="374" y="308" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-style="italic" fill="#b6bfb8">Copilot model</text>
+
+  <!-- Arrow 2→MCP Gateway (down) -->
+  <line x1="374" y1="322" x2="374" y2="378" stroke="#b6bfb8" stroke-width="2.5" marker-end="url(#arrow-light)"/>
+  <text x="389" y="358" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">tool call</text>
+
+  <!-- === Node 3: MCP Gateway === -->
+  <rect x="260" y="384" width="504" height="96" rx="10" fill="#0a241b" stroke="#909692" stroke-width="2" data-node="mcp-gateway"/>
+  <text x="512" y="408" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">MCP Gateway</text>
+  <text x="512" y="428" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">gh-proxy routes tool calls through</text>
+  <text x="512" y="446" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">GITHUB_TOKEN — no extra credentials needed</text>
+  <text x="512" y="464" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#b6bfb8">mode: gh-proxy · toolsets: [default]</text>
+
+  <!-- Arrow MCP→GitHub (right) -->
+  <line x1="764" y1="432" x2="830" y2="432" stroke="#b6bfb8" stroke-width="2.5" marker-end="url(#arrow-light)"/>
+
+  <!-- Connecting line from agent area to MCP gateway -->
+  <line x1="512" y1="322" x2="512" y2="384" stroke="#909692" stroke-width="1.5" stroke-dasharray="6 4" aria-hidden="true"/>
+
+  <!-- === Node 4: GitHub API === -->
+  <rect x="832" y="382" width="180" height="100" rx="10" fill="#0a241b" stroke="#909692" stroke-width="2" data-node="github-api"/>
+  <g transform="translate(922,413)" aria-hidden="true">
+    <circle cx="-12" cy="-4" r="5" fill="none" stroke="#3fb950" stroke-width="2" data-state="open"/>
+    <circle cx="12" cy="-4" r="5" fill="none" stroke="#3fb950" stroke-width="2" data-state="open"/>
+    <line x1="-12" y1="1" x2="-12" y2="14" stroke="#3fb950" stroke-width="2"/>
+    <path d="M-12,14 Q0,22 12,14" fill="none" stroke="#3fb950" stroke-width="2"/>
+  </g>
+  <text x="922" y="444" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">GitHub API</text>
+  <text x="922" y="462" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Issues, commits,</text>
+  <text x="922" y="478" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">repository data</text>
+
+  <!-- Arrow GitHub→up (results) -->
+  <line x1="922" y1="382" x2="922" y2="330" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+  <text x="932" y="362" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">results</text>
+
+  <!-- Return path to agent (dashed green) -->
+  <polyline points="922,330 922,256 472,256" fill="none" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arrow-green)" stroke-dasharray="8 4"/>
+  <text x="740" y="244" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#5fed83">live data returned to agent</text>
+
+  <!-- === Node 6: Output === -->
+  <rect x="956" y="190" width="200" height="132" rx="10" fill="#0a241b" stroke="#5fed83" stroke-width="2.5" data-node="output"/>
+  <circle cx="956" cy="190" r="14" fill="#5fed83"/>
+  <text x="956" y="195" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">3</text>
+  <g transform="translate(1056,218)" aria-hidden="true">
+    <circle cx="0" cy="0" r="11" fill="none" stroke="#3fb950" stroke-width="2" data-state="open"/>
+    <circle cx="0" cy="0" r="4" fill="#3fb950" data-state="open"/>
+  </g>
+  <text x="1056" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">Output</text>
+  <text x="1056" y="272" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Agent writes daily</text>
+  <text x="1056" y="290" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">status summary</text>
+  <text x="1056" y="308" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#3fb950" data-state="open">posted as new Issue</text>
+
+  <!-- Arrow from Agent→Output (final) -->
+  <line x1="472" y1="224" x2="955" y2="224" stroke="#5fed83" stroke-width="2.5" stroke-dasharray="8 4" marker-end="url(#arrow-green)"/>
+  <text x="714" y="216" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#5fed83">final output (after tool calls)</text>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="520" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#b6bfb8">The agent loops through reasoning and tool calls until it has all needed data, then produces its final output via safe-outputs.</text>
+
+  <!-- Arrowhead markers -->
+  <defs>
+    <marker id="arrow-light" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#b6bfb8"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fed83"/>
+    </marker>
+  </defs>
+</svg>

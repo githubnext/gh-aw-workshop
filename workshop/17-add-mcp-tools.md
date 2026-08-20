@@ -20,6 +20,12 @@ You'll add an [MCP (Model Context Protocol)](https://github.github.com/gh-aw/gui
 
 MCP (Model Context Protocol) connects external tool servers to the agent so it can call structured operations — like listing issues or fetching commits — and weave the live results into its output. Without MCP, the agent only knows what you wrote in the brief; with MCP, it can go out and look things up itself.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/17-mcp-agent-loop-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/17-mcp-agent-loop-light.svg">
+   <img alt="MCP agent loop: task brief enters the agent, which reasons and makes tool calls to GitHub via MCP, receives results, and produces final output" src="images/17-mcp-agent-loop-light.svg">
+</picture>
+
 > [!TIP]
 > <details>
 > <summary><b>Optional Side Quests:</b></summary>
