@@ -6,6 +6,9 @@
 
 ![Mona's Agent Factory](images/00-welcome-monas-agent-factory.png)
 
+> [!NOTE]
+> **Microsoft and GitHub employees:** Use the [Golden Ticket](https://aka.ms/golden-ticket) to set up your workshop environment.
+
 
 By the end of this workshop, a real AI agent will create an issue with a summary of the activity in your repository over the latest 24h, every day, without you writing shell-script workflow code.
 
