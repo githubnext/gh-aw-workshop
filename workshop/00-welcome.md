@@ -49,3 +49,6 @@ For any task involving creating, editing, debugging, or upgrading an agentic wor
 <!-- journey: all -->
 **Next:** [What You Need Before We Start](01-prerequisites.md)
 <!-- /journey -->
+
+> [!NOTE]
+> **Microsoft and GitHub facilitators:** Request a demo environment at [aka.ms/golden-ticket](https://aka.ms/golden-ticket).
