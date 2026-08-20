@@ -70,7 +70,7 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 - :arrow_right: [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md) — measure AIC consumption, set spending limits, and keep your workflows within budget (enterprise teams).
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your scheduled workflow has completed at least one successful automated run
 - [ ] You can describe, in plain English, what agentic workflows are and why they're useful

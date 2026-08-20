@@ -59,7 +59,7 @@ as an issue with the title "Weekly PR Digest".
 > [!TIP]
 > Struggling to think of a task? Browse the [gh-aw issue-ops pattern](https://github.github.com/gh-aw/patterns/issue-ops/) for inspiration. You will write a real version of your brief in Step 7. **Still unsure?** Pause here and work through [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md). It gives you more classification practice, a vocabulary check, and a sample `.md` / `.lock.yml` pair before you continue to Step 6. **Have an idea but not the words?** The [gh-aw wizard](https://githubnext.github.io/gh-aw-wizard/) turns a few answers about your idea into a generator prompt you can paste into your AI agent later.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can decide whether a task calls for an agentic or a standard Actions workflow
 - [ ] I have drafted a task brief that covers all three criteria: data source, output format, and cadence

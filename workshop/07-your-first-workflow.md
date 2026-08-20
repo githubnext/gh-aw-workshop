@@ -112,7 +112,7 @@ git push
 
 For follow-up edits, keep using an agent with the `agentic-workflows` skill and avoid manual workflow editing unless you are debugging a specific line-level issue.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Copilot access was confirmed in Copilot CLI before starting (test prompt received a reply)
 - [ ] `.github/workflows/daily-report-status.md` exists and contains an `on: schedule:` trigger in the frontmatter
