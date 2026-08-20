@@ -117,7 +117,7 @@ If any answer is no, revise your brief before continuing.
 > [!TIP]
 > Want annotated examples and more exercises? See [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md).
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can describe what an agentic workflow is in one sentence
 - [ ] You can explain one difference between an agentic and a standard Actions workflow
