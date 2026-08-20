@@ -86,7 +86,7 @@ Ideas:
 - **Screenshot**: If any UI file changed, a screenshot is linked in the PR description.
 - **Ticket link**: The PR title or description contains a reference to an issue number (`#NNN`).
 
-Update the checklist in the workflow brief, recompile, and open a fresh PR to verify the new criterion appears in the table.
+Update the checklist in the [workflow brief](https://github.github.com/gh-aw/reference/markdown/), recompile, and open a fresh PR to verify the new criterion appears in the table.
 
 ## ✅ Checkpoint
 

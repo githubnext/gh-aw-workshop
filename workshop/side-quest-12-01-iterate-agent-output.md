@@ -65,7 +65,7 @@ If you are working in a browser-based environment without terminal access, use t
 If you have a terminal open, open `.github/workflows/daily-status.md` and edit the Markdown body directly — no recompilation needed for body-only changes.
 
 > [!NOTE]
-> `gh aw compile` is only required when you change the **frontmatter** (triggers, permissions, or other YAML fields). Editing the Markdown task brief takes effect on the next run without recompiling.
+> `gh aw compile` is only required when you change the **frontmatter** ([triggers](https://github.github.com/gh-aw/reference/triggers/), permissions, or other YAML fields). Editing the Markdown task brief takes effect on the next run without recompiling.
 
 ## Before and after comparison
 

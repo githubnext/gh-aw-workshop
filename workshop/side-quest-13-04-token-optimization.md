@@ -79,7 +79,7 @@ If the workflow does not need to run, the cheapest run is zero AIC.
 
 - Lower the schedule frequency.
 - Add `if:` conditions around setup steps so you only call the agent when new data exists.
-- Use `workflow_dispatch` for occasional manual analysis instead of a frequent schedule.
+- Use `workflow_dispatch` for occasional manual analysis instead of a frequent [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
 ### Avoid re-processing unchanged work
 
@@ -94,7 +94,7 @@ Repeated work is repeated cost.
 Extra tool calls can increase cost indirectly by extending the turn and adding more reasoning.
 
 - Expose only the tools the workflow needs.
-- Prefer one targeted MCP query over several broad ones.
+- Prefer one targeted [MCP](https://github.github.com/gh-aw/reference/mcp-gateway/) query over several broad ones.
 - When possible, fetch structured data in a deterministic step and let the agent interpret it.
 
 ### Compare quality before choosing a more expensive setup
