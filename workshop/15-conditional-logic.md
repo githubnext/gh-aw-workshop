@@ -112,7 +112,7 @@ git commit -m "feat: skip summary on days with no commits"
 git push
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow has a `count recent commits` step with `id: recent`
 - [ ] Your workflow frontmatter includes `if: steps.recent.outputs.commit_count != '0'`
