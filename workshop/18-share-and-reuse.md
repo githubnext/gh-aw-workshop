@@ -21,6 +21,11 @@ When you run `gh aw add`, the extension fetches a workflow Markdown file directl
 
 That means **your workflow is already a template** — you just need to point people at it.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/18-template-share-flow-dark.svg">
+  <img src="images/18-template-share-flow-light.svg" alt="Template sharing flow: author commits a workflow .md file to their repository, a teammate runs gh aw add to copy it, then compiles and pushes to trigger GitHub Actions" width="1200" height="560">
+</picture>
+
 ### Choose a sharing destination
 
 You have two options:

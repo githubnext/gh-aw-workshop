@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="Template sharing flow: author commits a workflow .md file to their repository, a teammate runs gh aw add to copy it, then compiles and pushes to trigger GitHub Actions"
+  data-visual-kind="diagram"
+  data-visual-id="18-template-share-flow">
+
+  <style>
+    text { font-family: "Mona Sans", system-ui, -apple-system, sans-serif; }
+    .mono { font-family: "Mona Sans Mono", ui-monospace, "Cascadia Code", monospace; }
+    .title { font-size: 20px; font-weight: 700; fill: #f2f5f3; }
+    .step-label { font-size: 16px; font-weight: 600; fill: #f2f5f3; }
+    .sub-label { font-size: 14px; font-weight: 400; fill: #b6bfb8; }
+    .code-label { font-size: 14px; font-weight: 500; fill: #f2f5f3; }
+    .arrow-label { font-size: 14px; font-weight: 600; fill: #5fed83; }
+    .caption { font-size: 15px; font-weight: 400; fill: #b6bfb8; }
+    .badge { font-size: 13px; font-weight: 700; fill: #101411; }
+    .region-label { font-size: 13px; font-weight: 600; fill: #b6bfb8; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" class="title">Workflow Template Sharing Flow</text>
+
+  <!-- ── Region: Author ── -->
+  <rect x="32" y="70" width="280" height="200" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+  <text x="172" y="92" text-anchor="middle" class="region-label">Author Repository</text>
+
+  <!-- Node: workflow .md file -->
+  <rect x="64" y="104" width="216" height="72" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="workflow-file"/>
+  <!-- git-commit octicon (simplified) -->
+  <circle cx="88" cy="140" r="8" fill="none" stroke="#5fed83" stroke-width="2"/>
+  <line x1="64" y1="140" x2="80" y2="140" stroke="#5fed83" stroke-width="2"/>
+  <line x1="96" y1="140" x2="120" y2="140" stroke="#5fed83" stroke-width="2"/>
+  <text x="130" y="136" class="step-label">workflow.md</text>
+  <text x="130" y="154" class="sub-label">.github/workflows/</text>
+
+  <!-- Node: git push -->
+  <rect x="64" y="192" width="216" height="56" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="git-push"/>
+  <text x="172" y="218" text-anchor="middle" class="step-label">Committed &amp; Pushed</text>
+  <text x="172" y="236" text-anchor="middle" class="sub-label">git push origin main</text>
+
+  <!-- Badge 1 -->
+  <circle cx="64" cy="140" r="12" fill="#5fed83"/>
+  <text x="64" y="144" text-anchor="middle" class="badge">1</text>
+
+  <!-- ── Arrow 1: author → gh aw add ── -->
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fed83"/>
+    </marker>
+  </defs>
+  <line x1="312" y1="200" x2="418" y2="200" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="365" y="188" text-anchor="middle" class="arrow-label">gh aw add</text>
+  <text x="365" y="204" text-anchor="middle" class="sub-label" style="font-family:'Mona Sans Mono',monospace;font-size:12px">owner/repo/workflow</text>
+
+  <!-- ── Region: gh aw add command ── -->
+  <rect x="420" y="128" width="344" height="144" rx="12" fill="#0a241b" stroke="#5fed83" stroke-width="2" data-node="gh-aw-add"/>
+  <text x="592" y="150" text-anchor="middle" class="region-label">gh aw add</text>
+
+  <!-- Node: fetch -->
+  <rect x="444" y="160" width="136" height="88" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="fetch-step"/>
+  <text x="512" y="184" text-anchor="middle" class="step-label">Fetch</text>
+  <text x="512" y="202" text-anchor="middle" class="sub-label">Downloads .md</text>
+  <text x="512" y="218" text-anchor="middle" class="sub-label">from source repo</text>
+  <text x="512" y="234" text-anchor="middle" class="sub-label">via GitHub API</text>
+
+  <!-- Arrow between fetch and copy -->
+  <defs>
+    <marker id="arr2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#909692"/>
+    </marker>
+  </defs>
+  <line x1="580" y1="204" x2="608" y2="204" stroke="#909692" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+  <!-- Node: copy -->
+  <rect x="608" y="160" width="136" height="88" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="copy-step"/>
+  <text x="676" y="184" text-anchor="middle" class="step-label">Copy</text>
+  <text x="676" y="202" text-anchor="middle" class="sub-label">Writes to</text>
+  <text x="676" y="218" text-anchor="middle" class="sub-label">.github/workflows/</text>
+  <text x="676" y="234" text-anchor="middle" class="sub-label">in teammate repo</text>
+
+  <!-- Badge 2 -->
+  <circle cx="444" cy="160" r="12" fill="#5fed83"/>
+  <text x="444" y="164" text-anchor="middle" class="badge">2</text>
+
+  <!-- ── Arrow 2: gh aw add → teammate ── -->
+  <line x1="764" y1="200" x2="858" y2="200" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- ── Region: Teammate Repository ── -->
+  <rect x="860" y="70" width="308" height="320" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+  <text x="1014" y="92" text-anchor="middle" class="region-label">Teammate Repository</text>
+
+  <!-- Node: workflow .md copied -->
+  <rect x="888" y="104" width="252" height="72" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="teammate-file"/>
+  <circle cx="912" cy="140" r="8" fill="none" stroke="#5fed83" stroke-width="2"/>
+  <line x1="888" y1="140" x2="904" y2="140" stroke="#5fed83" stroke-width="2"/>
+  <line x1="920" y1="140" x2="944" y2="140" stroke="#5fed83" stroke-width="2"/>
+  <text x="956" y="136" class="step-label">workflow.md</text>
+  <text x="956" y="154" class="sub-label">copied, ready to edit</text>
+
+  <!-- Node: compile -->
+  <rect x="888" y="192" width="252" height="60" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="compile-step"/>
+  <text x="1014" y="218" text-anchor="middle" class="step-label">gh aw compile</text>
+  <text x="1014" y="236" text-anchor="middle" class="sub-label">Generates lock file</text>
+
+  <!-- Arrow: compile → push -->
+  <defs>
+    <marker id="arr3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#909692"/>
+    </marker>
+  </defs>
+  <line x1="1014" y1="252" x2="1014" y2="272" stroke="#909692" stroke-width="1.5" marker-end="url(#arr3)"/>
+
+  <!-- Node: push -->
+  <rect x="888" y="272" width="252" height="60" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="push-step"/>
+  <text x="1014" y="298" text-anchor="middle" class="step-label">git push</text>
+  <text x="1014" y="316" text-anchor="middle" class="sub-label">Triggers GitHub Actions</text>
+
+  <!-- Arrow: push → actions run -->
+  <line x1="1014" y1="332" x2="1014" y2="352" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Node: Actions run -->
+  <rect x="888" y="352" width="252" height="60" rx="8" fill="#3fb950" stroke="#5fed83" stroke-width="1.5" data-node="actions-run" data-state="done"/>
+  <!-- play icon simplified -->
+  <polygon points="912,370 912,394 934,382" fill="#bfffd1"/>
+  <text x="950" y="378" class="step-label" fill="#bfffd1">Workflow Runs</text>
+  <text x="950" y="396" class="sub-label" fill="#bfffd1">GitHub Actions</text>
+
+  <!-- Badges for teammate steps -->
+  <circle cx="888" cy="140" r="12" fill="#5fed83"/>
+  <text x="888" y="144" text-anchor="middle" class="badge">3</text>
+  <circle cx="888" cy="222" r="12" fill="#5fed83"/>
+  <text x="888" y="226" text-anchor="middle" class="badge">4</text>
+  <circle cx="888" cy="302" r="12" fill="#5fed83"/>
+  <text x="888" y="306" text-anchor="middle" class="badge">5</text>
+
+  <!-- Caption -->
+  <text x="600" y="502" text-anchor="middle" class="caption">
+    The author pushes a workflow .md file; teammates import it with gh aw add, compile, and push to run it in their own Actions.
+  </text>
+
+  <!-- Legend -->
+  <rect x="32" y="460" width="200" height="72" rx="8" fill="#0a241b" stroke="#909692" stroke-width="1"/>
+  <text x="44" y="480" class="region-label">Legend</text>
+  <rect x="44" y="490" width="16" height="10" rx="2" fill="#5fed83"/>
+  <text x="68" y="500" class="sub-label">Agentic / key action</text>
+  <rect x="44" y="508" width="16" height="10" rx="2" fill="#101411" stroke="#909692" stroke-width="1"/>
+  <text x="68" y="518" class="sub-label">Standard step</text>
+</svg>
