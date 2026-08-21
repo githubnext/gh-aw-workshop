@@ -33,7 +33,7 @@ to the workflow permissions and update the if condition to run the agent only wh
 alert_count is not zero and the ref is the default branch.
 ```
 
-The skill adds the step, updates the permissions block and the `if:` condition, then recompiles the lock file.
+The skill adds the step, updates the [permissions](https://github.github.com/gh-aw/reference/permissions/) block and the `if:` condition, then recompiles the lock file.
 
 <details>
 <summary>:desktop_computer: Terminal path</summary>
