@@ -95,7 +95,7 @@ rm -r test-dir
 ---
 
 <!-- journey: terminal -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You opened a terminal and saw a prompt (`$`, `%`, or `>`)
 - [ ] You ran `echo "hello, terminal!"` and saw the message printed

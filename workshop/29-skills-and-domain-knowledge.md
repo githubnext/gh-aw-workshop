@@ -134,7 +134,7 @@ gh aw compile
 
 Check the compiled `.lock.yml` for the activation step that installs your skill, and confirm no compile warnings mention an unpinned or missing skill reference.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You located an existing `SKILL.md` in this repository and identified its `name` and `description`
 - [ ] You wrote a local `SKILL.md` encoding one concrete domain convention

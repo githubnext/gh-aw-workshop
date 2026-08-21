@@ -156,7 +156,7 @@ the latest commit is more than 48 hours old and no status issue was created toda
 
 Each iteration follows the same loop: edit the brief, compile, push, run, inspect the dispatch log.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You identified at least two specialist workflows and one orchestration condition for each
 - [ ] Your `repo-orchestrator.md` includes a `dispatch-workflow` safe-output with an explicit `workflows` allowlist

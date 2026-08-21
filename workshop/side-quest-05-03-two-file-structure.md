@@ -106,7 +106,7 @@ An agent always operates **read-only**. Any writes — posting a comment, creati
 
 Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can point to the task brief and the trigger in a sample `.md` file
 - [ ] You can describe the difference between the `.md` source and the compiled `.lock.yml`

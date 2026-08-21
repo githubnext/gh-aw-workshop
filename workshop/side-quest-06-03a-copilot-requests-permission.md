@@ -60,7 +60,7 @@ Work through these checks in order if the run still fails:
 
 </details>
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I confirmed the owning organization has centralized Copilot billing enabled
 - [ ] `copilot-requests: write` is present under `permissions` in your workflow frontmatter

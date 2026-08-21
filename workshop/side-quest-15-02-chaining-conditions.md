@@ -105,7 +105,7 @@ git commit -m "feat: gate agent on open security alerts"
 git push
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow has a `count open security alerts` step with `id: alerts`
 - [ ] The `permissions:` block includes `security-events: read`

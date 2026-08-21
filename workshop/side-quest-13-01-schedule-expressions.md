@@ -78,7 +78,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 > ```
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain what a cron expression is at a high level
 - [ ] I know which fuzzy schedule expression best matches my workflow cadence

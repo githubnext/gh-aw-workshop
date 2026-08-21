@@ -150,7 +150,7 @@ gh repo clone my-agentic-workflows
 cd my-agentic-workflows
 ```
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I have cloned the `my-agentic-workflows` repository to my local machine
 - [ ] I have navigated into the `my-agentic-workflows` directory in my terminal

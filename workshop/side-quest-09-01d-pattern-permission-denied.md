@@ -40,7 +40,7 @@ Pattern: **Run fails with `permission denied`**. This is a write action, so you 
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can classify denied calls as read or write operations
 - [ ] I can fix missing read access in `permissions:`

@@ -106,7 +106,7 @@ To refine your questions, return to Copilot CLI and describe what you observed:
 > [!TIP]
 > Use `gh aw compile --watch` while iterating on eval questions to get instant feedback on compile errors.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] Your workflow frontmatter includes an `evals:` block with at least three binary questions
 - [ ] `gh aw compile daily-status` succeeds after your eval changes

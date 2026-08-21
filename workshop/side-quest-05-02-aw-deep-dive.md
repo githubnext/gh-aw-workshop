@@ -116,7 +116,7 @@ Does your answer include:
 
 Return to the main adventure: [What Are Agentic Workflows?](05-agentic-workflows-intro.md).
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You classified Task A as a standard workflow and explained why it needs no AI judgment
 - [ ] You classified Task B as an agentic workflow and named the decision the agent makes

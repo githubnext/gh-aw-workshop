@@ -76,7 +76,7 @@ Ideas:
 
 After making your change, recompile and open a fresh PR to see the updated output.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I created `.github/workflows/pr-summary.md` with an `opened`-only `pull_request` trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
