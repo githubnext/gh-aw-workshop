@@ -38,7 +38,7 @@ If you are unsure, check who owns your practice repository first:
 > [!IMPORTANT]
 > Choose one method. When [`copilot-requests: write`](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) is present, `COPILOT_GITHUB_TOKEN` is ignored for inference. Remove the permission and recompile when switching to personal billing.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I have identified which authentication method fits my situation.
 - [ ] I have completed either Method 1 or Method 2 (followed the linked guide to the end).
