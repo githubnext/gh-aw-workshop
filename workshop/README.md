@@ -105,6 +105,8 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Self-Hosted Runner Infrastructure Deep Dive](side-quest-24-01-runner-infrastructure.md) — enterprise infrastructure primer covering ephemeral and JIT runners, proxy configuration, and network isolation for air-gapped environments; branches from [Step 24](24-self-hosted-runners.md).
 - [Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) — full walkthrough of `gh aw forecast`: reading P10/P50/P90 output, using `--period week` and `--days 7`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 figure; branches from [Step 26](26-manage-costs-and-budgets.md).
 
+- [Govern Agentic Workflows at Scale](30-enterprise-governance.md) — apply deployment environment gates, `protected-files` blocks, and network allowlists to enforce enterprise policy; extends the advanced path after [Step 25](25-audit-and-observability.md) and [Step 26](26-manage-costs-and-budgets.md).
+
 ## Getting Started
 
 Start at [Welcome](00-welcome.md) — it shows you what you'll build and sets you up for success.
