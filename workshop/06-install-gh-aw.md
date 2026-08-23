@@ -1,6 +1,5 @@
 <!-- page-journey: all -->
 <!-- page-adventure: core -->
-<!-- learning:false -->
 # Install the gh-aw CLI Extension
 
 `gh-aw` is the CLI extension that compiles your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) Markdown files and triggers runs from your terminal.
@@ -83,6 +82,14 @@ Which one sub-command do you expect to use in Step 7 when you create and run you
 
 Want to understand how Copilot authenticates with your workflow?
 :arrow_right: **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
+
+## :white_check_mark: Checkpoint
+
+- [ ] `gh auth status` shows you are logged in to github.com
+- [ ] `gh aw --version` prints a version number (for example, `gh-aw version 0.81.6`)
+- [ ] `gh aw doctor` reports a success message for GitHub CLI authentication
+- [ ] `gh aw init` ran without errors and created `.github/skills/agentic-workflows/SKILL.md`
+- [ ] The skill files are committed and pushed to your repository
 
 <!-- journey: all -->
 **Next:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
