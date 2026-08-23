@@ -16,6 +16,14 @@ In this step, turn `github/gh-aw` research into a concrete training plan update:
 
 ## Steps
 
+The diagram below shows the five stages you will work through in this step — from gathering signals to opening a production-ready pull request.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/19-research-pipeline-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/19-research-pipeline-light.svg">
+   <img alt="Research-driven training node pipeline: five stages from signal review to pull request" src="images/19-research-pipeline-light.svg">
+</picture>
+
 ### Review current gh-aw signals
 
 Start by collecting the most current signal from the source repository and its docs references:
