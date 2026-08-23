@@ -24,7 +24,7 @@ managed by a runner controller such as actions-runner-controller.
 
 ## Proxy and network requirements
 
-Self-hosted runners in enterprise environments often sit behind an outbound proxy.
+[Self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) in enterprise environments often sit behind an outbound proxy.
 The [agentic engine](https://github.github.com/gh-aw/reference/engines/) needs to reach model endpoints and GitHub APIs.
 
 If your runner uses a proxy, set these environment variables in the runner's system

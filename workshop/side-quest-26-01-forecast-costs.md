@@ -12,7 +12,7 @@
 `gh aw forecast` looks at your actual run history and runs a Monte Carlo simulation to project future [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumption. It accounts for:
 
 - Run frequency (how often the workflow [triggers](https://github.github.com/gh-aw/reference/triggers/))
-- Per-run usage (how many AIC each run consumed)
+- Per-run usage (how many [AIC](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) each run consumed)
 - Success rate (failed runs still consume some tokens)
 
 The result is a probability distribution, not a single number. You get a **P10**, **P50**, and **P90** figure for the projection period.

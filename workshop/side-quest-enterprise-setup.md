@@ -12,7 +12,7 @@
 
 Use this side quest if your environment differs from standard `github.com` defaults.
 
-## Confirm GHES version and agentic workflow support
+## Confirm GHES version and [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) support
 
 [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) require **GHES 3.12 or later**. On earlier versions, the Copilot cloud agent feature is unavailable regardless of licensing or policy settings.
 

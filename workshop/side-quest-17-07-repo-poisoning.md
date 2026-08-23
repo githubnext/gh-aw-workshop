@@ -8,8 +8,8 @@
 
 By the end of this side quest you will be able to:
 
-- Explain what repository poisoning is and why agentic workflows are uniquely vulnerable to it.
-- Identify dangerous `permissions:` and `toolsets:` values in a workflow frontmatter.
+- Explain what repository poisoning is and why [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) are uniquely vulnerable to it.
+- Identify dangerous `permissions:` and `toolsets:` values in a workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 - Apply the three gh-aw defences: `contents: read`, `safe-outputs: create-pull-request`, and `network.allowed-domains`.
 
 ## :clipboard: Before You Start

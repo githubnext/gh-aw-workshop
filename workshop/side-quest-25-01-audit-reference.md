@@ -13,7 +13,7 @@
 
 `gh aw audit` generates a Markdown report that covers:
 
-- **Run metadata** — workflow name, trigger, engine, and model
+- **Run metadata** — workflow name, trigger, [engine](https://github.github.com/gh-aw/reference/engines/), and model
 - **Agent AIC** — total [AI Credits](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumed by the agent turn
 - **Threat-detection AIC (⌖ AIC)** — credits consumed by the firewall's threat-detection model, reported separately from agent inference
 - **[MCP tool calls](https://github.github.com/gh-aw/guides/mcps/)** — each tool the agent invoked, with any errors
@@ -29,7 +29,7 @@ The `agent` artifact — downloaded by both `gh aw logs --artifacts all` and `gh
 | File | What it tells you |
 |---|---|
 | `safeoutputs.jsonl` | Every safe-output declaration the agent emitted |
-| `mcp-logs/` | One log file per MCP server, listing every tool call and result |
+| `mcp-logs/` | One log file per [MCP](https://github.github.com/gh-aw/guides/mcps/) server, listing every tool call and result |
 | `sandbox/firewall/audit/` | Domain-level network access log (raw data) |
 | `agent_usage.json` | Token usage for the agent turn |
 
@@ -50,7 +50,7 @@ The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the thre
 
 ## Adding a blocked domain to [network.allowed](https://github.github.com/gh-aw/reference/network/#configuration)
 
-If the firewall blocked a domain your workflow needs, add it to `network.allowed` in your workflow frontmatter and recompile:
+If the firewall blocked a domain your workflow needs, add it to `network.allowed` in your workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and recompile:
 
 ```markdown
 ---
