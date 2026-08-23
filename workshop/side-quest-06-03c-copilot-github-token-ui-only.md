@@ -59,7 +59,7 @@ Quick check:
 
 When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You generated a new fine-grained PAT and copied it before leaving the token page
 - [ ] The token has **Copilot requests: Read-only** under **Account permissions**
