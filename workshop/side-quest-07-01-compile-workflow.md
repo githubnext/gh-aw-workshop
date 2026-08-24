@@ -108,7 +108,7 @@ on:
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
 <!-- journey: terminal -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I know what `gh aw compile` checks before a workflow runs
 - [ ] I can use `--no-emit` for quick structure checks without generating a lock file

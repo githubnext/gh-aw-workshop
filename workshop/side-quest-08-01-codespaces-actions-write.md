@@ -94,7 +94,7 @@ If you still see the same 403 error and no new run appears in the **Actions** ta
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can see `HTTP 403: Resource not accessible by integration` in my terminal when running `gh aw run daily-report-status`
 - [ ] A new **Daily Report Status** run appears in the **Actions** tab after I trigger it from the UI
