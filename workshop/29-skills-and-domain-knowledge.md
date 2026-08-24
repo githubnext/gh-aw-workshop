@@ -142,6 +142,8 @@ Check the compiled `.lock.yml` for the activation step that installs your skill,
 - [ ] You referenced your skill from a workflow (via `skills:`, a hint instruction, or a fusion comment)
 - [ ] `gh aw compile` succeeded with no unpinned-skill warnings
 
+**Next:** [Govern AI Workflow Policies Across Your Organisation](30-govern-workflow-policies.md)
+
 <!-- journey: all -->
 Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
 <!-- /journey -->
