@@ -40,7 +40,7 @@ Pattern: **safe-output `limit reached`**. Decide whether the second write is val
 </details>
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain what `BLOCKED` means in safe-output logs
 - [ ] I can decide when increasing `max` is appropriate
