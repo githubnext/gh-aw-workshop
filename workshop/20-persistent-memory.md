@@ -35,6 +35,14 @@ You'll add [persistent memory](https://github.github.com/gh-aw/patterns/memory-o
 
 Every workflow run you have built so far starts with a blank slate. That is fine for a daily summary, but it causes problems the moment you want to:
 
+The diagram below shows how `cache-memory` makes deduplication possible across runs.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/20-cache-memory-loop-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/20-cache-memory-loop-light.svg">
+   <img alt="Cache-memory deduplication loop: on each workflow run, the agent reads the memory slot, filters out already-seen issues, reports only new ones, then writes updated issue IDs back to cache." src="images/20-cache-memory-loop-light.svg">
+</picture>
+
 - **Deduplicate alerts** — alert only on _new_ open issues, not the same ones every morning.
 - **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
 - **Scan incrementally** — skip pull requests you have already reviewed.
