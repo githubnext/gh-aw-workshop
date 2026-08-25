@@ -170,7 +170,7 @@ Use the checklist below to record your findings in a comment or your workflow's 
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain in one sentence why a PAT is riskier than `GITHUB_TOKEN` in an unattended workflow
 - [ ] You can describe the risk window difference between the two credential types
