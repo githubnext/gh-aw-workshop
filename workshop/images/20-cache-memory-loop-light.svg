@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="Cache-memory deduplication loop: on each workflow run, the agent reads the memory slot, filters out already-seen issues, reports only new ones, then writes updated issue IDs back to cache."
+  data-visual-kind="diagram"
+  data-visual-id="20-cache-memory-loop">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="44" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#101411">Cache-Memory Deduplication Loop</text>
+
+  <!-- Annotation -->
+  <text x="600" y="534" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#232925">Each workflow run reads state, filters duplicates, reports only new items, and writes updated state back to cache.</text>
+
+  <!-- ── LANE: GitHub Actions Cache ── -->
+  <rect x="40" y="68" width="1120" height="430" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+  <text x="68" y="96" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#232925">Workflow Run</text>
+
+  <!-- ── Node 1: Schedule Trigger ── -->
+  <!-- clock octicon path (MIT Primer) centered in circle -->
+  <g data-node="trigger" transform="translate(112,170)">
+    <rect x="-56" y="-40" width="112" height="80" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <!-- clock icon 16x16 centered at 0,−10 -->
+    <g transform="translate(-8,-22)" fill="#08872b">
+      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM8 4a.75.75 0 0 1 .745.661L8.75 4.75v3.69l2.28 2.28a.75.75 0 0 1-.976 1.133l-.084-.073-2.5-2.5a.75.75 0 0 1-.214-.415L7.25 8.75v-4A.75.75 0 0 1 8 4z"/>
+    </g>
+    <text x="0" y="22" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Schedule</text>
+    <text x="0" y="38" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Trigger</text>
+  </g>
+
+  <!-- Arrow 1 → 2 -->
+  <line x1="168" y1="170" x2="236" y2="170" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="236,164 248,170 236,176" fill="#b6bfb8"/>
+
+  <!-- ── Node 2: Read Cache Memory ── -->
+  <g data-node="read-cache" transform="translate(320,170)">
+    <rect x="-72" y="-48" width="144" height="96" rx="10" fill="#ffffff" stroke="#08872b" stroke-width="2"/>
+    <text x="0" y="-14" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="14" font-weight="600" fill="#08872b">cache-memory</text>
+    <text x="0" y="4" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Read Memory</text>
+    <text x="0" y="22" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Load seen issue IDs</text>
+    <text x="0" y="38" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">(empty on first run)</text>
+  </g>
+
+  <!-- Arrow 2 → 3 -->
+  <line x1="392" y1="170" x2="460" y2="170" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="460,164 472,170 460,176" fill="#b6bfb8"/>
+
+  <!-- ── Node 3: Fetch Issues ── -->
+  <g data-node="fetch" transform="translate(544,170)">
+    <rect x="-72" y="-48" width="144" height="96" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <!-- issue-opened octicon path (MIT Primer) at top -->
+    <g transform="translate(-8,-44)" fill="#1a7f37">
+      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
+    </g>
+    <text x="0" y="-14" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Fetch Issues</text>
+    <text x="0" y="4" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Get all open issues</text>
+    <text x="0" y="22" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">from repository</text>
+    <!-- state badge -->
+    <rect x="-28" y="32" width="56" height="18" rx="9" fill="#1a7f37"/>
+    <text x="0" y="45" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="11" font-weight="600" fill="#ffffff" data-state="open">Open</text>
+  </g>
+
+  <!-- Arrow 3 → 4 -->
+  <line x1="616" y1="170" x2="684" y2="170" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="684,164 696,170 684,176" fill="#b6bfb8"/>
+
+  <!-- ── Node 4: Filter Duplicates ── -->
+  <g data-node="filter" transform="translate(768,170)">
+    <rect x="-72" y="-48" width="144" height="96" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="0" y="-14" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Filter</text>
+    <text x="0" y="6" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Remove already-seen</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">issue IDs</text>
+    <!-- diamond shape hint via rotated rect -->
+    <polygon points="0,-44 12,-36 0,-28 -12,-36" fill="#b6bfb8" transform="translate(0,2)"/>
+  </g>
+
+  <!-- Arrow 4 → 5 (new issues path) -->
+  <line x1="840" y1="170" x2="908" y2="170" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="908,164 920,170 908,176" fill="#b6bfb8"/>
+  <!-- label: new issues -->
+  <text x="874" y="158" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#08872b" font-weight="600">new only</text>
+
+  <!-- ── Node 5: Report ── -->
+  <g data-node="report" transform="translate(992,170)">
+    <rect x="-72" y="-48" width="144" height="96" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <!-- comment icon hint -->
+    <text x="0" y="-14" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Report</text>
+    <text x="0" y="4" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Post digest comment</text>
+    <text x="0" y="22" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">for new issues only</text>
+    <text x="0" y="40" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">(skip if none)</text>
+  </g>
+
+  <!-- ── Node 6: Write Cache Memory ── (below, center) -->
+  <g data-node="write-cache" transform="translate(600,390)">
+    <rect x="-120" y="-40" width="240" height="80" rx="10" fill="#ffffff" stroke="#08872b" stroke-width="2"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="14" font-weight="600" fill="#08872b">cache-memory</text>
+    <text x="0" y="10" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Write Memory</text>
+    <text x="0" y="30" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Save updated seen issue IDs (TTL: 7d)</text>
+  </g>
+
+  <!-- Arrow: Report → Write Cache (down from Report) -->
+  <line x1="992" y1="218" x2="992" y2="320" stroke="#b6bfb8" stroke-width="2"/>
+  <line x1="992" y1="320" x2="720" y2="320" stroke="#b6bfb8" stroke-width="2"/>
+  <line x1="720" y1="320" x2="720" y2="350" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="714,350 720,362 726,350" fill="#b6bfb8"/>
+
+  <!-- Arrow: Write Cache → Read Cache (loop back, bottom) -->
+  <line x1="480" y1="390" x2="180" y2="390" stroke="#08872b" stroke-width="2" stroke-dasharray="8 4"/>
+  <line x1="180" y1="390" x2="180" y2="280" stroke="#08872b" stroke-width="2" stroke-dasharray="8 4"/>
+  <line x1="180" y1="280" x2="248" y2="280" stroke="#08872b" stroke-width="2" stroke-dasharray="8 4"/>
+  <!-- arrowhead pointing right toward Node 2 bottom -->
+  <line x1="248" y1="280" x2="248" y2="218" stroke="#08872b" stroke-width="2" stroke-dasharray="8 4"/>
+  <polygon points="242,218 248,206 254,218" fill="#08872b"/>
+  <!-- loop label -->
+  <text x="330" y="408" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#08872b" font-weight="600">next run reads updated memory</text>
+
+  <!-- "no new issues" bypass path label -->
+  <line x1="768" y1="218" x2="768" y2="260" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line x1="768" y1="260" x2="600" y2="260" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line x1="600" y1="260" x2="600" y2="350" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <polygon points="594,350 600,362 606,350" fill="#b6bfb8"/>
+  <text x="684" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#909692">no new issues — skip post</text>
+
+  <!-- Step numbers badges -->
+  <circle cx="112" cy="130" r="13" fill="#08872b"/>
+  <text x="112" y="135" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">1</text>
+
+  <circle cx="320" cy="106" r="13" fill="#08872b"/>
+  <text x="320" y="111" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">2</text>
+
+  <circle cx="544" cy="106" r="13" fill="#08872b"/>
+  <text x="544" y="111" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">3</text>
+
+  <circle cx="768" cy="106" r="13" fill="#08872b"/>
+  <text x="768" y="111" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">4</text>
+
+  <circle cx="992" cy="106" r="13" fill="#08872b"/>
+  <text x="992" y="111" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">5</text>
+
+  <circle cx="600" cy="338" r="13" fill="#08872b"/>
+  <text x="600" y="343" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">6</text>
+
+</svg>
