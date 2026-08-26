@@ -38,7 +38,7 @@ The skill recognizes three core task types for day-to-day workflow maintenance:
 |-----------|---------------|------------------------|
 | **Edit** | Improve the agent brief or [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) | "update the workflow to …" |
 | **Debug** | Investigate unexpected output or a failed run | "debug the workflow — it ran but …" |
-| **Optimize** | Reduce token usage or tighten permissions | "optimize the workflow to reduce [AI Credit](https://github.github.com/gh-aw/reference/cost-management/) cost" |
+| **Optimize** | Reduce token usage or tighten [permissions](https://github.github.com/gh-aw/reference/permissions/) | "optimize the workflow to reduce [AI Credit](https://github.github.com/gh-aw/reference/cost-management/) cost" |
 
 If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
@@ -121,7 +121,7 @@ Recompile and push the change.
 
 ## Optimize: reduce token usage
 
-Once the workflow produces correct output, you can reduce how much [AI Credit](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) it uses per run. This matters especially for workflows that run on a schedule.
+Once the workflow produces correct output, you can reduce how much [AI Credit](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) it uses per run. This matters especially for workflows that run on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
 In your Codespace terminal, run `gh copilot`, then paste:
 

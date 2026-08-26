@@ -41,7 +41,7 @@ What it was trying to do:      [one sentence description]
 
 ## Check the output
 
-After the run finishes, scroll to the **Summary** section on the run page. This gives you the short version of what the agent believes it did, including the safe-output action it used.
+After the run finishes, scroll to the **Summary** section on the run page. This gives you the short version of what the agent believes it did, including the [safe-output action](https://github.github.com/gh-aw/reference/safe-outputs/) it used.
 
 Then verify the real output in your repository. For **Daily Report Status**, that usually means opening the issue the agent touched and confirming the comment or new issue is actually there. The GitHub change is the ground truth behind the [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) record.
 
