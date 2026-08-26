@@ -169,7 +169,7 @@ Run `/review` again and compare the new result with the first review. Once you h
 - [ ] You created `.github/workflows/pr-reviewer.md` through your AI agent and `/agentic-workflows`
 - [ ] The workflow contains a `pr-reviewer` inline agent and a `pr-review-standards` inline skill
 - [ ] The parent brief calls the reviewer, and the reviewer applies the skill
-- [ ] The agent job has read-only repository and pull request permissions
+- [ ] The agent job has read-only repository and pull request [permissions](https://github.github.com/gh-aw/reference/permissions/)
 - [ ] The safe output allows one `COMMENT` or `REQUEST_CHANGES` review, but not `APPROVE`
 - [ ] `gh aw compile` completed and both workflow files are committed and pushed
 - [ ] Marking a draft ready or commenting `/review` triggered the workflow
