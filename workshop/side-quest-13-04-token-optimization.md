@@ -150,7 +150,7 @@ Explain why that change is the best next step, then apply it and run gh aw compi
 
 Paste the relevant excerpt from your `gh aw audit --parse` output below the prompt.
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You collected a five-run AIC baseline for one workflow
 - [ ] You audited at least one unusually expensive run

@@ -87,7 +87,7 @@ gh issue list --state open --search "updated:>=2026-07-13" --json number,title,l
 
 ---
 
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] You can explain the difference between deterministic and agentic work in one sentence
 - [ ] You can identify one step in your workflow that should stay deterministic
