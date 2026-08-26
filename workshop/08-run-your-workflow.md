@@ -16,7 +16,7 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 ## Pre-flight check
 
-A stale or missing lock file is the leading cause of `model-access-not-configured` failures at this step. Run these checks before triggering the workflow — each takes less than a minute.
+A stale or missing [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) is the leading cause of `model-access-not-configured` failures at this step. Run these checks before triggering the workflow — each takes less than a minute.
 
 **Lock file is present and current.** Open `.github/workflows/` in your repository on GitHub and confirm both files are there:
 

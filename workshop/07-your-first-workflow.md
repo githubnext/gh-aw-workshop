@@ -115,7 +115,7 @@ For follow-up edits, keep using an agent with the `agentic-workflows` skill and 
 ## :white_check_mark: Checkpoint
 
 - [ ] Copilot access was confirmed in Copilot CLI before starting (test prompt received a reply)
-- [ ] `.github/workflows/daily-report-status.md` exists and contains an `on: schedule:` trigger in the frontmatter
+- [ ] `.github/workflows/daily-report-status.md` exists and contains an `on: schedule:` trigger in the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)
 - [ ] The file includes `permissions` with `copilot-requests: write`
 - [ ] `gh aw compile` exits with no errors and produces `daily-report-status.lock.yml`
 - [ ] Both `daily-report-status.md` and `daily-report-status.lock.yml` are committed and pushed to `main`

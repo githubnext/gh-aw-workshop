@@ -45,7 +45,7 @@ If you arrived from the step 07 access check and the test prompt succeeded, retu
 > [!NOTE]
 > For golden-ticket workshops, billing is pre-provisioned by your org. Use the **Organization centralized billing** path unless your instructor says otherwise.
 
-Follow the full setup steps in [Side Quest: Copilot Billing Paths](side-quest-07d-billing-paths.md), then return here once your workflow file and lock file are committed.
+Follow the full setup steps in [Side Quest: Copilot Billing Paths](side-quest-07d-billing-paths.md), then return here once your workflow file and [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) are committed.
 
 ## :white_check_mark: Checkpoint
 
