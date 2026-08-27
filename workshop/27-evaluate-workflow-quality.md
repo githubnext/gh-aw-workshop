@@ -36,7 +36,7 @@ In your Copilot CLI session in the terminal, paste:
 /agentic-workflows add three binary eval questions to daily-status.md: one checking that a status issue was created, one checking the output includes a summary of repository activity, and one checking that no writes happened outside declared safe outputs.
 ```
 
-The skill adds the `evals:` block to your frontmatter, compiles the lock file, and shows you the diff.
+The skill adds the `evals:` block to your frontmatter, compiles the [lock file](https://github.github.com/gh-aw/reference/compilation-process/), and shows you the diff.
 
 <details>
 <summary>:desktop_computer: Terminal path — add the evals block directly</summary>

@@ -88,7 +88,7 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 ### Compare assignment counts from [artifacts](https://github.github.com/gh-aw/reference/artifacts/)
 
-1. Open your first run, scroll to **Artifacts**, and download `experiment`.
+1. Open your first run, scroll to **[Artifacts](https://github.github.com/gh-aw/reference/artifacts/)**, and download `experiment`.
 2. Open the JSON file and note the counts for `concise` and `detailed`.
 3. Repeat for your second run and compare the two files.
 4. Confirm both variants now have one assignment each.

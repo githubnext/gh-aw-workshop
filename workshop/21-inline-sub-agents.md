@@ -93,7 +93,7 @@ After your parent workflow brief, at the bottom of the file, add the sub-agent b
 For each issue, use the `issue-summarizer` agent to produce a one-sentence summary.
 ```
 
-After editing both, run `gh aw compile` to regenerate the lock file.
+After editing both, run `gh aw compile` to regenerate the [lock file](https://github.github.com/gh-aw/reference/compilation-process/).
 
 </details>
 

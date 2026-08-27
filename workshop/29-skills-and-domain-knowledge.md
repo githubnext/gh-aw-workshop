@@ -57,7 +57,7 @@ skills:
 
 External references must be pinned to a full 40-character commit SHA (or an unpinned `owner/repo@` ref, which the compiler warns about). Local paths like `.github/skills/my-skill` are for skills you author and maintain in this repository.
 
-### Write a local SKILL.md
+### Write a local [SKILL.md](https://github.github.com/gh-aw/reference/custom-agent-for-aw/)
 
 Pick one narrow convention from your own repository — for example, "how to classify an issue" or "what fields a status report must include." In your AI agent, run:
 
