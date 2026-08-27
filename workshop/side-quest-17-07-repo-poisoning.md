@@ -17,6 +17,9 @@ By the end of this side quest you will be able to:
 - You have completed [Give Your Agent More Tools with MCP](17-add-mcp-tools.md) and have a working workflow file.
 - You are familiar with the `permissions:` and `safe-outputs:` blocks from earlier steps.
 
+> [!NOTE]
+> In enterprise environments (GHES or GHEC), your organization may already enforce branch protection rules, required reviewers, and CODEOWNERS at the repository level. The defences in this side quest work alongside those controls — they are not a substitute. Apply both layers for the strongest protection.
+
 ---
 
 ## The Attack
@@ -156,13 +159,19 @@ tools:
 
 ## :pencil2: Exercise: Harden Your Workflow
 
-1. Open your own workflow file.
-2. Check whether `contents: write` appears in `permissions:`.
-3. If your workflow does not need to commit files directly, replace it with `contents: read`.
-4. If your workflow does need to propose changes, add a `safe-outputs: create-pull-request` block with an `allowed-files` list and a `protected-files.exclude` entry for `.github/workflows/**`.
-5. Run the workflow and confirm the agent still completes its task.
+Open your workflow file from [Step 17](17-add-mcp-tools.md) and apply the following changes:
 
-Write your before-and-after `permissions:` block in a comment on this checkpoint.
+1. Locate the `permissions:` block. If `contents: write` appears and your workflow does not commit files directly, change it to `contents: read`.
+2. If your workflow needs to propose changes, add a `safe-outputs: create-pull-request` block that includes an `allowed-files` list scoped to the paths your task should touch and a `protected-files.exclude` entry for `.github/workflows/**`.
+3. Add a `network.allowed-domains` block listing only the domains your workflow genuinely needs (for example `api.github.com`).
+4. Compile and run the workflow. Confirm the agent still completes its task without needing direct write access.
+
+<details>
+<summary>Expected outcome</summary>
+
+After hardening, your workflow frontmatter should contain no `contents: write`, no `toolsets: [everything]`, and at least one of the safe-output or network restrictions described above. The agent's output (issue comment, pull request, or summary) should be identical to before — only the write path changes.
+
+</details>
 
 ---
 
@@ -177,9 +186,6 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 | `network.allowed-domains` | Blocks outbound connections to attacker-controlled servers, closing the exfiltration channel |
 | Treat all untrusted content as hostile | Issue bodies, PR descriptions, and file text are user-controlled inputs — never trust them unconditionally |
 
-> [!TIP]
-> In enterprise environments (GHES or GHEC), your organization may enforce branch protection rules and required reviewers at the repository level. Combine those controls with `protected-files` in your workflow for defence-in-depth.
-
 ---
 
 ## :white_check_mark: Checkpoint
@@ -189,6 +195,7 @@ Write your before-and-after `permissions:` block in a comment on this checkpoint
 - [ ] I identified all dangerous fields in the exercise frontmatter
 - [ ] I applied at least one defensive measure to my own workflow
 - [ ] I can explain why `protected-files` adds a human review gate even when a PR is allowed
+- [ ] I added a `network.allowed-domains` restriction to limit outbound connections
 
 ---
 
