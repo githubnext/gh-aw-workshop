@@ -44,7 +44,7 @@ In your Copilot CLI session in the terminal, paste:
 /agentic-workflows make daily-status.md resilient: add a fallback brief for empty data, set timeout-minutes to 10, and include a fallback message on the safe-output call.
 ```
 
-The skill applies all three changes and recompiles the lock file. Review the diff before committing.
+The skill applies all three changes and recompiles the [lock file](https://github.github.com/gh-aw/reference/compilation-process/). Review the diff before committing.
 
 <details>
 <summary>:pencil2: Manual edit path</summary>
@@ -74,7 +74,7 @@ This prevents the most common failure: the agent silently completes without writ
 
 ### Set a timeout
 
-Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` to your workflow frontmatter to cap the run:
+Long-running tasks can stall a workflow run indefinitely. Add `timeout-minutes` to your workflow frontmatter to cap the run (see [Timeouts](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)):
 
 ```markdown .github/workflows/daily-status.md
 ---

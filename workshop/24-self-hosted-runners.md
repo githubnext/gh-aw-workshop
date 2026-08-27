@@ -78,7 +78,7 @@ registration settings (Settings → Actions → Runners).
 > [!TIP]
 > Labels act as filters. A workflow job is dispatched to the first idle runner that satisfies all labels in the list. Adding `linux` alongside `self-hosted` ensures the job only lands on Linux runners when your fleet is mixed.
 
-Running in an enterprise environment? See [Side Quest: Self-Hosted Runner Infrastructure Deep Dive](side-quest-24-01-runner-infrastructure.md) for guidance on ephemeral and JIT runners, proxy configuration, and [network](https://github.github.com/gh-aw/reference/network/) isolation for air-gapped environments.
+Running in an enterprise environment? See [Side Quest: Self-Hosted Runner Infrastructure Deep Dive](side-quest-24-01-runner-infrastructure.md) for guidance on [ephemeral](https://github.github.com/gh-aw/reference/ephemerals/) and JIT runners, proxy configuration, and [network](https://github.github.com/gh-aw/reference/network/) isolation for air-gapped environments.
 
 ## :pencil2: Exercise: Compile and commit
 
@@ -97,7 +97,7 @@ git push
 ```
 
 > [!TIP]
-> You can also use the `/agentic-workflows` Copilot skill to edit the workflow — it compiles and commits both files together, so you never end up with a stale lock file.
+> You can also use the `/agentic-workflows` Copilot skill to edit the workflow — it compiles and commits both files together, so you never end up with a stale [lock file](https://github.github.com/gh-aw/reference/compilation-process/).
 
 ## :pencil2: Exercise: Verify the run lands on your runner
 
