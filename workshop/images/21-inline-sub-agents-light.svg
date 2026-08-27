@@ -1,124 +1,200 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Inline sub-agent pattern: parent agent plans and delegates repeated tasks to sub-agents, then assembles the final output">
-  <!-- Background -->
-  <rect width="1200" height="560" fill="#f6f8fa"/>
-
-  <!-- Title -->
-  <text x="600" y="38" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" font-weight="700" fill="#24292f">Inline Sub-Agent Pattern</text>
-  <text x="600" y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#57606a">One workflow file · parent agent plans · sub-agents handle repeated tasks</text>
-
-  <!-- ── Workflow file boundary ── -->
-  <rect x="60" y="80" width="1080" height="420" rx="12" fill="none" stroke="#d0d7de" stroke-width="2" stroke-dasharray="8 4"/>
-  <text x="82" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#57606a">daily-status.md  (single workflow file)</text>
-
-  <!-- ── TRIGGER box ── -->
-  <rect x="90" y="118" width="160" height="64" rx="8" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
-  <text x="170" y="145" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#24292f">Trigger</text>
-  <text x="170" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#57606a">schedule / workflow_dispatch</text>
-
-  <!-- arrow trigger → parent -->
-  <line x1="250" y1="150" x2="310" y2="150" stroke="#d0d7de" stroke-width="2" marker-end="url(#arrow-light)"/>
-
-  <!-- ── PARENT AGENT box ── -->
-  <rect x="310" y="90" width="230" height="320" rx="10" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
-  <rect x="310" y="90" width="230" height="34" rx="10" fill="#0969da"/>
-  <rect x="310" y="108" width="230" height="16" fill="#0969da"/>
-  <text x="425" y="113" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Parent Agent</text>
-  <text x="425" y="143" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#57606a">model: frontier</text>
-
-  <!-- parent steps -->
-  <rect x="328" y="158" width="194" height="32" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  <text x="425" y="179" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#24292f">① Fetch list of open issues</text>
-
-  <rect x="328" y="200" width="194" height="32" rx="6" fill="#dbeafe" stroke="#0969da" stroke-width="1"/>
-  <text x="425" y="221" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#0969da">② Call sub-agent per issue ↓</text>
-
-  <rect x="328" y="242" width="194" height="32" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  <text x="425" y="263" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#24292f">③ Collect summaries</text>
-
-  <rect x="328" y="284" width="194" height="32" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  <text x="425" y="305" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#24292f">④ Write final report</text>
-
-  <rect x="328" y="326" width="194" height="32" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  <text x="425" y="347" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#24292f">⑤ Post via safe output</text>
-
-  <!-- ── SUB-AGENT block (below, inside file boundary) ── -->
-  <rect x="310" y="380" width="230" height="96" rx="8" fill="#fff8e1" stroke="#d4a017" stroke-width="1.5"/>
-  <text x="425" y="400" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#7a5800">## agent: `issue-summarizer`</text>
-  <text x="425" y="418" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">model: small</text>
-  <text x="425" y="436" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Reads one issue →</text>
-  <text x="425" y="452" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">returns one sentence</text>
-
-  <!-- arrow parent ② → sub-agent (vertical) -->
-  <line x1="425" y1="358" x2="425" y2="378" stroke="#0969da" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow-blue-light)"/>
-
-  <!-- ── ISSUE cards (right side) ── -->
-  <!-- issue 1 -->
-  <rect x="620" y="155" width="160" height="52" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
-  <text x="700" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#24292f">Issue #1</text>
-  <text x="700" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Bug: login fails on Safari</text>
-
-  <!-- issue 2 -->
-  <rect x="620" y="225" width="160" height="52" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
-  <text x="700" y="246" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#24292f">Issue #2</text>
-  <text x="700" y="264" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Feature: dark mode toggle</text>
-
-  <!-- issue 3 -->
-  <rect x="620" y="295" width="160" height="52" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1.5"/>
-  <text x="700" y="316" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#24292f">Issue #3</text>
-  <text x="700" y="334" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Docs: update API reference</text>
-
-  <!-- arrows parent → issues -->
-  <line x1="540" y1="221" x2="618" y2="182" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-gold-light)"/>
-  <line x1="540" y1="221" x2="618" y2="251" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-gold-light)"/>
-  <line x1="540" y1="221" x2="618" y2="321" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-gold-light)"/>
-
-  <!-- ── SUMMARY output cards ── -->
-  <rect x="850" y="155" width="220" height="52" rx="6" fill="#f0fff4" stroke="#2da44e" stroke-width="1.5"/>
-  <text x="960" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#1a7f37">Summary #1</text>
-  <text x="960" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Login breaks in Safari due to …</text>
-
-  <rect x="850" y="225" width="220" height="52" rx="6" fill="#f0fff4" stroke="#2da44e" stroke-width="1.5"/>
-  <text x="960" y="246" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#1a7f37">Summary #2</text>
-  <text x="960" y="264" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Request to add a dark mode …</text>
-
-  <rect x="850" y="295" width="220" height="52" rx="6" fill="#f0fff4" stroke="#2da44e" stroke-width="1.5"/>
-  <text x="960" y="316" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#1a7f37">Summary #3</text>
-  <text x="960" y="334" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">API docs need refreshing …</text>
-
-  <!-- arrows issues → summaries -->
-  <line x1="780" y1="181" x2="848" y2="181" stroke="#2da44e" stroke-width="1.5" marker-end="url(#arrow-green-light)"/>
-  <line x1="780" y1="251" x2="848" y2="251" stroke="#2da44e" stroke-width="1.5" marker-end="url(#arrow-green-light)"/>
-  <line x1="780" y1="321" x2="848" y2="321" stroke="#2da44e" stroke-width="1.5" marker-end="url(#arrow-green-light)"/>
-
-  <!-- ── FINAL REPORT ── -->
-  <rect x="850" y="380" width="220" height="72" rx="8" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
-  <text x="960" y="405" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#0969da">Final Report</text>
-  <text x="960" y="423" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">Assembled numbered list</text>
-  <text x="960" y="440" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#57606a">posted via safe output</text>
-
-  <!-- arrow summaries → final report (aggregate) -->
-  <line x1="960" y1="348" x2="960" y2="378" stroke="#0969da" stroke-width="2" marker-end="url(#arrow-blue-light)"/>
-
-  <!-- label "× N" on delegation arrows -->
-  <rect x="541" y="200" width="44" height="20" rx="4" fill="#fff8e1" stroke="#d4a017" stroke-width="1"/>
-  <text x="563" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#7a5800">× N items</text>
-
-  <!-- ── Bottom annotation ── -->
-  <text x="600" y="530" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#57606a">The parent agent (frontier model) handles planning and assembly; sub-agents (small model) do the repeated per-item work.</text>
-
-  <!-- Marker defs -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img"
+     aria-label="Inline sub-agent pattern: parent agent plans and delegates repeated tasks to sub-agents, then assembles the final output"
+     data-visual-kind="diagram"
+     data-visual-id="21-inline-sub-agents-light">
   <defs>
-    <marker id="arrow-light" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#d0d7de"/>
+    <marker id="arrow-l" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#b6bfb8"/>
     </marker>
-    <marker id="arrow-blue-light" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#0969da"/>
+    <marker id="arrow-acc-l" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#08872b"/>
     </marker>
-    <marker id="arrow-gold-light" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#d4a017"/>
-    </marker>
-    <marker id="arrow-green-light" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#2da44e"/>
+    <marker id="arrow-muted-l" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#909692"/>
     </marker>
   </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="36" text-anchor="middle"
+        font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+        font-size="20" font-weight="700" fill="#101411">Inline Sub-Agent Pattern</text>
+  <text x="600" y="58" text-anchor="middle"
+        font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+        font-size="16" fill="#232925">One workflow file · parent agent plans · sub-agents handle repeated tasks</text>
+
+  <!-- Workflow file boundary -->
+  <rect x="60" y="72" width="1080" height="432" rx="12" fill="none" stroke="#b6bfb8" stroke-width="2" stroke-dasharray="8 4"/>
+  <text x="80" y="92"
+        font-family="'Mona Sans Mono',ui-monospace,monospace"
+        font-size="16" fill="#909692">daily-status.md</text>
+
+  <!-- TRIGGER node -->
+  <g data-node="trigger">
+    <rect x="88" y="112" width="172" height="64" rx="8" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="174" y="138" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#101411">Trigger</text>
+    <text x="174" y="160" text-anchor="middle"
+          font-family="'Mona Sans Mono',ui-monospace,monospace"
+          font-size="14" fill="#232925">schedule / dispatch</text>
+  </g>
+
+  <!-- arrow trigger → parent -->
+  <line x1="260" y1="144" x2="308" y2="144" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-l)"/>
+
+  <!-- PARENT AGENT node -->
+  <g data-node="parent-agent">
+    <rect x="310" y="84" width="230" height="330" rx="10" fill="#ffffff" stroke="#08872b" stroke-width="2"/>
+    <!-- header bar -->
+    <rect x="310" y="84" width="230" height="36" rx="10" fill="#08872b"/>
+    <rect x="310" y="104" width="230" height="16" fill="#08872b"/>
+    <text x="425" y="108" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="700" fill="#ffffff">Parent Agent</text>
+    <!-- model label -->
+    <text x="425" y="140" text-anchor="middle"
+          font-family="'Mona Sans Mono',ui-monospace,monospace"
+          font-size="14" fill="#232925">model: frontier</text>
+    <!-- Step rows -->
+    <rect x="326" y="152" width="198" height="32" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="425" y="173" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#101411">① Fetch open issues</text>
+    <rect x="326" y="194" width="198" height="32" rx="6" fill="#e4ebe6" stroke="#08872b" stroke-width="1"/>
+    <text x="425" y="215" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#08872b">② Call sub-agent ×N ↓</text>
+    <rect x="326" y="236" width="198" height="32" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="425" y="257" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#101411">③ Collect summaries</text>
+    <rect x="326" y="278" width="198" height="32" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="425" y="299" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#101411">④ Write final report</text>
+    <rect x="326" y="320" width="198" height="32" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="425" y="341" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#101411">⑤ Post via safe output</text>
+  </g>
+
+  <!-- SUB-AGENT node -->
+  <g data-node="sub-agent">
+    <rect x="310" y="384" width="230" height="96" rx="8" fill="#ffffff" stroke="#909692" stroke-width="1.5"/>
+    <text x="425" y="406" text-anchor="middle"
+          font-family="'Mona Sans Mono',ui-monospace,monospace"
+          font-size="14" font-weight="700" fill="#101411">## agent: `issue-summarizer`</text>
+    <text x="425" y="426" text-anchor="middle"
+          font-family="'Mona Sans Mono',ui-monospace,monospace"
+          font-size="14" fill="#232925">model: small</text>
+    <text x="425" y="448" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#232925">Reads one issue → one sentence</text>
+    <text x="425" y="468" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#909692">sub-agent block (same file)</text>
+  </g>
+
+  <!-- arrow parent step ② → sub-agent -->
+  <line x1="425" y1="352" x2="425" y2="382" stroke="#08872b" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow-acc-l)"/>
+
+  <!-- ISSUE nodes -->
+  <g data-node="issue-1">
+    <rect x="620" y="150" width="162" height="54" rx="6" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="701" y="172" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#101411">Issue #1</text>
+    <text x="701" y="192" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#232925">Bug: login fails on Safari</text>
+  </g>
+  <g data-node="issue-2">
+    <rect x="620" y="222" width="162" height="54" rx="6" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="701" y="244" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#101411">Issue #2</text>
+    <text x="701" y="264" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#232925">Feature: dark mode toggle</text>
+  </g>
+  <g data-node="issue-3">
+    <rect x="620" y="294" width="162" height="54" rx="6" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="701" y="316" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#101411">Issue #3</text>
+    <text x="701" y="336" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#232925">Docs: update API reference</text>
+  </g>
+
+  <!-- × N label -->
+  <rect x="544" y="194" width="56" height="22" rx="4" fill="#e4ebe6" stroke="#909692" stroke-width="1"/>
+  <text x="572" y="210" text-anchor="middle"
+        font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+        font-size="14" font-weight="600" fill="#232925">× N items</text>
+
+  <!-- arrows parent → issues -->
+  <line x1="542" y1="215" x2="618" y2="177" stroke="#909692" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-muted-l)"/>
+  <line x1="542" y1="215" x2="618" y2="249" stroke="#909692" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-muted-l)"/>
+  <line x1="542" y1="215" x2="618" y2="321" stroke="#909692" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-muted-l)"/>
+
+  <!-- SUMMARY nodes -->
+  <g data-node="summary-1" data-state="done">
+    <rect x="852" y="150" width="220" height="54" rx="6" fill="#ffffff" stroke="#08872b" stroke-width="1.5"/>
+    <text x="962" y="172" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#08872b">Summary #1</text>
+    <text x="962" y="192" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#232925">Login breaks in Safari due to …</text>
+  </g>
+  <g data-node="summary-2" data-state="done">
+    <rect x="852" y="222" width="220" height="54" rx="6" fill="#ffffff" stroke="#08872b" stroke-width="1.5"/>
+    <text x="962" y="244" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#08872b">Summary #2</text>
+    <text x="962" y="264" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#232925">Request to add a dark mode …</text>
+  </g>
+  <g data-node="summary-3" data-state="done">
+    <rect x="852" y="294" width="220" height="54" rx="6" fill="#ffffff" stroke="#08872b" stroke-width="1.5"/>
+    <text x="962" y="316" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="600" fill="#08872b">Summary #3</text>
+    <text x="962" y="336" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#232925">API docs need refreshing …</text>
+  </g>
+
+  <!-- arrows issues → summaries -->
+  <line x1="782" y1="177" x2="850" y2="177" stroke="#08872b" stroke-width="2" marker-end="url(#arrow-acc-l)"/>
+  <line x1="782" y1="249" x2="850" y2="249" stroke="#08872b" stroke-width="2" marker-end="url(#arrow-acc-l)"/>
+  <line x1="782" y1="321" x2="850" y2="321" stroke="#08872b" stroke-width="2" marker-end="url(#arrow-acc-l)"/>
+
+  <!-- FINAL REPORT node -->
+  <g data-node="final-report">
+    <rect x="852" y="380" width="220" height="72" rx="8" fill="#ffffff" stroke="#08872b" stroke-width="2"/>
+    <text x="962" y="406" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" font-weight="700" fill="#08872b">Final Report</text>
+    <text x="962" y="426" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="16" fill="#232925">Assembled numbered list</text>
+    <text x="962" y="444" text-anchor="middle"
+          font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+          font-size="14" fill="#909692">posted via safe output</text>
+  </g>
+
+  <!-- arrow summaries → final report -->
+  <line x1="962" y1="348" x2="962" y2="378" stroke="#08872b" stroke-width="2" marker-end="url(#arrow-acc-l)"/>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="498" text-anchor="middle"
+        font-family="'Mona Sans',ui-sans-serif,system-ui,sans-serif"
+        font-size="16" fill="#232925">Parent agent (frontier model) plans and assembles; sub-agents (small model) handle repeated per-item work.</text>
 </svg>
