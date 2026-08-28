@@ -14,7 +14,7 @@ To get the most out of this fast-track guide, you should have already:
 
 ## :dart: What You'll Do
 
-Review the key shift from classic Actions to agentic workflows, compare concrete code examples, and keep a short list of what stays unchanged. By the end, you'll have a practical adoption lens for platform and DevOps use cases.
+Review the key shift from classic Actions to [agentic workflows](https://github.github.com/gh-aw/introduction/overview/), compare concrete code examples, and keep a short list of what stays unchanged. By the end, you'll have a practical adoption lens for platform and DevOps use cases.
 
 ## The core mental model shift
 

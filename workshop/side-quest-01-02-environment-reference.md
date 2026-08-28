@@ -21,7 +21,7 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 | **`gh-aw` CLI extension** | The GitHub Agentic Workflows extension you install and use in the terminal. | [Install `gh-aw`](https://github.com/github/gh-aw#readme) |
 | **GitHub Copilot CLI** | Copilot in the terminal for AI-assisted command and development help. | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
 | **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | [GitHub Copilot app](https://github.com/features/ai/github-app) |
-| **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | [Claude documentation](https://docs.anthropic.com/) |
+| **Claude** | Anthropic's AI model family available in some GitHub Copilot and [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) contexts. | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | [OpenAI Codex CLI repository](https://github.com/openai/codex#readme) |
 
 ### :white_check_mark: Verify your tools are ready
@@ -100,7 +100,7 @@ You use `gh` for GitHub-specific terminal tasks like authentication checks, repo
    <img alt="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow" src="images/side-quest-01-02-gh-aw-light.svg">
 </picture>
 
-You use `gh aw` to compile agentic workflow files.
+You use `gh aw` to [compile](https://github.github.com/gh-aw/reference/compilation-process/) agentic workflow files.
 
 #### GitHub Copilot CLI
 
