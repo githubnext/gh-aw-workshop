@@ -162,7 +162,7 @@ Fields:
   `action` (`"dispatch"` | `"modify"` | `"suggest"` | `"noop"`), `target`, and
   `reason`
 
-### 1c. Handle `focus = "status"`
+### Handle `focus = "status"`
 
 If `${{ inputs.focus }}` equals `"status"`, call `noop` with a summary that
 includes:
@@ -174,7 +174,7 @@ includes:
 
 Do **not** take any other action.
 
-### 1d. Resolve status issue target
+### Resolve status issue target
 
 Resolve the issue that stores builder action history:
 
@@ -191,14 +191,14 @@ Resolve the issue that stores builder action history:
 
 Gather signals from three sources:
 
-### 2a. Workflow run status
+### Workflow run status
 
 Use the `agentic-workflows` `status` tool to check the latest run status for
 each workflow in the `dispatch-workflow` list above.
 
 Note: which workflows are failing, skipping, or have not run recently.
 
-### 2b. Open PRs and issues
+### Open PRs and issues
 
 Use the GitHub MCP tools to query open workshop-related work:
 
@@ -211,7 +211,7 @@ Record:
   eligibility table in section 2c
 - Any open issues suggesting improvements or reporting errors
 
-### 2c. Derive dispatch eligibility
+### Derive dispatch eligibility
 
 For each workflow, compute whether it is **eligible** for dispatch:
 
@@ -406,7 +406,7 @@ Write the updated state back to `/tmp/gh-aw/cache-memory/builder-state.json`:
 Maintain a single issue that acts as the permanent action log for this
 orchestrator.
 
-### 5a. Ensure status issue exists
+### Ensure status issue exists
 
 If `status_issue_number` is null, create this issue using `create-issue`:
 
@@ -415,14 +415,14 @@ If `status_issue_number` is null, create this issue using `create-issue`:
   action-history comment
 
 Do **not** set `status_issue_number` after creation — the real issue number will
-be resolved automatically by step 1d on the next run.
+be resolved automatically by step "Resolve status issue target" on the next run.
 
-### 5b. Append one history comment every run
+### Append one history comment every run
 
 Only call `add-comment` when `status_issue_number` is a **real numeric issue
 number** (i.e. it was already known before this run and is not null). Skip the
 comment when the issue was just created in this run — the next run will discover
-the number via step 1d and then start appending comments.
+the number via step "Resolve status issue target" and then start appending comments.
 
 - **item_number**: `status_issue_number`
 - **body** must include:

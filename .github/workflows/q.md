@@ -131,7 +131,7 @@ Use bash and file inspection tools to:
 
 Based on your analysis, make targeted improvements to workflow files:
 
-#### 3.1 Add Missing Tools
+#### Add Missing Tools
 
 If logs show missing tool reports:
 - Add the tools to the appropriate workflow frontmatter
@@ -144,7 +144,7 @@ tools:
   edit:
 ```
 
-#### 3.2 Fix Permission Issues
+#### Fix Permission Issues
 
 If logs show permission errors:
 - Add required permissions to workflow frontmatter
@@ -159,7 +159,7 @@ permissions:
   actions: read
 ```
 
-#### 3.3 Optimize Repetitive Operations
+#### Optimize Repetitive Operations
 
 If logs show excessive repetitive tool calls:
 - Extract common patterns into workflow steps
@@ -172,14 +172,14 @@ imports:
   - shared/reporting.md
 ```
 
-#### 3.4 Extract Common Execution Pathways
+#### Extract Common Execution Pathways
 
 If multiple workflows share similar logic:
 - Create new shared configuration files in `workflows/shared/`
 - Extract common prompts or instructions
 - Add imports to workflows to use shared configs
 
-#### 3.5 Improve Workflow Configuration
+#### Improve Workflow Configuration
 
 General optimizations:
 - Add `timeout-minutes` to prevent runaway costs
