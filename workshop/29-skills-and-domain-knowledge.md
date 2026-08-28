@@ -95,34 +95,13 @@ If any of these are missing, note which ones in your response.
 
 ### Choose a strategy: hint or fusion
 
-Once a skill exists, decide how your workflow prompt should point to it:
+Once a skill exists, decide how your workflow prompt should point to it. There are three strategies:
 
-| Factor | Hint (generalist) | Fusion (targeted) |
-|---|---|---|
-| Task domain | Broad or unknown at authoring time | Narrow and well-defined |
-| Skill set | Grows dynamically over time | Known and stable |
-| Context budget | Generous | Tight |
-| Determinism | Lower — agent chooses what applies | Higher — you specify the exact fragment |
+- **Hint** — let the agent discover and self-select relevant `SKILL.md` files at runtime. Best for broad or growing skill sets when you have a generous context budget.
+- **Fusion** — reference only the exact skill fragment the agent needs with a `<!-- gh-skill-fusion: path#anchor -->` comment. Best when the task is narrow and well-defined and you want to keep the prompt compact.
+- **Inline** — embed the skill fragment directly in the workflow file under a `## skill: \`name\`` heading. Best when the skill is small and specific to a single workflow.
 
-Use **hint** when you want the agent to discover and self-select relevant skills:
-
-```markdown
-If the repository contains `SKILL.md` files under `skills/` or `.github/skills/`,
-check which ones are relevant to this task. For each relevant skill, read its
-content and apply the guidance it provides.
-```
-
-Use **fusion** when you know exactly which skill section the agent needs and want to keep the prompt compact — reference only the relevant fragment, never the whole file:
-
-```markdown
-<!-- gh-skill-fusion: .github/skills/issue-triage/SKILL.md#issue-triage -->
-
-Classify this issue as bug, feature, or question. If it is a bug, confirm the
-body includes reproduction steps, expected vs. actual behavior, and environment
-details.
-```
-
-> :bulb: A third option, **inline skills**, lets you embed a skill fragment directly in the workflow file under a `## skill: \`name\`` heading. gh-aw extracts it to the right location at setup time. Use this when the skill is small and specific to a single workflow — you don't need it anywhere else.
+> :bulb: **Optional Side Quest:** For the full decision table, code examples for each strategy, and a hands-on practice exercise, see [Skill Injection Strategies — Hint, Fusion, and Inline](side-quest-29-01-skill-injection-strategies.md).
 
 ### Wire the skill into a workflow and validate
 
