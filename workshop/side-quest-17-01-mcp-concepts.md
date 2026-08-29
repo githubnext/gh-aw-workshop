@@ -86,7 +86,7 @@ tools:
 If you're working locally, run this command to confirm your `tools:` block has no schema errors:
 
 ```bash
-gh aw validate
+gh aw compile
 ```
 
 ---
@@ -161,5 +161,4 @@ Because MCP tool servers receive and return data at runtime, a few security conc
 <!-- journey: all -->
 Return to [Give Your Agent More Tools with MCP](17-add-mcp-tools.md).
 <!-- /journey -->
-
 
