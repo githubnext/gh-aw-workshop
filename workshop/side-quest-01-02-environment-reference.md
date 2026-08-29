@@ -151,6 +151,46 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
 
+## Quick check: match the tool to the task
+
+Before you move on, match each scenario below to the tool you would use. Write your answer, then reveal it.
+
+**Scenario A:** You want to convert a `.md` workflow file into a `.lock.yml` file that GitHub Actions can run.
+
+<details>
+<summary>Reveal Scenario A answer</summary>
+
+**`gh aw` CLI extension** — run `gh aw compile` in your terminal to compile the Markdown source into the Actions-compatible lock file.
+
+</details>
+
+**Scenario B:** You want to check whether your GitHub CLI is authenticated and which account is active.
+
+<details>
+<summary>Reveal Scenario B answer</summary>
+
+**GitHub CLI (`gh`)** — run `gh auth status` in your terminal to see which account is logged in.
+
+</details>
+
+**Scenario C:** You want to edit a workflow file and keep a terminal open beside it in your browser without installing anything locally.
+
+<details>
+<summary>Reveal Scenario C answer</summary>
+
+**GitHub Codespaces** — open the repository in a Codespace to get a full editor and integrated terminal in your browser.
+
+</details>
+
+**Scenario D:** You want to use an AI model other than the default Copilot model for a workflow run — specifically Anthropic's model family.
+
+<details>
+<summary>Reveal Scenario D answer</summary>
+
+**Claude** — configure your workflow frontmatter to use a Claude model. See [Side Quest: Anthropic API Key](side-quest-11-06-anthropic-key.md) for setup steps.
+
+</details>
+
 <!-- journey: all -->
 ## :white_check_mark: Checkpoint
 
