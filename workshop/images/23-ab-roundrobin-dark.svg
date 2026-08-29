@@ -1,80 +1,129 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img"
+     aria-label="A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run"
+     data-visual-kind="diagram"
+     data-visual-id="23-ab-roundrobin">
   <title>A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run</title>
-  <rect width="1200" height="560" fill="#0d1117"/>
-  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
-    <text x="600" y="72" text-anchor="middle" font-size="20" font-weight="600" fill="#f0f6fc">A/B Experiment Round-Robin Cycle</text>
 
-    <defs>
-      <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f81f7"/>
-      </marker>
-    </defs>
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
 
-    <g>
-      <line x1="220" y1="240" x2="272" y2="240" stroke="#2f81f7" stroke-width="4" marker-end="url(#arrowhead)"/>
-      <line x1="432" y1="240" x2="484" y2="240" stroke="#2f81f7" stroke-width="4" marker-end="url(#arrowhead)"/>
-      <line x1="644" y1="240" x2="696" y2="240" stroke="#2f81f7" stroke-width="4" marker-end="url(#arrowhead)"/>
-      <line x1="856" y1="240" x2="908" y2="240" stroke="#2f81f7" stroke-width="4" marker-end="url(#arrowhead)"/>
-    </g>
+  <!-- Title -->
+  <text x="600" y="56" text-anchor="middle"
+        font-family="'Mona Sans', 'Mona-Sans', system-ui, sans-serif"
+        font-size="22" font-weight="700" fill="#f2f5f3"
+        letter-spacing="0">A/B Experiment Round-Robin Cycle</text>
 
-    <g>
-      <g transform="translate(60 200)">
-        <rect width="160" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
-        <circle cx="18" cy="18" r="13" fill="#2f81f7"/>
-        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#f0f6fc">1</text>
-        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#f0f6fc">
-          <tspan x="80" dy="0">Load State</tspan>
-          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#8b949e">artifact counts</tspan>
-        </text>
-      </g>
+  <!-- Subtitle annotation -->
+  <text x="600" y="80" text-anchor="middle"
+        font-family="'Mona Sans', 'Mona-Sans', system-ui, sans-serif"
+        font-size="14" font-weight="400" fill="#b6bfb8">
+    On each run, gh-aw executes these five steps in sequence to assign and record the active variant.
+  </text>
 
-      <g transform="translate(272 200)">
-        <rect width="160" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
-        <circle cx="18" cy="18" r="13" fill="#2f81f7"/>
-        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#f0f6fc">2</text>
-        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#f0f6fc">
-          <tspan x="80" dy="0">Pick Variant</tspan>
-          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#8b949e">lowest count wins</tspan>
-        </text>
-      </g>
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arr-dark" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#5fed83"/>
+    </marker>
+  </defs>
 
-      <g transform="translate(484 200)">
-        <rect width="160" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
-        <circle cx="18" cy="18" r="13" fill="#2f81f7"/>
-        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#f0f6fc">3</text>
-        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#f0f6fc">
-          <tspan x="80" dy="0">Save Counts</tspan>
-          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#8b949e">increment winner</tspan>
-        </text>
-      </g>
+  <!-- Connector arrows -->
+  <line x1="228" y1="252" x2="276" y2="252" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr-dark)"/>
+  <line x1="444" y1="252" x2="492" y2="252" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr-dark)"/>
+  <line x1="660" y1="252" x2="708" y2="252" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr-dark)"/>
+  <line x1="876" y1="252" x2="924" y2="252" stroke="#5fed83" stroke-width="2.5" marker-end="url(#arr-dark)"/>
 
-      <g transform="translate(696 200)">
-        <rect width="160" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
-        <circle cx="18" cy="18" r="13" fill="#2f81f7"/>
-        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#f0f6fc">
-          <tspan x="80" dy="0">Upload Artifact</tspan>
-          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#8b949e">publish experiment</tspan>
-        </text>
-        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#f0f6fc">4</text>
-      </g>
-
-      <g transform="translate(908 200)">
-        <rect width="160" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
-        <circle cx="18" cy="18" r="13" fill="#2f81f7"/>
-        <text x="18" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#f0f6fc">5</text>
-        <text x="80" y="36" text-anchor="middle" font-size="18" font-weight="600" fill="#f0f6fc">
-          <tspan x="80" dy="0">Inject Variant</tspan>
-          <tspan x="80" dy="22" font-size="13" font-weight="400" fill="#8b949e">template conditionals</tspan>
-        </text>
-      </g>
-    </g>
-
-    <g transform="translate(315 332)">
-      <rect width="570" height="62" rx="8" fill="#0d419d" stroke="#1f6feb" stroke-width="1.5"/>
-      <text x="24" y="29" font-size="15" font-weight="600" fill="#cae8ff">Example: concise ×1 · detailed ×0 → picks detailed</text>
-      <text x="24" y="48" font-size="13" fill="#cae8ff">Lowest invocation count wins, so the next run uses the less-tested variant.</text>
-    </g>
-
-    <text x="600" y="490" text-anchor="middle" font-size="13" fill="#8b949e">gh-aw picks the variant with the lowest run count; ties go to the first variant listed</text>
+  <!-- Node 1: Load State -->
+  <g data-node="load-state" transform="translate(60,208)">
+    <rect width="168" height="88" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <circle cx="20" cy="20" r="14" fill="#5fed83"/>
+    <text x="20" y="25" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411">1</text>
+    <text x="84" y="46" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="17" font-weight="600" fill="#f2f5f3">Load State</text>
+    <text x="84" y="66" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="13" font-weight="400" fill="#b6bfb8">artifact counts</text>
   </g>
+
+  <!-- Node 2: Pick Variant -->
+  <g data-node="pick-variant" transform="translate(276,208)">
+    <rect width="168" height="88" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <circle cx="20" cy="20" r="14" fill="#5fed83"/>
+    <text x="20" y="25" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411">2</text>
+    <text x="84" y="46" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="17" font-weight="600" fill="#f2f5f3">Pick Variant</text>
+    <text x="84" y="66" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="13" font-weight="400" fill="#b6bfb8">lowest count wins</text>
+  </g>
+
+  <!-- Node 3: Save Counts -->
+  <g data-node="save-counts" transform="translate(492,208)">
+    <rect width="168" height="88" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <circle cx="20" cy="20" r="14" fill="#5fed83"/>
+    <text x="20" y="25" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411">3</text>
+    <text x="84" y="46" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="17" font-weight="600" fill="#f2f5f3">Save Counts</text>
+    <text x="84" y="66" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="13" font-weight="400" fill="#b6bfb8">increment winner</text>
+  </g>
+
+  <!-- Node 4: Upload Artifact -->
+  <g data-node="upload-artifact" transform="translate(708,208)">
+    <rect width="168" height="88" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <circle cx="20" cy="20" r="14" fill="#5fed83"/>
+    <text x="20" y="25" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411">4</text>
+    <text x="84" y="46" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="17" font-weight="600" fill="#f2f5f3">Upload Artifact</text>
+    <text x="84" y="66" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="13" font-weight="400" fill="#b6bfb8">publish experiment</text>
+  </g>
+
+  <!-- Node 5: Inject Variant -->
+  <g data-node="inject-variant" transform="translate(924,208)">
+    <rect width="168" height="88" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <circle cx="20" cy="20" r="14" fill="#5fed83"/>
+    <text x="20" y="25" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="14" font-weight="700" fill="#101411">5</text>
+    <text x="84" y="46" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="17" font-weight="600" fill="#f2f5f3">Inject Variant</text>
+    <text x="84" y="66" text-anchor="middle"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="13" font-weight="400" fill="#b6bfb8">template conditionals</text>
+  </g>
+
+  <!-- Example callout -->
+  <g transform="translate(300,340)">
+    <rect width="600" height="68" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+    <text x="24" y="30"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="15" font-weight="600" fill="#f2f5f3">Example: concise ×1 · detailed ×0 → picks detailed</text>
+    <text x="24" y="52"
+          font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+          font-size="13" font-weight="400" fill="#b6bfb8">Lowest invocation count wins; ties go to the first variant listed.</text>
+  </g>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="470" text-anchor="middle"
+        font-family="'Mona Sans','Mona-Sans',system-ui,sans-serif"
+        font-size="13" fill="#b6bfb8">
+    gh-aw selects the variant with the fewest runs so far, keeping all variants evenly tested over time.
+  </text>
 </svg>
