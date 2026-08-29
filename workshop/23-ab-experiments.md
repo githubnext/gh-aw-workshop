@@ -13,7 +13,6 @@ You'll add an A/B experiment using `experiments:` and compare outcomes across ru
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You are comfortable editing YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and task briefs.
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
-- Need internals? Jump to [Understand how the round-robin works](#understand-how-the-round-robin-works).
 
 ## Add an experiment to your workflow
 
@@ -119,26 +118,10 @@ Write a report according to the output_style: ${{ experiments.output_style }}.
 1. Using your confirmed 1:1 counts for `concise` and `detailed`, predict the next three assignments.
 2. Run the workflow three times and compare your prediction with activation logs and `experiment` counts.
 
-## Understand how the [round-robin](https://github.github.com/gh-aw/experimental/experiments/#statistical-balancing) works
+On each run, gh-aw picks the variant with the lowest invocation count so far (ties are broken by first-in-array order), then saves the updated counts and uploads them as the `experiment` [artifact](https://github.github.com/gh-aw/reference/artifacts/).
 
-<picture>
-   <source media="(prefers-color-scheme: dark)" srcset="images/23-ab-roundrobin-dark.svg">
-   <source media="(prefers-color-scheme: light)" srcset="images/23-ab-roundrobin-light.svg">
-   <img alt="A/B experiment round-robin cycle: five steps gh-aw performs on each workflow run" src="images/23-ab-roundrobin-light.svg">
-</picture>
-
-<details>
-<summary>Open for the mechanism details</summary>
-
-On each run, gh-aw:
-
-1. Loads state from `experiments/{workflow-id}` (created on first run).
-2. Picks the variant with the lowest invocation count (ties are broken by first-in-array order).
-3. Saves the updated counts.
-4. Uploads the `experiment` [artifact](https://github.github.com/gh-aw/reference/artifacts/).
-5. Injects the selected variant into your template conditionals.
-
-</details>
+> [!TIP]
+> Need the full five-step mechanism and worked prediction tables? Jump to [Side Quest: How A/B Experiment Round-Robin Assignment Works](side-quest-23-01-ab-roundrobin.md).
 
 ## Analyse the results
 
