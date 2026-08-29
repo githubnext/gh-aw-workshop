@@ -1,6 +1,6 @@
 ---
 name: agentic-workflows
-description: Route gh-aw workflow design/create/debug/upgrade requests to the right prompts.
+description: Routes gh-aw workflow requests to the right design, debugging, and upgrade prompts.
 ---
 
 # Agentic Workflows Router
