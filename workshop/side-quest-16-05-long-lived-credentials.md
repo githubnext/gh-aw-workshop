@@ -62,10 +62,13 @@ For any operation that touches only the current repository, use `${{ secrets.GIT
 
 ### Keep `permissions:` minimal
 
-Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the [permissions](https://github.github.com/gh-aw/reference/permissions/) your task actually needs. Compare the two blocks below:
+Even an ephemeral `GITHUB_TOKEN` carries risk if it is over-scoped. Declare only the [permissions](https://github.github.com/gh-aw/reference/permissions/) your task actually needs. In gh-aw, `write` permissions are rejected by the compiler for security reasons — use read-only scopes or `none`, and keep any write intent behind [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/).
+
+Compare the two blocks below:
 
 ```markdown
-# ❌ Risky: broad write scopes for a read-only task
+# ❌ Invalid in gh-aw: write permissions are rejected by the compiler
+# Use safe-outputs for any write operation instead.
 ---
 permissions:
   contents: write
