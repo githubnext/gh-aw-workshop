@@ -6,11 +6,11 @@
 
 **What you'll learn:** By the end of this page you can name each tool and environment used in the workshop, match it to its role, and know when you'll use it.
 
-## :clipboard: Before You Start
+## Before You Start
 
-This is a reference page — you can read it any time. Come back here whenever the workshop uses a term you want to clarify. No terminal required to read this page.
+**What you need:** A Codespace already open (from [Step 2](02a-setup-codespace.md)) or access to any terminal where `gh` is installed. You do not need `gh-aw` installed yet.
 
-When you're ready to verify your tools are working, see the [Checkpoint](#white_check_mark-checkpoint) section at the bottom.
+This is a reference page — come back here any time you encounter an unfamiliar term. No terminal required to read; the terminal commands in the Checkpoint section are optional quick-checks.
 
 ## Environment and tool glossary
 
@@ -150,6 +150,31 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 </picture>
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
+
+## Quick practice: match the tool to the task
+
+Before you check off the checkpoint, try this self-test. For each task below, name the tool you'd use. Answers are in the collapsed section.
+
+| Task | Which tool? |
+|------|-------------|
+| Open a file and edit it | ? |
+| Run `gh aw compile` | ? |
+| Trigger a workflow run from the command line | ? |
+| Ask AI to explain a bash command | ? |
+| Start a Codespace | ? |
+
+<details>
+<summary>Show answers</summary>
+
+| Task | Tool |
+|------|------|
+| Open a file and edit it | VS Code (inside your Codespace) |
+| Run `gh aw compile` | Terminal — type `gh aw compile` |
+| Trigger a workflow run from the command line | Terminal — `gh workflow run` |
+| Ask AI to explain a bash command | GitHub Copilot CLI — `gh copilot explain` |
+| Start a Codespace | GitHub.com → your repository → **Code** → **Codespaces** |
+
+</details>
 
 <!-- journey: all -->
 ## :white_check_mark: Checkpoint
