@@ -2,9 +2,9 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Method 2 — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: use this method for personal billing, or when the organization that owns the repository does not have centralized Copilot billing enabled._
+> _Optional: use this method for personal [billing](https://github.github.com/gh-aw/reference/billing/), or when the organization that owns the repository does not have centralized Copilot billing enabled._
 
-This method stores a Personal Access Token (PAT) as a repository secret named [`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken). The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) [engine](https://github.github.com/gh-aw/reference/engines/) picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
+This method stores a [Personal Access Token](https://github.github.com/gh-aw/reference/glossary/#personal-access-token-pat) (PAT) as a repository secret named [`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken). The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) [engine](https://github.github.com/gh-aw/reference/engines/) picks it up automatically. For background on PAT types and when to use each, see the [auth overview](side-quest-06-03-copilot-token.md).
 
 If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 
@@ -32,7 +32,7 @@ If you prefer to create and store the PAT manually, follow the full procedure be
 1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and click **Generate new token (fine-grained)**.
 2. Name the token (for example, `gh-aw-copilot`) and set an expiry (90 days is a common default).
 3. For a public workshop repository, choose **Public repositories**. For a private workshop repository, choose **Only select repositories** and select it.
-4. Under **Permissions** → **Account permissions**, set **Copilot requests** to **Read-only**.
+4. Under **[Permissions](https://github.github.com/gh-aw/reference/permissions/)** → **Account permissions**, set **Copilot requests** to **Read-only**.
 5. Click **Generate token** and copy the value immediately — GitHub shows it only once.
 
 > [!IMPORTANT]

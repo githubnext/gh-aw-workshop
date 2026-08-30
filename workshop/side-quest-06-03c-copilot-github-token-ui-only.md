@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Method 2 (UI-only) — COPILOT_GITHUB_TOKEN Secret
 
-> _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-billing setup without terminal commands._
+> _Optional: this is the GitHub UI-friendly variant of Method 2. Use it when you prefer or need to complete personal-[billing](https://github.github.com/gh-aw/reference/billing/) setup without terminal commands._
 
 This method stores a [fine-grained Personal Access Token](https://github.github.com/gh-aw/reference/auth/#copilot-default) (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) [engine](https://github.github.com/gh-aw/reference/engines/) picks it up automatically.
 
@@ -18,7 +18,7 @@ This method stores a [fine-grained Personal Access Token](https://github.github.
 3. Set **Repository access** based on your workshop repository visibility:
    - For a public repository, choose **Public repositories**.
    - For a private repository, choose **Only select repositories** and pick your repository.
-4. Under Permissions → **Account permissions**, set Copilot requests to Read-only.
+4. Under [Permissions](https://github.github.com/gh-aw/reference/permissions/) → **Account permissions**, set Copilot requests to Read-only.
 5. Click **Generate token** and copy the value immediately. GitHub shows it only once.
 
 > [!IMPORTANT]
