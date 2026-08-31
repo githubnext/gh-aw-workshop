@@ -26,6 +26,14 @@ An agentic workflow's frontmatter is compatible with standard GitHub Actions YAM
 The `runs-on:` field tells Actions which runner to use — it works identically for
 agentic workflows and classic jobs.
 
+The diagram below shows how Actions reads your labels and dispatches the job to the first idle runner that satisfies all of them.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/24-runner-label-dispatch-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/24-runner-label-dispatch-light.svg">
+  <img alt="Runner label dispatch: how runs-on labels in frontmatter route a workflow job to a matching self-hosted runner" src="images/24-runner-label-dispatch-light.svg">
+</picture>
+
 Your current workflow likely targets a GitHub-hosted runner. Look for the `runs-on:` field in your frontmatter:
 
 ```markdown .github/workflows/daily-status.md
