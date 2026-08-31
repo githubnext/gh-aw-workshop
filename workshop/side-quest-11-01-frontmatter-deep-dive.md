@@ -1,8 +1,8 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Frontmatter Deep Dive — Part A
+# Side Quest: [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) Deep Dive — Part A
 
-> _Optional: configure each of the opening three frontmatter sections of an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) file — metadata, triggers, and permissions. Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
+> _Optional: configure each of the opening three frontmatter sections of an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) file — metadata, triggers, and [permissions](https://github.github.com/gh-aw/reference/permissions/). Work through this before building Step 11, then continue to [Part B: Tools, Outputs, and the Agent Body](side-quest-11-08-frontmatter-tools-outputs.md) or return to the main path._
 
 ## :clipboard: Before You Start
 
@@ -10,7 +10,7 @@ Open the draft workflow file you started in [Step 11](07-your-first-workflow.md)
 
 ---
 
-An agentic workflow file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between `---` separators. This block configures when the workflow runs and what it is allowed to do.
+An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) file opens with a YAML **[frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** block between `---` separators. This block configures when the workflow runs and what it is allowed to do.
 
 ---
 

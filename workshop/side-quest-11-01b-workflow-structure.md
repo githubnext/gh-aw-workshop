@@ -15,7 +15,7 @@ An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) fi
 - **[Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)** — YAML between `---` fences at the top of the file. This configures how and when the workflow runs.
 - **Markdown body** — the agent's task brief, written below the closing `---`. The AI reads this at runtime.
 
-The file ends in `.md` instead of `.yml` because the frontmatter is only the opening config block — the rest of the file is a Markdown brief that the agent reads at runtime. See the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md).
+The file ends in `.md` instead of `.yml` because the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) is only the opening config block — the rest of the file is a Markdown brief that the agent reads at runtime. See the [Classic vs. Agentic comparison in Step 5](05-agentic-workflows-intro.md).
 
 ---
 
@@ -28,7 +28,7 @@ The five frontmatter sections you'll build in Step 7:
 | Metadata | `emoji`, `description` | Human-readable labels shown in the `gh aw` dashboard and Actions UI. |
 | [Triggers](https://github.github.com/gh-aw/reference/triggers/) | `on:` | Tells GitHub Actions when to run — `schedule: daily` plus a manual `workflow_dispatch` button. |
 | [Permissions](https://github.github.com/gh-aw/reference/permissions/) | `permissions:` | Declares the minimum GitHub API scopes the workflow may use. |
-| [Tools](https://github.github.com/gh-aw/reference/tools/) | `tools:` | Enables the [GitHub MCP](https://github.github.com/gh-aw/reference/tools/#github-tools-github) tool via `gh-proxy`, scoped to the permissions above. |
+| [Tools](https://github.github.com/gh-aw/reference/tools/) | `tools:` | Enables the [GitHub MCP](https://github.github.com/gh-aw/reference/tools/#github-tools-github) tool via `gh-proxy`, scoped to the [permissions](https://github.github.com/gh-aw/reference/permissions/) above. |
 | Write guardrail | `safe-outputs:` | The only write actions the agent may take — here, one issue comment per run. |
 
 ## :pencil2: Try It: Label the Structure

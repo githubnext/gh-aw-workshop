@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: YAML Frontmatter Pitfalls
+# Side Quest: YAML [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) Pitfalls
 
 > _Optional: work through these common YAML mistakes if you hit a [compile error](https://github.github.com/gh-aw/reference/compilation-process/) in Step 11, then return to the main path._
 
@@ -127,7 +127,7 @@ permissions:
 - [ ] You understand why `copilot-requests: write` is required
 
 > [!TIP]
-> Bookmark this page as a quick reference card whenever you write new agentic workflow frontmatter.
+> Bookmark this page as a quick reference card whenever you write new [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) frontmatter.
 
 ---
 
