@@ -15,6 +15,14 @@ Use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://gi
 
 ## Steps
 
+The diagram below shows how artifacts flow from a workflow run through the two audit commands to their outputs.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/25-audit-lifecycle-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/25-audit-lifecycle-light.svg">
+   <img alt="Audit artifacts lifecycle: a workflow run produces artifacts that gh aw logs and gh aw audit consume to generate summaries and compliance reports" src="images/25-audit-lifecycle-light.svg">
+</picture>
+
 ### Review recent runs with [gh aw logs](https://github.github.com/gh-aw/reference/audit/#gh-aw-logs---format)
 
 `gh aw logs` downloads artifacts from your workflow's recent runs and prints a summary table showing duration, token usage, and cost in [AI Credits (AIC)](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic).

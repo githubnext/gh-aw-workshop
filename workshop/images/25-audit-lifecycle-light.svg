@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+     role="img" aria-label="Audit artifacts lifecycle: a workflow run produces artifacts that gh aw logs and gh aw audit consume to generate summaries and compliance reports"
+     data-visual-kind="diagram" data-visual-id="25-audit-lifecycle-light">
+  <defs>
+    <marker id="arrow-light" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#232925"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="48" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700"
+        fill="#101411" text-anchor="middle">Audit Artifacts Lifecycle</text>
+  <text x="600" y="72" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="400"
+        fill="#232925" text-anchor="middle">Every agentic workflow run produces artifacts. Use gh aw logs and gh aw audit to consume them.</text>
+
+  <!-- ===== NODE 1: Workflow Run ===== -->
+  <!-- box -->
+  <rect x="60" y="140" width="200" height="100" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="workflow-run"/>
+  <!-- play octicon path (simplified) -->
+  <g transform="translate(135, 160)" fill="#08872b">
+    <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.271-2.014a.75.75 0 0 1 .75 0l4 2.5a.75.75 0 0 1 0 1.279l-4 2.5a.75.75 0 0 1-1.125-.64V6.625a.75.75 0 0 1 .375-.64z"/>
+  </g>
+  <text x="160" y="205" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600"
+        fill="#101411" text-anchor="middle">Workflow Run</text>
+  <text x="160" y="225" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="400"
+        fill="#232925" text-anchor="middle">GitHub Actions</text>
+
+  <!-- Step badge 1 -->
+  <circle cx="60" cy="140" r="14" fill="#08872b"/>
+  <text x="60" y="145" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700"
+        fill="#f2f5f3" text-anchor="middle">1</text>
+
+  <!-- ===== Arrow 1→2 ===== -->
+  <line x1="261" y1="190" x2="339" y2="190" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+  <text x="300" y="180" font-family="'Mona Sans', system-ui, sans-serif" font-size="12"
+        fill="#232925" text-anchor="middle">produces</text>
+
+  <!-- ===== NODE 2: Artifacts ===== -->
+  <rect x="340" y="140" width="200" height="100" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="artifacts"/>
+  <!-- Archive/package icon (simplified box) -->
+  <g transform="translate(420, 158)" fill="#08872b">
+    <rect x="0" y="8" width="20" height="14" rx="2" fill="none" stroke="#08872b" stroke-width="1.5"/>
+    <rect x="3" y="5" width="14" height="6" rx="1" fill="none" stroke="#08872b" stroke-width="1.5"/>
+    <line x1="7" y1="5" x2="7" y2="11" stroke="#08872b" stroke-width="1.5"/>
+    <line x1="13" y1="5" x2="13" y2="11" stroke="#08872b" stroke-width="1.5"/>
+  </g>
+  <text x="440" y="205" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600"
+        fill="#101411" text-anchor="middle">Artifacts</text>
+  <text x="440" y="225" font-family="'Mona Sans Mono', monospace, sans-serif" font-size="12" font-weight="400"
+        fill="#232925" text-anchor="middle">.github/aw/logs/</text>
+
+  <!-- Step badge 2 -->
+  <circle cx="340" cy="140" r="14" fill="#08872b"/>
+  <text x="340" y="145" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700"
+        fill="#f2f5f3" text-anchor="middle">2</text>
+
+  <!-- ===== Arrow 2→3a (logs) ===== -->
+  <path d="M540 175 Q620 175 620 260" stroke="#232925" stroke-width="2" fill="none" marker-end="url(#arrow-light)"/>
+  <text x="598" y="218" font-family="'Mona Sans', system-ui, sans-serif" font-size="12"
+        fill="#232925" text-anchor="middle">download</text>
+
+  <!-- ===== Arrow 2→3b (audit) ===== -->
+  <path d="M540 205 Q700 205 700 300" stroke="#232925" stroke-width="2" fill="none" marker-end="url(#arrow-light)"/>
+
+  <!-- ===== NODE 3a: gh aw logs ===== -->
+  <rect x="520" y="260" width="200" height="100" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="gh-aw-logs"/>
+  <!-- Terminal/code icon -->
+  <g transform="translate(595, 278)" fill="none" stroke="#08872b" stroke-width="1.5">
+    <rect x="0" y="0" width="20" height="16" rx="2"/>
+    <polyline points="3,5 7,8 3,11" stroke="#08872b" stroke-width="1.5" fill="none"/>
+    <line x1="9" y1="11" x2="17" y2="11" stroke="#08872b" stroke-width="1.5"/>
+  </g>
+  <text x="620" y="320" font-family="'Mona Sans Mono', monospace, sans-serif" font-size="15" font-weight="600"
+        fill="#101411" text-anchor="middle">gh aw logs</text>
+  <text x="620" y="342" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="400"
+        fill="#232925" text-anchor="middle">AIC · model · conclusion</text>
+
+  <!-- Step badge 3a -->
+  <circle cx="520" cy="260" r="14" fill="#08872b"/>
+  <text x="520" y="265" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700"
+        fill="#f2f5f3" text-anchor="middle">3</text>
+
+  <!-- ===== NODE 3b: gh aw audit ===== -->
+  <rect x="740" y="260" width="200" height="100" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="gh-aw-audit"/>
+  <!-- Audit/checklist icon -->
+  <g transform="translate(816, 278)" fill="none" stroke="#08872b" stroke-width="1.5">
+    <rect x="0" y="0" width="20" height="22" rx="2"/>
+    <line x1="5" y1="7" x2="15" y2="7"/>
+    <line x1="5" y1="12" x2="15" y2="12"/>
+    <line x1="5" y1="17" x2="11" y2="17"/>
+  </g>
+  <text x="840" y="320" font-family="'Mona Sans Mono', monospace, sans-serif" font-size="15" font-weight="600"
+        fill="#101411" text-anchor="middle">gh aw audit</text>
+  <text x="840" y="342" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="400"
+        fill="#232925" text-anchor="middle">deep run inspection</text>
+
+  <!-- Step badge 3b -->
+  <circle cx="740" cy="260" r="14" fill="#08872b"/>
+  <text x="740" y="265" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700"
+        fill="#f2f5f3" text-anchor="middle">3</text>
+
+  <!-- ===== Arrow 3a→4a ===== -->
+  <line x1="620" y1="362" x2="620" y2="420" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+  <!-- ===== Arrow 3b→4b ===== -->
+  <line x1="840" y1="362" x2="840" y2="420" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+  <!-- ===== NODE 4a: Summary table ===== -->
+  <rect x="520" y="422" width="200" height="82" rx="10" fill="#f2f5f3" stroke="#08872b" stroke-width="1.5" data-node="summary-table"/>
+  <text x="620" y="458" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600"
+        fill="#101411" text-anchor="middle">Summary Table</text>
+  <text x="620" y="478" font-family="'Mona Sans', system-ui, sans-serif" font-size="13"
+        fill="#232925" text-anchor="middle">cost · duration · status</text>
+  <text x="620" y="495" font-family="'Mona Sans', system-ui, sans-serif" font-size="13"
+        fill="#232925" text-anchor="middle">per run</text>
+
+  <!-- Step badge 4a -->
+  <circle cx="520" cy="422" r="14" fill="#08872b"/>
+  <text x="520" y="427" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700"
+        fill="#f2f5f3" text-anchor="middle">4</text>
+
+  <!-- ===== NODE 4b: Audit Report ===== -->
+  <rect x="740" y="422" width="200" height="82" rx="10" fill="#f2f5f3" stroke="#08872b" stroke-width="1.5" data-node="audit-report"/>
+  <text x="840" y="458" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600"
+        fill="#101411" text-anchor="middle">Audit Report</text>
+  <text x="840" y="478" font-family="'Mona Sans', system-ui, sans-serif" font-size="13"
+        fill="#232925" text-anchor="middle">Markdown · flagged issues</text>
+  <text x="840" y="495" font-family="'Mona Sans', system-ui, sans-serif" font-size="13"
+        fill="#232925" text-anchor="middle">compliance evidence</text>
+
+  <!-- Step badge 4b -->
+  <circle cx="740" cy="422" r="14" fill="#08872b"/>
+  <text x="740" y="427" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700"
+        fill="#f2f5f3" text-anchor="middle">4</text>
+
+  <!-- ===== Retention note ===== -->
+  <rect x="60" y="370" width="240" height="72" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1" stroke-dasharray="6 3"/>
+  <text x="180" y="398" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600"
+        fill="#101411" text-anchor="middle">Retention Policy</text>
+  <text x="180" y="418" font-family="'Mona Sans', system-ui, sans-serif" font-size="13"
+        fill="#232925" text-anchor="middle">Default: 90 days</text>
+  <text x="180" y="434" font-family="'Mona Sans', system-ui, sans-serif" font-size="13"
+        fill="#232925" text-anchor="middle">Check with your admin</text>
+
+  <!-- dashed line from artifacts down to retention -->
+  <line x1="440" y1="242" x2="440" y2="370" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="440" y1="370" x2="300" y2="370" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-light)"/>
+
+  <!-- Bottom annotation -->
+  <text x="600" y="534" font-family="'Mona Sans', system-ui, sans-serif" font-size="14"
+        fill="#232925" text-anchor="middle">Each run step (1→2) happens automatically. You drive steps 3–4 to inspect, debug, or produce compliance evidence.</text>
+
+</svg>
