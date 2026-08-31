@@ -1,6 +1,6 @@
 # Side Quest: Copilot Billing Paths
 
-Choose exactly one billing path for your first workflow, configure it, and commit the updated lock file.
+Choose exactly one [billing](https://github.github.com/gh-aw/reference/billing/) path for your first workflow, configure it, and commit the updated [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml).
 
 ## Quick reference
 
@@ -66,7 +66,7 @@ git commit -m "chore: configure personal billing path" && git push
 
 For a browser-only walkthrough, see [Method 2 (UI-only): COPILOT_GITHUB_TOKEN](side-quest-06-03c-copilot-github-token-ui-only.md). For terminal setup, see [Method 2: COPILOT_GITHUB_TOKEN secret](side-quest-06-03b-copilot-github-token.md).
 
-## Confirm engine
+## Confirm [engine](https://github.github.com/gh-aw/reference/engines/)
 
 Open `daily-report-status.md` and verify there is no `engine:` line. The workflow defaults to GitHub Copilot — no Anthropic or OpenAI key is needed for this first run.
 

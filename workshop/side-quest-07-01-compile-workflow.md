@@ -31,7 +31,7 @@ When you only want a yes/no answer without generating a [lock file](https://gith
 gh aw compile --no-emit
 ```
 
-This is useful after each small edit because it confirms the file structure without writing or overwriting the generated lock file every time.
+This is useful after each small edit because it confirms the file structure without writing or overwriting the generated [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) every time.
 
 ## Troubleshoot with `--validate`
 
@@ -60,7 +60,7 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 
 When `gh aw compile` fails, start with the first line number it reports. YAML errors are often caused by the line above or below the reported line, especially when indentation is off.
 
-The examples below show `gh-aw` source files before compilation, so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the schedule value itself.
+The examples below show `gh-aw` source files before [compilation](https://github.github.com/gh-aw/reference/compilation-process/), so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the schedule value itself.
 
 ```markdown
 ---
@@ -104,7 +104,7 @@ on:
 |-------------------------------|---------------|------------------|
 | YAML parse error or `did not find expected key` | A key is indented at the wrong level | Make sure nested keys under `on:`, [`permissions:`](https://github.github.com/gh-aw/reference/permissions/), `tools:`, or `safe-outputs:` are indented two more spaces than their parent |
 | `found character that cannot start any token` | You pasted a tab character or stray YAML punctuation | Replace tabs with spaces and check for accidental special characters in unquoted values |
-| `unexpected end of stream` or frontmatter/document errors | The frontmatter fences are incomplete | Confirm the file has both the opening `---` and the closing `---` for the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) |
+| `unexpected end of stream` or [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/)/document errors | The frontmatter fences are incomplete | Confirm the file has both the opening `---` and the closing `---` for the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) |
 | A section that worked before suddenly fails after one edit | The newest edit changed nearby YAML structure | Re-check the last block you touched before reading the rest of the file |
 
 <!-- journey: terminal -->
