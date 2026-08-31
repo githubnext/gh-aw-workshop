@@ -22,7 +22,7 @@ Understand the four design decisions that make `daily-status.md` safe and predic
 | Narrow `permissions` | Only the scopes the workflow actually needs — limits blast radius |
 | `gh-proxy` in `tools` | Enforces [permissions](https://github.github.com/gh-aw/reference/permissions/) at the [network](https://github.github.com/gh-aw/reference/network/) level |
 | `max: 1` in `safe-outputs` | Caps writes to exactly one comment per run |
-| Fixed output template | Same format every run — easy to scan and audit |
+| Fixed output template | Same format every run — easy to scan and [audit](https://github.github.com/gh-aw/reference/audit/) |
 
 ---
 
@@ -72,7 +72,7 @@ safe-outputs:
 3. Update `description:` text and run `gh aw list` again to confirm it reflects the change.
 4. Restore the original `emoji:` and `description:` values when you're done.
 
-## :pencil2: Your Turn — Safe-Outputs
+## :pencil2: Your Turn — [Safe-Outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 
 1. In your `daily-status.md`, comment out the entire [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/) block.
 2. Run `gh aw compile --validate`.
@@ -95,7 +95,7 @@ safe-outputs:
 ## :white_check_mark: Checkpoint
 
 - [ ] I changed `emoji:`, ran `gh aw list`, and saw the update reflected
-- [ ] I removed `safe-outputs:`, observed the compile error, then restored it and confirmed the error was gone
+- [ ] I removed `safe-outputs:`, observed the [compile error](https://github.github.com/gh-aw/reference/compilation-process/), then restored it and confirmed the error was gone
 - [ ] I can explain why `issues: write` is absent from `permissions` and what provides write access instead
 - [ ] I can explain what `max: 1` prevents the agent from doing
 

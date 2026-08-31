@@ -76,11 +76,11 @@ safe-outputs:
 
 ### `network.allowed` blocks data exfiltration
 
-Any attempt to reach an unlisted domain fails at the network layer, even if the agent is convinced to try.
+Any attempt to reach an unlisted domain fails at the [network layer](https://github.github.com/gh-aw/reference/network/), even if the agent is convinced to try.
 
-### Optional agentic threat detection reviews agent output before writes land
+### Optional agentic [threat detection](https://github.github.com/gh-aw/reference/safe-outputs/) reviews agent output before writes land
 
-When you enable `threat-detection` under `safe-outputs:`, gh-aw adds a `detection` job that runs in an isolated sandbox after the agent. A separate AI model reviews proposed output for anomalous behaviour; declared `safe-outputs` writes run only if detection passes.
+When you enable `threat-detection` under `safe-outputs:`, gh-aw adds a `detection` job that runs in an isolated [sandbox](https://github.github.com/gh-aw/reference/sandbox/) after the agent. A separate AI model reviews proposed output for anomalous behaviour; declared `safe-outputs` writes run only if detection passes.
 
 </details>
 
