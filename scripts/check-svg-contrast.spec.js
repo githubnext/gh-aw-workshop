@@ -56,7 +56,7 @@ function findSvgFiles(dir) {
 }
 
 const envFiles = process.env.SVG_FILES;
-const svgFiles = envFiles
+const svgFiles = envFiles !== undefined
   ? envFiles
       .split(/[\n\r\s]+/)
       .map((f) => f.trim())
