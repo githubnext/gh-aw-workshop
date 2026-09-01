@@ -17,7 +17,7 @@ Run your workflow once, score the output with a short rubric, change one sentenc
 
 Use the **Actions** tab to trigger your workflow one more time so you have a fresh example to score.
 
-If you prefer to collect the latest run files from a terminal, these example `gh` commands pull the newest run ID and download any artifacts it uploaded:
+If you prefer to collect the latest run files from a terminal, these example `gh` commands pull the newest run ID and download any [artifacts](https://github.github.com/gh-aw/reference/artifacts/) it uploaded:
 
 ```bash
 RUN_ID=$(gh run list --workflow "Daily Repo Status" --limit 1 --json databaseId --jq '.[0].databaseId')
@@ -65,7 +65,7 @@ If you are working in a browser-based environment without terminal access, use t
 If you have a terminal open, open `.github/workflows/daily-status.md` and edit the Markdown body directly — no recompilation needed for body-only changes.
 
 > [!NOTE]
-> `gh aw compile` is only required when you change the **frontmatter** ([triggers](https://github.github.com/gh-aw/reference/triggers/), permissions, or other YAML fields). Editing the Markdown task brief takes effect on the next run without recompiling.
+> `gh aw compile` is only required when you change the **frontmatter** ([triggers](https://github.github.com/gh-aw/reference/triggers/), [permissions](https://github.github.com/gh-aw/reference/permissions/), or other YAML fields). Editing the Markdown task brief takes effect on the next run without recompiling.
 
 ## Before and after comparison
 

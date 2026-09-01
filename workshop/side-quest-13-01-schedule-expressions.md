@@ -8,11 +8,11 @@
 
 - You have completed [Refine, Test, and Improve Your Workflow](09-agentic-editing.md) or are working through it now.
 - You understand that [GitHub Actions](https://github.github.com/gh-aw/reference/triggers/) schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
-- You know how to run `gh aw compile` to regenerate a workflow's lock file.
+- You know how to run `gh aw compile` to regenerate a workflow's [lock file](https://github.github.com/gh-aw/reference/faq/#what-is-a-workflow-lock-file).
 
 ## :dart: What You'll Do
 
-You'll learn how `gh-aw`'s plain-English schedule syntax maps to GitHub Actions cron schedules. By the end, you'll know which [fuzzy expression](https://github.github.com/gh-aw/reference/schedule-syntax/#fuzzy-schedules) fits your workflow, how to verify the compiled cron value, and how agentic workflows differ from classic Actions YAML when it comes to scheduling.
+You'll learn how `gh-aw`'s plain-English [schedule syntax](https://github.github.com/gh-aw/reference/schedule-syntax/) maps to GitHub Actions cron schedules. By the end, you'll know which [fuzzy expression](https://github.github.com/gh-aw/reference/schedule-syntax/#fuzzy-schedules) fits your workflow, how to verify the compiled cron value, and how agentic workflows differ from classic Actions YAML when it comes to scheduling.
 
 ## Cron in one minute
 

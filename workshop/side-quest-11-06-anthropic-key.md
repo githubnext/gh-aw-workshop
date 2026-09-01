@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Configure an Anthropic API Key
 
-> _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the AI engine for your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/), then return to your main path._
+> _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the [AI engine](https://github.github.com/gh-aw/reference/engines/) for your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/), then return to your main path._
 
 By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). If you prefer to use **[Claude](https://github.github.com/gh-aw/reference/auth/#claude)**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
 
