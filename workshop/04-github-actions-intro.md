@@ -69,7 +69,16 @@ You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/refe
 
 ## Why This Matters for Agentic Workflows
 
-Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the same Actions foundation, but introduce AI-driven decision making inside that runtime.
+Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the **same Actions foundation** — same triggers, same runner, same permissions model — but add an AI agent that reads your repository, reasons about it, and writes back through guardrailed outputs.
+
+| Concept | Classic Actions | Agentic Workflow |
+|---|---|---|
+| Trigger (`on:`) | Same — schedule, push, PR, dispatch | Same |
+| Runner (`runs-on:`) | GitHub-hosted or self-hosted | Same |
+| Steps | Shell commands you define | AI agent executes a plain-English task brief |
+| Output | Files, logs, deploy artifacts | GitHub comments, issues, PRs, or other API writes |
+
+The agentic workflow file you'll author in this workshop is a `.md` file with the same `on:` and `runs-on:` keys you see above, plus a Markdown task brief that tells the AI agent what to do.
 
 ## Label a sample workflow
 
@@ -132,7 +141,7 @@ Open a real workflow file and find the three core building blocks — no termina
 - [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
 - [ ] You know workflows live in `.github/workflows/`
 - [ ] You explored a real workflow and found its trigger, a job name, and a step command
-- [ ] You are ready to continue to Step 5, or skip ahead to Step 6 if you already know this material
+- [ ] You can describe one way agentic workflows extend classic Actions (same trigger and runner; AI agent replaces fixed shell steps)
 
 <!-- journey: all -->
 **Next:** [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
