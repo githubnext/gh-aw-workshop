@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -40,9 +42,11 @@ jobs:
 
       - name: Find changed SVG files
         id: changed
-        if: github.event_name == 'push'
         run: |
-          if git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            files=$(git diff --name-only --diff-filter=ACMR \
+              "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" -- '*.svg' || true)
+          elif git cat-file -e "${{ github.event.before }}" 2>/dev/null; then
             files=$(git diff --name-only --diff-filter=ACMR \
               "${{ github.event.before }}" "${{ github.sha }}" -- '*.svg' || true)
           else
