@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="AI Credit guardrail flow: a scheduled workflow run passes through a daily-cap check (max-daily-ai-credits) then a per-run-cap check (max-ai-credits) before completing. Runs that exceed the daily cap are blocked before they start with no billing; runs that hit the per-run cap are cancelled mid-run and billed only for tokens consumed so far."
+  data-visual-kind="diagram"
+  data-visual-id="26-credit-guardrails-flow">
+
+  <!-- Primer Octicons paths: MIT License, Copyright GitHub, Inc. -->
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L0,7 L10,3.5 z" fill="#b6bfb8"/>
+    </marker>
+    <marker id="ah-red" viewBox="0 0 10 7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L0,7 L10,3.5 z" fill="#cf222e"/>
+    </marker>
+    <marker id="ah-amber" viewBox="0 0 10 7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L0,7 L10,3.5 z" fill="#bf8700"/>
+    </marker>
+    <marker id="ah-green" viewBox="0 0 10 7" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L0,7 L10,3.5 z" fill="#08872b"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="44"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="22" font-weight="700" fill="#101411" text-anchor="middle"
+    font-feature-settings="'liga' 0">AI Credit Guardrail Flow</text>
+  <text x="600" y="68"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="14" fill="#232925" text-anchor="middle">How max-ai-credits and max-daily-ai-credits protect against runaway spend</text>
+
+  <!-- ===== EXIT NODE: Run Blocked (above N2) ===== -->
+  <g data-node="blocked" data-state="closed">
+    <rect x="277" y="108" width="172" height="70" rx="8"
+      fill="#fff0f0" stroke="#cf222e" stroke-width="1.5"/>
+    <text x="363" y="133"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="700" fill="#cf222e" text-anchor="middle">Run Blocked</text>
+    <text x="363" y="155"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="13" fill="#8c1010" text-anchor="middle">not started &amp;middot; not billed</text>
+  </g>
+
+  <!-- ===== EXIT NODE: Run Cancelled (above N4) ===== -->
+  <g data-node="cancelled" data-state="closed">
+    <rect x="751" y="108" width="172" height="70" rx="8"
+      fill="#fff8e6" stroke="#bf8700" stroke-width="1.5"/>
+    <text x="837" y="133"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="700" fill="#7d4e00" text-anchor="middle">Run Cancelled</text>
+    <text x="837" y="155"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="13" fill="#7d4e00" text-anchor="middle">billed for tokens so far</text>
+  </g>
+
+  <!-- Vertical arrow: N2 top -> Blocked bottom (going up) -->
+  <line x1="363" y1="228" x2="363" y2="181"
+    stroke="#cf222e" stroke-width="2" marker-end="url(#ah-red)"/>
+  <text x="375" y="209"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="13" fill="#cf222e">exceeded</text>
+
+  <!-- Vertical arrow: N4 top -> Cancelled bottom (going up) -->
+  <line x1="837" y1="228" x2="837" y2="181"
+    stroke="#bf8700" stroke-width="2" marker-end="url(#ah-amber)"/>
+  <text x="849" y="209"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="13" fill="#7d4e00">exceeded</text>
+
+  <!-- ===== MAIN FLOW NODES ===== -->
+
+  <!-- N1: Workflow Triggered -->
+  <g data-node="trigger">
+    <rect x="40" y="230" width="172" height="96" rx="8"
+      fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <!-- Primer clock-16 octicon, MIT License, Copyright GitHub Inc. -->
+    <g transform="translate(110, 241) scale(1.25)" aria-hidden="true">
+      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7-3.25v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5a.75.75 0 0 1 1.5 0Z"
+        fill="#232925"/>
+    </g>
+    <text x="126" y="282"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Workflow</text>
+    <text x="126" y="301"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Triggered</text>
+    <text x="126" y="318"
+      font-family="'Mona Sans Mono','Courier New',monospace"
+      font-size="12" fill="#232925" text-anchor="middle">on: schedule</text>
+  </g>
+
+  <!-- Arrow N1 -> N2 -->
+  <line x1="212" y1="278" x2="274" y2="278"
+    stroke="#b6bfb8" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- N2: Daily Cap Check -->
+  <g data-node="daily-check">
+    <rect x="277" y="230" width="172" height="96" rx="8"
+      fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="363" y="264"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Daily Cap</text>
+    <text x="363" y="283"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Check</text>
+    <text x="363" y="308"
+      font-family="'Mona Sans Mono','Courier New',monospace"
+      font-size="11" fill="#232925" text-anchor="middle">max-daily-ai-credits</text>
+  </g>
+
+  <!-- Arrow N2 -> N3 (green: within limit) -->
+  <line x1="449" y1="278" x2="511" y2="278"
+    stroke="#08872b" stroke-width="2" marker-end="url(#ah-green)"/>
+
+  <!-- N3: Agent Run In Progress -->
+  <g data-node="agent-run">
+    <rect x="514" y="230" width="172" height="96" rx="8"
+      fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="600" y="264"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Agent Run</text>
+    <text x="600" y="283"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">In Progress</text>
+    <text x="600" y="308"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="13" fill="#232925" text-anchor="middle">AWF monitors tokens</text>
+  </g>
+
+  <!-- Arrow N3 -> N4 -->
+  <line x1="686" y1="278" x2="748" y2="278"
+    stroke="#b6bfb8" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- N4: Per-Run Cap Check -->
+  <g data-node="per-run-check">
+    <rect x="751" y="230" width="172" height="96" rx="8"
+      fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="837" y="264"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Per-Run Cap</text>
+    <text x="837" y="283"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="16" font-weight="600" fill="#101411" text-anchor="middle">Check</text>
+    <text x="837" y="308"
+      font-family="'Mona Sans Mono','Courier New',monospace"
+      font-size="11" fill="#232925" text-anchor="middle">max-ai-credits</text>
+  </g>
+
+  <!-- Arrow N4 -> N5 (green: within limit) -->
+  <line x1="923" y1="278" x2="985" y2="278"
+    stroke="#08872b" stroke-width="2" marker-end="url(#ah-green)"/>
+
+  <!-- N5: Run Completes -->
+  <g data-node="complete" data-state="done">
+    <rect x="988" y="230" width="172" height="96" rx="8"
+      fill="#f6fff9" stroke="#08872b" stroke-width="1.5"/>
+    <text x="1074" y="271"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="17" font-weight="600" fill="#08872b" text-anchor="middle">Run</text>
+    <text x="1074" y="291"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="17" font-weight="600" fill="#08872b" text-anchor="middle">Completes</text>
+    <text x="1074" y="312"
+      font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+      font-size="13" fill="#08872b" text-anchor="middle">output produced</text>
+  </g>
+
+  <!-- ===== BOTTOM: Cost-reduction techniques ===== -->
+  <text x="600" y="370"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="14" font-weight="600" fill="#232925" text-anchor="middle">Ways to stay within limits</text>
+
+  <!-- Chip 1 -->
+  <rect x="148" y="385" width="218" height="54" rx="8"
+    fill="#ffffff" stroke="#b6bfb8" stroke-width="1"/>
+  <text x="257" y="408"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="15" font-weight="600" fill="#101411" text-anchor="middle">Shorten the brief</text>
+  <text x="257" y="428"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="13" fill="#232925" text-anchor="middle">fewer input tokens per run</text>
+
+  <!-- Chip 2 -->
+  <rect x="491" y="385" width="218" height="54" rx="8"
+    fill="#ffffff" stroke="#b6bfb8" stroke-width="1"/>
+  <text x="600" y="408"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="15" font-weight="600" fill="#101411" text-anchor="middle">Filter data first</text>
+  <text x="600" y="428"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="13" fill="#232925" text-anchor="middle">smaller context, lower cost</text>
+
+  <!-- Chip 3 -->
+  <rect x="834" y="385" width="218" height="54" rx="8"
+    fill="#ffffff" stroke="#b6bfb8" stroke-width="1"/>
+  <text x="943" y="408"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="15" font-weight="600" fill="#101411" text-anchor="middle">Reduce frequency</text>
+  <text x="943" y="428"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="13" fill="#232925" text-anchor="middle">fewer runs, fewer credits</text>
+
+  <!-- Bottom caption -->
+  <text x="600" y="496"
+    font-family="'Mona Sans','Segoe UI',system-ui,sans-serif"
+    font-size="13" fill="#232925" text-anchor="middle">Set max-ai-credits and max-daily-ai-credits in your workflow frontmatter</text>
+
+</svg>

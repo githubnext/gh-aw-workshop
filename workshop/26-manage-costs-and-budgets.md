@@ -71,6 +71,14 @@ Use the **P90** figure as a conservative upper bound when requesting a spending 
 
 ### Reduce token consumption and set guardrails
 
+The diagram below shows how the two guardrail fields act as gates — the daily cap blocks a run before it starts (no billing), while the per-run cap cancels it mid-flight (billed only for tokens consumed so far).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/26-credit-guardrails-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/26-credit-guardrails-light.svg">
+  <img alt="AI Credit guardrail flow: a scheduled workflow run passes through a daily-cap check (max-daily-ai-credits) then a per-run-cap check (max-ai-credits) before completing. Runs that exceed the daily cap are blocked before they start with no billing; runs that hit the per-run cap are cancelled mid-run and billed only for tokens consumed so far." src="images/26-credit-guardrails-light.svg">
+</picture>
+
 A few techniques keep spend in check:
 
 - **Shorten the task brief** — fewer input tokens per run.
