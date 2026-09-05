@@ -69,7 +69,7 @@ if: steps.alerts.outputs.alert_count != '0' && github.ref == 'refs/heads/main'
 
 ### Why chain with a branch check
 
-Dependabot alert counts are repository-wide. Running the agent on every branch would create duplicate summaries on the same data. Adding `github.ref == 'refs/heads/main'` gates the run to a single canonical location while still allowing a manual `workflow_dispatch` to override from the Actions tab regardless of the current branch.
+Dependabot alert counts are repository-wide. Running the agent on every branch would create duplicate summaries on the same data. Adding `github.ref == 'refs/heads/main'` gates the run to a single canonical location while still allowing a manual [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/#dispatch-triggers-workflowdispatch) to override from the Actions tab regardless of the current branch.
 
 > [!NOTE]
 > Values from `$GITHUB_OUTPUT` are always strings. Compare them against quoted literals — `steps.alerts.outputs.alert_count != '0'` — not unquoted values.

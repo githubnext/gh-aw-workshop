@@ -79,7 +79,7 @@ If the workflow does not need to run, the cheapest run is zero AIC.
 
 - Lower the schedule frequency.
 - Add `if:` conditions around setup steps so you only call the agent when new data exists.
-- Use `workflow_dispatch` for occasional manual analysis instead of a frequent [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
+- Use [`workflow_dispatch`](https://github.github.com/gh-aw/reference/triggers/#dispatch-triggers-workflowdispatch) for occasional manual analysis instead of a frequent [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
 ### Avoid re-processing unchanged work
 
@@ -108,8 +108,8 @@ Higher cost is only justified when it improves the outcome enough to matter.
 
 After you reduce cost, keep it reduced:
 
-- Use `max-ai-credits` to cap a single run.
-- Use `max-daily-ai-credits` to cap 24-hour usage.
+- Use [`max-ai-credits`](https://github.github.com/gh-aw/reference/triggers/#ai-credits-guardrail-max-ai-credits) to cap a single run.
+- Use [`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/triggers/#daily-per-workflow-ai-credits-guardrail-max-daily-ai-credits) to cap 24-hour usage.
 - Use [`timeout-minutes`](https://github.github.com/gh-aw/reference/frontmatter/) to stop unusually long runs.
 - Use [gh aw forecast](side-quest-26-01-forecast-costs.md) to size the guardrails from real history instead of guessing.
 

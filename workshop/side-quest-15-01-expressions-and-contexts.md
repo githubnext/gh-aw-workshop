@@ -31,7 +31,7 @@ A **context** is a named object that GitHub Actions populates automatically. The
 | Context | What it holds |
 |---------|--------------|
 | `github` | Event metadata — repo name, branch, commit SHA, actor |
-| `steps.<id>.outputs` | Outputs written by a previous step using `$GITHUB_OUTPUT` |
+| `steps.<id>.outputs` | Outputs written by a previous step using [`$GITHUB_OUTPUT`](https://github.github.com/gh-aw/reference/steps-jobs/#custom-steps-steps) |
 | `env` | [Environment variables](https://github.github.com/gh-aw/reference/environment-variables/) set in the workflow or step |
 | `secrets` | Repository or organisation [secrets](https://github.github.com/gh-aw/reference/environment-variables/#mcp-server-with-secrets) |
 | `runner` | Information about the runner OS and temp directory |
