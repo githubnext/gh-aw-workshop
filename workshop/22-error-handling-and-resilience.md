@@ -17,24 +17,15 @@ Learn the most common ways agentic workflows fail in production and apply three 
 
 ### Understand common failure modes
 
-Agentic workflows can fail for several reasons:
+Agentic workflows most often fail in one of four ways: empty data, tool errors, timeouts, and prompt drift. This step applies three mitigations — a defensive brief, `timeout-minutes`, and a fallback safe-output — that address all four.
 
-| Failure type | Example | Effect |
-|---|---|---|
-| **Empty data** | No open issues to summarise | Agent produces a vague or empty report |
-| **Tool error** | GitHub API rate-limit hit mid-run | Agent stops mid-task without writing output |
-| **Timeout** | Complex reasoning takes too long | Workflow job is cancelled by Actions |
-| **Prompt drift** | Instructions are ambiguous | Agent takes an unexpected code path |
-
-Recognising these patterns helps you write instructions that stay on track.
-
-The diagram below shows how these failure modes map to the three mitigations covered in this step.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/22-resilience-techniques-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/22-resilience-techniques-light.svg">
-  <img alt="Four failure modes — prompt drift, timeout, tool error, and empty data — each mapped to one of three mitigations: defensive brief, timeout-minutes, and fallback safe-output, which together produce a reliably running workflow" src="images/22-resilience-techniques-light.svg">
-</picture>
+> [!TIP]
+> <details>
+> <summary><b>Optional Side Quest:</b> Want a worked example of each failure mode and practice matching failures to fixes before you dive in?</summary>
+>
+> Work through [Side Quest: Recognizing Common Agentic Workflow Failure Modes](side-quest-22-01-failure-modes.md), then come back here.
+>
+> </details>
 
 ### Apply all three changes with the skill
 
