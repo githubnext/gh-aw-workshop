@@ -104,7 +104,7 @@ Inside any workflow step, reference a secret with `${{ secrets.SECRET_NAME }}`:
 <details>
 <summary>Learn about using the built-in `GITHUB_TOKEN` for GitHub API calls</summary>
 
-Most GitHub API calls in this workshop work with the automatically provided `GITHUB_TOKEN`:
+Most GitHub API calls in this workshop work with the automatically provided [`GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/environment-variables/#system-injected-runtime-variables):
 
 ```markdown
 - name: List open pull requests
