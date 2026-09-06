@@ -20,25 +20,10 @@ By the end of this step, your workflow will produce more useful output, and you'
 
 The `agentic-workflows` skill is a Copilot skill installed in your practice repository. It acts as a dispatcher: when you describe a workflow task in plain English and mention the skill by name, it routes your request to the right editing, debugging, or optimizing prompt and makes changes directly in your repository.
 
-You invoke it in Copilot CLI in your Codespace terminal:
+You invoke it in Copilot CLI in your Codespace terminal with `/agentic-workflows [your request here]`. It recognizes three core task types — edit, debug, and optimize — covered in the sections below.
 
-```bash
-gh copilot
-```
-
-Then send:
-
-```prompt
-/agentic-workflows [your request here]
-```
-
-The skill recognizes three core task types for day-to-day workflow maintenance:
-
-| Task type | When to use it | Example trigger phrase |
-|-----------|---------------|------------------------|
-| **Edit** | Improve the agent brief or [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) | "update the workflow to …" |
-| **Debug** | Investigate unexpected output or a failed run | "debug the workflow — it ran but …" |
-| **Optimize** | Reduce token usage or tighten [permissions](https://github.github.com/gh-aw/reference/permissions/) | "optimize the workflow to reduce [AI Credit](https://github.github.com/gh-aw/reference/cost-management/) cost" |
+> [!TIP]
+> Want the full picture of how the dispatcher matches your request and what to do without a live Copilot session? Take the optional [Side Quest: How the `agentic-workflows` Skill Dispatcher Works](side-quest-09-02-skill-dispatcher.md), then come back here.
 
 If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
