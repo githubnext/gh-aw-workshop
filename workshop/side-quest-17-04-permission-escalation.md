@@ -138,7 +138,7 @@ Write your prediction here, then save and run the workflow to check it:
 ## :white_check_mark: Checkpoint
 
 - [ ] You can explain permission escalation in plain English
-- [ ] You audited your own `permissions:` block against the principle of least privilege
+- [ ] You audited your own `permissions:` block against the [principle of least privilege](https://github.github.com/gh-aw/reference/glossary/#least-privilege)
 - [ ] You can describe how `permissions:`, `safe-outputs`, and `protected-files` work together
 - [ ] You added `protected-files` to your workflow and predicted what it would block
 

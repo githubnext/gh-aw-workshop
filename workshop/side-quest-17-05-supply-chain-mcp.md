@@ -15,7 +15,7 @@ A supply chain attack through [MCP](https://github.github.com/gh-aw/guides/mcps/
 
 ## Attack surface at a glance
 
-Use this table as a quick [threat model](https://github.github.com/gh-aw/introduction/architecture/#threat-model) when you add or review an MCP server.
+Use this table as a quick [threat model](https://github.github.com/gh-aw/introduction/architecture/#threat-model) when you add or review an [MCP server](https://github.github.com/gh-aw/guides/mcps/#custom-mcp-server-types).
 
 | Attack type | How it works | Detection signal |
 | --- | --- | --- |

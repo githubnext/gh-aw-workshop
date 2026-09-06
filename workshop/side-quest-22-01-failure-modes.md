@@ -28,7 +28,7 @@ Agentic workflows can fail for several reasons:
 
 Recognising these patterns helps you write instructions that stay on track — most workflow bugs are one of these four things, not something exotic.
 
-The diagram below shows how these failure modes map to three mitigations: a defensive brief, a `timeout-minutes` setting, and a fallback [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/).
+The diagram below shows how these failure modes map to three mitigations: a defensive brief, a [`timeout-minutes`](https://github.github.com/gh-aw/reference/frontmatter/#run-configuration-run-name-runs-on-runs-on-slim-timeout-minutes) setting, and a fallback [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/22-resilience-techniques-dark.svg">
