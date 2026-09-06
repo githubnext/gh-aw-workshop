@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Evals quality loop: run workflow, ask binary questions, record YES/NO answers, and compare across runs to catch regressions" data-visual-kind="diagram" data-visual-id="27-evals-quality-loop-light">
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+  <text x="600" y="54" font-family="Mona Sans, Arial, sans-serif" font-size="22" font-weight="bold" fill="#101411" text-anchor="middle">Evals Quality Loop</text>
+  <line x1="320" y1="275" x2="326" y2="275" stroke="#b6bfb8" stroke-width="3"/>
+  <polygon points="326,269 340,275 326,281" fill="#b6bfb8"/>
+  <line x1="590" y1="275" x2="596" y2="275" stroke="#b6bfb8" stroke-width="3"/>
+  <polygon points="596,269 610,275 596,281" fill="#b6bfb8"/>
+  <line x1="860" y1="275" x2="866" y2="275" stroke="#b6bfb8" stroke-width="3"/>
+  <polygon points="866,269 880,275 866,281" fill="#b6bfb8"/>
+  <rect x="70" y="190" width="250" height="170" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2" data-node="stage-1"/>
+  <circle cx="70" cy="190" r="18" fill="#08872b"/>
+  <text x="70" y="196" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <rect x="171" y="208" width="48" height="40" rx="8" fill="#f2f5f3"/>
+  <g transform="translate(181,214) scale(1.1666666666666667)"><path d="M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.939 2.939 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5ZM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5Z" fill="#08872b"/></g>
+  <text x="195" y="282" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#101411" text-anchor="middle">Run Workflow</text>
+  <text x="195" y="304" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Trigger daily-status</text>
+  <text x="195" y="322" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">workflow run</text>
+  <rect x="340" y="190" width="250" height="170" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2" data-node="stage-2"/>
+  <circle cx="340" cy="190" r="18" fill="#08872b"/>
+  <text x="340" y="196" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <rect x="441" y="208" width="48" height="40" rx="8" fill="#f2f5f3"/>
+  <g transform="translate(451,214) scale(1.1666666666666667)"><path d="M3.5 3.75a.25.25 0 0 1 .25-.25h13.5a.25.25 0 0 1 .25.25v10a.75.75 0 0 0 1.5 0v-10A1.75 1.75 0 0 0 17.25 2H3.75A1.75 1.75 0 0 0 2 3.75v16.5c0 .966.784 1.75 1.75 1.75h7a.75.75 0 0 0 0-1.5h-7a.25.25 0 0 1-.25-.25V3.75Z M6.25 7a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm-.75 4.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm16.28 4.53a.75.75 0 1 0-1.06-1.06l-4.97 4.97-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l5.5-5.5Z" fill="#08872b"/></g>
+  <text x="465" y="282" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#101411" text-anchor="middle">Ask Binary Questions</text>
+  <text x="465" y="304" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">evals: block defines</text>
+  <text x="465" y="322" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">observable claims</text>
+  <rect x="610" y="190" width="250" height="170" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2" data-node="stage-3"/>
+  <circle cx="610" cy="190" r="18" fill="#08872b"/>
+  <text x="610" y="196" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+  <rect x="632" y="212" width="90" height="32" rx="16" fill="#f2f5f3" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="677" y="233" font-family="Mona Sans, Arial, sans-serif" font-size="14" font-weight="bold" fill="#1a7f37" text-anchor="middle">YES</text>
+  <rect x="748" y="212" width="90" height="32" rx="16" fill="#f2f5f3" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="793" y="233" font-family="Mona Sans, Arial, sans-serif" font-size="14" font-weight="bold" fill="#cf222e" text-anchor="middle">NO</text>
+  <text x="735" y="282" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#101411" text-anchor="middle">Record YES/NO</text>
+  <text x="735" y="304" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">evals.jsonl artifact</text>
+  <text x="735" y="322" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">stores each answer</text>
+  <rect x="880" y="190" width="250" height="170" rx="12" fill="#ffffff" stroke="#08872b" stroke-width="2" data-node="stage-4"/>
+  <circle cx="880" cy="190" r="18" fill="#1a7f37"/>
+  <text x="880" y="196" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  <rect x="981" y="208" width="48" height="40" rx="8" fill="#f2f5f3"/>
+  <g transform="translate(991,214) scale(1.1666666666666667)"><path d="M12.5 7.25a.75.75 0 0 0-1.5 0v5.5c0 .27.144.518.378.651l3.5 2a.75.75 0 0 0 .744-1.302L12.5 12.315V7.25Z M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1ZM2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12Z" fill="#08872b"/></g>
+  <text x="1005" y="282" font-family="Mona Sans, Arial, sans-serif" font-size="16" font-weight="bold" fill="#101411" text-anchor="middle">Compare Across Runs</text>
+  <text x="1005" y="304" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Diff answers run</text>
+  <text x="1005" y="322" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">over run to spot flips</text>
+  <rect x="850" y="420" width="310" height="60" rx="10" fill="#f2f5f3" stroke="#cf222e" stroke-width="2" stroke-dasharray="6 4" data-node="regression-alert"/>
+  <text x="1005" y="446" font-family="Mona Sans, Arial, sans-serif" font-size="14" font-weight="bold" fill="#cf222e" text-anchor="middle">YES to NO flip</text>
+  <text x="1005" y="466" font-family="Mona Sans, Arial, sans-serif" font-size="12" fill="#232925" text-anchor="middle">Signals a quality regression</text>
+  <line x1="1005" y1="360" x2="1005" y2="420" stroke="#cf222e" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="600" y="500" font-family="Mona Sans, Arial, sans-serif" font-size="14" fill="#232925" text-anchor="middle">Each run scores binary questions from agent output — an answer that flips from YES to NO is a fast regression signal.</text>
+  </svg>

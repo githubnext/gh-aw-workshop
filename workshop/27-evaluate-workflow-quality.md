@@ -97,6 +97,12 @@ Example record:
 
 When you update your prompt or tools, rerun the workflow and compare answers across runs. A question that flips from `YES` to `NO` is a fast signal that quality regressed and needs investigation.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/27-evals-quality-loop-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/27-evals-quality-loop-light.svg">
+   <img alt="Evals quality loop: run workflow, ask binary questions, record YES/NO answers, and compare across runs to catch regressions" src="images/27-evals-quality-loop-light.svg">
+</picture>
+
 To refine your questions, return to Copilot CLI and describe what you observed:
 
 ```prompt
