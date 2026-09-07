@@ -156,6 +156,9 @@ the latest commit is more than 48 hours old and no status issue was created toda
 
 Each iteration follows the same loop: edit the brief, compile, push, run, inspect the dispatch log.
 
+> [!NOTE]
+> Working across multiple repositories (a hub-and-spoke tracking repo, shared libraries) instead of one? See [Side Quest: Orchestrate Across Multiple Repositories](side-quest-28-01-cross-repo-orchestration.md) for `target-repo` and cross-repository checkout.
+
 ## :white_check_mark: Checkpoint
 
 - [ ] You identified at least two specialist workflows and one orchestration condition for each
