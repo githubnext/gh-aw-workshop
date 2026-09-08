@@ -52,7 +52,7 @@ The output covers 7 days of projected spend. Useful for workflows that run a few
 
 ## Use `--days 7` to limit history after a task-brief change
 
-`gh aw forecast` samples from all available run history by default. If you recently changed your task brief or added MCP tools, older runs may have very different costs and will skew the projection.
+`gh aw forecast` samples from all available run history by default. If you recently changed your task brief or added [MCP tools](https://github.github.com/gh-aw/guides/mcps/), older runs may have very different costs and will skew the projection.
 
 Limit the history window to the last 7 days:
 
