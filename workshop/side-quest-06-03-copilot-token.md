@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Configure GitHub Copilot Authentication
 
-> _Optional: work through this guide when you need to configure Copilot [authentication](https://github.github.com/gh-aw/reference/auth/) for an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows), then return to your main path._
+> _Optional: work through this guide when you need to configure Copilot [authentication](https://github.github.com/gh-aw/reference/auth/) for an [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-is-an-agentic-workflow), then return to your main path._
 
 ## :clipboard: Before You Start
 
