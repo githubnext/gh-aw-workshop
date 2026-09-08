@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Skill Injection Strategies — Hint, Fusion, and Inline
 
-> _Optional: use this deeper guide if you want the full decision picture for wiring a `SKILL.md` into a workflow prompt before you return to [Step 29](29-skills-and-domain-knowledge.md)._
+> _Optional: use this deeper guide if you want the full decision picture for wiring a [`SKILL.md`](https://github.github.com/gh-aw/reference/custom-agent-for-aw/#using-the-skill-files-for-agentic-workflows) into a workflow prompt before you return to [Step 29](29-skills-and-domain-knowledge.md)._
 
 ## :dart: What You'll Do
 

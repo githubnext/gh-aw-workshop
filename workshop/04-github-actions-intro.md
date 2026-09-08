@@ -69,7 +69,7 @@ You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/refe
 
 ## Why This Matters for Agentic Workflows
 
-Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the **same Actions foundation** — same triggers, same runner, same permissions model — but add an AI agent that reads your repository, reasons about it, and writes back through guardrailed outputs.
+Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the **same Actions foundation** — same triggers, same runner, same [permissions](https://github.github.com/gh-aw/reference/permissions/) model — but add an AI agent that reads your repository, reasons about it, and writes back through guardrailed outputs.
 
 | Concept | Classic Actions | Agentic Workflow |
 |---|---|---|

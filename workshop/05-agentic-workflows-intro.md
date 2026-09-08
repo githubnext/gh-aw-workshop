@@ -17,7 +17,7 @@ If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, and posts the output automatically.
 
-Think of it like a scheduled digest: every morning it reads your inbox and sends you a summary — no keyboard required. The agent always runs in a sandbox and posts results through guardrailed safe outputs. You will explore security in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
+Think of it like a scheduled digest: every morning it reads your inbox and sends you a summary — no keyboard required. The agent always runs in a [sandbox](https://github.github.com/gh-aw/reference/sandbox/) and posts results through guardrailed safe outputs. You will explore security in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
 
 ## Three key terms
 
