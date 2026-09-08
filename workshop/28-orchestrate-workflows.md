@@ -32,6 +32,12 @@ When a repository needs different kinds of AI work — status reports, PR review
 
 The key primitive is `dispatch-workflow` in [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/). It lets your orchestrator trigger another workflow in the same repository and optionally pass inputs to it.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/28-orchestrator-routing-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/28-orchestrator-routing-light.svg">
+   <img alt="Diagram: an orchestrator workflow reads repository signals and dispatches exactly one specialist workflow, or logs a summary and exits when no condition matches." src="images/28-orchestrator-routing-light.svg">
+</picture>
+
 > :thinking: **Predict:** Look at your existing workflows. Which one handles the broadest task? Which handles the narrowest? The broadest is a natural orchestration candidate; the narrowest is a natural specialist.
 
 ## Steps
