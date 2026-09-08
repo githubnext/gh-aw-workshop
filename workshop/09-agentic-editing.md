@@ -32,15 +32,15 @@ Then send:
 /agentic-workflows [your request here]
 ```
 
-The skill recognizes three core task types for day-to-day workflow maintenance:
+The skill recognizes three core task types — **Edit**, **Debug**, and **Optimize** — and routes your request to the matching prompt. If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
-| Task type | When to use it | Example trigger phrase |
-|-----------|---------------|------------------------|
-| **Edit** | Improve the agent brief or [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) | "update the workflow to …" |
-| **Debug** | Investigate unexpected output or a failed run | "debug the workflow — it ran but …" |
-| **Optimize** | Reduce token usage or tighten [permissions](https://github.github.com/gh-aw/reference/permissions/) | "optimize the workflow to reduce [AI Credit](https://github.github.com/gh-aw/reference/cost-management/) cost" |
-
-If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
+> [!TIP]
+> <details>
+> <summary><b>Optional Side Quest:</b> Want the full task-type table with example trigger phrases, plus practice scenarios for matching a request to the right task type?</summary>
+>
+> Work through [Side Quest: How the `agentic-workflows` Skill Dispatcher Works](side-quest-10-03-skill-dispatcher.md), then come back here.
+>
+> </details>
 
 ## Start With One Concrete Observation
 
