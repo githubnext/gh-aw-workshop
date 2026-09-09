@@ -107,6 +107,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Project Future AI Credit Costs with `gh aw forecast`](side-quest-26-01-forecast-costs.md) — full walkthrough of `gh aw forecast`: reading P10/P50/P90 output, using `--period week` and `--days 7`, forecasting all workflows, and deriving a `max-daily-ai-credits` value from the P90 figure; branches from [Step 26](26-manage-costs-and-budgets.md).
 - [Skill Injection Strategies — Hint, Fusion, and Inline](side-quest-29-01-skill-injection-strategies.md) — decision table, code examples, and a practice exercise for the hint, fusion, and inline strategies for wiring a `SKILL.md` into a workflow prompt; branches from [Step 29](29-skills-and-domain-knowledge.md).
 - [Recognizing Common Agentic Workflow Failure Modes](side-quest-22-01-failure-modes.md) — worked examples of empty data, tool error, timeout, and prompt drift failures with a match-the-fix practice exercise; branches from [Step 22](22-error-handling-and-resilience.md).
+- [How the `agentic-workflows` Skill Dispatcher Works](side-quest-10-03-skill-dispatcher.md) — full task-type table with trigger phrases, plus practice scenarios for matching a request to the Edit, Debug, or Optimize path; branches from [Step 9](09-agentic-editing.md).
 
 ## Getting Started
 
