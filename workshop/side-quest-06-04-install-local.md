@@ -58,7 +58,7 @@ Verify the extension is ready:
 gh aw --version
 ```
 
-You should see output like `gh-aw version 0.81.6`.
+You should see output like `gh-aw version 0.88.2`.
 
 ## Run a quick diagnostic
 
@@ -83,11 +83,16 @@ git commit -m "Initialize agentic workflow skills"
 git push
 ```
 
-This creates several files needed for [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) authoring:
-`.github/skills/agentic-workflows/SKILL.md`,
-`.github/skills/agentic-workflow-designer/SKILL.md`,
-`.github/agents/agentic-workflows.md`, `.github/mcp.json`,
-`.github/workflows/copilot-setup-steps.yml`, and `.vscode/settings.json`.
+This configures `.gitattributes` and `.vscode/settings.json`, creates
+`.github/skills/agentic-workflows/SKILL.md`, and removes legacy prompt files from
+`.github/prompts/` if they exist.
+
+When you run `gh aw init --engine copilot`, it also creates
+`.github/agents/agentic-workflows.md`. Unless you pass `--no-mcp`, it also creates
+`.github/workflows/copilot-setup-steps.yml` and `.github/mcp.json`.
+
+If any workflow uses `expires`, `gh aw init` also generates
+`.github/workflows/agentics-maintenance.yml`.
 
 ## :running_man: Try It
 
