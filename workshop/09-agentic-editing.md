@@ -135,7 +135,7 @@ The skill applies techniques such as removing redundant instructions, consolidat
 <details>
 <summary>:desktop_computer: Terminal path</summary>
 
-Review the Markdown body of your workflow and remove any sentences that repeat the same constraint or restate something already enforced by frontmatter (for example, "post only one comment" if `safe-outputs` already limits you to one comment). Recompile after each removal so you can verify nothing breaks.
+Review the Markdown body of your workflow and remove any sentences that repeat the same constraint or restate something already enforced by [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (for example, "post only one comment" if `safe-outputs` already limits you to one comment). Recompile after each removal so you can verify nothing breaks.
 
 </details>
 
