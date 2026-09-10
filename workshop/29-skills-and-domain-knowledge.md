@@ -101,6 +101,12 @@ Once a skill exists, decide how your workflow prompt should point to it. There a
 - **Fusion** — reference only the exact skill fragment the agent needs with a `<!-- gh-skill-fusion: path#anchor -->` comment. Best when the task is narrow and well-defined and you want to keep the prompt compact.
 - **Inline** — embed the skill fragment directly in the workflow file under a `## skill: \`name\`` heading. Best when the skill is small and specific to a single workflow.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/29-skill-injection-strategies-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/29-skill-injection-strategies-light.svg">
+   <img alt="Diagram showing a SKILL.md file feeding three injection strategies -- hint, fusion, and inline -- each flowing into the workflow prompt the agent reads." src="images/29-skill-injection-strategies-light.svg">
+</picture>
+
 > :bulb: **Optional Side Quest:** For the full decision table, code examples for each strategy, and a hands-on practice exercise, see [Skill Injection Strategies — Hint, Fusion, and Inline](side-quest-29-01-skill-injection-strategies.md).
 
 ### Wire the skill into a workflow and validate

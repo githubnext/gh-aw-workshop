@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Diagram showing a SKILL.md file feeding three injection strategies -- hint, fusion, and inline -- each flowing into the workflow prompt the agent reads." data-visual-kind="diagram" data-visual-id="29-skill-injection-strategies-dark">
+<rect x="0" y="0" width="1200" height="560" fill="#101411"/>
+<text x="60" y="52" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#f2f5f3">Choosing a skill injection strategy</text>
+<text x="60" y="80" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17" fill="#b6bfb8">One SKILL.md, three ways to reach the workflow prompt</text>
+<rect data-node="skill-file" x="50" y="230" width="190" height="100" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+<path aria-hidden="true" d="M68 254 h28 l14 14 v38 h-42 z" fill="none" stroke="#5fed83" stroke-width="2"/>
+<path aria-hidden="true" d="M96 254 v14 h14" fill="none" stroke="#5fed83" stroke-width="2"/>
+<text x="130" y="268" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#f2f5f3">SKILL.md</text>
+<text x="130" y="292" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Domain convention,</text>
+<text x="130" y="312" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">written once</text>
+<rect data-node="hint-strategy" x="460" y="90" width="300" height="120" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+<text x="480" y="124" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#f2f5f3">Hint</text>
+<text x="480" y="148" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Agent discovers skills</text>
+<text x="480" y="170" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Broad sets, big budget</text>
+<rect data-node="fusion-strategy" x="460" y="240" width="300" height="120" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+<text x="480" y="274" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#f2f5f3">Fusion</text>
+<text x="480" y="298" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Reference exact fragment</text>
+<text x="480" y="320" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Narrow, well-defined task</text>
+<rect data-node="inline-strategy" x="460" y="390" width="300" height="120" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1.5"/>
+<text x="480" y="424" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#f2f5f3">Inline</text>
+<text x="480" y="448" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Embed fragment directly</text>
+<text x="480" y="470" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Small, single workflow</text>
+<rect data-node="workflow-prompt" x="940" y="230" width="210" height="100" rx="10" fill="#0a241b" stroke="#5fed83" stroke-width="2"/>
+<g transform="translate(960,268.0) scale(1.5)" fill="#5fed83">
+<path d="M0 1.75C0 .784.784 0 1.75 0h3.5C6.216 0 7 .784 7 1.75v3.5A1.75 1.75 0 0 1 5.25 7H4v4a1 1 0 0 0 1 1h4v-1.25C9 9.784 9.784 9 10.75 9h3.5c.966 0 1.75.784 1.75 1.75v3.5A1.75 1.75 0 0 1 14.25 16h-3.5A1.75 1.75 0 0 1 9 14.25v-.75H5A2.5 2.5 0 0 1 2.5 11V7h-.75A1.75 1.75 0 0 1 0 5.25Z"/>
+</g>
+<text x="998.0" y="270" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="700" fill="#f2f5f3">Workflow prompt</text>
+<text x="998.0" y="294" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">Agent reads and</text>
+<text x="998.0" y="314" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b6bfb8">applies the skill</text>
+<defs><marker id="arrow-dark" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#5fed83"/></marker></defs>
+<path d="M240 280.0 C 345.0 280.0, 345.0 150.0, 450 150.0" fill="none" stroke="#5fed83" stroke-width="2" marker-end="url(#arrow-dark)"/>
+<path d="M240 280.0 C 345.0 280.0, 345.0 300.0, 450 300.0" fill="none" stroke="#5fed83" stroke-width="2" marker-end="url(#arrow-dark)"/>
+<path d="M240 280.0 C 345.0 280.0, 345.0 450.0, 450 450.0" fill="none" stroke="#5fed83" stroke-width="2" marker-end="url(#arrow-dark)"/>
+<path d="M770 150.0 C 850.0 150.0, 850.0 280.0, 930 280.0" fill="none" stroke="#5fed83" stroke-width="2" marker-end="url(#arrow-dark)"/>
+<path d="M770 300.0 C 850.0 300.0, 850.0 280.0, 930 280.0" fill="none" stroke="#5fed83" stroke-width="2" marker-end="url(#arrow-dark)"/>
+<path d="M770 450.0 C 850.0 450.0, 850.0 280.0, 930 280.0" fill="none" stroke="#5fed83" stroke-width="2" marker-end="url(#arrow-dark)"/>
+<circle cx="36" cy="216" r="14" fill="#5fed83"/>
+<text x="36" y="221" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0a241b" text-anchor="middle">1</text>
+<circle cx="446" cy="76" r="14" fill="#5fed83"/>
+<text x="446" y="81" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0a241b" text-anchor="middle">2</text>
+<circle cx="926" cy="216" r="14" fill="#5fed83"/>
+<text x="926" y="221" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#0a241b" text-anchor="middle">3</text>
+<text x="60" y="530" font-family="'Mona Sans', 'Mona Sans Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" fill="#b6bfb8">Write the convention once, then pick hint, fusion, or inline based on scope and context budget.</text>
+</svg>
