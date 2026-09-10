@@ -16,29 +16,15 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 ## Pre-flight check
 
-A stale or missing [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) is the leading cause of `model-access-not-configured` failures at this step. Run these checks before triggering the workflow — each takes less than a minute.
+A stale or missing [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) or a billing mismatch is the leading cause of `model-access-not-configured` failures at this step. Confirm `daily-report-status.md` and `daily-report-status.lock.yml` are both committed on `main` and that the `permissions:` block matches your chosen billing path before you trigger a run.
 
-**Lock file is present and current.** Open `.github/workflows/` in your repository on GitHub and confirm both files are there:
-
-- `daily-report-status.md` (source)
-- `daily-report-status.lock.yml` (compiled lock file)
-
-If either file is missing, return to [Step 7](07-your-first-workflow.md) to complete the workflow creation steps. If the lock file is present but you are unsure it is current, recompile and push before continuing:
-
-```bash
-gh aw compile
-git add .
-git commit -m "chore: sync lock file" && git push
-```
-
-**Billing configuration matches the lock file.** Open `daily-report-status.lock.yml` (or `daily-report-status.md`) and confirm the `permissions:` block matches the billing path you chose in Step 7d:
-
-| Billing path | `copilot-requests: write` present |
-|---|---|
-| Organization centralized billing | Yes |
-| Personal billing | No — and `COPILOT_GITHUB_TOKEN` is set in **Settings → Secrets → Actions** |
-
-Any mismatch means returning to [Confirm Model Access](07d-confirm-model-access.md) to fix the configuration and recompile.
+> [!TIP]
+> <details>
+> <summary><b>Optional Side Quest:</b> Want the full two-minute lock-file-and-billing checklist before your first run?</summary>
+>
+> Work through [Side Quest: Pre-Flight Check Before Your First Run](side-quest-08-02-preflight-check.md), then come back here.
+>
+> </details>
 
 ## Run the workflow
 
