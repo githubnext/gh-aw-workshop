@@ -91,8 +91,8 @@ gh aw compile
   <intent>Teach maintainers how to choose and justify the next workshop node using live gh-aw research.</intent>
   <primary-source>https://raw.githubusercontent.com/github/gh-aw/main/LLMs.txt</primary-source>
   <secondary-sources>
-    <source>https://github.github.com/gh-aw/reference/llms/</source>
-    <source>https://github.github.com/gh-aw/guides/workflow-patterns/</source>
+    <source>https://github.github.com/gh-aw/llms.txt</source>
+    <source>https://github.github.com/gh-aw/patterns/memory-ops/</source>
   </secondary-sources>
 </research-node-metadata>
 -->
