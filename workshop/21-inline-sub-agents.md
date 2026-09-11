@@ -38,7 +38,7 @@ When your workflow repeats the same small job for many items, keep the parent ag
    <img alt="Inline sub-agent pattern: parent agent plans and delegates repeated tasks to sub-agents, then assembles the final output" src="images/21-inline-sub-agents-light.svg">
 </picture>
 
-A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading. If you want, add a short frontmatter block with fields such as `description` or `model`. Then call that helper by name from the parent workflow brief.
+A sub-agent is just a helper you define inside the same workflow file. In this step, you only need one syntax rule: start the helper with a level-2 heading that begins with `## agent:` and a backtick-wrapped name. Put the helper brief under that heading. If you want, add a short [frontmatter block](https://github.github.com/gh-aw/reference/inline-sub-agents/#frontmatter-fields) with fields such as `description` or `model`. Then call that helper by name from the parent workflow brief.
 
 > :thinking: **Predict:** Look at your current workflow. Which instruction repeats once per issue, pull request, or file? Keep that answer in mind for the next section.
 >

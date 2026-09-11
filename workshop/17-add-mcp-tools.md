@@ -31,7 +31,7 @@ MCP (Model Context Protocol) connects external tool servers to the agent so it c
 > <summary><b>Optional Side Quests:</b></summary>
 >
 > - Want a deeper look at how the agentic loop changes, what the `tools:` block does, and how to read tool calls in the Actions log? Work through [Side Quest: How MCP Tool Servers Work](side-quest-17-01-mcp-concepts.md).  
-> - Want a beginner-friendly security mental model for why sandboxing matters, where the agent runs, and what safe output looks like? Work through [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md).  
+> - Want a beginner-friendly security mental model for why sandboxing matters, where the agent runs, and what [safe output](https://github.github.com/gh-aw/reference/safe-outputs/) looks like? Work through [Side Quest: Agentic Workflow Security Architecture (Explain Like You're 5)](side-quest-17-02-security-architecture.md).  
 > - Want to understand how malicious content in issues or PRs can try to redirect your agent — and how gh-aw's design limits the damage? Work through [Side Quest: Prompt Injection Attacks in Agentic Workflows](side-quest-17-03-prompt-injection.md).  
 > - Want to see how an over-powered workflow can give a misdirected agent more authority than the task really needs? Work through [Side Quest: Permission Escalation in Agentic Workflows](side-quest-17-04-permission-escalation.md).  
 > - Want to understand how a compromised MCP server could feed poisoned data to your agent — and how `network.allowed` and minimal [permissions](https://github.github.com/gh-aw/reference/permissions/) defend against it? Work through [Side Quest: Supply Chain Attacks via MCP Tool Servers](side-quest-17-05-supply-chain-mcp.md).  
@@ -117,7 +117,7 @@ The agent will read this brief, decide which MCP tool calls to make, and weave t
 
 ### Push and trigger a run
 
-The `/agentic-workflows` skill recompiles the lock file automatically. Commit both files and push:
+The `/agentic-workflows` skill recompiles the [lock file](https://github.github.com/gh-aw/reference/compilation-process/#the-actions-lockjson-cache) automatically. Commit both files and push:
 
 ```bash
 git add .

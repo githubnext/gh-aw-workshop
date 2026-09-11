@@ -47,7 +47,7 @@ The diagram below shows how `cache-memory` makes deduplication possible across r
 - **Compare against a baseline** — "did the number of failing tests increase since yesterday?"
 - **Scan incrementally** — skip pull requests you have already reviewed.
 
-This step uses `cache-memory`; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison.
+This step uses `cache-memory`; see [Side Quest: Choosing Between Cache Memory and Repo Memory](side-quest-20-01-memory-patterns.md) for a full comparison with [repo-memory](https://github.github.com/gh-aw/reference/repo-memory/).
 
 ## Steps
 
@@ -124,7 +124,7 @@ have already reported on. On each run:
 
 ### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), validate, and push
 
-The `/agentic-workflows` skill recompiles the lock file automatically. If you edited manually, run `gh aw compile` first to confirm the memory block is valid.
+The `/agentic-workflows` skill recompiles the [lock file](https://github.github.com/gh-aw/reference/compilation-process/#the-actions-lockjson-cache) automatically. If you edited manually, run `gh aw compile` first to confirm the memory block is valid.
 
 Common mistakes include putting `cache-memory:` at the top level instead of nesting it under `tools:`, and omitting the `key:` field for `cache-memory`.
 

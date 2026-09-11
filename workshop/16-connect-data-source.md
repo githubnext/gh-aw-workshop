@@ -118,7 +118,7 @@ Write a concise, friendly update — two short paragraphs.
 Highlight anything that looks urgent in the issue list.
 ```
 
-GitHub resolves the step-output expressions before the AI sees the prompt, so the model receives plain text instead of workflow syntax.
+GitHub resolves the step-output [expressions](https://github.github.com/gh-aw/reference/templating/#github-actions-expressions) before the AI sees the prompt, so the model receives plain text instead of workflow syntax.
 
 :thinking: Pause and predict: If the `commit_log` output is empty, does the prompt still make sense to the AI? What one-line change would make the instruction more robust?
 
@@ -126,7 +126,7 @@ GitHub resolves the step-output expressions before the AI sees the prompt, so th
 
 ### [Compile](https://github.github.com/gh-aw/reference/compilation-process/), push, and test
 
-The `/agentic-workflows` skill recompiles the lock file automatically. If you edited the workflow manually, run `gh aw compile` first, then push:
+The `/agentic-workflows` skill recompiles the [lock file](https://github.github.com/gh-aw/reference/compilation-process/#the-actions-lockjson-cache) automatically. If you edited the workflow manually, run `gh aw compile` first, then push:
 
 ```bash
 git add .

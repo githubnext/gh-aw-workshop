@@ -17,7 +17,7 @@ You'll copy your finished workflow file into a shared location so that teammates
 
 ### Understand how gh-aw templates work
 
-When you run `gh aw add`, the extension fetches a workflow Markdown file directly from a GitHub repository. Any `.md` file in a `.github/workflows/` folder of a public (or accessible) repo can act as a template.
+When you run [`gh aw add`](https://github.github.com/gh-aw/setup/cli/#add), the extension fetches a workflow Markdown file directly from a GitHub repository. Any `.md` file in a `.github/workflows/` folder of a public (or accessible) repo can act as a template.
 
 That means **your workflow is already a template** — you just need to point people at it.
 
