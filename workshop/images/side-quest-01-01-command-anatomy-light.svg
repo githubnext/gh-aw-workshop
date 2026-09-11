@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Diagram showing the anatomy of a terminal command: a prompt where you type a command, pressing Enter to execute it, the terminal producing output, and changing directory updating the next prompt" data-visual-kind="diagram" data-visual-id="side-quest-01-01-command-anatomy">
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <text x="600" y="52" text-anchor="middle" font-family="Mona Sans, system-ui, -apple-system, sans-serif" font-size="26" font-weight="700" fill="#101411">Anatomy of a Terminal Command</text>
+  <text x="600" y="80" text-anchor="middle" font-family="Mona Sans, system-ui, -apple-system, sans-serif" font-size="15" fill="#232925">Left to right: 1. read the prompt, 2. type a command, 3. press Enter, 4. read the output</text>
+
+  <!-- Stage 1: Prompt -->
+  <g data-node="prompt">
+    <circle cx="112" cy="192" r="15" fill="#08872b"/>
+    <text x="112" y="197" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">1</text>
+    <rect x="40" y="220" width="220" height="150" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="150" y="252" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#101411">Prompt</text>
+    <rect x="60" y="270" width="180" height="34" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="150" y="292" text-anchor="middle" font-family="Mona Sans Mono, monospace" font-size="13" fill="#101411">~/project $</text>
+    <text x="150" y="330" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">Shows your</text>
+    <text x="150" y="348" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">current directory</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="262" y1="292" x2="322" y2="292" stroke="#08872b" stroke-width="2.5"/>
+  <polygon points="322,284 338,292 322,300" fill="#08872b"/>
+  <text x="300" y="270" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">you type</text>
+
+  <!-- Stage 2: Command -->
+  <g data-node="command">
+    <circle cx="392" cy="192" r="15" fill="#08872b"/>
+    <text x="392" y="197" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">2</text>
+    <rect x="320" y="220" width="220" height="150" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="430" y="252" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#101411">Command</text>
+    <rect x="340" y="270" width="180" height="34" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="430" y="292" text-anchor="middle" font-family="Mona Sans Mono, monospace" font-size="13" fill="#101411">pwd</text>
+    <text x="430" y="330" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">The instruction</text>
+    <text x="430" y="348" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">you want to run</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="542" y1="292" x2="602" y2="292" stroke="#08872b" stroke-width="2.5"/>
+  <polygon points="602,284 618,292 602,300" fill="#08872b"/>
+  <text x="580" y="270" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">press Enter</text>
+
+  <!-- Stage 3: Execute -->
+  <g data-node="execute">
+    <circle cx="672" cy="192" r="15" fill="#08872b"/>
+    <text x="672" y="197" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">3</text>
+    <rect x="600" y="220" width="220" height="150" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="710" y="252" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#101411">Terminal Runs It</text>
+    <rect x="620" y="270" width="180" height="34" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="710" y="292" text-anchor="middle" font-family="Mona Sans Mono, monospace" font-size="13" fill="#101411">&#8629; Enter</text>
+    <text x="710" y="330" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">The shell executes</text>
+    <text x="710" y="348" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">your command</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="822" y1="292" x2="882" y2="292" stroke="#08872b" stroke-width="2.5"/>
+  <polygon points="882,284 898,292 882,300" fill="#08872b"/>
+  <text x="860" y="270" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">prints result</text>
+
+  <!-- Stage 4: Output -->
+  <g data-node="output">
+    <circle cx="952" cy="192" r="15" fill="#08872b"/>
+    <text x="952" y="197" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">4</text>
+    <rect x="880" y="220" width="280" height="150" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+    <text x="1020" y="252" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#101411">Output</text>
+    <rect x="900" y="270" width="240" height="34" rx="6" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+    <text x="1020" y="292" text-anchor="middle" font-family="Mona Sans Mono, monospace" font-size="13" fill="#101411">/Users/alice/project</text>
+    <text x="1020" y="330" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">What the terminal</text>
+    <text x="1020" y="348" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" fill="#232925">prints back</text>
+  </g>
+
+  <!-- Loop back: cd updates the next prompt -->
+  <path d="M 1020 372 C 1020 460, 150 460, 150 372" fill="none" stroke="#08872b" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="150,372 142,388 158,388" fill="#08872b"/>
+  <rect x="470" y="430" width="260" height="30" rx="15" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+  <text x="600" y="450" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="12" font-weight="600" fill="#101411">cd updates the next prompt</text>
+
+  <text x="600" y="510" text-anchor="middle" font-family="Mona Sans, system-ui, sans-serif" font-size="14" fill="#232925">The prompt always reflects your current directory, so navigating with cd changes what you see next.</text>
+</svg>

@@ -20,6 +20,12 @@
 
 The **prompt** is a short line of text ending in `$`, `%`, or `>`. When you see it, the terminal is ready for your **command**. Whatever the terminal prints back is the **output**.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-01-command-anatomy-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-01-command-anatomy-light.svg">
+   <img alt="Diagram showing the anatomy of a terminal command: prompt, command, Enter, and output, with cd looping back to update the next prompt" src="images/side-quest-01-01-command-anatomy-light.svg">
+</picture>
+
 ---
 
 ## Practice 1: Confirm your terminal works
