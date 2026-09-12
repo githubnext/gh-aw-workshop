@@ -44,6 +44,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 
 ## Optional Side Quests
 
+- [GitHub Actions Basics — Triggers, Jobs, Runners, and Steps](side-quest-04-01-actions-basics.md) — line-by-line walkthrough of the core GitHub Actions primitives (trigger, job, runner, step), including what a runner is and how self-hosted runners differ; branches from [Step 4](04-github-actions-intro.md).
 - [Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md) — one-page cheat sheet for what changes vs what stays the same in agentic workflows; branches from [Step 5](05-agentic-workflows-intro.md).
 - [Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) — classification exercises, example agent output, the two-file structure, and concept checks; branches from [Step 5](05-agentic-workflows-intro.md).
 - [Terminal Basics](side-quest-01-01-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).

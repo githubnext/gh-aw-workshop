@@ -27,17 +27,15 @@ You'll do a fast refresher on the Actions primitives used in this workshop: [tri
 
 A GitHub Actions workflow is a YAML file in `.github/workflows/` that tells GitHub:
 
-- _when_ to run (`on`)
-- _what_ to run (`jobs`)
-- _how_ each job executes (`steps`)
+- _when_ to run (`on`) — the **trigger**
+- _what_ to run (`jobs`) — a named group of steps that runs on one machine
+- _how_ each job executes (`steps`) — shell commands or reusable actions run on a **runner**, the machine GitHub provisions fresh for each job
 
 ```text
 .github/
   workflows/
     hello.yml   ← each workflow file lives here
 ```
-
-Annotated example — each comment names the key term (this is a standard Actions workflow, not an agentic workflow):
 
 ```yaml .github/workflows/hello-workflow.yml
 # Standard GitHub Actions workflow — not an agentic workflow
@@ -52,20 +50,13 @@ jobs:
       - run: echo "Hello from GitHub Actions"   # step: a shell command on the runner
 ```
 
-<details>
-<summary>What is a runner?</summary>
-
-A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
-
-```markdown .github/workflows/hello-workflow.md
----
-runs-on: ubuntu-latest   # also: windows-latest, macos-latest
----
-```
-
-You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same hosted runners.
-
-</details>
+> [!TIP]
+> <details>
+> <summary><b>Optional Side Quest:</b> Want a slower, line-by-line walkthrough of these primitives — including what a runner is and how self-hosted runners differ — before continuing?</summary>
+>
+> Work through [Side Quest: GitHub Actions Basics — Triggers, Jobs, Runners, and Steps](side-quest-04-01-actions-basics.md), then come back here.
+>
+> </details>
 
 ## Why This Matters for Agentic Workflows
 
