@@ -15,6 +15,12 @@
 
 When you see `permission denied`, your user account does not have the rights to run that command as written. This is a security feature — it prevents accidental changes to system files.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-03-permission-decision-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-03-permission-decision-light.svg">
+   <img alt="Decision flow for a permission denied error: run a command, check permission, and if denied, elevate access with sudo or Run as administrator before the command succeeds" src="images/side-quest-01-03-permission-decision-light.svg">
+</picture>
+
 ---
 
 ## How to fix it

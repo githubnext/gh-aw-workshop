@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" data-visual-kind="diagram" data-visual-id="side-quest-01-03-permission-decision" aria-label="Decision flow for a permission denied error: run a command, check permission, and if permission is denied, elevate access with sudo or Run as administrator before the command succeeds; if permission is already granted, the command succeeds directly.">
+  <!-- Icons: Primer Octicons, MIT License, Copyright GitHub, Inc. -->
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Outer panel -->
+  <rect x="32" y="32" width="1136" height="496" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="600" y="76" font-family="'Mona Sans', system-ui, sans-serif" font-size="24" font-weight="700" fill="#101411" text-anchor="middle">Resolving a permission denied error</text>
+  <text x="600" y="102" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#232925" text-anchor="middle">Reading direction: numbered steps, left to right, top to bottom</text>
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="9" refX="9" refY="4.5" orient="auto">
+      <polygon points="0 0, 10 4.5, 0 9" fill="#232925"/>
+    </marker>
+  </defs>
+
+  <!-- Node 1: Run command -->
+  <rect data-node="run-command" x="64" y="150" width="196" height="96" rx="10" fill="#f2f5f3" stroke="#909692" stroke-width="1.5"/>
+  <circle cx="94" cy="176" r="14" fill="#232925"/>
+  <text x="94" y="181" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="162" y="200" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#101411" text-anchor="middle">Run command</text>
+  <text x="162" y="222" font-family="'Mona Sans Mono', 'SFMono-Regular', Consolas, monospace" font-size="14" fill="#232925" text-anchor="middle">cat /etc/sudoers</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="260" y1="198" x2="336" y2="198" stroke="#232925" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Node 2: Permission check -->
+  <rect data-node="permission-check" x="336" y="150" width="264" height="96" rx="10" fill="#f2f5f3" stroke="#909692" stroke-width="1.5"/>
+  <circle cx="366" cy="176" r="14" fill="#232925"/>
+  <text x="366" y="181" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="468" y="200" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#101411" text-anchor="middle">Permission check</text>
+  <text x="468" y="222" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#232925" text-anchor="middle">Does your account have rights?</text>
+
+  <!-- Arrow 2 -> 5 (Yes, direct) -->
+  <path d="M600 168 L960 168" fill="none" stroke="#08872b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="780" y="152" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#08872b" text-anchor="middle">Yes — access granted</text>
+
+  <!-- Arrow 2 -> 3 (No) -->
+  <line x1="468" y1="246" x2="468" y2="322" stroke="#232925" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="510" y="288" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#232925" text-anchor="start">No</text>
+
+  <!-- Node 3: Permission denied (danger/error) -->
+  <rect data-node="permission-denied" data-state="error" x="336" y="322" width="264" height="96" rx="10" fill="#cf222e" stroke="#cf222e" stroke-width="1.5"/>
+  <circle cx="366" cy="348" r="14" fill="#ffffff"/>
+  <text x="366" y="353" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#cf222e" text-anchor="middle">3</text>
+  <text x="468" y="372" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Permission denied</text>
+  <text x="468" y="394" font-family="'Mona Sans Mono', 'SFMono-Regular', Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle">Permission denied</text>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="600" y1="370" x2="676" y2="370" stroke="#232925" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Node 4: Elevate access (in-progress) -->
+  <rect data-node="elevate-access" data-state="in-progress" x="676" y="322" width="232" height="96" rx="10" fill="#9a6700" stroke="#9a6700" stroke-width="1.5"/>
+  <circle cx="706" cy="348" r="14" fill="#ffffff"/>
+  <text x="706" y="353" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#9a6700" text-anchor="middle">4</text>
+  <text x="792" y="372" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Elevate access</text>
+  <text x="792" y="394" font-family="'Mona Sans Mono', 'SFMono-Regular', Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle">sudo · Run as administrator</text>
+
+  <!-- Elbow arrow 4 -> 5 -->
+  <path d="M886 322 L886 260 L1060 260 L1060 246" fill="none" stroke="#232925" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Node 5: Command succeeds (success) -->
+  <rect data-node="command-succeeds" data-state="success" x="960" y="150" width="176" height="96" rx="10" fill="#1a7f37" stroke="#1a7f37" stroke-width="1.5"/>
+  <circle cx="990" cy="176" r="14" fill="#ffffff"/>
+  <text x="990" y="181" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#1a7f37" text-anchor="middle">5</text>
+  <text x="1048" y="200" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Command</text>
+  <text x="1048" y="220" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">succeeds</text>
+
+  <!-- Annotation -->
+  <text x="600" y="470" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#232925" text-anchor="middle">A missing permission is not a broken system — retry the same command with sudo or</text>
+  <text x="600" y="492" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#232925" text-anchor="middle">Run as administrator to grant temporary elevated rights and let it succeed.</text>
+</svg>
