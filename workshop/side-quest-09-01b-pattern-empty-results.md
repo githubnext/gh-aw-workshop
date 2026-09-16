@@ -4,7 +4,7 @@
 
 ## :dart: What You'll Do
 
-You will diagnose empty tool responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data.
+You will diagnose empty [tool](https://github.github.com/gh-aw/reference/tools/) responses and decide whether the root cause is missing read scope, over-filtering, or truly empty repository data.
 
 ## :clipboard: Before You Start
 

@@ -4,7 +4,7 @@
 
 ## :dart: What You'll Do
 
-You will map permission failures to the correct control: read access in `permissions:` and write allowlisting in `safe-outputs:`.
+You will map [permission](https://github.github.com/gh-aw/reference/permissions/) failures to the correct control: read access in `permissions:` and write allowlisting in `safe-outputs:`.
 
 ## :clipboard: Before You Start
 

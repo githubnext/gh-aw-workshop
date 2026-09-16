@@ -4,7 +4,7 @@
 
 ## :dart: What You'll Do
 
-You will learn how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first tool call.
+You will learn how to spot a planning loop and rewrite your workflow brief so the agent starts with an explicit first [tool](https://github.github.com/gh-aw/reference/tools/) call.
 
 ## :clipboard: Before You Start
 

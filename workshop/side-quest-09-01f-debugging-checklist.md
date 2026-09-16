@@ -13,7 +13,7 @@ You will apply a repeatable seven-step triage flow whenever a run produces unexp
 ## Checklist
 
 1. Open the live log in **Actions** and scan for `[error]` lines first.
-2. Check `[plan]` density. More than four consecutive plan lines without a tool call usually means your brief is underspecified.
+2. Check `[plan]` density. More than four consecutive plan lines without a [tool](https://github.github.com/gh-aw/reference/tools/) call usually means your brief is underspecified.
 3. Inspect `[tool]` and `[result]` lines to confirm expected data is returned.
 4. Look for `limit reached` [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) errors, such as `E002: add-comment limit reached — 1 of 1 already used this run`, and decide whether to increase `max` or tighten "post once" guidance.
 5. Read the run summary and compare it to your expected write behavior.

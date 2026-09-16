@@ -17,7 +17,7 @@ A safe-output error such as `E002: add-comment limit reached — 1 of 1 already 
 
 Treat `max` as a safety boundary, not a convenience setting. A low limit reduces accidental spam if instructions are interpreted too broadly.
 
-When changing behavior, prefer precise workflow guidance like "Post one comment per run. If a comment already exists today, update context in memory and skip writing."
+When changing behavior, prefer precise workflow guidance like "Post one comment per run. If a comment already exists today, update context in [memory](https://github.github.com/gh-aw/patterns/memory-ops/) and skip writing."
 
 If you need help with wording, ask the `agentic-workflows` skill or iterate quickly with [`gh aw compile --watch`](https://github.github.com/gh-aw/setup/cli/#compile).
 

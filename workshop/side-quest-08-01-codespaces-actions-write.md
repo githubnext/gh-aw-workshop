@@ -9,7 +9,7 @@
 This side quest applies to you if **both** of the following are true:
 
 - You are running `gh aw run` inside a GitHub Codespace (not a local environment).
-- You see an `actions:write` permission error (HTTP 403) in your terminal run log.
+- You see an `actions:write` [permission](https://github.github.com/gh-aw/reference/permissions/) error (HTTP 403) in your terminal run log.
 
 If you are not in a Codespace or you do not see the 403 error, return to [Run and Watch Your Workflow](08-run-your-workflow.md) and use the GitHub Actions UI path instead.
 

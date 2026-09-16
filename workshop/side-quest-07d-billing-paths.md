@@ -50,7 +50,7 @@ If you see `401 Unauthorized` in the run log, see [Method 1: Copilot Requests Pe
 Use this path for a personal repository, or when the owning organization does not provide centralized Copilot billing.
 
 > [!IMPORTANT]
-> When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN`. Remove that permission line before adding the secret.
+> When `copilot-requests: write` is present, the workflow ignores `COPILOT_GITHUB_TOKEN`. Remove that [permission](https://github.github.com/gh-aw/reference/permissions/#special-permission-copilot-requests-write) line before adding the secret.
 
 1. Open `daily-report-status.md` and remove `copilot-requests: write`.
 2. Generate a fine-grained PAT with **Copilot requests: Read-only** at [github.com/settings/tokens](https://github.com/settings/tokens).
