@@ -125,7 +125,7 @@ if: contains(github.event.head_commit.message, '[skip ci]')
 ```
 
 > [!NOTE]
-> Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via environment variables in your brief instead.
+> Expressions are evaluated on the GitHub Actions runner, not inside the AI agent. Use them for workflow control flow, not for shaping the AI prompt at runtime — pass values to the prompt via [environment variables](https://github.github.com/gh-aw/reference/environment-variables/) in your brief instead.
 
 ### Combine multiple conditions
 
