@@ -14,6 +14,14 @@ A standard Actions workflow runs the same fixed steps every time — no judgment
 
 **Key signal:** if the output could be different each run because the agent is reading context and making decisions, it's agentic.
 
+The same trigger can lead down either path, as shown below.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-05-02-classify-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-05-02-classify-flow-light.svg">
+   <img alt="Diagram comparing a standard workflow that always runs the same fixed steps with an agentic workflow where the agent reads context and makes judgment calls, producing output that varies each run." src="images/side-quest-05-02-classify-flow-light.svg">
+</picture>
+
 ## Classify Task A
 
 **Task:** Run unit tests on every pull request, fail if any test exits non-zero, and upload coverage.

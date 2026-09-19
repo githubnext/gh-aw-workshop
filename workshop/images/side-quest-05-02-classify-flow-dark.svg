@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Diagram comparing a standard workflow that always runs the same fixed steps with an agentic workflow where the agent reads context and makes judgment calls, producing output that varies each run." data-visual-kind="diagram" data-visual-id="side-quest-05-02-classify-flow">
+  <style>
+    text { font-family: "Mona Sans", "Segoe UI", system-ui, sans-serif; fill: #f2f5f3; }
+    .mono { font-family: "Mona Sans Mono", "SFMono-Regular", Consolas, monospace; }
+    .muted { fill: #b6bfb8; }
+  </style>
+  <rect x="0" y="0" width="1200" height="560" fill="#101411"/>
+
+  <text x="40" y="46" font-size="26" font-weight="700">Standard vs. agentic: same trigger, different path</text>
+  <text x="40" y="74" font-size="16" class="muted">Read left to right: one trigger, two possible kinds of steps.</text>
+
+  <!-- Trigger node -->
+  <rect data-node="trigger" x="40" y="240" width="160" height="80" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1"/>
+  <text x="120" y="275" font-size="18" font-weight="600" text-anchor="middle">Trigger</text>
+  <text x="120" y="298" font-size="14" class="muted mono" text-anchor="middle">on: pull_request</text>
+
+  <!-- Arrow to fork -->
+  <line x1="200" y1="280" x2="260" y2="280" stroke="#b6bfb8" stroke-width="2"/>
+  <polygon points="260,280 248,274 248,286" fill="#b6bfb8"/>
+
+  <!-- Top group: Standard -->
+  <g>
+    <rect x="300" y="60" width="860" height="180" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1" stroke-dasharray="6 5"/>
+    <text x="324" y="94" font-size="18" font-weight="700">1. Standard workflow — fixed steps</text>
+    <text x="324" y="116" font-size="14" class="muted">Same result every run. No judgment required.</text>
+
+    <rect data-node="lint" x="330" y="140" width="180" height="70" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1"/>
+    <text x="420" y="170" font-size="16" font-weight="600" text-anchor="middle">Run tests</text>
+    <text x="420" y="190" font-size="14" class="muted mono" text-anchor="middle">npm test</text>
+
+    <line x1="510" y1="175" x2="560" y2="175" stroke="#b6bfb8" stroke-width="2"/>
+    <polygon points="560,175 549,169 549,181" fill="#b6bfb8"/>
+
+    <rect data-node="check-exit" x="570" y="140" width="200" height="70" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1"/>
+    <text x="670" y="170" font-size="16" font-weight="600" text-anchor="middle">Fail on non-zero</text>
+    <text x="670" y="190" font-size="14" class="muted mono" text-anchor="middle">exit code check</text>
+
+    <line x1="770" y1="175" x2="820" y2="175" stroke="#b6bfb8" stroke-width="2"/>
+    <polygon points="820,175 809,169 809,181" fill="#b6bfb8"/>
+
+    <rect data-node="upload" x="830" y="140" width="220" height="70" rx="10" fill="#0a241b" stroke="#909692" stroke-width="1"/>
+    <text x="940" y="170" font-size="16" font-weight="600" text-anchor="middle">Upload coverage</text>
+    <text x="940" y="190" font-size="14" class="muted mono" text-anchor="middle">same output every run</text>
+  </g>
+
+  <!-- Bottom group: Agentic -->
+  <g>
+    <rect x="300" y="320" width="860" height="200" rx="12" fill="#0a241b" stroke="#5fed83" stroke-width="2"/>
+    <text x="324" y="354" font-size="18" font-weight="700" fill="#f2f5f3">2. Agentic workflow — judgment calls</text>
+    <text x="324" y="376" font-size="14" fill="#b6bfb8">Output differs each run based on live context.</text>
+
+    <rect data-node="read-context" x="330" y="400" width="200" height="80" rx="10" fill="#101411" stroke="#5fed83" stroke-width="1"/>
+    <text x="430" y="432" font-size="16" font-weight="600" text-anchor="middle" fill="#f2f5f3">Read issues</text>
+    <text x="430" y="454" font-size="14" text-anchor="middle" fill="#b6bfb8">live repo context</text>
+
+    <line x1="530" y1="440" x2="580" y2="440" stroke="#5fed83" stroke-width="2"/>
+    <polygon points="580,440 569,434 569,446" fill="#5fed83"/>
+
+    <rect data-node="decide" x="590" y="400" width="200" height="80" rx="10" fill="#101411" stroke="#5fed83" stroke-width="1"/>
+    <text x="690" y="432" font-size="16" font-weight="600" text-anchor="middle" fill="#f2f5f3">Judge &amp; group</text>
+    <text x="690" y="454" font-size="14" text-anchor="middle" fill="#b6bfb8">agent decision</text>
+
+    <line x1="790" y1="440" x2="840" y2="440" stroke="#5fed83" stroke-width="2"/>
+    <polygon points="840,440 829,434 829,446" fill="#5fed83"/>
+
+    <rect data-node="post-summary" x="850" y="400" width="200" height="80" rx="10" fill="#101411" stroke="#5fed83" stroke-width="1"/>
+    <text x="950" y="432" font-size="16" font-weight="600" text-anchor="middle" fill="#f2f5f3">Post summary</text>
+    <text x="950" y="454" font-size="14" text-anchor="middle" fill="#b6bfb8">varies each run</text>
+  </g>
+
+  <text x="40" y="548" font-size="14" class="muted">Key signal: fixed steps every run mean standard; judgment on live context that changes the output means agentic.</text>
+</svg>
