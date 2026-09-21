@@ -43,7 +43,7 @@ You do not need one mode for the whole workflow. Most production workflows are h
 Follow this structure for repository status, incident triage, and reporting flows:
 
 1. **Deterministic extraction**: run fixed commands (`gh`, `git`, API calls) to collect data.
-2. **Deterministic shaping**: normalize and label outputs (`$GITHUB_OUTPUT`, JSON fields, counts).
+2. **Deterministic shaping**: normalize and label outputs ([`$GITHUB_OUTPUT`](https://github.github.com/gh-aw/reference/environment-variables/#system-injected-runtime-variables), JSON fields, counts).
 3. **Agentic interpretation**: ask the agent to identify risk, priority, and notable patterns.
 4. **Agentic communication**: ask for role-specific output (engineering digest, leadership summary, on-call handoff).
 

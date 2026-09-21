@@ -63,7 +63,7 @@ permissions:
 
 An injection asking the agent to open an issue or post a comment will fail because those operations have no execution path.
 
-### `network.allowed` blocks outbound exfiltration
+### [`network.allowed`](https://github.github.com/gh-aw/reference/network/#caller-extensible-allowlist-networkallowed-input) blocks outbound exfiltration
 
 gh-aw lets you declare a [firewall](https://github.github.com/gh-aw/reference/network/) allowlist of domains the workflow runner may contact. Any outbound connection to a domain not in the list is rejected.
 

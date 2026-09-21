@@ -25,7 +25,7 @@ A powerful helper without boundaries can accidentally do unsafe things.
 The sandbox gives your helper clear rules:
 
 - It can only use the tools you allowed.
-- It can only do actions covered by your declared permissions.
+- It can only do actions covered by your declared [permissions](https://github.github.com/gh-aw/reference/permissions/).
 - It cannot reach random places outside the workflow environment.
 
 <picture>
@@ -97,7 +97,7 @@ network:
 ---
 ```
 
-> :thinking: **Predict:** What would happen if you removed `network.allowed` from the frontmatter above and an injected prompt told the agent to send data to an external URL?
+> :thinking: **Predict:** What would happen if you removed [`network.allowed`](https://github.github.com/gh-aw/reference/network/#caller-extensible-allowlist-networkallowed-input) from the frontmatter above and an injected prompt told the agent to send data to an external URL?
 
 ---
 

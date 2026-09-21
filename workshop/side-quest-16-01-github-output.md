@@ -25,7 +25,7 @@ Each step is a separate child process. [Environment variables](https://github.gi
 
 ## Single-line values
 
-Append a `key=value` pair to the file path stored in the `$GITHUB_OUTPUT` environment variable:
+Append a `key=value` pair to the file path stored in the [`$GITHUB_OUTPUT`](https://github.github.com/gh-aw/reference/environment-variables/#system-injected-runtime-variables) environment variable:
 
 ```bash
 # ✅ Write a single-line value
