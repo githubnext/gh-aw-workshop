@@ -97,6 +97,12 @@ Before you reveal the answers below, write a one-sentence definition for each te
 
 An agent always operates **read-only**. Any writes — posting a comment, creating an issue — go through [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) and guardrails.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/05b-agent-safe-output-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/05b-agent-safe-output-flow-light.svg">
+   <img alt="Agent safe-output flow: the read-only agent inside its sandbox produces a structured output request, which a separate permission-scoped safe-outputs job validates before writing the comment or issue to GitHub" src="images/05b-agent-safe-output-flow-light.svg">
+</picture>
+
 **Try it:** Open the `.lock.yml` you compiled earlier. Find the step or job that handles the agent's output. Notice how the write is separated from the agent's read-only work.
 
 > [!TIP]

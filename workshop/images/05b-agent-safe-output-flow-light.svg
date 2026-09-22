@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="Agent safe-output flow: the read-only agent inside its sandbox produces a structured output request, which a separate permission-scoped safe-outputs job validates before writing the comment or issue to GitHub"
+  data-visual-kind="diagram"
+  data-visual-id="05b-agent-safe-output-flow">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#101411">How the Agent Posts Output</text>
+  <text x="600" y="74" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#232925">The agent never writes to GitHub directly — every write passes through a guarded safe-outputs job</text>
+
+  <defs>
+    <marker id="arrow-light" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#232925"/>
+    </marker>
+  </defs>
+
+  <!-- ===== NODE 1: Read-only Agent (sandbox) ===== -->
+  <rect x="60" y="150" width="280" height="180" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="8 5" data-node="agent-sandbox"/>
+  <text x="200" y="182" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#232925" letter-spacing="0.04em">SANDBOX</text>
+  <!-- workflow/play octicon -->
+  <g transform="translate(180, 200)" fill="#08872b">
+    <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.271-2.014a.75.75 0 0 1 .75 0l4 2.5a.75.75 0 0 1 0 1.279l-4 2.5a.75.75 0 0 1-1.125-.64V6.625a.75.75 0 0 1 .375-.64z"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Agent</text>
+  <text x="200" y="274" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Reads repo data</text>
+  <text x="200" y="292" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Read-only — cannot write</text>
+
+  <!-- Step badge 1 -->
+  <circle cx="60" cy="150" r="14" fill="#08872b"/>
+  <text x="60" y="155" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">1</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="341" y1="240" x2="419" y2="240" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+  <text x="380" y="228" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">requests</text>
+
+  <!-- ===== NODE 2: Structured Output Request ===== -->
+  <rect x="420" y="170" width="280" height="140" rx="10" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="output-request"/>
+  <text x="560" y="200" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Output Request</text>
+  <text x="560" y="224" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#232925">create_comment</text>
+  <text x="560" y="244" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#232925">create_issue</text>
+  <text x="560" y="270" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">Structured, not yet applied</text>
+
+  <!-- Step badge 2 -->
+  <circle cx="420" cy="170" r="14" fill="#08872b"/>
+  <text x="420" y="175" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">2</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="701" y1="240" x2="779" y2="240" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+  <text x="740" y="228" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">validated by</text>
+
+  <!-- ===== NODE 3: safe-outputs job ===== -->
+  <rect x="780" y="150" width="280" height="180" rx="12" fill="#ffffff" stroke="#08872b" stroke-width="2" data-node="safe-outputs-job"/>
+  <text x="920" y="180" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#08872b" letter-spacing="0.04em">SEPARATE JOB</text>
+  <!-- shield/lock octicon -->
+  <g transform="translate(908, 196)" fill="#08872b">
+    <path d="M8.533.133a1.75 1.75 0 0 0-1.066 0l-5.25 1.68A1.75 1.75 0 0 0 1 3.48V8c0 3.037 1.879 5.715 4.75 6.888.575.228 1.925.228 2.5 0C11.121 13.715 13 11.037 13 8V3.48a1.75 1.75 0 0 0-1.217-1.667Zm-.55 1.44a.25.25 0 0 1 .153 0l5.25 1.68a.25.25 0 0 1 .174.238V8c0 2.478-1.495 4.705-3.888 5.655a3.499 3.499 0 0 1-1.344 0C5.995 12.705 4.5 10.478 4.5 8V3.49a.25.25 0 0 1 .174-.238Z"/>
+  </g>
+  <text x="920" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">safe-outputs</text>
+  <text x="920" y="274" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Checks permission scopes</text>
+  <text x="920" y="292" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Applies the write to GitHub</text>
+
+  <!-- Step badge 3 -->
+  <circle cx="780" cy="150" r="14" fill="#08872b"/>
+  <text x="780" y="155" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">3</text>
+
+  <!-- Arrow down to GitHub result -->
+  <line x1="920" y1="331" x2="920" y2="389" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+  <text x="920" y="365" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">writes</text>
+
+  <!-- ===== NODE 4: GitHub result (comment/issue) ===== -->
+  <rect x="780" y="391" width="280" height="100" rx="10" fill="#f2f5f3" stroke="#08872b" stroke-width="1.5" data-node="github-result"/>
+  <!-- issue-opened octicon -->
+  <g transform="translate(908, 407)" fill="#1a7f37" data-state="open">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
+  </g>
+  <text x="920" y="450" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600" fill="#101411">Comment / Issue</text>
+  <text x="920" y="470" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">Posted to the repository</text>
+
+  <!-- Step badge 4 -->
+  <circle cx="780" cy="391" r="14" fill="#08872b"/>
+  <text x="780" y="396" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">4</text>
+
+  <!-- Annotation -->
+  <text x="600" y="534" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#232925">The agent stays read-only; a separate guarded job decides whether the write is applied.</text>
+
+</svg>
