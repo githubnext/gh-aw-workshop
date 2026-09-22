@@ -97,7 +97,7 @@ Sample output:
 
 ### Explore MCP tool calls
 
-Download the artifacts for a run, then open the `mcp-logs/` directory. Each file corresponds to one MCP server and lists every tool call the agent made.
+Download the artifacts for a run, then open the `mcp-logs/` directory. Each file corresponds to one [MCP](https://github.github.com/gh-aw/guides/mcps/) server and lists every tool call the agent made.
 
 ```bash
 gh aw logs <your-workflow-id> --artifacts all

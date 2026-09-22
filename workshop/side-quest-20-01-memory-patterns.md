@@ -42,7 +42,7 @@ Ask yourself: _what happens if the memory is lost?_
 | A few duplicate alerts on cache expiry is tolerable | `cache-memory` |
 | Losing state would flood your team with false positives | `repo-memory` |
 | You need a baseline that survives a repository clone or transfer | `repo-memory` |
-| You want the simplest setup with no extra permissions | `cache-memory` |
+| You want the simplest setup with no extra [permissions](https://github.github.com/gh-aw/reference/frontmatter/#permissions-permissions) | `cache-memory` |
 | You need to inspect or edit the stored state manually | `repo-memory` |
 | You expect the workflow to run infrequently (less than once a week) | `repo-memory` |
 

@@ -6,7 +6,7 @@
 
 ## :dart: What You'll Do
 
-You'll look under the hood of `experiments:` assignment and learn exactly what gh-aw does on every run, so you can predict which variant comes next and read the `experiment` [artifact](https://github.github.com/gh-aw/reference/artifacts/) with confidence.
+You'll look under the hood of `experiments:` assignment and learn exactly what gh-aw does on every run, so you can predict which variant comes next and read the `experiment` [artifact](https://github.github.com/gh-aw/reference/artifacts/#quick-reference) with confidence.
 
 ## Understand how the [round-robin](https://github.github.com/gh-aw/experimental/experiments/#statistical-balancing) works
 

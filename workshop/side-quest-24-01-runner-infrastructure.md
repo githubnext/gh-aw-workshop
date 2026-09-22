@@ -22,9 +22,9 @@ managed by a runner controller such as actions-runner-controller.
 > [!TIP]
 > Ephemeral and JIT runners are the recommended pattern for [agentic workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) in enterprise environments: they eliminate residual state and ensure each run begins in a known-clean environment.
 
-## Proxy and network requirements
+## Proxy and [network](https://github.github.com/gh-aw/reference/network/#configuration) requirements
 
-Self-hosted runners in enterprise environments often sit behind an outbound proxy.
+[Self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) in enterprise environments often sit behind an outbound proxy.
 The [agentic engine](https://github.github.com/gh-aw/reference/engines/) needs to reach model endpoints and GitHub APIs.
 
 If your runner uses a proxy, set these environment variables in the runner's system
@@ -45,7 +45,7 @@ inherits them from the system environment automatically.
 ## Network isolation
 
 If your runner operates in an air-gapped or restricted environment, ensure it can reach
-the GitHub API, your model endpoint, and any MCP tool servers your workflow calls.
+the GitHub API, your model endpoint, and any [MCP](https://github.github.com/gh-aw/guides/mcps/) tool servers your workflow calls.
 Work with your network admin to allowlist these endpoints before running agentic workflows.
 
 You can use the `network.allowed` frontmatter field to explicitly declare the domains your
