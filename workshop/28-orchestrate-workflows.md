@@ -28,9 +28,15 @@ You'll build an orchestrator workflow that reads repository state, decides which
 
 ## Understand workflow orchestration
 
-When a repository needs different kinds of AI work — status reports, PR reviews, cost audits — you can keep each concern in its own focused workflow. An orchestrator connects them: it reads signals from the repository and dispatches the right specialist.
+When a repository needs different kinds of AI work — status reports, PR reviews, cost audits — you can keep each concern in its own focused workflow. An orchestrator connects them: it reads signals from the repository and dispatches the right specialist using [`dispatch-workflow`](https://github.github.com/gh-aw/reference/safe-outputs/), a [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) primitive that triggers another workflow in the same repository.
 
-The key primitive is `dispatch-workflow` in [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/). It lets your orchestrator trigger another workflow in the same repository and optionally pass inputs to it.
+> [!TIP]
+> <details>
+> <summary><b>Optional Side Quest:</b> Want to understand exactly how `dispatch-workflow` works, what the `workflows` allowlist and `max: 1` fields protect against, and how to build a signal-to-action decision table before writing your orchestrator's brief?</summary>
+>
+> Work through [Side Quest: How `dispatch-workflow` Orchestration Works](side-quest-28-01-dispatch-workflow-concepts.md), then come back here.
+>
+> </details>
 
 <picture>
    <source media="(prefers-color-scheme: dark)" srcset="images/28-orchestrator-routing-dark.svg">
@@ -38,25 +44,11 @@ The key primitive is `dispatch-workflow` in [`safe-outputs`](https://github.gith
    <img alt="Diagram: an orchestrator workflow reads repository signals and dispatches exactly one specialist workflow, or logs a summary and exits when no condition matches." src="images/28-orchestrator-routing-light.svg">
 </picture>
 
-> :thinking: **Predict:** Look at your existing workflows. Which one handles the broadest task? Which handles the narrowest? The broadest is a natural orchestration candidate; the narrowest is a natural specialist.
-
 ## Steps
 
 ### Design your orchestrator
 
-Before writing code, decide:
-
-- What signals will the orchestrator read? (open issues count, PR age, recent commit activity, or a combination)
-- Which specialist workflows will it activate? (at most one per run keeps behavior predictable)
-- What condition routes to each specialist?
-
-A simple decision table helps:
-
-| Signal | Action |
-|--------|--------|
-| Stale open PRs exist | Dispatch the PR reviewer |
-| No status issue created today | Dispatch the daily-status reporter |
-| Neither condition | Log a summary and exit |
+Before writing code, decide what signals the orchestrator will read (open issue count, PR age, recent commits), which specialist workflows it will activate, and what condition routes to each one. Keep it to at most one dispatch per run so behavior stays predictable.
 
 ### Create the orchestrator workflow
 
