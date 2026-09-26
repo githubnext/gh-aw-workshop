@@ -18,18 +18,18 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 
 | Term | What it means in this workshop | When you use it | Official documentation |
 |------|------|------|------|
-| **GitHub Codespaces** | Your cloud development environment when you choose the browser-based setup path. Pre-launched in golden-ticket workshops. | Steps 2–14: writing, compiling, and running workflows | [GitHub Codespaces docs](https://docs.github.com/en/codespaces) |
-| **Visual Studio Code (VS Code)** | The editor experience inside Codespaces (and optionally on your local machine). | Editing workflow files and reading output | [Visual Studio Code docs](https://code.visualstudio.com/docs) |
-| **Terminal (command line)** | The shell where you run workshop commands (`gh`, `gh aw`, `git`, and more). | Any step that shows a `bash` code block | [GitHub CLI manual](https://cli.github.com/manual/) |
-| **GitHub CLI (`gh`)** | GitHub's official CLI, required for this workshop. Pre-installed in the Codespace. | Starting at Step 6 (install the extension) | [GitHub CLI docs](https://cli.github.com/manual/) |
-| **`gh-aw` CLI extension** | The GitHub Agentic Workflows extension you install and use in the terminal to compile workflow files. | Step 6 onward | [Install `gh-aw`](https://github.com/github/gh-aw#readme) |
-| **GitHub Copilot CLI** | Copilot in the terminal for AI-assisted command and development help. The primary AI surface in this workshop. | Any step that shows a `prompt` code block | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
-| **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | Optional; side quests cover this surface | [GitHub Copilot app](https://github.com/features/ai/github-app) |
-| **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | Steps that use a non-default model | [Claude documentation](https://docs.anthropic.com/) |
-| **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | Steps that use a non-default model | [OpenAI Codex CLI repository](https://github.com/openai/codex#readme) |
+| **GitHub Codespaces** | Cloud dev environment for the browser-based setup path. | Steps 2–14: writing, compiling, running workflows | [GitHub Codespaces docs](https://docs.github.com/en/codespaces) |
+| **Visual Studio Code (VS Code)** | The editor inside Codespaces (or locally). | Editing workflow files and reading output | [Visual Studio Code docs](https://code.visualstudio.com/docs) |
+| **Terminal (command line)** | Shell for running `gh`, `gh aw`, `git`, and more. | Any step showing a `bash` code block | [GitHub CLI manual](https://cli.github.com/manual/) |
+| **GitHub CLI (`gh`)** | GitHub's official CLI, pre-installed in the Codespace. | Starting at Step 6 (install the extension) | [GitHub CLI docs](https://cli.github.com/manual/) |
+| **`gh-aw` CLI extension** | Compiles agentic workflow files. | Step 6 onward | [Install `gh-aw`](https://github.com/github/gh-aw#readme) |
+| **GitHub Copilot CLI** | AI help in the terminal; primary AI surface here. | Any step showing a `prompt` code block | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
+| **GitHub Copilot app** | Desktop/web app for repository sessions, coding tasks, and PR review. | Optional; side quests cover this surface | [GitHub Copilot app](https://github.com/features/ai/github-app) |
+| **Claude** | Anthropic's model family, available in some Copilot contexts. | Steps using a non-default model | [Claude documentation](https://docs.anthropic.com/) |
+| **OpenAI Codex** | OpenAI's coding model family. | Steps using a non-default model | [OpenAI Codex CLI repository](https://github.com/openai/codex#readme) |
 
 > [!NOTE]
-> **GitHub Enterprise (GHES/GHEC) users**: the same tools and commands apply in enterprise environments. Your Codespace URL and GitHub URLs will use your enterprise hostname instead of `github.com`. If your enterprise uses a self-hosted runner, the `gh aw compile` command still runs locally in your Codespace — see [Step 6](06-install-gh-aw.md) for any environment-specific install notes.
+> **Enterprise (GHES/GHEC) users**: the same tools and commands apply — your Codespace and GitHub URLs use your enterprise hostname instead of `github.com`. See [Step 6](06-install-gh-aw.md) for self-hosted runner install notes.
 
 ### :white_check_mark: Verify your tools are ready
 
@@ -53,103 +53,52 @@ gh aw --version
 
 ## Conceptual screenshots
 
-Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app."
+Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app." These visuals are simplified mental models, not literal product screenshots.
 
-These visuals are simplified mental models, not literal product screenshots. Use them to recognize what each name refers to when it appears in later steps.
+<details>
+<summary><strong>Development environments</strong> — Codespaces, VS Code, Terminal</summary>
 
-### Development environments
+| | | |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-github-codespaces-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-github-codespaces-light.svg"><img alt="Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal" src="images/side-quest-01-02-github-codespaces-light.svg" width="220"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-vscode-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-vscode-light.svg"><img alt="Conceptual screenshot of Visual Studio Code showing the Explorer, open editor tabs, and integrated terminal" src="images/side-quest-01-02-vscode-light.svg" width="220"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-terminal-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-terminal-light.svg"><img alt="Conceptual screenshot of a terminal showing a prompt, commands, and command output" src="images/side-quest-01-02-terminal-light.svg" width="220"></picture> |
+| **GitHub Codespaces** — ready-to-go dev environment in your browser | **VS Code** — browse files, edit workflows, keep a terminal alongside | **Terminal** — where you run `gh`, `gh aw`, and `git` |
 
-#### GitHub Codespaces
+</details>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-github-codespaces-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-github-codespaces-light.svg">
-  <img alt="Conceptual screenshot of GitHub Codespaces showing a browser-based editor, repository explorer, and integrated terminal" src="images/side-quest-01-02-github-codespaces-light.svg">
-</picture>
+<details>
+<summary><strong>Workshop tools and model options</strong> — gh, gh-aw, Copilot CLI, Copilot app, Claude, Codex</summary>
 
-You use Codespaces when you want a ready-to-go development environment in your browser.
+| | | |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-cli-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-cli-light.svg"><img alt="Conceptual screenshot of GitHub CLI showing authentication, repository, and workflow commands in a terminal" src="images/side-quest-01-02-gh-cli-light.svg" width="220"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-aw-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-aw-light.svg"><img alt="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow" src="images/side-quest-01-02-gh-aw-light.svg" width="220"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-cli-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-cli-light.svg"><img alt="Conceptual screenshot of GitHub Copilot CLI showing a terminal prompt alongside AI-assisted command help" src="images/side-quest-01-02-copilot-cli-light.svg" width="220"></picture> |
+| **`gh`** — GitHub auth, repo, and workflow commands | **`gh aw`** — compiles agentic workflow files | **Copilot CLI** — AI help inside the terminal |
 
-#### Visual Studio Code (VS Code)
+| | | |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-app-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-app-light.svg"><img alt="Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view" src="images/side-quest-01-02-copilot-app-light.svg" width="220"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-claude-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-claude-light.svg"><img alt="Conceptual screenshot of a Claude-style workspace showing a prompt, reasoning path, and structured response" src="images/side-quest-01-02-claude-light.svg" width="220"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-openai-codex-dark.svg"><source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-openai-codex-light.svg"><img alt="Conceptual screenshot of an OpenAI Codex-style coding workspace showing repository files and a suggested patch" src="images/side-quest-01-02-openai-codex-light.svg" width="220"></picture> |
+| **Copilot app** — start/steer sessions, manage tasks, review PRs | **Claude** — one of the AI model options | **OpenAI Codex** — coding-focused model option |
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-vscode-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-vscode-light.svg">
-  <img alt="Conceptual screenshot of Visual Studio Code showing the Explorer, open editor tabs, and integrated terminal" src="images/side-quest-01-02-vscode-light.svg">
-</picture>
+</details>
 
-You use VS Code to browse files, edit workflows, and keep a terminal open beside your work.
+### :bulb: Quick check: match the tool to its role
 
-#### Terminal (command line)
+<details>
+<summary>Which tool compiles your agentic workflow file? (click to reveal)</summary>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-terminal-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-terminal-light.svg">
-  <img alt="Conceptual screenshot of a terminal showing a prompt, commands, and command output" src="images/side-quest-01-02-terminal-light.svg">
-</picture>
+The `gh-aw` CLI extension — it compiles your `.md` workflow into a runnable `.lock.yml` file.
+</details>
 
-You use the terminal whenever the workshop asks you to run `gh`, `gh aw`, or `git` commands.
+<details>
+<summary>Where do you run <code>gh</code>, <code>gh aw</code>, and <code>git</code> commands? (click to reveal)</summary>
 
-### Workshop tools and model options
+The terminal — any step showing a `bash` code block expects you to run it there.
+</details>
 
-#### GitHub CLI (`gh`)
+<details>
+<summary>Which environment is pre-launched for you in a golden-ticket workshop? (click to reveal)</summary>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-cli-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-cli-light.svg">
-  <img alt="Conceptual screenshot of GitHub CLI showing authentication, repository, and workflow commands in a terminal" src="images/side-quest-01-02-gh-cli-light.svg">
-</picture>
-
-You use `gh` for GitHub-specific terminal tasks like authentication checks, repository shortcuts, and workflow commands.
-
-#### `gh-aw` CLI extension
-
-<picture>
-   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-gh-aw-dark.svg">
-   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-gh-aw-light.svg">
-   <img alt="Conceptual screenshot of the gh-aw CLI extension showing compile commands for an agentic workflow" src="images/side-quest-01-02-gh-aw-light.svg">
-</picture>
-
-You use `gh aw` to compile agentic workflow files.
-
-#### GitHub Copilot CLI
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-cli-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-cli-light.svg">
-  <img alt="Conceptual screenshot of GitHub Copilot CLI showing a terminal prompt alongside AI-assisted command help" src="images/side-quest-01-02-copilot-cli-light.svg">
-</picture>
-
-You use GitHub Copilot CLI when you want AI help inside the terminal.
-
-#### GitHub Copilot app
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-copilot-app-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-copilot-app-light.svg">
-  <img alt="Conceptual screenshot of the GitHub Copilot app showing a repository session, agent chat, and pull request view" src="images/side-quest-01-02-copilot-app-light.svg">
-</picture>
-
-You use the GitHub Copilot app when you want to start and steer repository sessions, manage coding tasks, and review pull requests from a Copilot workspace.
-
-#### Claude
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-claude-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-claude-light.svg">
-  <img alt="Conceptual screenshot of a Claude-style workspace showing a prompt, reasoning path, and structured response" src="images/side-quest-01-02-claude-light.svg">
-</picture>
-
-You may see Claude as one of the AI model options that can read a brief, reason through a task, and produce an output.
-
-#### OpenAI Codex
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-01-02-openai-codex-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-01-02-openai-codex-light.svg">
-  <img alt="Conceptual screenshot of an OpenAI Codex-style coding workspace showing repository files and a suggested patch" src="images/side-quest-01-02-openai-codex-light.svg">
-</picture>
-
-You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
+GitHub Codespaces — your browser-based development environment.
+</details>
 
 <!-- journey: all -->
 ## :white_check_mark: Checkpoint
@@ -159,6 +108,7 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 - [ ] You ran `git --version` in your terminal and it returned a version number
 - [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md): you ran `gh aw --version` and it returned a version number
 - [ ] You can match each item to its conceptual screenshot
+- [ ] You answered the quick check questions above
 - [ ] You know where to find official docs for each tool
 - [ ] (Enterprise users) You know which URLs in workshop instructions map to your enterprise hostname
 
