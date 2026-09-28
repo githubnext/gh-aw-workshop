@@ -16,29 +16,17 @@ You'll trigger the `daily-report-status` workflow from Step 7, watch it start in
 
 ## Pre-flight check
 
-A stale or missing [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) is the leading cause of `model-access-not-configured` failures at this step. Run these checks before triggering the workflow — each takes less than a minute.
+A stale or missing [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) is the leading cause of `model-access-not-configured` failures at this step. Before triggering the workflow, confirm two things: `daily-report-status.md` and `daily-report-status.lock.yml` are both committed to `main`, and the `permissions:` block matches the billing path you chose in Step 7d.
 
-**Lock file is present and current.** Open `.github/workflows/` in your repository on GitHub and confirm both files are there:
+> [!TIP]
+> <details>
+> <summary><b>Optional Side Quest:</b> Want the full two-minute walkthrough of both checks, with exact commands and a lock-file recompile step?</summary>
+>
+> Work through [Side Quest: Pre-Flight Checks Before Your First Run](side-quest-08-02-preflight-checks.md), then come back here.
+>
+> </details>
 
-- `daily-report-status.md` (source)
-- `daily-report-status.lock.yml` (compiled lock file)
-
-If either file is missing, return to [Step 7](07-your-first-workflow.md) to complete the workflow creation steps. If the lock file is present but you are unsure it is current, recompile and push before continuing:
-
-```bash
-gh aw compile
-git add .
-git commit -m "chore: sync lock file" && git push
-```
-
-**Billing configuration matches the lock file.** Open `daily-report-status.lock.yml` (or `daily-report-status.md`) and confirm the `permissions:` block matches the billing path you chose in Step 7d:
-
-| Billing path | `copilot-requests: write` present |
-|---|---|
-| Organization centralized billing | Yes |
-| Personal billing | No — and `COPILOT_GITHUB_TOKEN` is set in **Settings → Secrets → Actions** |
-
-Any mismatch means returning to [Confirm Model Access](07d-confirm-model-access.md) to fix the configuration and recompile.
+If either check fails, return to [Step 7](07-your-first-workflow.md) or [Confirm Model Access](07d-confirm-model-access.md) to fix the configuration and recompile before continuing.
 
 ## Run the workflow
 
