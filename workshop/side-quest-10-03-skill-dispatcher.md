@@ -47,7 +47,7 @@ If you are working locally or in a Codespace without a Copilot session, you can 
 
 For each scenario below, decide which task type (Edit, Debug, or Optimize) fits best before revealing the answer.
 
-**Scenario A:** Your workflow's daily comment is too generic and you want it to explain *why* something matters, not just *what* happened.
+**Scenario A:** Your workflow's daily comment is too generic and you want it to explain _why_ something matters, not just _what_ happened.
 
 <details>
 <summary>Reveal answer</summary>
