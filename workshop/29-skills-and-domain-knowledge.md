@@ -23,7 +23,7 @@ You'll write a local `SKILL.md` that encodes a repeatable domain convention — 
 ## :clipboard: Before You Start
 
 - You completed [Orchestrate Multiple Agentic Workflows](28-orchestrate-workflows.md).
-- You have at least one working agentic workflow you can edit and recompile.
+- You have at least one working [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) you can edit and recompile.
 - You can compile workflows with `gh aw compile` from [Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
 ## Understand skills
@@ -42,7 +42,7 @@ Notice the shape: YAML frontmatter with `name` and `description`, followed by pl
 
 ## Steps
 
-### Install external skills with the frontmatter `skills:` key
+### Install external skills with the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/#frontmatter-skills-skills) `skills:` key
 
 To pull in a skill maintained elsewhere, add the top-level `skills:` array to your workflow frontmatter. The compiler installs it in the activation job before the agent runs — no manual `gh skill install` step needed:
 

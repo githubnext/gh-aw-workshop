@@ -4,7 +4,7 @@
 
 > _Optional: use this guide if Step 6 install fails, then return to the main path._
 
-If `gh extension install github/gh-aw` fails, use the matching fix below and retry.
+If [`gh extension install github/gh-aw`](https://github.github.com/gh-aw/troubleshooting/common-issues/#extension-installation-fails) fails, use the matching fix below and retry.
 
 The diagram below shows how to identify your error type and apply the right fix:
 

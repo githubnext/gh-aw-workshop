@@ -9,7 +9,7 @@
 To get the most out of this fast-track guide, you should have already:
 
 - Completed [GitHub Actions in 5 Minutes](04-github-actions-intro.md) — or have hands-on experience authoring `.github/workflows/*.yml` files.
-- Understood the core Actions concepts: triggers (`on:`), jobs, steps, and runners.
+- Understood the core Actions concepts: triggers (`on:`), jobs, steps, and [runners](https://github.github.com/gh-aw/reference/self-hosted-runners/).
 - Optionally reviewed [What Are Agentic Workflows?](05-agentic-workflows-intro.md) for a beginner-friendly introduction before using this cheat sheet.
 
 ## :dart: What You'll Do
