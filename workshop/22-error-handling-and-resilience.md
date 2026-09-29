@@ -20,12 +20,7 @@ Learn the most common ways agentic workflows fail in production and apply three 
 Agentic workflows most often fail in one of four ways: empty data, tool errors, timeouts, and prompt drift. This step applies three mitigations — a defensive brief, `timeout-minutes`, and a fallback safe-output — that address all four.
 
 > [!TIP]
-> <details>
-> <summary><b>Optional Side Quest:</b> Want a worked example of each failure mode and practice matching failures to fixes before you dive in?</summary>
->
-> Work through [Side Quest: Recognizing Common Agentic Workflow Failure Modes](side-quest-22-01-failure-modes.md), then come back here.
->
-> </details>
+> **Optional Side Quest:** Want a worked example of each failure mode and practice matching failures to fixes before you dive in? Work through [Side Quest: Recognizing Common Agentic Workflow Failure Modes](side-quest-22-01-failure-modes.md), then come back here.
 
 ### Apply all three changes with the skill
 
@@ -81,12 +76,7 @@ timeout-minutes: 10
 ```
 
 > [!TIP]
-> <details>
-> <summary>`timeout-minutes` belongs at the top level of gh-aw frontmatter. Do not nest it under `jobs:` or `run:`.</summary>
->
-> Start with a generous limit (10–15 minutes) and tighten it once you know how long typical runs take.
->
-> </details>
+> `timeout-minutes` belongs at the top level of gh-aw frontmatter (do not nest it under `jobs:` or `run:`) — start with a generous limit (10–15 minutes) and tighten it once you know how long typical runs take.
 
 On GitHub Enterprise Server (GHES) and GitHub Enterprise Cloud (GHEC), administrators can set a maximum job timeout at the organisation or enterprise level. When that policy is more restrictive than your `timeout-minutes` value, the enterprise limit takes precedence and the workflow job will be cancelled at the admin-set threshold. Check with your GitHub administrator before relying on a specific `timeout-minutes` value in an enterprise environment.
 

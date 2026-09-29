@@ -17,12 +17,7 @@ You'll add an A/B experiment using `experiments:` and compare outcomes across ru
 ## Add an experiment to your workflow
 
 > [!TIP]
-> <details>
-> <summary>Prefer asking an agent with the `/agentic-workflows` skill to add the experiment. Use agents to edit agent workflows.</summary>
->
-> Terminal users can run `gh aw compile --watch` for continuous recompilation.
->
-> </details>
+> Prefer asking an agent with the `/agentic-workflows` skill to add the experiment — terminal users can run `gh aw compile --watch` for continuous recompilation.
 
 ### Choose one dimension to test
 

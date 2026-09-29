@@ -78,12 +78,7 @@ steps:
 This shell command uses `git log` with a `--since` time filter to list only commits from the last 24 hours, pipes the output through `wc -l` to count the lines, strips surrounding whitespace with `tr -d ' '`, and writes the final integer to `$GITHUB_OUTPUT` — a special GitHub Actions file that shares values between steps using `key=value` notation. The `id: recent` field is essential: it creates a named slot in the `steps` context so the value can be referenced as `steps.recent.outputs.commit_count` in later steps or in the top-level `if:` condition.
 
 > [!NOTE]
-> <details>
-> <summary>`$GITHUB_OUTPUT` makes step outputs available to later steps as `steps.<id>.outputs.key`.</summary>
->
-> For a deeper explanation of how the `steps` context works alongside other context objects (`github`, `env`, `runner`), how to use built-in expression functions like `contains()` and `toJSON()`, and how to chain conditions with `&&` and `||`, see [Side Quest: GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md).
->
-> </details>
+> `$GITHUB_OUTPUT` makes step outputs available to later steps as `steps.<id>.outputs.key`. For a deeper explanation of how the `steps` context works alongside other context objects (`github`, `env`, `runner`), how to use built-in expression functions like `contains()` and `toJSON()`, and how to chain conditions with `&&` and `||`, see [Side Quest: GitHub Actions Expressions and Contexts](side-quest-15-01-expressions-and-contexts.md).
 
 ### Add a top-level condition in frontmatter
 

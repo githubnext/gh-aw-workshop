@@ -35,12 +35,7 @@ Then send:
 The skill recognizes three core task types — **Edit**, **Debug**, and **Optimize** — and routes your request to the matching prompt. If you are working locally or in a Codespace without a Copilot session, the terminal path in each section below shows the equivalent manual change.
 
 > [!TIP]
-> <details>
-> <summary><b>Optional Side Quest:</b> Want the full task-type table with example trigger phrases, plus practice scenarios for matching a request to the right task type?</summary>
->
-> Work through [Side Quest: How the `agentic-workflows` Skill Dispatcher Works](side-quest-10-03-skill-dispatcher.md), then come back here.
->
-> </details>
+> **Optional Side Quest:** Want the full task-type table with example trigger phrases, plus practice scenarios for matching a request to the right task type? Work through [Side Quest: How the `agentic-workflows` Skill Dispatcher Works](side-quest-10-03-skill-dispatcher.md), then come back here.
 
 ## Start With One Concrete Observation
 
