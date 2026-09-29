@@ -17,7 +17,7 @@ When the Codespace finishes loading:
 
 1. Open the terminal tab.
 2. Run `gh auth status`.
-3. If needed, run `gh auth login` and complete browser sign-in.
+3. If needed, run `gh auth login` and complete [browser sign-in](https://github.github.com/gh-aw/reference/copilot-cloud-agent/#authentication).
 
 ## Install `gh-aw` in the Codespace terminal
 
