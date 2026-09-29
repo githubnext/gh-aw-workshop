@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="Token precedence decision: when a workflow's copilot-requests write permission is present, the engine uses built-in inference and ignores the COPILOT_GITHUB_TOKEN secret; when that permission is absent, the engine reads the secret instead"
+  data-visual-kind="diagram"
+  data-visual-id="06-03b-token-precedence">
+
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <text x="600" y="46" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#f2f5f3">Which Credential Does the Engine Use?</text>
+  <text x="600" y="72" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#b6bfb8">A workflow permission decides the answer before the secret is ever checked</text>
+
+  <defs>
+    <marker id="arrow-dark" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#b6bfb8"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1: Start node -->
+  <rect x="450" y="100" width="300" height="72" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="workflow-run"/>
+  <g transform="translate(468, 122)" fill="#5fed83">
+    <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.271-2.014a.75.75 0 0 1 .75 0l4 2.5a.75.75 0 0 1 0 1.279l-4 2.5a.75.75 0 0 1-1.125-.64V6.625a.75.75 0 0 1 .375-.64z"/>
+  </g>
+  <text x="610" y="132" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" font-weight="600" fill="#f2f5f3">Workflow run starts</text>
+  <text x="610" y="152" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">Engine needs Copilot access</text>
+  <circle cx="450" cy="100" r="14" fill="#5fed83"/>
+  <text x="450" y="105" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">1</text>
+
+  <!-- Arrow down to decision -->
+  <line x1="600" y1="172" x2="600" y2="212" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- Step 2: Decision diamond -->
+  <polygon points="600,214 780,278 600,342 420,278" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="permission-check"/>
+  <text x="600" y="270" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" font-weight="600" fill="#f2f5f3">copilot-requests: write</text>
+  <text x="600" y="290" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">present in frontmatter?</text>
+  <circle cx="600" cy="214" r="14" fill="#5fed83"/>
+  <text x="600" y="219" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">2</text>
+
+  <!-- YES branch (left) -->
+  <line x1="420" y1="278" x2="290" y2="278" stroke="#e3b341" stroke-width="2" marker-end="url(#arrow-dark)"/>
+  <text x="355" y="264" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#e3b341">YES</text>
+
+  <rect x="60" y="330" width="290" height="150" rx="12" fill="#0a241b" stroke="#e3b341" stroke-width="2" data-node="builtin-inference"/>
+  <text x="205" y="360" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#e3b341">Built-in inference used</text>
+  <text x="205" y="388" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">Engine authenticates with the</text>
+  <text x="205" y="406" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">workflow's own permission</text>
+  <text x="205" y="434" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="11" fill="#b6bfb8">COPILOT_GITHUB_TOKEN</text>
+  <text x="205" y="452" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#e3b341">ignored, even if set</text>
+
+  <!-- NO branch (right) -->
+  <line x1="780" y1="278" x2="910" y2="278" stroke="#3fb950" stroke-width="2" marker-end="url(#arrow-dark)"/>
+  <text x="845" y="264" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#3fb950">NO</text>
+
+  <rect x="850" y="330" width="290" height="150" rx="12" fill="#0a241b" stroke="#3fb950" stroke-width="2" data-node="secret-inference"/>
+  <text x="995" y="360" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#3fb950">Secret is read</text>
+  <text x="995" y="388" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">Engine looks for the repository</text>
+  <text x="995" y="406" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">secret</text>
+  <text x="995" y="434" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="11" fill="#b6bfb8">COPILOT_GITHUB_TOKEN</text>
+  <text x="995" y="452" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#3fb950">provides personal billing</text>
+
+  <text x="600" y="536" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#b6bfb8">Remove copilot-requests: write before storing COPILOT_GITHUB_TOKEN, or the secret is silently ignored.</text>
+
+</svg>

@@ -8,6 +8,14 @@ This method stores a [Personal Access Token](https://github.github.com/gh-aw/ref
 
 If you want an all-UI path with no terminal commands, use [Method 2 (UI-only)](side-quest-06-03c-copilot-github-token-ui-only.md).
 
+The engine checks one workflow permission before it ever looks at the secret:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/06-03b-token-precedence-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/06-03b-token-precedence-light.svg">
+  <img alt="Token precedence decision: when a workflow's copilot-requests write permission is present, the engine uses built-in inference and ignores the COPILOT_GITHUB_TOKEN secret; when that permission is absent, the engine reads the secret instead" src="images/06-03b-token-precedence-light.svg">
+</picture>
+
 ## :clipboard: Before You Start
 
 - You have a GitHub account with an active Copilot subscription.
