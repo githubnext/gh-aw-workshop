@@ -72,7 +72,7 @@ You should see `COPILOT_GITHUB_TOKEN` in the output. Once confirmed, you can saf
 
 ## Select the token in your workflow
 
-If you have not already done so, remove `copilot-requests: write` from the source workflow. When that permission is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
+If you have not already done so, remove `copilot-requests: write` from the source workflow. When that [permission](https://github.github.com/gh-aw/reference/permissions/) is present, the workflow ignores `COPILOT_GITHUB_TOKEN` for inference.
 
 ```bash
 gh aw compile

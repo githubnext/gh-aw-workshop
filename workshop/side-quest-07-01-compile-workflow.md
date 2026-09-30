@@ -10,7 +10,7 @@ You'll use `gh aw compile` as a fast feedback loop while you edit workflow files
 
 ## What `gh aw compile` does
 
-`gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
+`gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) GitHub Actions runs. It catches formatting and schema mistakes before you commit or [trigger](https://github.github.com/gh-aw/reference/triggers/) a workflow.
 
 Run it any time you edit a workflow file:
 
@@ -60,7 +60,7 @@ Each save triggers another compile, so you get immediate feedback instead of dis
 
 When `gh aw compile` fails, start with the first line number it reports. YAML errors are often caused by the line above or below the reported line, especially when indentation is off.
 
-The examples below show `gh-aw` source files before [compilation](https://github.github.com/gh-aw/reference/compilation-process/), so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the schedule value itself.
+The examples below show `gh-aw` source files before [compilation](https://github.github.com/gh-aw/reference/compilation-process/), so values like `schedule: daily` and `schedule: daily on weekdays` are valid shorthand here. The error is the indentation, not the [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) value itself.
 
 ```markdown
 ---

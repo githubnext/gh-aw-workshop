@@ -26,7 +26,7 @@ Choose the method that fits your situation:
 
 | Method | Best for | Guide |
 |---|---|---|
-| **Copilot requests permission** (recommended) | Organizations with centralized Copilot billing enabled for Actions | [Method 1 →](side-quest-06-03a-copilot-requests-permission.md) |
+| **Copilot requests [permission](https://github.github.com/gh-aw/reference/permissions/)** (recommended) | Organizations with centralized Copilot billing enabled for Actions | [Method 1 →](side-quest-06-03a-copilot-requests-permission.md) |
 | **`COPILOT_GITHUB_TOKEN` secret** | Personal billing, or organizations without centralized Copilot billing | [Method 2 →](side-quest-06-03b-copilot-github-token.md) |
 | **[`COPILOT_GITHUB_TOKEN`](https://github.github.com/gh-aw/reference/auth/#copilotgithubtoken) secret (UI-only)** | Same as Method 2, but using only GitHub web UI steps | [Method 2 (UI-only) →](side-quest-06-03c-copilot-github-token-ui-only.md) |
 
