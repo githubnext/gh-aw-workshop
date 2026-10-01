@@ -6,6 +6,14 @@
 
 This method stores a [fine-grained Personal Access Token](https://github.github.com/gh-aw/reference/auth/#copilot-default) (PAT) as a repository secret named `COPILOT_GITHUB_TOKEN`. The [agentic workflow](https://github.github.com/gh-aw/introduction/overview/) [engine](https://github.github.com/gh-aw/reference/engines/) picks it up automatically.
 
+The diagram below shows the full flow: you generate and store the token once, then every workflow run reads it automatically to authenticate to the Copilot API.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-06-03c-token-secret-flow-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-06-03c-token-secret-flow-light.svg">
+  <img alt="From PAT to workflow authentication: generate a fine-grained token, store it as the COPILOT_GITHUB_TOKEN secret, then every workflow run reads it to authenticate to the Copilot API" src="images/side-quest-06-03c-token-secret-flow-light.svg">
+</picture>
+
 ## :clipboard: Before You Start
 
 - You have a GitHub account with an active Copilot subscription.
