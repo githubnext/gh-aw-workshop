@@ -42,7 +42,7 @@ Before moving on, confirm your goal is one sentence that describes one action an
 <details>
 <summary>Why this works</summary>
 
-A one-sentence goal forces scope. If you need multiple outcomes, you probably need multiple workflows or a tighter brief.
+A one-sentence goal forces scope. If you need multiple [outcomes](https://github.github.com/gh-aw/reference/outcomes/#outcome-states), you probably need multiple workflows or a tighter brief.
 
 </details>
 
