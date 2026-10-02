@@ -21,6 +21,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 9 | [Refine, Test, and Improve Your Workflow](09-agentic-editing.md) |
 | 14 | [What's Next? Keep Exploring](14-next-steps.md) |
 | 14b | [Build Your First Event-Driven Workflow: PR Auto-Reviewer](14b-pr-reviewer-workflow.md) |
+| 14c | [Preview Safe Outputs Before They Go Live](14c-staged-mode-preview.md) |
 
 ## Curriculum — Part 2: Go Deeper
 

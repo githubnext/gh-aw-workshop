@@ -177,5 +177,5 @@ Run `/review` again and compare the new result with the first review. Once you h
 - [ ] You changed one layer and compared the rerun with the first review
 
 <!-- journey: all -->
-**Next:** [Make Your Workflow Smarter with Conditional Logic](15-conditional-logic.md)
+**Next:** [Preview Safe Outputs Before They Go Live](14c-staged-mode-preview.md)
 <!-- /journey -->
