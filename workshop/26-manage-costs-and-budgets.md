@@ -81,11 +81,10 @@ A few techniques keep spend in check:
 > [!TIP]
 > Want a deeper activity for observing where tokens go and testing cost reductions one change at a time? Try [Side Quest: Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md).
 
-Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields enforce hard limits directly in the workflow file:
+Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields enforce hard limits directly in the workflow file: `timeout-minutes` cancels a run that takes too long, `max-ai-credits` caps AIC per run, and `max-daily-ai-credits` caps the 24-hour total for a workflow.
 
-- **[`timeout-minutes`](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.
-- **[`max-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-ai-credits-per-run)** caps the AIC a single run may consume, enforced by the AWF firewall. The default when omitted is 1000 AIC. Set to a negative value (e.g. `-1`) to disable enforcement and token steering.
-- **[`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow)** caps the total AIC consumed by this workflow across the last 24 hours for the triggering user. Runs that would exceed the cap are blocked before they start. A system default threshold applies when this field is omitted; set to `-1` to disable the guardrail, or provide an explicit integer value to override the default.
+> [!TIP]
+> **Optional Side Quest:** Want the full field-by-field reference — default values, how to disable each guardrail, and a calculation exercise for your own workflow? Work through [Side Quest: Cost Guardrail Fields Reference](side-quest-26-02-cost-guardrail-fields.md), then come back here.
 
 ```markdown .github/workflows/daily-status.md
 ---
