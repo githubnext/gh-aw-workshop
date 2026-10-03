@@ -83,6 +83,14 @@ git commit -m "Initialize agentic workflow skills"
 git push
 ```
 
+The command generates files locally; you still need to commit and push them yourself.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/sq-06-04-gh-aw-init-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/sq-06-04-gh-aw-init-flow-light.svg">
+   <img alt="gh aw init flow: running gh aw init in your terminal generates skill and configuration files, you commit and push them, and your repository is ready to author agentic workflows" src="images/sq-06-04-gh-aw-init-flow-light.svg">
+</picture>
+
 This configures `.gitattributes` and `.vscode/settings.json`, creates
 `.github/skills/agentic-workflows/SKILL.md`, and removes legacy prompt files from
 `.github/prompts/` if they exist.

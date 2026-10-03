@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="gh aw init flow: running gh aw init in your terminal generates skill and configuration files, you commit and push them, and your repository is ready to author agentic workflows"
+  data-visual-kind="diagram"
+  data-visual-id="sq-06-04-gh-aw-init-flow-dark">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#f2f5f3">What gh aw init Creates</text>
+  <text x="600" y="74" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#b6bfb8">One terminal command generates the files your agent needs, then you commit and push them</text>
+
+  <defs>
+    <marker id="arrow-dark" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#b6bfb8"/>
+    </marker>
+  </defs>
+
+  <!-- ===== NODE 1: Local Terminal ===== -->
+  <rect x="40" y="140" width="230" height="260" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" stroke-dasharray="8 5" data-node="terminal"/>
+  <text x="155" y="172" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#b6bfb8" letter-spacing="0.04em">YOUR TERMINAL</text>
+  <text x="155" y="236" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="15" font-weight="600" fill="#f2f5f3">gh aw init</text>
+  <text x="155" y="258" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#b6bfb8">--engine copilot</text>
+  <text x="155" y="360" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">You run this once</text>
+
+  <!-- Step badge 1 -->
+  <circle cx="40" cy="140" r="14" fill="#5fed83"/>
+  <text x="40" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">1</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="271" y1="270" x2="309" y2="270" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ===== NODE 2: Generated Files ===== -->
+  <rect x="310" y="140" width="340" height="260" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="generated-files"/>
+  <text x="480" y="172" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#b6bfb8" letter-spacing="0.04em">GENERATED FILES</text>
+
+  <rect x="328" y="188" width="304" height="34" rx="8" fill="#101411" stroke="#909692" stroke-width="1" data-node="file-gitattributes"/>
+  <text x="480" y="210" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#b6bfb8">.gitattributes</text>
+
+  <rect x="328" y="230" width="304" height="34" rx="8" fill="#101411" stroke="#909692" stroke-width="1" data-node="file-vscode-settings"/>
+  <text x="480" y="252" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#b6bfb8">.vscode/settings.json</text>
+
+  <rect x="328" y="272" width="304" height="34" rx="8" fill="#101411" stroke="#909692" stroke-width="1" data-node="file-skill"/>
+  <text x="480" y="294" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#b6bfb8">skills/agentic-workflows/SKILL.md</text>
+
+  <rect x="328" y="314" width="304" height="34" rx="8" fill="#101411" stroke="#909692" stroke-width="1" data-node="file-mcp"/>
+  <text x="480" y="336" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#b6bfb8">mcp.json + copilot config</text>
+
+  <text x="480" y="378" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">Exact files vary with --engine and --no-mcp</text>
+
+  <!-- Step badge 2 -->
+  <circle cx="310" cy="140" r="14" fill="#5fed83"/>
+  <text x="310" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">2</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="651" y1="270" x2="689" y2="270" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ===== NODE 3: Commit and Push ===== -->
+  <rect x="690" y="140" width="230" height="260" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="commit-push"/>
+  <text x="805" y="172" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#b6bfb8" letter-spacing="0.04em">VERSION CONTROL</text>
+  <text x="805" y="222" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="13" fill="#f2f5f3">git add .</text>
+  <text x="805" y="248" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="13" fill="#f2f5f3">git commit</text>
+  <text x="805" y="274" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="13" fill="#f2f5f3">git push</text>
+  <text x="805" y="360" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">Files land on GitHub</text>
+
+  <!-- Step badge 3 -->
+  <circle cx="690" cy="140" r="14" fill="#5fed83"/>
+  <text x="690" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">3</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="921" y1="270" x2="959" y2="270" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ===== NODE 4: Repository Ready ===== -->
+  <rect x="960" y="140" width="200" height="260" rx="12" fill="#0a241b" stroke="#3fb950" stroke-width="2" data-node="repository-ready"/>
+  <text x="1060" y="172" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#3fb950" letter-spacing="0.04em">READY</text>
+  <!-- repo octicon (unmodified Primer path) -->
+  <g transform="translate(1040, 196) scale(1.25)" fill="#3fb950" aria-hidden="true">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8V1.5Z"/>
+  </g>
+  <text x="1060" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#f2f5f3">Skills committed</text>
+  <text x="1060" y="358" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">Ready to author your first workflow</text>
+
+  <!-- Step badge 4 -->
+  <circle cx="960" cy="140" r="14" fill="#5fed83"/>
+  <text x="960" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">4</text>
+
+  <!-- Annotation -->
+  <text x="600" y="534" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#b6bfb8">gh aw init runs locally once; the generated files are what you commit and push.</text>
+
+</svg>
