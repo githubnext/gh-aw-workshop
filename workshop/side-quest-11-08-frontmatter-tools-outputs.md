@@ -53,7 +53,7 @@ safe-outputs:
 | Field | Purpose |
 |-------|---------|
 | `safe-outputs:` | Declares every write operation the agent may perform. Any write not listed here is silently blocked. |
-| `add-comment:` | Permits the agent to post a comment on an issue or pull request. |
+| `add-comment:` | Permits the agent to post a [comment](https://github.github.com/gh-aw/reference/safe-outputs/#comment-creation-add-comment) on an issue or pull request. |
 | `max: 1` | Caps the operation at one comment per run. A second attempt is silently dropped. |
 
 > [!IMPORTANT]

@@ -57,7 +57,7 @@ git push
 
 ## Test It
 
-Open a test pull request that touches a Markdown file. After the workflow runs, check the pull request sidebar — the `documentation` label should appear automatically.
+Open a test [pull request](https://github.github.com/gh-aw/reference/triggers/#pull-request-triggers-pullrequest) that touches a Markdown file. After the workflow runs, check the pull request sidebar — the `documentation` label should appear automatically.
 
 Then open another PR that touches a test file and verify the `tests` label is applied.
 

@@ -15,7 +15,7 @@ You'll compare scheduled and event-driven [triggers](https://github.github.com/g
 
 ## Scheduled vs event-driven triggers
 
-A **scheduled** workflow runs because the clock says it is time. An **event-driven** workflow runs because something happened in the repository, like a pull request opening or an issue being reopened.
+A **scheduled** workflow runs because the clock says it is time. An **event-driven** workflow runs because something happened in the repository, like a [pull request](https://github.github.com/gh-aw/reference/triggers/#pull-request-triggers-pullrequest) opening or an issue being reopened.
 
 | Trigger style | What starts it | Good fit |
 |---------------|----------------|----------|
