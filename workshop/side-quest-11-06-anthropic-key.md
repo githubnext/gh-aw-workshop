@@ -65,7 +65,7 @@ Open your repository in a **new tab** so you keep the Anthropic console tab open
 - **Wrong name**: any variation (`anthropic_api_key`, `ANTHROPIC-API-KEY`, `CLAUDE_API_KEY`) will cause a silent auth failure. The name must be exactly `ANTHROPIC_API_KEY`.
 - **Copied with extra whitespace**: pasting from some tools adds a leading space. Delete and re-create the secret if you are unsure.
 - **Closed the Anthropic tab before saving**: you cannot retrieve the key again. Delete the key at [console.anthropic.com](https://console.anthropic.com/) and generate a new one.
-- **Network allow-list missing**: the `claude` engine needs outbound access to `api.anthropic.com`. Make sure it is in your `network.allowed` list (shown in the frontmatter example below).
+- **Network allow-list missing**: the `claude` engine needs outbound access to `api.anthropic.com`. Make sure it is in your [network.allowed](https://github.github.com/gh-aw/reference/network/) list (shown in the frontmatter example below).
 
 </details>
 

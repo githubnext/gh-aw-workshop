@@ -10,7 +10,7 @@ Learn five practical techniques for writing AI task briefs that produce clearer,
 
 ## :clipboard: Before You Start
 
-- You've written your first workflow task brief in [Step 11](07-your-first-workflow.md).
+- You've written your first workflow [task brief](https://github.github.com/gh-aw/reference/markdown/) in [Step 11](07-your-first-workflow.md).
 - You've run the workflow at least once in [Step 9](09-agentic-editing.md) and seen its output.
 
 ---

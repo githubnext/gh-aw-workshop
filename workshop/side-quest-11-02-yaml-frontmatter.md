@@ -70,7 +70,7 @@ tools:
 
 ## Forgetting the closing `---`
 
-The frontmatter must have both an opening and a closing `---` fence. If you omit the closing fence, the entire file is treated as YAML and the agent body is lost.
+The [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) must have both an opening and a closing `---` fence. If you omit the closing fence, the entire file is treated as YAML and the agent body is lost.
 
 ```
 # ❌ Wrong — no closing fence

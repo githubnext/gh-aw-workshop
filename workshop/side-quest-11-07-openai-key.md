@@ -62,7 +62,7 @@ gh secret list
 
 ## Update your workflow frontmatter
 
-Add `engine: codex` and the `network.allowed` entry to your workflow's frontmatter. You can omit `copilot-requests: write` — it is specific to the Copilot engine.
+Add `engine: codex` and the [network.allowed](https://github.github.com/gh-aw/reference/network/) entry to your workflow's frontmatter. You can omit `copilot-requests: write` — it is specific to the Copilot engine.
 
 ```markdown
 ---
