@@ -14,8 +14,8 @@ function generatePage(htmlContent, workshopMenu) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fcfcfb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
   <title>${SITE_TITLE}</title>
   <meta name="description" content="${SITE_DESCRIPTION}">
   <!-- Open Graph -->
