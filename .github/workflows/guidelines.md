@@ -8,7 +8,7 @@ These guidelines assume the standard delivery context for GitHub- and Microsoft-
 
 - **Codespace is already open.** Learners start from a pre-launched Codespace inside their provisioned practice repository. Do not add environment-creation steps (local Git setup, SSH key generation, manual Codespace creation) to the core route.
 - **Copilot CLI is the primary AI surface.** Use `gh copilot` (Copilot CLI in the Codespace terminal) as the default agent surface for every AI-assisted task in the core workshop. Side quests may cover Copilot Chat, IDE extensions, or other surfaces as alternatives.
-- **Org and billing are pre-provisioned.** The golden-ticket system creates the workshop org, assigns Copilot seats, and covers billing for the duration. Do not include billing setup, Copilot seat assignment, org creation, or payment steps in any core workshop content.
+- **Org provisioning and billing:** See [Golden-Ticket Workshop Surfaces](#golden-ticket-workshop-surfaces) for the maintained provisioning and billing guidance.
 - **Practice repository is pre-created.** Each learner's practice repository exists before they begin. Learners never fork, clone, or create it manually during a golden-ticket workshop session.
 
 ## Codespaces-first tooling progression
