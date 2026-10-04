@@ -14,6 +14,9 @@ You'll review your workflow's AI Credit consumption in the GitHub billing dashbo
 - You have run your workflow at least once and seen token usage data in `gh aw logs` output.
 - _(Enterprise users)_ Your GitHub administrator has confirmed that Copilot Enterprise billing is enabled for your organisation.
 
+> [!TIP]
+> Responsible for AIC spend across many repositories, not just one workflow? See [Side Quest: Centralize Cost Governance for Your Organization](side-quest-26-02-enterprise-cost-governance.md) for organization-wide usage reports and default-policy guidance.
+
 ## Steps
 
 ### Understand AI Credits
