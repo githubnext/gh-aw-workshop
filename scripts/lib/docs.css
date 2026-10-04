@@ -4,6 +4,10 @@
   --workshop-link-color: var(--fgColor-accent, #0969da);
   --workshop-link-visited-color: var(--fgColor-done, #8250df);
   --workshop-link-hover-color: var(--fgColor-accent, #0550ae);
+  --workshop-type-body: clamp(1rem, 0.955rem + 0.227vw, 1.125rem);
+  --workshop-type-title: clamp(2.25rem, 1.977rem + 1.364vw, 3rem);
+  --workshop-type-section: clamp(1.75rem, 1.477rem + 1.364vw, 2.5rem);
+  --workshop-type-subheading: clamp(1.375rem, 1.239rem + 0.682vw, 1.75rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +27,8 @@ html[data-color-mode="dark"] {
 body,
 .markdown-body {
   font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-optical-sizing: auto;
+  font-variant-ligatures: none;
 }
 
 html {
@@ -47,7 +53,7 @@ html {
   margin: 0;
   flex: 1 1 auto;
   min-width: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
 }
 .site-title a {
@@ -284,8 +290,10 @@ html[data-color-mode="dark"] .menu-toggle-progress {
 }
 .markdown-body > details > .workshop-page-title {
   margin: 0;
-  font-size: 32px;
-  line-height: 1.25;
+  max-width: 24ch;
+  font-size: var(--workshop-type-title);
+  font-weight: 400;
+  line-height: 1.15;
   scroll-margin-top: var(--workshop-sticky-header-offset);
 }
 
@@ -293,6 +301,34 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   max-width: 1300px;
   margin-inline: auto;
   padding-inline: 20px !important;
+}
+
+.markdown-body p,
+.markdown-body li {
+  font-size: var(--workshop-type-body);
+  line-height: 1.7;
+}
+.markdown-body p {
+  max-width: 72ch;
+}
+.markdown-body h2:not(.workshop-page-title) {
+  max-width: 24ch;
+  font-size: var(--workshop-type-section);
+  font-weight: 400;
+  line-height: 1.2;
+}
+.markdown-body h3 {
+  max-width: 24ch;
+  font-size: var(--workshop-type-subheading);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-size: var(--workshop-type-body);
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 @media (min-width: 480px) {
@@ -334,9 +370,6 @@ html[data-color-mode="dark"] .menu-toggle-progress {
 }
 
 @media (max-width: 543px) {
-  .markdown-body > details > .workshop-page-title {
-    font-size: 28px;
-  }
   .site-header {
     gap: 10px;
     padding: 0 12px;

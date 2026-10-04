@@ -51,6 +51,19 @@ test("workshop SPA renders a single document h1", () => {
   assert.ok((html.match(/<h2 id="[^"]+" class="workshop-page-title">/g) ?? []).length > 0);
 });
 
+test("workshop typography uses the bundled Mona Sans and fluid reading scale", () => {
+  const { html, css } = buildDocs();
+
+  assert.ok(html.includes('<link rel="stylesheet" href="mona-sans.css">'));
+  assert.ok(fs.existsSync(path.join(repoDir, "dist", "fonts", "mona-sans-latin-wght-normal.woff2")));
+  assert.match(css, /--workshop-type-body: clamp\(/);
+  assert.match(css, /--workshop-type-title: clamp\(/);
+  assert.match(css, /\.markdown-body p,\s*\.markdown-body li \{[\s\S]*?line-height: 1\.7;/);
+  assert.match(css, /\.markdown-body > details > \.workshop-page-title \{[\s\S]*?font-weight: 400;/);
+  assert.match(css, /\.markdown-body h2:not\(\.workshop-page-title\) \{[\s\S]*?font-weight: 400;/);
+  assert.match(css, /\.markdown-body h3 \{[\s\S]*?font-weight: 600;/);
+});
+
 test("workshop navigation constrains long buttons on small screens", () => {
   const { css } = buildDocs();
 
