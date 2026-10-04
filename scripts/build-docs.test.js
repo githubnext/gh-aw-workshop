@@ -64,6 +64,20 @@ test("workshop typography uses the bundled Mona Sans and fluid reading scale", (
   assert.match(css, /\.markdown-body h3 \{[\s\S]*?font-weight: 600;/);
 });
 
+test("reader uses the gh-aw-inspired reading surface in both color schemes", () => {
+  const { html, css, alertsCss } = buildDocs();
+
+  assert.ok(html.includes('<meta name="theme-color" content="#fcfcfb"'));
+  assert.ok(html.includes('<meta name="theme-color" content="#0c0a09"'));
+  assert.match(css, /--workshop-page-bg: #fcfcfb;/);
+  assert.match(css, /--workshop-page-bg: #0c0a09;/);
+  assert.match(css, /--workshop-link-color: #5f489a;/);
+  assert.match(css, /--workshop-link-color: #c3b5e4;/);
+  assert.match(css, /\.markdown-body > details \{[^}]*max-width: 760px;/);
+  assert.match(css, /\.workshop-navigation \{[^}]*border-top: 1px solid var\(--workshop-divider\);/);
+  assert.match(alertsCss, /\.markdown-alert \{[^}]*border: 1px solid color-mix\(/);
+});
+
 test("workshop navigation constrains long buttons on small screens", () => {
   const { css } = buildDocs();
 
