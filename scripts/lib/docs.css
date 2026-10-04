@@ -1,9 +1,15 @@
 /* Improve link discoverability in rendered workshop docs */
 :root {
   --workshop-sticky-header-offset: 72px;
-  --workshop-link-color: var(--fgColor-accent, #0969da);
-  --workshop-link-visited-color: var(--fgColor-done, #8250df);
-  --workshop-link-hover-color: var(--fgColor-accent, #0550ae);
+  --workshop-page-bg: #fcfcfb;
+  --workshop-surface: #ffffff;
+  --workshop-surface-muted: #f5f5f4;
+  --workshop-text: #1c1917;
+  --workshop-text-muted: #57534e;
+  --workshop-divider: #e7e5e4;
+  --workshop-link-color: #5f489a;
+  --workshop-link-visited-color: #4b397a;
+  --workshop-link-hover-color: #4b397a;
   --workshop-type-body: clamp(1rem, 0.955rem + 0.227vw, 1.125rem);
   --workshop-type-title: clamp(2.25rem, 1.977rem + 1.364vw, 3rem);
   --workshop-type-section: clamp(1.75rem, 1.477rem + 1.364vw, 2.5rem);
@@ -12,16 +18,28 @@
 
 @media (prefers-color-scheme: dark) {
   html[data-color-mode="auto"] {
-    --workshop-link-color: var(--fgColor-accent, #58a6ff);
-    --workshop-link-visited-color: var(--fgColor-done, #bc8cff);
-    --workshop-link-hover-color: var(--fgColor-accent, #79c0ff);
+    --workshop-page-bg: #0c0a09;
+    --workshop-surface: #231f1c;
+    --workshop-surface-muted: #1c1917;
+    --workshop-text: #fcfcfb;
+    --workshop-text-muted: #d6d3d1;
+    --workshop-divider: #44403c;
+    --workshop-link-color: #c3b5e4;
+    --workshop-link-visited-color: #e0d8f1;
+    --workshop-link-hover-color: #e0d8f1;
   }
 }
 
 html[data-color-mode="dark"] {
-  --workshop-link-color: var(--fgColor-accent, #58a6ff);
-  --workshop-link-visited-color: var(--fgColor-done, #bc8cff);
-  --workshop-link-hover-color: var(--fgColor-accent, #79c0ff);
+  --workshop-page-bg: #0c0a09;
+  --workshop-surface: #231f1c;
+  --workshop-surface-muted: #1c1917;
+  --workshop-text: #fcfcfb;
+  --workshop-text-muted: #d6d3d1;
+  --workshop-divider: #44403c;
+  --workshop-link-color: #c3b5e4;
+  --workshop-link-visited-color: #e0d8f1;
+  --workshop-link-hover-color: #e0d8f1;
 }
 
 body,
@@ -29,6 +47,10 @@ body,
   font-family: 'Mona Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-optical-sizing: auto;
   font-variant-ligatures: none;
+}
+body {
+  background-color: var(--workshop-page-bg);
+  color: var(--workshop-text);
 }
 
 html {
@@ -45,9 +67,9 @@ html {
   justify-content: space-between;
   min-height: 56px;
   padding: 0 16px;
-  color: var(--fgColor-default, #1f2328);
-  background-color: var(--bgColor-default, #ffffff);
-  border-bottom: 1px solid var(--borderColor-muted, #d0d7de);
+  color: var(--workshop-text);
+  background-color: var(--workshop-page-bg);
+  border-bottom: 1px solid var(--workshop-divider);
 }
 .site-title {
   margin: 0;
@@ -198,10 +220,10 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   max-height: none;
   margin: 0;
   padding: 0;
-  color: var(--fgColor-default, #1f2328);
-  background-color: var(--bgColor-default, #ffffff);
+  color: var(--workshop-text);
+  background-color: var(--workshop-page-bg);
   border: 0;
-  border-right: 1px solid var(--borderColor-muted, #d0d7de);
+  border-right: 1px solid var(--workshop-divider);
 }
 .workshop-menu::backdrop {
   background: rgba(0, 0, 0, 0.48);
@@ -267,13 +289,15 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   background-color: var(--bgColor-muted, #f6f8fa);
 }
 .workshop-menu-group a[aria-current="page"] {
-  color: var(--workshop-link-color);
+  color: var(--workshop-text);
   font-weight: 600;
-  background-color: var(--bgColor-accent-muted, #ddf4ff);
+  background-color: var(--workshop-surface-muted);
 }
 
 .markdown-body > details {
   scroll-margin-top: var(--workshop-sticky-header-offset);
+  max-width: 760px;
+  margin-inline: auto;
 }
 .markdown-body details > summary {
   display: inline-flex;
@@ -302,6 +326,10 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   margin-inline: auto;
   padding-inline: 20px !important;
 }
+.markdown-body {
+  color: var(--workshop-text);
+  background-color: transparent;
+}
 
 .markdown-body p,
 .markdown-body li {
@@ -316,12 +344,23 @@ html[data-color-mode="dark"] .menu-toggle-progress {
   font-size: var(--workshop-type-section);
   font-weight: 400;
   line-height: 1.2;
+  border-bottom: 0;
 }
 .markdown-body h3 {
   max-width: 24ch;
   font-size: var(--workshop-type-subheading);
   font-weight: 600;
   line-height: 1.3;
+}
+
+.markdown-body > details > .workshop-page-title {
+  margin-bottom: 24px;
+}
+.markdown-body h2:not(.workshop-page-title) {
+  margin-top: 48px;
+}
+.markdown-body h3 {
+  margin-top: 32px;
 }
 .markdown-body h4,
 .markdown-body h5,
@@ -551,8 +590,8 @@ body > footer a {
   align-items: flex-start;
   gap: 16px;
   margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid var(--borderColor-muted, #d0d7de);
+  padding-top: 24px;
+  border-top: 1px solid var(--workshop-divider);
 }
 .workshop-navigation-previous {
   flex: 0 0 auto;
@@ -586,69 +625,24 @@ body > footer a {
   text-decoration: none;
 }
 .workshop-nav-btn-primary {
-  color: #ffffff;
-  background-color: var(--bgColor-accent-emphasis, #0969da);
+  color: var(--workshop-link-color);
+  background-color: transparent;
   border: 1px solid transparent;
 }
 .workshop-nav-btn-primary:hover,
 .workshop-nav-btn-primary:focus-visible {
-  color: #ffffff;
-  background-color: var(--bgColor-accent-emphasis, #0550ae);
-  filter: brightness(0.9);
+  color: var(--workshop-link-hover-color);
+  background-color: var(--workshop-surface-muted);
 }
 .workshop-nav-btn-secondary {
-  color: var(--fgColor-default, #1f2328);
-  background-color: var(--bgColor-muted, #f6f8fa);
-  border: 1px solid var(--borderColor-default, #d0d7de);
+  color: var(--workshop-text-muted);
+  background-color: transparent;
+  border: 1px solid transparent;
 }
 .workshop-nav-btn-secondary:hover,
 .workshop-nav-btn-secondary:focus-visible {
-  color: var(--fgColor-default, #1f2328);
-  background-color: var(--bgColor-subtle, #eaeef2);
-}
-
-@media (prefers-color-scheme: dark) {
-  html[data-color-mode="auto"] .workshop-nav-btn-primary {
-    background-color: var(--bgColor-accent-emphasis, #1f6feb);
-    color: #ffffff;
-  }
-  html[data-color-mode="auto"] .workshop-nav-btn-primary:hover,
-  html[data-color-mode="auto"] .workshop-nav-btn-primary:focus-visible {
-    background-color: var(--bgColor-accent-emphasis, #1f6feb);
-    color: #ffffff;
-    filter: brightness(0.9);
-  }
-  html[data-color-mode="auto"] .workshop-nav-btn-secondary {
-    color: var(--fgColor-default, #e6edf3);
-    background-color: var(--bgColor-muted, #161b22);
-    border-color: var(--borderColor-default, #30363d);
-  }
-  html[data-color-mode="auto"] .workshop-nav-btn-secondary:hover,
-  html[data-color-mode="auto"] .workshop-nav-btn-secondary:focus-visible {
-    color: var(--fgColor-default, #e6edf3);
-    background-color: var(--bgColor-subtle, #1c2128);
-  }
-}
-
-html[data-color-mode="dark"] .workshop-nav-btn-primary {
-  background-color: var(--bgColor-accent-emphasis, #1f6feb);
-  color: #ffffff;
-}
-html[data-color-mode="dark"] .workshop-nav-btn-primary:hover,
-html[data-color-mode="dark"] .workshop-nav-btn-primary:focus-visible {
-  background-color: var(--bgColor-accent-emphasis, #1f6feb);
-  color: #ffffff;
-  filter: brightness(0.9);
-}
-html[data-color-mode="dark"] .workshop-nav-btn-secondary {
-  color: var(--fgColor-default, #e6edf3);
-  background-color: var(--bgColor-muted, #161b22);
-  border-color: var(--borderColor-default, #30363d);
-}
-html[data-color-mode="dark"] .workshop-nav-btn-secondary:hover,
-html[data-color-mode="dark"] .workshop-nav-btn-secondary:focus-visible {
-  color: var(--fgColor-default, #e6edf3);
-  background-color: var(--bgColor-subtle, #1c2128);
+  color: var(--workshop-text);
+  background-color: var(--workshop-surface-muted);
 }
 
 @media (max-width: 799px) {

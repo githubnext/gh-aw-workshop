@@ -1,9 +1,11 @@
 /* Alert callout styles for GitHub GFM > [!NOTE] / [!TIP] / etc. */
 .markdown-alert {
-  padding: 0.5rem 1rem;
+  padding: 1.25rem;
   margin-bottom: 16px;
-  border-left: 0.25em solid;
-  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--workshop-alert-color) 16%, var(--workshop-page-bg));
+  border-radius: 12px;
+  background-color: color-mix(in srgb, var(--workshop-alert-color) 5%, var(--workshop-page-bg));
+  color: var(--workshop-text);
 }
 .markdown-alert > :first-child { margin-top: 0; }
 .markdown-alert > :last-child { margin-bottom: 0; }
@@ -17,27 +19,35 @@
 }
 .markdown-alert-title svg { margin-right: 8px; }
 .markdown-alert-note {
-  border-color: var(--borderColor-accent-emphasis, #0969da);
-  background-color: var(--bgColor-accent-muted, #ddf4ff);
+  --workshop-alert-color: #0969da;
 }
-.markdown-alert-note .markdown-alert-title { color: var(--fgColor-accent, #0969da); }
+.markdown-alert-note .markdown-alert-title { color: var(--workshop-alert-color); }
 .markdown-alert-tip {
-  border-color: var(--borderColor-success-emphasis, #1a7f37);
-  background-color: var(--bgColor-success-muted, #dafbe1);
+  --workshop-alert-color: #1a7f37;
 }
-.markdown-alert-tip .markdown-alert-title { color: var(--fgColor-success, #1a7f37); }
+.markdown-alert-tip .markdown-alert-title { color: var(--workshop-alert-color); }
 .markdown-alert-important {
-  border-color: var(--borderColor-done-emphasis, #8250df);
-  background-color: var(--bgColor-done-muted, #fbefff);
+  --workshop-alert-color: #5f489a;
 }
-.markdown-alert-important .markdown-alert-title { color: var(--fgColor-done, #8250df); }
+.markdown-alert-important .markdown-alert-title { color: var(--workshop-alert-color); }
 .markdown-alert-warning {
-  border-color: var(--borderColor-attention-emphasis, #9a6700);
-  background-color: var(--bgColor-attention-muted, #fff8c5);
+  --workshop-alert-color: #9a6700;
 }
-.markdown-alert-warning .markdown-alert-title { color: var(--fgColor-attention, #9a6700); }
+.markdown-alert-warning .markdown-alert-title { color: var(--workshop-alert-color); }
 .markdown-alert-caution {
-  border-color: var(--borderColor-danger-emphasis, #d1242f);
-  background-color: var(--bgColor-danger-muted, #ffebe9);
+  --workshop-alert-color: #cf222e;
 }
-.markdown-alert-caution .markdown-alert-title { color: var(--fgColor-danger, #d1242f); }
+.markdown-alert-caution .markdown-alert-title { color: var(--workshop-alert-color); }
+
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode="auto"] .markdown-alert-note { --workshop-alert-color: #75cfff; }
+  html[data-color-mode="auto"] .markdown-alert-tip { --workshop-alert-color: #7dd54d; }
+  html[data-color-mode="auto"] .markdown-alert-important { --workshop-alert-color: #c3b5e4; }
+  html[data-color-mode="auto"] .markdown-alert-warning { --workshop-alert-color: #eaa734; }
+  html[data-color-mode="auto"] .markdown-alert-caution { --workshop-alert-color: #ff554d; }
+}
+html[data-color-mode="dark"] .markdown-alert-note { --workshop-alert-color: #75cfff; }
+html[data-color-mode="dark"] .markdown-alert-tip { --workshop-alert-color: #7dd54d; }
+html[data-color-mode="dark"] .markdown-alert-important { --workshop-alert-color: #c3b5e4; }
+html[data-color-mode="dark"] .markdown-alert-warning { --workshop-alert-color: #eaa734; }
+html[data-color-mode="dark"] .markdown-alert-caution { --workshop-alert-color: #ff554d; }
