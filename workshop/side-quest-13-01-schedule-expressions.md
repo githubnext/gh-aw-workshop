@@ -7,8 +7,8 @@
 ## :clipboard: Before You Start
 
 - You have completed [Refine, Test, and Improve Your Workflow](09-agentic-editing.md) or are working through it now.
-- You understand that [GitHub Actions](https://github.github.com/gh-aw/reference/triggers/) schedules use **cron expressions** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
-- You know how to run `gh aw compile` to regenerate a workflow's lock file.
+- You understand that [GitHub Actions](https://github.github.com/gh-aw/reference/triggers/) schedules use **[cron expressions](https://github.github.com/gh-aw/reference/schedule-syntax/#standard-cron-expressions)** (e.g., `0 9 * * 1` runs at 09:00 UTC every Monday).
+- You know how to run `gh aw compile` to regenerate a workflow's [lock file](https://github.github.com/gh-aw/reference/workflow-structure/#lock-file-header).
 
 ## :dart: What You'll Do
 

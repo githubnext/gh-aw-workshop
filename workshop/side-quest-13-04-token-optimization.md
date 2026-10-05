@@ -47,7 +47,7 @@ Use your baseline to decide what to change first:
 
 | If you observe this | Check for this cause | First fix to try |
 |---|---|---|
-| AIC grows after you add more repository data | Too much raw context in the brief | Pre-filter the data in a deterministic step before passing it to the agent |
+| AIC grows after you add more repository data | Too much raw context in the brief | Pre-filter the data in a [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) step before passing it to the agent |
 | One run is much higher than the others | The agent explored too broadly or retried tool calls | Tighten the brief and remove tools the task does not need |
 | Every run costs about the same and feels high | The brief is longer than it needs to be | Shorten instructions, examples, and repeated boilerplate |
 | Costs spike after adding a new schedule | The workflow runs more often than the value it creates | Reduce the schedule frequency or add conditions so no-op runs skip the agent |

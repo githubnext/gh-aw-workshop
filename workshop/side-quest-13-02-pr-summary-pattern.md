@@ -78,7 +78,7 @@ After making your change, recompile and open a fresh PR to see the updated outpu
 
 ## ✅ Checkpoint
 
-- [ ] I created `.github/workflows/pr-summary.md` with an `opened`-only `pull_request` trigger
+- [ ] I created `.github/workflows/pr-summary.md` with an `opened`-only [`pull_request`](https://github.github.com/gh-aw/reference/triggers/#pull-request-triggers-pullrequest) trigger
 - [ ] `gh aw compile` completed without errors and `.lock.yml` is committed and pushed
 - [ ] I opened a test PR and the workflow posted a comment matching the three-section template
 - [ ] I customised at least one section of the template to fit a real use case
