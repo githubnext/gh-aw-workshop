@@ -51,11 +51,29 @@ After you complete Step 6, also run:
 gh aw --version
 ```
 
+### :bulb: Quick check: match the tool to its role
+
+Before moving on, test your recall. Match each term to what it does, then expand the answer to check yourself.
+
+1. `gh aw`
+2. GitHub Codespaces
+3. GitHub Copilot CLI
+
+<details>
+<summary>Reveal answers</summary>
+
+1. `gh aw` — the CLI extension you use to compile agentic workflow files
+2. GitHub Codespaces — your cloud development environment in the browser
+3. GitHub Copilot CLI — AI help directly inside the terminal
+
+</details>
+
 ## Conceptual screenshots
 
-Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app."
+Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app." These visuals are simplified mental models, not literal product screenshots.
 
-These visuals are simplified mental models, not literal product screenshots. Use them to recognize what each name refers to when it appears in later steps.
+<details>
+<summary>Expand to see conceptual screenshots for each tool</summary>
 
 ### Development environments
 
@@ -150,6 +168,8 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 </picture>
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
+
+</details>
 
 <!-- journey: all -->
 ## :white_check_mark: Checkpoint
