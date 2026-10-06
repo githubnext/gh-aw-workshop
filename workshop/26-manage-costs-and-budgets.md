@@ -104,6 +104,9 @@ In this example, each run is capped at 1000 AIC and the 24-hour total is capped 
 gh aw compile
 ```
 
+> [!TIP]
+> Managing many repositories instead of just one? Try [Side Quest: Organization-Wide Governance with `gh aw env`](side-quest-26-02-organization-governance.md) to set these same guardrails at organization or enterprise scope, so every workflow inherits them without per-file edits.
+
 ## :white_check_mark: Checkpoint
 
 - [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
