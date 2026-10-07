@@ -36,7 +36,7 @@ The embedded YAML block in that issue body would define a job that exfiltrates `
 
 ## Why This Matters for [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows)
 
-Classic CI/CD runs deterministic scripts. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
+Classic CI/CD runs [deterministic](https://github.github.com/gh-aw/patterns/deterministic-ops/) scripts. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
 
 Write access magnifies every read. If the agent can commit directly, a successful content injection skips human review entirely. The poisoned file lands on the default branch before anyone notices.
 

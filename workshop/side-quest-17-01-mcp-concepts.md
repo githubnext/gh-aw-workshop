@@ -23,7 +23,7 @@ A tool server is a process that:
 2. Runs those operations on demand when the agent calls them.
 3. Returns structured results the agent can reason about.
 
-The GitHub MCP server, for example, advertises tools like `list_issues`, `get_pull_request`, `list_commits`, and dozens of others. When the agent calls `list_issues`, the server makes the GitHub API request and hands the result back.
+The [GitHub MCP server](https://github.github.com/gh-aw/guides/mcps/#github-mcp-server), for example, advertises tools like `list_issues`, `get_pull_request`, `list_commits`, and dozens of others. When the agent calls `list_issues`, the server makes the GitHub API request and hands the result back.
 
 ---
 
@@ -95,7 +95,7 @@ gh aw validate
 
 A [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
 
-The GitHub MCP server ships with these toolsets:
+The GitHub MCP server ships with these [toolsets](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets):
 
 | Toolset | What it includes |
 |---------|-----------------|

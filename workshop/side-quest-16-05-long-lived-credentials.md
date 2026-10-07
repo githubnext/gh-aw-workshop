@@ -118,7 +118,7 @@ When you must use a PAT:
 |---|---|
 | Use a fine-grained PAT with the minimum scopes | Limits what an attacker gains if it leaks |
 | Set the shortest practical expiry | Reduces the window during which a leaked token remains valid |
-| Rotate the PAT on a schedule | A rotated PAT invalidates any copy an attacker already has |
+| Rotate the PAT on a [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) | A rotated PAT invalidates any copy an attacker already has |
 | Inject the PAT at the step level, not globally | Keeps it out of other steps' environments, including the AI prompt step |
 | Add `network.allowed` | Prevents the token from being sent to attacker-controlled endpoints |
 
