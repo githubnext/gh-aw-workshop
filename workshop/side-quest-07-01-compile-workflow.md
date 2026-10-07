@@ -8,6 +8,14 @@
 
 You'll use `gh aw compile` as a fast feedback loop while you edit workflow files. By the end, you'll know when to use `--no-emit` for dry-run checks, when to use `--validate` for targeted troubleshooting, when to keep `--watch` running, and how to fix the most common compile errors.
 
+The four flags below answer different questions. Use the diagram to pick the one that matches your moment before you read the details.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-07-01-compile-mode-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images/side-quest-07-01-compile-mode-light.svg">
+  <img alt="Decision diagram: after editing a workflow source file, choose gh aw compile mode: use --no-emit for a quick structure check with no lock file written, plain compile for a normal edit that updates the lock file, --validate for a slower schema and deprecation audit, or --watch for continuous recompiling while iterating." src="images/side-quest-07-01-compile-mode-light.svg">
+</picture>
+
 ## What `gh aw compile` does
 
 `gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
