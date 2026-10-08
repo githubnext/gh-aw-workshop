@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Event-Driven Triggers in Agentic Workflows
 
-> _Optional: use this primer if you want help choosing between [scheduled](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) and event-driven workflows before you finish [Build — PR Code Reviewer](15-conditional-logic.md), then return to the main adventure._
+> _Optional: use this primer if you want help choosing between [scheduled](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) and event-driven workflows before you finish [Build a PR Reviewer with an Agent and Skill](14b-pr-reviewer-workflow.md), then return to the main adventure._
 
 ## :dart: What You'll Do
 
@@ -38,7 +38,7 @@ on:
 ---
 ```
 
-This is a good fit when you want feedback tied to the current PR, like the PR Code Reviewer in Step 11c.
+This is a good fit when you want feedback tied to the current PR, like the PR Code Reviewer in Step 14b.
 
 ### `push`
 
@@ -126,12 +126,12 @@ Use this rule of thumb:
 
 ## Concrete example: Step 7 vs Step 15
 
-The Daily Repo Status workflow in [Step 7](07-your-first-workflow.md) and the PR Code Reviewer in [Step 15](15-conditional-logic.md) use the same workflow format, but they solve different timing problems.
+The Daily Repo Status workflow in [Step 7](07-your-first-workflow.md) and the PR Code Reviewer in [Step 14b](14b-pr-reviewer-workflow.md) use the same workflow format, but they solve different timing problems.
 
 | Step | Trigger | Why it fits | Safe output |
 |------|---------|-------------|-------------|
 | 7 Daily Repo Status | `schedule: daily` | You want a report every day, even on quiet days | `add-comment` |
-| 15 PR Code Reviewer | `pull_request: {}` | You want feedback only when a PR changes | `add-comment` |
+| 14b PR Code Reviewer | `pull_request: {}` | You want feedback only when a PR changes | `submit-pull-request-review` |
 
 That is the core decision: pick the trigger that matches the moment you care about, then pick the write target that matches the object you want the workflow to answer.
 
@@ -142,7 +142,7 @@ That is the core decision: pick the trigger that matches the moment you care abo
 - [ ] I know starter trigger blocks for `pull_request`, `push`, `issues`, and `schedule`
 - [ ] I changed my workflow's trigger and confirmed it still compiles with `gh aw compile`
 - [ ] I understand that `safe-outputs` controls write access separately from the trigger
-- [ ] I can explain why both Step 7 and Step 15 use `add-comment` as their `safe-outputs` choice
+- [ ] I can explain why Step 7 uses `add-comment` while Step 14b uses `submit-pull-request-review`
 
 ---
 
