@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="The compile feedback loop: edit a workflow file, run gh aw compile, and either continue to a generated lock file when it is valid, or read the error, fix the file, and retry when it fails"
+  data-visual-kind="diagram"
+  data-visual-id="side-quest-07-01-compile-feedback-loop">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#101411">The Compile Feedback Loop</text>
+  <text x="600" y="74" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#232925">Edit, compile, and fix — repeat until the file is valid</text>
+
+  <defs>
+    <marker id="arrow-light" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#232925"/>
+    </marker>
+    <marker id="arrow-fail-light" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#cf222e"/>
+    </marker>
+  </defs>
+
+  <!-- Step badge 1 -->
+  <circle cx="40" cy="140" r="14" fill="#08872b"/>
+  <text x="40" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">1</text>
+
+  <!-- ===== NODE A: Edit workflow file ===== -->
+  <rect x="40" y="140" width="220" height="160" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="edit-file"/>
+  <!-- pencil octicon -->
+  <g transform="translate(130, 170)" fill="#08872b">
+    <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"/>
+  </g>
+  <text x="150" y="232" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Edit workflow</text>
+  <text x="150" y="252" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">Change frontmatter</text>
+  <text x="150" y="270" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#232925">or Markdown body</text>
+
+  <!-- Arrow A -> B -->
+  <line x1="261" y1="220" x2="329" y2="220" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+  <!-- Step badge 2 -->
+  <circle cx="330" cy="140" r="14" fill="#08872b"/>
+  <text x="330" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">2</text>
+
+  <!-- ===== NODE B: Run gh aw compile ===== -->
+  <rect x="330" y="140" width="220" height="160" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="1.5" data-node="run-compile"/>
+  <!-- terminal octicon -->
+  <g transform="translate(420, 170)" fill="#08872b">
+    <path d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25Zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM7.25 8a.749.749 0 0 1-.22.53l-2.25 2.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L5.44 8 3.72 6.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.25 2.25c.141.14.22.331.22.53Zm1.5 1.5h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5Z"/>
+  </g>
+  <text x="440" y="232" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Run compile</text>
+  <text x="440" y="252" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#232925">gh aw compile</text>
+  <text x="440" y="270" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">--watch repeats this step</text>
+
+  <!-- Arrow B -> Decision -->
+  <line x1="551" y1="220" x2="609" y2="220" stroke="#232925" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+  <!-- Step badge 3 -->
+  <circle cx="700" cy="150" r="14" fill="#08872b"/>
+  <text x="700" y="155" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">3</text>
+
+  <!-- ===== DECISION: Compile valid? ===== -->
+  <polygon points="700,150 800,220 700,290 600,220" fill="#ffffff" stroke="#08872b" stroke-width="2" data-node="decision-valid"/>
+  <text x="700" y="215" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#101411">Compile</text>
+  <text x="700" y="233" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#101411">valid?</text>
+
+  <!-- Arrow Decision -> Pass (Node C) -->
+  <line x1="800" y1="220" x2="898" y2="220" stroke="#1a7f37" stroke-width="2" marker-end="url(#arrow-light)"/>
+  <text x="849" y="208" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#1a7f37" font-weight="600">yes</text>
+
+  <!-- Step badge 4 (pass) -->
+  <circle cx="900" cy="140" r="14" fill="#08872b"/>
+  <text x="900" y="145" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#f2f5f3">4</text>
+
+  <!-- ===== NODE C: Lock file generated (pass) ===== -->
+  <rect x="900" y="140" width="260" height="160" rx="12" fill="#f2f5f3" stroke="#1a7f37" stroke-width="2" data-node="lock-file-generated"/>
+  <!-- file-code octicon -->
+  <g transform="translate(1010, 170)" fill="#1a7f37">
+    <path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06ZM3.28 7.78 1.81 9.25l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Zm8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"/>
+  </g>
+  <text x="1030" y="232" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Lock file</text>
+  <text x="1030" y="252" text-anchor="middle" font-family="'Mona Sans Mono', monospace" font-size="12" fill="#1a7f37">*.lock.yml</text>
+  <text x="1030" y="270" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">Ready for Actions</text>
+
+  <!-- Arrow Decision -> Fail (Node D) -->
+  <line x1="700" y1="290" x2="700" y2="358" stroke="#cf222e" stroke-width="2" marker-end="url(#arrow-fail-light)"/>
+  <text x="724" y="328" text-anchor="start" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#cf222e" font-weight="600">no</text>
+
+  <!-- ===== NODE D: Read error and fix (fail) ===== -->
+  <rect x="560" y="360" width="280" height="140" rx="12" fill="#f2f5f3" stroke="#cf222e" stroke-width="2" data-node="read-error-fix"/>
+  <!-- circle-slash octicon -->
+  <g transform="translate(686, 388)" fill="#cf222e">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM3.965 13.096a6.5 6.5 0 0 0 9.131-9.131ZM1.5 8a6.474 6.474 0 0 0 1.404 4.035l9.131-9.131A6.499 6.499 0 0 0 1.5 8Z"/>
+  </g>
+  <text x="700" y="448" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#101411">Read error, fix file</text>
+  <text x="700" y="468" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">Check the reported line first</text>
+
+  <!-- Loop arrow: Node D -> back to Node A -->
+  <polyline points="560,430 150,430 150,301" fill="none" stroke="#232925" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light)"/>
+  <text x="300" y="420" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#232925">retry</text>
+
+  <!-- Annotation -->
+  <text x="600" y="534" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#232925">Keep `--watch` running so every save drives this loop automatically.</text>
+
+</svg>

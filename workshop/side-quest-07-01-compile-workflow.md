@@ -12,6 +12,14 @@ You'll use `gh aw compile` as a fast feedback loop while you edit workflow files
 
 `gh aw compile` checks your workflow source file, validates the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and Markdown body structure, and generates the compiled [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) GitHub Actions runs. It catches formatting and schema mistakes before you commit or trigger a workflow.
 
+Editing, compiling, and fixing form a short loop you'll repeat until the file is valid:
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-07-01-compile-feedback-loop-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-07-01-compile-feedback-loop-light.svg">
+   <img alt="The compile feedback loop: edit a workflow file, run gh aw compile, and either continue to a generated lock file when it is valid, or read the error, fix the file, and retry when it fails" src="images/side-quest-07-01-compile-feedback-loop-light.svg">
+</picture>
+
 Run it any time you edit a workflow file:
 
 ```bash
