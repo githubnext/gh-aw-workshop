@@ -34,6 +34,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 20 | [Make Your Workflow Remember Across Runs](20-persistent-memory.md) |
 | 21 | [Split Complex Workflows with Inline Sub-Agents](21-inline-sub-agents.md) |
 | 22 | [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md) |
+| 22b | [Preview Safe Outputs Before They Go Live with Staged Mode](22b-staged-mode-preview.md) |
 | 23 | [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md) |
 | 24 | [Run Your Agentic Workflow on a Self-Hosted Runner](24-self-hosted-runners.md) |
 | 25 | [Audit and Monitor Your Agentic Workflows](25-audit-and-observability.md) |

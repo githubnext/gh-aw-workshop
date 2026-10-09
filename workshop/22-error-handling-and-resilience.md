@@ -122,5 +122,5 @@ After pushing:
 - [ ] You can name at least two common agentic workflow failure modes and how to mitigate them
 
 <!-- journey: all -->
-**Next:** [Test Your Prompt Ideas with A/B Experiments](23-ab-experiments.md)
+**Next:** [Preview Safe Outputs Before They Go Live with Staged Mode](22b-staged-mode-preview.md)
 <!-- /journey -->
