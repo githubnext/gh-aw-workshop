@@ -67,7 +67,7 @@ See [Audit Reference](side-quest-25-01-audit-reference.md) for details on readin
 ## :white_check_mark: Checkpoint
 
 - [ ] You understand the difference between ephemeral runners and JIT runners
-- [ ] You know where to set proxy environment variables for a self-hosted runner
+- [ ] You know where to set proxy environment variables for a [self-hosted runner](https://github.github.com/gh-aw/guides/using-at-scale/#self-hosted-runners)
 - [ ] You can identify which endpoints an agentic workflow needs to reach (GitHub API, model endpoint, MCP servers)
 - [ ] You know how to use `network.allowed` in frontmatter to declare required domains
 - [ ] You know how to use the `firewall.md` artifact to build an allowlist for your security team

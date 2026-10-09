@@ -10,7 +10,7 @@ You'll learn the four most common ways agentic workflows fail in production, see
 
 ## :clipboard: Before You Start
 
-- You have a working scheduled workflow (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
+- You have a working [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule)d workflow (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
 - You're starting (or have already started) [Make Your Workflows Resilient to Failure](22-error-handling-and-resilience.md), which uses this vocabulary.
 
 ## Steps

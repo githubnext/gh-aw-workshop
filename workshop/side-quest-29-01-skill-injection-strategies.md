@@ -6,7 +6,7 @@
 
 ## :dart: What You'll Do
 
-Compare three strategies for connecting a `SKILL.md` to a workflow prompt — **hint**, **fusion**, and **inline** — and practice writing each one. By the end, you'll be able to pick the right strategy for a given task and context budget.
+Compare three strategies for connecting a `SKILL.md` to a workflow prompt — **[hint](https://github.github.com/gh-aw/reference/custom-agent-for-aw/#using-the-skill-files-for-agentic-workflows)**, **fusion**, and **inline** — and practice writing each one. By the end, you'll be able to pick the right strategy for a given task and context budget.
 
 ## :clipboard: Before You Start
 

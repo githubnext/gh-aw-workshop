@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Project Future AI Credit Costs with `gh aw forecast`
 
-> _A deeper companion to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md). Use this side quest when you want a full walkthrough of `gh aw forecast` — what the output means, how to tune projections, and how to translate the P90 figure into a practical `max-daily-ai-credits` value._
+> _A deeper companion to [Manage Costs and AI Credit Budgets](26-manage-costs-and-budgets.md). Use this side quest when you want a full walkthrough of `gh aw forecast` — what the output means, how to tune projections, and how to translate the P90 figure into a practical [`max-daily-ai-credits`](https://github.github.com/gh-aw/reference/cost-management/#cap-daily-ai-credits-per-workflow) value._
 
 ## What [`gh aw forecast`](https://github.github.com/gh-aw/setup/cli/#forecast) does
 

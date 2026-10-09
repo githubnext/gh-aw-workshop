@@ -59,7 +59,7 @@ If your enterprise requires [self-hosted runners](https://github.github.com/gh-a
 - A runner is registered and online for your repository or org.
 - The runner allows workflow jobs from your repository.
 - If your network uses an outbound proxy, proxy settings are configured for runner jobs.
-- Network egress allows access to required endpoints such as `github.com`, `api.github.com`, `raw.githubusercontent.com`, and any model or MCP endpoints your workflow uses.
+- Network egress allows access to required endpoints such as `github.com`, `api.github.com`, `raw.githubusercontent.com`, and any model or [MCP](https://github.github.com/gh-aw/guides/mcps/) endpoints your workflow uses.
 - Required secrets and permissions are configured for runner-based execution.
 
 If you do not have this access yet, ask your admin to provide a ready-to-use runner target before you build and run workflows.

@@ -20,7 +20,7 @@ Already comfortable managing Git and the GitHub CLI on your machine? You can tak
 
 Open [github.com/settings/copilot](https://github.com/settings/copilot) and confirm both show:
 
-- **Copilot CLI is enabled**
+- **[Copilot CLI](https://github.github.com/gh-aw/engines/copilot/#github-agentic-workflows-vs-copilot-cli-in-github-actions) is enabled**
 - Some **Models are available**
 
 This workshop uses GitHub Copilot end-to-end, so you do not need to configure any external provider API keys.
