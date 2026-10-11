@@ -6,7 +6,7 @@
 
 - You've read [What Are Agentic Workflows?](05-agentic-workflows-intro.md)
 
-These exercises help you apply what you just learned — deciding when to use an agentic workflow and drafting your first task brief.
+These exercises help you apply what you just learned — deciding when to use an agentic workflow and drafting your first [task brief](https://github.github.com/gh-aw/reference/markdown/).
 
 ## Try it: agentic or standard?
 

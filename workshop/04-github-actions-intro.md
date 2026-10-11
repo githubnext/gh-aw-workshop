@@ -75,7 +75,7 @@ Traditional workflows execute a fixed script path. [Agentic workflows](https://g
 |---|---|---|
 | Trigger (`on:`) | Same — schedule, push, PR, dispatch | Same |
 | Runner (`runs-on:`) | GitHub-hosted or self-hosted | Same |
-| Steps | Shell commands you define | AI agent executes a plain-English task brief |
+| Steps | Shell commands you define | AI agent executes a plain-English [task brief](https://github.github.com/gh-aw/reference/markdown/) |
 | Output | Files, logs, deploy artifacts | GitHub comments, issues, PRs, or other API writes |
 
 The agentic workflow file you'll author in this workshop is a `.md` file with the same `on:` and `runs-on:` keys you see above, plus a Markdown task brief that tells the AI agent what to do.
