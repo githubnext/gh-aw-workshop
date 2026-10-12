@@ -42,7 +42,8 @@ Confirm you receive a reply. Any response means Copilot CLI and the `agentic-wor
 - [ ] I opened Copilot CLI in the terminal and received a reply to the test prompt
 
 ## Create your first workflow
-
+> [!IMPORTANT]
+> Before you create your first workflow, confirm that your GitHub account has access to [GitHub Copilot](https://github.com/settings/copilot). Also check the billing path for this repository: **Is centralized Copilot billing for GitHub Actions enabled for this repository?** Confirm the applicable access and billing arrangement before continuing.
 > [!NOTE]
 > Use the **AI agent that runs your agentic workflows** (Copilot, Claude, Codex, or whichever you configured) for all agentic workflow tasks in this workshop. Using the same agent locally gives you behavior that matches production — Copilot Chat (Agent Mode) runs in a different harness and may produce different results.
 
