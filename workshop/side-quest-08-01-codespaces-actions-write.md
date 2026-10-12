@@ -37,6 +37,14 @@ HTTP 403: Resource not accessible by integration
 
 Some versions of `gh aw` also show a follow-up message explaining that the default Codespaces token does not have [`actions:write`](https://github.github.com/gh-aw/reference/permissions/) and `workflows:write`.
 
+The diagram below shows where the gap is and the two ways to close it.
+
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-08-01-token-permission-gap-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-08-01-token-permission-gap-light.svg">
+   <img alt="Codespaces token permission gap: a Codespace's default token lacks actions:write, so running gh aw run fails with HTTP 403. Fix A re-routes through the Actions UI, which runs the workflow with full repository permissions. Fix B creates a new Codespace from a devcontainer.json that grants the terminal token actions:write and workflows:write." src="images/side-quest-08-01-token-permission-gap-light.svg">
+</picture>
+
 ---
 
 ## Cause
