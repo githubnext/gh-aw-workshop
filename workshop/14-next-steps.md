@@ -10,7 +10,7 @@ Take stock of everything you've learned, then choose a direction for what to bui
 
 ## :clipboard: Before You Start
 
-- You have a scheduled daily-status workflow running in GitHub Actions from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
+- You have a scheduled daily-status workflow running in [GitHub Actions](https://github.github.com/gh-aw/reference/glossary/#github-actions) from [Refine, Test, and Improve Your Workflow](09-agentic-editing.md).
 
 ## Steps
 
@@ -46,7 +46,7 @@ Here's a quick recap of the concepts you've touched. The diagram below shows how
 |---|---|
 | [GitHub Actions triggers](https://github.github.com/gh-aw/reference/triggers/) | `on: schedule` and `workflow_dispatch` |
 | [gh-aw workflow syntax](https://github.github.com/gh-aw/introduction/overview/) | Every `.md` workflow file you wrote |
-| AI model calls | The Markdown body (agent instructions) of your daily-status workflow |
+| AI model calls | The Markdown body ([agent instructions](https://github.github.com/gh-aw/reference/copilot-custom-agents/#agent-instructions)) of your daily-status workflow |
 | Natural-language schedules | `schedule: daily on weekdays` |
 | Iterative debugging | Running, reading output, tweaking, repeating |
 

@@ -18,7 +18,7 @@ You'll extend your daily-status workflow to fetch open issues from your reposito
 
 ### Understand the data-flow pattern
 
-[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside GitHub Actions, so your workflow can fetch live repository data before the AI writes anything. In this step, use shell steps to collect data and a later prompt section to turn that data into a summary.
+[gh-aw workflows](https://github.github.com/gh-aw/introduction/overview/) run inside [GitHub Actions](https://github.github.com/gh-aw/reference/glossary/#github-actions), so your workflow can fetch live repository data before the AI writes anything. In this step, use shell steps to collect data and a later prompt section to turn that data into a summary.
 
 Think of it as a handoff. First, the workflow gathers facts in a predictable way. Then, the prompt reads those saved results and asks the AI to explain what matters.
 
@@ -177,6 +177,6 @@ Once you're comfortable with this pattern, the same technique works for:
 > Now that your workflow reads live repository data, you're exposing a surface that attackers can try to exploit:
 >
 > - **Token exfiltration**: learn how crafted issue or PR content can attempt to leak your `GITHUB_TOKEN` — and how gh-aw stops it — in [Side Quest: Token and Secret Exfiltration in Agentic Workflows](side-quest-16-03-token-exfiltration.md).
-> - **Long-lived credential risks**: if your workflow ever needs a personal access token (PAT), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how [`permissions:`](https://github.github.com/gh-aw/reference/permissions/) minimization and `network.allowed` contain the blast radius.
+> - **Long-lived credential risks**: if your workflow ever needs a [personal access token (PAT)](https://github.github.com/gh-aw/reference/glossary/#personal-access-token-pat), read [Side Quest: Long-Lived Credential Risks in Agentic Workflows](side-quest-16-05-long-lived-credentials.md) to understand why PATs create a larger attack surface and how [`permissions:`](https://github.github.com/gh-aw/reference/permissions/) minimization and `network.allowed` contain the blast radius.
 >
 > </details>

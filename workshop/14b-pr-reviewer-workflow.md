@@ -6,7 +6,7 @@ _Turn pull request review into a small team: an orchestrator, a focused reviewer
 
 ## :dart: What You'll Do
 
-You'll use your AI agent and the `/agentic-workflows` skill to create an event-driven PR reviewer. The workflow will define:
+You'll use your [AI agent](https://github.github.com/gh-aw/reference/glossary/#ai-agent) and the `/agentic-workflows` skill to create an event-driven PR reviewer. The workflow will define:
 
 - an inline `pr-reviewer` agent that inspects one pull request
 - an inline `pr-review-standards` skill that keeps findings evidence-based

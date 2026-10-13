@@ -24,7 +24,7 @@ You'll add a sub-agent to your daily-status workflow so the parent agent can sta
 
 ## :clipboard: Before You Start
 
-- You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
+- You have a working [agentic workflow](https://github.github.com/gh-aw/reference/glossary/#agentic-workflow) from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).
 - You understand YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) from [Write Your First Agentic Workflow](07-your-first-workflow.md).
 - You know how to compile a workflow from [Side Quest: Using `gh aw compile` to Catch Errors Early](side-quest-07-01-compile-workflow.md).
 
