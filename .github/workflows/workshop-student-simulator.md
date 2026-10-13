@@ -24,6 +24,7 @@ safe-outputs:
 network:
   allowed:
     - defaults
+timeout-minutes: 30
 steps:
   - name: Prepare simulation workspace
     run: |
