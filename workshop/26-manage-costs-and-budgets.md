@@ -56,7 +56,7 @@ monthly cost = average AIC per run × runs per day × 30
 
 If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC per month`. Share this estimate with your GitHub administrator before enabling a high-frequency [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
 
-### Project costs with [gh aw forecast](https://github.github.com/gh-aw/setup/cli/#forecast-experimental)
+### Project costs with [gh aw forecast](https://github.github.com/gh-aw/setup/cli/#forecast)
 
 `gh aw forecast` uses your actual run history and Monte Carlo simulation to project future AIC consumption. Run it for a single workflow to see a P10/P50/P90 probability distribution:
 
