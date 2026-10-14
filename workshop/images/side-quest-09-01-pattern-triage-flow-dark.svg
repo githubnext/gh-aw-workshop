@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560"
+  role="img"
+  aria-label="Diagnosing agent output patterns: a workflow run produces unexpected output, which you match against five known patterns (long plan chain, empty tool results, safe-output limit reached, permission denied, done with no write), then open the matching micro-step guide, and use the debugging checklist for full triage, looping back to the run output if the symptom is still unclear."
+  data-visual-kind="diagram"
+  data-visual-id="side-quest-09-01-pattern-triage-flow">
+
+  <!-- Background -->
+  <rect width="1200" height="560" fill="#101411"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#f2f5f3">Diagnose by Pattern</text>
+  <text x="600" y="74" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="15" fill="#b6bfb8">Match the symptom, open its micro-step, then confirm with the full checklist</text>
+
+  <defs>
+    <marker id="arrow-dark" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#b6bfb8"/>
+    </marker>
+  </defs>
+
+  <!-- ===== NODE 1: Workflow run output ===== -->
+  <rect x="40" y="170" width="180" height="180" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="run-output"/>
+  <g transform="translate(115, 196)" fill="#5fed83">
+    <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm6.271-2.014a.75.75 0 0 1 .75 0l4 2.5a.75.75 0 0 1 0 1.279l-4 2.5a.75.75 0 0 1-1.125-.64V6.625a.75.75 0 0 1 .375-.64z"/>
+  </g>
+  <text x="130" y="248" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">Run Output</text>
+  <text x="130" y="270" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Something looks</text>
+  <text x="130" y="288" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">unexpected</text>
+  <circle cx="40" cy="170" r="14" fill="#5fed83"/>
+  <text x="40" y="175" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">1</text>
+
+  <line x1="221" y1="260" x2="259" y2="260" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ===== NODE 2: Five known patterns ===== -->
+  <rect x="260" y="130" width="420" height="260" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" stroke-dasharray="8 5" data-node="pattern-group"/>
+  <text x="470" y="160" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="600" fill="#b6bfb8" letter-spacing="0.04em">5 KNOWN PATTERNS</text>
+  <rect x="289.0" y="188" width="110" height="56" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="pattern-1"/>
+  <text x="344.0" y="213.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">Long plan</text>
+  <text x="344.0" y="229.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">chain</text>
+  <rect x="415.0" y="188" width="110" height="56" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="pattern-2"/>
+  <text x="470.0" y="213.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">Empty tool</text>
+  <text x="470.0" y="229.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">results</text>
+  <rect x="541.0" y="188" width="110" height="56" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="pattern-3"/>
+  <text x="596.0" y="213.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">Limit</text>
+  <text x="596.0" y="229.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">reached</text>
+  <rect x="352.0" y="264" width="110" height="56" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="pattern-4"/>
+  <text x="407.0" y="289.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">Permission</text>
+  <text x="407.0" y="305.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">denied</text>
+  <rect x="478.0" y="264" width="110" height="56" rx="8" fill="#101411" stroke="#909692" stroke-width="1.5" data-node="pattern-5"/>
+  <text x="533.0" y="289.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">Done, no</text>
+  <text x="533.0" y="305.0" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" font-weight="600" fill="#f2f5f3">write</text>
+  <circle cx="260" cy="130" r="14" fill="#5fed83"/>
+  <text x="260" y="135" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">2</text>
+
+  <line x1="681" y1="260" x2="719" y2="260" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+  <text x="700" y="248" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">match</text>
+
+  <!-- ===== NODE 3: Micro-step guide ===== -->
+  <rect x="720" y="170" width="200" height="180" rx="12" fill="#0a241b" stroke="#909692" stroke-width="1.5" data-node="micro-step"/>
+  <rect x="800" y="196" width="40" height="30" rx="3" fill="none" stroke="#5fed83" stroke-width="2"/>
+  <line x1="820" y1="196" x2="820" y2="226" stroke="#5fed83" stroke-width="2"/>
+  <text x="820" y="250" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">Micro-step</text>
+  <text x="820" y="272" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Explanation +</text>
+  <text x="820" y="290" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">identify-before-reveal</text>
+  <text x="820" y="308" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">exercise</text>
+  <circle cx="720" cy="170" r="14" fill="#5fed83"/>
+  <text x="720" y="175" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">3</text>
+
+  <line x1="921" y1="260" x2="959" y2="260" stroke="#b6bfb8" stroke-width="2" marker-end="url(#arrow-dark)"/>
+
+  <!-- ===== NODE 4: Debugging checklist ===== -->
+  <rect x="960" y="170" width="200" height="180" rx="12" fill="#0a241b" stroke="#5fed83" stroke-width="2" data-node="checklist"/>
+  <g stroke="#5fed83" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1040 198 l6 6 l12 -12" transform="translate(0,2)"/>
+    <line x1="1066" y1="200" x2="1100" y2="200"/>
+    <path d="M1040 220 l6 6 l12 -12"/>
+    <line x1="1066" y1="222" x2="1100" y2="222"/>
+  </g>
+  <text x="1060" y="262" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" font-weight="600" fill="#f2f5f3">Checklist</text>
+  <text x="1060" y="284" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">Full run triage</text>
+  <text x="1060" y="302" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" fill="#b6bfb8">when unsure</text>
+  <circle cx="960" cy="170" r="14" fill="#5fed83"/>
+  <text x="960" y="175" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#101411">4</text>
+
+  <!-- Loop-back: still unclear, re-check the run -->
+  <path d="M1060 350 L1060 420 L130 420 L130 351" fill="none" stroke="#b6bfb8" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#arrow-dark)"/>
+  <text x="595" y="440" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="12" fill="#b6bfb8">still unclear — re-check the run output</text>
+
+  <text x="600" y="534" text-anchor="middle" font-family="'Mona Sans', system-ui, sans-serif" font-size="14" fill="#b6bfb8">Five patterns cover most failures; the checklist handles anything the pattern table misses.</text>
+
+</svg>

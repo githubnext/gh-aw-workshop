@@ -8,6 +8,12 @@
 
 You will diagnose five common output patterns one at a time. Each micro-step includes a short explanation, a realistic log snippet, and an identify-before-reveal exercise.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-09-01-pattern-triage-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-09-01-pattern-triage-flow-light.svg">
+   <img alt="Diagnose by pattern: match unexpected run output against five known patterns, open the matching micro-step, then confirm with the debugging checklist if still unclear" src="images/side-quest-09-01-pattern-triage-flow-light.svg">
+</picture>
+
 ## :clipboard: Before You Start
 
 - Complete [Reading Workflow Output](08b-interpret-your-run.md)
