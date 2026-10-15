@@ -126,7 +126,7 @@ Write a label beside each line:
 
 Open a real workflow file and find the three core building blocks — no terminal or credentials required, just your browser.
 
-1. Open any public repository on GitHub (for example, the [gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) repository).
+1. Open a repository that has workflows: your practice repository, or the public [gh-aw-workshop](https://github.com/githubnext/gh-aw-workshop) repository. On GitHub Enterprise Server or an enterprise-managed account, use any repository on your own instance that has an **Actions** tab.
 2. Click the **Actions** tab.
 3. Click any workflow in the left sidebar.
 4. Click **View workflow file** (top right of the run list).
