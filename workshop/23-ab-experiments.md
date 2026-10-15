@@ -38,7 +38,7 @@ Commit both workflow files.
 
 ### Add the experiment manually (alternative)
 
-If you prefer to edit directly, add this to the frontmatter in `.github/workflows/daily-status.md`:
+If you prefer to edit directly, add this to the [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) in `.github/workflows/daily-status.md`:
 
 ```markdown .github/workflows/daily-status.md
 ---
