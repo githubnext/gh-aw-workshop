@@ -17,31 +17,11 @@ You'll copy your finished workflow file into a shared location so that teammates
 
 ### Understand how gh-aw templates work
 
-When you run `gh aw add`, the extension fetches a workflow Markdown file directly from a GitHub repository. Any `.md` file in a `.github/workflows/` folder of a repository you have read access to can act as a template — public, private, or internal all work the same way, as long as the person running `gh aw add` can read that repository (including on GHES or within an internal-visibility organization).
+When you run `gh aw add`, the extension fetches a workflow Markdown file from any repository you can read. That means **your workflow is already a template** — you just need to point people at it.
 
-That means **your workflow is already a template** — you just need to point people at it.
+For this step, you'll use your own practice repository. If you later move the template to a dedicated repo, the process is identical.
 
-> [!NOTE]
-> One frontmatter field blocks reuse on purpose: a workflow with `private: true` in its frontmatter cannot be added to another repository with `gh aw add`, even if the source repository itself is readable. Use `private: true` on workflows that contain repository-specific logic you don't want teammates copying elsewhere. Leave it unset (the default) on anything you intend to share as a template.
-
-### Choose a sharing destination
-
-You have two options:
-
-| Goal | Where to put the workflow |
-|------|--------------------------|
-| Share within your team | A shared "workflows" repo in your GitHub organization (e.g. `your-org/workflow-templates`) — private or internal visibility both work |
-| Share publicly | Any public repository — even the one you've been working in |
-
-For this step, you'll use your own practice repository. If you later want to move the template to a dedicated repo, the process is identical.
-
-> [!TIP]
-> <details>
-> <summary><b>Enterprise users (GHES, GHEC, EMU): confirm cross-repository and cross-org access before sharing.</b></summary>
->
-> `gh aw add` only works if the account running it has read access to the source repository. On GHES or within an EMU organization, that often means the source and destination repositories must be in the same enterprise instance, and any org-level repository visibility restrictions (private, internal, or outside-collaborator policies) still apply. If your admin restricts cross-org forking or outside collaborators, confirm with them which organizations can read your shared "workflows" repo before advertising the `gh aw add` command to a wider team.
->
-> </details>
+> **Optional Side Quest:** Want to choose between a team or public sharing destination, block reuse with `private: true`, or check cross-org access in an enterprise? Work through [Side Quest: Who Can Use Your Shared Workflow Template?](side-quest-18-01-sharing-access.md), then come back here.
 
 ### Verify your workflow file is committed
 
