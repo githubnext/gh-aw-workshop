@@ -1,6 +1,6 @@
 <!-- page-journey: all -->
 <!-- page-adventure: side-quest -->
-# Side Quest: Fuzzy Schedule Expressions
+# Side Quest 09-02: Fuzzy Schedule Expressions
 
 > _Optional: use this quick reference if you want help choosing a schedule expression for [Refine, Test, and Improve Your Workflow](09-agentic-editing.md), then return to the main adventure._
 
@@ -78,7 +78,7 @@ If none of the fuzzy options match your exact timing need, choose the closest fu
 > ```
 
 <!-- journey: all -->
-## ✅ Checkpoint
+## :white_check_mark: Checkpoint
 
 - [ ] I can explain what a cron expression is at a high level
 - [ ] I know which fuzzy schedule expression best matches my workflow cadence
