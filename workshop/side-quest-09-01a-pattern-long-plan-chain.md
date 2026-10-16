@@ -18,6 +18,12 @@ Use this structure in your brief:
 - Ranking rule: "Sort by reactions and pick the top item."
 - Output rule: "Post one comment that includes the selected issue URL and reason."
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-09-01a-plan-chain-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-09-01a-plan-chain-light.svg">
+   <img alt="Two workflow briefs compared: a vague brief produces repeated plan steps and no tool call, while an explicit brief leads to a first tool call, a ranking rule, and a comment." src="images/side-quest-09-01a-plan-chain-light.svg">
+</picture>
+
 If you need help tightening wording, ask the `agentic-workflows` skill to rewrite your brief or run [`gh aw compile --watch`](https://github.github.com/gh-aw/setup/cli/#compile).
 
 ## Hands-On Exercise
