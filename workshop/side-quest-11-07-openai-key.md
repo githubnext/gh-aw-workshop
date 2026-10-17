@@ -13,7 +13,7 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 - You have an OpenAI account or access to an OpenAI API key from your organization.
 
 > [!NOTE]
-> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution. It does not refer to the discontinued [OpenAI Codex](side-quest-01-02-environment-reference.md#openai-codex) model family.
+> In `gh-aw`, `codex` is the engine identifier for OpenAI-powered execution. It does not refer to the discontinued [OpenAI Codex](side-quest-01-04-environment-visuals.md#openai-codex) model family.
 
 ---
 

@@ -53,7 +53,7 @@ Pick the lowest-scoring row and modify or add only **one sentence** in your [wor
 | Completeness | Name the missing field, such as "Include the age of the oldest open PR." |
 | Tone | Describe the voice you want, such as "Write in a friendly, conversational tone." |
 
-If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-02-environment-reference.md#github-copilot-app), ask for one focused update:
+If you use the GitHub Copilot **Agents** tab or the [GitHub Copilot app](side-quest-01-04-environment-visuals.md#github-copilot-app), ask for one focused update:
 
 ```prompt
 Using the agentic-workflows skill, update .github/workflows/daily-status.md
