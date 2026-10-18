@@ -108,6 +108,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 - [Skill Injection Strategies — Hint, Fusion, and Inline](side-quest-29-01-skill-injection-strategies.md) — decision table, code examples, and a practice exercise for the hint, fusion, and inline strategies for wiring a `SKILL.md` into a workflow prompt; branches from [Step 29](29-skills-and-domain-knowledge.md).
 - [Recognizing Common Agentic Workflow Failure Modes](side-quest-22-01-failure-modes.md) — worked examples of empty data, tool error, timeout, and prompt drift failures with a match-the-fix practice exercise; branches from [Step 22](22-error-handling-and-resilience.md).
 - [How the `agentic-workflows` Skill Dispatcher Works](side-quest-10-03-skill-dispatcher.md) — full task-type table with trigger phrases, plus practice scenarios for matching a request to the Edit, Debug, or Optimize path; branches from [Step 9](09-agentic-editing.md).
+- [Control Who Can Reuse Your Workflow Template](side-quest-18-01-template-access-and-versioning.md) — repository access checks (including GHES/EMU), `private: true`, version pinning with `@<tag-or-sha>`, and template hints; branches from [Step 18](18-share-and-reuse.md).
 
 ## Getting Started
 

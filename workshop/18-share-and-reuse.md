@@ -21,8 +21,8 @@ When you run `gh aw add`, the extension fetches a workflow Markdown file directl
 
 That means **your workflow is already a template** — you just need to point people at it.
 
-> [!NOTE]
-> One frontmatter field blocks reuse on purpose: a workflow with `private: true` in its frontmatter cannot be added to another repository with `gh aw add`, even if the source repository itself is readable. Use `private: true` on workflows that contain repository-specific logic you don't want teammates copying elsewhere. Leave it unset (the default) on anything you intend to share as a template.
+> [!TIP]
+> **Optional Side Quest:** Want to check who can read your template, block reuse with `private: true`, or pin a version? Take [Side Quest: Control Who Can Reuse Your Workflow Template](side-quest-18-01-template-access-and-versioning.md), then come back here.
 
 ### Choose a sharing destination
 
@@ -34,14 +34,6 @@ You have two options:
 | Share publicly | Any public repository — even the one you've been working in |
 
 For this step, you'll use your own practice repository. If you later want to move the template to a dedicated repo, the process is identical.
-
-> [!TIP]
-> <details>
-> <summary><b>Enterprise users (GHES, GHEC, EMU): confirm cross-repository and cross-org access before sharing.</b></summary>
->
-> `gh aw add` only works if the account running it has read access to the source repository. On GHES or within an EMU organization, that often means the source and destination repositories must be in the same enterprise instance, and any org-level repository visibility restrictions (private, internal, or outside-collaborator policies) still apply. If your admin restricts cross-org forking or outside collaborators, confirm with them which organizations can read your shared "workflows" repo before advertising the `gh aw add` command to a wider team.
->
-> </details>
 
 ### Verify your workflow file is committed
 
@@ -78,8 +70,7 @@ gh aw add jsmith/my-workshop/daily-status
 
 Your teammate runs this inside their repository. `gh aw add` copies the Markdown file into their `.github/workflows/` folder and they can then edit and [compile](https://github.github.com/gh-aw/reference/compilation-process/) it for their own context.
 
-> [!TIP]
-> You can also pin to a specific version using a tag or commit SHA: `gh aw add jsmith/my-workshop/daily-status@v1.0`. This is useful when you want to guarantee stability for a team-wide rollout.
+To pin a version, add `@<tag-or-sha>` — see the side quest above.
 
 ### Document your template
 
