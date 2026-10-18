@@ -12,6 +12,12 @@ You will diagnose empty [tool](https://github.github.com/gh-aw/reference/tools/)
 
 An empty result does not always mean failure. The call may succeed but return zero records. Start by checking whether your tool needs a read scope that is missing from `permissions:`. Then test whether your query is too narrow. For example, `labels: bug` returns nothing if no issue currently has that label. Your goal is to isolate one variable at a time so you can see whether the problem is authorization, query logic, or data state.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-09-01b-empty-result-path-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-09-01b-empty-result-path-light.svg">
+   <img alt="Decision path for an empty tool result: a successful call returns zero records, then you check read scope, broaden filters, and compare with repository data to find the cause" src="images/side-quest-09-01b-empty-result-path-light.svg">
+</picture>
+
 Use this sequence:
 
 1. Confirm the required read scope in workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (for example, `issues: read`).

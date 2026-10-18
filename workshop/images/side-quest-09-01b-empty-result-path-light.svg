@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Decision path for an empty tool result: a successful call returns zero records, then you check read scope, broaden filters, and compare with repository data to find the cause" data-visual-kind="diagram" data-visual-id="side-quest-09-01b-empty-result-path">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#232925"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="560" fill="#f2f5f3"/>
+  <rect x="24" y="24" width="1152" height="512" rx="12" fill="#ffffff" stroke="#b6bfb8" stroke-width="2"/>
+  <text x="48" y="76" font-family="'Mona Sans', system-ui, sans-serif" font-size="28" font-weight="700" fill="#101411">Diagnose an empty [result]</text>
+  <text x="48" y="108" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" fill="#232925">Reading direction: left to right. Change one variable at a time.</text>
+
+  <g data-node="tool-call" data-state="done">
+    <rect x="48" y="150" width="220" height="110" rx="8" fill="#f2f5f3" stroke="#08872b" stroke-width="2"/>
+    <text x="64" y="188" font-family="'Mona Sans', system-ui, sans-serif" font-size="20" font-weight="700" fill="#101411">Call succeeds</text>
+    <text x="64" y="218" font-family="'Mona Sans Mono', ui-monospace, monospace" font-size="16" fill="#232925">0 records</text>
+    <text x="64" y="244" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">not a failure</text>
+  </g>
+  <g data-node="check-scope" data-state="in-progress">
+    <rect x="328" y="150" width="250" height="110" rx="8" fill="#f2f5f3" stroke="#08872b" stroke-width="2"/>
+    <text x="344" y="188" font-family="'Mona Sans', system-ui, sans-serif" font-size="20" font-weight="700" fill="#101411">Check read scope</text>
+    <text x="344" y="218" font-family="'Mona Sans Mono', ui-monospace, monospace" font-size="16" fill="#232925">permissions:</text>
+    <text x="344" y="244" font-family="'Mona Sans Mono', ui-monospace, monospace" font-size="16" fill="#232925">  issues: read</text>
+  </g>
+  <g data-node="broaden-filters" data-state="in-progress">
+    <rect x="638" y="150" width="250" height="110" rx="8" fill="#f2f5f3" stroke="#08872b" stroke-width="2"/>
+    <text x="654" y="188" font-family="'Mona Sans', system-ui, sans-serif" font-size="20" font-weight="700" fill="#101411">Broaden filters</text>
+    <text x="654" y="218" font-family="'Mona Sans Mono', ui-monospace, monospace" font-size="16" fill="#232925">drop labels: bug</text>
+    <text x="654" y="244" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">re-run the query</text>
+  </g>
+  <g data-node="compare-ui" data-state="in-progress">
+    <rect x="948" y="150" width="204" height="110" rx="8" fill="#f2f5f3" stroke="#08872b" stroke-width="2"/>
+    <text x="964" y="188" font-family="'Mona Sans', system-ui, sans-serif" font-size="20" font-weight="700" fill="#101411">Compare UI</text>
+    <text x="964" y="218" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">Does matching</text>
+    <text x="964" y="244" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">data exist?</text>
+  </g>
+
+  <line x1="268" y1="205" x2="326" y2="205" stroke="#232925" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="578" y1="205" x2="636" y2="205" stroke="#232925" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="888" y1="205" x2="946" y2="205" stroke="#232925" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g data-node="badge-1"><circle cx="48" cy="150" r="16" fill="#08872b"/><text x="48" y="157" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">1</text></g>
+  <g data-node="badge-2"><circle cx="328" cy="150" r="16" fill="#08872b"/><text x="328" y="157" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">2</text></g>
+  <g data-node="badge-3"><circle cx="638" cy="150" r="16" fill="#08872b"/><text x="638" y="157" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">3</text></g>
+  <g data-node="badge-4"><circle cx="948" cy="150" r="16" fill="#08872b"/><text x="948" y="157" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">4</text></g>
+
+  <line x1="453" y1="260" x2="453" y2="318" stroke="#232925" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <line x1="763" y1="260" x2="763" y2="318" stroke="#232925" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <line x1="1050" y1="260" x2="1050" y2="318" stroke="#232925" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+  <g data-node="cause-scope" data-state="error">
+    <rect x="328" y="320" width="250" height="88" rx="8" fill="#ffffff" stroke="#232925" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="344" y="354" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#101411">Cause: missing scope</text>
+    <text x="344" y="384" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">Fix: add read access</text>
+  </g>
+  <g data-node="cause-filter" data-state="error">
+    <rect x="638" y="320" width="250" height="88" rx="8" fill="#ffffff" stroke="#232925" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="654" y="354" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#101411">Cause: over-filtering</text>
+    <text x="654" y="384" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">Fix: loosen the query</text>
+  </g>
+  <g data-node="cause-empty" data-state="done">
+    <rect x="948" y="320" width="204" height="88" rx="8" fill="#ffffff" stroke="#08872b" stroke-width="2"/>
+    <text x="964" y="354" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" font-weight="700" fill="#101411">Cause: no data</text>
+    <text x="964" y="384" font-family="'Mona Sans', system-ui, sans-serif" font-size="16" fill="#232925">Nothing to fix</text>
+  </g>
+
+  <rect x="48" y="448" width="1104" height="56" rx="8" fill="#f2f5f3" stroke="#b6bfb8" stroke-width="1"/>
+  <text x="64" y="483" font-family="'Mona Sans', system-ui, sans-serif" font-size="18" fill="#101411">An empty result is a clue: scope, filter, or data state explains it.</text>
+</svg>
