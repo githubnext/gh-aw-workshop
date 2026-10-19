@@ -47,25 +47,37 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 
 ## Store the key as a repository secret
 
-Open your repository in a **new tab** so you keep the Anthropic console tab open until the secret is saved.
+Keep the Anthropic console tab open until the secret is saved. In your Codespace terminal, run the following command from your practice repository. It prompts you to paste the key, so the key never lands in your shell history:
 
-1. Open your repository on GitHub.
-2. Click **Settings** → **Secrets and variables** → **Actions**.
-3. Click **New repository secret**.
-4. Set the name to `ANTHROPIC_API_KEY` and paste the key value. Check there is no extra whitespace at the start or end.
-5. Click **Add secret**.
-6. Confirm the secret appears in the list as `ANTHROPIC_API_KEY`.
+```bash
+gh secret set ANTHROPIC_API_KEY
+```
+
+Expected output:
+
+```text
+? Paste your secret ********
+✓ Set Actions secret ANTHROPIC_API_KEY for <your-account>/<your-repo>
+```
+
+Confirm the secret exists:
+
+```bash
+gh secret list
+```
+
+Expected output includes a row like `ANTHROPIC_API_KEY    less than a minute ago`.
 
 > [!TIP]
-> Secret names must use only uppercase letters, digits, and underscores. `ANTHROPIC_API_KEY` is the exact name the `claude` engine looks for — do not rename it or add hyphens.
+> Prefer the browser? Go to **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. Either way, the name must be exactly `ANTHROPIC_API_KEY`.
 
 <details>
 <summary>Common mistakes with this secret</summary>
 
-- **Wrong name**: any variation (`anthropic_api_key`, `ANTHROPIC-API-KEY`, `CLAUDE_API_KEY`) will cause a silent auth failure. The name must be exactly `ANTHROPIC_API_KEY`.
-- **Copied with extra whitespace**: pasting from some tools adds a leading space. Delete and re-create the secret if you are unsure.
-- **Closed the Anthropic tab before saving**: you cannot retrieve the key again. Delete the key at [console.anthropic.com](https://console.anthropic.com/) and generate a new one.
-- **Network allow-list missing**: the `claude` engine needs outbound access to `api.anthropic.com`. Make sure it is in your [network.allowed](https://github.github.com/gh-aw/reference/network/) list (shown in the frontmatter example below).
+- **Wrong name**: any variation (`anthropic_api_key`, `CLAUDE_API_KEY`) causes a silent auth failure.
+- **Extra whitespace**: delete and re-create the secret if you are unsure.
+- **Closed the Anthropic tab before saving**: the key can't be shown again. Delete it in the console and generate a new one.
+- **Missing network entry**: the `claude` engine needs `api.anthropic.com` in your [network.allowed](https://github.github.com/gh-aw/reference/network/) list (shown below).
 
 </details>
 
@@ -102,17 +114,28 @@ After updating your frontmatter, compile the workflow to regenerate the lock fil
 gh aw compile
 ```
 
-You should see output confirming the file compiled without errors.
+Expected output ends with a line similar to:
+
+```text
+✓ Compiled my-workflow.md → my-workflow.lock.yml
+```
+
+Check that the lock file now uses the Claude engine:
+
+```bash
+grep -c "ANTHROPIC_API_KEY" .github/workflows/my-workflow.lock.yml
+```
+
+Any number greater than `0` means the compiled workflow reads your secret. Replace `my-workflow` with your workflow's file name.
 
 ---
 
 ## :white_check_mark: Checkpoint
 
-- [ ] You have an Anthropic account and have generated an API key
-- [ ] `ANTHROPIC_API_KEY` is stored as a repository secret
-- [ ] Your workflow frontmatter has `engine: claude`
+- [ ] `gh secret list` shows `ANTHROPIC_API_KEY`
+- [ ] Your workflow frontmatter has `engine: claude` and `api.anthropic.com` under `network.allowed`
 - [ ] `gh aw compile` completes without errors
-- [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
+- [ ] `grep -c "ANTHROPIC_API_KEY"` on your lock file prints a number greater than `0`
 
 <!-- journey: all -->
 **Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
