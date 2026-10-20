@@ -10,6 +10,12 @@ You will learn how to interpret blocked writes and choose between increasing all
 
 - Complete [Side Quest: Diagnosing Common Agent Output Patterns](side-quest-09-01-debug-output.md)
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/side-quest-09-01c-safe-output-limit-flow-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/side-quest-09-01c-safe-output-limit-flow-light.svg">
+   <img alt="Safe-output limit flow: the agent prepares two add-comment requests, the safe-outputs job allows the first because max is 1, and blocks the second with an E002 limit reached error" src="images/side-quest-09-01c-safe-output-limit-flow-light.svg">
+</picture>
+
 A safe-output error such as `E002: add-comment limit reached — 1 of 1 already used this run` means the agent attempted a write after reaching the configured `max` limit for that output type. The run may still finish successfully, but blocked writes are not executed. Your next step depends on intent:
 
 - If multiple writes are expected (for example, one comment per failing service), increase `max`.
