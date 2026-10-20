@@ -93,7 +93,7 @@ Repeated work is repeated cost.
 
 Extra tool calls can increase cost indirectly by extending the turn and adding more reasoning.
 
-- Expose only the tools the workflow needs.
+- Expose only the [tools](https://github.github.com/gh-aw/reference/tools/) the workflow needs.
 - Prefer one targeted [MCP](https://github.github.com/gh-aw/reference/mcp-gateway/) query over several broad ones.
 - When possible, fetch structured data in a deterministic step and let the agent interpret it.
 

@@ -93,7 +93,7 @@ env:
 
 ## Optional: choose a specific OpenAI model
 
-To pin a model version, use the extended engine syntax:
+To pin a model version, use the [extended engine syntax](https://github.github.com/gh-aw/reference/engines/#extended-coding-agent-configuration):
 
 ```markdown
 ---

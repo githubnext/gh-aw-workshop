@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Frontmatter Deep Dive — Part B
 
-> _Optional continuation of [Part A](side-quest-11-01-frontmatter-deep-dive.md): covers tools, safe-outputs, the closing fence, and the agent body. Return to the main path when done._
+> _Optional continuation of [Part A](side-quest-11-01-frontmatter-deep-dive.md): covers [tools](https://github.github.com/gh-aw/reference/tools/), [safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/), the closing fence, and the agent body. Return to the main path when done._
 
 ## :clipboard: Before You Start
 
@@ -12,7 +12,7 @@ You have completed [Part A](side-quest-11-01-frontmatter-deep-dive.md) and your 
 
 ## `tools:`
 
-**:mag: Predict:** To let the agent call GitHub APIs securely and stay within the permissions you declared, what configuration would you add? Write your answer before reading on.
+**:mag: Predict:** To let the agent call GitHub APIs securely and stay within the [permissions](https://github.github.com/gh-aw/reference/permissions/) you declared, what configuration would you add? Write your answer before reading on.
 
 ```markdown
 ---
