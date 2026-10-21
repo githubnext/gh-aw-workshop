@@ -52,33 +52,28 @@ jobs:
       - run: echo "Hello from GitHub Actions"   # step: a shell command on the runner
 ```
 
+A **runner** is the machine GitHub provisions for each job. Agentic workflows use the same hosted runners; see [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/) later if you need custom hardware.
+
+### Quick check: trigger, job, step
+
+Before moving on, answer from the example above:
+
+1. **Trigger:** Which key decides when the workflow starts, and what value does it use?
+2. **Job:** What is the job named?
+3. **Step:** Which command does the step run?
+
 <details>
-<summary>What is a runner?</summary>
+<summary>Reveal the answers</summary>
 
-A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
-
-```markdown .github/workflows/hello-workflow.md
----
-runs-on: ubuntu-latest   # also: windows-latest, macos-latest
----
-```
-
-You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same hosted runners.
+1. `on:` with `workflow_dispatch` (a manual run).
+2. `hello`.
+3. `echo "Hello from GitHub Actions"`.
 
 </details>
 
 ## Why This Matters for Agentic Workflows
 
-Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the **same Actions foundation** — same triggers, same runner, same [permissions](https://github.github.com/gh-aw/reference/permissions/) model — but add an AI agent that reads your repository, reasons about it, and writes back through guardrailed outputs.
-
-| Concept | Classic Actions | Agentic Workflow |
-|---|---|---|
-| Trigger (`on:`) | Same — schedule, push, PR, dispatch | Same |
-| Runner (`runs-on:`) | GitHub-hosted or self-hosted | Same |
-| Steps | Shell commands you define | AI agent executes a plain-English task brief |
-| Output | Files, logs, deploy artifacts | GitHub comments, issues, PRs, or other API writes |
-
-The agentic workflow file you'll author in this workshop is a `.md` file with the same `on:` and `runs-on:` keys you see above, plus a Markdown task brief that tells the AI agent what to do.
+[Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) use the same Actions foundation: same triggers, same runner, same [permissions](https://github.github.com/gh-aw/reference/permissions/) model. The difference is that a plain-English Markdown task brief replaces the fixed shell steps, and an AI agent writes back through guardrailed outputs.
 
 ## Label a sample workflow
 
