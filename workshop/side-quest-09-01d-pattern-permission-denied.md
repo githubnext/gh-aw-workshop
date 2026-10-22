@@ -17,6 +17,12 @@ When a log shows `permission denied`, the agent tried an operation outside the w
 
 Do not treat `permissions:` as a write switch. In this framework, write intent is controlled by `safe-outputs:`. Keep both controls minimal: only scopes and outputs your workflow truly needs.
 
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="images/09-permission-denied-decision-dark.svg">
+   <source media="(prefers-color-scheme: light)" srcset="images/09-permission-denied-decision-light.svg">
+   <img alt="Decision path for a permission denied error: if the failing call only reads data, add the matching permissions scope at read; if it changes GitHub state, allowlist the output in safe-outputs with a max." src="images/09-permission-denied-decision-light.svg">
+</picture>
+
 A quick check:
 
 - If the failing call changes GitHub state, inspect `safe-outputs:` first.
