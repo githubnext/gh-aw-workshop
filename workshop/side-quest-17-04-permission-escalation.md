@@ -73,7 +73,7 @@ With this setup, the agent can read data and generate output. It has no path to 
 Open your workflow file. Check the `permissions:` block and answer these three questions:
 
 - [ ] Does every permission listed have a clear reason tied to your task?
-- [ ] Are there any `write` permissions that your task does not actually use?
+- [ ] Are there any `write` [permissions](https://github.github.com/gh-aw/reference/permissions/#permission-scopes) that your task does not actually use?
 - [ ] Could you replace any `write` permission with `read` and the workflow would still work?
 
 If you answered "yes" to the second or third question, remove or downgrade that permission now.

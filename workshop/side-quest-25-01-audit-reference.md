@@ -17,7 +17,7 @@
 - **Agent AIC** — total [AI Credits](https://github.github.com/gh-aw/reference/cost-management/#ai-credits-aic) consumed by the agent turn
 - **Threat-detection AIC (⌖ AIC)** — credits consumed by the [firewall](https://github.github.com/gh-aw/reference/sandbox/#awf-agent-workflow-firewall)'s threat-detection model, reported separately from agent inference
 - **[MCP tool calls](https://github.github.com/gh-aw/guides/mcps/)** — each tool the agent invoked, with any errors
-- **Threat detection verdict** — whether prompt injection, secret leak, or malicious patch was detected
+- **[Threat detection](https://github.github.com/gh-aw/reference/threat-detection/#how-it-works) verdict** — whether prompt injection, secret leak, or malicious patch was detected
 - **[Safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)** — every safe-output declaration the agent emitted
 
 ## Artifact files explained

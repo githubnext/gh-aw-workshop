@@ -62,7 +62,7 @@ network:
 
 After a successful run, the `firewall.md` artifact provides a ready-made list of every
 domain the agent contacted — share it with your security team as an allowlist baseline.
-See [Audit Reference](side-quest-25-01-audit-reference.md) for details on reading firewall logs.
+See [Audit Reference](side-quest-25-01-audit-reference.md) for details on reading [firewall](https://github.github.com/gh-aw/reference/sandbox/#awf-agent-workflow-firewall) logs.
 
 ## :white_check_mark: Checkpoint
 

@@ -115,7 +115,7 @@ tools:
 | `repo-memory:` | Enables repository-backed memory for this workflow (`true` to enable). |
 
 > [!IMPORTANT]
-> `repo-memory` requires `contents: write` in your `permissions` block so the agent can commit the updated file. Add it alongside your existing permissions. This is a broader permission than `cache-memory` requires — keep the stored data small and review commits regularly.
+> `repo-memory` requires `contents: write` in your [`permissions`](https://github.github.com/gh-aw/reference/permissions/#permission-scopes) block so the agent can commit the updated file. Add it alongside your existing permissions. This is a broader permission than `cache-memory` requires — keep the stored data small and review commits regularly.
 
 Keep the stored data small — a list of IDs or a compact summary object — to avoid cluttering your commit history with large file changes.
 
