@@ -41,6 +41,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 27 | [Verify Your Workflow Quality with Evals](27-evaluate-workflow-quality.md) |
 | 28 | [Orchestrate Multiple Agentic Workflows](28-orchestrate-workflows.md) |
 | 29 | [Teach Your Agent Domain Knowledge with Skills](29-skills-and-domain-knowledge.md) |
+| 30 | [Control Which Domains Your Agent Can Reach](30-control-network-access.md) |
 
 ## Optional Side Quests
 
