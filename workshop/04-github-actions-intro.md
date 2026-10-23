@@ -82,45 +82,9 @@ The agentic workflow file you'll author in this workshop is a `.md` file with th
 
 ## Label a sample workflow
 
-The diagram below shows how the five key parts fit together in every workflow file.
+Every workflow file is built from five parts: **trigger**, **job**, **runner**, **step**, and **action**. In the examples above, `on:` is the trigger, `test:` or `hello:` under `jobs:` is a job, `runs-on:` picks the runner, and each `- run:` or `- uses:` entry is a step.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/04-actions-anatomy-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/04-actions-anatomy-light.svg">
-  <img alt="GitHub Actions workflow anatomy: trigger, job, runner, steps, and actions shown as nested layers" src="images/04-actions-anatomy-light.svg">
-</picture>
-
-Before reading on, label each highlighted part of the workflow below with its type:
-`trigger`, `job`, `runner`, `step`, or `action`.
-
-```yaml .github/workflows/hello-workflow.yml
-on: [push]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: echo "All checks passed"
-```
-
-Write a label beside each line:
-
-1. `on: [push]`
-2. `test:` (the job name under `jobs:`)
-3. `runs-on: ubuntu-latest`
-4. `uses: actions/checkout@v4`
-5. `run: echo "All checks passed"`
-
-<details>
-<summary>Reveal the labels</summary>
-
-- `on: [push]` → **trigger** (when this workflow runs)
-- `jobs: test:` → **job** (a group of steps that runs on one machine)
-- `runs-on: ubuntu-latest` → **runner** (the machine type GitHub provisions)
-- `uses: actions/checkout@v4` → **action** (a reusable step from the Actions marketplace)
-- `run: echo "All checks passed"` → **step** (a shell command run directly on the runner)
-
-</details>
+> :bulb: **Optional Side Quest:** Want to practice naming each part? Try [Side Quest: Label a GitHub Actions Workflow](side-quest-04-01-label-actions-workflow.md) for the anatomy diagram and a short labeling exercise with answers. It's optional — you can continue here without it.
 
 ## Try it: Explore a real workflow
 
@@ -138,7 +102,7 @@ Open a real workflow file and find the three core building blocks — no termina
 ## :white_check_mark: Checkpoint
 
 - [ ] You can identify `on`, `jobs`, and `steps` in a workflow file
-- [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
+- [ ] You can name the five parts of a workflow file (trigger, job, runner, step, action)
 - [ ] You know workflows live in `.github/workflows/`
 - [ ] You explored a real workflow and found its trigger, a job name, and a step command
 - [ ] You can describe one way agentic workflows extend classic Actions (same trigger and runner; AI agent replaces fixed shell steps)
