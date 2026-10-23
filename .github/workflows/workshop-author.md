@@ -27,7 +27,7 @@ safe-outputs:
     labels: [workshop, documentation]
     draft: true
     protected-files:
-      policy: request_review
+      policy: request-review
       exclude:
         - "README.md"
     allowed-files:

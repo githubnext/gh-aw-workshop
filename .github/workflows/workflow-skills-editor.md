@@ -25,7 +25,7 @@ safe-outputs:
     labels: [workflow-editor, documentation]
     draft: true
     protected-files:
-      policy: request_review
+      policy: request-review
     allowed-files:
       - ".github/workflows/*.md"
       - ".github/workflows/*.lock.yml"

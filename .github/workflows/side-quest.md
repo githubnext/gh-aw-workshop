@@ -28,7 +28,7 @@ safe-outputs:
     labels: [workshop, side-quest, documentation]
     draft: true
     protected-files:
-      policy: request_review
+      policy: request-review
     allowed-files:
       - "workshop/*.md"
       - "workshop/**/*.md"
