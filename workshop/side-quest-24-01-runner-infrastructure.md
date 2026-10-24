@@ -48,7 +48,7 @@ If your runner operates in an air-gapped or restricted environment, ensure it ca
 the GitHub API, your model endpoint, and any [MCP](https://github.github.com/gh-aw/guides/mcps/) tool servers your workflow calls.
 Work with your network admin to allowlist these endpoints before running agentic workflows.
 
-You can use the `network.allowed` frontmatter field to explicitly declare the domains your
+You can use the `network.allowed` [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) field to explicitly declare the domains your
 workflow needs:
 
 ```markdown
