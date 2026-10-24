@@ -50,7 +50,7 @@ The **⌖ AIC** column in `gh aw logs` output shows credits consumed by the thre
 
 ## Adding a blocked domain to [network.allowed](https://github.github.com/gh-aw/reference/network/#configuration)
 
-If the firewall blocked a domain your workflow needs, add it to `network.allowed` in your workflow frontmatter and recompile:
+If the firewall blocked a domain your workflow needs, add it to `network.allowed` in your workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and recompile:
 
 ```markdown
 ---

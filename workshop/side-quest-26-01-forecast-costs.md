@@ -90,7 +90,7 @@ The `max-daily-ai-credits` field caps how many [AIC](https://github.github.com/g
 | Safety margin (× 1.5) | 500 AIC |
 | Rounded `max-daily-ai-credits` | **500** |
 
-Add that value to your workflow frontmatter:
+Add that value to your workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/):
 
 ```markdown
 ---
