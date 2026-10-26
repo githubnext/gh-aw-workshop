@@ -30,7 +30,7 @@ The parent workflow should coordinate the run, not contain every review rule. It
 | `pr-reviewer` agent | Read the diff and return prioritized, evidence-backed findings |
 | `pr-review-standards` skill | Define what counts as a useful finding and how to format it |
 
-The diagram below shows how these three layers connect at runtime, with the safe output performing the only repository write.
+The diagram below shows how these three layers connect at runtime, with the [safe output](https://github.github.com/gh-aw/reference/safe-outputs/) performing the only repository write.
 
 <picture>
   <source srcset="images/14b-pr-reviewer-layers-dark.svg" media="(prefers-color-scheme: dark)">
@@ -56,7 +56,7 @@ Review the agent's diff before accepting it. The source should contain one paren
 
 ## Inspect the Generated Structure
 
-The workflow frontmatter should follow this shape:
+The workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) should follow this shape:
 
 ```markdown .github/workflows/pr-reviewer.md
 ---

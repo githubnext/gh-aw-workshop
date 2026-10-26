@@ -19,7 +19,7 @@ Letting an AI agent act on your repository on a [schedule](https://github.github
 - **A [sandbox](https://github.github.com/gh-aw/reference/sandbox/) around the agent.** The agent runs isolated inside the [Agent Workflow Firewall](https://github.github.com/gh-aw/reference/sandbox/), with **read-only** access to your repo and [network egress](https://github.github.com/gh-aw/reference/network/) limited to the domains you allow. Even if a [prompt injection](https://github.github.com/gh-aw/reference/threat-detection/) or a compromised tool tries to reach out or exfiltrate data, the firewall blocks anything outside the allowlist.
 - **A guardrailed [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) system for writes.** The agent never holds write permissions. Instead, it emits a *structured request* — "create this issue," "post this comment" — and a separate, permission-scoped job validates and executes it, applying per-operation limits (max counts, label and title constraints, allowed repos). That separation gives you least privilege, defense against prompt injection, and a full audit trail of every action.
 
-The security jobs in the run log above map to these boundaries: **activation** checks the agent is authorized to run, the **agent** runs sandboxed behind the firewall, **detection** scans for malicious behavior, and **safe-outputs** applies changes within the guardrails.
+The security jobs in the run log above map to these boundaries: **activation** checks the agent is authorized to run, the **agent** runs sandboxed behind the firewall, **detection** scans for malicious behavior, and **[safe-outputs](https://github.github.com/gh-aw/reference/safe-outputs/)** applies changes within the guardrails.
 
 <details>
 <summary>Why can't the agent just write to the repo directly?</summary>
@@ -58,7 +58,7 @@ For each scenario below, decide whether the **sandbox** or the **safe-output sys
 <details>
 <summary>Reveal Scenario B answer</summary>
 
-**Sandbox / Agent Workflow Firewall.** Outbound network traffic is limited to the domain allowlist. Any request to an unlisted domain is blocked at the firewall before it leaves the runner — the exfiltration attempt never reaches the external server.
+**Sandbox / Agent Workflow Firewall.** Outbound [network](https://github.github.com/gh-aw/reference/network/) traffic is limited to the domain allowlist. Any request to an unlisted domain is blocked at the firewall before it leaves the runner — the exfiltration attempt never reaches the external server.
 
 </details>
 
