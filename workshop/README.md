@@ -42,6 +42,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 28 | [Orchestrate Multiple Agentic Workflows](28-orchestrate-workflows.md) |
 | 29 | [Teach Your Agent Domain Knowledge with Skills](29-skills-and-domain-knowledge.md) |
 | 30 | [Preview Your Workflow's Writes with Staged Mode](30-preview-with-staged-mode.md) |
+| 31 | [Triage New Issues Automatically](31-triage-new-issues.md) |
 
 ## Optional Side Quests
 
