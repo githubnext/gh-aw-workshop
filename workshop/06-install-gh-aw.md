@@ -81,6 +81,13 @@ Run `gh aw --help` and scan the list of sub-commands.
 
 Which one sub-command do you expect to use in Step 7 when you create and run your first workflow?
 
+## :white_check_mark: Checkpoint
+
+- [ ] `gh aw --version` prints a version number
+- [ ] `gh aw --help` lists the available sub-commands
+- [ ] The skill and agent files exist under `.github/skills/` and `.github/agents/`
+- [ ] I can name the sub-command I expect to use in Step 7
+
 Want to understand how Copilot authenticates with your workflow?
 :arrow_right: **[Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md)**
 
