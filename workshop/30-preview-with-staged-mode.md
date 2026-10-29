@@ -100,5 +100,7 @@ git push
 - [ ] You removed staging, recompiled, and committed both the `.md` and `.lock.yml` files
 
 <!-- journey: all -->
+**Next:** [Prevent Overlapping Runs with Concurrency](31-prevent-overlapping-runs.md)
+
 Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
 <!-- /journey -->
