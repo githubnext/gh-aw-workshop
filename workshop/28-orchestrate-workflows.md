@@ -18,7 +18,7 @@
 
 ## :dart: What You'll Do
 
-You'll build an orchestrator workflow that reads repository state, decides which specialist workflow to activate, and dispatches it using the [`dispatch-workflow`](https://github.github.com/gh-aw/reference/safe-outputs/) safe-output. By the end of this step, you'll have a coordinator that routes work to existing specialists rather than handling everything itself.
+You'll build an [orchestrator workflow](https://github.github.com/gh-aw/patterns/orchestrator-ops/) that reads repository state, decides which specialist workflow to activate, and dispatches it using the [`dispatch-workflow`](https://github.github.com/gh-aw/reference/safe-outputs/) safe-output. By the end of this step, you'll have a coordinator that routes work to existing specialists rather than handling everything itself.
 
 ## :clipboard: Before You Start
 
