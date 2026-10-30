@@ -52,20 +52,8 @@ jobs:
       - run: echo "Hello from GitHub Actions"   # step: a shell command on the runner
 ```
 
-<details>
-<summary>What is a runner?</summary>
-
-A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
-
-```markdown .github/workflows/hello-workflow.md
----
-runs-on: ubuntu-latest   # also: windows-latest, macos-latest
----
-```
-
-You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same hosted runners.
-
-</details>
+> [!NOTE]
+> Other terms you may see (matrix, artifacts, environments, concurrency) aren't needed here. See the [GitHub Actions docs](https://docs.github.com/actions) when you want to go deeper. Agentic workflows use the same hosted runners, and you can also use [self-hosted runners](https://github.github.com/gh-aw/reference/self-hosted-runners/).
 
 ## Why This Matters for Agentic Workflows
 
@@ -103,13 +91,13 @@ jobs:
       - run: echo "All checks passed"
 ```
 
-Write a label beside each line:
+Write a label beside each line, then tick it off:
 
-1. `on: [push]`
-2. `test:` (the job name under `jobs:`)
-3. `runs-on: ubuntu-latest`
-4. `uses: actions/checkout@v4`
-5. `run: echo "All checks passed"`
+- [ ] `on: [push]`
+- [ ] `test:` (the job name under `jobs:`)
+- [ ] `runs-on: ubuntu-latest`
+- [ ] `uses: actions/checkout@v4`
+- [ ] `run: echo "All checks passed"`
 
 <details>
 <summary>Reveal the labels</summary>
@@ -130,10 +118,10 @@ Open a real workflow file and find the three core building blocks — no termina
 2. Click the **Actions** tab.
 3. Click any workflow in the left sidebar.
 4. Click **View workflow file** (top right of the run list).
-5. In the YAML, find and note:
-   - The `on:` trigger — what event starts this workflow?
-   - One `jobs:` entry — what is the job named?
-   - One `steps` item — what command does it run?
+5. In the YAML, find each item and tick it off:
+   - [ ] The `on:` trigger — what event starts this workflow?
+   - [ ] One `jobs:` entry — what is the job named?
+   - [ ] One `steps` item — what command does it run?
 
 ## :white_check_mark: Checkpoint
 
