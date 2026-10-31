@@ -99,6 +99,8 @@ git push
 - [ ] You can explain how per-type `staged: true` differs from the global setting
 - [ ] You removed staging, recompiled, and committed both the `.md` and `.lock.yml` files
 
+**Next:** [Control Which Websites Your Agent Can Reach](31-control-network-access.md)
+
 <!-- journey: all -->
 Want to choose another branch from the workshop hub? Return to [What's Next? Keep Exploring](14-next-steps.md).
 <!-- /journey -->
