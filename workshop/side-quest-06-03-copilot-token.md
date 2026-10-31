@@ -15,7 +15,7 @@
 
 If you are using a terminal, prefer the guided `gh-aw` setup flows where possible:
 
-- [`gh aw secrets bootstrap --engine copilot`](https://github.github.com/gh-aw/setup/cli/#secrets) after you choose personal billing
+- [`gh aw secrets bootstrap --engine copilot`](https://github.github.com/gh-aw/setup/cli/#secrets) after you choose personal [billing](https://github.github.com/gh-aw/reference/billing/)
 - `gh aw add-wizard ...` when you are installing a curated workflow and want setup prompts inline
 
 Use the manual guides below when you need or prefer the step-by-step browser procedure.

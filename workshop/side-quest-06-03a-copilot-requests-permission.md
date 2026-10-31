@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Method 1 — Copilot Requests Permission
 
-> _Optional: use this method when the organization that owns your practice repository has centralized Copilot billing enabled for GitHub Actions. Otherwise, use [Method PAT](side-quest-06-03b-copilot-github-token.md)._
+> _Optional: use this method when the organization that owns your practice repository has centralized Copilot [billing](https://github.github.com/gh-aw/reference/billing/) enabled for GitHub Actions. Otherwise, use [Method PAT](side-quest-06-03b-copilot-github-token.md)._
 
 ## :clipboard: Before You Start
 
