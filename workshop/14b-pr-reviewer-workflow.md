@@ -22,7 +22,7 @@ By the end, you'll have a reviewer that runs when a draft becomes ready, can be 
 
 ## Understand the Agent and Skill Split
 
-The parent workflow should coordinate the run, not contain every review rule. It delegates the diff analysis to a focused [inline agent](https://github.github.com/gh-aw/reference/inline-sub-agents/). That agent applies an inline skill containing the review method.
+The parent workflow coordinates the run, a focused [inline agent](https://github.github.com/gh-aw/reference/inline-sub-agents/) investigates the diff, and an inline skill defines what a good finding looks like.
 
 | Part | Responsibility |
 |---|---|
@@ -30,16 +30,8 @@ The parent workflow should coordinate the run, not contain every review rule. It
 | `pr-reviewer` agent | Read the diff and return prioritized, evidence-backed findings |
 | `pr-review-standards` skill | Define what counts as a useful finding and how to format it |
 
-The diagram below shows how these three layers connect at runtime, with the safe output performing the only repository write.
-
-<picture>
-  <source srcset="images/14b-pr-reviewer-layers-dark.svg" media="(prefers-color-scheme: dark)">
-  <img src="images/14b-pr-reviewer-layers-light.svg" alt="PR Reviewer three-layer architecture: Parent Brief orchestrates, pr-reviewer Agent investigates the diff, pr-review-standards Skill defines quality, and a Safe Output submits the review" width="1200" height="560">
-</picture>
-
-The agent can change how it investigates a pull request without changing the stable standards in the skill. You can also improve the skill without making the parent brief longer. The same split makes it straightforward to extend the reviewer to apply labels based on which files changed (see [Pattern: Auto-Label PRs by Content](side-quest-13-01-pr-labeler-pattern.md)) or to post a structured summary that doubles as a release note draft (see [Pattern: Generate a PR Summary Comment](side-quest-13-02-pr-summary-pattern.md)).
-
-> :thinking: **Predict:** Which instruction belongs in the skill: “review pull request 42” or “cite a changed file and line for every finding”? The first is run-specific orchestration; the second is reusable review guidance.
+> [!TIP]
+> **Optional Side Quest:** Want to see how the three layers connect at runtime and why the split keeps each layer easy to change? Take the detour through [Side Quest: The Agent and Skill Split](side-quest-14b-01-agent-skill-split.md), then come back here.
 
 ## Ask Your Agent to Create the Workflow
 
