@@ -51,6 +51,25 @@ After you complete Step 6, also run:
 gh aw --version
 ```
 
+## Try it: Match the tool to the task
+
+Before you scroll to the screenshots, check your understanding. Pick the tool from the glossary that fits each task:
+
+1. You want to compile a workflow file into its `.lock.yml`.
+2. You want a cloud environment in your browser with everything pre-installed.
+3. You want AI help while you stay in the terminal.
+4. You want to check which GitHub account you're signed in as.
+
+<details>
+<summary>Reveal the answers</summary>
+
+1. **`gh-aw` CLI extension** — run `gh aw compile`.
+2. **GitHub Codespaces**.
+3. **GitHub Copilot CLI**.
+4. **GitHub CLI (`gh`)** — run `gh auth status`.
+
+</details>
+
 ## Conceptual screenshots
 
 Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app."
@@ -158,6 +177,7 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 - [ ] You ran `gh --version` in your terminal and it returned a version number
 - [ ] You ran `git --version` in your terminal and it returned a version number
 - [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md): you ran `gh aw --version` and it returned a version number
+- [ ] You matched each of the four tasks in the "Match the tool to the task" activity to the right tool
 - [ ] You can match each item to its conceptual screenshot
 - [ ] You know where to find official docs for each tool
 - [ ] (Enterprise users) You know which URLs in workshop instructions map to your enterprise hostname
