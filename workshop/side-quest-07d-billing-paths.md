@@ -9,7 +9,7 @@ Choose exactly one [billing](https://github.github.com/gh-aw/reference/billing/)
 | Organization provides centralized Copilot billing for Actions | **Organization centralized billing** | Keep `copilot-requests: write`; no secret needed |
 | Personal repo, or org does not provide centralized billing | **Personal billing** | Remove `copilot-requests: write`; add `COPILOT_GITHUB_TOKEN` secret |
 
-If you are not sure which applies, ask: "Is centralized Copilot billing for GitHub Actions enabled for this repository?" If the answer is "no" or "I don't know," follow **Personal billing**.
+If you are not sure which applies, ask: "Is centralized Copilot [billing](https://github.github.com/gh-aw/reference/billing/) for GitHub Actions enabled for this repository?" If the answer is "no" or "I don't know," follow **Personal billing**.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/07d-billing-path-decision-dark.svg">
