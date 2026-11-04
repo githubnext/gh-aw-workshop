@@ -21,7 +21,7 @@ The file ends in `.md` instead of `.yml` because the [frontmatter](https://githu
 
 ## Frontmatter sections at a glance
 
-The five frontmatter sections you'll build in Step 7:
+The five [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) sections you'll build in Step 7:
 
 | Section | Key(s) | What it does |
 |---------|--------|--------------|

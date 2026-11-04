@@ -95,7 +95,7 @@ on:
 
 ## Permissions
 
-**:mag: Predict:** The agent needs to read issues and post a comment. Which permissions would you list? Write them down before reading the explanation.
+**:mag: Predict:** The agent needs to read issues and post a comment. Which [permissions](https://github.github.com/gh-aw/reference/frontmatter/#permissions-permissions) would you list? Write them down before reading the explanation.
 
 ```markdown
 ---
@@ -163,7 +163,7 @@ on:
 Run `gh aw compile` and verify all three triggers appear.
 </details>
 
-Now combine all three sections into one complete frontmatter block and compile it:
+Now combine all three sections into one complete [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) block and compile it:
 
 ```markdown
 # Your turn: combine all three sections

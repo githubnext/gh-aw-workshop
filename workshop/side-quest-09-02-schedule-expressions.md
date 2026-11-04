@@ -50,7 +50,7 @@ on:
       # Friendly format: daily on weekdays (scattered)
 ```
 
-This is the exact schedule GitHub Actions will register for **your** workflow.
+This is the exact [schedule](https://github.github.com/gh-aw/reference/schedule-syntax/#fuzzy-schedules) GitHub Actions will register for **your** workflow.
 
 ## When should you use raw cron?
 
