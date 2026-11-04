@@ -52,31 +52,24 @@ jobs:
       - run: echo "Hello from GitHub Actions"   # step: a shell command on the runner
 ```
 
+| Term | One-line definition |
+|---|---|
+| trigger | The event that starts the workflow |
+| job | A named group of steps that runs on one machine |
+| runner | The machine GitHub provisions for a job (fresh every run) |
+| step | One command or action inside a job |
+| action | A reusable step, referenced with `uses:` |
+
 <details>
-<summary>What is a runner?</summary>
+<summary>Optional: self-hosted runners</summary>
 
-A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
-
-```markdown .github/workflows/hello-workflow.md
----
-runs-on: ubuntu-latest   # also: windows-latest, macos-latest
----
-```
-
-You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same hosted runners.
+You can bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same runners.
 
 </details>
 
 ## Why This Matters for Agentic Workflows
 
 Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the **same Actions foundation** — same triggers, same runner, same [permissions](https://github.github.com/gh-aw/reference/permissions/) model — but add an AI agent that reads your repository, reasons about it, and writes back through guardrailed outputs.
-
-| Concept | Classic Actions | Agentic Workflow |
-|---|---|---|
-| Trigger (`on:`) | Same — schedule, push, PR, dispatch | Same |
-| Runner (`runs-on:`) | GitHub-hosted or self-hosted | Same |
-| Steps | Shell commands you define | AI agent executes a plain-English task brief |
-| Output | Files, logs, deploy artifacts | GitHub comments, issues, PRs, or other API writes |
 
 The agentic workflow file you'll author in this workshop is a `.md` file with the same `on:` and `runs-on:` keys you see above, plus a Markdown task brief that tells the AI agent what to do.
 
@@ -122,6 +115,29 @@ Write a label beside each line:
 
 </details>
 
+## Try it: Edit a workflow
+
+Change the sample workflow in your head — or in a scratch file — to practice reading the keys:
+
+1. Change the trigger so it runs on `workflow_dispatch` instead of `push`.
+2. Add a second `run:` step that prints `Done`.
+
+<details>
+<summary>Check your edit</summary>
+
+```yaml
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "All checks passed"
+      - run: echo "Done"
+```
+
+</details>
+
 ## Try it: Explore a real workflow
 
 Open a real workflow file and find the three core building blocks — no terminal or credentials required, just your browser.
@@ -139,6 +155,7 @@ Open a real workflow file and find the three core building blocks — no termina
 
 - [ ] You can identify `on`, `jobs`, and `steps` in a workflow file
 - [ ] You labeled all five parts of the sample workflow above (trigger, job, runner, action, step)
+- [ ] You edited the sample workflow's trigger and added a step
 - [ ] You know workflows live in `.github/workflows/`
 - [ ] You explored a real workflow and found its trigger, a job name, and a step command
 - [ ] You can describe one way agentic workflows extend classic Actions (same trigger and runner; AI agent replaces fixed shell steps)
