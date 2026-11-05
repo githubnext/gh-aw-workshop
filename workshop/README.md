@@ -47,6 +47,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 
 - [Agentic Workflows for GitHub Actions Power Users](side-quest-05-01-actions-power-user.md) — one-page cheat sheet for what changes vs what stays the same in agentic workflows; branches from [Step 5](05-agentic-workflows-intro.md).
 - [Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md) — classification exercises, example agent output, the two-file structure, and concept checks; branches from [Step 5](05-agentic-workflows-intro.md).
+- [Label the Parts of a GitHub Actions Workflow](side-quest-04-01-label-actions-workflow.md) — optional hands-on labeling exercise for trigger, job, runner, action, and step; branches from [Step 4](04-github-actions-intro.md).
 - [Terminal Basics](side-quest-01-01-terminal-basics.md) — optional primer that branches from [Step 1](01-prerequisites.md).
 - [Set Up Your Local Terminal](side-quest-02-01-local-terminal.md) — optional alternative for experienced terminal users who want to work on their own machine instead of in the recommended Codespace.
 - [Enterprise Setup Considerations](side-quest-enterprise-setup.md) — required reading for GHES users and useful for any managed enterprise environment; common return points include [Step 1](01-prerequisites.md), [Step 2](02a-setup-codespace.md), the [Local Terminal side quest](side-quest-02-01-local-terminal.md), and [Step 5](05-agentic-workflows-intro.md).
