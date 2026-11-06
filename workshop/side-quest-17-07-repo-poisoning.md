@@ -36,15 +36,13 @@ The embedded YAML block in that issue body would define a job that exfiltrates `
 
 ## Why This Matters for [Agentic Workflows](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows)
 
-Classic CI/CD runs deterministic scripts. An [agentic workflow](https://github.github.com/gh-aw/introduction/overview/#what-are-agentic-workflows) reads freeform repository content — issue bodies, PR descriptions, file text — and decides at runtime what to do. That reasoning loop makes it vulnerable to **content-driven manipulation**: the attack payload lives in repository data, not in workflow code.
-
-Write access magnifies every read. If the agent can commit directly, a successful content injection skips human review entirely. The poisoned file lands on the default branch before anyone notices.
+An agentic workflow decides at runtime what to do based on freeform repository content, so the attack payload lives in data, not workflow code. With write access, a successful injection skips human review and lands on the default branch.
 
 ---
 
 ## How AW Defends Against It
 
-gh-aw gives you three layers to prevent repository poisoning.
+gh-aw gives you four layers to prevent repository poisoning. Each one works on its own; together they cover each other's gaps.
 
 ### Declare [read-only permissions](https://github.github.com/gh-aw/reference/permissions/)
 
@@ -175,16 +173,9 @@ After hardening, your workflow frontmatter should contain no `contents: write`, 
 
 ---
 
-## What You Can Do as a Workflow Author
+## Remember
 
-| Defensive measure | Why it helps |
-|---|---|
-| `contents: read` | Removes direct commit capability; the agent cannot write files regardless of what it is told |
-| `safe-outputs: create-pull-request` | Routes every proposed change through a PR, adding a mandatory human review gate |
-| `allowed-files` | Limits the PR to only the paths the task should legitimately touch |
-| `protected-files.exclude` | Flags sensitive paths (e.g. `.github/workflows/**`) for mandatory reviewer approval |
-| `network.allowed-domains` | Blocks outbound connections to attacker-controlled servers, closing the exfiltration channel |
-| Treat all untrusted content as hostile | Issue bodies, PR descriptions, and file text are user-controlled inputs — never trust them unconditionally |
+Treat issue bodies, PR descriptions, and file text as hostile input. Keep permissions read-only, route writes through a reviewed pull request, and limit where the agent can send data.
 
 ---
 
