@@ -115,21 +115,10 @@ gh aw compile repo-orchestrator
 
 ### Review the `dispatch-workflow` safe-output
 
-After the skill or your manual edit creates the file, confirm the frontmatter contains:
-
-```markdown .github/workflows/repo-orchestrator.md
-safe-outputs:
-  dispatch-workflow:
-    workflows:
-      - daily-status
-      - pr-reviewer
-    max: 1
-```
-
-The `workflows` list is an allowlist — your orchestrator can only dispatch workflows named here. The `max: 1` cap prevents one run from triggering many specialists at once.
+Confirm your frontmatter has a `dispatch-workflow` block with an explicit `workflows` allowlist and `max: 1`. The allowlist limits which specialists the orchestrator can dispatch, and `max: 1` keeps each run to a single dispatch. The specialist runs asynchronously, so the orchestrator does not wait for it.
 
 > [!NOTE]
-> `dispatch-workflow` triggers the named workflow with a `workflow_dispatch` event. The specialist runs asynchronously in its own Actions job. Your orchestrator does not wait for it to complete.
+> **Optional Side Quest:** Want to inspect each setting line by line? Take the [Reviewing the `dispatch-workflow` Safe-Output](side-quest-28-01-dispatch-workflow.md) detour, then come back here.
 
 ### Compile and push
 
