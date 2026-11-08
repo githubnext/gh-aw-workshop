@@ -52,33 +52,13 @@ jobs:
       - run: echo "Hello from GitHub Actions"   # step: a shell command on the runner
 ```
 
-<details>
-<summary>What is a runner?</summary>
-
-A **runner** is the machine GitHub provisions for each job — fresh and isolated for every run.
-
-```markdown .github/workflows/hello-workflow.md
----
-runs-on: ubuntu-latest   # also: windows-latest, macos-latest
----
-```
-
-You can also bring a **[self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/)** for custom hardware or private networks. Agentic workflows use the same hosted runners.
-
-</details>
+A **runner** is the fresh, isolated machine GitHub provisions for each job. Agentic workflows use the same runners. Need Windows, macOS, or self-hosted runners (common on GHES and GHEC)? See [Actions power-user reference](side-quest-05-01-actions-power-user.md).
 
 ## Why This Matters for Agentic Workflows
 
-Traditional workflows execute a fixed script path. [Agentic workflows](https://github.github.com/gh-aw/introduction/overview/) still use the **same Actions foundation** — same triggers, same runner, same [permissions](https://github.github.com/gh-aw/reference/permissions/) model — but add an AI agent that reads your repository, reasons about it, and writes back through guardrailed outputs.
+Agentic workflows use the same Actions foundation (triggers, runners, [permissions](https://github.github.com/gh-aw/reference/permissions/)) but replace fixed shell steps with an AI agent that follows a plain-English task brief. You'll author a `.md` file with the same `on:` key you see above, plus that brief.
 
-| Concept | Classic Actions | Agentic Workflow |
-|---|---|---|
-| Trigger (`on:`) | Same — schedule, push, PR, dispatch | Same |
-| Runner (`runs-on:`) | GitHub-hosted or self-hosted | Same |
-| Steps | Shell commands you define | AI agent executes a plain-English task brief |
-| Output | Files, logs, deploy artifacts | GitHub comments, issues, PRs, or other API writes |
-
-The agentic workflow file you'll author in this workshop is a `.md` file with the same `on:` and `runs-on:` keys you see above, plus a Markdown task brief that tells the AI agent what to do.
+**Try it:** In the `hello-workflow.yml` example above, change `echo "Hello from GitHub Actions"` to a message of your own, then say aloud which key you changed (`on`, `jobs`, or `steps`).
 
 ## Label a sample workflow
 
