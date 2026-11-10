@@ -17,7 +17,7 @@ If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, and posts the output automatically.
 
-Think of it like a scheduled digest: every morning it reads your inbox and sends you a summary — no keyboard required. The agent always runs in a [sandbox](https://github.github.com/gh-aw/reference/sandbox/) and posts results through guardrailed safe outputs. You will explore security in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
+Think of it like a scheduled digest: every morning it reads your inbox and sends you a summary — no keyboard required. The agent always runs in a [sandbox](https://github.github.com/gh-aw/reference/sandbox/) and posts results through guardrailed [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/). You will explore security in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
 
 ## Three key terms
 
@@ -47,7 +47,7 @@ Before studying the diagram, write your prediction: what two files are involved,
   <img alt="Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub" src="images/05-workflow-lifecycle-light.svg">
 </picture>
 
-- **`.md` source file** — contains [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (trigger, permissions, runner) and your plain-English task brief. You author and edit this file.
+- **`.md` source file** — contains [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (trigger, [permissions](https://github.github.com/gh-aw/reference/permissions/), runner) and your plain-English task brief. You author and edit this file.
 - **`.lock.yml` compiled file** — [`gh aw compile`](https://github.github.com/gh-aw/reference/compilation-process/) generates it from the `.md`. GitHub Actions runs this file, not the `.md`. Never edit it by hand.
 
 **Activity 1 — identify the parts:** Open any `.lock.yml` file in your repo and find the `on:` key. That is the compiled trigger that came from your [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
