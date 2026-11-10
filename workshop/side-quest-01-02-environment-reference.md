@@ -38,9 +38,10 @@ Open a terminal in your Codespace and run:
 ```bash
 gh --version
 git --version
+gh auth status
 ```
 
-Both commands should print a version number. If either fails, see [Set Up a Codespace](02a-setup-codespace.md).
+The first two commands should print a version number, and `gh auth status` should show you are logged in. If any fails, see [Set Up a Codespace](02a-setup-codespace.md).
 
 > [!NOTE]
 > `gh aw --version` only works after you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md). Skip that check until you reach Step 6.
@@ -49,7 +50,10 @@ After you complete Step 6, also run:
 
 ```bash
 gh aw --version
+gh extension list
 ```
+
+`gh extension list` should include `gh-aw`.
 
 ## Conceptual screenshots
 
@@ -90,6 +94,9 @@ You use VS Code to browse files, edit workflows, and keep a terminal open beside
 You use the terminal whenever the workshop asks you to run `gh`, `gh aw`, or `git` commands.
 
 ### Workshop tools and model options
+
+<details>
+<summary>Show screenshots for <code>gh</code>, <code>gh-aw</code>, Copilot CLI, Copilot app, Claude, and OpenAI Codex</summary>
 
 #### GitHub CLI (`gh`)
 
@@ -151,14 +158,16 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
 
+</details>
+
 <!-- journey: all -->
 ## :white_check_mark: Checkpoint
 
 - [ ] You can name each environment and tool used in this workshop and describe its role
 - [ ] You ran `gh --version` in your terminal and it returned a version number
 - [ ] You ran `git --version` in your terminal and it returned a version number
-- [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md): you ran `gh aw --version` and it returned a version number
-- [ ] You can match each item to its conceptual screenshot
+- [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md): `gh aw --version` returns a version and `gh extension list` includes `gh-aw`
+- [ ] You ran `gh auth status` and it shows you are logged in
 - [ ] You know where to find official docs for each tool
 - [ ] (Enterprise users) You know which URLs in workshop instructions map to your enterprise hostname
 
