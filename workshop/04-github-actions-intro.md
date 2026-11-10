@@ -3,7 +3,7 @@
 # GitHub Actions in 5 Minutes
 
 <details>
-<summary><b>Already know GitHub Actions?</b> Confirm these three statements and skip ahead:</summary>
+<summary><b>Already know [GitHub Actions](https://github.github.com/gh-aw/guides/github-actions-primer/)?</b> Confirm these three statements and skip ahead:</summary>
 
 - You know workflows live in `.github/workflows/` as YAML files
 - You can read `on`, `jobs`, and `steps` keys in a workflow file
