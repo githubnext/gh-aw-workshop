@@ -27,34 +27,12 @@ Every agentic workflow run uses an AI model to process your task brief and produ
 > [!NOTE]
 > Exact pricing and AIC conversion rates are listed on the [GitHub billing documentation page](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot). Rates vary by Copilot plan.
 
-### Check current usage in the billing dashboard
+### Check usage and estimate monthly cost
 
-1. Open **github.com** and click your profile picture → **Settings**.
-2. In the left sidebar, click **Billing and plans**.
-3. Scroll to the **Copilot** section and click **Usage**.
-4. Look for the **Agentic Workflows** row. It shows AIC consumed this billing cycle.
+Your billing dashboard (**Settings** → **Billing and plans** → **Copilot** → **Usage**) shows AIC consumed this billing cycle. To project monthly spend, run `gh aw logs daily-status --count 5`, average the **AIC** column, and multiply by runs per day × 30.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/26-billing-dashboard-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="images/26-billing-dashboard-light.svg">
-  <img alt="Copilot billing usage dashboard showing AI Credit consumption by feature" src="images/26-billing-dashboard-light.svg">
-</picture>
-
-### Estimate monthly cost for a scheduled workflow
-
-Use the per-run cost from `gh aw logs` to project monthly spend.
-
-```bash
-gh aw logs daily-status --count 5
-```
-
-Look at the **AIC** column. Average the last five runs, then multiply:
-
-```text
-monthly cost = average AIC per run × runs per day × 30
-```
-
-If your workflow averages 1.5 AIC and runs once a day: `1.5 × 1 × 30 = 45 AIC per month`. Share this estimate with your GitHub administrator before enabling a high-frequency [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule).
+> [!TIP]
+> **Optional Side Quest:** Want the dashboard walkthrough and a worked monthly estimate? Work through [Side Quest: Check Your AIC Usage and Estimate Monthly Cost](side-quest-26-02-usage-and-monthly-estimate.md), then come back here.
 
 ### Project costs with [gh aw forecast](https://github.github.com/gh-aw/setup/cli/#forecast)
 
@@ -106,8 +84,7 @@ gh aw compile
 
 ## :white_check_mark: Checkpoint
 
-- [ ] You located your AIC usage for this billing cycle in the GitHub billing dashboard
-- [ ] You calculated an estimated monthly AIC cost for your scheduled workflow
+- [ ] You know where to find your AIC usage and how to estimate monthly cost (average AIC per run × runs per day × 30)
 - [ ] You ran `gh aw forecast` and identified the P50 and P90 projections for your workflow
 - [ ] You added `max-ai-credits` and `max-daily-ai-credits` to your workflow frontmatter
 - [ ] You added or verified a `timeout-minutes` value in your workflow frontmatter
