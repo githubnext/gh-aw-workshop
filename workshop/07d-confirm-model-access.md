@@ -30,7 +30,18 @@ gh copilot
 1. Any reply confirms the model and skill are accessible. Continue to **Choose a billing path**.
 
 > [!IMPORTANT]
-> If you see an error instead of a reply, check [github.com/settings/copilot](https://github.com/settings/copilot) to confirm Copilot is enabled. If the problem persists, see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return here.
+> <details>
+> <summary><b>Troubleshoot access errors before continuing</b></summary>
+>
+> If you see an error instead of a reply, check these items before continuing:
+>
+> - **Copilot seat:** Confirm an active Copilot seat is assigned to your account at [github.com/settings/copilot](https://github.com/settings/copilot).
+> - **Org policy:** If your repository is in an organization, confirm organization policies permit Copilot usage.
+> - **`gh copilot` login:** Run `gh auth status` or start `gh copilot` to verify your CLI session is authenticated.
+>
+> If the problem persists after these checks, see [Side Quest: Configure GitHub Copilot for Agentic Workflows](side-quest-06-03-copilot-token.md), then return here.
+>
+> </details>
 
 If you arrived from the step 07 access check and the test prompt succeeded, return to [Write Your First Agentic Workflow](07-your-first-workflow.md) now.
 
@@ -45,13 +56,43 @@ If you arrived from the step 07 access check and the test prompt succeeded, retu
 > [!NOTE]
 > For golden-ticket workshops, billing is pre-provisioned by your org. Use the **Organization centralized billing** path unless your instructor says otherwise.
 
-Follow the full setup steps in [Side Quest: Copilot Billing Paths](side-quest-07d-billing-paths.md), then return here once your workflow file and [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml) are committed.
+Choose the path that matches your repository setup:
+
+| Situation | Path | Key setting |
+|---|---|---|
+| Organization provides centralized Copilot billing for Actions | **Organization centralized billing** | Keep `copilot-requests: write`; no secret needed |
+| Personal repo, or org does not provide centralized billing | **Personal billing** | Remove `copilot-requests: write`; add `COPILOT_GITHUB_TOKEN` secret |
+
+### Configure centralized billing
+
+Confirm `permissions:` includes `copilot-requests: write` in `.github/workflows/daily-report-status.md`, then recompile and commit:
+
+```bash
+gh aw compile
+git add .
+git commit -m "chore: confirm centralized billing lock file"
+git push
+```
+
+### Configure personal billing
+
+Remove `copilot-requests: write` from `.github/workflows/daily-report-status.md`, add your PAT as secret `COPILOT_GITHUB_TOKEN` in repository settings, then recompile and commit:
+
+```bash
+gh aw compile
+git add .
+git commit -m "chore: configure personal billing path"
+git push
+```
+
+For step-by-step guidance on PAT configuration and secret setup, see [Side Quest: Copilot Billing Paths](side-quest-07d-billing-paths.md).
 
 ## :white_check_mark: Checkpoint
 
 - [ ] I sent the test prompt in Copilot CLI and received a reply
 - [ ] I confirmed no access errors appeared
 - [ ] I chose a billing path and completed all configuration steps
+- [ ] I can name which billing path I chose and verified `copilot-requests: write` presence or `COPILOT_GITHUB_TOKEN`
 - [ ] My source file and compiled lock file reflect the chosen method
 - [ ] Both files are committed to `main`
 - [ ] I am ready for [Run and Watch Your Workflow](08-run-your-workflow.md)

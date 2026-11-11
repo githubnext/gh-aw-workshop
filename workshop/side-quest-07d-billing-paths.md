@@ -1,3 +1,5 @@
+<!-- page-journey: all -->
+<!-- page-adventure: side-quest -->
 # Side Quest: Copilot Billing Paths
 
 Choose exactly one [billing](https://github.github.com/gh-aw/reference/billing/) path for your first workflow, configure it, and commit the updated [lock file](https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml).
@@ -81,4 +83,6 @@ To switch engines later, see:
 - [ ] `daily-report-status.lock.yml` is recompiled and committed to `main`
 - [ ] I am ready to return to [Confirm Model Access](07d-confirm-model-access.md)
 
+<!-- journey: all -->
 **Return to:** [Confirm Model Access](07d-confirm-model-access.md)
+<!-- /journey -->
