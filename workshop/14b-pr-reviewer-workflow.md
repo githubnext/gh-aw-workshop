@@ -56,7 +56,7 @@ Review the agent's diff before accepting it. The source should contain one paren
 
 ## Inspect the Generated Structure
 
-The workflow frontmatter should follow this shape:
+The workflow [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) should follow this shape:
 
 ```markdown .github/workflows/pr-reviewer.md
 ---
