@@ -24,9 +24,17 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 | **GitHub CLI (`gh`)** | GitHub's official CLI, required for this workshop. Pre-installed in the Codespace. | Starting at Step 6 (install the extension) | [GitHub CLI docs](https://cli.github.com/manual/) |
 | **`gh-aw` CLI extension** | The GitHub Agentic Workflows extension you install and use in the terminal to compile workflow files. | Step 6 onward | [Install `gh-aw`](https://github.com/github/gh-aw#readme) |
 | **GitHub Copilot CLI** | Copilot in the terminal for AI-assisted command and development help. The primary AI surface in this workshop. | Any step that shows a `prompt` code block | [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli) |
+
+<details>
+<summary>Optional: Copilot app and other model options</summary>
+
+| Term | What it means in this workshop | When you use it | Official documentation |
+|------|------|------|------|
 | **GitHub Copilot app** | The GitHub Copilot desktop and web application where you can open repositories, start agent sessions, steer coding tasks, and manage pull requests. | Optional; side quests cover this surface | [GitHub Copilot app](https://github.com/features/ai/github-app) |
 | **Claude** | Anthropic's AI model family available in some GitHub Copilot and agentic workflow contexts. | Steps that use a non-default model | [Claude documentation](https://docs.anthropic.com/) |
 | **OpenAI Codex** | OpenAI coding model family that can be used in coding and agent workflows. | Steps that use a non-default model | [OpenAI Codex CLI repository](https://github.com/openai/codex#readme) |
+
+</details>
 
 > [!NOTE]
 > **GitHub Enterprise (GHES/GHEC) users**: the same tools and commands apply in enterprise environments. Your Codespace URL and GitHub URLs will use your enterprise hostname instead of `github.com`. If your enterprise uses a self-hosted runner, the `gh aw compile` command still runs locally in your Codespace — see [Step 6](06-install-gh-aw.md) for any environment-specific install notes.
@@ -41,7 +49,16 @@ git --version
 gh auth status
 ```
 
-The first two commands should print a version number, and `gh auth status` should show you are logged in. If any fails, see [Set Up a Codespace](02a-setup-codespace.md).
+Expected output (your version numbers will differ):
+
+```text
+gh version 2.x.x (20xx-xx-xx)
+git version 2.x.x
+github.com
+  ✓ Logged in to github.com account <your-username>
+```
+
+If any command fails, see [Set Up a Codespace](02a-setup-codespace.md).
 
 > [!NOTE]
 > `gh aw --version` only works after you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md). Skip that check until you reach Step 6.
@@ -53,9 +70,20 @@ gh aw --version
 gh extension list
 ```
 
-`gh extension list` should include `gh-aw`.
+`gh aw --version` prints a version, and `gh extension list` includes a line starting with `github/gh-aw`.
+
+Finally, confirm you are inside a Codespace:
+
+```bash
+echo $CODESPACES
+```
+
+It prints `true` in a Codespace and nothing on a local machine.
 
 ## Conceptual screenshots
+
+<details>
+<summary>Show conceptual screenshots of each environment and tool</summary>
 
 Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app."
 
@@ -94,6 +122,8 @@ You use VS Code to browse files, edit workflows, and keep a terminal open beside
 You use the terminal whenever the workshop asks you to run `gh`, `gh aw`, or `git` commands.
 
 ### Workshop tools and model options
+
+#### More tools
 
 <details>
 <summary>Show screenshots for <code>gh</code>, <code>gh-aw</code>, Copilot CLI, Copilot app, Claude, and OpenAI Codex</summary>
@@ -157,6 +187,8 @@ You may see Claude as one of the AI model options that can read a brief, reason 
 </picture>
 
 You may see OpenAI Codex as a coding-focused model option that reads files and suggests edits.
+
+</details>
 
 </details>
 
