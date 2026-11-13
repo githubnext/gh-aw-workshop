@@ -43,6 +43,7 @@ A hands-on workshop that takes you from zero to a fully automated, AI-powered wo
 | 29 | [Teach Your Agent Domain Knowledge with Skills](29-skills-and-domain-knowledge.md) |
 | 30 | [Preview Your Workflow's Writes with Staged Mode](30-preview-with-staged-mode.md) |
 | 31 | [Control Network Access with the Firewall](31-control-network-access.md) |
+| 32 | [Control Overlapping Runs with Concurrency](32-control-concurrent-runs.md) |
 
 ## Optional Side Quests
 
