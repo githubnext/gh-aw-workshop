@@ -6,7 +6,7 @@
 
 ## :dart: What You'll Do
 
-Update your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to target a self-hosted runner using a runner label.
+Update your workflow's [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) to target a [self-hosted runner](https://github.github.com/gh-aw/reference/self-hosted-runners/) using a runner label.
 By the end of this step, your agentic workflow queues on a runner your organisation manages
 rather than a GitHub-hosted machine.
 

@@ -17,7 +17,7 @@ Learn the most common ways agentic workflows fail in production and apply three 
 
 ### Understand common failure modes
 
-Agentic workflows most often fail in one of four ways: empty data, tool errors, timeouts, and prompt drift. This step applies three mitigations — a defensive brief, `timeout-minutes`, and a fallback safe-output — that address all four.
+Agentic workflows most often fail in one of four ways: empty data, tool errors, timeouts, and prompt drift. This step applies three mitigations — a defensive brief, `timeout-minutes`, and a fallback [safe-output](https://github.github.com/gh-aw/reference/safe-outputs/) — that address all four.
 
 > [!TIP]
 > **Optional Side Quest:** Want a worked example of each failure mode and practice matching failures to fixes before you dive in? Work through [Side Quest: Recognizing Common Agentic Workflow Failure Modes](side-quest-22-01-failure-modes.md), then come back here.

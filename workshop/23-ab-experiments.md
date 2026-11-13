@@ -6,7 +6,7 @@
 
 ## :dart: What You'll Do
 
-You'll add an A/B experiment using `experiments:` and compare outcomes across runs.
+You'll add an [A/B experiment](https://github.github.com/gh-aw/experimental/experiments/) using `experiments:` and compare outcomes across runs.
 
 ## :clipboard: Before You Start
 
@@ -76,7 +76,7 @@ git commit -m "feat: add output_style A/B experiment to daily-status"
 
 1. Go to **Actions → Daily Status Report → Run workflow** and click **Run workflow**.
 2. Open the run log once it completes. In the activation job, find the assigned variant (for example, `experiment output_style: concise`).
-3. Check your safe output surface — confirm the output matches the concise variant.
+3. Check your [safe output](https://github.github.com/gh-aw/reference/safe-outputs/) surface — confirm the output matches the concise variant.
 4. Trigger a second manual run. This time the `detailed` variant should be assigned.
 5. Compare the two outputs side by side.
 
