@@ -58,7 +58,7 @@ engine: copilot
 network:
   allowed:
     - defaults
-    - api.example.com
+    - contoso.com
 ---
 
 # Network demo
