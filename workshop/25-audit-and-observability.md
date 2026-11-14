@@ -61,7 +61,7 @@ gh aw audit <run-id>
 
 This downloads all artifacts for that run and generates a concise Markdown report covering run metadata, AIC, and any flagged issues.
 
-To also parse the raw agent and firewall logs into readable Markdown, add `--parse`:
+To also parse the raw agent and [firewall](https://github.github.com/gh-aw/reference/sandbox/#awf-agent-workflow-firewall) logs into readable Markdown, add `--parse`:
 
 ```bash
 gh aw audit <run-id> --parse

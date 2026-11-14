@@ -36,7 +36,7 @@ Your repository already has skills in `.github/skills/` that power its own tooli
 cat .github/skills/agentic-workflows/SKILL.md
 ```
 
-Notice the shape: YAML frontmatter with `name` and `description`, followed by plain-language guidance the agent reads and applies.
+Notice the shape: YAML [frontmatter](https://github.github.com/gh-aw/reference/glossary/#frontmatter) with `name` and `description`, followed by plain-language guidance the agent reads and applies.
 
 > :thinking: **Predict:** Think of one convention you keep re-explaining to your agent across workflows — a commit message format, a labeling rule, a checklist. That's a skill candidate.
 
