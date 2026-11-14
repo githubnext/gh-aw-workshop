@@ -6,6 +6,7 @@
 ![Mona's Agent Factory](workshop/images/00-welcome-monas-agent-factory.png)
 
 - [Workshop docs](https://githubnext.github.io/gh-aw-workshop/)
+- [Feature walkthrough demo](https://gh.io/gh-aw-demo)
 
 ## What you will learn to build
 
