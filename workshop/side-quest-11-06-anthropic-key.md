@@ -2,9 +2,9 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Configure an Anthropic API Key
 
-> _Optional: work through this guide when you want to use [Claude](side-quest-01-02-environment-reference.md#claude) (Anthropic's model family) as the [AI engine](https://github.github.com/gh-aw/reference/engines/#built-in-ai-engines) for your [agentic workflow](https://github.github.com/gh-aw/introduction/overview/), then return to your main path._
+> _Optional: work through this guide when you want to use Claude (Anthropic's model family) as the AI engine for your agentic workflow, then return to your main path._
 
-By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) run on the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). If you prefer to use **[Claude](https://github.github.com/gh-aw/reference/auth/#claude)**, you'll need an Anthropic API key stored as a repository secret and a one-line change to your [workflow frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
+By default, agentic workflows run on the GitHub Copilot engine. To use **Claude** instead, you need an Anthropic API key stored as a repository secret and a one-line change to your workflow frontmatter.
 
 ## :clipboard: Before You Start
 
@@ -30,18 +30,12 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 3. Copy the key value — it starts with `sk-ant-`.
 
 > [!IMPORTANT]
-> <details><summary>Key is shown only once — save it before closing this tab</summary>
->
-> Anthropic shows the full key value **only once**. Copy it to your clipboard before you close the dialog or navigate away. If you miss this window, you must delete the key and generate a new one.
->
-> Paste the key into GitHub Secrets (the next section) **before** closing the Anthropic console tab.
->
-> </details>
+> Anthropic shows the key **only once**. Keep the console tab open until the secret is saved in GitHub.
 
 <!-- -->
 
 > [!NOTE]
-> Anthropic API usage is billed per token. Review the [Anthropic pricing page](https://www.anthropic.com/pricing) and set a usage limit before running workflows to avoid surprise charges.
+> Anthropic API usage is billed per token. Review Anthropic's pricing and set a usage limit before running workflows to avoid surprise charges.
 
 ---
 
@@ -56,6 +50,14 @@ Open your repository in a **new tab** so you keep the Anthropic console tab open
 5. Click **Add secret**.
 6. Confirm the secret appears in the list as `ANTHROPIC_API_KEY`.
 
+Verify from your terminal (run it inside your practice repository):
+
+```bash
+gh secret list | grep ANTHROPIC_API_KEY
+```
+
+You should see `ANTHROPIC_API_KEY` with an updated timestamp.
+
 > [!TIP]
 > Secret names must use only uppercase letters, digits, and underscores. `ANTHROPIC_API_KEY` is the exact name the `claude` engine looks for — do not rename it or add hyphens.
 
@@ -64,8 +66,8 @@ Open your repository in a **new tab** so you keep the Anthropic console tab open
 
 - **Wrong name**: any variation (`anthropic_api_key`, `ANTHROPIC-API-KEY`, `CLAUDE_API_KEY`) will cause a silent auth failure. The name must be exactly `ANTHROPIC_API_KEY`.
 - **Copied with extra whitespace**: pasting from some tools adds a leading space. Delete and re-create the secret if you are unsure.
-- **Closed the Anthropic tab before saving**: you cannot retrieve the key again. Delete the key at [console.anthropic.com](https://console.anthropic.com/) and generate a new one.
-- **Network allow-list missing**: the `claude` engine needs outbound access to `api.anthropic.com`. Make sure it is in your [network.allowed](https://github.github.com/gh-aw/reference/network/) list (shown in the frontmatter example below).
+- **Closed the Anthropic tab before saving**: you cannot retrieve the key again. Delete the key in the Anthropic console and generate a new one.
+- **Network allow-list missing**: the `claude` engine needs outbound access to `api.anthropic.com`. Make sure it is in your `network.allowed` list (shown in the frontmatter example below).
 
 </details>
 
@@ -109,10 +111,18 @@ You should see output confirming the file compiled without errors.
 ## :white_check_mark: Checkpoint
 
 - [ ] You have an Anthropic account and have generated an API key
-- [ ] `ANTHROPIC_API_KEY` is stored as a repository secret
+- [ ] `gh secret list` shows `ANTHROPIC_API_KEY`
 - [ ] Your workflow frontmatter has `engine: claude`
 - [ ] `gh aw compile` completes without errors
 - [ ] (If using network isolation) `api.anthropic.com` is in the `network.allowed` list
+
+## Learn more
+
+- [AI engines](https://github.github.com/gh-aw/reference/engines/#built-in-ai-engines)
+- [Authentication](https://github.github.com/gh-aw/reference/auth/#claude)
+- [Frontmatter reference](https://github.github.com/gh-aw/reference/frontmatter/)
+- [Network permissions](https://github.github.com/gh-aw/reference/network/)
+- [Anthropic pricing](https://www.anthropic.com/pricing)
 
 <!-- journey: all -->
 **Return to:** [Write Your First Agentic Workflow](07-your-first-workflow.md)
