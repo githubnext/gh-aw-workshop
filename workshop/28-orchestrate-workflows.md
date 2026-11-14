@@ -28,7 +28,7 @@ You'll build an orchestrator workflow that reads repository state, decides which
 
 ## Understand workflow orchestration
 
-When a repository needs different kinds of AI work — status reports, PR reviews, cost audits — you can keep each concern in its own focused workflow. An orchestrator connects them: it reads signals from the repository and dispatches the right specialist.
+When a repository needs different kinds of AI work — status reports, PR reviews, cost audits — you can keep each concern in its own focused workflow. An [orchestrator](https://github.github.com/gh-aw/reference/glossary/#orchestrator-workflow) connects them: it reads signals from the repository and dispatches the right specialist.
 
 The key primitive is `dispatch-workflow` in [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/). It lets your orchestrator trigger another workflow in the same repository and optionally pass inputs to it.
 

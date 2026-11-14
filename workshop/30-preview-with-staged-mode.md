@@ -90,7 +90,7 @@ git push
 ```
 
 > [!NOTE]
-> Staged mode isn't a sandbox. Custom jobs, external MCP servers, custom credentials, and memory persistence aren't blocked. [Custom safe output jobs](https://github.github.com/gh-aw/reference/custom-safe-outputs/) receive `GH_AW_SAFE_OUTPUTS_STAGED=true` and must honor it themselves.
+> Staged mode isn't a [sandbox](https://github.github.com/gh-aw/reference/sandbox/). Custom jobs, external MCP servers, custom credentials, and memory persistence aren't blocked. [Custom safe output jobs](https://github.github.com/gh-aw/reference/custom-safe-outputs/) receive `GH_AW_SAFE_OUTPUTS_STAGED=true` and must honor it themselves.
 
 ## :white_check_mark: Checkpoint
 

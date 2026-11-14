@@ -28,7 +28,7 @@ You'll add a `network:` section to one of your workflows so the agent can reach 
 
 ### Understand the default
 
-Agentic workflows run behind a [firewall](https://github.github.com/gh-aw/reference/network/). By default the agent can reach a small set of trusted infrastructure domains, such as the ones needed for its AI engine and GitHub. Everything else is blocked. The `network:` key in your frontmatter widens or narrows that list.
+Agentic workflows run behind a [firewall](https://github.github.com/gh-aw/reference/network/). By default the agent can reach a small set of trusted infrastructure domains, such as the ones needed for its AI engine and GitHub. Everything else is blocked. The `network:` key in your [frontmatter](https://github.github.com/gh-aw/reference/glossary/#frontmatter) widens or narrows that list.
 
 ### Ask your agent to add an allowlist
 
