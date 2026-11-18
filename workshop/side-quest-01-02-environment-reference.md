@@ -8,9 +8,12 @@
 
 ## :clipboard: Before You Start
 
-This is a reference page — you can read it any time. Come back here whenever the workshop uses a term you want to clarify. No terminal required to read this page.
+This is a reference page — you can read it any time. Come back here whenever the workshop uses a term you want to clarify. No terminal required to read the glossary.
 
-When you're ready to verify your tools are working, see the [Checkpoint](#white_check_mark-checkpoint) section at the bottom.
+Do this page in two passes:
+
+1. **Look up** a term in the glossary table.
+2. **Try it** in [Try it: verify your tools](#try-it-verify-your-tools), then tick the Checkpoint at the bottom.
 
 ## Environment and tool glossary
 
@@ -39,9 +42,9 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 > [!NOTE]
 > **GitHub Enterprise (GHES/GHEC) users**: the same tools and commands apply in enterprise environments. Your Codespace URL and GitHub URLs will use your enterprise hostname instead of `github.com`. If your enterprise uses a self-hosted runner, the `gh aw compile` command still runs locally in your Codespace — see [Step 6](06-install-gh-aw.md) for any environment-specific install notes.
 
-### :white_check_mark: Verify your tools are ready
+## Try it: verify your tools
 
-Open a terminal in your Codespace and run:
+Open a terminal in your Codespace and run these three commands. Each should print a version or a logged-in status:
 
 ```bash
 gh --version
@@ -63,7 +66,7 @@ If any command fails, see [Set Up a Codespace](02a-setup-codespace.md).
 > [!NOTE]
 > `gh aw --version` only works after you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md). Skip that check until you reach Step 6.
 
-After you complete Step 6, also run:
+After you complete Step 6, also run these two commands. This is optional until then:
 
 ```bash
 gh aw --version
@@ -72,7 +75,7 @@ gh extension list
 
 `gh aw --version` prints a version, and `gh extension list` includes a line starting with `github/gh-aw`.
 
-Finally, confirm you are inside a Codespace:
+Finally, confirm you are inside a Codespace. The `echo` command prints the value of an environment variable:
 
 ```bash
 echo $CODESPACES
