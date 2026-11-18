@@ -139,7 +139,7 @@ permissions:
 
 ## Mini-challenge
 
-Write the `on:` block for schedule + push to main + manual trigger from memory, then validate with `gh aw compile`.
+Write the `on:` block for [schedule](https://github.github.com/gh-aw/reference/triggers/#scheduled-triggers-schedule) + push to main + manual trigger from memory, then validate with `gh aw compile`.
 
 ```markdown
 ---
