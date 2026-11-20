@@ -2,7 +2,7 @@
 <!-- page-adventure: side-quest -->
 # Side Quest: Configure an OpenAI API Key
 
-> _Optional: work through this guide when you want to use the `codex` engine (OpenAI-powered) for your agentic workflow, then return to your main path._
+> _Optional: work through this guide when you want to use the `codex` [engine](https://github.github.com/gh-aw/reference/engines/#built-in-ai-engines) (OpenAI-powered) for your agentic workflow, then return to your main path._
 
 By default, [agentic workflows](https://github.github.com/gh-aw/introduction/overview/) use the [GitHub Copilot engine](https://github.github.com/gh-aw/reference/engines/). To use **OpenAI models**, store an OpenAI API key as a repository secret and add one [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) line.
 
