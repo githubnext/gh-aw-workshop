@@ -57,7 +57,7 @@ safe-outputs:
 | `max: 1` | Caps the operation at one comment per run. A second attempt is silently dropped. |
 
 > [!IMPORTANT]
-> Without `safe-outputs`, the agent cannot write anything — even if you ask it to in the body. The YAML frontmatter is the source of truth for write access, not the prose instructions.
+> Without `safe-outputs`, the agent cannot write anything — even if you ask it to in the body. The YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) is the source of truth for write access, not the prose instructions.
 
 **:pencil2: Try it:** Add `safe-outputs` to your draft. Verify that `max: 1` is indented under `add-comment:`.
 

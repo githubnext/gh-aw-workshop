@@ -18,7 +18,7 @@ By default, [agentic workflows](https://github.github.com/gh-aw/introduction/ove
 | Item | Value |
 |---|---|
 | Repository secret name | `ANTHROPIC_API_KEY` |
-| Frontmatter engine field | `engine: claude` |
+| [Frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) engine field | `engine: claude` |
 | Anthropic API domain | `api.anthropic.com` |
 
 ---
@@ -96,7 +96,7 @@ If you previously added `copilot-requests: write` for the Copilot engine, you ca
 
 ## Compile your workflow
 
-After updating your frontmatter, compile the workflow to regenerate the lock file:
+After updating your frontmatter, compile the workflow to regenerate the [lock file](https://github.github.com/gh-aw/reference/workflow-structure/#lock-file-header):
 
 ```bash
 gh aw compile
