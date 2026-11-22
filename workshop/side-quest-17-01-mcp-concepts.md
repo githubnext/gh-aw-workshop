@@ -91,7 +91,7 @@ gh aw validate
 
 ---
 
-## How toolsets work
+## How [toolsets](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) work
 
 A [toolset](https://github.github.com/gh-aw/reference/github-tools/#github-toolsets) is a named subset of the tools a server provides. Toolsets let you grant the agent access to only the tools it needs — reducing the surface area for unintended behavior.
 

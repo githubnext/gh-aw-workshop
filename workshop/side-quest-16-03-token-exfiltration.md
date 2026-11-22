@@ -45,7 +45,7 @@ GitHub Actions automatically redacts any value stored as a secret from all workf
 This protects values that are declared in `secrets:` — including `GITHUB_TOKEN` — from appearing in plain text anywhere in the run log.
 
 > [!NOTE]
-> Log masking covers the Actions log surface. It does not stop an agent from passing a secret to an external HTTP endpoint — which is why the firewall layer below matters.
+> Log masking covers the Actions log surface. It does not stop an agent from passing a secret to an external HTTP endpoint — which is why the [firewall](https://github.github.com/gh-aw/reference/sandbox/#awf-agent-workflow-firewall) layer below matters.
 
 ### `safe-outputs` removes unintended write surfaces
 

@@ -18,7 +18,7 @@ Think of your workflow like a smart helper in a playroom.
 
 ---
 
-## Why you need a sandbox
+## Why you need a [sandbox](https://github.github.com/gh-aw/reference/sandbox/)
 
 A powerful helper without boundaries can accidentally do unsafe things.
 
