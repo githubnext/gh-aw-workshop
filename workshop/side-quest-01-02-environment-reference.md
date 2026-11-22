@@ -10,7 +10,7 @@
 
 This is a reference page — you can read it any time. Come back here whenever the workshop uses a term you want to clarify. No terminal required to read this page.
 
-When you're ready to verify your tools are working, see the [Checkpoint](#white_check_mark-checkpoint) section at the bottom.
+When you're ready to verify your tools, jump to [Verify your tools are ready](#white_check_mark-verify-your-tools-are-ready).
 
 ## Environment and tool glossary
 
@@ -41,44 +41,25 @@ Knowing which name maps to which role helps you follow workshop instructions wit
 
 ### :white_check_mark: Verify your tools are ready
 
-Open a terminal in your Codespace and run:
+1. Open a terminal in your Codespace and run:
 
-```bash
-gh --version
-git --version
-gh auth status
-```
+   ```bash
+   gh --version
+   git --version
+   gh auth status
+   echo $CODESPACES
+   ```
 
-Expected output (your version numbers will differ):
+   You should see version numbers for `gh` and `git`, a logged-in account for `gh auth status`, and `true` from `echo $CODESPACES` (it prints nothing on a local machine). If any command fails, see [Set Up a Codespace](02a-setup-codespace.md).
 
-```text
-gh version 2.x.x (20xx-xx-xx)
-git version 2.x.x
-github.com
-  ✓ Logged in to github.com account <your-username>
-```
+2. After you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md), also run:
 
-If any command fails, see [Set Up a Codespace](02a-setup-codespace.md).
+   ```bash
+   gh aw --version
+   gh extension list
+   ```
 
-> [!NOTE]
-> `gh aw --version` only works after you complete [Install the gh-aw CLI Extension](06-install-gh-aw.md). Skip that check until you reach Step 6.
-
-After you complete Step 6, also run:
-
-```bash
-gh aw --version
-gh extension list
-```
-
-`gh aw --version` prints a version, and `gh extension list` includes a line starting with `github/gh-aw`.
-
-Finally, confirm you are inside a Codespace:
-
-```bash
-echo $CODESPACES
-```
-
-It prints `true` in a Codespace and nothing on a local machine.
+   `gh aw --version` prints a version, and `gh extension list` includes a line starting with `github/gh-aw`. Skip this check until you reach Step 6.
 
 ## Conceptual screenshots
 
@@ -122,8 +103,6 @@ You use VS Code to browse files, edit workflows, and keep a terminal open beside
 You use the terminal whenever the workshop asks you to run `gh`, `gh aw`, or `git` commands.
 
 ### Workshop tools and model options
-
-#### More tools
 
 <details>
 <summary>Show screenshots for <code>gh</code>, <code>gh-aw</code>, Copilot CLI, Copilot app, Claude, and OpenAI Codex</summary>
@@ -196,8 +175,7 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 ## :white_check_mark: Checkpoint
 
 - [ ] You can name each environment and tool used in this workshop and describe its role
-- [ ] You ran `gh --version` in your terminal and it returned a version number
-- [ ] You ran `git --version` in your terminal and it returned a version number
+- [ ] You ran `gh --version` and `git --version` and both returned a version number
 - [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md): `gh aw --version` returns a version and `gh extension list` includes `gh-aw`
 - [ ] You ran `gh auth status` and it shows you are logged in
 - [ ] You know where to find official docs for each tool
