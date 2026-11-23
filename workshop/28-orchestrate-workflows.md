@@ -73,65 +73,12 @@ Add permissions: contents: read, issues: read, pull-requests: read.
 Set safe-outputs: dispatch-workflow with the list of allowed workflows.
 ```
 
-<details>
-<summary>:desktop_computer: Terminal path — write the orchestrator directly</summary>
-
-Create `.github/workflows/repo-orchestrator.md` with this starting template:
-
-```markdown .github/workflows/repo-orchestrator.md
----
-name: Repository Orchestrator
-on:
-  schedule: daily on weekdays
-permissions:
-  contents: read
-  issues: read
-  pull-requests: read
-safe-outputs:
-  dispatch-workflow:
-    workflows:
-      - daily-status
-      - pr-reviewer
-    max: 1
----
-
-Read the current repository state:
-1. Count open pull requests older than 3 days.
-2. Check whether a GitHub issue with the title prefix "Daily Repository Status" was created today.
-
-Based on what you find:
-- If stale open PRs exist, dispatch the `pr-reviewer` workflow.
-- If no status issue exists today, dispatch the `daily-status` workflow.
-- If neither condition is true, output a one-line summary and stop.
-
-Dispatch at most one workflow per run.
-```
-
-Then compile:
-
-```bash
-gh aw compile repo-orchestrator
-```
-
-</details>
+> [!TIP]
+> **Optional Side Quest:** Prefer to write the orchestrator by hand, or want to understand the `dispatch-workflow` allowlist and `max` cap? Take the optional [Side Quest: Write and Review a `dispatch-workflow` Orchestrator](side-quest-28-01-dispatch-workflow.md), then return here.
 
 ### Review the `dispatch-workflow` safe-output
 
-After the skill or your manual edit creates the file, confirm the frontmatter contains:
-
-```markdown .github/workflows/repo-orchestrator.md
-safe-outputs:
-  dispatch-workflow:
-    workflows:
-      - daily-status
-      - pr-reviewer
-    max: 1
-```
-
-The `workflows` list is an allowlist — your orchestrator can only dispatch workflows named here. The `max: 1` cap prevents one run from triggering many specialists at once.
-
-> [!NOTE]
-> `dispatch-workflow` triggers the named workflow with a `workflow_dispatch` event. The specialist runs asynchronously in its own Actions job. Your orchestrator does not wait for it to complete.
+Confirm the generated frontmatter has a `dispatch-workflow` safe-output with an explicit `workflows` allowlist and `max: 1`. The allowlist limits which specialists the orchestrator can trigger, and `max: 1` keeps each run to a single dispatch.
 
 ### Compile and push
 
