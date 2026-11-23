@@ -2,6 +2,8 @@
 
 A hands-on workshop that takes you from zero to a fully automated, AI-powered workflow — running on a schedule or on events in GitHub Actions.
 
+You can optionally explore the [GitHub Agentic Workflows interactive presentation (cracktro)](https://github.github.com/gh-aw/cracktro/) alongside the workshop. Matching lessons include topic-specific slide links.
+
 ## Curriculum — Part 1: Build Your First Workflow
 
 | # | Step |

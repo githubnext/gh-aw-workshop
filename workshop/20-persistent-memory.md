@@ -25,6 +25,8 @@
 
 You'll add [persistent memory](https://github.github.com/gh-aw/patterns/memory-ops/) to your agentic workflow so it can carry state between runs. By the end of this step, your workflow will remember what it has already reported on and skip duplicates — so your team never gets the same alert twice.
 
+You can optionally explore [Agent memory](https://github.github.com/gh-aw/cracktro/#agent-memory) in the interactive presentation (cracktro) to see how memories are restored read-only and persisted by trusted jobs after a run.
+
 ## :clipboard: Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).

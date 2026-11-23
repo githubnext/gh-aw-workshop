@@ -30,6 +30,8 @@ You'll write a local `SKILL.md` that encodes a repeatable domain convention — 
 
 A **skill** is a domain-specific knowledge file — `SKILL.md` — stored under `skills/` or `.github/skills/<name>/SKILL.md`. Unlike a one-off prompt tweak, a skill is written once and reused across any workflow that needs the same convention: an issue-labeling rule, a code review checklist, a data schema, or a house style guide.
 
+You can optionally explore [Skills](https://github.github.com/gh-aw/cracktro/#skills) in the interactive presentation (cracktro) to see pinned skills installed before execution and a reviewer selecting and citing the guidance it applies.
+
 Your repository already has skills in `.github/skills/` that power its own tooling. Look at one:
 
 ```bash

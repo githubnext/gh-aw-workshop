@@ -21,6 +21,8 @@ Letting an AI agent act on your repository on a [schedule](https://github.github
 
 The security jobs in the run log above map to these boundaries: **activation** checks the agent is authorized to run, the **agent** runs sandboxed behind the firewall, **detection** scans for malicious behavior, and **safe-outputs** applies changes within the guardrails.
 
+You can optionally explore [Safety and control](https://github.github.com/gh-aw/cracktro/#safety-and-control) in the interactive presentation (cracktro) to trace filtered inputs, sandboxed execution, and scanned safe outputs.
+
 <details>
 <summary>Why can't the agent just write to the repo directly?</summary>
 

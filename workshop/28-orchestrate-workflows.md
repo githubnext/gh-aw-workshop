@@ -32,6 +32,8 @@ When a repository needs different kinds of AI work — status reports, PR review
 
 The key primitive is `dispatch-workflow` in [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/). It lets your orchestrator trigger another workflow in the same repository and optionally pass inputs to it.
 
+You can optionally explore [Agents Trigger Agents](https://github.github.com/gh-aw/cracktro/#agents-trigger-agents) in the interactive presentation (cracktro) to trace safe-output dispatches and completion signals across separate workflow runs.
+
 <picture>
    <source media="(prefers-color-scheme: dark)" srcset="images/28-orchestrator-routing-dark.svg">
    <source media="(prefers-color-scheme: light)" srcset="images/28-orchestrator-routing-light.svg">
