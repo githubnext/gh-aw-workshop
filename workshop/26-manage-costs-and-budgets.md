@@ -81,6 +81,8 @@ A few techniques keep spend in check:
 > [!TIP]
 > Want a deeper activity for observing where tokens go and testing cost reductions one change at a time? Try [Side Quest: Observe and Reduce Token Costs](side-quest-13-04-token-optimization.md).
 
+You can optionally explore [Cost guardrails](https://github.github.com/gh-aw/cracktro/#cost-guardrails) in the interactive presentation (cracktro) to see how execution controls, daily budgets, and per-run limits work together.
+
 Three [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) fields enforce hard limits directly in the workflow file:
 
 - **[`timeout-minutes`](https://github.github.com/gh-aw/reference/rate-limiting-controls/#timeouts)** cancels the entire Actions job if it exceeds the limit. The run fails and you are billed only for tokens consumed before cancellation.

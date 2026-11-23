@@ -8,6 +8,8 @@
 
 You'll add an [A/B experiment](https://github.github.com/gh-aw/experimental/experiments/) using `experiments:` and compare outcomes across runs.
 
+You can optionally explore [Experiments, graders & evals](https://github.github.com/gh-aw/cracktro/#experiments-graders-and-evals) in the interactive presentation (cracktro) to compare variant assignment, run measurement, and evaluation in this experimental feature.
+
 ## :clipboard: Before You Start
 
 - You have a working agentic workflow from the build steps ([Step 7](07-your-first-workflow.md) or equivalent).

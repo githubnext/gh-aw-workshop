@@ -21,6 +21,8 @@ When you run `gh aw add`, the extension fetches a workflow Markdown file directl
 
 That means **your workflow is already a template** — you just need to point people at it.
 
+You can optionally explore the complementary [Imports & reuse](https://github.github.com/gh-aw/cracktro/#imports-and-reuse) pattern in the interactive presentation (cracktro), where shared Markdown components are reviewed once and merged by the compiler.
+
 > [!NOTE]
 > One frontmatter field blocks reuse on purpose: a workflow with `private: true` in its frontmatter cannot be added to another repository with `gh aw add`, even if the source repository itself is readable. Use `private: true` on workflows that contain repository-specific logic you don't want teammates copying elsewhere. Leave it unset (the default) on anything you intend to share as a template.
 

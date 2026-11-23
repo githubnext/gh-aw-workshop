@@ -8,6 +8,8 @@
 
 Use `gh aw logs` and `gh aw audit` to review the built-in [artifacts](https://github.github.com/gh-aw/reference/artifacts/) that every agentic workflow run produces, understand [token usage](https://github.github.com/gh-aw/reference/cost-management/#monitoring-costs-with-gh-aw-logs), and debug unexpected behavior. By the end you know where to look when a run behaves unexpectedly or when a compliance review asks what the agent did.
 
+You can optionally explore [Audit & Optimize](https://github.github.com/gh-aw/cracktro/#audit-and-optimize) in the interactive presentation (cracktro) to follow an illustrative health agent auditing and tuning a failing or costly workflow.
+
 ## :clipboard: Before You Start
 
 - Your workflow runs successfully (see [Refine, Test, and Improve Your Workflow](09-agentic-editing.md)).
