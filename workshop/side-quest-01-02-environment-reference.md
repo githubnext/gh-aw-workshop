@@ -8,13 +8,9 @@
 
 ## :clipboard: Before You Start
 
-This is a reference page — you can read it any time. Come back here whenever the workshop uses a term you want to clarify. No terminal required to read this page.
-
-When you're ready to verify your tools are working, see the [Checkpoint](#white_check_mark-checkpoint) section at the bottom.
+This is a reference page — come back whenever the workshop uses a term you want to clarify. Reading needs no terminal; the verification and exercise sections do.
 
 ## Environment and tool glossary
-
-Knowing which name maps to which role helps you follow workshop instructions without stopping to wonder what "the terminal" or "Codespaces" means in context.
 
 | Term | What it means in this workshop | When you use it | Official documentation |
 |------|------|------|------|
@@ -80,15 +76,32 @@ echo $CODESPACES
 
 It prints `true` in a Codespace and nothing on a local machine.
 
+### Try it: match the tool to its role
+
+Match each tool to its role, then open the answers to check yourself.
+
+| Tool | Role |
+|------|------|
+| 1. `gh` | A. Compiles agentic workflow files |
+| 2. `gh aw` | B. Runs GitHub-specific tasks such as auth checks |
+| 3. Copilot CLI | C. Gives AI help inside the terminal |
+| 4. Codespaces | D. Cloud environment where you run all of the above |
+
+<details>
+<summary>Show answers</summary>
+
+1 → B, 2 → A, 3 → C, 4 → D
+
+</details>
+
+Then run `gh --version` and compare the output to the example above. Both should start with `gh version`.
+
 ## Conceptual screenshots
 
 <details>
 <summary>Show conceptual screenshots of each environment and tool</summary>
 
-Recognizing what each environment looks like on screen helps you orient yourself quickly when workshop instructions say "open a terminal" or "use the Copilot app."
-
-These visuals are simplified mental models, not literal product screenshots. Use them to recognize what each name refers to when it appears in later steps.
-
+These visuals are simplified mental models, not literal product screenshots.
 ### Development environments
 
 #### GitHub Codespaces
@@ -195,7 +208,7 @@ You may see OpenAI Codex as a coding-focused model option that reads files and s
 <!-- journey: all -->
 ## :white_check_mark: Checkpoint
 
-- [ ] You can name each environment and tool used in this workshop and describe its role
+- [ ] You matched `gh`, `gh aw`, Copilot CLI, and Codespaces to their roles in the exercise
 - [ ] You ran `gh --version` in your terminal and it returned a version number
 - [ ] You ran `git --version` in your terminal and it returned a version number
 - [ ] If you've completed [Install the `gh-aw` CLI Extension](06-install-gh-aw.md): `gh aw --version` returns a version and `gh extension list` includes `gh-aw`
