@@ -44,7 +44,7 @@ Before studying the diagram, write your prediction: what two files are involved,
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/05-workflow-lifecycle-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="images/05-workflow-lifecycle-light.svg">
-  <img alt="Agentic workflow lifecycle: a Markdown file with YAML [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub" src="images/05-workflow-lifecycle-light.svg">
+  <img alt="Agentic workflow lifecycle: a Markdown file with YAML frontmatter and a task brief is compiled by gh aw compile into a lock.yml file, which GitHub Actions triggers, runs the AI agent that reads repository data and calls tools, and produces a structured output posted back to GitHub" src="images/05-workflow-lifecycle-light.svg">
 </picture>
 
 - **`.md` source file** — contains [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (trigger, [permissions](https://github.github.com/gh-aw/reference/permissions/), runner) and your plain-English task brief. You author and edit this file.
