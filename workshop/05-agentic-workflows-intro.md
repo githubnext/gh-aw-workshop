@@ -123,7 +123,7 @@ If any answer is no, revise your brief before continuing.
 
 - [ ] You can describe what an agentic workflow is in one sentence
 - [ ] You can explain one difference between an agentic and a standard Actions workflow
-- [ ] You know the three key terms: trigger, task brief, safe outputs
+- [ ] You know the three key terms: trigger, task brief, [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [ ] You know that `gh aw compile` generates `.lock.yml` from the `.md` source
 - [ ] You identified the `on:` key in a compiled `.lock.yml` file
 - [ ] Your task brief includes a time window, output format, and priority signal
