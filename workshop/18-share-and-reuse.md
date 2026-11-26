@@ -23,8 +23,7 @@ That means **your workflow is already a template** — you just need to point pe
 
 You can optionally explore the complementary [Imports & reuse](https://github.github.com/gh-aw/cracktro/#imports-and-reuse) pattern in the interactive presentation (cracktro), where shared Markdown components are reviewed once and merged by the compiler.
 
-> [!NOTE]
-> One frontmatter field blocks reuse on purpose: a workflow with `private: true` in its frontmatter cannot be added to another repository with `gh aw add`, even if the source repository itself is readable. Use `private: true` on workflows that contain repository-specific logic you don't want teammates copying elsewhere. Leave it unset (the default) on anything you intend to share as a template.
+> **Optional Side Quest:** Who can actually run `gh aw add` against your workflow? If you share across a team or an enterprise, or want to lock teammates to a stable version, work through [Side Quest: Sharing Workflows — Access, Visibility, and Version Pinning](side-quest-18-01-sharing-access-and-pinning.md), then come back here.
 
 ### Choose a sharing destination
 
@@ -37,13 +36,7 @@ You have two options:
 
 For this step, you'll use your own practice repository. If you later want to move the template to a dedicated repo, the process is identical.
 
-> [!TIP]
-> <details>
-> <summary><b>Enterprise users (GHES, GHEC, EMU): confirm cross-repository and cross-org access before sharing.</b></summary>
->
-> `gh aw add` only works if the account running it has read access to the source repository. On GHES or within an EMU organization, that often means the source and destination repositories must be in the same enterprise instance, and any org-level repository visibility restrictions (private, internal, or outside-collaborator policies) still apply. If your admin restricts cross-org forking or outside collaborators, confirm with them which organizations can read your shared "workflows" repo before advertising the `gh aw add` command to a wider team.
->
-> </details>
+On GHES, GHEC, or EMU, the account running `gh aw add` must be able to read the source repository. The side quest above explains the checks to make before you share.
 
 ### Verify your workflow file is committed
 
@@ -81,7 +74,7 @@ gh aw add jsmith/my-workshop/daily-status
 Your teammate runs this inside their repository. `gh aw add` copies the Markdown file into their `.github/workflows/` folder and they can then edit and [compile](https://github.github.com/gh-aw/reference/compilation-process/) it for their own context.
 
 > [!TIP]
-> You can also pin to a specific version using a tag or commit SHA: `gh aw add jsmith/my-workshop/daily-status@v1.0`. This is useful when you want to guarantee stability for a team-wide rollout.
+> You can pin a version with `@<tag-or-sha>` (for example, `daily-status@v1.0`). The side quest above shows when to use it.
 
 ### Document your template
 
