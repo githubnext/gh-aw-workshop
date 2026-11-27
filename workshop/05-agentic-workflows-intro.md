@@ -17,7 +17,7 @@ If both apply, [Skip to Install gh-aw](06-install-gh-aw.md).
 
 An [**Agentic Workflow**](https://github.github.com/gh-aw/introduction/overview/) is a plain-English task brief that an AI agent executes inside GitHub Actions. You write what you want — "summarize open issues and post a daily digest" — and the agent reads your repo, calls tools, and posts the output automatically.
 
-Think of it like a scheduled digest: every morning it reads your inbox and sends you a summary — no keyboard required. The agent always runs in a [sandbox](https://github.github.com/gh-aw/reference/sandbox/) and posts results through guardrailed [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/). You will explore security in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
+The agent always runs in a [sandbox](https://github.github.com/gh-aw/reference/sandbox/) and posts results through guardrailed [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/). You will explore security in [How Agentic Workflows Stay Safe](05b-agentic-workflows-security.md).
 
 ## Three key terms
 
@@ -26,8 +26,6 @@ Think of it like a scheduled digest: every morning it reads your inbox and sends
 | [Trigger](https://github.github.com/gh-aw/reference/triggers/) | The event or schedule that starts the workflow |
 | [Task brief](https://github.github.com/gh-aw/reference/markdown/) | The plain-English instructions you write for the agent |
 | [Safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/) | The guardrails that control how the workflow writes back to GitHub |
-
-The diagram below shows how each term plays a role when the workflow runs.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="images/05-three-terms-dark.svg">
@@ -50,14 +48,21 @@ Before studying the diagram, write your prediction: what two files are involved,
 - **`.md` source file** — contains [YAML frontmatter](https://github.github.com/gh-aw/reference/frontmatter/) (trigger, [permissions](https://github.github.com/gh-aw/reference/permissions/), runner) and your plain-English task brief. You author and edit this file.
 - **`.lock.yml` compiled file** — [`gh aw compile`](https://github.github.com/gh-aw/reference/compilation-process/) generates it from the `.md`. GitHub Actions runs this file, not the `.md`. Never edit it by hand.
 
-You can optionally explore [Anatomy of a workflow](https://github.github.com/gh-aw/cracktro/#anatomy-of-a-workflow) in the interactive presentation (cracktro) to see how frontmatter settings and the agent prompt fit together.
+**Activity 1 — find the trigger:** You haven't compiled a workflow yet, so use this excerpt from a compiled `.lock.yml`. Find the `on:` key — that is the trigger that came from the frontmatter of the `.md` source.
 
-**Activity 1 — identify the parts:** Open any `.lock.yml` file in your repo and find the `on:` key. That is the compiled trigger that came from your [frontmatter](https://github.github.com/gh-aw/reference/frontmatter/).
+```yaml
+name: "Daily Issue Digest"
+"on":
+  schedule:
+  - cron: "0 9 * * *"
+  workflow_dispatch:
+permissions: {}
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+```
 
-```
-# Example: open .github/workflows/my-workflow.lock.yml
-# Find the "on:" key — that is your compiled trigger.
-```
+- [ ] Find the `on:` key and name the two ways this workflow can start (`schedule` and `workflow_dispatch`).
 
 Now check your prediction: did you name both files and identify which one Actions runs (`.lock.yml`)?
 
@@ -91,15 +96,15 @@ Read each task and decide before revealing the answer.
 
 </details>
 
-## Activity 3 — write a task brief
+## Activity 3 — sharpen a task brief
 
-Write a one- or two-sentence task brief for this goal before revealing the example:
-
-> Post a daily issue digest that summarizes newly opened issues and flags anything urgent.
+This brief is too vague for an agent to act on consistently:
 
 ```
-Write your brief here before revealing the example.
+Tell me about new issues.
 ```
+
+Rewrite it before revealing the example. Your goal: a daily digest that summarizes newly opened issues and flags anything urgent.
 
 <details>
 <summary>Reveal one possible brief</summary>
@@ -108,13 +113,13 @@ You are a repository triage assistant. Each day, review issues opened in the las
 
 </details>
 
-Check your brief against these three criteria:
+Check your rewrite against these three criteria:
 
-- Does it include a **time window** (for example, "last 24 hours")?
-- Does it specify the **output format** (single digest comment)?
-- Does it define at least one **priority signal** (for example, blockers)?
+- [ ] It includes a **time window** (for example, "last 24 hours")
+- [ ] It specifies the **output format** (single digest comment)
+- [ ] It defines at least one **priority signal** (for example, blockers)
 
-If any answer is no, revise your brief before continuing.
+If any box is unchecked, revise your brief before continuing.
 
 > [!TIP]
 > Want annotated examples and more exercises? See [Side Quest: Agentic Workflows Deep Dive](side-quest-05-02-aw-deep-dive.md).
@@ -125,8 +130,8 @@ If any answer is no, revise your brief before continuing.
 - [ ] You can explain one difference between an agentic and a standard Actions workflow
 - [ ] You know the three key terms: trigger, task brief, [safe outputs](https://github.github.com/gh-aw/reference/safe-outputs/)
 - [ ] You know that `gh aw compile` generates `.lock.yml` from the `.md` source
-- [ ] You identified the `on:` key in a compiled `.lock.yml` file
-- [ ] Your task brief includes a time window, output format, and priority signal
+- [ ] You found the `on:` key in the sample `.lock.yml` excerpt
+- [ ] Your rewritten task brief includes a time window, output format, and priority signal
 
 <details>
 <summary>Still uncertain? Try this before moving on</summary>
