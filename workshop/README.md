@@ -45,6 +45,7 @@ You can optionally explore the [GitHub Agentic Workflows interactive presentatio
 | 29 | [Teach Your Agent Domain Knowledge with Skills](29-skills-and-domain-knowledge.md) |
 | 30 | [Preview Your Workflow's Writes with Staged Mode](30-preview-with-staged-mode.md) |
 | 31 | [Control Network Access with the Firewall](31-control-network-access.md) |
+| 32 | [Limit Runaway Workflows with Timeouts and Output Caps](32-limit-runaway-workflows.md) |
 
 ## Optional Side Quests
 
